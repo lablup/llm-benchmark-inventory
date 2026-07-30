@@ -5,6 +5,7 @@
 한국어 및 영어 LLM 벤치마크의 평가 범위, 과제 예시, 라이선스와 실행 지원 정보를 정리한 목록입니다.
 이 문서는 빠른 탐색을 위한 요약이며, 전체 필드는 원본 CSV에서 확인할 수 있습니다.
 
+- [웹에서 인벤토리 탐색](https://lablup.github.io/llm-benchmark-inventory/)
 - [한국어 벤치마크 CSV](./korean_benchmark_inventory.csv)
 - [영어 벤치마크 CSV](./english_benchmark_inventory.csv)
 

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="한국어 및 영어 LLM 벤치마크의 평가 범위, 라이선스, 실행 지원 현황을 정리한 데이터 카탈로그입니다.">
+    <meta name="theme-color" content="#081a2c">
+    <title>LLM Benchmark Inventory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./inventory-data.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav shell" aria-label="주요 메뉴">
+        <a class="brand" href="https://github.com/lablup/llm-benchmark-inventory" aria-label="LLM Benchmark Inventory GitHub 저장소">
+          <span class="brand-mark" aria-hidden="true">LBI</span>
+          <span>Benchmark Inventory</span>
+        </a>
+        <div class="nav-links">
+          <a href="#inventory">인벤토리</a>
+          <a href="https://github.com/lablup/llm-benchmark-inventory">GitHub ↗</a>
+        </div>
+      </nav>
+
+      <div class="hero-content shell">
+        <p class="eyebrow">DATA CATALOGUE · UPDATED 2026.07</p>
+        <h1>LLM Benchmark<br><span>Inventory</span></h1>
+        <p class="hero-copy">한국어 및 영어 LLM 벤치마크의 평가 범위, 데이터 이용 조건, 라이선스와 평가 프레임워크 지원 현황을 정리한 목록입니다.</p>
+        <a class="hero-cta" href="#inventory">인벤토리 조회 <span>↓</span></a>
+      </div>
+
+      <div class="signal" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </header>
+
+    <main>
+      <section class="summary shell" aria-labelledby="summary-title">
+        <div>
+          <p class="section-kicker">AT A GLANCE</p>
+          <h2 id="summary-title">읽는 방법</h2>
+          <ul class="reading-notes">
+            <li><strong>상업적 이용</strong>은 데이터 카드 등에 표시된 라이선스를 기준으로 가능, 불가, 확인 불가, 조건 확인 필요로 정리했습니다.</li>
+            <li><strong>라이선스</strong>는 2026년 7월 28일 각 데이터 카드와 저장소에서 일괄 확인했습니다. 이후 변경될 수 있으므로 실제 이용 전에 원문을 다시 확인해야 합니다.</li>
+            <li>영어 벤치마크의 <strong>대표 예시·설명</strong>은 한국어 독자를 위한 번역·요약이 많습니다. CSV의 예시 표기 열에서 영문 예시와 한국어 요약을 구분했습니다.</li>
+            <li><strong>lm-eval 지원</strong>은 오픈소스 평가 프레임워크 <a href="https://github.com/EleutherAI/lm-evaluation-harness">lm-evaluation-harness</a>(EleutherAI)에 해당 태스크가 내장돼 있는지를 뜻합니다. 인벤토리 작성 시 확인한 상태이며 최신 버전에서 달라질 수 있습니다.</li>
+          </ul>
+        </div>
+        <dl class="stats" aria-live="polite">
+          <div><dt id="stat-total">—</dt><dd>전체 벤치마크</dd></div>
+          <div><dt id="stat-commercial">—</dt><dd>상업 이용 가능</dd></div>
+          <div><dt id="stat-lmeval">—</dt><dd>lm-eval 지원</dd></div>
+        </dl>
+      </section>
+
+      <section class="inventory" id="inventory" aria-labelledby="inventory-title">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">EXPLORE THE DATA</p>
+              <h2 id="inventory-title">벤치마크 인벤토리</h2>
+            </div>
+            <div class="language-tabs" role="group" aria-label="언어 선택">
+              <button class="active" type="button" data-language="all">전체</button>
+              <button type="button" data-language="ko">한국어</button>
+              <button type="button" data-language="en">영어</button>
+            </div>
+          </div>
+
+          <div class="controls">
+            <label class="search">
+              <span class="sr-only">벤치마크 검색</span>
+              <span aria-hidden="true">⌕</span>
+              <input id="search-input" type="search" placeholder="이름, 평가 축, 설명으로 검색" autocomplete="off">
+            </label>
+            <label>
+              <span class="sr-only">상업적 이용 조건</span>
+              <select id="commercial-filter">
+                <option value="">상업적 이용 · 전체</option>
+                <option value="가능">가능</option>
+                <option value="불가">불가</option>
+                <option value="조건 확인 필요">조건 확인 필요</option>
+                <option value="확인 불가">확인 불가</option>
+              </select>
+            </label>
+            <label>
+              <span class="sr-only">lm-eval 지원 여부</span>
+              <select id="lmeval-filter">
+                <option value="">lm-eval · 전체</option>
+                <option value="supported">지원</option>
+                <option value="unsupported">미지원</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="results-meta">
+            <p><strong id="result-count">0</strong>개의 벤치마크</p>
+            <div class="data-links">
+              <span>원본 데이터</span>
+              <a href="./korean_benchmark_inventory.csv">한국어 CSV ↓</a>
+              <a href="./english_benchmark_inventory.csv">영어 CSV ↓</a>
+              <button id="reset-filters" type="button">필터 초기화</button>
+            </div>
+          </div>
+
+          <div id="benchmark-grid" class="benchmark-list" aria-live="polite"></div>
+          <div id="empty-state" class="empty-state" hidden>
+            <p>조건에 맞는 벤치마크가 없습니다.</p>
+            <button type="button">필터 초기화</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="notice shell">
+        <p class="section-kicker">BEFORE YOU USE</p>
+        <div>
+          <h2>이용 조건 및<br>해석 범위</h2>
+          <p>본 인벤토리는 비교 및 탐색을 위한 참고 자료입니다. 라이선스 정보는 2026년 7월 28일 확인 결과를 기준으로 합니다. 실제 이용 시 원본 데이터 카드와 저장소에서 최신 조건을 재확인해야 합니다.</p>
+          <a href="#summary-title">읽는 방법 다시 보기 ↑</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">
+        <p>LLM Benchmark Inventory</p>
+        <p>Maintained by <a href="https://www.lablup.com">Lablup</a> · Data on <a href="https://github.com/lablup/llm-benchmark-inventory">GitHub</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
