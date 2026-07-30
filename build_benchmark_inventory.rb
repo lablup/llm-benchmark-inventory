@@ -157,18 +157,18 @@ readme << "# LLM 벤치마크 인벤토리"
 readme << ""
 readme << "![도시와 네트워크를 표현한 파란색 배너](./assets/network.png)"
 readme << ""
-readme << "한국어 및 영어 LLM 벤치마크의 평가 범위, 과제 예시, 라이선스와 실행 지원 정보를 정리한 목록입니다."
-readme << "이 문서는 빠른 탐색을 위한 요약이며, 전체 필드는 원본 CSV에서 확인할 수 있습니다."
+readme << "한국어 및 영어 LLM 벤치마크의 평가 범위, 과제 예시, 라이선스와 실행 지원 정보를 정리한 목록."
+readme << "이 문서는 빠른 탐색을 위한 요약이며, 전체 필드는 원본 CSV에서 확인 가능"
 readme << ""
 readme << "- [한국어 벤치마크 CSV](./korean_benchmark_inventory.csv)"
 readme << "- [영어 벤치마크 CSV](./english_benchmark_inventory.csv)"
 readme << ""
 readme << "## 읽는 방법"
 readme << ""
-readme << "- **상업적 이용**은 데이터 카드 등에 표시된 라이선스를 기준으로 `가능`, `불가`, `확인 불가`, `조건 확인 필요`로 정리했습니다."
-readme << "- 라이선스는 #{LICENSE_CHECKED_ON}에 각 데이터 카드와 저장소에서 일괄 확인한 것입니다. 이후 바뀔 수 있으므로 실제 이용 전에 원문을 다시 확인해야 합니다."
-readme << "- 영어 벤치마크의 `대표 예시·설명`은 한국어 독자를 위한 번역·요약이 많습니다. `예시 표기` 열에서 영문 예시와 한국어 요약을 구분했습니다."
-readme << "- `lm-eval 지원`은 오픈소스 평가 프레임워크 [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)(EleutherAI)에 해당 태스크가 내장돼 있는지를 뜻합니다. 인벤토리 작성 시 확인한 상태이며 최신 버전에서 달라질 수 있습니다."
+readme << "- **상업적 이용**은 데이터 카드 등에 표시된 라이선스를 기준으로 `가능`, `불가`, `확인 불가`, `조건 확인 필요`의 네 가지로 구분"
+readme << "- 라이선스는 #{LICENSE_CHECKED_ON}에 각 데이터 카드와 저장소에서 일괄 확인한 것. 이후 바뀔 수 있으므로 실제 이용 전 원문 재확인 필요"
+readme << "- **대표 예시**는 각 벤치마크의 실제 과제 문항. 영어 벤치마크의 예시는 한국어 독자를 위한 번역·요약이 많으며, CSV의 `예시 표기` 열로 영문 예시와 한국어 요약을 구분"
+readme << "- `lm-eval 지원`은 오픈소스 평가 프레임워크 [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)(EleutherAI)에 해당 태스크가 내장돼 있는지 여부. 인벤토리 작성 시점 기준이며 최신 버전에서 달라질 수 있음"
 readme << ""
 
 FILES.each do |path, title|
@@ -183,8 +183,8 @@ FILES.each do |path, title|
   grouped.each do |category, category_rows|
     readme << "### #{category}"
     readme << ""
-    readme << "| 벤치마크 | 평가 축 | 설명 | 상업적 이용 | 라이선스·이용 조건 | lm-eval |"
-    readme << "|---|---|---|---|---|---|"
+    readme << "| 벤치마크 | 평가 축 | 설명 | 대표 예시 | 상업적 이용 | 라이선스·이용 조건 | lm-eval |"
+    readme << "|---|---|---|---|---|---|---|"
     category_rows.each do |row|
       name = "[#{markdown_escape(row["이름"])}](#{public_url(row["링크"])})"
       license_info = [
@@ -193,7 +193,11 @@ FILES.each do |path, title|
         "재배포: #{markdown_escape(row["재배포"])}",
         markdown_escape(row["이용 시 유의사항"])
       ].reject(&:empty?).join("<br>")
-      readme << "| #{name} | #{markdown_escape(row["평가 축"])} | #{markdown_escape(row["정의"])} | **#{markdown_escape(row["상업적 이용"])}** | #{license_info} | #{markdown_escape(row["lm-eval 지원"])} |"
+      example_info = [
+        row["대표 과제"].to_s.empty? ? "" : "**#{markdown_escape(row["대표 과제"])}**",
+        markdown_escape(row["대표 예시·설명"])
+      ].reject(&:empty?).join("<br>")
+      readme << "| #{name} | #{markdown_escape(row["평가 축"])} | #{markdown_escape(row["정의"])} | #{example_info} | **#{markdown_escape(row["상업적 이용"])}** | #{license_info} | #{markdown_escape(row["lm-eval 지원"])} |"
     end
     readme << ""
   end
@@ -213,9 +217,9 @@ readme << "| `이용 시 유의사항` | 게이트 접근, 원저작권, 실행 
 readme << ""
 readme << "## 기여 시 확인 사항"
 readme << ""
-readme << "1. 데이터 카드와 공식 저장소의 라이선스를 우선 확인합니다."
-readme << "2. 데이터 라이선스와 코드·평가 하니스 라이선스를 구분합니다."
-readme << "3. 번역본·미러·수집물은 원본 라이선스가 자동 승계된다고 가정하지 않습니다."
-readme << "4. 라이선스를 재확인했으면 문서 상단의 확인 기준일을 갱신합니다."
+readme << "1. 데이터 카드와 공식 저장소의 라이선스를 우선 확인"
+readme << "2. 데이터 라이선스와 코드·평가 하니스 라이선스를 구분"
+readme << "3. 번역본·미러·수집물은 원본 라이선스가 자동 승계된다고 가정하지 않기"
+readme << "4. 라이선스 재확인 시 문서 상단의 확인 기준일을 갱신"
 
 File.write("README.md", readme.join("\n") + "\n", encoding: "UTF-8")
