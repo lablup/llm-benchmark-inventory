@@ -75,6 +75,18 @@ function isLmEvalSupported(value) {
   return value !== "없음" && value.trim() !== "";
 }
 
+function renderExample(row) {
+  const example = (row["대표 예시·설명"] ?? "").trim();
+  if (!example) return "";
+  const task = (row["대표 과제"] ?? "").trim();
+  return `
+    <div class="example">
+      <p class="example-title">대표 예시${task ? ` · ${escapeHTML(task)}` : ""}</p>
+      <p class="example-body">${escapeHTML(example)}</p>
+    </div>
+  `;
+}
+
 function renderRow(row) {
   const language = row["언어"] === "ko" ? "KOREAN" : "ENGLISH";
   const lmEval = isLmEvalSupported(row["lm-eval 지원"]) ? row["lm-eval 지원"] : "미지원";
@@ -84,6 +96,7 @@ function renderRow(row) {
         <span class="language">${language}</span>
         <h3><a href="${escapeHTML(row["링크"])}" target="_blank" rel="noopener noreferrer">${escapeHTML(row["이름"])} <span aria-hidden="true">↗</span></a></h3>
         <p>${escapeHTML(row["정의"])}</p>
+        ${renderExample(row)}
       </div>
       <p class="list-axis">${escapeHTML(row["평가 축"])}</p>
       <div class="license-cell">
@@ -116,7 +129,7 @@ function renderGroup(category, rows) {
 function filteredRows() {
   const query = state.query.toLocaleLowerCase("ko");
   return state.rows.filter((row) => {
-    const searchable = [row["이름"], row["평가 축"], row["정의"], row["라이선스"]].join(" ").toLocaleLowerCase("ko");
+    const searchable = [row["이름"], row["평가 축"], row["정의"], row["대표 과제"], row["대표 예시·설명"], row["라이선스"]].join(" ").toLocaleLowerCase("ko");
     const languageMatches = state.language === "all" || row["언어"] === state.language;
     const queryMatches = !query || searchable.includes(query);
     const commercialMatches = !state.commercial || row["상업적 이용"] === state.commercial;
