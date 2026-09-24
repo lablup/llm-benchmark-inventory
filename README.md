@@ -2,12 +2,22 @@
 
 ![도시와 네트워크를 표현한 파란색 배너](./assets/network.png)
 
-한국어 및 영어 LLM 벤치마크의 평가 범위, 과제 예시, 라이선스와 실행 지원 정보를 정리한 목록.
-이 문서는 빠른 탐색을 위한 요약이며, 전체 필드는 원본 CSV에서 확인 가능
+한국어·영어 LLM 벤치마크와 서빙 성능 도구, 공개 보드, GPU·엔진 자원 계측을 정리한 탐색형 인벤토리.
+모델 능력과 시스템 성능을 같은 점수로 섞지 않고 별도 영역으로 제공한다.
 
-- [웹에서 인벤토리 탐색](https://lablup.github.io/llm-benchmark-inventory/)
+- [통합 랜딩 페이지](https://lablup.github.io/llm-benchmark-inventory/)
+- [한국어 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html)
+- [영어 벤치마크](https://lablup.github.io/llm-benchmark-inventory/english.html)
+- [서빙·자원 인벤토리](https://lablup.github.io/llm-benchmark-inventory/serving.html)
 - [한국어 벤치마크 CSV](./korean_benchmark_inventory.csv)
 - [영어 벤치마크 CSV](./english_benchmark_inventory.csv)
+- [서빙·자원 CSV](./serving_inventory.csv)
+
+## 영역 구분
+
+- **한국어·영어 벤치마크**는 모델 능력(model capability)을 평가하는 데이터셋과 하니스를 다룬다.
+- **서빙·자원**은 지연·처리량을 재는 도구, 공개 성능 보드, GPU·엔진 계측을 다룬다.
+- 외부 보드의 실시간 점수는 복제하지 않는다. 공식 방법론과 결과 페이지로 연결하고 재현 조건과 운영 상태를 기록한다.
 
 ## 읽는 방법
 

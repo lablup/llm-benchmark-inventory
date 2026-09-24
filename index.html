@@ -3,34 +3,36 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="한국어 및 영어 LLM 벤치마크의 평가 범위, 라이선스, 실행 지원 현황을 정리한 데이터 카탈로그입니다.">
+    <meta name="description" content="한국어·영어 LLM 벤치마크와 서빙 성능 도구, 공개 보드, GPU 자원 계측을 한곳에서 탐색하는 인벤토리입니다.">
     <meta name="theme-color" content="#081a2c">
     <title>LLM Benchmark Inventory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
-    <script src="./inventory-data.js" defer></script>
-    <script src="./app.js" defer></script>
+    <script src="./site-meta.js" defer></script>
+    <script src="./landing.js" defer></script>
   </head>
   <body>
     <header class="hero">
       <nav class="nav shell" aria-label="주요 메뉴">
-        <a class="brand" href="https://github.com/lablup/llm-benchmark-inventory" aria-label="LLM Benchmark Inventory GitHub 저장소">
+        <a class="brand" href="./index.html" aria-label="LLM Benchmark Inventory 홈">
           <span class="brand-mark" aria-hidden="true">LBI</span>
           <span>Benchmark Inventory</span>
         </a>
         <div class="nav-links">
-          <a href="#inventory">인벤토리</a>
+          <a href="./korean.html">한국어</a>
+          <a href="./english.html">영어</a>
+          <a href="./serving.html">서빙</a>
           <a href="https://github.com/lablup/llm-benchmark-inventory">GitHub ↗</a>
         </div>
       </nav>
 
       <div class="hero-content shell">
-        <p class="eyebrow">DATA CATALOGUE · UPDATED 2026.07</p>
+        <p class="eyebrow">BENCHMARKS · SERVING · RESOURCES</p>
         <h1>LLM Benchmark<br><span>Inventory</span></h1>
-        <p class="hero-copy">한국어 및 영어 LLM 벤치마크의 평가 범위, 데이터 이용 조건, 라이선스와 평가 프레임워크 지원 현황을 정리한 목록입니다.</p>
-        <a class="hero-cta" href="#inventory">인벤토리 조회 <span>↓</span></a>
+        <p class="hero-copy">언어별 모델 능력 평가와 서빙 성능·자원 측정을 분리해 탐색합니다. 무엇을 재고, 어떤 조건에서 재현할 수 있는지 공식 출처와 함께 정리합니다.</p>
+        <a class="hero-cta" href="#tracks">영역 선택 <span>↓</span></a>
       </div>
 
       <div class="signal" aria-hidden="true">
@@ -42,85 +44,51 @@
       <section class="summary shell" aria-labelledby="summary-title">
         <div>
           <p class="section-kicker">AT A GLANCE</p>
-          <h2 id="summary-title">읽는 방법</h2>
-          <ul class="reading-notes">
-            <li><strong>상업적 이용</strong>은 데이터 카드 등에 표시된 라이선스를 기준으로 가능, 불가, 확인 불가, 조건 확인 필요의 네 가지로 구분</li>
-            <li><strong>라이선스</strong>는 2026년 7월 28일 각 데이터 카드와 저장소에서 일괄 확인한 것. 이후 변경될 수 있으므로 실제 이용 전 원문 재확인 필요</li>
-            <li><strong>대표 예시</strong>는 각 벤치마크의 실제 과제 문항. 영어 벤치마크의 예시는 한국어 독자를 위한 번역·요약이 많으며, CSV의 예시 표기 열로 영문 예시와 한국어 요약을 구분</li>
-            <li><strong>lm-eval 지원</strong>은 오픈소스 평가 프레임워크 <a href="https://github.com/EleutherAI/lm-evaluation-harness">lm-evaluation-harness</a>(EleutherAI)에 해당 태스크가 내장돼 있는지 여부. 인벤토리 작성 시점 기준이며 최신 버전에서 달라질 수 있음</li>
-          </ul>
+          <h2 id="summary-title">하나의 입구,<br>서로 다른 질문</h2>
+          <p class="section-copy">모델 능력(capability), 서빙 성능(serving performance), 운영 자원(resource footprint)은 같은 숫자가 아닙니다. 각 영역의 조건과 한계를 보존한 채 나란히 탐색합니다.</p>
         </div>
         <dl class="stats" aria-live="polite">
-          <div><dt id="stat-total">—</dt><dd>전체 벤치마크</dd></div>
-          <div><dt id="stat-commercial">—</dt><dd>상업 이용 가능</dd></div>
-          <div><dt id="stat-lmeval">—</dt><dd>lm-eval 지원</dd></div>
+          <div><dt id="landing-total-count">—</dt><dd>전체 항목</dd></div>
+          <div><dt>3</dt><dd>탐색 영역</dd></div>
+          <div><dt id="landing-updated">—</dt><dd>최근 확인일</dd></div>
         </dl>
       </section>
 
-      <section class="inventory" id="inventory" aria-labelledby="inventory-title">
+      <section class="track-section" id="tracks" aria-labelledby="tracks-title">
         <div class="shell">
+          <p class="section-kicker">CHOOSE A TRACK</p>
           <div class="section-heading">
-            <div>
-              <p class="section-kicker">EXPLORE THE DATA</p>
-              <h2 id="inventory-title">벤치마크 인벤토리</h2>
-            </div>
-            <div class="language-tabs" role="group" aria-label="언어 선택">
-              <button class="active" type="button" data-language="all">전체</button>
-              <button type="button" data-language="ko">한국어</button>
-              <button type="button" data-language="en">영어</button>
-            </div>
+            <h2 id="tracks-title">어떤 정보를 찾고 있나요?</h2>
           </div>
-
-          <div class="controls">
-            <label class="search">
-              <span class="sr-only">벤치마크 검색</span>
-              <span aria-hidden="true">⌕</span>
-              <input id="search-input" type="search" placeholder="이름, 평가 축, 설명으로 검색" autocomplete="off">
-            </label>
-            <label>
-              <span class="sr-only">상업적 이용 조건</span>
-              <select id="commercial-filter">
-                <option value="">상업적 이용 · 전체</option>
-                <option value="가능">가능</option>
-                <option value="불가">불가</option>
-                <option value="조건 확인 필요">조건 확인 필요</option>
-                <option value="확인 불가">확인 불가</option>
-              </select>
-            </label>
-            <label>
-              <span class="sr-only">lm-eval 지원 여부</span>
-              <select id="lmeval-filter">
-                <option value="">lm-eval · 전체</option>
-                <option value="supported">지원</option>
-                <option value="unsupported">미지원</option>
-              </select>
-            </label>
-          </div>
-
-          <div class="results-meta">
-            <p><strong id="result-count">0</strong>개의 벤치마크</p>
-            <div class="data-links">
-              <span>원본 데이터</span>
-              <a href="./korean_benchmark_inventory.csv">한국어 CSV ↓</a>
-              <a href="./english_benchmark_inventory.csv">영어 CSV ↓</a>
-              <button id="reset-filters" type="button">필터 초기화</button>
-            </div>
-          </div>
-
-          <div id="benchmark-grid" class="benchmark-list" aria-live="polite"></div>
-          <div id="empty-state" class="empty-state" hidden>
-            <p>조건에 맞는 벤치마크가 없습니다.</p>
-            <button type="button">필터 초기화</button>
+          <div class="track-grid">
+            <a class="track-card" href="./korean.html">
+              <span class="track-index">01</span>
+              <div><p class="track-label">CAPABILITY · KO</p><h3>한국어 벤치마크</h3></div>
+              <p>한국어 원생·번역 평가셋의 범위, 라이선스, 재배포 조건과 실행 지원을 확인합니다.</p>
+              <span class="track-count"><strong id="landing-ko-count">—</strong>개 항목</span>
+            </a>
+            <a class="track-card" href="./english.html">
+              <span class="track-index">02</span>
+              <div><p class="track-label">CAPABILITY · EN</p><h3>영어 벤치마크</h3></div>
+              <p>지식·추론·코딩·에이전트·사실성 평가의 채점 방식과 현재 활용도를 살펴봅니다.</p>
+              <span class="track-count"><strong id="landing-en-count">—</strong>개 항목</span>
+            </a>
+            <a class="track-card track-card--accent" href="./serving.html">
+              <span class="track-index">03</span>
+              <div><p class="track-label">SYSTEM · SERVING</p><h3>서빙·자원</h3></div>
+              <p>부하 도구, 공개 성능 보드, GPU·엔진 계측 지표와 에어갭 적용 가능성을 비교합니다.</p>
+              <span class="track-count"><strong id="landing-serving-count">—</strong>개 항목</span>
+            </a>
           </div>
         </div>
       </section>
 
       <section class="notice shell">
-        <p class="section-kicker">BEFORE YOU USE</p>
+        <p class="section-kicker">HOW TO READ</p>
         <div>
-          <h2>이용 조건 및<br>해석 범위</h2>
-          <p>본 인벤토리는 비교 및 탐색을 위한 참고 자료입니다. 라이선스 정보는 2026년 7월 28일 확인 결과를 기준으로 합니다. 실제 이용 시 원본 데이터 카드와 저장소에서 최신 조건을 재확인해야 합니다.</p>
-          <a href="#summary-title">읽는 방법 다시 보기 ↑</a>
+          <h2>점수보다 먼저<br>측정 조건을 봅니다</h2>
+          <p>이 사이트는 실시간 순위를 복제하지 않습니다. 평가 데이터, 부하 조건, 하드웨어 공개 여부, 원시 결과와 라이선스를 확인할 수 있도록 공식 원문으로 연결합니다.</p>
+          <a href="https://github.com/lablup/llm-benchmark-inventory">데이터와 기여 방법 보기 ↗</a>
         </div>
       </section>
     </main>

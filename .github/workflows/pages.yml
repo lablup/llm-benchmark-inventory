@@ -25,6 +25,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Validate inventory data
+        run: ruby validate_inventory.rb
       - name: Generate site data
         run: ruby build_site_data.rb
       - name: Upload site
