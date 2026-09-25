@@ -3,12 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="한국어·영어 LLM 벤치마크와 서빙 성능 도구, 공개 보드, GPU 자원 계측을 한곳에서 탐색하는 인벤토리입니다.">
+    <meta name="description" content="한국어·영어 LLM 벤치마크와 서빙 성능 도구, 공개 성능 비교, GPU 자원 계측 자료를 한곳에서 확인할 수 있습니다.">
     <meta name="theme-color" content="#081a2c">
     <title>LLM Benchmark Inventory</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
     <script src="./site-meta.js" defer></script>
     <script src="./landing.js" defer></script>
@@ -29,10 +26,10 @@
       </nav>
 
       <div class="hero-content shell">
-        <p class="eyebrow">BENCHMARKS · SERVING · RESOURCES</p>
+        <p class="eyebrow">벤치마크 · 서빙 · 자원</p>
         <h1>LLM Benchmark<br><span>Inventory</span></h1>
-        <p class="hero-copy">언어별 모델 능력 평가와 서빙 성능·자원 측정을 분리해 탐색합니다. 무엇을 재고, 어떤 조건에서 재현할 수 있는지 공식 출처와 함께 정리합니다.</p>
-        <a class="hero-cta" href="#tracks">영역 선택 <span>↓</span></a>
+        <p class="hero-copy">한국어·영어 모델 평가와 서빙 성능 측정을 따로 제공합니다. 평가 대상, 실행 조건과 원본 자료를 한곳에서 확인할 수 있습니다.</p>
+        <a class="hero-cta" href="#tracks">분야 선택 <span>↓</span></a>
       </div>
 
       <div class="signal" aria-hidden="true">
@@ -43,40 +40,40 @@
     <main>
       <section class="summary shell" aria-labelledby="summary-title">
         <div>
-          <p class="section-kicker">AT A GLANCE</p>
-          <h2 id="summary-title">하나의 입구,<br>서로 다른 질문</h2>
-          <p class="section-copy">모델 능력(capability), 서빙 성능(serving performance), 운영 자원(resource footprint)은 같은 숫자가 아닙니다. 각 영역의 조건과 한계를 보존한 채 나란히 탐색합니다.</p>
+          <p class="section-kicker">개요</p>
+          <h2 id="summary-title">모델 평가와<br>시스템 성능</h2>
+          <p class="section-copy">모델이 무엇을 아는지와 시스템이 얼마나 빠른지는 다른 문제입니다. 결과를 비교할 때는 평가 데이터, 부하 조건과 하드웨어를 함께 확인해야 합니다.</p>
         </div>
         <dl class="stats" aria-live="polite">
           <div><dt id="landing-total-count">—</dt><dd>전체 항목</dd></div>
-          <div><dt>3</dt><dd>탐색 영역</dd></div>
-          <div><dt id="landing-updated">—</dt><dd>최근 확인일</dd></div>
+          <div><dt>3</dt><dd>분야</dd></div>
+          <div><dt id="landing-updated">—</dt><dd>서빙 자료 확인일</dd></div>
         </dl>
       </section>
 
       <section class="track-section" id="tracks" aria-labelledby="tracks-title">
         <div class="shell">
-          <p class="section-kicker">CHOOSE A TRACK</p>
+          <p class="section-kicker">분야 선택</p>
           <div class="section-heading">
-            <h2 id="tracks-title">어떤 정보를 찾고 있나요?</h2>
+            <h2 id="tracks-title">평가 분야</h2>
           </div>
           <div class="track-grid">
             <a class="track-card" href="./korean.html">
               <span class="track-index">01</span>
-              <div><p class="track-label">CAPABILITY · KO</p><h3>한국어 벤치마크</h3></div>
-              <p>한국어 원생·번역 평가셋의 범위, 라이선스, 재배포 조건과 실행 지원을 확인합니다.</p>
+              <div><p class="track-label">모델 평가 · 한국어</p><h3>한국어 벤치마크</h3></div>
+              <p>한국어로 작성되었거나 번역된 평가 데이터셋을 모았습니다. 라이선스, 재배포 조건과 실행 도구 지원 여부를 확인할 수 있습니다.</p>
               <span class="track-count"><strong id="landing-ko-count">—</strong>개 항목</span>
             </a>
             <a class="track-card" href="./english.html">
               <span class="track-index">02</span>
-              <div><p class="track-label">CAPABILITY · EN</p><h3>영어 벤치마크</h3></div>
-              <p>지식·추론·코딩·에이전트·사실성 평가의 채점 방식과 현재 활용도를 살펴봅니다.</p>
+              <div><p class="track-label">모델 평가 · 영어</p><h3>영어 벤치마크</h3></div>
+              <p>지식, 추론, 코딩, 도구 사용과 사실성을 평가하는 방법을 모았습니다. 채점 방식과 현재 활용 여부를 확인할 수 있습니다.</p>
               <span class="track-count"><strong id="landing-en-count">—</strong>개 항목</span>
             </a>
             <a class="track-card track-card--accent" href="./serving.html">
               <span class="track-index">03</span>
-              <div><p class="track-label">SYSTEM · SERVING</p><h3>서빙·자원</h3></div>
-              <p>부하 도구, 공개 성능 보드, GPU·엔진 계측 지표와 에어갭 적용 가능성을 비교합니다.</p>
+              <div><p class="track-label">시스템 성능 · 서빙</p><h3>서빙·자원</h3></div>
+              <p>부하 생성 도구, 공개 성능 비교, GPU와 엔진 지표를 모았습니다. 에어갭 환경에서 실행할 수 있는지도 확인할 수 있습니다.</p>
               <span class="track-count"><strong id="landing-serving-count">—</strong>개 항목</span>
             </a>
           </div>
@@ -84,10 +81,10 @@
       </section>
 
       <section class="notice shell">
-        <p class="section-kicker">HOW TO READ</p>
+        <p class="section-kicker">읽는 방법</p>
         <div>
-          <h2>점수보다 먼저<br>측정 조건을 봅니다</h2>
-          <p>이 사이트는 실시간 순위를 복제하지 않습니다. 평가 데이터, 부하 조건, 하드웨어 공개 여부, 원시 결과와 라이선스를 확인할 수 있도록 공식 원문으로 연결합니다.</p>
+          <h2>점수를 비교하기 전에<br>측정 조건을 확인하세요</h2>
+          <p>평가 데이터, 부하 조건, 하드웨어 공개 여부, 원시 결과와 라이선스를 함께 확인해야 결과를 올바르게 비교할 수 있습니다. 이 사이트는 실시간 순위를 복제하지 않고 공식 자료로 연결합니다.</p>
           <a href="https://github.com/lablup/llm-benchmark-inventory">데이터와 기여 방법 보기 ↗</a>
         </div>
       </section>
