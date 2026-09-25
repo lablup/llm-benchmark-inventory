@@ -1,6 +1,6 @@
 const state = {
   rows: [],
-  language: "all",
+  language: document.body.dataset.language || "all",
   query: "",
   commercial: "",
   lmeval: "",
@@ -13,7 +13,6 @@ const elements = {
   search: document.querySelector("#search-input"),
   commercial: document.querySelector("#commercial-filter"),
   lmeval: document.querySelector("#lmeval-filter"),
-  tabs: [...document.querySelectorAll("[data-language]")],
   reset: document.querySelector("#reset-filters"),
 };
 
@@ -88,7 +87,7 @@ function renderExample(row) {
 }
 
 function renderRow(row) {
-  const language = row["언어"] === "ko" ? "KOREAN" : "ENGLISH";
+  const language = row["트랙"] === "ko" ? "KOREAN" : "ENGLISH";
   const lmEval = isLmEvalSupported(row["lm-eval 지원"]) ? row["lm-eval 지원"] : "미지원";
   return `
     <article class="list-row">
@@ -130,7 +129,7 @@ function filteredRows() {
   const query = state.query.toLocaleLowerCase("ko");
   return state.rows.filter((row) => {
     const searchable = [row["이름"], row["평가 축"], row["정의"], row["대표 과제"], row["대표 예시·설명"], row["라이선스"]].join(" ").toLocaleLowerCase("ko");
-    const languageMatches = state.language === "all" || row["언어"] === state.language;
+    const languageMatches = state.language === "all" || row["트랙"] === state.language;
     const queryMatches = !query || searchable.includes(query);
     const commercialMatches = !state.commercial || row["상업적 이용"] === state.commercial;
     const supported = isLmEvalSupported(row["lm-eval 지원"]);
@@ -153,14 +152,13 @@ function render() {
 }
 
 function resetFilters() {
-  state.language = "all";
+  state.language = document.body.dataset.language || "all";
   state.query = "";
   state.commercial = "";
   state.lmeval = "";
   elements.search.value = "";
   elements.commercial.value = "";
   elements.lmeval.value = "";
-  elements.tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.language === "all"));
   render();
 }
 
@@ -172,15 +170,17 @@ async function loadInventory() {
       const sources = ["korean_benchmark_inventory.csv", "english_benchmark_inventory.csv"];
       const responses = await Promise.all(sources.map((source) => fetch(source)));
       if (responses.some((response) => !response.ok)) throw new Error("CSV request failed");
-      state.rows = (await Promise.all(responses.map((response) => response.text()))).flatMap(parseCSV);
+      const parsed = (await Promise.all(responses.map((response) => response.text()))).map(parseCSV);
+      state.rows = parsed.flatMap((rows, index) => rows.map((row) => ({ ...row, "트랙": index === 0 ? "ko" : "en" })));
     }
 
+    const trackRows = state.rows.filter((row) => state.language === "all" || row["트랙"] === state.language);
     state.query = elements.search.value.trim();
     state.commercial = elements.commercial.value;
     state.lmeval = elements.lmeval.value;
-    document.querySelector("#stat-total").textContent = state.rows.length;
-    document.querySelector("#stat-commercial").textContent = state.rows.filter((row) => row["상업적 이용"] === "가능").length;
-    document.querySelector("#stat-lmeval").textContent = state.rows.filter((row) => isLmEvalSupported(row["lm-eval 지원"])).length;
+    document.querySelector("#stat-total").textContent = trackRows.length;
+    document.querySelector("#stat-commercial").textContent = trackRows.filter((row) => row["상업적 이용"] === "가능").length;
+    document.querySelector("#stat-lmeval").textContent = trackRows.filter((row) => isLmEvalSupported(row["lm-eval 지원"])).length;
     render();
   } catch (error) {
     elements.grid.innerHTML = '<p class="empty-state">데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>';
@@ -188,13 +188,6 @@ async function loadInventory() {
   }
 }
 
-elements.tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    state.language = tab.dataset.language;
-    elements.tabs.forEach((item) => item.classList.toggle("active", item === tab));
-    render();
-  });
-});
 elements.search.addEventListener("input", (event) => { state.query = event.target.value.trim(); render(); });
 elements.commercial.addEventListener("change", (event) => { state.commercial = event.target.value; render(); });
 elements.lmeval.addEventListener("change", (event) => { state.lmeval = event.target.value; render(); });
