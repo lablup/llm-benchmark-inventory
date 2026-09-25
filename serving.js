@@ -140,7 +140,7 @@ async function loadServingInventory() {
 
   document.querySelector("#stat-serving-total").textContent = servingState.rows.length;
   document.querySelector("#stat-serving-active").textContent = servingState.rows.filter((row) => row["운영 상태"] === "활성").length;
-  document.querySelector("#stat-serving-airgap").textContent = servingState.rows.filter((row) => ["가능", "조건부"].includes(row["에어갭"])).length;
+  document.querySelector("#stat-serving-airgap").textContent = servingState.rows.filter((row) => row["에어갭"] === "가능").length;
   renderServing();
 }
 
