@@ -86,7 +86,10 @@ rescue Date::Error => error
   abort "serving_inventory.csv: row #{index + 2}: #{error.message}"
 end
 
-%w[index.html korean.html english.html serving.html english-copy.js].each do |name|
+%w[
+  index.html korean.html english.html serving.html english-copy.js
+  assets/landing-map-desktop.webp assets/landing-map-mobile.webp
+].each do |name|
   abort "missing page: #{name}" unless File.file?(File.join(ROOT, name))
 end
 
