@@ -1,21 +1,46 @@
-name: Deploy GitHub Pages
+name: Validate and deploy GitHub Pages
 
 on:
   push:
+    branches: ["main"]
+  pull_request:
     branches: ["main"]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate inventory data
+        run: ruby validate_inventory.rb
+      - name: Generate site data
+        run: ruby build_site_data.rb
+      - name: Verify generated files are current
+        run: git diff --exit-code -- inventory-data.js serving-data.js site-meta.js
+      - name: Check script syntax
+        run: |
+          ruby -c build_benchmark_inventory.rb
+          ruby -c build_site_data.rb
+          ruby -c validate_inventory.rb
+          node --check app.js
+          node --check landing.js
+          node --check serving.js
+
   deploy:
+    if: github.event_name != 'pull_request'
+    needs: validate
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -25,8 +50,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Validate inventory data
-        run: ruby validate_inventory.rb
       - name: Generate site data
         run: ruby build_site_data.rb
       - name: Upload site
