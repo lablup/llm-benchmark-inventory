@@ -66,6 +66,14 @@ end
   validate_https_links(table, name)
 end
 
+english_ids = read_csv("english_benchmark_inventory.csv").map { |row| row["id"] }
+english_copy = File.read(File.join(ROOT, "english-copy.js"), encoding: "utf-8")
+english_copy_ids = english_copy.scan(/^  (?:"([^"]+)"|([a-z0-9]+)):\s*\{/).map { |quoted, bare| quoted || bare }
+missing_copy = english_ids - english_copy_ids
+extra_copy = english_copy_ids - english_ids
+abort "english-copy.js: missing ids: #{missing_copy.join(', ')}" unless missing_copy.empty?
+abort "english-copy.js: unknown ids: #{extra_copy.join(', ')}" unless extra_copy.empty?
+
 serving = read_csv("serving_inventory.csv")
 validate_required(serving, "serving_inventory.csv", SERVING_HEADERS)
 validate_ids(serving, "serving_inventory.csv")
@@ -78,7 +86,7 @@ rescue Date::Error => error
   abort "serving_inventory.csv: row #{index + 2}: #{error.message}"
 end
 
-%w[index.html korean.html english.html serving.html].each do |name|
+%w[index.html korean.html english.html serving.html english-copy.js].each do |name|
   abort "missing page: #{name}" unless File.file?(File.join(ROOT, name))
 end
 

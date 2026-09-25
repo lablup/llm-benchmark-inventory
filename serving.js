@@ -150,6 +150,11 @@ servingElements.airgap.addEventListener("change", (event) => { servingState.airg
 servingElements.reset.addEventListener("click", resetServingFilters);
 servingElements.empty.querySelector("button").addEventListener("click", resetServingFilters);
 
+const servingSwitcher = document.querySelector(".track-switcher");
+if (servingSwitcher) {
+  servingSwitcher.innerHTML = '<a href="./korean.html">텍스트</a><a href="./korean.html?modality=vision">이미지</a><a aria-current="page" href="./serving.html">서빙</a>';
+}
+
 loadServingInventory().catch((error) => {
   servingElements.grid.innerHTML = '<p class="empty-state">데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>';
   console.error(error);

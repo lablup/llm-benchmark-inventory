@@ -3,98 +3,71 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="한국어·영어 LLM 벤치마크와 서빙 성능 도구, 공개 성능 비교, GPU 자원 계측 자료를 한곳에서 확인할 수 있습니다.">
-    <meta name="theme-color" content="#081a2c">
+    <meta name="description" content="텍스트, 이미지와 서빙 영역별 LLM 벤치마크 인벤토리입니다.">
+    <meta name="theme-color" content="#f5f5f7">
     <title>LLM Benchmark Inventory</title>
     <link rel="stylesheet" href="./styles.css">
-    <script src="./site-meta.js" defer></script>
-    <script src="./landing.js" defer></script>
   </head>
-  <body>
-    <header class="hero">
-      <nav class="nav shell" aria-label="주요 메뉴">
-        <a class="brand" href="./index.html" aria-label="LLM Benchmark Inventory 홈">
-          <span class="brand-mark" aria-hidden="true">LBI</span>
-          <span>Benchmark Inventory</span>
-        </a>
-        <div class="nav-links">
-          <a href="./korean.html">한국어</a>
-          <a href="./english.html">영어</a>
-          <a href="./serving.html">서빙</a>
-          <a href="https://github.com/lablup/llm-benchmark-inventory">GitHub ↗</a>
-        </div>
-      </nav>
-
-      <div class="hero-content shell">
-        <p class="eyebrow">벤치마크 · 서빙 · 자원</p>
-        <h1>LLM Benchmark<br><span>Inventory</span></h1>
-        <p class="hero-copy">한국어·영어 모델 평가와 서빙 성능 측정을 따로 제공합니다. 평가 대상, 실행 조건과 원본 자료를 한곳에서 확인할 수 있습니다.</p>
-        <a class="hero-cta" href="#tracks">분야 선택 <span>↓</span></a>
-      </div>
-
-      <div class="signal" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
+  <body class="landing-page">
+    <header class="landing-header shell">
+      <a class="landing-brand" href="./index.html" aria-label="LLM Benchmark Inventory 홈">
+        <span class="landing-mark" aria-hidden="true">LBI</span>
+        <span>Benchmark Inventory</span>
+      </a>
+      <a class="landing-github" href="https://github.com/lablup/llm-benchmark-inventory">GitHub ↗</a>
     </header>
 
-    <main>
-      <section class="summary shell" aria-labelledby="summary-title">
-        <div>
-          <p class="section-kicker">개요</p>
-          <h2 id="summary-title">모델 평가와<br>시스템 성능</h2>
-          <p class="section-copy">모델이 무엇을 아는지와 시스템이 얼마나 빠른지는 다른 문제입니다. 결과를 비교할 때는 평가 데이터, 부하 조건과 하드웨어를 함께 확인해야 합니다.</p>
-        </div>
-        <dl class="stats" aria-live="polite">
-          <div><dt id="landing-total-count">—</dt><dd>전체 항목</dd></div>
-          <div><dt>3</dt><dd>분야</dd></div>
-          <div><dt id="landing-updated">—</dt><dd>서빙 자료 확인일</dd></div>
-        </dl>
+    <main class="landing-main shell">
+      <section class="landing-intro" aria-labelledby="landing-title">
+        <p>LLM BENCHMARK INVENTORY</p>
+        <h1 id="landing-title">평가할 대상을<br>선택하세요.</h1>
+        <span>텍스트 모델, 이미지 모델과 서빙 시스템의 평가 자료를 구분해 제공합니다.</span>
       </section>
 
-      <section class="track-section" id="tracks" aria-labelledby="tracks-title">
-        <div class="shell">
-          <p class="section-kicker">분야 선택</p>
-          <div class="section-heading">
-            <h2 id="tracks-title">평가 분야</h2>
-          </div>
-          <div class="track-grid">
-            <a class="track-card" href="./korean.html">
-              <span class="track-index">01</span>
-              <div><p class="track-label">모델 평가 · 한국어</p><h3>한국어 벤치마크</h3></div>
-              <p>한국어로 작성되었거나 번역된 평가 데이터셋을 모았습니다. 라이선스, 재배포 조건과 실행 도구 지원 여부를 확인할 수 있습니다.</p>
-              <span class="track-count"><strong id="landing-ko-count">—</strong>개 항목</span>
-            </a>
-            <a class="track-card" href="./english.html">
-              <span class="track-index">02</span>
-              <div><p class="track-label">모델 평가 · 영어</p><h3>영어 벤치마크</h3></div>
-              <p>지식, 추론, 코딩, 도구 사용과 사실성을 평가하는 방법을 모았습니다. 채점 방식과 현재 활용 여부를 확인할 수 있습니다.</p>
-              <span class="track-count"><strong id="landing-en-count">—</strong>개 항목</span>
-            </a>
-            <a class="track-card track-card--accent" href="./serving.html">
-              <span class="track-index">03</span>
-              <div><p class="track-label">시스템 성능 · 서빙</p><h3>서빙·자원</h3></div>
-              <p>부하 생성 도구, 공개 성능 비교, GPU와 엔진 지표를 모았습니다. 에어갭 환경에서 실행할 수 있는지도 확인할 수 있습니다.</p>
-              <span class="track-count"><strong id="landing-serving-count">—</strong>개 항목</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      <nav class="route-map" aria-label="벤치마크 영역 선택">
+        <svg class="route-lines" viewBox="0 0 1180 510" preserveAspectRatio="none" aria-hidden="true">
+          <path class="route route--text" d="M50 255 C145 255 123 94 250 94 S380 168 454 128" />
+          <path class="route route--vision" d="M50 255 C158 255 165 420 310 420 S476 300 594 350" />
+          <path class="route route--serving" d="M50 255 C213 255 289 240 438 240 S635 86 790 104 S936 246 1125 246" />
+          <circle cx="50" cy="255" r="6" />
+          <circle class="route-dot route-dot--text" cx="454" cy="128" r="7" />
+          <circle class="route-dot route-dot--vision" cx="594" cy="350" r="7" />
+          <circle class="route-dot route-dot--serving" cx="1125" cy="246" r="7" />
+        </svg>
 
-      <section class="notice shell">
-        <p class="section-kicker">읽는 방법</p>
-        <div>
-          <h2>점수를 비교하기 전에<br>측정 조건을 확인하세요</h2>
-          <p>평가 데이터, 부하 조건, 하드웨어 공개 여부, 원시 결과와 라이선스를 함께 확인해야 결과를 올바르게 비교할 수 있습니다. 이 사이트는 실시간 순위를 복제하지 않고 공식 자료로 연결합니다.</p>
-          <a href="https://github.com/lablup/llm-benchmark-inventory">데이터와 기여 방법 보기 ↗</a>
-        </div>
-      </section>
+        <div class="route-origin" aria-hidden="true"><span></span><p>Inventory</p></div>
+
+        <section class="route-card route-card--text" aria-labelledby="text-title">
+          <p class="route-label">MODEL EVALUATION</p>
+          <h2 id="text-title">텍스트</h2>
+          <div class="route-links">
+            <a href="./korean.html">한국어 <span>→</span></a>
+            <a href="./english.html">English <span>→</span></a>
+          </div>
+        </section>
+
+        <section class="route-card route-card--vision" aria-labelledby="vision-title">
+          <p class="route-label">VISION EVALUATION</p>
+          <h2 id="vision-title">이미지</h2>
+          <div class="route-links">
+            <a href="./korean.html?modality=vision">한국어 <span>→</span></a>
+            <a href="./english.html?modality=vision">English <span>→</span></a>
+          </div>
+        </section>
+
+        <section class="route-card route-card--serving" aria-labelledby="serving-title">
+          <p class="route-label">SYSTEM PERFORMANCE</p>
+          <h2 id="serving-title">서빙</h2>
+          <div class="route-links route-links--single">
+            <a href="./serving.html">자료 보기 <span>→</span></a>
+          </div>
+        </section>
+      </nav>
     </main>
 
-    <footer>
-      <div class="shell">
-        <p>LLM Benchmark Inventory</p>
-        <p>Maintained by <a href="https://www.lablup.com">Lablup</a> · Data on <a href="https://github.com/lablup/llm-benchmark-inventory">GitHub</a></p>
-      </div>
+    <footer class="landing-footer shell">
+      <p>Maintained by <a href="https://www.lablup.com">Lablup</a></p>
+      <p>Source data on <a href="https://github.com/lablup/llm-benchmark-inventory">GitHub</a></p>
     </footer>
   </body>
 </html>
