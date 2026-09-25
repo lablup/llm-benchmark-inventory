@@ -13,7 +13,6 @@ const elements = {
   search: document.querySelector("#search-input"),
   commercial: document.querySelector("#commercial-filter"),
   lmeval: document.querySelector("#lmeval-filter"),
-  tabs: [...document.querySelectorAll("[data-language]")],
   reset: document.querySelector("#reset-filters"),
 };
 
@@ -160,7 +159,6 @@ function resetFilters() {
   elements.search.value = "";
   elements.commercial.value = "";
   elements.lmeval.value = "";
-  elements.tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.language === state.language));
   render();
 }
 
@@ -190,13 +188,6 @@ async function loadInventory() {
   }
 }
 
-elements.tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    state.language = tab.dataset.language;
-    elements.tabs.forEach((item) => item.classList.toggle("active", item === tab));
-    render();
-  });
-});
 elements.search.addEventListener("input", (event) => { state.query = event.target.value.trim(); render(); });
 elements.commercial.addEventListener("change", (event) => { state.commercial = event.target.value; render(); });
 elements.lmeval.addEventListener("change", (event) => { state.lmeval = event.target.value; render(); });
