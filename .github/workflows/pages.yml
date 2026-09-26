@@ -17,16 +17,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Validate inventory data
-        run: ruby validate_inventory.rb
+        run: python3 validate_inventory.py
       - name: Generate site data
-        run: ruby build_site_data.rb
+        run: python3 build_site_data.py
       - name: Verify generated files are current
         run: git diff --exit-code -- inventory-data.js serving-data.js site-meta.js
       - name: Check script syntax
         run: |
-          ruby -c build_benchmark_inventory.rb
-          ruby -c build_site_data.rb
-          ruby -c validate_inventory.rb
+          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py
           node --check app.js
           node --check english-copy.js
           node --check landing.js
@@ -52,7 +50,7 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Generate site data
-        run: ruby build_site_data.rb
+        run: python3 build_site_data.py
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
