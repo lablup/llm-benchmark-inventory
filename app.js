@@ -157,6 +157,16 @@ function updatePageNavigation() {
   const korean = state.language === "ko";
   const visionQuery = state.modality === "vision" ? "?modality=vision" : "";
   switcher.classList.add("track-switcher--tiered");
+  if (korean) {
+    switcher.innerHTML = `
+      <div class="switch-group" aria-label="평가 대상">
+        <a ${state.modality === "text" ? 'aria-current="page"' : ""} href="./korean.html">텍스트</a>
+        <a ${state.modality === "vision" ? 'aria-current="page"' : ""} href="./korean.html?modality=vision">이미지</a>
+        <a href="./serving.html">서빙</a>
+      </div>
+    `;
+    return;
+  }
   switcher.innerHTML = `
     <div class="switch-group" aria-label="${korean ? "평가 대상" : "Evaluation input"}">
       <a ${state.modality === "text" ? 'aria-current="page"' : ""} href="./${korean ? "korean" : "english"}.html">${korean ? "텍스트" : "Text"}</a>
@@ -207,7 +217,7 @@ function renderExample(row) {
 }
 
 function renderRow(row) {
-  const language = row["트랙"] === "ko" ? "KOREAN" : "ENGLISH";
+  const language = state.language === "ko" ? "한국어" : "ENGLISH";
   const lmEval = lmEvalLabel(row["lm-eval 지원"]);
   return `
     <article class="list-row">

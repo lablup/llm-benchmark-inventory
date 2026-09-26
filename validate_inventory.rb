@@ -88,7 +88,7 @@ end
 
 %w[
   index.html korean.html english.html serving.html english-copy.js
-  assets/landing-map-desktop.webp assets/landing-map-mobile.webp
+  assets/landing-map-ko-desktop.webp assets/landing-map-ko-mobile.webp
 ].each do |name|
   abort "missing page: #{name}" unless File.file?(File.join(ROOT, name))
 end
