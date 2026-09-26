@@ -240,42 +240,63 @@ function formatScore(value) {
   return Number.isInteger(value) ? String(value) : String(Math.round(value * 100) / 100);
 }
 
-function renderRecommendedList(title, entries) {
-  if (!entries || !entries.length) return "";
-  const items = entries.map((entry) => `
-    <li><span class="rec-rank">${entry.rank}</span><span class="rec-model">${entry.model_url ? `<a href="${escapeHTML(entry.model_url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(entry.model)} <span aria-hidden="true">↗</span></a>` : escapeHTML(entry.model)}</span><span class="rec-score">${formatScore(entry.score)}</span></li>
-  `).join("");
-  return `<div class="rec-list"><p class="rec-list-title">${escapeHTML(title)}</p><ol>${items}</ol></div>`;
+const SOURCE_LABELS = {
+  ko: { official_leaderboard: "공식 리더보드", paper: "논문", dataset_card: "데이터 카드", third_party: "제3자 리더보드" },
+  en: { official_leaderboard: "official leaderboard", paper: "paper", dataset_card: "dataset card", third_party: "third-party leaderboard" },
+};
+
+function sourceLabel(type, english) {
+  return (english ? SOURCE_LABELS.en : SOURCE_LABELS.ko)[type] || type || "";
 }
 
-function renderOpenWeightSource(rec, english) {
-  const ows = rec.open_weight_source;
-  if (!ows || !ows.source_url) return "";
-  const label = { official_leaderboard: english ? "official leaderboard" : "공식 리더보드", paper: english ? "paper" : "논문", dataset_card: english ? "dataset card" : "데이터 카드", third_party: english ? "third-party leaderboard" : "제3자 리더보드" }[ows.source_type] || ows.source_type || "";
-  const setting = [ows.metric, ows.setting].filter(Boolean).join(" · ");
-  const text = ows.source_title ? escapeHTML(ows.source_title) : escapeHTML(label);
-  return `<p class="rec-source">${english ? "Source (open-weight list)" : "출처(공개 가중치)"}: ${escapeHTML(label)} · <a href="${escapeHTML(ows.source_url)}" target="_blank" rel="noopener noreferrer">${text} <span aria-hidden="true">↗</span></a>${setting ? ` · ${escapeHTML(setting)}` : ""}${ows.source_date ? ` · ${english ? "as of" : "기준"} ${escapeHTML(ows.source_date)}` : ""}${english ? " · not comparable with the all-model list" : " · 전체 목록과 점수 비교 불가"}</p>`;
+function renderRecommendedList(title, entries) {
+  if (!entries || !entries.length) return "";
+  const items = entries.map((entry) => {
+    const name = entry.model_url
+      ? `<a href="${escapeHTML(entry.model_url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(entry.model)} <span aria-hidden="true">↗</span></a>`
+      : escapeHTML(entry.model);
+    return `<li><span class="rec-rank">${entry.rank}</span><span class="rec-model">${name}</span><span class="rec-score">${formatScore(entry.score)}</span></li>`;
+  }).join("");
+  return `<div class="rec-panel"><p class="rec-panel-title">${escapeHTML(title)}</p><ol>${items}</ol></div>`;
+}
+
+function renderSourceLine(label, source, english) {
+  if (!source || !source.source_url) return "";
+  const title = source.source_title || sourceLabel(source.source_type, english);
+  const setting = [source.metric, source.setting].filter(Boolean).join(" · ");
+  return `
+    <p class="rec-source">
+      <span class="rec-source-label">${escapeHTML(label)}</span>
+      <span class="rec-source-type">${escapeHTML(sourceLabel(source.source_type, english))}</span>
+      <a class="rec-source-link" href="${escapeHTML(source.source_url)}" target="_blank" rel="noopener noreferrer" title="${escapeHTML(title)}">${escapeHTML(title)} <span aria-hidden="true">↗</span></a>
+      ${source.source_date ? `<span class="rec-source-date">${english ? "as of" : "기준"} ${escapeHTML(source.source_date)}</span>` : ""}
+    </p>
+    ${setting ? `<p class="rec-setting">${escapeHTML(setting)}</p>` : ""}
+  `;
 }
 
 function renderRecommended(row) {
   const rec = row["추천 모델"];
   if (!rec || (!rec.all?.length && !rec.open_weight?.length)) return "";
   const english = state.uiLanguage === "en";
-  const sourceLabel = { official_leaderboard: english ? "official leaderboard" : "공식 리더보드", paper: english ? "paper" : "논문", dataset_card: english ? "dataset card" : "데이터 카드", third_party: english ? "third-party leaderboard" : "제3자 리더보드" }[rec.source_type] || rec.source_type;
-  const setting = rec.metric || "";
-  const settingLine = rec.setting ? `<p class="rec-setting">${escapeHTML(rec.setting)}</p>` : "";
-  const sourceText = rec.source_title ? escapeHTML(rec.source_title) : escapeHTML(sourceLabel);
-  const source = rec.source_url ? `<a href="${escapeHTML(rec.source_url)}" target="_blank" rel="noopener noreferrer">${sourceText} <span aria-hidden="true">↗</span></a>` : sourceText;
+  const status = rec.status === "partial" ? `<span class="rec-flag">${english ? "partially verified" : "일부 확인"}</span>` : "";
+  const checked = rec.accessed ? `<span class="rec-checked">${english ? "checked" : "확인"} ${escapeHTML(rec.accessed)}</span>` : "";
   return `
     <div class="recommended">
-      <p class="rec-title">${english ? "Top models" : "추천 모델"}${setting ? ` · ${escapeHTML(setting)}` : ""}</p>
-      ${settingLine}
+      <div class="rec-head">
+        <p class="rec-title">${english ? "Top models" : "추천 모델"}</p>
+        <p class="rec-meta">${status}${checked}</p>
+      </div>
       <div class="rec-columns">
         ${renderRecommendedList(english ? "All models" : "전체", rec.all)}
-        ${renderRecommendedList(english ? "Open-weight (runs locally)" : "공개 가중치(로컬 실행 가능)", rec.open_weight)}
+        ${renderRecommendedList(english ? "Open-weight" : "공개 가중치", rec.open_weight)}
       </div>
-      ${renderOpenWeightSource(rec, english)}
-      <p class="rec-source">${english ? "Source" : "출처"}${rec.open_weight_source ? (english ? " (all models)" : "(전체)") : ""}: ${sourceLabel} · ${source}${rec.source_date ? ` · ${english ? "as of" : "기준"} ${escapeHTML(rec.source_date)}` : ""}${rec.accessed ? ` · ${english ? "checked" : "확인"} ${escapeHTML(rec.accessed)}` : ""}${rec.status === "partial" ? ` · ${english ? "partially verified" : "일부 확인"}` : ""}</p>
+      <details class="rec-details">
+        <summary>${english ? "Source, metric and setting" : "출처·지표·설정"}</summary>
+        ${renderSourceLine(rec.open_weight_source ? (english ? "All models" : "전체") : (english ? "Source" : "출처"), rec, english)}
+        ${renderSourceLine(english ? "Open-weight" : "공개 가중치", rec.open_weight_source, english)}
+        ${rec.open_weight_source ? `<p class="rec-setting">${english ? "The two lists use different sources and are not comparable." : "두 목록은 출처가 달라 점수를 서로 비교할 수 없습니다."}</p>` : ""}
+      </details>
     </div>
   `;
 }
