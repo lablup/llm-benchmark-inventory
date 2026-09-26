@@ -2,12 +2,14 @@
 
 ![도시와 네트워크를 표현한 파란색 배너](./assets/network.png)
 
-한국어·영어 LLM 벤치마크와 서빙 성능 도구, 공개 성능 비교, GPU·엔진 자원 계측 자료를 정리한 목록입니다.
-모델 능력과 시스템 성능은 서로 다른 기준으로 평가하므로 세 분야를 나누어 제공합니다.
+공개 페이지는 한국어와 영어 LLM 벤치마크, 서빙 성능 도구, 공개 성능 비교, GPU·엔진 자원 계측 자료를 한국어로 정리합니다.
+영어권 사용자를 위한 영어 인터페이스는 별도 페이지로 추후 제공합니다.
 
-- [통합 랜딩 페이지](https://lablup.github.io/llm-benchmark-inventory/)
-- [한국어 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html)
-- [영어 벤치마크](https://lablup.github.io/llm-benchmark-inventory/english.html)
+- [한국어 랜딩 페이지](https://lablup.github.io/llm-benchmark-inventory/)
+- [한국어 텍스트 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html)
+- [한국어 이미지 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html?modality=vision)
+- [영어 텍스트 벤치마크](https://lablup.github.io/llm-benchmark-inventory/english.html)
+- [영어 이미지 벤치마크](https://lablup.github.io/llm-benchmark-inventory/english.html?modality=vision)
 - [서빙·자원 인벤토리](https://lablup.github.io/llm-benchmark-inventory/serving.html)
 - [한국어 벤치마크 CSV](./korean_benchmark_inventory.csv)
 - [영어 벤치마크 CSV](./english_benchmark_inventory.csv)

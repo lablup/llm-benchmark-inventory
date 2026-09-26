@@ -183,7 +183,7 @@ a:focus-visible, button:focus-visible {
 .group-title { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
 .group-title h3 { margin: 0; font-size: 24px; letter-spacing: -.025em; }
 .group-title span { color: #2f7481; font: 500 12px var(--font-mono); }
-.list-head, .list-row { display: grid; grid-template-columns: minmax(300px, 2.3fr) minmax(140px, .8fr) minmax(190px, 1fr) minmax(90px, .45fr); column-gap: 24px; }
+.list-head, .list-row { display: grid; grid-template-columns: minmax(260px, 1.5fr) minmax(170px, .9fr) minmax(210px, 1fr) minmax(130px, .65fr); column-gap: 28px; }
 .list-head { padding: 10px 14px; color: var(--muted); background: #f5f7f7; font-size: 11px; font-weight: 600; }
 .list-row { align-items: start; padding: 22px 14px; border-bottom: 1px solid var(--line); }
 .list-row:last-child { border-bottom: 0; }
@@ -207,6 +207,7 @@ a:focus-visible, button:focus-visible {
 .serving-detail strong { color: var(--ink); font-weight: 600; }
 .serving-metrics { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
 .example { margin-top: 10px; font-size: 13px; }
+.list-row > .example { grid-column: 1 / -1; margin-top: 2px; }
 .example-title { margin: 0; color: #307888; font-weight: 600; }
 .example-body { margin: 8px 0 0; padding: 10px 12px; color: var(--ink); background: #f2f6f6; border-left: 2px solid #398393; line-height: 1.7; white-space: pre-line; }.license-cell { display: flex; align-items: flex-start; flex-direction: column; gap: 9px; color: var(--muted); font-size: 11px; line-height: 1.5; }
 .empty-state { padding: 80px 20px; text-align: center; color: var(--muted); }
@@ -227,7 +228,7 @@ footer a { color: var(--cyan); }
   .track-card > div { margin-top: 45px; }
   .controls { grid-template-columns: 1fr 1fr; }
   .search { grid-column: 1 / -1; }
-  .list-head, .list-row { grid-template-columns: minmax(280px, 2fr) minmax(130px, 1fr) minmax(160px, 1fr); }
+  .list-head, .list-row { grid-template-columns: minmax(210px, 1.5fr) minmax(105px, .75fr) minmax(130px, 1fr); }
   .list-head span:last-child, .lmeval { display: none; }
   .serving-head, .serving-row { grid-template-columns: minmax(280px, 1.7fr) minmax(180px, 1fr) minmax(210px, 1.1fr); }
   .serving-head span:last-child, .serving-row .license-cell { display: none; }
@@ -245,7 +246,7 @@ footer a { color: var(--cyan); }
   .map-destination--image-en { top: 36%; left: 2%; }
   .map-destination--text-ko { top: 11%; right: 2%; }
   .map-destination--text-en { top: 36%; right: 2%; }
-  .map-destination--resources { top: 56%; right: 2%; }
+  .map-destination--resources { top: 56%; right: 3%; }
 }
 @media (max-width: 620px) {
   .shell { width: min(100% - 28px, 1180px); }
@@ -277,8 +278,8 @@ footer a { color: var(--cyan); }
   .serving-head { display: none; }
   .serving-row { grid-template-columns: 1fr; gap: 12px; padding-inline: 4px; }
   .serving-row .license-cell { display: flex; }
-  body[data-language="ko"] .list-axis::before { content: "평가 축 · "; color: var(--ink); font-weight: 600; }
-  body[data-language="en"] .list-axis::before { content: "Evaluation category · "; color: var(--ink); font-weight: 600; }
+  html[lang="ko"] .list-axis::before { content: "평가 축 · "; color: var(--ink); font-weight: 600; }
+  html[lang="en"] .list-axis::before { content: "Evaluation category · "; color: var(--ink); font-weight: 600; }
   .license-cell { flex-direction: row; align-items: center; }
   .notice > div { grid-template-columns: 1fr; gap: 20px; }
   footer .shell { flex-direction: column; }
@@ -322,9 +323,18 @@ footer a { color: var(--cyan); }
 .detail-page .hero--serving {
   min-height: 520px;
   color: #1d1d1f;
-  background: #fff;
+  background: #f8f4eb;
 }
-.detail-page .hero::after { display: none; }
+.detail-page .hero::after {
+  display: block;
+  inset: 72px -80px -110px auto;
+  width: min(54vw, 760px);
+  height: calc(100% - 72px);
+  background: url("./assets/landing-map-ko-desktop.webp") center bottom / 820px auto no-repeat;
+  opacity: .13;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.5) 32%, #000 72%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.5) 32%, #000 72%);
+}
 .detail-page .site-header { height: 72px; }
 .detail-page .brand { gap: 10px; font-size: 13px; }
 .detail-page .brand-mark {
@@ -500,6 +510,17 @@ footer a { color: var(--cyan); }
 @media (max-width: 620px) {
   .detail-page .hero,
   .detail-page .hero--track { min-height: 500px; }
+  .detail-page .hero::after {
+    inset: auto -50px -120px auto;
+    width: 330px;
+    height: 330px;
+    background-image: url("./assets/landing-map-ko-mobile.webp");
+    background-position: center 70%;
+    background-size: 330px auto;
+    opacity: .11;
+    -webkit-mask-image: linear-gradient(135deg, transparent 5%, #000 58%);
+    mask-image: linear-gradient(135deg, transparent 5%, #000 58%);
+  }
   .detail-page .hero-content,
   .detail-page .hero--track .hero-content {
     padding-top: 68px;
@@ -508,6 +529,8 @@ footer a { color: var(--cyan); }
   .detail-page .hero h1,
   .detail-page .hero--track h1 { font-size: 48px; }
   .detail-page .hero-copy { font-size: 16px; }
+  .detail-page .hero-copy,
+  .detail-page .reading-notes li { word-break: normal; overflow-wrap: anywhere; }
   .detail-page .summary,
   .detail-page .inventory,
   .detail-page .notice { padding-block: 72px; }
