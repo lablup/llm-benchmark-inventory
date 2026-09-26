@@ -3,7 +3,7 @@
 
 require "csv"
 
-LICENSE_CHECKED_ON = "2026-07-28"
+LICENSE_CHECKED_ON = "2026-09-26"
 MISSING_LICENSE_PATTERN = /미표기|미기재|미확인|미선언|미확정/
 REVIEW_LICENSE_PATTERN = /충돌|확인 필요|비공개|공식 사이트|커스텀|AI-Hub|약정|카드 'cc'|LGPL-3\.0 태그/
 KNOWN_LICENSE_PATTERN = /MIT|Apache-2\.0|CC-BY|CC BY|CC-BY-SA|CC BY-SA|CC-BY-ND|CC BY-ND/
@@ -157,16 +157,19 @@ readme << "# LLM 벤치마크 인벤토리"
 readme << ""
 readme << "![도시와 네트워크를 표현한 파란색 배너](./assets/network.png)"
 readme << ""
-readme << "한국어·영어 LLM 벤치마크와 서빙 성능 도구, 공개 성능 비교, GPU·엔진 자원 계측 자료를 정리한 목록입니다."
-readme << "모델 능력과 시스템 성능은 서로 다른 기준으로 평가하므로 세 분야를 나누어 제공합니다."
+readme << "공개 페이지는 한국어와 영어 LLM 벤치마크, 서빙 성능 도구, 공개 성능 비교, GPU·엔진 자원 계측 자료를 한국어로 정리합니다."
+readme << "영어권 사용자를 위한 영어 인터페이스는 별도 페이지로 추후 제공합니다."
 readme << ""
-readme << "- [통합 랜딩 페이지](https://lablup.github.io/llm-benchmark-inventory/)"
-readme << "- [한국어 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html)"
-readme << "- [영어 벤치마크](https://lablup.github.io/llm-benchmark-inventory/english.html)"
+readme << "- [한국어 랜딩 페이지](https://lablup.github.io/llm-benchmark-inventory/)"
+readme << "- [한국어 텍스트 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html)"
+readme << "- [한국어 이미지 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html?modality=vision)"
+readme << "- [영어 텍스트 벤치마크](https://lablup.github.io/llm-benchmark-inventory/english.html)"
+readme << "- [영어 이미지 벤치마크](https://lablup.github.io/llm-benchmark-inventory/english.html?modality=vision)"
 readme << "- [서빙·자원 인벤토리](https://lablup.github.io/llm-benchmark-inventory/serving.html)"
 readme << "- [한국어 벤치마크 CSV](./korean_benchmark_inventory.csv)"
 readme << "- [영어 벤치마크 CSV](./english_benchmark_inventory.csv)"
 readme << "- [서빙·자원 CSV](./serving_inventory.csv)"
+readme << "- [한국어 이미지 벤치마크 조사와 등재 판단](./docs/korean-vision-benchmarks.md)"
 readme << ""
 readme << "## 분야 구분"
 readme << ""

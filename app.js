@@ -8,13 +8,21 @@ const state = {
   lmeval: "",
 };
 
-const VISION_BENCHMARKS = new Set([
-  "ko:kormedmcqa-v",
-  "en:hle",
-  "en:arc-agi-2",
-  "en:gaia",
-  "en:osworld",
+const VISION_GROUPS = new Map([
+  ["ko:kmmmu", "일반"],
+  ["ko:haerae-vision", "일반"],
+  ["ko:koffvqa", "일반"],
+  ["ko:kreta", "일반"],
+  ["ko:k-dtcbench", "일반"],
+  ["ko:k-mmbench", "일반"],
+  ["ko:ksafe-mm", "위험 탐지"],
+  ["ko:kormedmcqa-v", "의료"],
+  ["en:hle", "이미지"],
+  ["en:arc-agi-2", "이미지"],
+  ["en:gaia", "이미지"],
+  ["en:osworld", "이미지"],
 ]);
+const VISION_GROUP_ORDER = ["일반", "위험 탐지", "의료", "이미지"];
 
 document.body.dataset.modality = state.modality;
 
@@ -148,7 +156,7 @@ function lmEvalLabel(value) {
 }
 
 function matchesModality(row) {
-  const isVision = VISION_BENCHMARKS.has(`${row["트랙"]}:${row.id}`);
+  const isVision = VISION_GROUPS.has(`${row["트랙"]}:${row.id}`);
   return state.modality === "vision" ? isVision : !isVision;
 }
 
@@ -208,8 +216,10 @@ function updatePageContext() {
   if (summaryTitle) summaryTitle.textContent = koreanUI ? `${languageName} 이미지 평가` : "English vision evaluations";
   if (inventoryTitle) inventoryTitle.textContent = koreanUI ? `${languageName} 이미지 벤치마크` : "English vision benchmarks";
   if (firstStat) firstStat.textContent = koreanUI ? "이미지 항목" : "Vision benchmarks";
-  if (notes) notes.innerHTML = koreanUI
-    ? "<li><strong>입력 형식:</strong> 이미지, 문서, 표 또는 화면 가운데 평가에 사용하는 입력을 확인합니다.</li><li><strong>실행 환경:</strong> 이미지 해상도와 모델 입력 형식을 결과와 함께 기록해야 합니다.</li><li><strong>이용 조건:</strong> 이미지와 원문 문항의 권리를 데이터셋 라이선스와 별도로 확인해야 합니다.</li>"
+  if (notes) notes.innerHTML = koreanUI && koreanData
+    ? "<li><strong>일반:</strong> 장면, 문서, 도표와 한국 문화에 관한 이미지 이해를 평가합니다.</li><li><strong>위험 탐지:</strong> 유해 이미지를 판단하고 안전하게 답하는지, 편향되거나 필요 이상으로 거부하지 않는지 확인합니다.</li><li><strong>의료:</strong> 의료 영상을 해석하고 여러 영상을 함께 살펴 한국어 임상 문항에 답하는 능력을 평가합니다.</li>"
+    : koreanUI
+      ? "<li><strong>입력 형식:</strong> 이미지, 문서, 표 또는 화면 가운데 평가에 사용하는 입력을 확인합니다.</li><li><strong>실행 환경:</strong> 이미지 해상도와 모델 입력 형식을 결과와 함께 기록해야 합니다.</li><li><strong>이용 조건:</strong> 이미지와 원문 문항의 권리를 데이터셋 라이선스와 별도로 확인해야 합니다.</li>"
     : "<li><strong>Input format:</strong> Check whether each evaluation uses images, documents, charts, or computer screens.</li><li><strong>Runtime:</strong> Record the image resolution and model input format with every result.</li><li><strong>Licensing:</strong> Review the rights for images and original questions separately from the dataset license.</li>";
 }
 
@@ -282,13 +292,22 @@ function filteredRows() {
 function render() {
   const rows = filteredRows();
   const groups = rows.reduce((result, row) => {
-    const sourceCategory = state.modality === "vision" ? "이미지" : (row["분류"] || "기타");
+    const sourceCategory = state.modality === "vision"
+      ? (VISION_GROUPS.get(`${row["트랙"]}:${row.id}`) || "이미지")
+      : (row["분류"] || "기타");
     const category = state.uiLanguage === "en" ? (ENGLISH_CATEGORIES[sourceCategory] || sourceCategory) : sourceCategory;
     if (!result.has(category)) result.set(category, []);
     result.get(category).push(row);
     return result;
   }, new Map());
-  elements.grid.innerHTML = [...groups].map(([category, items]) => renderGroup(category, items)).join("");
+  const sortedGroups = [...groups].sort(([left], [right]) => {
+    if (state.modality !== "vision") return 0;
+    const leftIndex = VISION_GROUP_ORDER.indexOf(left);
+    const rightIndex = VISION_GROUP_ORDER.indexOf(right);
+    return (leftIndex < 0 ? VISION_GROUP_ORDER.length : leftIndex)
+      - (rightIndex < 0 ? VISION_GROUP_ORDER.length : rightIndex);
+  });
+  elements.grid.innerHTML = sortedGroups.map(([category, items]) => renderGroup(category, items)).join("");
   elements.count.textContent = rows.length.toLocaleString(state.uiLanguage === "en" ? "en-US" : "ko-KR");
   elements.empty.hidden = rows.length > 0;
 }

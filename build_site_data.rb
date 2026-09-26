@@ -47,7 +47,7 @@ serving_output = <<~JAVASCRIPT
 JAVASCRIPT
 
 meta = {
-  benchmark_checked_at: "2026-07-28",
+  benchmark_checked_at: "2026-09-26",
   serving_checked_at: serving_rows.map { |row| row["최근 확인일"] }.compact.max,
   korean_count: rows.count { |row| row["트랙"] == "ko" },
   english_count: rows.count { |row| row["트랙"] == "en" },
