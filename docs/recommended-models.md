@@ -15,7 +15,7 @@
 
 1. 벤치마크 저자가 운영하는 공식 리더보드(사이트, GitHub README 결과표, 데이터 카드의 결과표).
 2. 논문 최신판의 본문 결과표. PDF를 내려받아 표의 숫자를 텍스트로 확인했습니다.
-3. 저자 리더보드가 없고 논문 표에 2025년 이전 모델만 있을 때는, 한 곳에서 같은 프로토콜로 여러 모델을 재는 제3자 리더보드(Epoch AI Benchmarking Hub, Stanford HELM, Hugging Face Open LLM Leaderboard 아카이브, EvalPlus, MathArena, Vals.ai 등)를 썼고 카드에 "제3자 리더보드"로 표시했습니다.
+3. 저자 리더보드가 없고 논문 표에 2025년 이전 모델만 있을 때는, 한 곳에서 같은 프로토콜로 여러 모델을 재는 제3자 리더보드(Epoch AI Benchmarking Hub, Stanford HELM, Hugging Face Open LLM Leaderboard 아카이브, EvalPlus, MathArena, Vals.ai, Horangi W&B 한국어 리더보드 v3 등)를 썼고 카드에 "제3자 리더보드"로 표시했습니다.
 4. 모델 벤더가 각자 보고한 수치를 모아 순위를 만들지 않았습니다. 설정이 서로 달라 비교할 수 없기 때문입니다.
 
 한 벤치마크의 순위는 언제나 한 출처, 한 설정 안에서만 매겼습니다. 1차 출처 표에 공개 가중치 모델이 없거나 하나뿐인 벤치마크는 공개 가중치 목록만 다른 출처에서 가져오고, 카드에 그 출처를 따로 표시하며 두 목록의 점수를 서로 비교하지 않는다고 적었습니다.
@@ -33,7 +33,8 @@
 - 벤치마크 버전이 갈린 경우가 있습니다. Terminal-Bench 사이트는 4.0 결과만 제공하고, FrontierMath는 v2가 v1을 대체했습니다. SimpleQA의 공개 가중치 목록은 Google이 교정한 "SimpleQA Verified" 부분집합 기준입니다.
 - 낮을수록 좋은 지표는 오름차순입니다. KSAFE-MM은 공격 성공률(ASR), HalluLens는 환각률입니다. KSAFE-MM에서 1위 모델은 거부율도 가장 높습니다.
 - 에이전트 제출물이 섞인 보드(OSWorld, SWE-bench Verified, GAIA, Terminal-Bench)는 프레임워크와 순수 모델이 함께 순위에 오릅니다. 카드의 설정 문구에 조건을 적었습니다.
-- 몇몇 한국어 벤치마크(CSAT-QA, PAWS-X ko, KorNLI 원표, KOLD, KoBEST 원표, CLIcK, Belebele ko)는 2019~2023년 모델만 평가한 표가 유일하거나, 2025년 표로 대체했습니다. 대체한 경우 옛 값은 조사 기록의 비고에 남겼습니다.
+- 몇몇 한국어 벤치마크(CSAT-QA, PAWS-X ko, KOLD, KoBEST 원표, CLIcK, Belebele ko)는 2019~2023년 모델만 평가한 표가 유일하거나, 2025년 표로 대체했습니다. 대체한 경우 옛 값은 조사 기록의 비고에 남겼습니다.
+- Ko-TruthfulQA, HAE_RAE_BENCH, KoBBQ, KorNLI·KorSTS, KLUE, korean-hate-speech는 Horangi W&B 한국어 리더보드 v3(모델 77개, 실행 2024-10~2025-10, 2-shot, 과제당 100문항 표본, KoBBQ 900·Ko-TruthfulQA 817문항)를 출처로 씁니다. 표본 기반이라 전체셋 값과 섞지 않으며, 카드의 설정 문구에 표본 크기를 적었습니다. 데이터는 W&B 공개 API로 받았고 확인일 기준 스냅숏입니다.
 
 ## 조사 방법의 한계
 
