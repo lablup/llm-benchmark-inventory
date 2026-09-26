@@ -160,6 +160,12 @@ def main() -> None:
                 if not blank(row.get(header)) and not is_https(row[header]):
                     abort(f"{name}: row {line}: {header} must use https")
             validate_iso_date(row["accessed"], name, line)
+        seen_rows = set()
+        for index, row in enumerate(recommended):
+            key = (row.get("benchmark_id"), row.get("scope"), row.get("rank"), row.get("model"))
+            if key in seen_rows:
+                abort(f"{name}: row {index + 2}: duplicate entry {key}")
+            seen_rows.add(key)
         print(f"Validated {len(recommended)} recommended-model rows.")
 
     reference_path = ROOT / "serving_reference_values.csv"
