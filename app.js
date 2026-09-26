@@ -235,6 +235,51 @@ function renderExample(row) {
   `;
 }
 
+function formatScore(value) {
+  if (typeof value !== "number") return escapeHTML(String(value ?? ""));
+  return Number.isInteger(value) ? String(value) : String(Math.round(value * 100) / 100);
+}
+
+function renderRecommendedList(title, entries) {
+  if (!entries || !entries.length) return "";
+  const items = entries.map((entry) => `
+    <li><span class="rec-rank">${entry.rank}</span><span class="rec-model">${entry.model_url ? `<a href="${escapeHTML(entry.model_url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(entry.model)} <span aria-hidden="true">↗</span></a>` : escapeHTML(entry.model)}</span><span class="rec-score">${formatScore(entry.score)}</span></li>
+  `).join("");
+  return `<div class="rec-list"><p class="rec-list-title">${escapeHTML(title)}</p><ol>${items}</ol></div>`;
+}
+
+function renderOpenWeightSource(rec, english) {
+  const ows = rec.open_weight_source;
+  if (!ows || !ows.source_url) return "";
+  const label = { official_leaderboard: english ? "official leaderboard" : "공식 리더보드", paper: english ? "paper" : "논문", dataset_card: english ? "dataset card" : "데이터 카드", third_party: english ? "third-party leaderboard" : "제3자 리더보드" }[ows.source_type] || ows.source_type || "";
+  const setting = [ows.metric, ows.setting].filter(Boolean).join(" · ");
+  const text = ows.source_title ? escapeHTML(ows.source_title) : escapeHTML(label);
+  return `<p class="rec-source">${english ? "Source (open-weight list)" : "출처(공개 가중치)"}: ${escapeHTML(label)} · <a href="${escapeHTML(ows.source_url)}" target="_blank" rel="noopener noreferrer">${text} <span aria-hidden="true">↗</span></a>${setting ? ` · ${escapeHTML(setting)}` : ""}${ows.source_date ? ` · ${english ? "as of" : "기준"} ${escapeHTML(ows.source_date)}` : ""}${english ? " · not comparable with the all-model list" : " · 전체 목록과 점수 비교 불가"}</p>`;
+}
+
+function renderRecommended(row) {
+  const rec = row["추천 모델"];
+  if (!rec || (!rec.all?.length && !rec.open_weight?.length)) return "";
+  const english = state.uiLanguage === "en";
+  const sourceLabel = { official_leaderboard: english ? "official leaderboard" : "공식 리더보드", paper: english ? "paper" : "논문", dataset_card: english ? "dataset card" : "데이터 카드", third_party: english ? "third-party leaderboard" : "제3자 리더보드" }[rec.source_type] || rec.source_type;
+  const setting = rec.metric || "";
+  const settingLine = rec.setting ? `<p class="rec-setting">${escapeHTML(rec.setting)}</p>` : "";
+  const sourceText = rec.source_title ? escapeHTML(rec.source_title) : escapeHTML(sourceLabel);
+  const source = rec.source_url ? `<a href="${escapeHTML(rec.source_url)}" target="_blank" rel="noopener noreferrer">${sourceText} <span aria-hidden="true">↗</span></a>` : sourceText;
+  return `
+    <div class="recommended">
+      <p class="rec-title">${english ? "Top models" : "추천 모델"}${setting ? ` · ${escapeHTML(setting)}` : ""}</p>
+      ${settingLine}
+      <div class="rec-columns">
+        ${renderRecommendedList(english ? "All models" : "전체", rec.all)}
+        ${renderRecommendedList(english ? "Open-weight (runs locally)" : "공개 가중치(로컬 실행 가능)", rec.open_weight)}
+      </div>
+      ${renderOpenWeightSource(rec, english)}
+      <p class="rec-source">${english ? "Source" : "출처"}${rec.open_weight_source ? (english ? " (all models)" : "(전체)") : ""}: ${sourceLabel} · ${source}${rec.source_date ? ` · ${english ? "as of" : "기준"} ${escapeHTML(rec.source_date)}` : ""}${rec.accessed ? ` · ${english ? "checked" : "확인"} ${escapeHTML(rec.accessed)}` : ""}${rec.status === "partial" ? ` · ${english ? "partially verified" : "일부 확인"}` : ""}</p>
+    </div>
+  `;
+}
+
 function renderRow(row) {
   const language = state.uiLanguage === "en" ? (row["트랙"] === "ko" ? "KOREAN" : "ENGLISH") : (row["트랙"] === "ko" ? "한국어" : "영어");
   const lmEval = lmEvalLabel(row["lm-eval 지원"]);
@@ -252,6 +297,7 @@ function renderRow(row) {
       </div>
       <p class="lmeval">${escapeHTML(lmEval)}</p>
       ${renderExample(row)}
+      ${renderRecommended(row)}
     </article>
   `;
 }
@@ -278,7 +324,8 @@ function renderGroup(category, rows) {
 function filteredRows() {
   const query = state.query.toLocaleLowerCase("ko");
   return state.rows.filter((row) => {
-    const searchable = [row["이름"], row["평가 축"], row["정의"], row["대표 과제"], row["대표 예시·설명"], row["라이선스"]].join(" ").toLocaleLowerCase("ko");
+    const recommendedModels = (row["추천 모델"] ? [...(row["추천 모델"].all || []), ...(row["추천 모델"].open_weight || [])] : []).map((entry) => entry.model);
+    const searchable = [row["이름"], row["평가 축"], row["정의"], row["대표 과제"], row["대표 예시·설명"], row["라이선스"], ...recommendedModels].join(" ").toLocaleLowerCase("ko");
     const languageMatches = state.language === "all" || row["트랙"] === state.language;
     const modalityMatches = matchesModality(row);
     const queryMatches = !query || searchable.includes(query);

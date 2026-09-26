@@ -94,4 +94,39 @@ end
   abort "missing page: #{name}" unless File.file?(File.join(ROOT, name))
 end
 
+RECOMMENDED_HEADERS = %w[
+  benchmark_id benchmark_name track scope rank model score open_weight metric setting
+  source_type source_title source_url source_date evidence status accessed
+].freeze
+recommended_path = File.join(ROOT, "benchmark_top_models.csv")
+if File.file?(recommended_path)
+  recommended = read_csv("benchmark_top_models.csv")
+  missing_headers = RECOMMENDED_HEADERS - recommended.headers
+  abort "benchmark_top_models.csv: missing headers: #{missing_headers.join(', ')}" unless missing_headers.empty?
+  known_ids = %w[korean_benchmark_inventory.csv english_benchmark_inventory.csv].flat_map { |name| read_csv(name).map { |row| row["id"] } }
+  recommended.each_with_index do |row, index|
+    line = index + 2
+    abort "benchmark_top_models.csv: row #{line}: unknown benchmark_id #{row['benchmark_id']}" unless known_ids.include?(row["benchmark_id"])
+    abort "benchmark_top_models.csv: row #{line}: scope must be all or open_weight" unless %w[all open_weight].include?(row["scope"])
+    abort "benchmark_top_models.csv: row #{line}: rank must be 1..3" unless %w[1 2 3].include?(row["rank"].to_s)
+    abort "benchmark_top_models.csv: row #{line}: status must be verified or partial" unless %w[verified partial].include?(row["status"])
+    abort "benchmark_top_models.csv: row #{line}: open_weight scope requires open_weight=true" if row["scope"] == "open_weight" && row["open_weight"].to_s.downcase != "true"
+    %w[model score source_url source_date accessed].each do |header|
+      abort "benchmark_top_models.csv: row #{line}: missing #{header}" if row[header].to_s.strip.empty?
+    end
+    uri = URI.parse(row["source_url"])
+    abort "benchmark_top_models.csv: row #{line}: source_url must use https" unless uri.is_a?(URI::HTTPS)
+    unless row["model_url"].to_s.strip.empty?
+      abort "benchmark_top_models.csv: row #{line}: model_url must use https" unless URI.parse(row["model_url"]).is_a?(URI::HTTPS)
+    end
+    unless row["ow_source_url"].to_s.strip.empty?
+      abort "benchmark_top_models.csv: row #{line}: ow_source_url must use https" unless URI.parse(row["ow_source_url"]).is_a?(URI::HTTPS)
+    end
+    Date.iso8601(row["accessed"])
+  rescue URI::InvalidURIError, Date::Error => error
+    abort "benchmark_top_models.csv: row #{line}: #{error.message}"
+  end
+  puts "Validated #{recommended.length} recommended-model rows."
+end
+
 puts "Validated 2 benchmark inventories and #{serving.length} serving records."
