@@ -2,12 +2,14 @@
 
 ![도시와 네트워크를 표현한 파란색 배너](./assets/network.png)
 
-공개 페이지는 한국어 LLM 벤치마크와 서빙 성능 도구, 공개 성능 비교, GPU·엔진 자원 계측 자료를 정리합니다.
-영어권 사용자를 위한 페이지는 한국어 페이지와 분리해 추후 제공합니다. 영어 조사 자료와 CSV는 저장소에 유지합니다.
+공개 페이지는 한국어와 영어 LLM 벤치마크, 서빙 성능 도구, 공개 성능 비교, GPU·엔진 자원 계측 자료를 한국어로 정리합니다.
+영어권 사용자를 위한 영어 인터페이스는 별도 페이지로 추후 제공합니다.
 
 - [한국어 랜딩 페이지](https://lablup.github.io/llm-benchmark-inventory/)
 - [한국어 텍스트 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html)
 - [한국어 이미지 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html?modality=vision)
+- [영어 텍스트 벤치마크](https://lablup.github.io/llm-benchmark-inventory/english.html)
+- [영어 이미지 벤치마크](https://lablup.github.io/llm-benchmark-inventory/english.html?modality=vision)
 - [서빙·자원 인벤토리](https://lablup.github.io/llm-benchmark-inventory/serving.html)
 - [한국어 벤치마크 CSV](./korean_benchmark_inventory.csv)
 - [영어 벤치마크 CSV](./english_benchmark_inventory.csv)
@@ -15,7 +17,7 @@
 
 ## 분야 구분
 
-- **한국어 벤치마크**는 모델 능력(model capability)을 평가하는 데이터셋과 실행 도구를 다룹니다.
+- **한국어·영어 벤치마크**는 모델 능력(model capability)을 평가하는 데이터셋과 실행 도구를 다룹니다.
 - **서빙·자원**은 지연 시간과 처리량을 재는 도구, 공개 성능 비교, GPU·엔진 계측을 다룹니다.
 - 외부 보드의 실시간 점수는 복제하지 않습니다. 공식 방법론과 결과 페이지를 연결하고 재현 조건과 운영 상태를 기록합니다.
 
