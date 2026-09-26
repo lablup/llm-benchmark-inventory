@@ -67,6 +67,60 @@ function decisionClass(value) {
   return "caution";
 }
 
+function formatServingValue(value) {
+  if (typeof value !== "number") return escapeServingHTML(String(value ?? ""));
+  const rounded = Math.abs(value) >= 100 ? Math.round(value) : Math.round(value * 100) / 100;
+  return rounded.toLocaleString("ko-KR");
+}
+
+function renderServingReference(row) {
+  const ref = row["대표 측정값"];
+  if (!ref || !ref.rows?.length) return "";
+  const heading = [ref.model, ref.scenario].filter(Boolean).join(" · ");
+  const items = ref.rows.map((entry) => {
+    const label = entry.label_url
+      ? `<a href="${escapeServingHTML(entry.label_url)}" target="_blank" rel="noopener noreferrer">${escapeServingHTML(entry.label)} <span aria-hidden="true">↗</span></a>`
+      : escapeServingHTML(entry.label);
+    const sub = [entry.hardware, entry.engine].filter(Boolean).join(" · ");
+    const extra = typeof entry.per_accelerator === "number" ? `<span class="rec-sub-value">가속기당 ${formatServingValue(entry.per_accelerator)}</span>` : "";
+    return `
+      <li>
+        <span class="rec-rank">${entry.rank}</span>
+        <span class="rec-model">${label}${sub ? `<span class="rec-sub">${escapeServingHTML(sub)}</span>` : ""}</span>
+        <span class="rec-score">${formatServingValue(entry.value)} <span class="rec-unit">${escapeServingHTML(entry.unit || "")}</span>${extra}</span>
+      </li>`;
+  }).join("");
+  const status = ref.status === "partial" ? `<span class="rec-flag">일부 확인</span>` : "";
+  const checked = ref.accessed ? `<span class="rec-checked">확인 ${escapeServingHTML(ref.accessed)}</span>` : "";
+  const direction = ref.direction === "lower_is_better" ? "낮을수록 좋음" : "높을수록 좋음";
+  return `
+    <div class="recommended">
+      <div class="rec-head">
+        <p class="rec-title">대표 측정값${heading ? ` · ${escapeServingHTML(heading)}` : ""}</p>
+        <p class="rec-meta">${status}${checked}</p>
+      </div>
+      <div class="rec-columns">
+        <div class="rec-panel">
+          <p class="rec-panel-title">${escapeServingHTML(ref.unit || ref.metric || "")} · ${direction}</p>
+          <ol>${items}</ol>
+        </div>
+      </div>
+      <details class="rec-details">
+        <summary>출처·조건·주의</summary>
+        <p class="rec-source">
+          <span class="rec-source-label">출처</span>
+          <a class="rec-source-link" href="${escapeServingHTML(ref.source_url)}" target="_blank" rel="noopener noreferrer" title="${escapeServingHTML(ref.source_title || "")}">${escapeServingHTML(ref.source_title || ref.source_url)} <span aria-hidden="true">↗</span></a>
+          ${ref.source_date ? `<span class="rec-source-date">기준 ${escapeServingHTML(ref.source_date)}</span>` : ""}
+        </p>
+        ${ref.metric ? `<p class="rec-setting"><strong>지표</strong> ${escapeServingHTML(ref.metric)}</p>` : ""}
+        ${ref.board_condition ? `<p class="rec-setting"><strong>보드 조건</strong> ${escapeServingHTML(ref.board_condition)}</p>` : ""}
+        ${ref.rows.some((entry) => entry.condition) ? `<ol class="rec-conditions">${ref.rows.map((entry) => `<li><span class="rec-rank">${entry.rank}</span><span>${escapeServingHTML(entry.condition || "")}</span></li>`).join("")}</ol>` : ""}
+        ${ref.caveat ? `<p class="rec-setting"><strong>주의</strong> ${escapeServingHTML(ref.caveat)}</p>` : ""}
+      </details>
+    </div>
+  `;
+}
+
 function renderServingRow(row) {
   return `
     <article class="serving-row">
@@ -84,6 +138,7 @@ function renderServingRow(row) {
         <span class="status ${decisionClass(row["Benchpress 판단"])}">${escapeServingHTML(row["Benchpress 판단"])}</span>
         <span>에어갭 ${escapeServingHTML(row["에어갭"])} · ${escapeServingHTML(row["운영 상태"])}</span>
       </div>
+      ${renderServingReference(row)}
     </article>
   `;
 }

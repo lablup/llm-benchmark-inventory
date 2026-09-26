@@ -31,6 +31,11 @@ RECOMMENDED_HEADERS = [
     "benchmark_id", "benchmark_name", "track", "scope", "rank", "model", "model_url", "score", "open_weight",
     "metric", "setting", "source_type", "source_title", "source_url", "source_date", "evidence", "status", "accessed",
 ]
+SERVING_REFERENCE_HEADERS = [
+    "serving_id", "rank", "label", "label_url", "model", "hardware", "engine", "condition", "metric", "value", "unit",
+    "per_accelerator", "direction", "scenario", "board_condition", "source_type", "source_title", "source_url",
+    "source_date", "evidence", "status", "caveat", "accessed",
+]
 REQUIRED_PAGES = [
     "index.html", "korean.html", "english.html", "serving.html", "english-copy.js",
     "assets/landing-map-desktop.webp", "assets/landing-map-mobile.webp",
@@ -156,6 +161,34 @@ def main() -> None:
                     abort(f"{name}: row {line}: {header} must use https")
             validate_iso_date(row["accessed"], name, line)
         print(f"Validated {len(recommended)} recommended-model rows.")
+
+    reference_path = ROOT / "serving_reference_values.csv"
+    if reference_path.is_file():
+        name = reference_path.name
+        headers, reference = read_csv(name)
+        missing = [header for header in SERVING_REFERENCE_HEADERS if header not in headers]
+        if missing:
+            abort(f"{name}: missing headers: {', '.join(missing)}")
+        serving_ids = {row["id"] for row in serving}
+        for index, row in enumerate(reference):
+            line = index + 2
+            if row.get("serving_id") not in serving_ids:
+                abort(f"{name}: row {line}: unknown serving_id {row.get('serving_id')}")
+            if str(row.get("rank")) not in ("1", "2", "3"):
+                abort(f"{name}: row {line}: rank must be 1..3")
+            if row.get("status") not in ("verified", "partial"):
+                abort(f"{name}: row {line}: status must be verified or partial")
+            if row.get("direction") not in ("higher_is_better", "lower_is_better"):
+                abort(f"{name}: row {line}: direction must be higher_is_better or lower_is_better")
+            for header in ["label", "model", "metric", "value", "unit", "source_url", "source_date", "accessed"]:
+                if blank(row.get(header)):
+                    abort(f"{name}: row {line}: missing {header}")
+            if not is_https(row["source_url"]):
+                abort(f"{name}: row {line}: source_url must use https")
+            if not blank(row.get("label_url")) and not is_https(row["label_url"]):
+                abort(f"{name}: row {line}: label_url must use https")
+            validate_iso_date(row["accessed"], name, line)
+        print(f"Validated {len(reference)} serving reference rows.")
 
     for name in REQUIRED_PAGES:
         if not (ROOT / name).is_file():

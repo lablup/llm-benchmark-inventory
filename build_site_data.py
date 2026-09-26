@@ -95,6 +95,54 @@ def attach_recommended(rows: list[dict]) -> None:
             }
 
 
+def serving_entry(row: dict) -> dict:
+    value = (row.get("value") or "").strip()
+    per_acc = (row.get("per_accelerator") or "").strip()
+    return {
+        "rank": int(row.get("rank") or 0),
+        "label": row.get("label"),
+        "label_url": row.get("label_url") or None,
+        "model": row.get("model"),
+        "hardware": row.get("hardware"),
+        "engine": row.get("engine"),
+        "condition": row.get("condition"),
+        "value": float(value) if NUMBER.match(value) else value,
+        "unit": row.get("unit"),
+        "per_accelerator": float(per_acc) if NUMBER.match(per_acc) else (per_acc or None),
+    }
+
+
+def attach_serving_reference(rows: list[dict]) -> None:
+    path = ROOT / "serving_reference_values.csv"
+    if not path.is_file():
+        return
+    by_board: dict[str, list[dict]] = {}
+    for row in read_csv(path.name):
+        by_board.setdefault(row["serving_id"], []).append(row)
+    for record in rows:
+        entries = by_board.get(record["id"])
+        if not entries:
+            continue
+        head = entries[0]
+        ordered = sorted(enumerate(entries), key=lambda pair: (int(pair[1].get("rank") or 0), pair[0]))
+        record["대표 측정값"] = {
+            "status": head.get("status"),
+            "model": head.get("model"),
+            "scenario": head.get("scenario"),
+            "metric": head.get("metric"),
+            "unit": head.get("unit"),
+            "direction": head.get("direction"),
+            "board_condition": head.get("board_condition"),
+            "source_type": head.get("source_type"),
+            "source_title": head.get("source_title"),
+            "source_url": head.get("source_url"),
+            "source_date": head.get("source_date"),
+            "caveat": head.get("caveat"),
+            "accessed": head.get("accessed"),
+            "rows": [serving_entry(row) for _, row in ordered],
+        }
+
+
 def main() -> None:
     categories = categories_from_readme()
     rows: list[dict] = []
@@ -107,6 +155,7 @@ def main() -> None:
     attach_recommended(rows)
 
     serving_rows = read_csv("serving_inventory.csv")
+    attach_serving_reference(serving_rows)
     meta = {
         "benchmark_checked_at": BENCHMARK_CHECKED_AT,
         "serving_checked_at": max((row["최근 확인일"] for row in serving_rows if row.get("최근 확인일")), default=None),
