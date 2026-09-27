@@ -36,6 +36,9 @@ const elements = {
   reset: document.querySelector("#reset-filters"),
 };
 
+const initialQuery = new URLSearchParams(window.location.search).get("q") ?? "";
+elements.search.value = initialQuery;
+
 function parseCSV(text) {
   const rows = [];
   let row = [];

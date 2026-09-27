@@ -5,6 +5,10 @@ const values = {
   "landing-en-count": meta.english_count,
   "landing-serving-count": meta.serving_count,
   "landing-total-count": (meta.korean_count ?? 0) + (meta.english_count ?? 0) + (meta.serving_count ?? 0),
+  "landing-ko-vision-count": meta.korean_vision_count,
+  "landing-en-vision-count": meta.english_vision_count,
+  "landing-ko-text-count": (meta.korean_count ?? 0) - (meta.korean_vision_count ?? 0),
+  "landing-en-text-count": (meta.english_count ?? 0) - (meta.english_vision_count ?? 0),
 };
 
 Object.entries(values).forEach(([id, value]) => {

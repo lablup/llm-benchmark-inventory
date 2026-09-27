@@ -3,50 +3,71 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="텍스트, 이미지와 리소스 영역별 LLM 벤치마크 인벤토리입니다.">
-    <meta name="theme-color" content="#f8f4eb">
-    <title>LLM 벤치마크 인벤토리</title>
+    <meta name="description" content="형식과 언어별로 LLM 평가 자료를 찾아보는 벤치마크 인벤토리입니다.">
+    <meta name="theme-color" content="#f4f8fe">
+    <title>벤치마크 인벤토리</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
     <link rel="stylesheet" href="./styles.css">
+    <script src="./site-meta.js" defer></script>
+    <script src="./landing.js" defer></script>
   </head>
-  <body class="illustrated-page">
-    <header class="illustrated-header">
-      <a class="illustrated-brand" href="./index.html" aria-label="LLM 벤치마크 인벤토리 홈">
-        <span aria-hidden="true">LBI</span>
+  <body class="roadmap-page">
+    <header class="roadmap-header roadmap-shell">
+      <a class="roadmap-brand" href="./index.html" aria-label="벤치마크 인벤토리 홈">
+        <img src="./assets/design-concepts/lbi-logo-mark-blue.svg" alt="">
         <strong>벤치마크 인벤토리</strong>
       </a>
-      <a class="illustrated-github" href="https://github.com/lablup/llm-benchmark-inventory">GitHub ↗</a>
+      <nav class="roadmap-nav" aria-label="주요 메뉴">
+        <a href="#roadmap-title">소개</a>
+        <a href="./korean.html">전체 자료</a>
+        <a class="roadmap-github" href="https://github.com/lablup/llm-benchmark-inventory">GitHub</a>
+      </nav>
     </header>
 
-    <main class="illustrated-main">
-      <div class="map-canvas">
-        <picture>
-          <source media="(max-width: 900px)" srcset="./assets/landing-map-mobile.webp">
-          <img src="./assets/landing-map-desktop.webp" alt="하나의 길이 한국어와 영어의 이미지·텍스트 평가, 리소스의 다섯 갈래로 나뉘는 손그림 지도">
-        </picture>
-
-        <div class="map-title">
+    <main class="roadmap-main">
+      <section class="roadmap-intro roadmap-shell" aria-labelledby="roadmap-title">
+        <div class="roadmap-heading">
           <p>LLM 평가 자료</p>
-          <h1>평가 자료 선택</h1>
+          <h1 id="roadmap-title">형식과 언어별<br>평가자료 로드맵</h1>
+          <span>이미지·텍스트는 한국어와 영어로, 시스템 자료는 별도로 확인하세요.</span>
         </div>
+        <div class="roadmap-tools">
+          <form class="roadmap-search" action="./korean.html" role="search">
+            <span aria-hidden="true">⌕</span>
+            <label class="sr-only" for="roadmap-search-input">자료 검색</label>
+            <input id="roadmap-search-input" name="q" type="search" placeholder="자료 검색" autocomplete="off">
+          </form>
+          <p class="roadmap-legend"><span aria-hidden="true"></span>현재 선택한 경로</p>
+        </div>
+      </section>
 
-        <nav class="map-destinations" aria-label="평가 자료 선택">
-          <a class="map-destination map-destination--image-ko" href="./korean.html?modality=vision">
-            <span>이미지</span><strong>한국어</strong><b aria-hidden="true">→</b>
-          </a>
-          <a class="map-destination map-destination--image-en" href="./english.html?modality=vision">
-            <span>이미지</span><strong>영어</strong><b aria-hidden="true">→</b>
-          </a>
-          <a class="map-destination map-destination--text-ko" href="./korean.html">
-            <span>텍스트</span><strong>한국어</strong><b aria-hidden="true">→</b>
-          </a>
-          <a class="map-destination map-destination--text-en" href="./english.html">
-            <span>텍스트</span><strong>영어</strong><b aria-hidden="true">→</b>
-          </a>
-          <a class="map-destination map-destination--resources" href="./serving.html">
-            <span>시스템</span><strong>리소스</strong><b aria-hidden="true">→</b>
-          </a>
-        </nav>
-      </div>
+      <nav class="roadmap-map roadmap-shell" aria-label="형식과 언어별 평가 자료">
+        <div class="roadmap-runway" aria-hidden="true"></div>
+        <div class="roadmap-crossbar" aria-hidden="true"></div>
+        <div class="roadmap-axis" aria-hidden="true"></div>
+
+        <a class="roadmap-route roadmap-route--left roadmap-route--image-ko" href="./korean.html?modality=vision">
+          <span class="roadmap-line" aria-hidden="true"><i></i><b></b></span>
+          <span class="roadmap-copy"><small>IMAGE · KO</small><strong>이미지 · 한국어</strong><em><span id="landing-ko-vision-count">—</span>개&nbsp; →</em></span>
+        </a>
+        <a class="roadmap-route roadmap-route--left roadmap-route--image-en" href="./english.html?modality=vision">
+          <span class="roadmap-line" aria-hidden="true"><i></i><b></b></span>
+          <span class="roadmap-copy"><small>IMAGE · EN</small><strong>이미지 · 영어</strong><em><span id="landing-en-vision-count">—</span>개&nbsp; →</em></span>
+        </a>
+        <a class="roadmap-route roadmap-route--right roadmap-route--text-ko is-active" href="./korean.html">
+          <span class="roadmap-line" aria-hidden="true"><i></i><b></b></span>
+          <span class="roadmap-copy"><small>TEXT · KO</small><strong>텍스트 · 한국어</strong><em><span id="landing-ko-text-count">—</span>개&nbsp; →</em></span>
+        </a>
+        <a class="roadmap-route roadmap-route--right roadmap-route--text-en" href="./english.html">
+          <span class="roadmap-line" aria-hidden="true"><i></i><b></b></span>
+          <span class="roadmap-copy"><small>TEXT · EN</small><strong>텍스트 · 영어</strong><em><span id="landing-en-text-count">—</span>개&nbsp; →</em></span>
+        </a>
+        <a class="roadmap-route roadmap-route--right roadmap-route--system" href="./serving.html">
+          <span class="roadmap-line" aria-hidden="true"><i></i><b></b></span>
+          <span class="roadmap-copy"><small>SYSTEM</small><strong>시스템 · 리소스</strong><em><span id="landing-serving-count">—</span>개&nbsp; →</em></span>
+        </a>
+      </nav>
     </main>
   </body>
 </html>
