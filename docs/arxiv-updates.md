@@ -7,7 +7,8 @@ required.
 
 ## Daily operation
 
-The existing `pages.yml` workflow runs at **09:23 Asia/Seoul** (00:23 UTC).
+The existing `pages.yml` workflow runs at **11:30 Asia/Seoul** (02:30 UTC).
+It runs on GitHub's servers, independently of the reviewer's laptop.
 GitHub can delay scheduled runs. A manual **Run workflow** also fetches papers.
 Ordinary pushes synchronize review status and deploy without querying arXiv.
 Editing, closing, or reopening an `arxiv-review` issue also synchronizes its

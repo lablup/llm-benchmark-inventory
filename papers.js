@@ -63,7 +63,7 @@
     papers = data.papers;
     const checked = data.last_checked_at ? new Date(data.last_checked_at) : null;
     document.querySelector("#papers-updated").textContent = checked
-      ? `마지막 수집 ${checked.toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })} (한국 시간) · 매일 오전 9시 23분경 갱신`
+      ? `마지막 수집 ${checked.toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })} (한국 시간) · 매일 오전 11시 30분경 갱신`
       : "첫 자동 수집을 기다리고 있습니다.";
     document.querySelector("#papers-stale").hidden = !checked || Date.now() - checked.getTime() < 3 * 86400000;
     render();

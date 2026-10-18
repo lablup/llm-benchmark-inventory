@@ -18,3 +18,10 @@ address or mail credentials in this public repository.
 Issue checkboxes record that a paper was reviewed. They do not add a benchmark
 to the curated inventory. Record inclusion, deferral, or exclusion in the issue
 discussion and make inventory changes separately with source verification.
+
+## 3. Run the daily update at 11:30 Korea time (2026-10-18)
+
+The user requested 11:30 Asia/Seoul for daily collection and review
+notifications. Use `30 2 * * *` in GitHub Actions. Execution happens on GitHub's
+servers and does not require the reviewer's laptop to be on. GitHub may delay
+the scheduled start when runners are busy.
