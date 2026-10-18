@@ -18,3 +18,19 @@ Object.entries(values).forEach(([id, value]) => {
 
 const updated = document.querySelector("#landing-updated");
 if (updated) updated.textContent = meta.serving_checked_at ?? "—";
+
+fetch("./new-papers.json", { cache: "no-cache" }).then(response => {
+  if (!response.ok) throw new Error("Could not load paper summary");
+  return response.json();
+}).then(data => {
+  const summary = document.querySelector("#landing-papers-status");
+  if (!summary) return;
+  const pending = data.papers.filter(paper => paper.review_status === "pending").length;
+  const checked = data.last_checked_at ? new Date(data.last_checked_at) : null;
+  const date = checked ? checked.toLocaleDateString("ko-KR", { timeZone: "Asia/Seoul" }) : "첫 수집 대기";
+  const stale = checked && Date.now() - checked.getTime() >= 3 * 86400000 ? " · 수집 지연, 자동 갱신 상태 확인 필요" : "";
+  summary.textContent = `수집한 논문 ${data.papers.length}건 · 검토 대기 ${pending}건 · ${date}${stale}`;
+}).catch(() => {
+  const summary = document.querySelector("#landing-papers-status");
+  if (summary) summary.textContent = "수집 기록을 불러오지 못했습니다. 새 논문 페이지에서 확인해 주세요.";
+});

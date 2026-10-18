@@ -12,6 +12,8 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
+from arxiv_watch import load_state
+
 ROOT = Path(__file__).resolve().parent
 BENCHMARK_HEADERS = [
     "id", "이름", "평가 축", "언어", "정의", "대표 과제", "대표 예시·설명",
@@ -38,6 +40,7 @@ SERVING_REFERENCE_HEADERS = [
 ]
 REQUIRED_PAGES = [
     "index.html", "korean.html", "english.html", "serving.html", "english-copy.js",
+    "papers.html", "papers.js", "papers.css", "new-papers.json",
     "assets/landing-map-desktop.webp", "assets/landing-map-mobile.webp",
     "assets/landing-map-ko-desktop.webp", "assets/landing-map-ko-mobile.webp",
 ]
@@ -105,6 +108,7 @@ def validate_iso_date(value: str, name: str, line: int) -> None:
 
 
 def main() -> None:
+    load_state(ROOT / "new-papers.json")
     benchmark_tables = {}
     for name in ["korean_benchmark_inventory.csv", "english_benchmark_inventory.csv"]:
         headers, rows = read_csv(name)

@@ -150,6 +150,8 @@ README_HEAD = """# LLM 벤치마크 인벤토리
 영어권 사용자를 위한 영어 인터페이스는 별도 페이지로 추후 제공합니다.
 
 - [한국어 랜딩 페이지](https://lablup.github.io/llm-benchmark-inventory/)
+- [새 arXiv 논문과 검토 대기 목록](https://lablup.github.io/llm-benchmark-inventory/papers.html)
+- [자동 수집과 GitHub 검토 방법](./docs/arxiv-updates.md)
 - [한국어 텍스트 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html)
 - [한국어 이미지 벤치마크](https://lablup.github.io/llm-benchmark-inventory/korean.html?modality=vision)
 - [영어 텍스트 벤치마크](https://lablup.github.io/llm-benchmark-inventory/english.html)

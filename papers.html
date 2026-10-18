@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="자동 수집한 LLM 벤치마크 관련 arXiv 논문과 검토 대기 목록입니다.">
+    <title>새 논문 · 벤치마크 인벤토리</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
+    <link rel="stylesheet" href="./styles.css?v=20261018">
+    <link rel="stylesheet" href="./papers.css?v=20261018">
+    <script src="./papers.js?v=20261018" defer></script>
+  </head>
+  <body class="roadmap-page papers-page">
+    <header class="roadmap-header roadmap-shell">
+      <a class="roadmap-brand" href="./index.html">
+        <img src="./assets/design-concepts/lbi-logo-mark-blue.svg" width="56" height="56" alt="">
+        <strong>벤치마크 인벤토리</strong>
+      </a>
+      <nav class="roadmap-nav" aria-label="주요 메뉴">
+        <a href="./korean.html">전체 자료</a>
+        <a class="roadmap-github" href="https://github.com/lablup/llm-benchmark-inventory/issues?q=is%3Aissue%20label%3Aarxiv-review">검토 이슈</a>
+      </nav>
+    </header>
+    <main class="roadmap-shell papers-main">
+      <section aria-labelledby="papers-title">
+        <p class="papers-eyebrow">ARXIV · 매일 자동 수집</p>
+        <h1 id="papers-title">새 논문</h1>
+        <p class="papers-intro">LLM 벤치마크와 평가에 관한 새 논문을 모았습니다.<br>제목과 초록으로 찾은 후보이며, 기존 목록에는 검토를 거쳐 반영합니다.</p>
+        <p id="papers-updated" class="papers-meta">수집 기록을 불러오는 중입니다.</p>
+        <p id="papers-stale" class="papers-warning" hidden>최근 3일 동안 수집이 갱신되지 않았습니다. <a href="https://github.com/lablup/llm-benchmark-inventory/actions/workflows/pages.yml">자동 갱신 상태 확인</a></p>
+      </section>
+      <aside class="papers-help">
+        <strong>검토는 GitHub 이슈에서</strong>
+        <p>새 후보가 있으면 하루치씩 이슈로 알립니다. 논문을 확인하고 이슈의 체크박스를 선택한 뒤, 추가·보류·제외 판단을 댓글로 남겨 주세요. 체크 상태는 다음 자동 갱신 때 반영됩니다. ‘검토 완료’는 기존 목록에 등재했다는 뜻은 아닙니다.</p>
+      </aside>
+      <form class="papers-filters" role="search" onsubmit="return false">
+        <div>
+          <label for="paper-query">논문 검색</label>
+          <input id="paper-query" type="search" placeholder="제목, 초록, 저자, arXiv 번호" autocomplete="off">
+        </div>
+        <div>
+          <label for="paper-status">검토 상태</label>
+          <select id="paper-status">
+            <option value="all">전체</option>
+            <option value="pending">검토 대기</option>
+            <option value="reviewed">검토 완료</option>
+          </select>
+        </div>
+      </form>
+      <p id="papers-count" role="status" aria-live="polite"></p>
+      <div id="paper-list" class="paper-list"></div>
+      <button id="papers-more" class="papers-more" type="button" hidden>더 보기</button>
+      <noscript>논문 목록을 보려면 JavaScript를 켜 주세요. <a href="https://github.com/lablup/llm-benchmark-inventory/issues?q=is%3Aissue%20label%3Aarxiv-review">GitHub 검토 이슈</a>에서도 확인할 수 있습니다.</noscript>
+    </main>
+  </body>
+</html>
