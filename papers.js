@@ -7,7 +7,7 @@
   let papers = [];
   let limit = 30;
   const chosen = new URLSearchParams(location.search).get("status");
-  if (["pending", "reviewed"].includes(chosen)) status.value = chosen;
+  if (["proposed", "queued", "reviewed"].includes(chosen)) status.value = chosen;
 
   function element(tag, text, className) {
     const node = document.createElement(tag);
@@ -16,10 +16,12 @@
     return node;
   }
 
+  const states = { queued: "자동 조사 대기", proposed: "변경안 승인 대기", accepted: "표 반영 완료", held: "보류", rejected: "제외", exclude: "조사 결과 제외", needs_evidence: "근거 추가 확인 필요" };
+
   function card(paper) {
     const article = element("article", "", "paper-card");
     article.id = `arxiv-${paper.arxiv_id}`;
-    article.append(element("span", paper.review_status === "reviewed" ? "검토 완료" : "검토 대기", `paper-status ${paper.review_status}`));
+    article.append(element("span", states[paper.analysis_status] || states.queued, `paper-status ${paper.analysis_status || "queued"}`));
     const heading = element("h2");
     const link = element("a", paper.title);
     link.href = `https://arxiv.org/abs/${encodeURIComponent(paper.arxiv_id)}`;
@@ -32,21 +34,21 @@
     details.append(element("summary", "초록 원문 보기"), element("p", paper.summary));
     article.append(details);
     if (/^https:\/\/github\.com\/lablup\/llm-benchmark-inventory\/issues\/\d+$/.test(paper.review_issue_url || "")) {
-      const review = element("a", "GitHub에서 검토하기 →");
+      const review = element("a", "변경안과 처리 결과 보기 →");
       review.href = paper.review_issue_url;
       article.append(review);
     } else {
-      article.append(element("p", "다음 검토 이슈에 포함할 예정입니다.", "papers-meta"));
+      article.append(element("p", paper.analysis_reason || "자동 조사 대상입니다. 직접 읽고 검토할 필요는 없습니다.", "papers-meta"));
     }
     return article;
   }
 
   function render() {
     const text = query.value.trim().toLocaleLowerCase();
-    const filtered = papers.filter(p => (status.value === "all" || p.review_status === status.value)
+    const filtered = papers.filter(p => (status.value === "all" || (status.value === "reviewed" ? p.review_status === "reviewed" : (p.analysis_status || "queued") === status.value))
       && `${p.title} ${p.summary} ${p.authors.join(" ")} ${p.arxiv_id}`.toLocaleLowerCase().includes(text));
-    const pending = papers.filter(p => p.review_status === "pending").length;
-    count.textContent = `전체 ${papers.length}건 · 검토 대기 ${pending}건 · 현재 ${filtered.length}건`;
+    const pending = papers.filter(p => p.analysis_status === "proposed").length;
+    count.textContent = `수집 ${papers.length}건 · 승인할 변경안 ${pending}건 · 현재 ${filtered.length}건`;
     list.replaceChildren(...filtered.slice(0, limit).map(card));
     if (!filtered.length) list.append(element("p", papers.length ? "조건에 맞는 논문이 없습니다." : "아직 수집된 후보가 없습니다."));
     more.hidden = filtered.length <= limit;
@@ -61,6 +63,9 @@
   }).then(data => {
     if (data.schema_version !== 1 || !Array.isArray(data.papers)) throw new Error("Invalid paper data");
     papers = data.papers;
+    const research = document.querySelector("#research-status");
+    if (data.research?.status === "not_configured") research.textContent = data.research.message;
+    else if (data.research?.last_run_at) research.textContent = `최근 자동 조사 ${new Date(data.research.last_run_at).toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })} (한국 시간)`;
     const checked = data.last_checked_at ? new Date(data.last_checked_at) : null;
     document.querySelector("#papers-updated").textContent = checked
       ? `마지막 수집 ${checked.toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })} (한국 시간) · 매일 오전 11시 30분경 갱신`

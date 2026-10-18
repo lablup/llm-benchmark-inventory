@@ -159,7 +159,7 @@ function lmEvalLabel(value) {
 }
 
 function matchesModality(row) {
-  const isVision = VISION_GROUPS.has(`${row["트랙"]}:${row.id}`);
+  const isVision = row["입력 유형"] ? row["입력 유형"] === "vision" : VISION_GROUPS.has(`${row["트랙"]}:${row.id}`);
   return state.modality === "vision" ? isVision : !isVision;
 }
 

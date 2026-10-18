@@ -6,6 +6,7 @@ Standard library only. Exits non-zero with a message on the first problem found.
 from __future__ import annotations
 
 import csv
+import json
 import re
 import sys
 from datetime import date
@@ -116,6 +117,26 @@ def main() -> None:
         validate_ids(rows, name)
         validate_https_links(rows, name)
         benchmark_tables[name] = rows
+
+    modalities = json.loads((ROOT / "benchmark-modalities.json").read_text(encoding="utf-8"))
+    known_ids = {row["id"] for rows in benchmark_tables.values() for row in rows}
+    if not isinstance(modalities, dict) or any(key not in known_ids or value not in {"text", "vision"} for key, value in modalities.items()):
+        abort("Invalid benchmark modality override")
+    from research_pipeline import read_json, check_config
+    from review_proposals import proposal_hash
+    config = read_json(ROOT / "research/config.json")
+    if config.get("enabled"):
+        check_config(config)
+    ledger = read_json(ROOT / "research/proposals.json")
+    if ledger.get("schema_version") != 1 or not isinstance(ledger.get("processed_comments"), list):
+        abort("Invalid proposal ledger")
+    for key, proposal in ledger["proposals"].items():
+        if key != proposal["arxiv_id"] or proposal["proposal_sha256"] != proposal_hash(proposal):
+            abort("Invalid proposal identity or hash")
+        if proposal["status"] not in {"proposed", "accepted", "held", "rejected", "exclude", "needs_evidence"}:
+            abort("Invalid proposal status")
+        if proposal["status"] in {"proposed", "accepted", "held", "rejected"} and not proposal.get("verification", {}).get("approve"):
+            abort("Proposal is missing its second-pass verification")
 
     english_ids = [row["id"] for row in benchmark_tables["english_benchmark_inventory.csv"]]
     english_copy = (ROOT / "english-copy.js").read_text(encoding="utf-8")

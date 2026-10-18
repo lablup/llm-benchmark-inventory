@@ -1,109 +1,142 @@
-# arXiv discovery and review
+# arXiv discovery, investigation, and approval
 
-The [new papers page](https://lablup.github.io/llm-benchmark-inventory/papers.html)
-lists candidates discovered from arXiv. It is separate from the curated
-benchmark inventories. No model API, SMTP account, or third-party scheduler is
-required.
+The daily workflow runs at **11:30 Asia/Seoul** (`30 2 * * *`) on GitHub's
+servers. It does not require the reviewer's laptop. GitHub may delay a run.
 
-## Daily operation
+## Current deployment status
 
-The existing `pages.yml` workflow runs at **11:30 Asia/Seoul** (02:30 UTC).
-It runs on GitHub's servers, independently of the reviewer's laptop.
-GitHub can delay scheduled runs. A manual **Run workflow** also fetches papers.
-Ordinary pushes synchronize review status and deploy without querying arXiv.
-Editing, closing, or reopening an `arxiv-review` issue also synchronizes its
-checkboxes and deploys the result.
+Discovery and approval handling are installed. **Model-based investigation is
+disabled until a provider, model, prices, and API secret are configured.**
+The page displays this state. Collected papers are an investigation queue,
+not a reading assignment. No raw-paper review issues are created.
 
-`arxiv_watch.py` searches titles for benchmark, bench, evaluation, or dataset
-terms together with language-model and multimodal-model terms. A local rule
-requires model relevance and a benchmark-like title, or a dataset/evaluation
-title whose abstract introduces a benchmark. These are discovery heuristics:
-some relevant papers will be missed and some candidates will be irrelevant.
-This does not track every arXiv paper, dataset release, or model leaderboard.
-It does not infer the benchmark's language from the paper's writing language.
+## What changed after inspecting the original research
 
-The first run covers 30 days. Later runs start seven days before the last
-successful collection, so interrupted runs catch up and recent indexing delays
-are covered. Requests are paginated with a three-second delay and transient
-errors are retried. A partial, malformed, duplicate, or oversized result set
-fails without advancing the checkpoint. Older records and human review state
-are retained. IDs are normalized across paper versions. Revisions to papers
-outside the submission-date search window are not tracked.
+The September inventory used original papers and official sources, structured
+per-benchmark JSON, and scripts mapping benchmark IDs to CSV rows. The local
+research archive contains 57 PDFs and separate verification records. It was
+not a continuously running arXiv-to-inventory service.
 
-## How to review
+The new pipeline follows that sequence:
 
-1. Open the issue assigned to you, or choose **검토 대기 보기** on the homepage.
-2. Read the paper and check its official dataset/code, evaluation tasks, and
-   license conditions. The discovery page supplies the original abstract.
-3. Check the paper's box in the GitHub issue when you have reviewed it. Record
-   **추가**, **보류**, or **제외**, with the reason, in a comment.
-4. For an accepted candidate, update the appropriate inventory CSV with verified
-   evidence, then regenerate and validate the site data. Checking a box or
-   writing a comment alone never edits the curated CSVs.
-5. Close the issue once all items have been reviewed. Closing it with unchecked
-   items leaves those items pending. Unchecking an item restores pending status.
+1. `arxiv_watch.py` discovers candidates and retains the collection checkpoint.
+2. `research_pipeline.py` downloads PDFs, records SHA-256 hashes, and extracts
+   physical pages with `pdftotext -layout`. It processes at most five papers
+   per Korean calendar day, starting with the newest unprocessed candidates.
+3. The model proposes complete rows in the existing Korean/English CSV schema,
+   reusing existing IDs. Each changed factual field has a page and a short
+   quotation. Quotations must occur on that page. Dataset language needs its
+   own evidence; the paper's writing language is insufficient.
+4. The official resource URL must occur in the PDF. The pipeline fetches the
+   linked GitHub repository README or Hugging Face dataset card. Unsupported
+   sites and unavailable resources remain `needs_evidence`.
+5. A separate model call compares the change with the PDF and official card.
+   This second pass uses the same configured model. It is not independent
+   human verification or a guarantee of correctness.
+6. Only proposals passing both checks enter a GitHub issue, at most five per
+   day. The issue shows the actual before/after fields, English display copy,
+   source pages, and remaining uncertainties.
+7. Approval applies the exact proposal, rebuilds the README and site data,
+   validates them, commits, and deploys. The bot confirms after deployment.
 
-Only the checkboxes in the issue body control the site's review status.
-Comments provide the decision record but are not automatically interpreted.
-New daily issues mention and assign the reviewer. They contain at most 100
-papers to keep the issue usable and below GitHub's body limit. Additional
-unannounced candidates remain visible on the page and enter subsequent daily
-issues. A rerun on the same Korean calendar day does not create another digest
-or overwrite a reviewer's edits.
+The raw PDF and full text stay in an ignored local cache. The repository keeps
+short evidence excerpts, source hashes, proposals, and decisions. Diagnostic
+API response logs are retained as Actions artifacts for seven days; these are
+accessible to people who can read this public repository. API keys are never
+included in jobs or logs.
 
-## GitHub email notifications
+## Reviewer commands
 
-In [notification settings](https://github.com/settings/notifications), enable
-email for participating conversations and mentions. Set a verified address as
-the default notification address and check any organization-specific routing
-for `lablup`. Do not ignore this repository. Optionally choose **Watch → Custom
-→ Issues** on the repository to subscribe to all its issues.
+Post exactly one command per comment in the proposal's issue:
 
-The workflow creates GitHub notifications. Actual email delivery depends on
-these account and organization settings; it cannot verify mailbox delivery.
-Change the assignee using repository variable `ARXIV_REVIEWER` (default:
-`songys`). A reviewer must be assignable in this repository.
+- `추가 2610.12345`: apply the displayed proposal to the inventory.
+- `보류 2610.12345`: retain the proposal without repeated notifications.
+- `제외 2610.12345`: reject it without changing the inventory.
 
-## Reliability and troubleshooting
+Replace the example ID with the issue's arXiv ID. A held proposal may later be
+accepted or rejected. Accepted/rejected proposals are terminal; corrections
+require a new investigation. Editing an old comment does not undo a decision.
+Checkboxes and closing an issue do not change the inventory.
 
-`new-papers.json` is the persisted collection checkpoint and review state.
-Daily bot commits keep it in the repository. The collector reconciles all
-`arxiv-review` issues, including closed ones, before creating a digest. If a
-run creates an issue but fails before committing state, the next run recovers
-the existing issue by its marker and paper IDs. Only issues authored by
-`github-actions[bot]` or the configured reviewer are used.
+Only the configured reviewer (`ARXIV_REVIEWER`, default `songys`) can apply
+commands. A command must belong to a bot-authored proposal issue containing
+the saved proposal hash. Duplicate comments are idempotent. If the original
+CSV row or its English copy changed after investigation, approval fails instead
+of overwriting it. Check the failed Actions run and regenerate the proposal.
+If any part of a review synchronization fails, all its CSV writes roll back.
 
-The production workflow serializes collection and deployment. It grants
-`contents: write`, `issues: write`, `pages: write`, and `id-token: write` to the
-deployment job. Pull requests run offline validation only. A bot commit does
-not trigger a new workflow, so the same run uploads and deploys the refreshed
-files. A concurrent human push can reject the state push; rerun the workflow
-instead of force-pushing. A failed collection or issue request prevents that
-run's deployment and leaves the last successful public page in place.
+GitHub assignment/mentions use the reviewer's existing email notification
+settings. The workflow cannot confirm delivery to an email inbox. The former
+100-candidate issue is obsolete and does not need to be completed.
 
-The page warns if the last successful collection is more than three days old.
-Check [workflow runs](https://github.com/lablup/llm-benchmark-inventory/actions/workflows/pages.yml)
-for failures, disabled schedules, missing permissions, or arXiv outages.
-GitHub may disable schedules in public repositories after prolonged inactivity.
-Routine successful collection commits provide ongoing repository activity.
+## Connect the model service
 
-Local commands (Python standard library only):
+1. Select a provider/model and confirm its current input/output prices.
+2. Add `OPENROUTER_API_KEY` or `OPENAI_API_KEY` in repository **Settings →
+   Secrets and variables → Actions → New repository secret**. Never paste a
+   key in an issue, this file, or chat.
+3. Configure `research/config.json`: provider (`openrouter` or `openai`), model,
+   USD prices per million tokens, daily paper limit, and budget. Leave
+   `enabled: false` while preparing settings.
+4. Use `python3 research_pipeline.py --dry-run` with the configuration enabled
+   locally to inspect the request and cost estimate before the first paid run.
+   The dry run downloads one PDF but makes no model call and writes no queue
+   decisions. Set `enabled: true` in GitHub only after validating configuration.
+5. Run the Pages workflow manually and inspect its first investigation results.
+
+All model calls use an unchanged snapshot of the shared
+`~/weekly-planner/scripts/llm_batch.py`; see `vendor/README.md`. The project
+supplies jobs and parsers, not a separate API client. Calls are sequential,
+with shared smoke checks, retries, balance checks where available, and cost
+recording. The default **$1 daily stop threshold is a proposed configuration,
+not an exact billing guarantee**: a completed request can exceed its estimate.
+No model calls occur while disabled.
+
+Before a paid call, the daily ledger records a stop flag. A failed call or
+runner interruption leaves that day's research blocked to prevent an unnoticed
+second allowance. Inspect the saved logs and actual spend before clearing the
+flag or starting another day. Failed runs still persist the research checkpoint.
+
+## Scope and limits
+
+- Discovery covers a keyword-filtered arXiv submission window, not all papers,
+  dataset releases, or leaderboard changes. First run: 30 days; later runs:
+  seven days before the last successful checkpoint. Pagination must complete
+  before the checkpoint advances. Old paper revisions outside this window
+  are not tracked.
+- The five-paper daily limit can leave a backlog. Unprocessed records are
+  visible without creating reviewer tasks. PDF download failures retry on a
+  later day. Completed `needs_evidence`/`exclude` decisions stay recorded and
+  need an explicit re-investigation to be reconsidered.
+- PDFs over 60 pages, over 150,000 extracted characters, scanned PDFs, and
+  unsupported resource sites require another extraction/source adapter.
+- New entries retain **확인 불가** for dataset license, commercial use,
+  modification, redistribution, and lm-eval support. The pipeline does not
+  infer dataset rights from a code license or relax existing judgments.
+- **Recommended-model rankings are not updated by this pipeline.** The previous
+  score-research JSON and `merge_results.py` remain the reference for a later
+  score-specific adapter. Scores need explicit table/metric/setting verification;
+  this implementation handles benchmark descriptions and categorization.
+- Existing license-check dates are preserved. Adding a paper does not recheck
+  every benchmark's license.
+
+## Validation and operations
 
 ```bash
-python3 -m unittest -v test_arxiv_watch.py
+python3 -m unittest -v test_arxiv_watch.py test_research.py
 python3 validate_inventory.py
-# Fetch papers and preview the next issue without sending notifications:
-python3 arxiv_watch.py --preview /tmp/arxiv-review.md
-# GH_TOKEN must be supplied securely by the environment for real issue writes:
-python3 arxiv_watch.py --github
-python3 arxiv_watch.py --github --issues-only
+python3 arxiv_watch.py                  # discovery only, no notifications
+python3 research_pipeline.py --dry-run  # no paid model calls
+python3 review_proposals.py             # GH_TOKEN required; applies authorized comments
 ```
 
-The preview command updates the local JSON but does not call GitHub. The site
-packager (`build_pages.py`) copies an explicit public-file list and tracked
-assets into a fresh `_site/` directory. It excludes local drafts and source
-scripts. Existing license-check dates remain unchanged by discovery runs.
+Pull requests run offline checks without production secrets. Scheduled/manual
+runs collect and investigate; ordinary pushes/comments synchronize proposals
+and deploy. A `GITHUB_TOKEN` commit is deployed by the same run. A conflicting
+human push must be resolved by rerunning, never force-pushing.
+
+Check [workflow runs](https://github.com/lablup/llm-benchmark-inventory/actions/workflows/pages.yml)
+for failure details. The page warns when discovery is over three days old.
 
 Sources: [arXiv API manual](https://info.arxiv.org/help/api/user-manual.html),
-[GitHub scheduled workflows](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule),
-[GitHub notification settings](https://docs.github.com/en/subscriptions-and-notifications/get-started/configuring-notifications).
+[GitHub issue-comment events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#issue_comment).

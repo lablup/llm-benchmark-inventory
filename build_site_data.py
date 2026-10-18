@@ -149,12 +149,16 @@ def attach_serving_reference(rows: list[dict]) -> None:
 
 def main() -> None:
     categories = categories_from_readme()
+    modalities = json.loads((ROOT / "benchmark-modalities.json").read_text())
+    vision_ids = (VISION_IDS - {key for key, value in modalities.items() if value == "text"}) | {key for key, value in modalities.items() if value == "vision"}
     rows: list[dict] = []
     for source in SOURCES:
         track = "ko" if source.startswith("korean") else "en"
         for record in read_csv(source):
             record["트랙"] = track
             record["분류"] = categories.get(record["이름"], "기타")
+            if record["id"] in modalities:
+                record["입력 유형"] = modalities[record["id"]]
             rows.append(record)
     attach_recommended(rows)
 
@@ -165,8 +169,8 @@ def main() -> None:
         "serving_checked_at": max((row["최근 확인일"] for row in serving_rows if row.get("최근 확인일")), default=None),
         "korean_count": sum(1 for row in rows if row["트랙"] == "ko"),
         "english_count": sum(1 for row in rows if row["트랙"] == "en"),
-        "korean_vision_count": sum(1 for row in rows if row["트랙"] == "ko" and row["id"] in VISION_IDS),
-        "english_vision_count": sum(1 for row in rows if row["트랙"] == "en" and row["id"] in VISION_IDS),
+        "korean_vision_count": sum(1 for row in rows if row["트랙"] == "ko" and row["id"] in vision_ids),
+        "english_vision_count": sum(1 for row in rows if row["트랙"] == "en" and row["id"] in vision_ids),
         "serving_count": len(serving_rows),
     }
 

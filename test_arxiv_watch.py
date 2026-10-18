@@ -37,9 +37,7 @@ def feed(papers, total=None, start=0):
 
 
 def issue(papers, checked=False, day="2026-10-18", author="github-actions[bot]"):
-    body = watch.issue_body(papers, day, "songys")
-    if checked:
-        body = body.replace("- [ ]", "- [x]")
+    body = "<!-- arxiv-review:v1:2026-10-18 -->"
     return {"number": 7, "html_url": f"https://github.com/{watch.REPOSITORY}/issues/7",
             "body": body, "state": "open", "user": {"login": author}}
 
@@ -109,69 +107,6 @@ class CollectionTests(unittest.TestCase):
             state = {**empty(), "papers": [paper()]}
             watch.save_state(path, state)
             self.assertEqual(watch.load_state(path), state)
-
-
-class IssueTests(unittest.TestCase):
-    def client(self, issues=()):
-        client = Mock()
-        client.issues.return_value = list(issues)
-        client.request.return_value = issue([])
-        return client
-
-    def test_create_once_and_assign_reviewer(self):
-        state = {**empty(), "papers": [paper()]}
-        client = self.client()
-        result = watch.sync_issues(state, client, NOW, "songys")
-        self.assertEqual(client.request.call_args.args[1]["assignees"], ["songys"])
-        self.assertEqual(result["papers"][0]["review_issue_url"], issue([])["html_url"])
-        self.assertIsNone(state["papers"][0]["review_issue_url"])
-
-    def test_recover_after_issue_creation_before_commit(self):
-        state = {**empty(), "papers": [paper()]}
-        client = self.client([issue(state["papers"])])
-        result = watch.sync_issues(state, client, NOW + timedelta(days=1), "songys")
-        client.request.assert_not_called()
-        self.assertIsNotNone(result["papers"][0]["review_issue_url"])
-
-    def test_checked_tasks_sync_even_when_issue_closed(self):
-        state = {**empty(), "papers": [paper()]}
-        reviewed = issue(state["papers"], checked=True)
-        reviewed["state"] = "closed"
-        result = watch.sync_issues(state, self.client([reviewed]), NOW, "songys")
-        self.assertEqual(result["papers"][0]["review_status"], "reviewed")
-        reviewed["body"] = reviewed["body"].replace("[x]", "[ ]")
-        result = watch.sync_issues(result, self.client([reviewed]), NOW, "songys")
-        self.assertEqual(result["papers"][0]["review_status"], "pending")
-
-    def test_same_day_new_arrivals_wait_for_next_digest(self):
-        state = {**empty(), "papers": [paper(), paper("2610.12346")]}
-        client = self.client([issue([paper()])])
-        result = watch.sync_issues(state, client, NOW, "songys")
-        client.request.assert_not_called()
-        self.assertIsNone(result["papers"][1]["review_issue_url"])
-
-    def test_empty_queue_does_not_notify(self):
-        client = self.client()
-        watch.sync_issues(empty(), client, NOW, "songys")
-        client.request.assert_not_called()
-
-    def test_unauthorized_issue_cannot_clear_review(self):
-        state = {**empty(), "papers": [paper()]}
-        fake = issue(state["papers"], checked=True, author="untrusted-user")
-        result = watch.sync_issues(state, self.client([fake]), NOW, "songys")
-        self.assertEqual(result["papers"][0]["review_status"], "pending")
-
-    def test_digest_limit_leaves_backlog_unlinked(self):
-        state = {**empty(), "papers": [paper(f"2610.{i:05}") for i in range(102)]}
-        result = watch.sync_issues(state, self.client(), NOW, "songys")
-        self.assertEqual(sum(bool(p["review_issue_url"]) for p in result["papers"]), 100)
-
-    def test_metadata_cannot_inject_tasks_mentions_or_links(self):
-        malicious = paper(title="[bad](javascript:alert(1)) <img> @someone\n- [x] pretend")
-        body = watch.issue_body([malicious], "2026-10-18", "songys")
-        self.assertNotIn("@someone", body)
-        self.assertNotIn("<img>", body)
-        self.assertEqual(watch.TASK.findall(body), [(" ", malicious["arxiv_id"])])
 
 
 if __name__ == "__main__":

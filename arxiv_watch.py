@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Discover arXiv candidates and track human review in daily GitHub issues.
+"""Discover arXiv candidates; notify only after evidence-backed proposals exist.
 
 Standard library only. Discovery never changes the curated inventory CSVs.
 """
@@ -26,8 +26,6 @@ LABEL = "arxiv-review"
 ATOM = "{http://www.w3.org/2005/Atom}"
 SEARCH = "{http://a9.com/-/spec/opensearch/1.1/}"
 ARXIV_ID = r"\d{4}\.\d{4,5}"
-TASK = re.compile(r"^- \[([ xX])\].*<!-- arxiv:(" + ARXIV_ID + r") -->\s*$", re.M)
-MARKER = re.compile(r"^<!-- arxiv-review:v1:(\d{4}-\d{2}-\d{2}) -->", re.M)
 TOPIC_QUERY = (
     '(ti:benchmark OR ti:bench OR ti:evaluation OR ti:dataset) AND '
     '(all:"language model" OR all:LLM OR all:LLMs OR all:VLM OR '
@@ -36,7 +34,6 @@ TOPIC_QUERY = (
 MODEL = re.compile(r"\b(?:LLMs?|VLMs?|(?:large |vision[- ]|multimodal )?language models?|multimodal models?)\b", re.I)
 BENCH = re.compile(r"bench(?:mark(?:ing|s)?)?\b", re.I)
 INTRODUCES = re.compile(r"\b(?:introduc\w*|propos\w*|present\w*|releas\w*|construct\w*)\b", re.I)
-MAX_ISSUE_PAPERS = 100
 KST = timezone(timedelta(hours=9))
 
 
@@ -72,6 +69,8 @@ def validate_state(state: dict) -> None:
             raise ValueError("Invalid arXiv URL")
         if paper["review_status"] not in {"pending", "reviewed"}:
             raise ValueError("Invalid review status")
+        if paper.get("analysis_status", "queued") not in {"queued", "proposed", "accepted", "held", "rejected", "exclude", "needs_evidence"}:
+            raise ValueError("Invalid analysis status")
         issue = paper.get("review_issue_url")
         if issue and not re.fullmatch(r"https://github\.com/" + re.escape(REPOSITORY) + r"/issues/\d+", issue):
             raise ValueError("Invalid review issue URL")
@@ -228,59 +227,19 @@ class GitHub:
         except HTTPError as error:
             if error.code != 404:
                 raise
-            self.request("/labels", {"name": LABEL, "color": "1976e8", "description": "Daily arXiv candidates awaiting human review"})
+            self.request("/labels", {"name": LABEL, "color": "1976e8", "description": "Evidence-backed inventory changes awaiting approval"})
 
 
-def markdown_title(title: str) -> str:
+def markdown_title(title: str, limit: int = 300) -> str:
     # Prevent metadata from injecting Markdown links, HTML, or @mentions.
     title = " ".join(title.split()).replace("@", "＠").replace("<", "&lt;").replace(">", "&gt;")
-    return re.sub(r"([\\`*_{}\[\]()#!|])", r"\\\1", title[:300])
-
-
-def issue_body(papers: list[dict], day: str, reviewer: str) -> str:
-    lines = [f"<!-- arxiv-review:v1:{day} -->", f"@{reviewer} 새 arXiv 논문 {len(papers)}건의 검토를 부탁드립니다.", "",
-             f"[새 논문과 초록 보기]({SITE}?status=pending)", "",
-             "제목·초록의 키워드로 찾은 후보입니다. 기존 벤치마크 목록에 자동으로 추가되지는 않습니다.",
-             "논문을 확인한 뒤 해당 항목을 체크하고, 추가·보류·제외 판단은 댓글로 남겨 주세요.",
-             "체크는 검토 완료를 뜻하며, 기존 목록에 등재했다는 뜻은 아닙니다. 체크 상태는 다음 자동 갱신 때 페이지에 반영됩니다.",
-             "기존 목록에 추가할 때는 공식 데이터·코드 링크, 평가 과제, 라이선스와 이용 조건을 확인합니다.",
-             "모든 항목의 검토가 끝나면 이슈를 닫아 주세요. 체크하지 않은 항목은 이슈를 닫아도 검토 대기로 남습니다.", ""]
-    for paper in papers:
-        lines.append(f"- [ ] [{markdown_title(paper['title'])}]({paper['url']}) · {paper['published'][:10]} <!-- arxiv:{paper['arxiv_id']} -->")
-    return "\n".join(lines) + "\n"
+    return re.sub(r"([\\`*_{}\[\]()#!|])", r"\\\1", title[:limit])
 
 
 def sync_issues(state: dict, github: GitHub, now: datetime, reviewer: str) -> dict:
-    if not re.fullmatch(r"[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})", reviewer):
-        raise ValueError("A valid GitHub reviewer login is required")
-    result = copy.deepcopy(state)
-    by_id = {p["arxiv_id"]: p for p in result["papers"]}
-    day = now.astimezone(KST).date().isoformat()
-    daily_exists = False
-    # Recover links from issues even if a previous run created an issue but failed to commit.
-    for issue in sorted(github.issues(), key=lambda item: item["number"]):
-        body = issue.get("body") or ""
-        marker = MARKER.search(body)
-        if not marker or issue.get("user", {}).get("login") not in {"github-actions[bot]", reviewer}:
-            continue
-        daily_exists |= marker[1] == day
-        for checked, key in TASK.findall(body):
-            if key not in by_id:
-                continue
-            paper = by_id[key]
-            paper["review_issue_url"] = issue["html_url"]
-            paper["review_status"] = "reviewed" if checked.lower() == "x" else "pending"
-    pending = [p for p in result["papers"] if not p["review_issue_url"] and p["review_status"] == "pending"]
-    if pending and not daily_exists:
-        github.ensure_label()
-        batch = pending[:MAX_ISSUE_PAPERS]
-        issue = github.request("/issues", {"title": f"[arXiv 검토] {day} · 새 후보 {len(batch)}건",
-                                          "body": issue_body(batch, day, reviewer), "labels": [LABEL], "assignees": [reviewer]})
-        for paper in batch:
-            paper["review_issue_url"] = issue["html_url"]
-        print(f"Created review issue: {issue['html_url']}")
-    validate_state(result)
-    return result
+    # Kept as the collector's public entry point; v1 raw-paper digests are retired.
+    from review_proposals import sync
+    return sync(state, github, now, reviewer)
 
 
 def main() -> None:
@@ -289,12 +248,9 @@ def main() -> None:
     parser.add_argument("--github", action="store_true", help="Create and sync daily review issues")
     parser.add_argument("--issues-only", action="store_true", help="Sync reviews without querying arXiv")
     parser.add_argument("--reviewer", default=os.environ.get("ARXIV_REVIEWER", "songys"))
-    parser.add_argument("--preview", type=Path, help="Write the next issue body without calling GitHub")
     args = parser.parse_args()
     if args.issues_only and not args.github:
         parser.error("--issues-only requires --github")
-    if args.preview and args.github:
-        parser.error("--preview cannot be combined with --github")
     now = datetime.now(timezone.utc)
     state = load_state(args.state)
     before = len(state["papers"])
@@ -305,10 +261,7 @@ def main() -> None:
     if args.github:
         state = sync_issues(state, GitHub(os.environ.get("GH_TOKEN", "")), now, args.reviewer)
         save_state(args.state, state)
-    if args.preview:
-        pending = [p for p in state["papers"] if not p["review_issue_url"] and p["review_status"] == "pending"]
-        args.preview.write_text(issue_body(pending[:MAX_ISSUE_PAPERS], now.astimezone(KST).date().isoformat(), args.reviewer), encoding="utf-8")
-    print(f"Papers: {len(state['papers'])}; new: {len(state['papers']) - before}; pending review: {sum(p['review_status'] == 'pending' for p in state['papers'])}")
+    print(f"Papers: {len(state['papers'])}; new: {len(state['papers']) - before}; proposals: {sum(p.get('analysis_status') == 'proposed' for p in state['papers'])}")
 
 
 if __name__ == "__main__":
