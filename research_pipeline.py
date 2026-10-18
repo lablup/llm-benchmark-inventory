@@ -84,6 +84,22 @@ def write_json(path: Path, value) -> None:
     tmp.replace(path)
 
 
+def paid_call_checkpoint(root: Path, ledger: dict) -> None:
+    write_json(root / "research/proposals.json", ledger)
+    if os.environ.get("ARXIV_DURABLE_CHECKPOINT") == "1":
+        # GitHub runners are disposable. Push the stop flag before charging so
+        # cancellation or runner loss cannot erase the daily budget checkpoint.
+        subprocess.run(["git", "config", "user.name", "github-actions[bot]"], cwd=root, check=True)
+        subprocess.run(["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"], cwd=root, check=True)
+        subprocess.run(["git", "add", "research/proposals.json"], cwd=root, check=True)
+        changed = subprocess.run(["git", "diff", "--cached", "--quiet", "--", "research/proposals.json"], cwd=root)
+        if changed.returncode == 1:
+            subprocess.run(["git", "commit", "--only", "-m", "Checkpoint daily research budget before model calls", "--", "research/proposals.json"], cwd=root, check=True)
+        elif changed.returncode:
+            raise RuntimeError("Could not inspect research checkpoint")
+        subprocess.run(["git", "push", "origin", "HEAD:main"], cwd=root, check=True)
+
+
 def read_table(root: Path, track: str):
     with (root / TABLES[track]).open(encoding="utf-8-sig", newline="") as file:
         reader = csv.DictReader(file)
@@ -300,7 +316,7 @@ def run(root: Path = ROOT, dry_run=False):
         # preventing a retry from silently spending a second daily allowance.
         if not dry_run:
             attempts["blocked"] = True
-            write_json(root / "research/proposals.json", ledger)
+            paid_call_checkpoint(root, ledger)
         result, spent = invoke(job, p, folder / f"{key}-extract.jsonl",
                                lambda text: validate_result(json.loads(text), context),
                                config["cost_cap_usd"] - attempts["spent_usd"], dry_run)

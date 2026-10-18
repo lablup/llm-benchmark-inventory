@@ -69,6 +69,7 @@ jobs:
         id: research
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         env:
+          ARXIV_DURABLE_CHECKPOINT: "1"
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python3 research_pipeline.py

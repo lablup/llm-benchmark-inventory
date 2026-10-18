@@ -92,7 +92,8 @@ recording. The default **$1 daily stop threshold is a proposed configuration,
 not an exact billing guarantee**: a completed request can exceed its estimate.
 No model calls occur while disabled.
 
-Before a paid call, the daily ledger records a stop flag. A failed call or
+Before a paid call, the daily ledger records a stop flag and pushes it to
+GitHub before contacting the model service. A failed call or
 runner interruption leaves that day's research blocked to prevent an unnoticed
 second allowance. Inspect the saved logs and actual spend before clearing the
 flag or starting another day. Failed runs still persist the research checkpoint.
