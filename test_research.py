@@ -175,11 +175,13 @@ class ResearchTests(unittest.TestCase):
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(research.ROOT / name, target)
+        before_meta = json.loads((self.root / "site-meta.js").read_text().split(" = ", 1)[1].rstrip(";\n"))
         review.apply_proposal(self.proposal, self.root)
         self.assertIn("Example Bench", (self.root / "README.md").read_text())
         self.assertIn('"입력 유형":"vision"', (self.root / "inventory-data.js").read_text())
-        self.assertIn('"english_count":32', (self.root / "site-meta.js").read_text())
-        self.assertIn('"english_vision_count":5', (self.root / "site-meta.js").read_text())
+        after_meta = json.loads((self.root / "site-meta.js").read_text().split(" = ", 1)[1].rstrip(";\n"))
+        self.assertEqual(after_meta["english_count"], before_meta["english_count"] + 1)
+        self.assertEqual(after_meta["english_vision_count"], before_meta["english_vision_count"] + 1)
 
     def test_two_model_passes_use_shared_runner_and_day_limit(self):
         config = {"enabled": True, "provider": "openrouter", "model": "fixture", "price_in_per_million": 1,
