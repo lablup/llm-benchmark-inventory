@@ -66,6 +66,7 @@
     const research = document.querySelector("#research-status");
     if (data.research?.status === "not_configured") research.textContent = data.research.message;
     else if (data.research?.last_run_at) research.textContent = `최근 자동 조사 ${new Date(data.research.last_run_at).toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })} (한국 시간)`;
+    if (data.discovery_error) research.textContent += " · arXiv 응답 지연으로 신규 수집을 미뤘습니다. 기존 후보 조사는 계속됩니다.";
     const checked = data.last_checked_at ? new Date(data.last_checked_at) : null;
     document.querySelector("#papers-updated").textContent = checked
       ? `마지막 수집 ${checked.toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })} (한국 시간) · 매일 오전 11시 30분경 갱신`

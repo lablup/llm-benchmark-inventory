@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 from urllib.parse import parse_qs, urlparse
 from xml.sax.saxutils import escape
 
@@ -111,3 +111,25 @@ class CollectionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class CachedDiscoveryTests(unittest.TestCase):
+    def test_transient_failure_keeps_checkpoint_and_candidates(self):
+        state = {**empty(), "last_checked_at": watch.iso(NOW), "papers": [paper()]}
+        original = copy.deepcopy(state)
+        with patch.object(watch, "collect", side_effect=watch.HTTPError("https://export.arxiv.org", 429, "Limited", {}, None)):
+            result = watch.collect_with_cached_fallback(state, NOW)
+        self.assertEqual(state, original)
+        self.assertEqual(result["last_checked_at"], state["last_checked_at"])
+        self.assertEqual(result["papers"], state["papers"])
+        self.assertEqual(result["discovery_error"]["code"], "HTTP 429")
+
+    def test_schema_errors_still_stop_collection(self):
+        with patch.object(watch, "collect", side_effect=ValueError("Incomplete page")):
+            with self.assertRaises(ValueError):
+                watch.collect_with_cached_fallback(empty(), NOW)
+
+    def test_success_clears_previous_failure(self):
+        state = {**empty(), "discovery_error": {"code": "HTTP 429"}}
+        with patch.object(watch, "collect", return_value=copy.deepcopy(state)):
+            self.assertNotIn("discovery_error", watch.collect_with_cached_fallback(state, NOW))

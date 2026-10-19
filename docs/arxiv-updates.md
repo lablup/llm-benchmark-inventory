@@ -61,7 +61,9 @@ usage and errors before clearing a stop left by a failed run. Bot commits are
 deployed by the same run; they do not trigger another workflow.
 
 The five-paper limit can leave a backlog. Unprocessed candidates remain visible
-without assigning work to the user. PDF failures retry on a later day. Completed
+without assigning work to the user. Transient arXiv API failures retain the last successful discovery checkpoint and
+continue investigation of cached candidates. The site displays the collection delay.
+PDF failures retry on a later day. Completed
 exclusions and evidence failures stay recorded without repeated notifications.
 PDFs over 60 pages or 200,000 extracted characters, scanned documents, and
 unsupported official-source websites need another adapter. GitHub/Hugging Face

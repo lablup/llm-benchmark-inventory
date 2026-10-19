@@ -242,9 +242,26 @@ def sync_issues(state: dict, github: GitHub, now: datetime, reviewer: str) -> di
     return sync(state, github, now, reviewer)
 
 
+def collect_with_cached_fallback(state, now):
+    """Keep the old checkpoint on transient network failures; process cached work."""
+    try:
+        result = collect(state, now)
+        result.pop("discovery_error", None)
+        return result
+    except (HTTPError, URLError, TimeoutError) as error:
+        if isinstance(error, HTTPError) and error.code not in {429, 500, 502, 503, 504}:
+            raise
+        result = copy.deepcopy(state)
+        code = f"HTTP {error.code}" if isinstance(error, HTTPError) else type(error).__name__
+        result["discovery_error"] = {"at": iso(now), "code": code}
+        print(f"::warning::arXiv discovery unavailable ({code}); retaining checkpoint and investigating cached candidates")
+        return result
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", type=Path, default=STATE_PATH)
+    parser.add_argument("--allow-cached", action="store_true", help="Investigate cached candidates if arXiv is temporarily unavailable")
     parser.add_argument("--github", action="store_true", help="Create and sync daily review issues")
     parser.add_argument("--issues-only", action="store_true", help="Sync reviews without querying arXiv")
     parser.add_argument("--reviewer", default=os.environ.get("ARXIV_REVIEWER", "songys"))
@@ -255,7 +272,7 @@ def main() -> None:
     state = load_state(args.state)
     before = len(state["papers"])
     if not args.issues_only:
-        state = collect(state, now)
+        state = collect_with_cached_fallback(state, now) if args.allow_cached else collect(state, now)
         # Preserve discovery even if GitHub is temporarily unavailable.
         save_state(args.state, state)
     if args.github:

@@ -61,7 +61,7 @@ jobs:
           ref: main
       - name: Collect new arXiv papers
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-        run: python3 arxiv_watch.py
+        run: python3 arxiv_watch.py --allow-cached
       - name: Install PDF text extraction
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
