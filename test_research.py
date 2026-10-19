@@ -24,6 +24,8 @@ class ResearchTests(unittest.TestCase):
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(research.ROOT / name, target)
+        # Tests use an empty temporary ledger, independent of production daily limits.
+        research.write_json(self.root / "research/proposals.json", {"schema_version": 1, "proposals": {}, "processed_comments": []})
         config = research.read_json(self.root / "research/config.json")
         config["auto_apply_agreed"] = False
         config["enabled"] = False
