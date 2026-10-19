@@ -281,7 +281,27 @@
         "2609.28197",
         "2609.27205",
         "2609.27349",
-        "2609.27385"
+        "2609.27385",
+        "2609.27395",
+        "2609.27457",
+        "2609.27510",
+        "2609.27571",
+        "2610.08813",
+        "2609.28090",
+        "2609.28437",
+        "2609.28449",
+        "2609.28673",
+        "2609.28813",
+        "2609.28826",
+        "2604.01754",
+        "2608.15594",
+        "2609.28876",
+        "2609.28921",
+        "2609.28991",
+        "2609.29043",
+        "2609.29067",
+        "2609.29101",
+        "2609.29156"
       ]
     }
   },
@@ -3823,6 +3843,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "uncertain",
           "reason": "보정 보고 촉구 입장문으로 재사용 평가 자원 부재"
+        }
+      ]
+    },
+    "2609.26751": {
+      "arxiv_id": "2609.26751",
+      "paper_title": "EquivSVA: A Formally Verified Dataset of Behavioral Assertions Across Equivalent RTL Implementations",
+      "abstract": "Large language models are increasingly used to generate SystemVerilog Assertions from natural-language specifica- tions and register-transfer-level designs. Existing datasets and benchmarks support important goals such as large- scale training, formal evaluation, specification-to-assertion generation, and mutation-based testing. A complemen- tary need is to study whether a generated assertion cap- tures externally observable behavior or depends on inci- dental details of one RTL implementation. We present EquivSVA, a formally verified dataset organized around behavior families. Each family contains four structurally distinct RTL implementations of the same externally ob- servable behavior, shared interface-level gold properties, three controlled mutants, and formal-validation evidence. EquivSVA contains 120 behavior families across 12 cat- egories, 480 reference RTL implementations, 914 gold properties, and 360 mutants. Every final family passes a fixed 17-job validation suite covering RTL equivalence, gold-property proofs, property reachability, mutant dis- tinguishability, and gold-property checks on mutants. We also provide fixed family-safe train, development, and test splits. As a small demonstration of the analyses en- abled by the dataset, we evaluate the publicly released, Apache-2.0-licensed Qwen2.5-Coder-7B-Instruct model on the held-out test split. Of 293 interface-only generated properties, 93 are formally sound, and the number of sound properties varies across equivalent implementations for 14 of 24 test families. These results illustrate how behavior-family organization can support controlled stud- ies of assertion-generation robustness without requiring changes in intended functionality. The dataset, generators, validation scripts, and case-study artifacts are publicly released at https://github.com/aditigupta96/EquivSVA.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "facca2d1845fad464b84f5495bab7c6740272e1afe0e645743aabf5800899cb8",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "RTL 구현 간 SystemVerilog Assertion 생성 평가 데이터셋"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "RTL 검증 데이터셋·벤치마크 소개, 재사용 가능 평가자료"
+        }
+      ]
+    },
+    "2609.26893": {
+      "arxiv_id": "2609.26893",
+      "paper_title": "ACTS: A multi-tier benchmark evaluating LLM cipher identification under controlled blind conditions",
+      "abstract": "We introduce ACTS (Artifacts in Cipher Testing Suite), a reproducible benchmark that isolates cryptanalytic ability through tiered metadata deprivation (Tier-1: full metadata; Tier-2: filename only; Tier-3: completely blind) and tests forced reasoning (Tier-5: chain-of-thought, code-as-reasoning, self-correction) on ciphertext alone. A 10-configuration ablation study on 7,000 files, using a single 70/30 train-test split for feature-removal analysis, provides additional evidence at scale. Live API inference on a v2b corpus with fully randomised padding (PKCS7, ISO 10126, and ANSI X9.23 selected per file), unique CSPRNG keys, and unique plaintexts (127 files per model, 381 Tier-1 records, 380 Tier-3 records across three cloud systems, supplemented by 254 autonomous agentic evaluations in Tier-4) yields a combined Tier-3 accuracy of 30.8%, only modestly above the 14.3% random baseline for seven-way classification. The corresponding combined metadata-dependency gap is 40.9 percentage points (Tier-1: 71.7% vs. Tier-3: 30.8%). Against a classical Random Forest (69.2% on 7,000 files, trained on engineered byte-level features), the observed live gap is 38.4 percentage points. Because this comparison spans different input representations and training paradigms, the gap should be interpreted as an overall capability difference rather than a clean factorial decomposition. Six findings are reported: (1) Metadata dependency remains large; (2) Scaling failure under blind conditions; (3) Forced reasoning is epiphenomenal; (4) The observed live capability gap exceeds earlier heuristic estimates; (5) The signal is primarily structural rather than statistical; (6) Heuristic invariance versus ML fragility reveals different failure modes.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "46ac74129af20ed1cfa40d7fd0f9f50d299805fae2bcfda15a6b1511c95b8352",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "암호문 식별 LLM 벤치마크, 다계층 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "암호 식별 능력 평가 벤치마크 ACTS 신규 제안"
+        }
+      ]
+    },
+    "2609.26942": {
+      "arxiv_id": "2609.26942",
+      "paper_title": "Recognized but Not Produced: A Generation Benchmark for Culturally Specific Kinship Terms",
+      "abstract": "Current literature evaluates large language models (LLMs) on multilingual kinship understanding using multiple choice benchmarks, treating it as a recognition problem. We instead prompt five open weight LLMs to generate kinship terms in three non Western languages (Hindi, Tamil, and Korean) across two communicative tasks and pair this with a matched option-supported selection baseline. On identical relation language cells, GPT OSS120B selects the correct term in 90.67% of 75 valid cells but produces an accepted term in 36.00% of the corresponding attempts; Llama 3.370B shows the same pattern (77.92% versus 24.24%). Since the four-option condition displays the candidate terms and does not require script production, the difference is interpreted as an evaluation format gap rather than direct proof that lexical knowledge is intact. On explicitly specified L3 prompts, accuracy varies sharply, from GLM-5.1 at 72.29% to Llama-3.370B at 24.24%. The paternal-lineage advantage is language specific; it is large in Hindi but weak or reversed in Korean, while Tamil shared-term pairs provide a control for measurement variation. These results show that culturally specific kinship generation remains difficult even when the relationship is explicitly stated and motivate generation-based evaluation alongside multiple-choice testing.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "476d3fd88c51e93ec338ae1a4107200ae90ac8384fdd416babf5f5b6a8f4aa0f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "문화 특정 친족 용어 생성 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "한국어 포함 친족어 생성 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.26945": {
+      "arxiv_id": "2609.26945",
+      "paper_title": "Classifying Interpretive Canons at the Sentence Level: A Benchmark from the German Federal Constitutional Court",
+      "abstract": "Judicial reasoning remains challenging for large language models (LLMs) to analyze. This paper contributes a sentence-level benchmark for evaluating the ability of LLMs to classify interpretive canons as articulated by Larenz in the tradition of Savigny. Our contributions are threefold. First, we operationalize this conception of interpretation as classification criteria. Second, we provide a dataset of decisions of the German Federal Constitutional Court annotated at the sentence level. Third, we report baseline evaluations of four LLMs from three model families under expert hand-written prompts, compared against prompts optimized with Genetic-Pareto (GEPA). Mean F1 over the seven binary subtasks clusters between 70.4 and 79.2 across models, with grammatical interpretation usually the easiest canon to identify and systematic interpretation usually the hardest; under the tested configuration, GEPA-optimized prompts do not systematically outperform the hand-written ones, suggesting that the expert prompts provide a meaningful baseline.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "ccd4594422dd59beb960532aa861c060ffb26c7ddc7ef333d27fe0e9341e499a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "독일 헌법재판소 해석 규범 문장 분류 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "독일어 법원 문장 분류 벤치마크, 언어 제한 확인 필요"
+        }
+      ]
+    },
+    "2609.26985": {
+      "arxiv_id": "2609.26985",
+      "paper_title": "Benchmarking Automated Knowledge Graph Construction from Semi-Structured Data",
+      "abstract": "Knowledge Graphs (KGs) play an increasingly important role in numerous applications ranging from traditional knowledge representation to serving as memory for LLMs to support downstream tasks. However, their construction is labor-intensive; thus, in recent years, numerous approaches for automizing this process have been proposed. Compared to the popularity of construction approaches that focus on textual input data, methods for semi-structured inputs remain underrepresented and as a result, no comprehensive benchmark and evaluation suite exists to judge the quality of mapping predictions and generated KGs. This is problematic, as a KG's quality has direct influence on the downstream applications it supports and thus, strong evaluation mechanisms for their construction are urgently needed. In this work, we thus focus on the evaluation of KG construction from semi-structured data and present a benchmark and evaluation pipeline for KG construction that combines the quality dimensions (1) syntactic validity, (2) semantic accuracy, (3) consistency, (4) conciseness, (5) completeness, and (6) pragmatic quality measured on a KG's ability to provide answers to competency questions. This work contributes a realistic task definition, extends current state of the art evaluation frameworks, allows evaluation of systems that predict mappings and RDF data alike, and combines evaluation of both KG construction and downstream usage. We provide a comprehensive metrics suite, provide ten expert-curated datasets from seven domains, and showcase evaluation using two reference systems.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "00b1d30114d849951ba469168e86b9084dbde7222ee6cf78bd6619dea69f9028",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "반구조적 데이터 지식그래프 구축 자동화 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "지식그래프 구축 평가 벤치마크·파이프라인 신규 제안"
+        }
+      ]
+    },
+    "2609.27036": {
+      "arxiv_id": "2609.27036",
+      "paper_title": "An open benchmark for machine learning-based polymer property prediction",
+      "abstract": "Polymer property prediction lacks open, standardized benchmarks that enable rigorous comparison of machine-learning methods, with existing resources covering only a narrow fraction of polymer architectures, such as homopolymers. We introduce Polymer Benchmark 2026 (PolyBench26), an open dataset comprising nearly 250,000 polymer-property datapoints across eight physical properties, including data from experimental measurements, density functional theory, and molecular dynamics. The benchmark supports four evaluation tasks across homopolymers and alternating, random, and block copolymers: in-distribution property prediction, dataset-size scaling, repeat-unit complexity, and transfer to held-out polymer architectures. We compare language model, graph-based, and descriptor-based approaches and find graph-based models provide the lowest errors in property prediction, retain their advantage across the evaluated training-set sizes, and remain robust to increasing repeat-unit complexity. PolyBench26 provides a reproducible foundation for developing models for the increasingly complex polymer design space. The PolyBench26 benchmark is available open-source at https://github.com/rlearsch/PolymerBenchmark2026.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "7a424f677e54ac2ccdec5fd7230b13a7422c4f20db1b71b38109baede3167018",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "고분자 물성 예측 오픈 ML 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "고분자 특성 예측 개방형 벤치마크 PolyBench26 제안"
+        }
+      ]
+    },
+    "2609.27139": {
+      "arxiv_id": "2609.27139",
+      "paper_title": "A Hierarchy-Aware Video-Language Model Evaluation and Hyperbolic Baseline for Surgery",
+      "abstract": "Surgical procedures follow a phase-to-step hierarchy, yet the video-language models used to recognize them are evaluated with flat per-level metrics that ignore cross-level coherence and error structure. In this paper we make two contributions to address this problem, (i) we introduce SurgHiBench, the first hierarchy-aware evaluation suite for surgical video understanding, with three tasks measuring recognition, consistency, and severity across granularity levels. We evaluate a general-purpose CLIP model, a Euclidean surgical model, and, as second contribution: (ii) HyperSurg, a new hyperbolic model that enforces phase-step containment via entailment cones, across four (existing) datasets spanning three procedure types. The suite reveals that two models with the same accuracy can produce predictions of very different error severity, ranging from sibling confusions within the correct phase to unrelated cross-phase predictions. Hyperbolic geometry shifts predictions toward the correct procedural neighborhood, and these gains scale with the tree-likeness of each dataset's annotation hierarchy, providing a principled indicator when hierarchy-aware geometry helps.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "95f08d17f96d5d8f325c58e963047cf190f26c7c832733cbab3b8d176d5bdf1c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "수술 영상-언어 계층 인식 평가 및 쌍곡선 모델"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "수술 영상 이해 위계 평가 스위트 SurgHiBench 제안"
+        }
+      ]
+    },
+    "2505.10083": {
+      "arxiv_id": "2505.10083",
+      "paper_title": "ChronoSteer: Bridging Large Language Model and Time Series Foundation Model via Synthetic Cross-Modal Alignment Dataset",
+      "abstract": "Conventional forecasting methods are trained end-to-end on unimodal time series, which limits their ability to exploit textual information and undermines their generalization in data-scarce scenarios. Recently, large language models (LLMs) and time series foundation models (TSFMs) have demonstrated powerful capabilities in complex textual reasoning and zero-shot temporal modeling, respectively. Integrating these strengths to construct a multimodal time series foundation model that jointly leverages temporal and textual information for zero-shot future inference has emerged as a promising research direction. However, the scarcity of large-scale, high-quality multimodal datasets remains a fundamental obstacle. To address this challenge, we propose ChronoSteer, a decoupled agentic framework that learns cross-modal alignment from synthetic paired supervision. Specifically, a pretrained LLM first converts textual events into revision instructions that steer the initial unimodal prediction produced by a frozen TSFM. These revision instructions form an intermediate instruction space that bridges the semantic gap between text and time series while fully leveraging pretrained knowledge. Technically, the instructions are discretized into a compact codebook of instruction anchors, effectively mitigating semantic divergence while reducing the cost of dataset construction. Finally, we adopt a two-stage training strategy to recover the fine-grained magnitude information lost during discretization. Furthermore, we release a leakage-controlled multimodal benchmark constructed with temporal separation and textual context available before the prediction window. When paired with an LLM and trained on synthetic cross-modal alignment data, ChronoSteer achieves a 25.8% improvement in zero-shot prediction accuracy over its unimodal backbone, and outperforms prior state-of-the-art unimodal and multimodal ...",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "f53821f7316bfb8999b0ca24f5a5a48010866d5b27421ed6b50b2d2dbf214f77",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM-시계열 파운데이션 모델 정렬 및 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "시계열 멀티모달 벤치마크 및 정합 데이터셋 공개"
+        }
+      ]
+    },
+    "2508.13680": {
+      "arxiv_id": "2508.13680",
+      "paper_title": "VMMU: A Vietnamese Multitask Multimodal Understanding and Reasoning Benchmark",
+      "abstract": "We introduce VMMU, a Vietnamese Multitask Multimodal Understanding and Reasoning Benchmark designed to evaluate how vision-language models (VLMs) interpret and reason over visual and textual information beyond English. VMMU consists of 2.5k multimodal questions across 7 tasks, covering a diverse range of problem contexts, including STEM problem solving, data interpretation, rule-governed visual reasoning, and abstract visual reasoning. All questions require genuine multimodal integration, rather than reliance on text-only cues or OCR-based shortcuts. We evaluate a diverse set of state-of-the-art proprietary and open-source VLMs on VMMU. Despite strong Vietnamese OCR performance, proprietary models achieve only 66% mean accuracy. Further analysis shows that the primary source of failure is not OCR, but instead multimodal grounding and reasoning over text and visual evidence. Code and data are available at https://vmmu-bench.github.io/",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "e81d8777cd920c334b51d439f834cd5713e9339273fe16281289e45bec87bfb8",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "베트남어 멀티모달 이해·추론 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "베트남어 전용 멀티모달 벤치마크로 한국어·영어 아님"
+        }
+      ]
+    },
+    "2601.06676": {
+      "arxiv_id": "2601.06676",
+      "paper_title": "IDRBench: Benchmarking the Interactive Capabilities of Deep Research Agents",
+      "abstract": "Large Language Model (LLM)-based deep research agents perform multi-step reasoning, web exploration, and long-form report generation. In these long-horizon workflows, early deviations from user intent can misdirect research and propagate through planning, search, and synthesis, making timely interaction essential. However, existing benchmarks primarily treat deep research as a static input-output task, overlooking agents' ability to elicit and use user feedback. We introduce IDRBench, a benchmark for evaluating interactive deep research with controlled opportunities for clarification. Within a common workflow and stage-wise interaction budget, IDRBench compares autonomous and interactive trajectories, measuring interaction benefit through changes in task-specific report alignment and interaction cost through turns and tokens. Comprehensive experiments on 100 tasks with seven proprietary and open-weight LLMs show that interaction improves all five alignment measures for every model, yielding an average gain of 6.39 points, while revealing distinct trade-offs among autonomous performance, alignment gain, and communication cost. At the task level, interaction improves performance in 74.4% of cases but degrades it in 19.9%, demonstrating that access to clarification alone does not guarantee better outcomes: success depends on what agents ask and how effectively they incorporate the resulting feedback.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "a31a73fa0b62c6efab8cd80eb5b9e0b5e889f03aebc1fdd13c6744aea3d8889b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "심층 연구 에이전트 상호작용 능력 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "심층 리서치 에이전트 상호작용 벤치마크 IDRBench 제안"
+        }
+      ]
+    },
+    "2601.09562": {
+      "arxiv_id": "2601.09562",
+      "paper_title": "MM-BRIGHT: A Multi-Task Multimodal Benchmark for Reasoning-Intensive Retrieval",
+      "abstract": "Existing retrieval benchmarks primarily consist of text-based queries where keyword or semantic matching is usually sufficient. Many real-world queries contain multimodal elements, particularly, images such as diagrams, charts, and screenshots that require intensive reasoning to identify relevant documents. To address this gap, we introduce MM-BRIGHT, the first multimodal benchmark for reasoning-intensive retrieval. Our dataset consists of 2,803 real-world queries spanning 29 diverse technical domains, with four tasks of increasing complexity: text-to-text, multimodal-to-text, multimodal-to-image, and multimodal-to-multimodal retrieval. Extensive evaluation reveals that state-of-the-art models struggle across all tasks: BM25 achieves only 8.5 nDCG@10 on text-only retrieval, while the best multimodal model Nomic-Vision reaches just 27.6 nDCG@10 on multimodal-to-text retrieval actually underperforming the best text-only model (DiVeR: 32.2). These results highlight substantial headroom and position MM-BRIGHT as a testbed for next-generation retrieval models that better integrate visual reasoning. Our code and data are available at https://github.com/mm-bright/MM-BRIGHT. See also our official website: https://mm-bright.github.io/.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "f9f4592f992df1c59ab655c989f10efad840d011cb4c75b4b4d28195bf5e9f1a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "추론 집약적 멀티모달 검색 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 검색 벤치마크 MM-BRIGHT 신규 제안"
+        }
+      ]
+    },
+    "2603.17373": {
+      "arxiv_id": "2603.17373",
+      "paper_title": "SafeTutors: Benchmarking Pedagogical Safety in AI Tutoring Systems",
+      "abstract": "Large language models are rapidly being deployed as AI tutors, yet current evaluation paradigms assess problem-solving accuracy and generic safety in isolation, failing to capture whether a model is simultaneously pedagogically effective and safe across student-tutor interaction. We argue that tutoring safety is fundamentally different from conventional LLM safety: the primary risk is not toxic content but the quiet erosion of learning through answer over-disclosure, misconception reinforcement, and the abdication of scaffolding. To systematically study this failure mode, we introduce SafeTutors, a benchmark that jointly evaluates safety and pedagogy across mathematics, physics, and chemistry. SafeTutors is organized around a theoretically grounded risk taxonomy comprising 11 harm dimensions and 48 sub-risks drawn from learning-science literature. We uncover that all models show broad harm; scale doesn't reliably help; and multi-turn dialogue worsens behavior, with pedagogical failures rising from 17.7% to 77.8%. Harms also vary by subject, so mitigations must be discipline-aware, and single-turn \"safe/helpful\" results can mask systematic tutor failure over extended interaction.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "679bec27d710922d8732161f7d816aca17cd4a03dc88bde3dd8f8ec489e35cf4",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 튜터링 시스템 교육적 안전성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "AI 튜터 안전성·교육학 평가 벤치마크 SafeTutors 제안"
+        }
+      ]
+    },
+    "2606.05003": {
+      "arxiv_id": "2606.05003",
+      "paper_title": "PhysDox: Benchmarking LLMs on Physical Feasibility Auditing of Physiological Sensing Protocols",
+      "abstract": "Large language models (LLMs) increasingly assist in experimental design, yet fluent protocols often remain physically infeasible. We introduce PhysDox, a physical feasibility auditing benchmark for biomedical protocols comprising a 683-sample expert-curated Gold set and a 5,000-sample Silver set across six sensing domains. We formulate the task as a two-stage evaluation: severity detection classifying protocols as valid, minor, or fatal, followed by the constraint-level diagnosis of fatal violations. Evaluating 6 LLMs across 4 inference strategies yields a peak Stage-1 macro-F1 of only 53.0. Moreover, strong oracle diagnosis collapses during end-to-end evaluation due to correlated cascade errors. Error analysis reveals scaffold bias, where models conflate procedural completeness with physical validity. Consequently, implicit constraints exhibit a 2 times higher miss rate than explicit hardware violations, supported by strong statistical correlation at $ρ{=}0.81$ and $p{<}0.01$. Trace analysis of false negatives exposes a 54%--46% split between attention and judgment failures, ultimately demonstrating that protocol auditing demands calibrated feasibility reasoning rather than factual recall or longer rationales.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "99e91c99dd0b600cd5145e823256cb82a8a459da38b0898f398eab2046175cb9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "생리학적 센싱 프로토콜 물리적 타당성 감사 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "생체 프로토콜 타당성 감사 벤치마크 PhysDox 제안"
+        }
+      ]
+    },
+    "2608.10317": {
+      "arxiv_id": "2608.10317",
+      "paper_title": "From Detection to Understanding: TAR and TAR-Bench for Multi-Task Traffic Anomaly Reasoning",
+      "abstract": "Detecting a traffic anomaly does not establish whether a video-language model can explain what happened, localize it in time, or identify its causes. We introduce TAR (Traffic Anomaly Reasoning) and TAR-Bench, paired resources for training and evaluating these complementary capabilities across 10 tasks spanning question answering, temporal reasoning, and scene understanding. TAR contains 44,040 automatically generated annotations with chain-of-thought traces for 3,670 CCTV videos from eight public datasets. TAR-Bench provides 960 human-curated annotations for 80 held-out clips from 17 public YouTube videos. Evaluation of eleven vision-language models reveals a gap between question-answering performance and temporal or scene reasoning. Progressively adding task groups during supervised fine-tuning improves aggregate performance on both Cosmos-Reason2-8B and Qwen3-VL-8B-Instruct. Training on all 10 tasks raises their mean benchmark scores from 34.3 to 55.7 and from 30.9 to 53.9, respectively. These results support joint training across complementary tasks as a promising approach to traffic anomaly understanding, while highlighting persistent limitations in temporal precision and causal attribution. TAR and TAR-Bench serve as the official training and in-domain evaluation resources for AI City Challenge 2026 Track 3.The dataset is available at https://huggingface.co/datasets/nvidia/PhysicalAI-Traffic-Anomaly-Reasoning",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "7520c9904709294108cfb7a0092e1fe532bfebcf6ae97f21cff1e6987c5f22f9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "교통 이상 추론 벤치마크 및 데이터셋"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "교통 이상 추론 학습·평가 자원 TAR-Bench 제안"
+        }
+      ]
+    },
+    "2608.20153": {
+      "arxiv_id": "2608.20153",
+      "paper_title": "FormalTCS: Benchmarking End-to-End Frontier Formal Theoretical Computer Science Research of Large Language Models",
+      "abstract": "Large language models (LLMs) have shown growing potential for automated theoretical computer science (TCS) research, yet existing benchmarks remain far from realistic research settings. We introduce \\ourbenchmark, an expert-validated benchmark for evaluating LLMs on frontier, end-to-end TCS research. \\ourbenchmark contains $143$ instances drawn from papers accepted to STOC, FOCS, SODA, and COLT in 2025-2026, preserving paper-specific definitions, assumptions, and proof dependencies, with expert-verified Lean formalizations and proofs. Evaluations of leading LLMs reveal that current models remain far from reliably completing the full research pipeline. In particular, autoformalization is the sharpest bottleneck: the best model achieves only $11.5$ on translating natural-language claims into formal theorem statements, compared with $28.6$ Pass@8 when proving human-provided formal statements. Building on \\ourbenchmark, we further develop an automated TCS research framework that generates, formalizes, filters, and proves new claims. Of $64$ generated claims, only $6$ ultimately pass expert evaluation and proof verification, indicating that beyond formalization, limited research taste remains another major barrier to autonomous TCS research.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "5c4e8bc5869ef11267a025ae7abcdac0fea3a0c6ad546398adb784dac23b519f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "이론 전산과학 연구 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "이론컴퓨터과학 연구 종단 평가 벤치마크 FormalTCS 제안"
+        }
+      ]
+    },
+    "2609.06080": {
+      "arxiv_id": "2609.06080",
+      "paper_title": "PhenoBench: Mapping What a Deeply Phenotyped Human Cohort Can Tell Us",
+      "abstract": "Deeply phenotyped cohorts combine clinical, imaging, molecular, and wearable observations across timescales from seconds to years, but heterogeneous analyses are not directly comparable. We present PhenoBench, an executable benchmark that turns deep-phenotyping measurements into explicit questions and controlled comparisons of information sources and predictive models. It is built around the Human Phenotype Project, with more than 13,000 participants at the initial visit. Each question fixes the target, population, timing, and allowed information; its evaluation contract specifies the split, metric, baseline, and claim boundary. PhenoBench defines 90 clinically grounded tasks across 15 domains and 26 input modalities. Across 160 matched regression comparisons spanning 52 tasks, six pretrained tabular models ranked above the evaluated task-specific baselines, including XGBoost and CatBoost, under a fixed single-estimator protocol with bounded tuning. Giving each task equal weight, their mean advantage over ridge was 0.0103 $R^2$ (95% task-bootstrap interval, 0.0071-0.0136). We also evaluated 14 language models, collectively covering 40 tasks spanning phenotype recovery, classification, follow-up forecasting, and participant ordering. Without cohort-specific fitting, language models made informative predictions on some tasks but showed task-specific capability gaps, shared failures of scale, and rarely surpassed task-specific ridge or logistic regression models fitted on the same input fields. PhenoBench provides a versioned, auditable evaluation system where new questions, measurements, and models can be added without redefining existing comparisons.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "dc3612ec9a17bafbbb1912afbd517086fae83cdafdd4b6435834570a8d137523",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "심층 표현형 코호트 예측 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "딥표현형 코호트 실행형 벤치마크 PhenoBench 제안"
+        }
+      ]
+    },
+    "2609.28197": {
+      "arxiv_id": "2609.28197",
+      "paper_title": "PASTABench: Proactive Assessment of Sequential Trajectories for Agent Safety",
+      "abstract": "As Large Language Models (LLMs) evolve into autonomous agents that alter real-world states, ensuring operational safety across multi-step workflows has become a critical challenge. While recent work has moved beyond single-turn evaluation toward multi-turn paradigms, key limitations persist: step-level methods treat actions in isolation, missing how risks accumulate, while trajectory-level evaluations operate post-hoc, offering no opportunity for timely intervention. To address these limitations, we formalize Decoupled Proactive Safety Monitoring along three dimensions: whether to intervene, when to intervene, and what the risk is. We introduce PASTABench, a benchmark of 1,139 multi-turn trajectories spanning 5 risk categories and 13 subcategories. We further propose the Optimal Intervention Window (OIW), anchored by annotated Earliest-Signal and Trigger turns, to quantify intervention timeliness. Evaluation of 16 LLMs reveals that proactive intervention remains largely unsolved, with the best model achieving only 40.74% optimal-timing interventions. Fine-grained diagnosis further uncovers pervasive lexical overfitting: competitive safety scores of smaller models mask keyword hypersensitivity rather than genuine risk comprehension, as their proactive capability largely collapses once hazard vocabulary is neutralized.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "5dfe5e4cc31fa9efe1c0c19919443abfa0c771f08ac665edf629fbb1f5d6391c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 다단계 안전성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 안전 다중턴 궤적 벤치마크 PASTABench 제안"
+        }
+      ]
+    },
+    "2609.27205": {
+      "arxiv_id": "2609.27205",
+      "paper_title": "Phonemizing User-Generated Text: A Benchmark, Taxonomy, and Compositional Approach",
+      "abstract": "Text-to-speech systems increasingly process user-generated text (UGT) such as ppl and imo, whose pronunciation must be inferred from the canonical rather than surface form. We introduce UGTPhon, the first grapheme-to-phoneme (G2P) benchmark for UGT in English, Vietnamese, and Korean, together with an inference-grounded taxonomy for fine-grained diagnosis. Existing G2P models and frontier LLMs exhibit a systematic canonical-to-non-canonical performance gap, reaching up to 66.8 PER points. As a benchmark baseline, we propose a simple compositional G2P approach that incorporates canonical-form evidence through exact-match lookup and staged decoding. Across matched ByT5 and Qwen2.5-0.5B backbones, explicit canonical-form modeling consistently reduces non-canonical G2P errors. The 0.5B variant also performs competitively with much larger few-shot frontier LLMs, highlighting the benefit of explicitly modeling canonical-form inference for UGT phonemization.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "ab2dc0c258cd5deacfb526ad233922b19174c6378f99d81a6766dd5309e45642",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "사용자 생성 텍스트 음소화 G2P 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "한국어 포함 UGT 음소 변환 벤치마크 UGTPhon 제안"
+        }
+      ]
+    },
+    "2609.27349": {
+      "arxiv_id": "2609.27349",
+      "paper_title": "MolDesignBench: Evaluating LLM-based Agent for Scenario-grounded Molecular Design",
+      "abstract": "Real-world molecular design remains challenging for large language model (LLM)-based agents. It requires them to interpret design contexts, satisfy multiple constraints, identify infeasible specifications, and reason over multi-step tool outputs. Existing benchmarks do not capture this complexity, focusing instead on explicit and narrow constraints, only feasible problems, and single-path solutions. To address this gap, we propose MolDesignBench, a scenario-grounded benchmark that more closely reflects real-world molecular design for evaluating tool-augmented LLM agents. MolDesignBench comprises 2K generation and optimization instances that combine implicit requirements embedded in design narratives with explicit property and functional-group constraints, including infeasible cases, and require the effective use of 17 specialized chemistry tools. Experiments across diverse frontier LLMs reveal low success rates--with the best achieving only $\\sim43$\\%--and frequent failures in implicit-constraint reasoning, infeasibility detection, and tool reasoning. The corresponding fine-grained failure-mode analysis identifies implicit constraint interpretation and infeasibility detection as the primary bottlenecks, establishing MolDesignBench as a rigorous testbed to guide future research on chemical agents. The benchmark, tool interface, and evaluation code are publicly available.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "8c4d7494a6eb399519e8172760bff98ab000655047601f9d2da91db929427aca",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "시나리오 기반 분자 설계 LLM 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "분자 설계 에이전트 평가 벤치마크 MolDesignBench 제안"
+        }
+      ]
+    },
+    "2609.27385": {
+      "arxiv_id": "2609.27385",
+      "paper_title": "Forecast Workflow Bench: Evaluating Language-Model Decisions with Budgeted Forecast Tools",
+      "abstract": "Time-series foundation models (TSFMs) provide forecasts for operational decisions, but accuracy alone does not determine their value. Evaluating agents that use these models requires measuring decision quality and forecast cost. FWBench evaluates this capability on 1,251 electricity and cycle-hire cases using fixed forecast tools and simulated capacity contracts. Agents select models, histories and horizons, then submit capacities to minimize a stated loss-cost objective. We evaluated two hosted and eight local configurations, including small language models, and tested local models with and without TSFMs. GPT-6 Astra bought inexpensive short-horizon forecasts selectively, using 2.5% of the budget, and outperformed fixed policies when the saved decisions were scored with three loss-cost weightings. FWBench enables reproducible evaluation of how language models select and use time-series forecasts to make decisions under cost constraints.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:46Z",
+      "input_sha256": "c61c8d126a3fa5119040f92230ea185f65ea60855205890adbd252612be051bf",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "예산 제약 예측 도구 활용 LLM 의사결정 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "예측 도구 활용 의사결정 평가 FWBench 신규 제안"
         }
       ]
     }
