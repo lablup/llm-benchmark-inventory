@@ -701,7 +701,27 @@
         "2610.08026",
         "2610.08106",
         "2610.08161",
-        "2610.08162"
+        "2610.08162",
+        "2610.08300",
+        "2610.08303",
+        "2610.08513",
+        "2610.08642",
+        "2610.08649",
+        "2610.08691",
+        "2610.08733",
+        "2610.09021",
+        "2610.09112",
+        "2610.09152",
+        "2610.09163",
+        "2508.08833",
+        "2511.04655",
+        "2512.14014",
+        "2603.20576",
+        "2604.01569",
+        "2604.17260",
+        "2605.06936",
+        "2605.12894",
+        "2609.00482"
       ]
     }
   },
@@ -13503,6 +13523,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "LLM 유권자 전략적 투표 평가용 오라클 벤치마크 구축"
+        }
+      ]
+    },
+    "2607.01103": {
+      "arxiv_id": "2607.01103",
+      "paper_title": "Evaluating Large Language Model Raters for German Open-Response Clinical Questions: A Physician-Annotated Benchmark Study of Agreement, Evaluator Bias, and Abstention",
+      "abstract": "Background: Expert-annotated benchmarks for non-English open-response clinical questions are scarce. LLM-as-a-judge systems may scale evaluation but require validation. Objective: To introduce MedQADE, a standardized German open-response clinical benchmark with physician reference annotations, and evaluate LLM-as-a-judge alignment, self- and intra-family bias, and abstention. Methods: The benchmark contains 3,800 question-answer sets with answers from five student LLMs and annotations from 10 physicians. All 10 rated the 200-question core; two primary raters assessed each of 3,600 extension questions, with the tenth resolving disagreements. Nine LLM evaluators assessed all sets. We assessed physician reliability, student-model accuracy, evaluator alignment, bias, and abstention. Results: Physicians showed moderate-to-substantial agreement on answer correctness (unweighted mean pairwise Cohen's kappa = 0.612) but limited agreement on question difficulty (Krippendorff's alpha = 0.208 using squared numeric-score distances). Student-model accuracy was 17.8%-66.0% and generally decreased with physician-rated difficulty. Gemini 3 Flash approached the leave-one-out physician reference (kappa = 0.694 vs 0.709). Four of five models rated their own responses more favorably than out-of-family evaluators; five of six intra-family comparisons were positive. Physician abstention increased with perceived difficulty. Seven of nine LLM evaluators abstained in no more than 0.51% of evaluations; the two strongest evaluators assigned definitive labels to every response. Conclusions: Strong LLM evaluators approached physician agreement, but evaluator bias and low observed abstention warrant physician validation and further assessment of selective deferral before fully automated evaluation. These results do not establish clinical safety.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "729430170512bf67765461c01cc743a6c7dba5929e4418e2a64bec347e3d974e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "독일어 임상 QA 벤치마크로 LLM 평가자 편향·기권 분석"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "독일어 임상 벤치마크로 한국어/영어 외 언어로 한정"
+        }
+      ]
+    },
+    "2607.10826": {
+      "arxiv_id": "2607.10826",
+      "paper_title": "3D-DefectBench: A Controlled Factorial Study of Vision-Language Model Evaluation Pipelines for Fine-Grained 3D Generation Defects",
+      "abstract": "Automated evaluation is essential for scaling generative 3D systems, where exhaustive human review is costly and slow. Yet the reliability of an automated judge depends on the full evaluation pipeline, including the vision-language model (VLM), asset rendering, visual evidence, task specification, and human reference labels. We introduce 3D-DefectBench, a large-scale benchmark for rigorous evaluation-pipeline analysis. It complements holistic ratings and pairwise preferences with nine fine-grained binary defects spanning geometry, texture, and prompt adherence, with optional human severity annotations. Using a balanced factorial design, we vary the VLM, camera protocol, visual input, and prompt schema across 84 inference designs, and validate the resulting conclusions on a broader set of frontier models. Model choice is the dominant source of variation in agreement with human labels, while other pipeline factors also influence agreement, interact with the model, and can alter the best configuration. A compact six-view RGB protocol performs comparably to denser view sets and configurations augmented with depth or normal channels, making it a strong cost-effective default. Under this fixed design, the best of 12 VLMs still trail trained human labelers, and texture agreement drops sharply from expert-agreement to noisier silver labels. Severity annotations further show that binary judges recover most defects humans flag as severe. These results highlight the importance of evaluating automated judges as complete pipelines and calibrating them across human reference regimes.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "bf3c921fbe49dba7b15cec927cdb3a24c75693cc0f456b049d94459fbeedf7fe",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "3D 생성 결함 평가 파이프라인 벤치마크, VLM 판정 분석"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "3D 생성 결함 평가용 VLM 파이프라인 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2607.20471": {
+      "arxiv_id": "2607.20471",
+      "paper_title": "Benchmarking the Personalization Capabilities of Large Language Models",
+      "abstract": "Personalization is classically a two-party problem: a sender chooses what to say, and a receiver with independent objectives decides whether to act. A salesperson pitching the same analytics product leads with HIPAA compliance for a hospital and real-time reporting for a retailer, expecting a different argument to work on each. Existing LLM personalization benchmarks measure a narrower, one-party property: whether output matches the preferences of the same user it serves-sender and receiver being the same, as when RLHF aligns an assistant to its own user. The two-party case is harder to study automatically, since it needs ground truth linking specific content to an observed receiver action. Sales outreach provides this: a message written for one prospect, recorded against whether it produced a reply, a call, or a closed deal. We introduce SDR-Arena, a framework for benchmarking two-party generative personalization at scale, and SDR-Bench, a public corpus of 50,000 customer success stories across 22 industries and 3500 enterprises. Given only pre-outcome information, an agent must reconstruct the arguments that won the deal, scored by a weighted nugget-recall metric (WCS). The best model, Claude Sonnet 4.6, reaches 55.8% WCS indicating it recovers only half the winning content-a plateau we observe across model families that costly deep-research pipelines do not close. An ablation shows the cause is retrieval, not reasoning: models improve substantially given the facts a human researcher would gather, but rarely find them through web search alone. Two studies with professional SDRs support the metric: only 48% of generated pitches were rated usable without editing, and WCS yields model rankings consistent with evaluation against expert strategies authored independently of any model output.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "a5332db4ead46f3620761a497c5e0484c18716e03ccaf61cf4ce26c034891950",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 개인화 벤치마크, 판매 아웃리치 평가 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "SDR-Arena/Bench 개인화 벤치마크와 공개 코퍼스 제안"
+        }
+      ]
+    },
+    "2608.04265": {
+      "arxiv_id": "2608.04265",
+      "paper_title": "Strategic Evaluation of Planning Strategies for LLM Agents in Cyber-Physical Systems",
+      "abstract": "LLM-agent evaluations commonly measure task success or agreement with a declared plan. In strategic cyber-physical systems, an architecture must also remain appropriate after autonomous participants respond and physics constrains outcomes. We introduce a controlled benchmark of planning-induced control trajectories: ordered planning operations and directives linking execution architecture to strategic response and physical consequences. Four coded executors (predefined, sequential, hierarchical, and search) control demand response for 40 prosumers on a radial feeder. The LLM declares or advises typed policies and mediates communication; schedules, base prosumer dynamics, stochastic actions, and power flow remain explicit code. Paired forced-mode counterfactuals, exact-prompt caching, common response draws with separate randomness streams, critic isolation, and event-level feasibility isolate comparisons. The Llama-3.3-70B experiments on this feeder distinguish three properties. First, forced search is the oracle in all five baseline seeds under the specified objective. Second, injected objective substitution preserves mode agreement at 1.0 while increasing cumulative voltage shortfall by 2.68x. Third, the 144-scenario, 576-episode factorial bank, using three repeated seeds, contains feasible oracles from predefined, sequential, and search. The prespecified stress-held-out ridge has mean regret 90.7 and no observed value over fixed sequential. A post-hoc constraint-aware analysis reduces regret to 29.0; a simple deadline rule attains 28.7, so this gain does not establish a learning advantage. An all-feasible ablation does not improve over fixed search. These are simulation-internal, descriptive comparisons. A five-model, 300-declaration extension tests interface behaviour, not cross-backbone physical rankings; shared-endpoint latency tails motivate probabilistic live feasibility.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "6bf3c5895cfb26837f4502db69464deb618eb92ce2d56c53fa11bafb46c481c2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "사이버물리 시스템 LLM 에이전트 계획 전략 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 계획 전략 평가용 제어 벤치마크 도입"
+        }
+      ]
+    },
+    "2609.38480": {
+      "arxiv_id": "2609.38480",
+      "paper_title": "KlinikeBench: Evaluating Language Models Beyond Diagnostic Accuracy",
+      "abstract": "Most clinical benchmarks evaluate language models (LMs) on diagnosis using complete case descriptions. In clinical practice, however, patients present information in different ways, and clinicians must obtain relevant history and determine which examinations are needed before reaching a diagnosis. Diagnostic accuracy alone therefore cannot establish whether an agent gathered essential information or conducted an appropriate clinical assessment. Furthermore, existing benchmarks lack professional clinicians' verification. To address this gap, we introduce KlinikeBench, a benchmark of 333 clinician-authored tasks, each providing an isolated sandbox environment with a virtual patient, clinical tools, and task-specific success criteria. More than 35 clinicians contributed to case authoring and benchmark evaluation. In an empirical study, clinicians gave simulated dialogues higher mean quality ratings than reference conversations, which is adapted from real conversation. In each task, an LM has a fixed budget of turns to communicate with the patient, ask about relevant history, request examinations, follow action constraints, and record a final diagnosis. We score these steps separately as well as together. Across 31 models and seven model families, the best-performing models (e.g., GPT-6-astra and Claude Opus 5) succeed on less than 30% of tasks, even though their diagnosis accuracy reaches 90.7%. Some models benefit from talking with the patient; others diagnose well from a complete chart but perform much worse in conversation. Overall, KlinikeBench provides a testbed for evaluating the full clinical encounter and reveals a substantial gap between diagnostic accuracy and performance in interactive clinical assessment. All the code and data is available on https://zehui127.github.io/klinikebench/",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "bdc820c24081bd8ec081ad07bbe51bac2597c9375f7ccd217dc6acf748da9926",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "임상 진단 넘어 평가하는 KlinikeBench, 의사 검증 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "임상 진료 전체 평가용 KlinikeBench 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.00346": {
+      "arxiv_id": "2610.00346",
+      "paper_title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
+      "abstract": "Software that hands branching decisions to a model needs a declared option and a probability it can threshold. Typed decision models, also called System One models, return such probabilities without generating text, while supervised classifiers and generative language models are the established alternatives. One harness sends eight decision-model checkpoints from six families, including the hosted model Jev, and four open generative models from three developers the same semantic requests, and scores trained and zero-shot classifiers on the same workflow, intent, emotion and social-science items. With task labels, a fine-tuned DeBERTa-v3-large has the highest observed accuracy on every labeled benchmark but one. Without labels, no decision model is significantly more accurate than Jev on workflows or intents, but Gemma-4-31B matches it on workflows and exceeds it on CLINC-150 at higher cost and latency. Stated probabilities of generative models become unreadable when replies miss the key format, whereas key likelihoods avoid this but can saturate. A guaranteed 5 percent risk leaves Jev 0.528 of the intent decisions, and an in-scope threshold still accepts 0.310 of out-of-scope requests. On typed-decisions, swapping yes and no flips 50.5 answers per hundred for Jev and at least 16.8 for every generative model tested, against at most 6.5 for four fine-tuned decision checkpoints. Exposure to a benchmark's training data explains the largest lead of an open checkpoint, which vanishes on rater-labeled emotions. An intent-trained first stage escalating to Gemma-4-31B reaches that model's accuracy at about Jev's price. The results yield condition-dependent design rules for automated decision gates.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "01687e8a829e51d85bd9c0ba5553c697ec5192ace3f62a1f36e3be5047472173",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "의사결정 게이트용 모델 벤치마크, 분류기·LLM 비교"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "의사결정 게이트 평가용 벤치마크·하네스 구축 및 분석"
+        }
+      ]
+    },
+    "2610.07792": {
+      "arxiv_id": "2610.07792",
+      "paper_title": "ServeLearnBench: How Well Can Agents Self-Improve from Serving Experience?",
+      "abstract": "Large language model agents are increasingly deployed to perform complex tasks in real-world environments. However, the knowledge required for correct behavior in these environments is often implicit, undisclosed, and subject to change over time. Recent continual-learning harnesses seek to address this challenge by enabling agents to improve from serving experience. Yet the effectiveness and limitations of these methods are not yet well characterized. Existing benchmarks provide only partial coverage: some explicitly provide the target knowledge, others assume a static environment, and those that support continual adaptation remain limited in scale and knowledge diversity. To enable systematic evaluation, we formalize an evolving-environment streaming dataset (EESD), in which agents must infer, apply, and revise latent environment knowledge from interaction and outcome feedback as hidden policies evolve, and introduce ServeLearnBench, spanning retail support, banking, and sales-pitch generation with 53 environment windows and 7,718 tasks. We evaluate five learning harnesses (RAG, Mem0, SkillOpt, Continual Harness, and Prime) across six models (GPT-5.6 Terra, Opus 5, Kimi K3, GLM-5.3, DeepSeek V4.1 Flash, and GLM-5.3 Flash), covering 28 model-harness pairs and 252 learning runs. Our evaluation reveals three main findings: a substantial gap remains between task capability and learning from experience; continual adaptation is costly and can degrade already-correct behavior; and insufficient exploration emerges as a key bottleneck to effective adaptation. Overall, ServeLearnBench provides a controlled testbed for diagnosing these limitations and tracking progress toward agents that continually and reliably improve through serving experience.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "146eb2c083baf846c27ff90658eaa133737f2e4bfdec2d7ade60c524d4a85bda",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "서빙 경험 자기개선 평가 벤치마크, 지속학습 하네스 분석"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 자기개선 평가용 ServeLearnBench와 EESD 제안"
+        }
+      ]
+    },
+    "2610.08076": {
+      "arxiv_id": "2610.08076",
+      "paper_title": "SpeedrunBench: Challenging LLM Agents with Video Game Speedrunning",
+      "abstract": "Frontier LLM agents have been shown to be capable of solving increasingly complex tasks for which humans have measurable solutions. This begs the pertinent question of whether LLM agents can go beyond what humans have already solved. The ability to develop sophisticated strategies to tackle consequential problems becomes paramount as well-trodden, human-developed solutions become insufficient for problems for which we lack context or enough training data. We study agents' capability of such strategy formation through the communal practice of video game speedrunning. In speedrunning, practitioners compete to find the fastest way to complete a video game under certain conditions, and in so doing uncovering interesting unorthodox play styles that require a thorough understanding and mastery of the underlying game mechanics. We introduce SPEEDRUNBENCH, a benchmark that evaluates frontier LLM agents across 9 different games. To perform well in this benchmark, agents must repeatedly improve their strategy, reflect on their performance, exploit their gained knowledge, and reason across a long-horizon of actions to improve on an increasingly difficult problem: being faster than themselves and everyone else. Our experiments show that while frontier agents approach human world records in simple platformer games, they remain behind human performance on longer, more complex games under practical budgets. These results suggest that SPEEDRUNBENCH is a useful testbed for studying agents' strategy formation capabilities as well as being a saturation-resistant evaluation measure, as there is almost always a faster completion time waiting to be discovered.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "46dc691855897e845cd89b51ae420fe9ddcba62180366ecc1ce33becac3efcaa",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "게임 스피드런 LLM 에이전트 전략 형성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "스피드런 에이전트 평가용 신규 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.07563": {
+      "arxiv_id": "2610.07563",
+      "paper_title": "HouseholdBench: Evaluating Large Language Models as Predictors of Household Economic Behavior",
+      "abstract": "Large language models (LLMs) have the potential to meet a key goal in economics: a quantitative model of household decision making, across a variety of settings. Yet existing evaluations cover few surveys and outcomes, and do not study how households adjust to changing economic conditions. We introduce a new evaluation, HouseholdBench, which unites 6 U.S. household surveys and 32 prediction tasks spanning numeric, categorical and probabilistic outcomes, related to consumption, income, labor, expectations, and housing. Using past behavior, demographics and macroeconomic conditions, the tasks test whether LLMs predict behavior, including how households adjust to changes in various policies. We evaluate 13 proprietary and open-weight LLMs against a no-change baseline and a gradient-boosted tree model. Most LLMs outperform the no-change baseline, including for policy response tasks -- with the best model lowering error for numeric outcomes by 12.2%. Across most tasks, gradient-boosted trees rank first; leading proprietary LLMs approach their performance, but open-weight models lag. LLMs exhibit systematic over- and underprediction across different tasks. We identify methods that enable a 4 billion parameter open-weight model to match proprietary models' performance: fine-tuning and aggregating 16 predictions per observation. Improvements generalize to policy-response tasks, which are excluded from fine-tuning. We release our datasets, code, and leaderboard on our website: https://jn-huang.github.io/householdbench",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "4fe2c2b947b4674e882f5d90df1dffb63553f8d5ea70fcbe5c05250f0be05510",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "가계 경제행동 예측 LLM 벤치마크, 정책 반응 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "가계 경제행동 예측 벤치마크 및 데이터·코드 공개"
+        }
+      ]
+    },
+    "2610.07580": {
+      "arxiv_id": "2610.07580",
+      "paper_title": "LOGIC: An LLM Benchmark for Intent-Grounded Change Impact in Aerospace Electrical Systems",
+      "abstract": "Aerospace electrical-design revisions can contain multiple genuine changes, although an engineering request may authorize only a subset. Propagating every detected difference can therefore produce overly broad impact reports. We present LOGIC, a controlled benchmark and evaluation framework in which locally deployable language models ground a request in a deterministic candidate-change inventory before selected changes are propagated through a typed electrical traceability graph. This separation permits candidate-selection errors to be distinguished from downstream propagation errors. LOGIC contains 168 scenarios, including 144 selection and 24 abstention cases. We evaluate three 7--8B models against intent-agnostic, lexical, and structured-evidence methods, with an oracle-root upper bound. On 96 explicitly anchored selection cases, gate-only structured evidence achieves candidate F1 of 1.0000, compared with 0.9677 for token-lexical matching. On 12 relational-paraphrase cases, token-lexical F1 is 0.1772 and gate-only F1 is 0.0000, compared with 0.5000--0.6400 for the large language models. Model grounding degrades as candidate inventories grow from 4 to 64 changes, while affected-element and typed-path accuracy remain comparatively stable when frozen selections are replayed over graphs of approximately 1K to 100K nodes. Strict evidence gating suppresses false positives but can remove correct semantic selections. An exploratory evidence-empty abstention policy raises strict abstention accuracy to 0.6667 for all three models and reduces unsafe-report rates to 0.1667, while decreasing answerable-case coverage by 16.0--27.1 percentage points. Four of six conflicting requests remain unsafe for each model. These findings support combining literal evidence and language-model reasoning with engineering review when intent cannot be established reliably.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "0a4e1d0b5c4b50efb372265092611125f99f780c62648898bb6903e5610bd069",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "항공 전기시스템 변경 영향 LLM 벤치마크, 기권 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "항공 전기 시스템 의도 기반 평가용 LOGIC 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.07722": {
+      "arxiv_id": "2610.07722",
+      "paper_title": "Does Steering Break Your Model? A Multi-Dimensional Evaluation Suite for LLM Steering Methods",
+      "abstract": "Activation steering provides a lightweight and flexible way to control large language model (LLM) behavior. However, effective steering requires more than inducing the intended behavior: it should also limit unintended changes and remain robust across inputs and training data. Existing evaluations cover these dimensions only in fragments. As a result, the trade-offs between efficacy and side effects have not been systematically characterized. We introduce SteerScope, a two-axis, multi-dimensional evaluation suite that jointly characterizes steering outcomes and method properties through 15 metrics. We score target efficacy and side effects on language quality, task capabilities, and safety and reliability, and further assess generalization and data dependence through steering-specific metrics for sample efficiency and sample sensitivity. Rather than comparing methods at a single operating point, we characterize the trade-offs between efficacy and side effects. Under matched models, tasks, and evaluation protocols, we benchmark 23 methods spanning 4 families, including prompting, LoRA, and SFT as baseline methods, and release the suite as an extensible codebase. We find that current activation steering methods do not yet surpass the Prompt Steering baseline in their overall balance between steering efficacy and side effects: across both model scales, no evaluated activation steering method achieves higher efficacy without incurring greater composite side effects. We further uncover a consistent coupling between steering efficacy and side effects. Under OOD prompts, target efficacy is often preserved, whereas side effects tend to become more pronounced, particularly through declines in instruction relevance and fluency. Methods also exhibit sharply different sample-efficiency profiles.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "1579b69637b8529b97bb463e02bf48d77452e42aebadb96772c532648f2e4029",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 스티어링 방법 다차원 평가 스위트 SteerScope"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "스티어링 방법 다차원 평가 스위트 SteerScope 제안"
+        }
+      ]
+    },
+    "2610.07751": {
+      "arxiv_id": "2610.07751",
+      "paper_title": "How Well Do LLMs Reason with Noisy Evidence? An Active Visual Reasoning Benchmark",
+      "abstract": "Real-world reasoning rarely reduces to static question answering: agents must actively gather information from tools and sensors that are often noisy and unreliable. Yet most existing active reasoning benchmarks assume that environmental feedback is trustworthy, or introduce noise without exposing an explicit, calibrated uncertainty signal, leaving open how LLMs should reason when the evidence itself is uncertain. We introduce VisualNoiseQA, a novel benchmark for active reasoning under noisy visual feedback. A text-only LLM must solve VQA problems by iteratively querying a fixed, off-the-shelf VLM treated as a stochastic visual sensor. For each query, we draw multiple samples and expose an empirical uncertainty signal via self-consistency, enabling the reasoner to probe from different angles and decide what to ask next and when to stop. Our construction is automatic and scalable: starting from diverse VQA sources and two noisy VLMs, we retain only questions where the sensor is inconsistent yet human-solvable. We evaluate multiple LLM reasoners on 1,000 instances spanning perception, chart understanding, and knowledge-intensive reasoning. VisualNoiseQA thus provides a controlled playground to study how different LLMs exploit uncertainty signals for robust reasoning.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "865532b023fbdab7fcbd76e92e7c47bcb4dc4817b86397706fc311c221666b3b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "노이즈 시각 피드백 하 능동 추론 벤치마크 VisualNoiseQA"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "노이즈 시각 피드백 하 능동 추론 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2610.07763": {
+      "arxiv_id": "2610.07763",
+      "paper_title": "ST-Bench: A Spatial-Temporal Benchmark for Multi-Agent System Generation on Scientific Research Tasks",
+      "abstract": "The rapid progress of LLM-based multi-agent systems (MAS) has shown that they largely outperform single agents on coding, math, and QA tasks, where executable tests provide a binary success signal. Whether this advantage transfers to real scientific data analysis remains untested. We introduce ST-Bench, a benchmark designed to answer two questions: whether MAS outperform single agents on complex scientific data analysis tasks, and if so, by how much and at what additional cost. ST-Bench contains 100 data science tasks adapted from published Earth science studies across hydrology, agriculture, and wetland methane research, expanded into 2,067 queries grounded in additional published studies and validated by domain experts. Using ST-Bench, we evaluate five recent MAS generation methods under two training protocols, against single-agent baselines on the same GPT-5 backbone. Nine of the ten MAS configurations exceed the cheapest single-agent baseline, with the strongest reaching nearly three times its composite score. This gain is primarily attributable to coverage: trained workflows produce realistic numerical metrics on a larger fraction of queries, while the quality of those metrics, conditional on producing realistic output, is comparable to that of the single-agent baseline. The strongest configuration requires approximately four times the single-agent inference time, whereas a more economical workflow captures the majority of the benefit at less than twice the cost. MAS specialization confers measurable benefit on scientific data analysis, but the benefit is conditional rather than universal.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "6ccfda13819bed9730dd3c2f4ed387ac981c1b4c4aa2b60c696891c7ca38318f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "과학 연구 과제 다중에이전트 시스템 생성 벤치마크 ST-Bench"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "과학 데이터 분석 다중에이전트 평가용 ST-Bench 제안"
+        }
+      ]
+    },
+    "2610.07766": {
+      "arxiv_id": "2610.07766",
+      "paper_title": "OTel: Open Telco AI Datasets, Benchmarks, and Models",
+      "abstract": "We present Open Telco (OTel), an open telecom AI resource that releases derived telecom datasets for retrieval, reranking, instruction tuning, and safety/abstention, together with 30 full-parameter post-trained baselines spanning 10 embedding models, 3 rerankers, and 17 language models. The community has already engaged substantially with the resource: as of May 3, 2026, the released models have been downloaded over 16 million times and the project has received 157+ pieces of media coverage worldwide. Building on prior open telecom datasets and benchmarks, OTel provides documented telecom data sources, held-out evaluation partitions, trained embedding models, rerankers, context-grounded LLMs, and safety/abstention data in one unified resource. Each baseline starts from an open-weight model and is post-trained on OTel-derived data using an open training recipe, then evaluated on held-out OTel evaluation partitions. OTel post-training improves performance across all three model families: embedding retrieval reaches 93.1% NDCG@10, reranking reaches 0.947 MRR@10, and language-model correctness reaches 87.8%. We release OTel as a reproducible starting point and invite the community to expand the data, improve embedding and reranking models, and build stronger context-grounded telecom LLMs.",
+      "paper_updated": "2026-10-14T20:19:14Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "dc6a9f4d32c2315ba48dc9377cad5996341e4bb22605c8ae0ae4b2a08affad2f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "통신 AI 데이터셋·벤치마크·모델 공개, 안전/기권 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "텔레코 AI 데이터셋·벤치마크·모델 통합 공개"
+        }
+      ]
+    },
+    "2610.08871": {
+      "arxiv_id": "2610.08871",
+      "paper_title": "CredLeakBench: Evaluating Credential Leakage and Recovery in LLM Agents",
+      "abstract": "Language model agents are increasingly deployed to automate everyday digital chores from managing emails and social media to handling banking and bills allowing users to step away from supervision. However, this capability also exposes sensitive information to phishing. Safe execution requires distinguishing malicious requests from genuine ones without simply refusing to act. Despite its practical importance, this problem remains underexplored and it is unclear whether current agents or existing defenses can achieve it. To study this problem, we first propose CredLeak-Bench, a comprehensive benchmark designed to evaluate how effectively and securely agents automate human workflows when confronted with phishing and identity verification. The benchmark covers both user-directed authentication and autonomous inbox monitoring, where agents are not explicitly instructed to log in. It systematically varies deceptive cues and pairs phishing scenarios with legitimate counterparts, enabling joint evaluation of information leakage and utility on genuine tasks. Within a sandboxed environment, leakage is measured through actual submissions of information rather than agents' self-reported behavior. Our evaluation reveals that all tested models are vulnerable to leakage. Agents also disclose sensitive information during autonomous inbox monitoring, demonstrating that phishing can induce disclosure without a user request to authenticate. Furthermore, most evaluated mitigations that reduce leakage also impair performance on genuine tasks, exposing a security utility trade off in existing defenses. These findings show why reducing leakage alone is insufficient: effective defenses must prevent unauthorized disclosure while preserving legitimate task completion. CredLeak-Bench provides a controlled framework for measuring both objectives and evaluating progress toward secure, useful agents.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "0f36abef8723ade40eb29fc7240ea2d8230e77b6c9fa95799933c10cbd6fda53",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 자격증명 유출·복구 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 자격증명 유출 평가용 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2610.07967": {
+      "arxiv_id": "2610.07967",
+      "paper_title": "DecepEval: A Benchmark for Evaluating Deception in LLM Agents",
+      "abstract": "As large language model (LLM) agents become increasingly autonomous, they may pursue task performance through deception, raising concerns about their reliable deployment. Existing evaluations show that LLM agents can deceive, but often examine isolated scenarios or narrowly defined conditions, limiting systematic understanding of when deception becomes more likely. To address this gap, we introduce DecepEval, a benchmark comprising 1,532 instances across 3 task families and 28 professional scenarios. Drawing on classical fraud theories, we propose the LLM Deception Diamond framework, which characterizes four external conditions that may induce deception: pressure, incentive, opportunity, and conflict. DecepEval pairs neutral and induced versions of each instance to measure condition-dependent changes in deception rates, while explicit task facts and observable agent behavior help distinguish deception from capability-related errors. Evaluations of nine frontier LLMs show that inducements increase deception across models and task families, even among models with low baseline deception rates. DecepEval makes these vulnerabilities measurable, providing a shared benchmark for progress toward trustworthy artificial intelligence.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "c88af946dd2ffee5e8fe38131cb59acf7140b81456b3ad83697a9bfdc160d68d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 기만 평가 벤치마크 DecepEval"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 기만 평가용 DecepEval 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.08026": {
+      "arxiv_id": "2610.08026",
+      "paper_title": "The Labeling Problem in Hallucination Detection Benchmarks: An Empirical Evaluation",
+      "abstract": "In recent years, several methods for detecting when large language models (LLMs) hallucinate have been developed. These methods are often benchmarked with open-domain question answering (QA) datasets containing questions and corresponding short reference answers. First, an LLM is used to generate answers to questions within the QA dataset. Then, some automated labeling strategy is used to label these answers as hallucinated or not by comparing them with the reference answers in the dataset. This evaluation setting creates a methodological ambiguity between two criteria: reference faithfulness (whether the answer is fully supported by the reference) and factual correctness (whether the answer is free from contradictions and factually false specific claims). In practice, automated labelers may apply the former criterion even when the intended target is the latter. We study this potential criterion mismatch using 900 human-labeled question-answer pairs spanning three commonly used QA datasets and three generator models, with labels targeting answer-level factual correctness. We evaluate lexical similarity metrics, a reference-entailment NLI baseline, and seven LLM judges under controlled prompt variants as automated labelers. Our experiments reveal substantial disagreement both among automated labeling strategies and between these labels and human annotations. Many strategies also exhibit strong directional error biases, and for most judge-generator pairs, replacing a faithfulness-oriented prompt with a factual-correctness prompt improves agreement with human annotations and reduces false-positive dominance, indicating that automated hallucination labels depend strongly on how the target criterion is specified. Label-source choice should therefore be considered a fundamental part of benchmark design and made explicit, validated, and matched with the benchmark goal.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "5c49a6728eb2abb623840b2ec71fdc63c206aa3e48e800ffe346d9331b5e62eb",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "환각 탐지 벤치마크 라벨링 문제 실증 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "환각 감지 벤치마크 라벨링 문제 실증 평가 수행"
+        }
+      ]
+    },
+    "2610.08106": {
+      "arxiv_id": "2610.08106",
+      "paper_title": "ChartBmkAgent: Harness-Governed Multi-Agent Construction of Chart QA Benchmarks from Sparse Error-Taxonomy Specifications",
+      "abstract": "Multimodal large language models (MLLMs) advance rapidly, while conventional benchmark development lags behind, delaying investigation of newly observed capability gaps. Such investigation requires an expressive task format and an on-demand construction process: information-rich charts make chart question answering (Chart QA) suitable for probing coupled perception and reasoning. Automated Chart QA construction is intended to shorten the benchmark-development cycle by turning identified gaps into targeted samples on demand. Current methods, however, commonly separate target guidance from scratch generation: target-guided systems often require prepared data, charts, or templates, while scratch-generation systems primarily ensure artifact validity, without explicitly controlling whether newly synthesized requirements and content remain aligned with an externally specified diagnostic target. We introduce ChartBmkAgent, which turns an identified capability gap into targeted diagnostic evidence by constructing complete Chart QA samples from sparse error-taxonomy specifications. Throughout construction, a central harness governs specialized agents, requires stage-specific evidence of alignment with the original error category, and records the basis for each acceptance decision. On 300 taxonomy-wide samples, MLLM accuracies ranged from 32.7% to 84.3% with distinct category profiles, showing that generated samples reveal capability differences. Across three source-model comparisons, targeted follow-ups scored 50.0% versus 82.2% on matched controls ($p=8.96\\times10^{-6}$); all six cross-model comparisons had the same direction, demonstrating targeted validation and diagnostic-data generation. Multiple evaluator models assessed whether each sample tested its specified error category; 86.4% met this criterion, providing empirical evidence of target preservation.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "5abfaabfab16fe4b4acc5135c281e9145f11c32cdf53ef710d4ba4bf739d9933",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "차트 QA 벤치마크 자동 구축, 오류 분류 기반 생성"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "차트 QA 벤치마크 자동 구성 프레임워크 제안"
+        }
+      ]
+    },
+    "2610.08161": {
+      "arxiv_id": "2610.08161",
+      "paper_title": "Symphony for Text Generation: Benchmarking Clinical Note Generation",
+      "abstract": "Ambient documentation systems are rapidly gaining adoption, yet their impact on clinical note quality remains poorly characterized. We introduce MedConv, a multilingual dataset of 300 clinical encounters in English, Danish, and German, and use it alongside the Ambient Clinical Intelligence benchmark (ACI-BENCH) to compare Corti, a clinical AI platform, with two leading, accessible ambient scribe software applications built on general-purpose AI. We present a controlled clinical evaluation framework that combines entailment metrics with LLM-judged pairwise comparisons across eight dimensions adopted from PDSQI-9. Results show that Corti's API-based text-generation infrastructure is on par with or outperforms leading commercial scribes. We further show that Corti's configurable API provides the flexibility necessary to fine-tune quality dimensions for specific documentation use cases. We present the evaluation methodology and release a dataset to support future reproducible comparison of ambient documentation systems.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "6dc6774978274a4c45ed39a7e8b51981187b60a5b48118b5708bc6475fcbaa8b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "임상 노트 생성 벤치마크, 다국어 데이터셋 MedConv"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "임상 노트 생성 평가 프레임워크와 다국어 데이터셋 공개"
+        }
+      ]
+    },
+    "2610.08162": {
+      "arxiv_id": "2610.08162",
+      "paper_title": "The Failure Is in the Readout: Fine-Grained Emotion Recognition Benchmarks Measure Elicitation, Not Perception",
+      "abstract": "Fine-grained emotion recognition supports therapy tools and social robots, but it needs facial data, which raises privacy and data-protection concerns. EmoNet-Face-HQ answers that with generated portraits, expert-rated over a $40$-category taxonomy far finer than the usual six to eight basic emotions. Under the protocol it ships with, vision-language models (VLMs) score poorly on that taxonomy, and the benchmark concludes that a dedicated fine-tuned model is necessary: Empathic-Insight-Face (EIF; Small/Large). We show that off-the-shelf VLMs match or beat that fine-tuned model when the answer is not generated but read from the logits, as one binary query per category. We keep the benchmark's images, taxonomy and ratings, and change only how the answer is read. Experts agree at $κ_w = 0.468$ on the five categories they measure most reliably. Generatively, no interval among eleven open-weight VLMs lies entirely above that anchor ($κ_w=0.268$-$0.486$). Under verification all eleven clear it, each of them significantly better at $κ_w=0.507$-$0.586$. Three also significantly beat EIF sitting at $κ_w = 0.551$ (Small; $0.534$ Large). The gain comes from the graded probability and not from asking a yes/no question: as a control, thresholding those same probabilities to yes/no costs 142% of the average gains and drops binarization below generative elicitation to $κ_w=0.254$-$0.423$. A replication on real photographs (FACES) is weaker and mixed: of the ten models that pass a validity gate, six gain, three are neutral to positive and one is negative, so the effect is not confined to synthetic data.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:05Z",
+      "input_sha256": "d54e19f459c33dff8260a9f2757415cf2759e93c413783c8dd697b0cd4e0a294",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "세분화 감정인식 벤치마크, 판독 방식 재평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "감정 인식 벤치마크 프로토콜 재평가 및 개선 제시"
         }
       ]
     }
