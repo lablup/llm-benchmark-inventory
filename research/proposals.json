@@ -301,7 +301,27 @@
         "2609.29043",
         "2609.29067",
         "2609.29101",
-        "2609.29156"
+        "2609.29156",
+        "2609.29167",
+        "2609.29371",
+        "2609.29445",
+        "2609.29798",
+        "2609.30027",
+        "2609.30055",
+        "2609.30057",
+        "2609.30466",
+        "2609.30471",
+        "2609.30483",
+        "2609.30484",
+        "2609.30489",
+        "2609.30571",
+        "2609.30604",
+        "2506.04734",
+        "2601.06426",
+        "2603.21606",
+        "2605.06869",
+        "2605.11398",
+        "2605.30358"
       ]
     }
   },
@@ -4283,6 +4303,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "예측 도구 활용 의사결정 평가 FWBench 신규 제안"
+        }
+      ]
+    },
+    "2609.27395": {
+      "arxiv_id": "2609.27395",
+      "paper_title": "PRISM-VLM: A Multi-Axis Discriminative Benchmark for Compact Vision-Language Models",
+      "abstract": "Compact vision-language models (VLMs) now power a growing share of multimodal applications. The benchmarks used to compare them, however, inherit a frontier-centric design: each model is reduced to a single accuracy number, narrowing the inter-model gap on saturated suites and pressing models into low-score bands on harder ones. We introduce PRISM-VLM, a multi-axis discriminative benchmark that scores every item along seven axes covering the recurring failure modes (task quality, behavioral robustness, and capability bottlenecks) and combines them into a single PScore, with items recycled from fifteen public benchmarks. Across compact VLMs from the past two years, PScore separates model pairs more reliably than prior single-axis benchmarks under an item-level paired bootstrap, and surfaces behavioral differences these benchmarks average away. Even models with statistically indistinguishable PScores diverge sharply along the per-axis profile, particularly on sycophancy, which is nearly orthogonal to single-prompt accuracy. We will release the full pipeline, prompts, and per-item annotations.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "bc79b411ff5f8ff83ced134434f76cb80c9a8b69f67373510b9c2680dc85c1fb",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 VLM 벤치마크로 언어·도메인 특화 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다축 판별형 VLM 벤치마크 PRISM-VLM 신규 제안, 파이프라인·주석 공개 예고"
+        }
+      ]
+    },
+    "2609.27457": {
+      "arxiv_id": "2609.27457",
+      "paper_title": "Beyond Balanced Accuracy: A Resolution and Parity-Controlled Benchmark for Vision-Language and Vision-Only Defect Assessment in UAV Power-Line Inspection",
+      "abstract": "Vision-language models (VLMs) are often reported to outperform task-specific vision backbones for unmanned aerial vehicle (UAV) power-line defect assessment. We test that claim on ElecVQA-Bench, a 56,972-item benchmark derived from the public InsPLAD dataset, across six evaluation choices: partition, evaluated item set, label space, replication, input resolution, and side information. On a matched partition, a Swin Transformer and the strongest adapted VLM differ by only 0.03 points at binary screening. At seven-way defect typing, increasing the vision backbones from 224 px to the measured pixel budget of the VLM preprocessor narrows the gap against InternVL3.5-8B from +20.53 to -0.57 points for ResNet-50 and from +23.67 to +4.70 points for Swin-T. A pixel-budget audit shifts Qwen3-VL-8B macro recall by 10.78 points, yet a source-pixel-matched InternVL control still leaves Qwen ahead by 7.43 to 13.61 points while using 56% fewer visual tokens, so neither source pixels nor token budget explains the difference between the two VLMs. A two-seed global replication changes Qwen binary accuracy and seven-way macro recall by 0.86 and 1.02 points. After split-specific retraining, Qwen does not lead at crop or image level, and a 14-tower, three-seed replication reverses the sign across seeds, giving mean common-six macro recall of 0.9085 for Qwen against 0.9509 for ResNet-50. No split regime yields a family-level advantage that survives multiple-comparison correction. The study supports a benchmark-audit contribution rather than a general claim of VLM superiority.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "6ee8925dfd8387d6781234aff9ae593ea54cec2364712d32a8b2b560f980e2ff",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 VLM 전력선 결함 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "ElecVQA-Bench 벤치마크 감사·평가 프로토콜 기여, 재사용 가능 평가자료"
+        }
+      ]
+    },
+    "2609.27510": {
+      "arxiv_id": "2609.27510",
+      "paper_title": "Uncheatable Eval: Dynamic Compression-Based Evaluation of Language Models",
+      "abstract": "Modern large language models are pretrained on massive datasets, making it difficult to prevent benchmark data from entering their training sets and undermining the reliability of evaluation results. Reliable evaluation is particularly challenging for base models, whose limited instruction-following ability complicates task-based assessment. We introduce Uncheatable Eval, a dynamic benchmark that regularly collects newly published text to evaluate base language models and reduce the risk of data contamination. Drawing on the relationship between a model's predictive ability and its ability to compress data losslessly, we use compression rate to evaluate how well models predict new text. We evaluate 80 models across 14 text categories, study how compression changes with context length, and examine the correlation between compression rate and zero-shot MMLU accuracy. Our results yield three main findings: (1) compression performance follows a consistent scaling trend with model size; (2) attention-based, hybrid, and recurrent models differ in how their compression performance changes as more context becomes available; and (3) lower compression rates are strongly associated with higher zero-shot MMLU accuracy. Code is available at https://github.com/Jellyfish042/uncheatable_eval.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "ce7cd3d606e316f9a6a3ffd308fbc821cd1addb7674c365e1a14a0fad9239198",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 LLM 동적 압축 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "동적 압축 기반 평가 벤치마크 Uncheatable Eval 신규 제안, 코드 공개"
+        }
+      ]
+    },
+    "2609.27571": {
+      "arxiv_id": "2609.27571",
+      "paper_title": "FDE-Bench: Evaluating LLM Agents for Deployment Environment Configuration",
+      "abstract": "Deployment requires an agent to turn application code into a running system whose services connect, become ready, and remain observable. FDE-Bench evaluates this capability with 136 deployment-configuration tasks spanning Docker images, multi-service Compose stacks, and Kubernetes, in greenfield and diagnose-and-repair modes. Agents submit declarative artifacts that are collected, rebuilt, and redeployed in a pristine environment. Four gated binary check layers measure build, readiness, behavior, and conformance to the deployment specification, using programmatic checks without an LLM judge. A four-arm release gate requires a resolving reference solution and rejects tasks solved by do-nothing, specification-transcription, or generic-stub submissions. The released check annotations expose the link between 2,145 checks and their specifications, including seven documented gaps. Three additional adversarial strategies test shortcuts in the grading signals; none resolves any of the 135 tasks they cover, while a vacuous health probe passes readiness and exposes the need for downstream checks. On the 136-task evaluation grid, seven language models from four providers use the same four-tool scaffold and resolve 52.9-75.0 percent of tasks. The three zero-intelligence floors resolve none and reach a mean Deployment Score of at most 0.44. Readiness is the largest failure stage, accounting for 110 of 313 unresolved episodes. Mean resolution rate is 30.7 percentage points higher on the repair task group than on the disjoint greenfield group, with a positive gap for every model; ten tasks resist all seven. In a 25-task case study, one practicing engineer directing Claude-Sonnet-5 resolves 92 percent against 72 percent for the autonomous baseline. FDE-Bench links deployment success and failure to artifacts that can be inspected and replayed.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "d05a210fb0d133823526111e097c820bbaff7cb1f91d0ad63c184e9755528e07",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 LLM 배포 환경 구성 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "배포 구성 에이전트 평가용 FDE-Bench 136과제 신규 벤치마크"
+        }
+      ]
+    },
+    "2610.08813": {
+      "arxiv_id": "2610.08813",
+      "paper_title": "Pre-training, Reasoning, Benchmarking: X-ray Report Generation on CheXpert Plus Dataset",
+      "abstract": "X-ray image-based Radiology Report Generation (RRG) constitutes a critical research direction within medical artificial intelligence, with great potential to alleviate clinicians' diagnostic workload and shorten patient waiting periods. Despite substantial advances over recent years, the field faces evident bottlenecks stemming from insufficient standardized benchmarks and inadequate domain adaptation of generic large models. Notably, the newly released CheXpert Plus dataset is provided without accompanying baseline implementations and evaluation results, which impedes standardized training, quantitative evaluation and fair comparison among follow-up algorithms. To mitigate this limitation, we establish a comprehensive benchmark encompassing prevailing X-ray report generation models and Large Language Models on CheXpert Plus. This benchmark delivers a reliable comparative foundation for upcoming methods and enables researchers to rapidly identify state-of-the-art approaches within this domain. Beyond benchmark construction, we rethink X-ray RRG under the paradigm of large models and propose a novel framework termed MambaXray-PRB. Our framework improves report generation performance and enhances model interpretability via multi-stage large-model pre-training and multi-modal Chain-of-Thought reasoning. The pipeline consists of three successive phases: self-supervised auto-regressive modeling, X-ray-report contrastive learning, and post-training optimization for reasoning and report generation. Extensive experiments on IU X-ray, MIMIC-CXR, and CheXpert Plus datasets validate the effectiveness of MambaXray-PRB for radiology report generation. The source code of this paper is available on https://github.com/Event-AHU/Medical_Image_Analysis",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "a5e28aa05b5822d741ec7d23fc3e3dba4ca506cce9b53684963e0d5123667bff",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 X-ray 보고서 생성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "CheXpert Plus 흉부 X선 보고생성 종합 벤치마크 구축"
+        }
+      ]
+    },
+    "2609.28090": {
+      "arxiv_id": "2609.28090",
+      "paper_title": "Can LLMs Catch a Rigged Backtest? A Clean-Control Calibration Benchmark",
+      "abstract": "Backtest auditing is a calibration problem: high flaw recall is not useful when the model falsely flags matched clean strategies. We build a 96-item paired benchmark in which every flawed backtest has a clean control that holds strategy, dates, code style, labels, and reporting scaffold fixed while changing one methodology detail. A deterministic scorer separates flaw recall, clean-control false positives, evidence localization, and fix relevance. Over 1440 cached audits from four text endpoints, the primary DeepSeek auditor reaches 100.0\\% closed and clean-aware code recall, but open prompts over-flag 93.8\\% of clean code controls, and clean-aware all-three specificity is 87.5\\% even where recall saturates. A clean-aware warning drops DeepSeek code false positives from 20.8\\% (95\\% CI 11.7--34.3) to 0.0\\% (0.0--7.4) at unchanged recall, while the budget anchor still flags 38/48 clean controls under the same prompt. Reporting recall alone would rank three of these four models identically; reporting the clean-control rate separates them by 79 points.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "7c03761d8c4b13979a69be074c3c663cffe12c68ec0d336c7d8bfa03781b011c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 LLM 백테스트 감사 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "백테스트 감사용 96개 정제-대조 캘리브레이션 벤치마크 신규 구축"
+        }
+      ]
+    },
+    "2609.28437": {
+      "arxiv_id": "2609.28437",
+      "paper_title": "MultiVENT-Raw: A Benchmark for Retrieval and Reasoning over Raw Videos",
+      "abstract": "Online information is increasingly consumed in video format. Much of this comes in the form of *raw video*: continuous footage taken on a cell phone, with a hand-held camera, or via CCTV, which is then directly uploaded to social media platforms and content sharing services. Whereas professional or even amateur-edited footage tends to feature scripted speech, chyrons, graphics, and metadata that help contextualize its subject matter, raw video typically contains none of these things, making it a much more challenging medium for information retrieval and machine understanding. To facilitate progress in this domain, we release MultiVENT-Raw, a multilingual collection of nearly 120,000 primarily raw videos (over 5,300 total hours), paired with 130 events and 222 event-centric queries, along with human-annotated video relevance judgments and human-extracted key facts for relevant videos. MultiVENT-Raw supports both a retrieval task---to identify videos in the collection relevant to a query event---and a generation task---to summarize event-related videos into a coherent report for a target user. We benchmark strong baselines on MultiVENT-Raw, showing both tasks to be challenging even for some of the latest multimodal models.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "b7c28bc4f9db6d1492b2b95e2bbeebd69c694f2aaad4d19158c74bde037a1844",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 원시 영상 검색·요약 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다국어 원시영상 검색·요약 벤치마크 MultiVENT-Raw 공개"
+        }
+      ]
+    },
+    "2609.28449": {
+      "arxiv_id": "2609.28449",
+      "paper_title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
+      "abstract": "Large language models (LLMs) are increasingly used in coding tasks, but their ability to reason about code execution remains unclear. Existing repository-level QA benchmarks mainly evaluate static code understanding and often rely on LLM-based evaluation, while execution-reasoning benchmarks are mostly limited to snippets or functions. We introduce SWE-Flux, a repository-level benchmark for dynamic execution reasoning containing 480 execution-grounded instances across 12 real Python repositories, with gold answers automatically harvested from instrumented test executions rather than written manually or judged by LLMs. The benchmark covers singletest and multi-test questions over control flow, loops, program state, dataflow, exceptions, and program invariants. Evaluating five LLMs shows that this task remains challenging. The best model achieves only 37% accuracy. Models perform better on localized behavior such as invariants, intra-procedural control flow, exceptions, and simple loops, but struggle with dataflow, inter-procedural execution, precise state reasoning, and suite-level aggregation. Finally, we show that the oracle-harvesting pipeline can generate fresh benchmark variants using input perturbation. It successfully harvests valid variants for almost 90% of the selected instances, and the resulting variants are substantially more challenging for the evaluated models.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "d2fa964087c24446e11cc9539f78a448b128bcb3b8501f47427dd11a9130d8f9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 LLM 저장소 실행 추론 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "저장소 수준 실행 추론 벤치마크 SWE-Flux 신규 제안"
+        }
+      ]
+    },
+    "2609.28673": {
+      "arxiv_id": "2609.28673",
+      "paper_title": "Benchmarking Argumentative Behaviour of LLMs: A Study of Defences Against Character Attacks",
+      "abstract": "Large Language Models (LLMs) are increasingly deployed as argumentative agents in persuasive dialogues, necessitating rigorous evaluation of their debating competence relative to human interlocutors. In this study, we focus on character attacks (ad hominem arguments), traditionally dismissed as fallacies, which play a pivotal role in political persuasive dialogues where ethos often rivals propositional content. Specifically, we investigate whether modern LLMs can replicate human competence to strategically use and respond to such attacks. We analyse a corpus of natural language political dialogues to identify defensive strategies human interlocutors naturally employ in ethos-centred debates and structure them into a dialogue game. Empirically, we benchmark LLM-generated dialogues against the ElecDeb60to16-fallacy corpus of U.S. presidential debates, contrasting human debaters' repertoire of defensive strategies with those of artificial agents. Results reveal a substantial difference: most LLMs rigidly prioritise logical defences, failing to exploit ethotic counterattacks as valid moves in political discourse. We argue that current safety fine-tuning constraints the strategic action space of these LLMs, making them unable to fully engage in naturalistic interactions within domains where character contestation is a normative expectation rather than a mere fallacy.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "c189ba6a576780eac9e3b83dce12317f4a11e650297100693c6d1290c74bc55a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 LLM 논증 행동 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "논변 행동 분석 연구로 재사용 벤치마크 신규 제안 여부 불명확"
+        }
+      ]
+    },
+    "2609.28813": {
+      "arxiv_id": "2609.28813",
+      "paper_title": "CinematicVQA: Benchmarking Film-Grammar Reasoning in Large Vision-Language Models",
+      "abstract": "Cinematography, the craft of visual storytelling through framing, lighting, and camera operation, fundamentally shapes how audiences perceive and emotionally engage with video content. While Large Vision Language Models (LVLMs) have made remarkable progress in video question answering, existing benchmarks primarily focus on identifying low-level techniques rather than understanding their storytelling impact. To address this, we introduce CinematicVQA, the first-of-its-kind benchmark for cinematic video understanding that goes beyond technique recognition to evaluate film-grammar reasoning, utilizing our introduced Cinematic Scene Graph (CSG), a structured representation that links filming techniques to their perceptual effects and narrative functions. Through comprehensive evaluation of state-of-the-art LVLMs, we reveal a striking semantic gap: models consistently perform higher on describing visual presentations than on identifying the underlying techniques. Surprisingly, Chain-of-Thought prompting fails to provide consistent gains and degrades performance for most models, suggesting that current LVLMs lack sufficient cinematic domain knowledge to benefit from step-by-step reasoning. Fine-tuning on \\textsc{CinematicVQA-train} yields consistent improvements, particularly for narrative function and multi-hop reasoning. Overall, \\textsc{CinematicVQA} serves both as a rigorous benchmark for cinematic evaluation in LVLMs and as a practical dataset for training more film-aware video models.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "a63b37bf75d9b6d7b0df38ee4cbe37c14e6d2f390e95993a15f8915f4f2837de",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 영화 문법 추론 VLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "영화 문법 추론 벤치마크 CinematicVQA 및 학습데이터 제공"
+        }
+      ]
+    },
+    "2609.28826": {
+      "arxiv_id": "2609.28826",
+      "paper_title": "COILD: An Indic-Centric Parallel Corpus and Benchmark for Machine Translation Across Indian Languages",
+      "abstract": "Machine translation (MT) for Indian languages remains constrained by the limited availability of high-quality, Indic-centric parallel corpora and evaluation benchmarks. Existing multilingual resources are largely constructed from English-pivot content and often fail to capture the linguistic diversity, cultural complexity, and domain-specific characteristics of Indian languages. We present COILD, an Indic-centric parallel corpus comprising over 1.16 million human-translated and human-verified sentence pairs, covering 20 Indian language pairs across the Indo-Aryan, Dravidian, Tibeto-Burman, and Austro-Asiatic language families. The corpus is built entirely from original Indian language sources collected from licensed repositories spanning eight domains with direct real-world applicability. Furthermore, we introduce a domain-centric benchmark comprising 2,000 expert-verified sentences to enable consistent multilingual and cross-lingual evaluation across Indian language pairs. To validate the effectiveness of COILD, we fine-tune two representative multilingual neural machine translation models, IndicTrans2-Distilled and NLLB-200. Experimental results demonstrate consistent improvements across language pairs, domains, automatic evaluation metrics, and human evaluation, highlighting the effectiveness of high-quality Indic-centric supervision. COILD provides a valuable training and evaluation resource for advancing multilingual machine translation and future multilingual language models for Indian languages.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "a0007403c86b289ae964a5ca6f4a62c78c42b2e8a6732215a4c7882839e7de99",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "인도 언어 기계번역 병렬 코퍼스 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "인도어 병렬 코퍼스 COILD와 번역 평가 벤치마크 구축"
+        }
+      ]
+    },
+    "2604.01754": {
+      "arxiv_id": "2604.01754",
+      "paper_title": "LiveMathematicianBench: A Live Benchmark for Research-Level Mathematical Reasoning with Proof Sketches",
+      "abstract": "Mathematical reasoning is a hallmark of human intelligence, and whether large language models (LLMs) can meaningfully perform it remains a central question in artificial intelligence and cognitive science. As LLMs are increasingly integrated into scientific workflows, rigorous evaluation of their mathematical capabilities becomes a practical necessity. Existing benchmarks are limited by synthetic settings and data contamination. We present LiveMathematicianBench, a dynamic multiple-choice benchmark for research-level mathematical reasoning built from recent arXiv papers published after model training cutoffs. By grounding evaluation in newly published theorems, it provides a realistic testbed beyond memorized patterns. The benchmark introduces a thirteen-category logical taxonomy of theorem types (e.g., implication, equivalence, existence, uniqueness), enabling fine-grained evaluation across reasoning forms. It employs a proof-sketch-guided distractor pipeline that uses high-level proof strategies to construct plausible but invalid answer choices reflecting misleading proof directions, increasing sensitivity to genuine understanding over surface-level matching. We also introduce a substitution-resistant mechanism to distinguish answer recognition from substantive reasoning. Evaluation shows the benchmark is far from saturated: Gemini-3.1-pro-preview, the best model, achieves only 43.5%. Under substitution-resistant evaluation, accuracy drops sharply: GPT-5.4 scores highest at 30.6%, while Gemini-3.1-pro-preview falls to 17.6%, below the 20% random baseline. A dual-mode protocol reveals that proof-sketch access yields consistent accuracy gains, suggesting models can leverage high-level proof strategies for reasoning. Overall, LiveMathematicianBench offers a scalable, contamination-resistant testbed for studying research-level mathematical reasoning in LLMs.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "8643f06a16056adc3e197a70bf1244c8269d5bd3b8630fa06a9d981a54151902",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 연구급 수학 추론 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "연구급 수학 추론 라이브 벤치마크 LiveMathematicianBench 제안"
+        }
+      ]
+    },
+    "2608.15594": {
+      "arxiv_id": "2608.15594",
+      "paper_title": "TRACE: Trajectory Aware Reasoning for Multi-Turn Adversarial Conversation Evaluation",
+      "abstract": "Multi-turn jailbreak attacks have emerged as a critical safety threat to LLMs, as harmful objectives are decomposed across a sequence of apparently benign turns to bypass guardrails. Existing defenses lack the reasoning capacity to identify evolving manipulation patterns, often trading helpfulness for safety by over-refusing benign requests related to sensitive topics. We introduce Trace, a multi-turn defense with trajectory-aware structured reasoning. Before generating each response, the model identifies manipulation cues from the trajectory, evaluates both the benign and adversarial interpretations of user intent, assigns a jailbreak score, and commits to an action: Allow, Caution, or Decline. We curate 4k multi-turn adversarial conversations from five attack frameworks, pair them with 2.4k benign dialogs, and 600 sensitive-but-benign conversations. We train Llama-3.1-8B-Instruct with SFT and GRPO under a multi-component reward that jointly optimizes helpfulness on benign prompts and robustness against jailbreak attempts. Across seven multi-turn attack benchmarks, Trace attains an average attack success rate (ASR) of 14.5% against 31.4% for the strongest baseline and 74.9% for the undefended target, while significantly raising the attacker effort required per successful jailbreak. Trace also balances usability and safety, achieving a 93.3% average compliance on over-refusal benchmarks.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "80b478097e93908faca48c8e65647a2c1cc8d91f5210ddc6129c3231eb6b36e6",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 다중 턴 적대 대화 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "다중턴 방어 기법 제안, 벤치마크 자체 신규 기여 불명확"
+        }
+      ]
+    },
+    "2609.28876": {
+      "arxiv_id": "2609.28876",
+      "paper_title": "Forecast-Dojo: Replayable Environments for Benchmarking and Training LLM Forecasting Agents",
+      "abstract": "We introduce Forecast-Dojo, a replayable environment for benchmarking and training LLM forecasting agents. It combines resolved prediction-market questions with dated news, allowing agents to research an event and revisit their predictions at successive historical dates. The same tasks and tools support repeated evaluation, collection of training interactions, and feedback from recorded outcomes without waiting for new events to resolve. Forecast-Dojo contains 1,568 Polymarket events, split by time into training and evaluation periods, and 18.8M dated news articles. In an evaluation of 12 models, research tools lower Brier score for all 12. Forecasts also improve as events unfold, with the largest gains at steps where more newly dated evidence is recorded. Every model still trails historical market forecasts in both Brier score and accuracy. A belief notebook carried between dates lowers research cost but does not consistently improve forecast quality. Beyond evaluation, Forecast-Dojo provides interaction trajectories and outcome feedback for agent learning, with supervised fine-tuning as a proof of concept.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "c580dfe949e5369bd4f12455b0223a407bae33451b1cdb3247972703113585cf",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 LLM 예측 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "예측 에이전트용 재현 가능 환경 Forecast-Dojo 신규 제안"
+        }
+      ]
+    },
+    "2609.28921": {
+      "arxiv_id": "2609.28921",
+      "paper_title": "PFArena: Benchmarking Language Models for Protein Modification",
+      "abstract": "Protein modification requires navigating an immense sequence space, yet wet-lab validation remains low-throughput and costly. Although computational paradigms including protein language models (PLMs), large language models (LLMs), and LLM-based agents have shown promise in protein modification, their relative efficacy across realistic experimental decision-making settings remains unclear. To bridge this gap, we introduce PFArena, a benchmark comprising four controlled task interfaces that cover single-mutant generation and multi-mutant ranking. By providing varying levels of mutation fitness data, PFArena reflects four representative research scenarios characterized by differing degrees of prior experimental context. We assess six PLMs, six LLMs, and five LLM-based agents using complementary metrics to measure both peak and overall protein modification performance. Our evaluation reveals that model performance shifts systematically with the availability of target-specific experimental evidence: PLMs demonstrate proficiency in open-ended single-mutant generation by leveraging protein-specific priors, whereas LLMs and agents perform strongly in multi-mutant ranking, particularly when target-specific fitness data are available. Nevertheless, all model families face fundamental challenges with increasing search-space size and mutation depth. We release our code and benchmark suite to facilitate reproducible research in model-assisted protein modification.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "0d94d184e72c9e7416941aa794bb373018212293f7db552743909f054f353a99",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 단백질 변형 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "단백질 변형 평가 벤치마크 PFArena 구축, 코드·벤치 공개"
+        }
+      ]
+    },
+    "2609.28991": {
+      "arxiv_id": "2609.28991",
+      "paper_title": "Beneath the Scores: Rethinking Hallucination Evaluation for Video Understanding Models",
+      "abstract": "Video understanding is increasingly performed by multi-stage LLM agents that separate temporal grounding, visual observation, and reasoning. Yet these stages are typically evaluated on different benchmarks and distributions, making it difficult to determine where hallucinations originate. We first organize existing benchmarks around these stages and show that their scores provide inconsistent diagnostic signals: stronger stage-level performance does not reliably imply lower downstream hallucination, and even benchmarks targeting the same capability can disagree. We therefore introduce a causal stage-intervention protocol that overwrites individual stages while holding the downstream task fixed. Across 60,008 runs on three video-agent architectures, we find that grounding is the dominant source of downstream error, with roughly four times the causal impact of corrupting visual observations. Successful grounding depends primarily on locating the correct region rather than precise temporal overlap, explaining why standard mIoU metrics poorly predict downstream reliability. We further find that incorrect evidence is substantially more harmful than missing evidence. Finally, auditing existing benchmarks against these interventions reveals that their scores do not reliably predict causal cascade sensitivity and can fail under distribution shift. These results motivate intervention-based, stage-aware evaluation for trustworthy video agents.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "8506ce2ef2ea09f22a68ae4f87c2c8aaa1a62f2aa7624466f4b1536bdba973f7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 영상 이해 환각 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "비디오 환각 평가용 인과적 단계개입 프로토콜 신규 제안"
+        }
+      ]
+    },
+    "2609.29043": {
+      "arxiv_id": "2609.29043",
+      "paper_title": "Design and Evaluation of LLM Chaining-Based Task Planning for General Purpose Service Robots",
+      "abstract": "General Purpose Service Robot (GPSR) tasks, as defined in the RoboCup@Home benchmark, require robots to interpret diverse natural language commands and generate multi-step action sequences in real home environments. Conventional Single Prompt (SP) approaches suffer from context bloat and the \"Lost in the Middle\" phenomenon, leading to unreliable task planning. We propose an LLM chaining architecture that separates instruction classification and action generation into two specialized stages, reducing per-inference prompt length by approximately 45% while improving planning consistency. We evaluate our method using 100 randomly generated GPSR commands across three language models spanning local open-source and frontier cloud deployment contexts. Results show consistent planning improvements over SP across all models, with gains of up to +37 percentage points on local models. Further, real-robot execution experiments on the Toyota Human Support Robot (HSR) reveal that planning success alone does not guarantee task completion, with 6 of 10 tasks completing successfully and execution-layer failures identified as the primary remaining bottleneck.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "44037ac6e557c51b42124c0fb19d0d178d7a524587a46883ba1a1d8f790fdd98",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 서비스 로봇 작업 계획 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "기존 RoboCup@Home GPSR 과제 활용, 신규 벤치마크 기여 불명확"
+        }
+      ]
+    },
+    "2609.29067": {
+      "arxiv_id": "2609.29067",
+      "paper_title": "TileBench: A Controlled Benchmark for Performance Evaluation and Bottleneck Diagnosis of Tile-Based Programming Models",
+      "abstract": "Tile-based programming models, such as Triton and cuTile, aim to simplify high-performance kernel development, but their practical performance, tuning behavior, and usability remain difficult to compare systematically. We present TileBench, a controlled benchmark for evaluating Triton and cuTile on NVIDIA B200 GPUs under matched operator semantics and comparable implementation structures. TileBench contains 45 operators covering diverse AI-kernel patterns and memory/computation behaviors. Each task provides a PyTorch reference, verified Triton and cuTile implementations, standardized data-types (dtype) and input-size sweeps, default and autotuned configurations, roofline-based metrics, and profiling-guided diagnosis. Our evaluation shows that performance gaps are workload-dependent: cuTile excels on a small cluster of Tensor-Core/TMA-friendly kernels, while Triton is stronger on many irregular, streaming, and bandwidth-bound operators. We further evaluate LLM-generated cuTile and Triton kernels and find that Triton is consistently more token-efficient than cuTile under the same iterative refinement protocol. TileBench is publicly available at https://github.com/Deep-Learning-Profiling-Tools/Tilebench.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "af651a79b48bcd7edae3cfe2110badfdf82cfc47caba6b38045548a654da8f15",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 타일 기반 커널 성능 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "타일 기반 프로그래밍 평가 벤치마크 TileBench 신규 공개"
+        }
+      ]
+    },
+    "2609.29101": {
+      "arxiv_id": "2609.29101",
+      "paper_title": "Language Specificity vs. Domain Diversity: Benchmarking Transformers for Bangla Medical NER",
+      "abstract": "Medical Named Entity Recognition (NER) for low-resource languages remains a challenging task due to high linguistic variability and a scarcity of domain-specific annotated corpora. This work presents a comprehensive empirical benchmark evaluating three fine-tuned transformer encoders-BanglaBERT, multilingual BERT (mBERT), and XLM-RoBERTa-against GPT-4o mini under zero-shot and few-shot prompting configurations for Bangla medical NER. In contrast to prior studies that evaluated large language models on limited subsets of only 50 samples, we conduct a large-scale evaluation across the full test set of 3,179 samples, providing statistically robust and reproducible baselines. Our fine-tuned XLM-RoBERTa model achieves an F1- score of 0.5959, establishing a new state-of-the-art and surpassing the previously reported best result of 0.5848. Crucially, we demonstrate that the language-specific BanglaBERT model consistently underperforms its multilingual counterparts with an F1-score of 0.4937, indicating that pretraining domain diversity can outweigh language specificity in highly specialized clinical settings. Furthermore, we present a detailed per-entity-type analysis for this task, revealing that Medicine and Specialist categories are recognized with high reliability, achieving F1- scores above 0.83, while the Symptom category remains the most challenging with an F1-score of 0.4367 despite being the most frequent training class. Finally, fine-tuned transformer models outperform the optimal prompting configuration by a factor of 3.76, confirming that prompt-only pipelines remain inadequate for structured clinical entity extraction in low-resource language environments.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "b1a05e830b6726ca9a0e41f4a71dcecd06e3d4383cc541fd57272823a5632635",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 방글라 의료 NER 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "방글라 의료 NER 기존 모델 비교 평가, 신규 자료 기여 불명확"
+        }
+      ]
+    },
+    "2609.29156": {
+      "arxiv_id": "2609.29156",
+      "paper_title": "Med-AR: Autoregressive Vision-Language Pretraining for Long-Tailed Chest X-Ray Classification and Uncertainty-Aware Evaluation",
+      "abstract": "Long-tailed chest X-ray classification requires visual representations that capture both common abnormalities and subtle, infrequent findings. We propose Med-AR-8B and Med-AR-2B, two radiology-native autoregressive vision-language models pretrained with structured reports, abnormality-focused text, and region annotations. We evaluate the transfer of their visual encoders to multi-label classification against contrastive, self-supervised, and supervised pretrained encoders, including Med-CLIP, CheXFound, EVA-Base, ARK, and BioViL-T, using a common ML-Decoder classification head. To assess fine-grained recognition, we also construct LLM-expanded, report-derived label sets for MIMIC-CXR and CheXpert. Across PadChest, MIMIC-CXR, and CheXpert, Med-AR-8B outperforms Med-CLIP in mean AUROC and AUPRC for head, medium, and tail findings. On MIMIC-CXR, it increases tail-label mean AUPRC from 0.1033 to 0.1441. Med-AR-2B achieves the strongest discrimination results on PadChest. Across the broader encoder comparison, a Med-AR variant achieves the highest mean AUROC and AUPRC in every reported prevalence group on each public dataset. Both Med-AR variants also achieve lower excess area under the risk-coverage curve than Med-CLIP on all three public datasets, indicating improved selective-prediction performance under the evaluated protocol. Internal results are metric-dependent, with Med-CLIP retaining advantages in overall and tail AUPRC and in selective prediction. These findings establish Med-AR as a strong pretraining recipe for long-tailed chest X-ray classification on the evaluated public benchmarks and demonstrate the value of assessing discrimination and selective prediction together.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:44:58Z",
+      "input_sha256": "91abdbe217ea37993047966c7a843a81c08d01ee8f6df1ddf3894085f8321195",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어 흉부 X-ray 분류 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "흉부 X선 분류 모델 제안, 기존 벤치마크 점수 보고에 그침"
         }
       ]
     }
