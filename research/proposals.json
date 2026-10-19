@@ -221,7 +221,27 @@
         "2509.01167",
         "2509.08494",
         "2511.17909",
-        "2511.18921"
+        "2511.18921",
+        "2603.16859",
+        "2605.11269",
+        "2605.28190",
+        "2609.15387",
+        "2609.15695",
+        "2609.18644",
+        "2512.03262",
+        "2603.15309",
+        "2605.20731",
+        "2606.16560",
+        "2608.28021",
+        "2609.04409",
+        "2609.12708",
+        "2609.21562",
+        "2609.23959",
+        "2609.25396",
+        "2503.15242",
+        "2508.15526",
+        "2602.18307",
+        "2604.02947"
       ]
     }
   },
@@ -2443,6 +2463,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "Verilog 디버깅 벤치마크 구축 프레임워크 제안"
+        }
+      ]
+    },
+    "2609.19524": {
+      "arxiv_id": "2609.19524",
+      "paper_title": "A Unified Evaluation Framework for Trustworthy Large Language Models, Agentic AI, and Multimodal Systems",
+      "abstract": "Benchmark scores alone provide an incomplete basis for assessing the trustworthiness of modern artificial intelligence systems. Large language models (LLMs), agentic systems, and multimodal models (MLLMs) require different forms of assessment, yet their evaluation evidence must remain interpretable for development and oversight. We propose a unified framework that connects output-level, trajectory-level, and cross-modal assessment through eight trustworthiness dimensions: capability, robustness, safety, fairness, transparency, governance, oversight, and efficiency. The framework preserves system-specific metrics while mapping native measurements to common performance bands, accompanied by uncertainty estimates and traceable evidence. A meta-evaluation layer examines the validity, reliability, and reproducibility of the evaluation itself. Multidimensional profiles expose strengths and weaknesses, while safety-critical overrides prevent aggregate scores from masking critical failures. Mappings to governance frameworks, international standards, and European Union regulatory requirements connect technical assessment with oversight needs. The framework provides a structured basis for assessing both system performance and the credibility of the evidence supporting it, with empirical validation across deployment contexts remaining an essential next step.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "9182bb2d3b5215e2c494715c038bfd185ebcf993839be1b598d217732a0a0993",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 신뢰성 평가 프레임워크로 벤치마크 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM·에이전트·멀티모달 통합 신뢰성 평가 프레임워크 제안"
+        }
+      ]
+    },
+    "2609.21259": {
+      "arxiv_id": "2609.21259",
+      "paper_title": "CogGym: Towards Large-Scale Comparative Evaluation of Human and Machine Cognition",
+      "abstract": "Understanding and modeling human intelligence are parallel goals shared by artificial intelligence (AI) and cognitive science. As AI systems grow increasingly capable, in what ways do model responses resemble human responses, and where do they systematically diverge? The sheer breadth and diversity of the tasks humans can perform and think about pose a challenge for scalable and rigorous comparison between humans and models. We introduce CogGym, a scalable, unified framework grounded in cognitive science for systematically comparing model and human behavior on matched experimental trials. CogGym uses a semi-automated, human-in-the-loop pipeline to standardize diverse experimental paradigms into a task-agnostic Experiment Markup Language (EML), enabling reproducible and faithful comparison at scale. For initial release, we curate and standardize 258 cognitive experiments from 100 papers that focuses on human commonsense reasoning, and evaluate 50 large language models against human responses. We find a clear scaling trend where larger and more recent AI models better reproduce human judgments. Yet AI models' improvement on such common reasoning tasks is considerably slower than the gains observed on formal-reasoning benchmarks like math and coding, and model--human fit remains well below human splithalf reliability ($R^2 = 0.93$ on text, $0.95$ on image, and $0.92$ on video) with the best models achieving $R^2 = 0.59$ on text, $0.58$ on image, and $0.43$ on video experiments. We intend for CogGym to provide a living evaluation framework that continually incorporates new cognitive science experiments to characterize where model behavior resembles human behavior, where it systematically diverges, and how those patterns change as models and experiments evolve.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "bdf26a79a2b06c6eeb334343096a76b432c564b16b0b6ac085a123113374880f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "인간-AI 인지 비교 평가 프레임워크 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "인지 실험 258개 표준화한 인간-모델 비교 벤치마크 CogGym 제안"
+        }
+      ]
+    },
+    "2609.21263": {
+      "arxiv_id": "2609.21263",
+      "paper_title": "PlaceReasoner-Beta: Reasoning-Driven Macro Placement and Benchmarking",
+      "abstract": "Automated macro placement remains a fundamental challenge in VLSI physical design. Despite decades of research, existing approaches predominantly optimize hand-crafted proxy objectives, such as estimated wirelength, and typically produce placements through one-shot numerical optimization, limiting their ability to incorporate visual layout context, codified design expertise, and downstream physical-design feedback in a unified loop. We present PlaceReasoner-Beta, a verifier-guided multi-agent framework that reformulates macro placement as a closed-loop reasoning problem rather than black-box optimization. A vision-language model (VLM) planner generates candidate placements from the floorplan image, macro specifications, and connectivity structure; a geometric verifier enforces physical legality and expert placement principles; a physical verifier refines candidates using early implementation feedback; and a post-route optimizer further improves promising layouts using final PPA. To enable reproducible evaluation, we introduce PlaceReasoner-Bench, a fully open end-to-end benchmark built from open RTL designs, EDA tools, and technology libraries. It comprises 8 designs at two aspect ratios, yielding 16 tasks with fixed floorplans and I/O assignments, so methods differ only in macro positions and orientations and are evaluated using routed PPA and DRC rather than pre-route proxies. Across the benchmark, PlaceReasoner-Beta achieves the best timing among DRC-clean methods on all square tasks, reducing post-route TNS by 61.2% at 1:1 and 53.0% at 2:1 relative to the classical baseline field. It also shortens routed wirelength on most designs despite never explicitly optimizing it, demonstrating that reasoning over spatial structure under physical-design feedback can improve end-to-end layout quality beyond proxy-objective optimization.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "88b59c86c1ff42edb9908e2a97247c6d316b14a0335427c85d6b281db22c6628",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "매크로 배치 추론 및 벤치마크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "매크로 배치 평가용 PlaceReasoner-Bench 벤치마크 공개"
+        }
+      ]
+    },
+    "2609.21267": {
+      "arxiv_id": "2609.21267",
+      "paper_title": "Efficient Benchmarking in Production: A Study of an Evolving LLM Agent",
+      "abstract": "Production LLM agents are evaluated repeatedly as they evolve, but full agent benchmarks are costly to rerun. We study efficient recurring evaluation for a production analytics agent serving tens of thousands of monthly active users and report first-hand deployment experience. Using 574 historical runs of the production benchmark, split chronologically into calibration and held-out periods, we compare random sampling, historical caching, fixed representative subsets, and IRT-based adaptive testing. The results show that multidimensional 2PL adaptive testing achieves the best overall score fidelity: executing 200 questions, 38.5% of a full run, yields 1.03 pp of MAE. We nevertheless deployed difficulty-stratified fixed subsets because of their operational simplicity, and show they transfer without recalibration to five other agent families and remain stable across calibration windows as short as one day. Drawing on this deployment experience, we report practical recommendations for recurring production-agent evaluation.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "bceacd6c33921061bb38077ccb911a3430733e9a37651486908ca2595b0c1fa7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "프로덕션 LLM 에이전트 효율적 벤치마킹 연구"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "운영 에이전트 반복 평가의 효율화 기법 연구, 재사용 가능 평가 지침 제공"
+        }
+      ]
+    },
+    "2609.21344": {
+      "arxiv_id": "2609.21344",
+      "paper_title": "CESBench: Benchmarking Large Language Models on Cryptographic Engineering Security for IoT Devices",
+      "abstract": "For Internet of Things (IoT) devices, a secure algorithm alone is not enough: an attacker with physical access can attack the implementation directly, and its flaws are hard to fix once deployed. Large language models (LLMs) are now used to build and analyze such implementations. LLM benchmarks exist for cryptography and general cybersecurity, but none covers cryptographic engineering. In this paper, we present CESBench, 380 expert-written items across six sub-domains of cryptographic engineering security for IoT devices: side-channel, fault injection, implementation, countermeasures, evaluation, and integration. Four task types target different competences: 209 multiple-choice items test recall, 67 judgment items require a security verdict and its justification, 63 scenario items require an engineering diagnosis, and 41 code tasks are graded by 572 test cases. To validate the benchmark, 11 open-weight and proprietary LLMs answer every item. Multiple-choice and code responses are scored automatically, and judgment and scenario responses by an LLM judge, whose scores are checked against a second judge from another model family and human re-scoring. Composite scores range from 54.4% to 83.6%. The top score on each task type is 98.6% for multiple choice, 95.1% for code, and 88.4% for scenario diagnosis, but only 58.8% for judgment. Across models, 88.5% of verdicts are correct, yet their justifications earn only 53.4% of the rubric marks. Multiple choice is near its ceiling for the strongest models and most code tasks are solved, whereas justifying a security verdict remains the weakest competence. The benchmark, prompts, and per-item results are public.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "032be08c6b7ac4da23b66ded69175bd198aa2a42feccc860b4355aa1a5f1f91d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "IoT 암호공학 보안 LLM 벤치마크 CESBench"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "암호공학 보안 380개 전문가 문항 벤치마크 CESBench 공개"
+        }
+      ]
+    },
+    "2609.21386": {
+      "arxiv_id": "2609.21386",
+      "paper_title": "AgentVidBench: A Multi-Hop Video Question Answering Benchmark for Evaluating MLLM Agents",
+      "abstract": "Comprehensive video understanding is crucial for advancing artificial intelligence toward the intricate dynamics of the physical world. While recent advances in Multimodal Large Language Models (MLLMs) have demonstrated remarkable capabilities in video understanding, existing benchmarks remain confined to simple scene-level queries or global summaries that require only single-step inference. Real-world video understanding involves more challenging tasks that require multi-hop multimodal reasoning, and there is a critical absence of video benchmarks equipped to rigorously evaluate these agentic capabilities. To bridge this gap, we introduce AgentVidBench, a multi-hop video question answering benchmark focused on evaluating the spatial, temporal, and causal reasoning capabilities of MLLM agents. Beyond standard question-answer pairs, AgentVidBench provides step-by-step solution traces to support trajectory evaluation that assesses whether agents explicitly acquire the evidence needed to justify their answers. Experiments with 12 proprietary and open-source MLLMs show that single-turn performance remains limited on AgentVidBench, while integrating these models into state-of-the-art agentic workflows generally improves performance with respect to both accuracy and trajectory scores. We further present a simple yet effective agentic strategy that serves as a competitive baseline on AgentVidBench, establishing our benchmark as a holistic testbed for future research on agentic video understanding. Code and datasets are available at https://github.com/krafton-ai/agentvidbench and https://huggingface.co/datasets/agentvidbench/agentvidbench.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "ef1d53a45f318e29b5456ca7021263ef18b36b043c84c4daf00323ba613a3335",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "MLLM 에이전트용 다중 홉 비디오 QA 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "멀티홉 비디오 QA 에이전트 벤치마크 AgentVidBench 제안"
+        }
+      ]
+    },
+    "2609.21493": {
+      "arxiv_id": "2609.21493",
+      "paper_title": "PolyBridgeBench: Benchmarking Multimodal LLMs for Physics-Grounded Bridge Design",
+      "abstract": "Multimodal large language models, or MLLMs, perform well at visual understanding and structured generation, yet these capabilities do not establish whether an engineering design will work when executed. Existing benchmarks assess spatial reasoning, structural validity, or physics-grounded construction, but they do not determine whether MLLMs can synthesize complete load-bearing structures and repair them after simulator execution exposes a failure. We introduce PolyBridgeBench, an executable benchmark for multimodal bridge design. A model receives a visual scene and structured engineering constraints and generates a complete node--member--material topology. Deterministic legality checks gate execution in a native dynamic physics simulation. Following an execution failure, the benchmark returns temporal visual evidence from the failed rollout and evaluates repair under a fixed interaction budget. Separate measurements of deterministic validity, dynamic functional success, and post-failure recovery identify the stage at which design fails. Experiments with six representative MLLMs across 189 levels expose a substantial gap between deterministic validity and dynamic success, pronounced sensitivity to material budgets, and limited post-failure recovery under the primary strict-budget setting.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "47d5f3c10c84344f35fdb804a0bb7438d5794cbfc2eee01e22c53b4872b3b8ee",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "물리 기반 교량 설계 MLLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "물리 기반 다리 설계 실행형 벤치마크 PolyBridgeBench 제안"
+        }
+      ]
+    },
+    "2609.21504": {
+      "arxiv_id": "2609.21504",
+      "paper_title": "DPed-VLN: A Benchmark for Socially Compliant Vision-and-Language Navigation in Dynamic Pedestrian Environments",
+      "abstract": "Vision-and-language navigation (VLN) has advanced rapidly in static indoor environments, but robots operating in human-populated spaces must ground language while responding to moving pedestrians and social-safety constraints. We present DPed-VLN, a Habitat 3.0 benchmark for dynamic-pedestrian VLN that couples 33,093 navigation episodes with paired global and prior-augmented instructions, ORCA-controlled humanoid pedestrians, socially constrained expert paths, and metrics that jointly assess navigation efficiency and social safety. DPed-VLN separates ordinary goal-oriented route guidance from prior-augmented instructions that expose dynamic-pedestrian cues for controlled analysis. To instantiate the benchmark, we introduce DPet (Dynamic Pedestrian-aware Network), a pedestrian-aware policy network trained with reinforcement learning and imitation learning. We further adapt representative state-of-the-art VLM-based navigation models, including NaVILA and StreamVLN, to DPed-VLN through LoRA fine-tuning. Experiments show that LoRA adaptation improves zero-shot VLM baselines in several success and safety metrics, especially reducing StreamVLN's collision rate. Among the evaluated methods, DPet-RL achieves the highest SR, SPL, and STL.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "99c03a88360b6ad4b288df85f0d7ebc02bfafe32b2e04704306efbfe79b62853",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "동적 보행자 환경 VLN 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "동적 보행자 환경 VLN 벤치마크 DPed-VLN 제안"
+        }
+      ]
+    },
+    "2609.21527": {
+      "arxiv_id": "2609.21527",
+      "paper_title": "OpenMAS-GCom. A Diagnostic Benchmark for Graph-enhanced Multi-Agent Systems",
+      "abstract": "Graph-enhanced multi-agent systems (G-MAS) coordinate large language model agents through communication graphs and role assignments, which determine how agents exchange information and divide responsibilities. However, final-score comparisons across systems combine differences in models, communication patterns, roles, and computation costs, making performance differences difficult to attribute to specific communication structures, role assignments, and information flows. To address this evaluation attribution problem, we introduce OpenMAS-GCom, a benchmark for diagnosing how these components affect G-MAS performance through controlled interventions. We represent systems through collaboration units, communication links, shared intermediate information, and execution rules. OpenMAS-GCom compares original systems with versions modified by changing one component while keeping tasks, models, prompts, and budget limits fixed. We rewire communication edges, remove specialist or critic agents, replace intermediate messages with incorrect content, and disable workers during execution. The benchmark evaluates 17 single-agent, ordinary multi-agent, and graph-enhanced configurations on 29 datasets across six domains. We add 400 G-MAS-Complex tasks requiring agents to combine information from multiple documents, resolve conflicting records, and return specified values with source identifiers. Experiments show larger mean losses after specialist removal than after critic removal, different performance degradation under incorrect messages and worker failures despite similar original scores, and different configurations achieving the highest accuracy and accuracy per token on G-MAS-Complex.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "5366ff1b0bc6576255108d593821250b23c2b59432bfaf9ea2fc390da6cdbbe8",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "그래프 강화 멀티에이전트 진단 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "그래프 기반 멀티에이전트 진단 벤치마크 OpenMAS-GCom 제안"
+        }
+      ]
+    },
+    "2609.21673": {
+      "arxiv_id": "2609.21673",
+      "paper_title": "PRISM-BN: A Controlled Corpus and Benchmark for Text-to-Parameterized Bayesian Network Extraction",
+      "abstract": "Probabilistic Graphical Models (PGMs), especially Bayesian Networks (BNs), expose directed structure and probabilistic parameters, making them natural symbolic targets for neurosymbolic AI. Yet training text-to-parameterized-BN systems requires paired text-to-BN resources unavailable at scale. We introduce PRISM-BN, a controlled corpus of 5054 BN-grounded descriptions paired with discrete reference BNs containing variables, states, directed edges, root priors, and full multi-parent CPDs across five domains. The instances are derived from 50 Wikipedia-seeded backbones, and their probabilities are internally constructed benchmark targets rather than externally validated causal estimates. PRISM-BN is built with PRISM, a marginal-first pipeline that elicits marginal and local joint distributions, analytically recovers normalized CPDs, and constructs locally reparameterized subgraphs. We define a benchmark with semantic node and state alignment, conditional structural scoring, and strict full-CPD evaluation. Across six LLM extractors, Node F1 ranges from 0.56 to 0.83, conditional Edge F1 from 0.90 to 0.97, and CPD-KL from 1.11 to 3.14. Conditional state and edge recovery remain consistently strong, whereas strict full-CPD agreement remains challenging. These trends persist with independently generated GPT-5.5 references, and a human pilot corroborates structural recoverability and similar probabilistic interpretations. PRISM-BN supports separate evaluation of structural recovery and probabilistic parameter estimation.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "360258cca93e370105a93dd41cebaab726616f7a5ce048229bea1e785391c2e7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "텍스트-베이지안 네트워크 추출 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "텍스트→베이지안넷 추출용 제어 코퍼스·벤치마크 PRISM-BN 제안"
+        }
+      ]
+    },
+    "2609.21722": {
+      "arxiv_id": "2609.21722",
+      "paper_title": "CIBuzzBench: A Benchmark for Cross-Lingual Understanding of Chinese Internet Buzzwords",
+      "abstract": "Chinese social media has generated a vast and continually evolving lexicon of internet buzzwords whose meanings are often non-literal and deeply rooted in local cultural and pragmatic contexts. Existing research has primarily focused on interpreting these buzzwords within Chinese, leaving largely unexplored whether LLMs can transfer such culturally grounded knowledge across languages and accurately convey the intended meanings in English. This cross-lingual capability is also critical for safety, as harmful expressions may obscure their offensive content through culture-specific homophony, euphemism, irony, or coded language. In this paper, we investigate the ability of advanced LLMs to understand Chinese internet buzzwords across languages. To this end, we introduce CIBuzzBench, the first benchmark for cross-lingual Chinese-to-English understanding of Chinese internet buzzwords. CIBuzzBench comprises 3,001 Chinese internet buzzwords annotated with English meaning explanations, English equivalents, category labels, and harmfulness labels. Based on these annotations, we design three evaluation tasks: Meaning Explanation, Cross-lingual Equivalent Matching, and Culturally Grounded Harmfulness Detection. We evaluate representative state-of-the-art proprietary and Chinese LLMs under both English- and Chinese-prompting settings. Our results show that LLMs continue to struggle with the cross-lingual understanding of Chinese internet buzzwords, particularly in fine-grained non-literal interpretation, robust equivalent matching under option perturbations, and calibrated harmfulness detection. These findings highlight the persistent challenges posed by culturally grounded language phenomena for multilingual LLMs and safety-oriented evaluation. The dataset and code are available at https://github.com/SuperYFan/CIBuzzBench.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "b55913e277c27dd0d64d4c71f3830c526aec012c897d3b83840cf912ad712c81",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "중국 인터넷 신조어 교차언어 이해 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "중국 인터넷 유행어 한-영 이해 벤치마크 CIBuzzBench 제안"
+        }
+      ]
+    },
+    "2605.29653": {
+      "arxiv_id": "2605.29653",
+      "paper_title": "PTCG-Bench: Can LLM Agents Master Pokémon Trading Card Game?",
+      "abstract": "Given a strategically complex board game, human players can quickly learn to devise strategies after playing a few rounds. Autonomous agents require similar capabilities in realistic interactive environments, yet existing agent benchmarks often fail to fully capture such strategic and evolving decision-making scenarios. We present PTCG-Bench, a benchmark built on the Pok'{e}mon Trading Card Game (PTCG) that evaluates LLM agents at two complementary levels: (1) their decision-making performance within a single complex environment, and (2) their ability to self-evolving through accumulated experience. We further include a modular harness ablation to better interpret agent performance without conflating it with model capability. Our experiments show that, although LLM agents can achieve non-trivial gameplay performance, sustained and stable self-evolution remains challenging, and performance is sensitive to harness design. We hope that PTCG-Bench will facilitate future research on harness-aware and self-evolving agents in realistic interactive environments.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "158f6d7d098451816aa5927a079737840b9721f952ec493368e62654664ad66e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "포켓몬 카드 게임 LLM 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "포켓몬 TCG 기반 LLM 에이전트 벤치마크 PTCG-Bench 제안"
+        }
+      ]
+    },
+    "2606.21008": {
+      "arxiv_id": "2606.21008",
+      "paper_title": "The Metanym Game: An LLM Benchmark Without Ground Truth That Rises With the Models It Measures",
+      "abstract": "We introduce a benchmark that is fully self-contained, needs no ground truth, and rises with the models it measures. Language models compete at making analogies and subjectively grade one another; nothing enters from outside. The benchmark reproduces GPQA Diamond, a keyed benchmark of expert-written questions, at r = 0.98, audited for a leak and found clean. We hypothesize that both benchmarks measure the same thing in different ways: a language model holds its knowledge as archetypal contexts, relationship patterns valid across many topic domains. GPQA instantiates the required knowledge in one domain; the Metanym Game instantiates one archetype into several domains, generating analogies, no reasoning required. The reasoning feature of an LLM hardly changes the game's ratings, while it lifts GPQA, which requires derivations. In the game, a player writes a context template whose slots, filled with a set of keywords from a topic domain, instantiate a factually true description of that domain; the instantiations are each other's metaphors, and keywords filling the same slot are metanyms, metaphorically synonymous. Correctness is settled sentence by sentence. Ground truth is replaced by the SVD of the factual rating matrix: its left and right singular vectors rate the players as judges and as generators, two ratings from one factorisation, to our knowledge a first for an LLM council of peers. On the subjective criteria, judges are weighted by their rating consistency under a swept calibration anchor. Generating and judging are different skills: on this roster the strongest generators were middling judges. A council of the five best issues the official ratings; its contestable seats keep it current, a candidate steering signal for self-improving AI. The paper is accompanied by a validating package that recomputes every number.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "8f8a4bc2cd729e25c14d4653144ff2a0abcf925ed14124679bcdcff4c0418664",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "정답 없는 LLM 메타님 게임 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "정답 없이 상승하는 유추 벤치마크 Metanym Game 제안"
+        }
+      ]
+    },
+    "2608.21357": {
+      "arxiv_id": "2608.21357",
+      "paper_title": "VIALS: A Benchmark for Visual Interpretation of Artifacts in the Life Sciences",
+      "abstract": "In professional life sciences workflows, scientists routinely interpret visual artifacts (gel blots, microscopy images, plasmid maps, flow cytometry plots, molecular structures, ...) to inform research decisions. We introduce VIALS, a visual question-answering benchmark with 161 such interpretation tasks, spanning the types of artifacts examined throughout experimental workflows in the biotech industry (rather than polished figures from publications and textbooks). While frontier vision-language models can now fluently describe natural images, we find that they are unable to accurately interpret these scientific images, reflecting limitations in domain knowledge and domain-specific visual reasoning capabilities. In contrast, scientists with relevant domain expertise find these visual interpretation tasks straightforward. AI that cannot similarly interpret such images will have limited utility in professional life sciences workflows, where such artifacts are central to how scientists reason, communicate, and make decisions.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "c36a3cb8294e1270e20912922b160f6204878b47233088b2cf5d56fed7628461",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "생명과학 시각 해석 VQA 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "생명과학 시각 해석 VQA 벤치마크 VIALS 제안"
+        }
+      ]
+    },
+    "2411.10163": {
+      "arxiv_id": "2411.10163",
+      "paper_title": "Compound-QA: A Benchmark for Evaluating LLMs on Compound Questions",
+      "abstract": "Large language models (LLMs) demonstrate remarkable performance across various tasks, prompting researchers to develop diverse evaluation benchmarks. However, most benchmarks typically measure the ability of LLMs to respond to individual questions, neglecting the complex interactions in real-world applications. We introduce Compound Question Synthesis (CQ-Syn) to build Compound-QA, a benchmark targeting questions composed of multiple interrelated sub-questions. This benchmark is derived from existing QA datasets, annotated with proprietary LLMs, and verified by humans for accuracy. It encompasses five categories: Factual-Statement, Cause-and-Effect, Hypothetical-Analysis, Comparison-and-Selection, and Evaluation-and-Suggestion. It evaluates the LLM capability in terms of three dimensions, including understanding, reasoning, and knowledge. Evaluating nine open-source LLMs on Compound-QA reveals that their performance on compound questions is notably lower than on non-compound questions. We further explore strategies to enhance LLMs' handling of compound questions, and our results show that these methods substantially improve models' comprehension and reasoning abilities.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "872689bd2bf12c86287075fe5c338d4f867ed2c269b29359578e3fdc596a1f94",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "복합 질문 LLM 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "복합 질문 평가 벤치마크 Compound-QA 제안"
+        }
+      ]
+    },
+    "2505.23713": {
+      "arxiv_id": "2505.23713",
+      "paper_title": "SocialMaze: A Benchmark for Evaluating and Enhancing Social Reasoning in Large Language Models in Complex Social Environments",
+      "abstract": "Large language models (LLMs) are increasingly deployed in socially grounded applications, where success requires interpreting context, inferring others' mental states, and reasoning about unreliable information. Yet existing benchmarks rarely evaluate these demands jointly in complex, evolving settings. We introduce SocialMaze, a benchmark that organizes six tasks across social deduction games, daily-life interactions, and digital community platforms along three descriptive design axes: deep reasoning, dynamic interaction, and information uncertainty. These axes characterize intended sources of task difficulty rather than latent, factor-analytic dimensions of model capability. Automated checks and human validation support data quality. Evaluations of twelve proprietary and open-weight LLMs show substantial variation in the use of evolving interaction histories; stronger chain-of-thought reasoners perform better on tasks requiring deeper inference, while uncertainty consistently degrades performance. Reasoning workflows help weaker short-chain-of-thought backbones but saturate on stronger reasoners. Finally, targeted fine-tuning on curated reasoning traces substantially improves structured social-reasoning tasks, whereas transfer to language-aggregation tasks remains statistically inconclusive. The project homepage is available at https://xzx34.github.io/socialmaze/.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "33aeb805ce2c461728b4933f3e10c957ca88133363c8dd4ff457a6decdb5c1ae",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "복잡 사회환경 LLM 사회추론 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "사회적 추론 평가 벤치마크 SocialMaze 제안"
+        }
+      ]
+    },
+    "2509.01167": {
+      "arxiv_id": "2509.01167",
+      "paper_title": "TempCore: Are Video QA Benchmarks Temporally Grounded?",
+      "abstract": "Vision-language models (VLMs) can ingest only a limited number of video frames, making frame selection a practical necessity. But do current Video QA benchmarks genuinely require temporal frame selection, or can most questions be answered regardless of which frames are shown? We introduce Frame Selection Sensitivity (FSS), a per-sample diagnostic that measures how much VLM accuracy changes when the most relevant frames are replaced with the least relevant ones. Across six benchmarks and eight VLMs, we find that a large majority of samples are frame-agnostic: only a minority are genuinely sensitive to frame choice. Combining FSS with a Language Independence Score (LIS) reveals that merely 5.5--31% of samples are Temporally Sensitive. We construct TempCore, compact evaluation subsets that isolate these temporal samples from existing benchmarks, and will release code and per-sample annotations upon publication.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "3973384eccb7babc4b6642ce26e6a077f6cf6021b579b5aabcc8f06012aeed99",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "비디오 QA 벤치마크 시간적 근거 진단"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "시간 민감 샘플만 추린 TempCore 평가 서브셋 구축"
+        }
+      ]
+    },
+    "2509.08494": {
+      "arxiv_id": "2509.08494",
+      "paper_title": "HumanAgencyBench: Scalable Evaluation of Human Agency Support in AI Assistants",
+      "abstract": "As humans delegate more tasks and decisions to artificial intelligence (AI), we risk losing control of our individual and collective futures. Relatively simple algorithmic systems already steer human decision-making, such as social media feed algorithms that lead people to unintentionally and absent-mindedly scroll through engagement-optimized content. In this paper, we develop the idea of human agency by integrating philosophical and scientific theories of agency with AI-assisted evaluation methods: using large language models (LLMs) to simulate and validate user queries and to evaluate AI responses. We develop HumanAgencyBench (HAB), a scalable and adaptive diagnostic tool for six behaviors related to human agency. HAB measures the tendency of an AI assistant to Ask Clarifying Questions, Avoid Value Manipulation, Correct Misinformation, Defer Important Decisions, Encourage Learning, and Maintain Social Boundaries. We find low-to-moderate agency support in contemporary LLM-based assistants, with substantial variation across system developers and behaviors. For example, while Anthropic LLMs most support human agency overall, they are the least supportive LLMs in terms of Avoid Value Manipulation. These behaviors do not appear to consistently result from increasing LLM capabilities or instruction-following (e.g., RLHF); we encourage further study of these behaviors so that developers and users can better understand the complexities of modern human-AI interaction.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "eebcec5242fc9984bb1befa724d533597f8a45480d5945fd50329701d90aa64a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 어시스턴트 인간 행위성 지원 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "인간 자율성 지원 진단 도구 HumanAgencyBench 제안"
+        }
+      ]
+    },
+    "2511.17909": {
+      "arxiv_id": "2511.17909",
+      "paper_title": "ChemVTS-Bench: Evaluating Visual-Textual-Symbolic Reasoning of Multimodal Large Language Models in Chemistry",
+      "abstract": "Chemical reasoning inherently integrates visual, textual, and symbolic modalities, yet existing benchmarks rarely capture this complexity, often relying on simple image-text pairs with limited chemical semantics. As a result, the actual ability of Multimodal Large Language Models (MLLMs) to process and integrate chemically meaningful information across modalities remains unclear. We introduce \\textbf{ChemVTS-Bench}, a domain-authentic benchmark designed to systematically evaluate the Visual-Textual-Symbolic (VTS) reasoning abilities of MLLMs. ChemVTS-Bench contains diverse and challenging chemical problems spanning organic molecules, inorganic materials, and 3D crystal structures, with each task presented in three complementary input modes: (1) visual-only, (2) visual-text hybrid, and (3) SMILES-based symbolic input. This design enables fine-grained analysis of modality-dependent reasoning behaviors and cross-modal integration. To ensure rigorous and reproducible evaluation, we further develop an automated agent-based workflow that standardizes inference, verifies answers, and diagnoses failure modes. Extensive experiments on state-of-the-art MLLMs reveal that visual-only inputs remain challenging, structural chemistry is the hardest domain, and multimodal fusion mitigates but does not eliminate visual, knowledge-based, or logical errors, highlighting ChemVTS-Bench as a rigorous, domain-faithful testbed for advancing multimodal chemical reasoning. All data and code will be released to support future research.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "e9c916b738cda501d1a202e66544b627ad179edb383d2b469951ae5d085d8cdc",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "화학 시각-텍스트-기호 MLLM 추론 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "화학 시각-텍스트-기호 추론 벤치마크 ChemVTS-Bench 제안"
+        }
+      ]
+    },
+    "2511.18921": {
+      "arxiv_id": "2511.18921",
+      "paper_title": "BackdoorVLM: A Benchmark for Backdoor Attacks and Defenses on Vision-Language Models",
+      "abstract": "Backdoor attacks undermine the reliability and trustworthiness of machine learning systems by injecting hidden behaviors that can be maliciously activated at inference time. While such threats have been extensively studied in unimodal settings, their impact on multimodal foundation models, particularly vision-language models (VLMs), remains largely underexplored. In this work, we introduce BackdoorVLM, the first comprehensive benchmark for evaluating backdoor attacks and defenses on VLMs across a broad range of settings. It adopts a unified perspective that injects and analyzes backdoors across core vision-language tasks, including image captioning and visual question answering. BackdoorVLM organizes multimodal backdoor threats into 5 representative categories: targeted refusal, malicious injection, jailbreak, concept substitution, and perceptual hijack. Each category captures a distinct pathway through which an adversary can manipulate a model's behavior. We evaluate these threats using 12 representative attack methods spanning text, image, and bimodal triggers, tested on 2 open-source VLMs and 3 multimodal datasets along with 5 representative defense methods. Our analysis reveals that VLMs exhibit strong sensitivity to textual instructions, and in bimodal backdoors the text trigger typically overwhelms the image trigger when forming the backdoor mapping. Notably, backdoors involving the textual modality remain highly potent, with poisoning rates as low as 1\\% yielding over 90\\% success across most tasks. Moreover, existing defenses lack generalization across trigger types and backdoor scenarios, leading to unreliable protection against diverse triggers across modalities and forms. These findings highlight significant, underexplored vulnerabilities in current VLMs. We hope that BackdoorVLM can serve as a useful benchmark for analyzing and mitigating multimodal backdoor threats.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:44:10Z",
+      "input_sha256": "c65c04aff0959a779d6a3879306e7285afb228632c84d193a207be157f813653",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM 백도어 공격·방어 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "VLM 백도어 공격·방어 평가 벤치마크 BackdoorVLM 제안"
         }
       ]
     }
