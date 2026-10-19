@@ -981,7 +981,15 @@
         "2610.22542",
         "2610.22708",
         "2610.22822",
-        "2610.22846"
+        "2610.22846",
+        "2610.22869",
+        "2610.22889",
+        "2610.22894",
+        "2610.22964",
+        "2610.22980",
+        "2610.22989",
+        "2610.23141",
+        "2610.23284"
       ]
     }
   },
@@ -19943,6 +19951,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "자동연구 에이전트 과학적 판단 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.21135": {
+      "arxiv_id": "2610.21135",
+      "paper_title": "Stronger Judges Do Not See More: Deployment-Integrity Blindness in LLM Evaluation",
+      "abstract": "LLM-agent evaluation reports behavioral scores but leaves the identity of the deployed runtime stack unreported. A tampered deployment that preserves evaluated outputs passes every output-only evaluator. We introduce DIB-Bench, a benchmark that measures this deployment-integrity blindness across 7,560 scored examples, six tamper types, and an evaluator ladder from regex scorers through LLM judges to GPT-5-nano. Stronger evaluators accept more tampered outputs: mean acceptance rises from 88.6% (rule-based) to 94.1% (GPT-5-nano), and a trigger-conditional tamper invisible on the evaluation suite produces 48-100% harmful outputs, rising with model capability. A PAC-style bound shows that tampers with zero output shift are undetectable from outputs at any sample size; a manifest-hash identity channel detects them with zero samples. Behavioral fingerprinting identifies the model component above chance (76.7%) but covers one of six stack components. We also propose a graded deployment-identity descriptor for evaluation reports.",
+      "paper_updated": "2026-10-15T02:44:08Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "e0d5755bf05063ed5dbbb39a673e09f1b4c1347540a8edcbc43ca491a3957a0a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 평가 배포 무결성 벤치마크로 언어모델 평가에 해당"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "DIB-Bench라는 배포 무결성 평가 벤치마크를 새로 제안"
+        }
+      ]
+    },
+    "2610.21270": {
+      "arxiv_id": "2610.21270",
+      "paper_title": "Auditing Escalation Reliability in Healthcare LLM Agents: A Perturbation-Controlled Benchmark of Workflow-State Failures",
+      "abstract": "Trustworthy biomedical AI requires reliable action selection when evidence is missing, stale, conflicting, or late, not only accurate answers on static inputs. We instantiate an episode-level evaluation protocol as 400 synthetic healthcare workflow episodes: 40 hand-authored semantic seeds across four task classes, two surface parameterizations, and five controlled variants, scored on ANSWER/ASK CLARIFICATION/ABSTAIN/ESCALATE under a pre-declared 5:1 missed-versus-unnecessary escalation cost. Reference actions are single-author study-policy labels, not clinician-adjudicated ground truth. Across five open-weight configurations (1.7B--9.7B), clean decision accuracy reaches 0.97, yet uncertainty-prompted models miss 32--97% of required escalations. The stronger 9.7B configuration narrows but does not remove the gap, falling from 0.97 clean accuracy to 0.78 under conflict. Verbalized confidence is inconsistent (ECE 0.10--0.54; failure AUROC 0.48--0.77), and a development-tuned confidence-only policy yields no utility gain. A transparent workflow-aware controller improves 5:1 utility for every model and reduces missed escalations to 0.12--0.24, at specificity 0.83--0.93. However, a 30-concept lexical stress test reduces each rule detector's recall from 1.00 on trigger phrases to 0.00 on unseen paraphrases, limiting the controller claim to this benchmark. Seed-clustered statistics, ablations, cross-task transfer, raw outputs, and manifests are packaged for audit. The results motivate explicit workflow-state evaluation while showing that apparently effective routing controls need their own generalization tests.",
+      "paper_updated": "2026-10-15T05:04:10Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "9d6106aa8b0d784725099af85f8627baab5ba2e1fb9819e9e49ce671176abf8f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "의료 LLM 에이전트 워크플로 평가 벤치마크로 LLM 평가 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "의료 에이전트 에스컬레이션 평가 벤치마크 400 에피소드 제안"
+        }
+      ]
+    },
+    "2610.21304": {
+      "arxiv_id": "2610.21304",
+      "paper_title": "VALCON: Benchmarking and Enhancing Value Consistency in Large Language Models via Dual-Role Variation",
+      "abstract": "Current value alignment evaluations for large language models (LLMs) heavily rely on output compliance, overlooking whether LLMs maintain value consistency when alternating between generator and evaluator roles. Such consistency is increasingly important because modern LLM agents and alignment pipelines often rely on the same LLM to both generate actions and evaluate their acceptability. To mitigate this limitation, we propose VALCON, a role-driven data construction framework that operationalizes value consistency into three benchmark suites (VAB-Consistency, VAB-Boundary, VAB-Challenge) via dual-role variation. By systematically pairing an LLM's generative behavior with its evaluative judgments under identical principles, VALCON synthesizes target evaluation data that exposes hidden value discrepancies. Experiments on 28 LLMs reveal pervasive cross-role inconsistency: models with highly compliant outputs frequently fail to align their judgments with their own generations. To understand and address this gap, we perform mechanistic probing that uncovers a role-dependent representational decoupling associated with this behavioral asymmetry. Guided by these insights, we propose a representation-directed intervention that effectively mitigates consistency failures. Our work establishes value consistency as a distinct alignment dimension and provides a complete evaluation-analysis-mitigation pipeline. Code and data are available at https://github.com/tjunlp-lab/VALCON.",
+      "paper_updated": "2026-10-15T05:52:52Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "23667ef8fab500e37a018b2322d129dd96c3a1af8ef70bb44508974a4049e57d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 가치 일관성 벤치마크 및 평가 방법론 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "가치 일관성 평가 벤치마크 3종과 데이터 공개"
+        }
+      ]
+    },
+    "2610.21330": {
+      "arxiv_id": "2610.21330",
+      "paper_title": "VoteGEO-Bench: Measuring the Impact of Generative Engine Optimization on Electoral Visibility",
+      "abstract": "Large language models (LLMs) are increasingly used for election information, yet little is known about how external web content shapes the political information they present. Generative engine optimization (GEO) rewrites web content to improve its visibility in generated responses. To investigate its potential risks in voting scenarios (VoteGEO), we introduce VoteGEO-Bench, a benchmark covering the 2024 U.S. presidential election and the 2026 Japanese House of Representatives election, combining election-related queries, historical webpages, and voter personas. We first analyze sources cited by generative engines and find that many citations come from lower-cost owned and open-platform sources, while some webpages remain visible across days. We then evaluate 11 rewriting strategies in 4 categories, examining target specification, effectiveness across engines and elections, and the role of voter personas. Rewriting without specifying a target rarely increases target exposure, whereas target-specified rewriting more often does. Strategies that improve page organization or strengthen a position through argumentation yield greater gains than adding supporting evidence or changing wording. For the two strongest strategies, gains remain broadly positive across evaluated U.S. personas, but persona conditioning shows no consistent effect on these gains. Explicit partisan identities can create baseline exposure gaps larger than the gain from rewriting one webpage. When partisanship is implicit in the voter profile, baseline shifts depend on how strongly the engine responds to that signal.",
+      "paper_updated": "2026-10-15T06:18:55Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "2c6e986cb4fff6c4aa1c475dd6596248a8e72dc6dcf0dfd4eaaf5d3e9336d91f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 선거 정보 생성 엔진 최적화 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "선거 정보 GEO 영향 평가용 VoteGEO-Bench 제안"
+        }
+      ]
+    },
+    "2610.21333": {
+      "arxiv_id": "2610.21333",
+      "paper_title": "QuasiLeak-Bench: Evaluating LLM-Based Privacy Detectors on Policy-Conditioned Quasi-Evidence Group Recovery",
+      "abstract": "Natural language messages often contain quasi-identifiers that are weak in isolation but can jointly reveal an individual's private attributes. We call such a jointly revealing set of cues a quasi-evidence group. Existing privacy benchmarks focus on explicit identifiers, attribute inference, or task-driven disclosures, leaving inference from quasi-evidence groups largely unmeasured. In practice, whether exposing such a quasi-evidence group violates privacy also depends on sender-specified disclosure policies. We introduce QuasiLeak-Bench, a benchmark for policy-conditioned quasi-evidence group recovery, which evaluates whether detectors recover complete quasi-evidence groups and flag the disclosures the given policy prohibits. To obtain reliable ground truth at scale, a reverse-construction pipeline first selects weak quasi-identifiers, composes them into quasi-evidence groups verified to jointly reveal a target attribute, and generates documents around this evidence, followed by automated quality control. Experiments show that existing privacy detectors transfer poorly to QuasiLeak-Bench, and locally deployable LLM-based detectors fall far behind proprietary models, mainly because they miss most quasi-evidence groups altogether. However, a 4B model fine-tuned on our training split surpasses the strongest prompted model on held-out documents, showing that the task is learnable.",
+      "paper_updated": "2026-10-15T06:20:09Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "abf3a2b6b5c53f8b9adb3de8acb2f6c700435a1e0de44fb780e28e3b1481fc01",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 기반 프라이버시 탐지기 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "준식별자 프라이버시 탐지 평가 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.21397": {
+      "arxiv_id": "2610.21397",
+      "paper_title": "Watts If? A Benchmark for Counterfactual Reasoning About the AI Data Center Buildout",
+      "abstract": "An AI data center is committed years before it draws a watt: a few discrete choices (grid or on-site gas, evaporative or dry cooling, which county to file in) fix its capital, water draw, and carbon path, and LLMs are now asked to help screen them with no test of whether they track what each commitment rules out. We introduce DCBench-440, with two arms reported separately: 200 generative questions over STRIPS worlds for five US deal archetypes, with search-verified gold answers and no tested shortcut above 12% on any question type, and 240 multiple-choice questions grounded in quoted site records, emission equations, and stated scenarios. Across open-weight deployments, accuracy spans 12.5-71.5% (generative) and 58.3-92.5% (multiple choice). One skill fails everywhere: asked to list every action available at a decision gate, no model exceeds 4.0% exact match. The strongest list 72-85% of the actions that would change the project's state but omit most permitted actions that change nothing; with those excused, the best exact match is still 24%. Code, data, and other materials are available upon request.",
+      "paper_updated": "2026-10-15T07:16:25Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "084232082ad51cc281ad0bb2930377efce668c3c978b5d33ef7804934fceafba",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 반사실적 추론 벤치마크로 모델 평가 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "데이터센터 반사실 추론 벤치마크 DCBench-440 제안"
+        }
+      ]
+    },
+    "2610.21412": {
+      "arxiv_id": "2610.21412",
+      "paper_title": "JevAgentHarness: Benchmarking, Deploying and Training Decision Models That Share Control with LLMs",
+      "abstract": "Large language model (LLM) agents now fix software, operate computers and serve customers, but their harnesses, the programs that run them, call a large LLM at every step, which makes long tasks slow and costly. Most of these calls end in a multiple-choice decision, such as which tool to call next. Decision models such as Jev answer these questions directly, at a fraction of an LLM call's time and price. We ask how a harness can delegate these decisions to a decision model with little loss of success. To evaluate decision models in agentic tasks, we build AgentDecisionBench, which tests them from isolated questions up to control of a running agent, on public benchmarks and our DecisionGym environment. The decision model most accurate on isolated questions solved only 69.5% of agent tasks, and without a fitted confidence threshold, delegating tool choices lowered success by 19.0 points. Building on these findings, we then design JevAgentHarness, which fits this threshold for each choice on the agent's own trajectories and lets the LLM decide below it. Because existing decision models never see the states an agent reaches after its own mistakes, we train AgentDecision-4B, an open 4B model, on such states with Jev's answers as labels. On tasks unlike its training data, the agent solved 91.5% of them with AgentDecision-4B and 82.0% with Jev. On tasks like their training data, 4B models trained this way made agents 81.1-89.0% cheaper and up to 2.5 times faster, without losing 3 or more points of task success. The models, data, and harness will be released at https://github.com/JevAgentHarness/JevAgentHarness.",
+      "paper_updated": "2026-10-15T07:27:08Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "5b4327e8f1545f2bb1c1b1323aadd1a33f315bac8816c2473f332b0e8883e067",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 의사결정 위임 벤치마크 및 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 의사결정 평가용 AgentDecisionBench 제안"
+        }
+      ]
+    },
+    "2610.21440": {
+      "arxiv_id": "2610.21440",
+      "paper_title": "SITAR: A Situational Distortion Metric for Automatic Speech Recognition Evaluation",
+      "abstract": "In automatic speech recognition (ASR), transcription errors with similar lexical or semantic discrepancies can have markedly different consequences for the situation conveyed by speech. Capturing these differences requires not merely contextual assessment, but an understanding of what the spoken discourse describes, establishes, or seeks to bring about. However, relying on LLM judges introduces computational cost and scoring variability. We introduce SITAR, a situational distortion metric for ASR, realized through a comprehensive end-to-end construction framework. Specifically, this framework aggregates situational severity and cumulative extent into a unified score via a bounded recursive formulation. Using targets derived from this formulation with limited offline LLM support, we train SITAR as a lightweight BERT-family regressor that scores reference-hypothesis pairs in a single forward pass, entirely free of any prohibitive runtime costs. Recognizing that introducing a new metric demands rigorous justification, we formalize a principled validation protocol spanning both extrinsic validity, assessed at macro and micro levels, and intrinsic scorer reliability. The former, evaluated across diverse datasets and models, demonstrates that SITAR reliably tracks broad capability scaling while providing orthogonal diagnostic utility, whereas the latter, examined on a purpose-built controlled benchmark, confirms the operational soundness of the scoring instrument itself. Through systematic validation, we demonstrate that SITAR holds strong potential as a practical, lightweight complement to existing ASR metrics. We will release the full recipes (code, model weights, dataset, etc.) after the internal review to support community research.",
+      "paper_updated": "2026-10-15T07:48:03Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "4b6f7635e5ab57011441255f34b8ec9a836e180094361eca9bca3cff519938d9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "ASR 평가 지표로 LLM 판단 대체하나 평가 방법론"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "ASR 평가용 상황 왜곡 지표 SITAR와 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.21468": {
+      "arxiv_id": "2610.21468",
+      "paper_title": "Can LLMs Tell Stories Out of Order? A Corpus and Benchmark for Nonlinear Narrative Generation",
+      "abstract": "Every story has two orders: the order in which its events happen and the order in which they are told. A story is nonlinear when the two differ. We introduce a benchmark of 83 published works that measures whether language models can tell nonlinear stories. For each work, we annotate one list of events in both orders, together with a story graph of causal dependencies, character knowledge, and the questions the telling raises and resolves. Given events in chronological order, all 19 models tell them, on average, more chronologically than the published works do; asked for a specific structure, they land within the human range about half the time. We then compare a model's stories of the same events under different conditions, using both an automated judge and 71 human readers. Both prefer the chronological story a model writes by default to the nonlinear one it writes on request, which readers find harder to follow in 81% of decisive judgments. Readers also prefer stories written from the story graph to stories constrained to the published telling order (72% of decisive judgments), a difference the judge does not detect. Our results suggest that following an instruction to reorder a story is not yet the same as telling it well out of order.",
+      "paper_updated": "2026-10-15T08:13:12Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "ef32cf9fce4cc4865118880c5ca1660e5927fa8874adf1b0645e09163ca4b1f8",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 비선형 서사 생성 벤치마크 및 인간 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "비선형 서사 생성 코퍼스·벤치마크 83작품 제안"
+        }
+      ]
+    },
+    "2610.21555": {
+      "arxiv_id": "2610.21555",
+      "paper_title": "When Does Muon Actually Win? A Paired Data-, Time-, and Tuning-Budget Benchmark",
+      "abstract": "Muon's gains in data efficiency motivate evaluating its performance under explicit data, time, and tuning budgets. On a single A100 GPU, we compare a reference single-device Muon implementation with AdamW across 17.7M- and 33.6M-parameter causal language models and 2.70M-parameter vision transformers. A common 23-candidate development budget selects configurations evaluated with five matched seeds, full validation trajectories, optimizer-step timing, and a frozen one-shot test. Muon reduces validation-loss area under the curve by 3.25--22.44\\% at equal data and lowers test loss in all 20 primary pairs. In this configuration, Muon improves time-normalized loss area} by 19.68--22.31\\% on vision, while AdamW is better by 3.38--6.96\\% on language. The full Muon optimizer call, including auxiliary AdamW updates, consumes 56.1--69.6\\% of training time, compared with 6.1--9.1\\% for the AdamW baseline. Muon also has higher expected regret under restricted access to these candidate pools. These results characterize small models with reference kernels; their wall-clock ordering does not establish a ranking for larger models or optimized implementations.",
+      "paper_updated": "2026-10-15T09:15:49Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "1ce8029c157ea42530eb6a9fb0f0b503b0a32f90ab08ba33de3e79153370cd95",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "Muon 대 AdamW LLM 학습 벤치마크 비교"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "Muon 옵티마이저 학습 효율 비교 연구로 벤치마크 아님"
+        }
+      ]
+    },
+    "2610.21568": {
+      "arxiv_id": "2610.21568",
+      "paper_title": "From Perception to Prediction and Intervention: Benchmarking Proactive Video Assistants in Real-Life Scenarios",
+      "abstract": "Recent multimodal large language models have advanced video understanding, but existing benchmarks mainly evaluate whether models can interpret observed visual content. In real-world scenarios, assistants must additionally anticipate what assistance is needed and decide when to provide it. To address this gap, we introduce \\textsc{P$^3$IBench}, a benchmark for proactive video understanding in real-life streaming scenarios. It evaluates three complementary capabilities: daily perception, risk prediction and intervention. We benchmark 12 representative open-source and proprietary video-language models, including streaming and adapted non-streaming systems. Our evaluation shows that current models struggle to make well-calibrated response decisions. Finally, we construct additional proactive training data and train \\textsc{P$^3$I-Assistant-4B}, achieving improvements on several tasks, though gains remain uneven across capabilities. Together, these findings show that effective proactive assistance requires not only visual understanding, but also precise response timing and appropriate restraint.",
+      "paper_updated": "2026-10-15T09:23:45Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "8cb04fefd0013ff1fcf1838ddce4ca57592cf9da5b67155c0e0b3fde125c7a95",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "능동적 비디오 어시스턴트 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "능동적 비디오 어시스턴트 평가용 P3IBench 제안"
+        }
+      ]
+    },
+    "2610.21893": {
+      "arxiv_id": "2610.21893",
+      "paper_title": "GACC-Bench: Benchmarking Goal-Adaptive Context Compression Ability across Large Language Models",
+      "abstract": "Context compression in long-running applications of large language models (LLMs) must preserve goal-relevant information, often before specific downstream questions are known. We introduce GACC-Bench, a benchmark for Goal-Adaptive Context Compression that evaluates how reliably LLMs adapt information retention to specified high-level goals. For each source context, we derive one or more high-level goals by grouping source-grounded questions according to shared downstream objectives. The benchmark contains 500 goals and 2,571 questions over 281 document and agent-trace contexts from seven collections spanning diverse domains, with all instances reviewed by human experts. The compressor receives a source context, a goal, and a context-length budget, with the associated evaluation questions withheld. A fixed reader answers these questions individually using the same compressed context. Our evaluation of ten LLM compressors reveals substantial gaps to full-context performance even for the best-performing model, particularly in supporting correct answers to every question associated with a goal. Compared with goal-agnostic compression, target-goal conditioning consistently improves accuracy, whereas mismatched-goal conditioning reduces it. GACC-Bench is available at https://github.com/weiting24/GACC-Bench.",
+      "paper_updated": "2026-10-15T13:51:56Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "f150f1f76b374849b6d32f523395ee3c9a6222fd9889e78bc25197c37beda53f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 목표 적응형 문맥 압축 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "목표 적응형 맥락 압축 벤치마크 GACC-Bench 제안"
+        }
+      ]
+    },
+    "2610.22269": {
+      "arxiv_id": "2610.22269",
+      "paper_title": "X-RIC: An Agentic RAN-Intelligent Controller Benchmark for Enhancing Reinforcement Learning",
+      "abstract": "The O-RAN ALLIANCE introduces architectural flexibility through disaggregation and AI-driven control. While the RAN Intelligent Controller (RIC) enables centralized optimization, current AI approaches lack reasoning capabilities and explainability. We propose eXplainable RIC (X-RIC), a novel framework integrating agentic AI into O-RAN architectures. X-RIC combines reactive Reinforcement Learning (RL) with strategic agentic reasoning through: (i) automated Behavioral Cloning (BC) using domain heuristics for sample-efficient training, (ii) a Telecom Language Model (TLM), a transformer-based reasoning module providing contextual abstraction and interpretability, and (iii) closed-loop co-adaptation within the Near-RT RIC control loop enabling continuous policy refinement. To ensure deployment readiness, we introduce BARX (Benchmarking Agentic Reasoning for RAN), a domain-specific evaluation framework assessing agentic control across latency, compliance, and determinism metrics. We validate X-RIC on SLA-aware network slicing in simulation and O-RAN-compliant testbed deployments. X-RIC achieves 89% operational cost reduction while maintaining SLA compliance, converging 75% faster with 50% fewer training steps and 46% lower variance.",
+      "paper_updated": "2026-10-15T17:34:17Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "dfe3cf0cbe2afcba8cd2925d2ee767d6160b43174534e146c5c298d222eb5cdb",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "에이전틱 RAN 지능형 컨트롤러 RL 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "O-RAN 제어 평가용 BARX 벤치마크 프레임워크 제안"
+        }
+      ]
+    },
+    "2610.22298": {
+      "arxiv_id": "2610.22298",
+      "paper_title": "AI Consilium: a Benchmark of LLM Clinical Multidisciplinary Second Opinions",
+      "abstract": "Large language models (LLMs) can generate differential diagnoses for complex cases, but a useful second opinion must also be factually grounded, clinically coherent, actionable, and safe. We developed a multidimensional benchmark using 300 diagnostically resolved NEJM--MedQA cases: 110 for physician reference ratings and Judge calibration and 190 for held-out evaluation. Eight single-model pipelines generated independent role-specific opinions and interactive-consilium reports under free-form and structured clinical-reasoning conditions. A physician-calibrated LLM Judge evaluated 3,040 final reports and the corresponding structured primary-role outputs. Model identity separated report quality more strongly than response format. Structured final reports had higher overall mean scores in seven of eight model pipelines, with their clearest advantage in management (2.740 vs. 2.436). Compared with the structured pre-consilium primary-role opinion, the complete structured synthesis had higher pooled scores across all five shared criteria, with the largest increases in problem prioritization, factual grounding, and reasoning coherence. GPT-5.6-Sol led every evaluated component and reached consensus in the fewest review rounds. These findings show that the benchmark can distinguish model capability, the contribution of multidisciplinary synthesis, criterion-specific effects of response structure, deliberation dynamics, and inference requirements within one common-case evaluation.",
+      "paper_updated": "2026-10-15T17:46:37Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "1223eea5b599ca36f18ceaf0d09739a5e2a5918015a4b8a12b30887d17d956f0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 임상 다학제 의견 벤치마크 및 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "임상 다학제 진료 평가용 벤치마크 300 케이스 구축"
+        }
+      ]
+    },
+    "2610.22312": {
+      "arxiv_id": "2610.22312",
+      "paper_title": "Grid-Bench: Can LLMs Predict How Discrete Worlds Change?",
+      "abstract": "Spatial instructions describe how to move objects, transform regions, or modify their surroundings. When several operations are applied in sequence, each acts on a configuration shaped by earlier changes. How accurately can large language models (LLMs) predict the resulting spatial state? We introduce Grid-Bench, an executable benchmark in which eight families of operations transform discrete worlds represented as two-, three-, and four-dimensional grids. Given an initial grid, explicit rules, and an event history expressed as text, a model predicts the complete final grid. Reference execution makes every predicted value checkable, supporting comparisons across spatial operations, history lengths, and workloads. Evaluating six LLMs shows that complete-state accuracy falls sharply as histories grow, with substantial divergence among models that perform similarly on single events. Models with similar exact-match accuracy can nevertheless differ substantially in the number of incorrect cells on shared instances. Even over long histories, some models recover many correct changes beyond what copying the initial state would yield. Grid-Bench makes both complete recovery and these differences in returned states directly measurable across a range of spatial conditions.",
+      "paper_updated": "2026-10-15T17:50:57Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "63eb8b546826c2d59e72cdfb806fa070e5d44458c1e0fa44121cd7456d401ebb",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 이산 세계 변화 예측 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "격자 세계 상태 예측 벤치마크 Grid-Bench 제안"
+        }
+      ]
+    },
+    "2610.22511": {
+      "arxiv_id": "2610.22511",
+      "paper_title": "AuditKIT: A Unified Evaluation Spine for Benchmarking, Judging, and Comparing Large Language Models and Agentic Systems",
+      "abstract": "Evaluating language models and agents requires combining benchmark accuracy, judge-based assessment, runtime performance, tool-use behavior, and retrieval quality. Differences in interfaces, metric semantics, and trace formats complicate these comparisons and can hide failures in agentic workflows. We present AuditKIT, a source-available evaluation library that records these measurements in one result representation, with direction-aware metric contracts, configuration fingerprints, and extensible metrics and backends. For agents, it provides turn-aware tool-call matching, separates parallel from sequential execution, and distinguishes verified task outcomes from trajectory-level diagnostics. Missing or unobservable evidence is marked unscored rather than counted as failure. For retrieval-augmented generation, it combines ranked retrieval metrics, judged grounding, and deterministic evidence checks. Seven case studies spanning model comparison, serving runtimes, retrieval, tool calling, and interoperability show how answer extraction, runtime behavior, and metric selection change evaluation outcomes.",
+      "paper_updated": "2026-10-15T18:05:10Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "5f6def7a1bf8290f4abd49007f05094148da453f6206ec0da7657dd68e9a45f5",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 및 에이전트 평가 통합 라이브러리"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM·에이전트 통합 평가 라이브러리 AuditKIT 제안"
+        }
+      ]
+    },
+    "2610.22542": {
+      "arxiv_id": "2610.22542",
+      "paper_title": "HeRE: A Novel Benchmark for Hebrew Relation Extraction via LLM-Guided Denoising of Knowledge Graph Alignments",
+      "abstract": "While LLMs demonstrate strong capabilities in English Relation Extraction (RE) tasks, a significant gap remains in assessing their RE performance in low-resource languages, due to a lack of standardized benchmarks. Creating native, language-specific annotated RE benchmarks is expensive and requires human expertise, while relying on translation yields suboptimal, inaccurate datasets that introduce English-centric biases. To tackle this, we propose a scalable, language-agnostic methodology to create RE data by denoising naturally occurring yet noisy alignments of knowledge bases and corresponding texts. We define a proper alignment via a Natural Language Inference (NLI) task, where a relation triplet is entailed by an input text. We empirically assess five denoising strategies, and demonstrate that multilingual models outperform language-specific models in the few-shot LLM setting, while Hebrew-specific encoders remain competitive under NLI fine-tuning and are strongest in the label-free cross-training setting. We further find that prompting in the native language achieves performance on par with or slightly exceeding English prompts, confirming that the pipeline operates naturally in the target language. The best open-weights model, Gemma-4-31B-it (F1\\,=\\,0.915), matches the best API model, GPT-5.4 (0.921), and reaches F1\\,=\\,0.844 on a fully held-out, dual-annotated test set. Applying the optimized pipeline, we release HeRE: a novel, massive, 1.5-million-instance silver dataset for Hebrew RE, designed to support data-intensive experimentation and model fine-tuning. HeRE bridges a critical gap in standard Hebrew RE evaluation, while providing the NLP community with a reproducible, language-agnostic pipeline for RE dataset construction in other low-resource settings.",
+      "paper_updated": "2026-10-15T18:40:22Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "7cbe8705513f5aee5b11571ccb4a8a81b1eec17316f79bc0cf9435d9cc6d9f1f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 기반 히브리어 관계 추출 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "히브리어 관계 추출 벤치마크 HeRE 데이터셋 공개"
+        }
+      ]
+    },
+    "2610.22708": {
+      "arxiv_id": "2610.22708",
+      "paper_title": "GlobeBench: Evaluating Text-Based World Model Capabilities for Scalable Environment Simulations",
+      "abstract": "Text-based world models have recently shown potential to simulate complex RL environment state transitions for a diverse set of use cases. However, no standardized benchmark exists to compare, study and improve these models. Through this paper, we attempt to solve this problem by building GlobeBench, a novel benchmark with 1,632 tasks across five separate domains and nineteen simulation skills. The tasks check whether models can predict the environment's response to a specific action given the full agent trajectory by understanding earlier state changes, following environment rules, and predicting the effects of actions on both related and unrelated objects. We compare the predicted environment response with an execution-derived reference, using a hybrid architecture with both deterministic gates and a semantic judge. Among 20 general-purpose LLMs and specialized text world models, GPT-6 Astra achieves the highest task success rate at 49.57%. We find that model accuracy decreases as actions affect a larger portion of the environment. Specifically, when the agent's changes must propagate to dependent objects, task success drops to an average of 5.1% across all 20 models. Although model strengths differ across tasks, 631 tasks remain unsolved by any model, suggesting a significant gap in general LLM capabilities as a world model.",
+      "paper_updated": "2026-10-15T22:24:56Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "d3ee535748603652aad57e69a1deda51dcdb1e4a83752b3ec724344cdb5fb2b3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 텍스트 세계 모델 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "텍스트 월드모델 평가 벤치마크 GlobeBench 제안"
+        }
+      ]
+    },
+    "2610.22822": {
+      "arxiv_id": "2610.22822",
+      "paper_title": "VISTA: A Multimodal Egocentric Benchmark for Goal-Oriented Perception and Assistance to Blind and Low-Vision Users",
+      "abstract": "Blindness and low vision limit many people's ability to complete daily tasks, motivating AI assistants that provide useful guidance. Yet, existing benchmarks do not adequately test whether vision models can provide effective everyday assistance. In particular, i) existing benchmarks primarily rely on visual and textual inputs, with limited support for other modalities that are increasingly available in egocentric wearable devices such as gaze, inertial measurements, spatial trajectories, and others; and ii) existing evaluations emphasize scene understanding and question answering, with limited coverage of goal-conditioned guidance for blind and low-vision users across everyday tasks. To bridge this gap, we introduce VISTA (Visually Impaired Scene and Task Annotations), a multimodal egocentric benchmark for goal-oriented assistance for blind and low-vision users. VISTA contains $\\sim$1,000 egocentric recordings captured with Project Aria glasses; each recording provides synchronized sensor streams, six of which serve as model inputs, and three different types of annotation, covering ten task categories (TC), from object localization to hazard detection. We evaluate 14 representative vision-language models zero-shot on VISTA and design a lightweight multimodal model baseline that integrates all six modalities. Experimental results show that, although existing models can often describe egocentric scenes, they remain limited in generating goal-directed assistive guidance. VISTA thus provides a benchmark for evaluating multimodal models that could improve everyday accessibility.",
+      "paper_updated": "2026-10-16T01:57:16Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "b123c664e9c0f5d8750180f47cb03e3dd3fc9d4ff88201f4e69e23038cf8cf1d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "시각장애인 지원 멀티모달 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "저시력자 지원 멀티모달 벤치마크 VISTA 제안"
+        }
+      ]
+    },
+    "2610.22846": {
+      "arxiv_id": "2610.22846",
+      "paper_title": "Benchmarking and Enhancing Agentic Causal Discovery",
+      "abstract": "LLM agents can now run causal discovery algorithms on a dataset and report what comes out. Whether they do more than that, such as noticing where an algorithm went wrong and fixing it with further tests, is hard to tell from current benchmarks. Most of them give the variables meaningful names, and an LLM shown only the names of the Tübingen cause-effect pairs already gets 99% of the directions right. With the names removed, the data are usually clean enough that picking a better algorithm than PC closes most of the gap. We introduce Heuresis, a benchmark of anonymous simulated datasets whose mechanisms range from linear Gaussian to heavy-tailed. For each family of datasets it separates what a better existing algorithm can gain from what only a closer look at the data can gain, and it traces every edge an agent changes. Every family leaves a gap that none of the algorithms, the router and the two causal-discovery foundation models we ran can close, so a score above the best chosen algorithm has to come from using the data. We instantiate the benchmark with an agent harness and three LLMs, GPT-6.1 Sol, Claude Opus 5.5 and Qwen 3.8 Flash. GPT-6.1 Sol surpasses the best chosen algorithm on all six families, by 14% adjacency F1 on the most difficult one, and Claude Opus 5.5 does so by 7.4% there. A third of the true edges the two agents restore on the two hardest families appear in no algorithm's output. The code and data will be publicly released to facilitate future work.",
+      "paper_updated": "2026-10-16T02:47:51Z",
+      "created_at": "2026-10-19T13:51:59Z",
+      "input_sha256": "93a6191e14c51b2e6a51a378b89fd2020faa074f2b6a5d81b4c88890dee2291d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 인과 발견 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 인과발견 평가 벤치마크 Heuresis 제안"
         }
       ]
     }
