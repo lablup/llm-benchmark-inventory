@@ -690,6 +690,78 @@
       },
       "issue_url": null,
       "proposal_sha256": "c6e027558200a607eef1cb7f568c2c5f76ac430890a7766bd001f44dd469a3f0"
+    },
+    "2602.16571": {
+      "decision": "needs_evidence",
+      "changes": [],
+      "reason": "추출 결과가 근거·형식 검사를 통과하지 못해 반영하지 않았습니다.",
+      "validation_error": "parse: Quote does not occur on the cited PDF page",
+      "arxiv_id": "2602.16571",
+      "paper_title": "Utility-Preserving De-Identification for Math Tutoring: Investigating Numeric Ambiguity in the MathEd-PII Benchmark Dataset",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2602.16571",
+        "sha256": "9080fc504b4285062a21a81b757e6ca848f27eb6a285d7aa524c15070a8bc03e",
+        "accessed": "2026-10-19T14:18:39Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 11,
+          "elapsed_seconds": 79.29,
+          "pdf_sha256": "9080fc504b4285062a21a81b757e6ca848f27eb6a285d7aa524c15070a8bc03e",
+          "visual_pdf_audit": false,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "2f57b7e36f3041b3ec442c99f55bfac3edfeafd9931e2b5e74528dbc5a798cd6",
+          "page_json_file": "2602.16571.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-10-19T14:20:13Z",
+      "extraction_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "screening": {
+        "arxiv_id": "2602.16571",
+        "paper_title": "Utility-Preserving De-Identification for Math Tutoring: Investigating Numeric Ambiguity in the MathEd-PII Benchmark Dataset",
+        "abstract": "Large-scale sharing of dialogue data is key to advancing the science of teaching and learning, yet rigorous de-identification remains a major barrier. In mathematics tutoring transcripts, numeric expressions frequently resemble structured identifiers (e.g., dates or IDs), leading generic Personally Identifiable Information (PII) detection systems to over-redact core instructional content and reduce data utility. This work asks how to detect PII while preserving educational utility, focusing on this \"numeric ambiguity\" problem. We introduce MathEd-PII, the first benchmark dataset for PII detection in math tutoring dialogues, built with human-in-the-loop LLM annotation. Using density-based segmentation, we show that false PII redactions cluster in math-dense regions, confirming numeric ambiguity as a key failure mode. We then compare four detection strategies: a Presidio baseline and three LLM-based approaches with basic, math-aware, and segment-aware prompting. Domain-aware prompting, including both math-aware (F1: 0.802) and segment-aware versions (F1: 0.821), substantially outperforms the baseline (F1: 0.379) while reducing numeric false positives, demonstrating that de-identification must incorporate domain context to preserve analytic utility. This work provides a new benchmark and evidence that utility-preserving de-identification for tutoring data requires domain-aware modeling.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:43:34Z",
+        "input_sha256": "f7c469a68ac5460d9fc99747e7cb3c00bb9d5e76b043f51b3515451e14b4f0f9",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "uncertain",
+            "reason": "수학 튜터링 PII 제거로 언어 일반성 불명확"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "수학 튜터링 PII 탐지 신규 벤치마크 데이터셋 제시"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "0764cf2f403156156145733681fa5ce91e067db1f446203c809ad8151bf123a1"
     }
   },
   "processed_comments": [],
@@ -710,7 +782,8 @@
         "2610.08794",
         "2605.08467",
         "2605.10002",
-        "2602.16571"
+        "2602.16571",
+        "2606.04500"
       ],
       "spent_usd": 0.0,
       "blocked": true,
