@@ -1431,6 +1431,84 @@
       },
       "issue_url": null,
       "proposal_sha256": "2ed206cb152e9dd0c5143a97d9c2c3f5efaf66f11ceb0bbf42b7ce44a1693a05"
+    },
+    "2609.27787": {
+      "decision": "exclude",
+      "reason": "이 논문은 LLM judge로 채점되는 벤치마크의 측정 해상도(일반화가능성 이론 기반 분산분해, MDD, 단일 judge 상한)를 분석한 방법론·메타평가 연구다. MT-Bench, Arena-Hard, AlpacaEval 2의 기존 문항을 재사용해 분산 성분을 추정했을 뿐, 새로운 재사용 가능 벤치마크를 도입하거나 기존 벤치마크를 실질적으로 갱신하지 않는다. 논문이 언급하는 'Sieve'는 38개 문항의 판별력 선별 측정 도구로, 저자도 '능력 벤치마크가 아니라 측정 도구'라고 명시했고 데이터·코드는 요청 시 제공(비공개)이라 공식 https 링크가 PDF에 존재하지 않는다. 따라서 한국어/영어 트랙 어느 쪽에도 새 행이나 갱신 행을 제안하지 않는다.",
+      "changes": [],
+      "arxiv_id": "2609.27787",
+      "paper_title": "Ask Which, Not How Good: Sizing Benchmarks Scored by an LLM",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.27787",
+        "sha256": "0ff1d51b8f961b87010b5006224d7b2f5d15cd9a7795d6a0e70ef37c558b2158",
+        "accessed": "2026-10-19T14:47:31Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 18,
+          "elapsed_seconds": 91.5,
+          "pdf_sha256": "0ff1d51b8f961b87010b5006224d7b2f5d15cd9a7795d6a0e70ef37c558b2158",
+          "visual_pdf_audit": false,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "712632ee50d4af4c50cc572ea93c890881529ae8b52c7609b80161f4cd823b5f",
+          "page_json_file": "2609.27787.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-10-19T14:49:11Z",
+      "extraction_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "screening": {
+        "arxiv_id": "2609.27787",
+        "paper_title": "Ask Which, Not How Good: Sizing Benchmarks Scored by an LLM",
+        "abstract": "Benchmarks scored by an LLM judge routinely adjudicate differences of a tenth of a point, but the resolution of those benchmarks has never been measured. Existing sample-complexity work covers accuracy benchmarks and leaves the judged case open. Treating the system as the object of measurement, we decompose 373,019 judgments into system, item, judge and interaction components using generalizability theory. The central result is structural: under a single judge, generalizability asymptotes to sigma2_s/(sigma2_s+sigma2_sj) regardless of item count, because the system-by-judge term carries no n_i. Items saturate; judges do not. The item cost of a target diverges as the target nears that ceiling. The ceiling is a property of pointwise rubric scoring, not of LLM judging. Run as a pairwise preference in both presentation orders, sigma2_sj falls two orders of magnitude below sigma2_s and the ceiling rises to 0.986 (bootstrap [0.934, 1.000] on 11 systems), so one judge suffices. Pairwise buys a different problem: a system presented first wins 8.6 percentage points more often than the same system presented second, a bias 1.23x the median improvement claimed in the 53 published win-rate comparisons we recovered. Protocol design dominates panel size. Measured floors are 0.41-1.24 points on a 0-5 scale at native item counts, against a median reported improvement of 0.28 points; on the one benchmark recurring often enough for an exactly matched comparison, all 17 recovered MT-Bench improvements fall below MT-Bench's own floor, and 70% of the win-rate claims fall below the pairwise floor. An audit of 628 arXiv papers, double-coded by two independent models and validated against blind human coding (kappa=0.73), finds fewer than one paper in four states whether its evaluation was run more than once, and only 46-67% report uncertainty of any kind.",
+        "paper_updated": "2026-09-24T00:00:00Z",
+        "created_at": "2026-10-19T13:43:47Z",
+        "input_sha256": "a893fd299e930d779e5be634eb44b9bdafef494138f5849b120b9f32de5d0876",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 채점 벤치마크의 신뢰도·일반화 가능성 분석"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "LLM 채점 벤치마크 분해능 측정 방법론 제시"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "09d0e81dda038dc26acaa5f576b761f012a68ff3b91616f233463a23b25f164d"
     }
   },
   "processed_comments": [],
@@ -1464,7 +1542,8 @@
         "2606.10156",
         "2609.20836",
         "2609.26090",
-        "2609.27787"
+        "2609.27787",
+        "2609.27821"
       ],
       "spent_usd": 0.0,
       "blocked": true,
