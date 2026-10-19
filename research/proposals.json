@@ -381,7 +381,27 @@
         "2604.25231",
         "2605.00689",
         "2605.07338",
-        "2605.07492"
+        "2605.07492",
+        "2605.17281",
+        "2606.09570",
+        "2607.03261",
+        "2607.10490",
+        "2608.16349",
+        "2609.15855",
+        "2609.16607",
+        "2609.33117",
+        "2609.33158",
+        "2609.33261",
+        "2609.33295",
+        "2609.33314",
+        "2609.33319",
+        "2609.33411",
+        "2609.33530",
+        "2609.33699",
+        "2609.33796",
+        "2609.33807",
+        "2609.33893",
+        "2609.33905"
       ]
     }
   },
@@ -6123,6 +6143,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "대화형 차트 코드 생성 벤치마크·평가 프로토콜 제안"
+        }
+      ]
+    },
+    "2609.32424": {
+      "arxiv_id": "2609.32424",
+      "paper_title": "CyberClear: A Benchmark for LLM Agent Systems on APT Attack Chain Provenance",
+      "abstract": "Large language model agents have demonstrated promising capabilities in cybersecurity tasks, yet their ability to reconstruct complete Advanced Persistent Threat attack campaigns from complex security logs remains largely unexplored. Existing cybersecurity benchmarks for agents mainly focus on vulnerability discovery, exploitation, and security analysis tasks, leaving the evaluation of attack chain provenance under realistic security logs insufficiently studied. To address this gap, we introduce CyberClear, a benchmark for evaluating LLM agents and advanced agent systems on APT attack chain provenance from long-context security logs. CyberClear covers both single-step attacks and multi-stage attack chains, requiring agents to identify attack evidence, infer attack progression, and generate provenance graphs containing entities, causal relationships, MITRE ATT&CK techniques, and forensic evidence. To enable comprehensive evaluation, we develop an evaluation method tailored to APT attack chain provenance. Unlike conventional text similarity metrics that focus on surface-level matching, our evaluation examines whether reconstructed graphs preserve the semantics of attack chains across single-step behavior correctness, multi-step behavior identification, temporal and causal consistency, entity and relationship fidelity, and overall attack narrative consistency. Advanced multi-agent systems powered by state-of-the-art LLMs still struggle on CyberClear, motivating us to propose CyberProvenance, an agent cyber harness designed for multi-agents that augments LLM agents with evidence accumulation, execution-based validation, and feedback-guided refinement mechanisms for reliable attack-chain provenance. Extensive evaluations on CyberClear demonstrate the effectiveness of CyberProvenance in improving evidence reasoning, execution-grounded validation, and complete APT attack chain reconstruction.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "a4707b4447316dc9a9815e016b81e5495acde15433d4afc2be2b451851468a31",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트의 APT 공격 체인 재구성 벤치마크로 보안 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "APT 공격 연쇄 출처 복원용 LLM 에이전트 벤치마크·평가법 신규 제안"
+        }
+      ]
+    },
+    "2609.32533": {
+      "arxiv_id": "2609.32533",
+      "paper_title": "LLMAdBench: A Human Preference Benchmark for Advertising in LLM Responses",
+      "abstract": "Inserting advertisements (ads) into consumer-facing LLM output is emerging as a new business model, but there is little shared evidence on how such ad insertion should be evaluated or how it affects user preferences. We introduce LLMAdBench, a human-preference benchmark for studying advertising in LLM-generated content. The benchmark isolates a simple but practically important decision: given a user conversation, an LLM response, and a matched advertisement, where should the ad be placed? Our dataset compares pairs of responses that differ only in ad position while holding all other conditions fixed including the user query, base answer, advertisement, and disclosure condition. Human annotators evaluate each pair based on six criteria from both advertiser's and user's perspectives. The resulting benchmark contains more than 18000 human judgments across two disclosure conditions: explicitly labeling the ad as sponsored and merging it into the response without disclosure. We use LLMAdBench to evaluate eight frontier LLMs as preference judges and find that they are not reliable substitutes for human evaluation. Even the most stable models reverse roughly one quarter of their decisions when the presentation order is swapped, agreement across models is low, and their placement preferences differ systematically from those of human annotators. Moreover, LLMAdBench contains substantial learnable signal. In particular, a Qwen3-8B model fine-tuned on the human preferences improves substantially over its base model and outperforms all zero-shot frontier judges on the held-out prediction task. Beyond model evaluation, LLMAdBench provides quantitative evidence on the advertiser-user trade-off and shows that the sponsorship disclosure systematically changes users' preference over ad placement.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "7a983df09c5276fc62bb962615efb2c823fe8491f318b6e331b92829331359ab",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 응답 내 광고 삽입 위치에 대한 인간 선호도 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 광고 삽입 인간 선호 벤치마크 데이터셋 1.8만 판단 구축"
+        }
+      ]
+    },
+    "2609.32547": {
+      "arxiv_id": "2609.32547",
+      "paper_title": "Prioritizing Repeated LLM Evaluation for Hidden Failure Discovery",
+      "abstract": "Large language models are commonly evaluated by generating a small number of stochastic responses for each prompt in a benchmark. Because inference budgets are limited, this shallow evaluation may fail to observe low-probability but operationally important failures. A prompt that produces no failures in a small sample may therefore appear reliable despite having a nonzero latent probability of failure under repeated inference. We formulate LLM reliability evaluation as a budget-constrained discovery problem in which each prompt is associated with an unknown per-generation failure probability. We propose a budgeted discovery framework that first performs shallow evaluation across the prompt set and then uses trial-level failure outcomes together with prompt-derived representations to learn a feature-based ranking of failure propensity. The resulting scores prioritize prompts with zero observed shallow failures for deeper evaluation, concentrating the deep-evaluation budget where hidden failures are more likely to be discovered. We evaluate this approach on AIRBench and StrongREJECT across multiple model and system-prompt conditions. The central empirical test asks whether models fit without access to deep-evaluation outcomes can rank prompts with zero observed shallow failures according to their likelihood of producing failures under deeper evaluation. On AIRBench, the highest-ranked 10\\% of unresolved prompts achieves 2.54x hidden-failure lift for Qwen 2.5 7B and 1.87x for Gemma 3n E4B, recovering 25.4\\% and 18.7\\% of subsequently observed hidden failures, respectively, compared with 10\\% expected under random allocation. Semantic-neighborhood and feature-ablation analyses further show that this predictive signal can be recovered from multiple representations of prompt content and relationships.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "e6cb0eeda9d5d3371694b0e32e506176638b9ea7ca1fd6d0d8a9361f9835c432",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 반복 평가를 통한 숨은 실패 발견 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "기존 벤치마크 재사용한 평가 예산 배분 기법 제안, 자체 벤치마크 자료 불명확"
+        }
+      ]
+    },
+    "2609.32569": {
+      "arxiv_id": "2609.32569",
+      "paper_title": "OmniSmartHome: A Multimodal Reasoning Benchmark for Smart-Home Agents",
+      "abstract": "Smart-home assistants are expected to handle diverse, realistic requests that arise in daily life. In such interactions, users often rely on the surrounding multimodal context-pointing at objects or referring to what they see or hear, leaving their requests underspecified in language alone. Existing smart-home benchmarks, however, express user requests solely through language, leaving context-dependent real-world requests underexplored. To bridge this gap, we introduce OmniSmartHome, a multimodal smart-home benchmark where each spoken request is paired with the surrounding visual and spatial-audio context, providing complementary cues to disambiguate underspecified requests. OmniSmartHome comprises 1,360 synthetic and 272 real-world episodes. We evaluate 16 omnimodal large language models (Omni-LLMs) and reveal that, while they perform strongly when speech alone sufficiently conveys the user's intent, performance drops substantially when resolving it requires reasoning over multimodal contextual cues. As a simple agent baseline, we provide PROME (PROcedural Memory for multimodal Evidence gathering), which equips agents with specialized audio-visual perception tools and procedural memory for orchestrating their use. PROME generally improves performance across six Omni-LLMs. Demos and examples are available at https://omni-smart-home.github.io",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "926c7dd51ac90274fa37b8266b31e6a2ce350a46116b2ce598efff54746adca2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "스마트홈 에이전트를 위한 멀티모달 추론 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "스마트홈 멀티모달 추론 벤치마크 및 에이전트 베이스라인 신규 제안"
+        }
+      ]
+    },
+    "2609.32607": {
+      "arxiv_id": "2609.32607",
+      "paper_title": "VoxMem: Benchmarking Multimodal Memory in Large Audio Language Models",
+      "abstract": "Spoken conversational systems must recover information from prior interactions (i.e., memory), yet relevant information in speech extends beyond what was said to who said it, how it was spoken, and what was audible, information that exists only in the audio signal and cannot be recovered from a transcript. Beyond what to remember, memory also demands diverse operations: retrieving a single fact, integrating evidence across turns, tracking an evolving state. Real interactions further unfold across sessions, meaning information accumulates across distinct episodes rather than a single continuous recording. Existing benchmarks fall short on all three dimensions: they focus primarily on lexical content, adopt limited and ad hoc memory operations, and treat memory as a single-session problem. We argue that principled memory evaluation requires jointly characterizing the acoustic evidence to be retained and the operations applied to it, and introduce a taxonomy along these two axes. Building on this taxonomy, we present VoxMem: 3,196 evaluation instances over 34,743 spoken sessions (177 hours) crossing four acoustic evidence types (speech semantics, speaker identity, paralinguistic cues, environmental sound) with four memory operations (information extraction, multi-session reasoning, temporal tracking, and answer refusal), grounded in multi-session histories and stratified across context budgets from 8K to 64K tokens. Evaluating 15 LALMs, no model exceeds 40% at 32K. Models retain what was said far better than who said it, how, or what was audible, a gap that widens for complex operations, grows with history length, and manifests as qualitatively distinct failure modes across evidence types. VoxMem aims to provide a foundation to measure and drive progress on the full scope of spoken conversational memory.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "3985d8d74ede0399318f36e989bcf29fa4492db60c40df14621f1ada6b2a2186",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "대규모 오디오 언어 모델의 멀티모달 기억 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "오디오 LLM 메모리 평가 벤치마크 VoxMem과 분류 체계 신규 제안"
+        }
+      ]
+    },
+    "2609.32691": {
+      "arxiv_id": "2609.32691",
+      "paper_title": "Silent Failures in Agentic Security Evaluation: A Validated Harness for Tool-Call Mediation Under Indirect Prompt Injection",
+      "abstract": "LLM agents that invoke privileged tools are vulnerable to indirect prompt injection (IPI), in which adversarial instructions embedded in retrieved data hijack the agent's actions. A growing body of work evaluates defenses against IPI, but the validity of that evaluation is rarely examined. We audit an IPI benchmark and its harness and identify four defect classes -- silent payload non-delivery, attack success scored by tool identity rather than arguments, false-rejection rate conflated with model incapacity, and the absence of an audit trail -- each of which yields a plausible, publishable, and incorrect number. We quantify the distortion by re-scoring identical execution traces under the defective and corrected definitions: on real agent behaviour, the tool-identity scorer reports a 21.7% attack-success rate where the true argument-level rate is 1.2%. In the sharpest case, an open model previously reported at 62.8% registers 0% under the corrected harness -- the prior figure largely an artifact of undelivered payloads and identity-level scoring. We release a harness whose construction makes each defect unrepresentable -- machine-checkable payload placement, argument-level attacker predicates, per-scenario environments, and mandatory trace persistence -- and use it to report three quantities the field does not: whether a compromised agent discloses the attack, the full security/utility operating curve of an LLM-judge defense, and tool-calling capability disentangled from defensive over-blocking. A corrected harness further overturns a reported \"capability barrier\": a model deemed incapable of tool use is in fact fully capable, its earlier result an artifact of environment mismatch. We argue that evaluation validity is a prerequisite for, not a footnote to, defense claims in agentic security, and provide an instrument that enforces it.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "391d21ac445808a82ec15fce284c196cf303c2e3d201c21088214659cb4e0328",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "간접 프롬프트 주입 방어 평가의 타당성 감사 및 하네스"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "간접 프롬프트 주입 평가용 검증된 하네스 공개 및 결함 교정"
+        }
+      ]
+    },
+    "2609.32734": {
+      "arxiv_id": "2609.32734",
+      "paper_title": "REALIS: A Curated Dataset for Studying the Challenges of AI Image Detection",
+      "abstract": "AI-generated image detectors are often evaluated on benchmarks where real and synthetic images differ in content, quality, or generation artifacts, allowing models to rely on dataset-specific cues and fail on unfamiliar generators or processed images. Existing datasets provide limited support for evaluating these challenges jointly across diverse visual content. We introduce REALIS, a dataset of 1.43 million real and synthetic images generated by 42 modern text-to-image models, including the latest proprietary systems such as Nano Banana 2. REALIS combines prompts derived from real images, quality filtering, and stratified sampling to reduce class-specific shortcuts while preserving content diversity. We further introduce REALIS-Expert, a stress-test subset for high-quality synthetic images, where real and generated samples are selected with closely matched semantic and visual characteristics. We also propose a robustness protocol covering 35 transformations at five severity levels to analyze detector behavior under image processing. Based on REALIS, our benchmark evaluates pretrained detectors, fine-tuned models, and zero-shot vision-language models under generator and post-processing shifts. On the hardest processed split, the best pretrained conventional detector achieves 0.550 ROC-AUC, compared with 0.752 for the best REALIS-trained detector. REALIS provides a unified framework for measuring and improving the reliability of AI-image detectors under conditions that better reflect real-world use.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "ede8feb312deb468e9cebcc45e69680d1c58d0ff877ba296d5c53a3463f5a0f3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 생성 이미지 탐지기의 실제 환경 강건성 평가 데이터셋"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "AI 이미지 탐지용 143만 장 데이터셋·강건성 프로토콜 신규 제안"
+        }
+      ]
+    },
+    "2609.32763": {
+      "arxiv_id": "2609.32763",
+      "paper_title": "Mandela-Bench: Multimodal Models Remember Canonical Images Instead of Seeing Them",
+      "abstract": "Historical photographs and other canonical images can now be edited seamlessly with a single instruction, often leaving no reliable pixel-level trace. In such cases, the only evidence of manipulation may be a fact about what the image depicts. Existing benchmarks instead rely on generator artefacts, image-caption inconsistencies, visual implausibilities, or external references, and therefore do not test whether a model can use its own world knowledge to verify a recognized image. We introduce Mandela-Bench, containing 1,507 edits of canonical images: 1,359 knowledge-only forgeries, each contradicting one verifiable fact, and 148 anchor-free controls that preserve the editing process without introducing a factual contradiction, together with 474 untouched originals. We score not only whether a model detects a forgery, but whether its explanation identifies the inserted entity or the fact being violated. Across 36 multimodal models, from 0.8B parameters to frontier scale, we find a consistent failure mode. When a public figure is removed from a familiar photograph, models still name that person in up to 72.7% of responses. Some models can distinguish the replacement face from the original when shown in isolation, yet still judge the full edited photograph as authentic. Providing the true event and date does not improve knowledge-grounded detection, whereas providing the same information after cropping away the recognizable composition does. Even under explicit verification prompts, only one of the 36 models meets the KGR criterion on at least half of the forged images. These results suggest that the failures cannot be explained by missing knowledge or inadequate perception alone. Instead, they are consistent with recognition biasing verification toward the remembered canonical image rather than the observed edit.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "5a96bf8eb589253a8309b4b40962bddbe575578503f0fd43106346691e82d22d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "정규 이미지 편집 탐지를 위한 멀티모달 지식 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "정준 이미지 위조 탐지 멀티모달 벤치마크 Mandela-Bench 신규 제안"
+        }
+      ]
+    },
+    "2609.32770": {
+      "arxiv_id": "2609.32770",
+      "paper_title": "C-HAT-Bench: Benchmarking Chinese AI-Text Detection Beyond Fully Generated Text",
+      "abstract": "Large Language Models (LLMs) increasingly participate in writing by modifying or extending human drafts, causing machine involvement to vary in both form and extent. Yet most Machine-Generated Text (MGT) detectors are evaluated only on fully human-written versus fully AI-generated text. Because human--AI collaboration can weaken or redistribute cues associated with machine generation, strong performance under this binary setting may overstate detector reliability. This mismatch remains underexplored in Chinese: detection cues are shaped by tokenization and language-specific text distributions, yet controlled resources spanning production settings, domains, and generators remain limited. To fill this gap, we present a Chinese Human-AI Collaborative Text Detection Benchmark (C-HAT-Bench), a unified benchmark that links $5,000$ human-written source texts from five domains to more than $240,000$ variants produced using six generative models under Prefix-Conditioned Continuation as a reference setting and three collaborative production modes. We evaluate $21$ detectors through four protocols spanning zero-shot and pretrained supervised document-level detection, boundary localization, and cross-condition generalization. Relative to Prefix-Conditioned Continuation, mean AUROC across document-level detectors is $12.0\\%$ lower on the collaborative production modes, with the largest detector-specific relative decrease reaching $44.4\\%$. Transfer across collaborative production modes is also asymmetric, indicating that performance in a given production setting is not a reliable predictor of performance in other production settings.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "4e865e699e6a72cad7c6900f5b2844750ff06470f34d6a94437fd86dd57bf34e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "중국어 인간-AI 협업 텍스트 탐지 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "중국어 인간-AI 협업 텍스트 탐지 벤치마크 C-HAT-Bench 구축"
+        }
+      ]
+    },
+    "2609.32813": {
+      "arxiv_id": "2609.32813",
+      "paper_title": "USAI-Quant: A Quantitative Reasoning Benchmark for Vision-Language Models in Built Environments",
+      "abstract": "Large vision-language models (VLMs) have emerged as a powerful paradigm for urban and spatial AI. However, current state-of-the-art large VLMs still struggle with quantitative reasoning on remote sensing imagery. Existing benchmarks and algorithms are predominantly based on qualitative Visual Question Answering (VQA), providing limited insights into the quantitative reasoning capabilities of VLMs for built environment metrics. To address this gap, we develop Quantitative Urban and Spatial AI benchmark (USAI-Quant), the first benchmark designed to quantitatively evaluate VLM's reasoning capabilities on built environment metrics via remote sensing imagery. USAI-Quant is curated from the 335 largest U.S. cities, aligning high-resolution remote sensing images with quantitative built environment metrics. We then evaluate both general-purpose and remote sensing VLMs (RS-VLMs) by applying VQAs to tens of built environment metrics across three complexity levels. Our results reveal that current state-of-the-art models consistently fall short on numeric reasoning tasks. We further conduct in-depth analyses across models, question types, and geographic locations, uncovering insights into performance variability and task-specific challenges.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "49869cd76368c3e41ffbb72adbf2d294cc58cf0279e51d0b49f1a4a3b344cb61",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "건축 환경 지표에 대한 시각언어 모델 정량 추론 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "원격감지 정량 추론 평가용 VLM 벤치마크 USAI-Quant 신규 제안"
+        }
+      ]
+    },
+    "2609.32835": {
+      "arxiv_id": "2609.32835",
+      "paper_title": "FinancialAuditBench: Benchmark Construction under Differential Privacy Using Real-World Priors",
+      "abstract": "As AI agents are becoming widely adopted in the financial services industry, careful measurement is essential to understand where they can be reliably deployed and where oversight and professional review remain necessary. Such measurement, however, is constrained by limited access to proprietary or privacy-sensitive data. Existing benchmarks therefore often rely on publicly available data, human- and/or LLM-authored tasks, or simplified settings. We introduce FinancialAuditBench, a benchmark for evaluating agents on financial statement audit tasks, along with a framework for systematically generating synthetic engagements. Our task generation framework leverages differentially private aggregate statistics from historical audits along with audit expertise contributed through over 1,100 hours of benchmark development and review. FinancialAuditBench consists of 90 tasks spanning workpaper completion and review across six synthetic audit engagements, each containing an average of 179 files. Evaluation on eleven frontier models shows that while agents complete substantial portions of staff-level audit tasks well, they sometimes perform inappropriate procedures or produce incorrect documentation. Beyond financial auditing, our framework offers an approach for systematically generating synthetic tasks for model evaluation and training in privacy-sensitive domains.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "5d9a10661ac417bb963a9fb64972c1af4bf7aff8055dd7dc8bae17c2c4102778",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "차분 프라이버시 기반 금융 감사 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "재무 감사 에이전트 벤치마크 및 합성 과제 생성 프레임워크 제안"
+        }
+      ]
+    },
+    "2609.32867": {
+      "arxiv_id": "2609.32867",
+      "paper_title": "Are You Sure You're Sure? Two Confounds in a Sycophancy Benchmark",
+      "abstract": "Sycophancy is a language model's tendency to cave when a user pushes back, abandoning a correct answer for the user's. Several benchmarks now measure it by scripting an objection and recording how often the model caves. Because that objection is a prompt template, whatever else the template varies is measured along with the property it claims to isolate. We audit SycEval, which reports that objections raised before a model answers (preemptive) cause more caving than those raised after (in-context), and attributes the gap to timing. Two features of its templates vary alongside the property each is meant to test. First, SycEval's objections escalate through four strength levels, and at the two weakest only the preemptive template names a target answer, so timing and naming vary together. We build the missing comparison and test it on multiple-choice questions and SycEval's own free-form pipeline. Naming a target answer raises the follow rate, the share of samples matching the user's assertion, by 14.1--49.5 percentage points (pp), and once both templates name one, the timing comparison reverses on three of the five model conditions we test: models cave \\emph{less} under preemptive objections than in-context ones, opposite to SycEval. Second, the output-format instruction benchmarks append for automatic grading also varies with objection placement. Moving it from the pushback into the question flips its effect in opposite directions across models on the same items ($p=0.0059$). The same effect appears in SycEval's free-form pipeline: relocating its instruction lowers caving by 5.1pp on Llama-3.1-8B, while an equivalence test confirms no effect on Qwen3-4B. Both confounds live in the template rather than the models under test, so both are correctable: we close with three checks benchmark authors can apply before publishing.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "322323d9ce67c45b574f3259d5a153762296b2161646886a84dc4babf9f5f458",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "아첨 벤치마크의 두 교란 요인 감사 및 재현성 검증"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "기존 아첨 벤치마크 교란 변수 감사, 재사용 가능 자료 기여 불명확"
+        }
+      ]
+    },
+    "2609.32890": {
+      "arxiv_id": "2609.32890",
+      "paper_title": "A Function-Level Vulnerability Score Measures Flag Rate More Than the Model: Protocol Effects on Paired Benchmarks",
+      "abstract": "Language models are increasingly evaluated as vulnerability detectors, and scores reported for similar models differ widely between papers. We measured how much of that difference evaluation protocol accounts for, with model outputs held fixed. In a paired test, a model must flag a vulnerable function and clear its version after a fixing commit. Three choices that published evaluations make differently were varied one at a time: metric, verdict extraction and output budget. Seven frontier and large open models were evaluated on five released pair benchmarks and a set pooled for this work under one protocol, and 61 open models of 1.5B to 36B parameters on the pooled set. Function-level F1 follows how often a model flags both functions of a pair (Spearman $+0.86$ over 42 combinations) and is nearly unrelated to pair-level correctness ($+0.16$). On the pair score, extraction changes a model's number by $+0.001$ at the median and budget by $+0.02$ with an interval through zero, whereas the model changes a benchmark's number by up to 0.18 and the benchmark a model's by up to 0.16; a function-level score therefore measures flag rate more than model. For 37 of 68 models the difference between correct and reversed pairs is within its 95% interval of zero, the value for a null model that flags each function at a fixed rate, while both-flagged and both-cleared rates exceed that null by 0.055 on median, and for 64 of 68 both functions of a pair receive one answer more often than independence predicts: verdicts are determined by the text common to both functions. On length-matched pairs a linear probe on activations separates 0.78 by within-pair ranking, against 0.64 for a tf-idf baseline and 0.5 for length; the generated verdict is near chance for three of six models and at 0.55 to 0.57 for the other three, and a prompted logit is at chance for all six.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "92893364d739dad666ec2300ebee2c08376af7ecf1670c508962580772e49497",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "취약점 탐지 평가 프로토콜 효과 분석 및 함수 수준 점수"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "취약점 탐지 평가 프로토콜 효과 분석, 자체 벤치마크 기여 불명확"
+        }
+      ]
+    },
+    "2609.33014": {
+      "arxiv_id": "2609.33014",
+      "paper_title": "TCMQA: A 38K-Question Traditional Chinese Medicine Benchmark with a Licensed-Practitioner Reference",
+      "abstract": "Medical benchmarks for language models are built almost entirely on Western biomedicine. Traditional Chinese Medicine (TCM) is a separate system, with its own diagnostic framework and its own literature, and it remains largely unmeasured. The few TCM evaluations that exist are small, narrow, and rarely paired with a human reference. We present TCMQA, an open benchmark of 38,279 questions from Chinese TCM licensing examinations, paired with 15,151 responses from 101 licensed practitioners. We evaluate 29 instruction-tuned models from 9 families, spanning 0.27B to 14.8B parameters. Accuracy ranges over 59 points, and no model approaches saturation. Pretraining data predicts TCM ability far better than scale: a 12B Western-pretrained model reaches 39.6%, while a Chinese-pretrained model an eighth its size reaches 60.8%. Nine models exceed the practitioner majority vote of 64.9%, the best by 21.8 points, and all nine come from that same Chinese-pretrained family. Yet difficulty does not transfer between models and practitioners: accuracy is flat across practitioner-rated difficulty, item-level agreement is near zero for all 29 models, and on $8.4\\%$ of items the practitioners are correct where the leading model is wrong. We release the corpus, the practitioner responses, the harness, and per-item model outputs at https://huggingface.co/datasets/TechTCM/TCMQA.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "8a375de64860a11f43059abccd61f1337cc8a4f2844d996f42f280af8afd80bb",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "중의학 면허 시험 기반 LLM 벤치마크와 전문가 참조"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "한의학 38K 문항 벤치마크·한의사 응답·하네스 공개"
+        }
+      ]
+    },
+    "2609.35879": {
+      "arxiv_id": "2609.35879",
+      "paper_title": "CruxBench: A Benchmark of Information Discovery",
+      "abstract": "Benchmarks for large language models (LLMs) typically evaluate the accuracy of answers against fixed reference labels. But a central step in many complex real-world tasks is identifying which questions are worth asking in the first place: decomposing a difficult problem into subquestions -- which we call cruxes -- whose answers provide key steps on the path toward solving the target problem. To evaluate this capability of information discovery, we introduce CruxBench, a benchmark that grades LLM-generated questions by their Value of Information (VOI): how much a model-proposed crux updates beliefs about a target forecasting question. CruxBench enjoys a rare combination of three key properties: it is (1) contamination-resistant by construction, since ground truth is generated by future world events; (2) open-ended, admitting unbounded and complex text-based submissions rather than one correct numeric answer; and (3) grounded, with informativeness measured against quantified changes in real-world beliefs. We evaluate a diverse set of eight models on 293 target forecasting questions and find that VOI correlates highly with independent measures of model capability (r=0.90) and captures cruxes' usefulness for answering target questions. However, information discovery remains challenging even for frontier LLMs, which only narrowly outperform a random-timing baseline.",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "31e4b0180497b96f25052d4d0eb9089431ee69c67b1d6bcc20e3ce4d2e9ed7d4",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 정보 발견 능력을 평가하는 크럭스 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "정보 발견 능력 평가용 CruxBench, VOI 기반 신규 벤치마크"
+        }
+      ]
+    },
+    "2602.20571": {
+      "arxiv_id": "2602.20571",
+      "paper_title": "CausalReasoningBenchmark: A Real-World Benchmark for Disentangled Evaluation of Causal Identification and Estimation",
+      "abstract": "Many benchmarks for automated causal inference evaluate a system's performance based on a single numerical output, such as an Average Treatment Effect (ATE). This approach conflates two distinct steps in causal analysis: identification, formulating a valid research design under stated assumptions, and estimation, implementing that design numerically on finite data. We introduce CausalReasoningBenchmark, a benchmark of 174 queries across 139 real-world datasets, curated from 73 peer-reviewed research papers and three widely used causal-inference textbooks. For each query, a system must produce (i) a structured identification specification that names the strategy, the treatment, outcome, and control variables, and all design-specific elements, and (ii) a point estimate with a standard error. By scoring these two components separately, our benchmark enables granular diagnosis: it distinguishes failures in causal reasoning from errors in numerical execution. Baseline results with a state-of-the-art LLM show that, while the model correctly identifies the high-level strategy in 81% of cases, full identification-specification correctness drops to only 38%, revealing that the bottleneck lies in the nuanced details of research design rather than in computation. CausalReasoningBenchmark is publicly available on Hugging Face and is designed to foster the development of more robust automated causal-inference systems.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "c6be60030227a875043524331ceaf00c28435d628e01248978b2705d2d92f956",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "인과 추론의 식별과 추정을 분리 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "인과 추론 식별·추정 분리 평가 벤치마크 공개(Hugging Face)"
+        }
+      ]
+    },
+    "2604.25231": {
+      "arxiv_id": "2604.25231",
+      "paper_title": "DRAGON: A Benchmark for Evidence-Grounded Visual Reasoning over Diagrams",
+      "abstract": "Diagram question answering (DQA) requires models to interpret structured visual representations such as charts, maps, infographics, circuit schematics, and scientific diagrams. Recent vision-language models (VLMs) often achieve high answer accuracy on these tasks, yet correct answers do not guarantee that models ground their reasoning in the diagram regions that support the prediction. Models may instead rely on textual correlations or dataset artifacts without identifying the visual evidence required to verify the answer. This limitation prevents reliable evaluation of diagram reasoning and reduces interpretability. We introduce DRAGON, a benchmark for evaluating evidence-grounded visual reasoning in diagrams. Given a diagram, a question, and the correct answer, a model must predict bounding boxes that correspond to the visual elements required to justify the answer. These evidence regions may include answer-bearing components, textual labels, legends, axes, connectors, and other supporting structures involved in the reasoning process. The DRAGON dataset contains 11,664 annotated question instances from six diagram QA datasets: ChartQA, Circuit-VQA, InfographicsVQA, MapIQ, MapWise, and AI2D, with a 2,445-instance test set carrying human-verified evidence annotations and a standardized evaluation framework. Our evaluation on recent VLMs reveals that even Claude Opus 4.6 achieves a Grounding IoU of only 23.8% on AI2D, showing that faithful visual grounding remains an open challenge. DRAGON supports future research on models that ground their predictions in visual evidence.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "1b0515d03a346a1c2a0bd10247fae64e377475922199ffe614ced0d45c3ddbf7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다이어그램에 대한 근거 기반 시각 추론 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "도표 근거 기반 시각 추론 벤치마크 DRAGON 및 평가 체계 제안"
+        }
+      ]
+    },
+    "2605.00689": {
+      "arxiv_id": "2605.00689",
+      "paper_title": "BabelSafe: A Policy-Grounded Multilingual Safety Benchmark for LLMs",
+      "abstract": "As Large Language Models (LLMs) are increasingly deployed in cross-linguistic contexts, ensuring safety across diverse regulatory and cultural environments has become a critical challenge. However, existing multilingual benchmarks largely rely on general risk taxonomies and machine-translated data, limiting evaluation to predefined risk categories and providing insufficient coverage of region-specific regulatory requirements and cultural contexts. To bridge these gaps, we introduce BabelSafe, a policy-grounded multilingual safety benchmark covering 13 language settings. BabelSafe is constructed from regional regulatory sources, with risk categories and fine-grained rules extracted from jurisdiction-specific regulatory documents directly used to guide the generation of multilingual safety data. During data generation, we further incorporate region-specific cultural contexts, enabling regulation-grounded and culturally contextualized evaluation across languages. Building on BabelSafe, we develop BabelGuard, a Diffusion Large Language Model (dLLM)-based guardrail model that supports multilingual safety judgment and policy-conditioned safety assessment. BabelGuard has two variants, a lightweight 1.5B model for fast `safe/unsafe' classification and a more capable 7B model for customizable policy-conditioned safety checking with detailed explanations. We evaluate BabelGuard against 11 strong guardrail baselines on 6 existing multilingual safety benchmarks and BabelSafe, demonstrating the strong performance of BabelGuard across these evaluation settings. We hope that BabelSafe and BabelGuard can help advance the development of regulation-aware and culturally contextualized multilingual guardrail systems.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "05630cb4d90bb689ee5891a744be3a4df11c6db89c5dbe84a7b3f64fa88039f2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "규제 기반 다국어 LLM 안전성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "13개 언어 정책 기반 다국어 안전 벤치마크 BabelSafe 구축"
+        }
+      ]
+    },
+    "2605.07338": {
+      "arxiv_id": "2605.07338",
+      "paper_title": "ShellfishNet: A Domain-Specific Benchmark for Visual Recognition of Marine Molluscs",
+      "abstract": "Reliable visual recognition of shellfish is important for ecological monitoring and aquaculture, but real-world imagery exhibits substantial variation in acquisition conditions, appearance, and posture. Existing marine vision resources cover diverse taxa and imaging settings, but fine-grained mollusc recognition remains underexplored in a group-disjoint benchmark that jointly evaluates class prediction, representation-space retrieval, and condition sensitivity. To address this gap, we introduce ShellfishNet, a provenance-aware, group-disjoint benchmark of 40,130 images from 100 marine mollusc classes, organized into 30,879 acquisition or observation groups. Rather than treating recognition as a single clean-accuracy leaderboard, ShellfishNet evaluates model configurations across classification, image-to-image retrieval, taxonomic error structure, and controlled condition sensitivity. We benchmark representative convolutional, transformer-based, hybrid and efficient, self-supervised, and vision-language models on classification and retrieval. Separately, we evaluate open image-captioning and vision-language models on the captioning subset and assess selected fixed checkpoints under controlled generic and marine-inspired synthetic transformations. Across the benchmark, image-level and class-aware classification largely agree, whereas retrieval provides complementary model rankings and taxonomy projection reveals that a non-negligible subset of exact-class errors remains correct at higher taxonomic ranks. Selected fixed checkpoints with similar clean accuracy can also exhibit distinct sensitivity profiles under controlled transformations. These results show that model comparison on shellfish imagery should account for both task and image condition, rather than rely on a single clean classification score. The dataset and evaluation protocols will be publicly released.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "f9589fa12bff7b042e292d7560643685f9aa14172bd70bb82b1bfaeb6f9eeb52",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "해양 연체동물 시각 인식 도메인 특화 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "해양 연체동물 세분화 인식 벤치마크 ShellfishNet·프로토콜 제안"
+        }
+      ]
+    },
+    "2605.07492": {
+      "arxiv_id": "2605.07492",
+      "paper_title": "How Far Is Document Parsing from Solved? PureDocBench: A Source-Traceable Benchmark across Clean, Degraded, and Real-World Settings",
+      "abstract": "Document parsing models are improving rapidly, but existing benchmarks are still insufficient for a comprehensive evaluation of their capabilities. We introduce PureDocBench, a benchmark with 10 domains, 66 subcategories, and 1,475 pages. Each page has matched Clean, Digital, and Real versions, covering clean renders, simulated degradation, and real capture or sharing conditions. The resulting 4,425 images have source-derived annotations for text, formulas, tables, and reading order, checked through automated validation and human review. Keeping page content and annotations fixed allows direct comparisons across image conditions. We evaluate 58 models, including pipeline-based parsers, end-to-end parsers, and general vision-language models. The best three-track average score is 79.69 out of 100, and the mean across models is 63.84. Scores drop by 3.34 points on Digital and 11.61 points on Real on average, relative to Clean. TeleOCR leads on Clean, GLM-5.3-Flash on Digital, and Gemini 3.6 Flash on Real. The benchmark dataset, source documents, generation tools, and evaluation code are publicly available at https://github.com/zhihengli-casia/PureDocBench.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:47Z",
+      "input_sha256": "13286936adcec8d21d088b309c101befb5682919bd23f7d5064bc42c9f0292fe",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "문서 파싱의 깨끗함·열화·실제 환경 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "문서 파싱 평가 벤치마크 PureDocBench 데이터·코드 공개"
         }
       ]
     }
