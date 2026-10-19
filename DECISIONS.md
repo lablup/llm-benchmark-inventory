@@ -86,3 +86,10 @@ links. The landing page shows the latest brief update. Link the monthly GitHub
 archive from both pages. The user specifically asked not to emphasize an empty
 update history, so omit zero-result notices and dates when no update exists.
 Preserve the existing daily schedule and agreement/evidence requirements.
+
+## 8. Keep process notes in an ignored local folder (2026-10-19)
+
+The user requested a local process record under `_local/`, excluded from Git.
+Keep the pipeline explanation, relevance criteria, and PDF retention behavior
+in `_local/PROCESS.md`; commit only the ignore rule and this decision. This does
+not change the investigation quota or delete cached PDFs.
