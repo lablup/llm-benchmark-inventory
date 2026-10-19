@@ -861,7 +861,27 @@
         "2503.21821",
         "2506.00482",
         "2508.08742",
-        "2512.04125"
+        "2512.04125",
+        "2601.04824",
+        "2605.00513",
+        "2605.29107",
+        "2606.09004",
+        "2606.19887",
+        "2607.11889",
+        "2609.00982",
+        "2609.04241",
+        "2609.33196",
+        "2610.03935",
+        "2610.06354",
+        "2610.16067",
+        "2610.16127",
+        "2610.16133",
+        "2610.16238",
+        "2610.16260",
+        "2610.16346",
+        "2610.16412",
+        "2610.16426",
+        "2610.16450"
       ]
     }
   },
@@ -17183,6 +17203,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "실제 물리 환경 상호작용 평가 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2505.12135": {
+      "arxiv_id": "2505.12135",
+      "paper_title": "LLM-BabyBench: Can Language Models Plan in Worlds They Can Simulate?",
+      "abstract": "Interactive benchmarks for LLMs usually report a single metric, even though succeeding in them requires models to show several different skills. While those benchmarks are useful for measuring the overall capability of models to perform the downstream task, it is harder to identify which skill was lacking and caused failure solely from the aggregate score. For example, in benchmarks where models are supposed to navigate a simulated world to perform a task, failures can come from perception, an ambiguous instruction, retrieval, missing commonsense about what actions do, unknown dynamics, or planning. \\benchmark recasts the procedurally generated BabyAI gridworld as a fully observable, purely textual environment designed to evaluate planning separately from those factors. The nature of the environment and the structure of the prompt control for the other factors cited above. To evaluate the models, we define the PPD suite: \\textbf{Predict} asks for the state that follows an action sequence, \\textbf{Plan} asks for an action sequence that reaches a goal, and \\textbf{Decompose} asks for a subgoal sequence that achieves a mission. Across seven frontier and open models, queried zero-shot, we find simulation far ahead of planning for every model, close to saturated for the strongest. The length of the required solution governs planning failure, and each of the four strongest models has a horizon beyond which single-attempt success collapses. The responses of claude-opus-4-6 and claude-sonnet-4-6, which show their working step by step, reveal that they plan by proposing L-shaped corridors, which is consistent with their successful plans staying near-optimal while success falls. At the subgoal level, decomposition precision likewise falls to zero on long missions, while comprehension of those missions persists.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "2e7c912457b41325e3f75eafd9a6b870aff2012029435660c1081b7f47a4e915",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM의 텍스트 기반 계획 능력 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "텍스트 기반 계획 능력 평가 벤치마크 PPD 스위트 신규 제안"
+        }
+      ]
+    },
+    "2602.03100": {
+      "arxiv_id": "2602.03100",
+      "paper_title": "Risky-Bench: Evaluating Agentic Safety Risks in Real-World Life-Assist Deployments",
+      "abstract": "Large Language Models (LLMs) are increasingly deployed as agents that operate in real-world environments, introducing safety risks beyond linguistic harm through tool use, external transactions, and multi-step decision making. Existing agent safety evaluations construct risk-oriented tasks that lack a hierarchically organized taxonomy of attack surfaces, rely on predefined harm categories rather than deployment-grounded safety rubrics, and evaluate agent behavior in isolation rather than during realistic, long-horizon task execution. To address these limitations, we propose Risky-Bench, a deployment-grounded framework for systematic agent safety evaluation in life-assist settings. Risky-Bench derives context-aware safety rubrics from domain-agnostic safety principles and systematically probes safety risks across hierarchically organized attack surfaces through realistic task execution under varying threat assumptions. Applied to life-assist scenarios covering food delivery, in-store assistance, and online travel booking, Risky-Bench evaluates seven state-of-the-art agents across 750 tasks, revealing attack success rates ranging from 25% to 60% and exposing systematic failure patterns including threat-model-specific vulnerabilities, attack-surface-dependent risk concentration, and model-dependent effects of explicit reasoning. Our code and data are available at https://github.com/SophieZheng998/Risky-Bench.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "0c96fb970ef2d713fa63258465532d3b768e9a4f1b03737ecc2b39b8fb8a23e3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트의 실제 배포 안전성 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 안전 평가용 Risky-Bench 데이터·프레임워크 제안"
+        }
+      ]
+    },
+    "2604.16287": {
+      "arxiv_id": "2604.16287",
+      "paper_title": "NaijaS2ST: A Multi-Accent Benchmark for Speech-to-Speech Translation in Low-Resource Nigerian Languages",
+      "abstract": "Speech translation for low-resource languages remains fundamentally limited by the scarcity of high-quality, diverse parallel speech data, a challenge that is especially pronounced in African linguistic contexts. To address this, we introduce NaijaS2ST, a parallel speech translation dataset spanning Igbo, Hausa, Yorùbá, and Nigerian Pidgin paired with English. The dataset comprises approximately 50 hours of speech per language and captures substantial variation in speakers and accents, reflecting realistic multilingual and multi-accent conditions. With NaijaS2ST, we conduct a comprehensive benchmark of cascaded, end-to-end (E2E), and AudioLLM-based approaches across bidirectional translation settings. Our results show that audio LLMs with few-shot examples are more effective for speech-to-text translation than cascaded and end-to-end methods trained on fine-tuned data. However, for speech-to-speech translation, the cascaded and audio LLM paradigms yield comparable performance, indicating that there is still considerable room for improvement in developing targeted, task-specific models for this setting. By providing both a high-quality dataset and a systematic benchmark, we hope that NaijaS2ST will serve as a strong foundation for advancing research in low-resource, multilingual speech translation.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "07afacbf9c59f4010e43385d8f645deadba7afccaa4e98e765121eb5c2f8f212",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "저자원 나이지리아어 음성번역 벤치마크로 다국어 음성 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "나이지리아 저자원 언어 음성번역 데이터셋, 한국어·영어 과제 아님"
+        }
+      ]
+    },
+    "2604.23455": {
+      "arxiv_id": "2604.23455",
+      "paper_title": "CUJBench: Benchmarking LLM Agents for Browser-to-Backend Failure Diagnosis",
+      "abstract": "Automated failure diagnosis requires correlating browser-visible symptoms with backend observability signals, yet existing benchmarks do not evaluate this cross-modal reasoning task. Constructing one is non-trivial: multi-modal failure scenarios are costly to annotate, and live-environment capture introduces stochasticity that makes cross-run agent comparison unreliable. We present CUJBench, to our knowledge, the first benchmark to combine browser-visible failure evidence with backend observability in a diagnostic framing. CUJBench addresses annotation cost through an LLM-assisted generation pipeline with a multi-agent review loop and a three-layer annotation scheme, producing 87 labeled scenarios across five fault families, and ensures reproducibility by packaging each failure as a deterministic multi-modal snapshot with a fixed tool interface. Evaluating six LLMs under retrieval, browser-only, and full-toolset baselines, the benchmark yields an overall accuracy of 21.6% with a ceiling of 52.5%, well below saturation. Contrary to expectation, browser-only agents outperform full-toolset agents in aggregate, with expanded evidence access inducing unfocused exploration rather than improved synthesis. Trajectory analysis identifies cross-modal synthesis as the primary bottleneck: agents retrieve the decisive evidence but fail to attribute it correctly, a failure that persists across all six models and that model scale and richer tool access alone cannot resolve.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "b0b7b019a5161b6928bca1cc8849d99847ce8276ae4a9ca4b45ddc6bf4fa5d70",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트의 브라우저-백엔드 실패 진단 평가 벤치마크로 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "브라우저-백엔드 장애 진단 에이전트 벤치마크 CUJBench 신규 제안"
+        }
+      ]
+    },
+    "2606.11260": {
+      "arxiv_id": "2606.11260",
+      "paper_title": "RAIL: Rethinking Auditory Intelligence in Large Audio-Language Models with a CHC-Grounded Benchmark",
+      "abstract": "Humans process rich auditory environments through various cognitive capabilities such as audio perception, audio reasoning and memory. Despite recent progress in large audio-language models (LALMs), current evaluation remains largely task- or domain-centric, focusing on end performance while ignoring underlying auditory cognitive behaviors. This gap between how auditory cognition is understood in humans and how it is evaluated in LALMs hinders the interpretation of model behaviour in underlying capabilities and limits alignment with human auditory objectives. We introduce RAIL, a human-centric benchmark grounded in the Cattell--Horn--Carroll (CHC) framework, which formalises auditory cognition into five core capabilities, and develops them into structured evaluation tasks with principled data curation and human-aligned evaluation protocols. Evaluating 26 LALMs reveals strong performance in knowledge-related tasks but weak auditory perception and memory, reflecting reliance on language-based pretraining. Limited reasoning under auditory settings further suggests a mismatch between existing training paradigms and human-like auditory reasoning, as well as over-reasoning at the cost of efficiency. Six LALMs exceed human performance in general, while auditory processing all lags behind human. Overall, RAIL establishes a new framework for human-aligned evaluation of auditory intelligence.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "48d78f374461f9d8f793c9d2b0e50050a369565db77ce838e733ff993b407004",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "대형 오디오-언어 모델의 인지 능력 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "청각 인지 평가용 CHC 기반 벤치마크 RAIL 신규 제안"
+        }
+      ]
+    },
+    "2606.24162": {
+      "arxiv_id": "2606.24162",
+      "paper_title": "BehaviorBench: Benchmarking Foundation Models for Behavioral Science Tasks",
+      "abstract": "Foundation models have been increasingly applied to behavioral science domains such as psychology, sociology, and economics. While these models show promise in tasks such as survey response prediction and human-subject experiment simulation, there remains no systematic understanding of how well they perform across diverse behavioral science tasks. We introduce BehaviorBench, a comprehensive benchmark that evaluates foundation models along four core capabilities: (1) behavior prediction and simulation, (2) strategic decision-making, (3) subject-trait inference, and (4) behavioral knowledge application. Crucially, BehaviorBench evaluates model outputs at both the individual and distributional levels, capturing not only per-subject accuracy but also population-level alignment, an essential requirement for behavioral validity. Our evaluation shows that BehaviorBench remains challenging for leading general-purpose LLMs and behavior foundation models that are specifically trained with behavioral data. We find that individual-level and distributional performance do not always align. General-purpose LLMs tend to underestimate the diversity of human responses, whereas behavior foundation models often lag behind at individual-level prediction. Our investigation further demonstrates how fine-tuning on diverse behavioral data can improve both individual-level prediction and distributional alignment, balancing these two objectives. Our results highlight the importance of evaluation at both individual and distributional levels, establishing BehaviorBench as a foundation for developing and assessing behaviorally aligned AI systems. Our BehaviorBench and models can be accessed via https://umich-foreseer.github.io/behaviorbench/",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "ef65f6e19c86338f819e301b115a97e0bdef30ccb320888fb2cb210fc78783f0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "파운데이션 모델의 행동과학 과제 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "행동과학 과제 평가용 BehaviorBench 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2610.15239": {
+      "arxiv_id": "2610.15239",
+      "paper_title": "ClinEdge: An Expert-Graded Benchmark of Real Patient Edge Cases Where Frontier Multimodal Models Fail",
+      "abstract": "Most benchmarks for large language models in medicine are built from licensing examinations and theoretical questions. The few that draw on real clinical data do so only in part, and rarely require a model to read a patient's own imaging. ClinEdge addresses this gap with 32 real, de-identified patient cases from active clinical practice, each evaluated across seven frontier systems for a total of 224 expert-graded evaluations. Each case pairs primary imaging with a short vignette, contains a feature known to defeat pattern-matched reasoning, and is scored against the patient's documented clinical course. The suite is built for depth rather than volume. Grading followed a two-stage expert process. First, a senior orthopaedic surgeon graded all 224 responses on a weighted rubric and a pass-or-fail verdict. Second, a panel of nineteen physicians, largely senior specialists at teaching medical colleges, independently reviewed every case and every one of the 224 grades. All seven production systems were evaluated through their public interfaces, and all 224 conversations are preserved as replayable links. Performance was poor across all systems, and the failures were shared: different vendors missed the same findings and converged on the same wrong plans. From the experts' notes we catalogue 18 recurring failure modes in five families. The models stop reading an image at the first finding. They give generic plans and lean toward over-treatment. They trust a misleading history over correct imaging. Their answers vary across systems and runs, and change with question format. Failing answers were delivered fluently and without any expressed uncertainty. Four cases are released in full; the remaining 28 are held out, and we invite frontier AI labs and healthcare AI companies to evaluate their models against them (research@futrbridge.com)",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "c10fb77d161905e238c2173dbed2b2f49437893f5a6d8d256e2c599799cc4b69",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "의료 영역 멀티모달 LLM 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "실제 임상 엣지케이스 다중모달 평가 벤치마크 ClinEdge 제안"
+        }
+      ]
+    },
+    "2610.15634": {
+      "arxiv_id": "2610.15634",
+      "paper_title": "Big-Big-SycoBench: A Benchmark to Detect Sycophancy Through Model Responses to Valid vs. Invalid Arguments",
+      "abstract": "Sycophancy in large language models risks amplifying unsupported claims or beliefs across the knowledge ecosystem as these systems increasingly contribute to research synthesis, evaluation, and decision-making. A reliable model should revise its judgement when a user identifies a genuine flaw, but should resist pushback based on fallacies, emotion, or irrelevant appeals to authority. While sycophancy is usually measured on questions with a verifiable answer, the evaluative tasks in which it is most difficult to detect have no such ground truth. We introduce Big-Big-SycoBench, which measures sycophancy through argument discernment: the ability to revise an evaluation after valid criticism while resisting invalid pressure. The benchmark consists of 450 text artefacts with 5,400 arguments for raising or lowering their quality scores, each reviewed by one or more of twelve human annotators. An LLM scores each artefact twenty times to establish its baseline score and uncertainty. The model is then given a valid or invalid argument and asked to update its score. We only count a revision if it exceeds the model's own baseline variability. We use the resulting score delta to distinguish responsiveness to valid arguments from compliance with invalid ones. Across ten models, responsiveness is 88-95\\% for seven, 76-77\\% for Kimi K3 and GLM-5.3, and 32\\% for Opus 5.5. Compliance ranges from 0.2\\% for GPT-6 Astra to 95\\% for GPT-4o. Big-Big-SycoBench is intended to guide the development of models whose judgements can be corrected by sound arguments, but not displaced by unsupported pressure.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "faf31c79d69676db5dbd91b9a0875f684042b662ecf5530b515ba5d0cdd15f96",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM의 아부성(sycophancy) 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "아첨 성향 탐지용 SycoBench 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2610.15666": {
+      "arxiv_id": "2610.15666",
+      "paper_title": "A Persian Vision-Language-Action Dataset and Benchmark for Ambiguity- and Infeasibility-Aware Instruction-to-Plan Grounding",
+      "abstract": "Converting natural-language instructions into executable action plans conditioned on a scene image is a core capability for embodied human-robot interaction, but existing benchmarks target English, simulated or video-grounded environments, and largely assume instructions are clear and executable. We introduce the first Persian vision-language-action dataset for this task: 258 instances over 230 real household/office photographs, annotated with reference plans, deliberate ambiguity and infeasibility labels, disambiguating question-answer pairs, and an auto-generated chain-of-thought rationale for training. Using this resource, we ablate retrieval-augmentation, chain-of-thought prompting, and an agentic disambiguation step, evaluated with an LLM-as-judge protocol and a new metric, PGOS-FA, extending prior work (PG2S) with step-order sensitivity, an over-generation penalty, and Persian-adapted embeddings. Paired statistical testing across 36 comparisons shows retrieval-augmentation is a large, robustly significant effect, while finer-grained additions are directionally consistent but not statistically distinguishable from noise at this scale, and the LLM-judge metric has near-zero power where PGOS-FA succeeds. A blind human-correlation study on 79 real outputs shows PGOS-FA tracks human judgment at least as closely as the LLM-judge. Testing generalization beyond the ablation's single backbone, we find that most of the gap between an open-weight and a substantially stronger closed planner is attributable to open-weight model generation rather than to the closed model's capability specifically, and that our best configuration significantly outperforms an independently reproduced external baseline despite a weaker backbone. The dataset, PGOS-FA implementation, and evaluation code will be made available upon reasonable request.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "2d0cc2caa285be97a737e0015e4c30b133202793d99888c2d9ad020edb743523",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "페르시아어 지시-계획 그라운딩 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "페르시아어 VLA 데이터셋·벤치마크, 한국어 아님, 재사용성 불명확"
+        }
+      ]
+    },
+    "2610.15667": {
+      "arxiv_id": "2610.15667",
+      "paper_title": "Rate-Resolved Text Evaluation with Masked Diffusion Language Models",
+      "abstract": "A single evaluation score can rank generation systems but rarely reveals what failed. We propose rate-resolved text evaluation, which turns the masking rate of masked diffusion language models into a diagnostic axis. By reconstructing text under different fractions of masked tokens, one diffusion score becomes a vector of band-conditioned scores that reflect reconstruction difficulty at varying levels of visible context. On SummEval, preserving this rate structure yields complementary signal: the best masking-rate band improves fusion with autoregressive likelihood over a collapsed diffusion scalar, survives a sample-shuffle control that breaks rate ordering, and adds residual signal to a fixed prompted judge. A second diffusion model reproduces the effect more weakly. On WMT MQM zh-en, roundtrip mask-and-reconstruct probing produces a tunable localization curve in which ranking-oriented AUROC and span-detection F1 peak at different masking rates. Factuality benchmarks bound the interpretation: band semantics are model- and task-dependent, so each application requires empirical validation.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "15c34223a11bd9fb83cbe5d8b54a1100e3bfa84a1b80b24146f49b35cf6880de",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "마스크 확산 언어 모델의 텍스트 평가 방법으로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "확산 모델 평가 기법 제안, 벤치마크 자체 신규성 불명확"
+        }
+      ]
+    },
+    "2610.15722": {
+      "arxiv_id": "2610.15722",
+      "paper_title": "PhySimCode: A Benchmark and Evaluation Method for Physics Video to Code Generation",
+      "abstract": "Multimodal large language models (MLLMs) are good at video understanding and code generation, but it remains unclear whether they can recover the physical laws underlying videos, a capability essential for converting videos into executable simulations and for providing structured physical supervision in robotics. Captioning motion video does not imply that a model has inferred its governing dynamics, estimated quantitative parameters, or can regenerate the observed scene from code. Existing video-physics benchmarks evaluate plausibility, property estimation, or future-state prediction, but offer limited insight into whether models can translate visual dynamics into runnable simulation code. We introduce PhySimCode, a benchmark for physics video-to-code generation: given only a raw video, a model must infer the relevant physics, recover parameter values, and generate runnable Python that reproduces the input video. The dataset contains 160.6K procedurally generated samples spanning 162 physics phenomena across analytic SciPy simulations and PyBullet-rendered rigid-body, articulated, fluid, and contact-rich scenes; each sample bundles the simulation code, physical parameters, rendered video, and a structured chain-of-thought covering observations, laws, ODEs, numerical methods, and validation checks. We evaluate ten state-of-the-art closed- and open-source MLLMs along physical-law correctness, simulation equivalence, code executability, and parameter recovery. Models reliably state physics laws (4.27-4.93/5) yet score only 1.51-2.47/5 on inferring them from video, and the best system (Claude Sonnet 4.6) recovers just 7.7% of ground-truth parameters within $\\pm 20\\%$, exposing a substantial video-to-simulation gap. The 2,430-video evaluation set is available at https://huggingface.co/datasets/SourajaKundu123/PhySimCode and the evaluation code at https://github.com/SourajaKundu/PhySimCode",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "778b25bec29e9b92b47ec05b9988100e218658ffdcca0fa733bbe8cb0469dd0b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "물리 비디오-코드 생성 평가 벤치마크로 멀티모달 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "물리 비디오→코드 생성 벤치마크 PhySimCode 신규 제안"
+        }
+      ]
+    },
+    "2610.15732": {
+      "arxiv_id": "2610.15732",
+      "paper_title": "NepPlural: A Human-Anchored Benchmark for Persona Annotation in Nepali Migration Discourse",
+      "abstract": "Pluralistic alignment asks that language models faithfully represent a society's diverse, competing values rather than collapse them into one dominant viewpoint, yet flagship pluralistic-alignment datasets remain heavily skewed toward Western respondents. We introduce NepPlural, a human-anchored benchmark for modelling competing socio-cultural personas in Nepali public discourse on youth migration and brain drain. We curate 2,148 code-mixed (Devanagari, Romanized Nepali, English) YouTube comments, annotate them along a four-axis persona taxonomy (Intent, Primary Driver, Value Orientation, Affect) plus an explicit No-Persona class, and build a 300-comment gold set labelled independently by three native Nepali speakers (mean Fleiss' $κ\\approx 0.55$). Using this gold set to audit automatic annotation, we find that LLM annotation reliability is driven by protocol. Labels collected in batches through chat interfaces reach only near-chance inter-model agreement ($κ\\approx 0.17$). Annotating one comment at a time raises agreement above the native-speaker level ($κ\\approx 0.72$), but consistency is not validity: under a forced-choice schema, models agree on personas for the 39% of comments native speakers judge to express none, keeping macro-F1 against human gold near 0.50. Allowing abstention resolves this: models recover No-Persona comments with F1 of 0.79 to 0.87 and, against leave-one-annotator-out references, match or exceed individual native speakers (macro-F1 0.75 to 0.86 vs. 0.75). Encoders fine-tuned on the batched labels reach only 0.34. Finally, a human-judged steerability probe finds that three frontier models adopt single persona axes with 59 to 77% fidelity but compose full personas only 33% of the time, with no congruence gap detected at this scale between Western-congruent and Nepali-collectivist personas.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "d803cb27fe3ac698544ee7a9d4279304f051ff46c1a2912dedb4f23b51a89a8f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "네팔어 이주 담론 페르소나 주석 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "네팔어 페르소나 주석 벤치마크, 한국어 아님, 재사용 자원 여부 불명확"
+        }
+      ]
+    },
+    "2610.15750": {
+      "arxiv_id": "2610.15750",
+      "paper_title": "Google Earth AI Geospatial Reasoning Agent: Capabilities and a Systematic Evaluation",
+      "abstract": "Google Earth AI is a family of geospatial AI models, together with an agent that orchestrates them. We present this agent, Google Earth AI's Geospatial Reasoning agent (GRA), a Gemini-powered research system that combines geospatial data sources, foundation models, and tools to answer questions about our planet. GRA organizes these into modular domain skills and pairs them with upfront geospatial planning to decompose complex queries into multi-stage workflows. Evaluating such systems is hard: real-world problems admit multiple valid workflows, require data discovery across large catalogs, and rely on evolving ground truth. We introduce two benchmarks and release their development splits. GeoExpertQueries poses complex analytical problems grounded in practitioner use cases and refined by geospatial experts; each is paired with a consensus golden workflow from three independent experts and scored by a human-validated, tool-agnostic autorater. GeoKTools consists of templated queries with deterministic reference solvers that systematically vary the number of required tool types. We also use two external benchmarks, CBGB and UnivEARTH; the latter we find to be saturated. To isolate the contribution of GRA's tools and its agentic orchestration, we compare four configurations, each with Gemini 3.1 Pro and 3.8 Flash: a standalone LLM, the LLM with basic tools, the LLM with GRA's skills and tools but without its upfront planning and execution guidance, and GRA itself. With at most basic tools, an advanced model recovers much of the answer on templated queries but satisfies only a small fraction of the expert workflows on open-ended problems; GRA performs well on both. The largest step comes from GRA's skills and tools; on open-ended problems, its planning and execution guidance add a further gain with Gemini 3.8 Flash, letting Flash match or exceed Pro at lower cost.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "504f99c67c22e02d076c177f2ff6bbbb617a102a27148adab9068286b87c9606",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "지구공간 추론 에이전트 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "지리공간 추론 에이전트용 벤치마크 두 종 신규 제안·공개"
+        }
+      ]
+    },
+    "2610.15773": {
+      "arxiv_id": "2610.15773",
+      "paper_title": "HMU-Bench: Hierarchical Music Understanding Benchmark for Omni Models",
+      "abstract": "Music-understanding benchmarks should identify both the evidence available to a model and the operations a correct answer requires. We introduce HMU-Bench, a bilingual benchmark with notation and audio components. ABC Q&A contains 1,029 Chinese-English question pairs across six musical domains, labeled as extraction, single-step inference, or multi-step inference. Audio Q&A contains 460 question pairs on 92 recordings, spanning five scope-difficulty configurations. All music is Suno-generated, and questions and references are human-reviewed. Reference-based evaluation of seven omni models yields high notation scores for the strongest systems, but no model averages above 1.4 on the 0-4 audio scale. Notation and audio rankings show little correlation. A transposition case study also reveals octave errors missed by LLM grading. These findings motivate separate modality reporting and event-level checks for symbolic outputs. Data, annotations, evaluator prompts, and graded responses will be released at https://github.com/stepaudiollm/hmu-bench.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "c895cc735a8865ff7923698e5d985f1e40ec296ade18200f5d5c019cee163b7b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "옴니 모델의 계층적 음악 이해 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "중영 이중언어 음악 이해 벤치마크 HMU-Bench 신규 제안"
+        }
+      ]
+    },
+    "2610.15994": {
+      "arxiv_id": "2610.15994",
+      "paper_title": "Large language model-generated patterns for epidemiological modeling: a multi-benchmark evaluation framework",
+      "abstract": "Representing individual-level behavioral heterogeneity is challenging in epidemiological modeling, particularly when empirical behavioral data are sparse. We assess the potential of large language model (LLM)-generated behavioral outputs in addressing this challenge, using hepatitis C virus-related behaviors among people who inject drugs as a case study. Correspondence with epidemiological patterns was evaluated using external benchmarks: literature-informed association directions, correlations from an agent-based model (ABM), and survey associations. Across three LLMs, unconditional directional recovery across 28 retained literature-informed associations was 46-68%, compared with 82-93% agreement when LLMs were directly asked to classify the same associations. Mean absolute differences from ABM and survey correlation patterns were 0.11-0.13 and 0.15-0.18, respectively. Together, these findings show partial alignment between LLM-generated behavioral relationships and epidemiological evidence, despite higher knowledge-probe agreement. More systematic evaluation is needed before incorporating LLM-generated behavioral outputs into epidemiological models that simulate transmission dynamics.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "d6345538cca27ae1778a6f141b081739b8d447e589cb83a4d65e2e3d2b141bd9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 생성 역학 패턴의 역학 모델링 평가로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "기존 벤치마크로 LLM 출력 평가만 수행, 재사용 평가자료 신규 아님"
+        }
+      ]
+    },
+    "2409.00696": {
+      "arxiv_id": "2409.00696",
+      "paper_title": "Polyrating: A Cost-Effective and Bias-Aware Rating System for LLM Evaluation",
+      "abstract": "Rating-based human evaluation has become an essential tool to accurately evaluate the impressive performance of large language models (LLMs). However, current rating systems suffer from several important limitations: first, they fail to account for biases that significantly influence evaluation results, second, they require large and expensive preference datasets to obtain accurate ratings, and third, they do not facilitate meaningful comparisons of model ratings across different tasks. To address these issues, we introduce Polyrating, an expressive and flexible rating system based on maximum a posteriori estimation that enables a more nuanced and thorough analysis of model performance at lower costs. Polyrating can detect and quantify biases affecting human preferences, ensuring fairer model comparisons. Further, Polyrating can reduce the cost of human evaluations by up to $41\\%$ for new models and up to $77\\%$ for new tasks by leveraging existing benchmark scores. Lastly, Polyrating enables direct comparisons of ratings across different tasks, providing a comprehensive understanding of an LLMs' strengths, weaknesses, and relative performance across different applications.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "5ad66b7a2efbea0052edd1b01bca35cb3ca423a4bbfb6790814bbb48308c7096",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 평가를 위한 비용 효율적 편향 인식 평점 시스템으로 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 평가용 Polyrating 평가 시스템 신규 제안"
+        }
+      ]
+    },
+    "2503.21821": {
+      "arxiv_id": "2503.21821",
+      "paper_title": "Physics: Benchmarking Foundation Models on University-Level Physics Problem Solving",
+      "abstract": "We introduce Physics, a benchmark for evaluating foundation models on advanced physics problem solving. It contains 1034 annotated, open-ended problems from PhD-qualifying exams across six core physics domains. Solving these problems requires applying domain-specific knowledge to physical setups and carrying out multi-step mathematical reasoning. Each problem includes a worked solution and independently checked reference answers. An LLM-based grading protocol evaluates individual answers and complete multi-part problems, supporting numeric, symbolic, and text responses. We evaluate 53 proprietary and open-weight models. On test problems without figures, high accuracy is concentrated in a small group of thinking models, with the strongest open-weight models approaching proprietary performance. Most open-weight models still solve fewer than half of these problems. Our analysis of Qwen3.5-9B reveals failures in applying physics knowledge and interpreting figures, with misread figures affecting several subquestions.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "a634fd709e55bd2c3e11fbd9abee2a584cae8910abfc54fa6c51b96b447febc8",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "대학원 수준 물리 문제 해결 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "대학 물리 문제해결 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2506.00482": {
+      "arxiv_id": "2506.00482",
+      "paper_title": "Benchmarks Are Not Atomic: Composition-Aware LLM Evaluation using BenchHub",
+      "abstract": "LLM benchmarks are often treated as coherent measurement units, yet they are heterogeneous collections of instances spanning diverse domains, skills, formats, and contexts. As a result, aggregate benchmark scores can conflate model capability with benchmark composition, obscuring what existing benchmarks actually cover. We introduce BenchHub, a composition-aware evaluation framework that represents benchmarks as distributions over instance-level attributes. BenchHub integrates 54 benchmarks comprising 839K samples across 10 languages. It enables researchers to inspect benchmark contents, uncover reusable coverage hidden behind benchmark names, transparently compare benchmarks, and construct controllable evaluation sets for application-aligned model selection. Using BenchHub, we show that similarly motivated benchmarks can differ substantially in internal composition, existing benchmarks often contain reusable coverage beyond their stated purposes, models exhibit fine-grained category-level performance variation hidden by aggregate scores, and model rankings can shift under different reweighting and resampling configurations. Our results motivate evaluation practices that make benchmark composition explicit, inspectable, and controllable.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "3b2ef25f29ab3c86e114878935539fcfddfc75ab48acc3a8490f8338082452ee",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 벤치마크의 구성 인식 평가 프레임워크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "구성 인지 평가 프레임워크 BenchHub 신규 제안"
+        }
+      ]
+    },
+    "2508.08742": {
+      "arxiv_id": "2508.08742",
+      "paper_title": "SciRerankBench: Benchmarking Rerankers Towards Scientific Retrieval-Augmented Generation with LLMs",
+      "abstract": "Scientific literature question answering is a pivotal step towards new scientific discoveries. Recently, \\textit{two-stage} retrieval-augmented generated large language models (RAG-LLMs) have shown impressive advancements in this domain. Such a two-stage framework, especially the second stage (reranker), is particularly essential in the scientific domain, where subtle differences in terminology may have a greatly negative impact on the final factual-oriented or knowledge-intensive answers. Despite this significant progress, the potential and limitations of these works remain unexplored. In this work, we present a Scientific Rerank-oriented RAG Benchmark (SciRerankBench), for evaluating rerankers within RAG-LLMs systems, spanning five scientific subjects. To rigorously assess the reranker performance in terms of noise resilience, relevance disambiguation, and factual consistency, we develop three types of question-context-answer (Q-C-A) pairs, i.e., Noisy Contexts (NC), Semantically Similar but Logically Irrelevant Contexts (SSLI), and Counterfactual Contexts (CC). Through systematic evaluation of 13 widely used rerankers on five families of LLMs, we provide detailed insights into their relative strengths and limitations. To the best of our knowledge, SciRerankBench is the first benchmark specifically developed to evaluate rerankers within RAG-LLMs, which provides valuable observations and guidance for their future development.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "862ef2f83d16922734d451e4353e6550405f5bb102058c232f7a0694ace0ca48",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "과학 검색 증강 생성의 리랭커 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "과학 RAG 리랭커 평가용 SciRerankBench 신규 제안"
+        }
+      ]
+    },
+    "2512.04125": {
+      "arxiv_id": "2512.04125",
+      "paper_title": "ASCIIBench: Evaluating Language-Model-Based Understanding of Visually-Oriented Text",
+      "abstract": "Large language models (LLMs) have demonstrated several emergent behaviors with scale, including reasoning and fluency in long-form text generation. However, they continue to struggle with tasks requiring precise spatial and positional reasoning. ASCII art, a symbolic medium where characters encode structure and form, provides a unique probe of this limitation. We introduce ASCIIBench, a novel benchmark for evaluating both the generation and classification of ASCII-text images. ASCIIBench consists of a filtered dataset of 5,135 class-labeled ASCII images and is, to our knowledge, the first publicly available benchmark of its kind. Alongside the dataset, we release weights for a fine-tuned CLIP model adapted to capture ASCII structure, enabling the evaluation of LLM-generated ASCII art. Our analysis shows that cosine similarity over CLIP embeddings fails to separate most ASCII categories, yielding chance-level performance even for low-variance classes. In contrast, classes with high internal mean similarity exhibit clear discriminability, revealing that the bottleneck lies in representation rather than generational variance. These findings position ASCII art as a stress test for multimodal representations and motivate the development of new embedding methods or evaluation metrics tailored to symbolic visual modalities. All resources are available at https://github.com/ASCIIBench/ASCIIBench.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:45Z",
+      "input_sha256": "fdab79d7fb74311d08f1531866308b6290a34725f4e4773c961e463cf406b1d6",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "ASCII 텍스트 이해 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "ASCII 텍스트 이해 평가 벤치마크 ASCIIBench 신규 제안"
         }
       ]
     }
