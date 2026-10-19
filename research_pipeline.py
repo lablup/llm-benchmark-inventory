@@ -24,6 +24,7 @@ from urllib.request import Request, build_opener, HTTPRedirectHandler
 
 from arxiv_watch import ROOT, KST, load_state, save_state, iso, ARXIV_ID
 from vendor.llm_batch import Provider, run_batch, estimate_cost
+from pdf_evidence import extract_pdf
 
 TABLES = {"ko": "korean_benchmark_inventory.csv", "en": "english_benchmark_inventory.csv"}
 PROPOSALS = ROOT / "research/proposals.json"
@@ -85,6 +86,10 @@ Do not treat figures in a paper as evidence that image input is required.
 Do not accept an inference about dataset language from the paper being written in English.
 Evidence quotes are short page-location anchors. Read the surrounding full PDF page
 and official cards to evaluate support; an anchor need not restate the whole claim.
+The supplied pages are extracted text/table HTML, not PDF page images. Compare MinerU
+table headers, merged cells and values with the original Poppler text when available.
+If these disagree, or a claim requires an unreadable figure/formula, reject it.
+Do not claim to have visually inspected the original PDF.
 English task instructions/prompts establish English coverage, even if answers are
 numbers or grids. The paper's English prose alone does not establish task language.
 New evaluation categories are allowed. Task descriptions ('과제 설명') may paraphrase
@@ -157,17 +162,8 @@ def get_pdf(key: str, cache: Path) -> dict:
     if not data.startswith(b"%PDF-") or len(data) > 30_000_000:
         raise ValueError("Invalid or oversized PDF")
     pdf.write_bytes(data)
-    target = pdf.with_suffix(".txt")
-    subprocess.run(["pdftotext", "-layout", str(pdf), str(target)], check=True, timeout=45)
-    pages = target.read_text(encoding="utf-8").split("\f")
-    # Remove horizontal padding while retaining physical pages and line order.
-    pages = [re.sub(r"[ \t]{2,}", " ", page) for page in pages]
-    if not pages[-1].strip():
-        pages.pop()
-    if not pages or len(pages) > 60 or sum(map(len, pages)) > 200_000 or not any(p.strip() for p in pages):
-        raise ValueError("PDF needs a different extraction method or exceeds the context limit")
     return {"url": url, "sha256": hashlib.sha256(data).hexdigest(),
-            "accessed": iso(datetime.now(timezone.utc)), "pages": pages}
+            "accessed": iso(datetime.now(timezone.utc)), **extract_pdf(pdf)}
 
 
 def get_official_resource(url: str) -> dict:

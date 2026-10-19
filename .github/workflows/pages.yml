@@ -35,7 +35,7 @@ jobs:
       - name: Test discovery, evidence and approval handling
         # Buffer successful tests so simulated outages do not become annotations.
         # Failed-test output and real collection warnings remain visible.
-        run: python3 -m unittest --buffer -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py
+        run: python3 -m unittest --buffer -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py
       - name: Generate site data
         run: |
           python3 build_site_data.py
@@ -46,7 +46,7 @@ jobs:
           test -z "$(git ls-files --others --exclude-standard -- research/archive updates.json)"
       - name: Check script syntax
         run: |
-          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py arxiv_watch.py build_pages.py research_pipeline.py review_proposals.py build_research_records.py
+          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py arxiv_watch.py build_pages.py research_pipeline.py review_proposals.py build_research_records.py pdf_evidence.py prepare_mineru.py smoke_pdf_evidence.py
           node --check app.js
           node --check english-copy.js
           node --check landing.js
@@ -65,7 +65,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
@@ -73,9 +73,9 @@ jobs:
       - name: Collect new arXiv papers
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke)
         run: python3 arxiv_watch.py --allow-cached
-      - name: Install PDF text extraction
+      - name: Install PDF evidence runtime
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke)
-        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+        uses: ./.github/actions/pdf-tools
       - name: Investigate papers and verify proposals
         id: research
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
@@ -119,6 +119,9 @@ jobs:
           path: |
             .research-cache/**/*.jsonl
             .research-cache/**/*.manifest.json
+            .research-cache/**/*.pages.json
+            .research-cache/**/*.mineru.log
+            .research-cache/*/*.pdf
           if-no-files-found: ignore
           retention-days: 7
           include-hidden-files: true

@@ -35,14 +35,23 @@ independently of the user's laptop. GitHub can delay a scheduled run.
    work. Relevant, uncertain, disagreeing, or malformed-but-accounted responses
    proceed to full-text investigation. Cached decisions are bound to the abstract,
    title, prompt and model configuration.
-3. For passed candidates, download the PDF, extract physical pages, and record its
-   SHA-256 hash. DeepSeek prepares a draft in the existing CSV schema. Useful
+3. For passed candidates, download the PDF and try Poppler text extraction first.
+   `pdf_evidence.py` retries with MinerU 2.7.6 when extraction fails, a page has
+   sparse/broken text, or table captions/dense numeric columns are detected.
+   This deliberately conservative heuristic can send simple tables to MinerU;
+   it does not guarantee detection of every complex layout. Preserve physical
+   page numbers, table HTML (including merged cells), the original Poppler text,
+   the PDF SHA-256 and a page-JSON SHA-256. DeepSeek prepares a draft in the existing CSV schema. Useful
    dataset/question counts and evaluation metrics belong in the definition/task
    fields with their units, versions and conditions. The linked GitHub README or
    Hugging Face dataset card is also fetched.
 4. **DeepSeek-V4.1-Flash and GLM-5.3-Flash each audit the same draft and evidence.**
    Their separate requests do not contain each other's votes. Both must approve
    every change, including numerical claims, task language and input modality.
+   Both receive the same page-indexed text/table evidence extracted from the
+   retained original PDF. These are text-model audits, not visual PDF inspection.
+   Extraction disagreements and claims requiring unreadable figures or formulas
+   must be rejected. MinerU is a parser, not a third LLM judge.
    An abstract pass alone never authorizes an inventory update.
 5. Source quotes, physical page locations, official links, proposal hashes and
    the current inventory row are checked in code. Missing evidence or disagreement
@@ -108,9 +117,40 @@ See [arXiv API terms](https://info.arxiv.org/help/api/tou.html) for the service
 minimum (one request per three seconds, one connection at a time).
 PDF failures retry on a later day. Completed
 exclusions and evidence failures stay recorded without repeated notifications.
-PDFs over 60 pages or 200,000 extracted characters, scanned documents, and
-unsupported official-source websites need another adapter. GitHub/Hugging Face
+PDFs over 60 pages or 200,000 combined evidence characters and
+unsupported official-source websites need another adapter. Scanned pages use
+MinerU OCR. GitHub/Hugging Face
 cards must be accessible through the implemented source adapters.
+
+## PDF execution environment
+
+Research runs use `ubuntu-24.04`, Python 3.12, Poppler and MinerU 2.7.6's
+`pipeline` backend with CPU PyTorch 2.7.1 / torchvision 0.22.1. The shared
+`.github/actions/pdf-tools` action installs these only for full-text runs and
+the separate PDF smoke workflow, not ordinary site deployments or abstract tests.
+Standard public Linux runners provide 4 CPUs and 16 GB RAM; see
+[GitHub runner specifications](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).
+No paid GPU runner or external PDF API is required by this configuration.
+
+`prepare_mineru.py` downloads layout/OCR/table weights at the fixed
+PDF-Extract-Kit revision recorded in `pdf_evidence.py`. Actions caches these
+weights separately from paper evidence; changing the revision requires changing
+the cache key. Only the MinerU version and CPU torch pair are pinned, not every
+transitive Python dependency. The smoke workflow checks installation compatibility.
+Formula recognition is disabled to bound CPU memory/runtime; formula-dependent
+claims cannot be cleared through this adapter alone. Parsing is sequential, with
+a ten-minute timeout per fallback. There is no new daily paper-count cap. The
+existing 90-minute work budget still applies, so large PDFs can leave a backlog.
+MinerU temporary images and duplicate PDFs are removed after each attempt.
+Missing table HTML, missing physical pages, timeout or parser failure never
+falls back to accepting a known-bad Poppler extraction. It stays pending for a
+later daily attempt. Previously completed investigation records are not erased.
+
+Run **Validate PDF extraction on hosted CPU** (`pdf-smoke.yml`) manually to test
+plain text, a merged-cell table, and a scanned page without model credentials,
+discovery, inventory edits or deployment. Its artifact records timings and
+page evidence. `smoke_pdf_evidence.py --real-pdf PATH` additionally checks the
+first two physical pages of a local research PDF, explicitly as a test subset.
 
 ## Records and recovery
 
@@ -138,10 +178,14 @@ model names stay unknown; an initial exclusion without audit votes must not be
 presented as two-model agreement. Archives remain in GitHub, linked from the
 website, and are excluded from the Pages artifact.
 
- Full PDFs and text remain in an ignored cache. API response
-logs are retained as Actions artifacts for seven days, readable by those who
+Original PDFs and page JSON remain in the ignored `.research-cache` while the
+runner works. They and MinerU diagnostics/API response logs are retained as
+Actions artifacts for seven days, readable by those who
 can access this public repository. Keys are not included in requests' saved
-metadata or logs.
+metadata or logs. They are not committed to Git or included in GitHub Pages.
+After artifact expiry, hashes, original arXiv URLs and investigation decisions
+remain in the repository; the exact downloaded PDF is no longer guaranteed to
+be recoverable from Actions. This is short-term diagnosis, not permanent storage.
 
 Automatic updates preserve unrelated rows and roll back on validation failure.
 A stale draft is skipped. Notification markers prevent duplicate digests after
@@ -154,7 +198,7 @@ settings. The workflow cannot confirm inbox delivery. The former 100-candidate
 review issue is closed and does not need to be completed.
 
 ```bash
-python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py
+python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py
 python3 validate_inventory.py
 python3 arxiv_watch.py                  # discover only
 python3 research_pipeline.py --dry-run  # inspect one abstract batch request, no inference

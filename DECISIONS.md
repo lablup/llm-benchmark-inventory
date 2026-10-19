@@ -133,3 +133,24 @@ and retain pending work; expired continuation tokens restart the unfinished day.
 Deduplicate by arXiv ID and preserve research/review status. Date precision changes
 between sources must not repeat an unchanged abstract judgment. Keep 11:30 KST,
 the daily investigation limits, and the language/modality page destinations.
+
+## 11. Retry difficult PDFs with MinerU and retain page evidence (2026-10-19)
+
+The user chose abstract screening, related-PDF extraction, conditional MinerU
+re-extraction, two-model verification grounded in page-numbered JSON and the
+original PDF, and application only after agreement. Keep the existing task-language
+and modality routing and strict source checks.
+
+Use the standard GitHub-hosted Ubuntu CPU runner, Python 3.12 and MinerU 2.7.6
+pipeline, with cached pinned layout/OCR/table weights. Keep Poppler as the first
+extractor. Preserve physical pages, original PDF hashes, structured table HTML
+and extraction provenance. Retain originals and page JSON as seven-day Actions
+artifacts rather than adding paper contents to the website or repository.
+
+The current models receive text/table JSON derived from the PDF; this does not
+claim visual inspection of PDF pages. Reject conflicting extraction evidence
+or unsupported figure/formula claims. CPU formula recognition is disabled.
+Failing/partial extraction holds the candidate; agreement does not override
+missing evidence. The ten-minute per-PDF timeout is an operational safeguard,
+not a new daily paper quota. Validate hosted installation and actual extraction
+separately from LLM agreement and inventory application.

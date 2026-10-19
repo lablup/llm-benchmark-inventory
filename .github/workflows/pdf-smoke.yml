@@ -1,0 +1,28 @@
+name: Validate PDF extraction on hosted CPU
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  extract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/pdf-tools
+      - name: Test plain text, merged table and scanned PDF
+        run: |
+          mkdir -p .research-cache/pdf-smoke
+          /usr/bin/time -v python smoke_pdf_evidence.py 2> .research-cache/pdf-smoke/resources.log
+      - name: Keep evidence and timings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-extraction-smoke-${{ github.run_id }}
+          path: |
+            .research-cache/pdf-smoke/*.pdf
+            .research-cache/pdf-smoke/*.json
+            .research-cache/pdf-smoke/*.mineru.log
+            .research-cache/pdf-smoke/resources.log
+          include-hidden-files: true
+          retention-days: 7

@@ -1,0 +1,38 @@
+name: PDF evidence tools
+description: Pinned MinerU CPU runtime and model weights, without LLM credentials
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install CPU PDF tooling
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y poppler-utils libgl1 libglib2.0-0
+        python -m pip install --no-cache-dir 'torch==2.7.1' 'torchvision==0.22.1' --index-url https://download.pytorch.org/whl/cpu
+        python -m pip install --no-cache-dir 'mineru[pipeline]==2.7.6'
+        python -m pip check
+        python -c 'import torch; assert torch.version.cuda is None; print(torch.__version__)'
+        mineru --version
+    - name: Configure isolated model cache
+      shell: bash
+      run: |
+        echo "HF_HOME=$RUNNER_TEMP/mineru-hf" >> "$GITHUB_ENV"
+        echo "MINERU_TOOLS_CONFIG_JSON=$RUNNER_TEMP/mineru.json" >> "$GITHUB_ENV"
+        echo "MINERU_MODEL_SOURCE=local" >> "$GITHUB_ENV"
+        echo "MINERU_MODEL_REVISION=ed6b654c018d742e65a17671e379c5e6ecc87ec9" >> "$GITHUB_ENV"
+        echo "OMP_NUM_THREADS=4" >> "$GITHUB_ENV"
+        echo "MKL_NUM_THREADS=4" >> "$GITHUB_ENV"
+        echo "MINERU_INTRA_OP_NUM_THREADS=4" >> "$GITHUB_ENV"
+    - uses: actions/cache@v4
+      with:
+        path: ${{ runner.temp }}/mineru-hf
+        key: mineru-cpu-2.7.6-ed6b654c-layout-ocr-tables-v1
+    - name: Prepare pinned model weights
+      shell: bash
+      run: |
+        python prepare_mineru.py
+        df -h .
+        free -h
