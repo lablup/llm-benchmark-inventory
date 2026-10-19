@@ -1509,6 +1509,80 @@
       },
       "issue_url": null,
       "proposal_sha256": "09d0e81dda038dc26acaa5f576b761f012a68ff3b91616f233463a23b25f164d"
+    },
+    "2609.27821": {
+      "decision": "needs_evidence",
+      "changes": [],
+      "reason": "추출 결과가 근거·형식 검사를 통과하지 못해 반영하지 않았습니다.",
+      "validation_error": "parse: Quote does not occur on the cited PDF page",
+      "arxiv_id": "2609.27821",
+      "paper_title": "Groundbench: Multi-Resolution Polygon Grounding Exposes the Geometry Gap in Vision-Language Models",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.27821",
+        "sha256": "bc56ab8329e318a2698ebc4cf0ec0f03ab3c7f6c872e8263d33c6143d2a4233d",
+        "accessed": "2026-10-19T14:49:24Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "sparse_or_broken_text",
+            "table_layout"
+          ],
+          "page_count": 12,
+          "elapsed_seconds": 85.73,
+          "pdf_sha256": "bc56ab8329e318a2698ebc4cf0ec0f03ab3c7f6c872e8263d33c6143d2a4233d",
+          "visual_pdf_audit": false,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "5abcf9d38fb87b6e35a035f50e8fca492f342346ecb2a81c4babd587d62cf631",
+          "page_json_file": "2609.27821.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-10-19T14:51:04Z",
+      "extraction_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "screening": {
+        "arxiv_id": "2609.27821",
+        "paper_title": "Groundbench: Multi-Resolution Polygon Grounding Exposes the Geometry Gap in Vision-Language Models",
+        "abstract": "Bounding-box scores on RefCOCO-family grounding leave little room to distinguish frontier vision-language systems, yet boxes discard object shape. We introduce GroundingBench, a matched benchmark that re-targets the same 1,500 image-expression-referent triples to exact-N polygons at five vertex budgets. A fixed-denominator harness separately audits filled-region intersection over union (IoU) and legal-polygon completion. The strongest tested configuration reaches 88.2 box IoU and 97.1 accuracy at IoU >= .5 (Acc@.5), versus 57.7 and 69.2 for direct polygons; because these headline scores use different references, we also compare direct polygons with predicted boxes rasterised against the same contour target, obtaining 57.7 versus 57.3 when pooled. Performance is non-monotone in N and collapses at the densest budget, where legality failures compound residual geometric error. Qwen's thinking-setting contrast is the largest tested input-preserving configuration difference; under frozen templates, false spatial cues are more damaging than false colour cues, and target preference can remain high while contour tracing is poor. Alternate masks and a continuous-area scorer preserve the principal ordering. GroundingBench therefore measures an operational output-geometry gap spanning localisation, boundary construction, serialisation, and topology, rather than latent boundary perception alone.",
+        "paper_updated": "2026-09-24T00:00:00Z",
+        "created_at": "2026-10-19T13:43:47Z",
+        "input_sha256": "023317997f56479fc43a5048b1dd6bbc755ff85ef7ea9fda46eaf3a4fc4c02e3",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "VLM 다각형 그라운딩 벤치마크로 기하 격차 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "폴리곤 그라운딩 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "f25600fde290506ab8d68350eb9dc7798edc9a25a0116a048324b4e7d4b81c96"
     }
   },
   "processed_comments": [],
@@ -1543,7 +1617,8 @@
         "2609.20836",
         "2609.26090",
         "2609.27787",
-        "2609.27821"
+        "2609.27821",
+        "2609.27891"
       ],
       "spent_usd": 0.0,
       "blocked": true,
