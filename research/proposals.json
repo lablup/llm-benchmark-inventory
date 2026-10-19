@@ -181,7 +181,27 @@
         "2609.22216",
         "2609.22220",
         "2609.22222",
-        "2609.25046"
+        "2609.25046",
+        "2606.16723",
+        "2609.22255",
+        "2610.00092",
+        "2609.25059",
+        "2609.31632",
+        "2609.22285",
+        "2609.22302",
+        "2609.31651",
+        "2609.20870",
+        "2609.20886",
+        "2609.31675",
+        "2609.20945",
+        "2609.21133",
+        "2509.24789",
+        "2602.00279",
+        "2604.07733",
+        "2604.23478",
+        "2606.27401",
+        "2606.31672",
+        "2609.18022"
       ]
     }
   },
@@ -1523,6 +1543,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "에이전틱 추천 시스템 검증형 신규 벤치마크 제시"
+        }
+      ]
+    },
+    "2609.20836": {
+      "arxiv_id": "2609.20836",
+      "paper_title": "PhysioBench: A Unified Benchmark for Physiological Signal Question Answering",
+      "abstract": "Physiological signals support diverse clinical and monitoring tasks, yet existing physiological signal foundation models typically require task-specific adaptation for each task. Natural language provides a common interface for specifying different prediction objectives, but the ability of current models to follow such instructions across physiological signal modalities remains insufficiently evaluated. To address this gap, we introduce PhysioBench, a unified benchmark for physiological signal question answering. PhysioBench harmonizes annotations from 22 public datasets into 61.4 million questions across 30 tasks. Each question-answer pair is grounded in a signal segment and traceable to its source annotation. We evaluate 21 representative models, including large language models, vision-language models, time-series language models, and physiological signal foundation models under three complementary settings. The results show that none of the evaluated models achieves consistently strong performance across physiological signal modalities and tasks. The incorporation of natural language supports unified prediction across tasks, although performance remains sensitive to question formulation. Beyond these findings, PhysioBench offers an extensible platform for fine-grained analysis and future research on physiological signal understanding. Our codes are available at https://github.com/Leanna97/PhysioBench.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "736016c011937304fd35e8ab09d2bf0496685a8f8adf784c66d5ae84b2bbae18",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "생리신호 질의응답 통합 벤치마크로 언어·시계열 모델 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "생리 신호 QA 통합 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.26090": {
+      "arxiv_id": "2609.26090",
+      "paper_title": "SpecialEduBench: Benchmarking Vision-Language Models on Knowledge, Skill, and Attitude in Language Intervention for Autistic Children",
+      "abstract": "Language is the target of most early intervention for autistic children. Because the goal and the method change from child to child, the work falls to a teacher who takes one child at a time and judges each scene as it unfolds. Artificial intelligence is now being brought to that work, yet the benchmarks that reach special education ask what a model knows rather than what it does in front of a child. Building one is not straightforward, since whether a response is good teaching depends on what the child has just done, so no answer key applies. The evidence that settles it is visual as much as verbal, since the length of a wait, a shift of gaze, and the child's uptake leave no trace in a transcript. We introduce \\emph{SpecialEduBench}, which measures pedagogical competence along knowledge, skill, and attitude, with 4,537 knowledge items and with 200 skill items and 68 attitude items built on recorded intervention, the attitude items crossing pressure with monitoring into 192 response cells. Seven special-education experts wrote, scored, and reviewed the items, and we revised the judge model's instruction against the reference scores they set. Across eight frontier vision-language models no axis is saturated, since the strongest still fails about a tenth of the honesty cells. The models converge where the knowledge is factual and separate where the task is situated, and the failures gather where pressure is applied. We intend the benchmark as an audit to run before deployment and as a starting point for models built for this domain.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "2ed613801e97e78240c94a2623e5746ad633c8f0e534644b8b7b2c5234cbb2ac",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "자폐 아동 언어중재용 VLM 벤치마크로 지식·기술·태도 측정"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "특수교육 언어개입 VLM 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.27787": {
+      "arxiv_id": "2609.27787",
+      "paper_title": "Ask Which, Not How Good: Sizing Benchmarks Scored by an LLM",
+      "abstract": "Benchmarks scored by an LLM judge routinely adjudicate differences of a tenth of a point, but the resolution of those benchmarks has never been measured. Existing sample-complexity work covers accuracy benchmarks and leaves the judged case open. Treating the system as the object of measurement, we decompose 373,019 judgments into system, item, judge and interaction components using generalizability theory. The central result is structural: under a single judge, generalizability asymptotes to sigma2_s/(sigma2_s+sigma2_sj) regardless of item count, because the system-by-judge term carries no n_i. Items saturate; judges do not. The item cost of a target diverges as the target nears that ceiling. The ceiling is a property of pointwise rubric scoring, not of LLM judging. Run as a pairwise preference in both presentation orders, sigma2_sj falls two orders of magnitude below sigma2_s and the ceiling rises to 0.986 (bootstrap [0.934, 1.000] on 11 systems), so one judge suffices. Pairwise buys a different problem: a system presented first wins 8.6 percentage points more often than the same system presented second, a bias 1.23x the median improvement claimed in the 53 published win-rate comparisons we recovered. Protocol design dominates panel size. Measured floors are 0.41-1.24 points on a 0-5 scale at native item counts, against a median reported improvement of 0.28 points; on the one benchmark recurring often enough for an exactly matched comparison, all 17 recovered MT-Bench improvements fall below MT-Bench's own floor, and 70% of the win-rate claims fall below the pairwise floor. An audit of 628 arXiv papers, double-coded by two independent models and validated against blind human coding (kappa=0.73), finds fewer than one paper in four states whether its evaluation was run more than once, and only 46-67% report uncertainty of any kind.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "a893fd299e930d779e5be634eb44b9bdafef494138f5849b120b9f32de5d0876",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 채점 벤치마크의 신뢰도·일반화 가능성 분석"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 채점 벤치마크 분해능 측정 방법론 제시"
+        }
+      ]
+    },
+    "2609.27821": {
+      "arxiv_id": "2609.27821",
+      "paper_title": "Groundbench: Multi-Resolution Polygon Grounding Exposes the Geometry Gap in Vision-Language Models",
+      "abstract": "Bounding-box scores on RefCOCO-family grounding leave little room to distinguish frontier vision-language systems, yet boxes discard object shape. We introduce GroundingBench, a matched benchmark that re-targets the same 1,500 image-expression-referent triples to exact-N polygons at five vertex budgets. A fixed-denominator harness separately audits filled-region intersection over union (IoU) and legal-polygon completion. The strongest tested configuration reaches 88.2 box IoU and 97.1 accuracy at IoU >= .5 (Acc@.5), versus 57.7 and 69.2 for direct polygons; because these headline scores use different references, we also compare direct polygons with predicted boxes rasterised against the same contour target, obtaining 57.7 versus 57.3 when pooled. Performance is non-monotone in N and collapses at the densest budget, where legality failures compound residual geometric error. Qwen's thinking-setting contrast is the largest tested input-preserving configuration difference; under frozen templates, false spatial cues are more damaging than false colour cues, and target preference can remain high while contour tracing is poor. Alternate masks and a continuous-area scorer preserve the principal ordering. GroundingBench therefore measures an operational output-geometry gap spanning localisation, boundary construction, serialisation, and topology, rather than latent boundary perception alone.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "023317997f56479fc43a5048b1dd6bbc755ff85ef7ea9fda46eaf3a4fc4c02e3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM 다각형 그라운딩 벤치마크로 기하 격차 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "폴리곤 그라운딩 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.27891": {
+      "arxiv_id": "2609.27891",
+      "paper_title": "Schrödinger's Code Repository: Have LLMs Learned SWE-bench or Memorized It?",
+      "abstract": "Repository-level coding benchmarks have become the standard for evaluating coding agents, yet they inherently suffer from data leakage because they are built upon popular open-source repositories repeatedly used for training. Consequently, strong performance may reflect memorization of canonical repository cues rather than robust repository reasoning. We propose SchrodingerRepo (Schrödinger's Repository), an evaluation framework for testing coding agents under dynamically instantiated repository representations. Instead of repeatedly using a static representation of the test repository, SchrodingerRepo treats the test repository as an evaluation-time latent variable that is dynamically instantiated only when the agent enters the evaluation environment. The instantiated repository preserves the original executable behavior while eroding familiar cues such as naming conventions, file layouts, and implementation patterns through four transformation levels: problem statement reconstruction, namespace remapping, intra-file layout reordering, and functionality-preserving code rewriting. We evaluate popular LLMs on SWE-bench Verified and SWE-QA. Results show that removing familiar repository cues consistently degrades agent performance and substantially increases interaction costs across models. Further analysis reveals that the additional cost is primarily caused by increased difficulty in repository exploration and localization. These findings suggest that current coding agents may partially rely on memorized repository-side cues, highlighting the need for evaluation under dynamically instantiated repository representations.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "bd39cce720a5e57b53caa174b7351ac010e62f5de153a173c355eaafb8c91a1f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "SWE-bench 암기 여부 평가 프레임워크로 코딩 에이전트 검증"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "저장소 변형 기반 코딩 평가 프레임워크 제안"
+        }
+      ]
+    },
+    "2602.19001": {
+      "arxiv_id": "2602.19001",
+      "paper_title": "Life-Bench: A Benchmark and Knowledge Graph Framework for Multimodal Personalization Beyond Concept Recognition",
+      "abstract": "As large language models increasingly power personal assistants, users expect them to reason over multimodal life histories, from recognizing people to understanding events to aggregating patterns, yet existing benchmarks primarily target concept-level recognition. We introduce Life-Bench, a fully synthetic, human-verified multimodal benchmark of over 11,800 question-answer pairs across 10 tasks, organized by required evidence scope: concept identification, event understanding, and aggregated reasoning. The benchmark's photo-centric personal histories are distributionally aligned with real user accounts under embedding statistic. The interconnected structure of personal data invites graph-based solutions; we propose LifeGraph, a personal knowledge graph framework providing structured retrieval with on-demand access to source visual evidence, showing particular promise on event and aggregated tasks. Systematic evaluation of four retrieval paradigms on Life-Bench demonstrates that accuracy degrades sharply with evidence scope, falling below 0.40 on aggregated tasks, and that no single paradigm dominates across categories. Performance beyond concept recognition remains modest for all evaluated methods, establishing personalization over multimodal histories as an open challenge and Life-Bench as a testbed for future progress.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "71ac5976f6441b92164a642dd0cb2617ffd30652287b97f40e7807631345ce1a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 개인화 벤치마크와 지식그래프 프레임워크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 개인화 벤치마크 및 지식그래프 제안"
+        }
+      ]
+    },
+    "2609.29492": {
+      "arxiv_id": "2609.29492",
+      "paper_title": "QEVOLVE-Bench: A Seed Benchmark for Quantum SDK Evolution and Repair Planning",
+      "abstract": "Quantum software is increasingly built on fast-moving Python SDKs such as Qiskit, PennyLane, and Cirq. When these SDKs evolve, user programs can fail because execution helpers are removed, import paths change, simulator abstractions shift, device names are deprecated, or circuit export interfaces are revised. Although some failures surface as simple missing-symbol errors, repairing them is not only a syntactic problem: developers must identify the replacement workflow, preserve the quantum-facing intent, and validate behavior under pinned framework versions. This paper presents QEVOLVE-Bench, a small executable seed benchmark for quantum SDK evolution. The current public release contains 14 controlled migration tasks across Qiskit, PennyLane, and Cirq. Each task is a self-contained Python project with pinned dependencies, failing and passing outputs, pytest acceptance checks, metadata, and benchmark notes. The artifact also includes a manifest, sanity checker, representative smoke-test logs, Zenodo archive, screencast, and a lightweight QEVOLVE-Agent prototype that converts task evidence into structured repair proposals. QEVOLVE-Bench is intentionally not a statistically powered benchmark; instead, it is an extensible seed artifact that lowers the setup cost for studying automated repair, LLM-based software engineering, and maintenance of quantum SDK-based projects.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "4b5a66822d595f57660190309476b688365b97379f3c650b719b04f70547365b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "양자 SDK 진화·수리 계획용 시드 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "양자 SDK 진화 수리 시드 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.29511": {
+      "arxiv_id": "2609.29511",
+      "paper_title": "EnSiTa - A Trilingual Multi-Domain Parallel Dataset and Benchmark for Domain-Specific Machine Translation",
+      "abstract": "Machine Translation (MT) for low-resource languages remains far behind that of high-resource languages, and the gap is widest in specialised domains, where parallel data is scarce or entirely absent. We present EnSiTa, a trilingual multi-domain parallel dataset and benchmark for English, Sinhala and Tamil. EnSiTa provides human post-edited training data for seven domains, plus manually translated test sets for those and one additional domain, all produced by professional translators under a multi-year, rigorously quality-controlled process. Using this dataset, we conduct an extensive study of domain-specific MT for all six language directions, fine-tuning a from-scratch Transformer, a pre-trained translation model (NLLB-600M), and decoder-only LLMs (Gemma 3 family, 1B-12B, and TranslateGemma) across training-data sizes, model scales, and in-domain, cross-domain, multilingual and multi-domain settings. To the best of our knowledge, this is the most extensive systematically documented multi-domain parallel data creation and benchmarking effort for low-resource MT. Our data and models will be publicly released.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "52b98cd01e0aae593a89d09cc40e466e1b46dfe99f406f8cdb4c36f0e89c6504",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어·싱할라·타밀 다도메인 번역 데이터셋 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "3개국어 다도메인 병렬 데이터셋·벤치마크 제안"
+        }
+      ]
+    },
+    "2609.22150": {
+      "arxiv_id": "2609.22150",
+      "paper_title": "ECP-Bench: Benchmarking and Learning Entertainment Content Promotion with Foundation Models",
+      "abstract": "Content promotion spans a broad set of skills, from understanding content to forecasting its market reception. However, LLMs' ability to support such promotion decisions remains underexplored. Existing studies are often limited to a single task (e.g., popularity prediction) or a small set of tasks within a single domain (e.g., movies). As a result, there is a lack of understanding of LLMs' abilities in the full promotion process and how these abilities generalize across different tasks and domains. In this work, we introduce ECP-Bench, a benchmark containing 1.9M movie, game, and music items and 423,451 questions across 33 tasks in five content-promotion skill families. Our evaluation shows that frontier models achieve only 51.9\\% overall accuracy and lose much of their advantage on post-cutoff content, with drops of up to 19.1 percentage points. In contrast, open-weight models fine-tuned on ECP-Bench achieve up to 60.3\\%, remain substantially more stable across the knowledge cutoff, generalize to unseen content and tasks, and exhibit meaningful cross-domain generalization.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "1ffe8c5845cba9772535b1d5f99854e42f108cb2eb06104a4436dd3742aa9da9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "엔터테인먼트 콘텐츠 프로모션 벤치마크로 33개 과제 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "엔터테인먼트 콘텐츠 홍보 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.22152": {
+      "arxiv_id": "2609.22152",
+      "paper_title": "Is Imagination Derived from Hallucination? A Cross-Taxonomy Evaluation of Imagination and Hallucination in Large Language Models",
+      "abstract": "Imagination performs as a high-level function of large language models (LLMs) which determines the potential of how an LLM creates unseen or creative content. While existing works have built a rich family of creativity benchmarks for this ability, they only measure how far an output departs from common answers and never check whether the departure is licensed by the prompt. Moreover, hallucination, the closest neighbor of imagination, is always measured in a separate pipeline on different generations, so the influential claim that imagination and hallucination stem from the same generative mechanism has never been directly testable. In this paper, we propose Whiteboard, the first LLM imagination evaluation benchmark. Its design follows the authoritative cognitive instruments developed to measure human imagination: seven mechanism-grounded imagination subtypes are adapted from classic paradigms, then crossed with ten support-boundary hallucination subtypes and scored jointly on the same generation. Different from previous creativity or hallucination benchmarks, Whiteboard gates every imagination score with an explicit support check and computes both axes deterministically through an auditable atom matrix, with no LLM judge on the primary path. The full Whiteboard item bank contains 1,660 prompts; on its shared 80-item anchor set, we evaluate 79 state-of-the-art LLMs and validate the instrument against 13,280 human judgments. Additionally, we further explore whether imagination derives from the same generative tendency as hallucination and what key factors shape it. Our analysis indicates a counterintuitive correlation between hallucination and imagination: Most of the subtype couplings are negative, every one of the anchor items reproduces the negative coupling on its own.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "2493de95ddc8b8098ab788efb517fd0822495dae572793095d0e23c2a1342ef4",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 상상력·환각 교차 평가 벤치마크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "상상력 평가 벤치마크 Whiteboard 신규 제안"
+        }
+      ]
+    },
+    "2609.29509": {
+      "arxiv_id": "2609.29509",
+      "paper_title": "Delay-of-Gratification as a Multi-Agent Survival Micro-benchmark for Long-Horizon LLMs: Social Exposure, Personas, and Tool Use Budgets",
+      "abstract": "Large language models (LLMs) are increasingly deployed as multi-turn agents that must sustain goals, use tools, and adapt to other agents over extended interactions. However, existing research lacks auditable, multi-turn, multi-factorial experiments that quantify LLM behavior under explicit constraints, with time-resolved statistics that reveal how behavior unfolds over long horizons. To address this gap, we develop a multi-agent micro-benchmark inspired by the Stanford marshmallow experiment: ReAct agents operate minute-by-minute with a \"raise a question\" tool under a per-step budget, while we factorially manipulate social context (broadcast vs. isolated), personas (age, hedonic drive), and metacognitive policy (mandatory vs. optional tool use). We analyze outcomes with Kaplan-Meier (KM) survival curves and discrete-time hazard models over a long risk horizon across 19,200 agent trajectories in 64 cells. Behavior shows a sharp early \"eat\" impulse, and only 75.9% of agents persist to the end. In a discrete-time hazard model, isolation reduces per-minute risk relative to broadcast, whereas a must-use self-questioning policy increases risk. On average, agents ask $\\approx 7.12$ questions and hit the per-step budget in $\\approx 6\\%$ of minutes. Questioning declines faster under broadcast than isolation. Ablation experiments demonstrated that removing hedonic drive and/or persona age increases survival and completion, narrows the broadcast/isolated gap, but leaves the must vs. may ordering intact. The combined ablation (no hedonic + no persona age) yields the highest completion (approaching $1.0$). These results establish delay-of-gratification as a compact, multi-turn interaction benchmark that captures social contagion and tool-use dynamics in LLM agents, providing a reproducible testbed and statistics for analyzing long-horizon, multi-agent behavior.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "baf115c88c4ce14273529f725e9bd9371f1ee406d42af634d8e601fff69e275d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 지연만족 다중에이전트 생존 마이크로벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "장기 에이전트 다중행동 마이크로벤치마크 제안"
+        }
+      ]
+    },
+    "2609.29559": {
+      "arxiv_id": "2609.29559",
+      "paper_title": "Benchmarking Arabic--Russian Machine Translation: A Comparison of Fine-tuned NMT and Few-shot LLMs under Rich Morphology and Low Lexical Overlap",
+      "abstract": "Arabic-Russian machine translation (MT) remains under-explored due to the rich morphology of Arabic and low lexical overlap between the two languages. We benchmark seven fine-tuned neural machine translation (NMT) models against four few-shot large language models (LLMs) on a 20k/5k/5k split of a new 15.47M-pair corpus. Fine-tuned NLLB-1.3B achieves the highest BLEU (16.3) and COMET (0.738). Aya-Expanse 8B leads the few-shot LLMs (BLEU 1.7 on 500 sentences, chrF 25.7), but all LLM scores remain far below the fine-tuned NMT baselines. Error analysis identifies low lexical overlap as the dominant failure mode; among the worst translations, mT5-small produces 32% too-short outputs. Bootstrap tests confirm significant differences among most models. Our results demonstrate that fine-tuned NMT significantly outperforms few-shot LLMs for Arabic-Russian translation under low-resource conditions.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "1a385cacf2804cba85f6bb846ea4152f5903ce7b1032e45b69ff06424e246924",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "아랍어-러시아어 기계번역 벤치마크로 NMT·LLM 비교"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "아랍어-러시아어 번역 벤치마크, 한/영 아님"
+        }
+      ]
+    },
+    "2609.29578": {
+      "arxiv_id": "2609.29578",
+      "paper_title": "PartHackBench: Certified Equal-Progress Stress Tests for Partial-Credit Tool-Agent Evaluation",
+      "abstract": "Long-horizon tool agents often make useful progress without reaching terminal success, motivating partial-credit evaluation. Yet evaluators may reward milestones that were temporary, later reversed, or not attributable to the evaluated agent. Comparing an honest trajectory with a higher-scoring adversarial one is inconclusive if the latter made more genuine progress. We introduce PartHackBench, a controlled methodology that removes this confound. A private certifier admits a pair only when its trajectories match component-wise in both current-state predicate satisfaction and standardized agent attribution; score inflation, defined as f(A) - f(H), is measured only afterward. In 18 sealed held-out tasks in PB-CSTE, the frozen historical-target run produced matched adversaries for 15 tasks. Historical credit yielded mean inflation of .252, conditional attack success of 10/15, end-to-end yield of 10/18, and detected none of 14 strict rollbacks. Semantic LLM judges were more resistant but remained vulnerable, especially under evaluator-targeted attacks, while PB-CSTE current-state controls, defined as exact functions of the certified components, yielded zero inflation by construction. PartHackBench thus provides a certified control for testing whether evaluator credit changes while all benchmark-defined task-relevant progress remains fixed.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "f953ad9cf5532a67bbacf23d52a9ce057e2eb7f63c5e8adb99e68b57b04f58dc",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "부분점수 도구에이전트 평가용 인증 스트레스 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "부분점수 에이전트 평가 스트레스 방법론 제안"
+        }
+      ]
+    },
+    "2609.29607": {
+      "arxiv_id": "2609.29607",
+      "paper_title": "STRAND: Benchmarking and Improving Object-Centric Spatio-Temporal Monitoring in Video Large Language Models",
+      "abstract": "While multimodal large language models (MLLMs) have advanced video understanding, they remain highly prone to hallucinations in dynamic scenes. We argue this stems from a failure in spatio-temporal monitoring, the ability to persistently track object identities, states, and relations over time. Existing benchmarks obscure this deficit by relying on single final-answer evaluations for queries that can often be resolved via local visual cues or statistical priors. To rigorously diagnose this, we introduce STRAND, a benchmark of human-verified object-centric facts that evaluates intermediate reasoning by decomposing queries into sub-questions, distinguishing genuine temporal understanding from coincidental correctness. Crucially, we score models with Faithful Accuracy, an unconditional joint metric that credits a prediction only when the target answer and every prerequisite sub-question are correct, so that a model cannot inflate its score by being selectively consistent on the small subset of targets it happens to answer correctly. To address failure modes exposed by STRAND, we further propose an object-centric framework that explicitly constructs and reasons over structured object trajectories via chunk-wise state extraction and temporal aggregation. Extensive experiments, including backbone-, frame-, call-, and token-matched comparisons against both end-to-end MLLMs and modular video harnesses, demonstrate that our object-centric framework significantly reduces hallucinated answers and improves spatio-temporal reasoning consistency over state-of-the-art MLLMs. The code, model, and data have been made available at nguyentthong.github.io/strand.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "1a9ace502ea55505e292900502f509afae5822b26de3b6ede0a46011fe9b3fc2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "비디오 LLM 객체중심 시공간 모니터링 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "비디오 LLM 시공간 모니터링 벤치마크 제안"
+        }
+      ]
+    },
+    "2607.00711": {
+      "arxiv_id": "2607.00711",
+      "paper_title": "ClarifyCodeBench: Evaluating LLMs on Clarifying Ambiguous Requirements for Code Generation",
+      "abstract": "Large Language Models have emerged as programming assistants. However, the efficacy of code generation is constrained by the quality of input requirements, which are frequently ambiguous, incomplete, or underspecified. While LLMs excel at one-shot code synthesis, their ability to proactively clarify intent remains underexplored, as a critical trait for robust software engineering. Existing benchmarks largely overlook this interactive bottleneck, assuming perfectly specified prompts that do not reflect the iterative nature of requirement elicitation. To bridge this gap, we introduce ClarifyCodeBench, a novel interactive benchmark for evaluating LLMs' capability in resolving requirement ambiguity. Constructed from real-world programming tasks, ClarifyCodeBench features high-quality manual annotations, including N unique ambiguity types, associated clarification questions, and corresponding ground-truth answers. Furthermore, we formalize two rigorous metrics to assess the interaction quality: Turn-discounted Key Question Rate, which penalizes inefficient questioning, and Optimal Round Adherence, which measures the precision of the elicitation process. We conduct a systematic evaluation of six state-of-the-art LLMs using ClarifyCodeBench. Our empirical results yield three critical insights: 1) Capability Decoupling: Strong code generation performance does not inherently translate to effective requirement clarification; 2) The Reasoning Paradox: While increased computational thinking enhances code correctness, it yields marginal gains in identifying ambiguities; 3) The Multi-ambiguity Ceiling: LLMs' clarification performance degrades sharply as the density of ambiguities increases, revealing a significant bottleneck in handling complex, real-world specifications. Our work underscores the necessity for future AI4SE research to transition from static synthesis to interactive elicitation.",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "499a714f7f939521059e692d20273bfde9db70deac1d9650656d635e1ed09d59",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "모호한 요구사항 명확화 코드생성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "요구모호성 명료화 코드생성 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.22200": {
+      "arxiv_id": "2609.22200",
+      "paper_title": "PII-TRACE: A Benchmark for Context-Aware PII Detection in Multi-Turn LLM Conversations",
+      "abstract": "LLM assistants and agentic systems log long multi-turn conversations. AI providers often scan these conversations for Personally Identifiable Information (PII) and mask the PII before storing or processing conversation data. Yet most PII detectors and benchmarks target self-contained records rather than cross-turn evaluation. To evaluate PII detection across turns in multi-turn conversations, we introduce PII-TRACE (Tracing Recurring PII Across Conversational Exchanges), to our knowledge the first PII benchmark to assess whether detectors identify PII in conversational contexts and cover every mention of a recurring identifier across turns. PII-TRACE contains 13,148 synthetic multi-turn dialogues in 13 languages with character-level spans and identifier clusters. Across eleven baselines, including frontier LLMs, no detector achieves full entity-level coverage without substantial false positives on PII-free conversations, and single-pass reading loses a third of the gold characters on long dialogues. To close this gap, we introduce PII-Tracer, a compact 0.6B-parameter detector trained with conversation-level supervision. PII-Tracer attains the highest entity-level coverage of any system we evaluate and also performs strongly on standard single-record benchmarks.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "b3a5ce6ee61132d0390140c9ef7bc8802f5f39b70f8799c6a6046e47cd5a4e8e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다중턴 대화 PII 탐지 벤치마크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중턴 대화 PII 탐지 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.22216": {
+      "arxiv_id": "2609.22216",
+      "paper_title": "The Effect of Quantization on Clinical Benchmarks: Accuracy and Safety Across Model Families",
+      "abstract": "Quantization enables deployment of large language models on resource-constrained clinical edge devices, but its effect on clinical accuracy and safety remains understudied. We evaluate five 7-8B parameter models at FP16, GPTQ-INT8, and GPTQ-INT4 precision across five benchmarks: MedQA, MedMCQA, Med-HALT, a risk-stratified sample of HealthBench, and MedSafetyBench. The study jointly varies quantization bit width, model family, and clinical task type, with explicit risk stratification and safety measures. INT8 GPTQ is universally safe (max. degradation -1.9%-1.9%), while INT4 degradation is substantial and model-dependent: BioMistral-7B, clinically fine-tuned, loses 19.7% on MedMCQA, more than any general-purpose model, showing clinical fine-tuning does not confer compression robustness. MedMCQA degrades more than MedQA under INT4; Med-HALT is largely unaffected. On HealthBench's emergency-risk subgroup, Qwen2.5-7B degrades by 26.8% under INT4, suggesting high-risk scenarios are disproportionately vulnerable to compression. On MedSafetyBench, the model family dominates over precision (refusal rates range 10.2%-74.9% at FP16), though Qwen2.5-7B (-17.8%) and Meditron-7B (-28.3%) show substantial INT4 safety degradation; notably, Qwen2.5-7B is simultaneously the most accuracy-robust model, demonstrating that accuracy and safety robustness are independent properties. We additionally test two recovery methods, clinical calibration substitution and QLoRA fine-tuning, both producing the same trade-off: MedMCQA recovers while MedQA further degrades, indicating recovery strategies require task-specific validation rather than being assumed universally beneficial. These findings indicate INT8 is broadly safe for clinical deployment, while INT4 safety must be assessed per-model and per-task, and that safety alignment is determined primarily by instruction tuning rather than clinical domain adaptation.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "2514abf0511ca3c306c34f46ecc622047bc9ffb7e6836b9ff0a964d69adc4e42",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "양자화가 임상 벤치마크 정확도·안전성에 미치는 영향 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "기존 임상 벤치마크 양자화 영향 분석에 그침"
+        }
+      ]
+    },
+    "2609.22220": {
+      "arxiv_id": "2609.22220",
+      "paper_title": "Measuring the Checker: Mutation Analysis for GPU-Kernel Benchmark Oracles",
+      "abstract": "Benchmarks for LLM-generated GPU kernels decide correctness with a few random inputs and a loose floating-point tolerance, and their verdicts now feed leaderboards and reinforcement-learning rewards. Recent work agrees these checkers are weak and patches them by hand---extra input distributions, fuzzing recipes, tighter tolerances---with no way to \\emph{measure} whether any patch suffices. We introduce mutation analysis as an adequacy metric for kernel-benchmark oracles: deterministic rules inject 10{,}303 compilable faults into verified CUDA implementations of 188 KernelBench problems, 7{,}384 of them with an independent kill witness; any test protocol is scored by the fraction it detects. The official check misses \\textbf{one in six} witnessed faults (16.9%), deterministically, and the misses are skewed by family: 8.7% of arithmetic faults escape, but 78.6% of precision faults do. The metric explains why (a tolerance blind band growing with reduction size; a measured ceiling on input aggressiveness set by legitimate floating-point variance), audits the strongest existing patch (KernelBench-Verified's gain splits into $+4.0$ points from hidden inputs and $+4.5$ from tighter tolerance, a split its authors could not compute), and exposes a published fuzzing recipe that rejects \\emph{correct} kernels 107 times. Optimizing suites over the kill matrix reaches 98.0% detection with two inputs per problem (94.8% held-out), and the measurement's fault taxonomy teaches a test generator more than the raw faults themselves. Across 48 whole architectures, the blindness grows with scale, concentrating in deep homogeneous pipelines, and two problems prove unrefereeable: their official references violate the benchmark's own tolerance against fp64. We release everything as \\href{https://huggingface.co/datasets/Elfsong/KernelBench-M}{KernelBench-M}.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "3d412e7223f4bcc0c500da6634d66c6673c8da9d9c41600c458b849b05fc61db",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "GPU 커널 벤치마크 오라클용 변이 분석 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "GPU커널 오라클 변이분석 측정법·데이터 공개"
+        }
+      ]
+    },
+    "2609.22222": {
+      "arxiv_id": "2609.22222",
+      "paper_title": "Can Coding Agents Reproduce Official Statistics? Metadata, Retry Budget and the Limits of Execution Feedback in a Controlled Eurostat Benchmark",
+      "abstract": "Large language models can generate executable data-analysis code, but successful execution is not equivalent to a valid official-statistics result. This study asks whether authoritative metadata and execution feedback improve the reproducibility of Eurostat answers produced by a coding agent, and isolates what execution feedback actually contributes. A benchmark of 30 natural-language tasks covering seven domains, seven Eurostat datasets and four difficulty tiers was run under four conditions: task only (A), task plus a frozen dataset metadata card (B), metadata plus a repair loop driven by sanitized execution feedback (C), and metadata plus the same attempt budget with no diagnostics of any kind (D). Claude Sonnet 5 generated Python through the Anthropic Messages API in three independent replicates, yielding 360 task-runs. Exact correctness required successful execution, the correct dataset, filters, output shape, values and unit. A companion experiment run under an under-specified output contract, in which the required ranking key and unit representation were never stated to the model, understated condition C by 23.4 points, showing that evaluator and contract design can dominate measured agent error. Reliable statistical coding agents need semantic validation against frozen specifications, a fully specified output contract, and a retry budget - not execution diagnostics.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "f70d16ef027b36c8119030908ebd9fff09a6278daa773bf3690d34c6bcd48497",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "코딩 에이전트의 Eurostat 공식통계 재현 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "Eurostat 재현성 통제 벤치마크 30과제 구축"
+        }
+      ]
+    },
+    "2609.25046": {
+      "arxiv_id": "2609.25046",
+      "paper_title": "Peerify: Benchmarking Peer-Review Claim Verification",
+      "abstract": "Peer review plays a central role in scholarly publishing, yet verifying whether reviewer claims are supported by manuscript evidence remains a largely manual and time-consuming process. We present Peerify, a pipeline for manuscript-grounded verification of peer-review claims. Given a manuscript and a review comment, the Peerify pipeline decomposes reviews into atomic claims, retrieves relevant manuscript evidence, and determines whether each claim is supported by the paper. To support the development and evaluation of the pipeline, we construct a benchmark of 800 claims derived from authentic peer-review interactions collected from NeurIPS 2024 and ICLR 2024, including a 300-claim hand-labeled subset used to audit the automated supervision. We evaluate state-of-the-art language models and retrieval strategies within the Peerify pipeline, together with entailment baselines. Our results demonstrate the importance of retrieval-centered verification and claim decomposition, while highlighting the challenges posed by ambiguous and interpretive reviewer claims. Automated labels agree with human consensus on 90.3% of audited claims ($κ= 0.87$), while off-the-shelf entailment models stay below 0.24 macro-F1.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:43:47Z",
+      "input_sha256": "94443160925031364a2e1f370fb662ccc8b2b12798e0504d88f43827f9c3742f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "동료심사 주장 검증 벤치마크와 파이프라인 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "동료평가 주장 검증 벤치마크 800건 구축"
         }
       ]
     }
