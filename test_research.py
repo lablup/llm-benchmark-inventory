@@ -190,6 +190,9 @@ class ResearchTests(unittest.TestCase):
                   "price_out_per_million": 1, "cost_cap_usd": 1, "daily_papers": 1}
         research.write_json(self.root / "research/config.json", config)
         watch.save_state(self.root / "new-papers.json", {**empty(), "papers": [paper()]})
+        ledger = research.read_json(self.root / "research/proposals.json")
+        ledger["screenings"] = {paper()["arxiv_id"]: {"status": "passed", "input_sha256": research.screening_hash(paper(), config)}}
+        research.write_json(self.root / "research/proposals.json", ledger)
         transport = Mock(side_effect=[{"text": json.dumps(self.raw), "usage": {}, "cost": .001},
                                      {"text": '{"approve":true,"reason":"Supported"}', "usage": {}, "cost": .001}])
         provider = research.Provider(name="fixture", model="fixture", transport=transport, max_tokens=6000,
@@ -208,6 +211,9 @@ class ResearchTests(unittest.TestCase):
         config.update(enabled=True, auto_apply_agreed=True, daily_papers=1)
         research.write_json(self.root / "research/config.json", config)
         watch.save_state(self.root / "new-papers.json", {**empty(), "papers": [paper()]})
+        ledger = research.read_json(self.root / "research/proposals.json")
+        ledger["screenings"] = {paper()["arxiv_id"]: {"status": "passed", "input_sha256": research.screening_hash(paper(), config)}}
+        research.write_json(self.root / "research/proposals.json", ledger)
         primary = Mock(model=config["model"])
         secondary = Mock(model=config["verifier_model"])
         source = {**self.context["source"], "url": "https://arxiv.org/pdf/2610.12345", "sha256": "0" * 64}
@@ -294,6 +300,25 @@ class ResearchTests(unittest.TestCase):
         self.assertIn("검토나 승인 댓글은 필요하지 않습니다", body)
         self.assertNotIn("추가 2610", body)
         self.assertEqual(github.request.call_args.kwargs["method"], "PATCH")
+
+    def test_notification_summarizes_more_than_five_applied_papers(self):
+        self.consensus()
+        proposals = {}
+        for i in range(100):
+            item = copy.deepcopy(self.proposal)
+            item.update(arxiv_id=f"2610.{20000+i}", status="accepted", applied_by="dual_model_agreement",
+                        reason="Long reason " * 200, paper_title="Long title " * 50)
+            proposals[item["arxiv_id"]] = item
+        self.ledger["proposals"] = proposals
+        research.write_json(self.root / "research/proposals.json", self.ledger)
+        github = Mock()
+        github.issues.return_value = []
+        github.request.return_value = {"number": 21}
+        with patch.object(review.subprocess, "check_output", return_value="a" * 40):
+            review.notify_applied(github, self.root, NOW)
+        body = github.request.call_args_list[0].args[1]["body"]
+        self.assertEqual(len(review.ENTRY.findall(body)), 100)
+        self.assertLess(len(body), 60000)
 
     def test_zero_prices_require_explicit_billing_basis(self):
         config = research.read_json(research.ROOT / "research/config.json")

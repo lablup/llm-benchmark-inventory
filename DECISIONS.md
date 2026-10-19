@@ -93,3 +93,26 @@ The user requested a local process record under `_local/`, excluded from Git.
 Keep the pipeline explanation, relevance criteria, and PDF retention behavior
 in `_local/PROCESS.md`; commit only the ignore rule and this decision. This does
 not change the investigation quota or delete cached PDFs.
+
+## 9. Screen abstracts before reading full papers and increase throughput (2026-10-19)
+
+The user rejected the five-paper daily limit and requested abstract screening
+before full-text investigation to reduce token use. Screen title/abstract batches
+with both configured models independently. Skip the PDF only when both classify
+the abstract as irrelevant; pass relevant or uncertain candidates to full-text
+investigation. Abstract judgments cannot authorize a table change. Preserve the
+two independent full-text audits and source checks before applying changes.
+
+Implementation defaults are 1,000 abstract screenings and 100 full-text attempts
+per Korean calendar day, with 20 abstracts per request. Reserve part of a
+90-minute soft run budget for full-text work and allow 150 minutes in the hosted
+job for in-flight requests, validation and deployment. Use two transport retries
+per model call. These are adjustable implementation limits, not user-selected
+quotas. Process older uninvestigated candidates first to avoid starving a backlog.
+
+Use task language and input modality to update the existing Korean/English CSVs
+and rebuild their page data: Korean text to `korean.html`, English text to
+`english.html`, and image-input benchmarks to the corresponding vision tab.
+Extract supported benchmark counts and evaluation metrics into existing content
+fields. Model rankings remain outside this adapter; their requested scope was
+asked separately. Update the ignored `_local/PROCESS.md` with this process.

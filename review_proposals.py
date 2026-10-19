@@ -228,17 +228,17 @@ def notify_applied(github, root, now):
                and (item["arxiv_id"], item["proposal_sha256"]) not in seen]
     if not pending or today:
         return
-    batch = pending[:5]
+    batch = pending[:100]
     reviewer = os.environ.get("ARXIV_REVIEWER", "songys")
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
     lines = [f"<!-- arxiv-applied:v3:{day} -->", f"@{reviewer} 두 모델이 동의하고 근거 확인을 통과한 {len(batch)}건을 표와 페이지에 반영했습니다.", "",
              "검토나 승인 댓글은 필요하지 않습니다. 불일치하거나 근거가 부족한 항목은 반영하지 않았습니다.",
              f"[페이지](https://lablup.github.io/llm-benchmark-inventory/) · [변경 기록](https://github.com/{REPOSITORY}/commit/{commit})", ""]
     for item in batch:
-        lines += [f"## {markdown_title(item['paper_title'])}", f"<!-- proposal:{item['arxiv_id']}:{item['proposal_sha256']} -->",
-                  f"[논문]({item['source']['url']})", "", markdown_title(item["reason"], limit=1500), ""]
+        lines += [f"## {markdown_title(item['paper_title'], limit=120)}", f"<!-- proposal:{item['arxiv_id']}:{item['proposal_sha256']} -->",
+                  f"[논문]({item['source']['url']})", ""]
         for change in item["changes"]:
-            lines.append(f"- {change['track']} / {markdown_title(change['row']['이름'])}: " + ("새 항목 추가" if change["before"] is None else "기존 항목 수정"))
+            lines.append(f"- {change['track']} / {markdown_title(change['row']['이름'], limit=100)}: " + ("새 항목 추가" if change["before"] is None else "기존 항목 수정"))
         lines.append("")
     github.ensure_label()
     issue = github.request("/issues", {"title": f"[자동 반영] {day} · 벤치마크 {len(batch)}건",
@@ -271,7 +271,7 @@ def _sync(state, github, now, reviewer, root=ROOT):
     pending = [p for p in ledger["proposals"].values() if p["status"] == "proposed" and not p.get("issue_url")]
     if pending and not daily_exists:
         github.ensure_label()
-        batch = pending[:5]
+        batch = pending[:100]
         issue = github.request("/issues", {"title": f"[표 변경안] {day} · 조사 완료 {len(batch)}건",
             "body": issue_body(batch, day, reviewer), "labels": [LABEL], "assignees": [reviewer]})
         for item in batch:

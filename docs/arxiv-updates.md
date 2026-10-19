@@ -11,24 +11,34 @@ independently of the user's laptop. GitHub can delay a scheduled run.
    be missed. The first collection covers 30 days; later collections overlap
    the previous checkpoint by seven days. Pagination must finish before the
    checkpoint advances. Older paper revisions are not automatically researched.
-2. `research_pipeline.py` downloads the PDF, extracts physical pages, and
-   records its SHA-256 hash. DeepSeek prepares a draft in the existing CSV schema.
-   The linked GitHub README or Hugging Face dataset card is also fetched.
-3. **DeepSeek-V4.1-Flash and GLM-5.3-Flash each audit the same draft and evidence.**
-   Each request is separate and does not contain the other model's vote. Both
-   must approve the exact draft. This is agreement on a proposed change, not
-   an exact-string comparison between two independently written summaries.
-4. The code additionally checks source quotes, page locations, official links,
-   proposal hashes, and whether the original inventory row changed. Missing
-   evidence or disagreement prevents inclusion. It does not generate a review
-   request. Parser/evidence failures with known usage are recorded and skipped;
-   authentication, missing-cost, and transport failures stop the run.
-5. `review_proposals.py` applies only agreed changes, regenerates the README,
-   English copy, modality metadata, and site data, then validates all results.
-   The workflow commits the changed CSVs and deploys GitHub Pages.
-6. Only after deployment, a GitHub issue summarizes actual additions/changes.
-   The issue is immediately closed as completed. It is an informational notice;
-   no checkboxes or approval comments are needed. No changes means no issue.
+2. `research_pipeline.py` first sends batches of up to 20 titles and abstracts
+   to DeepSeek and GLM independently, without PDFs, inventory tables or official
+   resource pages. Only agreement that an abstract is irrelevant skips full-text
+   work. Relevant, uncertain, disagreeing, or malformed-but-accounted responses
+   proceed to full-text investigation. Cached decisions are bound to the abstract,
+   paper revision, prompt and model configuration.
+3. For passed candidates, download the PDF, extract physical pages, and record its
+   SHA-256 hash. DeepSeek prepares a draft in the existing CSV schema. Useful
+   dataset/question counts and evaluation metrics belong in the definition/task
+   fields with their units, versions and conditions. The linked GitHub README or
+   Hugging Face dataset card is also fetched.
+4. **DeepSeek-V4.1-Flash and GLM-5.3-Flash each audit the same draft and evidence.**
+   Their separate requests do not contain each other's votes. Both must approve
+   every change, including numerical claims, task language and input modality.
+   An abstract pass alone never authorizes an inventory update.
+5. Source quotes, physical page locations, official links, proposal hashes and
+   the current inventory row are checked in code. Missing evidence or disagreement
+   prevents inclusion without requesting human review. Known-usage parse/evidence
+   failures are recorded; authentication, unknown-cost and transport failures stop
+   the run with a saved checkpoint.
+6. `review_proposals.py` applies agreed changes to the corresponding CSV, then
+   regenerates the README, English copy, modality metadata and page data.
+   Korean text updates appear in `korean.html`, English text in `english.html`;
+   image-input tasks appear in the corresponding `?modality=vision` tab. Task
+   language, not the paper's writing language, determines the destination.
+   Validation failure rolls back the inventory changes.
+7. After commit and deployment, a GitHub issue summarizes actual additions and
+   changes and is closed as completed. No changes means no issue.
 
 Two models can share an error. Agreement is therefore combined with source
 checks and conservative treatment of missing facts. Neither model may grant
@@ -48,8 +58,16 @@ to point to an existing environment file; it is not copied into this repository.
 The inherited local configuration records company-provided access with no
 charge, confirmed on 2026-10-12. Zero estimated user cost refers to that
 allocation, not market pricing or a billing API assertion. Calls still have
-strict operational limits: at most five papers per Korean calendar day,
-sequential requests, explicit output limits, and a stop checkpoint. Short
+separate operational limits: up to 1,000 abstracts and 100 full-text attempts per
+Korean calendar day. Process older pending candidates first. Abstracts use batches
+of 20 and 3,000 output tokens; full-text calls use 6,000 output tokens. Requests
+remain sequential, with up to two transport retries through the shared runner.
+A 90-minute soft budget stops starting work; abstract screening gets at most
+30 minutes, reserving time for full-text work. The hosted job allows 150 minutes
+for in-flight requests, validation and deployment. Both quotas count attempts,
+not successes. Completed records are saved incrementally; untouched candidates
+remain pending for the next run. A failed model call can leave a stop checkpoint
+that must be inspected, rather than being silently retried. Short
 connection tests for both models passed with JSON response format and reasoning
 disabled. This does not by itself prove extraction accuracy.
 
@@ -60,7 +78,7 @@ lose its daily checkpoint. A completed paper clears the flag. Inspect recorded
 usage and errors before clearing a stop left by a failed run. Bot commits are
 deployed by the same run; they do not trigger another workflow.
 
-The five-paper limit can leave a backlog. Unprocessed candidates remain in the repository queue without assigning work
+The daily and elapsed-time limits can leave a backlog. Unprocessed candidates remain in the repository queue without assigning work
 to the user. Transient arXiv API failures retain the last successful discovery checkpoint and
 continue investigation of cached candidates. Discovery errors remain in the repository record. Requests are sequential with ten seconds
 between metadata pages and before fresh PDF downloads. HTTP 429 retries wait
@@ -79,8 +97,8 @@ cards must be accessible through the implemented source adapters.
 
 `new-papers.json` stores the discovery queue and investigation status in GitHub;
 it is not part of the public website artifact. `research/proposals.json` stores
-drafts, source hashes, model votes, the exact reviewed content hash, and
-application results. New investigations record the actual extraction model;
+abstract screening records separately from full-text drafts, source hashes,
+model votes, the exact reviewed content hash, and application results. New investigations record the actual extraction model;
 successful automatic applications record `applied_at`.
 
 `build_research_records.py` exports only applied changes to `updates.json`.
@@ -93,7 +111,10 @@ using the investigation timestamp in Korea time. Each immutable snapshot has a
 readable Markdown record and JSON evidence, with monthly indexes. A repeated
 build creates no duplicate; a changed result creates a new snapshot. Old
 snapshots remain even if a later investigation succeeds. Candidates still
-waiting for investigation are not classified as exclusions. Historical missing
+waiting for investigation are not classified as exclusions. Abstract-only
+exclusions get separate `*-abstract-*.md`/JSON records that explicitly say the
+PDF was not read. Full-text audit agreement must not be inferred from an
+abstract relevance judgment. Historical missing
 model names stay unknown; an initial exclusion without audit votes must not be
 presented as two-model agreement. Archives remain in GitHub, linked from the
 website, and are excluded from the Pages artifact.
@@ -114,10 +135,11 @@ settings. The workflow cannot confirm inbox delivery. The former 100-candidate
 review issue is closed and does not need to be completed.
 
 ```bash
-python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py
+python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py
 python3 validate_inventory.py
 python3 arxiv_watch.py                  # discover only
-python3 research_pipeline.py --dry-run  # inspect one request, no inference
+python3 research_pipeline.py --dry-run  # inspect one abstract batch request, no inference
+python3 research_pipeline.py --screening-smoke # at most 10 cached abstracts; no PDFs
 python3 research_pipeline.py            # investigate, using configured credentials
 python3 review_proposals.py             # apply agreed changes; requires GH_TOKEN
 python3 build_research_records.py       # refresh public history and monthly archives
@@ -127,3 +149,9 @@ Pull requests run offline checks without production secrets. Scheduled/manual
 runs collect and investigate; other production runs synchronize accepted changes
 and deploy. Check [workflow runs](https://github.com/lablup/llm-benchmark-inventory/actions/workflows/pages.yml)
 for errors.
+
+For a live abstract-format smoke test, manually dispatch the Pages workflow with
+`screening_smoke=true`. It skips discovery, PDF tooling, inventory application
+and notifications, and saves up to ten real abstract screenings and their
+archives. The normal schedule uses the complete pipeline. This is not a full-text
+acceptance test. No automated model-ranking updates are included.

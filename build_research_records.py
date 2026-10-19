@@ -26,6 +26,8 @@ def archive_item(root, item):
     date = timestamp(item["created_at"]).astimezone(KST)
     snapshot = {k: item.get(k) for k in ("arxiv_id", "paper_title", "created_at", "status", "reason",
                 "source", "extraction_model", "verification", "validation_error", "proposal_sha256", "changes")}
+    if "screening" in item:
+        snapshot["screening"] = item["screening"]
     fingerprint = digest(snapshot)
     folder = root / "research/archive" / date.strftime("%Y-%m")
     folder.mkdir(parents=True, exist_ok=True)
@@ -64,10 +66,44 @@ def archive_item(root, item):
         write_json(detail, snapshot)
 
 
+def archive_screening(root, item):
+    """Keep abstract-only exclusions visibly separate from PDF investigations."""
+    key = item["arxiv_id"]
+    if not re.fullmatch(ARXIV_ID, key):
+        raise ValueError("Invalid archive arXiv ID")
+    date = timestamp(item["created_at"]).astimezone(KST)
+    fingerprint = digest(item)
+    folder = root / "research/archive" / date.strftime("%Y-%m")
+    folder.mkdir(parents=True, exist_ok=True)
+    path = folder / f"{key}-abstract-{date:%Y%m%dT%H%M%S}-{fingerprint[:12]}.md"
+    lines = [f"# {prose(item['paper_title'])}", "", f"- 논문: https://arxiv.org/abs/{key}",
+             f"- 초록 선별 시각: {date:%Y-%m-%d %H:%M:%S} (한국 시간)",
+             "- 처리 단계: 초록 선별에서 제외, PDF 본문은 읽지 않음", "",
+             "두 모델이 초록에서 관련성이 낮다고 판단한 기록이며, 본문 근거 검증을 마친 결과가 아닙니다.",
+             "", "## 초록 선별 결과", ""]
+    for vote in item["votes"]:
+        lines.append(f"- {prose(vote['model'])}: {prose(vote['decision'])}. {prose(vote['reason'])}")
+    lines += ["", f"- [초록과 판정 기록(JSON)]({path.with_suffix('.json').name})",
+              f"- 보관 기록 SHA-256: `{fingerprint}`", ""]
+    content = "\n".join(lines)
+    if path.exists() and path.read_text(encoding="utf-8") != content:
+        raise ValueError(f"Archive snapshot was modified: {path.name}")
+    if not path.exists():
+        path.write_text(content, encoding="utf-8")
+    detail = path.with_suffix(".json")
+    if detail.exists() and read_json(detail) != item:
+        raise ValueError(f"Archive snapshot was modified: {detail.name}")
+    if not detail.exists():
+        write_json(detail, item)
+
+
 def build(root: Path = ROOT):
     state = read_json(root / "new-papers.json")
     ledger = read_json(root / "research/proposals.json")
     updates = []
+    for item in ledger.get("screenings", {}).values():
+        if item["status"] == "excluded":
+            archive_screening(root, item)
     for item in ledger["proposals"].values():
         if item["status"] in ARCHIVED:
             archive_item(root, item)

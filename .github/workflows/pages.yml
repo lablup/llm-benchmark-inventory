@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: ["main"]
   workflow_dispatch:
+    inputs:
+      screening_smoke:
+        description: "Screen at most 10 cached abstracts only, without full-text investigation or applying changes"
+        type: boolean
+        default: false
   schedule:
     # 11:30 Asia/Seoul. GitHub may start scheduled runs later when busy.
     - cron: "30 2 * * *"
@@ -28,7 +33,7 @@ jobs:
       - name: Validate inventory data
         run: python3 validate_inventory.py
       - name: Test discovery, evidence and approval handling
-        run: python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py
+        run: python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py
       - name: Generate site data
         run: |
           python3 build_site_data.py
@@ -49,7 +54,7 @@ jobs:
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: validate
-    timeout-minutes: 30
+    timeout-minutes: 150
     permissions:
       contents: write
       issues: write
@@ -64,10 +69,10 @@ jobs:
         with:
           ref: main
       - name: Collect new arXiv papers
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke)
         run: python3 arxiv_watch.py --allow-cached
       - name: Install PDF text extraction
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke)
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - name: Investigate papers and verify proposals
         id: research
@@ -77,9 +82,15 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           TOKEN_FACTORY_API_KEY: ${{ secrets.TOKEN_FACTORY_API_KEY }}
-        run: python3 research_pipeline.py
+        run: |
+          if [ "${{ inputs.screening_smoke }}" = "true" ]; then
+            python3 research_pipeline.py --screening-smoke
+          else
+            python3 research_pipeline.py
+          fi
       - name: Apply changes agreed by both models
         id: review
+        if: ${{ !inputs.screening_smoke }}
         env:
           GH_TOKEN: ${{ github.token }}
           ARXIV_REVIEWER: ${{ vars.ARXIV_REVIEWER || 'songys' }}
@@ -119,6 +130,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       - name: Confirm persisted decisions
+        if: ${{ !inputs.screening_smoke }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 review_proposals.py --acknowledge
