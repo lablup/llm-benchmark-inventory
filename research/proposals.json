@@ -741,7 +741,27 @@
         "2610.09823",
         "2610.10628",
         "2610.09872",
-        "2610.10150"
+        "2610.10150",
+        "2610.10156",
+        "2610.10208",
+        "2610.10374",
+        "2610.10942",
+        "2610.10947",
+        "2610.10971",
+        "2602.00811",
+        "2603.07980",
+        "2605.06213",
+        "2605.07675",
+        "2605.12882",
+        "2607.22766",
+        "2607.28640",
+        "2609.30717",
+        "2609.30979",
+        "2610.06591",
+        "2610.08215",
+        "2610.08966",
+        "2610.12427",
+        "2610.12522"
       ]
     }
   },
@@ -14423,6 +14443,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "uncertain",
           "reason": "기존 5개 벤치마크 재구성 분석으로 재사용 평가자료 신규성 불명확"
+        }
+      ]
+    },
+    "2609.00940": {
+      "arxiv_id": "2609.00940",
+      "paper_title": "A Dataset for Modeling Iterative Problem-Solving",
+      "abstract": "Solving problems through repeated attempts is a sequential modeling task: at each step, the solver receives feedback and decides how to revise their solutions. Predicting whether performance improves, plateaus, or regresses across attempts is central to understanding any iterative problem-solving process in both human learners and autonomous agents. Beyond outcomes, modeling what errors persist and how strategies shift across attempts provides deeper insight into the mechanics of sequential learning. Studying these dynamics requires observing many solvers as they attempt, receive feedback, and revise. Programming courses with automated grading provide this setting, as students iteratively submit code to test suites and receive feedback on every attempt. We therefore curate CodeInsight, a large-scale dataset of over 3 million submissions from 3,286 undergraduates across 2 introductory C++ courses in 2 academic years, with test-case-level outcomes, timestamps, and source code. On this dataset, we build a benchmark that evaluates models spanning parametric, sequential, and generative traditions under a shared calibration-and-scoring protocol, including a Recurrent State Space Model (RSSM) adapted to track solver characteristics through discrete latent variables and an LLM-based predictor that generates explicit solutions. The adapted RSSM achieves the strongest predictive accuracy on three of the four courses. The LLM predictor is less accurate but produces full submissions at each attempt, enabling direct analysis of failure modes. We find that the model's coding proficiency is inversely related to predictive performance in this setting, with the LLM better understood as a generative solver conditioned on context rather than a faithful predictor of solver behavior. We publicly release our code and the dataset on request to facilitate future research.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "dd7443687df42a5e9a67df252f5a0913615c2cfcf26010afae9cd9e99b065edf",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "코드 제출 데이터셋과 모델 평가 벤치마크로 LLM 관련성 높음"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "CodeInsight 데이터셋과 반복 문제해결 벤치마크를 새로 제시"
+        }
+      ]
+    },
+    "2609.03580": {
+      "arxiv_id": "2609.03580",
+      "paper_title": "HalluPeer: A Taxonomy-driven Benchmark for Detecting Hallucinations in Scientific Peer Reviews",
+      "abstract": "The growing scale of academic peer review has motivated the use of Large Language Models (LLMs) as review assistants, yet LLMs can generate fluent but unsupported claims that undermine review reliability. Existing hallucination benchmarks are not designed for peer review, where verification requires grounding claims in long, technical papers. We introduce HalluPeer, a benchmark for detecting hallucinations in scientific peer reviews, providing aligned triples of paper content, human-written reviews, and hallucination-injected reviews, annotated for detection, classification, and localization. Our pipeline induces a peer-review-specific hallucination taxonomy, identifies review contexts, and injects hallucinations with automated filtering. Experiments on 12K papers and 38K reviews show that existing detectors struggle to separate hallucinations from legitimate critique, while evaluation on authentic reviews demonstrates that HalluPeer-defined hallucination patterns occur in real peer reviews, highlighting the critical need for source-aware verification. Our project page can be found in https://github.com/Lin-TzuLing/HalluPeer.git",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "0f9278d78563ad8da4fcc6007323be36537275b7decc6f5b7adab048851cf8b3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 환각 탐지 벤치마크로 평가 대상 명확"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "동료평가 환각 탐지 벤치마크 HalluPeer 신규 제안"
+        }
+      ]
+    },
+    "2609.35821": {
+      "arxiv_id": "2609.35821",
+      "paper_title": "CrisisFake: Benchmark Validity of AI-Generated Text Detection for Disaster Social Sensing",
+      "abstract": "Disaster social sensing converts public social-media posts into evidence for situational awareness and humanitarian response, but plausible LLM-generated posts can contaminate this information stream and distort assessments of needs, damage, and resource priorities. This study empirically investigates whether text-based detectors can distinguish human-authored from LLM-generated disaster posts and what textual cues underlie their judgments. We construct CrisisFake, a Qwen2.5-7B-based dataset of 12,000 texts organized into 3,000 matched semantic units from nine disasters. Each unit contains an original human post, a minimally LLM-proofread human post, a fact-preserving LLM-generated post produced using LoRA, and an affectively reframed version of the artificial post. A separate 6,000-text corpus spanning 42 disaster events is independently constructed to support model selection and threshold calibration. We evaluate OSM-Det, Fast-DetectGPT, Binoculars, and direct LLM judges across five model families, and further examine how disaster-domain calibration and superficial linguistic cues, such as retweet markers, user mentions, hashtags, URLs, punctuation, and text length, affect detector performance. Across fourteen frozen configurations, AUROC ranges from 0.402 to 0.517, while the best prospective recall at a calibration-derived low-false-positive operating point is only 3.6%, indicating near-chance discrimination. For OSM-Det, a disaster-calibrated linear head improves AUROC to 0.817; however, a seven-feature textual classifier alone reaches AUROC 0.784 on the original-versus-factual-LLM contrast, and neutralizing identified surface asymmetries reduces the corresponding linear-head AUROC from 0.733 to 0.594. These findings provide empirical evidence that LLM-generated text detection is largely driven by linguistic cues and remains insufficiently robust for short-form disaster social media.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "450bb08cfe06fd1f4e00235a55f80106da7c56ba83b99ea728188532bb53c1c7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 생성 텍스트 탐지 벤치마크로 관련성 높음"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "재난 텍스트 LLM 생성 탐지 벤치마크 CrisisFake 구축"
+        }
+      ]
+    },
+    "2609.35965": {
+      "arxiv_id": "2609.35965",
+      "paper_title": "Systematic Multi-Agent Vision-and-Language Navigation: Formulation, Benchmark, and Method",
+      "abstract": "Vision-and-Language Navigation (VLN) has largely focused on a single agent following a single instruction, yet many real-world applications require teams of robots to tackle tasks beyond the capabilities of any individual agent. We present Systematic Multi-Agent Vision-and-Language Navigation, providing, to our knowledge, the first systematic formalization of multi-agent VLN as a constrained coordination problem: each mission consists of subtasks carrying dependency and resource constraints (presence locks and holding chains). A verified four-stage crafting pipeline instantiates the task as MAVLN, comprising 11,724 episodes across 145 scenes with teams of up to four agents under three instruction regimes, accompanied by tailored constraint-aware metrics. We further present TRISS, a coordination-ready navigation system coupling an LLM-based subtask scheduler, a shared topological memory that turns each agent's exploration into team knowledge, and a conflict-aware execution mechanism that realizes simultaneous intentions as collision-free routes. Extensive experiments establish TRISS as a comprehensive baseline and reveal substantial room for improvement across scheduling, planning, and execution, highlighting the challenges of coordinating under MAVLN task constraints. Project page: https://xyz9911.github.io/mavln.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "c90d515425d148c4d43abcb8856234a2a07129d74e956d1ef906b0120e38fcc9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 기반 다중 에이전트 내비게이션 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중에이전트 VLN 벤치마크 MAVLN 신규 제안"
+        }
+      ]
+    },
+    "2610.00839": {
+      "arxiv_id": "2610.00839",
+      "paper_title": "Do Defenses Against LLM Extraction Work Across Attacks? A Lifecycle Benchmark of Black-Box Model Extraction",
+      "abstract": "Large language models (LLMs) deployed through text-only APIs face model extraction risks, as adversaries can collect their responses to train surrogates that reproduce their capabilities. While prior work has developed diverse attacks and defenses, evaluations remain fragmented across access assumptions, model configurations, query budgets, and security objectives, limiting comparability across methods. To address this gap, we introduce a unified benchmark covering six extraction attacks, ten defenses, and two adaptive attacks that paraphrase or back-translate protected responses before surrogate training. The benchmark controls model configurations, query data, budgets, and held-out evaluation conditions within each comparison while preserving attack-specific querying and training procedures. We measure surrogate capability, fidelity to the victim, output quality using Rep-4, and query-budget sensitivity; defenses use their own security metrics paired with surrogate performance. For the adaptive attacks, we jointly measure provenance-detector scores and the capability and fidelity of surrogates trained on rewritten responses. The benchmark thus provides a reproducible basis for comparing extraction methods and their interactions with defenses under text-only access. Code and artifacts are available at https://github.com/sliu11-byte/MEA-Bench.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "18b174293f57e8008f7b581f9a434bc06de8dcc73ea8b485f71bef38ce74cb50",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 추출 공격·방어 통합 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "모델 추출 공격·방어 통합 벤치마크 제시"
+        }
+      ]
+    },
+    "2610.10276": {
+      "arxiv_id": "2610.10276",
+      "paper_title": "PatchBench: Measuring Collateral Damage in Activation Patching",
+      "abstract": "An LLM safety patch can pass a benchmark while still being a poor repair. This risk is especially acute for jailbreak repairs, where the goal is to correct a specific unsafe behaviour without changing unrelated behaviours. A patch may block exact evaluation prompts yet fail on close harmful variants, or suppress harmful behaviour by over-refusing benign prompts that share its wording or structure. Existing protocols primarily test whether models can be broken, while aggregate metrics (attack success, refusal rates, global capability) cannot distinguish selective repairs from broader local suppression. To address this gap, we introduce PatchBench, a benchmark of empirically observed model-specific jailbreak failures inducing actionable harmful answers. Starting from 27,870 prompts from 37 public datasets, we curate 15,314 English prompts and query 8 open-source instruction-tuned models. Combining WildGuard filtering, pairwise Elo ranking, and manual verification, we retain a curated bank of 400 high-confidence jailbreak failures. We further introduce PatchBench-Local, an evaluation protocol testing whether a patch is behaviourally precise. For each harmful source prompt, PatchBench-Local generates three families of local neighbours: harmful variants preserving malicious intent, benign prompts with matched structure, and benign prompts reusing key harmful terms. It evaluates harmful-neighbour correction and benign-neighbour preservation, distinguishing selective repair from broader local suppression. Evaluating four activation steering methods with PatchBench-Local and MMLU shows that global capability can remain nearly unchanged while local benign regressions are severe, confirming aggregate metrics miss important collateral damage. PatchBench-Local provides a more precise basis for developing and comparing jailbreak repair methods.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "18444201c1a8aa734799bba7fcb18c2a9695d808b9d39ef87f3d188424eb9399",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 안전 패치 평가 벤치마크로 관련성 높음"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "jailbreak 패치 평가 벤치마크 PatchBench 신규 제안"
+        }
+      ]
+    },
+    "2610.09294": {
+      "arxiv_id": "2610.09294",
+      "paper_title": "RT-Safe: Benchmarking Agent Safety in Real-Time Embodied Environment",
+      "abstract": "Rapid progress in AI agents has brought growing attention to agent safety, with extensive evaluation focused on digital environments. As agents move into the physical world, embodied safety becomes increasingly important: failures can cause human injury and costly hardware damage. Beyond selecting safe actions, embodied agents must also operate under real-time constraints: the physical world does not pause while an agent reasons. As pedestrians move and vehicles approach during inference, an action that appears safe at observation time may become unsafe before execution. Real-time embodied safety therefore depends on both decision quality and decision latency. We introduce RT-SAFE, a simulated urban benchmark for evaluating embodied-agent safety under real-time constraints. RT-SAFE combines navigation tasks with moving actors, environmental hazards, and traffic rules, while allowing the world to evolve throughout inference and action execution. Across eight VLMs, agents achieve high task completion yet almost never complete safely: in the hardest setting, only 0.7% of episodes finish without a safety event. More strikingly, matched static and real-time evaluations yield task completion rates of 91.3% and 94.1%, respectively, while real-time execution increases collisions by $12.3\\times$. These results reveal that standard task success can mask substantial safety failures, and that decision latency itself can become a source of physical risk. Finally, we show that RT-SAFE can support offline RL training and substantially reduce collision rates while achieving strong task completion.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "3d7b863a90cf67bca320dd1cdc0433be86b4fa43ce7c177e2a68427425fac4a7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM 에이전트 실시간 안전 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "실시간 구현 안전 벤치마크 RT-SAFE 신규 제안"
+        }
+      ]
+    },
+    "2610.09374": {
+      "arxiv_id": "2610.09374",
+      "paper_title": "DUDA-Bench: Benchmarking LLM Agents on Multimodal Data-Driven Urban Diagnosis",
+      "abstract": "Urban diagnosis integrates heterogeneous observations to identify urban problems, localize affected areas, and investigate contributing factors, informing evidence-based urban planning and management. However, its reliance on labor-intensive, case-specific expert workflows limits scalability and reuse, motivating the exploration of agent-based execution. To evaluate this capability, we introduce DUDA-Bench, a hierarchical and interactive benchmark that formalizes data-driven urban diagnosis as a multi-stage agent workflow. It comprises 86 atomic and 22 workflow tasks spanning four analytical stages, grounded in multimodal data from 12 cities covering five urban problem types. Evaluations of seven backbone models and five agent systems reveal a substantial gap between isolated analytical competence and end-to-end diagnosis, with system benefits varying across backbones. Trajectory analysis shows that unresolved evidence gaps propagate across stages, while successful recovery involves revising assumptions and actions using feedback. These findings highlight limitations in coordinating analytical capabilities across stages, particularly adaptive planning, evidence integration, and verification. More broadly, DUDA-Bench provides a framework for translating expert analytical workflows into hierarchical agent tasks and process-aware evaluation, supporting systematic assessment of end-to-end analytical capabilities.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "171cfe5c08de9064932203e3966b5e946b4f030904d72e870397e29126e8a95b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 도시 진단 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "도시 진단 멀티모달 에이전트 벤치마크 DUDA-Bench 제안"
+        }
+      ]
+    },
+    "2610.09382": {
+      "arxiv_id": "2610.09382",
+      "paper_title": "ScribbleEdit: A Benchmark for Scribble-Only Image Editing",
+      "abstract": "Scribble-based interaction provides a lightweight and intuitive way for users to specify image editing intents in interactive editing tools. However, current image editing models based on VLMs or LLMs struggle to understand and execute edits based solely on scribble inputs. To systematically study this problem, we construct a new benchmark, ScribbleEdit, that evaluates the ability of image editing models to perform image editing conditioned on scribbles. This task requires both a deep understanding of the intention of the scribble and an accurate interpretation of its spatial information. In ScribbleEdit, we design an automated data construction pipeline and introduce a dedicated evaluation protocol that explicitly measures intention alignment. Our analysis reveals that existing VLM/LLM-based editing models fail to accurately capture scribble intentions. To guide future progress on scribble-only image editing, we propose a simple yet effective soft-token baseline, which enhances the model's understanding of scribble semantics and outperforms standard image editing models on our benchmark. Our evaluation and baseline together provide a concrete foundation for assessing and improving the scribble-driven image editing.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "5d35cf44c5694ed4fd3115e3e18d1874d6d5a57dda22196d940e5bc04d06ae9c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM/LLM 기반 이미지 편집 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "스크리블 기반 이미지 편집 벤치마크 ScribbleEdit 제안"
+        }
+      ]
+    },
+    "2610.09446": {
+      "arxiv_id": "2610.09446",
+      "paper_title": "Arctic Questions, Missing Answers: A Dataset and Benchmark for LLM Abstention in Arctic Science",
+      "abstract": "Large language models (LLMs) should abstain from scientific multiple-choice questions when no option is valid, but frequent abstention alone does not demonstrate sensitivity to answer availability. We introduce ArcticQA, a dataset of 194 questions derived from primary Arctic research, with automated checks of answer support and distractor contradiction against source evidence. We further develop ArcticAbstain, a paired benchmark comparing answer-present and answer-absent conditions, with the correct answer replaced by a distractor in the latter and an explicit abstention option in both. We evaluate eight models from the Gemini, Claude, and ChatGPT families at high reasoning effort, with three trials per condition, yielding 9,312 recorded responses. Answer-present abstention rates range from 0.0% to 63.0%, whereas replacing the correct answer increases abstention by 5.05 percentage points on average. These findings highlight substantial baseline differences and the need to evaluate abstention frequency and responsiveness jointly. The dataset and benchmark are available at https://github.com/BenWilcox8/arctic-qa.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "a486f5a5a24358b1ff188e28a817318920c41c001d05ab45bb259d7f17fefb1c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 회피 판단 벤치마크로 관련성 높음"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "북극과학 LLM 기권 벤치마크 ArcticQA 신규 제안"
+        }
+      ]
+    },
+    "2610.10619": {
+      "arxiv_id": "2610.10619",
+      "paper_title": "TestJack: Should you trust the results in coding benchmarks? Agentic Coding Benchmarks Auditing via Evaluator Evolution",
+      "abstract": "Large language model (LLM) agents are rapidly reshaping software engineering, accompanied by an explosion of new code benchmarks. Yet nearly all existing benchmarks still rely on the same decades-old criterion: a solution is correct if it passes a fixed set of unit tests. Such tests are often insufficient: they check only part of what the task requires, so agents can reward hack them or silently miss required behavior while still passing every test. As a result, higher benchmark scores may partly reflect better adaptation to the evaluator rather than better problem solving. Existing works focus on static test augmentation: they strengthen each task's tests once, before any trial is seen, and thus overlook how real trials actually fail. We introduce TestJack, a scalable framework for evaluating patches beyond fixed tests. For each trial, TestJack generates tests targeting prompt requirements the patch may violate, retains only tests passed by the ground-truth patch, and re-examines any trial failures. Each confirmed failure is thus supported by a replayable test. To reduce evaluation cost, we also introduce a lightweight variant which audits a random sample of trials in depth and reuses the resulting tests across all trials for the same task. Across 6 frontier model backends and 5 benchmarks such as DeepSWE and SWE Marathon, we find that about 34.4% of the model trials currently judged correct violate the task requirements, lowering the overall resolution rate from 50.6% to 33.2%. Our results reveal a fundamental limitation of current coding-agent evaluation: as LLMs become better at optimizing against fixed evaluators, those evaluators themselves must become more adaptive.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "489b17104a1a1b9aa68ca8b58cff43b61e8faa5ba03301977d7fddcfe79adb92",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 코딩 에이전트 벤치마크 감사 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "코딩 벤치마크 감사 프레임워크 TestJack 제안"
+        }
+      ]
+    },
+    "2610.09661": {
+      "arxiv_id": "2610.09661",
+      "paper_title": "Alice: A Large-Scale German Benchmark for Rubric-Based Multi-Dimensional Automatic Short Answer Scoring",
+      "abstract": "Automatic Short Answer Scoring (ASAS) is central to NLP for Education. However, openly available benchmarks remain scarce, and existing datasets largely address how well students answer a question directly rather than how well they master underlying concepts (knowledge elements) such as thermal energy or epistemic activities (skills) such as reasoning or claim. To address this gap, we introduce Alice, a large-scale, rubric-based German ASAS dataset that is pedagogically aligned and comprises three subtasks: (i) learning performance (Alice-LP), (ii) knowledge elements (Alice-KE), and (iii) skills (Alice-SK). We further formulate rubric-based ASAS as a rubric-retrieval task and benchmark the dataset with a range of language models, from encoder-only models to lightweight LLMs. We also benchmark the dataset with zero-shot prompting via LLMs and a standard classification baseline. The experiments show that LLMs, in particular, struggle to score knowledge elements and skills in the zero-shot setting. They also indicate that rubric text is often useful, especially for Alice-KE and Alice-SK, while on Alice-LP gains over sample-solution-focused inputs are more modest and vary by model and input format.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "f3e71d6c0012bd2aaf91a0956b81e2a0cd4595ed8d8fad8ea93f242666e7d515",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 서답형 채점 벤치마크로 관련성 높음"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "모든 과제가 독일어 단답 채점으로 한정됨"
+        }
+      ]
+    },
+    "2610.09671": {
+      "arxiv_id": "2610.09671",
+      "paper_title": "InsClaimBench: Benchmarking Insurance Claim Adjudication Across the Decision Chain",
+      "abstract": "Recent advances in reasoning-oriented large language models (LLMs) have motivated increasing evaluation of their ability to perform professional decision tasks. Insurance claim adjudication is one such task, requiring models to connect case evidence, insurance rules, intermediate judgments, and payout calculations across a structured decision process. We introduce InsClaimBench, an end-to-end benchmark for evaluating insurance claim adjudication across the decision chain. Grounded in real claim materials and structured insurance rules, InsClaimBench contains 3,780 cases in 375 case families across auto, property, and health insurance, comprising 86,656 atomic rule judgments. It evaluates each claim from atomic rules through adjudication modules to payout decisions and amounts, with controlled factual variants testing whether required changes are correctly propagated across levels. Evaluation of six LLMs reveals a progressive loss of reliability along the decision chain. Payout-decision accuracy ranges from 74.23--80.19%, while joint decision--amount accuracy drops to 47.54--73.15%. Strong local performance also fails to ensure case-level correctness: atomic-rule accuracy reaches 95.48%, whereas rule-vector exact match peaks at only 36.90%, and the most frequent module errors are not necessarily those most associated with final-decision failure. Under factual changes, these inconsistencies further become propagation failures: module updates are less reliable than rule updates, correct local judgments can still yield incorrect payouts, and correct payouts can conceal intermediate errors. These results show that reliable claim adjudication requires consistent composition and propagation across the decision chain.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "8b19eb465a112eb7cb05f023d5216ce800ea30d0a95014084e8992d05f740f43",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 보험 청구 판정 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "보험 청구 심사 종단 벤치마크 InsClaimBench 제안"
+        }
+      ]
+    },
+    "2610.10622": {
+      "arxiv_id": "2610.10622",
+      "paper_title": "WorldBench: Evaluating LLMs on Three.js Voxel World Generation",
+      "abstract": "Large language models can now write complete, interactive 3D worlds as code, but grading those worlds automatically is unreliable. Existing judges take one view of the output: a vision-language model scores a few rendered snapshots, or a language model reads the source. On worlds written by five frontier models we find that the two views disagree on 32% of required items, mostly code that no frame shows, and that fixed views miss small close-up contents. We present WorldBench, a benchmark and judge for open-ended, LLM-generated Three.js worlds. From one prompt describing a floating voxel island with ten biomes, physics, and day/night and seasonal cycles, the judge explores the running world, controlling its clock, orbiting it, and sending a navigator agent to frame each biome, and reads the code for what it sees. Neither channel is trusted on its own: a code quote counts only if it is text the source contains, and visual claims are checked against measured pixels where the property is measurable. A mutation test, in which we remove features by construction, shows that code-only judging gives full credit to four of five removed features, because their code remains in the file. Our judge cuts the points kept on removed features by a third (5.44 to 3.55 of 7.11), and what it still credits is mostly code that exists but never runs. We evaluate five frontier models: Claude Fable 5.1, GPT-6 Astra, Kimi K3, Grok 4.7 and Gemini 3.1 Pro. Code, prompt, tests and judge configuration are available at https://github.com/KrishBakshi/worldbench",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "717f8bb7ac230298dccea9f0352fd4928b2d78fc8a200769207adb2432033dc8",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 3D 월드 생성 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "Three.js 복셀 월드 생성 벤치마크·저지 제안"
+        }
+      ]
+    },
+    "2610.09778": {
+      "arxiv_id": "2610.09778",
+      "paper_title": "Reproducible LLM Inference Benchmarking: A Sequential Isolation Protocol for Regression Testing",
+      "abstract": "Reproducible benchmarking of Large Language Model (LLM) inference is challenging because repeated measurements can vary with execution and system state. We present the Sequential Isolation Methodology, a controlled benchmarking and regression-testing protocol designed to reduce between-run measurement variance while deliberately varying workload concurrency. We evaluate three representative open-source LLMs on an NVIDIA A100 80GB GPU using vLLM 0.9.1 across six context sizes and eight concurrency levels, with five repetitions per configuration. The final protocol reduces average coefficient of variation (CV) from 15.2% in the least controlled methodology stage to 2.2% under the final protocol; using CV computed across the five repetition-level median (P50) TTFT values per configuration, 113 of 144 configurations (78.5%) achieve CV below 3%. The measurements also show a marked latency transition between 200 and 500 concurrent users on the tested stack and descriptive differences in P99 latency across the three models. We additionally provide an explicit cost break-even model with sensitivity to API pricing. The protocol is intended to provide a stable reference for reproducible comparison and regression testing rather than to predict absolute behavior under uncontrolled production traffic. Infrastructure-as-Code and benchmark scripts support replication of the experimental environment.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "017c391274df412c93b660ce35bf8d671fd7e12cc73925af514a62a2dc72dc73",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 추론 재현 벤치마킹 프로토콜"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "재현 가능한 LLM 추론 벤치마킹 프로토콜 제시"
+        }
+      ]
+    },
+    "2610.09793": {
+      "arxiv_id": "2610.09793",
+      "paper_title": "Formal Runtime Verification for Tool-Using LLM Agents: An Offline Same-Benchmark Study on AgentDojo and STAC",
+      "abstract": "Guardrails for tool-using LLM agents are usually application-specific rules, which makes multi-step, data-dependent safety policies hard to specify, audit and reuse. As a declarative alternative, we evaluate metric first-order temporal logic (MFOTL), replaying the recorded trajectories that AgentDojo, STAC and R-Judge already ship through the unmodified MonPoly monitor, offline and without running an agent. On these corpora, five generic obligations flag 71.8% of STAC attack chains and 70.1% of successful AgentDojo attacks, but also fire on 29.3% of benign runs. This imprecision stems from the corpora rather than the logic: they rarely record approvals and never record timestamps, so history-dependent obligations reduce to detecting risky action types. Where the trace does carry relational context, provenance-aware policies discriminate better; that context, however, is itself attackable, and one planted line defeats a naive provenance check on 94-99% of the runs it would otherwise flag. Binding provenance to the lookup that produced it closes this evasion at no cost in detection or benign firing. Taken together, these results show that formal temporal monitoring adds value exactly when the trace exposes trustworthy history. We therefore quantify how far current benchmarks are from that point and propose a twelve-field enforcement-ready trace schema.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "41dab5d2a2ab9d35db4ef6412b9a2623f02395c18422ef09a0fa9a6a5e6ac040",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "도구 사용 LLM 에이전트 런타임 검증"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 트레이스 검증 연구, 스키마 제안 포함"
+        }
+      ]
+    },
+    "2610.09823": {
+      "arxiv_id": "2610.09823",
+      "paper_title": "UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation",
+      "abstract": "Dense visual text requires image generators to reproduce long strings across multiple regions with correct placement and legibility. As short-string rendering improves, evaluation must test sustained performance across more demanding scenes. We introduce UltraText Bench, a bilingual benchmark for prompt-only generation of dense visual text. It contains 432 prompts spanning 24 real-world scene categories and three difficulty levels, split equally between English and Chinese. Each human-reviewed prompt supplies exact strings for four to twelve text regions, paired with structured references for their content, placement, and visual attributes. We use the Q-Judger vision-language model to assess each image against the complete reference, reporting text fidelity, text clarity, spatial quality, and scene quality. Across 24 model configurations, these dimensions reveal different strengths: Z-Image-Turbo gains 3.81 clarity points over Z-Image-Base while losing 14.76 fidelity points under the reported settings. Performance also varies with workload; Qwen-Image-2512's English composite falls from 86.50 at L1 to 42.86 at L3. Ten participants took part in human evaluation of the automatic scores. Repository: https://github.com/LINs-lab/UltraText_Bench.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "fa06f18522b46d3c33ed1b901b1b9cea9a8c71ac66e4163af17e0c84521437bd",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "이미지 생성 내 시각 텍스트 렌더링 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "영·중 이중어 시각 텍스트 렌더링 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.10628": {
+      "arxiv_id": "2610.10628",
+      "paper_title": "Agent4RE: A Self-Refining Multi-agent Framework for End-to-End Software Requirements Engineering and Benchmarking",
+      "abstract": "Existing LLM-based approaches for software Requirements Engineering (RE) typically rely on basic prompting strategies or rudimentary agent collaboration, under-utilizing the full potential of multi-agent systems. Meanwhile, available datasets focus on isolated subtasks, such as requirements extraction, classification, and completeness detection, leaving the absence of an end-to-end RE benchmark that spans from requirements elicitation to generation. We present Agent4RE - a self-refining multi-agent RE system that orchestrates specialized agents and incorporates two iterative improvement loops. To support evaluation, we construct RE-E2E - a real-world dataset built from human-written requirement specifications, enabling end-to-end assessment of RE workflows. Building on this foundation, we further propose two enhanced Agent4RE versions that incorporate either autonomous self-refinement or structured human feedback, and analyze their strengths and limitations across different scenarios. Evaluation on 8 Large Language Models (LLMs) demonstrates that all three Agent4RE variants consistently outperform a domain-context-augmented prompting baseline by average 8% in text-based metrics. The two enhanced variants achieve the highest LLM-as-a-judge and human ratings, surpassing two RE baselines by approximately 0.8 points on a four-point scale. This consistent performance establishes Agent4RE as a practical end-to-end RE solution for industrial environments.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "ee2cd76640c42ecd4add80fdf0f323dfca2a730180b39836a3ac8459228a7e86",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 다중 에이전트 요구공학 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "요구사항 엔지니어링 종단 벤치마크 RE-E2E 구축"
+        }
+      ]
+    },
+    "2610.09872": {
+      "arxiv_id": "2610.09872",
+      "paper_title": "LiveMACE: Process-Aware Evaluation of LLM Agent Capabilities in Evolving Markets",
+      "abstract": "Evaluating agents by outcomes alone can obscure the capabilities that produce them. This problem is especially pronounced in evolving environments, where outcomes reflect a closed-loop interaction between agent behavior and changing external conditions. We introduce LiveMACEBench, a process-aware benchmark that uses live financial markets as a naturally evolving testbed for persistent LLM agents. Five frontier LLMs operate along continuous trajectories under matched Tool Use, Persistent Memory, Rule Following, and Multi-Agent Collaboration configurations. We evaluate them through both realized outcomes and mechanism-specific diagnostics derived from complete decision traces. Across 30 days of live evaluation, we find a pronounced outcome-capability gap: realized returns often diverge from capability-specific measurements, and similar outcomes can arise from markedly different patterns of mechanism use. Trace-level diagnostics further expose distinct bottlenecks across capabilities, demonstrating that mechanism access, effective mechanism use, and downstream performance are not interchangeable measures of agent capability. LiveMACEBench makes this distinction measurable, turning live markets from a performance leaderboard into a diagnostic environment for agent capability",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "10c52173a706c54a728c8aa2b82111d55b9747f46b1efb07213eba3c8dd0d82b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 역량 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "실시간 금융시장 에이전트 평가 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.10150": {
+      "arxiv_id": "2610.10150",
+      "paper_title": "On the Reliability of LLM-Based Vulnerability Patching Benchmarks",
+      "abstract": "Large language models (LLMs) have shown strong potential for automated vulnerability patching, but current benchmarks can substantially distort reported performance. Drawing on extensive experience developing, running, and stress-testing such frameworks, we identify under-examined pitfalls across three dimensions: (1) agent-level factors, where prompting, tool availability, and detailed instructions can raise success rates without improving developer-aligned patch quality; (2) framework-level factors, where permission errors, infrastructure bugs, and timeout handling can silently suppress or inflate performance; and (3) dataset-level factors, where bug reports and single proof-of-concept (PoC) tests fail to capture whether patches address root causes or follow developer intent. We curate 112 historical bugs from 84 open-source C/C++, Go, and Rust projects, each with PoC tests, regression tests, and additional developer tests that assess alignment with the original developers' design principles. Through controlled experiments and case studies, we show that LLMs can achieve high PoC passing rates under ideal conditions, yet benchmark execution choices can materially change measured success. More importantly, developer-test passing rates remain low and improve only marginally with newer models, suggesting that models increasingly suppress symptoms without consistently producing upstream-quality fixes. These results show that benchmark scores are highly sensitive to evaluation design, and we provide practical guidelines for more rigorous, reliable, and reproducible evaluation.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:31Z",
+      "input_sha256": "45fbd58d738a80ba2edc76ff8215324764648b4952a89d788e0f3bc05245b791",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 취약점 패치 벤치마크 신뢰성 연구"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "취약점 패칭 벤치마크 신뢰성 분석 및 테스트셋 큐레이션"
         }
       ]
     }
