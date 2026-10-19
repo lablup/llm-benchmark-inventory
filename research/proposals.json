@@ -261,7 +261,27 @@
         "2609.26175",
         "2609.26853",
         "2610.00224",
-        "2609.26489"
+        "2609.26489",
+        "2609.26751",
+        "2609.26893",
+        "2609.26942",
+        "2609.26945",
+        "2609.26985",
+        "2609.27036",
+        "2609.27139",
+        "2505.10083",
+        "2508.13680",
+        "2601.06676",
+        "2601.09562",
+        "2603.17373",
+        "2606.05003",
+        "2608.10317",
+        "2608.20153",
+        "2609.06080",
+        "2609.28197",
+        "2609.27205",
+        "2609.27349",
+        "2609.27385"
       ]
     }
   },
@@ -3363,6 +3383,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "컴퓨터 사용 에이전트 유해 행동 벤치마크 AgentHazard 제안"
+        }
+      ]
+    },
+    "2605.25200": {
+      "arxiv_id": "2605.25200",
+      "paper_title": "GroupTravelBench: Benchmarking LLM Agents on Multi-Person Travel Planning",
+      "abstract": "Travel planning in the real world is overwhelmingly a \\textit{group} activity, yet existing LLM travel-planning benchmarks reduce it to a single user, where the field is approaching saturation. This single-user assumption sidesteps what makes group planning hard for an agent: discovering private preferences across multiple users, surfacing conflicts, and balancing utility against fairness. To bring the task back to its multi-user reality, we introduce \\textbf{\\textit{GroupTravelBench}}, the first benchmark for \\textbf{multi-user, multi-turn} travel planning. Built from real user profiles, POI data, and ticket prices, it comprises 650 tasks across three difficulty levels, each running in a synchronous group-chat sandbox with cached tool data for reproducible offline evaluation. Beyond the multi-step reasoning and tool use that single-user benchmarks already test, GroupTravelBench probes three group-specific capabilities: \\textit{(i) elicitation} of private preferences through multi-turn dialogue; \\textit{(ii) coordination} of inter-user conflicts via compromise or subgrouping; and \\textit{(iii) planning} that balances group utility against fairness. We pair this with a complementary evaluation framework combining rule-based outcome metrics and LLM-judge process metrics. Across a wide range of frontier models, even the strongest agents fall short on all four rule-based outcome metrics, with plan validity below 12\\%, suggesting that group-level outcome quality is a key open challenge for LLM travel-planning agents.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "5d806cdcb089a1f5e0d9fbaee40dd98014502b7628b9b3180c2dcfc3a90c448d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 여행 계획 벤치마크로 평가 대상에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중 사용자 여행 계획 에이전트 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2606.01322": {
+      "arxiv_id": "2606.01322",
+      "paper_title": "TukaBench: A Culturally Grounded Jailbreak Benchmark for African Languages",
+      "abstract": "Safety evaluation of Large Language Models (LLMs) remains heavily English-centric, leaving Low-Resource Languages (LRLs), particularly African ones, critically underexplored. We introduce TUKABENCH, a jailbreak benchmark for seven African languages that extends JailbreakBench (JBB) beyond direct translation through four settings: human translation of JBB prompts, English adaptation to African contexts followed by human translation, human-curated prompts validated through interactions with GPT-5.2, and code-switched prompts combining English and African languages, isolating the effect of language, cultural grounding, and prompt evasiveness on model safety. Across closed and open models, prompting in African languages reduces refusal relative to English, with culturally adapted prompts leading to least refusal. The evaluation also surfaces two structural limitations: model comprehension failures and reduced LLM-as-a-judge reliability in LRLs. To capture the first, we introduce Deflection alongside Refused and Jailbroken; to assess the second, we validate outputs with human annotations, showing that judge-human agreement drops in lower-resource languages and less commonly supported scripts.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "3e6f57f15ff6aeaa39455a159a81387f32c239bedcf845dc46421eb6838df46a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "아프리카 언어 LLM 안전성 벤치마크로 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "아프리카 7개 언어 한정 안전 벤치마크로 한국어·영어 아님"
+        }
+      ]
+    },
+    "2606.27264": {
+      "arxiv_id": "2606.27264",
+      "paper_title": "CORTEX: A Structured Reasoning Benchmark for Trustworthy 3D Chest CT MLLMs",
+      "abstract": "Reasoning in multimodal large language models (MLLMs) has shown strong promise in medical imaging. However, this reasoning is usually free-form text judged only by its final answer, making it hard to interpret and verify, especially in 3D radiology, where a diagnosis should be traceable to evidence in the scan. Existing chest CT question-answering datasets compound this by reducing expert radiology reports to answer-only pairs, dropping the reasoning that links findings to conclusions and omitting the patient history clinicians rely on. As a result, reasoning-capable 3D chest CT MLLMs remain out of reach, as neither the structured supervision needed to train them nor the protocol needed to verify their reasoning yet exists. We introduce CORTEX (Clinically Organized Reasoning and sTructured EXplanation), a structured reasoning benchmark for 3D chest CT. For each question, CORTEX restores the missing reasoning as a four-stage diagnostic trace mirroring a radiologist's workflow: task understanding, visual observation, diagnostic reasoning, and answer synthesis. We generate these traces using frontier large language models with broad medical and general-domain knowledge, then filter and verify them with a stage-level evaluation protocol combining automated rubric scoring with expert radiologist review. Crucially, both the reasoning structure and evaluation rubrics are designed in close collaboration with clinicians. Built on CT-RATE, a large, publicly available chest CT dataset without reasoning annotations, CORTEX comprises 76,177 validated reasoning traces across open-ended VQA, closed-ended VQA, and report generation, providing both the structured supervision and the stage-level evaluation protocol needed to build and evaluate trustworthy reasoning models for 3D chest CT. Our dataset and evaluation code is available at https://huggingface.co/datasets/aneesurhashmi/cortex",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "5b4aec78dd143704013b2c90ef761c959d86c55e32fbb93c183653b9098afe0a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "3D 흉부 CT MLLM 추론 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "3D 흉부 CT 구조화 추론 벤치마크·평가 프로토콜 제안"
+        }
+      ]
+    },
+    "2607.22115": {
+      "arxiv_id": "2607.22115",
+      "paper_title": "Benchmarking Text-to-SQL under Role-Based Access Control",
+      "abstract": "Given a database S and a natural language question Q, text-to-SQL systems aim to generate an SQL query that correctly answers Q when executed against S. Currently, popular text-to-SQL benchmarks mostly assume unrestricted access to S; in practice, however, user access is often restricted, e.g., through role-based access control (RBAC) policies. This leads to a potential disconnect between benchmarking results and real-world performance: an LLM with high benchmark scores might perform poorly in an access-controlled environment, by frequently violating RBAC, or rejecting a query q that could be answered with only permitted data in S. Motivated by this, we present a comprehensive text-to-SQL benchmarking framework with realistic RBAC constraints, which features an LLM-assisted workflow that augments existing text-to-SQL benchmarks with plausible user roles and access policies. To do so, we formulate the problem of role synthesis as a structured reasoning process over the database schema, in which the LLM first infers the application context from the schema, and then derives role responsibilities and access scopes consistent with this context. This process is audited by human-in-the-loop quality control, in which domain experts perform metric-guided screening on the generated roles. Besides the augmented dataset, the proposed framework also contains evaluation metrics that identify RBAC-specific failure modes, and disentangle SQL utility from access-control compliance. We apply the proposed framework to several widely-used benchmarks, and conduct a systematic empirical study of state-of-the-art text-to-SQL systems. The results show that many solutions (especially open-weight LLMs) with high benchmarking scores under an unrestricted setting suffer sharp performance degradation once access constraints are in place, due to frequent RBAC violations.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "35889d2dc089ec05b2811667c2ddb19dd96845e1aed9dddede100b3ae58c1282",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "RBAC 기반 Text-to-SQL 벤치마크로 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "RBAC 제약 텍스트-to-SQL 벤치마킹 프레임워크·데이터 제안"
+        }
+      ]
+    },
+    "2608.18752": {
+      "arxiv_id": "2608.18752",
+      "paper_title": "GreekBarRetrieval: A Benchmark for Greek Statutory Retrieval",
+      "abstract": "Statutory retrieval is necessary for citation-grounded legal question answering, but remains underexplored for Greek. We introduce GreekBarRetrieval, a public retrieval benchmark derived from, and complementing GreekBarBench, which did not include retrieval. The new benchmark comprises 283 bar-exam questions, each accompanied by the facts of the case it refers to, and 6,308 candidate statutory articles to retrieve from. Questions and facts are stated in everyday language, but need to be mapped to the formal terminology of statutes and their abstract legal concepts. A further complication is that not all of the case facts are relevant to each question of a case. Experimenting with three BM25 variants and nine dense retrievers, we find that vanilla dense retrieval far outperforms vanilla sparse retrieval in Recall@100. However, LLM-based query reformulation helps BM25 close that gap, while also improving dense retrieval. With a ten-round ReAct-like LLM reformulation loop that we introduce, BM25 improves further in Recall@100 and obtains the best nDCG and MAP scores of all tested retrievers. Query reformulation also outperforms pseudo-relevance feedback, sparse-dense fusion, and English translation.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "05d02dc91937eec7dc3f3180c888df4246c51f56c4eca567aec1e2e269a3575e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "그리스 법령 검색 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "그리스 법령 검색 벤치마크로 한국어·영어 아님"
+        }
+      ]
+    },
+    "2608.25286": {
+      "arxiv_id": "2608.25286",
+      "paper_title": "BixBench3: Benchmarking AI agents on research-study-scale computational biology tasks",
+      "abstract": "Artificial intelligence (AI) promises to accelerate biological research by automating computational analyses. Yet the ability of AI agents to execute on computational biology at the scale of complete research studies has not been systematically evaluated. Here we introduce BixBench3, a benchmark that measures the capacity of AI agents to process raw biological data through to scientific results. We designed BixBench3 tasks to mirror the delegation of work from a scientist to an agent: the scientist chooses the research question and high-level methods, then delegates implementation of all analyses to the agent. In each task, an agent receives a research objective, methodological guidance, and raw data derived from a published scientific study, and must execute a sequence of analyses to achieve the research objective. The data artifacts resulting from these analyses, such as peak call matrices or differential expression tables, are programmatically graded against the corresponding artifacts generated and reported in the original study. Across 20 BixBench3 tasks encompassing the generation of 138 unique artifacts, we find that 13 frontier models achieve scores ranging from 0.00 for Gemini 3.1 Flash Lite to 0.48 for GPT 5.6 Sol. Agents perform worse on tasks with larger raw datasets (0.36 on tasks with <100 GB versus 0.10 on tasks with >100 GB) and on analyses requiring more sequential steps (0.36 at 1-2 steps vs 0.24 at 3+). On average, agents use 6.8 hours, 102 million tokens, and \\$43 to complete each task, with the longest attempts consuming 24 hours, 1.07 billion tokens, and \\$525. Notably, the highest-scoring agents used fewer tokens and were cheaper than less performant options. These results reveal that LLMs vary substantially in their ability to (1) execute multiple sequential analysis steps coherently, (2) manage large quantities of raw data, and (3) work across scientific domains.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "6c9643525db4fbafcc25132be0eb2f8aa1c553b209ea225a48ae597f4b0db836",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 에이전트 계산생물학 벤치마크로 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "연구 규모 계산생물학 에이전트 벤치마크 BixBench3 제안"
+        }
+      ]
+    },
+    "2609.03467": {
+      "arxiv_id": "2609.03467",
+      "paper_title": "When Users Don't Ask: Benchmarking Context-Driven Memory Retrieval in Conversational Agents",
+      "abstract": "Large language models (LLMs) are increas- ingly deployed as long-horizon conversational agents, motivating growing interest in mem- ory systems. However, existing benchmarks primarily evaluate memory through QA-style probing rather than in-situ conversational usage. We introduce LOCOMO-CONV, a conversa- tional memory benchmark derived from Lo- CoMo with four query styles: dialog, implicit, counterfactual, and composed. Across five rep- resentative memory systems, we evaluate both retrieval recall and end-to-end response qual- ity. Our experiments show that conversational framing exposes substantial retrieval gaps over- looked by QA benchmarks, especially on im- plicit and composed queries, which multi-facet query rewriting narrows for raw-turn mem- ory but not abstractive memory. We further find that strong retrieval does not fully trans- late into response quality, and that implicit queries exhibit silent grounding, where mem- ory improves contextual grounding without ex- plicitly surfacing the gold fact. These results point to reasoning-based memory elaboration as a promising direction, and we release aux- iliary supportive_memory annotations captur- ing conversationally useful context beyond the original gold evidence.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "4fe6a39d3614c7a3e7d119aa3bbb2e5daf57402b9cc6a086b353cf4cb39bb828",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "대화형 메모리 검색 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "대화형 기억 검색 벤치마크 및 주석 자원 제안"
+        }
+      ]
+    },
+    "2609.11115": {
+      "arxiv_id": "2609.11115",
+      "paper_title": "Benchmark Radar: A Living Database and Search Engine for AI Benchmarks and Evaluation",
+      "abstract": "Benchmark researchers and developers of large language models (LLMs) and other AI systems need to find relevant evaluations, locate their benchmark datasets and code, and understand the settings behind reported scores. We present Benchmark Radar, a living database and search engine for retrieval and discovery of AI benchmarks, covering LLM evaluation, agentic and tool-use benchmarks, coding, reasoning, safety, and domain-specific evaluations. The system combines daily discovery of benchmark papers, repositories, datasets, and releases with a searchable benchmark catalog, mentions in model cards and technical reports, and score histories. It retains source identities and citations so readers can inspect candidate benchmarks and their evaluation evidence. Daily discovery draws on 37 sources: 13 direct connectors and 24 first-party research and engineering feeds. The catalog contains 1,283 source records drawn from 4 benchmark catalogs and 12,916 numeric observations on 790 records. We describe collection and retrieval, audit the full catalog, and examine benchmark saturation, adoption trends, and the limits of score comparisons. A worked example walks through a complete prior-art search, showing how to query the catalog and inspect benchmark evidence when designing a new evaluation. We release the web dashboard with a benchmark leaderboard, a Pareto frontier view of score against measured use, saturation and trend views, daily feeds, downloadable evidence, a command-line interface (CLI) for offline queries, and reproducible analysis.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "ca9ebbcb82d124ca39c5ea1441463f49e7225213608fa3e8856490983b11ec89",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 벤치마크 검색 엔진으로 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "벤치마크 검색·카탈로그 데이터베이스라는 재사용 평가 자원"
+        }
+      ]
+    },
+    "2609.11243": {
+      "arxiv_id": "2609.11243",
+      "paper_title": "Sci-MMR: Benchmarking Multi-Step Evidence-Grounded Scientific Reasoning in Multimodal Agents",
+      "abstract": "Autonomous research agents are increasingly expected to search the literature, analyze experimental evidence, and generate scientific hypotheses. These capabilities require multi-step evidence grounded reasoning that progressively acquires, integrates, and verifies evidence before reaching a conclusion. Existing multimodal benchmarks, however, largely evaluate final-answer accuracy, leaving open whether predictions are actually supported by traceable scientific evidence. We introduce Sci-MMR, a benchmark for multi-step evidence-grounded scientific reasoning built on structured argument graphs linking scientific claims, citation-grounded knowledge, visual evidence, and supporting regions. Sci-MMR comprises 235 multi-hop reasoning tasks spanning four scientific disciplines, with an average of nine figure panels per task. Evaluating eight frontier multimodal models, we find that answer accuracy consistently exceeds complete-evidence recovery rate by more than 20%, revealing a substantial gap that answer-only evaluation is structurally unable to capture. Through controlled interventions, we identify two fundamental bottlenecks. First, evidence acquisition: models struggle to extract complete structured evidence from scientific figures, accounting for 57.2% of failures. While cropping tools yield modest gains (+4.5 points), providing gold evidence improves accuracy by up to 37.0 points, indicating difficulty in assembling complete multi-region evidence. Second, evidence integration: models struggle to translate available evidence into correct conclusions, accounting for 31.8% of failures, while even with gold evidence the strongest model achieves only 69.1% accuracy on the hardest tasks. These findings indicate that current answer-centric benchmarks substantially overestimate the evidence-grounded reasoning capabilities of multimodal research agents",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "8919df0c2946aa8ce87b9f86d7ad25577ad7e0f438a862496e3133ae3d59ee2b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "과학적 다단계 추론 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다단계 근거 기반 과학 추론 멀티모달 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.20574": {
+      "arxiv_id": "2609.20574",
+      "paper_title": "DocAttriBench: Benchmarking Answer Grounding in Document Visual Question Answering",
+      "abstract": "Answer grounding in document visual question answering remains an open challenge: most benchmarks lack grounding annotations or provide limited-quality labels, while constructing grounded datasets still requires costly manual effort. We introduce DocAttriBench (DAB), a large-scale benchmark for fine-grained, element-level source attribution in Document VQA, grounding answers to specific layout elements such as text blocks, tables, and images. To build DAB, we propose a Mask-based Perplexity-Derived Attribution method (MAPPET) that combines document layout and language modeling to identify the most informative element for each answer. MAPPET measures the increase in perplexity after masking candidate elements and attributes the answer to the element contributing most to model confidence. Applying MAPPET to multiple existing Document VQA datasets yields DAB, with 237k documents and 296k question-answer pairs with element-level grounding. We benchmark grounding-capable multimodal LLMs on DAB, evaluating answer accuracy, attribution accuracy, and overall answer quality. Results show that while larger models generally achieve higher answer accuracy, even the strongest models often fail to localize the supporting elements. DAB provides a scalable benchmark for developing grounded, verifiable, and trustworthy Document VQA models. Dataset and code are available at https://aimagelab.github.io/DocAttriBench/.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "45d76371eb0b204d6368901957a12634e2f39a167d032856e4e2c09a11c0d468",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "문서 VQA 근거 벤치마크로 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "문서 VQA 근거 속성 대규모 벤치마크·구축법 제안"
+        }
+      ]
+    },
+    "2609.20850": {
+      "arxiv_id": "2609.20850",
+      "paper_title": "MME-Safety: A Fine-grained Benchmark for Safety Evaluation of MLLMs",
+      "abstract": "While Multimodal Large Language Models (MLLMs) show remarkable advancements, their cross-modal capabilities introduce complex vulnerabilities that easily bypass unimodal filters. Existing benchmarks lack fine-grained intent-related annotations and rely on unidimensional metrics, hindering comprehensive robustness evaluation. To address this, we propose MME-Safety, a rigorously verified benchmark featuring a unique four-dimensional annotation schema that categorizes risk scenarios, harm severity, and modality-specific stealth levels. Furthermore, we introduce a hierarchical evaluation framework to assess fundamental response reliability, actual risk exposure, and the structural integrity of defensive behaviors. Extensive zero-shot evaluations across 17 state-of-the-art MLLMs provide a comprehensive safety profile of current multimodal systems. Our analysis systematically investigates cross-modal input configurations and uncovers safety implications associated with Chain-of-Thought (CoT) reasoning. These multifaceted findings underscore the urgent need for robust, reasoning-aware safety alignment in the multimodal landscape.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "4e6b97f4a4ba90c8e7c21765b4584afb59c59af146b5cd2405bfa29c79f549be",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "MLLM 안전성 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "MLLM 세밀 안전 평가 벤치마크·평가 프레임워크 제안"
+        }
+      ]
+    },
+    "2609.25647": {
+      "arxiv_id": "2609.25647",
+      "paper_title": "Testing-Driven Reliability Audit of Trajectory-Based Early Outcome Prediction for LLM Agents: Target-Specific Calibration Transfer Persists Within a Single Benchmark",
+      "abstract": "Predicting early outcomes based on trajectory can decrease the expenses associated with agent evaluation by terminating a run once the outcome becomes sufficiently predictable, assuming that the predictor's confidence is properly calibrated. Calibration is at risk when a predictor is applied to an agent on which it was never trained, but it is not known whether such transfer failures are broad across agent systems or concentrated in specific target agent/head combinations. Using public SWE-bench Verified trajectories and a frozen dual-head early-outcome prediction pipeline, we ran a leave-one-agent-out calibration audit, a shared-predictor leave-two-agents-out control, oracle prior correction, and a robustness battery over training cohorts, task resampling, task halves, jackknife, and thresholds. Fixed-scaffold TerminalBench analysis served as a pre-registered boundary test. Broad same-predictor pairwise heterogeneity was not supported; the median pairwise corrected-gap differences were 0.0180 (SUCCESS head, 45 pairs) and 0.0385 (FAILURE head, 35 pairs), and the pre-registered heterogeneity criterion was not met on either head. Two specific combinations, gpt-5-mini/SUCCESS and claude-opus-4.6/FAILURE, showed persistent calibration-transfer errors (median corrected gaps 0.1377 and 0.1107) without a sign reversal under any frozen control. TerminalBench did not establish cross-benchmark replication: the success target produced zero decisions (INDETERMINATE), and the failure target did not satisfy the pre-registered persistence criterion. Therefore, a strong target-specific calibration-transfer error can exist within one frozen environment, but the evidence does not establish that the error is intrinsic to the model or general across benchmarks.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "7f32e21b0f2c1a19a6b8b5e7831218c068b88f5b6a0c024d69afb99de14bc346",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 궤적 신뢰성 감사로 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "기존 벤치마크 궤적 활용 감사 연구로 신규 자원 불명확"
+        }
+      ]
+    },
+    "2609.25841": {
+      "arxiv_id": "2609.25841",
+      "paper_title": "Metric-Bench: Exploring In-context Spatial Metric Reasoning in VLMs for Indoor Scenes",
+      "abstract": "Metric reasoning is a critical and challenging task for Vision Language Models (VLMs), playing a pivotal role in embodied AI tasks such as robotic manipulation and autonomous navigation. However, current spatial reasoning remains bottlenecked by rigid pixel-level supervision; such localized optimization often compromises general multimodal intelligence, triggering performance degradation or catastrophic forgetting of broad reasoning capabilities. To address these limitations, we introduce Metric-Bench, a focused benchmark designed to guide metric-spatial reasoning using contextual information. By incorporating in-image reference objects with known physical dimensions, Metric-Bench guides models to implicitly learn the 2D-to-3D mapping without camera intrinsics. We further present MetricReasoner, a task-adapted reinforcement fine-tuning recipe for reference-grounded metric reasoning, using structured prompts and verifiable numerical rewards. Extensive experiments on Metric-Bench demonstrate that our approach significantly enhances spatial metric understanding, outperforming existing and even larger proprietary models by 43.1\\%, while improving downstream embodied performance over a spatial-specialized counterpart by 30.4\\% on RoboSpatial overall accuracy and 9.3\\% on ERQA, and additionally delivering consistent gains on general benchmarks (15.9\\% on V$\\star$Bench, 88.9\\% on BLINK), indicating that the proposed adaptation does not necessarily compromise general VLM capabilities.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "a3ae7df1dbc3d3994ff7be5c2765be16156f33284c0236524ee263c836560b93",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM 공간 지표 추론 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "공간 거리 추론 벤치마크 및 학습법 제안"
+        }
+      ]
+    },
+    "2609.31727": {
+      "arxiv_id": "2609.31727",
+      "paper_title": "The Ongiini-Eval-OW Benchmark: A Concept Paper for the Planned Benchmarking of Machine Translation and Large Language Models on Oshindonga and Oshikwanyama",
+      "abstract": "Oshiwambo -- a cluster of mutually intelligible Bantu languages spoken by over a million people across northern Namibia and southern Angola, and the home language of roughly half of Namibian households -- has, to our knowledge, no published machine-translation evaluation benchmark. Major commercial services (Google Translate, DeepL, Microsoft Translator), open multilingual MT models (NLLB-200, MADLAD-400), and the open Masakhane checkpoint collection all lack coverage of either standardised dialect, Oshindonga or Oshikwanyama. We announce Ongiini-Eval-OW, a planned 600-item English-Oshindonga and English-Oshikwanyama benchmark with native-speaker references from two independent translators, a 30-item inter-translator agreement set, an 11-tag phenomenon-tagged stratification (at least 30 items per tag), a deterministic 30% blind split, and a reproducible scoring protocol over chrF++, BLEU, and COMET-22, supplemented by a 50-item human-evaluation round. We document the empirical coverage gap, the dataset composition, the launch-leaderboard model matrix across American, European, and Chinese frontier and open-weight systems, and the contribution pipeline. The dataset is targeted for first public release in Q4 2026; this v1.0 concept paper announces the design and the call for participation. Data and code will be released under CC-BY-4.0 and MIT respectively.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "a649c0d3023844a5036ab46db9b853e26a1d3946dcc29f91b00c90e03d65ac6f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "오시왐보 기계번역 벤치마크로 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "오시왐보어 MT 벤치마크 계획 개념서로 공개 예정 단계"
+        }
+      ]
+    },
+    "2609.35823": {
+      "arxiv_id": "2609.35823",
+      "paper_title": "CoVLM-Bench: A Real-World Benchmark for Cooperative Driving Question Answering and Planning",
+      "abstract": "Vision-language models (VLMs) have made substantial progress in autonomous driving, but their success has primarily been studied in ego-centric scenes. Infrastructure-side observations provide views beyond the ego vehicle's field of view, yet conventional cooperative-driving systems typically transform them into geometric representations for downstream perception and planning. Directly incorporating these views into VLMs offers an opportunity to improve cooperative scene understanding and trajectory planning. However, question answering and trajectory planning have not been jointly evaluated on the same real-world vehicle-infrastructure scenes. We present CoVLM-Bench, a benchmark for cooperative driving question answering (CDQA) and cooperative planning (CP) on vehicle-infrastructure paired scenes. CoVLM-Bench provides scene-grounded CDQA annotations, three-part rationales as auxiliary supervision, and future trajectory targets derived from recorded ego motion. It contains 2,196 paired frames with 35,136 CDQA annotations, while CP predicts six waypoints over a three-second horizon. The annotations combine model-assisted drafting, record-based computation, and human verification. Built upon CoVLM-Bench, we introduce CoVLM-Drive, a unified VLM baseline that directly uses paired views for both CDQA and CP. Experiments show that CDQA adaptation improves answer accuracy and that CoVLM-Drive reaches a lower FDE than the compared V2X planners; QA initialization and rationale supervision each reduce planning error. Together, CoVLM-Bench and CoVLM-Drive support the training and comparison of VLMs for cooperative scene understanding and planning.",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "849dc18decf500023aae16a8dd591b60de81db9deeeaf5806a95c1cc64ac709a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "협력주행 VLM 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "협력 주행 QA·계획 실환경 벤치마크 및 주석 제안"
+        }
+      ]
+    },
+    "2609.26029": {
+      "arxiv_id": "2609.26029",
+      "paper_title": "CQ4OE: A benchmark for assessing LLM-assisted ontology generation from competency questions",
+      "abstract": "Ontology generation from Competency Questions (CQs) is a central yet labor-intensive phase of Ontology Engineering. While large language models (LLMs) offer promising automation capabilities, current evaluations remain fragmented. Task formulations are heterogeneous, gold standards often lack fine-grained CQ provenance, metrics conflate lexical overlap with structural and logical adequacy, and reference ontologies are not always explicitly designed around the evaluation CQs. Here, we address these limitations with CQ4OE, a benchmark for the systematic and reproducible evaluation of LLM-based ontology generation from CQs. For each ontology in the benchmark, we build a CQ-driven gold OWL ontology with explicit provenance linking each CQ to the classes, properties, and axioms required to answer it. From this resource, we define two complementary evaluation tasks. CQ2Term supports term-level evaluation of CQ-specific class and property prediction over 99 CQs, and CQ2Onto supports ontology-level evaluation over 118 CQs, including hierarchy, property modeling, and axiom-level structure. We demonstrate CQ4OE with experiments using nine LLMs under zero-shot, iterative, and multi-agent generation strategies, showing that LLMs recover explicit vocabulary terms more reliably than creating ontologies, particularly in property modeling, hierarchy construction, and axiom generation.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "9e1943b1d3efbcb1b0bb38e82b768911ed7726e0ae004f416b43043acfb10a41",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "역량질문 기반 온톨로지 생성 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "온톨로지 생성 평가 벤치마크 CQ4OE 제안"
+        }
+      ]
+    },
+    "2609.26175": {
+      "arxiv_id": "2609.26175",
+      "paper_title": "EADC: Evaluation of Advanced and Deep-level Compliance in Large Language Models",
+      "abstract": "Large Language Models (LLMs) have been used in various industries. However, ensuring their compliance with complex laws and regulatory frameworks remains a great challenge. Existing evaluation paradigms mainly rely on static benchmarks that suffer from three severe limitations: First, the compliance rules being used do not comply with the requirements of Artificial Intelligence (AI) laws and regulations; Second, they only handle apparent, explicit compliance risks, leaving implicit and covert compliance risks undetected; Third, they fail to track the systematic propagation of risks along logical dependency chains or evaluate compliance within nuanced, context-based real-world scenarios. To bridge this critical gap, we introduce EADC, a novel advanced evaluation benchmark of LLMs based on an AI compliance knowledge graph and AI compliance legal experts. By mapping abstract legal rules into structured logical multi-relational graphs, our framework enables automated, evolving agents to distill and synthesize highly sophisticated adversarial scenarios. This compliance benchmark is reviewed and corrected by human AI legal experts throughout the whole process. The resulting dataset (4,435+ QA pairs) provides an extensive, multi-dimensional taxonomy covering critical regulatory frontiers, including bias and discrimination, fairness, personal privacy protection, and values. Crucially, our compliance dataset moves beyond shallow string-matching by incorporating contextual long-horizon interactions and logic-driven hazard chains, capturing deeply embedded compliance anomalies that bypass traditional filters. Experiment evaluations demonstrate that our framework exposes critical regulatory blind spots in state-of-the-art LLMs, offering a rigorous, AI laws and regulations-aligned benchmark to safeguard high-level and deep compliance in the application of LLMs.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "56249591dc14bb918049607e4e207f4999067aa79054f7c58f8e9dafc2dd9f06",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 규제 준수 평가 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "AI 규정 준수 평가 벤치마크 및 지식그래프 자원 제안"
+        }
+      ]
+    },
+    "2609.26853": {
+      "arxiv_id": "2609.26853",
+      "paper_title": "COPE: Continual Personalization of LLMs under Sparse User Feedback via User Embeddings and Self-Evaluation",
+      "abstract": "While Large Language Models (LLMs) have achieved remarkable results across various benchmarks, their alignment with normative values often results in homogenized responses that fail to address diverse user preferences. Existing training-free methods often occupy valuable context windows through prompt engineering, while training-based methods typically remain static post-training, failing to support the continual optimization required in real-world settings. To address these challenges, we propose COPE (Continual Optimization with Personalized embedding and self-Evaluation), a novel optimization framework tailored for real-world-motivated interaction settings with sparse user feedback. Our framework assigns learnable personalized embeddings to each user and synergistically integrates preference capture, self-evaluation calibration, and personalized response optimization within a single update step. A key innovation of our method is the use of self-evaluation to generate proxy rewards, enabling continuous model updates even when explicit user feedback is unavailable. Experiments show that COPE consistently outperforms strong training-free and training-based baselines under sparse feedback, and remains complementary to Retrieval-Augmented Prompting (RAP). Further analyses confirm COPE's reliable self-evaluation, meaningful preference patterns, stable general capabilities, and robustness under shifting preferences and alternative evaluators.",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "3e13e14d978c05e3fa477df4346ecf7c6ddd9248638fedde86792962d6bf1e45",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 지속적 개인화 평가로 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "개인화 최적화 방법론 제안으로 벤치마크 자원 없음"
+        }
+      ]
+    },
+    "2610.00224": {
+      "arxiv_id": "2610.00224",
+      "paper_title": "Build2SPARQL: A Large-Scale Text-to-SPARQL Benchmark Dataset for Building Knowledge Graph Querying",
+      "abstract": "Building automation systems are increasingly represented as semantic knowledge graphs (KGs) using ontologies such as Brick and ASHRAE 223P, creating a machine-readable substrate for artificial-intelligence applications. One promising application is translating natural-language questions into SPARQL (text-to-SPARQL), which would let building operators query these graphs through language agents, but progress is limited by the scarcity of large natural-language/SPARQL benchmarks. This paper presents Build2SPARQL, a large-scale benchmark for building KGs generated by a KG-grounded pipeline: SPARQL queries are produced and validated entirely by graph-traversal code, while large language models generate only the natural-language questions, keeping query correctness independent of model behavior. The pipeline mines six query-pattern families -- linear chains, branching, UNION, aggregation, OPTIONAL, and attribute-filtered -- and phrases each query across five vocabulary registers. Applied to 201 building KGs (180 Brick, 21 ASHRAE 223P), it yields 6,136 executable SPARQL queries and 30,680 questions. A two-rater human validation of 300 questions found 98.8% semantic fidelity, 98.8% naturalness, and 84.0% operational plausibility. A retrieval-augmented evaluation across three open-weight language models raised exact-match accuracy from 0.2-20% (zero-shot) to 56-65% (three-shot retrieved).",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "d5cd2e1d16e28307eaf23f611d23ae64c79b422d516702f1f91afdf33a47b425",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "건물 지식그래프 Text-to-SPARQL 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "건물 KG 텍스트-to-SPARQL 대규모 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.26489": {
+      "arxiv_id": "2609.26489",
+      "paper_title": "Calibration as a First-Class Criterion in LLM Evaluation",
+      "abstract": "Calibration of language models -- the alignment between expressed or implicit confidence and empirical correctness -- is a well-studied subfield within NLP. Methods to measure it already exist. The problem is adoption: outside this subfield, NLP research regularly introduces new models, datasets, and benchmarks without checking whether the model's confidence scores are meaningful. We argue that this adoption gap is a major obstacle to trustworthy LLM evaluation. Miscalibration causes problems in two distinct areas: at deployment, where overconfident mistakes cause real harm, and inside the research pipeline, where methods like LLM-as-a-judge, synthetic data generation, and active learning rely on calibrated confidence without verifying it. Standard calibration metrics only require two inputs per example: a confidence score and a correctness judgment. Most benchmarks in use today already provide both, meaning calibration can be reported immediately. For open-ended generation, however, defining these two inputs is still an open challenge. We argue that each NLP subfield should pair its main performance metric with a calibration score and call for treating calibration as an essential property of every model rather than a niche topic.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:44:34Z",
+      "input_sha256": "11b21f0966a3906416408fe3c5bbd0f60d8ee7c360abbde40af816c5ad33626a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 평가에서 보정 기준 제안으로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "보정 보고 촉구 입장문으로 재사용 평가 자원 부재"
         }
       ]
     }
