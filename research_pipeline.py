@@ -381,8 +381,24 @@ def abstract_input(paper):
 
 
 def screening_hash(paper, config):
-    return digest({"paper": abstract_input(paper), "prompt": SCREEN_PROMPT,
+    # Discovery sources expose different date precision. Reuse the decision when
+    # the actual title/abstract are unchanged, even if metadata dates are enriched.
+    return digest({"paper": {key: paper[key] for key in ("arxiv_id", "title", "summary")}, "prompt": SCREEN_PROMPT,
                    "version": SCREEN_VERSION, "models": [config["model"], config.get("verifier_model", config["model"])]})
+
+
+def screening_matches(record, paper, config):
+    if record.get("input_sha256") == screening_hash(paper, config):
+        return True
+    # Accept the previous date-sensitive cache format only when the original
+    # policy/model hash and source text still match. Do not repeat paid analysis
+    # merely because RSS/OAI adds or changes the precision of a date.
+    if record.get("paper_title") != paper["title"] or record.get("abstract") != paper["summary"]:
+        return False
+    old_input = {**abstract_input(paper), "updated": record.get("paper_updated")}
+    legacy = digest({"paper": old_input, "prompt": SCREEN_PROMPT,
+                     "version": SCREEN_VERSION, "models": [config["model"], config.get("verifier_model", config["model"])]})
+    return record.get("input_sha256") == legacy
 
 
 def parse_screening(text, expected):
@@ -407,7 +423,7 @@ def screen_candidates(state, ledger, config, primary, secondary, root, day, dead
     pending = [paper for paper in reversed(state["papers"])
                if paper["arxiv_id"] not in ledger["proposals"]
                and paper["arxiv_id"] not in attempted
-               and screenings.get(paper["arxiv_id"], {}).get("input_sha256") != screening_hash(paper, config)]
+               and not screening_matches(screenings.get(paper["arxiv_id"], {}), paper, config)]
     pending = pending[:max(0, config.get("daily_abstracts", 1000) - len(attempted))]
     if limit is not None:
         pending = pending[:limit]
@@ -525,7 +541,7 @@ def run(root: Path = ROOT, dry_run=False, screening_smoke=False):
     selected = [paper for paper in reversed(state["papers"])
                 if paper["arxiv_id"] not in ledger["proposals"] and paper["arxiv_id"] not in attempts["attempted"]
                 and ledger.get("screenings", {}).get(paper["arxiv_id"], {}).get("status") == "passed"
-                and ledger["screenings"][paper["arxiv_id"]].get("input_sha256") == screening_hash(paper, config)]
+                and screening_matches(ledger["screenings"][paper["arxiv_id"]], paper, config)]
     selected = selected[:max(0, config["daily_papers"] - len(attempts["attempted"]))]
     tables = {track: dict(zip(("headers", "rows"), read_table(root, track))) for track in TABLES}
     state["research"]["status"] = "running"

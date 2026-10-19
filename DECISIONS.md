@@ -116,3 +116,20 @@ and rebuild their page data: Korean text to `korean.html`, English text to
 Extract supported benchmark counts and evaluation metrics into existing content
 fields. Model rankings remain outside this adapter; their requested scope was
 asked separately. Update the ignored `_local/PROCESS.md` with this process.
+
+## 10. Discover new RSS announcements and recover gaps by metadata changes (2026-10-19)
+
+The user chose new-publication RSS, arXiv ID/processing-record deduplication, and
+an independent path to recover interrupted collection. Replace submission-date
+search windows with RSS announcement editions. Preserve first announcement dates
+separately from submission dates; never label an OAI modification date as first
+publication. Read the eight configured RSS feeds and retain the existing relevance
+keyword filter and two-model/full-text evidence requirements.
+
+Recover closed UTC days through OAI-PMH metadata changes, persisting every page
+and advancing a day only after pagination completes. Start with the previous
+30 days on migration, then resume unfinished days. Use a bounded recovery budget
+and retain pending work; expired continuation tokens restart the unfinished day.
+Deduplicate by arXiv ID and preserve research/review status. Date precision changes
+between sources must not repeat an unchanged abstract judgment. Keep 11:30 KST,
+the daily investigation limits, and the language/modality page destinations.

@@ -5,25 +5,36 @@ independently of the user's laptop. GitHub can delay a scheduled run.
 
 ## What gets updated
 
-1. `arxiv_watch.py` searches arXiv metadata using benchmark/evaluation/dataset
-   and language-model keywords. This is keyword discovery, not semantic search
-   or an agent browsing the whole web. Relevant papers without those terms can
-   be missed. The first collection covers 30 days; later collections overlap
-   the previous checkpoint by seven days. Pagination must finish before the
-   checkpoint advances. Older paper revisions are not automatically researched. The
-   overlap reduces misses from submissions announced later than their submission
-   date; it is not a guarantee against delays longer than seven days. See
-   [arXiv availability](https://info.arxiv.org/help/availability.html).
-   Repeated metadata hits do not trigger repeated model analysis: completed body
-   investigations are skipped by arXiv ID, and unchanged abstract decisions are
-   reused across days. Changed abstract/revision/policy inputs may be screened
-   again; pending body work and failed PDF downloads remain eligible.
+1. `arxiv_watch.py` reads arXiv RSS feeds for cs, econ, eess, math, physics,
+   q-bio, q-fin and stat. RSS is a machine-readable list of announcements.
+   Only `new` announcements enter from RSS; `pubDate` is stored as `announced_at`,
+   separately from submission dates. Each feed retains its own edition date.
+   Repeated or older editions do not reset processing. See the
+   [official RSS specification](https://info.arxiv.org/help/rss_specifications.html).
+   Titles/abstracts still pass the existing benchmark/evaluation/dataset and
+   language-model keyword filter before model screening. Relevant papers with
+   different wording can be missed.
+   A separate OAI-PMH recovery path reads metadata changes for completed UTC
+   days across all subject areas. It catches interrupted collection, capped RSS
+   feeds and cross-listings without filtering by submission date. On migration
+   it starts 30 days back; thereafter it continues from the unfinished day/page,
+   with at most 30 recovery requests per run. Every page saves candidate IDs and
+   its continuation token; the day advances only after its final page. An expired
+   token restarts that unfinished day, with ID deduplication. Remaining days stay
+   pending for later runs. OAI modification dates are not first-publication dates;
+   recovered papers keep the announcement date unknown unless RSS supplied it.
+   See [OAI-PMH recovery](https://info.arxiv.org/help/oa/index.html).
+   Completed full-text investigations are skipped by arXiv ID. Unchanged title/
+   abstract judgments are reused across sources and days, including the previous
+   cache format. Metadata date enrichment alone does not trigger model calls.
+   Changed text or screening policy may be screened again; pending body work and
+   failed PDF downloads remain eligible.
 2. `research_pipeline.py` first sends batches of up to 20 titles and abstracts
    to DeepSeek and GLM independently, without PDFs, inventory tables or official
    resource pages. Only agreement that an abstract is irrelevant skips full-text
    work. Relevant, uncertain, disagreeing, or malformed-but-accounted responses
    proceed to full-text investigation. Cached decisions are bound to the abstract,
-   paper revision, prompt and model configuration.
+   title, prompt and model configuration.
 3. For passed candidates, download the PDF, extract physical pages, and record its
    SHA-256 hash. DeepSeek prepares a draft in the existing CSV schema. Useful
    dataset/question counts and evaluation metrics belong in the definition/task
@@ -86,8 +97,9 @@ usage and errors before clearing a stop left by a failed run. Bot commits are
 deployed by the same run; they do not trigger another workflow.
 
 The daily and elapsed-time limits can leave a backlog. Unprocessed candidates remain in the repository queue without assigning work
-to the user. Transient arXiv API failures retain the last successful discovery checkpoint and
-continue investigation of cached candidates. Discovery errors remain in the repository record. Requests are sequential with ten seconds
+to the user. Transient RSS/OAI failures retain the affected source checkpoint while other
+sources and cached investigations continue. Source-specific errors and recovery
+progress remain in `new-papers.json`. A failed source cannot advance its cursor. Requests are sequential with ten seconds
 between metadata pages and before fresh PDF downloads. HTTP 429 retries wait
 60, 120, and 240 seconds, or longer when `Retry-After` requests it. Server
 cooldowns longer than four minutes are saved for a later run rather than

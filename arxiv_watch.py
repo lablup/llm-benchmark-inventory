@@ -24,14 +24,13 @@ STATE_PATH = ROOT / "new-papers.json"
 REPOSITORY = "lablup/llm-benchmark-inventory"
 SITE = "https://lablup.github.io/llm-benchmark-inventory/papers.html"
 LABEL = "arxiv-review"
-ATOM = "{http://www.w3.org/2005/Atom}"
-SEARCH = "{http://a9.com/-/spec/opensearch/1.1/}"
+OAI = "{http://www.openarchives.org/OAI/2.0/}"
+OAI_ARXIV = "{http://arxiv.org/OAI/arXiv/}"
+RSS_ARXIV = "{http://arxiv.org/schemas/atom}"
+DC = "{http://purl.org/dc/elements/1.1/}"
 ARXIV_ID = r"\d{4}\.\d{4,5}"
-TOPIC_QUERY = (
-    '(ti:benchmark OR ti:bench OR ti:evaluation OR ti:dataset) AND '
-    '(all:"language model" OR all:LLM OR all:LLMs OR all:VLM OR '
-    'all:"vision language" OR all:"multimodal model")'
-)
+RSS_FEEDS = ("cs", "econ", "eess", "math", "physics", "q-bio", "q-fin", "stat")
+OAI_URL = "https://oaipmh.arxiv.org/oai"
 MODEL = re.compile(r"\b(?:LLMs?|VLMs?|(?:large |vision[- ]|multimodal )?language models?|multimodal models?)\b", re.I)
 BENCH = re.compile(r"bench(?:mark(?:ing|s)?)?\b", re.I)
 INTRODUCES = re.compile(r"\b(?:introduc\w*|propos\w*|present\w*|releas\w*|construct\w*)\b", re.I)
@@ -78,8 +77,12 @@ def validate_state(state: dict) -> None:
         for field in ("title", "summary"):
             if not isinstance(paper[field], str) or not paper[field].strip():
                 raise ValueError(f"Missing {field}")
-        for field in ("published", "updated", "first_seen_at"):
-            timestamp(paper[field])
+        timestamp(paper["first_seen_at"])
+        for field in ("published", "updated", "announced_at", "metadata_changed_at"):
+            if paper.get(field):
+                timestamp(paper[field])
+        if not paper.get("published") and not paper.get("announced_at"):
+            raise ValueError("Paper needs a submission or announcement date")
         for field in ("authors", "categories"):
             if not isinstance(paper[field], list) or not all(isinstance(x, str) for x in paper[field]):
                 raise ValueError(f"Invalid {field}")
@@ -91,39 +94,6 @@ def save_state(path: Path, state: dict) -> None:
     temporary = path.with_suffix(".tmp")
     temporary.write_text(text, encoding="utf-8")
     temporary.replace(path)
-
-
-def parse_feed(payload: bytes, expected_start: int) -> tuple[int, list[dict]]:
-    root = ET.fromstring(payload)
-    if root.tag != ATOM + "feed":
-        raise ValueError("arXiv did not return an Atom feed")
-    total = int(root.findtext(SEARCH + "totalResults", "-1"))
-    start = int(root.findtext(SEARCH + "startIndex", "-1"))
-    if total < 0 or start != expected_start:
-        raise ValueError("arXiv returned invalid pagination or an error feed")
-    papers = []
-    for entry in root.findall(ATOM + "entry"):
-        raw_id = entry.findtext(ATOM + "id", "")
-        match = re.fullmatch(r"https?://arxiv\.org/abs/(" + ARXIV_ID + r")(?:v\d+)?", raw_id)
-        if not match:
-            raise ValueError(f"Invalid arXiv entry: {raw_id}")
-        key = match[1]
-        paper = {
-            "arxiv_id": key,
-            "title": " ".join(entry.findtext(ATOM + "title", "").split()),
-            "summary": " ".join(entry.findtext(ATOM + "summary", "").split()),
-            "authors": [" ".join(author.findtext(ATOM + "name", "").split()) for author in entry.findall(ATOM + "author")],
-            "published": entry.findtext(ATOM + "published", ""),
-            "updated": entry.findtext(ATOM + "updated", ""),
-            "categories": [category.attrib["term"] for category in entry.findall(ATOM + "category")],
-            "url": f"https://arxiv.org/abs/{key}",
-        }
-        timestamp(paper["published"])
-        timestamp(paper["updated"])
-        if not paper["title"] or not paper["summary"]:
-            raise ValueError("arXiv entry is missing title or abstract")
-        papers.append(paper)
-    return total, papers
 
 
 def candidate(paper: dict) -> bool:
@@ -158,7 +128,10 @@ def fetch_url(url: str) -> bytes:
         delay = 10 * (2 ** attempt)
         try:
             with urlopen(request, timeout=45) as response:
-                return response.read()
+                payload = response.read(20_000_001)
+                if len(payload) > 20_000_000:
+                    raise ValueError("arXiv metadata response exceeds 20 MB")
+                return payload
         except HTTPError as error:
             if error.code not in {429, 500, 502, 503, 504}:
                 raise
@@ -176,50 +149,242 @@ def fetch_url(url: str) -> bytes:
     raise RuntimeError("arXiv request failed")
 
 
-def collect(state: dict, now: datetime, fetch=fetch_url, sleep=time.sleep) -> dict:
-    """Fetch every page before advancing the checkpoint; retain older review data."""
-    since = timestamp(state["last_checked_at"]) - timedelta(days=7) if state.get("last_checked_at") else now - timedelta(days=30)
-    since = since.astimezone(timezone.utc).replace(second=0, microsecond=0)
-    if since > now:
-        raise ValueError("Collection checkpoint is in the future")
-    query = f"({TOPIC_QUERY}) AND submittedDate:[{since:%Y%m%d%H%M} TO {now:%Y%m%d%H%M}]"
-    found: dict[str, dict] = {}
-    start = 0
-    while True:
-        url = "https://export.arxiv.org/api/query?" + urlencode({
-            "search_query": query, "start": start, "max_results": 100,
-            "sortBy": "submittedDate", "sortOrder": "descending",
-        })
-        total, page = parse_feed(fetch(url), start)
-        if total > 5000:
-            raise ValueError("More than 5000 results; narrow the query before advancing the checkpoint")
-        if not page and start < total:
-            raise ValueError("arXiv returned an incomplete page; checkpoint was not advanced")
-        for paper in page:
-            if not since <= timestamp(paper["published"]) <= now:
-                raise ValueError("arXiv returned a paper outside the requested date range")
-            previous = found.get(paper["arxiv_id"])
-            if previous is None or timestamp(paper["updated"]) > timestamp(previous["updated"]):
-                found[paper["arxiv_id"]] = paper
-        start += len(page)
-        if start >= total:
-            break
-        sleep(10)
-    if len(found) != total:
-        raise ValueError("arXiv pagination changed during collection; retry without advancing the checkpoint")
-    result = copy.deepcopy(state)
-    by_id = {p["arxiv_id"]: p for p in result["papers"]}
-    for key, paper in found.items():
-        if key in by_id:
-            if timestamp(paper["updated"]) >= timestamp(by_id[key]["updated"]):
-                by_id[key].update(paper)
+def rss_date(value: str) -> str:
+    parsed = parsedate_to_datetime(value)
+    if parsed.tzinfo is None:
+        raise ValueError("RSS date must include a timezone")
+    return iso(parsed)
+
+
+def parse_rss(payload: bytes) -> tuple[str, list[dict], int]:
+    root = ET.fromstring(payload)
+    channel = root.find("channel")
+    if root.tag != "rss" or channel is None:
+        raise ValueError("arXiv did not return RSS")
+    published = rss_date(channel.findtext("pubDate", ""))
+    items = channel.findall("item")
+    papers = []
+    for item in items:
+        kind = item.findtext(RSS_ARXIV + "announce_type", "")
+        if kind not in {"new", "cross", "replace", "replace-cross"}:
+            raise ValueError("Unknown RSS announcement type")
+        if kind != "new":
+            continue
+        link = item.findtext("link", "")
+        match = re.fullmatch(r"https?://arxiv\.org/abs/(" + ARXIV_ID + r")(?:v\d+)?", link)
+        if not match:
+            raise ValueError("Invalid new-paper RSS link")
+        key = match[1]
+        description = item.findtext("description", "")
+        header, separator, summary = description.partition("Abstract:")
+        if not separator or not summary.strip() or not re.search(r"arXiv:" + re.escape(key) + r"(?:v\d+)?\b", header):
+            raise ValueError("RSS abstract or identifier is missing")
+        announced = rss_date(item.findtext("pubDate", ""))
+        if announced != published:
+            raise ValueError("Mixed RSS announcement dates")
+        papers.append({"arxiv_id": key, "url": f"https://arxiv.org/abs/{key}",
+            "title": " ".join(item.findtext("title", "").split()),
+            "summary": " ".join(summary.split()),
+            # RSS creator strings may contain commas inside affiliations.
+            "authors": [item.findtext(DC + "creator", "")],
+            "categories": [c.text for c in item.findall("category") if c.text],
+            "published": None, "updated": None, "announced_at": announced,
+            "metadata_source": "rss"})
+    return published, papers, len(items)
+
+
+class ExpiredResumptionToken(ValueError):
+    pass
+
+
+def parse_oai(payload: bytes, day: str, continuation=False) -> tuple[list[dict], str, str]:
+    root = ET.fromstring(payload)
+    if root.tag != OAI + "OAI-PMH":
+        raise ValueError("arXiv did not return OAI-PMH")
+    response_date = root.findtext(OAI + "responseDate", "")
+    timestamp(response_date)
+    errors = root.findall(OAI + "error")
+    if errors:
+        if len(errors) == 1 and errors[0].get("code") == "noRecordsMatch":
+            if continuation:
+                raise ValueError("OAI continuation unexpectedly lost its records")
+            return [], "", response_date
+        if errors[0].get("code") == "badResumptionToken":
+            raise ExpiredResumptionToken("Restart the unfinished OAI day")
+        raise ValueError("OAI error: " + str(errors[0].get("code")))
+    listing = root.find(OAI + "ListRecords")
+    if listing is None:
+        raise ValueError("Missing OAI records")
+    papers = []
+    for record in listing.findall(OAI + "record"):
+        header = record.find(OAI + "header")
+        if header is None or header.findtext(OAI + "datestamp") != day:
+            raise ValueError("OAI record outside the requested day")
+        if header.get("status") == "deleted":
+            continue
+        metadata = record.find(OAI + "metadata/" + OAI_ARXIV + "arXiv")
+        if metadata is None:
+            raise ValueError("Missing arXiv metadata")
+        key = metadata.findtext(OAI_ARXIV + "id", "")
+        if not re.fullmatch(ARXIV_ID, key):
+            if re.fullmatch(r"[a-z-]+(?:\.[A-Z]{2})?/\d{7}", key):
+                continue  # Pre-2007 identifiers are outside this LLM inventory.
+            raise ValueError("Invalid OAI arXiv ID")
+        if header.findtext(OAI + "identifier") != "oai:arXiv.org:" + key:
+            raise ValueError("OAI header and metadata IDs disagree")
+        created = metadata.findtext(OAI_ARXIV + "created", "")
+        updated = metadata.findtext(OAI_ARXIV + "updated") or created
+        for value in (created, updated):
+            datetime.strptime(value, "%Y-%m-%d")
+        authors = []
+        for author in metadata.findall(OAI_ARXIV + "authors/" + OAI_ARXIV + "author"):
+            authors.append(" ".join(filter(None, (author.findtext(OAI_ARXIV + "forenames"), author.findtext(OAI_ARXIV + "keyname")))))
+        papers.append({"arxiv_id": key, "url": f"https://arxiv.org/abs/{key}",
+            "title": " ".join(metadata.findtext(OAI_ARXIV + "title", "").split()),
+            "summary": " ".join(metadata.findtext(OAI_ARXIV + "abstract", "").split()),
+            "authors": authors, "categories": metadata.findtext(OAI_ARXIV + "categories", "").split(),
+            "published": created + "T00:00:00Z", "updated": updated + "T00:00:00Z",
+            "submission_date_precision": "day", "metadata_changed_at": day + "T00:00:00Z",
+            "metadata_source": "oai"})
+    token = listing.findtext(OAI + "resumptionToken", "").strip()
+    if token and not listing.findall(OAI + "record"):
+        raise ValueError("Empty OAI continuation page")
+    return papers, token, response_date
+
+
+def merge_papers(state, papers, now):
+    by_id = {p["arxiv_id"]: p for p in state["papers"]}
+    for paper in papers:
+        key = paper["arxiv_id"]
+        old = by_id.get(key)
+        if old:
+            # An RSS replay of v1 must never overwrite newer metadata. Discovery
+            # must also preserve review status and completed investigation records.
+            if paper.get("announced_at"):
+                old.setdefault("announced_at", paper["announced_at"])
+            if paper["metadata_source"] == "oai":
+                incoming = timestamp(paper["updated"]).date()
+                existing = timestamp(old["updated"]).date() if old.get("updated") else None
+                if existing is None or incoming >= existing:
+                    values = dict(paper)
+                    # Preserve precise API timestamps when OAI only repeats a date.
+                    for field in ("published", "updated"):
+                        if old.get(field) and timestamp(old[field]).date() == timestamp(values[field]).date():
+                            values[field] = old[field]
+                    old.update(values)
         elif candidate(paper):
             by_id[key] = {**paper, "first_seen_at": iso(now), "review_status": "pending", "review_issue_url": None}
-    result["papers"] = sorted(by_id.values(), key=lambda p: (p["published"], p["arxiv_id"]), reverse=True)
-    result["last_checked_at"] = iso(now)
-    validate_state(result)
-    return result
+    state["papers"] = sorted(by_id.values(), key=lambda p: (p.get("announced_at") or p.get("published") or p["first_seen_at"], p["arxiv_id"]), reverse=True)
 
+
+def collect(state: dict, now: datetime, fetch=None, sleep=time.sleep, *,
+            checkpoint=None, allow_cached=False, feeds=RSS_FEEDS, backfill_page_limit=30) -> dict:
+    """Consume new announcements and incrementally recover metadata by change date.
+
+    RSS checkpoints describe observed feed editions, never today's wall clock.
+    OAI advances only after all pages of a UTC day complete. Each page is saved,
+    including its continuation token, so an interrupted run can resume.
+    """
+    fetch = fetch or fetch_url
+    result = copy.deepcopy(state)
+    discovery = result.setdefault("discovery", {})
+    rss = discovery.setdefault("rss", {})
+    recovery = discovery.setdefault("oai", {"next_day": (now - timedelta(days=30)).date().isoformat()})
+    errors = discovery.setdefault("errors", {})
+    calls = 0
+
+    def persist():
+        validate_state(result)
+        if checkpoint:
+            checkpoint(copy.deepcopy(result))
+
+    def request(url):
+        nonlocal calls
+        if calls:
+            sleep(10)
+        calls += 1
+        return fetch(url)
+
+    def cooling(source):
+        retry = errors.get(source, {}).get("retry_at")
+        return retry and timestamp(retry) > now
+
+    def failed(source, error):
+        if not allow_cached or (isinstance(error, HTTPError) and error.code not in {429, 500, 502, 503, 504}):
+            raise error
+        errors[source] = {"at": iso(now), "code": f"HTTP {error.code}" if isinstance(error, HTTPError) else type(error).__name__}
+        if getattr(error, "retry_at", None):
+            errors[source]["retry_at"] = error.retry_at
+        print(f"::warning::{source} unavailable; keeping its checkpoint and cached candidates", flush=True)
+        persist()
+
+    for name in feeds:
+        source = "rss:" + name
+        if cooling(source):
+            continue
+        try:
+            published, papers, count = parse_rss(request(f"https://rss.arxiv.org/rss/{name}"))
+            if timestamp(published) > now:
+                raise ValueError("RSS announcement date is in the future")
+            previous = rss.get(name, {}).get("pub_date")
+            if not previous or timestamp(published) > timestamp(previous):
+                merge_papers(result, papers, now)
+                rss[name] = {"pub_date": published, "checked_at": iso(now), "items": count,
+                             "possibly_truncated": count >= 2000}
+            # A capped feed is still useful; OAI independently recovers missing rows.
+            errors.pop(source, None)
+            persist()
+            print(f"RSS {name}: {published}, {count} items", flush=True)
+        except (HTTPError, URLError, TimeoutError) as error:
+            failed(source, error)
+
+    # Finish closed UTC days only. Reconcile every day so capped/stale RSS feeds
+    # and cross-listings are covered too. First migration recovers the last month.
+    today = now.astimezone(timezone.utc).date()
+    pages = 0
+    restarted = False
+    while datetime.strptime(recovery["next_day"], "%Y-%m-%d").date() < today and pages < backfill_page_limit:
+        if cooling("oai"):
+            break
+        day = recovery["next_day"]
+        token = recovery.get("resumption_token")
+        params = {"verb": "ListRecords", "resumptionToken": token} if token else {
+            "verb": "ListRecords", "metadataPrefix": "arXiv", "from": day, "until": day}
+        try:
+            pages += 1
+            papers, following, response_date = parse_oai(request(OAI_URL + "?" + urlencode(params)), day, bool(token))
+            # Cached OAI responses from before the end of this day cannot close it.
+            if timestamp(response_date).date() <= datetime.strptime(day, "%Y-%m-%d").date():
+                raise ValueError("OAI response predates the end of the requested day")
+            if following and following == token:
+                raise ValueError("OAI continuation did not advance")
+            merge_papers(result, papers, now)
+            if following:
+                recovery["resumption_token"] = following
+            else:
+                recovery.pop("resumption_token", None)
+                recovery["completed_through"] = day
+                recovery["next_day"] = (datetime.strptime(day, "%Y-%m-%d") + timedelta(days=1)).date().isoformat()
+            recovery["last_response_at"] = response_date
+            errors.pop("oai", None)
+            persist()
+            print(f"OAI {day}: {len(papers)} records, {'more pages' if following else 'complete'}", flush=True)
+        except ExpiredResumptionToken:
+            if not token or restarted:
+                raise
+            recovery.pop("resumption_token", None)
+            restarted = True
+            persist()
+        except (HTTPError, URLError, TimeoutError) as error:
+            failed("oai", error)
+            break
+    discovery["recovery_pending"] = datetime.strptime(recovery["next_day"], "%Y-%m-%d").date() < today
+    discovery["last_attempt_at"] = iso(now)
+    if not errors:
+        result["last_checked_at"] = iso(now)
+    result.pop("discovery_error", None)  # Legacy search-API cooldown is source-specific.
+    persist()
+    return result
 
 class GitHub:
     def __init__(self, token: str):
@@ -266,26 +431,9 @@ def sync_issues(state: dict, github: GitHub, now: datetime, reviewer: str) -> di
     return sync(state, github, now, reviewer)
 
 
-def collect_with_cached_fallback(state, now):
-    """Keep the old checkpoint on transient network failures; process cached work."""
-    cooldown = state.get("discovery_error", {}).get("retry_at")
-    if cooldown and timestamp(cooldown) > now:
-        print("::warning::arXiv server cooldown is still active; using cached candidates")
-        return copy.deepcopy(state)
-    try:
-        result = collect(state, now)
-        result.pop("discovery_error", None)
-        return result
-    except (HTTPError, URLError, TimeoutError) as error:
-        if isinstance(error, HTTPError) and error.code not in {429, 500, 502, 503, 504}:
-            raise
-        result = copy.deepcopy(state)
-        code = f"HTTP {error.code}" if isinstance(error, HTTPError) else type(error).__name__
-        result["discovery_error"] = {"at": iso(now), "code": code}
-        if getattr(error, "retry_at", None):
-            result["discovery_error"]["retry_at"] = error.retry_at
-        print(f"::warning::arXiv discovery unavailable ({code}); retaining checkpoint and investigating cached candidates")
-        return result
+def collect_with_cached_fallback(state, now, **kwargs):
+    """Persist available sources while failed sources retain their own cursor."""
+    return collect(state, now, allow_cached=True, **kwargs)
 
 
 def main() -> None:
@@ -302,7 +450,8 @@ def main() -> None:
     state = load_state(args.state)
     before = len(state["papers"])
     if not args.issues_only:
-        state = collect_with_cached_fallback(state, now) if args.allow_cached else collect(state, now)
+        state = collect(state, now, allow_cached=args.allow_cached,
+                        checkpoint=lambda current: save_state(args.state, current))
         # Preserve discovery even if GitHub is temporarily unavailable.
         save_state(args.state, state)
     if args.github:

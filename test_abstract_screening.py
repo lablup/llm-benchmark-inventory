@@ -91,6 +91,19 @@ class ScreeningTests(unittest.TestCase):
         invoke.assert_not_called()
         pdf.assert_not_called()
 
+    def test_rss_oai_date_enrichment_reuses_legacy_abstract_decision(self):
+        self.prepare()
+        paper = self.papers[0]
+        legacy = research.digest({"paper": research.abstract_input(paper),
+            "prompt": research.SCREEN_PROMPT, "version": research.SCREEN_VERSION,
+            "models": [self.config["model"], self.config["verifier_model"]]})
+        record = {"input_sha256": legacy, "paper_title": paper["title"],
+                  "abstract": paper["summary"], "paper_updated": paper["updated"]}
+        enriched = {**paper, "updated": None, "announced_at": "2026-10-17T04:00:00Z"}
+        self.assertTrue(research.screening_matches(record, enriched, self.config))
+        self.assertFalse(research.screening_matches(record, {**enriched, "summary": "Changed"}, self.config))
+        self.assertEqual(research.screening_hash(paper, self.config), research.screening_hash(enriched, self.config))
+
     def test_disagreement_or_uncertainty_goes_to_full_text(self):
         for decision in ("relevant", "uncertain"):
             with self.subTest(decision=decision):
