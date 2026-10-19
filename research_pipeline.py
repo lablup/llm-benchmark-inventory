@@ -208,6 +208,13 @@ def compact(text: str) -> str:
     return " ".join(text.split())
 
 
+def evidence_payload(context: dict) -> str:
+    """Put each physical page number beside its text in model requests."""
+    source = context["source"]
+    numbered = [{"page": index + 1, "text": page} for index, page in enumerate(source["pages"])]
+    return json.dumps({**context, "source": {**source, "pages": numbered}}, ensure_ascii=False)
+
+
 def validate_result(result: dict, context: dict) -> dict:
     if result.get("decision") not in {"propose", "exclude", "needs_evidence"}:
         raise ValueError("Invalid research decision")
@@ -560,7 +567,7 @@ def run(root: Path = ROOT, dry_run=False, screening_smoke=False):
             continue
         context = {"paper": paper, "tables": tables, "source": source,
                    "english_copy": (root / "english-copy.js").read_text()}
-        payload = json.dumps(context, ensure_ascii=False)
+        payload = evidence_payload(context)
         job = {"id": key, "messages": [{"role": "system", "content": PROMPT}, {"role": "user", "content": payload}]}
         # Persist a block before any paid call. A crash leaves a visible stop,
         # preventing a retry from silently spending a second daily allowance.
@@ -583,7 +590,7 @@ def run(root: Path = ROOT, dry_run=False, screening_smoke=False):
             try:
                 cards = [get_official_resource(url) for url in sorted({change["row"]["링크"] for change in result["changes"]})]
                 context["official_resources"] = cards
-                payload = json.dumps(context, ensure_ascii=False)
+                payload = evidence_payload(context)
                 source["official_resources"] = [{k: v for k, v in card.items() if k != "text"} for card in cards]
             except (OSError, ValueError, KeyError):
                 result["decision"] = "needs_evidence"

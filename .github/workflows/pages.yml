@@ -11,6 +11,10 @@ on:
         description: "Screen at most 10 cached abstracts only, without full-text investigation or applying changes"
         type: boolean
         default: false
+      citation_replay_run:
+        description: "Optional completed run ID: re-audit saved drafts with uniquely correctable page citations only"
+        type: string
+        default: ""
   schedule:
     # 11:30 Asia/Seoul. GitHub may start scheduled runs later when busy.
     - cron: "30 2 * * *"
@@ -35,7 +39,7 @@ jobs:
       - name: Test discovery, evidence and approval handling
         # Buffer successful tests so simulated outages do not become annotations.
         # Failed-test output and real collection warnings remain visible.
-        run: python3 -m unittest --buffer -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py
+        run: python3 -m unittest --buffer -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py test_replay_citations.py
       - name: Generate site data
         run: |
           python3 build_site_data.py
@@ -46,7 +50,7 @@ jobs:
           test -z "$(git ls-files --others --exclude-standard -- research/archive updates.json)"
       - name: Check script syntax
         run: |
-          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py arxiv_watch.py build_pages.py research_pipeline.py review_proposals.py build_research_records.py pdf_evidence.py prepare_mineru.py smoke_pdf_evidence.py
+          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py arxiv_watch.py build_pages.py research_pipeline.py review_proposals.py build_research_records.py pdf_evidence.py prepare_mineru.py smoke_pdf_evidence.py replay_citations.py
           node --check app.js
           node --check english-copy.js
           node --check landing.js
@@ -58,6 +62,7 @@ jobs:
     needs: validate
     timeout-minutes: 150
     permissions:
+      actions: read
       contents: write
       issues: write
       pages: write
@@ -70,12 +75,31 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
       - name: Collect new arXiv papers
-        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke)
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke && !inputs.citation_replay_run)
         run: python3 arxiv_watch.py --allow-cached
       - name: Install PDF evidence runtime
-        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke)
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke && !inputs.citation_replay_run)
         uses: ./.github/actions/pdf-tools
+      - name: Resolve source evidence run
+        if: github.event_name == 'workflow_dispatch' && inputs.citation_replay_run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN: ${{ inputs.citation_replay_run }}
+        run: |
+          [[ "$SOURCE_RUN" =~ ^[0-9]+$ ]] || exit 1
+          test "${{ inputs.screening_smoke }}" != "true"
+          base_commit=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN" --jq .head_sha)
+          echo "REPLAY_BASE_COMMIT=$base_commit" >> "$GITHUB_ENV"
+      - name: Restore original PDFs and model responses
+        if: github.event_name == 'workflow_dispatch' && inputs.citation_replay_run
+        uses: actions/download-artifact@v4
+        with:
+          name: research-logs-${{ inputs.citation_replay_run }}
+          run-id: ${{ inputs.citation_replay_run }}
+          github-token: ${{ github.token }}
+          path: .research-cache/replay-source
       - name: Investigate papers and verify proposals
         id: research
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
@@ -84,8 +108,12 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           TOKEN_FACTORY_API_KEY: ${{ secrets.TOKEN_FACTORY_API_KEY }}
+          SOURCE_RUN: ${{ inputs.citation_replay_run }}
         run: |
-          if [ "${{ inputs.screening_smoke }}" = "true" ]; then
+          if [ -n "$SOURCE_RUN" ]; then
+            python3 replay_citations.py --artifact .research-cache/replay-source --base-commit "$REPLAY_BASE_COMMIT" --source-run "$SOURCE_RUN" --dry-run
+            python3 replay_citations.py --artifact .research-cache/replay-source --base-commit "$REPLAY_BASE_COMMIT" --source-run "$SOURCE_RUN"
+          elif [ "${{ inputs.screening_smoke }}" = "true" ]; then
             python3 research_pipeline.py --screening-smoke
           else
             python3 research_pipeline.py
@@ -121,6 +149,7 @@ jobs:
             .research-cache/**/*.manifest.json
             .research-cache/**/*.pages.json
             .research-cache/**/*.mineru.log
+            .research-cache/**/replay-report.json
             .research-cache/*/*.pdf
           if-no-files-found: ignore
           retention-days: 7

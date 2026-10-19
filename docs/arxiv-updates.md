@@ -160,6 +160,37 @@ abstract screening records separately from full-text drafts, source hashes,
 model votes, the exact reviewed content hash, and application results. New investigations record the actual extraction model;
 successful automatic applications record `applied_at`.
 
+Model requests attach an explicit physical page number to each page's text,
+including blank pages. The stored page JSON and original PDF retain their hashes.
+
+### Re-audit an exact quote with an incorrect page number
+
+The optional Pages workflow input `citation_replay_run` accepts a completed run
+ID whose seven-day research artifact is still available. It skips discovery,
+PDF installation/extraction and draft generation. `replay_citations.py` checks
+the original PDF/page-JSON hashes and refuses replay if inventory CSVs, English
+display copy or modality data have changed since that run's starting commit.
+
+Only saved `needs_evidence` drafts rejected for quote location are considered.
+A quote can move to another page only if its exact text, with the existing
+whitespace normalization, occurs on exactly one physical page. Missing,
+paraphrased, case-altered or ambiguous quotes retain the original failure.
+Every other evidence/schema check still runs. This is not approval by itself.
+At most ten eligible drafts receive fresh independent DeepSeek and GLM audits
+against the retained PDF evidence and newly fetched official cards. Both votes
+and the normal application checks are required to update inventory data.
+
+The original response and archived failure remain available. The new record
+stores `citation_replay`, the source run, original investigation time, corrected
+page locations and quote hashes. A replayed record is not automatically replayed
+again. Budget/crash checkpoints cover the new audit calls. Ordinary scheduled
+runs keep their existing deduplication behavior.
+
+```bash
+python3 replay_citations.py --artifact PATH --base-commit FULL_SOURCE_RUN_SHA \
+  --source-run RUN_ID --dry-run  # offline validation, no model calls
+```
+
 `build_research_records.py` exports only applied changes to `updates.json`.
 The website shows the application date, benchmark name, a short description
 of an addition or the fields changed, and source links. It does not display
@@ -198,7 +229,7 @@ settings. The workflow cannot confirm inbox delivery. The former 100-candidate
 review issue is closed and does not need to be completed.
 
 ```bash
-python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py
+python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py test_replay_citations.py
 python3 validate_inventory.py
 python3 arxiv_watch.py                  # discover only
 python3 research_pipeline.py --dry-run  # inspect one abstract batch request, no inference
