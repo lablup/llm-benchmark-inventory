@@ -521,7 +521,27 @@
         "2609.40097",
         "2609.40325",
         "2609.38781",
-        "2609.38867"
+        "2609.38867",
+        "2609.38954",
+        "2609.38974",
+        "2609.39086",
+        "2609.39146",
+        "2609.39189",
+        "2609.39284",
+        "2609.39371",
+        "2609.39437",
+        "2609.39492",
+        "2609.39777",
+        "2610.00416",
+        "2609.39847",
+        "2609.39903",
+        "2609.40103",
+        "2609.40286",
+        "2610.00531",
+        "2610.00609",
+        "2610.00636",
+        "2610.00651",
+        "2610.00664"
       ]
     }
   },
@@ -9343,6 +9363,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "상호작용 의도 정렬 벤치마크 Drift-Bench++ 구축 파이프라인 제안"
+        }
+      ]
+    },
+    "2609.38652": {
+      "arxiv_id": "2609.38652",
+      "paper_title": "AgBench: Agentic AI Benchmarks for Personal AI Devices",
+      "abstract": "Agentic AI systems increasingly rely on cloud-hosted large language models for planning, tool use, and iterative execution, raising concerns about API cost and data exposure. Advances in personal AI devices enable agents to execute locally, but limited resources on device may affect task success and performance. Existing benchmarks are inadequate for systematically characterizing these trade-offs across devices, workloads, and deployment architectures. We present AgBench, a benchmark suite and open artifacts for reproducible evaluation of agentic AI on personal devices. Using AgBench, we evaluate local, hybrid, and cloud execution across agentic workloads, examining task success, latency, cloud API cost, and data exposure. Our results, drawn from over 162.07 million data points, show that personal AI devices can complete many agent tasks locally, but local-only execution generally has lower task success and longer completion times than cloud-only execution, especially as concurrency increases. Local-only execution eliminates cloud model API costs and sensitive-information exposure to cloud agents. Hybrid execution can improve task success, but its cloud cost and data exposure depend on how agents divide work and share information. No single architecture performs best across task success, goodput, cloud cost, and data exposure; deployment choices should reflect the intended workload and device capabilities. AgBench is available at https://anonymous.4open.science/r/AgBench-2777.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "8922e80536e9a4abab2f42c1c2f1ac335647c8a31f05d3ac382949d779e77aef",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "개인 AI 기기 에이전트 벤치마크로 평가 대상에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 벤치마크 AgBench를 새로 제안, 공개 아티팩트 포함"
+        }
+      ]
+    },
+    "2510.17932": {
+      "arxiv_id": "2510.17932",
+      "paper_title": "From Charts to Code: A Hierarchical Benchmark for Multimodal Models",
+      "abstract": "We introduce Chart2Code, a new benchmark for evaluating the chart understanding and code generation capabilities of large multimodal models (LMMs). Chart2Code is explicitly designed from a user-driven perspective, capturing diverse real-world scenarios and progressively increasing task difficulty. It consists of three levels: Level 1 (Chart Reproduction) reproduces charts from a reference figure and user query; Level 2 (Chart Editing) involves complex modifications such as changing chart types or adding elements; and Level 3 (Long-Table to Chart Generation) requires models to transform long, information-dense tables into faithful charts following user instructions. To our knowledge, this is the first hierarchical benchmark that reflects practical chart2code usage while systematically scaling task complexity. In total, Chart2Code contains 2,023 tasks across 22 chart types, paired with multi-level evaluation metrics that assess both code correctness and the visual fidelity of rendered charts. We benchmark 25 state-of-the-art (SoTA) LMMs, including both proprietary and the latest open-source models such as GPT-5, Qwen2.5-VL, InternVL3/3.5, MiMo-VL, and Seed-1.6-VL. Experimental results demonstrate that even the SoTA model GPT-5 averages only 0.57 on code-based evaluation and 0.22 on chart-quality assessment across the editing tasks, underscoring the difficulty of Chart2Code. We anticipate this benchmark will drive advances in multimodal reasoning and foster the development of more robust and general-purpose LMMs. Our code and data are available on Chart2Code.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "c06e1d9ff30a239b00c6fec873948aa76a3f83cf51b15fde9c2d55e92175501c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "차트 이해·코드 생성 멀티모달 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "차트 이해·코드 생성 벤치마크 Chart2Code 신규 제안"
+        }
+      ]
+    },
+    "2511.00421": {
+      "arxiv_id": "2511.00421",
+      "paper_title": "MedRECT: A Bilingual Medical Reasoning Benchmark for Error Correction in Clinical Texts",
+      "abstract": "Large language models (LLMs) show promise in medical applications, but their ability to detect and correct errors in clinical texts remains under-evaluated, particularly beyond English. We introduce MedRECT, a bilingual benchmark for Japanese and English that formulates medical error handling as three subtasks: error detection, error sentence extraction, and error correction. MedRECT-ja contains 663 samples derived from the Japanese Medical Licensing Examinations, while the separately sourced MedRECT-en contains 458 samples curated from MEDEC. We evaluate 11 LLMs across 17 configurations that cover proprietary and open-weight models, medical-domain specialization, and multiple reasoning settings. Qwen3-32B scores higher in its thinking mode than in its non-thinking mode on error detection F1 and sentence extraction accuracy in both subsets, with sentence extraction accuracy higher by 24.5 percentage points on MedRECT-ja and 10.3 on MedRECT-en. Several leading general-purpose reasoning models outperform all three evaluated medical-domain models on these two subtasks. Most models have lower point estimates on the Japanese subset, although absolute scores are not directly comparable because the subsets differ in source material and error distributions. LoRA fine-tuning yields higher sentence extraction accuracy and higher point estimates on all three reference-based correction similarity metrics in both languages. MedRECT provides an open, reusable evaluation resource for studying medical error correction and reasoning across Japanese and English. Our dataset and code are available at https://github.com/pfnet-research/medrect.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "14feab51c82505e96b51bc8c2d874e178d1fcca92e921cf2a50c3ca9bd9c23f5",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "임상 텍스트 오류 수정용 이중언어 의료 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "일·영 이중 언어 의료 추론 벤치마크 MedRECT 제안"
+        }
+      ]
+    },
+    "2601.21225": {
+      "arxiv_id": "2601.21225",
+      "paper_title": "MGSM-Pro: A Simple Strategy for Robust Multilingual Mathematical Reasoning Evaluation",
+      "abstract": "Large language models have made substantial progress in mathematical reasoning. However, benchmark development for multilingual evaluation has lagged behind English in both difficulty and recency. Recently, GSM-Symbolic showed a strong evidence of high variance when models are evaluated on different instantiations of the same question; however, the evaluation was conducted only in English. In this paper, we introduce MGSM-Pro, an extension of MGSM dataset with GSM-Symbolic approach. Our dataset provides five instantiations per MGSM question by varying names, digits and irrelevant context. Evaluations across nine languages reveal that many low-resource languages suffer large performance drops when tested on digit instantiations different from those in the original test set. We further find that models robustness in HRL setting do not necessarily translate to LRL. Moreover, proprietary models, such as Gemini 2.5 Flash and GPT-4.1 are less robust to digit, whereas Gemini 3.0 Pro is more robust. Among open models, GPT-OSS 120B and DeepSeek v3 show stronger robustness. Based on these findings, we recommend evaluating each problem using at least five digit-varying instantiations to obtain a more robust and realistic assessment of math reasoning.",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "ab207c6f3305993a2b4d5e16b81944f1201e4b07b481e9dbc1ec153284c102e4",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다국어 수학 추론 평가 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다국어 수학 추론 벤치마크 MGSM-Pro 확장 제안"
+        }
+      ]
+    },
+    "2604.07709": {
+      "arxiv_id": "2604.07709",
+      "paper_title": "IatroBench: A Pre-Registered Benchmark of Clinical Omission in Language Models",
+      "abstract": "We introduce IatroBench, a benchmark with two axes of harm (commission and omission), comprising 60 pre-registered clinical scenarios, tested on 6 models. Matched scenarios are framed as a patient query and a doctor consultation, differing in register and request (with the implication of supervision by a treating physician in the latter). We analyse the responses of five different models and find that all share more information in the doctor framing than the patient framing (which we call \"framing-contingent withholding\"). For example, a model with strong safety training provides a benzodiazepine tapering schedule to a doctor, but does not provide this schedule to a patient who requests it. We use Claude Opus 4.6 for structured evaluation, and Gemini 3 Flash as our primary judge, to score model responses against a physician's rubrics. Our primary judge agrees with physicians' omission scores about as well as physicians agree with each other. We find a decoupling gap of +0.38 (p = 0.003) on average across models. With our primary judge (checked by physicians) the decoupling gap is +0.22 (95% CI 0.10-0.36, p = 0.0014). We find three distinct patterns underlying this gap, exemplified by each of the models below. In the doctor framing, Claude Opus demonstrates that it has the information, and withholds it in the patient framing. Llama 4 performs poorly in both framings, meaning the decoupling gap cannot distinguish between withholding and incompetence. Finally, GPT-5.2 (excluded from this analysis) failed to return text for 33.2% of doctor responses, compared to 0% of layperson responses. In 86.6% of cases that we score (through our structured evaluation) as having omission harms, our primary judge (Gemini 3 Flash) scores zero omission harm. Because our scenarios are designed to pit safety against helpfulness, these statistics hold only for this distribution.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "87f5321da6f45c16f342b0b01790e5dd018e1b811c29fa2c2c7a72af0b9de3d2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "임상 누락 평가용 사전등록 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "임시 누락 평가 벤치마크 IatroBench 신규 제안"
+        }
+      ]
+    },
+    "2604.12102": {
+      "arxiv_id": "2604.12102",
+      "paper_title": "Spatial Atlas: Compute-Grounded Reasoning for Spatial-Aware Research Agent Benchmarks",
+      "abstract": "We describe compute-grounded reasoning (CGR), a design pattern in which code computes selected sub-problems from explicit intermediate representations before a language model answers. Spatial Atlas implements CGR as an Agent2Agent (A2A) server with a spatial question-answering handler and a machine-learning engineering handler. The spatial handler asks a language model to extract a scene graph, and code then fills in missing distances and checks the extracted safety rules. A separate benchmark driver can also run a strict metric bridge. It computes the gap for horizontal-gap questions from segmentation masks and a reconstructed point map, and it passes that gap to the answering model as a fact. The bridge returns a fixed unavailable answer when an evidence check fails, and it never falls back to model-estimated coordinates. The ML-engineering handler generates pipeline code, parses validation scores, and caps the number of repair and refinement passes. Its code execution is off by default. The repository also provides four run modes that can write label-free journals, a shuffled-image control mapping, and journal validators that reject label-bearing fields. We report one private label-free operational run in which four paths each wrote eight prediction rows with zero retries. Labels stayed sealed, and no score was computed, so this run establishes operational integrity only. We report no FieldWorkArena result because the benchmark data were not accessible. We also omit every performance, latency, and resource-use number that lacks a reproducible run artifact.",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "fe1f4dcbea051d2d805bd65387e7dc42aae2b93a5f2a169407ca00a04691abb1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "uncertain",
+          "reason": "공간 추론 에이전트 설계이나 벤치마크 결과 미제시"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "CGR 설계 패턴 제시, 벤치마크 드라이버 있으나 기여 불명확"
+        }
+      ]
+    },
+    "2605.01203": {
+      "arxiv_id": "2605.01203",
+      "paper_title": "LSR-Ben: A Logical and Scientific Reasoning Benchmark for Evaluating Process Reward Models",
+      "abstract": "Currently, process reward models (PRMs) have exhibited remarkable potential for test-time scaling. Since large language models (LLMs) regularly generate flawed intermediate reasoning steps when tackling a broad spectrum of reasoning and decision-making tasks, PRMs are required to possess capabilities for detecting process-level errors in real-world scenarios. However, existing benchmarks primarily focus on mathematical reasoning, thereby failing to comprehensively evaluate the error detection ability of PRMs across diverse reasoning scenarios. To mitigate this gap, we introduce LSR-Ben, a process-level benchmark specifically designed for assessing PRM's performance across two primary reasoning domains (scientific and logical reasoning) and nine subdomains. We conduct extensive experiments on a diverse set of 22 models, encompassing both PRMs and LLMs, and derive two key findings: (1) In domains beyond mathematical reasoning, the error-detection ability of existing PRMs and LLMs is found to be markedly weaker by comparison. (2) In general, LLMs exhibit a tendency toward over-identification of errors compared to PRMs, whereas PRMs exhibit an inherent tendency to overlook errors compared to LLMs. We hope LSR-Ben can foster future researches on PRMs for broader domains, thereby enhancing the reasoning capabilities of LLMs.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "7c8d8413717210da0c500af7462f291005fe114133959bdf9b403c5e1e55367a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "논리·과학 추론 과정 보상모델 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "PRM 평가용 논리·과학 추론 벤치마크 LSR-Ben 제안"
+        }
+      ]
+    },
+    "2605.08412": {
+      "arxiv_id": "2605.08412",
+      "paper_title": "SYNCR: A Cross-Video Reasoning Benchmark with Synthetic Grounding",
+      "abstract": "Multimodal Large Language Models (MLLMs) have made rapid progress in single-video understanding, yet their ability to reason across multiple independent video streams remains poorly understood. Existing multi-video benchmarks rely largely on human-annotated real-world footage, limiting the precision of spatial, temporal, and physical ground truth and making it difficult to diagnose model failures. We introduce SYNCR, a controlled synthetic benchmark for cross-video reasoning with programmatically verified grounding. Built using Habitat, Kubric, and CLEVRER simulator engines, SYNCR contains 4,000 multi-video question-answer pairs grounded in 4,827 unique videos. It evaluates MLLMs across eight tasks spanning four diagnostic pillars: Temporal Alignment, Spatial Tracking, Comparative Reasoning, and Holistic Synthesis. Our zero-shot evaluation of leading open- and closed-weight MLLMs reveals a substantial gap between current models and humans: the best model achieves only 64.5% average accuracy, compared to an 89.5% human baseline. Models perform relatively well on temporal ordering but struggle with precise physical and spatial reasoning, with the best model reaching only 29.8% accuracy on Kinematic Comparison. We further find that parameter scaling and reasoning-specialized post-training improve temporal alignment capabilities, but do not reliably address fine-grained physical tracking or global spatial synthesis. Finally, a sim-to-real correlation analysis suggests that SYNCR tracks model-level trends on a real-world multi-video benchmark.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "ffc5c62530c21dde413227c34ed0655d32883e11b13b21504f72fc0261a6c4c0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다중 영상 교차 추론 합성 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중 비디오 추론 합성 벤치마크 SYNCR 신규 제안"
+        }
+      ]
+    },
+    "2605.18859": {
+      "arxiv_id": "2605.18859",
+      "paper_title": "TwinRouterBench: Fast Static and Live Dynamic Evaluation for Realistic Agentic LLM Routing",
+      "abstract": "LLM routing matters most in long-horizon applications such as coding agents, deep research systems, and computer-use agents, where a single user request triggers many model calls. Routing each call to the cheapest sufficient model can cut costs without sacrificing quality, yet existing router benchmarks evaluate routers only on one-shot prompts. They never expose the router-visible prefix at an intermediate agent step, never test whether a cheaper replacement preserves downstream task success, and often rely on online LLM judges at evaluation time. We introduce TwinRouterBench, a step-level routing benchmark with two tracks. The static track provides 970 router-visible prefixes from 520 instances across SWE-bench, BFCL, mtRAG, QMSum, and PinchBench, each paired with an execution-verified target tier estimated under a released downgrade-and-cascade protocol; scoring is deterministic arithmetic over tier labels, trajectory membership, and token costs, with no online evaluator-side LLM judge. The dynamic track supplies a harness that runs routers on the full 500-case SWE-bench Verified suite; in this paper we report a 100-case held-out evaluation disjoint from the static SWE supervision split. At each LLM call the router selects a concrete model from a locked pool, and success is measured by official task resolution and realized API spend. The two tracks support fast offline iteration followed by end-to-end validation under live agent execution. Code and data are available at https://github.com/CommonstackAI/TwinRouterBench.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "c1a65006758ab8cef29e50b092ae634a3f9e711567265f618af616dc155c4b65",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 LLM 라우팅 평가 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "라우팅 평가 벤치마크 TwinRouterBench 신규 제안"
+        }
+      ]
+    },
+    "2605.26380": {
+      "arxiv_id": "2605.26380",
+      "paper_title": "VisualNeedle: Benchmarking Active Visual Search in Information-Dense Scenes",
+      "abstract": "Frontier multimodal large language models (MLLMs) have been reported to achieve over 90\\% accuracy on fine-grained perception benchmarks. However, such scores do not necessarily imply faithful use of visual evidence. Prior studies have identified three shortcuts that inflate benchmark performance. First, linguistic priors and lexical cues in questions often enable models to infer plausible answers without seeing the image. Second, coarse global semantics from the visual encoder can bypass fine-grained local details. Third, in some ``think-with-images'' benchmarks, corrupting the intermediate images returned by visual tools barely affects the final answer. These findings suggest that higher input resolution or larger question pools alone do not elicit genuine active visual search. To address this, we introduce VisualNeedle, a challenging, information-dense, and fine-grained benchmark for scenes where critical evidence is spatially constrained to minute regions and not discernible at a glance. We further propose a counterfactual crop-black setting, which replaces crops returned by tools with black images of the same size, to test whether tool-enabled performance truly relies on intermediate visual evidence.We evaluate 9 prominent MLLMs across four settings: text-only, without tools, with tools, and crop-black. Text-only accuracy stays below 10\\%, while accuracy without tools remains below 20\\%. The best tool-enabled model reaches only 56.00\\%, still trailing the 63.00\\% human majority-vote accuracy. These results reveal persistent limitations in fine-grained visual search, while the crop-black ablation confirms that success on VisualNeedle hinges on genuine intermediate visual evidence.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "ef0b727420e00fff4cbcae5cb45ba17a1d55029071fd0ede8e57fd6ce00f9629",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "능동 시각 탐색 벤치마크로 평가 대상에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "능동 시각 탐색 벤치마크 VisualNeedle 신규 제안"
+        }
+      ]
+    },
+    "2606.15867": {
+      "arxiv_id": "2606.15867",
+      "paper_title": "CogCanvas: A Benchmark for Evaluating Multi-Subject Reference-Based Image Generation",
+      "abstract": "Multi-subject reference-based image generation requires jointly preserving multiple human identities, binding per-person objects and fashion items, and respecting a specified background scene, a regime where current diffusion models remain brittle. Existing benchmarks evaluate only one axis at a time and none jointly captures multi-identity composition with human-object interaction, background grounding, and spatial plausibility. We introduce CogCanvas, a benchmark of 1,952 curated reference images spanning 100 celebrity identities, 115 distinctive objects and fashion items, and 29 real-world background scenes including landmarks, from which we construct 1,361 compositional prompts covering 2-5 person group sizes. The curation pipeline combines DINOv2-based deduplication, two-stage aesthetic filtering, and automated derivation of structured interaction and position graphs that serve as ground-truth supervision. CogCanvas supports three tasks, reference-based multi-human-object generation (primary), text-to-image compositional generation, and reference retrieval, under a unified six-axis evaluation protocol. We introduce two metrics tailored to the multi-reference setting: BG-Sim, which scores background fidelity on SAM 3-masked regions via DINOv3 feature similarity, and Attr-VQA, which uses a multimodal LLM to verify per-subject attribute binding and inter-person interactions against the structured graphs. Benchmarking five SOTA methods reveals that every model degrades substantially as group size grows from 2 to 5, with near-complete failure on object/fashion binding beyond three subjects.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "4cf5d5954c4373c6e2b320f82c6311bcf3dc21f7b5ce9296bfe2803a944b8a0a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다중 주체 참조 이미지 생성 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중 주체 이미지 생성 벤치마크 CogCanvas 제안"
+        }
+      ]
+    },
+    "2606.22826": {
+      "arxiv_id": "2606.22826",
+      "paper_title": "MINCE: Shrinking LLM Evaluation Datasets via Few-Model Monte Carlo Calibration",
+      "abstract": "Evaluating LLMs across many model variants---quantized, fine-tuned, or deployment-specific---requires running large benchmarks repeatedly, a process that can take tens of hours per model on edge hardware such as NPUs. Existing subset selection methods reduce this cost but depend on large calibration pools or learned prediction layers. We introduce MINCE (Monte Carlo Informed N-sizing for Compact Evaluation), which uses Monte Carlo simulation over per-item logs from a small set of calibration models to find the minimum subset size that bounds accuracy drift and then fixes a randomly sampled subset at that size, with no prediction layer needed. MINCE reduces IFEVAL by 54\\%, MMLU by 89\\%, GSM8K by 70\\%, and MMLU-Pro by 88\\% with maximum drift $\\leq$2.62\\,pp on BF16 calibration models. The frozen subsets generalize to held-out GPU models with mean drift $\\leq$1.40\\,pp and to INT4 NPU models with mean drift of 0.77--3.59\\,pp, while delivering evaluation speedups of up to 8.1$\\times$ on the GPU models and evaluation speedups of 1.7--3.4$\\times$ on the NPU models. The method is robust to calibration pool size and achieves lower drift than tinyBenchmarks (12$\\times$ lower on MMLU, 3.3$\\times$ on GSM8K) while using 42$\\times$ fewer calibration models.",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "337a0e619bac0f0ac97633cc86b90811b98da8c34e9b5fbd9e944277c67eeff1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 평가 데이터셋 축소 방법론으로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "평가 데이터셋 축소법 MINCE, 재사용 가능 평가 자원"
+        }
+      ]
+    },
+    "2608.17804": {
+      "arxiv_id": "2608.17804",
+      "paper_title": "An Empirical Study of Reward Specification and Benchmark Reliability in GRPO-based LLM Unlearning",
+      "abstract": "Practical LLM unlearning is usually evaluated through two objectives: suppress target-specific knowledge and preserve non-target utility. In generative QA, this leaves a third behavior underspecified: when a target-adjacent prompt admits a broader answer without target-specific leakage, the model should answer at that level rather than leak, evade, or refuse. We study this specification problem in a controlled LoRA-GRPO RWKU setting, comparing four reward designs that span lexical suppression, anti-refusal shaping, rubric-based broad answering, and an explicit refusal contrast, with and without SFT warm-up. The experiments show that optimization success is not equivalent to behavioral unlearning: RWKU forget scores, held-out completion audits, and training dynamics can point to different conclusions. We trace these disagreements to reward-hacking endpoints, policy-support limits in GRPO, benchmark probes that miss endpoint changes, and a rubric reward that selects broad-topic answering with low semantic leakage under held-out evaluation.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "aee69feaeaed52d31a251e97bb4274f72b231981b7a835bd01947a5d8f3650a9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "GRPO 기반 LLM 언러닝 보상·벤치마크 신뢰성 연구"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "GRPO 언러닝 보상 명세 연구, 벤치마크 기여 불명확"
+        }
+      ]
+    },
+    "2609.28470": {
+      "arxiv_id": "2609.28470",
+      "paper_title": "StudentBench: AI and human tutoring yield equivalent GRE learning gains",
+      "abstract": "Artificial intelligence offers an unprecedented opportunity to augment human capabilities, yet progress at the frontier has focused primarily on advancing model capabilities. We introduce StudentBench, a suite of AI teaching evaluations and a public platform that enables large-scale data collection with over 175,000 student-AI messages to study whether large language models (LLMs) produce learning gains equivalent to human tutoring. Using StudentBench, we measured learning gains on Quantitative and Verbal GRE questions across 2,383 human participants receiving AI tutoring, human tutoring, or no tutoring. We establish that AI tutoring is statistically equivalent to expert human tutoring for GRE learning gains (p = .015), and in five of the seven GRE domains, the best performing AI tutor surpassed the human tutor, on average. In a second study, expert human tutors compared LLM-generated lesson plans and practice problems through 2,028 pairwise rubric evaluations. Together, the two studies clearly separate AI tutors across: (1) lesson planning, (2) practice-problem creation, (3) conversational pedagogy, (4) cost, and (5) engagement. Surprisingly, one AI tutor achieved learning gains equivalent to human tutoring (p = .044) at 918 times lower cost (USD 0.0052 for AI versus USD 4.81 for human, per percentage point gained). For Quantitative GRE sessions, faster AI replies correlated with more student messages, more messages with more correct practice, and more correct practice with larger learning gains (all p < .002). To support future research, we open-source the de-identified data collected in our studies.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "33559d74940fd4c2af0296d67aab16fa4329dfa9c47fb11cf1060e7b3b0e29c2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 대 인간 튜터링 GRE 학습 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "AI 과외 평가 스위트·플랫폼 StudentBench 제안"
+        }
+      ]
+    },
+    "2609.31665": {
+      "arxiv_id": "2609.31665",
+      "paper_title": "Language-Augmented Video Action Anticipation: Design Fundamentals, Benchmarks, and Open Challenges",
+      "abstract": "Action anticipation predicts future human actions from partial video under incomplete context and temporal uncertainty. Recent systems introduce large language models (LLMs), vision-language models (VLMs), or language-derived semantics at different stages, but reported gains are difficult to interpret when task formulation, visual pretraining, supervision, decoder design, and evaluation code change simultaneously. The central contribution of this review is an evidence-aware design map that crosses task regime with the point at which language-derived information intervenes. We characterise task regimes along six axes. These axes organise the literature into five broad task families: single-action, sequence, object-interaction, cross-view, and planning-oriented settings. C1-C3 locate interventions in context construction, goal/intention modelling, and future decoding, while C4 is treated as an adjacent, emerging grounding/executability extension. Unlike a generic processing pipeline, the map links each intervention to an appropriate counterfactual, failure diagnosis, and permissible evidence claim. Supporting contributions include a protocol-level audit of Ego4D-LTA and EPIC-KITCHENS-100, a multidimensional evidence profile, and the Backbone-Aware Comparison and Ablation Protocol (BCAP). The unresolved EK-100 record is treated as a reporting-comparability case study and is not used as a leaderboard. Evidence for LLM benefits, goal ambiguity, and horizon effects is therefore formulated as testable hypotheses requiring matched validation, not as causal conclusions. The accompanying package contains the coded evidence, source locators, protocol metadata, and versioned catalogue used in the review.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "6c824efff377161c80f761165580865d8a14126c08536d55329910bd2acd84b0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "언어 증강 영상 행동 예측 벤치마크·과제 검토"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "비디오 행동 예측 리뷰, BCAP 프로토콜 기여 불명확"
+        }
+      ]
+    },
+    "2609.38948": {
+      "arxiv_id": "2609.38948",
+      "paper_title": "DrivingBench: Can Vision-Language Models Drive a Toyota Corolla?",
+      "abstract": "Frontier models excel at many digital benchmarks, yet their ability to drive a real car, an everyday human skill, remains largely untested. We present DrivingBench, to our knowledge the first benchmark where general-purpose vision-language models must drive a real car. Through three tools, the models see camera frames from a Toyota Corolla and directly command its steering and velocity around a parking lot cone course at low speeds. The car may continue moving while the model thinks and new commands replace the currently running one, so inference latency is part of the task, testing the models' abilities to observe, act, monitor, recover, and complete a long-horizon objective under such constraints. We benchmark GPT-6 Astra, Claude Fable 5.1, GPT-5.6 Sol, and Grok 4.6 in vendor-native harnesses (Codex, Claude Code, Cursor) with up to three attempts each in one conversation; Astra is the only model to finish the course, on its second attempt, with no other attempt passing 50% of the course. Two of the four models improved materially across attempts with retained context. We also detail the design principles behind our action interface, and show how the tool output format and the framing of the task combined to determine whether models would drive at all or refuse. We release our harness, prompts, course map, and traces with video and telemetry for reproducibility.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "ae74d912b9d2e15fcbd3da0f919729d67e54451c9397a3fa09b6f26363250a8c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "실제 차량 주행 VLM 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "실차 주행 VLM 벤치마크 DrivingBench 신규 제안"
+        }
+      ]
+    },
+    "2609.40097": {
+      "arxiv_id": "2609.40097",
+      "paper_title": "AutoDataBench: A Data-centric Testbed for Accelerating Auto Research",
+      "abstract": "Existing auto-research benchmarks often entangle multiple sources of improvement, including training frameworks, hyperparameters, compute budgets, and data, making it difficult to attribute why one frontier agent outperforms another to specific research capabilities. In this work, we isolate and systematically evaluate Data Intelligence: an agent's ability to understand, manipulate, and improve the data that shapes model capabilities. We introduce AutoDataBench, a controlled testbed built on a conceptual framework of data intelligence spanning data diagnosis, data organization, and data construction, instantiated through three highly curated optimization tasks while holding non-data factors fixed. Across tool use, retrieval, and knowledge injection, we evaluate frontier LLMs' ability to improve training data through iterative experimentation under task-specific resource budgets. Beyond optimization performance, we ask: do LLMs understand what their data interventions do? We compare predictions made before training with observed outcomes to seek evidence of data-effect reasoning beyond trial and error, and explore whether iterative feedback helps LLMs better understand how changes to training data affect model performance. Finally, we show that reusing AutoDataBench trajectories for mid-training improves downstream coding performance, highlighting its value in both evaluating data intelligence and generating high-quality training data. Code and resources are available at https://github.com/AutoDataBench/AutoDataBench.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "6d6ba98605824c825fa26799b9ab26bba780c96f84a33dc7658a51ccdbb82547",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "자동 연구 데이터 지능 평가 테스트베드로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "데이터 지능 평가 테스트베드 AutoDataBench 제안"
+        }
+      ]
+    },
+    "2609.40325": {
+      "arxiv_id": "2609.40325",
+      "paper_title": "WorldAuditBench: Interactive 3D World Auditing with Multimodal Agents",
+      "abstract": "As interactive 3D worlds are increasingly used to study intelligent behavior, it becomes important to develop efficient pipelines for identifying anomalies in these simulated environments, such as floating objects, traversable walls, or objects inconsistent with the surrounding scene. Multimodal AI systems, including vision-language models (VLMs) and vision-language-action models (VLAs), have shown potential for automating this task. However, 3D world auditing is complex, requiring the close coupling of two distinct capabilities: action, to navigate the 3D world and search for anomalies systematically and efficiently; and visual reasoning, to understand the environment and identify anomalies from multimodal observations. It remains largely unexplored whether multimodal agents can effectively couple these two capabilities, using visual reasoning to identify potential anomalies while taking actions to validate them. In this paper, we introduce WorldAuditBench, a benchmark for 3D world auditing comprising 213 anomaly tasks across 13 environments built with Unreal Engine 5 and Three.js, spanning five anomaly families. We evaluate five frontier models under a fixed exploration budget using two auditing paradigms: VLA-based exploration followed by VLM-based anomaly identification, and an end-to-end VLM agent in which visual reasoning directly guides action selection. Across the evaluated models and two paradigms, success rates range from 6.6% to 42.3%, substantially below human performance (83.4%). Through the task of world auditing, WorldAuditBench provides a testbed for studying how multimodal agents couple action and visual reasoning in interactive 3D environments, while highlighting current limitations in their ability to gather and interpret evidence during exploration.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "c34319939d6e284afb3f5489dd459939bd41ef3711a1eb441fcdf9d60a6b474c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "3D 세계 감사 멀티모달 에이전트 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "3D 월드 감사 벤치마크 WorldAuditBench 신규 제안"
+        }
+      ]
+    },
+    "2609.38781": {
+      "arxiv_id": "2609.38781",
+      "paper_title": "ChartDensity-Bench: Benchmarking MLLMs for Numerical Data Reconstruction under Visual Density",
+      "abstract": "Multimodal large language models (MLLMs) offer a promising approach for recovering numerical data from scientific charts, but their ability to reconstruct chart data from visually dense figures remains poorly understood. Existing chart understanding benchmarks primarily evaluate question answering or chart-level reasoning and provide limited support for evaluating structured numerical reconstruction from scientific figures. We introduce \\textbf{ChartDensity-Bench}, a benchmark for evaluating MLLMs on structured numerical data reconstruction from compound chart figures under controlled visual density. Built from charts paired with source-level ground-truth data, ChartDensity-Bench systematically varies the number of simultaneously presented charts ($k\\in{1,3,6,9}$), enabling controlled evaluation of density-induced degradation. We further propose a multi-dimensional evaluation framework covering structural reliability, reconstruction completeness, parseability, and numerical fidelity. Experiments on five recent MLLMs show that numerical reconstruction generally degrades as visual density increases, while the magnitude of degradation varies substantially across models. Chart-level paired comparisons further show that the same source chart can incur higher reconstruction error when embedded in denser visual contexts. These findings highlight visual density as an important and previously underexplored factor in MLLM chart data reconstruction and provide a systematic benchmark for evaluating model robustness in this setting.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "6a9153e1af20f5ae6f8c309b188cfba86368bcb9b23c4b7d0805ca984726ed5b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "시각 밀도 기반 차트 수치 재구성 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "밀도별 차트 수치 재구성 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.38867": {
+      "arxiv_id": "2609.38867",
+      "paper_title": "Talk2Agent: Benchmarking Voice Interfaces for Text Agents",
+      "abstract": "Large language model (LLM) computer-use agents are typically evaluated with clean written instructions, despite speech being an increasingly popular interface for interacting with such systems. Speech input introduces an additional failure point: transcription errors can alter task-critical entities, constraints, or targets before the agent begins reasoning, while conventional ASR metrics do not directly measure whether the information required for successful execution has been preserved. We introduce Talk2Agent, a benchmark for evaluating how effectively voice interfaces convey human-spoken instructions to LLM-based computer-use agents. Talk2Agent builds human-spoken versions of tasks from WildClawBench and OSWorld and evaluates a range of voice interfaces, including dedicated ASR models, audio-capable LLMs, contextual biasing, and LLM-based ontology repair. Because repeatedly executing long-horizon computer-use tasks is costly and stochastic, we further propose an execution-free, task-conditioned evaluation framework that projects the original task grader onto prompt-addressable intentions and measures how much task-relevant information is retained after the voice interface. On WildClawBench, Talk2Agent's execution-free native projection provides a practical, execution-grounded measure of voice-interface quality, correlating with downstream task completion and improving Pearson correlation by 0.246 over WER/CER on 32 hours of real human speech.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:14Z",
+      "input_sha256": "496f7d1b7252cf257c5ba8693da26c2ba87a1f4190f0c000a80d38de602a183c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "텍스트 에이전트 음성 인터페이스 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "음성 인터페이스 에이전트 벤치마크 Talk2Agent 제안"
         }
       ]
     }
