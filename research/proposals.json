@@ -641,7 +641,27 @@
         "2610.05414",
         "2610.05540",
         "2610.05613",
-        "2505.17399"
+        "2505.17399",
+        "2506.10833",
+        "2510.13276",
+        "2601.17645",
+        "2604.10528",
+        "2604.17338",
+        "2604.25840",
+        "2605.02035",
+        "2605.07247",
+        "2606.04874",
+        "2606.05818",
+        "2606.11063",
+        "2606.30371",
+        "2607.02269",
+        "2607.03751",
+        "2608.27831",
+        "2609.25645",
+        "2609.37713",
+        "2610.02205",
+        "2610.06748",
+        "2610.05778"
       ]
     }
   },
@@ -12123,6 +12143,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "페르소나 기반 사용자 시뮬레이션 벤치마크 APB 구축"
+        }
+      ]
+    },
+    "2610.04392": {
+      "arxiv_id": "2610.04392",
+      "paper_title": "Detecting Defects that Matter: An Application-Driven Benchmark for Anomaly Detection in Manufacturing and Retail Logistics (VAND 4.0 Challenge)",
+      "abstract": "Existing Anomaly Detection benchmarks are saturated and often unrealistic. As part of the VAND 4.0 Challenge, we introduce a hidden-test, application-driven benchmark across two deployment-critical domains: industrial manufacturing and retail logistics. In the Industrial Track (MVTec AD 2), the results reveal that unsupervised anomaly segmentation remains challenging: the best regular-setting method achieves only ~57\\% pixel-level $SegF_1$, indicating substantial room for improvement. Zero-shot approaches trail by ~15 $SegF_1$ points, confirming that task-specific training on normal data remains essential for precise defect localization. Robustness to distribution shifts remains a key open challenge and DINOv3-backbones clearly dominate this track. In the Retail Track (Kaputt 2), the results reveal that (1) supervised defect detection is approaching saturation for common defect types; (2) the best off-the-shelf VLM approach trails specialized models by ~28 AP, confirming that currently VLMs cannot replace fine-tuned detectors, (3) reference images did not prove helpful for top-performing approaches. Performance collapses on rare defects (spillage ~53 AP, missing units ~27 AP), where the supervised ceiling is bounded by data availability. To drive future progress in this domain, we provide a new low-prevalence retail AD dataset (Kaputt-Rare). Across both tracks, computational efficiency is assessed as a first-class metric combining performance, throughput, memory, and power consumption. We introduce a novel metric for measuring efficiency and reveal that that top-performing methods rely on heavy architectures while efficiency is largely neglected. Overall, we conclude that the community needs (a) more efficiency-aware method development, and (b) true anomaly detection approaches for rare defects and shifting conditions. https://sites.google.com/view/vand4-cvpr2026/challenge",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "d1f3555eeaf43c081688f7fdd27bce0a7c571ffe07f0c5afbf4aa2254dd3d6d7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "제조·물류 이상탐지 응용 벤치마크로 실제 배포 도메인 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "산업·리테일 이상탐지 벤치마크와 신규 데이터셋(Kaputt-Rare) 제공"
+        }
+      ]
+    },
+    "2610.06947": {
+      "arxiv_id": "2610.06947",
+      "paper_title": "FactorBench: A Portfolio-Aware Benchmark for Automated Factor Mining",
+      "abstract": "Factor mining seeks to discover signals from financial data that predict future asset returns and guide portfolio construction. Automated factor mining now spans genetic programming, reinforcement learning, generative models, and large language model agents. Yet it remains unclear whether advances across these paradigms yield more generalizable, distinct, and economically useful financial signals. We introduce FactorBench, a portfolio-aware benchmark comparing roughly five thousand mined factors from nine automated mining methods across five equity markets. A shared data and evaluation contract supports both symbolic expressions and executable Python factors, connecting heterogeneous discovery algorithms to common signal combination and portfolio construction procedures. FactorBench traces the outputs of mining systems across three levels: factor validity, temporal generalization, and predictiveness beyond measured risk and style exposures; within- and across-method pool distinctness, including similarity to the benchmark Alpha101; and composite-signal quality and after-cost long-only and long--short portfolio performance. After systematically assessing whether advances in factor mining translate into signal quality and portfolio performance, FactorBench finds that no paradigm consistently dominates.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "579ea5638b3ef87bfe1105f081cf895a542e4934084f3d7862afef0705a19708",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "자동 팩터 마이닝 금융 벤치마크로 포트폴리오 평가 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "금융 팩터 마이닝용 재사용 가능 벤치마크 FactorBench 제안"
+        }
+      ]
+    },
+    "2610.04672": {
+      "arxiv_id": "2610.04672",
+      "paper_title": "MASBench: Benchmarking LLM-based Multi-Agent Collaboration under Partial Observability",
+      "abstract": "Large language models (LLMs) have progressively evolved into the core of autonomous agents. Building on this progress, LLM-based multi-agent systems (MAS) coordinate multiple agents into a synergistic team to accomplish complex tasks that exceed the capabilities of individual agents. The effectiveness of such systems depends not only on the agents themselves, but also on how collaboration mechanisms are designed and organized. Note that real-world collaboration is typically partially observable, where each agent can only access partial information about the environment due to physical or privacy-related constraints. However, many existing multi-agent benchmarks assume global observability, and leave limited support for systematically evaluating collaboration mechanisms. To bridge this gap, we introduce MASBench, a multi-agent collaboration benchmark designed under partially observable constraints. It is organized into three progressive task categories: Reasoning, Scheduling, and Game. Through this structure, we progressively evaluate three representative collaboration mechanisms: Protocol, Memory, and Routing. MASBench further provides deterministic evaluation metrics, including performance score, communication cost, and cost effectiveness, to characterize both collaboration outcomes and communication overhead. Experiments across diverse LLM backbones and mechanism configurations offer empirical guidance for effective MAS design. Code is available at: https://github.com/BUPT-GAMMA/MASBench",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "c7a72aeeee0ccb0a5cf9e0eddfeda2c005b870feeecc3c8d1d34ef955c9dd052",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 다중 에이전트 협업 벤치마크로 부분 관측성 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "부분관측 하 다중에이전트 협업 벤치마크 MASBench 제안"
+        }
+      ]
+    },
+    "2610.04721": {
+      "arxiv_id": "2610.04721",
+      "paper_title": "Knossos and Ariadne: Benchmarking and Learning Complete Diagram Topology Extraction with Vision-Language Models",
+      "abstract": "Structural diagrams are widely used to represent complex systems and relational information across scientific, engineering, procedural, and spatial domains. Recent vision-language models (VLMs) have become increasingly capable of recognizing diagram elements and reasoning about their content, while complete diagram topology extraction remains comparatively underexplored. In this paper, we study diagram-to-graph topology extraction: extracting all diagram entities and the complete relations among them. To enable large-scale supervised training and systematic evaluation of this task, we introduce Knossos, a benchmark of 19,200 diagrams across six diverse domains, with 245,179 nodes and 439,740 edges. Its symbolic generation process provides exact alignment between rendered diagrams and annotations of complete topology, relation types, and connector geometry. To address the modeling challenge of complete topology extraction, we also present Ariadne, a structured framework that decomposes the task into node inventory extraction and source-conditioned edge prediction. Extensive experiments show that training on Knossos substantially improves complete topology extraction in smaller open-source VLMs. Ariadne further improves over one-step extraction under matched supervision, demonstrating the additional benefit of structured decomposition. It achieves the highest average Edge F1 among the evaluated methods on Knossos, while both backbone variants also improve over their unadapted counterparts on the real-world external benchmark. Code and benchmark are available at https://github.com/bangwayne/knossos_Ariadne_Public.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "739e4a7ace7b0721dd4aa61f9b6d0881eb232346e8a4a4fbd9266ba353fe8c8a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM 도식 토폴로지 추출 벤치마크와 학습 프레임워크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다이어그램 토폴로지 추출 벤치마크 Knossos(19,200 다이어그램) 제안"
+        }
+      ]
+    },
+    "2602.11518": {
+      "arxiv_id": "2602.11518",
+      "paper_title": "KuaiSearch: An E-Commerce Search Dataset with Authentic Queries and Product Texts for Recall, Ranking, and Relevance",
+      "abstract": "E-commerce search connects user needs with massive product inventories, yet real-world systems face challenges from ambiguous queries, noisy product texts, and diverse user preferences. Recent advances in large language models (LLMs) offer new opportunities for semantic understanding and intent modeling, but existing e-commerce search datasets remain limited by heuristically constructed queries, popularity-based filtering, anonymized texts, and incomplete coverage of the search pipeline. These limitations hinder realistic evaluation of LLM-based e-commerce search. To address this gap, we introduce KuaiSearch, a large-scale dataset built from real user search interactions on the Kuaishou platform. KuaiSearch preserves authentic queries and natural-language product texts, retains cold-start users and long-tail products, and covers three key stages of the search pipeline: recall, ranking, and relevance judgment. We further provide comprehensive analyses of users, products, and queries, together with benchmark experiments on representative search tasks. Results demonstrate the value of KuaiSearch as a realistic benchmark for e-commerce search research. The code is available at https://github.com/benchen4395/KuaiSearch.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "acb5e173b02fadaa1885ecd1dbf0f3b36c5f712dafeca3cc79e27bd45c33724c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "이커머스 검색 데이터셋으로 리콜·랭킹·관련성 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "이커머스 검색용 실데이터 기반 벤치마크 데이터셋 KuaiSearch 제안"
+        }
+      ]
+    },
+    "2606.24797": {
+      "arxiv_id": "2606.24797",
+      "paper_title": "EG-VQA: Benchmarking Verifiable Video Question Answering with Grounded Temporal Evidence",
+      "abstract": "Recent advances in Video Large Language Models (Video-LLMs) have yielded promising performance on Video Question Answering (VideoQA). Nevertheless, existing benchmarks are predominantly evaluated through answer correctness, while the faithfulness of predicted evidence supporting those answers remains insufficiently evaluated. This disconnect between answer generation and evidence verification motivates the construction of the Evidence-Grounded Video Question Answering Benchmark (EG-VQA), a large-scale open-ended benchmark in which each QA pair is annotated with temporally localized textual evidence, requiring models to jointly produce answers and verifiable evidence. EG-VQA comprises 2,067 videos and 11,838 QA pairs with fine-grained evidence annotations. To evaluate predicted evidence, Evidence-Grounded F1 (EG-F1) is introduced as a metric that jointly measures temporal alignment and semantic consistency between predicted and ground-truth evidence. Experiments reveal a substantial discrepancy between answer correctness and evidence faithfulness: even strong proprietary models can achieve high answer accuracy while exhibiting gaps in temporal-semantic grounding. To investigate evidence-aware learning under EG-VQA, we develop EG-Reasoner, an evidence-aware model trained with explicit evidence supervision. EG-Reasoner achieves strong evidence grounding performance among open-source models while maintaining competitive answer generation results compared with proprietary systems. These findings highlight the importance of explicitly modeling evidence grounding and suggest that evidence-aware supervision provides an effective direction toward more reliable and interpretable VideoQA systems.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "a1d87c4a3ffcd9081ed617a794b637c0318d7c9e7ac6396e7ca8bc68df3ebab2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "근거 기반 비디오 QA 벤치마크로 시간적 근거 검증"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "증거 기반 비디오 QA 벤치마크 EG-VQA 및 평가지표 제안"
+        }
+      ]
+    },
+    "2607.00218": {
+      "arxiv_id": "2607.00218",
+      "paper_title": "EgoSafetyBench: A Diagnostic Egocentric Video Benchmark for Evaluating Embodied VLMs as Runtime Safety Guards",
+      "abstract": "Vision-language models (VLMs) are increasingly proposed as runtime safety guards for embodied agents in homes and factories. A deployable guard must catch genuinely unsafe situations while avoiding unnecessary intervention on routine but superficially alarming activity, a distinction obscured by binary safety benchmarks. We introduce EgoSafetyBench, an egocentric video benchmark of 1,200 robot-view scenarios annotated at half-second granularity, with two evaluation tracks. The situational track (800 scenarios) spans routine, safe-but-suspicious, obvious-hazard, and contextual-hazard scenes. The visual-channel track (400 scenarios) tests whether misleading in-scene text corrupts physical-safety judgments, using matched truthful controls. Both tracks use contrastive ladders: near-identical scenarios differing in a single visible deciding cue, forcing predictions to hinge on that cue. Across ten open- and closed-source VLMs, we find that guards often recognize videos containing hazards yet miss the specific hazardous moments, especially for contextual hazards. Misleading in-scene signs further degrade all tested guards: vulnerable models miss up to a third of hazards, while seemingly robust models often over-intervene on safe content. Matched controls show that apparent robustness can reflect indiscriminate alarming rather than true physical reasoning. A 20-clip real-video sanity check further shows that model rankings transfer beyond synthetic rendering, with Spearman \\r{ho} = 0.87 for hazard miss rate and 0.94 for visual-channel mismatch recall.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "b599758bfffefd714fd48ccce118b2f5114606078ab7fbd131dcc343dd609f0f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "1인칭 시점 안전 벤치마크로 체화 VLM 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에고센트릭 영상 안전가드 평가 벤치마크 EgoSafetyBench 제안"
+        }
+      ]
+    },
+    "2607.06306": {
+      "arxiv_id": "2607.06306",
+      "paper_title": "UI2App: Benchmarking Visual Interaction Inference in Executable Web Application Generation",
+      "abstract": "Large language models (LLMs) have demonstrated growing competence in generating web pages from UI screenshots, which convey both visual structure and cues to application behavior. Yet most screenshot-to-code benchmarks emphasize visual fidelity, while interactive generation benchmarks often supply behavioral specifications or demonstrated transitions. Whether models can infer and realize interactions from static screenshots alone remains insufficiently evaluated. We introduce UI2App to evaluate interaction inference: inferring and realizing application behavior from static visual cues without added behavioral guidance. UI2App comprises 600 screenshots organized into 95 state-coherent sets for runnable multi-route web applications. Our end-to-end pipeline evaluates each artifact along three dimensions: executability, visual fidelity, and interaction inference. The interaction metric (IIS) assesses functional correctness and state-management complexity, crediting valid implementations rather than requiring a match to a single reference. Experiments on six frontier vision-language models reveal a marked mismatch between visual fidelity and interaction realization: the visual-fidelity leader scores only 8.1 on IIS, ranking fourth, while the IIS leader achieves 4.5 times that score. High-complexity interactions such as cross-route state persistence remain a major bottleneck, with five of the six models scoring at most 3.5 on this dimension. Overall, these results highlight interaction inference as a key challenge in generating functional web applications from static screenshots.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "60c9cab5130d4d7c4242ed9587885cb30b80b257ceee8224c9cce87732b3d7fe",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "스크린샷 기반 웹앱 생성 벤치마크로 상호작용 추론 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "스크린샷 기반 웹앱 상호작용 추론 벤치마크 UI2App 제안"
+        }
+      ]
+    },
+    "2607.19670": {
+      "arxiv_id": "2607.19670",
+      "paper_title": "Same Game, Different Story: A Minimal Conservative Strategic Robustness Benchmark for Large Language Model Agents",
+      "abstract": "Large language model agents are increasingly deployed in settings where the value of an action depends on what other agents do. This creates a strategic reliability problem: the same game may be described as a business negotiation, a friendly compromise, a diplomatic exchange, or an abstract payoff matrix, and the model may choose different actions even when the incentives are unchanged. This paper introduces \\emph{Same Game, Different Story}, a benchmark for strategic robustness: invariance of model-induced action distributions under payoff-preserving language changes. The empirical analysis uses a deliberately narrow, literature-calibrated comparison from Lorè and Heydari's peer-reviewed study: business framing versus friend-sharing framing across GPT-3.5, GPT-4, and LLaMa-2 in four social-dilemma games, with 300 initializations per retained model-game-context cell. The retained design comprises 24 of the source study's 60 cells, representing 7,200 decisions. Because trial-level files were not available from the article, the analysis is presented as a secondary calibration based on reconstructed published rates, not as new model runs. As a conservative sensitivity analysis, effect magnitudes are attenuated by 30\\% toward the null: action shifts are multiplied by 0.70, and non-robustness, defined as one minus the robustness score, is multiplied by 0.70. Under this attenuation, pooled strategic robustness is 0.783 with a 95\\% bootstrap interval from 0.774 to 0.790, and friend-sharing framing raises cooperation by 0.307 with a 95\\% bootstrap interval from 0.297 to 0.316 relative to business framing. The analysis supports the narrower claim that social-relational framing can change strategic choices even when incentives are held fixed, without extending the analysis to a broader suite of contextual or cross-benchmark comparisons.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "f86c73966f12f3c07c006b352af3729e0c765dd7a70acad15d9c94508522cdac",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 전략적 견고성 벤치마크로 프레이밍 불변성 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "기존 연구 재분석 기반 전략적 강건성 평가, 재사용 자료 불명확"
+        }
+      ]
+    },
+    "2607.26348": {
+      "arxiv_id": "2607.26348",
+      "paper_title": "When Synthetic Users Fail: A Cross-Domain Benchmark of LLM-Simulated Human Survey Responses",
+      "abstract": "Large language models (LLMs) are increasingly used as synthetic users, stand-ins for human respondents whose simulated answers feed product, policy, and market decisions. We ask when this substitution is valid and when it fails, and package the answer as an evaluation framework for intelligent synthetic-user systems. A single protocol, run across four models spanning two families and an 8B-to-frontier capability range, is applied to two independent domains of real human-response data: U.S. general social attitudes (General Social Survey) and cross-cultural values (World Values Survey). Every model is benchmarked against a suite of non-LLM baselines fit on held-out human data. Under demographic prompting and the survey-simulation protocols we test, two failures replicate across both domains, all four models, and both families. First, at the individual level no LLM beats even the strongest baseline; on cross-cultural values every model falls well below it, and the gap survives distance-aware and proper scoring. Second, models systematically over-determine demographics, treating identity as far more predictive of attitudes than it is among real people, a distortion present for nearly every question-group combination and robust to a coding-invariant measure. Neither failure is remedied by a larger, more capable model. A decision-impact analysis shows why this matters in practice: on a segment-targeting task the models inflate between-segment gaps two to fourfold, would direct a team to the wrong segment in half of U.S. and most cross-cultural cases, and manufacture segment splits that do not exist in real people. We publicly release the cross-domain benchmark and validation framework, including all code and data, so that teams can determine in advance when synthetic-user evidence is safe for decision support and when it is not.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "d91edb1cb46d167e3a52cbb4f7374a5e838a5b1f0633fca339d8b5958a515f70",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 합성 사용자 설문 대체 벤치마크로 교차 도메인 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "합성 사용자 검증용 교차도메인 벤치마크·프레임워크 공개"
+        }
+      ]
+    },
+    "2610.05077": {
+      "arxiv_id": "2610.05077",
+      "paper_title": "How Execution Assumptions Change Short-Horizon Sharpe Rankings: Evidence from a Synthetic Trading Benchmark",
+      "abstract": "Backtests of LLM trading agents often assume that every order fills at the closing price. We ask whether this choice changes only reported returns or also the order of the agents. Five prompted LLM signal policies and seven classical baselines trade the same synthetic price paths under six execution settings, from near-ideal fills to latency, spread, participation, and impact stresses. The main experiment contains $2{,}462$ runs with matched decision frequencies and paired market paths. On the compressed two-asset board, agreement between the near-ideal and default-stress rankings falls to Kendall $τ_b=0.21$ in the high-volatility regime, compared with $0.82$ in the calm regime. The seed-bootstrap intervals, $[0.00,0.52]$ and $[0.48,0.94]$, are wide and overlap. On a fixed 11-policy board, agreement rises from 0.24 with two assets to 0.85 with ten; the two-asset point estimate differs substantially from the wider settings we tested. Rank changes are related to turnover, and comparisons with buy-and-hold also depend on how that anchor is initialized. The experiment does not compare LLM trading skill. It shows that, on a short horizon, an execution convention can become part of the benchmark's headline. Execution assumptions and rank stability should be reported alongside returns.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "54d0d0c0a314145c11cafc6d1a51c696b8a385400ed40e8259ebd85098aadbb3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 거래 에이전트 실행 가정 벤치마크로 순위 안정성 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "합성 트레이딩 실험으로 실행 가정 영향 분석, 벤치마크 자체 제안 불명확"
+        }
+      ]
+    },
+    "2610.05124": {
+      "arxiv_id": "2610.05124",
+      "paper_title": "Memory Canonicalization: A Framework and Benchmark for Cross-Model Drift in Persistent LLM Memory",
+      "abstract": "Persistent memory for Large Language Models (LLMs) has matured rapidly: systems such as MemGPT/Letta, Mem0, and Zep now provide agents with tiered, temporally-aware, model-agnostic external storage, while the Model Context Protocol (MCP) standardizes access to memory servers. A less addressed problem is that an identical stored memory object, retrieved by two different LLMs under otherwise identical conditions, may not be interpreted the same way, factually or emotionally. This paper proposes memory canonicalization: a write-time pipeline that detects ambiguity, conditional structure, and emotional loading in a raw memory object and rewrites it into an explicit, structurally disambiguated canonical form, with emotional valence represented as a separate field rather than inferred from tone. We formalize the pipeline, define a companion Cross-Model Semantic Drift / Emotional Consistency Score benchmark (CMSC-E), and report results from a three-arm pilot using 176 synthetic memory objects and three downstream model families. We find an uncorrected improvement in cross-model emotional consistency for fully canonicalized memory relative to raw memory (+0.050, 95% bootstrap CI [0.013, 0.086], paired t-test p = 0.010), but this result does not survive Bonferroni, Holm, or Benjamini-Hochberg correction across the six comparisons tested. None of the factual-drift (CMSD) comparisons reach significance at any correction level. We report these results as exploratory rather than confirmatory and outline needed follow-up work, including larger samples, independent judge models, human-validated rendering, and preregistration.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "7c888f405467da0e6c009c430860509ab2fe7f42503594654131486a9e74da76",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 지속 메모리 정규화 프레임워크와 교차 모델 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "메모리 정준화 프레임워크와 CMSC-E 벤치마크 정의"
+        }
+      ]
+    },
+    "2610.05380": {
+      "arxiv_id": "2610.05380",
+      "paper_title": "VHDL-REPOBENCH: A Repository-Level Benchmark for Evaluating Large Language Models on VHDL Design Generation",
+      "abstract": "Large Language Models (LLMs) are increasingly applied in hardware design automation, demonstrating strong potential in generating and understanding hardware description languages. However, most existing benchmarks focus on Verilog, with limited evaluation of VHDL, which remains widely used in industry and academia for FPGA and safety-critical systems. To address this gap, we introduce VHDL-REPOBENCH, a large-scale, cross-file, repository-level benchmark for assessing LLM capabilities on realistic VHDL design generation and analysis tasks. VHDL-REPOBENCH curates ~100 open-source VHDL repositories, encompassing ~2.5k VHDL files and ~500 testbenches, and provides structured problem statements, module stubs, and self-verifying testbenches. The benchmark enables comprehensive evaluation across syntax, semantic correctness, hierarchical reasoning, cross-file dependency resolution, and functional verification. We evaluate several state-of-the-art models, including GPT-4o, Llama-3-70B, Qwen2.5-72B, CodeLlama-70B, and multi-step reasoning approaches such as Reflexion and CoDes. Results reveal that while current LLMs achieve moderate line- and block-level accuracy, substantial challenges remain in multi-file reasoning, hierarchical design understanding, and specification-to-module generation. VHDL-REPOBENCH represents the first large-scale VHDL-focused benchmark and provides a valuable resource for the hardware design community to evaluate, compare, and advance LLM capabilities for practical VHDL development.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "26d8164b3540e067287ccd0725b960e5602de88e6a9263d541bfcb8539a0fe90",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VHDL 설계 생성 LLM 평가 저장소 수준 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "VHDL 설계 생성 레포지토리 수준 벤치마크 최초 제안"
+        }
+      ]
+    },
+    "2610.05387": {
+      "arxiv_id": "2610.05387",
+      "paper_title": "GNN-CB: A Graph Neural Network Competition Benchmark for Human and LLM Evaluation",
+      "abstract": "Large language models (LLMs) have demonstrated strong performance on coding and reasoning benchmarks; however, their ability to solve graph-structured machine learning problems remains largely unexplored. In particular, no benchmark currently evaluates whether LLMs can autonomously solve end-to-end Graph Neural Network (GNN) coding tasks under realistic competition settings. To address this gap, this paper introduces GNN-CB, the first competition-based benchmark for evaluating both humans and LLMs on GNN coding tasks. GNN-CB consists of 18 curated competitions spanning node-, edge-, and graph-level prediction across diverse graph categories, domains, and difficulty tiers. All submissions are evaluated through a unified automated pipeline with hidden test sets and standardized scoring. Human participants solve tasks under controlled competition constraints, while LLMs are evaluated using a frozen zero-shot prompting protocol based on a plan-then-code paradigm with bounded execute-and-repair loops. The benchmark additionally supports both non-agent and autonomous agent-based evaluation within the same protocol. Under our evaluated protocol, LLMs rarely match Human Top performance and show less stable performance across competitions. No single model dominates: a few competitions are won by LLMs, yet humans still hold the top score on most tasks. We release GNN-CB as a living benchmark with automated evaluation infrastructure, dynamic leaderboards, and reproducible execution pipelines. Beyond benchmarking, GNN-CB provides a practice-oriented resource for studying GNN implementation across progressively diverse graph-learning tasks. The benchmark and evaluation framework are publicly available at https://basiralab.github.io/GNN-CB/.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "ec1311070bfddd54df805cedf6b8f004696667baf23d705b4ba00d6528f26b4e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "GNN 코딩 경진 벤치마크로 인간과 LLM 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "GNN 코딩 경쟁 기반 벤치마크 GNN-CB 및 평가 인프라 공개"
+        }
+      ]
+    },
+    "2610.07026": {
+      "arxiv_id": "2610.07026",
+      "paper_title": "Offline AI Modules: Voice-First Offline Architecture, Hardware Reference Stack, Quantization and Benchmarking",
+      "abstract": "The Offline AI Modules workstream enables practical, low-power, and community-accessible deployment of voice-first AI systems that operate fully offline. Designed for African language communities where speech is the dominant mode of interaction and internet connectivity is unreliable or absent, the workstream delivers three reinforcing components: a modular voice-first offline architecture, a low-cost hardware reference bill of materials, and a reproducible quantization and a reproducible quantization and benchmarking pipeline for instruction-tuned language models in the 2-5B parameter class. This paper presents the first end-to-end benchmark evaluation of the stack across two hardware tiers: an NVIDIA Jetson Orin NX (TierB) and a Raspberry Pi5 (TierA). Three instruction-tuned models are evaluated across four quantization formats, assessed for deployment metrics (decode throughput, chat latency, memory, power) and multilingual quality (topic classification accuracy on MasakhaNEWS across English, Hausa, Igbo, Nigerian Pidgin, and Yoruba; per-language perplexity drift). Speech recognition is evaluated using Ethio-ASR on Amharic and Oromo across both tiers. The principal finding is that Q4_K_M quantization represents the best size-to-quality trade-off for deployment on both tiers: gemma-4-E2B-it achieves 28.8t/s decode throughput and 89.2% topic classification accuracy at Q4_K_M on TierB, while all three models run within the 16GB memory budget on TierA.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "75259774714ba6ee178dd95b3803cc03a2f999ac3cd607c3d89b95ff10b6b288",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "오프라인 음성 AI 모듈 양자화·하드웨어 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "오프라인 음성 AI 스택 벤치마킹, 한국어·영어 과제 여부 불명확"
+        }
+      ]
+    },
+    "2610.05398": {
+      "arxiv_id": "2610.05398",
+      "paper_title": "MMPostTrainBench: Benchmarking Autonomous Research for Multimodal Post-Training",
+      "abstract": "Autonomous research seeks sustained model improvements through iterative experimentation and feedback. LLM agents show promise in automating machine learning and language-model post-training, but their ability to sustain multimodal improvement remains unclear. We introduce MMPostTrainBench, a benchmark spanning eight tasks in image, audio, video, and joint audio-video understanding and image-grounded software repair. Agents operate from a common base model within fixed budgets, using development feedback before independent evaluation of their submitted models. Evaluation covers target and non-target model outcomes, iterative model improvement and selection, and research integrity. Across all eight tasks, 52.1% of model--task means fall below the base, and evaluated submissions also exhibit non-target regressions. Model performance does not consistently improve across research iterations, and agents do not reliably select the best evaluated candidate for submission; final submissions trail that candidate by up to 5.38 percentage points. Extending autonomous research from text-only to multimodal tasks introduces additional sources of error in perception, cross-modal alignment, and temporal grounding. The observed regressions and selection gaps highlight the need to balance targeted improvements with non-target capability preservation and to retain gains across research iterations. These requirements motivate MMResearch, a multimodal research framework that connects media-grounded evidence to hypotheses and interventions, carries findings across rounds through hierarchical memory, and retains candidates using development evaluation. Added to existing code-agent runtimes, it improves submitted-model accuracy by up to 7.75 percentage points for Claude Opus 4.8 with Claude Code and 2.33 points for GPT-5.6-sol with Codex.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "e8a14ded263b97587d0f138fa8689eb9edf49205d5ee02fe999d70e5b6721f6a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 사후학습 자율 연구 벤치마크와 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 포스트트레이닝 자율연구 벤치마크 MMPostTrainBench 제안"
+        }
+      ]
+    },
+    "2610.05414": {
+      "arxiv_id": "2610.05414",
+      "paper_title": "RMMBench: A Comprehensive Benchmark for Robotic Mobile Manipulation",
+      "abstract": "Although the advancement of vision-language models (VLMs) has endowed robots with enhanced environmental understanding and task reasoning, a comprehensive evaluation methodology is important to advance the integration of VLMs in robotic navigation and manipulation. However, current benchmarks lack a comprehensive method to evaluate diverse robotic tasks, and evaluation metrics remain relatively constrained, making it difficult to assess the embodied capabilities of VLMs in a thorough and fine-grained manner. To address this issue, we propose RMMBench, an evaluation benchmark that requires robots to understand language instructions and perform long-horizon tasks in continuous spaces. RMMBench seamlessly integrates high- and low-level embodied tasks into a unified framework, constructing a \"navigation-manipulation\" task suite comprising 70 canonical task scenarios that range from localized manipulation to long-horizon composite navigation. The results reveal that leading VLMs still face major challenges in spatial localization when performing mobile manipulation tasks, and also highlight the necessity of enhancing the spatial perception capability of robots during long-horizon interactions. RMMBench can be accessed at https://mxxq-stack.github.io/rmmbench-project/",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "c2dfd93708bde04ff521c93f9979c53c89894c9a3ecd0a25cb3bcb302929ee5b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "로봇 이동 조작 벤치마크로 VLM 체화 능력 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "로봇 이동 조작 통합 평가 벤치마크 RMMBench 제안"
+        }
+      ]
+    },
+    "2610.05540": {
+      "arxiv_id": "2610.05540",
+      "paper_title": "SALUS: Automated Auditing of NL-to-SQL Benchmarks through Weak Supervision of Multi-Agent Output",
+      "abstract": "Natural language to SQL (NL-to-SQL) benchmarks are foundational to progress in data analysis research, yet recent work has shown that widely-used benchmarks contain significant annotation errors. These errors silently corrupt evaluation metrics, penalize correct model output, and distort the field's understanding of state-of-the-art performance. We present SALUS, a system that automatically detects annotation errors in NL-to-SQL benchmarks. SALUS frames benchmark auditing as a weakly supervised error detection: SQL generated by multiple LLM agents drive a suite of complementary weak-labeling functions. By passing this noisy vote matrix through a generative label model, we extract high-confidence training samples without requiring human ground truth. These samples train a decision plane that maps gold SQL query features to per-agent trustworthiness, allowing SALUS to intelligently fuse reliability estimates with raw verdicts for rigorous benchmark error detection. We evaluate on BIRD-Clean-xs, a benchmark of 298 BIRD development tasks with manually verified correctness labels. SALUS achieves F1 = 0.9194, significantly outperforming the state-of-the-art baselines. Applying SALUS to the full development sets, we estimate annotation error rates of approximately 37% on BIRD and 27% on Spider.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "02064f0b7507c07f46253f8eda405c9d7722989b00a4892820a91806c32b6346",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "NL-to-SQL 벤치마크 주석 오류 자동 감사 시스템"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "NL-to-SQL 벤치마크 주석 오류 자동 감사 시스템 SALUS 제안"
+        }
+      ]
+    },
+    "2610.05613": {
+      "arxiv_id": "2610.05613",
+      "paper_title": "LLM Benchmarking via Representation Multi-task Learning",
+      "abstract": "Quantifying and evaluating the capabilities of Large Language Models (LLMs) remains a fundamental challenge in modern data science and artificial intelligence. In this paper, we consider LLM evaluation based on their performance across items in multiple benchmark domains (e.g., mathematical reasoning and coding) within a leaderboard framework. Our goal is to address two core questions: (1) How do we derive more accurate domain-specific scores by borrowing information across domains? and (2) How do we define and estimate an overall score that aggregates performance across multiple domains? To solve these problems, we propose a novel statistical framework based on representation Multi-task Learning (MTL) and an item response theory model. Specifically, we define overall and domain-specific LLM traits through an Item Response Theory (IRT) model, and propose an MTL approach to estimate these traits from item-level response data. We develop a computationally efficient estimator and establish its minimax optimality under certain asymptotic regimes. This framework provides a rigorous measurement foundation for systematic LLM evaluation. We conduct extensive simulations, demonstrating the superior performance of the proposed method over competing methods. Crucially for the Applications and Case Studies section, we apply the proposed framework to MMLU response data from the Hugging Face Open LLM Leaderboard, covering 4,272 LLMs and 13,232 items across 56 subjects. The empirical analysis reveals substantial heterogeneity in domain size and difficulty, together with strong positive cross-domain dependence, highlighting the practical value and substantive insights generated by our approach.",
+      "paper_updated": "2026-10-15T15:22:46Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "a6a60f11b8865b8210b29c3cbce19ec0352b7a6b9c7f910584260f6d90f45702",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 벤치마크 표현 멀티태스크 학습 평가 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "IRT·MTL 기반 LLM 평가 통계 프레임워크로 벤치마크 측정 기여"
+        }
+      ]
+    },
+    "2505.17399": {
+      "arxiv_id": "2505.17399",
+      "paper_title": "FullFront: Benchmarking MLLMs Across the Full Front-End Engineering Workflow",
+      "abstract": "Front-end engineering involves a complex workflow where engineers conceptualize designs, translate them into code, and iteratively refine the implementation. While recent benchmarks primarily focus on converting visual designs to code, we present FullFront, a benchmark designed to evaluate Multimodal Large Language Models (MLLMs) \\textbf{across the full front-end development pipeline}. FullFront assesses three fundamental tasks that map directly to the front-end engineering pipeline: Webpage Design (conceptualization phase), Webpage Perception QA (comprehension of visual organization and elements), and Webpage Code Generation (implementation phase). Unlike existing benchmarks that use either scraped websites with bloated code or oversimplified LLM-generated HTML, FullFront employs a novel, two-stage process to transform real-world webpages into clean, standardized HTML while maintaining diverse visual designs and avoiding copyright issues. Extensive testing of state-of-the-art MLLMs reveals significant limitations in page perception, code generation (particularly for image handling and layout), and interaction implementation. Our results quantitatively demonstrate performance disparities across models and tasks, and highlight a substantial gap between current MLLM capabilities and human expert performance in front-end engineering. The FullFront benchmark and code are available in https://github.com/Mikivishy/FullFront.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:27Z",
+      "input_sha256": "6cc8c47ddc3e4afcc3be73681441a5e818cd5f2a57b6f04eb95adc6309a975b6",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "프론트엔드 전체 워크플로우 MLLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "프론트엔드 전 과정 평가 벤치마크 FullFront 및 코드 공개"
         }
       ]
     }
