@@ -33,7 +33,9 @@ jobs:
       - name: Validate inventory data
         run: python3 validate_inventory.py
       - name: Test discovery, evidence and approval handling
-        run: python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py
+        # Buffer successful tests so simulated outages do not become annotations.
+        # Failed-test output and real collection warnings remain visible.
+        run: python3 -m unittest --buffer -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py
       - name: Generate site data
         run: |
           python3 build_site_data.py
