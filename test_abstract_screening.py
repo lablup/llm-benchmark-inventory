@@ -48,9 +48,12 @@ class ScreeningTests(unittest.TestCase):
         self.assertEqual(invoke.call_count, 2)
         first, second = invoke.call_args_list
         self.assertEqual(first.args[0]["messages"], second.args[0]["messages"])
-        payload = json.loads(first.args[0]["messages"][1]["content"])
-        self.assertEqual(set(payload), {"instruction", "expected_arxiv_ids", "candidates"})
-        self.assertEqual(set(payload["candidates"][0]), {"arxiv_id", "title", "summary", "updated"})
+        payload = first.args[0]["messages"][1]["content"]
+        for paper in self.papers:
+            self.assertIn(f"Paper ID: {paper['arxiv_id']}", payload)
+            self.assertIn(paper["summary"], payload)
+        self.assertNotIn("tables", payload)
+        self.assertNotIn("pdf_url", payload)
         self.assertEqual(first.args[1].max_tokens, 3000)
         ledger = research.read_json(self.root / "research/proposals.json")
         self.assertEqual(len(ledger["screenings"]), 2)
@@ -186,8 +189,8 @@ class ScreeningTests(unittest.TestCase):
         with patch.object(research, "provider", side_effect=[self.primary, self.secondary]), patch.object(research, "invoke", side_effect=replies) as invoke, patch.object(research, "get_pdf") as pdf:
             research.run(self.root, screening_smoke=True)
         pdf.assert_not_called()
-        payload = json.loads(invoke.call_args_list[0].args[0]["messages"][1]["content"])
-        self.assertEqual(len(payload["candidates"]), 10)
+        payload = invoke.call_args_list[0].args[0]["messages"][1]["content"]
+        self.assertEqual(payload.count("Paper ID: "), 10)
         ledger = research.read_json(self.root / "research/proposals.json")
         self.assertEqual(len(ledger["screenings"]), 10)
         self.assertEqual(next(iter(ledger["daily_runs"].values()))["attempted"], [])
