@@ -158,11 +158,101 @@ def process_comment(comment, issue, ledger, reviewer, root=ROOT, apply=apply_pro
     return True
 
 
+AUTO_MARKER = re.compile(r"^<!-- arxiv-applied:v3:(\d{4}-\d{2}-\d{2}) -->", re.M)
+
+
+def agreed(item, config):
+    verification = item.get("verification", {})
+    votes = verification.get("votes", [])
+    expected = {config.get("model"), config.get("verifier_model")}
+    return (len(expected) == 2 and None not in expected and len(votes) == 2
+            and {vote.get("model") for vote in votes} == expected
+            and all(vote.get("approve") is True for vote in votes)
+            and verification.get("approve") is True
+            and verification.get("reviewed_sha256") == item["proposal_sha256"] == proposal_hash(item))
+
+
+def sync_automatic(state, ledger, github, config, root):
+    for item in ledger["proposals"].values():
+        if item["status"] != "proposed":
+            continue
+        if not agreed(item, config):
+            item["status"] = "needs_evidence"
+            item["reason"] = "두 모델의 일치 판정이 없어 반영하지 않았습니다."
+            continue
+        try:
+            apply_proposal(item, root)
+        except ValueError as error:
+            item["status"] = "needs_evidence"
+            item["reason"] = "조사 이후 기존 자료가 변경되어 반영하지 않았습니다."
+            print(f"Skipped {item['arxiv_id']}: {type(error).__name__}")
+            continue
+        item["status"] = "accepted"
+        item["applied_by"] = "dual_model_agreement"
+    # Notification runs after deployment. Recover its links on the next sync.
+    for issue in github.issues():
+        body = issue.get("body") or ""
+        if issue.get("user", {}).get("login") != "github-actions[bot]" or not AUTO_MARKER.search(body):
+            continue
+        for key, sha in ENTRY.findall(body):
+            item = ledger["proposals"].get(key)
+            if item and item["status"] == "accepted" and item["proposal_sha256"] == sha:
+                item["issue_url"] = issue["html_url"]
+    for paper in state["papers"]:
+        item = ledger["proposals"].get(paper["arxiv_id"])
+        if item:
+            paper.update(analysis_status=item["status"], analysis_reason=item["reason"],
+                         review_issue_url=item.get("issue_url"),
+                         review_status="reviewed" if item["status"] == "accepted" else "pending")
+    write_json(root / "research/proposals.json", ledger)
+    return state
+
+
+def notify_applied(github, root, now):
+    ledger = read_json(root / "research/proposals.json")
+    day = now.astimezone(KST).date().isoformat()
+    seen = set()
+    today = False
+    for issue in github.issues():
+        body = issue.get("body") or ""
+        marker = AUTO_MARKER.search(body)
+        if not marker or issue.get("user", {}).get("login") != "github-actions[bot]":
+            continue
+        seen.update(ENTRY.findall(body))
+        today |= marker[1] == day
+        if issue.get("state") == "open":
+            github.request(f"/issues/{issue['number']}", {"state": "closed", "state_reason": "completed"}, method="PATCH")
+    pending = [item for item in ledger["proposals"].values() if item["status"] == "accepted"
+               and item.get("applied_by") == "dual_model_agreement"
+               and (item["arxiv_id"], item["proposal_sha256"]) not in seen]
+    if not pending or today:
+        return
+    batch = pending[:5]
+    reviewer = os.environ.get("ARXIV_REVIEWER", "songys")
+    commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+    lines = [f"<!-- arxiv-applied:v3:{day} -->", f"@{reviewer} 두 모델이 동의하고 근거 확인을 통과한 {len(batch)}건을 표와 페이지에 반영했습니다.", "",
+             "검토나 승인 댓글은 필요하지 않습니다. 불일치하거나 근거가 부족한 항목은 반영하지 않았습니다.",
+             f"[페이지](https://lablup.github.io/llm-benchmark-inventory/) · [변경 기록](https://github.com/{REPOSITORY}/commit/{commit})", ""]
+    for item in batch:
+        lines += [f"## {markdown_title(item['paper_title'])}", f"<!-- proposal:{item['arxiv_id']}:{item['proposal_sha256']} -->",
+                  f"[논문]({item['source']['url']})", "", markdown_title(item["reason"], limit=1500), ""]
+        for change in item["changes"]:
+            lines.append(f"- {change['track']} / {markdown_title(change['row']['이름'])}: " + ("새 항목 추가" if change["before"] is None else "기존 항목 수정"))
+        lines.append("")
+    github.ensure_label()
+    issue = github.request("/issues", {"title": f"[자동 반영] {day} · 벤치마크 {len(batch)}건",
+        "body": "\n".join(lines), "labels": [LABEL], "assignees": [reviewer]})
+    github.request(f"/issues/{issue['number']}", {"state": "closed", "state_reason": "completed"}, method="PATCH")
+
+
 def _sync(state, github, now, reviewer, root=ROOT):
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9-]{0,38}", reviewer):
         raise ValueError("Invalid reviewer")
     result = copy.deepcopy(state)
     ledger = read_json(root / "research/proposals.json")
+    config = read_json(root / "research/config.json")
+    if config.get("auto_apply_agreed"):
+        return sync_automatic(result, ledger, github, config, root)
     day = now.astimezone(KST).date().isoformat()
     daily_exists = False
     for issue in sorted(github.issues(), key=lambda x: x["number"]):
@@ -208,6 +298,8 @@ def sync(state, github, now, reviewer, root=ROOT):
 
 
 def acknowledge(github, root=ROOT):
+    if read_json(root / "research/config.json").get("auto_apply_agreed"):
+        return notify_applied(github, root, datetime.now(timezone.utc))
     ledger = read_json(root / "research/proposals.json")
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
     for item in ledger["proposals"].values():

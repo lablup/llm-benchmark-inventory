@@ -203,9 +203,9 @@ class GitHub:
             raise ValueError("GH_TOKEN is required for issue synchronization")
         self.token = token
 
-    def request(self, path: str, data=None):
+    def request(self, path: str, data=None, method=None):
         request = Request("https://api.github.com/repos/" + REPOSITORY + path,
-                          data=json.dumps(data).encode() if data is not None else None,
+                          data=json.dumps(data).encode() if data is not None else None, method=method,
                           headers={"Authorization": f"Bearer {self.token}", "Accept": "application/vnd.github+json",
                                    "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "llm-benchmark-inventory"})
         with urlopen(request, timeout=45) as response:

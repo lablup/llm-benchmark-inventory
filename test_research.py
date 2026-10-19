@@ -24,6 +24,10 @@ class ResearchTests(unittest.TestCase):
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(research.ROOT / name, target)
+        config = research.read_json(self.root / "research/config.json")
+        config["auto_apply_agreed"] = False
+        config["enabled"] = False
+        research.write_json(self.root / "research/config.json", config)
         tables = {track: dict(zip(("headers", "rows"), research.read_table(self.root, track))) for track in research.TABLES}
         self.context = {"tables": tables, "source": {"pages": ["Example English vision benchmark https://example.org/data"]},
                         "english_copy": (self.root / "english-copy.js").read_text()}
@@ -155,6 +159,7 @@ class ResearchTests(unittest.TestCase):
     def test_enabled_config_needs_explicit_model_and_costs(self):
         config = research.read_json(self.root / "research/config.json")
         config["enabled"] = True
+        config["model"] = None
         with self.assertRaises(ValueError):
             research.check_config(config)
 
@@ -194,6 +199,28 @@ class ResearchTests(unittest.TestCase):
         self.assertEqual(ledger["proposals"]["2610.12345"]["status"], "proposed")
         self.assertEqual(next(iter(ledger["daily_runs"].values()))["spent_usd"], .002)
 
+    def test_both_models_audit_identical_draft_without_seeing_other_vote(self):
+        config = research.read_json(self.root / "research/config.json")
+        config.update(enabled=True, auto_apply_agreed=True, daily_papers=1)
+        research.write_json(self.root / "research/config.json", config)
+        watch.save_state(self.root / "new-papers.json", {**empty(), "papers": [paper()]})
+        primary = Mock(model=config["model"])
+        secondary = Mock(model=config["verifier_model"])
+        source = {**self.context["source"], "url": "https://arxiv.org/pdf/2610.12345", "sha256": "0" * 64}
+        replies = [(copy.deepcopy(self.proposal), 0), ({"approve": True, "reason": "First independent vote"}, 0),
+                   ({"approve": True, "reason": "Second independent vote"}, 0)]
+        replies[0][0].pop("verification")
+        with patch.object(research, "provider", side_effect=[primary, secondary]), patch.object(research, "get_pdf", return_value=source), patch.object(research, "get_official_resource", return_value={"url": "https://example.org/data", "text": "Official card"}), patch.object(research, "invoke", side_effect=replies) as invoke, patch.object(research.time, "sleep"):
+            research.run(self.root)
+        calls = invoke.call_args_list
+        self.assertEqual(len(calls), 3)
+        self.assertIs(calls[1].args[1], primary)
+        self.assertIs(calls[2].args[1], secondary)
+        self.assertEqual(calls[1].args[0]["messages"], calls[2].args[0]["messages"])
+        self.assertNotIn("First independent vote", str(calls[2].args[0]))
+        item = research.read_json(self.root / "research/proposals.json")["proposals"]["2610.12345"]
+        self.assertTrue(review.agreed(item, config))
+
     def test_official_source_adapter_rejects_arbitrary_hosts_without_request(self):
         with patch.object(research, "build_opener") as opener:
             for url in ["https://localhost/data", "http://github.com/a/b", "https://github.com@localhost/a/b", "https://github.com:444/a/b"]:
@@ -201,12 +228,80 @@ class ResearchTests(unittest.TestCase):
                     research.get_official_resource(url)
         opener.assert_not_called()
 
+    def consensus(self, votes=(True, True)):
+        config = research.read_json(research.ROOT / "research/config.json")
+        self.proposal["verification"] = {"approve": all(votes), "reviewed_sha256": self.proposal["proposal_sha256"],
+            "votes": [{"model": config["model"], "approve": votes[0], "reason": "Checked"},
+                      {"model": config["verifier_model"], "approve": votes[1], "reason": "Checked"}]}
+        research.write_json(self.root / "research/config.json", config)
+        research.write_json(self.root / "research/proposals.json", self.ledger)
+        return config
+
+    def test_consensus_requires_two_distinct_models_and_exact_content(self):
+        config = self.consensus()
+        self.assertTrue(review.agreed(self.proposal, config))
+        self.proposal["verification"]["votes"][1]["model"] = config["model"]
+        self.assertFalse(review.agreed(self.proposal, config))
+        self.consensus()
+        self.proposal["changes"][0]["row"]["정의"] = "Changed after model review"
+        self.assertFalse(review.agreed(self.proposal, config))
+
+    def test_consensus_applies_without_human_comment(self):
+        config = self.consensus()
+        github = Mock()
+        github.issues.return_value = []
+        with patch.object(review, "apply_proposal") as apply:
+            result = review.sync({**empty(), "papers": [paper()]}, github, NOW, "songys", self.root)
+        apply.assert_called_once()
+        github.request.assert_not_called()  # Notify only after deployment.
+        self.assertEqual(result["papers"][0]["analysis_status"], "accepted")
+
+    def test_disagreement_does_not_apply_or_request_review(self):
+        self.consensus((True, False))
+        github = Mock()
+        github.issues.return_value = []
+        with patch.object(review, "apply_proposal") as apply:
+            result = review.sync({**empty(), "papers": [paper()]}, github, NOW, "songys", self.root)
+        apply.assert_not_called()
+        github.request.assert_not_called()
+        self.assertEqual(result["papers"][0]["analysis_status"], "needs_evidence")
+
+    def test_stale_consensus_is_skipped_without_notification(self):
+        self.consensus()
+        github = Mock()
+        github.issues.return_value = []
+        with patch.object(review, "apply_proposal", side_effect=ValueError("stale row")):
+            result = review.sync({**empty(), "papers": [paper()]}, github, NOW, "songys", self.root)
+        self.assertEqual(result["papers"][0]["analysis_status"], "needs_evidence")
+        github.request.assert_not_called()
+
+    def test_notifications_only_include_applied_results_and_close_the_issue(self):
+        self.consensus()
+        self.proposal.update(status="accepted", applied_by="dual_model_agreement")
+        research.write_json(self.root / "research/proposals.json", self.ledger)
+        github = Mock()
+        github.issues.return_value = []
+        github.request.return_value = {"number": 21}
+        with patch.object(review.subprocess, "check_output", return_value="a" * 40):
+            review.notify_applied(github, self.root, NOW)
+        body = github.request.call_args_list[0].args[1]["body"]
+        self.assertIn("검토나 승인 댓글은 필요하지 않습니다", body)
+        self.assertNotIn("추가 2610", body)
+        self.assertEqual(github.request.call_args.kwargs["method"], "PATCH")
+
+    def test_zero_prices_require_explicit_billing_basis(self):
+        config = research.read_json(research.ROOT / "research/config.json")
+        research.check_config(config)
+        del config["billing_basis"]
+        with self.assertRaises(ValueError):
+            research.check_config(config)
+
     def test_notification_contains_actual_diff_and_no_checkbox(self):
         body = self.issue["body"]
         self.assertIn("| 항목 | 현재 | 변경 후 |", body)
         self.assertIn("추가 2610.12345", body)
         self.assertNotIn("- [ ]", body)
-        self.assertEqual(body.count("Example English vision benchmark"), 1)
+        self.assertEqual(body.count("Example English vision"), 1)
 
 
 if __name__ == "__main__":

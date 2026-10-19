@@ -7,7 +7,7 @@
   let papers = [];
   let limit = 30;
   const chosen = new URLSearchParams(location.search).get("status");
-  if (["proposed", "queued", "reviewed"].includes(chosen)) status.value = chosen;
+  if (["accepted", "queued", "needs_evidence"].includes(chosen)) status.value = chosen;
 
   function element(tag, text, className) {
     const node = document.createElement(tag);
@@ -16,7 +16,7 @@
     return node;
   }
 
-  const states = { queued: "자동 조사 대기", proposed: "변경안 승인 대기", accepted: "표 반영 완료", held: "보류", rejected: "제외", exclude: "조사 결과 제외", needs_evidence: "근거 추가 확인 필요" };
+  const states = { queued: "자동 조사 대기", proposed: "반영 전 확인 중", accepted: "표 반영 완료", held: "보류", rejected: "제외", exclude: "조사 결과 제외", needs_evidence: "근거·판단 불충분으로 미반영" };
 
   function card(paper) {
     const article = element("article", "", "paper-card");
@@ -47,8 +47,8 @@
     const text = query.value.trim().toLocaleLowerCase();
     const filtered = papers.filter(p => (status.value === "all" || (status.value === "reviewed" ? p.review_status === "reviewed" : (p.analysis_status || "queued") === status.value))
       && `${p.title} ${p.summary} ${p.authors.join(" ")} ${p.arxiv_id}`.toLocaleLowerCase().includes(text));
-    const pending = papers.filter(p => p.analysis_status === "proposed").length;
-    count.textContent = `수집 ${papers.length}건 · 승인할 변경안 ${pending}건 · 현재 ${filtered.length}건`;
+    const pending = papers.filter(p => p.analysis_status === "accepted").length;
+    count.textContent = `수집 ${papers.length}건 · 자동 반영 ${pending}건 · 현재 ${filtered.length}건`;
     list.replaceChildren(...filtered.slice(0, limit).map(card));
     if (!filtered.length) list.append(element("p", papers.length ? "조건에 맞는 논문이 없습니다." : "아직 수집된 후보가 없습니다."));
     more.hidden = filtered.length <= limit;

@@ -43,3 +43,21 @@ a $1 daily stop threshold. These are adjustable defaults, not user-selected
 model or spending settings. Provider/model selection and API credentials are
 still pending; keep model investigation disabled and disclose that state.
 Recommended-model rankings remain outside this first investigation adapter.
+
+## 5. Use Token Factory and apply only two-model agreement (2026-10-19)
+
+The user chose the locally configured Token Factory service, with
+DeepSeek-V4.1-Flash and GLM-5.3-Flash. Both models must approve the exact proposed
+change against source evidence before it can be applied automatically to this
+repository and deployed. A DeepSeek draft is audited separately by both models;
+neither audit sees the other's vote. This supersedes decision 4's requirement
+for an inclusion comment.
+
+The user explicitly said that disagreement or insufficient evidence should
+simply prevent inclusion. Keep those outcomes in the research record without
+requesting human review. Notify through GitHub only after actual changes have
+been committed and deployed. Preserve the daily 11:30 Asia/Seoul schedule.
+
+Local Token Factory configuration records a company allocation with no charge,
+confirmed on 2026-10-12. Record zero estimated user cost on that basis, not as a
+claim that public model pricing is zero. Keep the key in GitHub Actions Secrets.

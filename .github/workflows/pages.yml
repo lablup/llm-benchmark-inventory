@@ -72,8 +72,9 @@ jobs:
           ARXIV_DURABLE_CHECKPOINT: "1"
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TOKEN_FACTORY_API_KEY: ${{ secrets.TOKEN_FACTORY_API_KEY }}
         run: python3 research_pipeline.py
-      - name: Apply reviewer decisions and notify researched proposals
+      - name: Apply changes agreed by both models
         id: review
         env:
           GH_TOKEN: ${{ github.token }}
