@@ -1,7 +1,376 @@
 {
   "schema_version": 1,
-  "last_checked_at": "2026-10-18T13:48:07Z",
+  "last_checked_at": "2026-10-19T03:48:58Z",
   "papers": [
+    {
+      "arxiv_id": "2610.23678",
+      "title": "Beyond the Benchmark: Conditioning, Domains and Failure Modes of Qwen3-TTS",
+      "summary": "Qwen3-TTS reports state-of-the-art zero-shot voice cloning, but its technical report leaves open how the model should be conditioned, how it behaves outside read speech, and how it fails. We characterise its two cloning interfaces, in-context learning (ICL) and X-Vector, against Chatterbox, XTTS-v2 and F5-TTS on read, meeting, emotional and air-traffic-control (ATC) speech, using eighteen objective measures, an LLM judge, a spoofing countermeasure and a listening test. Neither interface dominates: ICL clones timbre more closely from correctly transcribed references, X-Vector clones timing, and ICL degrades sharply when a short reference transcript is wrong. Domain explains four times more variance than system choice. Qwen3-TTS leads on intelligibility and pitch register but trails on prosody, and the objective measures rank systems differently from listeners. An off-the-shelf countermeasure flags its clones no more often than genuine recordings, and on ATC radio it fails for every system. Code and audio are released.",
+      "authors": [
+        "Séverin Baroudi",
+        "Yanis Labrak",
+        "Petr Motlicek",
+        "Hervé Bredin",
+        "Ricard Marxer"
+      ],
+      "published": "2026-10-16T16:09:20Z",
+      "updated": "2026-10-16T16:09:20Z",
+      "categories": [
+        "cs.SD",
+        "cs.CL"
+      ],
+      "url": "https://arxiv.org/abs/2610.23678",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "exclude",
+      "analysis_reason": "이 논문은 Qwen3-TTS의 음성 복제 인터페이스(ICL, X-Vector)를 조건화 방식·도메인·실패 모드 관점에서 분석한 시스템 특성화 연구로, 재사용 가능한 새 벤치마크를 도입하거나 기존 벤치마크를 실질적으로 갱신하지 않는다. 평가에 사용된 LibriSpeech, AMI, IEMOCAP, ATCO2는 기존 음성 코퍼스이며, 18개 객관적 지표·LLM judge·스푸핑 대응책·청취 테스트는 이 논문의 분석 프로토콜이지 공개된 벤치마크가 아니다. 또한 한국어 과제·지시가 전혀 포함되어 있지 않고, 영어 트랙에 추가할 만한 재사용 벤치마크도 새로 제시되지 않는다. 코드와 오디오가 공개된다는 언급은 있으나 논문 본문에 공식 데이터셋/코드 URL이 명시되지 않아 링크 근거도 확보되지 않는다."
+    },
+    {
+      "arxiv_id": "2610.23656",
+      "title": "ABF-Bench: A Verifiable Benchmark for Agentic Blockchain Forensics",
+      "summary": "Blockchain forensics is adversarial and open-ended: money launderers split, swap, and bridge funds, cut their trail at mixers or custodial services, and change tactics from one incident to the next. Investigators must keep adapting their tracing in response. Yet the immutability of public ledgers preserves every recorded movement in public view, making much of the investigation independently verifiable. We introduce ABF-Bench, an interactive benchmark that makes evidence-backed fund tracing a verifiable agent task, in which every claimed movement must cite ledger records the agent retrieved. A case-to-task pipeline builds well-posed tasks across ledgers: conservative rules halt tracing wherever the records leave a continuation unresolved, and each task's reference graph is the answer those rules determine. Built from real laundering activity, the tasks combine multi-hop transfers, DeFi exchanges, cross-chain round trips, custodial and mixer deposits, and address poisoning. We also propose the ABF agent harness, built around a working memory, and evaluate it alongside general-purpose agents and fixed-order tracers. The harness reaches 75% edge recall, against 47% for Codex with the same model and 10% for Claude Code, which loses recall to overconfidence: it cites records it left unretrieved. Compared with fixed-order tracers, the harness acquires evidence faster than the best of them early in the budget and recognizes undisclosed custodial services that they walk past (89% vs. 0%), with 98% fidelity. However, agents tend to stop early and lose recall on larger tasks, which holds their final recall below the best tracer. Beyond exposing these gaps, ABF-Bench opens blockchain forensics to LLM agents as a verifiable domain, where the verdicts that score agents also offer potential training signals.",
+      "authors": [
+        "Xiaohang Yu",
+        "Hejia Geng",
+        "William Knottenbelt"
+      ],
+      "published": "2026-10-16T15:51:03Z",
+      "updated": "2026-10-16T15:51:03Z",
+      "categories": [
+        "cs.CR"
+      ],
+      "url": "https://arxiv.org/abs/2610.23656",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "exclude",
+      "analysis_reason": "ABF-Bench는 블록체인 자금 추적을 평가하는 에이전트 벤치마크로, 한국어 또는 영어 지식·추론·코딩·멀티모달·장문 평가 과제가 아니라 온체인 원장 기록을 대상으로 하는 도메인 특화 과제이다. 논문은 한국어나 영어 자연어 과제를 포함하지 않으며, 평가 대상은 원장 조회와 자금 흐름 그래프 복원이므로 이 인벤토리의 커버리지(한국어/영어 지식·추론·코딩·에이전트·멀티모달·장문)에 해당하지 않는다. 또한 공식 데이터셋/코드 URL이 PDF에 명시되어 있지 않고(‘The benchmark will be released upon publication’), 라이선스·하니스 정보도 확인할 수 없어 새 행을 제안할 근거가 부족하다."
+    },
+    {
+      "arxiv_id": "2610.23625",
+      "title": "PresenceBench: An Exploratory Evaluation of Large Language Model Adaptation to User State",
+      "summary": "Presence-aware intelligence is the capacity of an AI system's intelligence layer to adapt appropriately to the functional state of the person it serves (here readiness, flow, and stability) while preserving task quality and safety. We introduce PresenceBench, an instrument for measuring it. PresenceBench evaluates how the intelligence layer uses a supplied state, not how that state is sensed, and breaks the capability into measurable properties. Two are tested here. Receptivity: does the model take up the state and give a better response than with no signal? Specificity: does any improvement depend on the correct state, rather than on extra structured context? A third, adaptation across states, is a required endpoint not measured in this release. A five-arm causal design answers both questions, against each model's own baseline and an equally structured mismatched-state control, scored by a correctness-gated human paired comparison. The exploratory evaluation covered four models across eighteen single-turn, six fixed three-turn and six simulated natural-conversation scenarios. Supplying a synthetic state, raw or translated into a response policy, gave human-preference point estimates above 0.5 for all four models (Claude Sonnet 5, DeepSeek V4 Pro, Gemini 3.6 Flash, GPT-5.6 Terra), with three of eight 95% intervals excluding chance. Specificity was not resolved: no per-model interval excluded chance, and the design cannot yet separate the state values from a generic instruction to adapt. Policy delivery reduced priced cost and output tokens against each model's baseline; these are resource-use changes, not efficiency gains, because correctness non-inferiority was not established. Safety-floor failures were rare (13 of 360 cases), with a non-significant excess under policy delivery. We report the instrument, the frozen results, and the controls a confirmatory study needs.",
+      "authors": [
+        "Peña Arroyo Gallego",
+        "Mauro Ruiz Moreno",
+        "Alejandro Acien",
+        "Sergio Romero-Tapiador",
+        "Teresa Arroyo-Gallego"
+      ],
+      "published": "2026-10-16T15:33:04Z",
+      "updated": "2026-10-16T15:33:04Z",
+      "categories": [
+        "cs.HC",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "url": "https://arxiv.org/abs/2610.23625",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "exclude",
+      "analysis_reason": "PresenceBench는 사용자의 기능적 상태(readiness·flow·stability)를 모델이 잘 소비하는지를 재는 탐색적 평가 도구로, 한국어/영어 지식·추론·코딩·에이전트·멀티모달·장문 평가가 아니라 사용자 상태 적응이라는 별도 구성개념을 다룬다. 또한 데이터·코드가 공개 저장소가 아니라 저자 요청 시 제공으로 되어 있어 공식 https 데이터셋/코드 링크가 PDF에 존재하지 않으므로 재사용 벤치마크로 등록하기 어렵다."
+    },
+    {
+      "arxiv_id": "2610.23612",
+      "title": "SIT-Eval: Situation-Based Interactive Turn-by-Turn Evaluation of Conversational Agents",
+      "summary": "The rapid proliferation of conversational AI agents necessitates evaluation methods that assess performance across diverse dialogue scenarios, utilizing multiple situational criteria, as appropriate behavior depends on context and encompasses various aspects. Existing dialogue benchmarks typically use static natural conversations, which underrepresent rare situations---a critical safety gap, as low-probability events become frequent failures at production scale. However, limited sample sizes force a choice: either maintain natural dialogues for realism or turn to adaptive situation sampling for comprehensive yet statistically reliable coverage. We introduce SIT-Eval, an adjustable framework for evaluating situation-based conversational agents. We formalize an agent's desired behavior as situational rules: if situation is P, follow rules Q. At each conversation turn, an LLM-interlocutor enacts a uniformly sampled situation. A context-aware LLM-judge leverages all conditionally applicable rules as criteria to evaluate the agent's reply for that situation. The judge is validated using human-verified synthetic golden dialogues. Benchmarking 8 LLMs on 1292 conversation turns reveals failure modes hidden by aggregate metrics: models with similar overall scores vary widely in their adherence to individual rules. All models struggle most with ambiguity clarification and Socratic questioning.",
+      "authors": [
+        "Ravil Mussabayev",
+        "Saveliy Zavertyaev",
+        "Dmitriy Parpulov",
+        "Andrey Savchenko"
+      ],
+      "published": "2026-10-16T15:24:02Z",
+      "updated": "2026-10-16T15:24:02Z",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "url": "https://arxiv.org/abs/2610.23612",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "needs_evidence",
+      "analysis_reason": "추출 결과가 근거·형식 검사를 통과하지 못해 반영하지 않았습니다."
+    },
+    {
+      "arxiv_id": "2610.23230",
+      "title": "RAP: A Dataset for Paper-to-Poster Generation via Declarative Markup from Human-Crafted Exemplars",
+      "summary": "Making a conference poster is visual coding in miniature: an entire paper must be compressed onto a single page, which exercises summarization, visual design, and code implementation at once, using nothing beyond the paper itself. Yet benchmarks for this task in the context of visual coding remain scarce: existing resources are small and annotated only with layout boxes, so evaluation must fall back on VLM-as-judge or human checklists rather than objective render-and-compare, and the generation methods they support design layouts from scratch, leaving human-crafted posters unusable as either a retrievable design library or as verified supervision. We introduce RAP (Reconstruct A Poster), a dataset and benchmark for paper-to-poster generation as a visual coding task. RAP contains 25K+ verified paper-poster pairs from various machine learning conferences held between 2022 and 2026, annotated with a three-level content taxonomy, plus a held-out benchmark of 150 test papers each paired with its human poster. A fully automated derendering pipeline turns each poster into styled HTML/CSS of typed, refillable slots, so every sample is a paper-poster-markup triplet verifiable by rendering against the source poster. The corpus serves both inference and training: PosterRAG, a training-free multi-agent pipeline, retrieves an exemplar and refills its slots without touching layout or styling, while an SFT+RL recipe trains a dedicated model from the same triplets. An online demo is available at https://reconstruct-a-poster.github.io/.",
+      "authors": [
+        "Haonan Han",
+        "Yukang Lin",
+        "Minliang Lin",
+        "Haoxian Tan",
+        "Jun-Yan He",
+        "Rui Yang",
+        "Zhi-Qi Cheng",
+        "Jie Hu",
+        "Guanglu Wan",
+        "Xiu Li"
+      ],
+      "published": "2026-10-16T09:59:22Z",
+      "updated": "2026-10-16T09:59:22Z",
+      "categories": [
+        "cs.CV"
+      ],
+      "url": "https://arxiv.org/abs/2610.23230",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "needs_evidence",
+      "analysis_reason": "추출 결과가 근거·형식 검사를 통과하지 못해 반영하지 않았습니다."
+    },
+    {
+      "arxiv_id": "2610.23141",
+      "title": "LexPilot: Benchmarking the Proactive Interaction Ability of Legal LLMs with Laypeople in Chinese Civil Case Consultation",
+      "summary": "Large Language Models (LLMs) have greatly assisted legal professionals. However, our empirical studies reveal that, when faced with underspecified consultations from non-experts, current LLMs often produce irresponsible responses with limited utility despite lacking sufficient case details for definitive conclusions. To better assist laypeople, legal LLMs must identify focal points of dispute and proactively elicit crucial context from users. Unfortunately, existing data resources often focus on interaction and response quality, offering limited insight into how proactive interaction affects LLMs' downstream claim-level judgment prediction in actual civil cases. To address this gap, we introduce \\textbf{LexPilot}, a benchmark linking proactive legal interaction to claim-level verdict prediction using authentic Chinese civil judgments. Constructed from 432 real-world judgments across 36 common causes of action, LexPilot comprises expert-reviewed pairs of complete and underspecified consultation histories with corresponding court verdicts. Experiments reveal that current LLMs struggle with proactive legal interactions in underspecified consultations, with downstream judgment prediction substantially underperforming that in the fully specified consultation setup (-23.84% on average). Further analysis identifies critical bottlenecks hindering these capabilities. Our work highlights the urgent need for more user-centered legal AI to better serve the public.",
+      "authors": [
+        "Wenbin Zhang",
+        "ShangZhan Li",
+        "Bingxiang He",
+        "Ye He",
+        "Yuxin Zhou",
+        "Muzhen Cai",
+        "Qi Shi",
+        "Wanxiang Che"
+      ],
+      "published": "2026-10-16T08:38:20Z",
+      "updated": "2026-10-16T08:38:20Z",
+      "categories": [
+        "cs.AI"
+      ],
+      "url": "https://arxiv.org/abs/2610.23141",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2610.22989",
+      "title": "MUB: An Identity-Masked Benchmark for Music Understanding in Multimodal Language Models",
+      "summary": "Evaluating musical perception in multimodal language models requires separating audio evidence from answers recoverable through metadata or external tools. We present the Music Understanding Benchmark (MUB), a locally assembled collection of 500 identity-masked recordings with existing annotations for tempo, key, time signature, and structural intervals. The collection covers all 24 major/minor key combinations, tempos of 47--180 beats per minute, and 4,676 annotated intervals. Original titles, artists, and platform identifiers are excluded from evaluation inputs. Relative to recent music question-answering and temporal-grounding work, MUB emphasizes scalar tempo prediction and full-recording interval outputs, together with a documented metadata-masking protocol. Saved baseline predictions yield 53.6\\% tempo accuracy for a simple DSP estimator and 98.4\\% time-signature accuracy for a constant 4/4 predictor. We identify important limitations, including an asymmetric legacy key metric, unverified independent annotation agreement, extreme metre imbalance, and unresolved recording-level rights clearance. No contemporary multimodal language model comparison has yet been completed. MUB is therefore an evaluation resource and protocol under validation, rather than a completed demonstration of model capabilities.",
+      "authors": [
+        "Kun Liu",
+        "Lyra Tao"
+      ],
+      "published": "2026-10-16T06:14:31Z",
+      "updated": "2026-10-16T06:14:31Z",
+      "categories": [
+        "cs.SD"
+      ],
+      "url": "https://arxiv.org/abs/2610.22989",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2610.22964",
+      "title": "ANCHOR: Audio-Visually Grounded Chain-of-Thought Reasoning Benchmark",
+      "summary": "Multimodal large language models (MLLMs) perform well on audio-visual question answering, but correct answers do not necessarily imply that their stated reasoning is grounded in relevant perceptual evidence. Existing benchmarks mainly evaluate final-answer accuracy, offering limited insight into whether model-generated rationales correctly identify visual regions, temporal intervals, and audio events supporting predictions. We introduce ANCHOR, a benchmark and evaluation framework for measuring grounded-rationale alignment in multimodal reasoning, comprising 2,319 videos and 8,272 question-answer pairs with structured reasoning traces, temporal evidence, spatial bounding boxes, and salient audio cues, including a human-refined test set of 224 videos and 975 question-answer pairs. We separately measure answer correctness, hallucination, logical divergence, and conciseness, with direct spatial and temporal grounding measurements on a focused subset. Across the full benchmark, twelve contemporary MLLMs show a substantial alignment gap: models with comparable answer performance can differ markedly in whether their explanations are supported by annotated evidence. On a matched subset of 100 videos and 446 question-answer pairs, rankings remain highly stable across human-refined, Gemini-generated, and GPT-generated references (mean Pearson r=0.99), providing evidence against model-reference circularity within this subset. Grounding-cue ablations of three MLLMs on the full human-refined test set reveal a consistent modality hierarchy: removing video reduces accuracy by 38.4-41.8 points, while removing bounding boxes (3.2-7.7 points) and audio (4.2-5.6 points) causes smaller, complementary, model-dependent drops. These findings show answer-only evaluation obscures important grounding failures and position ANCHOR as a testbed for evaluating accurate and evidence-aligned audio-visual reasoning.",
+      "authors": [
+        "Joel Julin",
+        "Souraja Kundu",
+        "Liza Dahiya",
+        "George Z. Wei",
+        "Liuyue Xie",
+        "Jingru Yi",
+        "Xu Zhang",
+        "Hao Yang",
+        "Laszlo A. Jeni"
+      ],
+      "published": "2026-10-16T05:38:11Z",
+      "updated": "2026-10-16T05:38:11Z",
+      "categories": [
+        "cs.CV"
+      ],
+      "url": "https://arxiv.org/abs/2610.22964",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2610.22894",
+      "title": "Competence-Based Evaluation of Logical Reasoning in Large Language Models",
+      "summary": "Recent advances in large language models (LLMs) have brought impressive performance across diverse tasks; however, shortcomings remain in logical reasoning, including inconsistencies under linguistic variation. To improve the reasoning capacity of LLMs, we must be able to accurately measure their reasoning capacity. Current benchmarks primarily report single accuracy numbers on selected reasoning tasks. Such a performance-based evaluation methodology says little about a model's generalization capacity in reasoning. To address this limitation, we argue for a different evaluation paradigm, called competence-based evaluation (CBE), which tests whether models reliably apply the same competence across a family of problems. A parameterized generator scales complexity while keeping the required competence fixed, and matched answer-preserving presentations test correctness beyond one formulation. We instantiate CBE on elementary ordering tasks, scaling input size while varying presentations of the same ordering rule. Across six GPT and Qwen models, performance is reasonably good over bounded complexity ranges, but even strong models fail the competence condition across the tested family. Chain-of-thought and GRPO extend strong performance without resolving all tested failures; supervised LoRA shows little held-out transfer. CBE provides diagnostic profiles and an evaluation protocol that can grow with future models.",
+      "authors": [
+        "Jize Jiang",
+        "Chengxiang Zhai"
+      ],
+      "published": "2026-10-16T03:52:17Z",
+      "updated": "2026-10-16T03:52:17Z",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "url": "https://arxiv.org/abs/2610.22894",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2610.22889",
+      "title": "NLData2Opt: Benchmarking Parameter Derivation and Prediction for Modeling Optimization Problems from Natural Language and Data",
+      "summary": "Formulating optimization problems from raw inputs of problem descriptions and data is time-consuming and costly. While Large Language Models (LLMs) offer a promising way to automate this process, existing benchmarks overestimate their capabilities by relying on idealized inputs where all data is relevant and complete. This diverges from reality, where data-centric reasoning is required to extract, compute, and predict parameters from noisy sources. To address this, we introduce NLData2Opt, a benchmark to evaluate LLMs on the multi-stage reasoning inherent in practical optimization workflows. NLData2Opt decomposes problems into problem descriptions and data, and requires models to (1) extract relevant parameters from data containing misleading attributes, (2) compute missing parameters derived by transforming existing data attributes, and (3) predict unavailable future values from historical observations. Evaluation results show substantial performance decline relative to existing benchmarks, indicating that benchmark progress does not directly translate to formulation accuracy in practical optimization workflows. NLData2Opt is available at https://github.com/sumarivyn/NLData2Opt.",
+      "authors": [
+        "Lijia Liu",
+        "Kyohei Atarashi",
+        "Jiyi Li",
+        "Koh Takeuchi",
+        "Shunji Umetani",
+        "Hisashi Kashima"
+      ],
+      "published": "2026-10-16T03:43:00Z",
+      "updated": "2026-10-16T03:43:00Z",
+      "categories": [
+        "cs.CL"
+      ],
+      "url": "https://arxiv.org/abs/2610.22889",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2610.22869",
+      "title": "MS-Eval: Benchmarking Sub-Agent Delegation and Orchestration in MCP-Intensive Working Scenarios",
+      "summary": "LLM agents are increasingly integrated into real-world works, yet they must handle diverse domain-specific tools and complex multi-sub-task problems that sequential tool invocation resolves inefficiently and with severe context bloat. The Main-Agent Delegation and Sub-Agent Execution (MAD-SAE) paradigm addresses these issues by delegating sub-tasks to specialized sub-agents for parallel execution in isolated contexts, but its delegation and orchestration quality remains unquantified. We introduce MS-Eval, a unified evaluation kit comprising an MCP-intensive benchmark, a controlled execution harness, tailored delegation and orchestration metrics, and the MSQ index for comprehensive assessment. Evaluating four MAD-SAE variants and eight frontier models reveals that (1) sub-agent specialization (Spec) is the best practical practice; (2) open-source models are largely competitive with few exceptions; and (3) MAD-SAE generally raises cost with contingent payoff, benefiting most open-source models in both performance and efficiency while leaving closed-source models with higher cost and degraded performance. Our case study further traces these gains to better single-agent solutions, effective context offloading, and genuine sub-task parallelism, whereas unnecessary or redundant delegation turns the same cost into pure overhead. Codes: https://github.com/LINs-lab/MS-Eval",
+      "authors": [
+        "Bowen Ding",
+        "Qixin Wang",
+        "Lexing Ruan",
+        "Weiyi Lu",
+        "Qiwei Ge",
+        "Ruishan Fang",
+        "Tao Lin"
+      ],
+      "published": "2026-10-16T03:13:30Z",
+      "updated": "2026-10-16T03:13:30Z",
+      "categories": [
+        "cs.AI"
+      ],
+      "url": "https://arxiv.org/abs/2610.22869",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2610.22846",
+      "title": "Benchmarking and Enhancing Agentic Causal Discovery",
+      "summary": "LLM agents can now run causal discovery algorithms on a dataset and report what comes out. Whether they do more than that, such as noticing where an algorithm went wrong and fixing it with further tests, is hard to tell from current benchmarks. Most of them give the variables meaningful names, and an LLM shown only the names of the Tübingen cause-effect pairs already gets 99% of the directions right. With the names removed, the data are usually clean enough that picking a better algorithm than PC closes most of the gap. We introduce Heuresis, a benchmark of anonymous simulated datasets whose mechanisms range from linear Gaussian to heavy-tailed. For each family of datasets it separates what a better existing algorithm can gain from what only a closer look at the data can gain, and it traces every edge an agent changes. Every family leaves a gap that none of the algorithms, the router and the two causal-discovery foundation models we ran can close, so a score above the best chosen algorithm has to come from using the data. We instantiate the benchmark with an agent harness and three LLMs, GPT-6.1 Sol, Claude Opus 5.5 and Qwen 3.8 Flash. GPT-6.1 Sol surpasses the best chosen algorithm on all six families, by 14% adjacency F1 on the most difficult one, and Claude Opus 5.5 does so by 7.4% there. A third of the true edges the two agents restore on the two hardest families appear in no algorithm's output. The code and data will be publicly released to facilitate future work.",
+      "authors": [
+        "Pingchuan Ma",
+        "Rui Ding",
+        "Shuai Wang"
+      ],
+      "published": "2026-10-16T02:47:51Z",
+      "updated": "2026-10-16T02:47:51Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "url": "https://arxiv.org/abs/2610.22846",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2610.22822",
+      "title": "VISTA: A Multimodal Egocentric Benchmark for Goal-Oriented Perception and Assistance to Blind and Low-Vision Users",
+      "summary": "Blindness and low vision limit many people's ability to complete daily tasks, motivating AI assistants that provide useful guidance. Yet, existing benchmarks do not adequately test whether vision models can provide effective everyday assistance. In particular, i) existing benchmarks primarily rely on visual and textual inputs, with limited support for other modalities that are increasingly available in egocentric wearable devices such as gaze, inertial measurements, spatial trajectories, and others; and ii) existing evaluations emphasize scene understanding and question answering, with limited coverage of goal-conditioned guidance for blind and low-vision users across everyday tasks. To bridge this gap, we introduce VISTA (Visually Impaired Scene and Task Annotations), a multimodal egocentric benchmark for goal-oriented assistance for blind and low-vision users. VISTA contains $\\sim$1,000 egocentric recordings captured with Project Aria glasses; each recording provides synchronized sensor streams, six of which serve as model inputs, and three different types of annotation, covering ten task categories (TC), from object localization to hazard detection. We evaluate 14 representative vision-language models zero-shot on VISTA and design a lightweight multimodal model baseline that integrates all six modalities. Experimental results show that, although existing models can often describe egocentric scenes, they remain limited in generating goal-directed assistive guidance. VISTA thus provides a benchmark for evaluating multimodal models that could improve everyday accessibility.",
+      "authors": [
+        "Noé Mosca",
+        "Mohamed Rayan Barhdadi",
+        "Muhammad Hamza",
+        "Joshua Yeh",
+        "Suryodaya Bikram Shahi",
+        "Zhiyan Li",
+        "Selim-Antoine Lali",
+        "Weiyue Li",
+        "Hasan Kurban",
+        "Erchin Serpedin",
+        "Gang Luo",
+        "Yue Zhang",
+        "Minghan Li",
+        "Mengyu Wang"
+      ],
+      "published": "2026-10-16T01:57:16Z",
+      "updated": "2026-10-16T01:57:16Z",
+      "categories": [
+        "cs.CV"
+      ],
+      "url": "https://arxiv.org/abs/2610.22822",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2610.22708",
+      "title": "GlobeBench: Evaluating Text-Based World Model Capabilities for Scalable Environment Simulations",
+      "summary": "Text-based world models have recently shown potential to simulate complex RL environment state transitions for a diverse set of use cases. However, no standardized benchmark exists to compare, study and improve these models. Through this paper, we attempt to solve this problem by building GlobeBench, a novel benchmark with 1,632 tasks across five separate domains and nineteen simulation skills. The tasks check whether models can predict the environment's response to a specific action given the full agent trajectory by understanding earlier state changes, following environment rules, and predicting the effects of actions on both related and unrelated objects. We compare the predicted environment response with an execution-derived reference, using a hybrid architecture with both deterministic gates and a semantic judge. Among 20 general-purpose LLMs and specialized text world models, GPT-6 Astra achieves the highest task success rate at 49.57%. We find that model accuracy decreases as actions affect a larger portion of the environment. Specifically, when the agent's changes must propagate to dependent objects, task success drops to an average of 5.1% across all 20 models. Although model strengths differ across tasks, 631 tasks remain unsolved by any model, suggesting a significant gap in general LLM capabilities as a world model.",
+      "authors": [
+        "Nicholas Saban",
+        "Charvi Bannur",
+        "Mariya Vasileva",
+        "Darshan Deshpande"
+      ],
+      "published": "2026-10-15T22:24:56Z",
+      "updated": "2026-10-15T22:24:56Z",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "url": "https://arxiv.org/abs/2610.22708",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2610.22542",
+      "title": "HeRE: A Novel Benchmark for Hebrew Relation Extraction via LLM-Guided Denoising of Knowledge Graph Alignments",
+      "summary": "While LLMs demonstrate strong capabilities in English Relation Extraction (RE) tasks, a significant gap remains in assessing their RE performance in low-resource languages, due to a lack of standardized benchmarks. Creating native, language-specific annotated RE benchmarks is expensive and requires human expertise, while relying on translation yields suboptimal, inaccurate datasets that introduce English-centric biases. To tackle this, we propose a scalable, language-agnostic methodology to create RE data by denoising naturally occurring yet noisy alignments of knowledge bases and corresponding texts. We define a proper alignment via a Natural Language Inference (NLI) task, where a relation triplet is entailed by an input text. We empirically assess five denoising strategies, and demonstrate that multilingual models outperform language-specific models in the few-shot LLM setting, while Hebrew-specific encoders remain competitive under NLI fine-tuning and are strongest in the label-free cross-training setting. We further find that prompting in the native language achieves performance on par with or slightly exceeding English prompts, confirming that the pipeline operates naturally in the target language. The best open-weights model, Gemma-4-31B-it (F1\\,=\\,0.915), matches the best API model, GPT-5.4 (0.921), and reaches F1\\,=\\,0.844 on a fully held-out, dual-annotated test set. Applying the optimized pipeline, we release HeRE: a novel, massive, 1.5-million-instance silver dataset for Hebrew RE, designed to support data-intensive experimentation and model fine-tuning. HeRE bridges a critical gap in standard Hebrew RE evaluation, while providing the NLP community with a reproducible, language-agnostic pipeline for RE dataset construction in other low-resource settings.",
+      "authors": [
+        "Ron Keinan",
+        "Amir David Nissan Cohen",
+        "Reut Tsarfaty"
+      ],
+      "published": "2026-10-15T18:40:22Z",
+      "updated": "2026-10-15T18:40:22Z",
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "url": "https://arxiv.org/abs/2610.22542",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2610.22511",
+      "title": "AuditKIT: A Unified Evaluation Spine for Benchmarking, Judging, and Comparing Large Language Models and Agentic Systems",
+      "summary": "Evaluating language models and agents requires combining benchmark accuracy, judge-based assessment, runtime performance, tool-use behavior, and retrieval quality. Differences in interfaces, metric semantics, and trace formats complicate these comparisons and can hide failures in agentic workflows. We present AuditKIT, a source-available evaluation library that records these measurements in one result representation, with direction-aware metric contracts, configuration fingerprints, and extensible metrics and backends. For agents, it provides turn-aware tool-call matching, separates parallel from sequential execution, and distinguishes verified task outcomes from trajectory-level diagnostics. Missing or unobservable evidence is marked unscored rather than counted as failure. For retrieval-augmented generation, it combines ranked retrieval metrics, judged grounding, and deterministic evidence checks. Seven case studies spanning model comparison, serving runtimes, retrieval, tool calling, and interoperability show how answer extraction, runtime behavior, and metric selection change evaluation outcomes.",
+      "authors": [
+        "Shreeyans Arora",
+        "Utsav Avaiya",
+        "Zera Lyngkhoi",
+        "Hem Gosalia",
+        "Ram Mohan Rao Kadiyala",
+        "Vinay Kumar Sankarapu",
+        "Pratinav Seth"
+      ],
+      "published": "2026-10-15T18:05:10Z",
+      "updated": "2026-10-15T18:05:10Z",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.IR",
+        "cs.SE"
+      ],
+      "url": "https://arxiv.org/abs/2610.22511",
+      "first_seen_at": "2026-10-19T03:48:58Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
     {
       "arxiv_id": "2610.22312",
       "title": "Grid-Bench: Can LLMs Predict How Discrete Worlds Change?",
@@ -1861,11 +2230,11 @@
         "Wang Chen",
         "Yuhui Zeng",
         "Yuhang Wu",
-        "Xiawu Zheng",
-        "Rongrong Ji"
+        "Rongrong Ji",
+        "Xiawu Zheng"
       ],
       "published": "2026-10-13T03:46:48Z",
-      "updated": "2026-10-14T03:47:29Z",
+      "updated": "2026-10-16T07:18:17Z",
       "categories": [
         "cs.AI"
       ],
@@ -12972,7 +13341,12 @@
     }
   ],
   "research": {
-    "status": "not_configured",
-    "message": "자동 조사에 사용할 모델 API 연결을 기다리고 있습니다. 수집된 논문을 직접 검토할 필요는 없습니다."
+    "status": "ready",
+    "last_run_at": "2026-10-19T03:55:41Z",
+    "models": [
+      "deepseek-ai/DeepSeek-V4.1-Flash",
+      "zai-org/GLM-5.3-Flash"
+    ],
+    "policy": "apply_only_agreed"
   }
 }
