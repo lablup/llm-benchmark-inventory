@@ -3,6 +3,7 @@ import copy
 import json
 import unittest
 from unittest.mock import Mock, patch
+from datetime import timedelta
 
 import arxiv_watch as watch
 import build_research_records as records
@@ -48,8 +49,8 @@ class ScreeningTests(unittest.TestCase):
         first, second = invoke.call_args_list
         self.assertEqual(first.args[0]["messages"], second.args[0]["messages"])
         payload = json.loads(first.args[0]["messages"][1]["content"])
-        self.assertEqual(set(payload), {"papers"})
-        self.assertEqual(set(payload["papers"][0]), {"arxiv_id", "title", "summary", "updated"})
+        self.assertEqual(set(payload), {"instruction", "expected_arxiv_ids", "candidates"})
+        self.assertEqual(set(payload["candidates"][0]), {"arxiv_id", "title", "summary", "updated"})
         self.assertEqual(first.args[1].max_tokens, 3000)
         ledger = research.read_json(self.root / "research/proposals.json")
         self.assertEqual(len(ledger["screenings"]), 2)
@@ -59,6 +60,28 @@ class ScreeningTests(unittest.TestCase):
         self.assertEqual(len(archived), 2)
         self.assertIn("PDF 본문은 읽지 않음", archived[0].read_text())
         self.assertEqual(research.read_json(self.root / "updates.json")["updates"], [])
+
+    def test_next_day_reuses_completed_screening_without_model_or_pdf_calls(self):
+        self.prepare()
+        self.run_replies([(self.votes("irrelevant"), 0), (self.votes("irrelevant"), 0)])
+        tomorrow = research.datetime.now(research.timezone.utc) + timedelta(days=1)
+        with patch.object(research, "datetime") as clock:
+            clock.now.return_value = tomorrow
+            invoke, pdf = self.run_replies([])
+        invoke.assert_not_called()
+        pdf.assert_not_called()
+
+    def test_next_day_never_reinvestigates_completed_full_text(self):
+        self.prepare()
+        item = copy.deepcopy(self.proposal)
+        item["status"] = "accepted"
+        research.write_json(self.root / "research/proposals.json", {"proposals": {item["arxiv_id"]: item}})
+        tomorrow = research.datetime.now(research.timezone.utc) + timedelta(days=1)
+        with patch.object(research, "datetime") as clock:
+            clock.now.return_value = tomorrow
+            invoke, pdf = self.run_replies([])
+        invoke.assert_not_called()
+        pdf.assert_not_called()
 
     def test_disagreement_or_uncertainty_goes_to_full_text(self):
         for decision in ("relevant", "uncertain"):
@@ -164,7 +187,7 @@ class ScreeningTests(unittest.TestCase):
             research.run(self.root, screening_smoke=True)
         pdf.assert_not_called()
         payload = json.loads(invoke.call_args_list[0].args[0]["messages"][1]["content"])
-        self.assertEqual(len(payload["papers"]), 10)
+        self.assertEqual(len(payload["candidates"]), 10)
         ledger = research.read_json(self.root / "research/proposals.json")
         self.assertEqual(len(ledger["screenings"]), 10)
         self.assertEqual(next(iter(ledger["daily_runs"].values()))["attempted"], [])

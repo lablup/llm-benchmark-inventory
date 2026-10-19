@@ -10,7 +10,14 @@ independently of the user's laptop. GitHub can delay a scheduled run.
    or an agent browsing the whole web. Relevant papers without those terms can
    be missed. The first collection covers 30 days; later collections overlap
    the previous checkpoint by seven days. Pagination must finish before the
-   checkpoint advances. Older paper revisions are not automatically researched.
+   checkpoint advances. Older paper revisions are not automatically researched. The
+   overlap reduces misses from submissions announced later than their submission
+   date; it is not a guarantee against delays longer than seven days. See
+   [arXiv availability](https://info.arxiv.org/help/availability.html).
+   Repeated metadata hits do not trigger repeated model analysis: completed body
+   investigations are skipped by arXiv ID, and unchanged abstract decisions are
+   reused across days. Changed abstract/revision/policy inputs may be screened
+   again; pending body work and failed PDF downloads remain eligible.
 2. `research_pipeline.py` first sends batches of up to 20 titles and abstracts
    to DeepSeek and GLM independently, without PDFs, inventory tables or official
    resource pages. Only agreement that an abstract is irrelevant skips full-text
@@ -153,5 +160,7 @@ for errors.
 For a live abstract-format smoke test, manually dispatch the Pages workflow with
 `screening_smoke=true`. It skips discovery, PDF tooling, inventory application
 and notifications, and saves up to ten real abstract screenings and their
-archives. The normal schedule uses the complete pipeline. This is not a full-text
+archives. A response-schema failure makes the smoke run fail visibly while
+preserving its records. Hidden cache files are explicitly enabled for the
+JSONL/manifest-only artifact paths. The normal schedule uses the complete pipeline. This is not a full-text
 acceptance test. No automated model-ranking updates are included.
