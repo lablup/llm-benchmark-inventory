@@ -201,7 +201,27 @@
         "2604.23478",
         "2606.27401",
         "2606.31672",
-        "2609.18022"
+        "2609.18022",
+        "2609.19524",
+        "2609.21259",
+        "2609.21263",
+        "2609.21267",
+        "2609.21344",
+        "2609.21386",
+        "2609.21493",
+        "2609.21504",
+        "2609.21527",
+        "2609.21673",
+        "2609.21722",
+        "2605.29653",
+        "2606.21008",
+        "2608.21357",
+        "2411.10163",
+        "2505.23713",
+        "2509.01167",
+        "2509.08494",
+        "2511.17909",
+        "2511.18921"
       ]
     }
   },
@@ -1983,6 +2003,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "동료평가 주장 검증 벤치마크 800건 구축"
+        }
+      ]
+    },
+    "2606.16723": {
+      "arxiv_id": "2606.16723",
+      "paper_title": "AgentFairBench: Do LLM Agents Discriminate When They Act?",
+      "abstract": "Large language model (LLM) agents increasingly take actions (screening applicants, recommending credit, triaging patients), yet fairness for LLMs is still measured by grading answers. We introduce AgentFairBench, a cheap, reproducible, multi-domain benchmark for demographic disparity in the actions of LLM agents. Grounded in a companion framework, the Bias Conduction Framework (BCF, restated here), it spans three regulator-anchored domains: hiring, lending, and medical triage. Synthetic, demographic-neutral profiles are evaluated in counterfactual matched sets that vary only a name-coded race x gender signal (in the Bertrand Mullainathan tradition), under four agent scaffolds of increasing agency (direct, chain-of-thought, multi-agent deliberation, tool-augmented). A NumPy-only harness computes counterfactual flip rate, mean absolute score difference (MASD), action-rate disparity, and tool-invocation disparity, with bootstrap confidence intervals, paired tests, and false-discovery-rate control, for single-digit dollars per model. A live leaderboard with a held-out private split and a contamination canary admits external models by submission. Our pilot (864 decisions plus a test-retest replication) carries a methodological lesson: comparing a six-group score spread against a two-run noise difference overstates disparity by ~ 2.4X through statistic arity alone. Against an arity matched noise floor and an omnibus group test, claude haiku 4 5 shows no demographic effect above sampling noise (0 of 120 pairwise and 0 of 9 omnibus contrasts survive correction); a planted-bias test confirms the instrument detects disparity when present. The contribution is a sound, sensitive, adoption-ready instrument, the arity matched null methodology, and open artifacts to scale it. Code, data, and harness are released under open licenses, with an anonymized review artifact.",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "20474337c3a6ecc98a3bb1acb3d5cf2ded1b868782c95c99578ea870995b566d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 공정성 벤치마크로 평가 대상에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 공정성 벤치마크·평가 도구·데이터 공개"
+        }
+      ]
+    },
+    "2609.22255": {
+      "arxiv_id": "2609.22255",
+      "paper_title": "Deep Persona: A Psychologically Grounded Architecture and Evaluation Framework for Role-Playing Agents and Simulations",
+      "abstract": "Existing approaches to persona simulation with Large Language Models (LLMs) mostly rely on shallow character descriptions that fail to sustain coherent character behavior across extended interactions. We introduce Deep Persona, a psychologically grounded, three-layered architecture that organizes personas into hierarchical levels of observable expression, latent beliefs, and core motivational drives, for constructing highly convincing role-playing agents. Governed by the principles of scripted determinism and bounded agency, the architecture restricts the model to a reactive engine guided by a structured internal script. We further propose a reference-free evaluation framework that benchmarks dialogue naturalness against empirical human distributions using established psychological clinical instruments and adversarial stress-tests. Empirical evaluation reveals that while LLMs achieve high pragmatic fluency, they exhibit systematic limitations in emotional expression and joint attention. In addition, we present a case study of two Deep Personas and evaluate them using the proposed framework, demonstrating that structured personas can produce interactions that more closely align with human conversational behavior.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "230af78bd241cbe01e3a70b6bc09d9e4d44e0dccca2d24ecc00c0d5d622cc840",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "역할극 에이전트 아키텍처와 평가 프레임워크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "롤플레잉 에이전트용 평가 프레임워크 제안"
+        }
+      ]
+    },
+    "2610.00092": {
+      "arxiv_id": "2610.00092",
+      "paper_title": "BudgetSchemaBench: A Budget-Swept Diagnostic for Schema Context in Text-to-SQL",
+      "abstract": "Data agents over structured sources must fit database schema into the model's context window. Large catalogs can span many databases and thousands of columns, so cost constraints may require choosing between table coverage and serialization detail well before the context window is full. We introduce BudgetSchemaBench, an execution-grounded diagnostic for this setting. Its construction derives relevance labels mechanically from gold SQL, without human- or LLM-authored ground truth. Using a pooled 80-database catalog, we sweep four schema-context budgets and compare three representations while keeping each retriever's table ranking fixed. A source-namespace check rejects queries that obtain the correct result from the wrong database. The evaluation covers three conditions: end-to-end retrieval; frozen-gold, in which the required tables are guaranteed; and a probe that removes those tables. For the primary solver with raw serialization, raising the budget from 2.5% to 50% of the catalog improves execution accuracy on 1,279 held-out questions by 18 percentage points under lexical retrieval but only 3 under dense retrieval; the dense retriever already finds most required tables at the smallest budget. When the required tables are removed, 94.6% of correct predictions name one of them exactly, consistent with reconstruction of absent schema from parametric knowledge. For the two main solvers in the frozen-gold condition, the three representations differ by at most 2 percentage points, and the widest paired 95% confidence interval bounds the difference within +/-4 points. We observe the same qualitative patterns with one reasoning model from a different family. When retrieval is coverage-limited, execution accuracy is more sensitive to the schema budget than to the tested serializations. The diagnostic and the code used to construct and evaluate it are publicly available.",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "b151a1c3ef1f1ed5bb8a69f90a03f5fc72aae7d89de89f8cd96a3ef48515086e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "Text-to-SQL 스키마 예산 진단 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "Text-to-SQL 스키마 컨텍스트 진단 벤치마크 공개"
+        }
+      ]
+    },
+    "2609.25059": {
+      "arxiv_id": "2609.25059",
+      "paper_title": "Can Large Language Model-Generated Responses Support Assessment Development? A Human-Calibrated Rasch Benchmark",
+      "abstract": "Large language models (LLMs) are proposed as synthetic respondents for pilot testing, but their usefulness depends on whether they supply the evidence assessment development requires. We calibrated rating scale models on 14 digital-use skill items from 6,245 adults and used the human item parameters to evaluate responses generated for 1,300 demographically matched personas. LLM responses had high internal consistency ($α\\approx .94$) but used the lowest category in 0.2-0.3% of responses versus 13.7-21.5% for humans, and no persona chose it on every item. These gaps changed the response-category judgment on both subscales and the PC targeting judgment; on the human-calibrated scales, 12 of 14 items had infit below 0.70, indicating responses more predictable than the Rasch model expects. Preregistered changes to the prompt, category order, and persona information did not restore the human lower range. High internal consistency is insufficient evidence that LLM responses can replace human pilot data.",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "3de516b8ac9c0b8f38ba66df2d3fe348ddd75af83e7823b1665948b2b034553e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 생성 응답의 Rasch 기반 인간 보정 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "LLM 응답의 Rasch 평가 벤치마크이나 재사용 자원 불명확"
+        }
+      ]
+    },
+    "2609.31632": {
+      "arxiv_id": "2609.31632",
+      "paper_title": "EEGAgentBench: Benchmarking LLM Agents on Short- and Long-Horizon EEG Analysis",
+      "abstract": "Electroencephalography (EEG) analysis is evolving from short-segment classification toward long-horizon interpretation that demands iterative evidence accumulation, multi-step reasoning, and coordinated use of specialized signal-processing tools. Although large language models (LLMs) have recently shown promise as autonomous agents for EEG analysis, existing EEG agentic evaluations remain fragmented, covering limited tasks over narrow temporal horizons with inconsistent protocols, and providing no comprehensive assessment of agents' reasoning, tool-use, and workflow construction capabilities. To address this gap, we propose \\textbf{EEGAgentBench}, a unified benchmark for systematically evaluating LLM agents on short- and long-horizon EEG analysis. EEGAgentBench spans six representative EEG applications ranging from knowledge question answering to sleep staging. It encompasses signal durations from 2 seconds to nearly 23 hours, with prediction targets ranging from class labels to event intervals and epoch-level sequences. This design supports unified evaluation across knowledge reasoning, short-horizon interpretation, long-horizon event detection, and sequential understanding. The benchmark further provides 10 deterministic EEG analysis tools that expose only task-relevant signal measurements. Agents must therefore select tools autonomously, accumulate evidence iteratively, and construct multi-step workflows. For evaluation, we benchmark 29 frontier LLMs from 15 model families. Results demonstrate that EEGAgentBench effectively distinguishes agent capabilities beyond model scale and inference cost, while revealing substantial limitations of current LLM agents in long-horizon EEG analysis, particularly in sustained evidence accumulation and multi-step reasoning.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "f82b13a510fe644bcbef818ac495ae046dd16981d8755bb514c615acc40ff61c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "EEG 분석 LLM 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "EEG 분석 에이전트 통합 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.22285": {
+      "arxiv_id": "2609.22285",
+      "paper_title": "ORDER: A Fictitious-World Benchmark for Domain-Adaptive Embodied AI",
+      "abstract": "Adapting language models to new domains via continual pre-training raises a basic evaluation problem: if the training corpus overlaps with what the model already knows, performance gains cannot be cleanly attributed to new learning rather than pre-existing knowledge. This matters most for knowledge-intensive, task-light (KHTL) robot deployments - pharmaceutical dispensing, hazardous-material handling, facility-specific protocols, where the physical task is simple but the governing rules are proprietary and safety-critical, and where extensive live testing is costly or unsafe. We introduce ORDER (Ontology-driven Decision-making for Embodied Reasoning), a benchmark built on a fictitious world: a 342,069-token synthetic corpus defining a self-consistent physics that cannot appear in any model's pre-training data. ORDER pairs a 500-question knowledge test (ORDER-BENCH) with a harder compositional task, ORDER-SPATIAL: ordering objects for safe manipulation across both familiar and entirely novel scenes. GPT-4.1 without adaptation scores below chance on ORDER-SPATIAL (Kendall's tau = 0.441), showing its priors actively conflict with the invented physics. After continual pre-training, small models improve substantially on both familiar and novel scenes alike evidence of genuine world-model induction rather than memorization. We then carry this through to a robot pipeline: models that answer the knowledge test well often cannot produce valid, executable plans without a further skill-adaptation stage, after which small, fully offline models outperform GPT-4.1 even when GPT-4.1 is given retrieval access to the same rules (Kendall's tau = 0.848 vs. 0.606), on a full perception-to-execution loop demonstrated on a simulated iiwa7 arm with human-in-the-loop correction. Throughout, ORDER-SPATIAL performance, not knowledge-test accuracy is what predicts real plan quality.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "c724ab64749eef2f3e3eaccd6ecc1e60768eb1b9acc4bde9b14acb15693335f9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "허구 세계 기반 도메인 적응 체화 AI 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "가상 세계 기반 도메인 적응 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.22302": {
+      "arxiv_id": "2609.22302",
+      "paper_title": "Authority-Preserving Evaluation of Medical Vision-Language Assistants",
+      "abstract": "Medical vision-language models can propose how urgently a skin lesion should be reviewed, but the local service retains authority to accept or replace that proposal under referral policy, capacity, and locally held patient context. Proposal quality and selected-action quality are therefore distinct evaluation targets, and benchmark evidence transfers between them only when local review preserves the expected action score. We introduce AuthEval, a logging and evaluation framework that records both actions, scores the selected action under declared local criteria, and, where feasible, scores the declined proposal under the same rule. It reports the resulting authority gap only when the record supports it. Because the gap is the product of the proposal-change rate and the mean score change on changed cases, that rate alone determines neither its magnitude nor its sign. On ISIC 2019, with MedGemma and simulated local review, two constraint regimes with similar change rates produced an optimistic image-equal gap under capacity ($+0.744$ simulator units) but no detectable gap under safety. The declared evaluation unit also mattered: under mixed constraints the gap reversed from $+0.374$ to $-0.206$ when weighting shifted from image to lesion-aware cluster. AuthEval thus clarifies whether a study's records support claims about the model, the workflow, or both.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "bfea531422650c930ee538317670f7066bee7b336312f4f27d5e913adfb39a35",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "의료 VLM 권한 보존 평가 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "의료 VLM 평가·로깅 프레임워크 AuthEval 제안"
+        }
+      ]
+    },
+    "2609.31651": {
+      "arxiv_id": "2609.31651",
+      "paper_title": "PalmLeaf-VQA: A Multi-Script Visual Question Answering Benchmark for Historical Palm-Leaf Manuscript Understanding Across Diverse Regions",
+      "abstract": "Historical manuscripts remain largely absent from modern vision-language benchmarks, leaving open how well multimodal large language models (MLLMs) handle culturally diverse, degraded, and non-Latin document images. We introduce \\textbf{PalmLeaf-VQA}, a multi-script visual question answering benchmark for historical palm-leaf manuscript understanding across South and Southeast Asian traditions. PalmLeaf-VQA contains \\textbf{923 curated manuscript images} and \\textbf{7,384 question--answer pairs} from eight collection groups: Balinese, Grantha, Jathakam, Kambaramayanam, Kannada, Khmer, Sundanese, and Tamil. Unlike recognition-oriented resources, the benchmark targets manuscript-aware visual reasoning over preservation-relevant cues, including physical condition, line structure, material and coating, binding holes, margins, symbols, drawings, and localized visual artifacts. We evaluate recent proprietary and open-weight MLLMs under open-answer and constrained-answer prompting and provide fine-grained analysis across collections, question categories, and task types. The strongest evaluated model reaches only \\textbf{58.00\\% exact-match accuracy} on the held-out test split, revealing substantial limitations in current MLLMs for rare-script, degraded-layout, and preservation-oriented document understanding. PalmLeaf-VQA provides a standardized benchmark for advancing culturally grounded and layout-aware multimodal document analysis.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "19dec71188b97497e878f22490dc5daa7024ad05443263cd87c8b1d90d3b7660",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다중 문자 필사본 VQA 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다문서 VQA 벤치마크 신규 구축, 언어 불명"
+        }
+      ]
+    },
+    "2609.20870": {
+      "arxiv_id": "2609.20870",
+      "paper_title": "The Internet Archive Music Dataset",
+      "abstract": "We introduce the Internet Archive Music Dataset (IAMD), a large-scale collection of captioned music segments derived from the Internet Archive. To the best of our knowledge, IAMD constitutes the largest publicly available music-caption dataset to date with over 34,000 hours of audio, providing a valuable benchmark for training and evaluating music understanding and generative models. The dataset is built from content declared to be distributed under Creative Commons licenses, and cross-referencing with MusicBrainz is done to improve license information reliability. To annotate IAMD, we present an automatic captioning pipeline that augments base captions produced by an audio-language model (ALM) with textual metadata sourced from the Internet Archive and imputed metadata obtained using audio classification models. Caption quality is assessed objectively and subjectively, and results indicate that the annotation pipeline is reliable and does not degrade caption quality with scaling.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "ca56986e46e7bf884c54418bff13de35034c17e0c9610e8f054524bca6261cfa",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "음악 캡션 대규모 데이터셋 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "대규모 음악-캡션 데이터셋·벤치마크 공개"
+        }
+      ]
+    },
+    "2609.20886": {
+      "arxiv_id": "2609.20886",
+      "paper_title": "BI-Agent and BI-Bench: Towards Automating End-to-End Business Intelligence",
+      "abstract": "Business intelligence (BI) is a cornerstone of enterprise decision-making and is widely used by enterprise users in software such as Power BI and Tableau. In traditional BI workflows, users need to prepare data by (1) identifying relevant tables, (2) performing data transformations, and (3) building join relationships, before they can (4) answer their business questions. These steps can be complex and time-consuming, making BI challenging. Given the strong capabilities of large language models (LLMs) in working with data, we study their ability to answer BI questions end-to-end, without requiring users to manually perform the tedious preparation steps. To do this, we harvest a large collection of real-world BI projects from public sources, and manually extract pairs of (questions, ground-truth answers) from real user dashboards. The resulting benchmark, BI-Bench, is the first benchmark to systematically study LLMs' ability on end-to-end BI. We find that even frontier LLMs perform poorly on BI-Bench, with less than 50% accuracy. To address their limitations, we design a tool-augmented BI-Agent that decomposes BI workflows into subtasks on structured data, such as search, join, and transform, and orchestrates specialized data management methods across BI stages. Furthermore, we develop a post-training framework that synthesizes training trajectories from real BI projects, enabling BI-Agent to be further post-trained using both supervised fine-tuning (SFT) and reinforcement learning (RL). BI-Agent achieves substantial accuracy gains of up to 40 percentage points with vanilla LLMs, and post-trained BI-Agent yields gains of up to 30 points. Our results highlight the importance of combining tool-augmented reasoning with domain-specific post-training in complex BI workflows, and point to promising directions for future research.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "038b313923fc3018ef30b5565a35ccb1eba459191ffc0ad93187c7c22319c5c9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "비즈니스 인텔리전스 에이전트와 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "BI 엔드투엔드 벤치마크 BI-Bench 신규 제안"
+        }
+      ]
+    },
+    "2609.31675": {
+      "arxiv_id": "2609.31675",
+      "paper_title": "Active Causal Discovery Benchmark: Evaluating LLM Agents Under Budgeted Interventions",
+      "abstract": "We introduce the Active Causal Discovery Benchmark (ACDB), an SCM-grounded environment for evaluating whether LLM agents recover causal graph structure from observations and budget-constrained hard interventions. ACDB pairs a linear-Gaussian world generator with a fixed observe-intervene-submit API and a three-layer scoring contract that separates skeleton recovery, DAG recovery, and intervention efficiency. On the current six-level ladder, PC with a greedy active orientation heuristic is the strongest non-oracle method (directed F1 42.7%, SHD 4.79), ahead of Claude Sonnet 4.6 raw active (31.7%, 7.25) and GPT-5.4 raw active (22.9%, 9.27). The most informative diagnostic is the precision-recall decomposition: PC under-commits with high precision, LLMs over-commit with lower precision, and statistical-tool access often increases abstention rather than useful intervention. A structure-blind random DAG baseline reaches 23.6% directed F1 on this dense v0 ladder; a density probe lowers this floor to 16.9%, motivating the v1 calibration pass. The current results should therefore be read as a benchmark audit and calibration report, not as evidence that current LLMs solve active causal discovery.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "7c1790e668b06ce26c376f948d1f14626720f13dc9b8377ba987c16ec2c4c10a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "예산 제약 개입 하 능동 인과 발견 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "능동 인과발견 에이전트 벤치마크 ACDB 제안"
+        }
+      ]
+    },
+    "2609.20945": {
+      "arxiv_id": "2609.20945",
+      "paper_title": "$μ^2$-Bench: A Multilingual Machine Unlearning Benchmark",
+      "abstract": "Undesired information such as harmful content and private data propagates through Multilingual Large Language Models (LLMs) via direct training and indirect cross-linguistic spread. Multilingual Machine Unlearning (MMU) aims to remove such information, yet its evaluation remains underexplored, leaving unclear whether unlearning truly eliminates target knowledge across all languages. To bridge this gap, we introduce $μ^2$-Bench, an MMU benchmark that simulates the full pipeline of memorization, unlearning, and evaluation across diverse languages. It 1) spans a broad set of languages, 2) evaluates on both training and hold-out languages, and 3) assesses knowledge as dispersed across multiple languages. We show that successful MMU requires methods that reflect multilingual characteristics, and conduct analysis to provide deeper insights into MMU.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "1e1f24b296b859cc3679339b5a910d7e9edb38729ffb80cc085a59140bb245b1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다국어 기계 망각 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다국어 언러닝 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.21133": {
+      "arxiv_id": "2609.21133",
+      "paper_title": "The Stochastic Shift: A New Evaluation Paradigm for Text-to-SQL with AI Operators",
+      "abstract": "SQL has been augmented with AI operators, enabling modern data analytics platforms to derive insights from both structured and unstructured data. We observe that while current Text-to-SQL systems can successfully generate these AI-augmented queries, reliably evaluating their correctness remains a critical open challenge. Current metrics, which rely on exact query results and deterministic execution, systematically fail against the flexible, non-deterministic outputs of AI operators. In this paper, we formalize these unique evaluation failure modes and introduce a Multilayered Evaluation Framework that decouples deterministic database logic from flexible AI semantics. We test our approach across both industry (BigQuery) and academic (ThalamusDB) systems. We demonstrate that traditional Execution Accuracy severely penalizes valid queries, achieving as low as a 25% detection rate for correct translations. Furthermore, even a state-of-the-art LLM-based autorater falsely rejects 32% of accurate queries due to the complexity of judging both relational and AI components simultaneously. By validating the standard relational logic and the AI operations separately, our framework achieves state-of-the-art overall accuracy across both platforms (up to 97.2%), proposing a reliable standard for benchmarking AI-powered SQL generators.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "22d892d2c9111b7ee55685840abdc9c3fdcadb6a6a951d93f23a47ca75b4f048",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 연산자 포함 Text-to-SQL 평가 패러다임"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "AI 연산자 Text-to-SQL 다층 평가 프레임워크 제안"
+        }
+      ]
+    },
+    "2509.24789": {
+      "arxiv_id": "2509.24789",
+      "paper_title": "Fidel-TS: A High-Fidelity Multimodal Benchmark for Time Series Forecasting",
+      "abstract": "The evaluation of time series forecasting models is hindered by a lack of high-quality benchmarks, leading to overestimated assessments of progress. Existing datasets suffer from issues ranging from small-scale, low-frequency, pre-training data contamination in unimodal designs to the temporal and description leakage prevalent in early multimodal designs. To address this, we formalize the core principles of high-fidelity benchmarking, focusing on data sourcing integrity, leak-free design, and structural clarity. We introduce Fidel-TS, a new large-scale benchmark built from these principles. Our experiments reveal the limitations of prior benchmarks and the potential discrepancies in model evaluation, providing new insights into multiple existing unimodal and multimodal forecasting models and LLMs across various evaluation tasks.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "aea5008a880fbca24ecdbf2782e71b699ba11801e70569b34616243ccb8f254e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "시계열 예측을 위한 다중모달 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "시계열 예측 고품질 벤치마크 Fidel-TS 제안"
+        }
+      ]
+    },
+    "2602.00279": {
+      "arxiv_id": "2602.00279",
+      "paper_title": "Semantic Calibration Prevails Where Token Confidence Fails: Benchmarking Long-Form Scientific QA",
+      "abstract": "Reliable uncertainty quantification (UQ) is essential for safe deployment of large language models (LLMs) in scientific question answering, where long-form outputs exceed practical human verification at scale. We introduce the first large-scale benchmark for UQ calibration in long-form, reasoning-demanding scientific QA, evaluating four UQ methods on 685,000 responses across up to 20 LLMs and seven datasets, supported by an extensible open-source framework whose shared-generation design enables reproducible cross-method comparisons. Instruction tuning is shown to associate with systematic token probability polarization, collapsing confidence distributions and undermining the reliability of token-level uncertainty signals. Reasoning model families diverge: some reproduce this polarization while others actively mitigate it, a pattern that clusters by provider and suggests training pipeline design as a key differentiating factor. Verbalized and token-aggregation sequence-level methods fail systematically. Only semantic consistency, as measured by consistency of the final answer, yields well-calibrated outputs, providing the first large-scale evidence that semantic calibration persists in multi-step, dependency-rich reasoning settings.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "51ceae36a961a6324760990ad6b379e2486e15d745c40044f2331afd4a312617",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "장문 과학 QA 불확실성 보정 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "장문 과학 QA UQ 벤치마크·오픈 프레임워크 제안"
+        }
+      ]
+    },
+    "2604.07733": {
+      "arxiv_id": "2604.07733",
+      "paper_title": "CivBench: Progress-Based Evaluation for LLMs' Strategic Decision-Making in Civilization V",
+      "abstract": "Evaluating strategic decision-making in LLM-based agents requires generative, competitive, and longitudinal environments, yet few benchmarks provide all three, and fewer still offer evaluation signals rich enough for long-horizon, multi-agent play. We introduce CivBench, a benchmark for LLM strategists (a model under an agentic setup) in multiplayer Civilization V. Because terminal win/loss is too sparse a signal in games spanning hundreds of turns and multiple opponents, CivBench trains estimators of a state-value function, the probability that a player eventually wins given the game state. cross 307 games with 7 LLMs and multiple CivBench agent conditions, we demonstrate CivBench's potential to estimate strategic capabilities in Civilization V as an unsaturated benchmark, reveal model-specific effects of agentic setup, and outline distinct strategic profiles not visible through outcome-only evaluation.",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "c7d0dc3d283fb94d32cf3296f1cbfbb38f3ab5aabb62fb36fbd830006607c058",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "문명 V 전략 의사결정 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "문명V 전략 의사결정 벤치마크 CivBench 제안"
+        }
+      ]
+    },
+    "2604.23478": {
+      "arxiv_id": "2604.23478",
+      "paper_title": "JudgeSense: A Benchmark for Prompt Sensitivity in LLM-as-a-Judge Systems",
+      "abstract": "Large language models are widely used to judge the output of other language models, yet whether a judge returns the same verdict when the same request is worded differently remains largely unexamined. We study that question across four evaluation tasks and twenty-five judges from six providers. To support the analysis we release JudgeSense, a benchmark of 880 items from human-labelled corpora, each issued under two instructions that differ in wording and not in what they ask, with the complete decision logs. Every score is reported against the judge's own agreement with itself on the identical prompt, so decoding noise is not charged to wording, and the release lets a reader ask the same of any judge not in our roster. Rewording costs agreement on all four tasks, and on two it clears the threshold we declare for a practically meaningful effect; the ordinal task is both the least stable and the one fewest judges are accurate on, and within a single family parameter count does not predict stability. A judge measured inside an agent harness yields a smaller estimate than the same judge reached through a direct API call, because its agreement with itself collapses faster than its agreement across wordings.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "7cfe4c876bd6c0c27f919866e3a9ea081ac714f27cc5178599a424558d8e7571",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 심판 프롬프트 민감도 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 심판 프롬프트 민감도 벤치마크 공개"
+        }
+      ]
+    },
+    "2606.27401": {
+      "arxiv_id": "2606.27401",
+      "paper_title": "Recall Before Rerank: Benchmarking Deep Learning Models for Large-Scale Code-to-Code Retrieval",
+      "abstract": "Semantic code search and clone detection are essential for software development, maintenance, and reuse. This paper evaluates the effectiveness, efficiency, and scalability of contemporary deep learning models for first-stage recall in large-scale code-to-code search engines. Benchmarking across multiple programming languages and datasets reveals critical limits in the precision and scalability of these models on Terabyte-scale source-code collections. We present LLM-based code normalisation and query-rewriting schemes that yield significant gains in precision for lower-performing models. Our results question the sustainability of resource-constrained deployment and the assumed robustness of current code-specialised LLMs across datasets. We conclude with actionable insights for building scalable, efficient code-retrieval systems.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "dac3cdf8b236c3859c21652c532f1af986322cca6cd659049f56114a3d912b67",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "코드-코드 검색 심층 모델 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "코드 검색 평가 수행하나 재사용 벤치마크 자원 불명확"
+        }
+      ]
+    },
+    "2606.31672": {
+      "arxiv_id": "2606.31672",
+      "paper_title": "WorldRoamBench: An Open-World Benchmark for Long-Horizon Stability of Interactive World Models",
+      "abstract": "Despite rapid progress in interactive world models (IWMs), short-horizon performance does not establish sustained action following, visual stability, physical plausibility, or memory. We introduce WorldRoamBench, an open-world benchmark for long-horizon stability across four dimensions, each with innovations: (i) Action: per-frame action metric bypassing cross-model semantic scale disparity and exposing failures hidden by trajectory; (ii) Vision: sliding-window drift metric capturing non-monotonic mid-sequence collapse missed by start-vs-end comparisons; (iii) Physics: evaluation of physical plausibility across mechanics, optics, and 3D consistency, gated by camera-motion and subject-tracking checks; (iv) Memory: a trajectory-aware protocol reducing confounding from action-following errors, evaluating scene memory via transition-localized 3D point-cloud reconstruction and subject memory via tracking-plus-VLM reasoning. The benchmark comprises 1000+ test cases across Nature, Urban, and Indoor scenes in first/third-person views with WASD 10-60 s continuous interaction. Evaluating 10+ open/closed-source models reveals none reliably satisfies all dimensions; even the best achieves only moderate scores. Advances on WorldRoamBench are steps toward IWMs that are stable, physically grounded, memory-faithful, and deployable in real-world applications.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "58143bd7cab6c4539df678de731ff732f92936b0b53ccf6ca2f0bfbbe081c5bf",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "상호작용 세계 모델 장기 안정성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "월드모델 장기 안정성 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.18022": {
+      "arxiv_id": "2609.18022",
+      "paper_title": "VeriBugBench: An Empirically Grounded Framework for Constructing Verilog RTL Debugging Benchmarks",
+      "abstract": "RTL source-level debugging research requires benchmark artifacts that provide faulty designs together with precise change locations, executable test stimuli, and reproducible configurations. Available Verilog resources usually provide only a subset of these elements. We present VeriBugBench, a framework for constructing Verilog RTL debugging benchmarks through empirically grounded fault construction, LLM-based testbench enhancement, and execution-based retention. The mutation library maps recurring, multi-granularity repair patterns observed in RTL bug-fix histories to 19 executable inverse operators. For each project, an LLM generates a design-specific stimulus phase from the clean DUT and original testbench; the phase is composed with the original testbench for candidate execution. Applying the framework to 45 open-source projects yields VeriBugBench-v1.0, with 2,608 executable single-fault instances whose effects are observable at design outputs. Across the 45 projects, the assembled testbenches increase mean project-level fault observability from 36.01% to 39.54% and improve line coverage and execution-trace diversity on average. VeriBugBench provides versioned RTL variants, source-level ground truth, testbenches, and execution artifacts for evaluating RTL debugging methods.",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-19T13:43:59Z",
+      "input_sha256": "17538ff9d5b78d2dfd26dafd3798d68a63d3aa5148312fe5085bfbb4a1923c25",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "Verilog RTL 디버깅 벤치마크 구축 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "Verilog 디버깅 벤치마크 구축 프레임워크 제안"
         }
       ]
     }
