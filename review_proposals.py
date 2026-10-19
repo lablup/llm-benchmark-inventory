@@ -12,7 +12,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from arxiv_watch import ROOT, KST, LABEL, REPOSITORY, GitHub, markdown_title, load_state, save_state
+from arxiv_watch import ROOT, KST, iso, LABEL, REPOSITORY, GitHub, markdown_title, load_state, save_state
 from research_pipeline import TABLES, digest, read_json, write_json, read_table, copy_block
 
 MARKER = re.compile(r"^<!-- arxiv-proposals:v2:(\d{4}-\d{2}-\d{2}) -->", re.M)
@@ -172,7 +172,7 @@ def agreed(item, config):
             and verification.get("reviewed_sha256") == item["proposal_sha256"] == proposal_hash(item))
 
 
-def sync_automatic(state, ledger, github, config, root):
+def sync_automatic(state, ledger, github, config, root, now):
     for item in ledger["proposals"].values():
         if item["status"] != "proposed":
             continue
@@ -189,6 +189,7 @@ def sync_automatic(state, ledger, github, config, root):
             continue
         item["status"] = "accepted"
         item["applied_by"] = "dual_model_agreement"
+        item["applied_at"] = iso(now)
     # Notification runs after deployment. Recover its links on the next sync.
     for issue in github.issues():
         body = issue.get("body") or ""
@@ -252,7 +253,7 @@ def _sync(state, github, now, reviewer, root=ROOT):
     ledger = read_json(root / "research/proposals.json")
     config = read_json(root / "research/config.json")
     if config.get("auto_apply_agreed"):
-        return sync_automatic(result, ledger, github, config, root)
+        return sync_automatic(result, ledger, github, config, root, now)
     day = now.astimezone(KST).date().isoformat()
     daily_exists = False
     for issue in sorted(github.issues(), key=lambda x: x["number"]):

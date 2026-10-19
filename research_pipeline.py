@@ -431,7 +431,7 @@ def run(root: Path = ROOT, dry_run=False):
         result.update(arxiv_id=key, paper_title=paper["title"], paper_updated=paper["updated"],
                       source={k: v for k, v in source.items() if k != "pages"},
                       status="proposed" if result["decision"] == "propose" else result["decision"],
-                      created_at=iso(datetime.now(timezone.utc)), issue_url=None)
+                      created_at=iso(datetime.now(timezone.utc)), extraction_model=p.model, issue_url=None)
         result["proposal_sha256"] = digest({k: result[k] for k in ("arxiv_id", "changes", "source")})
         if config.get("auto_apply_agreed") and result.get("verification", {}).get("approve"):
             result["verification"]["reviewed_sha256"] = result["proposal_sha256"]

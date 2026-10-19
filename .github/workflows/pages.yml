@@ -28,14 +28,18 @@ jobs:
       - name: Validate inventory data
         run: python3 validate_inventory.py
       - name: Test discovery, evidence and approval handling
-        run: python3 -m unittest -v test_arxiv_watch.py test_research.py
+        run: python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py
       - name: Generate site data
-        run: python3 build_site_data.py
+        run: |
+          python3 build_site_data.py
+          python3 build_research_records.py
       - name: Verify generated files are current
-        run: git diff --exit-code -- inventory-data.js serving-data.js site-meta.js
+        run: |
+          git diff --exit-code -- inventory-data.js serving-data.js site-meta.js updates.json research/archive
+          test -z "$(git ls-files --others --exclude-standard -- research/archive updates.json)"
       - name: Check script syntax
         run: |
-          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py arxiv_watch.py build_pages.py research_pipeline.py review_proposals.py
+          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py arxiv_watch.py build_pages.py research_pipeline.py review_proposals.py build_research_records.py
           node --check app.js
           node --check english-copy.js
           node --check landing.js
@@ -86,9 +90,10 @@ jobs:
         if: always() && !cancelled()
         run: |
           python3 validate_inventory.py
+          python3 build_research_records.py
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add new-papers.json research/proposals.json korean_benchmark_inventory.csv english_benchmark_inventory.csv english-copy.js benchmark-modalities.json README.md inventory-data.js serving-data.js site-meta.js
+          git add new-papers.json research/proposals.json updates.json research/archive/ korean_benchmark_inventory.csv english_benchmark_inventory.csv english-copy.js benchmark-modalities.json README.md inventory-data.js serving-data.js site-meta.js
           if ! git diff --cached --quiet; then
             git commit -m "Update research progress and approved inventory changes"
             git push origin HEAD:main

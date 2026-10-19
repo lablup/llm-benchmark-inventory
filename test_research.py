@@ -259,6 +259,8 @@ class ResearchTests(unittest.TestCase):
         apply.assert_called_once()
         github.request.assert_not_called()  # Notify only after deployment.
         self.assertEqual(result["papers"][0]["analysis_status"], "accepted")
+        saved = research.read_json(self.root / "research/proposals.json")
+        self.assertEqual(saved["proposals"][self.proposal["arxiv_id"]]["applied_at"], research.iso(NOW))
 
     def test_disagreement_does_not_apply_or_request_review(self):
         self.consensus((True, False))

@@ -19,18 +19,16 @@ Object.entries(values).forEach(([id, value]) => {
 const updated = document.querySelector("#landing-updated");
 if (updated) updated.textContent = meta.serving_checked_at ?? "—";
 
-fetch("./new-papers.json", { cache: "no-cache" }).then(response => {
-  if (!response.ok) throw new Error("Could not load paper summary");
+fetch("./updates.json", { cache: "no-cache" }).then(response => {
+  if (!response.ok) throw new Error("Could not load updates");
   return response.json();
 }).then(data => {
   const summary = document.querySelector("#landing-papers-status");
-  if (!summary) return;
-  const pending = data.papers.filter(paper => paper.analysis_status === "accepted").length;
-  const checked = data.last_checked_at ? new Date(data.last_checked_at) : null;
-  const date = checked ? checked.toLocaleDateString("ko-KR", { timeZone: "Asia/Seoul" }) : "첫 수집 대기";
-  const stale = checked && Date.now() - checked.getTime() >= 3 * 86400000 ? " · 수집 지연, 자동 갱신 상태 확인 필요" : "";
-  summary.textContent = `수집한 논문 ${data.papers.length}건 · 자동 반영 ${pending}건 · ${date}${stale}${data.discovery_error ? " · arXiv 신규 수집 지연" : ""}${data.research?.status === "not_configured" ? " · 자동 조사 API 연결 대기" : ""}`;
+  if (!summary || !data.updates?.length) return;
+  const latest = data.updates[0];
+  const date = latest.applied_at ? new Date(latest.applied_at).toLocaleDateString("ko-KR", { timeZone: "Asia/Seoul" }) + " · " : "";
+  summary.textContent = date + latest.changes.map(change => `${change.name} ${change.action === "added" ? "추가" : "수정"}: ${change.summary}`).join(" ");
 }).catch(() => {
   const summary = document.querySelector("#landing-papers-status");
-  if (summary) summary.textContent = "수집 기록을 불러오지 못했습니다. 새 논문 페이지에서 확인해 주세요.";
+  if (summary) summary.textContent = "벤치마크 표에 반영된 추가·수정 내역은 업데이트 페이지에서 확인할 수 있습니다.";
 });

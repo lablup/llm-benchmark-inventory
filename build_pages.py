@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parent
 PUBLIC = [
     "index.html", "korean.html", "english.html", "serving.html", "papers.html",
     "styles.css", "papers.css", "app.js", "landing.js", "serving.js", "papers.js",
-    "english-copy.js", "inventory-data.js", "serving-data.js", "site-meta.js", "new-papers.json",
+    "english-copy.js", "inventory-data.js", "serving-data.js", "site-meta.js", "updates.json",
     "korean_benchmark_inventory.csv", "english_benchmark_inventory.csv", "serving_inventory.csv",
     "benchmark_top_models.csv", "serving_reference_values.csv",
 ]

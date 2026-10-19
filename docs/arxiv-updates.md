@@ -60,9 +60,9 @@ lose its daily checkpoint. A completed paper clears the flag. Inspect recorded
 usage and errors before clearing a stop left by a failed run. Bot commits are
 deployed by the same run; they do not trigger another workflow.
 
-The five-paper limit can leave a backlog. Unprocessed candidates remain visible
-without assigning work to the user. Transient arXiv API failures retain the last successful discovery checkpoint and
-continue investigation of cached candidates. The site displays the collection delay. Requests are sequential with ten seconds
+The five-paper limit can leave a backlog. Unprocessed candidates remain in the repository queue without assigning work
+to the user. Transient arXiv API failures retain the last successful discovery checkpoint and
+continue investigation of cached candidates. Discovery errors remain in the repository record. Requests are sequential with ten seconds
 between metadata pages and before fresh PDF downloads. HTTP 429 retries wait
 60, 120, and 240 seconds, or longer when `Retry-After` requests it. Server
 cooldowns longer than four minutes are saved for a later run rather than
@@ -77,9 +77,28 @@ cards must be accessible through the implemented source adapters.
 
 ## Records and recovery
 
-`new-papers.json` stores discovery and display status. `research/proposals.json`
-stores drafts, source hashes, model votes, the exact reviewed content hash, and
-application results. Full PDFs and text remain in an ignored cache. API response
+`new-papers.json` stores the discovery queue and investigation status in GitHub;
+it is not part of the public website artifact. `research/proposals.json` stores
+drafts, source hashes, model votes, the exact reviewed content hash, and
+application results. New investigations record the actual extraction model;
+successful automatic applications record `applied_at`.
+
+`build_research_records.py` exports only applied changes to `updates.json`.
+The website shows the application date, benchmark name, a short description
+of an addition or the fields changed, and source links. It does not display
+excluded candidates, disagreements, or notices about having no updates.
+
+Unapplied investigation results are archived in `research/archive/YYYY-MM/`,
+using the investigation timestamp in Korea time. Each immutable snapshot has a
+readable Markdown record and JSON evidence, with monthly indexes. A repeated
+build creates no duplicate; a changed result creates a new snapshot. Old
+snapshots remain even if a later investigation succeeds. Candidates still
+waiting for investigation are not classified as exclusions. Historical missing
+model names stay unknown; an initial exclusion without audit votes must not be
+presented as two-model agreement. Archives remain in GitHub, linked from the
+website, and are excluded from the Pages artifact.
+
+ Full PDFs and text remain in an ignored cache. API response
 logs are retained as Actions artifacts for seven days, readable by those who
 can access this public repository. Keys are not included in requests' saved
 metadata or logs.
@@ -95,15 +114,16 @@ settings. The workflow cannot confirm inbox delivery. The former 100-candidate
 review issue is closed and does not need to be completed.
 
 ```bash
-python3 -m unittest -v test_arxiv_watch.py test_research.py
+python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py
 python3 validate_inventory.py
 python3 arxiv_watch.py                  # discover only
 python3 research_pipeline.py --dry-run  # inspect one request, no inference
 python3 research_pipeline.py            # investigate, using configured credentials
 python3 review_proposals.py             # apply agreed changes; requires GH_TOKEN
+python3 build_research_records.py       # refresh public history and monthly archives
 ```
 
 Pull requests run offline checks without production secrets. Scheduled/manual
 runs collect and investigate; other production runs synchronize accepted changes
 and deploy. Check [workflow runs](https://github.com/lablup/llm-benchmark-inventory/actions/workflows/pages.yml)
-for errors. The page warns when discovery is more than three days old.
+for errors.

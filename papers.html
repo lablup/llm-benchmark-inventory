@@ -3,49 +3,37 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="자동 수집한 LLM 벤치마크 관련 arXiv 논문과 조사한 표 변경안입니다.">
-    <title>새 논문 · 벤치마크 인벤토리</title>
+    <meta name="description" content="벤치마크 표에 반영된 추가·수정 내역입니다.">
+    <title>업데이트 내역 · 벤치마크 인벤토리</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
     <link rel="stylesheet" href="./styles.css?v=20261019-neutral">
-    <link rel="stylesheet" href="./papers.css?v=20261019-neutral">
-    <script src="./papers.js?v=20261019" defer></script>
+    <link rel="stylesheet" href="./papers.css?v=20261019-archive">
+    <script src="./papers.js?v=20261019-archive" defer></script>
   </head>
   <body class="roadmap-page papers-page">
-    <header class="global-header"><div class="global-header-inner shell"><a class="global-brand" href="./index.html" aria-label="벤치마크 인벤토리 홈"><span class="global-brand-mark" aria-hidden="true">LBI</span><span>벤치마크 인벤토리</span></a><nav class="global-nav" aria-label="주요 메뉴"><a href="./korean.html">한국어</a><a href="./english.html">영어</a><a href="./serving.html">서빙</a><a href="./papers.html" aria-current="page">새 논문</a><a href="https://github.com/lablup/llm-benchmark-inventory">GitHub</a></nav></div></header>
+    <header class="global-header"><div class="global-header-inner shell"><a class="global-brand" href="./index.html" aria-label="벤치마크 인벤토리 홈"><span class="global-brand-mark" aria-hidden="true">LBI</span><span>벤치마크 인벤토리</span></a><nav class="global-nav" aria-label="주요 메뉴"><a href="./korean.html">한국어</a><a href="./english.html">영어</a><a href="./serving.html">서빙</a><a href="./papers.html" aria-current="page">업데이트</a><a href="https://github.com/lablup/llm-benchmark-inventory">GitHub</a></nav></div></header>
     <main class="roadmap-shell papers-main">
       <section aria-labelledby="papers-title">
-        <p class="papers-eyebrow">ARXIV · 매일 자동 수집</p>
-        <h1 id="papers-title">새 논문</h1>
-        <p class="papers-intro">LLM 벤치마크와 평가에 관한 새 논문을 모았습니다.<br>수집된 후보를 두 모델이 확인하고, 근거와 판단이 일치한 내용을 기존 목록에 반영합니다.</p>
-        <p id="papers-updated" class="papers-meta">수집 기록을 불러오는 중입니다.</p>
-        <p id="papers-stale" class="papers-warning" hidden>최근 3일 동안 수집이 갱신되지 않았습니다. <a href="https://github.com/lablup/llm-benchmark-inventory/actions/workflows/pages.yml">자동 갱신 상태 확인</a></p>
+        <p class="papers-eyebrow">BENCHMARK INVENTORY</p>
+        <h1 id="papers-title">업데이트 내역</h1>
+        <p class="papers-intro">벤치마크 표에 반영된 추가·수정 내역을 모았습니다.</p>
+        <p id="papers-updated" class="papers-meta" hidden></p>
       </section>
-      <aside class="papers-help">
-        <strong>두 모델이 동의한 항목만 자동 반영합니다</strong>
-        <p>DeepSeek과 GLM이 논문 본문과 공식 자료를 각각 대조합니다. 두 모델이 모두 동의하고 근거 확인을 통과한 항목만 표에 반영합니다. 불일치하거나 근거가 부족한 항목은 반영하지 않으며, 별도 검토를 요청하지 않습니다. GitHub 알림에는 실제 반영 결과만 담습니다.</p>
-        <p id="research-status">자동 조사 상태를 불러오는 중입니다.</p>
-      </aside>
-      <form class="papers-filters" role="search" onsubmit="return false">
+      <form class="papers-filters" role="search" onsubmit="return false" hidden>
         <div>
-          <label for="paper-query">논문 검색</label>
-          <input id="paper-query" type="search" placeholder="제목, 초록, 저자, arXiv 번호" autocomplete="off">
-        </div>
-        <div>
-          <label for="paper-status">검토 상태</label>
-          <select id="paper-status">
-            <option value="all">전체</option>
-            <option value="accepted">자동 반영 완료</option>
-            <option value="needs_evidence">근거·판단 불충분으로 미반영</option>
-            <option value="queued">자동 조사 대기</option>
-
-          </select>
+          <label for="paper-query">업데이트 검색</label>
+          <input id="paper-query" type="search" placeholder="벤치마크 이름, 논문 제목, arXiv 번호" autocomplete="off">
         </div>
       </form>
       <p id="papers-count" role="status" aria-live="polite"></p>
       <div id="paper-list" class="paper-list"></div>
       <button id="papers-more" class="papers-more" type="button" hidden>더 보기</button>
-      <noscript>논문 목록을 보려면 JavaScript를 켜 주세요. <a href="https://github.com/lablup/llm-benchmark-inventory/issues?q=is%3Aissue%20label%3Aarxiv-review">GitHub 검토 이슈</a>에서도 확인할 수 있습니다.</noscript>
+      <aside class="papers-help">
+        <strong>월별 조사 기록</strong>
+        <p>표에 반영하지 않은 논문과 그 사유는 <a href="https://github.com/lablup/llm-benchmark-inventory/tree/main/research/archive">GitHub 월별 폴더 ↗</a>에 보관합니다.</p>
+      </aside>
+      <noscript>업데이트 목록을 보려면 JavaScript를 켜 주세요. <a href="https://github.com/lablup/llm-benchmark-inventory/issues?q=is%3Aissue%20label%3Aarxiv-review">GitHub 반영 기록</a>에서도 확인할 수 있습니다.</noscript>
     </main>
     <footer class="site-footer"><div class="shell"><p>LLM 벤치마크 인벤토리</p><p><a href="https://www.lablup.com">Lablup</a> 운영 · 자료는 <a href="https://github.com/lablup/llm-benchmark-inventory">GitHub</a>에서 확인</p></div></footer>
   </body>

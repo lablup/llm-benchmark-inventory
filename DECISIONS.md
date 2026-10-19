@@ -70,3 +70,19 @@ links and primary actions. Use shared design tokens for color, typography,
 spacing, navigation, and tables across the landing, Korean, English, serving,
 and paper pages. Keep the roadmap as the landing's organizing idea, with
 thinner connections and the paper summary below the main navigation.
+
+## 7. Publish applied changes and archive unapplied research by month (2026-10-19)
+
+The user chose GitHub monthly folders for papers discovered and investigated
+but not added to the benchmark tables. Preserve their reasons and source/model
+records under `research/archive/YYYY-MM/`, using the investigation date in Korea
+time. Append new snapshots when a record changes; retain previous snapshots.
+Do not present an early exclusion as agreement between both models.
+
+Keep `papers.html` as the existing URL and rename it to update history. Publish
+only actual applied changes through `updates.json`, with the application date,
+benchmark name, a brief description of additions or changed fields, and source
+links. The landing page shows the latest brief update. Link the monthly GitHub
+archive from both pages. The user specifically asked not to emphasize an empty
+update history, so omit zero-result notices and dates when no update exists.
+Preserve the existing daily schedule and agreement/evidence requirements.
