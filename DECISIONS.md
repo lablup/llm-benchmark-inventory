@@ -61,3 +61,12 @@ been committed and deployed. Preserve the daily 11:30 Asia/Seoul schedule.
 Local Token Factory configuration records a company allocation with no charge,
 confirmed on 2026-10-12. Record zero estimated user cost on that basis, not as a
 claim that public model pricing is zero. Keep the key in GitHub Actions Secrets.
+
+## 6. Use a restrained Apple-inspired design across the site (2026-10-19)
+
+The user rejected the blue-tinted palette and approved a site-wide revision
+with white and neutral gray surfaces, dark gray type, and blue limited to
+links and primary actions. Use shared design tokens for color, typography,
+spacing, navigation, and tables across the landing, Korean, English, serving,
+and paper pages. Keep the roadmap as the landing's organizing idea, with
+thinner connections and the paper summary below the main navigation.
