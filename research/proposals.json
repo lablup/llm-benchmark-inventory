@@ -721,7 +721,27 @@
         "2604.17260",
         "2605.06936",
         "2605.12894",
-        "2609.00482"
+        "2609.00482",
+        "2609.00940",
+        "2609.03580",
+        "2609.35821",
+        "2609.35965",
+        "2610.00839",
+        "2610.10276",
+        "2610.09294",
+        "2610.09374",
+        "2610.09382",
+        "2610.09446",
+        "2610.10619",
+        "2610.09661",
+        "2610.09671",
+        "2610.10622",
+        "2610.09778",
+        "2610.09793",
+        "2610.09823",
+        "2610.10628",
+        "2610.09872",
+        "2610.10150"
       ]
     }
   },
@@ -13963,6 +13983,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "감정 인식 벤치마크 프로토콜 재평가 및 개선 제시"
+        }
+      ]
+    },
+    "2610.08300": {
+      "arxiv_id": "2610.08300",
+      "paper_title": "Memory Depth and Reconstructed Context Width: A Controlled Evaluation of Hierarchical Retrieval",
+      "abstract": "Long-term conversational memory is becoming an integral component of modern LLM systems. Proposed architectures group records by topics and events, construct hierarchies and graphs, and connect facts through causal and temporal relations. We experimentally study the interaction between two memory parameters: structural depth and the width of context supplied to the answer model. Using EverMemBench, we evaluate depths D1-D4, core budgets of 1,024/2,048/4,096 tokens, and additional Production and Oracle conditions up to the full archive. Increasing width from 1K to 4K improves Accuracy by 10.11-17.98 percentage points, whereas increasing depth provides no monotonic gain. Beyond 8-16K, Production performance reaches a plateau while tokens per correct answer continue to increase; Oracle preserves quality on full archives of 68-71K tokens. These results motivate further investigation of large, coherent context blocks instead of progressively deeper memory structures.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "8e95f44d3f75cc9b35bb6bc54829f3eb1993cc935329ebdd751ca1c3570c4047",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 계층 메모리 검색 평가 벤치마크로 언어 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "EverMemBench 기존 벤치마크 활용 평가로 신규 벤치마크 소개 여부 불명확"
+        }
+      ]
+    },
+    "2610.08303": {
+      "arxiv_id": "2610.08303",
+      "paper_title": "Language Unalignability: Why Some Concepts Resist Cross-Cultural Benchmark Evaluation",
+      "abstract": "Current evaluation of multilingual Large Language Models (LLMs) rests on an implicit Translation-Isomorphism Assumption (TIA): that semantic structures across languages are congruent and mutually mappable without loss of information. We argue that this assumption is not merely violated in practice, but ill-posed in principle for a typologically identifiable class of concepts, including pragmatic markers, honorifics, and diachronically stratified terms. We formalize this failure using a usage-cloud framework, representing concepts as point sets of contextualized embeddings. We define $α$-unalignability as the impossibility of any mapping that simultaneously preserves lexical faithfulness (centroid correspondence) and structural faithfulness (local neighborhood topology). We provide three layers of evidence. Behaviorally, we show that FLORES-200 translation failures are predicted by language family and resource class but not by script, and that LOBSTER reasoning scores vary by family. Mechanistically, we report a Representation-Intervention Gap (RIG) in a nine-model case study on Yami: the models' activations encode a regularity along which Yami groups with other low-resource and Austronesian languages, yet interventions on language-specific neurons show no demonstrated advantage over random masks: the regularity is visible but not usable by this intervention. Finally, we operationalize these findings into a multidimensional diagnostic profile: Cycle-Consistency, Pragmatic-Load Disagreement, Manifold-Curvature Mismatch, and RIG. We argue that collapsing cultural competence into a single scalar incentivizes \"probabilistic flattening,\" and that recognizing the unalignable class is a precondition for AI that respects, rather than erases, cultural divergence. This suggests that multilingual alignment is not a single well-defined objective, but a set of mutually incompatible projections.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "bcaeac7b10b7450ea466766de1e8f4ae66badf02eaa7e51f42fcde263a1b7d11",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다국어 LLM 평가의 번역 동형성 가정 비판과 진단 지표 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다국어 평가의 한계 진단 프레임워크와 진단 프로파일 제안"
+        }
+      ]
+    },
+    "2610.08513": {
+      "arxiv_id": "2610.08513",
+      "paper_title": "Wiki-Talkie: Multilingual Benchmarking of Persona-Based Agents on Real-World Discussions",
+      "abstract": "LLMs are increasingly deployed as autonomous agents in social environments, making it critical to study their ability to faithfully simulate human interactions. Central to this is grounding agents in realistic user personas, yet existing datasets rely on fictional personas and are limited to a handful of languages, lacking the empirical grounding necessary to evaluate behavioral fidelity across diverse populations. We introduce Wiki-Talkie, a multilingual dataset of real-world conversations from Wikipedia Talk pages across five languages spanning two language families: Germanic (German, English) and Romance (Spanish, French, Italian), paired with personas derived from real user communities and encompassing sociodemographic attributes, self-descriptions, and behaviorally grounded interaction traits. Using Wiki-Talkie, we evaluate agent interactional behavior on a next-turn generation task across various persona conditioning strategies. Our evaluation assesses whether agents collectively reproduce the distributional behavioral patterns observed in human discussions. Results show that user's comment history exemplifying interaction behavior consistently outperforms explicit persona information. In addition, models systematically underproduce negative or extreme sentiments, while over producing references and suggestions, revealing biases toward agreeableness and positivity. Crucially, these patterns hold robustly across languages, with small cross-lingual differences.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "2171b0c3f302613cd6e6a56ab1da5d7520bccf081b7805e622fb721d8baac95e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다국어 페르소나 기반 LLM 에이전트 평가 데이터셋과 벤치마킹"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "5개 언어 실대화 기반 페르소나 에이전트 다국어 벤치마크 데이터셋"
+        }
+      ]
+    },
+    "2610.08642": {
+      "arxiv_id": "2610.08642",
+      "paper_title": "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots",
+      "abstract": "Contact with contaminated objects can spread hazards through a household robot's grippers, tools, and shared surfaces, while new contacts can make an existing plan unsafe. Existing benchmarks do not jointly assess how planners identify hygiene risks from contact history and plan safe continuations after new contact events. Planners must do so within time and resource limits while respecting user priorities. We introduce HygieneRoboBench, with 624 instances across 134 task families, to evaluate safe resolution of household tasks from a given execution history. Tasks capture contamination through two grippers and shared objects, treatment costs, and user priorities. We combine controlled history, profile, and event comparisons with independent plan evaluation. These assess safe resolution, cost efficiency under user priorities, and responses to contact events. Evaluation of LLM-based and symbolic planners shows that safely completing a task does not guarantee the lowest execution costs under the user's priorities. To address this problem, we introduce Hygiene-NSP. It combines LLM-based grounding, contact-history reconstruction, and CP-SAT to jointly plan hygiene treatment and task execution under user priorities. Hygiene-NSP achieves safe resolution and optimal safe resolution rates of 94.4% and 90.4%, respectively. Both rates are higher than those of the evaluated baseline planners on the full dataset. Project page: https://euron-zc.github.io/HygieneRoboBench/.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "a1e0ea75fff82140b54ac946a70efa9e5958b05adba89b6035ea2ae491ac8d39",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "가정용 로봇 위생 인식 계획 평가 벤치마크로 LLM 계획 평가 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "가정 로봇 위생 인식 계획 평가 벤치마크 624 인스턴스 신규 제안"
+        }
+      ]
+    },
+    "2610.08649": {
+      "arxiv_id": "2610.08649",
+      "paper_title": "Stable Scores, Unstable Answers: Frame Phase and Option Order in Video Multiple-Choice Evaluation",
+      "abstract": "Video-language models are ranked by multiple-choice accuracy on frames from a uniform grid. The grid has two parameters, a rate and a phase, and benchmarks report only the rate. The phase moves answers: two deployed samplers differing only by a half-step phase offset answer 23.6% of questions differently while scoring within a point, and across four releases from two families shifting only the phase changes roughly one answer in five after controlling option order. PHASEFUSION decodes three offset grids and averages the option posteriors. The grids are the polyphase components of the dense grid. Fusion matches a 32-frame single pass in accuracy within a prespecified margin (logit-scored) and cuts the answers a half-step shift of all three grids changes from 18.2% to 10.1%. Option order, which changes only the presentation, is flagged instead by a one-pass answer margin. Report the phase convention with the budget, or marginalize it.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "65f01da5dd20cee452c8d006deb31ddb50fd8352af58d0aad9af16390be65ab1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "비디오 언어 모델 다지선다 평가의 프레임 위상과 선택지 순서 분석"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "비디오 평가 프레임 위상·선택지 순서 분석, 재사용 평가자료 불명확"
+        }
+      ]
+    },
+    "2610.08691": {
+      "arxiv_id": "2610.08691",
+      "paper_title": "ScienceClaw: Benchmarking Continual Self-Evolution of AI-for-Science Agents Across the Natural and Social Sciences",
+      "abstract": "Large language model agents are accelerating scientific automation, yet verified executions rarely become persistent program-level improvements, and existing evaluations do not examine this process across sequential tasks in both the natural and social sciences. We formalize ScienceClaw as fixed-parameter program self-evolution that unifies task solving, scientific verification, and program updates. ScienceClaw-Eval spans 23 disciplines and measures scientific correctness, evolutionary gain, retention, cross-dataset transfer, and evolution cost through sequential streams and independent reset evaluation. Our framework repairs executable workflows through multi-turn interaction, converts re-execution-verified failure--success trajectories into linked Skill and Operator candidates, and retains an update only when source-task replay reproduces the repair and independent scientific tasks improve. Code is available at https://github.com/beita6969/ScienceClaw.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "f73d65b8ec18865f10ce71e0b28f615707f1baccf9d94f28823e6ce9395b87e1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "과학 분야 LLM 에이전트의 지속적 자기진화 평가 벤치마크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "과학 에이전트 자기진화 평가 벤치마크 ScienceClaw-Eval 신규 제안"
+        }
+      ]
+    },
+    "2610.08733": {
+      "arxiv_id": "2610.08733",
+      "paper_title": "Towards an Extensible Benchmark for Spoken Dialogue with Social Robots",
+      "abstract": "Language models provide a plug-and-play interface between humans and robots, but important challenges remain when speech, dialogue, fast interaction, and collaboration are required. We propose a benchmark for the community to use as a way to explore common spoken dialogue artifacts between robots and humans, including requests for clarification, interruptions, embodied signals (e.g., head nods or facial cues), and time constraints. We also explain our vision to extend the benchmark for other aspects of human-robot interaction that are important to the larger research community. To facilitate the benchmark, we further propose using \\textit{Retico}, a real-time communication framework that fulfills important technical requirements to enable robots to have spoken dialogue capabilities.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "c2f5565a2bc3ca9b477466986938bab83acdcf17198c3dd28361181ae75f5a91",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "사회적 로봇과의 음성 대화 평가 벤치마크로 언어 모델 평가 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "사회적 로봇 음성 대화 확장형 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.09021": {
+      "arxiv_id": "2610.09021",
+      "paper_title": "Not Every Call Needs a Frontier Model: Per-Call-Site Evaluation of Small Language Models in a Deployed Agentic Home-Automation System",
+      "abstract": "An agentic system issues several structurally different kinds of LLM calls. It routes intent, classifies actions, grounds language in a device registry, plans multi-agent pipelines and writes the Python code those pipelines run. The difficulty of these call sites varies by an order of magnitude, yet in practice a single model, chosen for the hardest site, serves all of them. In this work, we evaluate 9 models from 0.8B to a frontier hosted model across the five call sites of a deployed open-source home-automation framework (Wactorz), using its unmodified production prompts and two real Home Assistant installations (280 cases, 2520 scored calls). We find that capability is not ordered the same way at every site, and that larger models are not uniformly better: one 4B model is worse than its 2B sibling at grounded actuation. Paired testing shows the best local model to be statistically indistinguishable from both hosted models at four of five sites. Only code generation separates them, against a small hosted model (p = 0.039) as well as a frontier one (p = 0.002). Aggregate accuracy also hides a safety failure specific to actuation, where small models resolve the accuracy/refusal trade-off in degenerate ways: one model (Gemma4 E2B) actuates on 87.2% of requests for devices the site does not own, while another refuses every request it receives. Routing each site to its best local model reaches 91.8% against 95.4% at no per-call cost. In a live deployment judged by a user, hosting only the two generative sites matches hosting everything (39/43 against 39/43) for 28% of the spend, and the actuation gap the benchmark predicted appears as exactly one case in twenty-six. Benchmark, harness and all records are released at https://github.com/waldiez/slm-callsite-eval.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "91d22522e58f7952620a015bf0df30598c36a8e7d4ed6efd7e564d9250660bbe",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 홈오토메이션 시스템의 호출별 소형 언어모델 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "호메이션 에이전트 호출지점별 평가 벤치마크·하네스 공개"
+        }
+      ]
+    },
+    "2610.09112": {
+      "arxiv_id": "2610.09112",
+      "paper_title": "GeoNatureAgent (GNA): A Framework and Benchmark for Pre-Production Evaluation of Tool-Using Agents on Geospatial and Environmental Tasks",
+      "abstract": "Before tool-using LLM agents are deployed in environmental and geospatial workflows, teams need evidence that an agent reliably selects the right operations against real APIs. We introduce GeoNatureAgent (GNA), a framework for pre-production evaluation of tool-using agents: a fixed sixteen-tool geospatial interface published as a Model Context Protocol (MCP) server, so the agent under test is the only variable, scored against an identical tool layer, task suite, and deterministic scorer. Its flagship instance is a 103-task benchmark (a 93-task main suite across 18 categories plus a ten-task comparison expansion) evaluated against an open, self-hostable geospatial API serving three environmental indicators across Spain and Portugal. We evaluate nine LLMs under three temperature-1.0 seeds, reporting capability and per-case cost as orthogonal axes. (1) Claude Sonnet 4 achieves the highest capability (61.7% +/- 0.7% on all 103 tasks; 60.8% on the main suite), followed closely by DeepSeek V3.2 (57.9%), while no other model exceeds 53%; (2) the cost-accuracy Pareto frontier is mostly open-weight, with DeepSeek V3.2 offering 93% of Claude's capability at 11.3x lower list-price cost; (3) under strict all-checks scoring the best model sits 24-36 points below the 85-97% reported on general-purpose GIS benchmarks, whereas per-check partial credit for the top four models (86-90%) is comparable, so much of that gap reflects scoring strictness rather than task difficulty alone. The MCP server, evaluation harness, benchmark, and API are publicly available; swapping the tool executors and task suite instantiates an equivalent benchmark for any geospatial domain.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "33fa67dd7760ccc7448a32cdf28eed52c885c7f160bcbda1c965599145fba6f5",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "지리공간 도구 사용 LLM 에이전트의 사전 배포 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "지리·환경 도구사용 에이전트 사전배포 평가 벤치마크·프레임워크"
+        }
+      ]
+    },
+    "2610.09152": {
+      "arxiv_id": "2610.09152",
+      "paper_title": "sk-bench: A Native-First Benchmark for Evaluating Large Language Models in Slovak",
+      "abstract": "Multilingual LLM benchmarks omit Slovak, a morphologically rich West Slavic language of five million speakers, or cover it only by machine translation. We present sk-bench, a native-first Slovak benchmark with 30 datasets (33 scored task variants) across ten skill categories. Eleven resources are introduced or first packaged for generative-LLM evaluation, including IFEval-SK with Slovak-adapted instruction checkers and native Chiby/SKJ1 resources for Slovak grammar and morphology. We evaluate 55 open- and closed-weights models under one harness. The best open model trails proprietary APIs by 12.6 points. Model rankings are similar for native and translated closed-form data ($ρ\\geq0.98$), though translation separates the strongest models less well. By contrast, human-authored and LLM-generated QA questions rank models differently ($ρ=0.72$). For Qwen3-14B, continued Slovak pretraining lowers the overall score by 13.9 points. A small instruction set restores three quarters of that loss. Test-time reasoning improves scores by 8.5 to 12.5 points for models of 9B and above. Together, these findings suggest four design lessons for other under-resourced languages: use native data where translation fails, plan instruction repair after language adaptation, enable test-time reasoning before scaling up, and avoid overinvesting in target-language prompts. We release the data and code at https://github.com/slovak-nlp/sk-bench",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "9c59b738d5934a2d64eb24c2223975be58ce6511d2db67f1d3340e668a5e301e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "슬로바키아어 LLM 평가를 위한 네이티브 우선 벤치마크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "슬로바키아어 전용 벤치마크로 한국어·영어 외 언어에 한정"
+        }
+      ]
+    },
+    "2610.09163": {
+      "arxiv_id": "2610.09163",
+      "paper_title": "ToolRACER: A Robust Agentic Conversation Emulation Resource for Agent Training and Evaluation",
+      "abstract": "Task-oriented conversational agents remain fragile under real world conversation scenarios as they rarely follow a predictable script, especially when users exhibit non-cooperative behavior. Existing function-calling benchmarks often emphasize successful, cooperative interactions and underrepresent adversarial conversation trajectories, thereby limiting the training resources available for developing robust agents. We present ToolRACER, a synthetic data generation pipeline that coordinates user, assistant and tool emulation models to generate and validated multi-turn interactions between a user and an agent. Using \\sysn, we construct ToolRACERBench a robust multi-turn conversation benchmark spanning six domains, ranging over 55 varied personas, generating a validated corpus of 5.6K conversation trajectories, with approximately 66\\% of conversations containing failure-prone conversation scenarios. We inject adversarial behaviors, producing validated conversational interaction trajectories that capture realistic, robust scenarios. We evaluate models trained on ToolRACERBench against internal benchmarks, as well as on function calling benchmarks such as $τ^2$-bench, BFCLv3 and ACEBench to evaluate agentic accuracy and robustness. Models trained on ToolRACERBench improve end to end agentic accuracy across $τ^2$-bench and ACEBench, demonstrating significant gains when mixed with in-domain dataset in small language models for agent capability tasks.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "a17df25f1f29d56cb95ffa9739da8f1094647456046765ec9380036dadc2764f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "도구 사용 대화 에이전트 훈련·평가를 위한 견고한 대화 데이터 파이프라인"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 훈련·평가용 적대적 대화 벤치마크 ToolRACERBench 제안"
+        }
+      ]
+    },
+    "2508.08833": {
+      "arxiv_id": "2508.08833",
+      "paper_title": "An Investigation of Robustness of LLMs in Mathematical Reasoning: Benchmarking with Mathematically-Equivalent Transformation of Advanced Mathematical Problems",
+      "abstract": "Frontier large language models (LLMs) now reach near-ceiling accuracy on standard mathematical-reasoning benchmarks and gold-medal-level performance at the International Mathematical Olympiad. As these benchmarks saturate and their items leak into training data, a high score no longer shows whether a model reasons robustly or which component of its reasoning fails. To evaluate reasoning while keeping results informative and failures diagnosable, we propose GAP (Generalisation-and-Perturbation), a methodology that automatically generates mathematically equivalent variants of existing mathematics problems at scale using two disjoint, interpretable transformations: (1) surface renames, probing the binding between identifiers and latent variable roles, and (2) kernel rewrites, probing whether a high-level proof plan survives a change of mathematical setting. Compared with existing benchmarks, GAP has two key benefits: (1) novel, likely unseen variants mitigate data leakage, and (2) performance across transformation families enables failure diagnosis, each transformation testing a hypothesis about the cause of failure. We instantiate GAP on all 1,051 William Lowell Putnam Competition problems from 1938 to 2024, adding 5,255 unseen variants to form PutnamGAP, a 6,306-item competition-level mathematics corpus and the first public machine-readable dataset from the full Putnam archive. Using PutnamGAP, we evaluated 18 commercial and open-source models spanning sizes and providers. Accuracy drops across all models and variant families, most severely under kernel rewrites. This gap does not close with model strength, suggesting that even the strongest models' dominant weakness is transferring a proof plan to a changed mathematical setting, rather than handling surface changes. Further analysis provides finer failure diagnoses and potentially useful insights for improving LLM reasoning.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "3ba38c3669b0d6e1dc2bb00b5ba494ab591b1393e0f065a0f3f3262a2d8c1314",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "수학적 추론 LLM의 견고성 평가를 위한 변형 문제 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "수학 추론 강건성 평가용 PutnamGAP 6306문항 코퍼스 신규 구축"
+        }
+      ]
+    },
+    "2511.04655": {
+      "arxiv_id": "2511.04655",
+      "paper_title": "Benchmark Designers Should \"Train on the Test Set\" to Expose Exploitable Non-Visual Shortcuts",
+      "abstract": "Multimodal LLMs can answer many questions in vision-centric benchmarks without looking at the image, using linguistic priors and skewed answer distributions. Blind evaluation shows what a model already answers this way, but not what it could learn from the test set's own regularities. Extending partial-input auditing (e.g., hypothesis-only baselines in natural language inference), we argue that benchmark designers should \"train on the test set\": probe the artifact they release for exploitable patterns. Our Test-set Stress-Test (TsT) cross-validates a text-only Qwen2-7B on the test set's questions and answer options, yielding a benchmark-level score and a per-question bias score s(x); a random forest on hand-crafted features adds a fast, interpretable audit. On the template-based VSI-Bench and CV-Bench, the held-out score is 17.9 and 13.1 points above the model's own zero-shot score. On MMMU it learns little, even though GPT-4o correctly answers 52.3% of its multiple-choice questions without the image, so blind success there reflects pretrained knowledge rather than learnable test-set patterns. Iterative Bias Pruning (IBP) removes the questions with the highest s(x) and re-diagnoses; on VSI-Bench it widens a fine-tuned model's vision-blind gap more than random removal at the same rate. We also release VSI-Bench-Debiased, which lowers a fine-tuned model's blind score from 44.7 to 32.0 while its vision score falls only from 57.1 to 48.7.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "5ed9fec860917c4b98fbd352a6241220eaa786d66bf2e1678b3823a7af32549c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 LLM 벤치마크의 비시각적 지름길 진단과 편향 제거"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "비시각 단축키 감사법 제안, VSI-Bench-Debiased 재사용 자료 공개"
+        }
+      ]
+    },
+    "2512.14014": {
+      "arxiv_id": "2512.14014",
+      "paper_title": "MobileWorldBench: Towards Semantic World Modeling For Mobile Agents",
+      "abstract": "World models have shown great utility in improving the task performance of embodied agents. While prior work largely focuses on pixel-space world models, these approaches face practical limitations in GUI settings, where predicting complex visual elements in future states is often difficult. In this work, we explore an alternative formulation of world modeling for GUI agents, where state transitions are described in natural language rather than predicting raw pixels. First, we introduce MobileWorldBench, a benchmark that evaluates the ability of vision-language models (VLMs) to function as world models for mobile GUI agents. Second, we release MobileWorld, a large-scale dataset consisting of 1.4M samples, that significantly improves the world modeling capabilities of VLMs. Finally, we propose a novel framework that integrates VLM world models into the planning framework of mobile agents, demonstrating that semantic world models can directly benefit mobile agents by improving task success rates. The code and dataset is available at https://github.com/jacklishufan/MobileWorld",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "7b63b9f86a68aa99f7dafdeab5d2a9ef7363cf19d60dd49eb55c3430dea7fb3f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "모바일 GUI 에이전트를 위한 시맨틱 월드 모델링 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "모바일 에이전트 의미적 월드모델 벤치마크·140만 샘플 데이터셋"
+        }
+      ]
+    },
+    "2603.20576": {
+      "arxiv_id": "2603.20576",
+      "paper_title": "Can AI Agents Answer Your Data Questions? A Benchmark for Data Agents",
+      "abstract": "However, building reliable data agents remains difficult because real enterprise data is fragmented across many heterogeneous database systems, with duplicated and inconsistent data, and key information often buried in unstructured text, requiring agents to go beyond just writing SQL or data science scripts to answer questions. Existing benchmarks tackle only individual pieces of this end-to-end workflow (e.g., text-to-SQL over a single database) and are increasingly saturated and contaminated. We present a new benchmark for LLM agents, the Data Agent Benchmark (DAB), grounded in a study of enterprises building production data agents across six industries. DAB comprises 104 queries across 17 datasets and 4 database management systems. On DAB, the best state-of-the-art agent achieves only 57% pass@1. We analyze agent failure modes and distill takeaways for future data-agent development. Our benchmark and experiment code are published at github.com/ucbepic/DataAgentBench.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "731979143e139e1ee96a76ddd59f194e9a0da4bf2f6f5f670660576f913e87d0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "데이터 질의응답 LLM 에이전트 평가를 위한 새로운 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "엔터프라이즈 데이터 에이전트 종단평가 벤치마크 DAB 신규 제안"
+        }
+      ]
+    },
+    "2604.01569": {
+      "arxiv_id": "2604.01569",
+      "paper_title": "VideoZeroBench: Probing the Limits of Video MLLMs with Spatio-Temporal Evidence Verification",
+      "abstract": "Video multimodal large language models achieve strong results on existing benchmarks, but answer accuracy alone does not establish whether they can locate the evidence needed to answer a question. We introduce VideoZeroBench, a challenging long-video benchmark with manually annotated question-answer pairs spanning 13 video domains. Questions target fine-grained cues, fleeting events, and evidence distributed across multiple segments. Temporal intervals and key-frame boxes are annotated where applicable. All questions undergo two rounds of cross-verification for answer validity and evidence quality. Our five-level diagnostic protocol compares answering with and without evidence hints, then combines answer correctness with independently evaluated temporal and spatial grounding. Across 19 evaluated models, the best standard QA accuracy is 24.8% (Level-3), achieved by Gemini-3.7-Flash. No model exceeds 1.8% when correct answers and accurate spatio-temporal localization are jointly required (Level-5). Analyses of atomic abilities, evidence spans, input modalities, and thinking-with-videos inference further characterize where the evaluated systems struggle. These findings motivate more precise evidence search and localization for long-video question answering. Our code and data are publicly released.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "e39ca475f691629db8a8bdb0158125b68e84e6546d813ab00d2383fc6cbe1623",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "장시간 비디오 MLLM의 시공간 증거 검증 한계 진단 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "장기 비디오 증거 검증 벤치마크 VideoZeroBench 신규 제안"
+        }
+      ]
+    },
+    "2604.17260": {
+      "arxiv_id": "2604.17260",
+      "paper_title": "Rethinking Meeting Effectiveness: A Benchmark and Framework for Temporal Fine-grained Automatic Meeting Effectiveness Evaluation",
+      "abstract": "Evaluating meeting effectiveness is crucial for improving organizational productivity. Current approaches rely on post-hoc surveys that yield a single coarse-grained score for an entire meeting. The reliance on manual assessment is inherently limited in scalability, cost, and reproducibility. Moreover, a single score fails to capture the dynamic nature of collaborative discussions. We propose a new paradigm for evaluating meeting effectiveness centered on novel criteria and temporal fine-grained approach. We define effectiveness as the rate of objective achievement over time and assess it for individual topical segments within a meeting. To support this task, we introduce the AMI Meeting Effectiveness (AMI-ME) dataset, a new meta-evaluation dataset containing 2,459 human-annotated segments from 130 AMI Corpus meetings. We also develop an automatic effectiveness evaluation framework that uses a Large Language Model (LLM) as a judge to score each segment's effectiveness relative to the overall meeting objectives. Through substantial experiments, we establish a comprehensive benchmark for this new task and evaluate the framework's generalizability across distinct meeting types, ranging from business scenarios to unstructured discussions. Furthermore, we benchmark end-to-end performance starting from raw speech to measure the capabilities of a complete system. Our results validate the framework's effectiveness and provide strong baselines to facilitate future research in meeting analysis and multi-party dialogue. Our dataset and code will be publicly available. The AMI-ME dataset and the Automatic Evaluation Framework are available at https://github.com/ku-nlp/AMI-ME.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "bffa362612711f8c61e50f4f4316a92d64cb922f51f692ec614464a567c83f5b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "회의 효과성의 시간적 세분화 자동 평가 벤치마크와 LLM 심판"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "회의 효과성 시간 세분 평가용 AMI-ME 데이터셋·프레임워크 제안"
+        }
+      ]
+    },
+    "2605.06936": {
+      "arxiv_id": "2605.06936",
+      "paper_title": "Bridging the Last Mile of Circuit Design: PostEDA-Bench, a Hierarchical Benchmark for PPA Convergence and DRC Fixing",
+      "abstract": "LLM-based agents are increasingly applied to the \"last mile\" of Electronic Design Automation (EDA): repairing residual sign-off Design Rule Check (DRC) violations and converging Power-Performance-Area (PPA) targets after tool runs. Existing EDA-LLM benchmarks, however, omit DRC fixing entirely and rely on flat hierarchies tied to a single toolchain. We introduce PostEDA-Bench, a hierarchical benchmark with 145 tasks across DRC-Essential, DRC-Reasoning, PPA-Mono, and PPA-Multi, supported by EDA toolchains with machine-checkable evaluation. Across eight commercial and open-source LLMs under multiple agent scaffolds, we find that agents handle synthetic DRC-Essential and single-objective PPA-Mono reasonably well but degrade sharply on the more practical DRC-Reasoning, where the best success rate is 36.66%, and PPA-Multi, where the best success rate is 20.00%; vision augmentation consistently enhances DRC-Bench; and trade-off reasoning, rather than knob knowledge, is the dominant PPA-Multi bottleneck.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "70e855403a06e831016542d3b0e831e635e5b8790336ed65d3bb9b928782ae9f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "회로 설계 마지막 단계의 LLM 에이전트 계층적 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "EDA 후처리 DRC·PPA 평가 계층형 벤치마크 PostEDA-Bench 제안"
+        }
+      ]
+    },
+    "2605.12894": {
+      "arxiv_id": "2605.12894",
+      "paper_title": "Beyond Cooperative Simulators: Generating Realistic User Personas for Robust Evaluation of LLM Agents",
+      "abstract": "Large Language Model (LLM) agents are increasingly deployed in settings where they interact with diverse users, including those who are unclear, impatient, or reluctant to share information. However, collecting real interaction data at scale remains expensive. The field has turned to LLM-based \\emph{user simulators} as stand-ins, but these simulators inherit the behavior of their underlying models: cooperative and homogeneous. As a result, agents that appear strong in simulation often fail in real human interactions. To narrow this gap, we introduce Persona Policies (PPol), a plug-and-play control layer that induces realistic behavioral variation in user simulators while preserving original task goals. Rather than hand-crafting personas, we employ an evolutionary coding agent to discover persona generation programs optimized for human-likeness and behavioral coverage over real user conversations. The evolved program generates diverse, human-like personas for any task in the domain. Across 4 benchmarks--including $τ^2$-bench Retail and Airline, ColBench, and WildChat--evolved PPol yield 28-72% absolute gains in fitness score over the baseline simulator. In blinded evaluations, annotators judged PPol users as 'human' 80.4% of the time, nearly 2x more than the baseline simulators. Training agents with PPol also improves real-world performance: our user study with live human-agent interactions showed that fine-tuning with our method boosted task success by +23% over default baselines. PPol thus offers a novel approach to strengthen simulator-based evaluation and training without changing underlying tasks.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "f7c73aae2871887000b344a2fe08bec9b2b613a6b451917f5afeedf63a4026c2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트의 견고한 평가를 위한 현실적 사용자 페르소나 생성"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "사용자 시뮬레이터 페르소나 제어 방법론, 벤치마크 자체 불명확"
+        }
+      ]
+    },
+    "2609.00482": {
+      "arxiv_id": "2609.00482",
+      "paper_title": "Are Near-Tied LLM Rankings Robust to Family-DIF-Guided Benchmark Recomposition?",
+      "abstract": "Small leaderboard gaps are often interpreted as evidence that one language model is better than another, but their sign may depend on which benchmark items are included. We test this using item-level responses from five benchmarks and a family-label-free spectral approximation to multidimensional item-response theory (MIRT). In owner-disjoint folds, one owner half identifies items with low residual differential item functioning across model families (low-DIF). These items are used to score models in the other half with frozen weights that preserve the benchmark's composition across metadata-defined item groups and easiness strata. Equally short matched-random subtests provide a baseline for variation due to item subsampling. Full-benchmark and low-DIF rankings remain strongly correlated ($τ_b=.900$--$.948$). Yet in four of five benchmarks, 30.9--47.1\\% of cross-family pairs initially within one percentage point reverse order, exceeding their matched-random medians by 16.9--28.6 percentage points (all $p=.001$). The fifth benchmark shows no reliable excess ($-0.9$ points, $p=.689$). The pattern survives all pre-specified population perturbations, and residual item--family signatures replicate across owner halves; however, no family shows a consistent advantage across benchmarks. Thus, globally stable rankings can still leave individual near-tie orderings sensitive to benchmark composition, and sub-one-point leaderboard gaps should be accompanied by evidence that the implied ordering is composition-robust.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:19Z",
+      "input_sha256": "d363967d003e8e655de4b7c80fbb2b55542fc34bb0f0c0355f5d19fac5572794",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 순위의 벤치마크 재구성 민감도와 항목 수준 분석"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "기존 5개 벤치마크 재구성 분석으로 재사용 평가자료 신규성 불명확"
         }
       ]
     }
