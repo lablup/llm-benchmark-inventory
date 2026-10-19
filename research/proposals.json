@@ -341,7 +341,27 @@
         "2609.31967",
         "2609.32020",
         "2609.32082",
-        "2505.17482"
+        "2505.17482",
+        "2512.00333",
+        "2601.13722",
+        "2602.09007",
+        "2605.10978",
+        "2605.23176",
+        "2606.08034",
+        "2606.10281",
+        "2607.22561",
+        "2608.24934",
+        "2609.04280",
+        "2609.25352",
+        "2609.28230",
+        "2609.32103",
+        "2609.32109",
+        "2609.32157",
+        "2609.32245",
+        "2609.32248",
+        "2609.32280",
+        "2609.32283",
+        "2609.32413"
       ]
     }
   },
@@ -5203,6 +5223,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "OpenQASM-3 코드 생성 평가·학습 데이터셋 신규 제시"
+        }
+      ]
+    },
+    "2606.13020": {
+      "arxiv_id": "2606.13020",
+      "paper_title": "SciR: A Controllable Benchmark for Scientific Reasoning in LLMs",
+      "abstract": "Three paradigmatic forms of inference recur across scientific reasoning: deduction, induction, and causal abduction. Reliably evaluating LLMs on these in scientific settings is currently out of reach: scientific benchmarks built on human annotations are costly and lack mechanistic ground truth, while synthetic logical-reasoning benchmarks do not resemble real scientific documents. We introduce SciR, a benchmark that combines multi-paradigm reasoning with controllable scientific rendering, anchored on three paradigmatic scientific problems. Tasks are generated from formal objects (deduction tree, inductive rule hypothesis, causal graph) to guarantee verifiable answers, then rendered into multi-document scientific discourse via per-track domain-tuned genres. The construction lets us independently vary two difficulty axes: how hard it is to extract the key information needed for inference, and how hard the principled inference itself is. We test six models. Both axes hurt every model, and their effects compound. The rendering even hurts neurosymbolic pipelines, which hand inference to a verified solver. The two axes yield a per-model extraction-vs-inference profile: for instance, reasoning models like deepseek-r1 mostly surpass non-reasoning instruct models on the inference axis. To our knowledge, SciR is the first multi-paradigm scientific-reasoning benchmark with parametric control on both extraction and inference difficulty.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "b9614c43931a03d7df78ba817910cc5e91ffd0af4d3981353f2ddf62e9970568",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "과학 추론 벤치마크로 LLM 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "과학 추론용 제어 가능 벤치마크 SciR를 새로 제안"
+        }
+      ]
+    },
+    "2606.20626": {
+      "arxiv_id": "2606.20626",
+      "paper_title": "Efficient Safety Benchmarking via Item Response Theory",
+      "abstract": "Safety benchmarks for language models are typically evaluated using static paradigms that treat all items as equally informative for all models, an assumption that is particularly problematic for adversarial, highly heterogeneous safety items. Applied in full to modern benchmark suites, current evaluation procedures would require on the order of $10^5$ responses, most of which provide little ranking signal. We analyze six widely used safety benchmarks and make three contributions toward more efficient safety evaluation. First, we show that Item Response Theory (IRT) recovers interpretable structure on safety benchmarks, with ability estimates resolving differences among models that cluster at the ceiling of raw safety metrics. Second, we show that adaptive item selection, which dynamically chooses informative items for each model based on its responses, approximates full-benchmark rankings (Spearman's $ρ>$ 0.90), reducing evaluation cost by at least 80% on every benchmark where this threshold is attainable, and by up to 99.9%, achieved on AIR-Bench 2024. Third, we introduce a practical procedure for extracting a fixed, informative subset of items reusable across models, a static alternative to adaptive selection with savings of 80--99.8% across benchmarks. Together, these results establish that psychometric methods enable benchmark-aware reductions in evaluation costs across the safety evaluation pipeline.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "e0de7d48e6a8091bf73c3b8bdfcb9f90875e32625d83b3cae7df0d5c042e70c3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "IRT 기반 안전성 벤치마크 평가 방법 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "IRT 기반 안전 벤치마크 효율화 및 재사용 가능 항목 집합 제안"
+        }
+      ]
+    },
+    "2608.00008": {
+      "arxiv_id": "2608.00008",
+      "paper_title": "Energy Efficiency of Locally Deployed LLMs: A Preliminary Quantitative GPU Power Benchmark on Consumer Hardware",
+      "abstract": "The local deployment of large language models (LLMs) is gaining traction due to privacy concerns and the desire for on-premise inference. However, the energy costs on consumer hardware remain poorly characterized, as most benchmarks focus solely on accuracy. This paper presents a reproducible, hardware-level energy benchmark of 18 open-source LLMs (0.5B to 7B parameters) executed on a single consumer GPU (RTX 4060ti 16GB). Using the Ollama inference engine, GPU power draw was sampled at 2hz via nvidia-smi across a fixed prompt set. We evaluate mean/peak power, total energy per prompt (J/prompt), energy per output token (J/tok), and throughput (tok/s). Our findings suggest that factors beyond raw parameter count, including model architecture and quantization strategy, drive energy efficiency. Specifically, qwen2.5:0.5b and tinyllama:1.1b achieve the lowest energy cost (0.2747 J/tok and 0.3234 J/tok) and the highest throughput (>325 tok/s). In contrast, the 7B-Mistral model consumes up to 8.6x more energy per token than the most efficient model. Notably, qwen3.5:0.8b(on) exhibits anomalously high per-prompt energy due to extended internal reasoning, highlighting the need to distinguish between token generation modes in efficiency metrics.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "436aa110c62018bcb4ff18aa5afa4a9be8875392e27a34d19ecf418002eee961",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "소비자 GPU LLM 에너지 효율 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "GPU 전력 소비 측정 벤치마크로 언어능력 평가 아님"
+        }
+      ]
+    },
+    "2609.21663": {
+      "arxiv_id": "2609.21663",
+      "paper_title": "Rethinking Human-Aligned Evaluation: An Analysis of Semantic Metrics Beyond WER",
+      "abstract": "Word Error Rate (WER), the most commonly used metric for Automatic Speech Recognition (ASR), treats every lexical deviation from the reference as equally costly, regardless of whether it changes meaning. This raises the question: does WER actually track how humans judge ASR transcript quality? We introduce HATS-en, an English dataset for human-centered ASR evaluation. Using this dataset, we benchmark lexical metrics against several configurations of BERTScore and SemDist, varying the language model, layer, and pooling strategy. We find that WER agrees least with human judgment among all metrics tested, that the best-performing SemDist configurations achieve the highest overall agreement, ahead of CER and BERTScore, and that no single model is best across settings. CER, despite its simplicity and low cost, remains remarkably close to these best configurations. In line with prior recommendations, our results support shifting ASR evaluation toward CER both for English and for morphosyllabic writing systems as it is a more interpretable and low-cost metric for what evaluation should actually capture, and using SemDist as a complementary evaluation.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "bf42cbbbc41de23e700b25bd7545542f5c90c0c4fc9a70b840a8fcb0042bdb84",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "ASR 평가 지표 인간 정렬 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "ASR 평가용 영어 HATS-en 데이터셋과 의미 기반 메트릭 벤치마킹"
+        }
+      ]
+    },
+    "2609.30928": {
+      "arxiv_id": "2609.30928",
+      "paper_title": "UltraG-Bench: A Multi-task Benchmark for assessing Large Vision-Language Models on Pixel-level Evidence Grounding in Ultrasound",
+      "abstract": "Ultrasound is one of the most widely used medical imaging modalities, and recent large vision-language models(VLMs) have shown increasing capabilities in ultrasound image understanding. However, these models fail to provide pixel-level visual evidence aligned with their semantic predictions, and their fine-grained grounding capability in ultrasound remains largely unclear. We introduce UltraG-Bench, a large-scale multi-task benchmark for evaluating pixel-level evidence grounding in ultrasound. UltraG-Bench is built by annotating 40 public ultrasound segmentation datasets spanning 13 anatomical categories, and comprises three progressive tasks: instruction-guided segmentation, evidence-grounded VQA, and evidence-grounded report generation, with 331125, 666779, and 138832 annotations, respectively. Comprehensive evaluation of 14 state-of-the-art models reveals a substantial gap between semantic understanding and fine-grained pixel-level localization. We further propose UltraG-Agent, which combines the semantic reasoning capabilities of a VLM with the ultrasound-specific segmentation capability of UltraSAM3. Experiments show that UltraG-Agent substantially improves both semantic prediction and pixel-level visual grounding. Our dataset and code are available at https://github.com/zhuqh19/UltraG-Bench.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "3a4eb15421ed63c974b499e37827e65d7c448d6f357385c30df7e4f3a72a12b4",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "초음파 VLM 픽셀 근거 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "초음파 픽셀 근거 그라운딩 평가용 대규모 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.30952": {
+      "arxiv_id": "2609.30952",
+      "paper_title": "MVVBench: Benchmarking 4D Reasoning in Vision-Language Models",
+      "abstract": "Multi-view video understanding requires integrating spatial and temporal evidence across multiple, often non-overlapping camera streams: tracking entities as they transition between viewpoints, aligning events across time, and reasoning about latent 4D continuity rather than any single visible frame. We introduce MVVBench, a benchmark for multi-view video reasoning built from real world multi camera datasets. Questions are curated to be monocular-ambiguous along both the view and the temporal axis: each question is unanswerable from any single view in the designated input set, and the majority are further unanswerable from any single moment. Each question becomes uniquely solvable only by jointly reasoning across views and across time. MVVBench spans diverse dynamic scenes and probes six capabilities: implicit/explicit attribute identification, implicit/explicit relative distance, relative camera pose, and compositional counting, with human-authored QA and rigorous verification. Beyond benchmarking, we provide an extensive analysis of when and why current vision language models succeed or fail, characterizing errors due to temporal mis-localization, cross-view identity breaks, and brittle multi-hop reasoning. We then study inference-time elicitation strategies that unlock latent multi-view competence---task-specific chain-of-thought scaffolds and structured cross-view evidence aggregation---yielding substantial gains without retraining. Finally, we present preliminary evidence that reinforcement learning with verifiable rewards can elicit some latent multi-view competence in the base model, pointing to training-time approaches as a promising direction for future work. Together, MVVBench offers a rigorous evaluation of 4D multi-view reasoning and a foundation for future progress toward reliable embodied perception.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "e986bd38409c2d7a9b2dcdd857fe245799a842e9da626ab5dba4b2833f7a3a9f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다중 시점 4D 추론 VLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중뷰 영상 4D 추론 평가 벤치마크 MVVBench 제안"
+        }
+      ]
+    },
+    "2609.30981": {
+      "arxiv_id": "2609.30981",
+      "paper_title": "STORM-Bench: Evaluating Online Video QA under Evolving and Incomplete Evidence",
+      "abstract": "Reliable online video question answering requires tracking state transitions while selectively abstaining when visual evidence is insufficient. Existing benchmarks focus on static recognition or long-range retrieval, rarely evaluating these coupled capabilities under evolving and incomplete evidence. We present STORM-Bench, comprising 5,736 questions across 630 compact, change-dense episodes spanning five egocentric domains (STORM-Real) and two controlled simulation subsets (STORM-Sim) at 1 FPS. Questions are stratified by a proxy for accumulated change intensity (Low, Medium, High) and query-time answerability (Known, Uncertain). To measure reliability, we introduce STORM-BR, a harmonic metric over joint answer-status correctness that exposes abstention failures masked by aggregate accuracy, alongside STORM-BR-ATTR for uncertainty attribution. Across 14 video LLMs, online accuracy peaks at 60.3\\% (mean 51.7\\%), whereas STORM-BR ranges from 5.7\\% to 35.6\\% (mean 18.8\\%), driven by pervasive overconfidence on uncertain queries. STORM-Bench shows that task accuracy masks these gaps in epistemic reliability and state tracking. Benchmark and code are available at https://github.com/siruzhong/STORM-Bench.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "77ffbc22f0a70efae05b1645a4cccfc4c07c438807417ec09a38656ccb11e684",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "온라인 비디오 QA 불확실성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "온라인 비디오 QA 신뢰성 평가 벤치마크 STORM-Bench 제안"
+        }
+      ]
+    },
+    "2609.31814": {
+      "arxiv_id": "2609.31814",
+      "paper_title": "DriveHierarchy: A Benchmark for Diagnosing VLM Driving Capabilities from Open-Loop Understanding to Closed-Loop Execution",
+      "abstract": "Evaluating VLM-based autonomous driving remains difficult because driving competence is composite, where a capable system must ground traffic participants and hazards, integrate context across views and time, reason about future evolution, and act appropriately under closed-loop interaction. Existing benchmarks usually assess either open-loop understanding or closed-loop driving but provide limited structure for explaining how these abilities are organized, how they relate, and how they may inform model diagnosis and improvement. We present \\textsc{DriveHierarchy}, a hierarchical benchmark that organizes VLM-based autonomous driving into four ranks, spanning perceptual grounding, contextual memory, mental reasoning, and closed-loop execution. To instantiate this hierarchy, we integrate multiple open-source autonomous-driving datasets into a unified open-loop benchmark with 76,798 question-answer pairs over 84,279 frames and develop a closed-loop simulation platform with interactive scenario construction on a real-world road network, from which 100 driving scenarios are curated for embodied evaluation. Experiments on 15 VLMs show that \\textsc{DriveHierarchy} captures structured but non-redundant capability variation, relates open-loop understanding to closed-loop driving, and provides a practical basis for diagnosis and benchmark-guided optimization. \\textsc{DriveHierarchy} therefore serves as a unified framework for evaluating and improving VLM-based autonomous driving systems. An anonymized project has been released on https://github.com/PerfectXu88/DriveHierarchy",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "417cec69125855f73e26cfd914cda22c8620589a9576dc69c6a8482b825b0a49",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM 자율주행 계층적 진단 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "VLM 자율주행 계층적 평가 벤치마크 DriveHierarchy 제안"
+        }
+      ]
+    },
+    "2609.31390": {
+      "arxiv_id": "2609.31390",
+      "paper_title": "AlphaOpsBench: Benchmarking End-to-End Alpha Strategy Operationalization in Prediction Markets",
+      "abstract": "Large language models increasingly generate quantitative trading strategies, yet existing benchmarks assume standardized assets, numerical features, or directly compilable strategy representations---assumptions that prediction-market strategies violate, since a coarse idea may leave the traded outcome, causal information source, signal definition, threshold, sizing, order policy, exit, and settlement behavior unspecified. We introduce \\textsc{AlphaOpsBench}, which evaluates end-to-end operationalization from source-grounded economic hypotheses to auditable executable programs over 581 source-preserving strategy records and a lifecycle-scale Polymarket dataset with 1.28 million binary markets, 183.6 million cleaned executions, settlement evidence, and limit-order-book history, comparing Direct generation against a Staged design-then-code protocol. In a corrected independent-generation study over 36 controlled tasks and 24 preregistered real strategies, strict end-to-end validity remains rare: Direct and Staged obtain 35/180 and 20/180 canonical passes on the controlled cohort and no confirmed pass on the real cohort, and repeated generations vary substantially in model-owned economic choices. By contrast, 775,725 of 783,655 scheduled historical replays complete, showing that replayability is a far weaker property than source-faithful operationalization. Financial outcomes depend on the declared execution model and available historical evidence, and fee and liquidity experiments show that execution costs alter subsequent trading paths rather than acting only as ex-post deductions. \\textsc{AlphaOpsBench} thus separates strategy fidelity, behavioral validity, historical executability, and financial performance in an evidence-aware benchmark for LLM-based quantitative research in prediction markets.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "5070c043018ed562bc0127c06c66fde1b7547f67875b2f61ecc3c036666f4216",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "예측시장 알파 전략 운영화 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "예측시장 알파 전략 운용화 평가 벤치마크 AlphaOpsBench 제안"
+        }
+      ]
+    },
+    "2609.31468": {
+      "arxiv_id": "2609.31468",
+      "paper_title": "PriceBench: A Diagnostic Benchmark for Price, Quality, and Brand Preferences in LLM Booking Agents",
+      "abstract": "LLMs increasingly act as purchasing agents, which makes the LLM, not the user, the one choosing among the options that satisfy a request; its preferences quietly fix what gets bought and what it costs. Hotel booking is a clean instance: a high-volume choice settled on a few comparable attributes, where the pick reveals those preferences. We introduce PriceBench, a diagnostic benchmark that recovers an LLM's price, quality, and brand preferences from its booking choices with a logit choice model, applied to 28 LLMs from 8 providers on 3,600 hotel tasks from 179 real New York City properties. We find that capability is associated with how consistently an LLM chooses, not with what it chooses: more capable LLMs hold stronger, more consistent preferences, while weaker ones either lock onto one position, exploitable by whoever controls listing order, or choose almost indifferently. What those preferences favor varies sharply across providers and even within one family: price sensitivity spans more than an order of magnitude, and the price/quality trade-off moves mean booked nightly price from \\$247 to \\$393 on identical tasks. What an agent buys must therefore be measured per LLM, not inferred, and we release the tasks, code, and all 28 response sets.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "5cf0bf7b3ad7dcd61345ebcef10630b21580e6e5a3ec7d9c678e17f849e84ab6",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 호텔 예약 선호 진단 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 예약 에이전트 선호 진단 벤치마크 PriceBench 제안"
+        }
+      ]
+    },
+    "2609.31473": {
+      "arxiv_id": "2609.31473",
+      "paper_title": "Game Arena: Strategic LLM Evaluation in Competitive Environments",
+      "abstract": "We introduce Kaggle Game Arena, an open and ever-expanding platform to evaluate large language models (LLMs) through competitive games. Different from static benchmarks, game arena enables models to play head-to-head matchups in structured environments where the gameplay strength naturally increases as models evolve, preventing performance saturation. This technical report details the infrastructure behind Game Arena and describes the three pilot game environments: Chess, Poker, and Werewolf. These environments span perfect information, imperfect information, and multiplayer game settings, enabling a systematic study of models' strategic planning, adaptation, and robustness under uncertainty. For each game, we provide a detailed description of the environment, evaluation metrics, and results from running full competitions across models. Through robust infrastructure and large-scale ground-truth based evaluation, Game Arena ensures reproducibility, transparency and generalizability to new games and variants over time.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "8c9a6237e2b655a8effc289ce00e2d9aeea7f349e9bedbad122f902f1464a300",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 전략 게임 경쟁 평가 플랫폼"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "경쟁 게임 기반 LLM 전략 평가 플랫폼 Game Arena 제안"
+        }
+      ]
+    },
+    "2609.31507": {
+      "arxiv_id": "2609.31507",
+      "paper_title": "SatNav: A Scalable Benchmark for Long-Horizon UAV Vision-Language Navigation from Satellite Imagery",
+      "abstract": "Urban uncrewed aerial vehicle (UAV) vision-language navigation (VLN) requires agents to follow instructions across extended urban spaces, inherently demanding long-term memory and geospatial grounding. However, scaling existing benchmarks remains difficult because of their reliance on costly reconstructed 3D assets, limiting geographic diversity and episode scale. To address this, we introduce SatNav, a scalable, long-horizon UAV VLN benchmark built from high-resolution satellite imagery. SatNav targets city-level navigation missions and uses satellite crops as approximations of UAV nadir views for visual observations. Through an automated cue-to-episode pipeline, SatNav constructs 118K episodes from 59 scenes across 18 cities, with an average trajectory length of 379 m. To stress-test long-horizon memory and geospatial reasoning, SatNav defines three task families: Boundary, Landmark, and Route, targeting loop progress tracking, landmark-based spatial grounding, and route following with counting cues. Benchmarking classical VLN agents and recent agents based on large vision-language models (LVLMs) on SatNav shows that city-scale navigation remains challenging. We further introduce SwiftVLN, a modular framework with switchable memory components, and conduct systematic memory-design ablations. Finally, satellite-to-UAV transfer experiments show that satellite-trained navigation models can operate on real-flight UAV observations, showing the practical relevance of SatNav. Our project page: https://eku127.github.io/SatNav/",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "a1dfa4ba77ad656bb81e2bde8caf3c5f5be74962877999f3105bfddda2c30ec0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "UAV 비전언어 내비게이션 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "위성영상 기반 장기 UAV 비전언어 내비게이션 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.31823": {
+      "arxiv_id": "2609.31823",
+      "paper_title": "SynDORBench: Evaluating LVLM Perceptual Robustness Under Physically Constrained Visibility Conditions",
+      "abstract": "Large vision-language models (LVLMs) have demonstrated remarkable performance on multimodal reasoning benchmarks, yet their perceptual reliability under physically constrained imaging conditions remains poorly understood. Existing evaluations predominantly assume ideal visual inputs and therefore fail to characterize how camera distance, illumination, viewpoint, and pixel density fundamentally affect semantic recoverability. We introduce SynDORBench, the first physically grounded benchmark for evaluating LVLM perceptual robustness under DORI-calibrated conditions aligned with human visual capability standards. SynDORBench comprises over 54k question--answer pairs generated through a controllable synthetic pipeline that systematically varies viewing distance, lighting, camera geometry, and action pose according to physically interpretable pixel-density regimes. To support scalable low-visibility supervision, we further propose a discernibility annotation framework that propagates human perceptual labels using mask-conditioned statistical features and ensemble learning. We evaluate 16 open-source LVLMs, a commercial LVLM baseline, and YOLO11x across human-presence classification and action recognition tasks under progressively degraded visibility conditions. Our results reveal that perceptual failure in LVLMs is strongly governed by pixel density and physical imaging constraints rather than model scale alone. Surprisingly, several compact open-source LVLMs outperform larger commercial baselines and substantially exceed YOLO11x robustness under long-range and low-light conditions. SynDORBench establishes a new benchmark paradigm for physically grounded multimodal evaluation, enabling systematic analysis of LVLM reliability under real-world perceptual constraints and direct comparison against human visibility thresholds.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "6d6564cd6bff6789c3ef4dbd2dca210014f237587d20344df8aa6d6242d5b8bc",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LVLM 지각 견고성 물리 기반 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LVLM 지각 강건성 평가용 SynDORBench 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.31590": {
+      "arxiv_id": "2609.31590",
+      "paper_title": "AgentWorld: Benchmarking Long-Horizon Collaboration of Multi-agent LLMs",
+      "abstract": "Existing multi-agent benchmarks primarily test in competitive settings, short-horizon interactions under 20 steps, or simply aggregate individual performance, failing to isolate and highlight genuine collaboration capabilities of LLM-based agents. We introduce AgentWorld, a benchmark of 100 human-annotated tasks (with 100 augmented variants) for evaluating long-horizon, multi-agent collaboration. Tasks span 50+ interaction rounds across a rich MMORPG sandbox and require 3-20 agents with asymmetric roles and abilities to coordinate through communication, joint planning, and resource sharing under a blackbox setting where each agent acts independently without access to others' internal states. To quantify collaboration effectiveness in addition to conventional binary task success, we propose Causal Collaboration Effectiveness (CCE), a graph-based metric that traces causal dependencies between agent actions and measures what fraction of a team's effort actually contributed to the outcome. Experiments with Gemini 3 Flash, Claude Haiku 4.5, GPT-5 Mini, and DeepSeek R1-70B show that even the best model achieves only 52.0% task success, with systematic failure modes including communication breakdowns, role confusion, and inability to maintain shared plans across rounds. AgentWorld is fully open-source.",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "ac8da41943c0b179b53890a0eda7f55128ebcf9e3705e05821a1ff5ac778fc0d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다중 에이전트 장기 협업 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중 에이전트 장기 협업 평가 벤치마크 AgentWorld 제안"
+        }
+      ]
+    },
+    "2609.31877": {
+      "arxiv_id": "2609.31877",
+      "paper_title": "A Large-Scale Benchmark and Risk Assessment of Traffic Analysis Attacks on Cloud LLM Services",
+      "abstract": "Cloud-based Large language model (LLM) services create a network-level traffic side channel that can expose model, prompt, and task behavior despite encryption. From packet sizes, directions, timing, and burst structure alone, a passive local observer can infer the serving model, the user's prompt category, and the task executed by a collaborative multi-agent system. Yet current evidence is fragmented across separate datasets and settings, limiting reproducibility and comparison. We present, to our knowledge, the first unified measurement study and public benchmark of encrypted LLM traffic across both user--LLM and multi-agent executions. The large-scale benchmark contains 60,000 user--LLM interactions across 10 models and 6 prompt categories, plus 2,838 multi-agent executions covering 10 task categories and two coordination topologies. Using only encrypted packet metadata, we assess the risk of traffic analysis attack by characterizing traffic signatures, identifying the features most associated with leakage, and testing robustness under prompt reformulation, decoding-temperature changes, larger candidate model sets, and partial traffic observation. Model fingerprinting achieves 97.7\\% balanced accuracy, prompt-category fingerprinting reaches 76.7\\% mean accuracy, and multi-agent task fingerprinting achieves up to 90.7\\% accuracy. Prompt reformulation weakens but does not remove model-specific leakage, and task fingerprints remain detectable even from a single agent's traffic.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "7a4ae3356262cf5620d21d9367c3dd9e27f5e7f34e6137473fbba34227627666",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "클라우드 LLM 트래픽 분석 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "암호화 LLM 트래픽 분석 공격 대규모 공개 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.31906": {
+      "arxiv_id": "2609.31906",
+      "paper_title": "EmailBench: A Benchmark for Evaluating LLM Agents on Enterprise Email and Productivity Tasks",
+      "abstract": "Enterprise email agents must combine information retrieval, structured state changes, temporal reasoning, and multi-step coordination. Recent agent benchmarks include productivity tasks, but few center on typed email workflows in a self-contained environment. We introduce EmailBench, a benchmark of 206 email and productivity scenarios across 16 task categories. The benchmark couples a typed email API specification with provider-neutral naming, a deterministic synthetic Enron-inspired corpus, and a scenario suite whose topic selection was informed by aggregate task-intent telemetry from an interactive prototype. Its hybrid evaluation protocol combines 258 executable static assertions with 211 LLM rubrics. We evaluate eight LM configurations on a fixed single-user corpus. The best-performing configuration passes only 33.5% of scenarios despite 99.7% of its tool calls completing without an observed API failure, with pass rates varying substantially across task categories. This gap shows that valid tool execution is not equivalent to task completion. EmailBench provides a self-contained environment for end-to-end email-agent evaluation, with broader tool coverage, multi-persona testing, and repeated-run evaluation as future work areas.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "627e8071fe76c862883bdd1f20fcf86d0c435d1f53e7f489af34aea9c2d026eb",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "기업 이메일 생산성 LLM 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "기업 이메일 에이전트 평가 벤치마크 EmailBench 제안"
+        }
+      ]
+    },
+    "2609.31967": {
+      "arxiv_id": "2609.31967",
+      "paper_title": "IndicFDB: Benchmarking Full-Duplex Voice Agents across Indian Languages",
+      "abstract": "Full-duplex voice agents must handle pauses, take turns, backchannel, and respond to user interruptions in real time. Full-Duplex-Bench evaluates these behaviors, but its English-only corpus and reliance on word-timestamped ASR and an English-prompted LLM judge make it difficult to extend to Indian languages. We introduce IndicFDB, which extends it to ten languages spoken in India with 12,350 samples, nearly 17 times as many as the original. We address three challenges: finding conversational events in multilingual speech, evaluating their timing without reliable word-level alignment, and judging responses across languages. We mine pause handling, turn taking, and backchanneling samples from roughly 50,000 hours of channel-separated conversations using voice activity detection (VAD), and construct human-validated synthetic user interruption samples. Language-independent VAD heuristics evaluate timing, while an open-weight transcription and translation pipeline converts responses to English for LLM ratings of relevance and quality. Across seven voice agents, commercial APIs show unexpectedly consistent behavior across languages but are either fast or robust to pauses, never both, while monolingual open full-duplex models expose further tradeoffs among backchanneling, response quality, and latency.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "a2fe868813a296b74db56a94263aba81b775dcbb5830d79c8c4b63952cc1b3d5",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "인도 언어 전이중 음성 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "인도 10개 언어 전이중 음성 에이전트 벤치마크 IndicFDB 제안"
+        }
+      ]
+    },
+    "2609.32020": {
+      "arxiv_id": "2609.32020",
+      "paper_title": "A Benchmark for LLM's Understanding of Middle School and High School Science Topics",
+      "abstract": "Large language models (LLMs) are increasingly integrated into educational settings, yet educators lack robust, standards-aligned tools to evaluate their effectiveness in K-12 science contexts. Existing benchmarks predominantly assess general language or advanced scientific reasoning, leaving a critical gap in understanding LLMs' performance on content directly relevant to secondary science curricula. To address this gap, we developed a comprehensive NGSS-aligned benchmark for both middle and high school science using a rigorous synthetic data pipeline, multi-judge validation, and item-level psychometric analysis. Nine open-weight LLMs were systematically evaluated using this benchmark, indicating that several smaller, locally deployable models achieved high accuracy across diverse science domains and question types. Our findings indicate that model size did not consistently predict performance, emphasizing the importance of intentional model selection for educational deployment. We then incorporated a human reviewer into the loop, reviewing the items generated by the LLMs for alignment with NGSS standards. The human review indicated that synthetically generated items were not in perfect alignment with the NGSS standards, indicating the benefits of human-in-the-loop item development, the need to explore the intersection of content and pedagogical knowledge, and the need to extend benchmarks to evaluate LLMs' capacity for interactive, evidence-based feedback in educational scenarios.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "653ba07816b8bf459808bd8c2c5971ad6d7c54318f64d803638c7ce77042d269",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "중고등 과학 주제 LLM 이해 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "K-12 과학 이해 평가용 NGSS 정렬 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.32082": {
+      "arxiv_id": "2609.32082",
+      "paper_title": "mu-bench: A Multilingual Utterance Transcription Benchmark",
+      "abstract": "Voice agents depend on accurate automatic speech recognition (ASR) to act on what callers say, yet ASR is evaluated on read, English-centric speech with word error rate (WER), which penalizes surface rather than semantic differences. We introduce mu-bench, a dataset of 4,270 caller utterances from 250 phone calls to an AI banking agent in English, Spanish, Turkish, Vietnamese, and Mandarin, centered on form-field inputs such as names, email addresses, and confirmation codes. We release Utterance Error Rate (UER), an LLM judge of whether a transcript preserves meaning, calibrated against human raters, together with an LLM normalizer that makes WER comparable across providers' output formats. On 1,847 human-rated transcripts, UER agrees with annotators at $κ$ = 0.78, versus 0.53 for exact-match WER on normalized text. We rank six commercial providers on a public leaderboard; the best reaches 11.9% UER, and Mandarin is hardest for all six.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "dced348053528cec63f2a41bcb79f22b9bfc4a645d59496a34373efe40501be7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다국어 발화 전사 ASR 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다국어 발화 전사 평가 벤치마크 mu-bench 및 UER 지표 제안"
+        }
+      ]
+    },
+    "2505.17482": {
+      "arxiv_id": "2505.17482",
+      "paper_title": "From Reasoning to Generalization: Knowledge-Augmented LLMs for ARC Benchmark",
+      "abstract": "Recent reasoning-oriented LLMs have demonstrated strong performance on challenging tasks such as mathematics and science examinations. However, core cognitive faculties of human intelligence, such as abstract reasoning and generalization, remain underexplored. To address this, we evaluate recent reasoning-oriented LLMs on the Abstraction and Reasoning Corpus (ARC) benchmark, which explicitly demands both faculties. We formulate ARC as a program synthesis task and propose nine candidate solvers. Experimental results show that repeated-sampling planning-aided code generation (RSPC) achieves the highest test accuracy and demonstrates consistent generalization across most LLMs. To further improve performance, we introduce an ARC solver, Knowledge Augmentation for Abstract Reasoning (KAAR), which encodes core knowledge priors within an ontology that classifies priors into three hierarchical levels based on their dependencies. KAAR progressively expands LLM reasoning capacity by gradually augmenting priors at each level, and invokes RSPC to generate candidate solutions after each augmentation stage. This stage-wise reasoning reduces interference from irrelevant priors and improves LLM performance. Empirical results show that KAAR maintains strong generalization and consistently outperforms non-augmented RSPC across all evaluated LLMs, achieving around 5% absolute gains and up to 64.52% relative improvement. Despite these achievements, ARC remains a challenging benchmark for reasoning-oriented LLMs, highlighting future avenues of progress in LLMs. Our code is available at https://github.com/you68681/kaar.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:45:22Z",
+      "input_sha256": "9545ede0abffb8620885b102cd1c71fc04dec024d5f4746eb1648aa0c1f1eaf2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "ARC 추상 추론 LLM 지식 증강 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "기존 ARC에서 솔버 성능 보고, 재사용 평가자료 신규 제안 아님"
         }
       ]
     }
