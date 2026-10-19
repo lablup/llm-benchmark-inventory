@@ -100,7 +100,7 @@
         "2610.23230"
       ],
       "spent_usd": 0.0,
-      "blocked": true,
+      "blocked": false,
       "abstract_attempted": [
         "2609.21763",
         "2609.21879",
@@ -823,6 +823,226 @@
           "decision": "uncertain",
           "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
           "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.24210": {
+      "arxiv_id": "2609.24210",
+      "paper_title": "ChartJudgeBench: Evaluating LMM Judges for Chart-to-Code Generation",
+      "abstract": "Building strong chart-to-code systems increasingly relies on reinforcement learning, whose effectiveness depends critically on the quality of the reward signal. Large Multimodal Models (LMMs) play a natural critical role in jointly assessing chart visual appearance and task requirements. They are therefore increasingly used as visual critics and reward models, yet their reliability as judges remains largely unexplored. To this end, we introduce ChartJudgeBench, a diagnostic vision-language benchmark for assessing LMM judges in chart-to-code workflows. It includes 1,003 Chart Perception Alignment (CPA) instances for pairwise chart comparison and 650 Chart Reasoning Judgment (CRJ) instances for binary Accept/Reject verification in Chart Reproduction and Chart Editing. Together, these tasks emulate the core judging decisions required in agentic refinement and RL-based chart optimization. Our evaluation of strong LMMs reveals four systematic limitations: (i) positional bias in pairwise comparison, (ii) a strong tendency to overpredict Accept, (iii) difficulty in matching visual styles and aesthetics, and (iv) an unexpected leniency bias in RL-trained models. These findings show that current LMM judges require explicit reliability validation before being used as critics or reward models in chart-to-code optimization. The code and data are available on ChartJudgeBench.",
+      "paper_updated": "2026-09-21T07:29:46Z",
+      "created_at": "2026-10-19T05:38:25Z",
+      "input_sha256": "9673d2bc03cb7ab9cd27c26c8a1a0d1e91f9d891e51f32de2f6761a3dd1b9388",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "차트-코드 생성용 LMM 판정 벤치마크를 새로 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "차트-코드 판별용 LMM 벤치마크·데이터 공개"
+        }
+      ]
+    },
+    "2609.24259": {
+      "arxiv_id": "2609.24259",
+      "paper_title": "MemCalib: Benchmarking and Optimizing Memory Use in LLM Agents",
+      "abstract": "The effectiveness of agent memory ultimately depends on whether the underlying LLM gives each memory in context an appropriate degree of influence over its response. Yet this capability has remained largely overlooked. To assess this capability, we introduce MemCalib, a benchmark grounded in realistic memory-system scenarios for evaluating memory use and advancing optimization algorithms. Results on the MemCalib test set reveal that frontier open- and closed-source models struggle to use memory appropriately. They frequently over-use or under-use memory rather than matching each proposition's actual use to its target level, leading to biased, low-quality responses. Experiments with common post-training algorithms, including group relative policy optimization and on-policy self-distillation, further reveal a clear directional skew: trained models improve in one direction while deteriorating in the other. We therefore propose MemCalib-RL, an ordered bidirectional counterfactual credit-assignment algorithm that separates over- and under-use signals and localizes their credit to response tokens through exact atom ablation. Results across model families and scales (Qwen3-8B, Ministral-3-8B-Instruct, and Qwen3.5-35B-A3B) show that MemCalib-RL achieves the best overall performance while better balancing over-use and under-use, with gains generalizing beyond MemCalib in external benchmark evaluation. Further experiments support its design choices and robustness and provide insight into its training dynamics.",
+      "paper_updated": "2026-10-08T09:09:43Z",
+      "created_at": "2026-10-19T05:38:25Z",
+      "input_sha256": "b9a7f2b340e7e856b9edb35800a02108c1884435808d5c1ecc2438d0a8c4b7a0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 메모리 활용 평가 벤치마크와 최적화 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 메모리 사용 평가 벤치마크 및 최적화 제안"
+        }
+      ]
+    },
+    "2609.25173": {
+      "arxiv_id": "2609.25173",
+      "paper_title": "Attack Success Rate Is Not a Number: On Measurement Validity in Agentic AI Security Evaluation",
+      "abstract": "Attack success rate (ASR) is the headline metric in nearly every published evaluation of attacks on, and defenses for, LLM agents. We argue that ASR as currently used is not a single quantity but a family of metrics parameterized by six design choices that papers seldom specify and never hold constant across the literature. We support this with two studies that require no proprietary access. First, a full-text meta-analysis of 259 agentic-security papers posted to arXiv between February 2025 and September 2026 finds that most report neither a variance estimate nor repeated runs for their headline attack metric: 58% (95% CI 44-71) in a hand-coded random sample of 50, 65.3% by automated coding of all 259. Only 30.9% disclose enough about decoding to establish whether their evaluation was even stochastic, and of the 64 papers we confirm use an LLM judge, 29.7% report any agreement check against human labels. Second, an analytical study shows that these omissions are not cosmetic: on a 100-instance benchmark, the minimum difference in ASR detectable at conventional power is 18.2 percentage points, and two defenses whose true ASRs differ by 5 points are ranked in the wrong order by a single-run evaluation roughly 21% of the time. Because several of the six axes shift ASR in a system-dependent way, the resulting incomparability is not a constant offset that cancels in comparison. We conclude that cross-paper ASR comparison is currently unsupported, and propose a ten-item reporting checklist targeted at each failure we measure. Our aim is not to dispute any individual result but to supply the shared measurement contract the field has so far done without.",
+      "paper_updated": "2026-09-21T14:16:59Z",
+      "created_at": "2026-10-19T05:38:25Z",
+      "input_sha256": "bba610a0bcdb29fd8eb33370a3ff3f8206f10e09519256f196a8c5a867551ebd",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "uncertain",
+          "reason": "ASR 측정 타당성 분석과 보고 체크리스트 제안, 벤치마크성 불명확"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "보안 평가 측정 타당성 분석, 재사용 벤치마크 불명확"
+        }
+      ]
+    },
+    "2609.24662": {
+      "arxiv_id": "2609.24662",
+      "paper_title": "DUMA-Bench: A Dual-Control Multi-Agent Benchmark for Evaluating LLM Agent Security",
+      "abstract": "LLM-based agents increasingly operate in environments where they interact with users, tools, and external systems. Yet most security evaluations assume passive users and static control, ignoring the interactive dynamics that shape real agent behavior. We introduce \\textbf{DUMA-Bench}, a benchmark and evaluation protocol for measuring agent security under \\emph{dual-control} interaction, where both the agent and the user can influence the shared environment state. DUMA-Bench extends $τ^2$-bench ~\\cite{barres2025tau} with adversarial environments covering eight vulnerability classes, including RAG poisoning, cross-agent manipulation, and unsafe output handling. We evaluate \\textbf{14 models from five model families} (OpenAI, Anthropic, DeepSeek, Qwen, and Z.ai) across eight domains and multiple user-behavior regimes. Across our experiments, introducing dual-control interaction increases the attack success rate from \\textbf{26.9\\%} to \\textbf{41.1\\%}. These results show that agent security is not solely a property of the model but emerges from the interaction between the model, the user, and the environment. DUMA-Bench provides a missing evaluation layer for studying security in realistic agent deployments.",
+      "paper_updated": "2026-09-21T14:28:05Z",
+      "created_at": "2026-10-19T05:38:25Z",
+      "input_sha256": "fd40ff7ff5d9c55e3372cec0ad5293fdba51e9be54af2a46390528e6bd93eab9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 보안 평가용 이중제어 벤치마크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 보안 평가 벤치마크·프로토콜 제안"
+        }
+      ]
+    },
+    "2609.24677": {
+      "arxiv_id": "2609.24677",
+      "paper_title": "TimeLitmus: A Diagnostic Benchmark for Cross-Modal Understanding and Explanation Faithfulness in Event-Conditioned Time-Series Prediction",
+      "abstract": "Large language models (LLMs) are increasingly used to make predictions from numerical time-series histories and textual events. Yet accuracy alone cannot reveal whether correct answers reflect effective integration of the two inputs or instead arise from event polarity, unimodal priors, or superficial cues. Likewise, plausible explanations may rationalize predictions without faithfully reflecting the evidence that drives model behavior. We introduce TimeLitmus, a diagnostic benchmark for cross-modal understanding and explanation faithfulness in event-conditioned time-series prediction. TimeLitmus contains 4,856 evaluation records across Finance and Traffic, combining natural prediction with controlled counterfactual and contrastive interventions, explanation-targeted faithfulness tests, and systematic shortcut controls. Across ten representative LLMs, standard prediction accuracy substantially overstates reliable cross-modal understanding: Hard Paired Contrast (HPC) pair correctness peaks at only 19.2% in Finance and 11.7% in Traffic, and all ten models show lower-than-expected consistency on Finance series-side controls. Models often recognize scenario relations explicitly yet fail to apply them during independent prediction. Explanation faithfulness shows a similar gap: in Traffic, most models cite the manipulated temporal factor in over 90% of cases, while behavioral support remains below 22%. Human annotators outperform LLMs on matched controlled and hard-pair diagnostics, confirming that these distinctions are recoverable from the inputs. Natural-only adaptation yields selective gains in evidence selection and input sensitivity, but not consistent gains in controlled or hard-pair behavior. The benchmark, evaluation suite, and supervised adaptation data will be released publicly.",
+      "paper_updated": "2026-09-21T14:38:49Z",
+      "created_at": "2026-10-19T05:38:25Z",
+      "input_sha256": "5b121d3d6b65003bce92d8c1bb6c9d1333bbb75f16b0b52ecf92b87ab4e95da2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "시계열 예측 교차모달 이해 진단 벤치마크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "시계열 교차모달 진단 벤치마크·평가 스위트 공개"
+        }
+      ]
+    },
+    "2609.24928": {
+      "arxiv_id": "2609.24928",
+      "paper_title": "Trajectory-Aware Benchmark Subset Selection for Cost-Efficient Software Engineering Agent Regression Testing",
+      "abstract": "Autonomous software engineering agents (SWE-agents) automate coding tasks. Each agent update may require re-running the full benchmark to detect regressions and improvements, at a cost of hundreds of millions of LLM tokens per run, which makes evaluation a bottleneck. One solution is to evaluate only a subset of benchmark instances. Yet, simple approaches, such as random sampling or stratified random sampling based on past pass/fail outcomes, risk producing high variance and unrepresentative subsets. We turn to agent trajectories, the step-by-step record of the actions an agent took. We propose a trajectory-aware subset selection approach that replaces random sampling with deterministic selection based on trajectory embeddings. We first group test set instances by their test outcome in a recent full test run to preserve the historical pass/fail rate, then select the subset using the trajectory's embedding space. We evaluate 76 subset selection configurations, including random sampling, embedding-based selection, clustering-based selection, and hybrid shortlist-then-subsample strategies, across three regression scenarios: same-configuration reruns, model and configuration changes, and agent framework changes. Our best trajectory-aware method is the one selecting benchmark instances closest to the centroid of each outcome group in the embedding space. It achieves the lowest estimation error among all methods we evaluate. For instance, when evaluating a given agent version on a selected subset of 5% or 10% of the test instances, our approach reduces the average estimation error by 3--11% and the worst-case error by 4--11% relative to the typical draw and 38--46% relative to the 95th-percentile draw of the strongest baseline. Our results show that a 10% trajectory-aware subset keeps the median estimation error below 5% while cutting token cost by roughly 90%.",
+      "paper_updated": "2026-09-28T15:48:38Z",
+      "created_at": "2026-10-19T05:38:25Z",
+      "input_sha256": "6909e4fbfd138e2c99378e67889abe9e51a74831d51d00b9368cec36251302f0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "uncertain",
+          "reason": "SWE 에이전트 회귀 테스트용 부분집합 선택법, 벤치마크 신규성 불명확"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "벤치마크 부분집합 선택 기법 제안, 자체 평가자료 불명확"
+        }
+      ]
+    },
+    "2609.25192": {
+      "arxiv_id": "2609.25192",
+      "paper_title": "FinFIRST: Benchmarking Search Agents for Financial Information Retrieval, Sourcing and Traceability",
+      "abstract": "Financial search is a highly demanding task for LLM agents, requiring not only a correct final answer but also temporally valid information retrieval, authoritative source selection, entity and period alignment, unit and definition consistency, and verifiable evidence for all conclusions. Existing benchmarks predominantly evaluate only the final answer, making it difficult to localize errors or assess whether an answer is well-founded. To address this gap, we introduce FinFIRST (Financial Information Retrieval, Sourcing and Traceability), the first financial benchmark to jointly evaluate answers and supporting evidence through atomic rubrics. FinFIRST comprises 123 expert-authored tasks spanning a graduated difficulty spectrum, constructed from aggregate patterns of real-world financial scenarios through an 18-field taxonomy, a six-axis coverage blueprint, a registry of 138 financial sources, contributions from over 50 finance experts, and a six-stage quality-control pipeline. Each task is accompanied by an evidence-grounded reference package decomposed into atomic criteria across three dimensions: raw-information acquisition, source verification, and computation and answer formation. We evaluate 15 model configurations under a unified tool setting. Claude-Opus-5 achieves the highest atomic score of 87.59%, while GPT-5.6-Sol attains the highest strict pass rate of 71.54%. Computation and answer formation consistently lag behind raw-information acquisition across systems. FinFIRST retains final-answer correctness as the primary objective while making the supporting research process measurable, verifiable, and diagnosable.",
+      "paper_updated": "2026-09-21T17:28:08Z",
+      "created_at": "2026-10-19T05:38:25Z",
+      "input_sha256": "9162a0a5bc6823ea8d4c408d044f4e96bf627837fb47d4d41d7910dfcdbcc00f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "금융 정보검색 에이전트 평가 벤치마크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "금융 검색 에이전트용 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.24934": {
+      "arxiv_id": "2609.24934",
+      "paper_title": "Whose Facts Count? A Culturally Responsive Audit of LLM Evaluation Benchmarks",
+      "abstract": "LLM benchmarks function as evaluation instruments, informing decisions that affect education, labor, and public services worldwide. Drawing on Hood, Kirkhart, and Hopson's culturally responsive evaluation (CRE) frameworks, this paper applies a six-dimension CR rubric to audit OpenAI's SimpleQA (N = 4,326 items) and the LMSYS Chatbot Arena (N = 600 conversations). Every SimpleQA question requires English-language archival verification as its evidentiary basis. A single rater's preoccupation with Colombian founding dates accounts for 2.70% of items, inflating the appearance of Global South coverage. English-language prompts constitute 76.3% of Arena conversations, against an International Telecommunication Union (ITU)-estimated 25.9% share of global internet users. A 50-item counter-benchmark scored a mean CR deficit nearly three times lower than SimpleQA (Cohen's d = 1.01). The paper proposes a practical CR evaluation framework. These are structural validity failures, not incidental measurement problems, with direct consequences for communities whose knowledge traditions these instruments were not built to see.",
+      "paper_updated": "2026-09-21T17:29:39Z",
+      "created_at": "2026-10-19T05:38:25Z",
+      "input_sha256": "04cd7d4bfe98a580c1d303077e683e4f1c54520fd36644a6bf5e8e3ff9f93df2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "uncertain",
+          "reason": "기존 벤치마크 문화적 감사와 반벤치마크 제안, 재사용성 불명확"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "기존 벤치마크 감사·반(反)벤치마크 50개 항목, 재사용성 불명확"
+        }
+      ]
+    },
+    "2609.25237": {
+      "arxiv_id": "2609.25237",
+      "paper_title": "Trains but Doesn't Learn: A Post-Training Delivery Benchmark for LLM Agents as Forward-Deployed Engineers",
+      "abstract": "Post-training is becoming a service (PTaaS): a customer hands an operator data and a goal, and a forward-deployed engineer (FDE) returns a fine-tuned, evaluated, and deployed model under a budget, a human-approval gate, and reproducibility requirements. Seating an LLM agent in the FDE seat raises a question existing benchmarks cannot answer: not whether an agent can raise a metric, but whether it can be trusted to deliver. We answer it on a governed delivery plane, where an agent drives ten stages and an oracle scores each stage from platform-recorded facts. The central silent failure is the run that trains but does not learn (TBDL): loss falls, every signal stays green, and the delivered model is no better than the base. An operator-run acceptance gate catches every such run before payment, and a detector calibrated on known-corrupted runs flags severe corruption mid-run. We ran four frontier agents (Claude Opus 5, GPT-5.6-luna, Gemini 3.7 Flash, DeepSeek V4-Pro) end to end on metered L40S, A100, and H200 GPUs across 8B to 70B open bases, certifying every scenario before scoring. We also ran a human FDE arm under the same oracle and compare every agent against it.",
+      "paper_updated": "2026-09-21T18:01:24Z",
+      "created_at": "2026-10-19T05:38:25Z",
+      "input_sha256": "d96dc8c703bda136ec99203ec656020ad284361b586c39fca9e1c0acd34dd4ac",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 후속학습 납품 평가 벤치마크 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 포스트트레이닝 전달 평가 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.25298": {
+      "arxiv_id": "2609.25298",
+      "paper_title": "FineWeb-CLaR: Culture, Language, and Region Annotations for Benchmark-Aligned Corpus Auditing",
+      "abstract": "Cultural evaluation coverage and robustness in language models are difficult to diagnose because pretraining corpora and cultural benchmarks are rarely indexed with comparable metadata. Benchmarks increasingly target culturally situated phenomena at the level of languages, regions, and locale-specific practices, while web-scale corpora are usually organized only by language. A shared culture-language-region layer makes these resources comparable, enabling audits of whether a target cultural phenomenon is represented in pretraining data, evaluated by benchmarks or both. To this end, we introduce FineWeb-CLaR, a large-scale annotated dataset derived from FineWeb and FineWeb-2 that places web documents on a shared culture-language-region axis for corpus auditing and benchmark alignment. FineWeb-CLaR annotates the full 30.9B-document collection from FineWeb and FineWeb-2 with URL-derived region labels and cultural-topic provenance. Our region resolver assigns a non-empty region to 25.61% of documents (7.92B). For cultural-topic analysis, we induce locale-specific topics and project them onto the 14 leaves of the Cultural Taxonomy of Liu et al. (2025), producing Locale Topic Distributions (LTDs) for corpus-side comparison. We also annotate 277 cultural NLP benchmarks with the same taxonomy, language coverage, and region coverage. Together, these resources enable direct comparison between corpus-side pretraining evidence and benchmark-side evaluation coverage.",
+      "paper_updated": "2026-09-21T18:41:30Z",
+      "created_at": "2026-10-19T05:38:25Z",
+      "input_sha256": "3d80d506b8a41e319dedf04a1df8bc20c816a32369a65944b98b6a90316ce2b5",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "문화·언어·지역 주석 코퍼스 감사 데이터셋 제안"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "문화·언어·지역 주석 대규모 데이터셋 및 벤치마크 정렬"
         }
       ]
     }
