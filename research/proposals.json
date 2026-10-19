@@ -821,7 +821,27 @@
         "2610.14397",
         "2601.22725",
         "2602.05382",
-        "2605.05662"
+        "2605.05662",
+        "2606.14715",
+        "2607.22165",
+        "2607.26455",
+        "2608.11947",
+        "2609.34024",
+        "2610.00559",
+        "2610.06170",
+        "2610.07639",
+        "2610.15129",
+        "2610.14431",
+        "2610.14531",
+        "2610.14635",
+        "2610.14707",
+        "2610.14769",
+        "2610.14883",
+        "2610.15103",
+        "2610.15134",
+        "2610.15163",
+        "2610.15179",
+        "2610.15228"
       ]
     }
   },
@@ -16263,6 +16283,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "과학 문헌 데이터 큐레이션 벤치마크 및 에이전트 시스템 제안"
+        }
+      ]
+    },
+    "2610.12881": {
+      "arxiv_id": "2610.12881",
+      "paper_title": "Mind the Spatial Gap: A Benchmark for Geospatial Reasoning and Constrained Spatial Editing",
+      "abstract": "Understanding and manipulating spatial relations is fundamental to AI systems that reason about physical environments and construct grounded world models. However, existing evaluations of multimodal large language models (MLLMs) for spatial reasoning rely predominantly on static question-answering (QA) over small-scale or synthetic scenes, rarely probing whether models can modify spatial configurations while satisfying explicit geometric constraints. We introduce GeoSpatialBench, a benchmark designed to evaluate an escalating progression of spatial cognition, ranging from spatial relation understanding and geometric reasoning to constrained spatial editing. Grounded in real-world urban data across six geographically diverse cities, GeoSpatialBench evaluates a comprehensive taxonomy of 28 topological, directional, metric, and ordering relations across structured GeoJSON and map image modalities, with ground-truth references and constraints verified via GIS operations. Our empirical evaluation across frontier MLLMs uncovers a stark spatial gap: structured GeoJSON consistently outperforms map images, with multimodal combinations offering no reliable gain over GeoJSON alone, and while models show reasonable competence on qualitative topological and ordering, performance drops on quantitative metric relations. Crucially, editing performance on ordering relations declines relative to QA, and most failed edits violate at least one specified spatial constraint. These results highlight a gap between passively recognizing spatial relations and actively manipulating geometric configurations. GeoSpatialBench provides an open, rigorous diagnostic testbed to benchmark these spatial limitations, laying essential empirical groundwork for physically grounded world models and embodied spatial AI.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "39d58b4255c9d5f7c4dc2adc53f0f790fbe5b25baadccb63f5166f3578a9222d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "공간 추론 및 편집 평가 벤치마크로 관련성 높음"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "지리공간 추론·편집 평가 벤치마크 GeoSpatialBench 신규 제안"
+        }
+      ]
+    },
+    "2610.12920": {
+      "arxiv_id": "2610.12920",
+      "paper_title": "SCCGBench: Executability-Oriented Evaluation for Real-World Web Service-Call Code Generation",
+      "abstract": "LLM-generated service-call code is increasingly important for service computing, where developers rely on large language models (LLMs) to compose services and invoke third-party services. However, current approaches have not yet evaluated the invocation and execution of services in the actual code environment. To support execution-grounded evaluation, we present the Service-Call Code Generation Benchmark (SCCGBench), a benchmark of 3,135 traceable and decontamination-filtered RapidAPI call functions from real GitHub repositories. SCCGBench uses redacted-intent generation to reduce circular leakage and introduces Mock, Robust, ParamF1, and host-, endpoint-, method-, and parameter-level diagnostics. Mock denotes a virtual-execution hit that simultaneously matches the gold host, endpoint, and HTTP method, while Robust further requires status checking and exception handling. We evaluate six code LLMs and one non-neural retrieval baseline under intent-only, retrieval-augmented, and gold-documentation Oracle settings. Results show that models often generate syntactically correct or superficially similar HTTP-request code but achieve low Mock success in the intent-only setting; the strongest evaluated model obtains only 3.76% Mock. Under the gold-documentation Oracle settings (C3 and C5), Mock reaches 88.73%--90.52% for the open-source models evaluated in RQ2 and 76.47%--81.86% for DeepSeek-V4-Pro, whereas sparse and dense retrieval remain far below this oracle level. The findings indicate that service/API grounding is the main bottleneck: Mock is dominated by host, endpoint, and method alignment, while ParamF1 separately reveals parameter-alignment errors. SCCGBench provides an execution-grounded benchmark for Web service invocation, API recommendation, service-interface retrieval, endpoint grounding, and reliable service-call automation.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "8236727dde3e2183d2d91edc113dfad14cafcd54518848f7819fb63ade75b04e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "웹 서비스 호출 코드 생성 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "서비스 호출 코드 생성 실행 기반 벤치마크 SCCGBench 제안"
+        }
+      ]
+    },
+    "2610.12954": {
+      "arxiv_id": "2610.12954",
+      "paper_title": "MathVis: Can AI Reason through Drawing? A Benchmark for Mathematical Figure Generation",
+      "abstract": "This paper introduces MathVis, a benchmark designed to evaluate LLMs' ability to visualize frontier mathematical problems and perform diagram-assisted reasoning. The benchmark consists of 512 tasks, each comprising a mathematical statement, a reference diagram, executable TikZ or SVG code, a Gold Intermediate Representation (IR), atomic rubrics, and error codes. Through rigorous evaluation, GPT-6-Astra, Claude Fable 5, and Gemini 3.1 Pro Preview achieve pass@1 scores of 31.25%, 26.56%, and 22.85%, respectively. We found that although the tasks require visualization, LLMs produce outputs dominated by formal languages, symbols, and graphics programs, rather than explicit diagram-mediated reasoning. Furthermore, while the solutions generated by LLMs may contain all the necessary elements, they are often visually confusing to humans. Ultimately, this benchmark aims to visualize mathematical problems and promote research on enabling LLMs to simplify their reasoning via visual diagrams.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "c652cdc371e1529d48dc27cdc3f2b9592812deaaecbf3c19a010c9d5a20d37ce",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "수학 도형 생성 및 추론 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "수학 도식 생성 평가 벤치마크 MathVis 신규 제안"
+        }
+      ]
+    },
+    "2610.12961": {
+      "arxiv_id": "2610.12961",
+      "paper_title": "MVGraph: Benchmarking LVLMs on Evidence Composition across Multi-View Visual Graph",
+      "abstract": "We introduce MVGraph, a benchmark for evaluating large vision-language models (LVLMs) on multi-graph reasoning where the evidence required by a query is distributed across multiple interrelated visual graph views. Although such evidence commonly resides in source-specific graphs, temporal snapshots, or local observations, existing graph reasoning benchmarks remain confined to a single self-contained structure, assessing only graph perception and reasoning while leaving the alignment and composition of evidence across views underexplored. MVGraph comprises 8k instances spanning 8 \\textit{graph-theoretic} tasks, abstracted from two multi-graph scenarios (partial and temporal graph views). Each problem is programmatically constructed and verified to be unsolvable from a single view. Beyond end-to-end evaluation, we decompose multi-graph reasoning into four complementary capabilities---Perception, Alignment, Composition, and Reasoning---and design 29 diagnostic tasks with 64k instances to probe each one, along with golden intermediate representations for evaluating the intermediate process. Across 15 LVLMs, we reveal the difficulty of multi-graph reasoning and identify cross-view edge alignment and relation-level composition as prominent bottlenecks through stage-oriented diagnostics. Meanwhile, temporal constraints and increasing view counts expose further capability boundaries. Code and data are available at https://github.com/AAAndy-Zhu/MVGraph.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "755403e7679526d20ba3f635c5e9e64071d408830ad1d077cd4d8e2b0b131107",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다중 시각 그래프 추론 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중 뷰 그래프 추론 벤치마크 MVGraph 및 진단 세트 제안"
+        }
+      ]
+    },
+    "2610.12975": {
+      "arxiv_id": "2610.12975",
+      "paper_title": "SmartSalesBench: A Resistance-Aware Multi-Turn Benchmark for Evaluating LLM Sales Agents",
+      "abstract": "We present SmartSalesBench, the first multi-turn conversational benchmark explicitly designed to evaluate large language model (LLM) sales agents against psychologically grounded, resistant buyer personas. Existing task-oriented dialogue benchmarks assume cooperative users and measure task completion; SmartSalesBench inverts this assumption, placing agents against personas programmed to resist and challenge across conversations of up to twenty turns. The benchmark includes five agent profiles, twelve buyer personas, fifteen smartphone products across six price tiers, and four controlled experiments with 3 iterations totaling 13,680 sessions. Both sales-agent and buyer persona generations are grounded through retrieval-augmented generation (RAG). We introduce nine evaluation metrics grouped into three tiers: primary outcome metrics (CR, BRS, RIR), secondary quality metrics (SMS, PFS, ETI), and exploratory metrics planned for future reporting (ITS, ARI, SPI). Our evaluation combines automated LLM-as-judge scoring with internal human assessment (n = 50, \\k{appa} = 0.71, Pearson r = 0.81 with BRS).",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "fa42c4d9605a02f3c16d362f0e7782a41a45fca47b7d3fe9181fdb43e897c312",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 판매 에이전트 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "영업 에이전트 다중 턴 평가 벤치마크 SmartSalesBench 제안"
+        }
+      ]
+    },
+    "2610.13116": {
+      "arxiv_id": "2610.13116",
+      "paper_title": "DRYLAB-Bench: Benchmarking the Biosecurity Risk of Agentic LLM Mutation Design",
+      "abstract": "As large language models (LLMs) acquire advanced biological design capabilities, they offer substantial research benefits but simultaneously introduce severe dual-use risks, such as engineering enhanced pathogens or drug-resistant bacteria. While biosecurity frameworks recognize these threats, the actual risk of LLMs executing dangerous biological modifications remains unquantified, particularly when augmented with specialized biological design tools (BDTs). Existing evaluations primarily assess hazardous knowledge possession rather than practical application, overlook risk amplification from BDTs, and rely on unreliable, expensive, or hazardous validation methods. To address these gaps, we introduce DRYLAB-Bench (Design Risk Yielded by LLM Agent in Biodesign), the first comprehensive benchmark evaluating the high-risk biological mutation design capabilities of LLM agents. Moving beyond basic question-answering, DRYLAB-Bench tasks agents with 30 genuinely hazardous mutation-design scenarios distilled from biosecurity guidelines. It evaluates models in a multi-round, tool-augmented environment where LLMs orchestrate BDTs to iteratively refine candidates. Crucially, it scores designs directly against 187,695 empirical wet-lab measurements from ProteinGym and ViroGym using our proposed Biosecurity Risk Score (BRS), quantifying risk-associated effects while enabling scalable and safe ground-truth verification. Evaluations of 15 frontier models reveal substantial baseline threats: without tools, 67.6% of one-shot designs exceed the average measured variant, and 21.4% reach the highest-risk decile. Equipping models with BDTs significantly amplifies this risk, raising the pooled risk by \\(ΔBRS=+0.116\\) and the top-decile share to 23.5%. Code: https://github.com/drylab-bio/DRYLAB-Bench",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "6dafe7cd699e2c66d5f95caecc23046e089624484dcc7edd85a602d84969a17c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "생물보안 위험 평가 벤치마크로 관련성 높음"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "생물보안 위험 에이전트 평가 벤치마크 DRYLAB-Bench 제안"
+        }
+      ]
+    },
+    "2610.13412": {
+      "arxiv_id": "2610.13412",
+      "paper_title": "TextVBench: Evaluating Text Rendering and Preservation in Video Generation",
+      "abstract": "Modern video generators can synthesize convincing scenes while rendering a few characters incorrectly, omitting requested text, or changing it across frames. Measuring these failures is harder than applying OCR independently to each frame: when a scene contains multiple text targets and multiple noisy OCR regions, the evaluator must first determine which observation belongs to which intended text. We introduce TextVBench, a benchmark and evaluation framework that formulates visual-text evaluation as a multi-target, multi-instance spatiotemporal correspondence problem. TextVBench contains two complementary tracks: TextVBench-T2V measures the creation and maintenance of prompt-specified text, while TextVBench-Ref2V measures preservation of text from reference images. Both tracks use target-conditioned candidate selection rather than unconstrained VLM transcription, support one target mapping to multiple OCR regions, and separate frame-level spatial fidelity from cross-frame temporal fidelity. A length-weighted harmonic score summarizes these factors, while extra-text diagnostics expose failure modes hidden by a single OCR score. The benchmark is organized around controlled text, layout, carrier, and motion attributes so that aggregate scores can be traced back to specific capability limits. Across the evaluated model runs, MiniMax-H3 reaches a T2V TextVScore of 68.32, while the strongest Ref2V score is 56.51; attribute slices reveal a pronounced drop as the number of simultaneous reference text regions increases.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "46cbe4673a53d778fc5db201f32b11e48fe41defd5b5b0103b38e8fcc8b48b90",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "비디오 텍스트 렌더링 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "영상 생성 텍스트 렌더링 평가 벤치마크 TextVBench 제안"
+        }
+      ]
+    },
+    "2610.13461": {
+      "arxiv_id": "2610.13461",
+      "paper_title": "SqueezeBench: Saturation-Resilient Evaluation of Mathematical Capability",
+      "abstract": "AI systems are making rapid progress in mathematics, but this progress is hard to measure. Benchmarks of solved problems saturate, and in benchmarks of open problems each problem can be resolved for the first time only once. We present SqueezeBench, a benchmark that is resilient to saturation: a success raises the bar instead of removing the problem. Each problem fixes an integer function $f(n)$ whose values are known only for small $n$, and the benchmark keeps a lower and an upper record on it. A record is a computable Lean function with a machine-checked proof that it bounds $f$. A submission proposes a new function and proves that it bounds $f$, that it is no worse than the current record at any $n$, and that it is strictly better at some $n$. Once accepted, it becomes the record that the next submission has to beat. The system thus chooses the bound as well as its proof, and it may improve the record at a single $n$ or its growth rate. At every $n$, the gap between the two records shows how far the certified bounds are from determining $f(n)$. Every proof is checked by two independent Lean kernels, so no referee needs to check the mathematics. The checks also reject a function that computes $f$ by exhaustive search at small $n$, and a maintainer only reads the submitter's report and looks for such a search at larger $n$. We release ten problems from extremal combinatorics with twenty proved initial records and the admission tools. As a baseline, agents based on a frontier language model, with at most one hour per record, had 82 submissions accepted and improved every record, without going beyond the published literature. Agents based on two newer models then started from these records, had 60 more submissions accepted and improved 19 of the 20 records again. For eight of the ten problems, at least one record is still asymptotically behind the best published bound.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "4635c5646252750123d32ce510e4e869a39255a098bdf3f55ae5780c434adadd",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "수학 능력 포화 방지 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "포화 저항형 수학 벤치마크 SqueezeBench와 문제·도구 공개"
+        }
+      ]
+    },
+    "2610.13548": {
+      "arxiv_id": "2610.13548",
+      "paper_title": "Auditing VLM Benchmarks from Existing Evaluation Runs",
+      "abstract": "Every evaluation run of a vision-language model (VLM) already produces per-question artifacts (predictions, judged correctness, metadata) that leaderboards reduce to a single score and then discard. We reuse those artifacts to audit the benchmark itself, and add an audit layer to VLMEvalKit: six detectors that run as post-processing over saved outputs, plus one additional text-only rerun with visual inputs removed, emitting a per-question report. The layer reports per-question findings together with aggregate audit statistics; for the headline quantities, it attaches permutation-null excess where applicable, interval estimates for proportions, and sensitivity to the model pool. Auditing MMStar, a benchmark curated specifically so that the image is indispensable, with three models, we find zero aggregate accuracy gain from the image on 20.2% of its questions. An item-matched permutation null accounts for 17.0%, leaving a +3.2 pp excess (corrected permutation p = 0.001). This excess is concentrated in the mathematics and science categories and is absent from coarse perception, a localization consistent with knowledge substituting for visual evidence; confirming that mechanism would require item-level review. A second detector flags 134 questions on which every model that answered in parseable form picked the same non-gold option, and these candidates peak in the perception categories, whereas the zero-gain excess is largest in mathematics and science & technology. Replacing the LLM judge with exact string matching changes no conclusion, and every scoring discrepancy between the two traces to one model whose free-form answers a parser cannot read. On a binary yes/no benchmark the detectors measurably fall out of calibration, a scope boundary that we measure and report. The audit layer, the prediction artifacts and the generated reports accompany this submission.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "45893792b29c33507e587c2da8e37cc761ff19bf77fe3b731e6f2461baebdd31",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM 벤치마크 감사 및 평가 방법론"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "VLMEvalKit 감사 레이어와 재사용 가능 감사 도구 제공"
+        }
+      ]
+    },
+    "2610.13607": {
+      "arxiv_id": "2610.13607",
+      "paper_title": "BLiMPPI: Benchmark of Linguistic Minimal Pairs for Polarity Items",
+      "abstract": "Negative polarity items (NPIs), such as \"anymore\" and \"ever\", are grammatical only in select environments, predominantly in the context of negation. Because their grammaticality depends on both syntax and semantics, they have a rich, multilingual literature in theoretical linguistics, yet work on NPIs in language models is almost entirely confined to English. We introduce BLiMPPI, a multilingual evaluation suite of over 12,000 NPI minimal pairs in 33 languages, built by a pipeline that discovers NPIs in Universal Dependencies (UD) treebanks, labels their licensing environments, and perturbs these into minimal pairs. Evaluating 12 multilingual and 2 monolingual models alongside n-gram baselines, we find that multilingual models struggle most with lower-resource languages and with pairs that are not n-gram solvable. We further examine the effects of NPI typology, language family, licensing variability, and NPI-licenser distance. Data: https://github.com/arzuburcuguven/blimppi-data",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "38a69c53764b8fc49c89cf063634c983033276717cb9fe2e0e0d34a20288c316",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다국어 극성 항목 언어 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "33개 언어 NPI 최소쌍 다국어 평가 세트 BLiMPPI 제안"
+        }
+      ]
+    },
+    "2610.13626": {
+      "arxiv_id": "2610.13626",
+      "paper_title": "SWE-DeceptionBench: Benchmarking Deceptive Behaviors of LLMs Across the Software Development Lifecycle",
+      "abstract": "Large Language Models (LLMs) are increasingly used throughout the software development lifecycle. This growing reliance on LLMs raises concerns about their trustworthiness, with deception posing a particularly important risk. Deceptive behavior takes the form of misleading responses or assistance in fabricating, concealing, or distorting information. To study this behavior, we introduce SWE-DeceptionBench, a benchmark for evaluating LLM deception in software engineering. The benchmark covers six lifecycle stages and two deception triggers: Active Deception, where models recognize infeasible or conflicting requirements but still present them as achievable, and Passive Deception, where models help fulfill explicit user requests to mislead others. We further introduce Neutral, Reward, and Pressure conditions to study the effect of external inducements, resulting in 720 test instances in Chinese and English. Evaluating seven mainstream LLMs, we find substantial deception even under the Neutral condition, with aggregate rates of 49.88% for Active Deception and 64.29% for Passive Deception. Deception rates vary across lifecycle stages, and external inducements affect Active and Passive Deception to different extents. We also evaluate lightweight defenses, finding that guard models miss many deceptive requests, and Self-Reminder reduces but does not eliminate deceptive responses. These findings highlight the need for more effective deception detection and mitigation methods to support trustworthy LLM-based software engineering.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "826adc608d99fcd4bae9f5462543eb003c7c988606fcf7a5e497fda26c853ee7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "소프트웨어 개발 주기 기만 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "SW 개발 사기 행위 벤치마크, 중국어·영어 인스턴스 포함"
+        }
+      ]
+    },
+    "2610.13636": {
+      "arxiv_id": "2610.13636",
+      "paper_title": "Benchmarking Answer-Grounding Consistency in Remote Sensing Visual Question Answering",
+      "abstract": "In grounded remote sensing visual question answering, a model produces a textual answer and identifies relevant objects in the image as grounding evidence. Existing evaluations measure answer correctness and localization quality, but do not directly assess answer-grounding consistency. We propose the Answer-Evidence Support Protocol (AESP) to assess this consistency through evidence support: whether the grounding evidence supports the model's own answer. AESP applies task-specific rules to existence, counting, and comparison questions. We further construct the Grounded Remote Sensing Visual Question Answering (G-RSVQA) benchmark, containing 15,027 samples with questions, reference answers, and all related object-level annotations. Experiments on seven grounded vision--language models reveal failures of evidence support across all three question types. Up to 50.82% of correct answers in the evidence evaluation subset are not supported by the provided grounding evidence.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "db82fc6d46d9bee5c2af72a908324c22d8d52e8592704540e967e0307580d3de",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "원격 탐사 VQA 답변 근거 일관성 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "원격감지 VQA 근거 일관성 벤치마크 G-RSVQA 제안"
+        }
+      ]
+    },
+    "2610.13811": {
+      "arxiv_id": "2610.13811",
+      "paper_title": "QTestBench: A Test Framework for Evaluating LLM-Generated Quantum Code",
+      "abstract": "Large language models (LLMs) have shown strong results in classical code generation and are increasingly used to write the unit tests that safeguard that code. Whether they can do the same for quantum software is less clear, because quantum programs are probabilistic, depend on numerical tolerances, and are judged by domain-specific checkers, so a well-formed test can still disagree with the benchmark's verdict. Existing quantum benchmarks measure whether a model produces a correct solution, but not whether its tests can distinguish correct implementations from faulty ones. We introduce QTestBench, a framework that evaluates LLM-generated quantum test suites against independent benchmark checkers, never treating the tests themselves as ground truth. For each task, QTestBench prompts models to produce syntactic, semantic, and behavioral tests, injects candidate solutions at runtime, and compares each test verdict with the checker's label under three validation cohorts, each answering a distinct diagnostic question. We benchmark five LLMs on eight PennyLane QHack challenges and ten Qiskit HumanEval tasks. Generated suites almost always execute, but discrimination lags behind: the best generator reaches a test quality of 0.71 on QHack and 0.34 on Qiskit HumanEval, so executability alone overstates test quality. Oracle-verified synthetic mutants stabilize bug-detection estimates when natural faulty solutions are scarce, as on three of ten Qiskit tasks that yield none. QTestBench offers a reproducible, cross-framework benchmark for the trustworthiness of LLM-generated quantum tests.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "baab7e6a177ae81c58152874d54ffdc2e3522575f4c0352c7764310de5178460",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "양자 코드 생성 테스트 평가 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "양자 코드 테스트 품질 평가 프레임워크 QTestBench 제안"
+        }
+      ]
+    },
+    "2610.13862": {
+      "arxiv_id": "2610.13862",
+      "paper_title": "BT-Agent: Deploying Onboard Robot Agents with Behavior Trees and Multi-Fidelity Evaluation",
+      "abstract": "Deploying language-model agents onboard mobile robots requires task reasoning and responsive execution within limited compute and memory. We propose BT-Agent, an onboard architecture combining LLM-driven task decisions with predefined behavior-tree (BT) skills. These skills enforce execution conditions and return structured failure feedback. We demonstrate fully onboard operation with a 9B model on a quadruped across five task categories. Intervention tests show that local checks stop ongoing navigation without waiting for another model decision, while the agent remains active to retry or report constraints. To compare agent designs efficiently, we introduce a 161-task multi-fidelity benchmark, evaluated in text on all tasks and in Habitat on 39. Text supports 10.9$\\times$ higher evaluation throughput, while simulation reveals how perception and motion failures change task outcomes. BT-Agent's largest success gains over the strongest Act/ReAct baseline occur at 4B and 9B: approximately 10 and 5 percentage points. Ablations identify structured tool calls and informative failure feedback as the most useful components.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "50698a2b9b9338d33732458c23ac3ec4f0a4e6f29beb848afb2058877bb44f54",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "로봇 에이전트 행동 트리 및 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "로봇 에이전트용 161과제 다중 충실도 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.14381": {
+      "arxiv_id": "2610.14381",
+      "paper_title": "ACED-Bench: Evaluating How LLM Agents Acquire and Act on Causal Evidence",
+      "abstract": "Large language models are increasingly used as scientific assistants, yet we still lack reliable ways to evaluate whether they can investigate a system rather than merely answer a prompt. A useful evaluation must let agents choose experiments, interpret finite evidence, and make causal decisions, while keeping the environment coherent across repeated observations and interventions and preserving objective ground truth. We introduce ACED-BENCH (Active Causal Evidence and Decision Benchmark), a neuro-symbolic benchmark built around this requirement. The key idea is to separate the readable scientific surface from the formal causal world: LLMs generate natural-language scenarios and task text, while hidden probabilistic graphical models define the causal graph, data-generating process, intervention semantics, validation checks, and oracle answers. This yields scientific worlds that are natural for agents to investigate but exact enough for scalable, programmatic evaluation. The main leaderboard ACED-CORE contains 180 tasks: 60 set-valued causal ancestry/descendancy questions and 120 constrained causal-decision tasks. We also report ACED-QUAL, a 150-question yes/no qualification check using the same hidden-PGM interface. We evaluate seven contemporary LLMs and two earlier-generation models across three active agent designs. ACED-QUAL checks whether agents can use the interface to draw conclusions from evidence, while ACED-CORE tests whether they can decide what evidence to collect and when to commit to an answer. Evidence-ledger analysis localizes failures within the investigation: agents test the wrong intervention, lose relevant evidence, or continue after sufficient evidence has appeared. These results suggest that reliable AI co-scientists need explicit support for experiment design, evidence retention, answer commitment, and stopping.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "8eed9bd61dd9171f6702a28e6d2422a4c58f0c02c9399b00a534e77b91465c47",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "인과 증거 습득 및 행동 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "인과 증거 수집·의사결정 평가 벤치마크 ACED-BENCH 제안"
+        }
+      ]
+    },
+    "2610.14389": {
+      "arxiv_id": "2610.14389",
+      "paper_title": "Measuring the Inference Energy Efficiency of Open-Weight LLMs across Benchmarks, Reasoning Modes, and Hardware",
+      "abstract": "Benchmark scores tell us what an LLM can do, but not how much energy is required to deliver that capability. We directly measure this trade-off for 86 open-weight model checkpoints, evaluated on seven benchmarks and six hardware platforms ranging from a consumer GPU to an eight-GPU server. We find large differences in energy efficiency even among models with similar capability. Most configurations lie away from the score--energy Pareto frontier: they use a median of 2.6--4.8$\\times$ more energy than another configuration that scores at least as well, with differences reaching 27$\\times$. Reasoning can improve capability, but enabling thinking increases energy by about 3.7$\\times$ on average, and the benefit depends strongly on the model family and output budget. Generated-token count is also an imperfect proxy for energy, misordering 18--24\\% of model pairs. In contrast, FP8 reduces energy by roughly a quarter with little change in score, while changing hardware largely rescales energy without changing the relative ranking of models. These results show that capability alone gives an incomplete picture of efficiency. We argue that benchmark scores should be reported together with measured energy consumption under a specified serving regime and output budget.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "4c57a9952a22d9edcb7e790b3537e3f090eadafd65ac13a6f76b8244b8629763",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 추론 에너지 효율 측정 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "기존 벤치마크 점수와 에너지 측정만 수행, 평가자료 신규 아님"
+        }
+      ]
+    },
+    "2610.14397": {
+      "arxiv_id": "2610.14397",
+      "paper_title": "RealityBench: Simulated Environments to Evaluate a Vision Language Model's Ability to Document Human Physical Work",
+      "abstract": "Augmenting worker capabilities in the physical world through guidance has been a decades-long goal for AI agents. One key supporting capability is to understand what the worker is doing, seeing through the human's camera or smart glasses, and assist them in documentation. Despite advances in vision language models, their capabilities in these settings remain uncertain and are challenging to benchmark because most physical work data is proprietary, and involves too much variability to study in a principled manner. Unlike structured settings such as kitchens and warehouses that have predictable lighting, geometry, and objects, field-facing tasks such as rooftop solar installation and vehicle repair are unconstrained and high variance. Here, we model real-world physical work in Blender across eleven environments, incorporating variants in both image acceptability and documentation. The acceptability task asks whether a particular view would be suitable proof-of-work and documentation asks whether an agent can understand the task-relevant state of the environment from that view. Across 26 vision-language models, we find that top models largely solve documentation when the answer is text in frame, but are weak at reading measurements and at judging small parts and spatial relations, such as whether a tape measure leans. Acceptability is harder to pin down because human raters disagree with each other. Measured against a scorer that agrees with the raters' majority about as often as a single rater does, the best models cannot be distinguished from a single non-author rater, at a cost within the range of a human pass. In the three environments where we can trace acceptability errors, most wrong rejections come from misreading the scene rather than the requirement. On the three documentation questions for which we have real images, model rankings on rendered frames transfer to real images.",
+      "paper_updated": "2026-10-14T02:49:35Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "e36de82d05978581f45d78045a4eda5fcd7f902095cede07faf80daa110c720c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "물리 작업 문서화 VLM 평가 시뮬레이션"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "인간 작업 문서화 평가용 시뮬레이션 벤치마크 RealityBench 제안"
+        }
+      ]
+    },
+    "2601.22725": {
+      "arxiv_id": "2601.22725",
+      "paper_title": "OpenVTON-Bench: A Large-Scale High-Resolution Benchmark for Controllable Virtual Try-On Evaluation",
+      "abstract": "Recent advances in diffusion models have significantly elevated the visual fidelity of Virtual Try-On (VTON) systems, yet reliable evaluation remains a persistent bottleneck. Traditional metrics struggle to quantify fine-grained texture details and semantic consistency, while existing datasets fail to meet commercial standards in scale and diversity. We present OpenVTON-Bench, a large-scale benchmark comprising approximately 100K high-resolution image pairs (up to $1536\\times1536$). The dataset combines Gemini-powered dense captioning with stratified sampling across 20 visual clusters obtained by DINOv3 K-Means. To support reliable evaluation, we propose a multi-modal protocol that measures VTON quality along five interpretable dimensions: background consistency, identity fidelity, texture fidelity, shape plausibility, and overall realism. The protocol integrates VLM-based semantic reasoning with a novel Multi-Scale Representation Metric based on SAM3 segmentation and morphological erosion, enabling the separation of boundary alignment errors from internal texture artifacts. Under the specified evaluation rubric, our representation metric shows strong agreement with human model rankings (Kendall's $τ$ of 0.833 vs. 0.611 for SSIM). Code and dataset are available at https://github.com/RenxingIntelligence/OpenVTON-Bench.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "e4be27d9c15e8e7fb9870bb1619bfdcd6a56b98f500f559eb1700f2984b56b75",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "가상 착용 평가 벤치마크로 관련성 높음"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "가상 피팅 평가 벤치마크 OpenVTON-Bench와 프로토콜 제안"
+        }
+      ]
+    },
+    "2602.05382": {
+      "arxiv_id": "2602.05382",
+      "paper_title": "VRIQ: Benchmarking and Diagnosing the Visual-Reasoning IQ of Vision-Language Models",
+      "abstract": "Vision-language model (VLM) errors on visual reasoning may come from missing visual structure, from mistakes after that structure is extracted, or from both. We introduce VRIQ, a benchmark of 1,391 human-verified IQ-style visual reasoning puzzles spanning five psychometric categories, each instantiated in category-matched abstract and natural-image domains. To study perception and reasoning more directly, we also introduce DiagVRIQ, a 209-item diagnostic subset paired with human-verified, rule-neutral textual descriptions. Across 21 VLMs, the 17 non-frontier models reach a 26.8% unweighted category mean on abstract puzzles, while three 2026 frontier models improve substantially but unevenly, with unweighted category means of 41.3--70.9% on abstract puzzles and at most 78.2% on natural-image puzzles; all remain below human performance. On DiagVRIQ, even when their descriptions are judged correct, the strongest models still answer approximately 9--12% of those items incorrectly. Two interventions, ground-truth description augmentation and tool-augmented inference, improve accuracy, with the largest tool gains on spatially demanding categories, but neither eliminates errors. VRIQ and DiagVRIQ provide a framework for studying visual reasoning through complementary end-to-end, description-based, and intervention-based analyses rather than treating it as a single monolithic capability.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "97a1ed8ed351fa8a0e37161ef3fde5242cdcde6e25a9501875f3c4ed4c323e6c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "시각 추론 IQ 평가 및 진단 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "시각 추론 IQ 벤치마크 VRIQ·진단 세트 DiagVRIQ 제안"
+        }
+      ]
+    },
+    "2605.05662": {
+      "arxiv_id": "2605.05662",
+      "paper_title": "XL-SafetyBench: A Country-Grounded Cross-Cultural Benchmark for LLM Safety and Cultural Sensitivity",
+      "abstract": "Current LLM safety benchmarks are predominantly English-centric and often rely on translation, failing to capture country-specific harms. Moreover, they rarely evaluate a model's ability to detect culturally embedded sensitivities as distinct from universal harms. We introduce XL-SafetyBench, a suite of 5,500 test cases across 10 country-language pairs, comprising a Jailbreak Benchmark of country-grounded adversarial prompts and a Cultural Benchmark where local sensitivities are embedded within innocuous requests. Each item is constructed via a multi-stage pipeline that combines LLM-assisted discovery, automated validation gates, and dual independent native-speaker annotators per country. We report Attack Success Rate (ASR) alongside Neutral-Safe Rate (NSR) to separate principled refusal from non-engagement, and introduce the Cultural Sensitivity Rate (CSR) for recognizing embedded sensitivities. Evaluating 10 frontier and 27 local LLMs reveals two key findings. First, strong jailbreak robustness does not always come with strong cultural awareness, showing why the two should be evaluated separately. Second, local models exhibit a strong ASR-NSR trade-off (r = -0.81), suggesting that low attack success in several local models reflects non-engagement rather than safe refusal. XL-SafetyBench enables more nuanced, cross-cultural safety evaluation in the multilingual era.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:19Z",
+      "input_sha256": "187532adf2cf3b74489d3dc3005a9fc5859e095c0f1dd0bc68107d484abdf6c4",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "국가 기반 교차 문화 LLM 안전 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "10개 국가-언어 안전·문화 민감성 벤치마크 XL-SafetyBench 제안"
         }
       ]
     }
