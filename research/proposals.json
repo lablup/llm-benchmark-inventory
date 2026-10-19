@@ -337,9 +337,8 @@
     },
     "2510.26238": {
       "decision": "needs_evidence",
+      "reason": "페이지 위치 보정 후 두 모델의 검증을 통과하지 못했습니다: 근거 대조 응답의 형식 검사를 통과하지 못했습니다.",
       "changes": [],
-      "reason": "추출 결과가 근거·형식 검사를 통과하지 못해 반영하지 않았습니다.",
-      "validation_error": "parse: Quote does not occur on the cited PDF page",
       "arxiv_id": "2510.26238",
       "paper_title": "Questionnaire meets LLM: A Benchmark and Empirical Study of Structural Skills for Understanding Questions and Responses",
       "paper_updated": "2026-10-01T00:00:00Z",
@@ -380,10 +379,17 @@
           "language": "en",
           "page_json_sha256": "4b0b566c51d0bc7320fcd2e88136b9255ebd745f47798108faa66c500cf58990",
           "page_json_file": "2510.26238.pages.json"
-        }
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/ReML-AI/QASU",
+            "fetched_url": "https://api.github.com/repos/ReML-AI/QASU/readme",
+            "sha256": "15bf9b948bbb9a983ae0f99aec969a09745c1d89a7ca5a6d8e93aa5dbd64baff",
+            "accessed": "2026-10-19T15:38:41Z"
+          }
+        ]
       },
-      "status": "needs_evidence",
-      "created_at": "2026-10-19T14:01:28Z",
+      "created_at": "2026-10-19T15:39:19Z",
       "extraction_model": "deepseek-ai/DeepSeek-V4.1-Flash",
       "screening": {
         "arxiv_id": "2510.26238",
@@ -408,7 +414,6 @@
         ]
       },
       "issue_url": null,
-      "proposal_sha256": "4593634e1072e6a4327f74eb3d71b0a7236222fe38f9fbef6171c2279ffb63c5",
       "citation_replay": {
         "source_run": "39261196214",
         "original_created_at": "2026-10-19T14:01:28Z",
@@ -421,8 +426,25 @@
             "quote_sha256": "b12b88eaf81520bfe8cdb5f35bc8e47457816dabb28463a4d42276866d990325"
           }
         ],
-        "status": "auditing"
-      }
+        "status": "completed"
+      },
+      "status": "needs_evidence",
+      "verification": {
+        "approve": false,
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "approve": true,
+            "reason": "제안된 QASU 행은 논문과 공식 저장소로 뒷받침된다. 6개 직렬화 형식(HTML, XML, JSON, Markdown, Turtle, 평문)과 6개 구조 과제(정답 조회, 역조회, 응답자 수, 개념 집계, 규칙 기반 질의, 멀티홉 관계 추론)가 논문에 명시되어 있고, 5개 공개 데이터셋(병원 퇴원, 정신건강, SUS-UTA7, 2022 Stack Overflow, ISBAR), 토큰 예산 표본추출, 순위 교환·MCQ 10% 교란, exact-match 채점도 확인된다. 언어는 논문이 '영어 설문지만'이라고 명시하므로 en 트랙 지정이 타당하다. 링크는 PDF에 명시된 공식 저장소이며, 라이선스·상업적 이용·수정·재배포·lm-eval은 정책대로 '확인 불가'로 두어 문제없다. 예시는 삽화적 과제 설명으로 허용 범위 내이며, 모든 변경 필드가 근거와 일치한다."
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "approve": false,
+            "reason": "근거 대조 응답의 형식 검사를 통과하지 못했습니다."
+          }
+        ]
+      },
+      "proposal_sha256": "68b98f74decaa31fac2d2eaf8aa74c9fe7d85ae2580c2242498426ccfe139538"
     },
     "2511.08500": {
       "decision": "exclude",
@@ -3061,8 +3083,8 @@
       "attempted": [
         "2510.26238"
       ],
-      "spent_usd": 0,
-      "blocked": true
+      "spent_usd": 0.0,
+      "blocked": false
     }
   },
   "screenings": {
