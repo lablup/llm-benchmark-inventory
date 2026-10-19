@@ -401,7 +401,27 @@
         "2609.33796",
         "2609.33807",
         "2609.33893",
-        "2609.33905"
+        "2609.33905",
+        "2509.23219",
+        "2601.15511",
+        "2603.21359",
+        "2603.22018",
+        "2603.28590",
+        "2605.01970",
+        "2605.11960",
+        "2606.03657",
+        "2606.06960",
+        "2606.15057",
+        "2607.19829",
+        "2608.17379",
+        "2609.03423",
+        "2609.08887",
+        "2609.17538",
+        "2609.21465",
+        "2609.30298",
+        "2609.34072",
+        "2609.34496",
+        "2609.35025"
       ]
     }
   },
@@ -6583,6 +6603,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "문서 파싱 평가 벤치마크 PureDocBench 데이터·코드 공개"
+        }
+      ]
+    },
+    "2605.17281": {
+      "arxiv_id": "2605.17281",
+      "paper_title": "ContractBench: Can LLM Agents Preserve Observation Contracts?",
+      "abstract": "Tool-augmented LLM agents call APIs whose intermediate outputs, such as presigned URLs, session tokens, and OAuth state parameters, are observation contracts: artifacts whose later use is constrained by the external system that produced them. We show that observation contract compliance (preserving the temporal validity and byte-level integrity) is an emergent, regression-prone capability: it is neither guaranteed by general tool-use ability nor consistently improved by larger or newer models. To measure this, we introduce ContractBench, a benchmark of 33 dual-axis tasks that probe two orthogonal failure modes no existing benchmark evaluates: validity failures (using an artifact after expiry) and integrity failures (corrupting an artifact's bytes through the observation-to-action pipeline). Our evaluation is deterministic and programmatic, with a virtual clock controlling time and SHA-256 hashes verifying byte integrity. We assign each outcome a failure label drawn from real-world API specifications. We evaluate 38 models and report four findings: (i) no evaluated model clears 80%, with Claude-Opus-4.6 leading at 77.8%, revealing that current frontier models still fail to comply with observation contracts; (ii) a sharp within-family capability cliff in Qwen 3.5 between 4B (0%) and 9B (56.6%), smoothing to 70.7% at 397B-A17B: what emerges across the cliff is mid-trajectory restraint, not tool-call competence; (iii) non-monotonic scaling across the GPT-5 family: agentic post-training can erode compliance through sycophancy-driven regression; (iv) our failure taxonomy works as an actionable in-context reward signal, yielding +7.1 pp on 42 paired GPT-5.1 failures.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "e360708b7fca71a44a7e86638f41fafa028754d6981ff3e079618dc24dc29aa2",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트의 API 관찰 계약 준수 벤치마크로 도구 사용 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "관측 계약 준수를 평가하는 새로운 에이전트 벤치마크 ContractBench를 도입"
+        }
+      ]
+    },
+    "2606.09570": {
+      "arxiv_id": "2606.09570",
+      "paper_title": "UXBench: Benchmarking User Experience in AI Assistants",
+      "abstract": "As AI assistants serve millions of users daily, evaluating user experience (UX) beyond general model capability has become increasingly important. We present \\textbf{UXBench}, the first user-centric benchmark grounded in real user feedback signals for evaluating preference alignment and dialogue generation. The benchmark consists of three interconnected tasks, UX Judge, UX Eval, and UX Recovery, with 7,400 test instances extracted from over 70K interaction logs of a mainstream Chinese AI assistant. The dataset closely reflects real user distributions, covering 8 scenarios, 83 domains, and diverse failure patterns that pose severe challenges. Extensive experiments on 26 frontier language models provide novel insights into how well models perceive user experience and how improvements in model capability contribute to better dialogue engagement. Through analyses of model behavior and performance gaps, we document six important findings, demonstrating that user feedback prediction is a learnable capability and revealing different aspects that influence user experience. UXBench establishes a new evaluation landscape and calls for greater attention to tailored UX optimization, contributing toward a user-centric scaling law for the development of successful AI assistants. The full project is released at https://github.com/mengze-hong/UXBench.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "0bf2dde969733756104f303e9a8df424f24ee3a093cec3310f159531665d6b5c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 어시스턴트의 사용자 경험 평가 벤치마크로 대화형 LLM 평가에 해당"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "사용자 경험 평가용 UXBench 벤치마크와 데이터셋을 새로 제시"
+        }
+      ]
+    },
+    "2607.03261": {
+      "arxiv_id": "2607.03261",
+      "paper_title": "OmniLayout: A Schematic-Coupled Multimodal Benchmark for Constraint-Aware Geometric Reasoning in PCB Layout",
+      "abstract": "Recent large language models (LLMs) have demonstrated remarkable progress in 3D spatial reasoning, spatial grounding, and fine-grained geometric understanding. However, their ability to reason about densely packed object placement under strict spatial and functional constraints remains largely unexplored, despite being a fundamental challenge in practical electronic design automation (EDA) workflows. To bridge this gap, we introduce OmniLayout, the first benchmark designed to evaluate LLMs on printed-circuit-board (PCB) layout placement reasoning under real-world geometric, routing, and connectivity constraints. OmniLayout contains 1,681 industrial-grade schematic-coupled PCB layouts and includes four tasks: (1) geometric reasoning for IC physical placement, with 77.24K placement instances constrained within PCB board boundaries; (2) routability-aware placement reasoning, generating physically valid component placements; (3) electrical functionality, preserving schematic-specified connectivity and electronic functional correctness; and (4) tool-augmented agentic reasoning for invoking external tools to accomplish tasks (1)-(3). Our results reveal substantial limitations of current LLMs in PCB layout placement, including weak geometric reasoning, poor routability optimization, and inconsistent preservation of electrical functionality.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "bf2814c1bb2b09a06cc411b6c5f680e99a81807f6c61661d7e5d69b411322307",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "PCB 배치 추론을 위한 멀티모달 LLM 벤치마크로 제약 기반 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "PCB 배치 기하 추론용 최초 멀티모달 벤치마크 OmniLayout 도입"
+        }
+      ]
+    },
+    "2607.10490": {
+      "arxiv_id": "2607.10490",
+      "paper_title": "NetInjectBench: Benchmarking Indirect Prompt Injection in Tool-Using Large Language Model Agents for Network Operations",
+      "abstract": "Tool-using large language model (LLM) agents are attractive for network operations, but tickets, alerts, logs, runbooks, and ChatOps messages can carry indirect prompt injections. We present NetInjectBench, a 130-scenario benchmark that separates untrusted artifact text, trusted policy metadata, and evaluation labels for network-operation tool use. The sample contains 40 benign, 40 weak-attack, 40 strong-attack, and 10 approved high-impact change scenarios; each is evaluated with Qwen2.5-7B, Llama3.1-8B, and Mistral-7B. Across 240 attack instances, naive execution reached an 82.50% unsafe tool-action rate. Prompt-only safety, Self-Reminder, Spotlighting, and a Two-Pass LLM Judge reduced this rate to 25.63%, 21.67%, 18.33%, and 10.00%, respectively. Static allowlisting reached 5.00% but blocked all approved changes, yielding 0.00% usefulness and 100.00% overblocking on approved cases. Under the stated metadata-integrity assumption, the metadata-aware policy gate produced 0/240 unsafe attack actions, with a 95% Wilson upper bound of 1.58%, while preserving 99.17% attack-scenario usefulness and 100.00% approved-change usefulness. The findings show that network-operation agents need execution-time authorization boundaries alongside prompt-level instruction hygiene.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "157cf803963cbb5a7eaf80c89e662bc0d0a672f2eea8bfe1dc868d6291a0f133",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "도구 사용 LLM 에이전트의 간접 프롬프트 주입 보안 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "네트워크 운영 간접 프롬프트 인젝션 벤치마크 NetInjectBench 신설"
+        }
+      ]
+    },
+    "2608.16349": {
+      "arxiv_id": "2608.16349",
+      "paper_title": "AeroCopilotBench: Safety-Gated Evaluation of LLM Agents on Aircraft Emergency Procedures in an Executable Cockpit",
+      "abstract": "Aviation knowledge question answering cannot directly assess the operational effectiveness and safety compliance of large language models throughout aircraft emergency procedures. We introduce AeroCopilotBench and its executable cockpit environment, ACOE, which define state-transition rules, task goals, and trajectory-level safety constraints based on aircraft-specific Pilot's Operating Handbooks (POHs). The benchmark comprises 12 scenario templates and 73 tasks across two aircraft types, evaluating task completion, safety compliance, execution discipline, and repeatability. Across repeated evaluations of 12 models, the highest safety-gated success rate is 72.6\\%. Most failed episodes achieve all critical goals but do not satisfy all remaining terminal goals. Across repeated runs, models still omit steps that they execute in other runs of the same task. Analysis of failed trajectories further reveals that some reasons for actions that conflict with the aircraft's POH recur across models. These results expose shortcomings in complete procedure execution, consistency across runs, and aircraft-specific emergency response.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "25e60c7835bb45882f8086f46f75931ab2a1add56090dfce016870c08d542f75",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "항공 비상 절차에서 LLM 에이전트의 안전 게이트 실행 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "항공기 비상 절차 에이전트 평가용 AeroCopilotBench와 실행 환경 제시"
+        }
+      ]
+    },
+    "2609.15855": {
+      "arxiv_id": "2609.15855",
+      "paper_title": "K-Bench: a clinically calibrated benchmark for evaluating large language models in high-risk mental health conversations",
+      "abstract": "People increasingly use large language models (LLMs) for mental health support, yet their safety in evolving, high-risk conversations remains poorly characterised. We developed K-Bench, a clinician-calibrated, protected benchmark evaluating 125 model configurations representing 33 base models from 14 providers across a fixed cohort of 200 multi-turn vignettes involving suicide, self-harm, domestic violence, substance misuse, and no-risk presentations. Synthetic patient conversations showed substantial distributional overlap with real human-AI conversations. A frozen GPT-4o judge achieved 94.2% exact agreement with clinician consensus across 6,751 eligible item comparisons from 151 clinician-rated transcripts. Leading models combined strong supportive conversation with combined-risk scores above 95, whereas risk exploration exposed substantial variation among lower-performing configurations. Therapeutic prompting produced configuration-specific gains concentrated among weaker models, while elevated reasoning produced no average improvement. K-Bench combines broader clinical coverage and configuration-scale comparison with a continuously updated public leaderboard whose operational test materials are protected from direct optimisation. The leaderboard is available at www.k-bench.ai.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "87f98a6a87f12df4bd6767667a69976066caa4649d86adccf0e9562829d66de4",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "고위험 정신 건강 대화에서 LLM 안전성을 평가하는 임상 보정 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "정신건강 고위험 대화 임상 보정 벤치마크 K-Bench 신규 구축"
+        }
+      ]
+    },
+    "2609.16607": {
+      "arxiv_id": "2609.16607",
+      "paper_title": "Measuring Decision-Scale Use in Tool-Augmented LLMs: A Contrastive Urban Benchmark",
+      "abstract": "Urban decision-support often asks whether activity is unusually high or low for a specific place, not which place has the larger raw count. Twenty pickups in a quiet neighborhood can be more abnormal than 180 at an airport. We introduce URBANCONTRASTIVEQA, a benchmark that asks whether tool-augmented language models can make this baseline-relative comparison. Each item pairs two urban situations from public mobility data in NYC, Chicago, and Seattle, labeled by how far current activity deviates from that place's historical baseline. We evaluate six instruction-tuned models under five tool-output formats. With only raw counts, models often pick the larger number even when it is less abnormal for its zone. Server-computed baseline scores and ordinal labels raise accuracy, but gains vary by model. For heterogeneous urban feeds, tool interfaces need to expose local baselines, not just activity volumes. We release the pair bank, labels, scoring scripts, and data card.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "7fb037ce3c93cf8205e098bde5189b1cdcb1943b13e32404320e615ee39b335c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "도시 이동 데이터에서 도구 증강 LLM의 의사결정 규모 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "도구 기반 도시 기준선 비교 벤치마크와 데이터·스크립트 공개"
+        }
+      ]
+    },
+    "2609.33117": {
+      "arxiv_id": "2609.33117",
+      "paper_title": "ECG-Scroll: A Long-Horizon, Streaming Benchmark and Agent Environment for Interpretation of Ambulatory Electrocardiograms",
+      "abstract": "Multimodal large language models (MLLMs) can now interpret a standard ten-second, twelve-lead electrocardiogram (ECG) with clinically grounded, reward-verified reasoning. Real cardiac monitoring is different. Ambulatory (Holter) and telemetry recordings span hours to days and are read as they stream in, and their clinically decisive findings are paroxysmal, brief episodes buried in an otherwise unremarkable trace. Such a recording cannot be held in one context at diagnostic resolution, and its future has not yet happened, so a reader must work online, deciding what to measure now, committing evidence to memory as it passes, and reporting events as they occur. We recast long-duration ECG interpretation as a long-horizon, online (streaming, causal) sequential decision process and introduce ECG-Scroll. As a benchmark, long ambulatory recordings are streamed to an agent chunk by chunk, and it must localize, quantify, and promptly flag paroxysmal events without access to future signal; because the underlying signal is retained, every answer is checkable against objective ground truth, giving rule-based rather than judge-based rewards, and the streaming formulation adds a metric batch evaluation cannot express, the detection latency between an event's onset and the moment the agent records it. As an agent environment, it is a fixed, gym-style interaction layer that exercises three competencies single-glance ECG models never touch: Memory, Tool use through signal-grounded measurement rather than reading pixels, and Planning of what to measure now and when to commit. We release 390 whole-recording instances spanning 2,536 hours of two-lead ambulatory ECG and evaluate a signal-threshold rule agent alongside off-the-shelf LLM agents online, characterizing how they use memory, tools, and planning and where the benchmark's head-room lies.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "7997ca8221bd627a3ff12d9171177014dd00929cc253a21ecb7e74cb687dd440",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "장시간 스트리밍 심전도 해석을 위한 LLM 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "장시간 스트리밍 ECG 해석 벤치마크·에이전트 환경 ECG-Scroll 제시"
+        }
+      ]
+    },
+    "2609.33158": {
+      "arxiv_id": "2609.33158",
+      "paper_title": "FOCUS: Benchmarking Retinal Model Generalization from Foundation Vision Encoders to Multimodal LLMs",
+      "abstract": "Progress in AI-based retinal image analysis has advanced with foundation models, yet evaluating their reliability remains challenging. Performance reported on a single dataset does not capture how models behave under dataset shift, across clinical definitions, or for different patient subgroups. This limitation is particularly critical in medical imaging analysis, where robustness, calibration, and fairness are essential for safe deployment. We introduce FOCUS (Foundation Ophthalmic Cross-Dataset Understanding under Shift), a cross-dataset benchmark for evaluating retinal fundus models that considers vision-only encoder models (VM), vision-language dual-encoder models (VLM), and multimodal large language models (MLLM). FOCUS harmonizes binary diabetic retinopathy, referable diabetic retinopathy, and glaucomatous optic neuropathy tasks across ten public datasets spanning diverse geographies, acquisition conditions, and label protocols. The benchmark evaluates models through a unified analysis layer that measures ranking performance, calibration, subgroup disparities, and image-quality robustness. We present a large-scale evaluation covering 532 base configurations and 228 MLLM configurations adapted through supervised fine-tuning with low-rank adaptation (LoRA). Results show that no model family consistently dominates across tasks and datasets: general VM encoders achieve the strongest average ranking performance, medical MLLMs are competitive but variable, and dual encoder VLMs benefit substantially from lightweight adaptation. Fine-tuning improves in-domain performance but exhibits heterogeneous transfer to external datasets, particularly in calibration. These findings demonstrate that retinal model evaluation is inherently multidimensional. FOCUS provides a practical framework and public benchmark to assess generalization, reliability, and robustness beyond single-dataset leaderboards",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "a44ba7e8ead641e546b03343ac142eba13c527f4c73d474d26604211f8715c56",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "망막 기반 모델 일반화 평가로 의료 멀티모달 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "망막 모델 교차 데이터셋 일반화 평가 벤치마크 FOCUS 구축"
+        }
+      ]
+    },
+    "2609.33261": {
+      "arxiv_id": "2609.33261",
+      "paper_title": "EngIntervene: Benchmarking Multimodal Engineering State Understanding and Design Intervention Reasoning",
+      "abstract": "Multimodal engineering benchmarks largely evaluate static understanding, such as recognizing components, interpreting diagrams, or answering technical questions. This leaves a missing middle between engineering perception and full design generation: whether a model can use an understood system state to reason about relations, constraints, and the consequences of design changes. We introduce \\textsc{EngIntervene}, a benchmark for this capability. It contains 3,229 questions across seven engineering domains and organizes evaluation into four levels: state grounding (T1), relational and mechanistic reasoning (T2), constraint-aware diagnosis (T3), and intervention reasoning (T4), which asks whether a proposed modification achieves its target while preserving required constraints. The tasks instantiate a unified engineering state representation spanning objects, relations, constraints, and design objectives, and T2--T4 are scored against structured reference answers with atomic criteria. Across open- and closed-weight multimodal models, stronger grounding does not reliably translate into better diagnosis or intervention, and the best open-weight model trails the best closed model by 14.7 percentage points on the T2--T4 average. Removing or shuffling visual evidence consistently degrades performance, while benchmark-specific supervised fine-tuning improves T1 but not T2--T4. T4 further exposes a large gap between satisfying individual revision criteria and producing a fully valid intervention. Engineering reasoning thus requires not only recovering the current state, but also reliably using it to reason about constraints and post-intervention consequences. Code and benchmark artifacts are available at https://github.com/changcv2021/EngIntervene",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "39979c87f2c60eb9f7744aedaada750d0647932912bba6ff8cca4a69eb4220dc",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 공학 상태 이해와 설계 개입 추론을 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "공학 상태 이해·설계 개입 추론 멀티모달 벤치마크 EngIntervene 제안"
+        }
+      ]
+    },
+    "2609.33295": {
+      "arxiv_id": "2609.33295",
+      "paper_title": "TraceDance: An Automated System for Building Agent Behavior Benchmarks from Real-World Agent Deployment Traces",
+      "abstract": "An agent can complete a task while exhibiting undesirable behavior during execution. Developers need tests for the specific behaviors encountered in deployment, beyond fixed benchmark suites. We present TraceDance, an agent system that constructs targeted benchmarks from deployment traces for user-specified undesirable behaviors. For efficient construction, Anchor-and-Confirm combines programmable retrieval with candidate-level confirmation by a Flash large language model (LLM), while the Anchor Synthesis Loop generates and revises specifications for custom behaviors. The benchmarks use decision-point continuation to evaluate an LLM's next turn at a recorded decision point with a behavior-specific rubric, without a reference answer or environment replay. Experiments in coding and general tool use draw on 252,557 sessions and produce 107 benchmarks with 4,125 instances, fulfilling 95.3% of build-target requests. Both human annotators confirm the requested behavior in 84% of sampled instances, and the automated grader's agreement with human pass/fail judgments is comparable to that between the annotators. Nine frontier LLMs achieve a mean pass rate of only 26.7%, showing that they still struggle to respond appropriately at the evaluated decision points. Analysis across behavior-specific benchmarks further reveals weaknesses in how current LLMs behave as agents. By turning deployment problems into targeted benchmarks, TraceDance could serve as a key component of the recursive self-improvement (RSI) loop.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "faba62dd4d617b57e72bc048705cda7d5afe4dca2c829ade04226c9abcc461b7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "실제 배포 추적에서 LLM 에이전트 행동 벤치마크를 자동 구축"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "배포 트레이스에서 에이전트 행동 벤치마크를 자동 구축하는 시스템 제시"
+        }
+      ]
+    },
+    "2609.33314": {
+      "arxiv_id": "2609.33314",
+      "paper_title": "ZeroGAR: Benchmarking the Adversarial Robustness of Zero-Shot Graph Models",
+      "abstract": "Zero-shot graph models (ZGMs), which learn transferable knowledge from source graphs and directly apply to unseen target graphs without any adaptation, have achieved promising performance and attracted considerable attention. Despite their proliferation, existing ZGMs are predominantly evaluated on clean graphs, while existing graph robustness benchmarks mainly focus on supervised settings, leaving a fundamental question largely unexplored: How robust are ZGMs when their unseen target graphs are exposed to adversarial manipulation? In this paper, we answer this question by proposing ZeroGAR, the first systematic benchmark for evaluating the adversarial robustness of ZGMs. ZeroGAR evaluates 13 representative ZGMs from 3 different paradigms on 8 graph datasets across 4 domains, covering both in-domain and cross-domain transfer under structural, textual, and node injection attacks with multiple perturbation budgets. It further investigates whether existing graph defenses remain effective in the zero-shot setting. Extensive experiments reveal that strong clean zero-shot performance does not guarantee adversarial robustness, with three key findings: (1) Vulnerability patterns are related to model prediction mechanisms: GNN-based methods are particularly vulnerable to structural and node injection attacks, whereas LLM-based methods are more vulnerable to textual attacks; (2) Stronger LLM backbones introduce a structure-text robustness trade-off; (3) Existing graph defense methods do not consistently improve zero-shot robustness and may compromise clean performance. We hope that ZeroGAR will facilitate rapid, equitable evaluation and inspire further innovative research in ZGM security.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "109e1f868127dd1dd00880043b03fa32bf1460e5f22a4ea659611a89096caa29",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "제로샷 그래프 모델의 적대적 견고성을 평가하는 그래프 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "제로샷 그래프 모델 적대적 강건성 최초 벤치마크 ZeroGAR 제안"
+        }
+      ]
+    },
+    "2609.33319": {
+      "arxiv_id": "2609.33319",
+      "paper_title": "PhysAlign: A Benchmark for Evidence-Grounded Role Alignment in Multimodal Physics Reasoning",
+      "abstract": "A key challenge in physics diagram understanding is correctly associating visual information with the physical entities, relations, and conditions it describes. Even when a value, symbol, or other local element is accurately recognized, assigning it to the wrong entity or scope can distort the underlying physical premise and lead to incorrect reasoning. To systematically study this challenge, we introduce \\textbf{PhysAlign}, a benchmark designed to assess whether multimodal models correctly associate information recognized from physics diagrams with its intended physical role. By disentangling visual recognition from physical-role assignment through localized probes and controlled variants, PhysAlign isolates correspondence errors from recognition failures. It contains 3,341 human-validated probes spanning 986 physics problems, enabling systematic evaluation of visual recognition and physical-role correspondence at scale. We further introduce five complementary evaluation metrics, including CAcc, GAcc, and JAcc, which provide a comprehensive assessment of models' ability to recognize diagram content, establish correct physical correspondences, and solve the underlying physics problem. Across our evaluated multimodal models, PhysAlign reveals a consistent gap between local visual recognition and physical-role grounding. Even when the queried content is correctly recognized, the conditional correspondence error rate remains 13.8\\% for GPT-6-Astra and rises to about 50.6\\% for InternVL3.5-8B. These findings indicate that strong perception alone does not ensure reliable physical interpretation, exposing a distinct grounding bottleneck that is largely hidden by answer-level accuracy and highlighting the need for future models to better align recognized visual evidence with its physical meaning.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "8bdaf524f8a9e20a89736957d016f3f54bf6e5c726eea441ed4b536134f4abd0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "물리 다이어그램에서 멀티모달 모델의 역할 정렬 추론 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "물리 다이어그램 근거 역할 정렬 평가 벤치마크 PhysAlign 도입"
+        }
+      ]
+    },
+    "2609.33411": {
+      "arxiv_id": "2609.33411",
+      "paper_title": "MetaBench-Harness: Unlocking End-to-End Optimization of Benchmark Harnesses",
+      "abstract": "Rapid progress in Large Language Models (LLMs) is saturating static benchmarks faster than they can be designed. While existing automated evolution frameworks attempt to generate harder questions by perturbing individual tasks, they remain constrained by rigid, hard-coded generation rules. Moving beyond the evolution of isolated tasks, we propose to optimize the benchmark generation workflow itself end to end with MetaBench-Harness, a dual-loop search framework. Specifically, the inner loop utilizes a benchmark harness to generate a new benchmark in each round, while the outer meta-harness orchestration layer iteratively refines and searches over harness implementations based on historical evolution trajectories. By applying MetaBench-Harness to the competitive programming CodeContests and Olympiad mathematics AIME-2024 datasets, we demonstrate that the evolved benchmarks are challenging and discriminative for frontier models. Trajectory and quality analyses verify that MetaBench-Harness enables multi-dimensional evolution, steadily improving evolution reasonableness, benchmark competency, and evaluator robustness across successive rounds. Furthermore, case studies reveal its effective utilization of diverse difficulty levers to reframe problems and elevate required capabilities. Ultimately, this work provides a solution to the pressing challenge of benchmark saturation.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "af41e7bffd55084d0ad1b227760b93b0f89c49cdb381e353720898e42dece025",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 벤치마크 하네스의 종단간 최적화를 다루는 메타 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "벤치마크 하네스 자체를 진화시키는 MetaBench-Harness 프레임워크 제안"
+        }
+      ]
+    },
+    "2609.33530": {
+      "arxiv_id": "2609.33530",
+      "paper_title": "E-CONAN (Entailment, CONtradition And Neutral) Diagnostics Dataset Investigating Linguistic Phenomena in Arabic Natural Language Understanding",
+      "abstract": "Natural Language Understanding (NLU) plays a crucial role in various applications, yet its performance suffers from weaknesses in handling the complexities of human languages, ranging from lexical ambiguity to high-level reasoning difficulties. Analyzing errors across diverse linguistic phenomena is crucial for NLU improvement, as it will help humans get insights to comprehensively assess models' limitations and capabilities, so optimizing models' generalization. Notably, several benchmarks contain diagnostics datasets designed for investigation and fine-grained error analysis. When highlighting the gaps in the state-of-the-art, we noted that there is no naming convention for macro and micro categories or even a standard set of linguistic phenomena that should be covered. To overcome this gap, we propose an initial hierarchy for Cross-Lingual NLU error analysis. Moreover, we propose a methodology to create an NLI hierarchical framework and applied a case study on Arabic NLU. Moreover, this paper introduces E-CONAN diagnostics dataset, a freely available dataset manually-annotated with coarse-grained and fine-grained categories based on our proposed Arabic hierarchy. E-CONAN dataset helps NLU designers better understand their models by doing error analysis and in-depth investigation. We used E-CONAN to investigate the performance of 9 pretrained language models and 5 LLMs. Results indicate that LLMs outperform pretrained models in world knowledge and commonsense reasoning macro-category, and underperform pretrained models in syntactic macro-category. Moreover, the hardest phenomena for all models is Reasoning, and the easiest phenomena for all pretrained models is Syntactic, and the easiest for LLMs is Lexico-Syntactic.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "bd043e53d6e045b076cc159d7ab052a06bd5eae84d384746a7ae8c992413a49c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "아랍어 자연어 이해에서 LLM과 사전학습 모델의 진단 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "아랍어 NLU 진단 데이터셋으로 한국어·영어 평가 아님"
+        }
+      ]
+    },
+    "2609.33699": {
+      "arxiv_id": "2609.33699",
+      "paper_title": "SpecRead: A Benchmark for Measuring Whether Language Models Understand Hardware Specifications",
+      "abstract": "Existing benchmarks for large language models (LLMs) in hardware design evaluate downstream artifacts such as generated RTL, assertions, or testbenches. When a model fails such a benchmark, the failure is ambiguous: it may have misread the specification, or it may have understood the specification and failed to write the code. We present SpecRead, a benchmark that isolates specification comprehension from generation ability. SpecRead v2.1 contains 385 questions over 10 open-source OpenTitan IP blocks: exact retrieval, cross-section reasoning, contradiction detection in mutated specifications, and spec-RTL consistency checking, plus 82 controls (41 distractor, 41 consistent-RTL). Type-4 items are built from real RTL mutations; we retain only mutations that Icarus Verilog simulation shows to change observable behavior. A with-spec vs. without-spec ablation suggests the questions require the excerpt, not training recall alone (without-spec accuracy 3/20 on the t1/t2 subset), though memorization of the source text may still help spot mutations. As an initial characterization with a small model, Ministral-3B scores 33.2% overall (128/385; macro average 39.0%): 55.2% on retrieval, 51.7% on cross-section reasoning. On the two contradiction-focused types, the verdict-plus-location measure gives 48.0% (t3) and 63.3% (t4), with a 51.2% false-positive rate on distractors and 100% on consistent-RTL controls. Layered scoring shows the model locates contradictions well (78.9-81.6% location accuracy) but scores lower on their category (43.9-49.7%). A structured \"rule-table\" prompting intervention lowers accuracy on every question type except t2 (tied). SpecRead is automatically scorable by deterministic checks, with gray-zone cases counted wrong under the conservative main scoring. The benchmark is regenerable for type-3 items via mutation injection, and built exclusively from public sources.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "f0698a0d0786abe70a6a36368f60828008d406892c7e1c9089b42d2bf4fcd586",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM의 하드웨어 명세 이해를 분리 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "하드웨어 명세 이해 격리 평가 벤치마크 SpecRead 신규 제시"
+        }
+      ]
+    },
+    "2609.33796": {
+      "arxiv_id": "2609.33796",
+      "paper_title": "RAISE: Reinforcing Access Control Policy Synthesis in LLMs via Symbolic Evaluation",
+      "abstract": "Translating natural-language access-control requirements into policies requires careful reasoning about permissions, constraints, and exceptions, and even frontier LLMs often produce policies that violate the intended authorization semantics. We construct CedarInstruct, to our knowledge the first dataset that supports both training and semantic evaluation for formally verifiable Cedar policy synthesis. It contains 5,800 scenarios across 44 domains and 1,408 representing a single synthetic organization, each with a verified target policy and an executable verification plan. On this data we introduce RAISE, which trains policy synthesizers from formal verification in two stages, verified supervised fine-tuning (SFT) followed by a reinforcement learning (RL) stage that learns from verifier signal. We find that SFT succeeds largely by letting models express authorization logic they already have, since untrained models rarely write valid Cedar but often reason correctly when they do. After SFT, how the verifier's information is used matters more than how much of it is used. Of six RL instantiations that consume progressively richer verifier signal, only RAISE-OC improves meaningfully on SFT; it turns failed checks and symbolic counterexamples into guided exploration and learns from the result with off-context GRPO. With about 5.4K verified scenarios and LoRA fine-tuning, RAISE-OC trains Qwen3.5-9B to surpass zero-shot GPT-6 Astra and Claude Opus 5 by 13.33 and 16.26 percentage points in semantic success on held-out scenarios, and training transfers to the independently constructed CedarBench.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "224a1baffc0ba2875ab8f534321665aa43bfbc4ac0ffee15beb78c2011f4782d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM의 접근 제어 정책 합성을 강화학습으로 개선하는 연구"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "Cedar 정책 합성용 데이터셋과 기호 평가 기반 학습법 제안"
+        }
+      ]
+    },
+    "2609.33807": {
+      "arxiv_id": "2609.33807",
+      "paper_title": "CodeActionBench: Evaluating Agentic Code-as-Policy for Embodied Manipulation",
+      "abstract": "How well can general-purpose multimodal models turn visual understanding and reasoning into embodied manipulation via executable code? We introduce CodeActionBench, a benchmark of 25 manipulation tasks that evaluates this capability through agentic Code-as-Policy. Without task-specific fine-tuning, demonstrations, external specialist perception or grasp modules, privileged scene state, or predefined task policies, agents should select visual evidence, form task-relevant 3D estimates, construct manipulation targets, and iteratively execute and revise their policies. A shared robot API provides RGB observations, calibrated geometric operations, robot feedback, and bounded motion, leaving task-dependent decisions to the evaluated agent. Fixed task instances, resource budgets, and a hidden physical-outcome verifier support controlled comparisons across models and harness configurations. Extensive evaluations across nine configurations and 675 attempts achieve success rates ranging from 2.7% to 73.3%. The strongest configuration, GPT-6 Astra with Codex CLI, solves 22 of 25 tasks at least once in three attempts, demonstrating the best performance while still leaving substantial room for improvement. Trajectory analyses reveal difficulties in spatial alignment, object retention, and completion judgment, including task failures despite successfully completed motions. CodeActionBench provides a controlled testbed for measuring how general-purpose models translate their capabilities into manipulation behavior and for examining typical failure scenarios in that process.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "85ee47385c577f52d31ef07e312262418cc0561f3646739c52ee1204388a7bec",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 모델의 코드 기반 구현 조작 에이전트 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "신체 조작용 Code-as-Policy 에이전트 벤치마크 CodeActionBench 제시"
+        }
+      ]
+    },
+    "2609.33893": {
+      "arxiv_id": "2609.33893",
+      "paper_title": "MISHAP-Bench: A Hallucination Benchmark for Large Audio-Language Models",
+      "abstract": "Large audio-language models (LALMs) produce fluent responses about audio but often hallucinate by making plausible yet ungrounded claims. Existing audio hallucination benchmarks mainly measure response correctness, leaving it unclear whether an LALM hallucinates or simply fails to understand the audio. We challenge correctness-based evaluation by defining two hallucination categories: (i) context, where claims are not grounded in the audio; and (ii) knowledge, where claims about audio-related topics lack support from externally verifiable facts. We introduce MISHAP-Bench, a comprehensive benchmark with 12,000 challenging open-ended question-audio pairs and a rigorous evaluation pipeline covering both categories. To evaluate open-ended responses, we propose a groundedness judge that uses reference rubrics and judge prompts guided by human annotations. We extensively evaluate ten state-of-the-art LALMs and show that hallucination remains substantial. Even a frontier model such as Gemini 3.7 Flash reaches a hallucination rate of 36.5%. We further adapt and benchmark four mitigation methods from multiple domains for LALMs. Despite some improvements, effective hallucination mitigation remains an open challenge. Finally, we call on the community to evaluate hallucination and benchmark mitigation methods with MISHAP-Bench.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "129163aa3d11a3b3e37b40bd4d81b0c6ba45101fb6db79757fb510da730105c0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "대규모 오디오-언어 모델의 환각을 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "오디오 언어 모델 환각 평가 벤치마크 MISHAP-Bench 신설"
+        }
+      ]
+    },
+    "2609.33905": {
+      "arxiv_id": "2609.33905",
+      "paper_title": "SlopBench: How Well Can We Rank Language Models by Slop? A Multi-Domain Benchmark of Repetitive AI Writing",
+      "abstract": "SlopBench asks which models produce the stiff, repetitive prose readers call AI slop, a question detectors leave open once they have classified a text as machine-written. We evaluated eighteen models on 112 hand-written tasks in email, social posts, essays, and workplace chat, sampling each model on each task up to ten times, for 19,928 outputs in all. SlopBench scores four surface behaviors a reader can check by hand: length against the word band each task specifies, opener repetition across a model's own samples of one task, and paragraph rhythm and fixed lexical constructions against pre-ChatGPT human corpora. Under one fixed weighting, Kimi K2.6 scores lowest at 21.1 and Mistral Large highest at 40.6. Across 500 random reweightings Kimi has the lowest score in 58 percent of draws and Mistral the highest in 97 percent. No draw preserves the full order of the eighteen, and a scenario bootstrap leaves exactly one of those ranks unambiguous. We ran three further checks on that middle order: a crowd arena, an AI detector, and lexical diversity. None of them confirmed the order. We therefore report the four behaviors separately and treat the composite as one weighting among many, and we release the prompts, outputs, reference statistics, and scoring code.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:01Z",
+      "input_sha256": "0a9dde29153f5aa63916d8b6d7d1748cc6cba9dde2c7b90287ef6e32f912de33",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM의 반복적 AI 글쓰기 품질을 다중 영역에서 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "AI 슬롭 글쓰기 평가 다중 도메인 벤치마크 SlopBench 제시"
         }
       ]
     }
