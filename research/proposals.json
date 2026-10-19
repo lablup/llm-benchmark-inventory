@@ -781,7 +781,27 @@
         "2610.12561",
         "2610.12596",
         "2610.12617",
-        "2610.12669"
+        "2610.12669",
+        "2610.12758",
+        "2610.12778",
+        "2405.01930",
+        "2506.09956",
+        "2603.07427",
+        "2603.18048",
+        "2605.11307",
+        "2605.27887",
+        "2606.22338",
+        "2608.06202",
+        "2608.06769",
+        "2609.31306",
+        "2609.33521",
+        "2609.38612",
+        "2610.04008",
+        "2610.05671",
+        "2610.06411",
+        "2610.10455",
+        "2610.13790",
+        "2610.14393"
       ]
     }
   },
@@ -15343,6 +15363,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "분자 성질→구조 추론 벤치마크 MolP2SBench 신규 제안"
+        }
+      ]
+    },
+    "2610.11087": {
+      "arxiv_id": "2610.11087",
+      "paper_title": "Beyond Imitation: A Framework and Benchmark for LLM-Assisted Peer Review",
+      "abstract": "The rapid growth of scientific publishing has strained peer review, particularly in machine learning, raising concerns about declining review quality and increasing reviewer workload. Large language models (LLMs) have been proposed as automated review assistants, yet their evaluation has focused largely on imitating human-written reviews rather than supporting the core functions of peer review. Here, we introduce a verification-centric perspective on LLM-assisted peer review, emphasizing error detection as a critical and resource-intensive task. We present a scalable benchmark that evaluates review systems' ability to identify logical contradictions, constructed through synthetic insertion of errors into conference papers, yielding unambiguous evaluation targets and enabling systematic comparison. We further propose a Multi-Layered Review (MLR) framework that prioritizes detailed manuscript comprehension before review generation, aligning more closely with human reviewing practices while improving token efficiency. Across evaluations, our approach demonstrates strong alignment with human review scores, achieves high error detection performance, and provides complementary perspectives on reviewer focus. These improvements can be attributed to both the choice of the underlying LLM and the design of our system. At the same time, we corroborate persistent vulnerabilities to adversarial manipulation, underscoring the need for robustness in automated review systems. Our findings highlight the importance of rigorous, error-focused evaluation to guide responsible deployment of LLM-based tools in peer review and other critical scientific workflows.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "78dda2ec2156044e339767040e6ecbf13f4189196f0ac07940dc58c8ecab5c22",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 기반 동료평가 프레임워크와 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "동료검토 오류탐지용 벤치마크와 MLR 프레임워크를 새로 제시"
+        }
+      ]
+    },
+    "2610.11312": {
+      "arxiv_id": "2610.11312",
+      "paper_title": "MedBenchAgent: Towards Systematic Automation of Medical VLM Benchmark Construction",
+      "abstract": "Large-scale construction of medical vision-language model (VLM) benchmarks is increasingly feasible with richly annotated imaging datasets and large language models (LLMs), yet existing automation largely focuses on generating evaluation items within predefined benchmark specifications. We study the broader problem of automatically deriving the specification itself: what to evaluate, which annotations support each task, and how to translate this evidence into reliable evaluation items. We formulate benchmark construction as constrained compilation, in which the benchmark specification is progressively derived from evaluation requirements, heterogeneous annotations, and medical knowledge. Based on this formulation, we introduce MedBenchAgent, a multi-agent framework with a Benchmark Intermediate Representation (BIR) that encodes task definitions, evidence mappings, evaluation protocols, and item specifications across construction stages. MedBenchAgent separates planning, which derives and verifies the specification, from instantiation, which constructs and audits items under the locked specification. MedBenchAgent achieves a Task-Space F1 of 90.9%, outperforming direct task induction (79.2-80.0%) and prior-guided induction (85.1%); 994 of 1,000 sampled items from correctly identified tasks pass human audit. We further demonstrate portability to a specialized medical domain and evaluate twelve VLMs, revealing task- and setting-specific variation obscured by aggregate scores. These results establish constrained compilation as a scalable and auditable framework for medical VLM benchmark construction beyond question generation.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "b5bf588f4234931bf249a8694aa1308a500b7c34e05e15c3aa42df23600ccde3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "의료 VLM 벤치마크 자동 구축 프레임워크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "의료 VLM 벤치마크 자동 구축 프레임워크 MedBenchAgent 제안"
+        }
+      ]
+    },
+    "2610.11329": {
+      "arxiv_id": "2610.11329",
+      "paper_title": "PathLang: A Language-Centered Benchmark for Vision-Language Models in Computational Pathology",
+      "abstract": "Pathology vision-language models (VLMs) have shown strong visual perception ability, but their robustness in the language domain remains poorly characterized. Existing pathology VLM benchmarks largely rely on canonical closed-set prompts or perturb only generic templates, treating language as a fixed evaluation component rather than a variable axis of model behavior. In clinical practice, however, diagnostic language varies across reports, institutions, and candidate diagnoses. We introduce PathLang, a language-centered and clinically grounded zero-shot benchmark. PathLang holds the underlying slides, ground-truth labels, and image-text evaluation direction fixed while systematically varying only the diagnostic language, so that performance differences reflect how a diagnosis is phrased rather than what is imaged. The language variation follows how pathologists actually rephrase diagnoses (terminology, specificity, and reporting style), and all prompts and candidate pools are validated by six board-certified pathologists. PathLang covers four task families: (1) zero-shot classification with image-text alignment analysis, (2) cross-modal retrieval, (3) paraphrase robustness, including semantic-equivalence paraphrases, length and reporting-style variation, and prompt ensembling, and (4) open-vocabulary diagnosis retrieval over four candidate pools with distinct forms of semantic competition. Across nine VLMs and five public datasets spanning four organs, we find that performance is highly sensitive to clinically equivalent paraphrases, varies substantially across forms of semantic competition, and that image-text alignment quality does not necessarily translate into inter-class separability. We release the prompt corpus, candidate pools, pre-computed text embeddings, and evaluation code at https://anonymous.4open.science/r/PathLang.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "3bce1fede722c8c3cf75836b0cf38f9baecfd7059a81fa5518fd75a7c8a4cef7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "병리 VLM용 언어 중심 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "병리 VLM 언어 강건성 벤치마크 PathLang과 프롬프트 코퍼스 공개"
+        }
+      ]
+    },
+    "2610.11447": {
+      "arxiv_id": "2610.11447",
+      "paper_title": "Closed-loop evaluation of LLM agents for embedded software development",
+      "abstract": "Large language models (LLMs) are increasingly deployed as coding agents that edit files, run builds and tests, inspect execution results, and repair software iteratively. Embedded firmware is a demanding target because correctness depends on closed-loop behavior under sensing, timing, and safety constraints, not only on static source quality. Yet embedded-agent evaluation remains limited and often emphasizes one-shot synthesis or offline correctness. We present a benchmark for closed-loop evaluation of embedded coding agents. Each task provides a plain-text engineering description, constrained workspace, and visible build-and-runtime surface. The agent must translate requirements into implementation and self-verification steps, then iterate until the required device behavior is achieved. The suite contains five embedded-control tasks and four feedback scenarios: one-shot generation, realistic self-verification, CI-style red/green feedback, and oracle-style detailed feedback. The implementation targets simulated ESP32 firmware for reproducibility. We evaluate seven GPT-family and Qwen-family configurations across five tasks and four scenarios, with three repetitions per condition for 420 runs. gpt-5.4 has the highest pass rate among evaluated configurations but does not saturate the benchmark; qwen3.5-27B is the strongest observed local model; and smaller local models degrade sharply in pass rate and search efficiency. These results suggest that capable local embedded coding agents are emerging.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "7205a28a15b50dff36b2b6cee8dca70f669ddd039424b2e2e8bda00d313536da",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "임베디드 코딩 에이전트의 폐루프 평가 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "임베디드 코딩 에이전트 폐루프 평가 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2610.11514": {
+      "arxiv_id": "2610.11514",
+      "paper_title": "SSCBench: Evaluating the Evidential Validity of Fault-Injection Tests for Tool-Using LLM Agents",
+      "abstract": "Fault injection is increasingly used to evaluate the reliability of tool-using LLM agents. However, there has been limited study of how fault-adoption results should be interpreted when the agent itself determines which authoritative observations become visible during execution. In this paper, we present a systematic study of this evidential validity problem in agent fault-injection evaluation. We develop a measurement protocol that specifies what observations can refute an injected assertion, determines whether they can become visible before the affected fact is first used, and records whether the evaluated execution actually realizes this condition. We construct SSCBench as an instantiation of the protocol and evaluate four fault operators and five agent configurations over 1,191 faulted executions in two $τ$-bench environments. Our experiments show that an admitted fault case and agent configuration can realize substantially different evidential conditions across executions, and that aggregate adoption can remain well defined even when the population supporting a timely-counterevidence claim is sparse or absent. For example, among 44 adopted runs in which counterevidence eventually became visible, only 17 received it before first use, while 27 received it afterward. We also find that first-error timing and later stance revision need not coincide, and that automated trajectory analysis can recover adoption without reliably recovering the first faulty-reliance event needed for temporal diagnosis. We argue that the evidential condition realized by an execution and the population supporting a claim-specific interpretation are part of fault-injection evaluation itself and should be reported before adoption is interpreted as failure under pre-use counterevidence.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "4db9a9592816448b9676ce4de47998995b7bed58a46e52ddee6622355947cefd",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "도구 사용 LLM 에이전트의 결함 주입 평가를 분석함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 결함주입 평가의 증거 타당성 프로토콜과 SSCBench 구축"
+        }
+      ]
+    },
+    "2610.11539": {
+      "arxiv_id": "2610.11539",
+      "paper_title": "Design Creativity Bench: Measuring creativity in LLM-Generated UI",
+      "abstract": "As leading LLMs improve on capability evaluations, their limitations in producing creative outputs on design tasks remain insufficiently characterised. Our work introduces Design Creativity Bench, a benchmark that evaluates diversity and appropriateness in UI designs. It measures distinctiveness among models on the same prompt (originality), how much a model's designs change between two prompts for the same UI goal in different product domains (creative range), and the share of a brief's acceptance criteria each design meets (appropriateness). Originality is 0.592 for same-prompt design pairs from different models (95% CI [0.582, 0.602]), far below the 0.764 for same-prompt human-model pairs (95% CI [0.751, 0.778]). Creative range is 0.581 across models (95% CI [0.567, 0.597]), against 0.902 for human designs (95% CI [0.884, 0.919]). Appropriateness is above 90% for every model in our test set, and the best model reaches 99.2%, slightly above the 98.0% for human designs. Our work shows that the default output of LLMs, though generally appropriate, is substantially more repetitive than the human baseline. This calls for strong measures to address the issue. A live leaderboard with newer models is maintained at https://kombai.com/benchmark/.",
+      "paper_updated": "2026-10-14T08:42:05Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "65177f636d6bac1cc303020329f74038fa3eb6cf90a051a4c7d4518428fedd96",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 생성 UI 디자인의 창의성을 평가하는 벤치마크임"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "UI 디자인 창의성 평가 벤치마크 Design Creativity Bench 제안"
+        }
+      ]
+    },
+    "2610.11559": {
+      "arxiv_id": "2610.11559",
+      "paper_title": "SWE-Journey: Towards More Realistic Evaluation of Coding Assistants through Long-Horizon, Multi-Turn Interaction",
+      "abstract": "Coding assistants such as Claude Code and Codex have become a major application of LLM agents, yet existing benchmarks remain far from real-world use, particularly in task horizon and interaction length. Code assistants require completing long chains of development work in continuously evolving repositories, while repeatedly clarifying requirements and adapting implementations through multi-turn interaction. To address these gaps, we introduce SWE-Journey, a benchmark for more realistic evaluation of coding assistants. To address the task-horizon gap, we propose a weak-to-strong synthesis pipeline that automatically constructs long-horizon coding tasks. To address the interaction gap, we mine four representative user personas from real interaction data and build a user-simulation agent to reproduce realistic code-assistance interactions. On average, models pass over 75% of tests for requested functionality with software architects, but fewer than 25% with non-coders. These results show that current coding assistants still fall short of enabling reliable coding for non-coders. We further analyze the reasons for this gap and identify asking right, finding right, and fixing right as key capabilities during interaction.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "0995df8679142b3d997daf8bab42e8146e399cb9f29c4e7b44bebde307cb32fc",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "코딩 어시스턴트의 장기 다중 턴 평가 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "장기 다중턴 코딩 어시스턴트 평가 벤치마크 SWE-Journey 제안"
+        }
+      ]
+    },
+    "2610.11618": {
+      "arxiv_id": "2610.11618",
+      "paper_title": "PolyCodeEval: Benchmarking Multilingual Code Generation from Functions to Repositories",
+      "abstract": "As large language models increasingly move toward repository-level software engineering, existing code-generation benchmarks remain fragmented across language coverage, task granularity, and evaluation protocols, impeding systematic comparison. To address this gap, we present PolyCodeEval, a unified multilingual and multi-granularity benchmark for code generation. It comprises 2,590 code generation tasks spanning functions to repositories, derived from 58 real, executable open-source repositories in five programming languages. All tasks are evaluated under a unified execution-based protocol with integration procedures tailored to their generation targets. Building on this benchmark, we evaluate frontier large language models, state-of-the-art specialized methods, and general coding agents. Our results show that existing approaches still struggle to correctly generate complete code fragments across granularities and languages. Specifically, the studied methods generate at most 71.7%, 76.7%, and 31.0% correct functions, files, and repositories, respectively, with performance varying widely across languages. Paired experiments further show that implementation context from related functions in the same file improves the executable correctness of function generation. Method rankings also vary across task granularities and programming languages, highlighting the importance of multilingual, multi-granularity evaluation for comprehensively assessing code generation capabilities.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "e996d39cc597b91c86d4296d74c82cb48668f52b30cb4a344d19229b2625901d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다국어 코드 생성 벤치마크를 제안하고 평가함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다국어 코드생성 통합 벤치마크 PolyCodeEval 신규 구축"
+        }
+      ]
+    },
+    "2610.11669": {
+      "arxiv_id": "2610.11669",
+      "paper_title": "Perceptually Grounded and Semantics-Aware Evaluation for Holistic Co-Speech Gesture Generation",
+      "abstract": "Holistic and semantics-aware co-speech gesture generation has advanced rapidly, yet evaluation remains behind: objective metrics do not consistently reflect human perception, and semantic appropriateness remains difficult to quantify. We present a perceptually grounded and semantics-aware benchmark that combines standardized model comparison, human-centered metric validation, and fine-grained semantic evaluation. We first curate a list of 13 objective metrics covering different aspects, including distributional similarity, geometric fidelity, kinematic quality, cross-modal synchrony, and semantic appropriateness. For the semantic-appropriateness category, we propose a new metric, Semantic Gesture Preservation (SGP), which measures how far semantic gestures in the ground truth are preserved in the generated gestures. For this, we augment the BEAT2 dataset's annotations using a multi-modal LLM. We then conduct a perceptual study where 101 participants score generated gestures among five dimensions, including human-likeness, motion diversity, absence of animation errors, speech timing and content match. We systematically analyze objective metric--subjective score correlations. Unlike Semantic Score (SC), which shows no significant association with the evaluated perceptual dimensions, SGP is selectively aligned with speech-aware human judgments. We construct five target-specific composite metrics aligned with the subjective dimensions. These composites improve perceptual alignment across all five dimensions, with the largest gains for absence of animation errors and content match, indicating that complementary objective signals can better approximate human judgments than individual metrics alone. Overall, our results show that objective metrics require validation against subjective evaluations.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "8a9da2ad1fa26094aeb99d4a7e00b19e93cff666aa02d173c996472fa371709b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "제스처 생성 평가 벤치마크와 지표를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "제스처 생성 평가용 벤치마크와 새 지표 SGP 제안"
+        }
+      ]
+    },
+    "2610.11678": {
+      "arxiv_id": "2610.11678",
+      "paper_title": "TRACE: Diagnosing Verifier Brittleness in Agentic Evaluation",
+      "abstract": "Verifier scores now serve as both benchmark metrics and training rewards for large language model (LLM) agents, and a change in score is routinely read as a change in capability. It may instead reflect a change in the evaluation. We introduce TRACE, a protocol that turns a score change from a verdict into a testable diagnosis: it applies a targeted change to one part of an evaluation, compares paired runs, checks whether the agent's behavior changed, and rescores unchanged trajectories to test whether the scoring rule is responsible. In a controlled suite of 25 synthetic tasks, renaming tools lowers a scripted agent's score by 0.250 even though it performs exactly the same operations; restoring the original names at scoring time closes the entire gap, while the same mutation exposes a genuine behavioral failure in a second agent. On public $τ^2$-bench tasks with four LLM agents, an initial 30-task study finds mixed reward changes whose one clear effect does not replicate. In a larger follow-up on 88 new tasks with repeated runs per condition, renaming tools or reformatting tool outputs leaves reward unchanged to within $\\pm$0.10 for seven of eight agent-change pairs, whereas tool names that deliberately mislead lower every agent's reward by 0.20-0.44, showing that the setup can detect real effects. Identical reruns flip 15-36% of task outcomes, so single-run comparisons cannot separate presentation effects from run-to-run variation. Two frontier LLM judges give consistent verdicts when a fixed trajectory is presented differently, yet disagree with each other on 57% of the same records, largely because one grades procedure rather than outcome. TRACE thus separates what a score change says about the agent from what it says about the measurement.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "83e2919e75eb0e2933aa3b4ffa20ddc3c2f3d35ee82a5fa72ebd7aaae487b2f4",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 평가의 검증자 취약성을 진단하는 프로토콜임"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 평가 검증기 취약성 진단 프로토콜 TRACE 제안"
+        }
+      ]
+    },
+    "2610.11978": {
+      "arxiv_id": "2610.11978",
+      "paper_title": "Specialized Decision Models vs. General-Purpose LLMs: Benchmarking Jev Across Knowledge, Reasoning, and Multilingual Tasks",
+      "abstract": "Jev is a \"System One\" model that returns a choice among given options instead of generating text. We study how such a specialized decision model compares with general-purpose large language models (LLMs). We evaluate Jev on 13 multiple-choice benchmarks covering knowledge, reasoning, and multilingual understanding, and compare it with 19 LLMs in three tiers: frontier, representative, and small. Jev is competitive with frontier LLMs on knowledge and commonsense benchmarks and obtains the best score on MMLU-Redux and ARC-Challenge. Outside mathematics, it also outperforms most representative LLMs and all small LLMs. However, it falls behind on mathematical word problems: on MathQA, it is 17.7 points below the frontier median and scores lower than all 19 LLMs. These results indicate that a specialized decision model can match general-purpose LLMs on decisions that rely mainly on knowledge, but not on decisions that require multi-step calculation.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "d7e7a34a07c0c4fb2b8449c47567c29e4b8b8227f17b2652296e9b470ad9fb42",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "전문 의사결정 모델과 LLM을 벤치마크로 비교함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "기존 벤치마크 점수 보고만 있고 재사용 평가자료 신규 제시 없음"
+        }
+      ]
+    },
+    "2610.12183": {
+      "arxiv_id": "2610.12183",
+      "paper_title": "A Closer Look at Agentic BBO: Benchmarking LLM Agents for Black-Box Optimization",
+      "abstract": "Black-box optimization (BBO) arises in many scientific and engineering problems where objective evaluations are expensive and limited. Recent large language model (LLM) agents offer a new way to approach BBO by combining task semantics, computation, optimization tools, and feedback-driven decision making, showing great potential due to the integration with mathematically rigorous tools. However, existing agentic BBO studies use different task domains and system configurations, making their results difficult to compare and the effects of individual design choices hard to isolate. We therefore introduce AgenticBBO-Bench, a cross-domain benchmark for agentic BBO spanning synthetic functions, hyperparameter optimization, database tuning, chip design, and molecular design under a unified finite-budget evaluation protocol. In our experiments, agentic BBO achieves higher family-averaged scores than direct LLM-based methods in all five domains and outperforms the best numerical optimizers in four. We further study three factors shaping agent performance: optimization tools, task information and prior knowledge, and the role of the LLM during search. Our results show that additional numerical tools do not consistently improve performance, task semantics are broadly useful while more specific priors are less reliable, and numerical optimizers can effectively absorb gains from search trajectories established by the agent. Finally, we introduce a five-task frontier challenge within AgenticBBO-Bench and evaluate seven LLMs under the Codex agent harness, where GPT-6 Astra and DeepSeek-V4.1-Flash lie on the Pareto frontier of performance and cost among the evaluated models. Our code is available at https://github.com/lamda-bbo/agentic-bbo.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "d64ceeebf9ad9d5eb5344d2a8834c11acd1d6793391f9190067b159aa0bb14e0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 기반 블랙박스 최적화 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "블랙박스 최적화 에이전트용 AgenticBBO-Bench 신규 제안"
+        }
+      ]
+    },
+    "2610.12187": {
+      "arxiv_id": "2610.12187",
+      "paper_title": "Autonomous Code Migration for Quantum Programming Languages: A Case Study with QED-C Benchmarks",
+      "abstract": "Quantum programming requires concepts and intuition that differ substantially from those used in traditional programming languages. Multiple quantum programming frameworks address these requirements through different abstractions and execution models, creating tradeoffs in programmability, portability, and performance. Because quantum software is less prevalent in the training data available to large language models, autonomous coding agents might be expected to face additional challenges when working with these frameworks. We present a case study in autonomous migration of the QED-C Application-Oriented Benchmarks from Qiskit to CUDA-Q. Opus, GPT, and Gemini models were each tasked with porting thirteen benchmark methods spanning foundational algorithms, amplitude estimation, Monte Carlo methods, variational optimization, linear-system solving, and factoring. In all cases, the models were able to generate satisfactory ports with little direct coding help and there was a drastic reduction in the time required compared to a human engineer. However, in all cases, the agents resorted to shortcuts when implementation challenges surfaced and multiple prompts were required to force appropriate coding directions. Assessment of the generated implementations showed that no single model consistently produced the best port across all benchmarks, indicating that multi-agent ensemble strategies could mitigate challenges associated with quantum software. The effort resulted in publicly available, near-complete CUDA-Q support in the QED-C benchmarks along with model-generated skills designed to improve agent performance when implementing CUDA-Q applications. When tested on an unseen benchmark, these skills reduced the required model turns by up to 85% and token usage by up to 96%. We conclude by distilling lessons from the case study.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "0e29f1eb0119091ece272a1aa868df3906bbcd9cc61d467a89ab67028521e391",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "양자 프로그래밍 코드 자동 마이그레이션 사례 연구임"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "양자 코드 마이그레이션 사례연구, 벤치마크 기여 불명확"
+        }
+      ]
+    },
+    "2610.12190": {
+      "arxiv_id": "2610.12190",
+      "paper_title": "DataSense-Bench: The First Step Toward an AI Scientist",
+      "abstract": "As claims about recursive self-improvement (RSI) and artificial general intelligence (AGI) proliferate, we ask a simple question: do frontier AI models have a sense of data, i.e., can they reliably select the right data for training? We introduce DataSense-Bench to study this capability through the fundamental problem of data selection and performance forecasting in machine learning. We ask AI agents to select and rank candidate training subsets that can be used to fine-tune a small LLM model. Agents are allowed to inspect the data, write and execute analysis code, and run model forward passes, but can not train the model or access the actual evaluation tasks. We then fine-tune the base model on each selected subset and evaluate its post-training performance under a standardized protocol. We instantiate the benchmark in terminal problem solving and tool use, selecting trajectories from OpenThoughts-Agent and EnvScaler and evaluating on TBLite and BFCL, respectively. We then evaluate the agents along two complementary dimensions: the post-training performance of the top-ranked subset, reflecting the ability to identify high-value training data, and ranking accuracy, reflecting the ability to predict the relative performance of the selected subsets. In our experiments, selection gains over random selection are limited; agents do not reliably rank their selected groups, and ranking ability does not hold consistently across tasks: Astra identifies the best group in all three tool-use runs but in only one of three terminal runs. Analysis of execution traces on both tasks shows that agents often use similar data signals while interpreting their training value differently.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "b66aa2df0aef3d6144c89ee6dff69eb757fab7619ceb947574c2f21587d8de08",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 과학자를 위한 데이터 선택 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "데이터 선택 능력 평가 벤치마크 DataSense-Bench 신규 제안"
+        }
+      ]
+    },
+    "2610.12402": {
+      "arxiv_id": "2610.12402",
+      "paper_title": "SpaceCast-Bench: Evaluating Predictive Spatial Reasoning in Vision-Language Models",
+      "abstract": "Existing spatial reasoning benchmarks mainly test spatial perception: reading off relations already visible in the input. Yet real-world spatial intelligence demands predictive spatial reasoning: constructing a scene from observations, anticipating how an intervention changes it, and reasoning about the unseen outcome. We introduce SpaceCast-Bench, the first benchmark to directly and diagnostically evaluate this capability. Built around an observe-transform-infer framework, its 3,862 questions from 182 real-world scenes span 16 task types at three levels: static perception, local prediction, and global prediction, progressively requiring scene understanding, spatial state updating, and relational inference over unobserved outcomes. Evaluating 21 models exposes a stark gap: the strongest model reaches only 58.0% against 87.2% human performance, while spatially specialized models remain near random chance. Controlled analyses further reveal that bridge views are critical for integrating distributed observations, and that explicit 3D evidence benefits models more reliably than generated outcome images or videos. Fine-tuning on our programmatically generated data lifts Qwen3-VL-4B from 34.0% to 65.7% with macro-average gains across six out-of-domain benchmarks.",
+      "paper_updated": "2026-10-08T17:44:17Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "126f49243ea7b7d5b4f99cad11be962513d3a88476e537ef75fcaf1fa9a55118",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM의 예측적 공간 추론 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "예측적 공간추론 벤치마크 SpaceCast-Bench와 생성 데이터 제공"
+        }
+      ]
+    },
+    "2610.12458": {
+      "arxiv_id": "2610.12458",
+      "paper_title": "OmniCapBench: A Deep-Structured Evaluation Framework for Fine-Grained Audio-Visual Captioning",
+      "abstract": "Multimodal large language models (MLLMs) are rapidly evolving toward continuous audio--visual reasoning, creating an urgent need for evaluations that expose their capability limits. Audio--visual captioning is an ideal diagnostic task, yet current benchmarks face a coupled trade-off: whole-caption scores provide coverage without localization, local probes provide localization without coverage, and unconstrained LLM judges introduce instability. We introduce OmniCapBench (Omni-Video Caption Benchmark), a benchmark that reframes audio--visual caption evaluation as a deep-structured diagnostic framework. OmniCapBench shifts the prediction target from free-form text to sets of atomic, verifiable evaluation units across three tracks: entity references, visual shots, and audio events, enabling reliable scoring with deterministic constraint checks and localized LLM-based semantic comparisons. With 786 densely annotated videos, OmniCapBench effectively distinguishes MLLM perception errors, including temporal grounding failures, identity drift, cross-modal misalignment, and hallucinated descriptions. Evaluating frontier MLLMs reveals strong local perception but weak long-horizon audio--visual reasoning, particularly in identity drift and cross-modal misalignment, providing a fine-grained roadmap for omnimodal development.",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "474d96270e90dfd02d0029dde570f48c05fe793d3826d38fa3d08f43b8a1200d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "오디오-시각 캡셔닝 평가 프레임워크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "음성영상 캡셔닝 진단 벤치마크 OmniCapBench 신규 제안"
+        }
+      ]
+    },
+    "2610.12561": {
+      "arxiv_id": "2610.12561",
+      "paper_title": "What Should Embodied Agents Remember? Benchmarking and Evaluating Memory Modality for Embodied Agents",
+      "abstract": "Memory allows large language model (LLM) agents to use past experience, often stored as textual records, when responding to requests. For embodied agents that control robots, visual and spatial observations introduce a broader choice of memory modalities, affecting both the information available for subsequent tasks and the model inference costs of constructing and using memory. We introduce MeMoREval, a benchmark for studying this problem through a controlled experience-request protocol. Agents first experience a sequence of events without knowing the subsequent tasks, and subsequently they use memory to respond to information and action requests without receiving new observations. The benchmark comprises 53 tasks across four simulated indoor environments and measures task success alongside the inference costs of memory construction and use. Our reference evaluations reveal that storing frames outperforms storing generated descriptions at lower write-time inference cost for the primary model, while storing frames with scene graphs achieves the highest aggregate task success for every tested model. Extensions to accumulated experience, selective frame retention, and visual input to memory writers demonstrate how the benchmark accommodates further memory-design investigations. Two physical-robot demonstrations establish the feasibility of applying its protocol beyond simulation.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "d8c56ff238fd510706ed44b98d252b2d318607b25590849c18f694f59b74333e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "체화 에이전트의 기억 양식 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "구현 에이전트 메모리 모달리티 평가 벤치마크 MeMoREval 제안"
+        }
+      ]
+    },
+    "2610.12596": {
+      "arxiv_id": "2610.12596",
+      "paper_title": "SpireBench: Evaluating Long-Horizon Strategic Play of Agentic Models with Slay the Spire",
+      "abstract": "Agentic large language models now tackle complex tasks, yet strategic reasoning over long horizons is under-studied: most agentic benchmarks are short and episodic, and performance on long tasks is hard to dissect into stored knowledge, reasoning and luck. We introduce SpireBench, in which models play the complete commercial deck-builder Slay the Spire (StS), where early decisions decide long-term success. Across 20 large language models (LLMs) at the game's highest difficulty, frontier models beat heuristic baselines and match the average human player but remain far behind experts. This gap widens as the run lengthens: the strongest models win the first act as often as experts, then fall behind. What separates strong models from weak is how well they play each fight; all of them misjudge risk over a run, preserving health rather than spending it to grow stronger. A comprehensive, self-consistent renaming of every game term shows that part of their performance rests on prior knowledge of the game, and models do not improve from the memories they write across runs, which are often wrong and overly cautious. Our harness is the first to give a model the complete original game, and we compare it with existing harnesses. Overall, SpireBench offers an unsaturated long-horizon benchmark with tools to locate where and why agents fail.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "71d15f1933ba6e37bfd32c00d05bbca8438949fb1690bbceadd533836fa882b1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트의 장기 전략 게임 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "장기 전략 플레이 벤치마크 SpireBench와 하네스 제안"
+        }
+      ]
+    },
+    "2610.12617": {
+      "arxiv_id": "2610.12617",
+      "paper_title": "GeopoliticalQA: Benchmarking Retrieval and Generation over Intelligence Reports",
+      "abstract": "Geopolitical and strategic intelligence reports constitute a rich source of expert knowledge and have increasing value in the current political climate, but their heterogeneity and analytical complexity pose challenges for retrieval-augmented question answering. We introduce a benchmark for grounded question answering over 415 open-source geopolitical and strategic intelligence reports, comprising 5,525 document-grounded question-answer pairs spanning factual, inferential, comparative, and risk-oriented questions. We propose a document-aware generation pipeline that profiles reports before generating questions and validate dataset quality through expert annotation and an LLM-as-judge protocol. Using the benchmark, we evaluate 15 retrieval systems and six open-weight LLMs for RAG. We find that models perform similarly on document-level retrieval, while at the harder chunk level retrieval quality is not driven by embedding-model scale: bge-m3, a mid-size open encoder matches an order of magnitude larger ones and outperforms commercial embedding APIs. In contrast, answer generation remains challenging even given the gold evidence, particularly for inferential and risk-oriented questions.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "7c4da784a858d7ea960ae92608777e790c98f44dab42b52d7ad706abd56adca8",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "지정학 정보 보고서 기반 QA 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "정보보고서 기반 QA 벤치마크 GeopoliticalQA 신규 구축"
+        }
+      ]
+    },
+    "2610.12669": {
+      "arxiv_id": "2610.12669",
+      "paper_title": "GeoFitBench-LLM: A Benchmark for Assessing Large Language Models' Capabilities in Geospatial Data Requirements Elicitation for Geo-Analytic Tasks",
+      "abstract": "Large language models are becoming central to GeoAI systems, yet their evaluation rarely considers the elicitation of geospatial data requirements. This omission is critical as retrieval oriented geo-analytic tasks cannot be supported reliably without first identifying the necessary datasets and constraints. GeoFitBench-LLM is introduced as a benchmark for assessing whether LLMs can infer the datasets, the supporting resources and the constraints required by geo-analytic requests in natural language. The benchmark is structured around two reasoning dimensions, Spatio-Temporal Relational and Semantic Grounding, reflecting long-standing challenges in geospatial information retrieval and related natural language tasks. Ground truth requirements are encoded in a fixed, provider-independent schema for reproducible evaluation of resource identification and attribute-level specification. Experiments on seven models under minimal prompting indicate that identifying the necessary resources is often achievable, with GPT-5.4 Thinking achieving the best result by recovering the complete set of resources in 66.67% of benchmark requests. Results further indicate that accurate fitness-for-use specification remains more difficult as inferential demands increase.",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "created_at": "2026-10-19T13:49:55Z",
+      "input_sha256": "7b776e4171cf93967fdb515c58b9f92188cea2e08d6565fd4dfe9ff1af6c8379",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "지리공간 데이터 요구사항 도출 LLM 벤치마크를 제안함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "지리공간 요구사항 도출 평가 벤치마크 GeoFitBench-LLM 제안"
         }
       ]
     }
