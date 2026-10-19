@@ -681,7 +681,27 @@
         "2606.04282",
         "2606.10142",
         "2606.13994",
-        "2606.21001"
+        "2606.21001",
+        "2607.01103",
+        "2607.10826",
+        "2607.20471",
+        "2608.04265",
+        "2609.38480",
+        "2610.00346",
+        "2610.07792",
+        "2610.08076",
+        "2610.07563",
+        "2610.07580",
+        "2610.07722",
+        "2610.07751",
+        "2610.07763",
+        "2610.07766",
+        "2610.08871",
+        "2610.07967",
+        "2610.08026",
+        "2610.08106",
+        "2610.08161",
+        "2610.08162"
       ]
     }
   },
@@ -13043,6 +13063,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "의료 에이전트 하니스 평가 벤치마크 MedicalHarnessBench 구축"
+        }
+      ]
+    },
+    "2610.05863": {
+      "arxiv_id": "2610.05863",
+      "paper_title": "CCQ: A Multi-State Child Care Quality Dataset to Support AI for Children's Health Research",
+      "abstract": "High-quality child care in early life is a critical determinant of children's growth and development. Research on child care quality has been constrained by fragmented, non-research-friendly, and privacy-bound datasets. We present CCQ (Child Care Quality), a large-scale, de-identified dataset for applied data science research at the intersection of AI and early childhood health. CCQ integrates 59,372 child care provider records across 12 U.S. states, covering diverse provider types as well as data schemas. To ensure research utility while protecting privacy, we implement an automated, LLM-based curation pipeline that anonymizes, cleans, and standardizes raw state records into two complementary releases: a cleaned textual release and a fully preprocessed tabular release. We also benchmark traditional machine learning models, tabular foundation models, and language models on quality rating prediction and important features analytics. Within a state, tabular classifiers on the preprocessed tables perform best. Across states, zero-shot transfer is near chance, but modest target-state supervision recovers most of the within-state performance, and pretraining on other states benefits finetuned language models. We release both datasets with all code to accelerate AI-driven research on child care quality and ultimately improve children's health and development.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "01847f0791057469b0c5113065a277f104ff47e4a66dff9eb6ca06793bab857d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "아동 돌봄 품질 데이터셋, 아동 건강 AI 연구 지원"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "LLM 기반 데이터셋 구축이지만 벤치마크는 표 형태 예측용으로 LLM 평가 자료로의 재사용성 불명확"
+        }
+      ]
+    },
+    "2610.06122": {
+      "arxiv_id": "2610.06122",
+      "paper_title": "Benchmarking Jailbreak Guardrails for Embodied Agents",
+      "abstract": "Embodied agents powered by large language models and vision-language models are increasingly deployed in physical environments, but jailbreak attacks can induce these agents to perform physically harmful actions. A growing number of guardrail methods have been proposed to intercept dangerous behavior before it is executed, yet existing safety benchmarks evaluate the embodied models themselves, leaving it unclear how well these guardrails actually defend an embodied agent in practice. We present the first systematic evaluation of jailbreak guardrails for embodied agents. To compare guardrails under identical conditions, we build a pluggable evaluation framework that treats the embodied agent as a fixed backend and each guardrail as a module that can intervene at the perception, planning, or control stage. We subject six representative guardrails to template-based and automated jailbreak attacks as well as safe instructions, and assess them at the system level along three dimensions: defense effectiveness, measured by the bypass rate and the hazard success rate in the simulator; usability, measured by the false-positive rate and the task completion rate on safe instructions; and efficiency, measured by the latency overhead added at runtime. Experiments on guardrails that span different intervention stages, decision mechanisms, and input modalities reveal a clear trade-off among the three dimensions, and show that no single guardrail dominates in all settings. We further analyze how intervention stage, decision mechanism, and input modality shape safety outcomes, and we offer practical guidance for selecting and designing guardrails for embodied agents.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "2eeac16e27ee173c8c40ed128beee030d227e221292d0a86253657d7f13de1bc",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 기반 체화 에이전트 안전 가드레일 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "신체화 에이전트용 탈옥 가드레일 평가 프레임워크·벤치마크 도입"
+        }
+      ]
+    },
+    "2610.06193": {
+      "arxiv_id": "2610.06193",
+      "paper_title": "Correct Code, Broken Contributions? SWE-CC: Benchmarking Repository Policy Compliance for Coding Agents",
+      "abstract": "Autonomous coding agents now resolve a substantial share of real-world GitHub issues. However, passing functional tests differs fundamentally from producing a high-quality contribution acceptable for merging. Mature open-source projects publish repository-specific contribution policies, spanning style, git, testing workflows, to ensure code quality and long-term maintainability. Because existing benchmarks evaluate patches solely on unit tests, agent compliance with repository governance remains unknown. In this paper, we introduce SWE-CC, a benchmark evaluating code and process compliance in autonomous software engineering. We develop a semi-automated pipeline that converts developer documentation across 12 open-source repositories into 823 machine-checkable atomic policies. SWE-CC introduces two features: 1) lightweight, deterministic checker functions that represent each policy, 2) a comprehensive auditing mechanism that inspects both agent runtime behaviors and final deliverables. We evaluate the compliance of agent workflows in 500 end-to-end software contribution tasks extended from SWE-bench Verified. Our evaluation of four LLMs under two agent scaffolds shows that modern agents suffer from coding compliance issues: although agents produce functionally correct patches, they still violate 43.1 percent of applicable project policies, with nearly half of all violations occurring during intermediate execution steps. These results show that functional correctness does not guarantee real-world readiness, highlighting that future software engineering agents must reliably conform to repository governance to enable safe and trustworthy deployment.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "466108e06c890a4e334ef1f9e643f31bf535e2f866da09d9f949557b1eca96cb",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "코딩 에이전트의 저장소 정책 준수 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "코딩 에이전트의 저장소 정책 준수 평가 벤치마크 SWE-CC 신규 제안"
+        }
+      ]
+    },
+    "2610.07089": {
+      "arxiv_id": "2610.07089",
+      "paper_title": "Towards a Unified Misuse Monitoring Benchmark",
+      "abstract": "LLM agents increasingly act in multi-actor environments, exposing them to misuse from multiple sources: decomposition attacks, where a harmful request is split into innocuous sub-requests, and prompt injection attacks, where a compromised tool delivers a malicious instruction. Existing evaluations treat these threats separately and ask whether a trajectory is harmful, rather than when it becomes harmful. We propose monitoring the agent's responses, where its actions are externalised, and ask whether the first point where monitors identify harm lands within a harm window (from the agent's first harmful commitment to goal execution). We develop a unified formalism for trace-level misuse monitoring and use it to construct a benchmark of ~6,200 conversation transcripts between a user, an LLM agent, and the external environment, spanning both threats in a shared schema, with a labelled harm window, corresponding benign controls, and matched instances of refusals to these requests. Across 17 monitor configurations, we find that our proposed action-framed monitors perform well on both threats under classical metrics (AUC: 0.95 and 0.99 respectively), while content-framed monitors collapse on injection attacks (AUC: 0.52). We also show that classical position-blind metrics paint an optimistic picture of monitor performance, since all monitors localise decomposition attacks poorly under the interval metric, which measures the ability to localise harm. Broadly, we illustrate the need for a unified study of misuse monitoring.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "e0fbef10a4a1ec9f761b5ed5a37ecdcffeef6e2fc506671423fcaa7e30dcc857",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 오용 모니터링 통합 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 오용 감시용 통합 벤치마크(약 6,200개 대화) 구축"
+        }
+      ]
+    },
+    "2610.06413": {
+      "arxiv_id": "2610.06413",
+      "paper_title": "SpatialChain: A Benchmark for Auditing Spatial Reasoning Faithfulness in VLMs",
+      "abstract": "Thinking-enabled vision-language models (VLMs) report ever-higher accuracy on spatial benchmarks, yet final-answer scores cannot reveal whether a correct prediction reflects faithful spatial reasoning or a linguistic shortcut. We introduce SpatialChain, a dataset of 28,350 training and 899 test examples pairing spatially-oriented GQA questions with scene-graph-grounded reasoning chains, retained only when the generated answer matches the symbolic ground truth, and a two-axis evaluation combining objective chain-overlap metrics with a scene-graph-aware LLM judge that scores faithfulness and completeness independently of the final answer. Applied to nine thinking-enabled VLMs, the protocol surfaces three findings invisible to standard accuracy: (i) four of nine models achieve $\\geq$79% VQA accuracy while exhibiting shortcut rates above 39%, i.e., correct answers whose reasoning the judge marks as unfaithful; (ii) chain quality significantly predicts answer correctness for seven of nine models, but the two exceptions (Claude Sonnet 4.6, InternVL3.5-8B) reveal qualitatively distinct failure modes, terse output vs. verbose-decorative reasoning, that benchmark accuracy alone conflates; (iii) SFT on SpatialChain improves Qwen3-VL-8B by +6.2 pp in-domain and reduces its shortcut rate to 22%, while a stylistic specialization effect on external benchmarks motivates replay-augmented training as mitigation. The faithfulness judge is validated against 198 human-annotated items, where judge-human agreement matches human-human agreement, and against a second judge from a different provider, which preserves the model ranking ($ρ$ = 0.88). Data, generation scripts, and evaluation code are released at https://github.com/spatialchain/SpatialChainBenchmark.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "554edb1604df4c0e9b4eaeedc661bf24a897ff4cea399b69b1c3db45fd3f0335",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "시각언어모델 공간 추론 충실성 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "VLM 공간 추론 충실성 평가 데이터셋·프로토콜 공개"
+        }
+      ]
+    },
+    "2610.06507": {
+      "arxiv_id": "2610.06507",
+      "paper_title": "An Evaluation of the Semantic Understanding Capabilities of Large Language Models for Web Attack Payloads",
+      "abstract": "Computer vision services delivered through Web interfaces and APIs process textual requests for image-resource acquisition, inference-task configuration, and result management, making Web attack-payload analysis relevant to their deployment security. Large language models (LLMs) can identify payload types and explain attack intent. However, existing studies generally treat payload analysis as a single-layer classification task and lack both a systematic assessment of how deeply LLMs understand payloads and an evaluation benchmark dedicated to the depth of semantic understanding of Web attack payloads. We construct PayloadSemBench, a four-layer semantic evaluation benchmark that operationalizes payload understanding across measurable tasks and comprises 240 payloads. Its ground truth was established through two rounds of anchor calibration and re-verified by a fourth independent expert. Two experiments, a semantic-understanding benchmark and an analysis mapping semantic understanding to detection performance, yielded three main findings: (1) type identification and intent understanding were generally strong, whereas severity assessment was the principal weakness; (2) the effects of obfuscation varied across models and layers, with intent explanation and reconstruction of specific obfuscation techniques more susceptible to degradation, while performance did not degrade synchronously across all layers; and (3) semantic understanding and detection decisions were partially decoupled, with only 12.5% to 50% of missed detections attributable to semantic-understanding failures. External re-evaluation on an independent 180-record dataset comprising production WAF alert streams and real application requests reproduced the non-uniform four-layer capability profile and the layer-specific differences on obfuscated payloads.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "d4c1a4ada098d67a4b80a49e44ade6069c4e3e347bc997af76bf491d609ce7a6",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM의 웹 공격 페이로드 의미 이해 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "웹 공격 페이로드 의미 이해 평가 벤치마크 PayloadSemBench 신규 구축"
+        }
+      ]
+    },
+    "2610.06514": {
+      "arxiv_id": "2610.06514",
+      "paper_title": "ANT: A Multi-Granularity Network Traffic Dataset and Benchmark for Agents Behavior Auditing",
+      "abstract": "The growing adoption of large language model (LLM) agents creates a need for network administrators and security teams to audit agent behavior within organizational networks without inspecting private user content. Network traffic offers an observable source of evidence, but how much it reveals about agent tasks and operations remains unclear. Existing traffic datasets lack the joint task and stage annotations needed to evaluate this question. We introduce ANT (Agent Network Traffic), a dataset providing agent behavior information at risk, scenario, and behavior primitive granularities alongside network traffic. ANT contains 3,114 execution episodes across 20 tasks and five scenarios, comprising 276,417 bidirectional flows and 40,049 behavior primitive segments organized into 47 macro groups. We establish a benchmark for agent risk identification, scenario recognition, and behavior primitive classification using 13 representative traffic analysis baselines. The results show that existing methods recover useful but uneven behavioral signals. They struggle to identify risk when malicious workflows resemble benign tasks and to distinguish scenarios with similar traffic patterns. Primitive classification is more reliable for frequent macro groups and those with distinctive traffic patterns than for rare or semantically similar groups. ANT provides a common basis for developing more precise auditing and forensic analysis of agent behavior from network traffic. Our data and code are available at https://anonymous.4open.science/r/ant-main-suite-7BC0/.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "1bee780cfdd5ac0b8486f52f6da21d72a363c0cb74c4bf8f304260415d5cb0ad",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 행동 감사를 위한 네트워크 트래픽 데이터셋"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 행위 감사용 네트워크 트래픽 데이터셋·벤치마크 제안"
+        }
+      ]
+    },
+    "2610.06614": {
+      "arxiv_id": "2610.06614",
+      "paper_title": "FREA: A Multi-Source Expert Benchmark for Reaction Feasibility Verification",
+      "abstract": "As generative models and AI agents propose chemical reactions at a scale beyond expert review, feasibility verifiers decide which proposals enter synthesis planning. But do their decisions agree with chemists across different kinds of candidates? We introduce FREA, a benchmark of 751 reactions labeled by expert chemists under an explicit feasibility criterion, drawn from retrosynthesis model proposals, zero-yield experimental records, edits by large language models (LLMs), and five negative candidate generation methods. Our evaluation finds that no verifier leads across all sources: LLMs given only the criterion are competitive with dedicated verifiers, while forward models perform best on retrosynthesis proposals but reject most feasible edits of recorded reactions at the evaluated operating points. Looking beyond aggregate scores, both forward models perform below chance when separating infeasible alternative disconnections from feasible generated candidates. To study whether negative supervision addresses these weaknesses, we also release a corpus of over 14 million recorded reactions and generated negative candidates. In matched training comparisons, adding a mixture of generated negatives to forward training raises mean AUROC across sources, but these gains do not extend to retrosynthesis proposals. Varying the generation method further shows that the largest gain on generated candidates coincides with worse proposal screening. These findings motivate evaluating verifiers against experts across sources and designing negatives for transfer to model proposals.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "778751fe43df8b754c7ac323a6fbe959833c77556982e0630f7f909bc88ad289",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "화학 반응 실현 가능성 검증 전문가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "화학 반응 실현가능성 검증 전문 벤치마크 FREA 및 음성 코퍼스 공개"
+        }
+      ]
+    },
+    "2610.07127": {
+      "arxiv_id": "2610.07127",
+      "paper_title": "PlaySuite: A Large-Scale Benchmark for Interactive Visual Intelligence",
+      "abstract": "Recent advances in multimodal foundation models yield strong performance on static perception and reasoning benchmarks, yet such evaluations largely overlook a central aspect of intelligence: acting competently in dynamic environments over extended time horizons. We introduce PlaySuite, a large-scale benchmark for evaluating interactive visual intelligence across more than 5K open-source video games curated from PyWeek and itch.io. Spanning diverse genres and engines, including Pygame, HTML5, Godot, and Unity, these independent games are largely out-of-distribution for current models, reducing the likelihood that success can be achieved by retrieving memorized walkthroughs or web-scale training artifacts. To enable scalable evaluation across heterogeneous titles, we develop a unified closed-loop interaction framework optimized for HPC clusters alongside a Video-LLM-as-a-judge protocol that maps observable gameplay milestones to standardized progress levels. We evaluate fourteen recent open models spanning vision-language models, computer-use agents, and vision-language-action models. Our results yield strong evidence of a perception-action gap: despite strong reasoning capabilities, current models struggle to make sustained progress and exhibit recurring failures in spatial grounding, action execution, and self-correction. PlaySuite provides a reproducible and extensible testbed for measuring progress from visual perception to goal-directed interaction, and a foundation for developing models that can act, adapt, and generalize in dynamic visual environments.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "8c6c8543fddf7adba54a00e1062f1c34d3fee8a5c4ddbe8734112b316d8d50d1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "동적 환경 상호작용 시각 지능 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "대화형 시각 지능 평가 대규모 벤치마크 PlaySuite 신규 제안"
+        }
+      ]
+    },
+    "2610.07261": {
+      "arxiv_id": "2610.07261",
+      "paper_title": "Verifying Coordination in Parallel Coding Agents: NP-Bench and a Scheduling Planner",
+      "abstract": "A team of coding agents can look fine agent by agent yet fail as a team: each passes its own tests while the merged result is broken, and single-agent evaluation never catches it. As teams run several LLM coding agents in parallel on one codebase, the agents collide: two rewrite the same function, one codes against a contract a teammate just changed, and integration fails after the work is done. Most coordination tools react (watch for a conflict, then warn), but at agent speed the warning arrives after the wasted edit. We recast the problem as scheduling: take each work item's declared scope, partition the work into disjoint scopes, and order merges along the producer->consumer graph, all up front. We build this planner into Nerveplane and evaluate it with NP-Bench, an environment-grounded three-arm benchmark (no coordination; reactive detection; proactive planning) that verifies integration off a real git merge, both in a deterministic simulation and with live agents. The planner lifts clean-integration from 1/9 to 9/9 scenarios and cuts merge conflicts from 13 to 0, with a gap that grows in the number of agents. On a live breaking contract change it rescues an outcome both baselines miss on every seed: the clean-integration rate rises from 0 (no coordination and reactive detection) to 1.0 on a frontier model and 0.6 on a small one, while agents respect assigned scopes (0/5 leakage). A cross-session memory drops the repeated-mistake rate from 1.00 to 0.00 on strong and weak models alike. We also report a negative result: routing facts to agents does not rescue long-context accuracy at window-fitting scales; its value is cost and capacity, not attention. Across two capability tiers and two vendors, the benefit did not shrink as models got stronger, because it comes from how work is allocated, not model reasoning.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "b8e698acd00582e7abe3a47c853700885b4f535d1835d2ba7ba2e4a4bcd19b3b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "병렬 코딩 에이전트 조정 검증 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "병렬 코딩 에이전트 조율 검증 벤치마크 NP-Bench 도입"
+        }
+      ]
+    },
+    "2610.07356": {
+      "arxiv_id": "2610.07356",
+      "paper_title": "A Validated Dataset and Benchmark for Coherent Multi-Diagram SysML Models",
+      "abstract": "Systems engineers use several diagrams to describe the structure and behavior of systems. Engineers create these diagrams together to make sure that they use the same elements and remain consistent with one another. Large language models can generate diagrams as text or code, which makes it possible to create system diagrams automatically. However, their ability to generate coherent sets of diagrams is not well understood, and existing datasets and benchmarks do not directly measure this ability at scale. We introduce SEMAADB (Systems Engineering Modeling Assistant with AI Dataset and Benchmark), a dataset of 3,000 engineering contexts and 15,000 diagrams. Each context contains five connected SysML views: Requirement, Block Definition, Activity, State Machine, and Sequence. Here, a view is a diagram that presents one aspect of a system. We checked the diagram sets for consistency and valid rendering. A set of 100 contexts is also human-verified and forms the benchmark test set. We evaluate three language models on two tasks. In diagram repair, the strongest model repairs 64.3% of semantic errors . In cross-diagram update the best propagation F1 is 80.7% when a model applies one change across related diagrams. The results show that syntax repair is nearly solved, but semantic repair and consistency across diagrams are still challenging tasks for models. SEMAADB therefore provides both a large diagram resource and a set of benchmarks for measuring coherent multi-diagram SysML generation.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "0e03a55a851595cc827e7512df0d30da36652e93193cd932bbe45790ef1c0cff",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "SysML 다이어그램 생성 일관성 데이터셋 및 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "SysML 다중 다이어그램 일관성 평가 데이터셋·벤치마크 구축"
+        }
+      ]
+    },
+    "2610.07362": {
+      "arxiv_id": "2610.07362",
+      "paper_title": "Dynamic Budget Allocation for LLM Evaluation under Hard Resource Constraints",
+      "abstract": "We evaluate large language models (LLMs) in multi-turn interactions through their time-to-event: the number of interaction steps required to produce an event of interest, such as a successful jailbreak or agentic task completion. Under limited compute, interactions may be terminated before the event occurs, so that event times are only partially observed (censored). Existing allocation methods for calibrating time-to-event bounds satisfy the budget only in expectation and can exceed the available budget on a particular evaluation run. Enforcing a hard constraint is particularly challenging as the cost of a trajectory is initially unknown. We introduce Hard-budget Allocation with Reflow for Predictive calibration (HARP), a budget allocation that satisfies hard resource constraints and adaptively reallocates unused budget. We show how to use HARP to construct lower predictive bounds (LPBs) on the time-to-event and to estimate evaluation metrics such as the jailbreak rate on a fixed benchmark. Although HARP induces dependence in acquisition decisions across different trajectories, we prove that HARP never exceeds the target budget, that its LPBs have finite-sample coverage guarantees, and that its metric estimates are unbiased. Experiments on agentic task success, LLM jailbreaks, toxic content generation, and RAG hallucinations show that HARP achieves coverage close to the nominal level with low variance, while never exceeding the given budget.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "bec8150fd96e967ee4d181a299ee06607c681bf7fbbb9e1edcfdf4c2451c7a18",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "자원 제약 하 LLM 평가 예산 할당 방법"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "평가 예산 배분 방법론 제안으로 재사용 가능한 벤치마크·데이터셋 자체는 아님"
+        }
+      ]
+    },
+    "2508.16821": {
+      "arxiv_id": "2508.16821",
+      "paper_title": "PuzzleJAX: A Benchmark for Reasoning and Learning",
+      "abstract": "We introduce PuzzleJAX, a GPU-accelerated puzzle game engine and description language designed to support rapid benchmarking of tree search, reinforcement learning, and LLM reasoning abilities. Unlike existing GPU-accelerated learning environments that provide hard-coded implementations of fixed sets of games, PuzzleJAX allows dynamic compilation of any game expressible in its domain-specific language (DSL). This DSL follows PuzzleScript, which is a popular and accessible online game engine for designing puzzle games. In this paper, we validate in PuzzleJAX several hundred of the thousands of games designed in PuzzleScript by both professional designers and casual creators since its release in 2013, thereby demonstrating PuzzleJAX's coverage of an expansive, expressive, and human-relevant space of tasks. By analyzing the performance of search, learning, and language models on these games, we show that PuzzleJAX can naturally express tasks that are both simple and intuitive to understand, yet often deeply challenging to master, requiring a combination of control, planning, and high-level insight.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "ba0eebf307a90c3f80727e2122942efb5781df3d30683fc55d69ecb47114dcc7",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "추론 및 학습 평가용 퍼즐 게임 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "퍼즐 게임 기반 추론·강화학습 벤치마크 엔진 PuzzleJAX 제안"
+        }
+      ]
+    },
+    "2605.01238": {
+      "arxiv_id": "2605.01238",
+      "paper_title": "EduGage: A Multimodal Dataset and Benchmark for Sensor-Based Momentary Assessment of Engagement in Self-Guided Video Learning",
+      "abstract": "Engagement, which links to attentional, emotional, and cognitive dimensions, plays an important role in learning. In online and video-based learning environments, learners often need to regulate their own interactions with instructional materials. Measuring and reflecting on engagement can therefore support both learners and adaptive learning systems. In this study, we use wearable and camera-based sensing devices to collect physiological and motion signals, including PPG, ECG, EDA, EEG, IMU, heart rate, temperature, and eye-tracking data, to estimate learner engagement. We conducted a user study with 16 participants in a video-based learning scenario, where participants completed learning tasks and provided repeated in-situ engagement-probe ratings on a 1-5 scale, reporting how difficult it was to pay attention during the preceding minute. We establish a benchmark for engagement estimation, compare different sensing modalities, and further analyze the feasibility and effectiveness of multimodal modeling for characterizing learner engagement. Across participant-based cross-validation, the modality-aware reference model achieves an MAE of 0.80, 83.18% within-1 accuracy, 70.96% binary accuracy, and 62.90% binary Macro-F1, outperforming sensor-free, statistical, deep temporal, foundation-model, and LLM-based baselines. Our results suggest that fine-grained engagement estimation is feasible but inherently noisy, and that the preferred sensing configuration depends on the target metric and practical sensing burden. We release the EduGage dataset as the primary contribution of this work, including synchronized multimodal sensor signals, probe-aligned engagement-probe ratings, video metadata, quizzes, and study materials, to support reproducible research on fine-grained sensor-based engagement modeling in self-guided learning.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "940d1ed64436ca50bb7351d492ffdc1ac01178aafcc8c9e0abdba42b3a8063d5",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "학습 참여도 추정을 위한 멀티모달 데이터셋 및 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "착용 센서 기반 몰입도 데이터셋으로 언어모델 평가 자료 성격 불명확"
+        }
+      ]
+    },
+    "2605.15229": {
+      "arxiv_id": "2605.15229",
+      "paper_title": "PBT-Bench: Benchmarking AI Agents on Property-Based Testing",
+      "abstract": "Existing code benchmarks measure whether an agent can produce any test that reproduces a known bug, or whether it can produce a patch that fixes a described issue. Neither isolates the distinct skill of property-based testing: deriving a semantic invariant from documentation, and then constructing an input-generation strategy precise enough to make a random search reveal the violation. We introduce PBT-Bench, a benchmark of 100 curated property-based testing problems across 40 real Python libraries. Each problem injects one or more semantic bugs (365 in total, mean 3.65 per problem) designed so that default-strategy random inputs almost never trigger them; the agent must read the library's documentation, identify the relevant invariant, and specify a Hypothesis @given strategy that concentrates mass in the trigger region. Bugs are stratified across three difficulty levels (L1-L3) spanning single-constraint boundary bugs to stateful, cross-function protocol violations. We evaluate eight contemporary LLMs under two prompting regimes (open-ended baseline vs. explicit Hypothesis scaffolding) for three independent runs per configuration. Bug recall under the PBT-guided prompt ranges from 42.1% to 83.4% across models; under the open-ended baseline, from 31.4% to 76.7%. Hypothesis scaffolding lifts mid-capability models by over 20 percentage points, but yields smaller gains for the strongest models, with two exceptions showing degradation, suggesting the structured prompt can interfere with certain model behaviours rather than complementing them. The hardest bugs prove model-specific: different architectures fail on different problems, leaving persistent gaps that no single model closes. We release the benchmark, harness, and full evaluation corpus to support downstream work on documentation-grounded semantic reasoning.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "69ec544370a20a367c9d10d864c6bdbdef37d4c367911e85d48393713a3b7936",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "속성 기반 테스팅 AI 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "속성 기반 테스트 수행 능력 평가 벤치마크 PBT-Bench 신규 제안"
+        }
+      ]
+    },
+    "2605.29257": {
+      "arxiv_id": "2605.29257",
+      "paper_title": "ChildVox: A Speech, Audio, and Large Audio-Language Model Benchmark in Understanding and Characterizing Sound across Childhood",
+      "abstract": "We present ChildVox, a novel benchmark for characterizing the diverse acoustic signals through which children communicate. Specifically, ChildVox follows the full developmental trajectory from birth through school age, covering physiological sounds, non-linguistic vocalizations, canonical syllables, and spoken language. ChildVox integrates more than 20 sub-tasks across 17 child-centered audio and speech datasets, enabling systematic cross-corpus and cross-domain comparison. We evaluate a representative range of audio and speech foundation models, including self-supervised, ASR-oriented, and large audio-language models, on tasks including physiological sound classification, vocalization and canonical syllables modeling, and speech quality assessment and recognition. Benchmark results show that ChildVox provides a suite of high-performance models in recognizing a wide range of acoustic signals from children, supporting downstream applications such as characterizing children's language levels and tracking speech production with age. Our benchmark models on public datasets are released at: https://github.com/tiantiaf0627/childvox-release.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "c2a1c98bdf5f133241cddcd6b512a71f34c848f9e6d3ea8561dfd041c3526d3b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "아동 음성·오디오 이해 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "아동 음성·오디오 이해 평가 벤치마크 ChildVox 구축 및 공개"
+        }
+      ]
+    },
+    "2606.04282": {
+      "arxiv_id": "2606.04282",
+      "paper_title": "FindIt: A Format-Informed Visual Detection Benchmark for Generalist Multimodal LLMs",
+      "abstract": "Multimodal large language models (MLLMs) are predominantly evaluated on free-form vision-language tasks such as visual question answering, captioning, and summarization. However, their practical use is rapidly expanding to more structured computer vision settings, where users prompt models to perform localization-centric tasks such as object detection, often within larger agentic or decision-making systems. Despite this shift, there is currently no standardized benchmark that systematically evaluates these capabilities at scale. In this work, we introduce the first comprehensive benchmark specifically designed to assess the promptable localization abilities of generalist MLLMs. Our benchmark spans four core task categories: object detection, referring expression detection, instance-level detection, and video-based detection. To enable consistent and fair evaluation, we develop a unified framework that standardizes inputs, enforces parsable bounding box outputs, and defines transparent evaluation protocols across tasks. Using this suite, we evaluate a diverse set of open-source and proprietary MLLMs, providing an in-depth analysis of their performance and limitations. Beyond accuracy, we examine models' ability to adhere to output format specifications, showing that current systems are highly sensitive to formatting constraints and often fail to generalize even to minor variations. Our results highlight both the strengths and shortcomings of state-of-the-art MLLMs in localization settings, and point toward important directions for improving multimodal model design and evaluation.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "55b3f6783f8f8b299d4c6dca27e6c28a0b67b70e5dd5e14c3cdbb87c4a3039c6",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 LLM 시각 객체 탐지 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "MLLM 객체 검출 등 위치 파악 능력 통합 벤치마크 제안"
+        }
+      ]
+    },
+    "2606.10142": {
+      "arxiv_id": "2606.10142",
+      "paper_title": "DB-3DME: From Dataset to Benchmark for Human-aligned Automatic 3D Mesh Evaluation",
+      "abstract": "Recent advances in 3D generation have led to substantial improvements in realism, controllability, and efficiency, yet the evaluation of 3D assets remains underexplored. Existing evaluation paradigms, including human evaluation, learned metrics, and vision-language models (VLMs) as judges, suffer from limitations in cost, scalability, resolution handling, or task-specific alignment. In this work, we focus on 3D mesh evaluation and introduce DB-3DME, the Dataset and Benchmark for 3D Mesh Evaluation. DB-3DME contains 2,619 synthetic 3D meshes paired with human ratings on Geometry and Prompt Adherence. Using this dataset, we systematically benchmark state-of-the-art VLMs and identify visual encoding of 3D representations as a key factor for human-aligned evaluation performance. Motivated by this finding, we fine-tune an open-weight VLM, Qwen-2.5-VL-7B, for 3D mesh evaluation by adapting the visual encoder while freezing the language model. The fine-tuned model substantially outperforms existing pre-trained VLMs across multiple evaluation dimensions, establishing a new benchmark for automatic 3D mesh evaluation. We publicly release the benchmark dataset on GitHub and Hugging Face to facilitate future research.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "d9faee3b109f86b040694f62d763fcb5686955d3e0f418ba2cf2c7979123251f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "인간 정렬 3D 메시 평가 데이터셋 및 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "3D 메쉬 인간 정합 평가용 데이터셋·벤치마크 공개"
+        }
+      ]
+    },
+    "2606.13994": {
+      "arxiv_id": "2606.13994",
+      "paper_title": "Hidden in Plain Sight: Benchmarking Agent Safety Against Decomposition Attacks with DECOMPBENCH",
+      "abstract": "LLM-based Agents are becoming increasingly capable and widely deployed, creating growing incentives for adversarial misuse in the real-world. A key emerging threat is Decomposition Attacks \\cite{glukhov2024breach, jones2024adversaries} in which a harmful task is broken into simpler, benign subtasks that evade safety mechanisms when executed separately but cumulatively fulfill the malicious intent. Although recent benchmarks assess agent safety in multi-turn and multi-tool-use settings, they do not explicitly capture this form of decompositional misuse and may not represent realistic adversarial execution flows. To this end, we introduce DeCompBench, a benchmark designed specifically to evaluate agentic safety under decomposition attacks. DeCompBench is created with a decomposition-by-design principle using a graphical framework and enables harmful task decomposition into individually benign and executable subtasks with realistic workflows. Our experiments using a custom decomposer show that state-of-the-art agents exhibit high refusal rates on monolithic harmful tasks, but significantly lower refusal rates on their decomposed variants, while often inadvertently fulfilling the adversarial objectives. These findings underscore the need for safety evaluations against decomposition attacks and corresponding defenses. Our dataset is publicly available and can be found at https://huggingface.co/datasets/decompositionbench/DeCompBench.",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "ae48755f83dd110766f07dfc8a1750e87e9780edc0b2827d977cc45007b62ef1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 분해 공격 안전성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "분해 공격 대응 에이전트 안전 평가 벤치마크 DeCompBench 제안"
+        }
+      ]
+    },
+    "2606.21001": {
+      "arxiv_id": "2606.21001",
+      "paper_title": "Do Large Language Model Voters Strategize? An Oracle-Based Benchmark for Manipulation under Voting Rules",
+      "abstract": "Strategic voting is a canonical failure mode for collective choice: a voter may obtain a more preferred outcome by reporting a ballot that differs from its true preferences. This paper introduces an oracle-based benchmark for testing whether large language model (LLM) voters can discover and execute such manipulations. Each instance gives an LLM voter a true preference ranking, the other voters' ballots, a deterministic voting rule, and a prompt condition. An exact oracle enumerates every feasible report by the LLM voter, computes the sincere outcome, identifies all profitable reports, and records the best achievable outcome. The benchmark therefore supplies ground truth for strategic success without human labels or subjective grading of explanations. The benchmark covers plurality, Borda, approval, instant-runoff voting, and Copeland-style pairwise majority voting; prompt conditions separate sincere, strategic, civic, and expert framings. To keep the primary study defensible while preserving the main comparisons, the registered core design fixes a single electorate size, uses 600 balanced election instances, and produces 9,600 model--prompt responses when run with four model configurations and four prompt conditions. Because existing peer-reviewed work does not report manipulation discovery, optimal manipulation, false manipulation, near-miss, or invalid-ballot rates for this exact task, we do not impute LLM performance from unrelated studies. Instead, we report exact oracle-calibration baselines that bound and contextualize subsequent model results. By reducing strategic-voting behavior to exact counterfactual evaluation, the benchmark turns the question ``Do LLM voters vote sincerely or strategically?'' into a reproducible social-choice experiment.",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "created_at": "2026-10-19T13:48:52Z",
+      "input_sha256": "f0235a4a1186e2c7488d1dcc4faf7980c7282cd2e9e7afb4988464d34d2cfe90",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 유권자 전략적 투표 조작 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 유권자 전략적 투표 평가용 오라클 벤치마크 구축"
         }
       ]
     }
