@@ -55,6 +55,11 @@ class ScreeningTests(unittest.TestCase):
         self.assertNotIn("tables", payload)
         self.assertNotIn("pdf_url", payload)
         self.assertEqual(first.args[1].max_tokens, 3000)
+        schema = first.args[1].response_format["json_schema"]["schema"]
+        rows = schema["properties"]["papers"]
+        self.assertEqual(rows["minItems"], 2)
+        self.assertEqual(set(rows["items"]["properties"]["arxiv_id"]["enum"]),
+                         {p["arxiv_id"] for p in self.papers})
         ledger = research.read_json(self.root / "research/proposals.json")
         self.assertEqual(len(ledger["screenings"]), 2)
         self.assertEqual(ledger["proposals"], {})
