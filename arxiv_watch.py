@@ -13,6 +13,7 @@ import re
 import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
@@ -136,19 +137,42 @@ def candidate(paper: dict) -> bool:
     ))
 
 
+def retry_delay(headers, attempt, now=None):
+    """Honor Retry-After (seconds or HTTP date), with a one-minute floor."""
+    delay = 60 * (2 ** attempt)
+    value = (headers or {}).get("Retry-After", "")
+    try:
+        seconds = int(value)
+    except (ValueError, TypeError):
+        try:
+            deadline = parsedate_to_datetime(value)
+            seconds = (deadline - (now or datetime.now(timezone.utc))).total_seconds()
+        except (ValueError, TypeError, OverflowError):
+            return delay
+    return max(delay, seconds)
+
+
 def fetch_url(url: str) -> bytes:
     request = Request(url, headers={"User-Agent": f"llm-benchmark-inventory/1.0 (https://github.com/{REPOSITORY})"})
     for attempt in range(4):
+        delay = 10 * (2 ** attempt)
         try:
             with urlopen(request, timeout=45) as response:
                 return response.read()
         except HTTPError as error:
-            if error.code not in {429, 500, 502, 503, 504} or attempt == 3:
+            if error.code not in {429, 500, 502, 503, 504}:
+                raise
+            if error.code == 429 or (error.headers or {}).get("Retry-After"):
+                delay = retry_delay(error.headers, attempt)
+                error.retry_at = iso(datetime.now(timezone.utc) + timedelta(seconds=delay))
+            # A long server cooldown is deferred, never shortened to fit this run.
+            if attempt == 3 or delay > 240:
                 raise
         except (URLError, TimeoutError):
             if attempt == 3:
                 raise
-        time.sleep(3 * (2 ** attempt))
+        print(f"arXiv request delayed; retrying in {delay:.0f} seconds", flush=True)
+        time.sleep(delay)
     raise RuntimeError("arXiv request failed")
 
 
@@ -180,7 +204,7 @@ def collect(state: dict, now: datetime, fetch=fetch_url, sleep=time.sleep) -> di
         start += len(page)
         if start >= total:
             break
-        sleep(3)
+        sleep(10)
     if len(found) != total:
         raise ValueError("arXiv pagination changed during collection; retry without advancing the checkpoint")
     result = copy.deepcopy(state)
@@ -244,6 +268,10 @@ def sync_issues(state: dict, github: GitHub, now: datetime, reviewer: str) -> di
 
 def collect_with_cached_fallback(state, now):
     """Keep the old checkpoint on transient network failures; process cached work."""
+    cooldown = state.get("discovery_error", {}).get("retry_at")
+    if cooldown and timestamp(cooldown) > now:
+        print("::warning::arXiv server cooldown is still active; using cached candidates")
+        return copy.deepcopy(state)
     try:
         result = collect(state, now)
         result.pop("discovery_error", None)
@@ -254,6 +282,8 @@ def collect_with_cached_fallback(state, now):
         result = copy.deepcopy(state)
         code = f"HTTP {error.code}" if isinstance(error, HTTPError) else type(error).__name__
         result["discovery_error"] = {"at": iso(now), "code": code}
+        if getattr(error, "retry_at", None):
+            result["discovery_error"]["retry_at"] = error.retry_at
         print(f"::warning::arXiv discovery unavailable ({code}); retaining checkpoint and investigating cached candidates")
         return result
 

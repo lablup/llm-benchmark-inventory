@@ -136,8 +136,12 @@ def get_pdf(key: str, cache: Path) -> dict:
     cache.mkdir(parents=True, exist_ok=True)
     pdf = cache / f"{key}.pdf"
     url = f"https://arxiv.org/pdf/{key}"
-    with build_opener(NoRedirect()).open(Request(url, headers={"User-Agent": "llm-benchmark-inventory/2.0"}), timeout=60) as response:
-        data = response.read(30_000_001)
+    if pdf.exists():
+        data = pdf.read_bytes()
+    else:
+        time.sleep(10)
+        with build_opener(NoRedirect()).open(Request(url, headers={"User-Agent": "llm-benchmark-inventory/2.0"}), timeout=60) as response:
+            data = response.read(30_000_001)
     if not data.startswith(b"%PDF-") or len(data) > 30_000_000:
         raise ValueError("Invalid or oversized PDF")
     pdf.write_bytes(data)

@@ -49,7 +49,7 @@ class CollectionTests(unittest.TestCase):
         result = watch.collect(empty(), NOW, fetch, sleep)
         self.assertEqual(len(result["papers"]), 2)
         self.assertEqual(result["last_checked_at"], watch.iso(NOW))
-        sleep.assert_called_once_with(3)
+        sleep.assert_called_once_with(10)
         self.assertNotIn("v2", result["papers"][0]["arxiv_id"])
 
     def test_overlap_and_preserved_review(self):
@@ -117,7 +117,9 @@ class CachedDiscoveryTests(unittest.TestCase):
     def test_transient_failure_keeps_checkpoint_and_candidates(self):
         state = {**empty(), "last_checked_at": watch.iso(NOW), "papers": [paper()]}
         original = copy.deepcopy(state)
-        with patch.object(watch, "collect", side_effect=watch.HTTPError("https://export.arxiv.org", 429, "Limited", {}, None)):
+        error = watch.HTTPError("https://export.arxiv.org", 429, "Limited", {}, None)
+        self.addCleanup(error.close)
+        with patch.object(watch, "collect", side_effect=error):
             result = watch.collect_with_cached_fallback(state, NOW)
         self.assertEqual(state, original)
         self.assertEqual(result["last_checked_at"], state["last_checked_at"])
@@ -133,3 +135,25 @@ class CachedDiscoveryTests(unittest.TestCase):
         state = {**empty(), "discovery_error": {"code": "HTTP 429"}}
         with patch.object(watch, "collect", return_value=copy.deepcopy(state)):
             self.assertNotIn("discovery_error", watch.collect_with_cached_fallback(state, NOW))
+
+
+class RequestPacingTests(unittest.TestCase):
+    def test_retry_after_seconds_date_and_fallback(self):
+        self.assertEqual(watch.retry_delay({}, 0), 60)
+        self.assertEqual(watch.retry_delay({}, 1), 120)
+        self.assertEqual(watch.retry_delay({}, 2), 240)
+        self.assertEqual(watch.retry_delay({"Retry-After": "600"}, 0), 600)
+        self.assertEqual(watch.retry_delay({"Retry-After": "Sun, 18 Oct 2026 01:05:00 GMT"}, 0, NOW), 300)
+        self.assertEqual(watch.retry_delay({"Retry-After": "invalid"}, 0), 60)
+
+    def test_long_cooldown_does_not_retry_early(self):
+        error = watch.HTTPError("https://export.arxiv.org", 429, "Limited", {"Retry-After": "600"}, None)
+        self.addCleanup(error.close)
+        with patch.object(watch, "urlopen", side_effect=error) as request, patch.object(watch.time, "sleep") as sleep:
+            result = watch.collect_with_cached_fallback(empty(), NOW)
+        self.assertEqual(request.call_count, 1)
+        sleep.assert_not_called()
+        self.assertIn("retry_at", result["discovery_error"])
+        with patch.object(watch, "collect") as collect:
+            watch.collect_with_cached_fallback(result, NOW)
+        collect.assert_not_called()

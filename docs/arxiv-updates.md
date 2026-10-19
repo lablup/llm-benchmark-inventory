@@ -62,7 +62,13 @@ deployed by the same run; they do not trigger another workflow.
 
 The five-paper limit can leave a backlog. Unprocessed candidates remain visible
 without assigning work to the user. Transient arXiv API failures retain the last successful discovery checkpoint and
-continue investigation of cached candidates. The site displays the collection delay.
+continue investigation of cached candidates. The site displays the collection delay. Requests are sequential with ten seconds
+between metadata pages and before fresh PDF downloads. HTTP 429 retries wait
+60, 120, and 240 seconds, or longer when `Retry-After` requests it. Server
+cooldowns longer than four minutes are saved for a later run rather than
+shortened. Cached PDFs are reused within a run.
+See [arXiv API terms](https://info.arxiv.org/help/api/tou.html) for the service
+minimum (one request per three seconds, one connection at a time).
 PDF failures retry on a later day. Completed
 exclusions and evidence failures stay recorded without repeated notifications.
 PDFs over 60 pages or 200,000 extracted characters, scanned documents, and
