@@ -421,7 +421,27 @@
         "2609.30298",
         "2609.34072",
         "2609.34496",
-        "2609.35025"
+        "2609.35025",
+        "2609.35409",
+        "2609.34047",
+        "2609.34088",
+        "2609.34195",
+        "2609.34228",
+        "2609.35902",
+        "2609.34274",
+        "2609.34384",
+        "2609.34428",
+        "2609.34450",
+        "2609.34455",
+        "2609.34492",
+        "2609.34630",
+        "2609.34636",
+        "2609.34683",
+        "2609.34710",
+        "2609.34752",
+        "2609.34772",
+        "2609.34783",
+        "2609.34800"
       ]
     }
   },
@@ -7043,6 +7063,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "AI 슬롭 글쓰기 평가 다중 도메인 벤치마크 SlopBench 제시"
+        }
+      ]
+    },
+    "2509.23219": {
+      "arxiv_id": "2509.23219",
+      "paper_title": "WirelessMathBench-XL: An Auditable Benchmark for Wireless Mathematical Reasoning",
+      "abstract": "Technical-domain benchmarks constructed from arXiv papers can overlap the same public text used in LLM pretraining. Auditing this risk at training-corpus scale requires searching billions of corpus n-grams while retaining per-item evidence that users can inspect and recompute. We contribute a reverse-probe audit at a fixed 13-gram threshold: it indexes benchmark prompts, streams public pretraining corpora, and emits per-problem prompt-surface lexical-overlap metadata with memory that scales with the benchmark. We instantiate the protocol in WirelessMathBench-XL, a 4,027-problem wireless mathematical-reasoning benchmark built from 836 retained arXiv papers across 20 subfields. Against 12.9B streamed 13-grams from RedPajama-arXiv, the audit identifies a strict zero-hit view S0 covering 3,853 problems (95.7%). Filtering to S0 changes accuracy by less than 1 pp for every evaluated model; frontier calibration rows form one high-accuracy cluster between 86.5% and 91.3%, not a resolved rank order. Only 30/800 test items carry detected overlap. Under an all-flagged-correct counterfactual, their largest possible positive score inflation is 0.31-0.51 pp for the frontier rows, so full-versus-S0 is a bounded, structurally underpowered stability summary rather than a contamination-effect test or cleanliness claim. The audit channel does not cover paraphrase, target-answer, post-training, or closed-corpus exposure. The release includes source-paper identifiers, verifier-facing ground truths, audit and threshold metadata, filtered views, a paper-disjoint sensitivity view, evaluation traces, paired-bootstrap scripts, training recipes, Croissant metadata, and a Datasheet for Datasets.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "42eaab9966968b7b3f102862a1d2c47cd0b3cca408977d105733761b7bd2b19c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "무선 수학 추론 벤치마크로 LLM 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "무선 수학 추론 벤치마크와 오염 감사 프로토콜 재사용 가능 자원 제공"
+        }
+      ]
+    },
+    "2601.15511": {
+      "arxiv_id": "2601.15511",
+      "paper_title": "AdversaRiskQA: An Adversarial Factuality Benchmark for High-Risk Domains",
+      "abstract": "Hallucination in large language models (LLMs) remains an acute concern, contributing to the spread of misinformation and diminished public trust, particularly in high-risk domains. Among hallucination types, factuality is crucial, as it concerns a model's alignment with established world knowledge. Adversarial factuality, defined as the deliberate insertion of misinformation into prompts with varying levels of expressed confidence, tests a model's ability to detect and resist confidently framed falsehoods. Existing work lacks high-quality, domain-specific resources for assessing model robustness under such adversarial conditions, and no prior research has examined the impact of injected misinformation on long-form text factuality. To address this gap, we introduce AdversaRiskQA, the first verified and reliable benchmark systematically evaluating adversarial factuality across Health, Finance, and Law. The benchmark includes two difficulty levels to test LLMs' defensive capabilities across varying knowledge depths. We propose two automated methods for evaluating the adversarial attack success and long-form factuality. We evaluate six open- and closed-source LLMs from the Qwen, GPT-OSS, and GPT families, measuring misinformation detection rates. Long-form factuality is assessed on Qwen3 (30B) under both baseline and adversarial conditions. Results show that after excluding meaningless responses, Qwen3 (80B) achieves the highest average accuracy, while GPT-5 maintains consistently high accuracy. Performance scales non-linearly with model size, varies by domains, and gaps between difficulty levels narrow as models grow. Long-form evaluation reveals no significant correlation between injected misinformation and the model's factual output. AdversaRiskQA provides a valuable benchmark for pinpointing LLM weaknesses and developing more reliable models for high-stakes applications.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "e83c59d98332167ababb4bc31ca5969700c95c660926b45c64bca1e99347fa60",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "고위험 도메인 LLM 사실성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "적대적 사실성 평가 벤치마크 AdversaRiskQA 신규 제안"
+        }
+      ]
+    },
+    "2603.21359": {
+      "arxiv_id": "2603.21359",
+      "paper_title": "Benchmarking Bengali Dialectal Bias: A Multi-Stage Framework Integrating RAG-Based Translation and Human-Augmented RLAIF",
+      "abstract": "Large language models (LLMs) frequently exhibit performance biases against regional dialects of low-resource languages. However, frameworks to quantify these disparities remain scarce. We propose a two-phase framework to evaluate dialectal bias, operationalized as comprehension degradation relative to standard Bengali, in LLM question-answering across nine Bengali dialects. First, we translate and gold-label standard Bengali questions into dialectal variants adopting a retrieval-augmented generation (RAG) pipeline to prepare 4,000 question sets. Since traditional translation quality evaluation metrics fail on unstandardized dialects, we evaluate fidelity using an LLM-as-a-judge, which human correlation confirms outperforms legacy metrics. Second, we benchmark 19 LLMs across these gold-labeled sets, running 68,395 RLAIF evaluations validated through multi-judge agreement and human fallback. Our findings reveal severe performance drops linked to linguistic divergence. For instance, responses to the highly divergent Chittagong dialect score 5.44/10, compared to 7.68/10 for Tangail. Furthermore, increased model scale does not consistently mitigate this bias. We contribute a validated translation quality evaluation method, a rigorous benchmark dataset, and a Critical Bias Sensitivity (CBS) metric for safety-critical applications.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "c31b7fd76d1ed611236d91fa7052613d4135858092f04a70b4502497e8d72a82",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "벵골어 방언 편향 LLM 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "벵골 방언 편향 벤치마크로 전 작업이 벵골어 등 비한국·영어"
+        }
+      ]
+    },
+    "2603.22018": {
+      "arxiv_id": "2603.22018",
+      "paper_title": "Do Papers Tell the Whole Story? A Benchmark and Framework for Uncovering Hidden Implementation Gaps in Bioinformatics",
+      "abstract": "As bioinformatics software is increasingly applied across a broader range of scenarios and the rapid development of large language models (LLMs) further lowers the barriers to software use and development, the composition of the bioinformatics research community is undergoing substantial change. Consequently, a growing number of researchers require a deeper understanding of methodological details and software behavior. In this context, systematically analyzing the relationship between paper descriptions and code implementations is emerging as an important new challenge in the field. To address this challenge, we introduce paper-code consistency analysis as a new research perspective and construct BioCon, the first benchmark dataset for paper-code consistency analysis in bioinformatics. Furthermore, we develop a unified cross-modal analysis framework to systematically investigate this problem from three perspectives: sentence-level detection, cross-modal retrieval, and project-level assessment. Experimental results demonstrate that the proposed framework can effectively model the semantic relationships between scientific publications and software implementations. Further case studies reveal that paper-code inconsistency is not a single phenomenon but arises from multiple underlying causes, among which Author-Perceived Non-Essential Details represents the most prevalent category. These findings suggest that paper-code consistency analysis is not merely a technical problem but also raises broader discussions regarding knowledge dissemination, the boundaries of code disclosure, and community norms. We hope that this work will encourage the bioinformatics community to re-examine the relationship between scientific publications and software implementations while providing a foundation for future research in paper-code consistency analysis.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "99d1360049bc4a6dcd59508327d642dd75c32909a33b89d99676d921be833270",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "생물정보학 논문-코드 일관성 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "논문-코드 일관성 분석 신규 벤치마크 BioCon 제안"
+        }
+      ]
+    },
+    "2603.28590": {
+      "arxiv_id": "2603.28590",
+      "paper_title": "MonitorBench: A Comprehensive Benchmark for Chain-of-Thought Monitorability in Large Language Models",
+      "abstract": "Large language models (LLMs) can generate chains of thought (CoTs) that are not always causally responsible for their final outputs. When such a mismatch occurs, the CoT no longer faithfully reflects the actual reasons (i.e., decision-critical factors) driving the model's behavior, leading to the reduced CoT monitorability problem. This limits the use of CoTs for reliable oversight. However, a comprehensive and fully open-source benchmark for thoroughly evaluating CoT monitorability remains lacking. To address this gap, we propose MonitorBench, a systematic benchmark for evaluating CoT monitorability in LLMs. MonitorBench provides: (1) a diverse set of 1,514 test instances with carefully designed decision-critical factors across 19 tasks spanning 7 categories to characterize when CoTs can be used to monitor the factors driving LLM behavior; and (2) two prompting stress-test settings to quantify the extent to which CoT monitorability can be degraded. Extensive experiments show that CoT monitorability is a conditional property affected by the evaluated LLM, monitor LLM, and task characteristics. Across these factors, monitorability is higher when decision-critical factors shape the intermediate reasoning process, rather than merely influencing the final answer. Under stress-test prompting, most evaluated LLMs can intentionally reduce monitorability, mainly on tasks where decision-critical factors are not structurally required by the reasoning process. Overall, MonitorBench provides a basis for further research on AI control, reasoning faithfulness, stress-test monitorability, and monitoring scaffords. The code is available at https://github.com/ASTRAL-Group/MonitorBench.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "85354dd8e71372bb5ef42d9219dac26b18f839224391cc8bcfd56bcdf9132fea",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 사고 사슬 모니터링 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "CoT 모니터링 가능성 평가용 오픈 벤치마크 MonitorBench 제안"
+        }
+      ]
+    },
+    "2605.01970": {
+      "arxiv_id": "2605.01970",
+      "paper_title": "Trojan Hippo Bench: A Dynamic Benchmark for Persistent Memory Attacks and Defenses in LLM Agents",
+      "abstract": "Memory systems enable otherwise stateless LLM agents to persist user information across sessions, but also introduce a new attack surface. The Trojan Hippo attack is a class of persistent memory attacks that operates under a more realistic threat model than prior memory poisoning work. The attacker plants a dormant payload into an agent's long-term memory via a single untrusted tool call (e.g., a crafted email), which activates only when the user later discusses sensitive topics such as finance, health, or identity, and exfiltrates high-value personal data to the attacker. While anecdotal demonstrations of such attacks have appeared against deployed systems, no prior work systematically evaluates them across heterogeneous memory architectures and defenses. We introduce Trojan Hippo Bench, a dynamic evaluation framework for persistent memory attacks and memory-layer defenses, comprising two components, (1) an OpenEvolve-based adaptive red-teaming benchmark that stress-tests defenses and memory backends against continuously refined attacks, and (2) a capability-aware security-utility analysis for persistent memory systems, enabling principled reasoning about defense deployment across different usage profiles. Instantiated on an email assistant across four memory backends (explicit tool memory, agentic memory, RAG, and sliding-window context), the undefended Trojan Hippo attack achieves up to 85-100% attack success rate (ASR) against current frontier models from OpenAI and Google, with planted memories successfully activating even after 100 benign sessions. We evaluate four memory-system defenses inspired by basic security principles; they reduce attack success to as low as 0-5%, but at utility costs that vary widely with the task mix. Effective real-world deployment thus remains an open challenge that Trojan Hippo Bench is built to study; we release it to support reuse and extension.",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "1b60c59f11b61e710667e8317e844335361f6da18cc666a4810721403b1c239f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 지속 메모리 공격 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 메모리 공격·방어 평가 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2605.11960": {
+      "arxiv_id": "2605.11960",
+      "paper_title": "Chronicles-OCR: A Cross-Temporal Perception Benchmark for the Evolutionary Trajectory of Chinese Characters",
+      "abstract": "Vision Large Language Models (VLLMs) have achieved remarkable success in modern text-rich visual understanding. However, their perceptual robustness in the face of the continuous morphological evolution of historical writing systems remains largely unexplored. Existing ancient text datasets typically focus on isolated historical periods, failing to capture the systematic visual distribution shifts spanning thousands of years. To bridge this gap and empower Digital Humanities, we introduce Chronicles-OCR, the first comprehensive benchmark specifically designed to evaluate the cross-temporal visual perception capabilities of VLLMs across the complete evolutionary trajectory of Chinese characters, known as the Seven Chinese Scripts. Curated in collaboration with top-tier institutional domain experts, the dataset comprises 2,800 strictly balanced images encompassing highly diverse physical media, ranging from tortoise shells to paper-based calligraphy. To accommodate the drastic morphological and topological variations across different historical stages, we propose a novel Stage-Adaptive Annotation Paradigm. Based on this, Chronicles-OCR formulates four rigorous quantitative tasks: cross-period character spotting, fine-grained archaic character recognition via visual referring, ancient text parsing, and script classification. By isolating visual perception from semantic reasoning, Chronicles-OCR provides an authoritative platform to expose the limitations of current VLLMs, paving the way for robust, evolution-aware historical text perception. Chronicles-OCR is publicly available at https://github.com/VirtualLUOUCAS/Chronicles-OCR.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "a523c9bc2610b5fd7ae268f3aa0ae4b5209863bfa356071dc5ab517953cf31fa",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "한자 진화 인식 VLLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "한자 시대별 인식 벤치마크로 중국어 문자 과제에 한정"
+        }
+      ]
+    },
+    "2606.03657": {
+      "arxiv_id": "2606.03657",
+      "paper_title": "NovelAPIBench: Diagnosing How A Code LLM Learns to Use Novel APIs",
+      "abstract": "Rapidly evolving software libraries require coding language models to use unfamiliar APIs. Yet failed solutions alone tell us little about what API knowledge models need or how to provide it. We present NovelAPIBench, an automated diagnostic framework that builds benchmarks around the API knowledge gaps of a target model. It identifies novel APIs, generates executable coding tasks with separately controllable knowledge components, and classifies failures into six categories. The framework can be rerun as models and libraries evolve. We study 21 libraries across five domains and six backbone models, with our primary benchmark comprising 1,670 tasks covering 856 APIs. Our experiments show that when supplied directly, usage examples provide the strongest standalone guidance for novel API acquisition, and combining them with signature descriptions approaches full-knowledge performance. Retrieving this knowledge from a pool of APIs yields lower accuracy than supplying only the target API's knowledge, even when retrieval finds the target. Fine-tuning on other APIs improves performance on unseen APIs mainly when external knowledge is supplied, helping models both select the target API and integrate it into the surrounding code. These findings highlight complementary roles for external API knowledge and the ability to apply it. By separating knowledge content, delivery, and use, NovelAPIBench helps diagnose what limits novel API use and guides adaptation to evolving libraries. Code and data are available at https://github.com/MAPS-research/NovelAPIBench.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "56e13105a0ba6ff234549af0093fc721aa8d5f1f8ac14ae30fc4453e3f51ca24",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "코드 LLM의 신규 API 학습 진단 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "신규 API 사용 진단용 코드 벤치마크 프레임워크 제안"
+        }
+      ]
+    },
+    "2606.06960": {
+      "arxiv_id": "2606.06960",
+      "paper_title": "FinEvolveBench: A Benchmark for Self-Evolving Agents on Low-Repetition Tasks with Implicit Rewards",
+      "abstract": "Large language model (LLM) agents increasingly rely on external experience to continually adapt to changing environments without modifying their underlying models. Recent experience mechanisms have demonstrated promising results across diverse tasks. However, their effectiveness is typically evaluated within individual benchmark settings, and how experience mechanisms generalize across different scenarios remains insufficiently explored. In this work, we present a scenario-oriented analysis of experience mechanisms for LLM agents. We characterize existing evaluation scenarios along four dimensions: outcome observability, credit assignment complexity, environmental dynamics, and experience reusability. Our analysis shows that existing benchmarks often evaluate experience mechanisms under scenarios where at least one dimension is comparatively favorable, leaving more challenging combinations of scenario properties underexplored. To address this gap, we introduce \\textsc{FinEvolveBench}, a reproducible benchmark built on a chronological stream of rich financial news and market data that enables systematic evaluation of experience-based self-evolution under challenging experience regimes characterized by noisy feedback, ambiguous credit assignment, environmental non-stationarity, and limited experience reusability. Experiments show that existing approaches exhibit substantially reduced or inconsistent gains in this setting, highlighting the scenario-dependent nature of experience mechanisms and the challenge of maintaining valid experience under changing environments.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "a9944e35b3dcbd6f15972fa653c3f31c0826b7469533a8f969d146ad4c137a19",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "금융 자기진화 LLM 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "자기진화 에이전트 평가용 재현 가능 벤치마크 제안"
+        }
+      ]
+    },
+    "2606.15057": {
+      "arxiv_id": "2606.15057",
+      "paper_title": "AutoDojo: A Generative Benchmark for Evaluating Prompt Injection Defenses in LLM Agents",
+      "abstract": "Indirect prompt injection (IPI) is a major security threat to LLM-powered agents. Thus, a growing body of work has proposed a variety of defensive approaches against IPI which can be grouped into three broad categories: prompt-level, filter-based, and system-level designs. However, commonly used benchmarks for evaluating defense, such as AgentDojo, are \\emph{inherently static}, generating a fixed distribution of IPI attacks. Consequently, a defense can score well on them without being robust to adaptive threats. We introduce \\textbf{AutoDojo}, a generative benchmark built on AgentDojo and AgentDyn that generates IPI \\emph{adaptively} for a given agent and defense. It supports six task suites across the two benchmarks, covering banking, communication, travel, shopping, coding, and everyday-assistant domains. AutoDojo optimizes injections under a strict black-box setting, observing only whether a candidate injection succeeds, and can readily integrate, and often improve on, any existing black-box attack. Across ten defenses and five target models, AutoDojo demonstrates that standard static benchmarks often significantly overestimate defense efficacy. Moreover, we show that most existing defenses either sacrifice considerable utility or are insecure. Finally, we demonstrate that attack success interacts with task specification, with under-specified tasks particularly vulnerable. AutoDojo is available at https://github.com/xhOwenMa/AutoDojo",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "cefd048737b8b8fff86f6dfa6a20b9f672c72b874bdd27441730671b614a7c39",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 프롬프트 주입 방어 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "적응형 프롬프트 주입 방어 평가 생성형 벤치마크 제안"
+        }
+      ]
+    },
+    "2607.19829": {
+      "arxiv_id": "2607.19829",
+      "paper_title": "DARWIN: Evolving Jailbreak Adversary and Guardrail for LLM Safety Evaluation and Protection",
+      "abstract": "Most existing LLM safety evaluation and defense methods are static: jailbreak vulnerabilities are assessed with fixed attacks, and guardrails are trained on fixed malicious-prompt datasets. In practice, adversaries continually evolve and expand the attack space. We propose DARWIN, an evolutionary attack-defense framework that models jailbreaking as a continual process and updates guardrails through an attack-defense loop. DARWIN-Attack evolves its capabilities through strategy discovery, mutation, selection, and feedback-guided composition. It mines strategies from broad external sources, generates variants through self-reflection and genetic evolution, filters them by performance against aligned LLMs, and adaptively selects and composes strategies during attacks. Through continuous evolution, DARWIN-Attack achieves state-of-the-art attack success rates against frontier LLMs and guardrails, reaching nearly 100\\% on DeepSeek-V4-Pro, over 90\\% on GPT-5.5, and nearly 100\\% on YuFeng-XGuard, outperforming recent evolving frameworks such as LSA and MAGIC. Its continued evolution exposes new vulnerabilities, motivating timely defense updates. Accordingly, DARWIN-Guard performs online adversarial training on emerging samples generated by DARWIN-Attack and jointly learns from malicious and benign disguised queries to recognize underlying intent rather than superficial attack patterns. DARWIN-Guard achieves 95.0\\% average unsafe recall across multiple safety benchmarks, outperforming recent advanced guardrails such as YuFeng and Nemotron, while maintaining nearly 100\\% average benign pass rate on standard benign benchmarks and the best performance on over-refusal benchmarks. Our code and model are available at https://github.com/ZJU-LLM-Safety/DARWIN.",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "2e51127ed2d6ee3ac0ca9e0988dd28233212b43f7c7421eb4cbae345fb295d05",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 탈옥 진화 공격-방어 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "진화형 탈옥 공격·가드레일 안전 평가 프레임워크 제안"
+        }
+      ]
+    },
+    "2608.17379": {
+      "arxiv_id": "2608.17379",
+      "paper_title": "PTXBench: Benchmarking and Adapting LLMs for GPU Kernel Optimization with Architecture-specific PTX",
+      "abstract": "We introduce PTXBench, a benchmark for evaluating and adapting large language models (LLMs) to use architecture-specific PTX for GPU kernel optimization. PTXBench measures functional correctness, whether selected target instructions execute at runtime, and speedup over frontier libraries across GEMM and attention workloads on H100 and B200 GPUs. Our evaluation shows that architecture-specific PTX capability remains uneven: success rates fall substantially on complex attention backward workloads, and executing the target instructions does not necessarily translate into competitive performance. No evaluated model consistently matches frontier libraries across the suite. We further adapt Qwen3.6-27B using supervised fine-tuning. Repair-conditioned training improves several tasks, but generalization remains uneven; data coverage, balance, and the quality of the reasoning teacher matter in addition to dataset size. PTXBench provides an auditable testbed for measuring and improving LLMs' ability to exploit evolving GPU architectures.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "6126078ea160d590156210ddf061619ab13536b791fd47e3c3573a280ec88435",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "GPU 커널 최적화용 LLM PTX 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "PTX GPU 커널 최적화 평가 벤치마크 PTXBench 제안"
+        }
+      ]
+    },
+    "2609.03423": {
+      "arxiv_id": "2609.03423",
+      "paper_title": "DuplexSpeechBench-IFEval: Evaluating Implicit Instruction Following in Full-Duplex Voice Agents",
+      "abstract": "Full-duplex voice agents must continuously decide when to speak, listen, backchannel, interrupt, overlap, and yield the conversational floor. Existing benchmarks evaluate these behaviors through explicit turn-management instructions, whereas voice agents are often configured through roles or personas from which appropriate conversational behavior must be inferred. We introduce DuplexSpeechBench-IFEval (DSB-IFEval), a benchmark for evaluating implicit instruction following in real-time spoken interaction. DSB-IFEval comprises 1,038 test cases derived from 240 controlled conversations spanning eight behaviorally contrastive assistant roles and five conditioning protocols: default behavior, explicit behavioral instructions, persona-implied behavior, combined persona-rule conditioning, and instruction conflict. We measure real-time floor management using the deterministic Instruction Adherence Score (IAS) and persona-consistent response content using the LLM-judged Persona Adherence Score (PAS). Across eleven real-time speech models, we find that executing an explicit floor-management policy does not reliably imply the ability to infer the same policy from a persona. Moreover, even frontier models such as GPT-Live-1 and Gemini-3.8-Live adapt their dialogue language to the assigned persona without consistently translating that persona into the appropriate full-duplex floor-management behavior. Finally, models that successfully resolve benign instruction conflicts often fail when safety-relevant role behavior should override an explicit directive. These results show that inferring role-implied behavior, executing it in real time, and resolving instruction conflicts remain distinct challenges for full-duplex voice agents.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "a6f3936e53d6d1779955246bb73badb061f3a51ed2250b4f660c699dea457c3b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "전이중 음성 에이전트 암묵 지시 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "전이중 음성 에이전트 암묵적 지시 이행 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.08887": {
+      "arxiv_id": "2609.08887",
+      "paper_title": "Q2D-Web: A Large-Scale Benchmark for Retrieval in Agentic RAG Systems",
+      "abstract": "Evaluating first-stage retrievers in large-scale production RAG requires a benchmark that pairs a large-scale corpus with a large set of agent-reformulated search queries based on real user queries and their conversation threads, and that labels many relevant documents per query. No existing public benchmark evaluates this setting: large-scale collections typically provide only a small number of evaluation queries, whereas benchmarks with many queries generally contain only millions of documents. Moreover, most benchmarks assess human-written queries, while the first-stage retrievers in agentic RAG pipelines serve machine-written reformulations whose distribution differs from human search behavior. To overcome these evaluation gaps, we introduce Q2D-Web (Query2Doc-Web), a large-scale agentic retrieval benchmark consisting of a 190M-document web corpus and 70k agentic search queries in ten languages, reformulated from real-world user queries in production systems. Q2D-Web provides three sets of fixed relevance judgments: agent citations, production rankings, and a combined set that unions both signals and adds LLM-based judgments of unlabeled pooled documents to reduce false negatives. We benchmark 13 retrievers including lexical, dense, and late-interaction models and find that their relative ordering is largely insensitive to the choice of judgment set, while diverging substantially across topical domains, query languages, and query types. To enable fast evaluation, we also study subcorpus sampling as an approximation to full-corpus evaluations. Retaining a third of the corpus, selected by reciprocal rank fusion over pooled retriever runs, preserves the full-corpus model ranking under the combined judgments while raising absolute Recall@1000 only by 4 to 7 points. The public leaderboard is accessible under: https://huggingface.co/spaces/perplexity-ai/q2d-web-leaderboard",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "e7c1a5afe78741f1105af295f9ac7eb893183d6642c3a8286dba7b18723d7d2f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "에이전틱 RAG 검색 대규모 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "대규모 agentic RAG 검색 벤치마크 Q2D-Web 제안"
+        }
+      ]
+    },
+    "2609.17538": {
+      "arxiv_id": "2609.17538",
+      "paper_title": "From Pixels to Pairs: A Comprehensive Benchmark of LLM-Driven Key-Value Extraction in Noisy Document Settings",
+      "abstract": "Large language models (LLMs) have demonstrated strong capabilities in document key-value pair (KVP) extraction, yet controlled evaluations of their robustness to optical character recognition (OCR) output remain limited. This leaves an important gap in understanding their reliability in real-world OCR-to-LLM pipelines. Unlike end-to-end Vision-Language Models (VLMs), which jointly perform visual perception and semantic extraction, modular pipelines allow these stages and their errors to be isolated and audited. We introduce a controlled benchmark that distinguishes downstream LLM extraction behavior from upstream OCR degradation. It evaluates 136 experimental configurations and 17,688 document-level inferences generated with deterministic decoding across five instruction-tuned open-weight LLMs (2B-8B parameters), three datasets, and four text-quality conditions. The evaluation combines a full zero-shot comparison, targeted one- to three-shot experiments, and a sensitivity analysis of 40 configurations across 20 frozen demonstration sets. By separating Key Recall (annotated-field recovery) from Exact Match and Value F1 (exact and partial value recovery, respectively), we test whether OCR degradation affects field identification and value reproduction differently across models. Our findings challenge three practical assumptions: (1) clean-text performance reliably predicts real-world robustness, (2) model rankings remain consistent across annotation-derived Gold and OCR-derived text, and (3) additional few-shot demonstrations monotonically improve extraction accuracy. The observed model-ranking reversals and unstable few-shot gains expose important reliability risks under noisy document conditions. We release the benchmarking framework, dataset splits, and evaluation scripts to support reproducible research.",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "d5d6ca80adb8034687a92a1aeb6afc46196e98f1d4a07b741037b43d733c1c6e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "노이즈 문서 LLM 키-값 추출 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "노이즈 문서 KVP 추출 강건성 평가 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.21465": {
+      "arxiv_id": "2609.21465",
+      "paper_title": "OmniVChat: Synthesizing, Benchmarking, and Training for Native Audio-Visual Dialogue",
+      "abstract": "We define OmniVChat (Omni Video Chat) as the task of native audio-visual dialogue between a user and an omni model. In OmniVChat, omni models directly and simultaneously receive audio and video from a user and return text. The user's query is embedded in the audio and video, without a separate text question, external captioning, or speech recognition. Direct audio-visual input reduces external latency and computation while preserving perceptual cues. However, research on OmniVChat faces two constraints: data availability and evaluation. Recordings of people using their own devices are scarce. Furthermore, good replies often depend on multimodal context and can be phrased in many ways, making keyword matching unreliable for evaluation. Recent progress in agent systems and video generation makes generation for comprehension viable, which means using synthesized dialogues for training and evaluation. Therefore, we present OmniVChat-Studio, a multi-agent data engine for synthesizing single- and multi-turn audio-visual dialogues. We use synthesized dialogues to build OmniVChat-Bench, an evaluation benchmark that evaluates omni models' basic dialogue abilities across five ability categories. Replies are judged by a large language model based on explicit scoring criteria. We also present OmniVChat-RL, a reinforcement learning reward design that jointly targets reply correctness, efficiency, and style in OmniVChat. Training Qwen3-Omni-Instruct with OmniVChat-RL on synthesized dialogues improves its performance on both OmniVChat-Bench and the human-recorded OmniVChat-Bench-Human. These gains validate the reward design and show transfer to real-world dialogues in training and evaluation.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "b84ee193165f73daca9dd621d9025100f4eaf57ad0a710f178f2821fa7576546",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "네이티브 오디오-비주얼 대화 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "음성-영상 대화 벤치마크·데이터 합성 엔진 제안"
+        }
+      ]
+    },
+    "2609.30298": {
+      "arxiv_id": "2609.30298",
+      "paper_title": "A Benchmark Framework for Screening Automation in Systematic Reviews",
+      "abstract": "Systematic reviews (SR) are essential for evidence-based research, but their screening phase is highly time-consuming and labor-intensive. Large language models (LLMs) offer a promising opportunity to reduce this workload by assisting with article relevance classification. However, existing evaluation approaches often rely on traditional metrics that may be misleading for highly imbalanced SR screening datasets. This paper presents a benchmark dataset of $45\\,064$ labeled entries for evaluating LLM performance in SR screening across 32 curated secondary studies. It proposes an evaluation framework that accounts for class imbalance, i.e., the natural prevalence of excluded articles relative to included articles in SRs. It also introduces PromptSR, a tool designed to support prompt experimentation, experiment management, and result analysis for LLM-based screening. We also present a use case demonstrating the application of SRBench and PromptSR.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "2eeaad2e316a293dac7136678c0e7395edac65302dbd90156060d6f923974c7b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "체계적 문헌고찰 자동화 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "체계적 문헌고 스크리닝 평가 벤치마크·도구 제안"
+        }
+      ]
+    },
+    "2609.34072": {
+      "arxiv_id": "2609.34072",
+      "paper_title": "PhysFieldBench: Can Multimodal Models Understand Physical Fields?",
+      "abstract": "Multimodal large language models (MLLMs) are increasingly envisioned as core components of scientific and engineering agents, yet their ability to interpret physical fields remains poorly understood. Existing physics benchmarks largely emphasize textbook problem solving or intuitive physical reasoning, leaving open whether MLLMs can infer physically meaningful information from continuous field observations. We introduce PhysFieldBench, a benchmark comprising 24 tasks and 1,160 evaluation examples across controlled equation fields, simulated physical fields, and observed physical fields. The tasks assess three forms of inference: identifying physical mechanisms, comparing latent control variables, and predicting outcome properties. Across representative open-source and proprietary MLLMs, zero-shot performance is low: the best model achieves a chance-normalized score of 29.3, while several open-source models remain near chance. In contrast, a task-specific supervised vision transformer performs substantially better, demonstrating that the inputs contain learnable physical information. To diagnose these failures, a structured self-explanation analysis attributes most errors to missed visual patterns and incorrect visual-to-physical mappings. Further, to explore whether post-training can improve physical inference and generalize to unseen tasks, we compare supervised fine-tuning with final answers or chain-of-thought supervision and reinforcement learning. Final-answer supervision performs best overall but transfers less effectively, whereas reinforcement learning after chain-of-thought supervision achieves the best generalization. Together, these findings highlight the need to improve visual-to-physical grounding and cross-task generalization for MLLMs to reliably interpret physical fields in scientific and engineering workflows.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "1fdefaae61e088d9ddb20b64fdd202359aa404d4fd8a9a17c2a196744cdfd267",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "물리장 이해 멀티모달 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "물리장 이해 평가 멀티모달 벤치마크 PhysFieldBench 제안"
+        }
+      ]
+    },
+    "2609.34496": {
+      "arxiv_id": "2609.34496",
+      "paper_title": "MASTraceBench: Diagnosing Collaboration Gains through Proposal Trajectories in LLM-Based Multi-Agent Systems",
+      "abstract": "LLM-based multi-agent systems (MAS) have shown promise in complex problem solving. As MAS methods diversify, systematic evaluation becomes increasingly challenging. However, existing benchmarks largely focus on final outcomes, leaving unclear how collaboration gains arise, are preserved, or are lost. To address this limitation, we introduce MASTraceBench, a benchmark for diagnosing collaboration gains through proposal trajectories in MAS. Across six cooperative and competitive tasks, MASTraceBench tracks and grades proposal trajectories and provides a multi-layer metric suite covering Task Score, Collaboration Gain, proposal-trajectory indicators, and Token Cost. Using MASTraceBench, we systematically compare representative MAS methods not only by final performance, but also by how agent proposals evolve and are aggregated into the final answer. This analysis reveals a recurring pattern: final MAS answers rarely surpass the strongest initial proposal; interaction often lifts initially weaker proposals toward it, while strong initial proposals are seldom further improved and may regress. To reduce this risk, we propose CLEARS, which replaces whole-proposal exchange with claim-level evaluation across agents to guide reliable synthesis. CLEARS more often preserves or improves upon the strongest initial proposal and achieves the highest Collaboration Gain on five of the six tasks.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "03d29cf9c836babb0260c5f733c081c946c7b61a116d5b92d5b7e6b68f8dad13",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 다중 에이전트 협업 진단 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중 에이전트 협업 과정 진단 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.35025": {
+      "arxiv_id": "2609.35025",
+      "paper_title": "AutoDataBench: Can Agents Write the Data That Feeds the Self-Improvement Loop?",
+      "abstract": "Recent gains in language model capability have come more from data than from architecture. Frontier labs and data companies produce verifiable agentic tasks, which supervised finetuning and reinforcement learning then turn into capability.This production line still rests on human labour and on human-in-the-loop collaboration. Automating task creation would let data production scale with compute rather than with expert headcount, would extend to more domains, and would enable a key step in recursive self-improvement (RSI). Current evaluations of an agent's ability to write such tasks measure how a model performs after training on what the agent produced. That does not match common practice in the data industry, where data is delivered sample by sample and each sample is accepted against a set of criteria rather than put straight into training. No existing evaluation asks whether an individual task meets the acceptance criteria of a data pipeline. We therefore introduce AutoDataBench. Given an original benchmark task and a record of the target model attempting it, an agent must write a new task for the same suite that meets practical acceptance standards on validity, novelty, difficulty and behavioural coverage. Across three benchmarks of executable agent tasks, no agent we evaluate scores above 20 out of 100 at the default time budget of 45 minutes. Giving the strongest agent four times as long improves its score substantially, while the cost of one usable task stays almost unchanged. Current agents can write training tasks of the required quality, but not efficiently. AutoDataBench provides a direct measure of an agent's capacity for autonomous data synthesis: one artifact at a time, judged against the criteria a production pipeline would apply, and without a training run. Code and data are available at https://github.com/StarDewXXX/AutoDataBench.",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "created_at": "2026-10-19T13:46:12Z",
+      "input_sha256": "97f52b4711276c1d6602fa5c38ae113fe5580777f6085cae8bdb5ab1d98b7c27",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 자율 데이터 생성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 과제 생성 능력 평가 벤치마크 제안"
         }
       ]
     }
