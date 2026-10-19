@@ -1,6 +1,7 @@
 """Exercise real CPU extraction without discovery, LLM calls or inventory writes."""
 import argparse
 import json
+import re
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -60,6 +61,8 @@ def main():
             saved = json.loads(path.with_suffix(".pages.json").read_text())
             tables = [b["table_body"] for b in saved["pages"][0]["blocks"] if b["type"] == "table"]
             assert tables and all(value in " ".join(tables) for value in ("120", "240", "Train", "Test"))
+            assert re.search(r'colspan=["\x27]?2', " ".join(tables))
+            assert re.search(r'rowspan=["\x27]?2', " ".join(tables))
         elif path == scan:
             assert result["extraction"]["backend"] == "mineru"
             assert "240" in result["pages"][0]
