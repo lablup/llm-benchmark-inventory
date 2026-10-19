@@ -621,7 +621,27 @@
         "2610.04243",
         "2610.04246",
         "2610.04378",
-        "2610.04379"
+        "2610.04379",
+        "2610.04392",
+        "2610.06947",
+        "2610.04672",
+        "2610.04721",
+        "2602.11518",
+        "2606.24797",
+        "2607.00218",
+        "2607.06306",
+        "2607.19670",
+        "2607.26348",
+        "2610.05077",
+        "2610.05124",
+        "2610.05380",
+        "2610.05387",
+        "2610.07026",
+        "2610.05398",
+        "2610.05414",
+        "2610.05540",
+        "2610.05613",
+        "2505.17399"
       ]
     }
   },
@@ -11663,6 +11683,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "관점 인식 에이전트 평가 벤치마크 ReFract 신규 제안"
+        }
+      ]
+    },
+    "2610.03524": {
+      "arxiv_id": "2610.03524",
+      "paper_title": "From Benchmarks to Production: A Text-to-SQL System for Complex Financial Data",
+      "abstract": "General-purpose Text-to-SQL systems achieve strong performance on academic benchmarks like Spider and BIRD, where schemas are relatively shallow and column values are often human readable. In production financial databases, where concepts are stored as opaque integer keys rather than human-readable strings, these methods fall below 50%, as even simple queries require multiple joins and filter predicates reference opaque IDs. We present Financial LINking Text-to-SQL (FLINT), a domain-specialized Text-to-SQL system that closes this gap through three key components: (1) a lookup agent that dynamically resolves natural-language concepts to question-specific reference table constraints, (2) embedding-based retrieval of structurally similar query templates from a compact, expert-authored bank, and (3) schema linking that prunes a large table schema to the relevant subset by traversing foreign-key chains, rather than relying on name similarity alone. We evaluate on two datasets totaling 359 questions over production financial schemas. FLINT outperforms various state-of-the-art baselines using the same LLM. The system is deployed in production as part of a financial data retrieval service.",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "119d769e5565826a8810449a1339d3da36e6803a51dc9f4d915594778ecec9ac",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "금융 Text-to-SQL 시스템 벤치마크로 LLM 평가 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "금융 Text-to-SQL 시스템 제안, 벤치마크 자체 재사용성 불명확"
+        }
+      ]
+    },
+    "2610.03585": {
+      "arxiv_id": "2610.03585",
+      "paper_title": "Threat-Preserving Representation Sensitivity in Agent-Security Benchmarks",
+      "abstract": "Security benchmarks for LLM-based agents often report the attack success rate (ASR) as a measure of model robustness and use these scores to compare different models and defense mechanisms, assuming that they describe the security of the agent. In this paper, we explore whether it also influences the benchmark's measurement. To measure the effect of the benchmark representation, we introduce threat-preserving representation sensitivity (TPRS), which measures how much the ASR changes when we change the agent-visible representation while holding the underlying task, harmful action, security policy, ground truth, environment, and the evaluation criteria fixed. On Agent Security Bench (ASB), replacing threat-related tool names with threat-neutral names raises the committed attack success rate by 11.67 percentage points on GPT-5-mini and by 13.21 points on Claude Haiku 4.5. On MCPTox, replacing the original neutral tool name with an explicit threat-related name lowers the ASR by 11.00 percentage points on GPT-5-mini and 4.11 points on Claude Haiku 4.5. On AgentDojo, adding threat-related wording to the attack-relevant tool changes ASR by only 0.50 percentage points on GPT-4o-mini, yet the benign utility falls by 5.36 points on tasks requiring that tool. We ran an experiment on MCPTox where we observed that a threat-neutral name matched on token count, length, and casing reproduces most of the shift produced by the threat-explicit name (8.54 of 11.00 points on GPT-5-mini). The results show that a security score measured under one representation may fail to generalize across threat-preserving representations of the same security problem. Robustness claims should therefore be supported by performance across a controlled set of threat-preserving representations rather than relying on a single representation-dependent score.",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "566fcab1e694ce4868f54f908b35c897a49433170e37b75819f916f44718275e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 보안 벤치마크의 표현 민감도 분석"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "기존 에이전트 보안 벤치마크의 표현 민감도 분석, 신규 평가자료 불명확"
+        }
+      ]
+    },
+    "2610.03639": {
+      "arxiv_id": "2610.03639",
+      "paper_title": "Do Large Language Models Know Colombian Law? A Reliability Benchmark for the Colombian Legal System",
+      "abstract": "Large language models (LLMs) are increasingly used to support legal practice, education, and research, yet their reliability in national legal systems outside the United States remains largely undocumented. We introduce an expert-validated benchmark for evaluating LLM reliability on the Colombian legal system. The benchmark comprises 1,042 items spanning ten areas of law and three question formats (closed multiple-choice, semi-open, and open-ended IRAC), built through a human-in-the-loop pipeline with multi-stage expert review. We evaluate 15 contemporary proprietary and open-weight models with format-appropriate metrics. Accuracy on closed questions ranges widely, from 0.905 (Gemini 3.1 Pro) to 0.577, but on free-text legal answers factual correctness never exceeds 0.45 (on a 0-1 scale) for any model. We find a dissociation between answer relevancy and correctness (Spearman rho = -0.46): models reliably sound responsive while frequently being wrong, a pattern of particular concern for non-expert users. Closed-question accuracy and free-text correctness are strongly rank-correlated (rho = 0.94), so cheap multiple-choice screening predicts model ranking but overstates absolute reliability. An independent rubric-based LLM judge and blind human expert scoring both reproduce the free-text ranking (rho >= 0.88). The judge further reveals that only about half of the norms models cite are correct; the rest are wrong or non-existent. Reliability varies systematically by legal area and follows an inverted-U across question complexity. Our results indicate that current LLMs require expert supervision for Colombian legal tasks, and that grounding answers in authoritative sources is a promising path to higher reliability. We release the benchmark construction pipeline to support reproducible evaluation.",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "9779b82fb1e43c81c32a6e35f9ceed6deb1cc5541ff22e30be94392944f78680",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "콜롬비아 법률 LLM 신뢰성 벤치마크 구축"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "콜롬비아 법률 신뢰성 벤치마크 1042문항 구축 및 공개"
+        }
+      ]
+    },
+    "2610.03971": {
+      "arxiv_id": "2610.03971",
+      "paper_title": "An Executable Benchmark for LLM-Based HLS Repair:Design Complexity and Repair Underconstraint",
+      "abstract": "Automated repair of High-Level Synthesis (HLS) designs using large language models (LLMs) is an emerging but underexplored problem. While LLM-based repair shows strong results on register-transfer level (RTL) Verilog, the only prior systematic study of HLS logic repair reports just 10.5% correction accuracy for GPT-4, with no analysis of why repair fails or what drives difficulty. We present the first comprehensive evaluation of LLM-based HLS repair across four models (GPT-4o, GPT-4o-mini, GPT-5.4, and Claude Opus 4.6) on 125 benchmark instances spanning eight logic bug types across three open-source HLS suites (CHStone, MachSuite, Polybench). We construct the first executable APR-style HLS repair benchmark with suite-specific functional oracles, enabling pass@k evaluation rather than the string-match approximations used in prior work. Design context and scale, rather than bug type alone, dominate repair difficulty: repair rates range from 6-45% on complex cryptographic kernels (CHStone) to 81-93% on compact algorithmic kernels (MachSuite) despite identical bug type distributions. We introduce solution multiplicity, the fraction of distinct patches generated across repeated repair attempts, as an empirical measure of repair underconstraint, and show it strongly predicts repair failure across all four models (Spearman rho = -0.393, p = 6.61 x 10^-20). Frontier models reduce underconstrained instances from 41-46 (GPT-4o, GPT-4o-mini) to just 3 (Claude Opus 4.6), with pass@1 improving from 42-53% to 73-76%. SHFT bugs remain consistently hard across all models, and semantic bug classes such as buffer indexing become reliably repairable only at frontier scale. These findings show that future APR benchmarks must include complex, executable, and weakly identifiable designs that remain challenging after frontier LLM repair.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "c53f66aee57e6b26707f43cfca7e6cfbab5e158a56f5365575a7c9842d4b6315",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 기반 HLS 수리 벤치마크 및 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "HLS 수리 실행형 벤치마크 125 인스턴스 최초 구축"
+        }
+      ]
+    },
+    "2610.04053": {
+      "arxiv_id": "2610.04053",
+      "paper_title": "The Cost of a Hop: Benchmarking NLIP and A2A",
+      "abstract": "Autonomous agents built on Large Language Models (LLMs) need standardized protocols to interoperate across systems. Several now exist (A2A, MCP, ACP, ANP, NLIP), but the Natural Language Interaction Protocol (NLIP) has not appeared in any controlled performance study, and no work has measured where an agent protocol's latency is spent. We compare NLIP and the Agent-to-Agent (A2A) protocol empirically, decomposing latency into message creation, connection, and send phases across three independent hardware environments. For lightweight coordination, NLIP is 8.4-9.6x faster than the baseline A2A SDK implementation on two environments and about 4x on a third; the direction of the advantage is consistent, its magnitude depends on the hardware. The advantage is stage-specific: for the end-to-end pipeline, where LLM inference dominates, the protocols are near parity. The difference comes almost entirely from connection setup. To test A2A at its best, we also ran A2A SDK with connection caching enabled; caching narrows its gap with NLIP by a hardware-dependent amount, from 2.75x on one machine to near-parity on faster hardware, where at scale a cache-optimized A2A-SDK matches NLIP. We report these as measured conditions without a single causal account of the residual send-phase cost. Against the more optimized Python-A2A, NLIP leads by about 4x on the same stage. We close with a protocol-selection guide keyed to workload characteristics.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "7c1c2425f2961a09185a76c993a47b44a1c191221f21c29551c8ab32096d9c02",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 프로토콜 NLIP/A2A 지연 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "에이전트 프로토콜 지연시간 성능 측정, 벤치마크 아님"
+        }
+      ]
+    },
+    "2510.04852": {
+      "arxiv_id": "2510.04852",
+      "paper_title": "FreshBrew: A Benchmark for Evaluating AI Agents on Java Code Migration",
+      "abstract": "AI coding assistants are rapidly becoming integral to modern software development. A key challenge in this space is the continual need to migrate and modernize codebases in response to evolving software ecosystems. Traditionally, such migrations have relied on rule-based systems and human intervention. With the advent of powerful large language models (LLMs), AI-driven agentic frameworks offer a promising alternative-but their effectiveness has not been systematically evaluated. In this paper, we introduce \\FreshBrew{}\\footnote{\\url{https://github.com/mrcabbage972/freshbrew}}, a novel benchmark for evaluating AI agents on project-level Java migrations, with a specific focus on measuring an agent's ability to preserve program semantics and avoid reward hacking, which we argue requires projects with high test coverage for a rigorous and reliable evaluation. We benchmark several state-of-the-art LLMs, and compare their performance against established rule-based tools. Our evaluation on a challenging subset of 228 public Maven repositories that build on JDK 8, fail on JDK 17, and have high test coverage shows that the top-performing model, Gemini 2.5 Flash, can successfully migrate 52.3\\% of projects to JDK 17. Our empirical analysis reveals novel insights into the critical strengths and limitations of current agentic approaches, offering actionable insights into their real-world applicability. Our empirical study reveals failure modes of current AI agents in realistic Java modernization tasks, providing a foundation for evaluating trustworthy code-migration systems. By releasing \\FreshBrew{}, we aim to facilitate rigorous, reproducible evaluation and catalyze progress in AI-driven codebase modernization.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "d2f013c3e7b1a560303857f73fb7200d5946688136c0ed01afb21837cc230c88",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 에이전트의 Java 코드 마이그레이션 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "Java 코드 마이그레이션 에이전트 벤치마크 FreshBrew 공개"
+        }
+      ]
+    },
+    "2605.09635": {
+      "arxiv_id": "2605.09635",
+      "paper_title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
+      "abstract": "Large language models are increasingly used in K-12 education, but existing benchmarks mainly test exam question answering rather than understanding how curriculum knowledge is structured and visually presented. We call this capability curriculum cognition. It covers prerequisite chains, concept taxonomies, experiment-concept links, pedagogical sequencing, and visual grounding. We introduce K12-KGraph, a curriculum-aligned knowledge graph extracted from official People's Education Press textbooks in mathematics, physics, chemistry, and biology across primary, middle, and high school. It contains nine node types and fourteen relation types covering curriculum structure and visual grounding. From this graph, we derive K12-Bench, a 23,640-question multi-select benchmark with five task families: Ground, Prereq, Neighbor, Evidence, and Locate. We also build K12-Train, a graph-guided supervised fine-tuning corpus of 7,335 samples, including 2,267 text-only QA pairs and 5,068 multimodal VQA pairs. On K12-Bench, Gemini-3-Flash achieves only 57 percent exact match and Gemma-4-31B-IT reaches 46 percent, with Prereq and Neighbor being the hardest tasks. Our training experiments show that domain-specific supervision can reduce this gap. Under a matched 2,300-sample budget, K12-Train-Text consistently outperforms equally sized subsets of eight mainstream instruction-tuning corpora on GaokaoBench and EduEval. For vision-language models, K12-Train-Full achieves the best overall results on Gaokao-MM, MDK12-medium, and K12Vista among all compared training configurations, despite using fewer samples than the full DataFlow and WizardLM baselines. It also surpasses both text-only and multimodal-only variants, showing that textual and visual supervision are complementary. We release the graph, benchmark, training data, and complete construction pipeline.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "66e2e972c7a5138da8492e8886a2c8b59aebe91488affd5d38cdbe769ff8e345",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "교육용 LLM을 위한 K-12 지식그래프 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "K12 교육 지식그래프 기반 벤치마크·학습데이터 공개"
+        }
+      ]
+    },
+    "2606.18950": {
+      "arxiv_id": "2606.18950",
+      "paper_title": "RTSGameBench: An RTS Benchmark for Strategic Reasoning by Vision-Language Models",
+      "abstract": "Modern Vision-Language Models (VLMs) often struggle with strategic reasoning, i.e., anticipating and influencing other agents' actions, under uncertainty in competitive and cooperative settings. Real-time strategy (RTS) games can be a natural testbed for diagnosing this limitation, as they demand coordination with allies, adaptation to opponents' strategy, and long-horizon planning under partial observability. However, existing RTS benchmarks offer limited evaluation scope, lack systematic competency diagnosis, and remain fixed in the pre-designed scenario coverage. To address these limitations, we present RTSGameBench, which is built on Beyond All Reason, a large-scale RTS game with an expanded battlefield that demands broader strategy diversity than the existing testbeds. The proposed benchmark provides evaluations through diverse gameplay across various matchup structures, diagnostic assessment via mini-games, each targeting an individual strategic competency, and extensible coverage via a self-evolving generation framework that converts free-form queries into new mini-games, improving over successive cycles. Additionally, for VLMs to operate in large-scale RTS games, we provide RTSGameAgent that manages units by an FSM with agentic memory. We empirically validate that multiple state-of-the-art VLMs do not perform well when matchups demand tighter coordination, multiagent coordination and when task scale increases.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "c4804cbbfe70f984987c042b10a8cda885421a0fffff96783d472d9b6a097170",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM 전략적 추론 평가 RTS 게임 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "RTS 게임 전략 추론 VLM 벤치마크 RTSGameBench 제안"
+        }
+      ]
+    },
+    "2607.01245": {
+      "arxiv_id": "2607.01245",
+      "paper_title": "Office Comprehension Benchmark",
+      "abstract": "We introduce Office Comprehension Bench (OCB), the first public benchmark to jointly evaluate LLM systems on Word, Excel, and PowerPoint comprehension over native file formats (.docx, .xlsx, .pptx) and their variants. OCB consists of two tracks. File Fidelity Q&A tests structural and visual perception of office artifacts - tables, charts, embedded images, formulas, and app-specific elements such as headers, speaker notes, and named ranges. Domain Q&A tests expert-level reasoning grounded in real-world industry documents across 12 professional domains, with queries requiring multi-step analysis and synthesis across documents. Each reference answer is decomposed into atomic, binary-gradable claims, and an ensemble of LLM judges scores responses against each claim independently. Even the strongest frontier system in its default reasoning mode reaches only about 59.3% on Domain Q&A; increasing thinking depth within a tier does not move performance materially, while moving to a higher product tier yields modest gains. We release the dataset, evaluation tooling, judge prompt, and a public leaderboard.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "b8782295b5e18afe49dbf7744ca41a00f644767ade747e9d797c24811095fb8c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM의 Word/Excel/PPT 이해 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "오피스 문서 이해 벤치마크 OCB 데이터셋·평가도구 공개"
+        }
+      ]
+    },
+    "2607.20219": {
+      "arxiv_id": "2607.20219",
+      "paper_title": "HalluTruthQA: A Fine-Grained Benchmark for Hallucination Detection, Localization, and Explanation in Arabic Question Answering",
+      "abstract": "Large language models (LLMs) can generate fluent Arabic answers, yet factual errors remain difficult to detect, localize, explain, and verify. Existing hallucination benchmarks often provide response-level labels, with limited support for identifying the exact erroneous content, explaining why it is incorrect, or selecting the correct factual answer. We introduce HalluTruthQA, a fine-grained benchmark for hallucination evaluation in Arabic question answering. The benchmark contains 2,400 expert-curated examples across four knowledge-intensive domains: Islamic knowledge, history, science, and geography. Each example pairs an Arabic question and a model-generated answer with a verified reference answer, a binary hallucination label, and six candidate answers for factual verification. Hallucinated answers additionally include character-level erroneous spans, human-written explanations, and macro- and micro-level hallucination types. We evaluate four open-source LLMs, ALLaM-7B, Falcon-H1R-7B, Qwen3-32B, and SILMA, in a zero-shot setting across hallucination detection, span-level localization, factual verification, and explanation evaluation. Results show that these tasks capture different abilities: no single model performs best across all tasks. The best scores are 0.880 Macro-F1 for detection, 0.516 F1-Sp for localization, 0.852 LO-Score for factual verification, and 0.644 for explanation evaluation. These findings show that hallucination evaluation should move beyond response-level detection toward the localization, verification, and explanation of factual errors.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "f073f373d451a4320e2ddae8af9945756128bf1f0de0a1b19759f3c28af9e151",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "아랍어 QA 환각 탐지·설명 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "아랍어 환각 탐지 세분화 벤치마크 HalluTruthQA 구축"
+        }
+      ]
+    },
+    "2609.14762": {
+      "arxiv_id": "2609.14762",
+      "paper_title": "TriCalRAG: A Three-Strategy, Retrieval-Augmented Benchmark for On-Premise LLM-Based Root Cause Analysis in AIOps",
+      "abstract": "Operational logs create a need for private, resource-efficient incident analysis, but aggregate detection scores can conceal severe prediction bias. We present TriCalRAG, a reproducible benchmark for log-anomaly detection with generated root-cause and remediation outputs across BGL, HDFS, Thunderbird, and OpenStack. The primary evaluation compares Qwen2.5-14B and Mistral-Small-22B, served through vLLM on one NVIDIA RTX PRO 6000 GPU (96 GB), under zero-shot, few-shot, and retrieval-augmented generation (RAG) prompting across three data-sampling seeds. We report F1, bootstrap confidence intervals, predicted-positive rates, throughput, and memory use, with DeepLog as a held-out classical baseline. Mistral-Small attains a higher macro-averaged F1 than Qwen2.5-14B (0.644 versus 0.560), whereas Qwen provides approximately twice the throughput. A separate log-probability evaluation compares raw decisions with Contextual Calibration (CC) and Batch Calibration (BC): neither correction consistently improves prediction-balance diagnostics across prompting strategies. Supplementary single-run comparisons extend evaluation to 4-bit Llama-3.1-70B via local Ollama and Claude Haiku 4.5 via Anthropic's cloud API; RAG improves F1 on all four datasets for both models. Claude's reported aggregate F1 increases from 0.566 to 0.695, while the estimated API cost rises from \\$0.94 to \\$2.15 per 1,000 incidents. Local deployment ablations show approximately 41-fold throughput scaling with batching and 20% lower latency with 4-bit quantization on the tested workload. These findings support retrieval as useful context for anomaly decisions, while the supplementary protocols, unvalidated explanation quality, and prediction-balance diagnostics limit broader claims about RCA accuracy and probabilistic calibration.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "9b8d980ea47d2314b65d448fbde6f7b6b285e2c4d72656657281693856b70ef3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AIOps 로그 이상 탐지 RAG 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "로그 이상탐지·원인분석 재현 가능 RAG 벤치마크 제안"
+        }
+      ]
+    },
+    "2609.18909": {
+      "arxiv_id": "2609.18909",
+      "paper_title": "Beyond Outcomes: Dual-View Relational Learning for Efficient Agent Benchmarking",
+      "abstract": "Agent benchmarks are substantially more costly to evaluate than conventional LLM benchmarks. Benchmark compression is therefore a natural solution, yet existing methods primarily model redundancy in task--model final-score distributions, which is important in agentic evaluation. To address this limitation, we analyze large-scale trajectories and identify six complementary process signals that are systematically associated with final agent performance. To disentangle agent performance redundancy from a complete perspective, we propose DualViewEval, an agent benchmark compression method that jointly exploits outcome and process relations to learn an exact-size miniset and predict the full-benchmark scores. Across five agent benchmarks and five representative baselines, DualViewEval achieves the best results in all datasets. With only 20 tasks, it achieves $24\\times$--$40\\times$ compression on APEX-Agents and BFCL, reducing mean absolute error (MAE) by $14.5\\%$--$28.2\\%$ over the strongest competitors while improving Kendall's $τ$ by up to $7.2\\%$ relative to EssenceBench on SWE-bench Verified. The selected minisets further reveal capability differences among different agents, providing compact and diagnostic feedback for efficient agentic model development.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "16a2844d7ecb352a4731bede72cd768a3f51085bec186eacf8921c4cfe38e3c5",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 벤치마크 압축을 위한 이중 관점 학습"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 벤치마크 압축 방법 DualViewEval 제안"
+        }
+      ]
+    },
+    "2609.21521": {
+      "arxiv_id": "2609.21521",
+      "paper_title": "VidOmni-Bench: A Benchmark for Fine-Grained Video Understanding via Spatio-Temporal Event Verification across Complexity and Duration",
+      "abstract": "While Video Large Language Models (Video-LLMs) have recently demonstrated strong performance, reliably evaluating their fine-grained video understanding remains challenging. Existing benchmarks often rely on question answering or ground-truth caption matching, where models may succeed through superficial cues and incomplete annotations. To this end, we introduce VidOmni-Bench, a benchmark that requires models to verify whether each event in dense video captions is supported by the video. VidOmni-Bench consists of 500 videos spanning five complexity types and diverse durations from 4 seconds to 90 minutes. After collecting videos along these axes, we use diverse Video-LLMs to generate dense captions and obtain human-verified sentence-level labels, where sentences containing incorrect events serve as hard negatives for evaluation. Our experiments on VidOmni-Bench reveal three key findings: (i) Video-LLMs frequently generate hallucinated descriptions in dense video captioning; (ii) they also struggle as verifiers, failing to reliably detect plausible but incorrect event descriptions; and (iii) model weaknesses vary across video complexity and duration, revealing diverse, model-specific bottlenecks in current Video-LLMs.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "b108e1db89816d8c247648e66af7449e157e929a8b23e622d198e645a83c38d0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "Video-LLM 세밀한 시공간 이해 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "세분화된 비디오 이해 검증 벤치마크 VidOmni-Bench 구축"
+        }
+      ]
+    },
+    "2609.37658": {
+      "arxiv_id": "2609.37658",
+      "paper_title": "EnterpriseBench: Benchmarking LLM Agents on Enterprise-Level Strategic Reasoning and Decision-Making",
+      "abstract": "LLM agents are increasingly expected to support enterprise workflows, where tasks often involve missing information, uncertainty, feedback, and long-term trade-offs. However, existing enterprise and financial benchmarks mainly test static capabilities such as information extraction, numerical calculation, domain knowledge, and financial QA, leaving interactive and long-horizon decision-making underexplored. To bridge this gap, we introduce EnterpriseBench, a benchmark that evaluates LLM agents across this spectrum, from static question answering to dynamic decision-making. Specifically, EnterpriseBench reorganizes existing enterprise and financial QA datasets into a unified foundational suite annotated by capability and difficulty, and introduces three professional interactive settings: Consulting, based on management-consulting-style business cases for client problem diagnosis through multi-turn information seeking; the Beer Game, adapted from a classic supply-chain management simulation for inventory control under delayed feedback; and Enterprise Digital Twin, a project-based business simulator for workforce, risk, and project planning. Experiments with nine agent methods under four backbone models show that current agents have not yet achieved stable, comprehensive, and cross-task reliability in enterprise scenarios. These results show that EnterpriseBench provides a practical benchmark for evaluating LLM agents in realistic enterprise strategic reasoning and decision-making.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "6ece50b94bfecfe6ca4855837452558b2adfdcb9624710b567fcf6f8617e55e9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 기업 전략 의사결정 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "기업 전략 추론·의사결정 에이전트 벤치마크 EnterpriseBench 제안"
+        }
+      ]
+    },
+    "2610.04506": {
+      "arxiv_id": "2610.04506",
+      "paper_title": "EgoExo-Next:Benchmarking Vision-Language Models on Visual-Option Next-State and Cross-View Reasoning",
+      "abstract": "Vision-language models (VLMs) are increasingly evaluated for egocentric and cross-view video reasoning, yet existing benchmarks largely focus on semantic event understanding, temporal relations, or correspondence between already observed views, leaving their ability to reason directly about future visual states underexplored. We introduce EgoExo-Next, a visual-option benchmark for dynamic visual-state reasoning, where models must identify how an observed action trajectory subsequently appears rather than predict only an action label or textual description. EgoExo-Next contains 2,503 human-curated four-choice questions from six public egocentric and ego--exo video sources and comprises four interconnected subtasks that evaluate egocentric next-state prediction, bidirectional ego--exo state correspondence, exocentric next-state prediction, and their composition in Ego-to-Exo Next-State. Extensive evaluation of proprietary, open-source, and spatial reasoning VLMs reveals a substantial human--model gap, with the best model achieving 43.81\\% average accuracy compared with 98.55\\% for humans, and the largest degradation occurring on the composed Ego-to-Exo task. These results suggest that current VLMs remain substantially limited in dynamic visual-state reasoning, particularly when temporal progression and cross-view reasoning must be composed. The benchmark is publicly available at \\url{https://huggingface.co/datasets/yutongli2024/EgoExo-Next}.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "f6d2cea8e7597bba5c2e9ac5d9bdaa98ec429dff78e98a6b71da77477aa8439d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM의 자아·타자 시점 미래 상태 추론 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에고·엑소 차세대 상태 추론 VLM 벤치마크 공개"
+        }
+      ]
+    },
+    "2610.04215": {
+      "arxiv_id": "2610.04215",
+      "paper_title": "TCMClinicalReason-Bench: Can Language Models Reason from Pathogenesis to Prescription over Real-World Clinical Cases?",
+      "abstract": "Large language models (LLMs) can generate clinical narratives that are insufficiently grounded in patient-specific evidence. In traditional Chinese medicine (TCM), errors can propagate from etiology and pathogenesis through syndrome diagnosis and treatment principles to prescription generation. We developed TCMClinicalReason-Bench using 2,000 multicenter electronic health record cases to distinguish case-grounded responses from fluent but unsupported diagnostic and therapeutic conclusions. Five general-purpose and two TCM-specific LLMs were evaluated in zero-shot settings. An evidence-constrained rubric assessed seven diagnostic and therapeutic components and three cross-block relations, allowing case-supported alternatives. Qwen3.7-Plus with TCM retrieval served as the automated judge, alongside parallel blinded ratings by five senior TCM clinicians on a 600-case subset. Structural completeness was nearly saturated (99.3-100.0%), but normalized content scores ranged from 40.7% to 54.1%. The five general-purpose models averaged 50.0%, versus 41.3% for the two smaller TCM-specific models. Cross-block logic consistency ranged from 60.8% to 66.8% and correlated moderately with content across cases (Pearson's r = 0.515-0.656). Deficits were greatest in prescription generation, prescription analysis, and symptom-guided modification. In judge stress testing on 100 independent cases, perturbation detection rates across the three relations were 57%, 56%, and 31%, with contradictions detected more reliably than omissions. Separating component quality from cross-block consistency localizes failures missed by endpoint and completeness metrics and identifies where clinician oversight remains necessary.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "3825b195f07615de41a58dab03d0671c8ef157dbf62192e30804528c07ef37e9",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "중의학 임상 추론 LLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "한의학 임상 추론 벤치마크 2000증례 기반 구축"
+        }
+      ]
+    },
+    "2610.04243": {
+      "arxiv_id": "2610.04243",
+      "paper_title": "Autonomous Active Directory Exploitation via Multi-Model Harness Orchestration: A Benchmark Study with NeuroSploit on GOAD",
+      "abstract": "Active Directory (AD) remains the predominant identity and access management infrastructure in enterprise environments, and its compromise represents the highest-impact outcome in internal penetration tests. Recent work has shown that large language models (LLMs) can autonomously conduct assumed-breach penetration testing against AD, but these studies employ standalone agents lacking structured guardrails, deterministic validation, and multi-stage chain orchestration. We present a benchmark evaluation of NeuroSploit v4.2.0, an open-source Rust-based autonomous pentest harness, against the Game of Active Directory (GOAD), a deliberately vulnerable multi-forest AD lab maintained by Orange Cyberdefense comprising five virtual machines, two forests, and three domains. The harness orchestrates 22 AD-specific agents and 7 multi-stage attack-chain playbooks covering the full AD kill chain: enumeration, Kerberoasting, AS-REP roasting, NTLM relay and coercion, Kerberos delegation abuse, AD CS exploitation (ESC1-ESC8), MSSQL linked-server pivoting, DCSync, cross-forest trust abuse, and persistence detection. We benchmark nine frontier LLMs (Claude Opus 4.6/4.7/4.8, GPT-6 Astra, GPT-5.6 Sol, Grok 4.6, Qwen 3.8, GLM 5.3, Kimi k3) within the harness, comparing against direct invocation across 14 technique categories and 7 chains. The harness achieves 96-100% technique coverage with 90-97% precision, while direct invocation covers only 21-54% and produces 3.2x more false positives. Time to full three-domain compromise with Opus 4.8 was 134 minutes with guardrail activations preventing lockout-triggering sprays, unauthorized DCSync dumps, and out-of-scope reconnaissance. Results demonstrate that structured harness orchestration with domain-specialized agents, POMDP belief tracking, and cross-model voting substantially outperforms unstructured LLM usage for AD penetration testing.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "3f0f84b880cebf1895f333230a9e4350c89c9bfc988b7d69c0a0a7751bc1224d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 기반 Active Directory 공격 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "AD 침투 테스트 하네스 평가 연구, 재사용 벤치마크 기여 불명확"
+        }
+      ]
+    },
+    "2610.04246": {
+      "arxiv_id": "2610.04246",
+      "paper_title": "Benchmarking Psychological Dynamics in Generative Agents",
+      "abstract": "Large language models (LLMs) are increasingly deployed to simulate human behavior, acting as computational replicas of human subjects. Yet the lived psychological experience of humans is difficult to benchmark, particularly as it unfolds over time. We introduce a psychometric benchmark for computational replicas: personas that carry a fixed identity through an evolving sequence of events. Built entirely from published norms and meta-analytic effects, the benchmark scores two dimensions of psychological realism. The first, internal validity, quantifies whether generated trajectories reproduce the internal structure of repeated human measurement: distributions, the between- versus within-person variance partition, temporal dependence, and range. The second, external validity, quantifies whether replicas recover established trait, state, and indicator relations. Across 36 open-weight and proprietary LLMs from nine developers (1B-671B parameters), most recover the direction of established relations (84.3% mean agreement) and the variance partition (26 of 34), yet the within-person correlation and distributional structure elude recovery. Internal validity is independent of scale and capability: a mid-size open LLM (Gemma-3-27B) strikes the best trade-off between the two dimensions. The benchmark is a precondition for using computational replicas in causal inference across domains (e.g., marketing, healthcare), and identifies within-person grounding as the central challenge ahead.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "92765642bfd0fd3927f3a665ff03ac79eb0cdacda16fa62546287d0e34bdbd8f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "생성 에이전트의 심리적 역학 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "생성 에이전트 심리 측정 벤치마크 신규 구축"
+        }
+      ]
+    },
+    "2610.04378": {
+      "arxiv_id": "2610.04378",
+      "paper_title": "COPEX: Benchmarking LLM Robustness to Adversarial Context Across Model Context Protocol Layers",
+      "abstract": "Large language models increasingly mediate tool use in Model Context Protocol (MCP) systems, where adversarial influence may enter through user instructions, tool schemas, tool outputs, or protocol messages. Existing benchmarks often evaluate deployed agents, conflating model susceptibility with guardrails, orchestration, and general task capability. We introduce COPEX (COntext Provider EXploitation), a controlled benchmark that isolates the model as an MCP client by fixing the surrounding agent stack and varying only the tool-selecting model. COPEX covers 25 attack types instantiated as 125 scenarios across four entry surfaces: model/agent, client, server/tool, and transport. Across nine models and 3,375 trials, the mean attack success rate is 64.4%, with surface-level means ranging from 58.3% to 71.4%. Some client- and transport-level attacks succeed partly outside the model's observation or control, separating system exposure from model susceptibility. Combined input and context scanning reduces mean attack success by 49.6% on an eight-attack defense subset relative to the undefended setting. The benchmark is available at https://github.com/inspire-center/copex.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "a1a6eab80620be1667e7ad7310d7ddce21c2704449bc4e70fb290462a7067663",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "MCP 계층별 LLM 적대적 맥락 견고성 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "MCP 적대적 맥락 강건성 통제 벤치마크 COPEX 공개"
+        }
+      ]
+    },
+    "2610.04379": {
+      "arxiv_id": "2610.04379",
+      "paper_title": "AgentPersonaBench: Benchmarking Persona-Driven User Simulation",
+      "abstract": "We introduce AgentPersonaBench (APB), a benchmark evaluating whether persona conditioning faithfully steers downstream agent behavior. While language models are increasingly deployed for persona-driven user simulation, existing benchmarks primarily evaluate conversational styling or self-reports rather than authentic behavioral fidelity. APB evaluates latent persona adherence one trait at a time, embedding each target trait within a complete synthetic profile without explicitly naming the trait or disclosing the test. Ground-truth adherence is verified strictly from observable actions across four interaction surfaces of increasing realism: survey, chat, web (interactive web environments), and app (desktop software environments). APB comprises 2,460 tasks spanning 867 traits, verified through automated audits and expert review. Our evaluation of 20 frontier model arms demonstrates that high-fidelity user simulation is already attainable: leading models achieve up to 84.7% full-pass adherence under unprompted conditions. At the same time, APB identifies clear behavioral boundaries: adherence drops across interaction modalities (only 37.9-64.3% pass all four surfaces), multi-attribute demands degrade retention, and competing model families exhibit pronounced behavioral divergence.",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "created_at": "2026-10-19T13:48:14Z",
+      "input_sha256": "643838db567279b655502cb390fbb3986ecbdc7a2b52221c616132a51f267139",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "페르소나 기반 사용자 시뮬레이션 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "페르소나 기반 사용자 시뮬레이션 벤치마크 APB 구축"
         }
       ]
     }
