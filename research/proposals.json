@@ -841,7 +841,27 @@
         "2610.15134",
         "2610.15163",
         "2610.15179",
-        "2610.15228"
+        "2610.15228",
+        "2505.12135",
+        "2602.03100",
+        "2604.16287",
+        "2604.23455",
+        "2606.11260",
+        "2606.24162",
+        "2610.15239",
+        "2610.15634",
+        "2610.15666",
+        "2610.15667",
+        "2610.15722",
+        "2610.15732",
+        "2610.15750",
+        "2610.15773",
+        "2610.15994",
+        "2409.00696",
+        "2503.21821",
+        "2506.00482",
+        "2508.08742",
+        "2512.04125"
       ]
     }
   },
@@ -16723,6 +16743,446 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "10개 국가-언어 안전·문화 민감성 벤치마크 XL-SafetyBench 제안"
+        }
+      ]
+    },
+    "2606.14715": {
+      "arxiv_id": "2606.14715",
+      "paper_title": "ThreadBench: Benchmarking Realism in Agentic Simulation of Real-world Discussions",
+      "abstract": "LLM agents are increasingly used to simulate real-world interactions, but it remains unclear whether simulated behaviors preserve the content patterns and interaction dynamics of real human behaviors. Existing evaluations often focus on individual comments or task performance, rather than whether simulated behaviors match human behavior at thread level. In this paper, we use Reddit discussions as a concrete testbed for real-world social simulation. Reddit provides public, topic-grounded, multi-party interactions with diverse opinions, experiences, and interaction patterns, making it a useful setting for evaluating whether LLM agents reproduce the distributional and structural properties of real online discussions. We introduce ThreadBench, a benchmark for Reddit discussion simulation built from 9,817 real Reddit threads spanning 8 diverse domains and 116 subdomains. ThreadBench uses statistical analyses to compare generated and real discussions across 12 metrics grouped in 4 families: uniformity, expression, tone, and interaction. We further develop Thread-Prompt-based Discussion Generation (ThreadPDG), a Planner-Writer framework that learns how a real discussion grows. The Planner produces thread- and comment-level plans from a real seed discussion, and the Writer generates comments from these plans. For each seed, we generate multiple candidate threads and combine their best branches using thread-level statistics. Across all domains and multiple LLMs, ThreadPDG achieves ThreadBench pass rates of 58-100%, compared with 0-17% for the baselines. Human evaluation with 436 annotators further shows that ThreadPDG is not distinguished from real discussions in 78.7% of pairs, outperforming existing simulation methods.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "ed9ec4a3378221dd59733aeb4c355b03befad6f3b510389abe2cf2c820145aa1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "영어권 Reddit 토론 시뮬레이션 벤치마크로 언어·도메인 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "Reddit 스레드 시뮬레이션 벤치마크 ThreadBench를 새로 제안"
+        }
+      ]
+    },
+    "2607.22165": {
+      "arxiv_id": "2607.22165",
+      "paper_title": "DBA-Bench: A Production-Fidelity Benchmark for LLM-Based Database Operations Agents",
+      "abstract": "LLM-based database agents show promise, but differences in task scope, testbeds, and success criteria hinder direct comparison. A shared benchmark must also preserve the operational conditions that determine whether diagnosis and remediation succeed in practice. We present DBA-Bench, guided by operational realism, outcome-first evaluation, and controlled scenario reproducibility. It evaluates agents in live PostgreSQL and distributed TiDB deployments with active workloads, stateful behavior, and multi-source observations. Success requires satisfying scenario-specific operational objectives without violating safety constraints. The primary evaluation covers 231 bounded scenarios across five operational domains, while 10 persistent scenarios extend evaluation to continued operation across interacting events. We evaluate eight automated baselines, including four frontier foundation models, two open-weight models, and two GPT-5.5-backed database agents. Our evaluation exposes gaps between diagnosis, effective remediation, and safe execution across both database systems. Agents can identify root causes yet fail to restore operational objectives. Even when objectives are restored, the executed actions can violate safety constraints. Persistent scenarios expose a gap between clearing individual blockers and sustaining business service: agents leave competing workloads uncoordinated and previously completed repairs unchecked after subsequent changes.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "45faeca1c2d8070df6648775a4cd1f87685e3a45ff8de6df806aef17fb75e53e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 데이터베이스 에이전트 운영 벤치마크로 에이전트 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "DB 운영 에이전트용 DBA-Bench 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2607.26455": {
+      "arxiv_id": "2607.26455",
+      "paper_title": "ForgetBench: Benchmarking Forgetting Dynamics of Long-Term Parametric Memory in Language Models",
+      "abstract": "Large language models (LLMs) have demonstrated strong capabilities in knowledge acquisition and reasoning, yet their ability to retain previously acquired knowledge under repeated updates remains insufficiently understood. Existing evaluation paradigms primarily focus on single-step reasoning or static knowledge editing, which fail to capture the temporal dynamics of knowledge retention and degradation during continual model modification. In this work, we propose \\textbf{ForgetBench}, a benchmark for measuring forgetting dynamics in the long-term parametric memory of LLMs under continual knowledge editing. ForgetBench introduces two complementary evaluation paradigms, namely concept-based QA and scenario-based QA, to probe the retention of isolated facts and structured relational knowledge. Building upon a sequential editing framework, we construct temporally ordered knowledge streams and evaluate model behavior across multiple editing stages. To quantify these dynamics, we introduce a unified evaluation framework that indexes memory age by the number of subsequent edits and measures temporal decay, retention strength, and cross-instance stability. Extensive experiments across diverse models and editing methods reveal distinct forgetting trajectories and a recurring tension between long-term retention and generalization quality. Our findings highlight the need for more robust memory mechanisms that can effectively acquire, update, and preserve knowledge over time in future LLMs.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "c11ef043a66c46c803a9534eddb1a58507e2d4bf0def508e4469526f156281e5",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 지식 망각 역학 벤치마크로 모델 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "지식 편집 망각 역학 평가용 ForgetBench 제안"
+        }
+      ]
+    },
+    "2608.11947": {
+      "arxiv_id": "2608.11947",
+      "paper_title": "A, B, C, or Stable? Accuracy and Order Sensitivity Diverge in LLM Multiple-Choice Evaluation",
+      "abstract": "Multiple-choice question (MCQ) benchmarks are widely used to evaluate large language models, yet a single reported accuracy number is not enough to distinguish a model's latent ability from order sensitivity. Debiasing methods tend to be judged on one axis, which implicitly assumes that fixing order sensitivity and improving accuracy go together. We test this assumption with two proprietary models and two open-weight models on MMLU and ARC-Challenge, across four families of strategies. We measure order sensitivity with flip rate, capturing per-question instability, and recall standard deviation (RStd), capturing aggregate positional imbalance. We find accuracy and order sensitivity do not move together consistently: two-stage prompting reduces both flip rate and RStd for GPT on MMLU without a significant change in accuracy. The two sensitivity metrics also diverge from each other. Adding reasoning to direct answering leaves Llama's MMLU flip rate statistically indistinguishable while RStd falls sharply. A $2\\times2$ ablation across generation-then-matching, crossing option visibility with matcher type, shows that withholding options mainly harms semantic matching, which achieves zero flip rate by construction, yet loses significantly in accuracy; the effect is smaller when using an LLM matcher. We recommend reporting flip rate and RStd along with accuracy when evaluating MCQ strategies.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "b1eae7e5bd1508e7e83beaca50315ef6880dcbaa72c48fefdca280e202ec2927",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 다지선다 평가의 순서 민감도 분석으로 평가 방법론에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "기존 MCQ 벤치마크 분석·지표 제안, 재사용 평가자료 불명확"
+        }
+      ]
+    },
+    "2609.34024": {
+      "arxiv_id": "2609.34024",
+      "paper_title": "Jev in Medicine: A Benchmark Evaluation",
+      "abstract": "Jev is a non-generative System One model that assigns probabilities to predefined answer options and cannot answer outside them. Its accuracy and calibration on medical question-answering and case-based diagnostic-reasoning tasks are unknown. We evaluated Jev 1.13 on four medical benchmarks: MetaMedQA, PubMedQA, DiagnosisArena-MCQ and the NEJM Case Challenges. GPT-6 Sol, with (medium) and without reasoning, was the reference. The primary outcome was top-1 accuracy; key secondary outcomes were calibration, selective prediction and recognition of unanswerable questions. All 8,469 requests returned a valid answer. Jev's accuracy was similar to that of GPT-6 Sol with medium reasoning on PubMedQA (78.4% vs 78.2%;), lower on MetaMedQA (74.8% vs 82.7%) and much lower on DiagnosisArena-MCQ (59.8% vs 82.4%;) and the NEJM cases (61.8% vs 82.4%). On MetaMedQA, Jev's probabilities were the best calibrated (expected calibration error 0.063 vs 0.146), and its answers with a probability of at least 0.9 (52.9% of questions) were 93.4% accurate, but GPT-6 Sol was as accurate when it accepted a similar proportion of questions. On DiagnosisArena-MCQ, Jev's probabilities discriminated poorly (AUROC 0.645 vs 0.768). Of the 162 questions whose correct answer was \"I don't know or cannot answer\", Jev chose that option for 10.5% (GPT-6 Sol, 8.6%). Median latency was 0.27-0.31 s; all 2,823 items cost USD 0.08. Jev was fast and inexpensive, and its accuracy was similar to that of a frontier LLM on research abstracts but lower on examination questions and much lower on complex diagnostic cases. Task-specific validation is required before clinical use.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "c321e8cce269a5164a365cdd8d6b2eb143d78a27d61e8e1d990d256ac54fec05",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "의료 질의응답 벤치마크로 LLM 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "기존 의료 벤치마크 점수 보고만, 신규 평가자료 없음"
+        }
+      ]
+    },
+    "2610.00559": {
+      "arxiv_id": "2610.00559",
+      "paper_title": "PhysVista: Benchmarking Physical Intelligence in VLMs via a Perception-Reasoning-Assessment Loop",
+      "abstract": "Vision-Language Models (VLMs) have shown strong multimodal reasoning capabilities, yet whether they truly capture the physical consistency underlying real-world dynamics remains unclear. Existing benchmark paradigms often suffer from fragmented evaluation, focusing on isolated cognitive stages while overlooking the inherent synergy between perception, reasoning, and physical judgment. The lack of a holistic perspective limits the ability to diagnose whether VLMs can reliably serve as evaluators of physical plausibility in generative content. To address these issues, we introduce PhysVista, a benchmark designed to evaluate physical intelligence in VLMs through a closed cognitive loop framework inspired by the human seeing-reasoning-assessment process. PhysVista restores this loop by jointly evaluating physical state perception, physical dynamics reasoning, and physical plausibility assessment. It further distinguishes event-level reasoning and scale-level reasoning to enable fine-grained analysis of physical understanding. In addition, PhysVista incorporates both real-world and AI-generated videos, allowing evaluation across diverse domains and emerging generative scenarios. Extensive experiments across a diverse set of VLMs reveal substantial limitations in physical reasoning and plausibility assessment, highlighting a persistent gap between visual recognition and genuine physical understanding, and pointing toward more principled designs for physically grounded multimodal intelligence.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "37cf5acccf27e8d861c3d0196098b2dd4b465d6afcd750ee6ab9327f687eeea4",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM 물리 지능 벤치마크로 멀티모달 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "VLM 물리 이해 평가 벤치마크 PhysVista 신규 제안"
+        }
+      ]
+    },
+    "2610.06170": {
+      "arxiv_id": "2610.06170",
+      "paper_title": "MS-Exam-Gen: An Automatic Benchmark Construction Toolkit for Evaluating LLMs on Multiple Sclerosis-MRI Imaging Knowledge",
+      "abstract": "Biomedical large language model (LLM) evaluation requires auditable assessment of narrow, evolving, source-grounded subspecialty knowledge. Multiple sclerosis MRI (MS-MRI) provides a high-stakes textual-knowledge test case because correct reasoning requires current diagnostic criteria, standardized acquisition and reporting knowledge, longitudinal monitoring concepts, lesion morphology, and recognition of difficult mimics. We present MS-Exam-Gen, a reproducible framework for constructing and auditing a text-based multiple-choice question (MCQ) benchmark for MS-MRI knowledge; it does not evaluate direct MRI image interpretation. MS-Exam-Gen targets source-grounded criteria, protocols, reporting, and differential diagnosis. The framework combines expert-source indexing, exam-oriented topic induction, evidence-grounded MCQ generation, automated quality audits, a same-family consistency screen, and empirical calibration. From a 66-source corpus indexed into 4,289 retrieval chunks, the pipeline produced a locked 3,058-item candidate benchmark spanning 16 topics and 53 subtopics. Evaluation across 12 primary LLM endpoints yielded 36,696 item-level predictions and separated performance over a 42.8-percentage-point accuracy range (89.7% to 46.9%). Across these endpoints, 25.5% of items were missed by at least four. Post-generation audits showed that refreshed construction reduced measurable answer cues, while option-order testing showed that absolute MCQ scores remain position-sensitive. Generated construction labels remain metadata rather than validated psychometric categories. Because expert adjudication and full option-order counterbalancing remain future work, MS-Exam-Gen is not a clinically certified examination. It should be interpreted as an automatically filtered, source-grounded candidate benchmark and reproducible audit workflow for item-level and topic-specific LLM evaluation.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "b8f72505481300339f7798bbb3075c466391024de2df5374660ca89ec1be015d",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다발성경화증 MRI 지식 MCQ 벤치마크로 LLM 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "MS-MRI 지식 MCQ 벤치마크 구축 도구·데이터셋 제안"
+        }
+      ]
+    },
+    "2610.07639": {
+      "arxiv_id": "2610.07639",
+      "paper_title": "HarnessSecurity-Bench: Do Security Mechanisms Really Protect Coding Agent Harnesses?",
+      "abstract": "Coding agent harnesses mediate tool use and authorize actions, yet their security mechanisms and runtime effects remain incompletely characterized. We present HarnessSecurity, the first systematic empirical study and benchmark of open- and closed-source coding agent harnesses. First, we derive a ten-mechanism taxonomy and then assess 400 harness-mechanism cells using independent ratings by researchers and large language model (LLM) judges. We find that about half of confirmed mechanism implementations are opt-in, while closed-source harnesses exhibit substantial evidence gaps. Second, we introduce HarnessSecurity-Bench, a benchmark of 23 tasks across five attack surfaces without sacrificing legitimate task requirements. Using separate deterministic oracles to measure task utility and attack effects with security setting comparisons, we evaluate nine mechanisms across six leading harnesses: Claude Code, Codex CLI, Gemini CLI, gptme, Qwen Code, and GitHub Copilot. Under a controlled LLM baseline GLM-5.2, we conduct 2,500 trials, recording 81,155 tool calls and over 2.2 billion tokens. Enabling auto-approve increases utility and raises attack success from 29.2% to 95.6%. Network isolation and read-only mode reduce attack effects with substantial utility losses, while command allowlisting and command denylisting reduce attack effects with a small utility loss and a utility gain, respectively. Task-level cases show that restrictions on a shared capability can obstruct both legitimate and malicious operations, and that allowed tools or commands can leave unauthorized operations reachable through alternative execution paths. Harness providers should make security settings verifiable, test alternative execution paths to protected operations, and assess attack effects alongside task utility and execution costs.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "4bf2b8a22a53a106a6da2690604a45d2ec841882f549f88edabd6f6613dd4fd3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "코딩 에이전트 보안 벤치마크로 에이전트 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "코딩 에이전트 하네스 보안 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2610.15129": {
+      "arxiv_id": "2610.15129",
+      "paper_title": "GesBench: When and Where Do Multimodal Language Models Perceive Social Meaning?",
+      "abstract": "Human social perception is incremental: we infer intent before an utterance is complete, revise our interpretation as new cues arrive, and attend to specific facial, gestural, or prosodic signals that shape social meaning. Current multimodal LLM benchmarks largely evaluate final-answer understanding over complete episodes, rewarding post-hoc recognition of social meaning rather than the unfolding perception required for real-time interaction. Drawing on interactionally embedded Gestalt principles of multimodal human communication, we introduce GesBench: a human-grounded benchmark for cue-level social perception in multimodal LLMs. GesBench uses cumulative sub-utterance clips to measure when models form stable interpretations of speaker intention and social affordance, and human gaze-guided corruption to evaluate whether regions attended by humans are functionally important for model judgments. Built from more than 6000 utterance-level clips from scripted and unscripted conversational datasets, GesBench includes human annotations of unfolding judgments and gaze on a representative subset. Across open and closed multimodal models, we find a clear human-model gap: humans form predictive understandings early and revise more often, while models often hedge or repeat across different clips. GesBench shifts social evaluation from whether models eventually recognize meaning to when and where that meaning is formed. Our codes are publicly available at https://anonymous.4open.science/status/GesBench-share-212C.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "9224d4dda38dc2d81d04e4c6ed1fc8f6a533ff67af8f9f23ebc4022c0240b011",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 LLM 사회적 지각 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "멀티모달 사회적 지각 평가용 GesBench 신규 제안"
+        }
+      ]
+    },
+    "2610.14431": {
+      "arxiv_id": "2610.14431",
+      "paper_title": "MemForm: Benchmarking Memory Formation Poisoning in LLM Agents",
+      "abstract": "Long-term memory enables LLM agents to learn from past interactions but exposes memory formation to adversarial influence. Existing studies primarily organize memory poisoning by attack channels, corruption patterns, or lifecycle stages, leaving formation interfaces insufficiently characterized. We formulate Memory Formation Poisoning as adversarial manipulation of the interfaces through which persistent agent memory is produced and committed, and introduce MemForm, a controlled diagnostic benchmark covering five interfaces: Content, Evidence, Scope, Selection, and Path Poisoning. We introduce Selection and Path Poisoning as controlled intervention categories that isolate retention and consolidation order effects, respectively. Each category pairs clean and poisoned conditions with interface-specific controls. Evaluations across six LLMs and two response formats reveal broad susceptibility at all five interfaces under the evaluated memory protocols and implementations. Crucially, authentic experiences with successful outcomes do not guarantee reliable behavior after memory formation: changes to contextual support, retention, or consolidation order can induce undesirable downstream behavior. In particular, consolidation order can alter behavior even with identical retained experiences, depending on the memory formation procedure. Additional analyses show that interface applicability depends on memory architecture and that Path Poisoning susceptibility depends on the updater. The evaluated defenses provide incomplete mitigation that varies by interface. These findings motivate protecting both what is committed to persistent memory and how memory is formed from experiences. Code and data are available at https://github.com/opanhw/memform-code.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "1db513c624b6637987e75345219d71cc37d22c0296d405ba3c7a54e327ebc28f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 기억 형성 오염 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 기억 형성 오염 진단 벤치마크 MemForm 제안"
+        }
+      ]
+    },
+    "2610.14531": {
+      "arxiv_id": "2610.14531",
+      "paper_title": "LongHisDoc: A Comprehensive Benchmark for Chinese Long Historical Document Understanding",
+      "abstract": "Chinese historical documents are invaluable cultural treasures, but their complexity poses significant comprehension challenges for non-specialists. Despite the success of Large Language Models (LLMs) and Large Vision-Language Models (LVLMs) in modern document tasks, their capabilities in Long (full-book) Historical Document understanding remain largely unexplored. To bridge this gap, we introduce LongHisDoc, the first benchmark tailored for long historical document understanding. LongHisDoc comprises 1,012 expert-annotated QA pairs derived from 101 PDF documents, with an average of 85.1 pages and 42,776.4 tokens per document. It spans 10 categories and features four QA types: single-page, cross-page, multi-hop, and unanswerable. Answering these questions requires integrating multimodal evidence from text, layout, and visual elements. Our evaluation reveals that the top-performing LVLM and LLM achieve only 62.9% and 69.9% accuracy, respectively, highlighting a substantial performance gap. Furthermore, we assess various modal retrievers and the end-to-end RAG performance to provide references for Retrieval-Augmented Generation (RAG) systems. We believe that LongHisDoc serves as a comprehensive benchmark to catalyze future research in full-book historical document understanding. The benchmark and evaluation code are available at https://huggingface.co/datasets/qweq12433454/LongHisDoc and https://github.com/SCUT-DLVCLab/LongHisDoc.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "0ac8bd57a3b9ce55f64c211cba1d27e72dd00dcfc74a3777566251f771414165",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "중국어 장문 역사 문서 이해 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "중국어 역사 문서 이해 벤치마크 LongHisDoc 제안, 한국어·영어 아님에도 공개 자원이나 언어 제한 불명확하여 불명확 판단 가능하나 중국어 특화로 무관 처리"
+        }
+      ]
+    },
+    "2610.14635": {
+      "arxiv_id": "2610.14635",
+      "paper_title": "PVFH-Bench: Benchmarking Premise-Induced Visual Fixation Hallucinations in Vision-Language Models",
+      "abstract": "Large Vision-Language Models (LVLMs) have achieved remarkable progress across a wide range of multimodal tasks. However, object hallucination remains a persistent challenge, undermining model reliability in applications such as visual question answering, embodied agents, and human-AI decision support systems. In this paper, inspired by cognitive science studies on perceptual bias, we investigate a new failure mode termed Premise-Induced Visual Fixation Hallucination (PVFH). Specifically, PVFH refers to a premise-induced reasoning error in which models become anchored to visually confusable evidence, accept a false textual premise, and subsequently generate responses about an absent yet visually plausible object. To systematically study this phenomenon, we introduce PVFH-Bench, a benchmark that automatically constructs visually confusable but absent targets and pairs the core hallucination setting with diagnostic subsets to trace how models move from object recognition to Premise-Induced Visual Fixation Hallucination. Experimental results on 10 state-of-the-art LVLMs demonstrate that all evaluated models are highly vulnerable to Premise-Induced Visual Fixation Hallucination. Moreover, we find that explicit chain-of-thought reasoning can further exacerbate this failure mode by encouraging models to overinterpret weak visual cues as supporting evidence for hallucinated objects.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "eaf51a01697bd435da3c0e9668ace8dcbaa808e0d18fd39008162ee4ae026094",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM 시각 고정 환각 벤치마크로 멀티모달 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LVLM 환각 평가 벤치마크 PVFH-Bench 신규 제안"
+        }
+      ]
+    },
+    "2610.14707": {
+      "arxiv_id": "2610.14707",
+      "paper_title": "How to Build a Benchmark That Actually Measures Taste",
+      "abstract": "Expert-aligned \"taste\" benchmarks should reward craft judgment, not the ability to game the test. We introduce TasteBench, a pairwise good-vs-bad benchmark across visual, brand, book, and tech items under a frozen rubric with expert-only gold (panel n>=3; percent agreement >=0.60 primary gate; weak engagement labels train/analysis-only), together with a control protocol that separates craft judgment from test-gaming. Applying the protocol to a Round-1 pilot (primary_human_expert; three biological human experts; n=250 pairs) surfaces and quantifies three validity threats: two construction artifacts that inflate the trivial-baseline layer, and a difficulty ceiling that inflates every score. (1) Position: the preferred item is slot A with probability 0.956, so an always_item_a policy scores 0.956 (fair chance 0.5). (2) Lexical leakage: a filename token cue scores 0.912. (3) Difficulty ceiling: craft domains show near-ceiling human agreement (book/brand/tech 1.0), and even under A/B randomization (eval_assignment_seed7; gold_side_A ~0.47) all five VLM cards reach 1.0 on craft, with only visual separating (~0.84-0.91; a post-hoc hard subset, n=107, leaves craft at 1.0). The protocol (expert-only gold, a weak-label firewall, side randomization at construction, filename scrubbing, and hard filters) makes each artifact measurable and, for the two construction artifacts, correctable; we release a reference eval harness and a side-randomization tool, and show the tool removes the position skew (0.916 to 0.495/0.505). The result is a calibrated view of what the benchmark does and does not yet measure: position and leakage are fixable, whereas the craft-domain ceiling is a pair-difficulty limit that Round-2 must address. We do not evaluate engagement, era/circle conditioning, or calibration here, and we claim no general taste SOTA.",
+      "paper_updated": "2026-10-14T05:09:43Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "f571ecc356b26500b60793373e08c0e1f1ccafc471f27711d794a77e89e33ea5",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "전문가 정렬 취향 평가 벤치마크로 LLM 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "취향 평가 벤치마크 구축 프로토콜·평가 하네스 공개"
+        }
+      ]
+    },
+    "2610.14769": {
+      "arxiv_id": "2610.14769",
+      "paper_title": "Who Receives Respect? A Counterfactual Benchmark for Honorific Allocation Bias in Bengali",
+      "abstract": "Bengali has no grammatical gender, but honorificity is obligatory: every third-person reference must choose ordinary or respectful register. English has no such signal, so the system must choose a level of deference that the source never specified. We use this property to measure how large language models (LLMs) allocate respect in English--Bengali translation. Our evaluation set contains 2{,}016 sentences across 72 occupations. Each appears in seven sentence frames under four pronoun conditions. Masculine and feminine versions differ by one word, forming counterfactual pairs. We report a single Honorific Bias Score (HBS) for each model on a 0--100 scale, covering both the gender and occupation axes. A lower score means that respect is allocated more evenly. For the occupation analysis, we compute each occupation's honorific rate across the seven no-pronoun sentence frames. The standard deviation of these 72 occupation-level rates ranges from 17.2 to 35.5 percentage points across models, showing substantial variation in how honorifics are allocated across occupations. Occupation is associated with 3.2\\% to 51.5\\% of the variance in register choice, compared with at most 1.2\\% for gender. Gender effects are much smaller overall: only two of the nine models show significant directional gender gaps, and they favor opposite genders. HBS ranges from 19.9 to 70.1 across the nine models, showing substantial variation in how evenly the models allocate respect.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "d63a9793de0a734be9d58d5cf5d3142fb7d13041e809451e729ac209a42e46cf",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "벵골어 존칭 배분 편향 벤치마크로 LLM 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "벵골어 경어법 할당 편향 벤치마크, 한국어·영어 외 언어 한정"
+        }
+      ]
+    },
+    "2610.14883": {
+      "arxiv_id": "2610.14883",
+      "paper_title": "MARL-BattleGrounds: A Novel JAX-native Benchmark for Heterogeneous and Competitive Multi-agent RL",
+      "abstract": "We present MARL-BattleGrounds (MARL-BGs), an easy-to-use JAX-native benchmark for heterogeneous and competitive multi-agent reinforcement learning (MARL), designed to be sample-efficient, computationally efficient, and researcher-centric. MARL benchmarks are typically simple and efficient, like SMAX, where winning reduces to unit micromanagement, or rich and costly, like Dota 2. MARL-BGs fills this missing middle. Its first mode, Team Deathmatch, is a simultaneous turn-based game between two teams of five heterogeneous agents. The five classes have distinct basic, passive, and ultimate abilities designed to synergize with allies and counter enemies. Our 52 hand-designed maps with diverse obstacles include a 12-map curriculum and ten held-out validation and test maps. MARL-BGs provides two canonical evaluation modes. First, eight endgame scenarios form a hard generalization challenge: each asks a team to win an unseen, nearly lost position against a strong reactive controller within 5-10 ticks. Second, a monthly round-robin tournament retrains each submission on equal compute, plays it against every member of the current \"Big Nine\" field, and publishes the Elo results on the official leaderboard. All entrants are publicly released as downloadable opponents. MARL-BGs records 11,192 metrics per game in 28 topics. We also include three strong scripted opponents, an analytical replay viewer, and off-the-shelf tools for self-play, cross-play, curriculum learning, and zero-shot coordination evaluation. We even provide an API for LLM-based agents and use it to evaluate Qwen3.5-9B against our strongest policy. In our BattleClient, humans can play alongside or against any mix of policies, enabling human-AI evaluation. We benchmark MARL-BGs with six additional deep MARL baselines, which we release. On one RTX 5090 with 1,024 parallel games, the simulator runs 50,000 5v5 game steps per second.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "7218a1435b845a4eae7228aea345fbac857a4ffe23a49d0b802a255297831d25",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "이종 경쟁 MARL 벤치마크로 에이전트 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중 에이전트 강화학습 벤치마크 MARL-BattleGrounds 제안"
+        }
+      ]
+    },
+    "2610.15103": {
+      "arxiv_id": "2610.15103",
+      "paper_title": "RegExtract: A Benchmark for PFAS Regulatory Information Extraction with LLMs",
+      "abstract": "Extracting structured information from regulatory documents is a critical but challenging task. Relevant facts are scattered across long, legally dense texts, and traceability of extracted facts to their source is essential for verification. With increasing awareness of the environmental and health impacts of per- and polyfluoroalkyl substances (PFAS), regulatory documents have expanded significantly, varying in scope and product relevance, making interpretation challenging for manufacturers and policymakers. We introduce RegExtract, a benchmark for structured information extraction from PFAS regulatory documents, comprising 488 human-annotated field instances across 20 US state documents and 46 regulations. Each field instance includes a value and a provenance entry, yielding 976 entries in total. We define a typed, multi-field schema targeting key elements such as material definitions, permitted uses, and product exemptions, and propose provenance-aware evaluation metrics tailored to regulatory text. Through experiments with open- and closed-source LLMs across prompting strategies, document condensing methods, and schema partitioning approaches, we find that document identification fields remain challenging, and that field-specific few-shot examples improve extraction. This work lays the groundwork for AI tools for hazardous substance identification, question answering, and compliance monitoring. The code and data are available at https://github.com/IBM/PFAS-regulations.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "42b7764b59ec3c942f0e4408f8e5c1e96c4001ff9667da506cfb7656b63b59eb",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "PFAS 규제 정보 추출 벤치마크로 LLM 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "PFAS 규제 문서 정보 추출 벤치마크 RegExtract 제안"
+        }
+      ]
+    },
+    "2610.15134": {
+      "arxiv_id": "2610.15134",
+      "paper_title": "Lumen-bench: Cross-Lingual Safety Gaps and the Say-Do Problem in Tool-Calling Large Language Models",
+      "abstract": "When a large language model refuses an unethical request, what does refusal mean? In conversation, refusal is bounded by what the model says; once the model is equipped with executable tools, what it does can diverge from what it says, a failure mode that English-only evaluations cannot fully reveal. We introduce Lumen-bench, a behavioral benchmark of tool-calling ethics spanning 30 models, five languages (Portuguese, English, Spanish, Mandarin Chinese, Hindi), 108 Portuguese-authored scenarios, six social-pressure conditions, two system prompts (ethical and neutral), and 21 generic tools. The evaluation comprises 194,400 trials. Judgments come from a reasoning-model judge (o4-mini), calibrated against one Portuguese-speaking author ($n=83$; harmful/non-harmful $κ=0.78$), compared with two other provider judges (Fleiss' $κ=0.78$, $n=607$), and complemented by retrospective sandbox replay. Four findings emerge. (i) Within-model comparisons support higher harmful-action rates in Hindi and Portuguese than English under the ethical prompt, and Hindi and Spanish under the neutral prompt, after multiple-testing correction. (ii) Premium models have lower median violation rates, although price does not guarantee safety or competence. (iii) Replacing the ethical system prompt with a neutral one raises pooled violation rates from 2.76\\% to 13.64\\%. (iv) In 8.57\\% of substantive-call cases, refusal or ethical objection accompanies a harmful tool call: the judges consistently identify the say-do gap, although they differ in how many responses they assign to this category. Matched benign controls demonstrate legitimate task completion in 82.8\\% of 3,300 trials. Code and reproduction scripts are available at https://github.com/TropicAI-Research/lumen.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "8d049edb9b780ade346ea729e02f48804643ee454ba4cb31fc8490483af114a5",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "도구 호출 윤리 벤치마크로 LLM 안전 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "도구 호출 윤리 다국어 안전 벤치마크 Lumen-bench 제안"
+        }
+      ]
+    },
+    "2610.15163": {
+      "arxiv_id": "2610.15163",
+      "paper_title": "Sanzaru: Benchmarking Protocol Formation under Epistemic & Communication Asymmetry",
+      "abstract": "A language model's ability to solve a task individually does not ensure that a team can solve it under unequal access to information and communication. SANZARU examines this gap through cooperative bomb-defusal puzzles adapted from BOMBANANA! (Lefto Studio, 2026). Task information and action authority are divided among three agents: one cannot hear, another cannot speak, and the third cannot see. The benchmark contains 120 puzzle instances across seven families, each targeting a distinct coordination ability. Across 1512 episodes, 7 models achieve an overall success rate of 49%, ranging from 20% to 86% under the evaluated configurations. Teams develop or adopt diverse communication protocols, from simple gesture codes to Morse and encodings of entire manuals. Yet trace analysis attributes about 60% of 771 team losses to communication, and agents attempt to use channels unavailable to their teammates despite explicit role instructions. Together, task outcomes and interaction traces enable evaluation of both collaborative performance and perspective taking throughout cooperation. The benchmark is available at https://github.com/markli404/sanzaru-benchmark.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "04c658f4b0af7a5e881d6c4254ce64058c50acbc09b84f172704037895656737",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "인식·소통 비대칭 협력 벤치마크로 LLM 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "비대칭 협력 퍼즐 벤치마크 Sanzaru 신규 제안"
+        }
+      ]
+    },
+    "2610.15179": {
+      "arxiv_id": "2610.15179",
+      "paper_title": "UDHRBench: Benchmarking Human Rights in Large Language Models",
+      "abstract": "Large language models are increasingly deployed in contexts requiring adherence to ethical and legal norms, yet their alignment with internationally recognized human rights standards remains underexplored. We introduce UDHRBench, a large-scale benchmark for operationalising the evaluation of large language model compliance with the Universal Declaration of Human Rights. The dataset comprises 1,124 human rights confronting questions covering all 30 articles and 4,496 responses from four large language models (ChatGPT, Grok, Gemini, and Fanar), manually annotated by experts for alignment, with high inter-annotator agreement ($κ= 0.801$). Our analysis reveals systematic and non-trivial misalignments, showing that violations typically arise through seemingly rational reasoning: appeals to efficiency, risk management, or scientific neutrality, rather than explicit rejection of rights. We further propose an LLM-as-a-Judge framework for automated evaluation using zero-shot and few-shot prompting, achieving 89.8\\% weighted F1-score in detecting human-rights misalignment, alongside a novel Alignment Leniency Score that quantifies how judge models resolve ambiguous cases. The dataset, annotations, and code will be released as open-source resources (https://sina.birzeit.edu/UDHRBench).",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "1eb8b9b1f1b3d30229d6ae7d48aff611406bd889c2578cfa576231c203450d4a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 인권 준수 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "인권 준수 평가 벤치마크 UDHRBench 데이터셋 제안"
+        }
+      ]
+    },
+    "2610.15228": {
+      "arxiv_id": "2610.15228",
+      "paper_title": "Words to World: Benchmarking LLMs in Interactive Physical Environments",
+      "abstract": "Words are increasingly becoming an interface for action: large language models (LLMs) can now invoke tools, operate devices, and make decisions that affect the physical world. However, current benchmarks largely evaluate LLMs through static text responses, offline tool calls, or simulated tasks, leaving open the question of how well they can act in real physical environments. We present a benchmark for measuring LLMs in closed-loop physical interaction, where models control a harness system connected to real-world components including robotic arms, cameras, and sensors. In each task, the model must issue instructions, receive physical feedback from the environment, interpret the resulting state, and adapt its next action accordingly. This setting evaluates capabilities beyond language understanding, including grounded perception, action planning, tool selection, spatial reasoning, feedback-driven correction, and robustness to execution uncertainty. Through experiments with representative LLMs, we characterize their ability to translate linguistic reasoning into physical actions and identify common failure modes such as hallucinated state changes, poor recovery from unexpected outcomes, and unstable long-horizon plans. Our benchmark aims to provide a systematic foundation for evaluating LLMs as interactive agents that connect words, tools, and the physical world.",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "created_at": "2026-10-19T13:50:32Z",
+      "input_sha256": "4d40adc85524c3229bf2aeff59dc4331f82af953f6c162eed1b964b1fcafc78f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 물리 환경 상호작용 벤치마크로 평가에 부합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "실제 물리 환경 상호작용 평가 벤치마크 신규 제안"
         }
       ]
     }
