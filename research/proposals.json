@@ -541,7 +541,27 @@
         "2610.00609",
         "2610.00636",
         "2610.00651",
-        "2610.00664"
+        "2610.00664",
+        "2610.00666",
+        "2610.00682",
+        "2610.00700",
+        "2610.14029",
+        "2610.00833",
+        "2506.05766",
+        "2510.04302",
+        "2601.18493",
+        "2601.21666",
+        "2602.00443",
+        "2602.02220",
+        "2602.02898",
+        "2602.22755",
+        "2603.29112",
+        "2605.12413",
+        "2605.16358",
+        "2605.23215",
+        "2608.11469",
+        "2609.21637",
+        "2609.30030"
       ]
     }
   },
@@ -9803,6 +9823,466 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "음성 인터페이스 에이전트 벤치마크 Talk2Agent 제안"
+        }
+      ]
+    },
+    "2609.38954": {
+      "arxiv_id": "2609.38954",
+      "paper_title": "APTInvestBench: Evaluating Autonomous APT Investigation under Varying Telemetry",
+      "abstract": "Large language model (LLM) agents could help security operations centers (SOCs) investigate advanced persistent threats (APTs) by turning weak leads into evidence for intrusion scoping and response. Yet success under one telemetry setting does not establish robustness to changes in log collection, retention, or sampling. We introduce APTInvestBench, a benchmark for evaluating cross-telemetry robustness in autonomous APT investigation. It comprises 370 cases across seven SOC-inspired conditions, derived from 56 report-informed attack reconstructions with 16.4 million log records. Agents investigate unverified leads and submit reports with record-level citations. Fixed action-level support requirements track sufficient evidence across available logs, query returns, and formal citations, separating telemetry limitations from acquisition and reporting gaps. Across eleven LLMs, agents acquire sufficient evidence for 44.3% of recoverable attack actions on average, while formal citations support only 25.0%. More importantly, aggregate coverage can conceal substantial instability: from Full to endpoint-only telemetry, coverage declines by only 1.6 percentage points, yet 35.5% of previously covered actions lose sufficient citation support despite remaining recoverable. Across four frameworks, such losses persist even when registered supporting records remain unchanged. APTInvestBench provides reusable investigation environments and diagnostic evaluation for identifying these gaps and developing more reliable defensive agents.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "3d12be51dca53be876d21532e8594b49b0562ce43cc8eed0a70f309aebaf6e33",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 기반 APT 조사 벤치마크로 보안 평가에 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.38974": {
+      "arxiv_id": "2609.38974",
+      "paper_title": "RealWorldShop: Benchmarking and Improving Conversational Shopping Agents in Real-World E-commerce",
+      "abstract": "Large language models are reshaping ecommerce from static recommenders into interactive shopping assistants, yet real-world shopping requires session-level decision support: users reveal and revise constraints, coordinate multiple goals, and expect product-grounded recommendations over a full conversation. Existing benchmarks are mostly outcome-oriented or execution-oriented, leaving this evolving decision process under-evaluated. We introduce REALWORLDSHOP, a benchmark built on 3.28M grounded products, structured shopping episodes, a profile-grounded and actioncontrolled user simulator, and role-play evaluation. Our analysis shows that current systems produce locally plausible responses but struggle with state tracking, constraint updating, and grounded convergence, especially under ambiguous intent, bundle, and multi-intent scenarios. We further propose REALSHOP_AGENT, an executable session-control framework with explicit state management, shopping-flow control, catalog-grounded retrieval, and runtime guards. Experiments show that REALSHOP_AGENT consistently outperforms strong baselines on REALWORLDSHOP.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "8a888f25f99e8bce5afa7f843f93fc3cb7a7d6046e3112758f8ac5f1fa70a5ff",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 대화형 쇼핑 에이전트 벤치마크로 평가 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.39086": {
+      "arxiv_id": "2609.39086",
+      "paper_title": "Trustworthy Runtime Error Healing in Real-World Repositories: A Benchmark and Guardrail",
+      "abstract": "Runtime error healing lets a crashed program continue by generating code that repairs its live runtime state. Recent work shows that LLMs can generate such healing code, but it is evaluated only on small competition programs, and executing LLM-generated code inside a live process raises safety concerns that remain unaddressed. In this paper, we take LLM-based runtime healing toward practical use in real-world repositories. We first build HealBench, a benchmark of 265 runtime errors from 18 real-world repositories, each paired with a reference execution on the patched version. HealBench also provides a unified framework that lets LLM agents heal with cross-file context and live runtime state. We then design HealGuard, which requires healing code to be written in HealCore, an analyzable subset of Python, and uses static and dynamic taint analysis to check whether state changed by healing reaches operations protected by developers. We evaluate a dedicated healing method and three general coding agents with three backbone LLMs. The best setting resumes execution in 38.11% of instances and passes the target test in 28.68%, showing that existing agents can already heal a meaningful share of real repository-level crashes. However, among executions that pass, HealGuard flags 17.4% whose healing-changed state may reach a protected operation. On 684 controlled cases, HealGuard detects all unsafe cases, at the cost of a 68.42% false positive rate.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "d6dfa01697a4f02209d4429adfdb235a0920202ec75dc5ee39324419a75c8a6e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 런타임 오류 치유 벤치마크와 가드레일 제시"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.39146": {
+      "arxiv_id": "2609.39146",
+      "paper_title": "MADBench: Benchmarking the Security of Multi-Agent Debate",
+      "abstract": "Multi-agent debate (MAD) can improve large language model (LLM) reasoning by allowing multiple agents to exchange and critique their answers to the same task. However, the interactions that enable agents to correct mistakes can also spread adversarial errors and steer the agents toward an incorrect answer. Although some efforts have been made to examine particular attack types on MAD, systematic evaluation of MAD under diverse attacks remains limited. A central question is whether debate mitigates adversarial influence or amplifies it. In this paper, we present MADBench, a benchmark for evaluating the security of MAD. We organize attacks into a layered taxonomy following the MAD workflow, incorporating both established attacks and new strategies tailored to debate. We evaluate six attack families over 356 source tasks and 3,958 test cases, examining their effects on the final answer and the propagation of adversarial influence. Our results show that, under attacks, MAD does not necessarily improve LLM reasoning. Compared with a single-agent baseline, MAD can mitigate attacks on answer accuracy in question-answering tasks while amplifying unauthorized reads or writes in both question-answering and workspace tasks. Moreover, even when three out of five agents collude, the attack changes the final answer from correct to wrong on only 28.30\\% of tasks answered correctly without attack, while only 3.26\\% of initially correct honest agents switch to wrong answers during debate.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "16f8dabd149a4f1d9bc9e0d06a078946e2fb347bc7a3980909204ad3d9bd0685",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 다중 에이전트 토론 보안 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.39189": {
+      "arxiv_id": "2609.39189",
+      "paper_title": "ViLegalExpert: A Large-Scale Benchmark for Vietnamese Legal Retrieval and Question Answering from Real-World Consultations",
+      "abstract": "Trustworthy Legal AI requires systems that can answer legal questions while grounding their responses in authoritative sources. However, existing Vietnamese legal benchmarks provide limited coverage of real-world legal consultations. We introduce \\textbf{ViLegalExpert}, a large-scale benchmark constructed from authentic citizen--lawyer consultations, containing over \\textbf{172K} questions across \\textbf{34 legal domains}, together with professional answers and expert-verified legal evidence. ViLegalExpert supports legal information retrieval, extractive QA, and abstractive QA. Experiments with representative retrieval methods and language models reveal substantial challenges in evidence retrieval and grounded answer generation. While pretrained models perform strongly on QA, hybrid retrieval achieves the best retrieval performance. These results demonstrate the difficulty of mapping naturally expressed legal questions to authoritative provisions and establish ViLegalExpert as a challenging benchmark for reliable Vietnamese Legal AI.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "a9baadfc11b970c09d211d0fbb75d41b57299fa495d75e5b7f6a008fa440b69b",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "베트남 법률 QA LLM 벤치마크로 평가 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.39284": {
+      "arxiv_id": "2609.39284",
+      "paper_title": "EngramBench: A Capability-Grounded Benchmark for Skill-Evolution Harnesses",
+      "abstract": "While large language models have achieved remarkable success in isolated code generation, authentic software engineering requires sustained reasoning, complex state management, and continuous cross-domain abstraction. However, current evaluations of skill evolution in autonomous agents suffer from a critical identifiability problem: they structurally confound genuine capability abstraction with rote solution leakage (i.e., copying highly similar code from historical training data). To resolve this, we introduce EngramBench, a rigorous, capability-grounded benchmark governed by the strict axiom of capability overlap without solution overlap. Comprising 30 diverse learning tasks and 13 unseen transfer tasks, EngramBench challenges agents to navigate interactive, multi-hour development cycles driven by LLM-simulated users. Our extensive evaluation across 48 multi-hour execution trajectories -- corroborated by human-expert validation -- reveals a profound insight into procedural memory. We demonstrate that static skill banks do not magically bypass the \"last mile\" of exact code implementation, which remains bottlenecked by the base model's inherent reasoning limits. However, they serve as an indispensable execution compass. By navigating agents away from catastrophic, token-heavy trial-and-error, genuine capability abstraction slashes redundant context bloat and reduces overall coding time by over 55%. Ultimately, EngramBench shifts the evaluation paradigm from trivial pattern matching to the verifiable measurement of deep, cross-domain capability transfer.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "58dae0b74852911a2443f28a841478925e1fdd128a023fabaf21abef8d5dc07a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 스킬 진화 평가 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.39371": {
+      "arxiv_id": "2609.39371",
+      "paper_title": "EHR-RobustGym: Benchmarking and Training Agents for Robust Clinical Reasoning",
+      "abstract": "In hospital workflows, electronic health records (EHRs) are often noisy, and may not contain the evidence needed to confirm events or measurements referenced in a clinical query. Even when database retrieval succeeds, clinical agents can overlook such discrepancies and return plausible but unsupported answers. We introduce EHR-RobustGym, a scalable and interactive environment for evaluating and training robust clinical agents grounded in noisy EHRs. Built on MIMIC-IV hospital records (365K patients, 31 tables, and over 500M records), EHR-RobustGym comprises 5,486 Clean-Noise pairs spanning six clinical intents and both patient-level and population-level queries. The pairs test robustness to Record-level, Value-level, and Query-level noise, while interactive SQL/Python execution and outcome verification support trajectory collection and training. Evaluating multiple LLMs reveals substantial robustness gaps: average task success across proprietary and large-scale open-weight models drops from 62.2% on Clean questions to 37.9% on Noise questions. At k=4, pass^k consistency falls below 50% for most evaluated models, exposing instability in clinical task completion. Supervised fine-tuning and reinforcement learning in EHR-RobustGym improve performance, with gains generalizing to five external EHR benchmarks. Together, these results position EHR-RobustGym as a testbed for evaluating and improving the evidence-grounded robustness of clinical agents.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "7d52a2d552219e470ac4e45c027c768d7df2e0d4b016747219696ec8f317696a",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 임상 추론 견고성 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.39437": {
+      "arxiv_id": "2609.39437",
+      "paper_title": "Network-based Spatial Context Retrieval for Open-weight LLMs: A Faithfulness Benchmark for Grounded Geographic Reasoning",
+      "abstract": "Large language models (LLMs) encode substantial latent geographic knowledge, yet they reason poorly over space and are unreliable when queried from coordinates alone. Useful behaviour emerges only when structured spatial context is supplied in the prompt. This raises a question geographic evaluation has left unexamined: once the right context is supplied, does the model reason from it, or override it with its own parametric recall? We take up this question with an open pipeline for network-based spatial context retriev-al. In it, the surroundings of a selected point are defined by the pedestrian street network, the area actually reachable on foot. Using only open data and open-weight models, the pipeline retrieves features from OpenStreetMap and the GHS-POP population grid, computes indicators over the network catchment in code, and injects them as a compact spatial brief. On this basis we build a faithfulness benchmark. It labels every claim a model makes by its source (grounded in the brief, or drawn from training knowledge) and its correctness, and it probes each case with a planted false premise that the brief refutes. We evaluate sixteen open-weight model configurations across three families (Qwen, Gemma and Llama, with Gemma in two generations), four size classes and, where available, both thinking and non-thinking modes, on three con-trasting cities, resampling every case over ten seeds. The results show that resistance to the planted premise varies more strongly by model family and generation than by scale, while brief-reading competence forms a partly separate dimension. These behaviours are not captured by conventional world-correctness scores or single-shot evaluation. We release the implementation, spatial briefs, model outputs, and claim-level labels as a reproducible workflow at github.com/perezjoan/NSCR-LLM.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "e0bf9b1a9b121a5659cb355e9bf7ba4b64c8368cacf4d3ff41a27d3f4be671e6",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 지리적 공간 추론 충실성 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.39492": {
+      "arxiv_id": "2609.39492",
+      "paper_title": "Front-to-Back: Benchmarking Vision-Language Models for Asymmetric Cross-View Vehicle Re-Identification",
+      "abstract": "Matching the same vehicle across front and rear cameras is difficult because the cameras do not share a view and the vehicle's appearance changes substantially. We introduce Front2Back-ReID, a benchmark of 500 manually verified vehicle handovers from 20 recording sequences in South Africa. Each example asks a model to match a vehicle highlighted in a front-camera image to the same vehicle among at least three candidates in a later rear-camera image. We evaluate seven zero-shot vision-language models, four image-retrieval baselines, and 25 human participants. Models are tested using full front RGB images, cropped target vehicles, and binary silhouettes. The strongest VLM achieved 76.6 percent Rank-1 accuracy on target crops, compared with 74.0 percent for the frozen SigLIP2 baseline; this difference was not statistically clear. Human participants achieved 94.0 percent accuracy with full images and 92.2 percent with target crops. Under our evaluation setup, enabling reasoning improved accuracy across all three input conditions for every model evaluated in both modes. We also found that VLMs generally performed worse on full scenes than on target crops. These results show that general-purpose VLMs do not yet consistently outperform strong visual retrieval for front-to-rear vehicle matching, while humans remain substantially more reliable.",
+      "paper_updated": "2026-10-13T19:29:23Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "010961bc3da4b69cf760cac117684b295a2f7389518279c08514a1108fcb880f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "차량 재식별 VLM 벤치마크로 평가 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.39777": {
+      "arxiv_id": "2609.39777",
+      "paper_title": "GraphMAS: A Systematic Benchmark of Multi-Agent Coordination for Graph Learning",
+      "abstract": "LLM-based multi-agent systems coordinate specialized reasoning through aggregation, interaction, and adaptive control, yet their potential for graph learning remains unexplored. Graph learning is a natural setting for such systems because useful evidence may arise from heterogeneous local, long-range, global structural, and semantic perspectives whose relevance varies across instances. Existing LLM-based graph learning approaches primarily rely on single-agent reasoning, while multi-agent coordination has been studied mainly in general reasoning settings. Consequently, it remains unclear whether multiple specialized agents can improve graph learning and how coordination strategies should be designed and evaluated. To address this gap, we introduce GraphMAS, a systematic benchmark of multi-agent coordination for graph learning. GraphMAS builds a shared pool of graph reasoning specialists and organizes coordination along two dimensions, inter-agent interaction and runtime adaptivity, yielding four paradigms and seven representative coordination methods. Under a unified protocol, we evaluate these methods across seven text-attributed graphs, three domains, and two graph learning tasks. We find that heterogeneous graph perspectives are complementary, and that coordinating specialists improves over individual specialists and single-agent graph reasoning, with gains from decomposing reasoning across specialists rather than from broader evidence access alone. However, richer inter-agent interaction does not reliably help, whereas instance-adaptive specialist selection yields the strongest accuracy-efficiency trade-off. We further show that coordination can be learned over a fixed specialist pool and transfers to held-out graphs. GraphMAS therefore provides a controlled evaluation framework and empirical principles for understanding when and how multi-agent coordination benefits graph learning.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "9e100c479d9d01e1bd9485953f575aae43912a4232f6b6e03ef215264bd79fce",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 다중 에이전트 그래프 학습 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2610.00416": {
+      "arxiv_id": "2610.00416",
+      "paper_title": "Benchmarking Prompt Optimization of Large Language Models With Chess",
+      "abstract": "Evaluating large language models becomes increasingly challenging as their capabilities advance: benchmarks can saturate, public test sets risk contamination, and assessing harder tasks can require expensive grading or execution infrastructure. These challenges are amplified in automatic prompt optimization (APO), where evaluation is repeated throughout the search for better prompts. Studying APO therefore requires a benchmark that is cheap and deterministic to score, hard enough to leave room for improvement, and renewable as models evolve. We introduce a chess benchmark built from 1,118 Lichess puzzles to study APO for frozen LLMs: we optimize their prompts without updating their model weights. Chess combines inexpensive exact-match scoring, engine-based evaluation of alternative moves, and a renewable supply of problems with adjustable difficulty. Unlike evaluations that report only success on isolated test items, the benchmark also connects puzzle-solving gains to short game-play rollouts within the same domain. We use it to evaluate six APO algorithms on eight target models, measuring not only baseline strength but also how much each model responds to optimization and whether optimized prompts transfer across models and to game play. Chess is thus a well-suited benchmark for APO: it is (i) challenging, as even the strongest evaluated model, Gemini 3.5 Flash (used as the meta-model), solves only about 55\\% of puzzles; (ii) discriminative, revealing gains, unchanged performance, and regressions across methods and models; (iii) renewable, with fresh puzzles to reduce contamination risk and adjustable difficulty to maintain headroom as models improve; and (iv) affordable, as the complete study runs for around \\$800. We release the puzzles, optimization and evaluation code, and dataset-renewal scripts (https://github.com/imec-ailabs/Automatic-Prompt-Optimization-with-Chess).",
+      "paper_updated": "2026-09-30T14:25:55Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "fd29faf6030a8c1a69a40fbe741806aec94997433ee72e62e5ee324be9318a00",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 프롬프트 최적화 체스 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.39847": {
+      "arxiv_id": "2609.39847",
+      "paper_title": "SEAR: Spoofing Evidence-Grounded Audio Reasoning Benchmark for Audio Language Models",
+      "abstract": "Audio language models (ALMs) are increasingly used for audio deepfake detection (ADD), yet existing benchmarks assess their verdicts or rationale plausibility without verifying the underlying acoustic evidence. To address this issue, we first introduce spoofing evidence-grounded audio reasoning (SEAR), a four-task AQA benchmark to evaluate ALM-based ADD through acoustic evidence identification and quantification, deepfake detection, and forensic rationale generation. We further propose a bona-fide-based acoustic evidence agent (BAEA), which equips a frozen ALM with controlled acoustic tools under \\textsc{fixed} or \\textsc{adaptive} evidence-acquisition policies. Experiments with six ALMs reveal a clear gap between plausible rationales and verifiable acoustic evidence reasoning, while BAEA-\\textsc{Fixed} improves final verdicts and forensic rationales on both evaluation partitions. Controlled interventions further show that misleading evidence degrades both detection and grounding performance.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "846147020d5b24c7f8881b80f836d719e694c2ed4507ecc05462be64ce5d08d6",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "오디오 언어 모델 스푸핑 추론 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.39903": {
+      "arxiv_id": "2609.39903",
+      "paper_title": "OSWorld-Science: A Benchmark of Computer Use Agents for Learning and Using Scientific Software",
+      "abstract": "Scientific software presents a demanding test for computer-using agents based on visual language models (VLMs): completing a research workflow requires interpreting specialized interfaces, manipulating scientific objects, and producing verifiable results. We thus introduce OSWorld-Science, a benchmark and evaluation environment that combines scientifically meaningful tasks, artifact-based evaluation, and an efficient agent harness for studying computer use in the scientific domain. The benchmark contains 12 VLMs and 146 high-quality tasks across several scientific domains and software configurations, covering workflows such as molecular drawing and retrosynthesis, pathology image analysis, statistical computing, and physical simulation. Tasks are developed through expert proposals and iterative human--AI co-design, with selection guided by scientific value and difficulty. Task-specific execution-based evaluators inspect application states and generated artifacts, including molecular structures, segmentation masks, plots, and numerical results, and award partial credit for incomplete outcomes. Our special harness integrates model adapters, interaction-loop control, and trajectory logging to support comparisons of models and interaction strategies. Our results show that current state-of-the-art VLMs with a strong harness still face challenges in addressing key questions in the scientific domains. We also analyze the benchmarking results across multi-linguistics, reasoning efforts, context length and other factors and derive several important conclusions and directions to assist future development. Overall, we provide an integrated framework connecting expert-defined scientific goals to verifiable software outcomes, enabling systematic evaluation of both agent capabilities and harness design in scientific workflows.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "faf7416a30d6f97f838ceb7d9840d01737e06498779d4d3fbdda4dda23152e27",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "과학 소프트웨어용 컴퓨터 사용 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.40103": {
+      "arxiv_id": "2609.40103",
+      "paper_title": "JuryFlow: Disagreement-Guided Human-in-the-Loop Multi-Agent Evaluation",
+      "abstract": "Large language models (LLMs) are increasingly deployed as automated judges for AI-generated content, yet a single judge is unreliable and even a panel of judges leaves a hard residue: when judges disagree, majority voting discards the conflict instead of resolving it. We present JuryFlow, a disagreement-guided, human-in-the-loop multi-agent evaluation framework that treats inter-judge disagreement not as noise to be averaged away, but as a precise, claim-level signal indicating where an evaluation is uncertain. JuryFlow decomposes each candidate response into atomic claims, has a panel of heterogeneous judges assign per-claim verdicts, and builds a disagreement graph whose nodes are scored by verdict entropy and whose edges encode structural similarity between claims. A human acts as a structural guide, selecting which disagreement to resolve through a single, minimal intervention rather than re-labeling the response, after which the focal claim is re-evaluated, the correction propagates along graph edges and to historically similar cases, and is crystallized into reusable rubric entries that all judges inherit, making the evaluator progressively self-refining. To enable large-scale, reproducible benchmarking without human studies, we evaluate JuryFlow in an automatic configuration in which focal selection is made by entropy ranking. On MT-Bench and LLMBar, JuryFlow improves agreement with gold labels over single-judge and majority-vote panel baselines, and ablations isolate the contributions of disagreement-targeted re-evaluation, propagation, and rubric induction. We contribute (1) a human-in-the-loop paradigm that recasts the human from labeler to structural guide, (2) the JuryFlow framework operationalizing it through a disagreement graph, focal re-evaluation, and closed-loop rubric induction, and (3) an evaluation protocol with ablations that isolate where the gains originate.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "145f0e464b3f1de46c130ff64e7394889e0391d904d35000f3cfff7f4a626da8",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 다중 에이전트 평가 프레임워크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2609.40286": {
+      "arxiv_id": "2609.40286",
+      "paper_title": "Linguistic Loopholes in LLM Unlearning: From a 174-Language Benchmark to Coverage-Aware Unlearning",
+      "abstract": "Unlearning a fact in one language does not guarantee its removal in others as changing the query or even the requested answer language can reopen seemingly forgotten knowledge -- a cross-lingual loophole. The most straightforward solution to this challenge -- unlearning in all languages -- is neither scalable nor desirable as it amplifies damage to unrelated model capabilities. We introduce the task of language budgeted multilingual unlearning where the goal is to select a subset of languages that maximizes cross-lingual erasure. To study this task we introduce the Cross-Lingual Unlearning Tensor, an unlearning benchmark that spans 174 language--script pairs and 25 atomic paraphrase types to examine when forgetting generalizes across linguistic expressions of the same knowledge. We further propose COVER, which selects source languages to maximize predicted COVERage of languages receiving no forget supervision, enabling unlearning on a language budget. Surprisingly, we find naively selecting strong individual sources does not reliably compose into strong source sets motivating our development of COVER. At deployment COVER only requires benign calibration data and access to the frozen model. Across three model families and two disjoint forget sets, COVER reduces mean held-out residual access by 7.8--27.3% relative to uniform source selection. We find these gains extend beyond synthetic benchmarks to real news documents in low-resource language settings using human translated data from the Low Resource Languages for Emergent Incidents (LORELEI) corpus.",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "651c82161160b3a62d9761d824a14af1505c195e56c63959e737ffd3e5688e1e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 다국어 언러닝 벤치마크로 평가 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2610.00531": {
+      "arxiv_id": "2610.00531",
+      "paper_title": "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Papers",
+      "abstract": "AI-generated content, often called AI slop, is increasingly common everywhere, particularly in academia. Slop in AI-generated scientific papers, however, has more complex patterns that cannot be easily detected by existing token-based AI detectors. Each part of such a paper looks plausible while the scientific reasoning that connects the parts breaks down, which can mislead how readers assess the work. We benchmark these failures as scientific slop through six measures across Structure, Argument, and Artifacts. We construct SciSlopBench with 390 AI-generated papers, mostly in computer science but spanning the life, social, and natural sciences, each paired with a human-written paper matched by research problem and contribution type. Our measures identify the AI paper in each pair with 85.9% accuracy, compared with 68.7% for Binoculars. Higher scientific slop accompanies lower ICLR ratings and distinguishes rejected from accepted papers above chance in every year from 2017 to 2025. Reducing these patterns, however, is not as simple as directly optimizing the measures. We therefore propose SciSlopHarness, a harness-level framework that guides a fixed LLM to revise slop only where the experiment records support the change. While standard revisions leave residual slop and direct slop-aware prompting triggers reward hacking, SciSlopHarness reduces the remaining AI-human gap by 63% over the strongest revision baseline without requiring human reference targets. Overall, we demonstrate that AI-generated scientific papers leave fundamental traces in their global reasoning, and that responsible mitigation demands strict evidentiary grounding rather than mere prose refinement.",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "1fa0238b7f8ae1ea5d9c169faacfc3faa85474496222fdf4073db77774a8f454",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "AI 생성 과학 논문 벤치마크로 평가 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2610.00609": {
+      "arxiv_id": "2610.00609",
+      "paper_title": "Legal Research Bench: Measuring End-to-End Reliability in Long-Horizon Legal Research Agents",
+      "abstract": "Legal research is a core and time-consuming legal workflow. Lawyers must identify controlling authority, verify that it remains valid, reconcile statutes and cases, and synthesize a grounded answer. Language model agents are a natural fit for this retrieval-intensive workflow, and automating even part of it would be valuable. But that value depends on reliability: a single missing authority, stale citation, or wrong legal conclusion can make an otherwise plausible answer unusable. We introduce \\textbf{Legal Research Bench} (LRB), a benchmark of 413 open-ended U.S. legal research questions written by experts, each paired with a gold answer, supporting authorities, and a binary grading rubric. We evaluate thirteen frontier models in a harness with web search, case-law search, page parsing, and retrieval tools. We score agent responses through all-pass grading with source verification, where a response is correct only if every required criterion is satisfied and its cited authorities verify. We also validate the LLM judge against expert attorneys ensuring that benchmark scores track attorney judgment. Agents remain far from reliable: among the models we tested, the strongest, Claude Opus 4.8, is fully correct on 42.9\\% of questions. Performance also varies substantially by task setting: all-pass rates differ across areas of law and are lower on questions requiring reconciliation of conflicting authorities. Across models, more turns, tool calls, and inference cost do not predict higher accuracy.",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "cc2c5c48868b07c0efdb6317a6a9ecba93ccb841f27ea431ed1f52be20c75dfc",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "법률 연구 LLM 에이전트 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2610.00636": {
+      "arxiv_id": "2610.00636",
+      "paper_title": "CompMat-Bench: Benchmarking AI Agents for Computational Materials Science",
+      "abstract": "Evaluating AI agents on scientific research tasks is constrained by the time and resources required for the underlying experiments or calculations. In computational materials research, repeating the same expensive simulations across agents and trials can make evaluation impractical. We introduce CompMat-Bench, a benchmark of 94 tasks derived from recently published computational materials studies, each asking agents to complete a step toward achieving the study's scientific goal. We reproduce the research steps in advance and assess agents on preparing inputs and analyzing outputs for expensive simulations, so expensive simulations can be avoided during evaluation. The reproduced inputs and results serve as ground truth for grading agents with fixed rules, without an LLM judge. The benchmark supports four evaluation conditions: single tasks and workflows composed of related tasks, each with full or reduced methodological guidance. With full guidance on single tasks, agents based on three LLMs demonstrate the ability to complete individual materials research steps, with pass rates of 66.0-90.4% across 94 tasks. Both longer workflows and reduced guidance can limit agent performance, but in different ways for different agents: they lower the pass rates of the weaker agents, whereas the strongest agent falls only when a long workflow is combined with reduced guidance. Failure analysis attributes most failures to scientific errors rather than to errors in software usage. CompMat-Bench provides a basis for comparing agents on the steps of real materials research and for analyzing agent failure modes.",
+      "paper_updated": "2026-10-15T15:11:29Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "34ca18ac00e30d35339a19b3b11f3600834a0274ad970282a608e7f3baddbbf6",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "계산 재료과학 AI 에이전트 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2610.00651": {
+      "arxiv_id": "2610.00651",
+      "paper_title": "Agent Evaluation Reliability: More Tasks Won't (Always) Fix An Agent Leaderboard",
+      "abstract": "Agent evaluations are increasingly used to compare LLMs and inform deployment decisions, yet ranks can reflect not only the model but also the effects of the evaluation conditions such as the scaffolds or tasks. This makes reliability claim-dependent: an evaluation that reliably ranks deployed systems may not reliably rank underlying models. We ask which conclusions current agent evaluations reliably support and what additional evaluation would improve them. We develop a Bayesian variance-decomposition framework for sparse, imbalanced agent leaderboards and apply it to 22 benchmarks from the Holistic Agent Leaderboard and Harbor Index. The framework separates signal, performance differences relevant to the intended claim, from noise, irrelevant variation that can still change rankings. We find: (1) Reliability depends on the measurement goal. Fixed model-scaffold systems are ranked reliably (0.935-0.994), while underlying-model reliability is substantially lower (0.148-0.841). (2) Scaffold choice can change conclusions. Inter-scaffold reliability measures whether scaffolds preserve model rankings, showing that scaffold effects vary substantially across evaluations. (3) More tasks cannot resolve all uncertainty. Even infinitely many similarly constructed tasks improve model-ranking reliability of a benchmark by at most 0.097 when uncertainty is dominated by limited scaffold coverage. (4) Pooling diverse benchmarks can improve cross-task rankings at lower cost. For rankings across diverse agentic tasks, pooling benchmarks raises projected reliability from 0.44 to 0.75 at the same task budget and can reduce projected cost by up to 83\\%. Evaluation design should follow the intended claim: identify what a score or ranking should mean, diagnose what limits its reliability, and spend evaluation budget on the sources of uncertainty that matter.",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "4f327a56e655500d9f9514bf3733c9703fba310cf9bb85076457c4a92c7ec74e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 평가 신뢰성 분석으로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
+        }
+      ]
+    },
+    "2610.00664": {
+      "arxiv_id": "2610.00664",
+      "paper_title": "PhysicsMate: A Curriculum-Grounded Bengali Benchmark for Secondary Physics QA with Small-Model Adaptation",
+      "abstract": "Bengali secondary education lacks curriculum-grounded benchmarks for STEM question-solving, and general-purpose language models struggle with the precise terminology, unit conventions, and derivations that physics problems demand. We introduce PhysicsMate, a benchmark of 1834 question-answer pairs built from the National Curriculum and Textbook Board (NCTB) Grade 9-10 physics syllabus and grounded in a multi-relational knowledge graph of 1760 nodes and 2600 edges across ten ontological types. We Low-Rank Adapt at 0.6B, 1.7B, and 4B parameters, with a unified recipe and demonstrate a significant increase in closed-book accuracy in all scales (+5.5, +15.0, and +23.3 percentage points). A node-type analysis shows that the most benefited by adaptation is the structured curricular knowledge, which consists of physical quantities and named laws, while the least benefited is the loosely specified entity-level knowledge. The 4B model has been adapted and quantized to a small offline binary that can be used for local inference in resource constrained environments and offers a viable path to curriculum aligned physics support in environments with limited connectivity and hardware.",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "created_at": "2026-10-19T13:47:26Z",
+      "input_sha256": "2d1b745ec3810698af4281feac977f9a8458cee9c267c0a84aa67486e409be36",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "벵골어 물리 QA LLM 벤치마크로 적합"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+          "error": "parse: Screening IDs must match the request exactly"
         }
       ]
     }
