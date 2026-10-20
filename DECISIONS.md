@@ -193,3 +193,9 @@ The user subsequently confirmed that automatic usage-credit spending is disabled
 This account-setting prerequisite is satisfied; do not request the same confirmation
 again unless evidence shows the setting changed. The repository secret `CLAUDE_CODE_OAUTH_TOKEN` was subsequently confirmed present.
 Use the manual subscription smoke before enabling Claude in production.
+
+Authentication trial `39375151752` and saved-paper trial `39375393782`
+subsequently completed. Claude returned a valid rejection for QASU's unsupported
+repository-license wording. Both workflows are read-only; the scheduled
+production model configuration is unchanged. Preserve that distinction when
+resuming the production migration.

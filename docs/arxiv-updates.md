@@ -3,6 +3,35 @@
 The workflow runs at **11:30 Asia/Seoul** (`30 2 * * *`) on GitHub servers,
 independently of the user's laptop. GitHub can delay a scheduled run.
 
+## Claude subscription connection trials
+
+Decision 12 requires Claude's included subscription allocation only, with paid
+extra usage disabled by the account owner and no API-key or cloud fallback.
+The repository OAuth secret is `CLAUDE_CODE_OAUTH_TOKEN`. Never put its value
+in a document, issue, command argument or log.
+
+Two manually dispatched workflows have been checked:
+`claude-subscription-smoke.yml` tests authentication and response parsing;
+`claude-paper-trial.yml` audits the saved QASU draft using the official
+`anthropics/claude-code-action/base-action`, pinned to a commit. Both require
+the subscription-only confirmation input and grant no repository write access.
+The paper trial rechecks the original PDF/page hashes and inventory baseline,
+fetches the official resource card, and supplies no earlier model votes.
+It passes the evidence through a prompt file rather than exposing the paper
+in public workflow input logs. Claude has no tools and at most two turns.
+
+The successful authentication trial is run `39375151752`. Paper trial
+`39375393782` returned a valid rejection from `claude-sonnet-5-5`: the proposed
+usage note claimed the repository license was a code license without evidence
+in the supplied materials. The trial neither changes the inventory nor treats
+that rejection as an operational failure. Its diagnostic report is retained
+as a seven-day artifact.
+
+These are connection/evidence trials. The scheduled production pipeline still
+uses its existing Token Factory models; production migration and checkpointed
+Claude audit resumption remain to be implemented. Do not interpret successful
+authentication as a completed production migration or an approved benchmark.
+
 ## What gets updated
 
 1. `arxiv_watch.py` reads arXiv RSS feeds for cs, econ, eess, math, physics,
