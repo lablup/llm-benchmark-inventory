@@ -3216,6 +3216,72 @@
       },
       "issue_url": null,
       "proposal_sha256": "dfd68dfb1b45b05eb2a9a36abb304aca51f37b951438d8c202c12fd9e77614c0"
+    },
+    "2609.21133": {
+      "decision": "exclude",
+      "reason": "이 논문은 새로운 재사용 가능 벤치마크를 제안하지 않는다. 기존 SemBench(55개 쿼리, 5개 시나리오)를 평가 대상으로 사용하면서, AI 연산자가 포함된 Text-to-SQL 쿼리를 평가하기 위한 'Multilayered Evaluation Framework'(SQL Splitter + LLM autorater)라는 평가 방법론/메타 평가 프레임워크를 제안한다. 논문이 공개하는 것은 평가 스크립트와 프롬프트 템플릿(figshare)이며, 대규모 벤치마크 데이터셋 구축은 명시적으로 'future work'로 남겨두고 있다. 따라서 한국어/영어 과제를 가진 재사용 가능한 벤치마크 신규 도입이나 기존 벤치마크의 실질적 갱신으로 보기 어렵다. 또한 논문의 과제 언어는 영어이며 한국어 관련 내용이 전혀 없다.",
+      "changes": [],
+      "arxiv_id": "2609.21133",
+      "paper_title": "The Stochastic Shift: A New Evaluation Paradigm for Text-to-SQL with AI Operators",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.21133",
+        "sha256": "958a4ca1982022ce6d4a468fa1bafd47e39bf297a55489a2664d6e4e810e4b1d",
+        "accessed": "2026-10-20T04:06:17Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 6,
+          "elapsed_seconds": 34.27,
+          "pdf_sha256": "958a4ca1982022ce6d4a468fa1bafd47e39bf297a55489a2664d6e4e810e4b1d",
+          "visual_pdf_audit": false,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "de8f051b5bddca41b41059845928023a5a1acf727adbaaf573d5ab57e2c1f0ee",
+          "page_json_file": "2609.21133.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-10-20T04:06:58Z",
+      "extraction_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "screening": {
+        "arxiv_id": "2609.21133",
+        "paper_title": "The Stochastic Shift: A New Evaluation Paradigm for Text-to-SQL with AI Operators",
+        "abstract": "SQL has been augmented with AI operators, enabling modern data analytics platforms to derive insights from both structured and unstructured data. We observe that while current Text-to-SQL systems can successfully generate these AI-augmented queries, reliably evaluating their correctness remains a critical open challenge. Current metrics, which rely on exact query results and deterministic execution, systematically fail against the flexible, non-deterministic outputs of AI operators. In this paper, we formalize these unique evaluation failure modes and introduce a Multilayered Evaluation Framework that decouples deterministic database logic from flexible AI semantics. We test our approach across both industry (BigQuery) and academic (ThalamusDB) systems. We demonstrate that traditional Execution Accuracy severely penalizes valid queries, achieving as low as a 25% detection rate for correct translations. Furthermore, even a state-of-the-art LLM-based autorater falsely rejects 32% of accurate queries due to the complexity of judging both relational and AI components simultaneously. By validating the standard relational logic and the AI operations separately, our framework achieves state-of-the-art overall accuracy across both platforms (up to 97.2%), proposing a reliable standard for benchmarking AI-powered SQL generators.",
+        "paper_updated": "2026-09-21T00:00:00Z",
+        "created_at": "2026-10-19T13:43:59Z",
+        "input_sha256": "22d892d2c9111b7ee55685840abdc9c3fdcadb6a6a951d93f23a47ca75b4f048",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "AI 연산자 포함 Text-to-SQL 평가 패러다임"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "AI 연산자 Text-to-SQL 다층 평가 프레임워크 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "3ec698bb5e12c7c001e29210e7941c4cf87408f585a463c196b9afc2e2ed2664"
     }
   },
   "processed_comments": [],
@@ -4188,7 +4254,9 @@
         "2609.20886",
         "2609.31675",
         "2609.20945",
-        "2609.21133"
+        "2609.21133",
+        "2509.24789",
+        "2602.00279"
       ],
       "spent_usd": 0.0,
       "blocked": true,
