@@ -274,3 +274,15 @@ from serving reference cards. Keep scores, sources, experimental conditions
 and source-access dates available for review. Retain investigation status in
 the source data; hiding a badge does not promote any record to verified or
 change the publication pipeline.
+
+## 17. Add all-smi to resource monitoring (2026-10-21)
+
+The user approved adding Lablup all-smi after reviewing its monitoring role.
+List it under resource monitoring, with GPU/NPU/CPU/memory coverage,
+Prometheus/JSON/CSV output, and recording/replay. Use the official
+[README](https://github.com/lablup/all-smi#readme) and
+[API reference](https://github.com/lablup/all-smi/blob/main/API.md) as sources.
+Hardware and drivers determine metric availability. Air-gapped local use
+requires preparing the executable, drivers and libraries in advance.
+Mark it as an adoption candidate, not an already integrated Benchpress tool.
+No representative performance scores are attached to this monitoring tool.
