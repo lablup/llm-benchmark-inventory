@@ -3081,7 +3081,8 @@
     },
     "2026-10-20": {
       "attempted": [
-        "2510.26238"
+        "2510.26238",
+        "2412.07251"
       ],
       "spent_usd": 0.0,
       "blocked": true,
@@ -22704,22 +22705,22 @@
     "2610.23284": {
       "arxiv_id": "2610.23284",
       "paper_title": "Annotrace: A Workbench for Step-Level Annotation of Agent Traces",
-      "abstract": "Every study of why LLM agents fail begins by labelling traces by hand, and every such study builds its own throwaway tool. Observability platforms record agent traces but offer no structured labelling; annotation tools label text but have no notion of a step, a delegation or a tool call, leaving it unclear what the smallest unit of execution to label should be. Annotrace reads six trace formats, including OpenTelemetry GenAI, LangSmith and Langfuse, and turns each run into an ordered, nested list of steps. The annotator writes their own labelling codebook; a frontier model proposes a starting set from a sample of their own traces, answers first, and is asked exactly the questions the human is asked, making annotation a joint human-AI process. Annotrace measures agreement between any two annotators, human or AI. On a multi-agent question-answering corpus it reproduces a previous manual effort's 235 annotation units exactly, and two models labelling the same traces agree 91% of the time at $\\kappa = 0.82$.",
-      "paper_updated": null,
-      "created_at": "2026-10-19T13:52:06Z",
-      "input_sha256": "ddc294fb27b7c533ec4442ff614fce79c325571ce80d6289e635d0a28ae1348b",
+      "abstract": "Every study of why LLM agents fail begins by labelling traces by hand, and every such study builds its own throwaway tool. Observability platforms record agent traces but offer no structured labelling; annotation tools label text but have no notion of a step, a delegation or a tool call, leaving it unclear what the smallest unit of execution to label should be. Annotrace reads six trace formats, including OpenTelemetry GenAI, LangSmith and Langfuse, and turns each run into an ordered, nested list of steps. The annotator writes their own labelling codebook; a frontier model proposes a starting set from a sample of their own traces, answers first, and is asked exactly the questions the human is asked, making annotation a joint human-AI process. Annotrace measures agreement between any two annotators, human or AI. On a multi-agent question-answering corpus it reproduces a previous manual effort's 235 annotation units exactly, and two models labelling the same traces agree 91% of the time at $κ= 0.82$.",
+      "paper_updated": "2026-10-19T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "25c0c2db6ad952bf4aa27e7c80485d830e56b5113e4584ca082ed7f6f55f39cd",
       "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "LLM 에이전트 트레이스 단계별 주석 도구로 에이전트 평가에 부합"
+          "reason": "LLM 에이전트 트레이스의 단계별 주석 워크벤치"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
-          "reason": "에이전트 트레이스 단계별 주석 워크벤치 재사용 도구 제안"
+          "reason": "에이전트 트레이스 단계 주석 도구 Annotrace 제안"
         }
       ]
     },
@@ -23380,6 +23381,358 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "텍스트-이미지 편향 벤치마크·자동 평가 파이프라인 제안"
+        }
+      ]
+    },
+    "2604.17819": {
+      "arxiv_id": "2604.17819",
+      "paper_title": "Algorithmic Primitives of Theory of Mind Benchmarks",
+      "abstract": "Do Theory of Mind (ToM) benchmarks really test theory of mind, or are they actually testing parsing and algorithmic state tracking? While benchmarks vary modality and dialogue length, this paper finds that they re-encode the same few state transition algorithms. We create PDDL-Mind, a neuro-symbolic approach that recovers such algorithms and upstream inductive biases of ToM benchmarks explicitly by parsing narratives into the Planning Domain Definition Language (PDDL) and executes candidate actions against a predefined set of update algorithms. Doing so provides program-verified state traces to the model. We use our method's performance gain to audit how much of a benchmark's difficulty our inductive bias absorbs. Across MMToM, MuMA, and FanToM, outsourcing parsing to programs alone brings performance close to strong agentic pipelines, while outsourcing state tracking to PDDL moves GPT-4o to close-to-human performance. We demonstrate that complex ToM benchmarks primarily punishes Large Language Models' unreliable implicit implementation of state tracking and parsing algorithms rather than limitations in belief and counterfactual reasoning.",
+      "paper_updated": "2026-10-19T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "6aaba8ef3fb9c6f1bce396f546575be3b0975acb13b599977481e20dbfdb4379",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "ToM 벤치마크의 알고리즘적 편향을 분석하는 LLM 평가 연구"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "ToM 벤치마크 감사용 PDDL-Mind 도구·분석 프레임 제시"
+        }
+      ]
+    },
+    "2605.15766": {
+      "arxiv_id": "2605.15766",
+      "paper_title": "BioXArena: Benchmarking LLM Agents on Multi-Modal Biomedical Machine Learning Tasks",
+      "abstract": "Large language model (LLM) agents increasingly automate machine-learning model building, yet biomedical benchmarks emphasize question answering, reasoning, and tool use or cover narrow slices of biomedical ML coding. We introduce BioXArena, a biomedical machine learning (BioML) coding benchmark for task-specific model building on heterogeneous, often multi-modal datasets. It contains 76 end-to-end tasks across 9 domains: sequence, single-cell, structure, network biology, chemical biology, perturbation dynamics, phenotype--disease, imaging, and text-integrated tasks. Each task packages primary-source data with hidden labels, held-out graders, and biology-aware metrics on a unified 0-to-100 scale; agents write runnable code, train models, and predict private test samples. BioXArena emphasizes realistic data interfaces: most tasks require agents to integrate multiple input sources, including 46 tasks that combine distinct modality families. We compare 18 harness--backbone configurations: general-purpose coding, biomedical, and ML agents plus our Minimal runner, all under the same controlled resource configuration. Codex with GPT-6 Astra achieves the highest task-level average score of 73.91 among 18 configurations, closely followed by Claude Code with Opus 5.5 (73.79). Matched-backbone comparisons show higher observed scores for mature coding systems than for Minimal; seven Minimal backends characterize model differences under a fixed runner. Beyond the main leaderboard, ablations, robustness checks, and scaling, runtime, and failure-mode analyses characterize how backbones, scaffolds, budgets, and domains affect BioML coding performance, exposing modeling and execution gaps across agent and LLM backbone families.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "92700148c8c64e73cde716811d870a1c7122bc3a67128e50f716267e34dde96e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트의 생의학 ML 코딩 능력을 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "바이오ML 코딩 에이전트 벤치마크 BioXArena 신규 제안"
+        }
+      ]
+    },
+    "2605.17070": {
+      "arxiv_id": "2605.17070",
+      "paper_title": "EPIC-Bench: A Perception-Centric Benchmark for Fine-Grained Embodied Visual Grounding in Vision-Language Models",
+      "abstract": "While large vision-language models (VLMs) are increasingly adopted as the perceptual backbone for embodied agents, their fundamental vision-language grounding (VLG) capability in embodied scenarios remains unexplored. We present \\textbf{EPIC-Bench}, \\textbf{E}mbodied \\textbf{P}ercept\\textbf{I}on Ben\\textbf{C}hmark, a fine-grained grounding benchmark designed to systematically evaluate the VLG capabilities of VLMs in real-world embodied environments. EPIC-Bench comprises 6.6k meticulously human-annotated tuples (Image, Text, Mask) spanning three core stages of the embodied interaction pipeline: Target Localization, Navigation, and Manipulation. With 23 fine-grained tasks, multi-dimensional settings and evaluation over 80 leading VLMs, EPIC-Bench provides a diagnostic analysis.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "aa9dec000b88ffd69687c087157380e270630f263f02801ddc74fa5d836f03f3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "VLM의 체화된 시각적 그라운딩 능력을 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "구체적 그라운딩 평가용 EPIC-Bench 신규 제안"
+        }
+      ]
+    },
+    "2605.27922": {
+      "arxiv_id": "2605.27922",
+      "paper_title": "Harness-Bench: Evaluating Agent Harnesses across Models and Realistic Workflows",
+      "abstract": "LLM agents are increasingly deployed as executable systems that use tools, modify workspaces, and produce concrete artifacts. In such workflows, performance depends not only on the base model, but also on the harness: the system layer that manages context, tools, state, constraints, permissions, tracing, and recovery. However, existing benchmarks typically abstract away execution, compare complete agent systems, or hold the harness fixed, making execution-layer variation difficult to study. We introduce Harness-Bench, a diagnostic benchmark for evaluating configuration-level harness effects in realistic agent workflows. Harness-Bench evaluates representative harness configurations across multiple model backends under shared task environments, budgets, and evaluation protocols, while preserving each harness's native execution behavior. The benchmark contains 106 sandboxed offline tasks constructed from practical agent-use patterns and manually reviewed for realism, solvability, oracle-checkability, and integrity. Each run records final artifacts, execution traces, usage statistics, and validator outputs, enabling analysis beyond final completion. Across 5,194 execution trajectories, we observe substantial variation in completion, process quality, efficiency, and failure behavior across model-harness pairings. These results suggest that agent capability should be reported at the model-harness configuration level rather than attributed to the base model alone. Our analysis further identifies recurring execution-alignment failures, where plausible reasoning becomes decoupled from tool feedback, workspace state, evidence, or verifiable output contracts. Harness-Bench provides a reproducible foundation for diagnosing and improving reliable, efficient, and auditable agent execution stacks.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "c09d7135f32cad0f8e8ff870f267bd00e419d8bf53415f99d0cbe74a922c45ba",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 하네스의 실행 성능을 평가하는 진단 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 하니스 진단 벤치마크 Harness-Bench 제안"
+        }
+      ]
+    },
+    "2605.29468": {
+      "arxiv_id": "2605.29468",
+      "paper_title": "SciIntBench: Measuring LLM Compliance with Research Integrity Norms Under Adversarial Framing",
+      "abstract": "Large language models (LLMs) are increasingly used to support scientific work, but it is unclear whether they uphold responsible conduct of research (RCR) norms or help undermine them. We introduce SciIntBench, an adversarial benchmark of 1350 prompts across 270 scenarios, ten RCR categories, and three scientific domains. Each scenario appears in five gradations, from Most Overt to Most Covert adversarial prompts, and an additional Benign version, allowing us to jointly measure framing-sensitive refusal of misconduct and helpfulness on legitimate requests. We evaluate 16 commercial and open-weight LLMs from six providers (2024--2026), producing 21,600 responses. We assess the responses using LLM judgments validated by human evaluation, achieving high agreement ($κ$ = 0.857). We find that, under the most covert framing condition, models fail to refuse requests for research misconduct in 71.7\\% of cases, on average. Refusals vary by RCR category, with weaker boundaries around transparency, plagiarism, and fabrication.",
+      "paper_updated": "2026-10-19T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "62bc753af8307a64495c1f2e83c8d59ed94cdf5111b52d05c763986c2aeaa279",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM의 연구윤리 규범 준수를 평가하는 적대적 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "연구윤리 준수 평가용 SciIntBench 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2606.13040": {
+      "arxiv_id": "2606.13040",
+      "paper_title": "Robo2Process: Benchmarking and Learning Process-Aware Understanding in Vision-Language Robotic Manipulation",
+      "abstract": "Vision-language models (VLMs) used as robotic critics, reward generators, and failure detectors must understand how manipulation unfolds, not only whether it succeeds. Yet fine-grained process supervision is not readily available in a unified form, and existing evaluations do not systematically diagnose these abilities. We introduce Robo2Process, a trace-grounded framework for scalable construction of process-aware supervision from heterogeneous robotic execution data. It aligns visual observations with source-native signals and annotations, extracts local process units (LPUs), and generates structured QA supervision through task-specific sampling, deterministic label construction, and ambiguity filtering. We instantiate this framework as RoboProcessBench, a diagnostic benchmark with 12 question families spanning \\emph{static monitoring} and \\emph{dynamic reasoning}, and ProcessData, a corpus of 57,892 QA pairs across four data sources and 260 manipulation tasks, split into ProcessData-SFT and ProcessData-Eval. Evaluation of a broad suite of VLMs reveals uneven process understanding. Supervision from ProcessData-SFT improves \\textit{Qwen2.5-VL-7B} and \\textit{InternVL-3-8B} on local state, motion, progress, and primitive-aware cues. External evaluation on RoboRewardBench shows Robo2Process enables out-of-distribution process-aware reasoning abilities. Overall, Robo2Process provides a source-aware pipeline, diagnostic benchmark, and learnable substrate for process-aware understanding in robotic manipulation.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "7ec9126b2b4a32328540a95d630e59221086a464e6f91e85b4d7c5824f4aa1bd",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "로봇 조작의 과정 이해를 평가하는 VLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "로봇 조작 프로세스 이해 벤치마크·데이터셋 제안"
+        }
+      ]
+    },
+    "2607.01071": {
+      "arxiv_id": "2607.01071",
+      "paper_title": "MemSyco-Bench: Benchmarking Sycophancy in Agent Memory",
+      "abstract": "Memory has emerged as a cornerstone of modern LLM-based agents, supporting their evolution from single-turn assistants to long-term collaborators. However, memory is not always beneficial: retrieved memories often induce a critical issue of sycophancy, causing agents to over-align with the user at the cost of factual accuracy or objective reasoning. Despite this emerging risk, existing memory benchmarks primarily evaluate whether memories are correctly stored, retrieved, or updated, while overlooking how retrieved memories influence downstream reasoning and decision-making. To bridge this gap, we propose MemSyco-Bench, a comprehensive benchmark for evaluating memory-induced sycophancy in agent systems. MemSyco-Bench measures when memory should influence a decision and how valid memory should be used. Specifically, it covers five tasks that assess whether agents can reject memory as factual evidence, respect its applicable scope, resolve conflicts between memory and objective evidence, track memory updates, and use valid memory for personalization. All related resources are collected for the community at https://github.com/XMUDeepLIT/MemSyco-Bench.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "8ea492ba8b326a847205ddf451979fa5e9eeedf456b511cd1e8f9e7bb6c475db",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 메모리의 아첨성을 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 메모리 아첨 평가 벤치마크 제안, 자원 공개"
+        }
+      ]
+    },
+    "2608.03874": {
+      "arxiv_id": "2608.03874",
+      "paper_title": "ContinualSkillBench: Can LLM Agents Truly Evolve Their Capabilities?",
+      "abstract": "Modern agent frameworks equip large language models with external skill libraries to solve complex tasks. However, it remains unclear whether these systems can effectively evolve their skills and whether the resulting skills improve task-solving capabilities. To bridge this gap, we introduce ContinualSkillBench, a dynamic evaluation framework for in-context continual skill learning. It covers five domains, each with 100 tasks ordered by difficulty and opportunities for skill transfer. Our experiments show that sequential execution generally improves performance, but the gains vary substantially across models and domains. Moreover, across two models and three domains, retaining context and feedback without skill maintenance yields nearly the same mean performance as maintaining an explicit skill library. Explicit skills nevertheless provide selective benefits for tasks requiring reusable procedures or precise outputs. We further find that the weaker model (GPT-4o) accumulates more skills but reuses them less often, suggesting difficulty consolidating task-specific experience into reusable procedures. These findings show that current in-context skill evolution mechanisms can support continual adaptation, but still struggle to consistently consolidate experience into robust and transferable skills.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "72d39d31cc15fefc531e6f45e9be3de8cf9341c88e2678722d7054fb0d97d86e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트의 지속적 스킬 학습을 평가하는 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "지속 스킬 학습 평가 프레임워크 ContinualSkillBench 제안"
+        }
+      ]
+    },
+    "2608.18097": {
+      "arxiv_id": "2608.18097",
+      "paper_title": "FrenchNews-7: Benchmarking Cross-Publisher French News Editorial Desk Classification",
+      "abstract": "We present FrenchNews-7, a cross-publisher France-based French-language news editorial desk classification benchmark combining a large multi-outlet corpus, a URL-derived seven-class taxonomy, and a fine-tuned CamemBERT classifier. Labels are assigned via a hybrid pipeline combining publisher URL slugs with LLM annotation for structurally ambiguous cases, audited through an inter-rater study (2 humans + 2 LLMs; pairwise $κ\\geq 0.766$, human--human $κ= 0.806$). We evaluate lexical, multilingual, and French-specific trained classifiers under both in-distribution and held-out-publisher settings, with additional comparison against zero-shot LLM baselines (GPT-OSS-120B, Mistral Small 3.2, Llama-3.3-70B) on the held-out pool. The strongest model, CamemBERT-base on full article text, outperforms headline-only input, generalizes to unseen outlets, and exceeds all three zero-shot LLM baselines on overall recall (0.799), with the gap concentrated in the ambiguous editorial-boundary categories Economie and Societe. Cross-publisher evaluation reveals uneven boundary stability: Sport, Culture & Loisirs, and International transfer cleanly, while Economie (recall = 0.517) is statistically indistinguishable from blinded human agreement on the same articles (0.55, $n = 40$), and Societe (precision = 0.577) absorbs boundary ambiguity, both suggesting editorial conventions rather than recoverable classifier headroom. The fine-tuned CamemBERT-base model, labeled manifest, reference collection scripts, and a reliability-tier guidance table are available at https://huggingface.co/LeFrenchNewsLab/camembert-base-frenchnews7 (model) and https://huggingface.co/datasets/LeFrenchNewsLab/frenchnews-7 (dataset).",
+      "paper_updated": "2026-10-19T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "0bce0560e42559f1f993935beafe2018c90cc9bcd2d376844d2db10f29b54fb0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "프랑스어 뉴스 편집 분류 벤치마크로 LLM 평가 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "프랑스어 전용 뉴스 분류 벤치마크로 한국어·영어 외"
+        }
+      ]
+    },
+    "2609.10226": {
+      "arxiv_id": "2609.10226",
+      "paper_title": "$Φ$-Bench: Can Large Language Models Engineer the Infrastructure That Powers Them?",
+      "abstract": "Large language models (LLMs) now show strong reasoning and coding abilities, raising the prospect that they could assist in developing and optimizing the very infrastructure that powers them. Existing benchmarks, however, mainly focus on isolated kernels, predefined operators, or pre-specified optimization targets, and cannot evaluate open-ended, long-horizon LLM infrastructure engineering. To address this gap, we present $Φ$-Bench, a benchmark of 85 tasks grounded in real LLM training and inference codebases. The tasks cover nine categories of LLM infrastructure and come in three formats, ranging from kernel function completion to long-horizon implementation and repository-wide end-to-end optimization. They are built by a construction pipeline that turns real pull requests, issues, and repository code into executable tasks with validated tests, and every reward is gated by correctness and anti-hacking checks. Across eight frontier models, the strongest model, Claude Opus 5, scores only 36.53%, and every model performs worse on long-horizon, repository-level implementation than on kernel-level tasks. Trajectory analysis further suggests that stronger models treat optimization as controlled experimentation, validating ideas with cheap local runs and ruling out confounders before drawing conclusions. We will open-source $Φ$-Bench to facilitate future research on LLM agents' ability to develop and optimize the LLM infrastructure that powers themselves.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "b24e4a069a0f967228a911fabca2b9b98d94026a9769a56ab090abb0849dcb23",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 인프라 엔지니어링 능력을 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "LLM 인프라 엔지니어링 벤치마크 Φ-Bench 제안"
+        }
+      ]
+    },
+    "2609.20827": {
+      "arxiv_id": "2609.20827",
+      "paper_title": "DischargeBench: Pre-Deployment Evaluation of LLM Discharge Educators through Persona-Grounded Patient Simulation",
+      "abstract": "Effective discharge education is personalized: a clinician adapts the discharge plan to each patient's literacy, recall, and personality. Before large language models (LLMs) take on this role with real patients, they need to be evaluated in conversations with diverse patients, yet existing evaluations target static, artifact-generation, or question-answering tasks. We introduce **DischargeBench**, a pre-deployment benchmark in which a candidate LLM educator teaches a persona-grounded simulated patient in an open-ended, multi-turn conversation. We curate **MIMIC-IV-Ext-DischargeBench**, 320 cases across 16 ICD chapters, each paired with a patient persona that varies personality, education level, health literacy, and recall. Each conversation is scored on Conversation Quality, Topic Checklist Score (TCS), Simulated Comprehension Score (SCS), and a Claim-Level Safety Audit (CLSA) by an LLM judge validated against physician annotations. Across eight closed- and open-source LLMs, the best model scored only 0.70 on TCS and 0.72 on SCS, and distrustful and anxious patients lowered comprehension for every model. DischargeBench is intended as a screening step before human evaluation, not as evidence of readiness to educate patients.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "81651c503b10ee05f349ccca71330048ffd786c9640361bcd0a49445bb57145f",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 퇴원 교육자의 환자 시뮬레이션 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "퇴원 교육 대화 평가 벤치마크·케이스셋 제안"
+        }
+      ]
+    },
+    "2610.00860": {
+      "arxiv_id": "2610.00860",
+      "paper_title": "MorphoBranch: A Fine-Structure-Preserving Workbench for Morphometric Analysis of Branched Cellular Structures",
+      "abstract": "Background and Objectives: Fluorescence-labeled cellular arbors provide readouts of neuronal and microglial morphology, but fine and weakly labeled processes are prone to fragmentation and false connections that bias skeleton-based measurements. We present MorphoBranch, a fine-structure-preserving, human-reviewable workbench for morphometry of branched cellular structures. Methods: MorphoBranch combines a deterministic Morphometry Engine with an LLM-assisted Refinement Engine. The Mor- phometry Engine implements an image-to-graph workflow integrating multiscale structural evidence extraction, hysteresis segmen- tation, evidence-constrained skeleton refinement, and graph-based morphometry. The Refinement Engine maps natural-language requests to registered actions for parameter adjustment, preview execution, metric reporting, and unsupported-request handling, while image processing and quantitative computation remain deterministic and reviewable. Results: MorphoBranch was evaluated on two public neuronal axon datasets, AxonMIP and AxonStack, and the in-house Cell- Morph dataset of microglial fluorescence images. It achieved the highest Skeleton F1 and clDice and the lowest length-estimation error among the evaluated methods on all three datasets, while also achieving the highest Dice and IoU on AxonMIP and Axon- Stack. Across 150 natural-language tasks, the Refinement Engine achieved a 94.0% end-to-end success rate. Conclusions: These results demonstrate that MorphoBranch provides a reproducible, human-reviewable workflow for mor- phometric analysis of branched cellular structures. It supports fine-structure-preserving quantification across neuronal axon and microglial fluorescence images while maintaining inspectable and reproducible analysis workflows.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "232c4550c03d57d96d28eb620fc1c385df3b09e55fcd219de8c770e2d0a12d37",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "uncertain",
+          "reason": "형태학 분석 워크벤치로 LLM 보조 정제 포함, 도메인 특화"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "세포 형태계측 워크벤치로 평가 벤치마크 성격 불명확"
+        }
+      ]
+    },
+    "2410.00713": {
+      "arxiv_id": "2410.00713",
+      "paper_title": "RAD: A Realistic Multi-View Benchmark for Pose-Agnostic Anomaly Detection",
+      "abstract": "Anomaly detection is essential for robotic perception and industrial inspection, yet most benchmarks are collected under controlled conditions with fixed viewpoints and stable illumination. These settings do not reflect robotic deployment, where camera pose, lighting, and surface reflectance vary continuously. We present RAD (Realistic Anomaly Detection), a robot-captured multi-view benchmark for pose-agnostic anomaly detection. RAD contains 4,047 RGB images from 13 everyday object categories, captured from 68 viewpoints per object with a Franka robotic arm and an RGB-D camera under uncontrolled lighting. The dataset covers four realistic defect types: scratched, missing, stained, and squeezed, with pixel-level annotations for localization. We benchmark representative 2D feature-based methods, 3D reconstruction pipelines, and vision-language models under a realistic setting in which test poses are unknown. Results show a clear gap between performance on conventional benchmarks and performance on RAD. Strong 2D feature-embedding methods remain the most reliable at image-level detection, whereas 3D approaches are more competitive for pixel-level localization but remain vulnerable to reflective materials, geometric symmetry, and sparse viewpoint coverage. Vision-language models perform poorly in both classification and localization. RAD provides a challenging testbed for robust robotic inspection and highlights open problems in jointly modeling appearance, geometry, and viewpoint uncertainty. Our website and code are available at https://chang-xinhai.github.io/rad-website/.",
+      "paper_updated": "2026-10-19T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "89162b3b6439b4b338d7ad788a5e5d97756f9a5864d7e83bc6730020d6e01969",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "로봇 시점 이상 탐지 벤치마크로 VLM 평가 포함"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중시점 이상탐지 벤치마크 RAD 데이터셋 제안"
+        }
+      ]
+    },
+    "2607.03162": {
+      "arxiv_id": "2607.03162",
+      "paper_title": "APeB: Benchmarking Personalization Ability of Large Language Model Agents",
+      "abstract": "LLM-powered agents struggle with personalization when users issue raw, underspecified queries. In this setting, agents must infer latent intent, extract preferences from noisy interaction histories, and select among competing alternatives. Existing benchmarks rarely test this capability, as they often rely on user-refined queries or simplified histories. We introduce personalized product search (PPS), a testbed for agentic personalization under raw queries and diverse histories. We construct Agent Personalized Benchmark (APeB) from action logs, pairing underspecified intents with rich histories and user-viewed candidate items. Evaluating state-of-the-art LLMs with multi-step agent workflows, we find that models handle explicit queries well but struggle with early-stage queries requiring intent and preference discovery. Rubric analysis attributes this gap mainly to ineffective history use. A simple history-aware query-refinement pipeline, VQRA, yields consistent gains, highlighting the need for dedicated history-utilization modules in personalized agents.",
+      "paper_updated": "2026-10-19T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "c453260b827f0badf90225685b1183552d8689161acf5d4ebcfc1fbcf27c60f1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 에이전트의 개인화 능력을 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "에이전트 개인화 평가 벤치마크 APeB 제안"
+        }
+      ]
+    },
+    "2608.17895": {
+      "arxiv_id": "2608.17895",
+      "paper_title": "BEAR-Bench: A Bilingual Enterprise and Academic Reasoning Benchmark for Multimodal Models",
+      "abstract": "While Multimodal Large Language Models (MLLMs) have made significant strides in visual comprehension, their ability to reason about text-dense, professional documents remains incompletely evaluated. Existing benchmarks emphasize information extraction, require external domain knowledge, or cover professional documents only as one of many settings. They are also largely English- or Chinese-centric, leaving other languages and Russian, in particular, substantially underrepresented. To address these limitations, we introduce BEAR-Bench (Bilingual Enterprise and Academic Reasoning), a self-contained, complex English-and-Russian benchmark comprising 1000 human-annotated questions based on text-rich business and scientific documents. We evaluate 16 proprietary and open-weight MLLMs, including Gemini 3.1 Pro and Qwen3.5-397B, on BEAR-Bench and observe clear headroom even for the strongest systems. Finally, we use the resulting model outputs to compare existing hallucination detection methods, evaluating not only how often models fail on BEAR-Bench but also how reliably those failures can be identified.",
+      "paper_updated": "2026-10-19T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "3f8402466e005ef556ddbcd679f1ecaa7dab7a7aad7bf03aef4ab8fdb8f0b5da",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다국어 기업/학술 추론 평가 MLLM 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "영어·러시아어 다중모달 문서 추론 벤치마크 제안"
+        }
+      ]
+    },
+    "2608.20338": {
+      "arxiv_id": "2608.20338",
+      "paper_title": "ConceptGuard: Benchmarking Context-Sensitive Unlearning in Large Language Models",
+      "abstract": "Large Language Models (LLMs) often require selective removal of harmful or sensitive knowledge, called unlearning, yet existing benchmarks evaluate this capability incompletely. They rely on disjoint forget and retain sets of independent facts, and measure success by simple factual recall. This misses a key requirement of unlearning from a safety perspective, namely eliminating harmful behaviours while preserving benign and beneficial knowledge. We argue that effective unlearning must operate at the level of concepts, removing unsafe applications while maintaining correct and useful usage. To evaluate this, we operationalize dual-use concepts, i.e., concepts that can be used in both harmful and benign contexts, and construct ConceptGuard, a benchmark of 2,583 harmful--benign pairs over 68 concepts, where forget and retain sets are explicitly paired in concept usage. Evaluation is intent-sensitive and centres on contextual separation, which measures how well a model suppresses harmful behaviour while preserving benign usage of the same concept. Across four unlearning methods and four models, we find that current techniques reduce harmful memorization but show strong forgetting--utility trade-offs and limited contextual separation, well below a retain-only reference. Separation trends also depend more on the concept and model than on the method. Our results point to the need for unlearning approaches that better align with real-world safety requirements. Our dataset is publicly available.",
+      "paper_updated": "2026-10-19T00:00:00Z",
+      "created_at": "2026-10-20T02:49:23Z",
+      "input_sha256": "b15e37adcf421fb45199ef9b38927f76e35a0eca4d52c5f997a7111e61e92c86",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM의 맥락 민감 언러닝을 평가하는 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "문맥 민감 언러닝 평가 벤치마크 ConceptGuard 제안"
         }
       ]
     }
