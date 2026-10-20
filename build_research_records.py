@@ -121,6 +121,8 @@ def build(root: Path = ROOT):
             page = "korean.html" if change["track"] == "ko" else "english.html"
             modality = "?modality=vision" if change["modality"] == "vision" else ""
             fields = [field for field in row if before is not None and before.get(field) != row[field]]
+            if before is not None and change.get("recommendations"):
+                fields.append("추천 모델·평가 점수")
             labels = {"정의": "벤치마크 설명", "링크": "자료 링크", "대표 과제": "평가 과제",
                       "대표 예시·설명": "평가 예시", "예시 표기": "예시 표기", "이름": "벤치마크 이름"}
             if before is None:

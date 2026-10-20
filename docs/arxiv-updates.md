@@ -8,7 +8,8 @@ independently of the user's laptop. GitHub can delay a scheduled run.
 Decision 13 supersedes the two-model approval requirement. New abstracts and
 full-text drafts use `claude-sonnet-5-5`; a separate Claude request audits each
 validated draft against the full extracted evidence and fetched official cards.
-Only its approval of the exact proposal permits automatic application. DeepSeek
+Decision 14 additionally requires complete publication evidence and sourced model
+scores. Claude approval cannot override these requirements. DeepSeek
 and GLM votes are not required and their historical approvals cannot authorize
 new changes. Completed screening of unchanged abstracts is reused on migration.
 
@@ -26,7 +27,42 @@ unsupported QASU repository-license claim; it did not update the inventory.
 Production now invokes the official CLI directly so a variable number of papers
 can be processed sequentially with individual checkpoints.
 
-## Verified production migration
+## Current publication requirements
+
+Decision 14 withdrew QASU's publication. QASU remains `held` in the research
+ledger, including its former approval and publication history, but is absent
+from the public CSV, page data and applied-update list. Scheduled runs skip held
+records. Historical decision 13's unknown-field allowance no longer applies.
+Other existing entries are preserved; this change is not a retroactive purge.
+
+After the initial evidence draft and official card retrieval, Claude completes
+the five license/usage/harness fields and a `recommendations` comparison block.
+`publication_checks.py` rejects unresolved fields (including unknown synonyms),
+missing usage evidence, missing model scores, nonnumeric values, absent physical
+page quotes, unverified source URLs and unsupported public-weight claims.
+Explicitly documented restrictions or non-support are allowed. Missing
+information cannot be renamed to unsupported/not-applicable to pass the gate.
+
+A separate Claude audit reviews all completed fields and the score table against
+full source evidence. Its publication-policy marker and reviewed hash bind the
+exact rows, recommendation results, metric, conditions and old-ranking hash.
+Old approvals cannot publish under the new policy. The application step repeats
+the completeness gate and checks stale inventory, English copy and score data.
+All affected files, including `benchmark_top_models.csv`, roll back together if
+any validation fails.
+
+The recommendation adapter uses one paper's comparable experiment, preserving
+metric, units, version, split and prompting/budget conditions. It sorts using the
+metric direction and publishes up to three overall results and, only when
+verified, up to three public-weight results. An unevidenced weight status never
+makes a model public-weight or closed-weight. The cards retain their existing
+layout and expose the paper/date/conditions under the source details. These are
+paper-reported results, not a refreshed global leaderboard. Existing unrelated
+scores are retained. Official live leaderboard ingestion is not implemented by
+this paper-score adapter. Missing required evidence leaves the candidate held
+without updating the website or asking the user to read the full paper.
+
+## Historical production migration
 
 Run [39377815541](https://github.com/lablup/llm-benchmark-inventory/actions/runs/39377815541)
 revised QASU's unsupported license wording, obtained one Claude approval,
@@ -34,6 +70,7 @@ applied the English row and deployed it successfully. The actual inventory
 change is [e4bc869](https://github.com/lablup/llm-benchmark-inventory/commit/e4bc8696022da56c24268fe3a107d46ba55a4a48);
 notification [#19](https://github.com/lablup/llm-benchmark-inventory/issues/19)
 was created after deployment. Public page data matched that deployed commit.
+This QASU addition was subsequently withdrawn under decision 14.
 The subsequent abstract smoke (39377904060) found no unprocessed/changed abstracts,
 so it reused cached screening and made no new model calls. New-abstract parsing
 and deduplication are covered by offline tests; this smoke is not a fresh model
@@ -79,7 +116,8 @@ quality measurement.
    dataset/question counts and evaluation metrics belong in the definition/task
    fields with their units, versions and conditions. The linked GitHub README or
    Hugging Face dataset card is also fetched.
-4. **Claude audits the validated draft in a separate request.** It receives the
+4. After completing usage evidence and model scores, **Claude audits the full
+   proposal in a separate request.** It receives the
    full page-indexed evidence and official cards, without any earlier model vote.
    Approval covers every change, numerical claim, language and modality. This is
    a text/table audit, not visual PDF inspection. Conflicting extraction or claims
@@ -90,7 +128,8 @@ quality measurement.
    prevents inclusion without requesting human review. Known-usage parse/evidence
    failures are recorded; authentication, unknown-cost and transport failures stop
    the run with a saved checkpoint.
-6. `review_proposals.py` applies Claude-approved changes to the corresponding CSV, then
+6. `review_proposals.py` applies complete, Claude-approved inventory and model-score
+   changes to the corresponding CSV files, then
    regenerates the README, English copy, modality metadata and page data.
    Korean text updates appear in `korean.html`, English text in `english.html`;
    image-input tasks appear in the corresponding `?modality=vision` tab. Task
@@ -99,12 +138,12 @@ quality measurement.
 7. After commit and deployment, a GitHub issue summarizes actual additions and
    changes and is closed as completed. No changes means no issue.
 
-Claude can make errors. Approval is therefore combined with source checks
-and conservative treatment of missing facts. Claude may not grant
-new licensing permissions. New entries retain `확인 불가` for license,
-commercial use, modification, redistribution, and lm-eval support until those
-claims are separately verified. Existing license-check dates remain unchanged.
-Recommended-model rankings are not updated by this description/catalog adapter.
+Claude can make errors. Approval is combined with source checks and mandatory
+publication completeness. Claude may report evidenced license terms but cannot
+grant new permissions. A code license is not proof of dataset rights. The initial
+internal draft may still use unknown placeholders while gathering sources; it
+cannot be published in that form. All required information and model scores must
+be completed before the final approval and write transaction.
 
 ## Connection and limits
 

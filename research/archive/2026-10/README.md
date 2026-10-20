@@ -45,6 +45,7 @@
 - [2602.00279 · Semantic Calibration Prevails Where Token Confidence Fails: Benchmarking Long-Form Scientific QA](2602.00279-20261020T131257-2819621bfded.md)
 - [2601.13864 · HardSecBench: Benchmarking the Security Awareness of LLMs for Hardware Code Generation](2601.13864-20261019T232713-70d46220aa99.md)
 - [2511.08500 · SPEAR-MM: Selective Parameter Evaluation and Restoration via Model Merging for Efficient Financial LLM Adaptation](2511.08500-20261019T230235-a855854e86fc.md)
+- [2510.26238 · Questionnaire meets LLM: A Benchmark and Empirical Study of Structural Skills for Understanding Questions and Responses](2510.26238-20261020T153559-58db3bc7720a.md)
 - [2510.26238 · Questionnaire meets LLM: A Benchmark and Empirical Study of Structural Skills for Understanding Questions and Responses](2510.26238-20261020T003919-ad48ddd2cf2b.md)
 - [2510.26238 · Questionnaire meets LLM: A Benchmark and Empirical Study of Structural Skills for Understanding Questions and Responses](2510.26238-20261019T230128-283a791c73ea.md)
 - [2509.10179 · Benchmark of stylistic variation in LLM-generated texts](2509.10179-20261019T225831-dbb507e0ca38.md)

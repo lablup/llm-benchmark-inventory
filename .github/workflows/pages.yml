@@ -43,7 +43,7 @@ jobs:
       - name: Test discovery, evidence and approval handling
         # Buffer successful tests so simulated outages do not become annotations.
         # Failed-test output and real collection warnings remain visible.
-        run: python3 -m unittest --buffer -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py test_replay_citations.py test_claude_subscription_trial.py test_claude_approval.py
+        run: python3 -m unittest --buffer -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py test_replay_citations.py test_claude_subscription_trial.py test_claude_approval.py test_publication_checks.py
       - name: Generate site data
         run: |
           python3 build_site_data.py
@@ -54,7 +54,7 @@ jobs:
           test -z "$(git ls-files --others --exclude-standard -- research/archive updates.json)"
       - name: Check script syntax
         run: |
-          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py arxiv_watch.py build_pages.py research_pipeline.py review_proposals.py build_research_records.py pdf_evidence.py prepare_mineru.py smoke_pdf_evidence.py replay_citations.py claude_approval.py
+          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py arxiv_watch.py build_pages.py research_pipeline.py review_proposals.py build_research_records.py pdf_evidence.py prepare_mineru.py smoke_pdf_evidence.py replay_citations.py claude_approval.py publication_checks.py
           node --check app.js
           node --check english-copy.js
           node --check landing.js
@@ -142,7 +142,7 @@ jobs:
           python3 build_research_records.py
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add new-papers.json research/proposals.json updates.json research/archive/ korean_benchmark_inventory.csv english_benchmark_inventory.csv english-copy.js benchmark-modalities.json README.md inventory-data.js serving-data.js site-meta.js
+          git add new-papers.json research/proposals.json updates.json research/archive/ korean_benchmark_inventory.csv english_benchmark_inventory.csv benchmark_top_models.csv english-copy.js benchmark-modalities.json README.md inventory-data.js serving-data.js site-meta.js
           if ! git diff --cached --quiet; then
             git commit -m "Update research progress and approved inventory changes"
             git push origin HEAD:main

@@ -19,6 +19,7 @@ class ClaudeApprovalTests(unittest.TestCase):
         self.addCleanup(fixture.doCleanups)
         self.root, self.raw, self.context = fixture.root, fixture.raw, fixture.context
         self.config = r.read_json(r.ROOT / "research/config.json")
+        self.config.pop("publication_policy", None)
         self.config.update(enabled=True, daily_papers=1)
         r.write_json(self.root / "research/config.json", self.config)
         self.context["source"].update(url="https://arxiv.org/pdf/2610.12345", sha256="0" * 64)

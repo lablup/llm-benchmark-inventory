@@ -92,11 +92,38 @@ def audit_and_save(root, ledger, state, paper, proposal, context, config, author
     # Persist the complete input as a diagnostic artifact for resumption.
     folder = root / ".research-cache" / "claude" / key
     r.write_json(folder / "context.json", context)
-    prompt = r.VERIFY_PROMPT + "\n" + r.evidence_payload(context) + "\nPROPOSAL:\n" + json.dumps(
+    audit_prompt = r.VERIFY_PROMPT
+    if config.get("publication_policy") == "complete-evidence-v1":
+        import publication_checks as publication
+        if not item.get("changes") or not all(c.get("recommendations") and c.get("rights_evidence") for c in item["changes"]):
+            completion_prompt = (publication.PROMPT + "\n" + r.evidence_payload(context)
+                                 + "\nUNPUBLISHED DRAFT:\n" + json.dumps(proposal, ensure_ascii=False))
+            completed = call(completion_prompt, folder / "completion",
+                             lambda text: publication.validate(json.loads(text), context, root))
+            proposal = {k: completed[k] for k in ("decision", "reason", "changes")}
+        else:
+            proposal = publication.validate(proposal, context, root)
+        item.update(proposal)
+        item["publication_policy"] = publication.POLICY
+        item["proposal_sha256"] = r.digest({k: item[k] for k in ("arxiv_id", "changes", "source")})
+        if proposal["decision"] != "propose":
+            item.update(status="needs_evidence", approval_policy="claude_only")
+            item.pop("claude_pending", None)
+            paper.update(analysis_status=item["status"], analysis_reason=item["reason"])
+            r.save_state(root / "new-papers.json", state)
+            r.paid_call_checkpoint(root, ledger)
+            print(f"{key}: incomplete publication evidence, held", flush=True)
+            return item
+        # Persist the completed draft before its separate, content-bound audit.
+        r.paid_call_checkpoint(root, ledger)
+        audit_prompt = publication.AUDIT_PROMPT
+    prompt = audit_prompt + "\n" + r.evidence_payload(context) + "\nPROPOSAL:\n" + json.dumps(
         {k: proposal[k] for k in ("decision", "reason", "changes")}, ensure_ascii=False)
     vote = call(prompt, folder)
     item["verification"] = {"policy": "claude_only", "approve": vote["approve"],
                             "votes": [vote], "reviewed_sha256": item["proposal_sha256"]}
+    if config.get("publication_policy"):
+        item["verification"]["publication_policy"] = config["publication_policy"]
     item.pop("claude_pending")
     if vote["approve"]:
         item["status"] = "proposed"
@@ -150,7 +177,16 @@ def resume_pending(root, ledger, state, config, deadline):
                 raise ValueError("English copy changed while awaiting Claude")
         paper = next(p for p in state["papers"] if p["arxiv_id"] == key)
         proposal = {k: copy.deepcopy(item[k]) for k in ("decision", "reason", "changes")}
-        r.validate_result(proposal, context)
+        if config.get("publication_policy") == "complete-evidence-v1" and all(c.get("recommendations") for c in proposal["changes"]):
+            import publication_checks as publication
+            rankings = publication.read_rankings(root)
+            for change in proposal["changes"]:
+                previous = [row for row in rankings if row["benchmark_id"] == change["row"]["id"]]
+                if r.digest(previous) != change.get("recommendations_before_sha256"):
+                    raise ValueError("Model scores changed while awaiting Claude")
+            publication.validate(proposal, context, root)
+        else:
+            r.validate_result(proposal, context)
         audit_and_save(root, ledger, state, paper, proposal, context, config, item["extraction_model"])
 
 
@@ -273,6 +309,7 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False):
             continue
         context = {"paper": {k: v for k, v in paper.items() if not k.startswith(("analysis_", "review_"))},
                    "source": source,
+                   "allow_score_updates": config.get("publication_policy") == "complete-evidence-v1",
                    "tables": {track: dict(zip(("headers", "rows"), r.read_table(root, track))) for track in r.TABLES},
                    "english_copy": (root / "english-copy.js").read_text()}
         result = call(r.PROMPT + "\n" + r.evidence_payload(context),

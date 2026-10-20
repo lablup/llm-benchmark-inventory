@@ -185,10 +185,5 @@ window.ENGLISH_INVENTORY_COPY = {
     task: "retrieval",
     example: "Evaluate retrieval with corpus, query, and relevance files in BEIR format, then report recall at k and nDCG.",
   },
-  "qasu": {
-    "axis": "Structural understanding of questionnaire data",
-    "definition": "QASU evaluates questionnaire data serialized into six formats (HTML, XML, JSON, Markdown, Turtle, plain text) across six structural tasks: answer lookup, reverse answer lookup, respondent count, conceptual aggregation, rule-based querying, and multi-hop relational inference. It harmonizes five public questionnaire datasets (hospital discharge, mental health, SUS-UTA7, 2022 Stack Overflow Developer Survey, ISBAR), samples respondents to fit a token budget, and applies rank swapping and 10% MCQ perturbation to reduce contamination. Scoring is exact-match accuracy after whitespace and case normalization.",
-    "task": "Answer Lookup, Reverse Answer Lookup, Respondent Count, Conceptual Aggregation, Rule-based Querying, Multi-hop Relational Inference",
-    "example": "Task description: given a serialized questionnaire, find the value of a specified question for a specified respondent, find the respondents holding a specified value, count respondents, count respondents matching a concept, find respondents satisfying a numeric predicate, or find respondents satisfying multiple conditions across questions."
-  },
+
 };

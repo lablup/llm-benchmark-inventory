@@ -224,3 +224,31 @@ language/modality routing and notifications after deployment. Store pending
 Claude audits durably and resume from evidence artifacts after interruption.
 Missing, malformed or truncated output never counts as approval. Substantive
 rejections remain held. Actual additions/changes alone enter website history.
+
+## 14. Hold QASU and publish only complete entries with model scores (2026-10-20)
+
+The user withdrew QASU's publication and explicitly requested that unknown
+fields no longer be allowed in new registrations. Remove only the newly added
+QASU row, English copy, modality entry and public update entry; retain its draft,
+prior approval and publication history in the held research record. It must not
+be automatically re-added by a later run. Other existing inventory rows are not
+part of this withdrawal.
+
+Claude approval alone is necessary but not sufficient. Before publishing a new
+or changed proposal, require resolved license, commercial-use, modification,
+redistribution and lm-eval fields, with exact evidence from the paper or fetched
+official resource. Unknown synonyms do not satisfy the requirement. Explicitly
+documented non-support or restrictions may be recorded; missing documentation
+must not be converted into a claim of non-support. A code license never proves
+a dataset license. This replaces decision 13's inherited unknown-field allowance.
+
+Include sourced model scores in the same proposal and approval. Store results
+in benchmark_top_models.csv and generate the existing recommendation cards.
+Scores must share a metric, units, version, dataset/split and experimental
+conditions. Select up to three models from the paper's compared results; label
+the source/conditions rather than claiming a current global leaderboard.
+Include public-weight models only when weight availability is evidenced, never
+invent entries to fill slots. Bind rankings to the reviewed proposal hash,
+check for stale data and roll back inventory plus scores together on failure.
+Incomplete proposals remain off the public site. Existing unrelated rankings
+are preserved; this is not a claim that all historical scores were refreshed.

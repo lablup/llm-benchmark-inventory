@@ -19,7 +19,7 @@ MARKER = re.compile(r"^<!-- arxiv-proposals:v2:(\d{4}-\d{2}-\d{2}) -->", re.M)
 ENTRY = re.compile(r"<!-- proposal:(\d{4}\.\d{4,5}):([a-f0-9]{64}) -->")
 COMMAND = re.compile(r"(추가|보류|제외)\s+(\d{4}\.\d{4,5})")
 FILES = [*TABLES.values(), "english-copy.js", "benchmark-modalities.json", "README.md",
-         "inventory-data.js", "serving-data.js", "site-meta.js"]
+         "inventory-data.js", "serving-data.js", "site-meta.js", "benchmark_top_models.csv"]
 
 
 def proposal_hash(proposal):
@@ -80,6 +80,14 @@ def replace_copy(text, key, fields):
 def apply_proposal(item, root=ROOT, verify=True):
     if item["proposal_sha256"] != proposal_hash(item) or not item.get("verification", {}).get("approve"):
         raise ValueError("Proposal hash or second-pass verification is invalid")
+    config = read_json(root / "research/config.json")
+    if config.get("publication_policy") == "complete-evidence-v1":
+        from publication_checks import complete
+        complete(item["changes"])
+        if item.get("verification", {}).get("publication_policy") != config["publication_policy"]:
+            raise ValueError("Proposal lacks approval under the complete publication policy")
+        if not agreed(item, config):
+            raise ValueError("Complete proposal is not bound to the current Claude approval")
     originals = {name: (root / name).read_bytes() for name in FILES}
     tables = {track: read_table(root, track) for track in TABLES}
     # Check every row before writing anything, so an unrelated update is retained.
@@ -108,6 +116,9 @@ def apply_proposal(item, root=ROOT, verify=True):
                 path = root / "english-copy.js"
                 path.write_text(replace_copy(path.read_text(), row["id"], change["english_copy"]), encoding="utf-8")
             modalities[row["id"]] = change["modality"]
+        if config.get("publication_policy") == "complete-evidence-v1":
+            from publication_checks import apply_rankings
+            apply_rankings(item, root)
         write_json(root / "benchmark-modalities.json", modalities)
         if verify:
             # Reuse the existing renderer without re-normalizing license fields.
@@ -164,6 +175,14 @@ AUTO_MARKER = re.compile(r"^<!-- arxiv-applied:v3:(\d{4}-\d{2}-\d{2}) -->", re.M
 def agreed(item, config):
     verification = item.get("verification", {})
     votes = verification.get("votes", [])
+    if config.get("publication_policy") == "complete-evidence-v1":
+        from publication_checks import complete
+        if verification.get("publication_policy") != config["publication_policy"]:
+            return False
+        try:
+            complete(item["changes"])
+        except (ValueError, KeyError, TypeError):
+            return False
     if config.get("approval_policy") == "claude_only":
         return (verification.get("policy") == "claude_only"
                 and len(votes) == 1 and votes[0].get("model") == config.get("claude_model")
@@ -296,6 +315,12 @@ def _sync(state, github, now, reviewer, root=ROOT):
 
 def sync(state, github, now, reviewer, root=ROOT):
     names = FILES + ["research/proposals.json"]
+    config = read_json(root / "research/config.json")
+    if config.get("publication_policy") == "complete-evidence-v1":
+        from publication_checks import complete
+        complete(item["changes"])
+        if item.get("verification", {}).get("publication_policy") != config["publication_policy"]:
+            raise ValueError("Proposal lacks approval under the complete publication policy")
     originals = {name: (root / name).read_bytes() for name in names if (root / name).exists()}
     try:
         return _sync(state, github, now, reviewer, root)

@@ -35,6 +35,7 @@ class ResearchTests(unittest.TestCase):
         # Tests use an empty temporary ledger, independent of production daily limits.
         research.write_json(self.root / "research/proposals.json", {"schema_version": 1, "proposals": {}, "processed_comments": []})
         config = research.read_json(self.root / "research/config.json")
+        config.pop("publication_policy", None)
         config.update(LEGACY_CONFIG)
         config["pipeline"] = "legacy"
         config["approval_policy"] = "dual_model"
@@ -251,6 +252,7 @@ class ResearchTests(unittest.TestCase):
 
     def consensus(self, votes=(True, True)):
         config = research.read_json(research.ROOT / "research/config.json")
+        config.pop("publication_policy", None)
         config.update(LEGACY_CONFIG)
         config["pipeline"] = "legacy"
         config["approval_policy"] = "dual_model"
@@ -336,6 +338,7 @@ class ResearchTests(unittest.TestCase):
 
     def test_zero_prices_require_explicit_billing_basis(self):
         config = research.read_json(research.ROOT / "research/config.json")
+        config.pop("publication_policy", None)
         config.update(LEGACY_CONFIG)
         research.check_config(config)
         del config["billing_basis"]

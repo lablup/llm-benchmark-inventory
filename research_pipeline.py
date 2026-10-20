@@ -49,8 +49,10 @@ inputs -> text; tasks requiring images/screenshots/documents -> vision. A paper
 containing figures does not make its benchmark a vision benchmark.
 Record supported dataset/question counts, task counts, splits and evaluation
 metrics in the existing definition/task fields when useful. Preserve units,
-versions and evaluation conditions. Do not infer missing numbers or turn a
-paper's model scores into a current leaderboard or recommended-model ranking.
+versions and evaluation conditions. Do not infer missing numbers or claim a
+current global leaderboard. A separate evidence stage adds paper-reported model
+comparisons. A materially new model comparison for an existing benchmark may
+propose its unchanged inventory row for that stage.
 Do not infer dataset language solely from the paper's writing language.
 Never invent examples, scores, licensing, evaluation harness support, or model rankings.
 Output {"decision":"propose|exclude|needs_evidence", "reason":"Korean explanation",
@@ -236,10 +238,11 @@ def validate_result(result: dict, context: dict) -> dict:
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", row["id"]):
             raise ValueError("Invalid benchmark id")
         old = next((r for r in context["tables"][track]["rows"] if r["id"] == row["id"]), None)
-        if old == row:
+        if old == row and not context.get("allow_score_updates") and not (
+                context.get("publication_policy") == "complete-evidence-v1" and change.get("recommendations")):
             raise ValueError("No inventory change")
         for key, value in UNKNOWN.items():
-            if row[key] != (old[key] if old else value):
+            if context.get("publication_policy") != "complete-evidence-v1" and row[key] != (old[key] if old else value):
                 raise ValueError("Automatic proposals cannot assert new licensing or harness support")
         if not old and row["예시 표기"] != "과제 설명":
             raise ValueError("New entries must use task descriptions")
