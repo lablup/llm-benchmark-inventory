@@ -154,3 +154,42 @@ Failing/partial extraction holds the candidate; agreement does not override
 missing evidence. The ten-minute per-PDF timeout is an operational safeguard,
 not a new daily paper quota. Validate hosted installation and actual extraction
 separately from LLM agreement and inventory application.
+
+## 12. Use Claude within the existing subscription only (2026-10-20)
+
+The user chose Claude subscription usage instead of adding metered GPT costs.
+Integrate the official Claude Code GitHub Action using the repository secret
+`CLAUDE_CODE_OAUTH_TOKEN`, issued with `claude setup-token`. Do not send that
+credential through a custom API client or the existing OpenAI-compatible adapter.
+Keep the existing shared runner for Token Factory calls.
+
+The initial integration replaces GLM in the independent full-text audit with
+Claude, keeping DeepSeek as the draft author and the other auditor. Preserve
+the existing two-model abstract screening until its migration is separately
+implemented and checked. Require both full-text approvals on the same draft
+and evidence before applying any change. Keep the 11:30 Asia/Seoul schedule,
+ID deduplication, source checks, and language/modality routing.
+
+Claude must use the subscription allocation only. Do not enable paid extra
+usage, spend usage credits, purchase credits, or fall back to an Anthropic API
+key, GPT API, cloud provider, or another billable route. Verify that account
+extra usage is disabled before the first model call; OAuth authentication alone
+does not establish that condition. If authentication or billing mode cannot
+be established, stop before calling the model.
+
+On quota exhaustion, save progress and wait for the provider's reset before
+resuming. On authentication failure, require credential repair. On interrupted
+calls, reconcile saved responses and checkpoints before retrying. Never treat
+missing, malformed, or truncated output as approval or substantive disagreement.
+Preserve completed work; do not clear stop flags or repeat the entire queue
+without inspecting the saved run.
+
+At this decision's creation, the workflow still uses Token Factory and Claude
+integration has not been implemented or tested. No Claude token is registered.
+The local implementation and recovery instructions are in
+`_local/CLAUDE_SUBSCRIPTION_HANDOFF.md`, intentionally ignored under decision 8.
+
+The user subsequently confirmed that automatic usage-credit spending is disabled.
+This account-setting prerequisite is satisfied; do not request the same confirmation
+again unless evidence shows the setting changed. The repository secret `CLAUDE_CODE_OAUTH_TOKEN` was subsequently confirmed present.
+Use the manual subscription smoke before enabling Claude in production.
