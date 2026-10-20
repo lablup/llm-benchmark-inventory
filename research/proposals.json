@@ -3105,7 +3105,27 @@
         "2609.23055",
         "2609.23064",
         "2609.23142",
-        "2609.23201"
+        "2609.23201",
+        "2609.23307",
+        "2609.23315",
+        "2609.23336",
+        "2609.23363",
+        "2609.23416",
+        "2609.23490",
+        "2609.23695",
+        "2609.23825",
+        "2609.23894",
+        "2609.23925",
+        "2609.24002",
+        "2609.24016",
+        "2609.24094",
+        "2609.24161",
+        "2609.24172",
+        "2609.24190",
+        "2509.20645",
+        "2604.01444",
+        "2608.27394",
+        "2609.06780"
       ]
     }
   },
@@ -3114,21 +3134,21 @@
       "arxiv_id": "2609.21763",
       "paper_title": "Beyond Benchmark Scores: Auditing Medical Vision-Language Models for Chest X-Ray Tuberculosis Screening",
       "abstract": "A medical model's benchmark score does not establish that the same conclusion holds under a different evaluation. This study tests whether claims about model ranking, score reliability and screening performance survive changes in cohort, prompt, negative spectrum, specified prevalence and operating threshold. We audit three medical vision-language models (BioMedCLIP, CheXficient, and MedSigLIP) and a general-domain OpenCLIP comparator on 12,200 chest radiograph records from four datasets (Montgomery, Shenzhen, TBX11K, and VinDr-CXR). Five fixed prompt families yield 244,000 model--image--prompt scores. No model leads every cohort and reliability criterion. Prompt-family changes alter AUROC in 21 of 48 multiplicity-controlled comparisons. Replacing healthy controls with sick non-tuberculosis controls reduces AUROC by 0.075--0.306 across all four models. On VinDr-CXR, the three medical models distinguish tuberculosis from no-finding controls substantially better than from pneumonia or lung tumor; their AUROC point estimates for both named diseases fall below 0.5. CheXficient has documented VinDr-CXR pretraining exposure, which limits the interpretation of its results. Thresholds chosen for 95\\% sensitivity on TBX11K training retain that constraint by point estimate in only four of sixteen target evaluations. A five-seed supervised source model reaches 0.999 AUROC on TBX11K validation but 0.629 on each of two external cohorts. Conservative exclusion of perceptual-overlap candidates narrows this gap without closing it. These retrospective, single-task results show that discrimination, score reliability and threshold retention support different portability claims. Evidence for chest X-ray tuberculosis screening should identify the complete evaluation specification rather than attribute clinical portability to a checkpoint alone.",
-      "paper_updated": "2026-09-18T13:33:57Z",
-      "created_at": "2026-10-19T05:25:37Z",
-      "input_sha256": "3228af2374a05b30d0a39964028f400a3f0612760acf9cdf435b76d278c54475",
-      "version": 1,
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "a71dd9db3d7dab2f98eb0b0b33a7d8855f969d9fd2334a74bfe249e7b8441e3e",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "의료 VLM 평가 감사 프레임워크와 재사용 가능한 평가 프로토콜을 제시함"
+          "reason": "의료 VLM 결핵 선별 감사 연구"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요"
+          "decision": "irrelevant",
+          "reason": "기존 모델 결핵 스크리닝 성능 감사, 벤치마크 신규 제안 아님"
         }
       ]
     },
@@ -3136,21 +3156,21 @@
       "arxiv_id": "2609.21879",
       "paper_title": "Benchmarking the Explanatory Quality of Open-Weight Vision-Language Models in Face Recognition",
       "abstract": "Vision-Language Models (VLMs) have recently been proposed as promising tools for face recognition, as they can produce natural language explanations alongside similarity scores. This capability is considered appealing for face comparisons in forensic contexts, which require decisions to be transparent and auditable. However, existing evaluations of VLMs for that use case focus mostly on recognition accuracy, while the validity of generated explanations remains unquantified. In this work, we introduce a benchmarking framework for VLM-based face recognition that treats explanation quality as a core evaluation axis. We propose two criteria that explanations should satisfy: relevance, i.e., reliance on identity-stable facial features; and faithfulness, i.e., alignment with the visible image content without hallucinated features. We jointly develop a methodology enabling the quantification of relevance and faithfulness of evaluated models, based on constraining model outputs to a structured explanation format that supports automated querying and auditing. Using this framework, we benchmark several families of open-weight VLMs, jointly evaluating face verification accuracy and explanation quality. Our results highlight remaining shortcomings of produced explanations, and emphasize the need for such explanation quality metrics to get a complete picture of model performance. The proposed benchmark and open-source evaluation harness provide a foundation for proper benchmarking and future fine-tuning of explainable face recognition systems.",
-      "paper_updated": "2026-09-18T15:06:02Z",
-      "created_at": "2026-10-19T05:25:37Z",
-      "input_sha256": "b08636f5412a82f5bd23b60dfbeb8fe6aa147ef047ba7751d92e0a85c45af4cc",
-      "version": 1,
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "0a42b0a4c9a3d5e6ae436e696145f3f2507b9d2955e93deca478a1763a12ce3a",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "얼굴 인식 VLM 설명 품질 평가 벤치마크와 하네스를 새로 제안함"
+          "reason": "얼굴 인식 VLM 설명 품질 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요"
+          "decision": "relevant",
+          "reason": "얼굴인식 설명 품질 평가 벤치마크 프레임워크 제안"
         }
       ]
     },
@@ -3158,21 +3178,21 @@
       "arxiv_id": "2609.22038",
       "paper_title": "QuranicMMLU: A Cognitively-Aware Benchmark for Evaluating Generative AI Solutions on Quranic Linguistic Knowledge",
       "abstract": "We introduce QuranicMMLU, a benchmark for evaluating generative AI on Quranic Arabic across multiple dimensions of linguistic complexity. Existing Quranic benchmarks center on general question answering and semantic retrieval, without probing specific linguistic competencies or stratifying by cognitive demand and verse difficulty. We construct a five-pillar Quranic taxonomy spanning Phonology, Morphology, Syntax, Semantics, and Pragmatics, with 31 leaves covering phenomena from tajwīd and root-and-pattern morphology to occasions of revelation and inter-surah coherence. For each leaf we generate questions stratified by Bloom's cognitive level and verse perplexity, then have LLM as a judge to independently answer and score every item and route the annotations to manual review. The resulting dataset comprises 980 human-reviewed questions, each issued in both open-ended and multiple-choice form. We benchmark 12 systems on these items and find that the Islamic-specialized model leads, yet every system scores higher on multiple-choice accuracy (average 84%) than open-ended answer quality (average 60%): the two rankings agree closely (Kendall's τ=0.73), but multiple-choice scoring hides failures that surface only once answer choices are removed. QuranicMMLU thus offers a rigorous, linguistically grounded framework for evaluating Arabic NLP in the Quranic domain.",
-      "paper_updated": "2026-09-18T17:30:27Z",
-      "created_at": "2026-10-19T05:25:37Z",
-      "input_sha256": "e4399d9fe0a4c6bc0ff0c8376976d070b0895e4d9bc1fd136cab06ab20ccb269",
-      "version": 1,
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "f97f08dc368734a3f38f1497bc0774ba5149ee831c822987ec4574505ab8085b",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "코란 아랍어 언어 지식 평가용 신규 벤치마크 데이터셋을 제안함"
+          "reason": "꾸란 언어 지식 평가 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요"
+          "decision": "relevant",
+          "reason": "쿠란 아랍어 지식 벤치마크 QuranicMMLU 신규 제안"
         }
       ]
     },
@@ -3180,21 +3200,21 @@
       "arxiv_id": "2609.22452",
       "paper_title": "Vox-Infinity: Benchmarking the Limits of Long-Context Spoken Language Models",
       "abstract": "Long-context understanding remains a fundamental challenge for large language models, as excessively long inputs often lead models to forget salient information. This issue is even more pronounced in the speech domain, where audio, as a low-compression modality, requires substantially more embeddings than text to preserve both semantic content and acoustic cues. To address this challenge, we introduce \\textbf{Vox-Infinity}, the first benchmark specifically designed to evaluate long-context understanding in spoken language models. Vox-Infinity systematically extends audio history along two dimensions: turn count and turn duration. It covers a diverse range of representative scenarios with varying interaction structures and semantic complexity. Crucially, Vox-Infinity provides explicit answer-provenance annotations and organizes samples according to the amount of historical context required to resolve each query, enabling precise and length-aware evaluation. Extensive evaluations of seven representative spoken language models reveal a clear overall recency effect: models generally achieve higher accuracy when answer-supporting evidence is closer to the query, but struggle to retrieve and use evidence located farther back in the dialogue history. Cases and datasets are available at https://vox-infinity.github.io.",
-      "paper_updated": "2026-09-18T18:07:47Z",
-      "created_at": "2026-10-19T05:25:37Z",
-      "input_sha256": "3876c8eebef1197f655e740e252f9bd040a291a6093536d594d9e7f366227d63",
-      "version": 1,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "1d770584b5dc327cf5b994b8597c438c90fe5322b145f5399293427ec0c5213c",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "음성 언어 모델 장문맥 이해 평가용 최초 벤치마크를 제안함"
+          "reason": "장문 음성 언어 모델 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요"
+          "decision": "relevant",
+          "reason": "장문 음성모델 이해 평가 벤치마크 Vox-Infinity 제안"
         }
       ]
     },
@@ -3202,21 +3222,21 @@
       "arxiv_id": "2609.22529",
       "paper_title": "IntLawNER: A Named Entity Recognition Dataset and Benchmark in International Law",
       "abstract": "International law provides the normative framework through which states coordinate action, regulate armed conflict, and protect human rights, yet its texts remain without token-level named entity recognition (NER) resources. We introduce IntLawNER, a NER dataset and benchmark for codified sources of international law, covering 2,987 gold-annotated sentences and 8,094 entity spans from International Court of Justice (ICJ) decisions, UN Security Council resolutions, and European Court of Human Rights (ECtHR) judgments, annotated with seven institution-specific entity types. We construct IntLawNER with a cost-effective hybrid algorithmic-agentic pipeline that reduces 468k source sentences to a compact annotation set through candidate retrieval, LLM-based vetting, and human review, with 89.6% of gold spans accepted unchanged from the silver layer. However, the silver-to-gold analysis reveals that human-machine aggregate agreement metrics can be misleading in domain-specific NER: Cohen's kappa=0.964 on boundary-matched spans masks a macro-F1 of 0.753 when missing entities, boundary errors, and label corrections are included. The benchmark shows that zero-shot span-based GLiNER collapses on entity types dependent on institutional function rather than surface form (0.243 micro-F1), while fine-tuned transformers struggle on rare labels. Carefully selected few-shot examples that demonstrate label contrasts improve every LLM over zero-shot prompting, with Claude Opus 4.6 reaching the best score of 0.873 micro-F1. We release IntLawNER as a benchmark and reusable resource for extracting references in international legal texts.",
-      "paper_updated": "2026-09-18T19:36:30Z",
-      "created_at": "2026-10-19T05:25:37Z",
-      "input_sha256": "227a476d2d7b0fac103a1d8007e5b37befeb3baff22a308af609edae8ff2d1c6",
-      "version": 1,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "ca21acc3309af7188611dd40be784df36342e2a66a4291ddca63fd105580e7c1",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "국제법 개체명 인식 데이터셋과 벤치마크를 새로 공개함"
+          "reason": "국제법 개체명 인식 데이터셋 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요"
+          "decision": "relevant",
+          "reason": "국제법 NER 데이터셋·벤치마크 IntLawNER 제안"
         }
       ]
     },
@@ -3224,21 +3244,21 @@
       "arxiv_id": "2609.22586",
       "paper_title": "SEABED: SouthEast Asian Benchmark for Evaluating Audio Reasoning",
       "abstract": "Modern audio-language models are no longer judged only on what words they can transcribe, but on whether they can reason over what they hear: recovering meaning that lives in tone and prosody, telling dialects and regional languages apart, and resolving ambiguity that the written form leaves open. This capability is now measured by a growing family of audio-reasoning benchmarks, but almost entirely in English and on general-domain audio. Southeast Asia (SEA) is served instead by benchmarks that inherit an English task taxonomy of recognition, translation, and paralinguistic classification, and therefore test whether a model hears SEA speech rather than whether it can reason from it. We introduce SEABED, an audio-first question answering dataset designed to benchmark language and audio reasoning models on SEA speech. SEABED comprises a suite of six audio-reasoning tasks built entirely from real, openly available SEA speech corpora, yielding 5,404 question-answer pairs. We evaluate six frontier and region-specific audio LLMs: even the state-of-the-art model Gemini 3.5 Flash achieves only 50.3% weighted average accuracy. SEABED evaluates not only answer accuracy, but also whether models' stated reasoning is grounded in the audio evidence. A sample of the benchmark data is available here: https://huggingface.co/datasets/CentificAIResearch/SEABED.",
-      "paper_updated": "2026-09-18T21:11:17Z",
-      "created_at": "2026-10-19T05:25:37Z",
-      "input_sha256": "491d97a4f03abbce8d0c1346198949c3e3c1718714d054a65d627a971d4c74a4",
-      "version": 1,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "7512ca4b9f45de28e1cb3b2353edcf4204d468493032104b320ccaddde85d744",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "동남아 음성 추론 평가용 신규 오디오 QA 벤치마크를 제안함"
+          "reason": "동남아시아 오디오 추론 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요"
+          "decision": "relevant",
+          "reason": "동남아 음성 추론 벤치마크 SEABED 신규 제안"
         }
       ]
     },
@@ -3246,21 +3266,21 @@
       "arxiv_id": "2609.22599",
       "paper_title": "MAWILE: Multi-Axis Workbench for Inspecting LLM Evaluators",
       "abstract": "Large language model (LLM) judges provide a flexible and scalable method for evaluating model and agent outputs, but their verdicts can be sensitive to incidental changes in the evaluated response, judge instructions, and scoring rubric. Existing systems examine important subsets of these failure modes, but auditing a configured judge requires testing both the judge instrument and the items it evaluates. We introduce MAWILE, a developer-facing workbench for auditing judge sensitivity across four surfaces: the judge prompt, judge rubric, target-system input, and target-system output. Given a user-supplied judge and representative evaluation items, MAWILE constructs and validates controlled perturbations, re-executes the judge, and localizes the resulting sensitivity. Each perturbation declares whether the verdict should remain invariant or change in a specified direction, allowing the same system to measure both robustness to irrelevant variations and sensitivity to meaningful changes. MAWILE audits binary, ordinal, and pairwise judges without requiring gold labels. The code for this tool is available at: github.com/megagonlabs/mawile-judge.",
-      "paper_updated": "2026-09-18T21:34:22Z",
-      "created_at": "2026-10-19T05:25:37Z",
-      "input_sha256": "e60bb458a23109c1058ea33341b5b470b1509217bc2d78466c80838b05e437fe",
-      "version": 1,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "46ff2199bba355e0fa9fe8bc7a66b107c0039cefc233a4a07f0de015373c56c7",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "LLM 심사자 민감도 감사용 재사용 가능한 워크벤치 도구를 제안함"
+          "reason": "LLM 심사자 민감도 감사 워크벤치"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요"
+          "decision": "relevant",
+          "reason": "LLM 심판 감사 도구 MAWILE 제안, 평가 도구 해당"
         }
       ]
     },
@@ -3268,21 +3288,21 @@
       "arxiv_id": "2609.22723",
       "paper_title": "ANI-Gamut: Benchmarking Agent Reliability across the Gamut of Agent-Network Interface Abstractions",
       "abstract": "Large Language Model (LLM) agents are increasingly trusted to operate live networks: they read state, change configuration, and verify the result. A first-order question is left implicit: at which level of abstraction should the agent operate? We make the interface-abstraction level an explicit, controlled experimental variable, organizing agent-network interfaces into a spectrum from raw CLI (A0) through bounded wrappers (A1) and standardized model-driven configuration (A2) to typed transactional service intent (A3-T), reconciled source-of-truth automation (A3-R), and their combination (A4). We present ANI-Gamut, a reproducible, open-source playground that exposes the same task at several levels on a single, densely populated brownfield substrate, where many coexisting services share resources and collateral damage actually arises. We instantiate and measure four points of the spectrum and describe the others only at the conceptual level, and record three dependent variables as the substrate is stressed by injected faults: task reliability, collateral damage against pre-existing tenants, and operational cost. In a pilot with small run counts (n=20, n=6 and n=4 per level), the interface level moves reliability and cost sharply: on a live change-set task a raw-shell agent fails on all six seeds while a typed transactional interface succeeds on all six (paired McNemar p=0.031, on six discordant pairs), at roughly an order of magnitude less cost, as the engineering effort migrates from the agent to a reusable transaction layer. Collateral damage, by contrast, is absent at every level, whether benign or under faults: in a tenant-isolated substrate the agents fail safe, and the blast radius is held by the substrate's isolation, which moves the safety question from the agent to the substrate.",
-      "paper_updated": "2026-09-19T03:17:01Z",
-      "created_at": "2026-10-19T05:25:37Z",
-      "input_sha256": "8ff5d2cb9dd6779189e3e496da9973f4512423cd60c3912065248d7a1a15ec2d",
-      "version": 1,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "3910a86544b8210b5e1ce96459af2b07eabdbc886a48b3a054c7b7135c479ff4",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "에이전트-네트워크 인터페이스 추상화 평가용 재현 가능한 플레이그라운드를 제안함"
+          "reason": "에이전트-네트워크 인터페이스 추상화 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요"
+          "decision": "relevant",
+          "reason": "에이전트-네트워크 인터페이스 신뢰성 벤치마크 제안"
         }
       ]
     },
@@ -3290,21 +3310,21 @@
       "arxiv_id": "2609.22778",
       "paper_title": "MIS-Bench: Benchmarking Multimodal LLMs for Psychotherapeutic Interpersonal Skills Assessment",
       "abstract": "Multimodal large language models (MLLMs) are increasingly used as evaluators, yet their reliability in professional assessment tasks that require expert judgment remains unclear. We investigate this challenge in the context of assessing psychotherapeutic interpersonal skills and introduce MIS-Bench, a Multimodal Interpersonal Skills (MIS) benchmark comprising 996 psychotherapy response videos annotated across 8 dimensions of Facilitative Interpersonal Skills. Across 9 MLLMs with multiple modality and prompting settings, we find that current models show only modest agreement with human experts, inconsistent gains from multimodal input, and limited benefits from reasoning-based prompting. To mitigate this gap, we propose MIS-RAFT, a regression-aware fine-tuning method inspired by RAFT and tailored to fine-grained interpersonal skill scoring at one-decimal precision. MIS-RAFT addresses the mismatch between autoregressive token prediction and scalar-valued expert assessment, significantly improving agreement with human ratings. Overall, MIS-Bench reveals a clear gap between general multimodal capability and expert-level interpersonal judgment, while MIS-RAFT offers a promising path toward more reliable model-based assessment.",
-      "paper_updated": "2026-09-19T05:22:04Z",
-      "created_at": "2026-10-19T05:25:37Z",
-      "input_sha256": "8028f4a9ce89c5ca46b954f1e1c43428fdefaa5e41ff415a348a0a794bda27f9",
-      "version": 1,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "b36d7e10e8160a9674c09860a5b1a8038315b02e2025b6ca88fb12dd6827ebc6",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "심리치료 대인기술 평가용 멀티모달 벤치마크를 새로 제안함"
+          "reason": "심리치료 대인관계 기술 평가 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요"
+          "decision": "relevant",
+          "reason": "심리치료 대인기술 다중모달 벤치마크 MIS-Bench 제안"
         }
       ]
     },
@@ -3312,21 +3332,21 @@
       "arxiv_id": "2609.22878",
       "paper_title": "ISA-Bench: A Benchmark for Computational Reasoning Across Instruction Set Architectures",
       "abstract": "Large language model code generation benchmarks primarily evaluate well-resourced languages like Python and Java, where models benefit from abundant training data. They provide limited evidence about reasoning in unfamiliar computational models: deriving arithmetic from a single subtract instruction, coordinating parallel programs across communicating nodes, or wiring logic gates into circuits. We present ISA-Bench, a benchmark of programming games with constrained instruction sets. For each game we provide a full execution stack (parser, VM, and verifier), enabling automated evaluation with structured feedback for iterative refinement. Reasoning models achieve higher average solve rates than code-specialized and general-purpose models, but unfamiliar syntax remains a major source of failure. Models solve more tasks with iterative feedback, though the gains vary substantially across architectures. We introduce a reasoning--execution gap (REG) analysis that reveals a recurring disconnect between identifying a plausible computational strategy and expressing it as a correct program in the target ISA. Code is open-sourced.",
-      "paper_updated": "2026-09-19T08:29:35Z",
-      "created_at": "2026-10-19T05:25:37Z",
-      "input_sha256": "1c85238c6a3faeeba1b9c8598a944130562bdbf1d1b9d6e3f3943305b6a8b89e",
-      "version": 1,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "429ea0c52ce5aa9239d3ce0f44fb98fa816067c53565eb20ae8bf800d17d74dd",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "명령어 집합 구조 추론 평가용 신규 벤치마크와 실행 스택을 제안함"
+          "reason": "명령어 집합 아키텍처 추론 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요"
+          "decision": "relevant",
+          "reason": "명령어 집합 아키텍처 추론 벤치마크 ISA-Bench 제안"
         }
       ]
     },
@@ -3334,22 +3354,21 @@
       "arxiv_id": "2609.23055",
       "paper_title": "Optimizers for Diffusion Models: A Controlled Benchmark",
       "abstract": "Discrete diffusion models now match autoregressive language models on several benchmarks, while the question of how best to train them has received far less attention: the optimizer is inherited from one paper to the next and never compared. New optimizers, meanwhile, are validated almost exclusively on autoregressive pretraining, a different objective on a different loss surface. We present a controlled optimizer benchmark across four diffusion formulations, to our knowledge the first for discrete diffusion: seven optimizers (AdamW, Lion, Muon, SOAP, MARS, MARS-M, Schedule-Free) on masked diffusion (text8), uniform diffusion (QM9, and LM1B through the Gaussian duality) and Gaussian diffusion on images (CelebA-64), each on a task with published reference values. Every optimizer receives the same search protocol, and every winner is retrained at the full budget with three seeds. AdamW is a strong default but not always the right choice: it is beaten by a resolved margin on two of the four tasks, and the winner changes with the formulation, so the optimizer deserves the same care as the rest of the training recipe. Notably, methods validated on autoregressive language model pretraining transfer well: Muon, MARS-M and SOAP each beat the tuned AdamW on at least one diffusion formulation. The benchmark, all runs and every figure are reproducible end to end from the released code at https://github.com/armanbolatov/diffusion-baselines.",
-      "paper_updated": "2026-09-19T14:41:28Z",
-      "created_at": "2026-10-19T05:33:33Z",
-      "input_sha256": "b60548568c3bdd0226e66d15626381bd4b974dbdc2d28f138d94d739fbd1d112",
-      "version": 2,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "1c782ec668fae8ee23f99705eb41bcef7e7d305b280d9883aaf28e83216f4d88",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "확산 모델 옵티마이저 재사용 벤치마크와 코드 공개"
+          "reason": "확산 모델 옵티마이저 통제 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Unterminated string starting at: line 1 column 14474 (char 14473)"
+          "reason": "확산모델 옵티마이저 벤치마크, 언어모델 평가 자료인지 불명확"
         }
       ]
     },
@@ -3357,22 +3376,21 @@
       "arxiv_id": "2609.23064",
       "paper_title": "FireWorldBench: Benchmarking Complex Physical World Intelligence through Coupled-Field Fire Dynamics",
       "abstract": "Understanding the physical world requires more than object recognition, scene description, and short-term visual prediction, as real-world physical systems involve multiple continuous fields, latent causal mechanisms, partial observations, and intervention-sensitive dynamics. We propose FireWorldBench, a benchmark for evaluating complex physical world intelligence in multimodal large language models and agents through coupled-field fire dynamics. Fire provides a canonical stress-test environment, where multiple interacting physical fields jointly shape observable states and temporal dynamics. FireWorldBench is organized along two complementary axes, a physical capability axis and a fire scenario task axis, jointly covering physical-state understanding, temporal dynamics, causal mechanisms, and intervention reasoning. The benchmark comprises 520 fire-world entries, including 494 controlled simulation worlds and 26 real-world-aligned event groups, spanning 47 scene archetypes across 7 environment families. These entries combine structured textual observations, multiple 2D physical-field visualizations, and 3D event-level scene modeling, yielding 9,074 text-image interleaved question-answer pairs across choice-based and open-ended report-generation formats. FireWorldBench evaluates whether models can infer latent physical states, explain underlying mechanisms, forecast coupled-field evolution, and assess intervention consequences from multimodal partial observations, providing a challenging testbed for complex physical world intelligence.",
-      "paper_updated": "2026-09-19T14:50:42Z",
-      "created_at": "2026-10-19T05:33:33Z",
-      "input_sha256": "179b067dd8a066680cf06d7a3443598fa7b1ccc484896e38664184782f4313d6",
-      "version": 2,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "977db5705d77d17e0ae649af0ce83d1090c979741bd20b5b11619636a0f58874",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "다중모달 물리세계 이해 벤치마크와 데이터셋 제안"
+          "reason": "복합 물리장 화재 역학 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Unterminated string starting at: line 1 column 14474 (char 14473)"
+          "decision": "relevant",
+          "reason": "물리 세계 이해 다중모달 벤치마크 FireWorldBench 제안"
         }
       ]
     },
@@ -3380,22 +3398,21 @@
       "arxiv_id": "2609.23142",
       "paper_title": "CraftBench-UE: Deterministic Evaluation for Coding Agents in Unreal Engine",
       "abstract": "Building gameplay features in a game engine requires more than code, as code that compiles and runs does not necessarily implement the requested gameplay. We introduce CraftBenchUE, an evaluation harness that runs agents in an isolated Unreal Engine environment, reconstructs their saved submissions in fresh projects, and applies deterministic build, asset, and runtime checks without an LLM judge. Based on the harness, we built a benchmark consisting of 70 tasks spanning C++ source, Blueprint assets, and editor scripting. We evaluate seven models under two editor-tool configurations, with a file-and-shell baseline on C++ tasks. We further pair tasks that specify the same gameplay and use the same runtime tests, but require C++ and Blueprint as the deliverables. Across the 10 paired tasks, C++ completion rates exceed Blueprint by 30.0 and 42.9 percentage points in the two tool configurations. Among on-time Blueprint submissions in this paired set that pass asset checks, 42.2% and 50.0% fail explicit runtime assertions. These submissions satisfy asset requirements but fail the required gameplay tests. We will release the harness, task benchmark, and our trajectory findings with the report.",
-      "paper_updated": "2026-09-19T17:18:23Z",
-      "created_at": "2026-10-19T05:33:33Z",
-      "input_sha256": "63fd7ae7b8c4108210d0166d583716bd7b6e930ea088f34e32980ab2ad355c45",
-      "version": 2,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "62d88080363c6abf5196b8fa97af3a525557454acd524af2f73f7056cdb520eb",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "언리얼 엔진 코딩 에이전트 평가 하네스와 벤치마크"
+          "reason": "언리얼 엔진 코딩 에이전트 평가 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Unterminated string starting at: line 1 column 14474 (char 14473)"
+          "decision": "relevant",
+          "reason": "언리얼 코딩 에이전트 결정론적 평가 벤치마크 제안"
         }
       ]
     },
@@ -3403,22 +3420,21 @@
       "arxiv_id": "2609.23201",
       "paper_title": "Do Not Trust the Benchmark: Limitations of General LLM Rankings and a Case for Task-Specific Evaluation",
       "abstract": "Benchmark scores increasingly influence the development, marketing, and selection of large language models (LLMs). Yet an overall score is interpretable only in relation to the system tested, the questions included, and the conditions of evaluation. This perspective examines five connected limitations of general LLM rankings: differences between evaluated and publicly available systems; commercial incentives and dependencies in external evaluation; benchmark saturation, defective tests, and data contamination; models exploiting scoring procedures; and the limited relevance of general scores to users' tasks. Documented cases illustrate why these problems require different responses. I argue for evaluation procedures that disclose the tested configuration, validate questions and successful task completion, report performance alongside cost and execution time, and make the scope of generalization explicit. I then discuss \\textbf{Isotanta}, a crowdsourced benchmarking platform, as a practical example of contributed questions and repeated evaluation. A larger question pool may improve task coverage, while repeated sampling can improve the stability of estimates on that pool; neither guarantees validity or personalization. The paper distinguishes the platform's current shared ranking from proposed task-specific and user-provided evaluations. Its central argument is that model selection requires evidence about performance on the intended work, not simply a high position on a general leaderboard.",
-      "paper_updated": "2026-09-19T20:02:05Z",
-      "created_at": "2026-10-19T05:33:33Z",
-      "input_sha256": "9c6b8f4daffd0406d40484d1094f28fa7fc062713f9a3db03ed719bdb9e10d09",
-      "version": 2,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "6a43125939404013869fd96188a5285b074f8634f86224ebcb7091efb55be757",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "decision": "uncertain",
-          "reason": "벤치마크 한계 논평과 플랫폼 소개, 재사용 자원 불명확"
+          "decision": "relevant",
+          "reason": "LLM 순위 한계 및 과제별 평가 주장"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Unterminated string starting at: line 1 column 14474 (char 14473)"
+          "reason": "벤치마크 한계 논평, 크라우드소싱 플랫폼 재사용성 불명확"
         }
       ]
     },
@@ -22683,6 +22699,138 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "에이전트 트레이스 단계별 주석 워크벤치 재사용 도구 제안"
+        }
+      ]
+    },
+    "2412.07251": {
+      "arxiv_id": "2412.07251",
+      "paper_title": "KULTURE Bench: A Benchmark for Assessing Language Model in Korean Cultural Context",
+      "abstract": "Large language models have exhibited significant enhancements in performance across various tasks. However, the complexity of their evaluation increases as these models generate more fluent and coherent content. Current multilingual benchmarks often use translated English versions, which may incorporate Western cultural biases that do not accurately assess other languages and cultures. To address this research gap, we introduce KULTURE Bench, an evaluation framework specifically designed for Korean culture that features datasets of cultural news, idioms, and poetry. It is designed to assess language models' cultural comprehension and reasoning capabilities at the word, sentence, and paragraph levels. Using the KULTURE Bench, we assessed the capabilities of models trained with different language corpora and analyzed the results comprehensively. The results show that there is still significant room for improvement in the models' understanding of texts related to the deeper aspects of Korean culture.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "b84f28fbc02b8f8415dd42ceae49df43a5acd2ae98fbbf414d20abb137eaeca1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "한국어 문화 맥락 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "한국 문화 이해 평가 벤치마크 KULTURE Bench 신규 제안"
+        }
+      ]
+    },
+    "2506.04516": {
+      "arxiv_id": "2506.04516",
+      "paper_title": "DRE: An Effective Dual-Refined Method for Integrating Small and Large Language Models in Open-Domain Dialogue Evaluation",
+      "abstract": "Large Language Models (LLMs) excel at many tasks but struggle with ambiguous scenarios where multiple valid responses exist, often yielding unreliable results. Conversely, Small Language Models (SLMs) demonstrate robustness in such scenarios but are susceptible to misleading or adversarial inputs. We observed that LLMs handle negative examples effectively, while SLMs excel with positive examples. To leverage their complementary strengths, we introduce SLIDE (Small and Large Integrated for Dialogue Evaluation), a method integrating SLMs and LLMs via adaptive weighting. Building on SLIDE, we further propose a Dual-Refinement Evaluation (DRE) method to enhance SLM-LLM integration: (1) SLM-generated insights guide the LLM to produce initial evaluations; (2) SLM-derived adjustments refine the LLM's scores for improved accuracy. Experiments demonstrate that DRE outperforms existing methods, showing stronger alignment with human judgment across diverse benchmarks. This work illustrates how combining small and large models can yield more reliable evaluation tools, particularly for open-ended tasks such as dialogue evaluation.",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "ec10649418a069569d38c0f4598a920540dbd1acdea258df469d2152b45cdb7c",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "대화 평가 방법론 및 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "대화 평가 방법 제안, 재사용 가능 평가자료 불명확"
+        }
+      ]
+    },
+    "2507.03160": {
+      "arxiv_id": "2507.03160",
+      "paper_title": "Assessing Small Language Models for Code Generation: An Empirical Study with Benchmarks",
+      "abstract": "The recent advancements of Small Language Models (SLMs) have opened new possibilities for efficient code generation. SLMs offer lightweight and cost-effective alternatives to Large Language Models (LLMs), making them attractive for use in resource-constrained environments. However, empirical understanding of SLMs, particularly their capabilities, limitations, and performance trade-offs in code generation remains limited. This study presents a comprehensive empirical evaluation of 20 open-source SLMs ranging from 0.4B to 10B parameters on five diverse code-related benchmarks (HumanEval, MBPP, Mercury, HumanEvalPack, and CodeXGLUE). The models are assessed along three dimensions: i) functional correctness of generated code, ii) computational efficiency and iii) performance across multiple programming languages. The findings of this study reveal that several compact SLMs achieve competitive results while maintaining a balance between performance and efficiency, making them viable for deployment in resource-constrained environments. However, achieving further improvements in accuracy requires switching to larger models. These models generally outperform their smaller counterparts, but they require much more computational power. We observe that for 10% performance improvements, models can require nearly a 4x increase in VRAM consumption, highlighting a trade-off between effectiveness and scalability. Besides, the multilingual performance analysis reveals that SLMs tend to perform better in languages such as Python, Java, and PHP, while exhibiting relatively weaker performance in Go, C++, and Ruby. However, statistical analysis suggests these differences are not significant, indicating a generalizability of SLMs across programming languages. Based on the findings, this work provides insights into the design and selection of SLMs for real-world code generation tasks.",
+      "paper_updated": "2026-10-19T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "dc0415eca1fd2406604775ac64a0b307d7f6c140479a3cd4da929455f135d7c1",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "코드 생성 SLM 평가 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "irrelevant",
+          "reason": "기존 벤치마크로 SLM 코드생성 성능만 보고"
+        }
+      ]
+    },
+    "2604.11304": {
+      "arxiv_id": "2604.11304",
+      "paper_title": "BankerToolBench: Evaluating AI Agents in End-to-End Investment Banking Workflows",
+      "abstract": "Existing AI benchmarks lack the fidelity to assess economically meaningful progress on professional workflows. To evaluate frontier AI agents in a high-value, labor-intensive profession, we introduce BankerToolBench (BTB): an open-source benchmark of end-to-end analytical workflows routinely performed by junior investment bankers. To develop an ecologically valid benchmark grounded in representative work environments, we collaborated with 502 investment bankers from leading firms. BTB requires agents to execute senior banker requests by navigating data rooms, using industry tools (market data platform, SEC filings database), and generating multi-file deliverables--including Excel financial models, PowerPoint pitch decks, and PDF/Word reports. Completing a BTB task takes bankers up to 21 hours, underscoring the economic stakes of successfully delegating this work to AI. BTB enables automated evaluation of any LLM or agent, scoring deliverables against 100+ rubric criteria defined by veteran investment bankers to capture stakeholder utility. Testing 9 frontier models, we find that even the best-performing model (GPT-5.4) fails nearly half of the rubric criteria and bankers rate 0% of its outputs as client-ready. Our failure analysis reveals key obstacles (such as breakdowns in cross-artifact consistency) and improvement directions for agentic AI in high-stakes professional workflows.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "6014fb9b26f27e207cf76778fd2aba0d13d35280a6ee96b5c979f8dec6d17426",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "투자은행 워크플로우 AI 에이전트 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "투자은행 워크플로 에이전트 벤치마크 BTB 신규 제안"
+        }
+      ]
+    },
+    "2511.04689": {
+      "arxiv_id": "2511.04689",
+      "paper_title": "Adaptive Testing for LLM Evaluation: A Psychometric Alternative to Static Benchmarks",
+      "abstract": "Evaluating large language models (LLMs) typically requires thousands of benchmark items, making the process expensive, slow, and increasingly impractical at scale. Existing evaluation protocols rely on average accuracy over fixed item sets, treating all items as equally informative despite substantial variation in difficulty and discrimination. We introduce ATLAS, an adaptive testing framework based on Item Response Theory (IRT) that estimates model ability using Fisher information-guided item selection. ATLAS reduces the number of required items by up to 90% while maintaining measurement precision. For instance, it matches whole-bank ability estimates using only 41 items (0.157 MAE) on HellaSwag (5,600 items). We further reconstruct accuracy from ATLAS's ability estimates and find that reconstructed accuracies closely match raw accuracies across all five benchmarks, indicating that ability $θ$ preserves the global performance structure. At the same time, $θ$ provides finer discrimination within accuracy-equivalent models: among more than 3,000 evaluated models, 23-31% shift by more than 10 rank positions, and models with identical accuracies receive meaningfully different ability estimates. Code and calibrated item banks are available at https://github.com/Peiyu-Georgia-Li/ATLAS.git.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "46f6c268393faa2fee3c95b4f51869e7406367b7218d19e186182c9149c5d3b0",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 평가를 위한 적응형 테스트 프레임워크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "IRT 기반 적응형 LLM 평가 프레임워크 ATLAS 제안"
+        }
+      ]
+    },
+    "2608.30653": {
+      "arxiv_id": "2608.30653",
+      "paper_title": "Fine-Grained Multi Image Object Hallucination Benchmark",
+      "abstract": "Multimodal Large Language Models (MLLMs) are increasingly deployed in multi-image scenarios requiring complex reasoning across visual contexts. However, current MLLMs remain fundamentally limited by object hallucination-generating plausible yet factually inconsistent descriptions about objects. Existing benchmarks, designed primarily for single-image settings or providing only high-level multi-image assessments, cannot systematically diagnose how visual complexity and reasoning demands trigger hallucination. To address this gap, we introduce MIOH, a fine-grained multi-image object hallucination benchmark that systematically evaluates object hallucination across four foundational tasks (existence, counting, attribute, position) through three multi-image reasoning patterns (comprehensive, comparative, selective) under three controlled adversarial pressures (visual context scale, perceptual difficulty, contextual bias). Through evaluation of 29 models, we reveal that even state-of-the-art systems like GPT-5 and Gemini-2.5-Pro exhibit distinct failure patterns across different reasoning patterns and tasks. Our evaluation reveals that hallucination stems not merely from perceptual failures but from integration-stage limitations when maintaining object representations across multiple images. MIOH provides a controlled framework for analyzing multi-image object hallucination and serves as a critical evaluation tool for developing more reliable multimodal AI systems.",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "created_at": "2026-10-20T02:48:49Z",
+      "input_sha256": "2b51fcd89fe773d62faa58132ebd30d9fdd4f51b519115b772901074d8db74d3",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "다중 이미지 객체 환각 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "다중 이미지 환각 평가 벤치마크 MIOH 신규 제안"
         }
       ]
     }
