@@ -61,7 +61,7 @@ def prepare(artifact, base_commit, root=r.ROOT):
     return manifest
 
 
-def parse_execution(messages):
+def parse_execution(messages, parse=r.parse_check):
     if not isinstance(messages, list) or not all(isinstance(m, dict) for m in messages):
         raise ValueError("Invalid execution log")
     init = [m for m in messages if m.get("type") == "system" and m.get("subtype") == "init"]
@@ -79,7 +79,7 @@ def parse_execution(messages):
         content = message.get("message", {}).get("content", [])
         if isinstance(content, list) and any(isinstance(c, dict) and c.get("type") == "tool_use" for c in content):
             raise ValueError("The audit must not use tools")
-    return {"model": MODEL, **r.parse_check(result.get("result", "")),
+    return {"model": MODEL, **parse(result.get("result", "")),
             "num_turns": result["num_turns"], "usage": result.get("usage", {})}
 
 

@@ -133,7 +133,7 @@ def main() -> None:
     for key, proposal in ledger["proposals"].items():
         if key != proposal["arxiv_id"] or proposal["proposal_sha256"] != proposal_hash(proposal):
             abort("Invalid proposal identity or hash")
-        if proposal["status"] not in {"proposed", "accepted", "held", "rejected", "exclude", "needs_evidence"}:
+        if proposal["status"] not in {"awaiting_claude", "proposed", "accepted", "held", "rejected", "exclude", "needs_evidence"}:
             abort("Invalid proposal status")
         if proposal["status"] in {"proposed", "accepted", "held", "rejected"} and not proposal.get("verification", {}).get("approve"):
             abort("Proposal is missing its second-pass verification")

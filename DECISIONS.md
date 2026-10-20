@@ -199,3 +199,28 @@ subsequently completed. Claude returned a valid rejection for QASU's unsupported
 repository-license wording. Both workflows are read-only; the scheduled
 production model configuration is unchanged. Preserve that distinction when
 resuming the production migration.
+
+## 13. Claude alone approves automatic inventory changes (2026-10-20)
+
+The user explicitly retired the two-model approval requirement because of
+repeated response-format failures. This supersedes the approval requirements
+in decisions 5, 9, 11 and 12: one valid Claude approval of the exact final draft
+is sufficient, together with deterministic evidence and inventory checks.
+A DeepSeek or GLM approval is neither necessary nor sufficient. Historical
+records keep their original policy and are not relabeled as Claude-approved.
+
+Production uses the official subscription-authenticated Claude Code CLI for
+abstract screening, draft preparation and a separate final audit. At migration,
+GitHub exposed only the Claude OAuth secret, so retaining Token Factory for
+screening/drafting would leave scheduled work dependent on a missing credential.
+Reuse completed screening of unchanged text. No additional API service or paid
+fallback is introduced. Pin the CLI and model; isolate settings, disable tools,
+and check OAuth authentication before a call. The owner already confirmed paid
+extra usage is off; do not request the same confirmation again.
+
+Keep the 11:30 Korea schedule, RSS/OAI recovery, ID deduplication, source quotes,
+physical PDF pages, official resource checks, conservative license fields,
+language/modality routing and notifications after deployment. Store pending
+Claude audits durably and resume from evidence artifacts after interruption.
+Missing, malformed or truncated output never counts as approval. Substantive
+rejections remain held. Actual additions/changes alone enter website history.

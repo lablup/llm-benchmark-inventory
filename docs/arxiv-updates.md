@@ -1,36 +1,30 @@
-# arXiv discovery and two-model updates
+# arXiv discovery and Claude-approved updates
 
 The workflow runs at **11:30 Asia/Seoul** (`30 2 * * *`) on GitHub servers,
 independently of the user's laptop. GitHub can delay a scheduled run.
 
-## Claude subscription connection trials
+## Claude subscription production policy
 
-Decision 12 requires Claude's included subscription allocation only, with paid
-extra usage disabled by the account owner and no API-key or cloud fallback.
-The repository OAuth secret is `CLAUDE_CODE_OAUTH_TOKEN`. Never put its value
-in a document, issue, command argument or log.
+Decision 13 supersedes the two-model approval requirement. New abstracts and
+full-text drafts use `claude-sonnet-5-5`; a separate Claude request audits each
+validated draft against the full extracted evidence and fetched official cards.
+Only its approval of the exact proposal permits automatic application. DeepSeek
+and GLM votes are not required and their historical approvals cannot authorize
+new changes. Completed screening of unchanged abstracts is reused on migration.
 
-Two manually dispatched workflows have been checked:
-`claude-subscription-smoke.yml` tests authentication and response parsing;
-`claude-paper-trial.yml` audits the saved QASU draft using the official
-`anthropics/claude-code-action/base-action`, pinned to a commit. Both require
-the subscription-only confirmation input and grant no repository write access.
-The paper trial rechecks the original PDF/page hashes and inventory baseline,
-fetches the official resource card, and supplies no earlier model votes.
-It passes the evidence through a prompt file rather than exposing the paper
-in public workflow input logs. Claude has no tools and at most two turns.
+The official Claude Code CLI is pinned to 2.1.304. It uses only repository secret
+`CLAUDE_CODE_OAUTH_TOKEN`, with isolated settings/HOME, no tools, no MCP servers,
+and no API-key or cloud credentials. OAuth tokens never enter a custom API client.
+The owner confirmed extra usage is disabled. On quota/authentication/runtime
+failure, stop without a paid fallback. The CLI's token-cost estimate is not a
+billing statement. See the [official CLI reference](https://code.claude.com/docs/en/cli-reference)
+and [authentication documentation](https://code.claude.com/docs/en/authentication).
 
-The successful authentication trial is run `39375151752`. Paper trial
-`39375393782` returned a valid rejection from `claude-sonnet-5-5`: the proposed
-usage note claimed the repository license was a code license without evidence
-in the supplied materials. The trial neither changes the inventory nor treats
-that rejection as an operational failure. Its diagnostic report is retained
-as a seven-day artifact.
-
-These are connection/evidence trials. The scheduled production pipeline still
-uses its existing Token Factory models; production migration and checkpointed
-Claude audit resumption remain to be implemented. Do not interpret successful
-authentication as a completed production migration or an approved benchmark.
+The earlier read-only subscription smoke (39375151752) and paper trial
+(39375393782) remain diagnostic history. The latter correctly rejected an
+unsupported QASU repository-license claim; it did not update the inventory.
+Production now invokes the official CLI directly so a variable number of papers
+can be processed sequentially with individual checkpoints.
 
 ## What gets updated
 
@@ -58,36 +52,32 @@ authentication as a completed production migration or an approved benchmark.
    cache format. Metadata date enrichment alone does not trigger model calls.
    Changed text or screening policy may be screened again; pending body work and
    failed PDF downloads remain eligible.
-2. `research_pipeline.py` first sends batches of up to 20 titles and abstracts
-   to DeepSeek and GLM independently, without PDFs, inventory tables or official
-   resource pages. Only agreement that an abstract is irrelevant skips full-text
-   work. Relevant, uncertain, disagreeing, or malformed-but-accounted responses
-   proceed to full-text investigation. Cached decisions are bound to the abstract,
-   title, prompt and model configuration.
+2. `research_pipeline.py` routes production to `claude_approval.py`. Claude reads
+   batches of up to 20 titles and abstracts. Only a valid irrelevant decision
+   skips full-text work; uncertain/relevant candidates continue. A missing or
+   malformed response stops the run and is never treated as an exclusion.
 3. For passed candidates, download the PDF and try Poppler text extraction first.
    `pdf_evidence.py` retries with MinerU 2.7.6 when extraction fails, a page has
    sparse/broken text, or table captions/dense numeric columns are detected.
    This deliberately conservative heuristic can send simple tables to MinerU;
    it does not guarantee detection of every complex layout. Preserve physical
    page numbers, table HTML (including merged cells), the original Poppler text,
-   the PDF SHA-256 and a page-JSON SHA-256. DeepSeek prepares a draft in the existing CSV schema. Useful
+   the PDF SHA-256 and a page-JSON SHA-256. Claude prepares a draft in the existing CSV schema. Useful
    dataset/question counts and evaluation metrics belong in the definition/task
    fields with their units, versions and conditions. The linked GitHub README or
    Hugging Face dataset card is also fetched.
-4. **DeepSeek-V4.1-Flash and GLM-5.3-Flash each audit the same draft and evidence.**
-   Their separate requests do not contain each other's votes. Both must approve
-   every change, including numerical claims, task language and input modality.
-   Both receive the same page-indexed text/table evidence extracted from the
-   retained original PDF. These are text-model audits, not visual PDF inspection.
-   Extraction disagreements and claims requiring unreadable figures or formulas
-   must be rejected. MinerU is a parser, not a third LLM judge.
+4. **Claude audits the validated draft in a separate request.** It receives the
+   full page-indexed evidence and official cards, without any earlier model vote.
+   Approval covers every change, numerical claim, language and modality. This is
+   a text/table audit, not visual PDF inspection. Conflicting extraction or claims
+   requiring unreadable figures/formulas are rejected. MinerU remains a parser.
    An abstract pass alone never authorizes an inventory update.
 5. Source quotes, physical page locations, official links, proposal hashes and
-   the current inventory row are checked in code. Missing evidence or disagreement
+   the current inventory row are checked in code. Missing evidence or a rejected audit
    prevents inclusion without requesting human review. Known-usage parse/evidence
    failures are recorded; authentication, unknown-cost and transport failures stop
    the run with a saved checkpoint.
-6. `review_proposals.py` applies agreed changes to the corresponding CSV, then
+6. `review_proposals.py` applies Claude-approved changes to the corresponding CSV, then
    regenerates the README, English copy, modality metadata and page data.
    Korean text updates appear in `korean.html`, English text in `english.html`;
    image-input tasks appear in the corresponding `?modality=vision` tab. Task
@@ -96,8 +86,8 @@ authentication as a completed production migration or an approved benchmark.
 7. After commit and deployment, a GitHub issue summarizes actual additions and
    changes and is closed as completed. No changes means no issue.
 
-Two models can share an error. Agreement is therefore combined with source
-checks and conservative treatment of missing facts. Neither model may grant
+Claude can make errors. Approval is therefore combined with source checks
+and conservative treatment of missing facts. Claude may not grant
 new licensing permissions. New entries retain `확인 불가` for license,
 commercial use, modification, redistribution, and lm-eval support until those
 claims are separately verified. Existing license-check dates remain unchanged.
@@ -105,34 +95,29 @@ Recommended-model rankings are not updated by this description/catalog adapter.
 
 ## Connection and limits
 
-Configuration is in `research/config.json`. The verified service endpoint is
-`https://api.console.lablup.ai/v1`. The workflow reads `TOKEN_FACTORY_API_KEY`
-from repository **Settings → Secrets and variables → Actions**. Never put the
-key in code, an issue, or chat. Local execution may use `TOKEN_FACTORY_ENV_FILE`
-to point to an existing environment file; it is not copied into this repository.
+Configuration is in `research/config.json`. The production route is
+`pipeline: claude_subscription`, `approval_policy: claude_only`. Only the OAuth
+secret is passed to research. The shared Token Factory runner remains available
+for historical tests, but production no longer calls it or requires its key.
 
-The inherited local configuration records company-provided access with no
-charge, confirmed on 2026-10-12. Zero estimated user cost refers to that
-allocation, not market pricing or a billing API assertion. Calls still have
-separate operational limits: up to 1,000 abstracts and 100 full-text attempts per
-Korean calendar day. Process older pending candidates first. Abstracts use batches
-of 20 and 3,000 output tokens; full-text calls use 6,000 output tokens. Requests
-remain sequential, with up to two transport retries through the shared runner.
-A 90-minute soft budget stops starting work; abstract screening gets at most
-30 minutes, reserving time for full-text work. The hosted job allows 150 minutes
-for in-flight requests, validation and deployment. Both quotas count attempts,
-not successes. Completed records are saved incrementally; untouched candidates
-remain pending for the next run. A failed model call can leave a stop checkpoint
-that must be inspected, rather than being silently retried. Short
-connection tests for both models passed with JSON response format and reasoning
-disabled. This does not by itself prove extraction accuracy.
+Limits remain 1,000 abstracts, 100 full-text attempts per Korean calendar day,
+20 abstracts per batch and 90 minutes of work, with at most 30 minutes for new
+abstract screening. Each CLI request is limited to two turns and ten minutes.
+The hosted job allows 150 minutes including extraction, validation and deployment.
+Completed screenings and papers are persisted incrementally. Pending Claude
+audits are resumed before new work; completed abstracts are not screened again
+merely because the model changed. `--screening-smoke` processes at most ten
+previously unprocessed/changed abstracts without PDF work.
 
-All model calls use the unchanged shared `llm_batch.py` snapshot documented in
-`vendor/README.md`. Projects supply jobs and parsers only. Before model calls,
-the workflow commits and pushes a stop flag so an interrupted runner cannot
-lose its daily checkpoint. A completed paper clears the flag. Inspect recorded
-usage and errors before clearing a stop left by a failed run. Bot commits are
-deployed by the same run; they do not trigger another workflow.
+Before an audit, the ledger saves `awaiting_claude`, the source run, context hash
+and exact draft. A missing/malformed answer is not a rejection or approval.
+The next run restores its seven-day evidence artifact, checks provenance and
+current rows, and resumes the audit without drafting again. An expired/missing
+artifact stops resumption for investigation rather than inventing source evidence.
+A completed response cache is bound to the full prompt hash. Old Token Factory
+budget stop flags are preserved as historical records, not reused as Claude limits.
+Already approved work can still be applied and deployed if a later call fails;
+the workflow retains the failure status so the interruption remains visible.
 
 The daily and elapsed-time limits can leave a backlog. Unprocessed candidates remain in the repository queue without assigning work
 to the user. Transient RSS/OAI failures retain the affected source checkpoint while other
@@ -192,33 +177,16 @@ successful automatic applications record `applied_at`.
 Model requests attach an explicit physical page number to each page's text,
 including blank pages. The stored page JSON and original PDF retain their hashes.
 
-### Re-audit an exact quote with an incorrect page number
+### Revisit a held draft with Claude
 
-The optional Pages workflow input `citation_replay_run` accepts a completed run
-ID whose seven-day research artifact is still available. It skips discovery,
-PDF installation/extraction and draft generation. `replay_citations.py` checks
-the original PDF/page-JSON hashes and refuses replay if inventory CSVs, English
-display copy or modality data have changed since that run's starting commit.
-
-Only saved `needs_evidence` drafts rejected for quote location are considered.
-A quote can move to another page only if its exact text, with the existing
-whitespace normalization, occurs on exactly one physical page. Missing,
-paraphrased, case-altered or ambiguous quotes retain the original failure.
-Every other evidence/schema check still runs. This is not approval by itself.
-At most ten eligible drafts receive fresh independent DeepSeek and GLM audits
-against the retained PDF evidence and newly fetched official cards. Both votes
-and the normal application checks are required to update inventory data.
-
-The original response and archived failure remain available. The new record
-stores `citation_replay`, the source run, original investigation time, corrected
-page locations and quote hashes. A replayed record is not automatically replayed
-again. Budget/crash checkpoints cover the new audit calls. Ordinary scheduled
-runs keep their existing deduplication behavior.
-
-```bash
-python3 replay_citations.py --artifact PATH --base-commit FULL_SOURCE_RUN_SHA \
-  --source-run RUN_ID --dry-run  # offline validation, no model calls
-```
+Dispatch Pages with both `citation_replay_run` (original research artifact run)
+and `claude_replay_key` (one held arXiv ID). The source PDF/page hashes and the
+inventory baseline must still match. Claude revises the saved draft against the
+original evidence and newly fetched official cards. The normal schema, quote,
+page and link checks run again, followed by a fresh independent Claude audit.
+Only approval of that final draft enables application. Historical monthly
+snapshots remain unchanged. The legacy two-model `replay_citations.py` entry point
+refuses execution under the new production policy.
 
 `build_research_records.py` exports only applied changes to `updates.json`.
 The website shows the application date, benchmark name, a short description
@@ -261,10 +229,10 @@ review issue is closed and does not need to be completed.
 python3 -m unittest -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py test_replay_citations.py
 python3 validate_inventory.py
 python3 arxiv_watch.py                  # discover only
-python3 research_pipeline.py --dry-run  # inspect one abstract batch request, no inference
+python3 research_pipeline.py --dry-run  # validate configuration, no inference
 python3 research_pipeline.py --screening-smoke # at most 10 cached abstracts; no PDFs
 python3 research_pipeline.py            # investigate, using configured credentials
-python3 review_proposals.py             # apply agreed changes; requires GH_TOKEN
+python3 review_proposals.py             # apply Claude-approved changes; requires GH_TOKEN
 python3 build_research_records.py       # refresh public history and monthly archives
 ```
 

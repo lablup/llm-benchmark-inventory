@@ -28,6 +28,8 @@ def archive_item(root, item):
                 "source", "extraction_model", "verification", "validation_error", "proposal_sha256", "changes")}
     if "screening" in item:
         snapshot["screening"] = item["screening"]
+    if item.get("approval_policy"):
+        snapshot["approval_policy"] = item["approval_policy"]
     fingerprint = digest(snapshot)
     folder = root / "research/archive" / date.strftime("%Y-%m")
     folder.mkdir(parents=True, exist_ok=True)
@@ -43,6 +45,8 @@ def archive_item(root, item):
     if votes:
         for vote in votes:
             lines += [f"- {prose(vote['model'])}: {'동의' if vote['approve'] else '미동의'}. {prose(vote['reason'])}"]
+    elif item.get("approval_policy") == "claude_only":
+        lines += ["Claude의 본문 승인 전에 종료된 조사입니다."]
     else:
         lines += ["두 모델의 교차 확인 기록이 없습니다. 1차 조사에서 종료된 결과를 두 모델의 합의로 해석하지 않습니다."]
     if item.get("validation_error"):
@@ -79,7 +83,9 @@ def archive_screening(root, item):
     lines = [f"# {prose(item['paper_title'])}", "", f"- 논문: https://arxiv.org/abs/{key}",
              f"- 초록 선별 시각: {date:%Y-%m-%d %H:%M:%S} (한국 시간)",
              "- 처리 단계: 초록 선별에서 제외, PDF 본문은 읽지 않음", "",
-             "두 모델이 초록에서 관련성이 낮다고 판단한 기록이며, 본문 근거 검증을 마친 결과가 아닙니다.",
+             ("Claude가 초록에서 관련성이 낮다고 판단한 기록이며, 본문 근거 검증을 마친 결과가 아닙니다."
+              if item.get("policy") == "claude_only" else
+              "두 모델이 초록에서 관련성이 낮다고 판단한 기록이며, 본문 근거 검증을 마친 결과가 아닙니다."),
              "", "## 초록 선별 결과", ""]
     for vote in item["votes"]:
         lines.append(f"- {prose(vote['model'])}: {prose(vote['decision'])}. {prose(vote['reason'])}")

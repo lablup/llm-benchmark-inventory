@@ -13,6 +13,14 @@ import review_proposals as review
 from test_arxiv_watch import NOW, empty, paper
 
 
+LEGACY_CONFIG = {"pipeline": "legacy", "approval_policy": "dual_model", "provider": "tokenfactory",
+                 "model": "deepseek-ai/DeepSeek-V4.1-Flash", "verifier_model": "zai-org/GLM-5.3-Flash",
+                 "base_url": "https://api.console.lablup.ai/v1", "auto_apply_agreed": True,
+                 "billing_basis": "company_no_charge_confirmed", "price_in_per_million": 0,
+                 "price_out_per_million": 0, "cost_cap_usd": 1, "daily_papers": 100,
+                 "daily_abstracts": 1000, "abstract_batch_size": 20, "run_minutes": 90}
+
+
 class ResearchTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -27,6 +35,9 @@ class ResearchTests(unittest.TestCase):
         # Tests use an empty temporary ledger, independent of production daily limits.
         research.write_json(self.root / "research/proposals.json", {"schema_version": 1, "proposals": {}, "processed_comments": []})
         config = research.read_json(self.root / "research/config.json")
+        config.update(LEGACY_CONFIG)
+        config["pipeline"] = "legacy"
+        config["approval_policy"] = "dual_model"
         config["auto_apply_agreed"] = False
         config["enabled"] = False
         research.write_json(self.root / "research/config.json", config)
@@ -240,6 +251,9 @@ class ResearchTests(unittest.TestCase):
 
     def consensus(self, votes=(True, True)):
         config = research.read_json(research.ROOT / "research/config.json")
+        config.update(LEGACY_CONFIG)
+        config["pipeline"] = "legacy"
+        config["approval_policy"] = "dual_model"
         self.proposal["verification"] = {"approve": all(votes), "reviewed_sha256": self.proposal["proposal_sha256"],
             "votes": [{"model": config["model"], "approve": votes[0], "reason": "Checked"},
                       {"model": config["verifier_model"], "approve": votes[1], "reason": "Checked"}]}
@@ -322,6 +336,7 @@ class ResearchTests(unittest.TestCase):
 
     def test_zero_prices_require_explicit_billing_basis(self):
         config = research.read_json(research.ROOT / "research/config.json")
+        config.update(LEGACY_CONFIG)
         research.check_config(config)
         del config["billing_basis"]
         with self.assertRaises(ValueError):

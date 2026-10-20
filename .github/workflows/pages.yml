@@ -11,8 +11,12 @@ on:
         description: "Screen at most 10 cached abstracts only, without full-text investigation or applying changes"
         type: boolean
         default: false
+      claude_replay_key:
+        description: "Optional held arXiv ID to revise and audit with Claude, using citation_replay_run evidence"
+        type: string
+        default: ""
       citation_replay_run:
-        description: "Optional completed run ID: re-audit saved drafts with uniquely correctable page citations only"
+        description: "Completed run ID containing original evidence for claude_replay_key"
         type: string
         default: ""
   schedule:
@@ -39,7 +43,7 @@ jobs:
       - name: Test discovery, evidence and approval handling
         # Buffer successful tests so simulated outages do not become annotations.
         # Failed-test output and real collection warnings remain visible.
-        run: python3 -m unittest --buffer -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py test_replay_citations.py test_claude_subscription_trial.py
+        run: python3 -m unittest --buffer -v test_arxiv_watch.py test_research.py test_research_records.py test_abstract_screening.py test_pdf_evidence.py test_replay_citations.py test_claude_subscription_trial.py test_claude_approval.py
       - name: Generate site data
         run: |
           python3 build_site_data.py
@@ -50,7 +54,7 @@ jobs:
           test -z "$(git ls-files --others --exclude-standard -- research/archive updates.json)"
       - name: Check script syntax
         run: |
-          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py arxiv_watch.py build_pages.py research_pipeline.py review_proposals.py build_research_records.py pdf_evidence.py prepare_mineru.py smoke_pdf_evidence.py replay_citations.py
+          python3 -m py_compile build_benchmark_inventory.py build_site_data.py validate_inventory.py arxiv_watch.py build_pages.py research_pipeline.py review_proposals.py build_research_records.py pdf_evidence.py prepare_mineru.py smoke_pdf_evidence.py replay_citations.py claude_approval.py
           node --check app.js
           node --check english-copy.js
           node --check landing.js
@@ -100,32 +104,36 @@ jobs:
           run-id: ${{ inputs.citation_replay_run }}
           github-token: ${{ github.token }}
           path: .research-cache/replay-source
+      - name: Install official Claude Code
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: npm install --global @anthropic-ai/claude-code@2.1.304
       - name: Investigate papers and verify proposals
         id: research
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         env:
           ARXIV_DURABLE_CHECKPOINT: "1"
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          TOKEN_FACTORY_API_KEY: ${{ secrets.TOKEN_FACTORY_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           SOURCE_RUN: ${{ inputs.citation_replay_run }}
+          CLAUDE_REPLAY_KEY: ${{ inputs.claude_replay_key }}
         run: |
           if [ -n "$SOURCE_RUN" ]; then
-            python3 replay_citations.py --artifact .research-cache/replay-source --base-commit "$REPLAY_BASE_COMMIT" --source-run "$SOURCE_RUN" --dry-run
-            python3 replay_citations.py --artifact .research-cache/replay-source --base-commit "$REPLAY_BASE_COMMIT" --source-run "$SOURCE_RUN"
+            test -n "$CLAUDE_REPLAY_KEY"
+            python3 claude_approval.py --artifact .research-cache/replay-source --base-commit "$REPLAY_BASE_COMMIT" --key "$CLAUDE_REPLAY_KEY"
           elif [ "${{ inputs.screening_smoke }}" = "true" ]; then
             python3 research_pipeline.py --screening-smoke
           else
             python3 research_pipeline.py
           fi
-      - name: Apply changes agreed by both models
+      - name: Apply changes approved by Claude
         id: review
-        if: ${{ !inputs.screening_smoke }}
+        if: ${{ always() && !cancelled() && !inputs.screening_smoke }}
         env:
           GH_TOKEN: ${{ github.token }}
           ARXIV_REVIEWER: ${{ vars.ARXIV_REVIEWER || 'songys' }}
         run: python3 review_proposals.py
       - name: Persist research progress and approved changes
+        id: persist
         # Preserve budget/crash checkpoints even if a paid call failed. The
         # review script rolls back all inventory writes if its transaction fails.
         if: always() && !cancelled()
@@ -146,6 +154,7 @@ jobs:
           name: research-logs-${{ github.run_id }}
           path: |
             .research-cache/**/*.jsonl
+            .research-cache/claude/**/*.json
             .research-cache/**/*.manifest.json
             .research-cache/**/*.pages.json
             .research-cache/**/*.mineru.log
@@ -156,16 +165,22 @@ jobs:
           include-hidden-files: true
       # GITHUB_TOKEN commits do not trigger another run; deploy in this run.
       - uses: actions/configure-pages@v5
+        if: ${{ always() && !cancelled() && steps.persist.outcome == 'success' && steps.review.outcome != 'failure' }}
       - name: Stage public files
+        id: stage
+        if: ${{ always() && !cancelled() && steps.persist.outcome == 'success' && steps.review.outcome != 'failure' }}
         run: python3 build_pages.py
       - uses: actions/upload-pages-artifact@v3
+        id: upload
+        if: ${{ always() && !cancelled() && steps.stage.outcome == 'success' }}
         with:
           path: _site
       - name: Deploy
         id: deployment
+        if: ${{ always() && !cancelled() && steps.upload.outcome == 'success' }}
         uses: actions/deploy-pages@v4
       - name: Confirm persisted decisions
-        if: ${{ !inputs.screening_smoke }}
+        if: ${{ always() && !cancelled() && !inputs.screening_smoke && steps.deployment.outcome == 'success' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 review_proposals.py --acknowledge

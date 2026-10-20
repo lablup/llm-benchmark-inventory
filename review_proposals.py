@@ -164,6 +164,13 @@ AUTO_MARKER = re.compile(r"^<!-- arxiv-applied:v3:(\d{4}-\d{2}-\d{2}) -->", re.M
 def agreed(item, config):
     verification = item.get("verification", {})
     votes = verification.get("votes", [])
+    if config.get("approval_policy") == "claude_only":
+        return (verification.get("policy") == "claude_only"
+                and len(votes) == 1 and votes[0].get("model") == config.get("claude_model")
+                and votes[0].get("approve") is True
+                and votes[0].get("auth_method") == "oauth_token"
+                and verification.get("approve") is True
+                and verification.get("reviewed_sha256") == item["proposal_sha256"] == proposal_hash(item))
     expected = {config.get("model"), config.get("verifier_model")}
     return (len(expected) == 2 and None not in expected and len(votes) == 2
             and {vote.get("model") for vote in votes} == expected
@@ -178,7 +185,7 @@ def sync_automatic(state, ledger, github, config, root, now):
             continue
         if not agreed(item, config):
             item["status"] = "needs_evidence"
-            item["reason"] = "두 모델의 일치 판정이 없어 반영하지 않았습니다."
+            item["reason"] = "현재 승인 정책에 맞는 검증 기록이 없어 반영하지 않았습니다."
             continue
         try:
             apply_proposal(item, root)
@@ -188,7 +195,7 @@ def sync_automatic(state, ledger, github, config, root, now):
             print(f"Skipped {item['arxiv_id']}: {type(error).__name__}")
             continue
         item["status"] = "accepted"
-        item["applied_by"] = "dual_model_agreement"
+        item["applied_by"] = "claude_approval" if config.get("approval_policy") == "claude_only" else "dual_model_agreement"
         item["applied_at"] = iso(now)
     # Notification runs after deployment. Recover its links on the next sync.
     for issue in github.issues():
@@ -224,15 +231,15 @@ def notify_applied(github, root, now):
         if issue.get("state") == "open":
             github.request(f"/issues/{issue['number']}", {"state": "closed", "state_reason": "completed"}, method="PATCH")
     pending = [item for item in ledger["proposals"].values() if item["status"] == "accepted"
-               and item.get("applied_by") == "dual_model_agreement"
+               and item.get("applied_by") in {"dual_model_agreement", "claude_approval"}
                and (item["arxiv_id"], item["proposal_sha256"]) not in seen]
     if not pending or today:
         return
     batch = pending[:100]
     reviewer = os.environ.get("ARXIV_REVIEWER", "songys")
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
-    lines = [f"<!-- arxiv-applied:v3:{day} -->", f"@{reviewer} 두 모델이 동의하고 근거 확인을 통과한 {len(batch)}건을 표와 페이지에 반영했습니다.", "",
-             "검토나 승인 댓글은 필요하지 않습니다. 불일치하거나 근거가 부족한 항목은 반영하지 않았습니다.",
+    lines = [f"<!-- arxiv-applied:v3:{day} -->", f"@{reviewer} 승인과 근거 확인을 통과한 {len(batch)}건을 표와 페이지에 반영했습니다.", "",
+             "검토나 승인 댓글은 필요하지 않습니다. 승인되지 않았거나 근거가 부족한 항목은 반영하지 않았습니다.",
              f"[페이지](https://lablup.github.io/llm-benchmark-inventory/) · [변경 기록](https://github.com/{REPOSITORY}/commit/{commit})", ""]
     for item in batch:
         lines += [f"## {markdown_title(item['paper_title'], limit=120)}", f"<!-- proposal:{item['arxiv_id']}:{item['proposal_sha256']} -->",

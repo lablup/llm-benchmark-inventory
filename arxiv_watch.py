@@ -69,7 +69,7 @@ def validate_state(state: dict) -> None:
             raise ValueError("Invalid arXiv URL")
         if paper["review_status"] not in {"pending", "reviewed"}:
             raise ValueError("Invalid review status")
-        if paper.get("analysis_status", "queued") not in {"queued", "proposed", "accepted", "held", "rejected", "exclude", "needs_evidence"}:
+        if paper.get("analysis_status", "queued") not in {"queued", "awaiting_claude", "proposed", "accepted", "held", "rejected", "exclude", "needs_evidence"}:
             raise ValueError("Invalid analysis status")
         issue = paper.get("review_issue_url")
         if issue and not re.fullmatch(r"https://github\.com/" + re.escape(REPOSITORY) + r"/issues/\d+", issue):

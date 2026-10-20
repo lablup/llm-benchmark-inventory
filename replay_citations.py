@@ -66,6 +66,8 @@ def run(artifact, base_commit, source_run, root=r.ROOT, dry_run=False):
     verify_baseline(root, base_commit)
     config = r.read_json(root / "research/config.json")
     r.check_config(config)
+    if config.get("approval_policy") == "claude_only":
+        raise ValueError("Legacy two-model replay is disabled; use claude_approval.py")
     if not config.get("enabled") or not config.get("auto_apply_agreed") or config["model"] == config.get("verifier_model"):
         raise ValueError("Replay requires enabled two-model automatic verification")
     ledger = r.read_json(root / "research/proposals.json")

@@ -308,11 +308,25 @@ def provider(config: dict, model: str | None = None) -> Provider:
 
 
 def check_config(config):
+    if config.get("pipeline") == "claude_subscription":
+        if (config.get("provider") != "claude_subscription" or config.get("model") != "claude-sonnet-5-5"
+                or config.get("claude_model") != config["model"] or config.get("approval_policy") != "claude_only"
+                or config.get("claude_subscription_only") is not True or config.get("auto_apply_agreed") is not True):
+            raise ValueError("Claude production requires subscription-only authentication and Claude-only approval")
+        for field, upper in (("daily_papers", 1000), ("daily_abstracts", 10000), ("abstract_batch_size", 20), ("run_minutes", 90)):
+            if type(config.get(field)) is not int or not 1 <= config[field] <= upper:
+                raise ValueError(f"Invalid {field}")
+        return
     if not config.get("model") or config["provider"] not in {"tokenfactory", "openrouter", "openai"}:
         raise ValueError("Provider and model must be configured")
     if config["provider"] == "tokenfactory" and config.get("base_url") != "https://api.console.lablup.ai/v1":
         raise ValueError("Use the verified Token Factory endpoint")
-    if config.get("auto_apply_agreed") and (not config.get("verifier_model") or config["verifier_model"] == config["model"]):
+    if config.get("approval_policy") not in {None, "dual_model", "claude_only"}:
+        raise ValueError("Unknown approval policy")
+    if config.get("approval_policy") == "claude_only":
+        if config.get("claude_model") != "claude-sonnet-5-5" or config.get("claude_subscription_only") is not True:
+            raise ValueError("Claude requires the verified model and subscription-only authentication")
+    elif config.get("auto_apply_agreed") and (not config.get("verifier_model") or config["verifier_model"] == config["model"]):
         raise ValueError("Automatic inclusion requires two different models")
     for field in ("price_in_per_million", "price_out_per_million", "cost_cap_usd"):
         value = config.get(field)
@@ -518,6 +532,9 @@ def run(root: Path = ROOT, dry_run=False, screening_smoke=False):
         print("Research disabled: configure provider, model, prices and GitHub secret first.")
         return
     check_config(config)
+    if config.get("pipeline") == "claude_subscription":
+        from claude_approval import run as run_claude
+        return run_claude(root, dry_run=dry_run, screening_smoke=screening_smoke)
     started = time.monotonic()
     deadline = started + config.get("run_minutes", 90) * 60
     p = provider(config)
@@ -528,7 +545,7 @@ def run(root: Path = ROOT, dry_run=False, screening_smoke=False):
     if attempts.get("blocked"):
         raise RuntimeError("Today's research budget is blocked after a failed call; inspect the batch logs")
     state["research"] = {"status": "screening", "last_run_at": iso(datetime.now(timezone.utc)),
-                         "models": [p.model, auditor.model], "policy": "apply_only_agreed" if config.get("auto_apply_agreed") else "human_review"}
+                         "models": [p.model, auditor.model], "policy": config.get("approval_policy", "apply_only_agreed") if config.get("auto_apply_agreed") else "human_review"}
     # Reserve at least half the run for full-text work; persist each abstract batch.
     screen_errors = screen_candidates(state, ledger, config, p, auditor, root, day,
                       min(deadline, started + min(30, config.get("run_minutes", 90) / 2) * 60), dry_run,
@@ -541,6 +558,9 @@ def run(root: Path = ROOT, dry_run=False, screening_smoke=False):
         state["research"]["status"] = "screened"
         save_state(root / "new-papers.json", state)
         return
+    if config.get("approval_policy") == "claude_only":
+        from claude_approval import resume_pending
+        resume_pending(root, ledger, state, config, deadline)
     selected = [paper for paper in reversed(state["papers"])
                 if paper["arxiv_id"] not in ledger["proposals"] and paper["arxiv_id"] not in attempts["attempted"]
                 and ledger.get("screenings", {}).get(paper["arxiv_id"], {}).get("status") == "passed"
@@ -561,7 +581,7 @@ def run(root: Path = ROOT, dry_run=False, screening_smoke=False):
         except (OSError, ValueError, subprocess.SubprocessError) as error:
             paper["analysis_status"] = "needs_evidence"
             paper["analysis_reason"] = "PDF 본문을 추출하지 못했습니다. 자동 재시도를 기다립니다."
-            print(f"{key}: PDF extraction unavailable ({type(error).__name__})")
+            print(f"{key}: PDF extraction unavailable ({type(error).__name__}: {str(error)[:300]})")
             if not dry_run:
                 save_state(root / "new-papers.json", state)
             continue
@@ -596,6 +616,12 @@ def run(root: Path = ROOT, dry_run=False, screening_smoke=False):
                 result["decision"] = "needs_evidence"
                 result["reason"] = "공식 데이터셋·저장소 자료를 자동으로 확인하지 못했습니다. 추가 조사가 필요합니다."
                 result["changes"] = []
+        if result["decision"] == "propose" and config.get("approval_policy") == "claude_only":
+            from claude_approval import audit_and_save
+            audit_and_save(root, ledger, state, paper, result, context, config, p.model)
+            attempts["blocked"] = False
+            write_json(root / "research/proposals.json", ledger)
+            continue
         if result["decision"] == "propose":
             # Each auditor gets the same draft and evidence, never the other vote.
             audit_payload = payload + "\nPROPOSAL:\n" + json.dumps(result, ensure_ascii=False)
