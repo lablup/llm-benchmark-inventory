@@ -264,3 +264,13 @@ follow the shared design tokens. Korean entries carry a "가" badge and English
 entries an "A" badge. Keep the descriptions aligned with each detail page's
 hero copy. Decision 6 still applies to the surrounding design; only the
 roadmap's visual form changes.
+
+## 16. Remove investigation-status badges from public cards (2026-10-21)
+
+The owner will perform the final review and requested removal of labels such
+as "일부 확인" (partially verified) from detail pages. Remove these badges
+from recommendation cards shared by Korean and English benchmark pages and
+from serving reference cards. Keep scores, sources, experimental conditions
+and source-access dates available for review. Retain investigation status in
+the source data; hiding a badge does not promote any record to verified or
+change the publication pipeline.

@@ -90,14 +90,13 @@ function renderServingReference(row) {
         <span class="rec-score">${formatServingValue(entry.value)} <span class="rec-unit">${escapeServingHTML(entry.unit || "")}</span>${extra}</span>
       </li>`;
   }).join("");
-  const status = ref.status === "partial" ? `<span class="rec-flag">일부 확인</span>` : "";
   const checked = ref.accessed ? `<span class="rec-checked">확인 ${escapeServingHTML(ref.accessed)}</span>` : "";
   const direction = ref.direction === "lower_is_better" ? "낮을수록 좋음" : "높을수록 좋음";
   return `
     <div class="recommended">
       <div class="rec-head">
         <p class="rec-title">대표 측정값${heading ? ` · ${escapeServingHTML(heading)}` : ""}</p>
-        <p class="rec-meta">${status}${checked}</p>
+        <p class="rec-meta">${checked}</p>
       </div>
       <div class="rec-columns">
         <div class="rec-panel">

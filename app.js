@@ -282,13 +282,12 @@ function renderRecommended(row) {
   const rec = row["추천 모델"];
   if (!rec || (!rec.all?.length && !rec.open_weight?.length)) return "";
   const english = state.uiLanguage === "en";
-  const status = rec.status === "partial" ? `<span class="rec-flag">${english ? "partially verified" : "일부 확인"}</span>` : "";
   const checked = rec.accessed ? `<span class="rec-checked">${english ? "checked" : "확인"} ${escapeHTML(rec.accessed)}</span>` : "";
   return `
     <div class="recommended">
       <div class="rec-head">
         <p class="rec-title">${english ? "Top models" : "추천 모델"}</p>
-        <p class="rec-meta">${status}${checked}</p>
+        <p class="rec-meta">${checked}</p>
       </div>
       <div class="rec-columns">
         ${renderRecommendedList(english ? "All models" : "전체", rec.all)}
