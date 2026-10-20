@@ -1,0 +1,76 @@
+name: Audit one saved paper with Claude subscription
+
+on:
+  workflow_dispatch:
+    inputs:
+      subscription_only_confirmed:
+        description: "Owner confirmed extra usage and automatic usage-credit spending are off"
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: claude-subscription-paper-trial
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Require subscription-only authorization
+        env:
+          CONFIRMED: ${{ inputs.subscription_only_confirmed }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          test "$CONFIRMED" = "true"
+          test -n "$CLAUDE_CODE_OAUTH_TOKEN"
+          python3 -m unittest --buffer test_claude_subscription_trial
+      - uses: actions/download-artifact@v4
+        with:
+          name: research-logs-39261196214
+          run-id: 39261196214
+          github-token: ${{ github.token }}
+          path: .research-cache/claude-trial-source
+      - name: Validate saved draft and original evidence
+        run: >-
+          python3 claude_subscription_trial.py prepare
+          --artifact .research-cache/claude-trial-source
+          --base-commit 873d47c8d69c0335849dca8d28f1f63d77c879e7
+      # Official base action reads the prompt from disk, keeping paper contents
+      # out of the public step-input log. It needs no GitHub App or write token.
+      - name: Independently audit the saved draft
+        id: claude
+        uses: anthropics/claude-code-action/base-action@c2b6a53127258e3963e8ec37c9a4ca5b853c1e54
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt_file: .research-cache/claude-trial/prompt.txt
+          settings: '{"disableAllHooks":true}'
+          claude_args: >-
+            --model claude-sonnet-5-5
+            --max-turns 2
+            --disallowedTools "*"
+      - name: Validate and record the independent vote
+        env:
+          EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
+        run: python3 claude_subscription_trial.py consume --execution "$EXECUTION_FILE"
+      - name: Keep trial evidence and result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-paper-trial-${{ github.run_id }}
+          path: |
+            .research-cache/claude-trial/manifest.json
+            .research-cache/claude-trial/report.json
+          retention-days: 7
+          include-hidden-files: true
+          if-no-files-found: ignore
