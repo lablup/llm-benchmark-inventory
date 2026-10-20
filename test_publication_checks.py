@@ -1,14 +1,14 @@
 """Regression tests for complete publication evidence and atomic model scores."""
 import copy
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import claude_approval as claude
 import publication_checks as p
 import research_pipeline as r
 import review_proposals as review
 import test_research
-from test_arxiv_watch import empty, paper
+from test_arxiv_watch import NOW, empty, paper
 
 
 class PublicationTests(unittest.TestCase):
@@ -182,6 +182,29 @@ class PublicationTests(unittest.TestCase):
         self.assertTrue(review.agreed(item, self.config))
         review.apply_proposal(item, self.root, verify=False)
         self.assertEqual(sum(row["benchmark_id"] == "example-bench" for row in p.read_rankings(self.root)), 3)
+
+    def test_deployment_sync_leaves_held_incomplete_entries_unpublished(self):
+        item = self.item()
+        item.update(status="held", reason="User withdrew publication")
+        item["changes"][0]["row"].update(r.UNKNOWN)
+        r.write_json(self.root / "research/proposals.json", {"proposals": {item["arxiv_id"]: item}})
+        github = Mock()
+        github.issues.return_value = []
+        with patch.object(review, "apply_proposal") as apply:
+            state = review.sync({**empty(), "papers": [paper()]}, github, NOW, "songys", self.root)
+        apply.assert_not_called()
+        self.assertEqual(state["papers"][0]["analysis_status"], "held")
+
+    def test_deployment_sync_applies_complete_approved_scores(self):
+        item = self.item()
+        r.write_json(self.root / "research/proposals.json", {"proposals": {item["arxiv_id"]: item}})
+        github = Mock()
+        github.issues.return_value = []
+        apply = review.apply_proposal
+        with patch.object(review, "apply_proposal", side_effect=lambda item, root: apply(item, root, verify=False)):
+            state = review.sync({**empty(), "papers": [paper()]}, github, NOW, "songys", self.root)
+        self.assertEqual(state["papers"][0]["analysis_status"], "accepted")
+        self.assertTrue(any(row["benchmark_id"] == "example-bench" for row in p.read_rankings(self.root)))
 
 
 if __name__ == "__main__":

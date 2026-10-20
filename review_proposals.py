@@ -315,12 +315,6 @@ def _sync(state, github, now, reviewer, root=ROOT):
 
 def sync(state, github, now, reviewer, root=ROOT):
     names = FILES + ["research/proposals.json"]
-    config = read_json(root / "research/config.json")
-    if config.get("publication_policy") == "complete-evidence-v1":
-        from publication_checks import complete
-        complete(item["changes"])
-        if item.get("verification", {}).get("publication_policy") != config["publication_policy"]:
-            raise ValueError("Proposal lacks approval under the complete publication policy")
     originals = {name: (root / name).read_bytes() for name in names if (root / name).exists()}
     try:
         return _sync(state, github, now, reviewer, root)
