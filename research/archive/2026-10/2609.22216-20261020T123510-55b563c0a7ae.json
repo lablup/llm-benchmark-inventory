@@ -1,0 +1,67 @@
+{
+  "arxiv_id": "2609.22216",
+  "paper_title": "The Effect of Quantization on Clinical Benchmarks: Accuracy and Safety Across Model Families",
+  "created_at": "2026-10-20T03:35:10Z",
+  "status": "exclude",
+  "reason": "이 논문은 양자화(INT8/INT4)가 임상 벤치마크 성능에 미치는 영향을 분석한 모델·평가 방법론 연구로, 새로운 재사용 가능 벤치마크를 제안하거나 기존 벤치마크를 실질적으로 갱신하지 않는다. 사용된 MedQA, MedMCQA, Med-HALT, HealthBench, MedSafetyBench는 모두 기존 벤치마크이며, 논문은 이들에 대한 자체 평가 결과만 보고한다. 또한 한국어 과제가 전혀 포함되어 있지 않고, 영어 트랙에 등록할 만한 신규 벤치마크도 없다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2609.22216",
+    "sha256": "c714a7eb77ff91f9e2b9dd5990798c638b4bc2c35ab33c6cd8632dca18ffe0ee",
+    "accessed": "2026-10-20T03:34:12Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 8,
+      "elapsed_seconds": 51.88,
+      "pdf_sha256": "c714a7eb77ff91f9e2b9dd5990798c638b4bc2c35ab33c6cd8632dca18ffe0ee",
+      "visual_pdf_audit": false,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "22ae995f6f99cdfa6f34d8ef458186bbfedc6364f04a5065fd8c05cd0cf1743c",
+      "page_json_file": "2609.22216.pages.json"
+    }
+  },
+  "extraction_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "e712a64001ece654a706abbfbd8c21d1906c9f875e77b82ae8a7ed05b3e26cf4",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2609.22216",
+    "paper_title": "The Effect of Quantization on Clinical Benchmarks: Accuracy and Safety Across Model Families",
+    "abstract": "Quantization enables deployment of large language models on resource-constrained clinical edge devices, but its effect on clinical accuracy and safety remains understudied. We evaluate five 7-8B parameter models at FP16, GPTQ-INT8, and GPTQ-INT4 precision across five benchmarks: MedQA, MedMCQA, Med-HALT, a risk-stratified sample of HealthBench, and MedSafetyBench. The study jointly varies quantization bit width, model family, and clinical task type, with explicit risk stratification and safety measures. INT8 GPTQ is universally safe (max. degradation -1.9%-1.9%), while INT4 degradation is substantial and model-dependent: BioMistral-7B, clinically fine-tuned, loses 19.7% on MedMCQA, more than any general-purpose model, showing clinical fine-tuning does not confer compression robustness. MedMCQA degrades more than MedQA under INT4; Med-HALT is largely unaffected. On HealthBench's emergency-risk subgroup, Qwen2.5-7B degrades by 26.8% under INT4, suggesting high-risk scenarios are disproportionately vulnerable to compression. On MedSafetyBench, the model family dominates over precision (refusal rates range 10.2%-74.9% at FP16), though Qwen2.5-7B (-17.8%) and Meditron-7B (-28.3%) show substantial INT4 safety degradation; notably, Qwen2.5-7B is simultaneously the most accuracy-robust model, demonstrating that accuracy and safety robustness are independent properties. We additionally test two recovery methods, clinical calibration substitution and QLoRA fine-tuning, both producing the same trade-off: MedMCQA recovers while MedQA further degrades, indicating recovery strategies require task-specific validation rather than being assumed universally beneficial. These findings indicate INT8 is broadly safe for clinical deployment, while INT4 safety must be assessed per-model and per-task, and that safety alignment is determined primarily by instruction tuning rather than clinical domain adaptation.",
+    "paper_updated": "2026-09-22T00:00:00Z",
+    "created_at": "2026-10-19T13:43:47Z",
+    "input_sha256": "2514abf0511ca3c306c34f46ecc622047bc9ffb7e6836b9ff0a964d69adc4e42",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "양자화가 임상 벤치마크 정확도·안전성에 미치는 영향 평가"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "irrelevant",
+        "reason": "기존 임상 벤치마크 양자화 영향 분석에 그침"
+      }
+    ]
+  }
+}
