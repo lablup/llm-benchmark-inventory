@@ -2761,6 +2761,78 @@
       },
       "issue_url": null,
       "proposal_sha256": "3a0677dfdff74a0207371996002cdefb686c30450d90b52520645ee8129100bc"
+    },
+    "2610.00092": {
+      "decision": "needs_evidence",
+      "changes": [],
+      "reason": "추출 결과가 근거·형식 검사를 통과하지 못해 반영하지 않았습니다.",
+      "validation_error": "parse: Automatic proposals cannot assert new licensing or harness support",
+      "arxiv_id": "2610.00092",
+      "paper_title": "BudgetSchemaBench: A Budget-Swept Diagnostic for Schema Context in Text-to-SQL",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.00092",
+        "sha256": "aabe50e98de2e4f6a80063b0dd0b6ee975de2f1856c625b926cd51500d07fb4f",
+        "accessed": "2026-10-20T03:44:18Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 11,
+          "elapsed_seconds": 50.15,
+          "pdf_sha256": "aabe50e98de2e4f6a80063b0dd0b6ee975de2f1856c625b926cd51500d07fb4f",
+          "visual_pdf_audit": false,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "ee006a6c900f05330024fc5c9e5748666bb563c41146c970d9e3fc988992016d",
+          "page_json_file": "2610.00092.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-10-20T03:45:21Z",
+      "extraction_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "screening": {
+        "arxiv_id": "2610.00092",
+        "paper_title": "BudgetSchemaBench: A Budget-Swept Diagnostic for Schema Context in Text-to-SQL",
+        "abstract": "Data agents over structured sources must fit database schema into the model's context window. Large catalogs can span many databases and thousands of columns, so cost constraints may require choosing between table coverage and serialization detail well before the context window is full. We introduce BudgetSchemaBench, an execution-grounded diagnostic for this setting. Its construction derives relevance labels mechanically from gold SQL, without human- or LLM-authored ground truth. Using a pooled 80-database catalog, we sweep four schema-context budgets and compare three representations while keeping each retriever's table ranking fixed. A source-namespace check rejects queries that obtain the correct result from the wrong database. The evaluation covers three conditions: end-to-end retrieval; frozen-gold, in which the required tables are guaranteed; and a probe that removes those tables. For the primary solver with raw serialization, raising the budget from 2.5% to 50% of the catalog improves execution accuracy on 1,279 held-out questions by 18 percentage points under lexical retrieval but only 3 under dense retrieval; the dense retriever already finds most required tables at the smallest budget. When the required tables are removed, 94.6% of correct predictions name one of them exactly, consistent with reconstruction of absent schema from parametric knowledge. For the two main solvers in the frozen-gold condition, the three representations differ by at most 2 percentage points, and the widest paired 95% confidence interval bounds the difference within +/-4 points. We observe the same qualitative patterns with one reasoning model from a different family. When retrieval is coverage-limited, execution accuracy is more sensitive to the schema budget than to the tested serializations. The diagnostic and the code used to construct and evaluate it are publicly available.",
+        "paper_updated": "2026-10-02T00:00:00Z",
+        "created_at": "2026-10-19T13:43:59Z",
+        "input_sha256": "b151a1c3ef1f1ed5bb8a69f90a03f5fc72aae7d89de89f8cd96a3ef48515086e",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "Text-to-SQL 스키마 예산 진단 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "Text-to-SQL 스키마 컨텍스트 진단 벤치마크 공개"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "1f6d625aa67ea9e3ad3ee037ce3011961585ac24ef1a840807ed372d65cebed5"
     }
   },
   "processed_comments": [],
@@ -3723,7 +3795,9 @@
         "2609.25046",
         "2606.16723",
         "2609.22255",
-        "2610.00092"
+        "2610.00092",
+        "2609.25059",
+        "2609.31632"
       ],
       "spent_usd": 0.0,
       "blocked": true,
