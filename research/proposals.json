@@ -3125,7 +3125,27 @@
         "2509.20645",
         "2604.01444",
         "2608.27394",
-        "2609.06780"
+        "2609.06780",
+        "2510.07231",
+        "2511.04473",
+        "2601.01982",
+        "2601.08689",
+        "2601.22050",
+        "2602.01779",
+        "2603.08491",
+        "2605.24305",
+        "2605.29893",
+        "2606.11152",
+        "2607.08093",
+        "2608.25061",
+        "2608.26310",
+        "2609.06059",
+        "2610.20830",
+        "2406.07243",
+        "2511.16221",
+        "2512.20159",
+        "2603.16557",
+        "2604.11934"
       ]
     }
   },
@@ -3442,22 +3462,21 @@
       "arxiv_id": "2609.23307",
       "paper_title": "Semantic Candidate-Job Matching: A Comparative Evaluation of Dense Embedding Models in Hybrid Retrieval",
       "abstract": "This paper presents a comparative evaluation of dense embedding models for semantic candidate-job matching in high-volume staffing workflows. Incoming job descriptions are converted into structured English search text and language-specific keywords through LLM-based parsing, and candidate profiles are indexed as semantically enriched resume representations. We evaluate EmbeddingGemma (base) against EmbeddingGemma fine-tuned with Cached Multiple Negatives Ranking Loss (MNRL) within a unified hybrid retrieval pipeline that fuses vector similarity and full-text relevance via reciprocal rank fusion (RRF), and benchmark both against the MPNet model on a batch comparative evaluation dataset scored through the deployed job-candidate matching scoring pipeline. We further document, with mathematical detail, the broader set of contrastive fine-tuning objectives considered during model development (including AnglE/CoSENT-style refinement) and the empirical rationale for retaining Cached-MNRL-only adaptation as the preferred configuration. To support reproducible model selection, we define a broader evaluation framework comprising standard information retrieval metrics (Recall@K, mean reciprocal rank, nDCG) under the exact hybrid-retrieval protocol; the metrics used for the evaluation reported in this paper are fine-tuning convergence diagnostics and a batch comparative evaluation using the deployed AI-Match score and an independent LLM-as-a-Judge relevance score, and we state this scope explicitly rather than implying the full framework was measured. The paper addresses the gap between general-purpose embedding benchmarks and enterprise job-candidate matching constraints, providing a structured basis for comparing embedding strategies under realistic job-candidate retrieval conditions.",
-      "paper_updated": "2026-09-20T02:50:12Z",
-      "created_at": "2026-10-19T05:33:33Z",
-      "input_sha256": "8ba09ba2942263c267281d76529bbca75a558496e283526287af1f27a2d7611c",
-      "version": 2,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "f538a38569566c30e674b4f1b01573f36748d79f18fe6b427b4c58aea61eb87e",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "decision": "uncertain",
-          "reason": "임베딩 비교 평가로 재사용 벤치마크 기여인지 불명확"
+          "decision": "relevant",
+          "reason": "의미 기반 후보-직무 매칭 평가"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Unterminated string starting at: line 1 column 14474 (char 14473)"
+          "reason": "임베딩 모델 비교 평가 프레임워크 제시하나 벤치마크 공개 여부 불명확"
         }
       ]
     },
@@ -3465,22 +3484,21 @@
       "arxiv_id": "2609.23315",
       "paper_title": "Graph Memory for LLM Agents: At What Cost? A Comparative Evaluation of Query, Ingest, and Update Performance Across Graph Database Engines",
       "abstract": "Graph databases are frequently positioned as categorically necessary for connected-data workloads, yet the systems dimension along which they actually differ - query planning, indexing, and data-readiness cost - is rarely isolated from vendor framing. We construct a synthetic, biomedical-shaped property graph (1.02 million nodes, 5.34 million total node and edge rows) and a twenty-query workload spanning neighborhood lookups, bounded paths, set intersections, anti-joins, grouped aggregation, top-k ranking, temporal filters, full scans, and relational joins. We benchmark Corvic AI - a purpose-built columnar query engine underlying Corvic's ontology management layer (\"memories\")- against seven purpose-built or graph-extension database systems (LoraDB, Ladybug, DuckPGQ, Memgraph, Neo4j, HugeGraph, and FalkorDB) at three graph scales spanning three orders of magnitude. We report query latency geomeans, bulk-ingest throughput, point-update latency, and answer correctness for each system, and we derive a simple total-cost-of-ownership model that expresses the ingest/query trade-off as a function of query volume. Our central finding is that no system in this sample is categorically fastest: a native graph engine (Ladybug) outperforms Corvic AI on narrow, bounded-neighborhood shapes, while Corvic AI is faster on shapes that scan or join a large fraction of the graph, and a system implementing graph query syntax via SQL/PGQ (DuckPGQ) is measurably slower purely due to query-plan choice. The dominant cost differential in our data is not query latency but the cost of making data queryable at all: bulk-ingest throughput varies by three orders of magnitude across engines (5.0k-4.3M rows/s), a gap that a simple crossover-point calculation shows dominates total cost for any workload with fewer than roughly 105 queries per data refresh.",
-      "paper_updated": "2026-09-20T03:04:30Z",
-      "created_at": "2026-10-19T05:33:33Z",
-      "input_sha256": "e6b572dc6851e74526178f1ef169205cb8c0e3ed8b22ccd6037ac5a01c3b3969",
-      "version": 2,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "8decde97053d24e67033951ee2c23e84801e3e9dd8bc35f38a6bf7eb7fb472fb",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "decision": "irrelevant",
-          "reason": "그래프 DB 엔진 성능 비교로 LLM 평가 자원 아님"
+          "decision": "relevant",
+          "reason": "그래프 DB 질의·수집 성능 비교 평가"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Unterminated string starting at: line 1 column 14474 (char 14473)"
+          "reason": "그래프 DB 엔진 벤치마크로 LLM 평가 자원인지 불명확"
         }
       ]
     },
@@ -3488,22 +3506,21 @@
       "arxiv_id": "2609.23336",
       "paper_title": "MinCU: A Fine-Grained Benchmark for Grounded Minimal-Change Understanding in Image Pairs",
       "abstract": "Localizing and describing fine-grained differences between near-identical images is a critical yet underexplored capability for multimodal large language models (MLLMs). Existing benchmarks largely assess semantic comparison or single-image grounding in isolation, without jointly requiring faithful description and physical localization. To bridge this gap, we introduce MinCU, a benchmark for grounded minimal-change understanding, where each sample consists of an image pair differing by a single atomic variation in object category, attribute, count, or spatial position, and models are evaluated on their ability to describe the change, localize the changed regions, and identify the changed entity. We further propose Semantic-Guided Implicit Spatial Anchors (SG-ISA), a structured autoregressive method that decomposes prediction into a Think-Locate-Describe sequence. SG-ISA first predicts a semantic cue for the changed concept, then uses discrete spatial anchors as an implicit localization scaffold, and finally generates the change description together with the grounding box. Experiments reveal that even the strongest closed-source MLLMs and recent R1-style reasoning models struggle on MinCU, with most failing to jointly produce accurate descriptions and grounding boxes. Compared to the previous chain-of-thought method, fine-tuning with SG-ISA yields substantial joint improvements in grounding accuracy and description quality while reducing reasoning-token overhead by approximately 26%. These results suggest that an implicit intermediate spatial interface can be more effective than relying solely on model scale for grounded dual-image understanding.",
-      "paper_updated": "2026-09-20T03:48:09Z",
-      "created_at": "2026-10-19T05:33:33Z",
-      "input_sha256": "b8fbc4c4576c412debe373e711e2fa737c6069ee2c2cd2f2a6a8f80ded602d43",
-      "version": 2,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "9a24edfacf8c802d6d2897ef0ad1615d118d683ee35d5a5507c49d704198e46a",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "이미지 쌍 최소변화 이해 벤치마크와 방법 제안"
+          "reason": "이미지 쌍 최소 변화 이해 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Unterminated string starting at: line 1 column 14474 (char 14473)"
+          "decision": "relevant",
+          "reason": "멀티모달 최소변화 이해 벤치마크 MinCU 신규 제안"
         }
       ]
     },
@@ -3511,22 +3528,21 @@
       "arxiv_id": "2609.23363",
       "paper_title": "TicTacBench: Benchmarking Timing Closure Capabilities of Coding Agents",
       "abstract": "Recent advances in large language models (LLMs) have led to the emergence of coding agents capable of performing complex engineering tasks, including register-transfer level (RTL) design and optimization. Existing RTL benchmarks mainly evaluate functional correctness and performance, power, and area (PPA) of the generated RTL designs, leaving agents' ability for \\emph{timing closure} under-evaluated. We propose TicTacBench, a benchmark specifically designed to evaluate coding agents' capabilities for RTL-level timing closure under post-place-and-route (post-PnR) evaluation. TicTacBench contains 30 diverse tasks, each provided with a suboptimal RTL design, realistic timing constraints, functional equivalence verification, and timing reports. With over 300 runs of coding agents driven by 8 frontier LLMs, we find that even the best agent can only close 53.3\\% of tasks with 7.18\\% area-delay product (ADP) degradation and 8.83\\% energy-delay-squared product (EDDP) improvement on average. We identify common failure categories that explain why agents fail to close timing. Then we propose TicTacSkill, a new method that guides agents to follow standard timing-closure procedures and improves the Timing Closure Rate by 9\\%. These results suggest that while coding agents have made significant progress in RTL design, their timing-closure capability still has substantial room for improvement.",
-      "paper_updated": "2026-09-20T05:17:00Z",
-      "created_at": "2026-10-19T05:33:33Z",
-      "input_sha256": "e0e966af7e4b85285d0b1b668c0345a018c61f2e05a8b17a9337ab2a830e31c1",
-      "version": 2,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "c128c92a4a33dd395724f2d175756e143232ed8b4b5c08387f07a5158bcf6733",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "RTL 타이밍 클로저 코딩 에이전트 벤치마크 제안"
+          "reason": "코딩 에이전트 타이밍 클로저 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Unterminated string starting at: line 1 column 14474 (char 14473)"
+          "decision": "relevant",
+          "reason": "코딩 에이전트 타이밍 클로저 평가 벤치마크 TicTacBench 제안"
         }
       ]
     },
@@ -3534,22 +3550,21 @@
       "arxiv_id": "2609.23416",
       "paper_title": "MuLA-Bench: A Multilingual Long-Form Audio Understanding Benchmark via Multi-Tier Auditing",
       "abstract": "Long-form audio performance is often summarized by context length and aggregate accuracy, obscuring how language, evidence, and task jointly shape difficulty. We introduce MuLA-Bench: 5,038 open-ended questions over 1,769 in-the-wild recordings totaling 1,377.9 hours, covering 16 languages and eight domains. A balanced Language x Domain semantic track supports controlled comparisons, while a complementary acoustic track preserves naturally occurring non-speech evidence. Evidence-grounded generation, shortcut checks, and language-expert review provide auditable questions without translating a shared source set or injecting target sounds. We evaluate ten audio-language models and conduct pooled diagnostics on a fixed eight-model cohort. Language rankings change across domains and tasks; acoustic-semantic performance gaps vary with the requested operation; and temporal errors can persist after the correct event is identified. Long-range retrieval is comparatively strong, while precise clock alignment and factual grounding of natural acoustic events remain fragile. MuLA-Bench thus exposes conditional failure patterns that a single long-context score does not capture.",
-      "paper_updated": "2026-09-20T07:11:31Z",
-      "created_at": "2026-10-19T05:33:33Z",
-      "input_sha256": "fcd792104b5baf5d9fad1978b3269e5e2308d02be550df29e103c2f8a5cfdef3",
-      "version": 2,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "9675a2dad37433d7835ed9db59136a3a1c030ca39ddafc34dd67d7d91e8f9206",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "다국어 장문 오디오 이해 벤치마크 제안"
+          "reason": "다국어 장문 오디오 이해 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Unterminated string starting at: line 1 column 14474 (char 14473)"
+          "decision": "relevant",
+          "reason": "16개 언어 장문 오디오 이해 벤치마크 MuLA-Bench 제안"
         }
       ]
     },
@@ -3557,22 +3572,21 @@
       "arxiv_id": "2609.23490",
       "paper_title": "BabelArena: A Large-Scale Multilingual Benchmark for LLM Agents",
       "abstract": "Large language model (LLM) agents increasingly execute multi-step workflows through tool use and interaction with users and environments. However, current agent evaluations are largely English-centric, limiting our understanding of agent capabilities in multilingual settings. We introduce BabelFlow, a benchmark-general agentic workflow that adapts existing agent benchmarks to new languages by analyzing runtime dependencies, coordinating structure-preserving translation, and combining multi-layer verification with human review to preserve task and evaluation semantics. Using BabelFlow, we construct BabelArena, a task-aligned benchmark comprising 16,146 instances derived from 702 canonical tasks across four benchmark families, 13 domains, and 23 languages. Experiments with five frontier models show that no single model dominates across benchmark families and that cross-language disparities extend well beyond task success. Lower-resource languages exhibit distinct failure patterns, with larger shares of tool-use and control-flow errors rather than answer-quality errors alone, pointing to gaps in reliable task execution across the resource levels of these languages. On the same tasks, agents in low-resource languages also consume substantially more tokens than in English (up to roughly twice the input) without proportional increases in interaction length, and language consistency degrades further on tasks requiring structured output, where switches are directed overwhelmingly toward English. We believe BabelArena provides a foundation for advancing research on reliable and efficient multilingual agents.",
-      "paper_updated": "2026-09-20T09:25:38Z",
-      "created_at": "2026-10-19T05:33:33Z",
-      "input_sha256": "5af8cf37c13aaf4c15495fd66bff04730b9eafcc5714f26407a874cc5aeceb01",
-      "version": 2,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "91e5941bc9656ca0aeb755016655df6b82a5c4d53b89f5c063f38707dcf707a8",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "다국어 LLM 에이전트 벤치마크와 구축 방법 제안"
+          "reason": "다국어 LLM 에이전트 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Unterminated string starting at: line 1 column 14474 (char 14473)"
+          "decision": "relevant",
+          "reason": "23개 언어 멀티링구얼 에이전트 벤치마크 BabelArena 제안"
         }
       ]
     },
@@ -3580,22 +3594,21 @@
       "arxiv_id": "2609.23695",
       "paper_title": "PhysAI-Bench: A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
       "abstract": "Recent advances in Physical AI have accelerated the use of foundation models in autonomous systems such as unmanned aerial vehicles (UAVs), which must perceive, reason, plan, and act in dynamic environments. Existing benchmarks assess physical perception, intuitive physics, embodied navigation, and collaborative reasoning, but rarely evaluate the agentic decision-making required for reliable autonomy. We introduce \\textit{PhysAI-Bench}, a benchmark for evaluating this capability. It contains 10,178 standardized decision instances automatically extracted from conversational traces of autonomous UAV missions. Each instance preserves mission context, temporal dependencies, physical constraints, Model Context Protocol (MCP) tool calls, Agent-to-Agent (A2A) interactions, sensor observations, and AI-native 6G network conditions, including latency, packet loss, throughput, edge load, and network slicing. We expose only information preceding each decision, preventing future-event leakage and approximating online decision-making. We evaluate 29 foundation models using a two-stage protocol. We select model-specific configurations from 12 combinations of zero-, three-, and five-shot prompting and four temperatures, tested in three runs on a 35-instance, human-verified development set. We then freeze each selected configuration and evaluate it in three runs on a fixed, episode-disjoint set of 500 instances. GPT-5.3 achieves the highest accuracy (52.00%), followed by GPT-5.2 (49.40%) and Grok~4.5 (49.07%). Few-shot prompting generally improves performance, while temperature has limited influence. The results demonstrate that reliable agentic decision-making in Physical AI remains an open challenge. The dataset is available at https://github.com/maferrag/physai-bench",
-      "paper_updated": "2026-09-20T15:14:45Z",
-      "created_at": "2026-10-19T05:35:41Z",
-      "input_sha256": "0cdfd353f15bb2c0b02374a9e9299e126aa7e0ea05f50ebe3af66342f458c805",
-      "version": 3,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "98f7b6f81cc90af2bb79ded5aed24611d90160da5e8cb36680f638f5aba1b158",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "UAV 에이전트 의사결정용 재사용 벤치마크와 데이터셋 공개"
+          "reason": "UAV 에이전트 의사결정 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Screening IDs must match the request exactly"
+          "decision": "relevant",
+          "reason": "UAV 에이전트 의사결정 벤치마크 PhysAI-Bench 제안, 데이터 공개"
         }
       ]
     },
@@ -3603,22 +3616,21 @@
       "arxiv_id": "2609.23825",
       "paper_title": "Federated Multilingual Speech-LLMs: Architecture and Aggregation Strategy Benchmarking",
       "abstract": "We present a comprehensive benchmark of Federated Learning (FL) for multilingual Automatic Speech Recognition (ASR), evaluating four Speech-LLM architectures on the Multilingual LibriSpeech dataset. We compare FedAvg and FedProx across frozen and unfrozen encoder configurations, demonstrating that optimized learning rates are critical for performance. Specifically, independently tuning the learning rates for the speech encoder, connector, and decoder yields the lowest error rates, with full three-component adaptation (LoRA for encoder and decoder, full training for the connector) producing the best FL results. We observe that FedProx efficacy is architecture-dependent, providing notable advantages in multilingual pre-trained architectures (e.g., EuroLLM over TinyLlama when keeping the encoder fixed); this indicates that LLM backbone capacity plays a key role in mediating resilience to heterogeneous data distributions. These findings offer concrete design guidance for deploying multilingual Speech-LLMs in privacy-sensitive, distributed environments.",
-      "paper_updated": "2026-09-20T19:23:15Z",
-      "created_at": "2026-10-19T05:35:41Z",
-      "input_sha256": "f8633839b1b1cbb691116cec50470d093a0faaab7041f3a5a0cce8665b09c345",
-      "version": 3,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "22b41206adc65b593946f8d94bc0ff7fb756ae387e0405edd61b5a0bd3593f78",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "decision": "uncertain",
-          "reason": "연합학습 다국어 음성LLM 벤치마크이나 과제 언어 불명확"
+          "decision": "relevant",
+          "reason": "연합학습 다국어 음성 LLM 평가"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Screening IDs must match the request exactly"
+          "reason": "연합학습 ASR 아키텍처 비교로 재사용 벤치마크 자원 불명확"
         }
       ]
     },
@@ -3626,22 +3638,21 @@
       "arxiv_id": "2609.23894",
       "paper_title": "Connecting the Dots in Agentic AI Security: A Cross-Dimensional Threat Taxonomy, Evaluation Maturity, and Open Challenges",
       "abstract": "Agentic AI extends LLM security beyond generated content to persistent state, autonomous actions, tool use, and interactions with humans and other agents. Existing threat classifications often emphasize individual dimensions, obscuring connections among entry points, affected components, and security consequences. The known threat landscape also differs from the coverage demonstrated by empirical research. Through a structured review of 66 studies published from 2022 to 2026, we introduce T={S, B, P, A}, a cross-dimensional representation linking affected functional or system surfaces {S}, interaction or trust boundaries {B}, violated security properties {P}, and empirically examined architectures {A}. We analyze 22 artifact-backed red-teaming studies and 11 representative security benchmarks to characterize empirical coverage and evaluation maturity. Within the selected studies, evidence concentrates on prompt/reasoning, memory, and tool-mediated attacks, predominantly in single-agent settings. Persistent, Human--Agent, complex multi-agent, systemic, and long-horizon threats receive less coverage. These findings describe the selected corpus rather than establish gaps across all empirical research. Heterogeneous metrics, limited adaptive defense evaluation, architectural imbalance, and incomplete execution-state capture further constrain comparison and reproducibility. We derive 13 open research questions to guide more systematic, architecture-aware, and reproducible security evaluation of agentic AI.",
-      "paper_updated": "2026-09-20T22:00:52Z",
-      "created_at": "2026-10-19T05:35:41Z",
-      "input_sha256": "0f199dd07dace27b8d3275dfee4feaf9a89c3dc55a7e408506be85d94a5e1f2f",
-      "version": 3,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "4fd8a1bd0c73a59d1a80aa5c7fda84c620f61eae82c0e6d46b6b2f61ee495353",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "decision": "uncertain",
-          "reason": "에이전트 보안 평가 성숙도 분석이나 새 벤치마크 제공 불명확"
+          "decision": "relevant",
+          "reason": "에이전틱 AI 보안 위협 분류 리뷰"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Screening IDs must match the request exactly"
+          "reason": "에이전트 보안 위협 분류 및 벤치마크 조사, 신규 평가자원 불명확"
         }
       ]
     },
@@ -3649,22 +3660,21 @@
       "arxiv_id": "2609.23925",
       "paper_title": "MCPGen: Benchmarking LLMs on Executable MCPWorkflow Development",
       "abstract": "We study whether LLMs can produce executable workflow artifacts that remain consistent across graph structure, tool implementation, schema bindings, and runtime wiring. In this setting, correctness depends on cross-layer consistency: a workflow may be structurally plausible, yet still fail because tool implementations, schema bindings, or runtime execution do not align. Existing benchmarks largely evaluate these capabilities in isolation or rely on trajectory-level proxies, leaving open whether generated workflow artifacts execute end-to-end. We introduce \\textbf{MCPGen}, an executable benchmark for Model Context Protocol (MCP) workflow development. MCPGen contains 100 self-contained MCP projects across 16 application domains and evaluates three diagnostic tasks: workflow reconstruction, tool creation, and backward-compatible workflow extension. We evaluate 11 representative LLMs in a single-turn foundation-model setting, assessing generated artifacts through static analysis, unit and integration tests, and process-isolated end-to-end execution. Models reach 88.5\\% on workflow reconstruction, but no model exceeds 57\\% end-to-end execution success. Per-tool unit-test pass rates reach 63.8\\%, while project-level integration success does not exceed 45\\%, suggesting that integration remains a major bottleneck even when isolated tool tests pass.",
-      "paper_updated": "2026-09-20T22:57:06Z",
-      "created_at": "2026-10-19T05:35:41Z",
-      "input_sha256": "6bc10f829836519c6b45c86f9f014ffc349878b8a2b5cfcd7486714780172484",
-      "version": 3,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "cc1f717dcab8fe8430eba8c6932c79be201913a2179005036b045b4c4def88ee",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "MCP 워크플로 실행 가능성 평가 벤치마크 신규 제안"
+          "reason": "MCP 워크플로 생성 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Screening IDs must match the request exactly"
+          "decision": "relevant",
+          "reason": "MCP 워크플로 개발 실행형 벤치마크 MCPGen 제안"
         }
       ]
     },
@@ -3672,22 +3682,21 @@
       "arxiv_id": "2609.24002",
       "paper_title": "FinInteract: Benchmarking Clarification and Intent Integration in Ambiguous Financial Question Answering",
       "abstract": "Large language model agents increasingly answer financial questions by searching regulatory filings. Such questions are often deceptively under-specified: Meta Platforms' \"operating income\" is $46.75B consolidated but $62.87B for the Family of Apps segment, and each reading is exactly verifiable against the filing. A capable agent should recognize the ambiguity and ask, rather than commit to a plausible but unintended reading. Existing financial benchmarks cannot measure this, because one gold answer per question cannot separate agents that resolve the ambiguity from those that guess the common reading, a blind spot we call the single-gold illusion. We release FinInteract, a bilingual (English/Chinese) benchmark of 173 instances that pairs each question with a default and an intended interpretation across a five-category ambiguity taxonomy, and grades whether an agent elicits the right clarification and then integrates it. Re-grading identical outputs against the default rather than the intended reading inflates GPT-4o's accuracy by 3.1 times, confirming the illusion. Beyond it, we find that models answer above 90% once the interpretation is supplied but at most 28.9% when they must elicit it themselves, that targeting is uneven across a taxonomy well powered for entity scope and metric definition and exploratory elsewhere, and that conditioning on the ambiguity category improves resolution at both inference and training time.",
-      "paper_updated": "2026-09-21T02:06:45Z",
-      "created_at": "2026-10-19T05:35:41Z",
-      "input_sha256": "68f77031f7523c29a90774fa860cdc7121c327296d709980b12b4b510e685de4",
-      "version": 3,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "795738432fa24f4bf6d0fb8bc6b478e92f4a9c914279cbe6879289a76f9d2b9b",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "영중 이중언어 금융 모호성 해소 평가 벤치마크 공개"
+          "reason": "모호한 금융 질의 명확화 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Screening IDs must match the request exactly"
+          "decision": "relevant",
+          "reason": "영중 이중언어 금융 QA 모호성 벤치마크 FinInteract 공개"
         }
       ]
     },
@@ -3695,22 +3704,21 @@
       "arxiv_id": "2609.24016",
       "paper_title": "Context-Aware Pre-Deployment Evaluation of AI Systems: A Regulatory Framework for Nigerian Fintech",
       "abstract": "Commercial large language models are increasingly deployed across African fintech infrastructure for fraud detection and customer communication, yet no Nigerian or African continental regulatory instrument specifies what pre-deployment evaluation such systems must undergo before procurement. This paper reviews African fintech AI governance across global, continental, and Nigerian instruments, and shows that safety is affirmed as a principle while pre-deployment evaluation is operationally unspecified. Generic safety benchmarks cannot surface the failure modes most relevant to this domain, since none contain Nigerian institutional content or test for false positive misclassification of legitimate financial communications. These claims are demonstrated using SafeAlert, a purpose-built evaluation kit applied to six commercial models across three system prompt conditions. Results show that models resisting generic harmful content requests still produce complete fraud scripts under specific framing, and that several models misclassify most legitimate Nigerian bank communications as suspicious or fraudulent, a failure invisible to standard safety evaluation. The paper concludes with a regulatory framework proposing pre-deployment evaluation requirements for the CBN, NITDA, SEC, and the AU, arguing that the identified gap reflects an absence of regulatory specification, not a shortage of technical or financial resources.",
-      "paper_updated": "2026-09-21T02:34:26Z",
-      "created_at": "2026-10-19T05:35:41Z",
-      "input_sha256": "0872f1af0cba8ed8c5a9243d27f40dc353a1fa3c5b849193640e3efcce427d12",
-      "version": 3,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "27892697b721093e7f29bd505be2b354f293eed928e4f9564f894e83ced0c835",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "decision": "uncertain",
-          "reason": "나이지리아 핀테크 평가키트이나 재사용 벤치마크 여부 불명확"
+          "decision": "relevant",
+          "reason": "나이지리아 핀테크 AI 사전평가 규제"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Screening IDs must match the request exactly"
+          "decision": "relevant",
+          "reason": "나이지리아 핀테크 안전 평가 킷 SafeAlert 등 도메인 평가자원 제안"
         }
       ]
     },
@@ -3718,22 +3726,21 @@
       "arxiv_id": "2609.24094",
       "paper_title": "WidgetVA: A Widget-Centric Framework and Benchmark for Agentic Visual Analytics",
       "abstract": "Visual analytics (VA) enables sensemaking through interactive visualization, but effective analysis often requires experts to translate high-level intents into long sequences of interface operations and iteratively interpret visual feedback. We study whether modern vision-language models (VLMs) can take on this role as autonomous VA operators that observe the interface, plan multi-step exploration, execute interactions, and adapt based on intermediate visual feedback. To support systematic development and evaluation, we first introduce WidgetVA, a widget-centric agentic VA framework that standardizes interactive components as structured widgets with unified action (e.g., filter and zoom) and perception-query (e.g., selection summaries) APIs. This standardization supports two modes of system construction: wrapping an existing VA system to make it agent-operable without rebuilding it, and composing a new system from widgets as modular building blocks. To help agents coordinate across widgets rather than plan each interaction from scratch, each widget further packages reusable analytical workflows, giving agents more than a bare set of callable functions to plan over. Building on this framework, we present WidgetVABench, a benchmark of single- and multi-widget VA tasks that require agents to perform multi-step interactions to uncover evidence and produce verifiable results. Each task also provides fine-grained reference annotations so that WidgetVABench can score Answer, Reference Trace Similarity, and State separately rather than collapsing agent performance into one success score. Experiments across multiple VLMs show that our framework provides an effective scaffold for agentic VA, while the diagnostic measures expose persistent limitations for future work. The WidgetVA framework and WidgetVABench have been released in https://github.com/Hiverwin/widgetva.",
-      "paper_updated": "2026-09-21T04:27:36Z",
-      "created_at": "2026-10-19T05:35:41Z",
-      "input_sha256": "04c24db9fc37da11bc00a6d0f12a765e23284049fa8e9818f1ee93949c9b08bb",
-      "version": 3,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "82af26fde5191196f564eb2e0787dd8339834a8f6314b4eaa4d33fbb4bb57cd1",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "위젯 기반 시각분석 에이전트 벤치마크와 프레임워크 공개"
+          "reason": "위젯 중심 시각 분석 에이전트 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Screening IDs must match the request exactly"
+          "decision": "relevant",
+          "reason": "에이전트 시각 분석 벤치마크 WidgetVABench 및 프레임워크 공개"
         }
       ]
     },
@@ -3741,22 +3748,21 @@
       "arxiv_id": "2609.24161",
       "paper_title": "MCP-GRANITE Benchmark: GRANularity Interface TEsting for MCP-Based LLM Agents",
       "abstract": "As LLM agents increasingly interact with external tools through standardized protocols such as MCP, tool-interface design becomes a critical yet underexplored factor. How funψtionality is decomposed into tools affects whether an agent can select the right tool and construct valid arguments. This choice is especially consequential at the edge, where resource constraints limit which models can run locally and scaling up is often not an option. We present MCP-GRANITE, an open-source extensible benchmark framework that treats tool-interface granularity as a controlled variable for MCP-based agents, evaluated under edge and IoT scenarios. It comprises 81 multi-step scenarios across 9 domains, instantiated at 4 granularity levels from fine-grained primitive tools to a single tool. We evaluate 9 locally deployed models (268M-20.9B parameters) across 8,748 trials using task completion, tool selection F1, argument accuracy, latency, and resource-usage metrics. Results show that a 4-tool interface offers the best trade-off, improving task completion by 16.4% over fine-grained primitives and 33.6% over a single monolithic tool, while nearly doubling argument accuracy. Model size is only weakly correlated with task completion and strongly with latency, while its association with argument accuracy is less robust, and a 3.2B model at the optimal granularity outperforms a 20.9B model at a mismatched one. These findings identify tool-interface granularity as a key design parameter for MCP-based agents.",
-      "paper_updated": "2026-09-21T06:21:13Z",
-      "created_at": "2026-10-19T05:35:41Z",
-      "input_sha256": "18cf3d1fc6003ab75710f1e9c0ef9335d878f71207c4fb496f3fdf901b673072",
-      "version": 3,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "79d4efa65f933c08e553f13012fb51603267a23b1a221a8b8249141ffdb1a5b8",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "MCP 도구 인터페이스 세분성 평가 벤치마크 프레임워크 제시"
+          "reason": "MCP 도구 인터페이스 세분성 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Screening IDs must match the request exactly"
+          "decision": "relevant",
+          "reason": "MCP 도구 인터페이스 세분화 평가 벤치마크 프레임워크 제안"
         }
       ]
     },
@@ -3764,22 +3770,21 @@
       "arxiv_id": "2609.24172",
       "paper_title": "LegendBench: A Diagnostic Benchmark for Legend Understanding with Counterfactual Interventions",
       "abstract": "Legends are fundamental to chart understanding, as reliable interpretation requires correctly binding legend entries to corresponding visual marks. While vision-language models (VLMs) are increasingly applied to chart understanding, their legend understanding is poorly diagnosed by aggregate accuracy, which can be satisfied by superficial shortcuts and confound legend-specific errors with other reasoning failures. To enable fine-grained diagnosis and controlled testing, we introduce LegendBench, a parametric benchmark and generation pipeline that produces targeted legend-centric test cases. LegendBench contributes (1) a capability-task taxonomy spanning legend parsing, legend grounding, legend-conditioned reasoning, and legend-aware abstention to localize failures, and (2) counterfactual group generation, where each base chart yields multiple variants under controlled legend interventions to probe model invariance and sensitivity. Using LegendBench, we evaluate both general-purpose VLMs and specialized chart models and generate their capability profiles, revealing persistent bottlenecks in reliable legend-to-mark binding and counterfactual consistency. We then use these capability profiles to guide targeted fine-tuning, demonstrating that bottleneck-specific interventions can effectively close the localized capability gaps and generalize to unseen data. We further leverage our counterfactual design to conduct fine-grained diagnostic experiments, analyzing encoding-channel effects, legend-order shortcuts, and abstention under varying visibility.",
-      "paper_updated": "2026-09-21T06:42:46Z",
-      "created_at": "2026-10-19T05:35:41Z",
-      "input_sha256": "cff2db240a2e20b3ed9aafa5dfde290560e9f3467c4d414ba5f8f54ee60af47e",
-      "version": 3,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "434e687ba2df451067e4c477c7263590da31205f66846fe2e52e494b780c019b",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "decision": "relevant",
-          "reason": "범례 이해 진단용 반사실 벤치마크와 생성 파이프라인 제안"
+          "reason": "차트 범례 이해 진단 벤치마크"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
-          "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Screening IDs must match the request exactly"
+          "decision": "relevant",
+          "reason": "차트 범례 이해 진단 벤치마크 LegendBench 생성 파이프라인 제안"
         }
       ]
     },
@@ -3787,22 +3792,21 @@
       "arxiv_id": "2609.24190",
       "paper_title": "Benchmarking Off-the-Shelf Multimodal AI Models Against Dermatologists on Patient-Captured Skin Images",
       "abstract": "Artificial intelligence (AI) has advanced at a rapid pace in recent years. Initially, breakthroughs in large language models caught widespread attention. However, recent generations of frontier AI models have adopted multimodal capabilities as a first class citizen, with vision capabilities being central to that. In this paper, we evaluate three recently released models on the task of diagnosing dermatological conditions from patient-submitted images. The models chosen are at the low to mid tier in terms of pricing and thus represent a floor on current AI capabilities, not a ceiling. We evaluate AI performance relative to a panel of three certified dermatologists, who grade each image, and we present four interesting findings. Firstly, depending on the metric, the tested AI models are either on par or slightly trail humans in terms of inter-clinician agreement. Secondly, we find that asking AI models for a confidence rating produces poorly calibrated answers, meaning use of confidence thresholds should not be relied upon in a clinical setting. Thirdly, the effect of providing additional patient metadata is strongly model-specific, with one of the three models degrading on every metric considered. Finally, model cost is not predictive of performance. The best-performing model we tested costs on average $0.0045 per case.",
-      "paper_updated": "2026-09-21T07:01:25Z",
-      "created_at": "2026-10-19T05:35:41Z",
-      "input_sha256": "977a9f35b11c71fbcf9b59253371b1eac59c0ff34d74a7b3a3e8add931e4cf54",
-      "version": 3,
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "6b7e50508c18bdf475b580286d30a0563f1e374c840014e06c832ce04b33d034",
+      "version": 4,
       "status": "passed",
       "votes": [
         {
           "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "decision": "irrelevant",
-          "reason": "기존 모델 피부진단 성능 비교로 새 벤치마크 미제공"
+          "decision": "relevant",
+          "reason": "피부 이미지 진단 멀티모달 AI 평가"
         },
         {
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "uncertain",
-          "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
-          "error": "parse: Screening IDs must match the request exactly"
+          "reason": "피부과 진단 모델 비교 보고, 재사용 벤치마크 자원 불명확"
         }
       ]
     },
@@ -22831,6 +22835,94 @@
           "model": "zai-org/GLM-5.3-Flash",
           "decision": "relevant",
           "reason": "다중 이미지 환각 평가 벤치마크 MIOH 신규 제안"
+        }
+      ]
+    },
+    "2509.20645": {
+      "arxiv_id": "2509.20645",
+      "paper_title": "Anticipatory Evaluation of Language Models: Predicting LLM Benchmark Scores from Descriptions",
+      "abstract": "Modern ML research increasingly faces an evaluation bottleneck: building benchmarks and running experiments is costly, slowing iteration. We ask how much can be inferred about evaluation outcomes before experiments, given only a natural-language description of the task and setup. We call this setting anticipatory evaluation. We introduce EVALCAST, a literature-grounded resource of 2,290 description-performance pairs from 1,519 arXiv papers, including a test set of papers published after the model's knowledge cutoff. We evaluate two tasks: predicting absolute performance through regression and comparing benchmark difficulty through pairwise prediction. Experiments with frontier LLMs show that accurate regression remains challenging, while pairwise predictions can recover relative performance ordering under matched settings. Comparable performance on post-cutoff and streaming evaluations suggests that the observed signal is not solely attributable to previously reported results. Overall, EVALCAST provides a resource and evaluation framework for studying anticipatory evaluation and its potential use in prioritizing benchmarks.",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "9d6680e887f2cb2c973fb8bd29159490cef01cb7edea24631e89739334a8ea45",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 벤치마크 점수 예측 평가"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "벤치마크 점수 예측용 자원 EVALCAST 제안, 새 평가 패러다임"
+        }
+      ]
+    },
+    "2604.01444": {
+      "arxiv_id": "2604.01444",
+      "paper_title": "Cooking Up Risks: Benchmarking and Reducing Food Safety Risks in Large Language Models",
+      "abstract": "Food safety directly affects human health in daily life, as unsafe preparation or storage can lead to contamination and foodborne illness. PwC's 2025 consumer survey reports that 47% of respondents are comfortable using generative AI for meal planning, highlighting the need for safe food-related assistance. Yet the safety of large language models (LLMs) against malicious food-related requests remains underexplored. We introduce FoodGuardBench, an FDA-grounded benchmark with 2,124 seed malicious questions, 16,992 variants from eight jailbreak strategies, and 1,000 benign questions across five food-safety risk categories. Across twelve LLMs, the mean overall ASR is 25.51%, whereas the average per-model maximum across eight attacks is 60.59%, revealing that testing only one attack can substantially underestimate the full extent of food safety risk. For several models, nearly half or more of unsafe answers are rated as ready-to-use guides for harmful actions. Existing general-purpose guardrails average 96.25% benign utility but only 55.80% detection accuracy against these eight jailbreak attacks. Using FoodGuardBench, we fine-tune FoodGuard-4B, a food-safety-specific guardrail that achieves 97.64% out-of-distribution (OOD) accuracy while maintaining high benign utility. This demonstrates the value of FoodGuardBench for identifying and mitigating food safety risks.",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "71915b37d8ae7374fb91e57a5793a32ea2fd67b671794c17206a6a04e1a8441e",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "LLM 식품 안전 위험 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "식품 안전 LLM 벤치마크 FoodGuardBench 제안 및 가드레일 학습"
+        }
+      ]
+    },
+    "2608.27394": {
+      "arxiv_id": "2608.27394",
+      "paper_title": "RATIO: A Benchmark for Retrieval Across Typed Ideation Operations in Scientific Literature",
+      "abstract": "Retrieved scientific literature can serve as inspiration for both human and AI scientists. Inspiration can take different forms: prior work may directly suggest how to address a problem, or surface directions at different levels of abstraction---zooming out to a more general view or zooming in to a concrete realization. We introduce RATIO (Retrieval Across Typed Ideation Operations), a large-scale benchmark in which relevance is defined by three operations which we name ideation moves: Address retrieves potential approaches for stated problems, Broaden retrieves more general formulations, and Specify retrieves concrete instantiations. RATIO is constructed from millions of full-text scientific papers across CS literature via a general recipe that extends discourse-marker distant supervision---previously used only for classification---to corpus-scale retrieval, combined with extensive LLM and human vetting. Experiments show that operation-specific fine-tuning substantially boosts retrievers and LLM reranking helps further, but much room for improvement remains. Researchers blind to condition found the fine-tuned retriever's candidates more useful as inspirations. RATIO provides a scalable training and evaluation framework for retrieval components that support literature-grounded ideation, opening up new research avenues in scientific inspiration retrieval. We release full data, code, models, and annotations.",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "1ca5bbcb332a976923483eb7cee1fbebb25453f3ca3b82f4beea2441fef52947",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "과학 문헌 검색 벤치마크"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "relevant",
+          "reason": "과학 문헌 아이데이션 검색 벤치마크 RATIO 제안, 데이터 공개"
+        }
+      ]
+    },
+    "2609.06780": {
+      "arxiv_id": "2609.06780",
+      "paper_title": "Shortcutting the Fix: Identifying and Categorizing Agentic Exploits in Software Engineering Benchmarks",
+      "abstract": "High software engineering benchmark scores often mask exploitative shortcuts, such as retrieving upstream solutions, exploiting local Git histories, or recalling memorized code. We formalize this phenomenon as agentic shortcutting and audit three state-of-the-art open LLMs on SWE-bench Multilingual and DeepSWE using trajectory-level LLM judges. Standard evaluations trigger shortcutting attempts in 60.7%-90.1% and 55.5%-89.1% of trajectories, respectively, with up to 72.1% of tasks resolved with the aid of a successful exploit; disabling network access fails to curb these high attempt rates. Prompting agents to construct solutions independently suppresses attempts to 9.4%-14.2% and 0.9%-10.3%, respectively, while virtually eliminating shortcut-dependent resolutions and preserving core task performance. Our findings demonstrate the necessity of exploit-aware evaluation frameworks to measure repository-level problem solving.",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "created_at": "2026-10-20T02:49:01Z",
+      "input_sha256": "1a995270de37dbd6a592ca150e8cc205b6210a9a7569ab845c1763cb0f5161ac",
+      "version": 4,
+      "status": "passed",
+      "votes": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "decision": "relevant",
+          "reason": "SWE 벤치마크 에이전틱 익스플로잇 분석"
+        },
+        {
+          "model": "zai-org/GLM-5.3-Flash",
+          "decision": "uncertain",
+          "reason": "SWE 벤치마크 단축행위 분석으로 신규 평가자원 제안 불명확"
         }
       ]
     }
