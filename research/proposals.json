@@ -336,9 +336,74 @@
       "proposal_sha256": "2a5b34636ac6143230d1c573eb08bccd0a918596d6b50b920d0a5a81496cdc59"
     },
     "2510.26238": {
-      "decision": "needs_evidence",
-      "reason": "페이지 위치 보정 후 두 모델의 검증을 통과하지 못했습니다: 근거 대조 응답의 형식 검사를 통과하지 못했습니다.",
-      "changes": [],
+      "decision": "propose",
+      "reason": "QASU는 설문지 데이터의 구조 이해를 평가하는 새 벤치마크로, 6개 구조 과제를 6개 직렬화 형식과 프롬프트 변형에 걸쳐 평가한다. 논문은 현재 릴리스가 영어 설문지만 다룬다고 밝혀 en 트랙에만 새 행을 제안한다. 입력은 직렬화된 텍스트이므로 modality는 text이다. 공식 저장소 URL이 PDF에 그대로 나온다. 라이선스, 상업적 이용, 수정, 재배포, lm-eval 지원은 제공된 근거에서 확인되지 않아 '확인 불가'로 둔다. 초안에 있던 저장소 코드 라이선스 관련 서술은 근거가 없어 삭제했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "qasu",
+            "이름": "QASU",
+            "평가 축": "구조 이해(설문지 데이터)",
+            "언어": "en",
+            "정의": "설문지 데이터를 6개 직렬화 형식(HTML, XML, JSON, Markdown, Turtle, 평문)으로 표현하고 6개 구조 과제(정답 조회, 역조회, 응답자 수, 개념 집계, 규칙 기반 질의, 멀티홉 관계 추론)를 수행하게 하는 벤치마크. 5개 공개 설문 데이터셋(병원 퇴원, 정신건강, SUS-UTA7, 2022 Stack Overflow 개발자 설문, ISBAR)을 통합 표현으로 재구성하고, 토큰 예산에 맞춰 응답자를 무작위 표본추출하며, 순위 교환(rank swapping)과 MCQ 10% 교란으로 오염을 완화한다. 채점은 공백·대소문자 정규화 후 exact-match 정확도",
+            "대표 과제": "Answer Lookup, Reverse Answer Lookup, Respondent Count, Conceptual Aggregation, Rule-based Querying, Multi-hop Relational Inference",
+            "대표 예시·설명": "과제 설명: 직렬화된 설문지에서 특정 응답자의 특정 문항 값을 찾거나(정답 조회), 특정 값을 가진 응답자 집합을 찾고(역조회), 응답자 수를 세거나, 개념에 해당하는 응답자 수를 집계하거나, 수치 조건을 만족하는 응답자를 찾거나, 여러 문항 조건을 모두 만족하는 응답자를 찾는 과제",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "제공된 논문과 저장소 README에서 데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건을 확인하지 못함. 원본 5개 설문 데이터셋의 이용 조건도 각각 별도 확인 필요. 현재 릴리스는 영어 설문지만 포함하며 다국어 확장은 논문에서 향후 과제로 언급됨. 개인정보 보호와 오염 방지를 위해 순위 교환·MCQ 교란을 적용하므로 원본 값과 다를 수 있음. lm-eval 하니스 지원 여부는 확인되지 않음",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/ReML-AI/QASU"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Structural understanding of questionnaire data",
+            "definition": "QASU evaluates questionnaire data serialized into six formats (HTML, XML, JSON, Markdown, Turtle, plain text) across six structural tasks: answer lookup, reverse answer lookup, respondent count, conceptual aggregation, rule-based querying, and multi-hop relational inference. It harmonizes five public questionnaire datasets (hospital discharge, mental health, SUS-UTA7, 2022 Stack Overflow Developer Survey, ISBAR), samples respondents to fit a token budget, and applies rank swapping and 10% MCQ perturbation to reduce contamination. Scoring is exact-match accuracy after whitespace and case normalization.",
+            "task": "Answer Lookup, Reverse Answer Lookup, Respondent Count, Conceptual Aggregation, Rule-based Querying, Multi-hop Relational Inference",
+            "example": "Task description: given a serialized questionnaire, find the value of a specified question for a specified respondent, find the respondents holding a specified value, count respondents, count respondents matching a concept, find respondents satisfying a numeric predicate, or find respondents satisfying multiple conditions across questions."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "serialized document"
+            },
+            "대표 과제": {
+              "page": 4,
+              "quote": "Answer Lookup"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "Respondent Count"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/ReML-AI/QASU"
+            },
+            "언어": {
+              "page": 10,
+              "quote": "focuses exclusively on"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "QASU (Questionnaire Analysis"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "six serialization styles"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "QASU (Questionnaire Analysis"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
       "arxiv_id": "2510.26238",
       "paper_title": "Questionnaire meets LLM: A Benchmark and Empirical Study of Structural Skills for Understanding Questions and Responses",
       "paper_updated": "2026-10-01T00:00:00Z",
@@ -385,12 +450,14 @@
             "url": "https://github.com/ReML-AI/QASU",
             "fetched_url": "https://api.github.com/repos/ReML-AI/QASU/readme",
             "sha256": "15bf9b948bbb9a983ae0f99aec969a09745c1d89a7ca5a6d8e93aa5dbd64baff",
-            "accessed": "2026-10-19T15:38:41Z"
+            "accessed": "2026-10-20T06:00:29Z"
           }
         ]
       },
-      "created_at": "2026-10-19T15:39:19Z",
-      "extraction_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "status": "awaiting_claude",
+      "created_at": "2026-10-20T06:00:29Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
       "screening": {
         "arxiv_id": "2510.26238",
         "paper_title": "Questionnaire meets LLM: A Benchmark and Empirical Study of Structural Skills for Understanding Questions and Responses",
@@ -413,38 +480,11 @@
           }
         ]
       },
-      "issue_url": null,
-      "citation_replay": {
-        "source_run": "39261196214",
-        "original_created_at": "2026-10-19T14:01:28Z",
-        "page_corrections": [
-          {
-            "track": "en",
-            "field": "정의",
-            "from_page": 4,
-            "to_page": 2,
-            "quote_sha256": "b12b88eaf81520bfe8cdb5f35bc8e47457816dabb28463a4d42276866d990325"
-          }
-        ],
-        "status": "completed"
+      "claude_pending": {
+        "source_run": "39377815541",
+        "context_sha256": "6713e3dce707a9ecb8fb194ce94b065e36a904b7423e25e5ec33bb6cbe8ccb80"
       },
-      "status": "needs_evidence",
-      "verification": {
-        "approve": false,
-        "votes": [
-          {
-            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-            "approve": true,
-            "reason": "제안된 QASU 행은 논문과 공식 저장소로 뒷받침된다. 6개 직렬화 형식(HTML, XML, JSON, Markdown, Turtle, 평문)과 6개 구조 과제(정답 조회, 역조회, 응답자 수, 개념 집계, 규칙 기반 질의, 멀티홉 관계 추론)가 논문에 명시되어 있고, 5개 공개 데이터셋(병원 퇴원, 정신건강, SUS-UTA7, 2022 Stack Overflow, ISBAR), 토큰 예산 표본추출, 순위 교환·MCQ 10% 교란, exact-match 채점도 확인된다. 언어는 논문이 '영어 설문지만'이라고 명시하므로 en 트랙 지정이 타당하다. 링크는 PDF에 명시된 공식 저장소이며, 라이선스·상업적 이용·수정·재배포·lm-eval은 정책대로 '확인 불가'로 두어 문제없다. 예시는 삽화적 과제 설명으로 허용 범위 내이며, 모든 변경 필드가 근거와 일치한다."
-          },
-          {
-            "model": "zai-org/GLM-5.3-Flash",
-            "approve": false,
-            "reason": "근거 대조 응답의 형식 검사를 통과하지 못했습니다."
-          }
-        ]
-      },
-      "proposal_sha256": "68b98f74decaa31fac2d2eaf8aa74c9fe7d85ae2580c2242498426ccfe139538"
+      "proposal_sha256": "6bfaebcb99bc4f5085c5f7700740eba017cd439c5b75006325fca07514e43d67"
     },
     "2511.08500": {
       "decision": "exclude",
