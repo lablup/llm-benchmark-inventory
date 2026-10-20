@@ -26,6 +26,19 @@ unsupported QASU repository-license claim; it did not update the inventory.
 Production now invokes the official CLI directly so a variable number of papers
 can be processed sequentially with individual checkpoints.
 
+## Verified production migration
+
+Run [39377815541](https://github.com/lablup/llm-benchmark-inventory/actions/runs/39377815541)
+revised QASU's unsupported license wording, obtained one Claude approval,
+applied the English row and deployed it successfully. The actual inventory
+change is [e4bc869](https://github.com/lablup/llm-benchmark-inventory/commit/e4bc8696022da56c24268fe3a107d46ba55a4a48);
+notification [#19](https://github.com/lablup/llm-benchmark-inventory/issues/19)
+was created after deployment. Public page data matched that deployed commit.
+The subsequent abstract smoke (39377904060) found no unprocessed/changed abstracts,
+so it reused cached screening and made no new model calls. New-abstract parsing
+and deduplication are covered by offline tests; this smoke is not a fresh model
+quality measurement.
+
 ## What gets updated
 
 1. `arxiv_watch.py` reads arXiv RSS feeds for cs, econ, eess, math, physics,

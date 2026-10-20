@@ -117,6 +117,20 @@ class ClaudeApprovalTests(unittest.TestCase):
         item = r.read_json(self.root / "research/proposals.json")["proposals"][p["arxiv_id"]]
         self.assertTrue(review.agreed(item, self.config))
 
+    def test_abstract_screening_reuses_unchanged_result_without_pdf(self):
+        r.write_json(self.root / "research/proposals.json", self.ledger)
+        r.save_state(self.root / "new-papers.json", self.state)
+        response = {"papers": {"2610.12345": {"decision": "irrelevant", "reason": "새 평가 자료 없음"}}}
+        with patch.object(c, "call", return_value=response) as call, patch.object(r, "get_pdf") as pdf:
+            r.run(self.root, screening_smoke=True)
+            r.run(self.root, screening_smoke=True)
+        call.assert_called_once()
+        pdf.assert_not_called()
+        record = r.read_json(self.root / "research/proposals.json")["screenings"]["2610.12345"]
+        self.assertEqual(record["policy"], "claude_only")
+        self.assertEqual(len(record["votes"]), 1)
+        self.assertEqual(record["status"], "excluded")
+
 
 if __name__ == "__main__":
     unittest.main()
