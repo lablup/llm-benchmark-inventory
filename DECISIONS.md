@@ -252,3 +252,15 @@ invent entries to fill slots. Bind rankings to the reviewed proposal hash,
 check for stale data and roll back inventory plus scores together on failure.
 Incomplete proposals remain off the public site. Existing unrelated rankings
 are preserved; this is not a claim that all historical scores were refreshed.
+
+## 15. Present the landing roadmap as an icon grid with inline SVG (2026-10-21)
+
+The user replaced the axis-and-branch roadmap diagram with a grid of five
+entries (text Korean, text English, system resources, image Korean, image
+English), each showing a line icon, a title, a one-line description, and the
+item count. Draw icons as inline SVG in `index.html`, authored in this
+repository, so no third-party image or icon license is involved and colors
+follow the shared design tokens. Korean entries carry a "가" badge and English
+entries an "A" badge. Keep the descriptions aligned with each detail page's
+hero copy. Decision 6 still applies to the surrounding design; only the
+roadmap's visual form changes.
