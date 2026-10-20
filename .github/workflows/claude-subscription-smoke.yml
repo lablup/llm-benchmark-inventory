@@ -40,7 +40,7 @@ jobs:
         with:
           github_token: ${{ github.token }}
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          prompt: 'Return the structured object {"ok":true}. Do not read files, call tools, or comment on GitHub.'
+          prompt: 'Return exactly {"ok":true} as plain JSON without Markdown fences. Do not read files, call tools, or comment on GitHub.'
           settings: '{"disableAllHooks":true}'
           claude_args: >-
             --model sonnet
@@ -48,17 +48,21 @@ jobs:
             --tools ""
             --disallowedTools "mcp__*"
             --setting-sources ""
-            --json-schema '{"type":"object","properties":{"ok":{"type":"boolean","const":true}},"required":["ok"],"additionalProperties":false}'
       - name: Check the structured response
         env:
-          RESPONSE: ${{ steps.claude.outputs.structured_output }}
+          EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
           CONCLUSION: ${{ steps.claude.outputs.conclusion }}
         run: |
           python3 - <<'PY'
           import json, os
           if os.environ["CONCLUSION"] != "success":
               raise SystemExit("Claude request did not succeed; no fallback is configured")
-          result = json.loads(os.environ["RESPONSE"])
+          from pathlib import Path
+          messages = json.loads(Path(os.environ["EXECUTION_FILE"]).read_text())
+          results = [m for m in messages if m.get("type") == "result"]
+          if len(results) != 1 or results[0].get("is_error") or results[0].get("subtype") != "success":
+              raise SystemExit("Missing or unsuccessful Claude result")
+          result = json.loads(results[0]["result"])
           if result != {"ok": True} or type(result.get("ok")) is not bool:
               raise SystemExit("Invalid smoke response")
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as report:
