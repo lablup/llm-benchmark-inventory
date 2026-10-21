@@ -29,7 +29,9 @@ need explicit evidence in rights_evidence, in one of two forms per field.
 {"page":physical PDF page number,"quote":"..."}. Do not invent URLs or quote text.
 (b) Verified absence: {"source_url":"exact supplied official card URL","absent":true}.
 Use it ONLY when neither the supplied PDF pages nor the fetched official card
-mention any license at all. Then set 라이선스 to exactly '미표기(논문·공식 저장소 확인)'
+mention any license at all. The card text includes the repository's LICENSE file
+under a '## LICENSE file' heading when one exists; a card with that section can
+never support absence. Then set 라이선스 to exactly '미표기(논문·공식 저장소 확인)'
 and set 상업적 이용, 수정·파생 and 재배포 each to exactly '저작권 전부 보유': an
 unlicensed public release is treated as all rights reserved until the authors
 state a license. If the official card never mentions lm-eval or
@@ -109,6 +111,10 @@ def absence(evidence, context, field):
     matches = [c for c in context.get("official_resources", []) if c["url"] == evidence["source_url"]]
     if len(matches) != 1:
         raise ValueError("Publication source was not fetched")
+    if "license_file" not in matches[0]:
+        raise ValueError("The official card was fetched without checking for a LICENSE file")
+    if field != "lm-eval 지원" and matches[0]["license_file"] is not None:
+        raise ValueError("The repository has a LICENSE file; cite it instead of claiming absence")
     if field == "lm-eval 지원":
         texts, words, what = [matches[0]["text"]], HARNESS_WORDS, "the evaluation harness"
     else:

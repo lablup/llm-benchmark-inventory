@@ -14,6 +14,8 @@
 - 자동 조사 파이프라인의 초안 단계는 다섯 필드(라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원)를 `미확인`으로 두고, 공개 단계(`publication_checks.py`)에서 근거로 해소한다. `미표기`는 부재 근거(absence evidence) `{"source_url": 공식 카드 URL, "absent": true}`가 있어야 하며, 코드는 공식 카드와 PDF 본문에 라이선스 단어가 하나라도 있으면 부재 주장을 거부한다. `미확인`이 남은 행은 공개되지 않는다.
 - 사람이 표를 고칠 때는 `라이선스` 열만 적고 `python3 build_benchmark_inventory.py`를 돌린다. 파생 세 열은 스크립트가 채운다. 이어서 `python3 build_site_data.py`로 사이트 데이터를 갱신한다.
 
-## 확인 범위의 한계
+## 자동 조사가 읽는 범위
 
-자동 조사가 읽는 공식 카드는 GitHub README 또는 Hugging Face 데이터셋 README뿐이다. 저장소의 별도 LICENSE 파일은 읽지 않으므로, `미표기(논문·공식 저장소 확인)` 행도 이용 전에 저장소를 직접 확인해야 한다.
+- 공식 카드 = README + 저장소 루트의 LICENSE 파일. GitHub는 API의 license 엔드포인트로 파일 이름과 무관하게 감지된 라이선스 파일(SPDX 식별자 포함)을 읽고, Hugging Face 데이터셋은 `LICENSE`, `LICENSE.md`, `LICENSE.txt`와 LICENCE 철자 변형을 차례로 찾는다(`research_pipeline.get_official_resource`).
+- LICENSE 파일이 있으면 카드 본문 끝에 `## LICENSE file: 이름 (SPDX …)` 절로 붙고, 메타데이터 `license_file`에 이름·SPDX·sha256이 남는다. 이 경우 부재 주장은 코드가 거부한다.
+- 여전히 읽지 않는 것: 루트가 아닌 하위 폴더의 라이선스 파일, 데이터 파일 안에 들어 있는 라이선스 문구, 논문·저장소 밖(학회 사이트, 별도 데이터 호스팅)의 이용 약관. `미표기(논문·공식 저장소 확인)` 행도 이용 전에 이 범위 밖을 한 번 더 본다.

@@ -124,6 +124,7 @@ const ENGLISH_LICENSES = {
   "미표기(수집물. 원 저장소 라이선스 상속)": "Not specified; source repository licenses may apply",
   "미표기(데이터 카드 확인. HF 게이트 접근)": "Not specified; Hugging Face access approval is required",
   "CC-BY-4.0(미러 카드)": "CC-BY-4.0, as stated on the mirror card",
+  "CC-BY-4.0(저장소 LICENSE 파일)": "CC-BY-4.0, from the repository LICENSE file",
   "Apache-2.0(FastChat 저장소)": "Apache-2.0 for the FastChat repository",
 };
 

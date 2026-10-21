@@ -19,6 +19,7 @@ import time
 from dataclasses import replace
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.error import HTTPError
 from urllib.parse import urlsplit
 from urllib.request import Request, build_opener, HTTPRedirectHandler
 
@@ -168,36 +169,78 @@ def get_pdf(key: str, cache: Path) -> dict:
             "accessed": iso(datetime.now(timezone.utc)), **extract_pdf(pdf)}
 
 
+HF_LICENSE_FILES = ("LICENSE", "LICENSE.md", "LICENSE.txt", "LICENCE", "LICENCE.md", "LICENCE.txt")
+
+
+def fetch_public(url: str, limit: int, accept: str | None = None, optional: bool = False) -> bytes | None:
+    """GET a public URL without redirects or credentials. optional=True turns 404 into None."""
+    headers = {"User-Agent": "llm-benchmark-inventory/2.0"}
+    if accept:
+        headers["Accept"] = accept
+    try:
+        with build_opener(NoRedirect()).open(Request(url, headers=headers), timeout=30) as response:
+            data = response.read(limit + 1)
+    except HTTPError as error:
+        if optional and error.code == 404:
+            return None
+        raise
+    if len(data) > limit:
+        raise ValueError("Official source too large")
+    return data
+
+
 def get_official_resource(url: str) -> dict:
-    """Read a linked public repository/dataset card without forwarding API keys."""
+    """Read a linked public repository/dataset card and its LICENSE file without forwarding API keys.
+
+    The returned text is the README followed by the license file when one exists, so the
+    model and the absence check in publication_checks.py see both. license_file is None when
+    the repository has no license file at its root (GitHub: any name the API detects;
+    Hugging Face: LICENSE/LICENCE with .md/.txt variants).
+    """
     parsed = urlsplit(url)
     parts = parsed.path.strip("/").split("/")
     if parsed.scheme != "https" or parsed.username or parsed.port or parsed.query or parsed.fragment:
         raise ValueError("Unsupported official source URL")
+    license_file = None
     if parsed.hostname == "github.com" and len(parts) >= 2:
         owner, repo = parts[:2]
         if not re.fullmatch(r"[A-Za-z0-9_.-]+", owner) or not re.fullmatch(r"[A-Za-z0-9_.-]+", repo):
             raise ValueError("Unsupported repository path")
-        fetch_url = f"https://api.github.com/repos/{owner}/{repo}/readme"
-        with build_opener(NoRedirect()).open(Request(fetch_url, headers={"User-Agent": "llm-benchmark-inventory/2.0", "Accept": "application/vnd.github+json"}), timeout=30) as response:
-            data = response.read(500_001)
-        if len(data) > 500_000:
-            raise ValueError("Repository card too large")
-        card = json.loads(data)
-        raw = base64.b64decode(card["content"], validate=False)
+        api = f"https://api.github.com/repos/{owner}/{repo}"
+        fetch_url = f"{api}/readme"
+        raw = base64.b64decode(json.loads(fetch_public(fetch_url, 500_000, "application/vnd.github+json"))["content"], validate=False)
+        data = fetch_public(f"{api}/license", 500_000, "application/vnd.github+json", optional=True)
+        if data is not None:
+            found = json.loads(data)
+            content = base64.b64decode(found["content"], validate=False)
+            license_file = {"fetched_url": f"{api}/license", "name": found.get("name"),
+                            "spdx_id": (found.get("license") or {}).get("spdx_id"),
+                            "sha256": hashlib.sha256(content).hexdigest(), "text": content.decode("utf-8", "replace")}
     elif parsed.hostname == "huggingface.co" and len(parts) >= 3 and parts[0] == "datasets":
         owner, repo = parts[1:3]
         if not all(re.fullmatch(r"[A-Za-z0-9_.-]+", value) for value in (owner, repo)):
             raise ValueError("Unsupported dataset path")
-        fetch_url = f"https://huggingface.co/datasets/{owner}/{repo}/raw/main/README.md"
-        with build_opener(NoRedirect()).open(Request(fetch_url, headers={"User-Agent": "llm-benchmark-inventory/2.0"}), timeout=30) as response:
-            raw = response.read(300_001)
+        base = f"https://huggingface.co/datasets/{owner}/{repo}/raw/main"
+        fetch_url = f"{base}/README.md"
+        raw = fetch_public(fetch_url, 300_000)
+        for name in HF_LICENSE_FILES:
+            content = fetch_public(f"{base}/{name}", 300_000, optional=True)
+            if content is not None:
+                license_file = {"fetched_url": f"{base}/{name}", "name": name, "spdx_id": None,
+                                "sha256": hashlib.sha256(content).hexdigest(), "text": content.decode("utf-8", "replace")}
+                break
     else:
         raise ValueError("Official source needs a supported dataset-card adapter")
     if len(raw) > 300_000 or not raw.strip():
         raise ValueError("Empty or oversized official source")
+    text = raw.decode("utf-8", "replace")
+    if license_file:
+        heading = f"## LICENSE file: {license_file['name']}"
+        if license_file["spdx_id"]:
+            heading += f" (SPDX {license_file['spdx_id']})"
+        text += f"\n\n{heading}\n{license_file.pop('text')}"
     return {"url": url, "fetched_url": fetch_url, "sha256": hashlib.sha256(raw).hexdigest(),
-            "accessed": iso(datetime.now(timezone.utc)), "text": raw.decode("utf-8")}
+            "accessed": iso(datetime.now(timezone.utc)), "license_file": license_file, "text": text}
 
 
 def copy_block(text, key):

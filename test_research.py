@@ -250,6 +250,43 @@ class ResearchTests(unittest.TestCase):
                     research.get_official_resource(url)
         opener.assert_not_called()
 
+    def test_official_source_adapter_reads_the_license_file(self):
+        import base64, json
+        from urllib.error import HTTPError
+
+        def github(payload):
+            return json.dumps(payload).encode()
+
+        def fake_fetch(responses):
+            def fetch(url, limit, accept=None, optional=False):
+                value = responses[url]
+                if value is None:
+                    if optional:
+                        return None
+                    raise HTTPError(url, 404, "missing", {}, None)
+                return value
+            return fetch
+
+        readme = github({"content": base64.b64encode(b"# Bench\nData.").decode()})
+        found = github({"name": "LICENSE", "license": {"spdx_id": "MIT"}, "content": base64.b64encode(b"MIT License text").decode()})
+        api = "https://api.github.com/repos/org/bench"
+        with patch.object(research, "fetch_public", side_effect=fake_fetch({f"{api}/readme": readme, f"{api}/license": found})):
+            card = research.get_official_resource("https://github.com/org/bench")
+        self.assertEqual(card["license_file"]["spdx_id"], "MIT")
+        self.assertIn("## LICENSE file: LICENSE (SPDX MIT)\nMIT License text", card["text"])
+        self.assertNotIn("text", card["license_file"])
+        with patch.object(research, "fetch_public", side_effect=fake_fetch({f"{api}/readme": readme, f"{api}/license": None})):
+            card = research.get_official_resource("https://github.com/org/bench")
+        self.assertIsNone(card["license_file"])
+        self.assertEqual(card["text"], "# Bench\nData.")
+        base = "https://huggingface.co/datasets/org/bench/raw/main"
+        responses = {f"{base}/README.md": b"---\nlicense: cc-by-4.0\n---\n# Bench", **{f"{base}/{n}": None for n in research.HF_LICENSE_FILES}}
+        responses[f"{base}/LICENSE.txt"] = b"CC BY 4.0 full text"
+        with patch.object(research, "fetch_public", side_effect=fake_fetch(responses)):
+            card = research.get_official_resource("https://huggingface.co/datasets/org/bench")
+        self.assertEqual(card["license_file"]["name"], "LICENSE.txt")
+        self.assertIn("## LICENSE file: LICENSE.txt\nCC BY 4.0 full text", card["text"])
+
     def consensus(self, votes=(True, True)):
         config = research.read_json(research.ROOT / "research/config.json")
         config.pop("publication_policy", None)

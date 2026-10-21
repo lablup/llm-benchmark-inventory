@@ -66,7 +66,7 @@ class PublicationTests(unittest.TestCase):
         """Paper and official card state no license: publishable as all rights reserved."""
         raw = copy.deepcopy(self.raw)
         self.context["source"]["pages"][1] = "Model A 90. Model B 80. Public weights for Model B."
-        self.context["official_resources"] = [{"url": "https://example.org/data", "text": "# Example Bench\nData and code."}]
+        self.context["official_resources"] = [{"url": "https://example.org/data", "license_file": None, "text": "# Example Bench\nData and code."}]
         change = raw["changes"][0]
         change["row"].update({"라이선스": "미표기(논문·공식 저장소 확인)", "상업적 이용": p.ALL_RIGHTS_RESERVED,
                               "수정·파생": p.ALL_RIGHTS_RESERVED, "재배포": p.ALL_RIGHTS_RESERVED, "lm-eval 지원": "미표기",
@@ -90,6 +90,15 @@ class PublicationTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "mentions a license"):
                     p.validate(raw, self.context, self.root)
 
+    def test_absence_claim_fails_when_the_repository_has_a_license_file(self):
+        raw = self.unstated()
+        self.context["official_resources"][0]["license_file"] = {"name": "LICENSE", "spdx_id": "MIT", "sha256": "0" * 64}
+        with self.assertRaisesRegex(ValueError, "LICENSE file"):
+            p.validate(raw, self.context, self.root)
+        del self.context["official_resources"][0]["license_file"]
+        with self.assertRaisesRegex(ValueError, "without checking"):
+            p.validate(raw, self.context, self.root)
+
     def test_unstated_license_requires_all_rights_reserved_columns(self):
         raw = self.unstated()
         raw["changes"][0]["row"]["상업적 이용"] = "가능"
@@ -103,7 +112,7 @@ class PublicationTests(unittest.TestCase):
     def test_documented_license_cannot_use_absence_evidence(self):
         raw = copy.deepcopy(self.raw)
         raw["changes"][0]["rights_evidence"]["라이선스"] = {"source_url": "https://example.org/data", "absent": True}
-        self.context["official_resources"] = [{"url": "https://example.org/data", "text": "# Example Bench"}]
+        self.context["official_resources"] = [{"url": "https://example.org/data", "license_file": None, "text": "# Example Bench"}]
         with self.assertRaisesRegex(ValueError, "absence evidence"):
             p.validate(raw, self.context, self.root)
 
