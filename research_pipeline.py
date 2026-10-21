@@ -567,7 +567,7 @@ def screen_candidates(state, ledger, config, primary, secondary, root, day, dead
     return failures
 
 
-def run(root: Path = ROOT, dry_run=False, screening_smoke=False):
+def run(root: Path = ROOT, dry_run=False, screening_smoke=False, reaudit=None):
     config = read_json(root / "research/config.json")
     state = load_state(root / "new-papers.json")
     if not config["enabled"]:
@@ -580,7 +580,9 @@ def run(root: Path = ROOT, dry_run=False, screening_smoke=False):
     check_config(config)
     if config.get("pipeline") == "claude_subscription":
         from claude_approval import run as run_claude
-        return run_claude(root, dry_run=dry_run, screening_smoke=screening_smoke)
+        return run_claude(root, dry_run=dry_run, screening_smoke=screening_smoke, reaudit=reaudit)
+    if reaudit:
+        raise ValueError("Re-auditing one candidate is only supported by the Claude subscription pipeline")
     started = time.monotonic()
     deadline = started + config.get("run_minutes", 90) * 60
     p = provider(config)
@@ -715,5 +717,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--screening-smoke", action="store_true", help="Screen at most 10 cached abstracts; no PDF or inventory changes")
+    parser.add_argument("--reaudit", metavar="ARXIV_ID", help="Re-investigate one held, rejected or needs_evidence candidate under the current policy")
     args = parser.parse_args()
-    run(dry_run=args.dry_run, screening_smoke=args.screening_smoke)
+    run(dry_run=args.dry_run, screening_smoke=args.screening_smoke, reaudit=args.reaudit)

@@ -142,6 +142,16 @@ def resume_pending(root, ledger, state, config, deadline):
     for key, item in list(ledger["proposals"].items()):
         if item.get("status") != "awaiting_claude" or time.monotonic() >= deadline:
             continue
+        try:
+            resume_one(root, ledger, state, config, key, item)
+        except json.JSONDecodeError as error:
+            # An empty or non-JSON Claude answer must not end the whole run; the
+            # candidate stays pending. Integrity failures (hash, provenance) still raise.
+            print(f"{key}: resume skipped, still pending: {str(error)[:300]}", flush=True)
+
+
+def resume_one(root, ledger, state, config, key, item):
+    if True:
         folder = root / ".research-cache" / "claude" / key
         context_file = folder / "context.json"
         if not context_file.exists():
@@ -234,7 +244,24 @@ def replay_saved(artifact, base_commit, key, root=r.ROOT):
     audit_and_save(root, ledger, state, paper, proposal, context, config, MODEL)
 
 
-def run(root=r.ROOT, dry_run=False, screening_smoke=False):
+def unhold(ledger, state, attempts, key):
+    """Move a held/rejected/needs_evidence record to ledger['reaudits'] and queue the paper again."""
+    item = ledger["proposals"].get(key)
+    if not item or item.get("status") not in {"held", "rejected", "needs_evidence"}:
+        raise ValueError("Only a held, rejected or needs_evidence candidate can be re-audited")
+    if ledger.get("screenings", {}).get(key, {}).get("status") != "passed":
+        raise ValueError("Re-audit needs a passed abstract screening")
+    paper = next((p for p in state["papers"] if p["arxiv_id"] == key), None)
+    if paper is None:
+        raise ValueError("Re-audit candidate is not in new-papers.json")
+    ledger.setdefault("reaudits", []).append({**item, "superseded_at": r.iso(datetime.now(timezone.utc))})
+    del ledger["proposals"][key]
+    attempts["attempted"] = [k for k in attempts["attempted"] if k != key]
+    paper.update(analysis_status="queued", analysis_reason="현재 공개 기준으로 재심사 대기")
+    return paper
+
+
+def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
     """Use subscription Claude for new abstracts, drafts and the final audit."""
     config = r.read_json(root / "research/config.json")
     r.check_config(config)
@@ -247,8 +274,9 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False):
     deadline = started + config.get("run_minutes", 90) * 60
     day = datetime.now(timezone.utc).astimezone(r.KST).date().isoformat()
     attempts = ledger.setdefault("claude_daily_runs", {}).setdefault(day, {"attempted": [], "abstract_attempted": []})
+    reaudit_paper = unhold(ledger, state, attempts, reaudit) if reaudit else None
     # Preserve old provider stop flags; they are not Claude spending allowances.
-    if not screening_smoke:
+    if not screening_smoke and not reaudit:
         resume_pending(root, ledger, state, config, deadline)
     screenings = ledger.setdefault("screenings", {})
     def cached(paper):
@@ -258,7 +286,7 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False):
                 and previous.get("status") in {"passed", "excluded"})
     pending = [p for p in reversed(state["papers"]) if p["arxiv_id"] not in ledger["proposals"] and not cached(p)]
     remaining = max(0, config.get("daily_abstracts", 1000) - len(attempts["abstract_attempted"]))
-    pending = pending[:min(10, remaining) if screening_smoke else remaining]
+    pending = [] if reaudit else pending[:min(10, remaining) if screening_smoke else remaining]
     state["research"] = {"status": "screening", "last_run_at": r.iso(datetime.now(timezone.utc)),
                          "models": [MODEL], "policy": "claude_only"}
     screen_deadline = min(deadline, started + min(30, config.get("run_minutes", 90) / 2) * 60)
@@ -293,7 +321,7 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False):
     selected = [p for p in reversed(state["papers"]) if p["arxiv_id"] not in ledger["proposals"]
                 and p["arxiv_id"] not in attempts["attempted"] and cached(p)
                 and screenings[p["arxiv_id"]]["status"] == "passed"]
-    selected = selected[:max(0, config["daily_papers"] - len(attempts["attempted"]))]
+    selected = [reaudit_paper] if reaudit else selected[:max(0, config["daily_papers"] - len(attempts["attempted"]))]
     for paper in selected:
         if time.monotonic() >= deadline:
             break
@@ -307,6 +335,24 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False):
             print(f"{key}: PDF extraction failed: {str(error)[:300]}", flush=True)
             r.save_state(root / "new-papers.json", state)
             continue
+        try:
+            investigate(root, ledger, state, config, screenings, paper, source)
+        except ValueError as error:
+            # An empty or unparseable Claude answer skips this paper only. A saved
+            # awaiting_claude record is resumed on the next run.
+            paper.update(analysis_status="needs_evidence", analysis_reason=f"Claude 응답 처리 실패, 다음 실행에서 재시도: {str(error)[:200]}")
+            print(f"{key}: Claude answer unusable, skipped: {str(error)[:300]}", flush=True)
+        r.save_state(root / "new-papers.json", state)
+        r.paid_call_checkpoint(root, ledger)
+    state["research"].update(status="paused_time_budget" if time.monotonic() >= deadline else "ready",
+                             abstract_screened_total=len(screenings), full_text_completed_total=len(ledger["proposals"]))
+    r.save_state(root / "new-papers.json", state)
+
+
+def investigate(root, ledger, state, config, screenings, paper, source):
+    """Draft one paper's inventory change with Claude and hand it to the audit."""
+    key = paper["arxiv_id"]
+    if True:
         context = {"paper": {k: v for k, v in paper.items() if not k.startswith(("analysis_", "review_"))},
                    "source": source,
                    "allow_score_updates": config.get("publication_policy") == "complete-evidence-v1",
@@ -323,7 +369,7 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False):
                 # Transient card errors stay eligible tomorrow, not permanently excluded.
                 paper.update(analysis_status="needs_evidence", analysis_reason="공식 자료 확인 실패, 다음 실행에서 재시도")
                 r.save_state(root / "new-papers.json", state)
-                continue
+                return
             context["official_resources"] = cards
             source["official_resources"] = [{k: v for k, v in card.items() if k != "text"} for card in cards]
             audit_and_save(root, ledger, state, paper, proposal, context, config, MODEL)
@@ -335,11 +381,6 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False):
             proposal["proposal_sha256"] = r.digest({k: proposal[k] for k in ("arxiv_id", "changes", "source")})
             ledger["proposals"][key] = proposal
             paper.update(analysis_status=proposal["status"], analysis_reason=proposal["reason"])
-        r.save_state(root / "new-papers.json", state)
-        r.paid_call_checkpoint(root, ledger)
-    state["research"].update(status="paused_time_budget" if time.monotonic() >= deadline else "ready",
-                             abstract_screened_total=len(screenings), full_text_completed_total=len(ledger["proposals"]))
-    r.save_state(root / "new-papers.json", state)
 
 
 if __name__ == "__main__":
@@ -348,6 +389,7 @@ if __name__ == "__main__":
     parser.add_argument("--artifact", type=Path)
     parser.add_argument("--base-commit")
     parser.add_argument("--key")
+    parser.add_argument("--reaudit", metavar="ARXIV_ID")
     args = parser.parse_args()
     config = r.read_json(r.ROOT / "research/config.json")
     r.check_config(config)

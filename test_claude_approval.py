@@ -118,6 +118,40 @@ class ClaudeApprovalTests(unittest.TestCase):
         item = r.read_json(self.root / "research/proposals.json")["proposals"][p["arxiv_id"]]
         self.assertTrue(review.agreed(item, self.config))
 
+    def test_reaudit_reprocesses_a_held_candidate_under_the_current_policy(self):
+        p = self.state["papers"][0]
+        self.ledger["screenings"][p["arxiv_id"]] = {"status": "passed", "paper_title": p["title"], "abstract": p["summary"]}
+        held = {**self.proposal, "arxiv_id": p["arxiv_id"], "status": "held", "reason": "사용자 보류"}
+        self.ledger["proposals"][p["arxiv_id"]] = held
+        self.ledger["claude_daily_runs"] = {time.strftime("%Y-%m-%d"): {"attempted": [p["arxiv_id"]], "abstract_attempted": []}}
+        p.update(analysis_status="held")
+        r.write_json(self.root / "research/proposals.json", self.ledger)
+        r.save_state(self.root / "new-papers.json", self.state)
+        with patch.object(r, "get_pdf", return_value=self.context["source"]), \
+                patch.object(r, "get_official_resource", return_value={"url": "https://example.org/data", "license_file": None, "text": "Official"}), \
+                patch.object(c, "call", side_effect=[self.proposal, self.vote]) as call:
+            r.run(self.root, reaudit=p["arxiv_id"])
+        self.assertEqual(call.call_count, 2)
+        ledger = r.read_json(self.root / "research/proposals.json")
+        self.assertTrue(review.agreed(ledger["proposals"][p["arxiv_id"]], self.config))
+        self.assertEqual(ledger["reaudits"][0]["status"], "held")
+        self.assertIn("superseded_at", ledger["reaudits"][0])
+        with self.assertRaisesRegex(ValueError, "held, rejected or needs_evidence"):
+            r.run(self.root, reaudit=p["arxiv_id"])
+
+    def test_unusable_claude_answer_skips_only_that_paper(self):
+        p = self.state["papers"][0]
+        self.ledger["screenings"][p["arxiv_id"]] = {"status": "passed", "paper_title": p["title"], "abstract": p["summary"]}
+        r.write_json(self.root / "research/proposals.json", self.ledger)
+        r.save_state(self.root / "new-papers.json", self.state)
+        with patch.object(r, "get_pdf", return_value=self.context["source"]), \
+                patch.object(c, "call", side_effect=ValueError("Expecting value: line 1 column 1 (char 0)")):
+            r.run(self.root)
+        state = r.load_state(self.root / "new-papers.json")
+        self.assertEqual(state["papers"][0]["analysis_status"], "needs_evidence")
+        self.assertIn("Claude 응답 처리 실패", state["papers"][0]["analysis_reason"])
+        self.assertEqual(state["research"]["status"], "ready")
+
     def test_abstract_screening_reuses_unchanged_result_without_pdf(self):
         r.write_json(self.root / "research/proposals.json", self.ledger)
         r.save_state(self.root / "new-papers.json", self.state)

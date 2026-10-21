@@ -19,6 +19,10 @@ on:
         description: "Completed run ID containing original evidence for claude_replay_key"
         type: string
         default: ""
+      reaudit_key:
+        description: "Held, rejected or needs_evidence arXiv ID to investigate again from the PDF under the current publication policy"
+        type: string
+        default: ""
   schedule:
     # 11:30 Asia/Seoul. GitHub may start scheduled runs later when busy.
     - cron: "30 2 * * *"
@@ -81,7 +85,7 @@ jobs:
           ref: main
           fetch-depth: 0
       - name: Collect new arXiv papers
-        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke && !inputs.citation_replay_run)
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke && !inputs.citation_replay_run && !inputs.reaudit_key)
         run: python3 arxiv_watch.py --allow-cached
       - name: Install PDF evidence runtime
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.screening_smoke && !inputs.citation_replay_run)
@@ -116,10 +120,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           SOURCE_RUN: ${{ inputs.citation_replay_run }}
           CLAUDE_REPLAY_KEY: ${{ inputs.claude_replay_key }}
+          REAUDIT_KEY: ${{ inputs.reaudit_key }}
         run: |
           if [ -n "$SOURCE_RUN" ]; then
             test -n "$CLAUDE_REPLAY_KEY"
             python3 claude_approval.py --artifact .research-cache/replay-source --base-commit "$REPLAY_BASE_COMMIT" --key "$CLAUDE_REPLAY_KEY"
+          elif [ -n "$REAUDIT_KEY" ]; then
+            python3 research_pipeline.py --reaudit "$REAUDIT_KEY"
           elif [ "${{ inputs.screening_smoke }}" = "true" ]; then
             python3 research_pipeline.py --screening-smoke
           else
