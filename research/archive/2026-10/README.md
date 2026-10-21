@@ -59,6 +59,7 @@
 - [2601.13864 · HardSecBench: Benchmarking the Security Awareness of LLMs for Hardware Code Generation](2601.13864-20261019T232713-70d46220aa99.md)
 - [2512.14554 · VLegal-Bench: Cognitively Grounded Benchmark for Vietnamese Legal Reasoning of Large Language Models](2512.14554-abstract-20261021T114821-12d34a303c4b.md)
 - [2511.08500 · SPEAR-MM: Selective Parameter Evaluation and Restoration via Model Merging for Efficient Financial LLM Adaptation](2511.08500-20261019T230235-a855854e86fc.md)
+- [2510.26238 · Questionnaire meets LLM: A Benchmark and Empirical Study of Structural Skills for Understanding Questions and Responses](2510.26238-20261021T153552-fe3acf14dc68.md)
 - [2510.26238 · Questionnaire meets LLM: A Benchmark and Empirical Study of Structural Skills for Understanding Questions and Responses](2510.26238-20261020T153559-58db3bc7720a.md)
 - [2510.26238 · Questionnaire meets LLM: A Benchmark and Empirical Study of Structural Skills for Understanding Questions and Responses](2510.26238-20261020T003919-ad48ddd2cf2b.md)
 - [2510.26238 · Questionnaire meets LLM: A Benchmark and Empirical Study of Structural Skills for Understanding Questions and Responses](2510.26238-20261019T230128-283a791c73ea.md)
