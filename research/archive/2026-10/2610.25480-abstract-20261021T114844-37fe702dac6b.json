@@ -1,0 +1,18 @@
+{
+  "arxiv_id": "2610.25480",
+  "paper_title": "Consistent LLM Call Handling Across Java Frameworks: A Reference Implementation and Benchmark",
+  "abstract": "Java applications reach large language models (LLMs) through an integration framework, and rely on it to handle a failing provider: to retry what can be retried and nothing else, to wait as long as the provider asks, never to present a truncated answer as complete, and to record each failure in the application's metrics. We state these expectations as a six-clause reliability contract and measure Spring AI 2.0.1 and LangChain4j 1.21.0 against it with a scripted OpenAI-compatible provider: fifteen failure scenarios, synchronous and streaming, three repetitions. LangChain4j meets it in 47 of 77 applicable cases with its defaults and in 51 of 83 when configured explicitly, Spring AI in 72 of 77 and 76 of 83; both deliver a stream that ended without its terminator as a complete answer. We then place one implementation of the contract beneath both frameworks, at the HTTP boundary - an OkHttp interceptor for Spring AI, an HttpClient for LangChain4j, and a java.net.http transport for code without a framework - sharing a 725-line core that depends only on the JDK and the Micrometer Observation API. With it, all three clients behave identically and meet the contract in 90 of 91 cases; the remaining case is a policy trade-off between retrying a hung provider and waiting for a slow first token. Against a local model server the layer rejected none of 700 calls, and it adds a median of 32-217 microseconds to a call.",
+  "paper_updated": "2026-10-20T00:00:00Z",
+  "created_at": "2026-10-21T02:48:44Z",
+  "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+  "version": "claude-v1",
+  "policy": "claude_only",
+  "status": "excluded",
+  "votes": [
+    {
+      "model": "claude-sonnet-5-5",
+      "decision": "irrelevant",
+      "reason": "Java 프레임워크 신뢰성 측정으로 LLM 평가 벤치마크 아님"
+    }
+  ]
+}
