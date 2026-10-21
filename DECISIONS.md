@@ -299,3 +299,15 @@ re-investigated. `확인 불가` and `unknown` are no longer used. The draft
 stage of the automated pipeline records `미확인`; the publication stage may
 resolve a field to `미표기` only with absence evidence that the code verifies
 against the fetched card and the PDF text. The rule is written in CLAUDE.md.
+
+## 19. Keep QASU out of the inventory (2026-10-21)
+
+The user decided not to add QASU (arXiv 2510.26238) after a full re-audit
+under the current publication policy. The paper reports conflicting scores
+for the same HTML Answer Lookup condition in Table 6 and Table 7 (Qwen3-32B,
+Llama3-70B and Amazon Nova Lite differ; GPT-5-mini and Gemini-2.5-Flash
+agree), so recommended models cannot be chosen from one consistent source,
+and the repository states no license. The ledger keeps the candidate as
+`needs_evidence` (its audit was not approved, so `held` does not apply) with
+the decision in its reason and a `user_decision` field; the automated run
+does not revisit a recorded candidate unless a re-audit is requested.
