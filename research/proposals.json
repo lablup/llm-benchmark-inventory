@@ -25900,6 +25900,366 @@
           "reason": "기존 벤치마크로 프롬프트 기법 비교, 신규 자원 없음"
         }
       ]
+    },
+    "2610.24957": {
+      "arxiv_id": "2610.24957",
+      "paper_title": "Revealing what benchmark scores hide: Jointly measuring the breadth and reliability of LLM capabilities using accessibility profiles",
+      "abstract": "Language model benchmarks assign each question a single outcome from one fixed wording, even though the same underlying request can be expressed in many equivalent ways. We argue that the quantity of interest should therefore not be correctness on one wording, but the accessibility of an inquiry, which we define as the probability that a model succeeds across meaning-preserving formulations. The distribution of accessibility across inquiries reveals a structure that accuracy and existing best-, worst-, or average-case prompt scores collapse: how broadly a model's capabilities extend across inquiries and how dependably those capabilities can be elicited. Two models can have the same average performance while one succeeds across more inquiries unreliably and the other succeeds across fewer inquiries but more consistently, leading to opposite preferences depending on whether the task allows multiple retries until one success or when repeated consistent success is required. Across six benchmarks and more than twenty models, this tradeoff is common: for about half of the model pairs with nearly equal mean accessibility, which model looks better depends on whether one success across five formulations is enough or all five must succeed, quantities we call Access@5 and Reliable@5, respectively. For some pairs the two measures diverge significantly, by up to 10 points in opposite directions. Accessibility also reveals that scaling, reasoning, and prompt optimization can redistribute capability across inquiries in ways aggregate accuracy obscures, sometimes broadening the set of inquiries a model can succeed on while making success on them less repeatable. Accessibility turns formulation sensitivity from a nuisance into a measurable property of capability, distinguishing what a model can sometimes succeed on from what users can actually depend on.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "접근성 프로파일 평가 방법론; 재사용 자원과 과제 언어 불명확"
+        }
+      ]
+    },
+    "2610.24972": {
+      "arxiv_id": "2610.24972",
+      "paper_title": "A Measurement Perspective on Benchmarking LLM-Generated Text Detectors using Item Response Theory",
+      "abstract": "Benchmarking large language model (LLM)-generated text detectors commonly relies on aggregate detector-level metrics such as accuracy, F1 score, and AUC. Although useful for summarizing overall performance, these metrics provide limited insight into how benchmark composition shapes detector comparisons or which texts distinguish detectors with different response profiles. We propose a measurement-based benchmarking framework for jointly characterizing benchmark heterogeneity and detector behavior using multidimensional item response theory (IRT). By treating benchmark texts as measurement items and detectors as respondents, the framework estimates text-level discrimination and difficulty-location parameters alongside multidimensional detector abilities. We apply the framework to a benchmark of 32K human-written and machine-generated texts across four domains, evaluated by 14 detectors. The estimated IRT item-parameter space reveals distinct but overlapping human-machine distributions, with substantial variation across domains and text lengths. The human-machine label shows the strongest multivariate association with this space, while domain and text length further contribute to benchmark heterogeneity. Detector ability profiles reveal multidimensional and domain-dependent response patterns that are not fully reflected in aggregate performance rankings. As a practical application, clustering texts in the estimated IRT space yields a compact subset of 2,088 texts (6.5\\% of the full 32K benchmark) that largely preserves the comparative detector-performance patterns observed on the full benchmark. Overall, the proposed framework provides a principled and interpretable methodology for benchmarking heterogeneous detection technologies while jointly characterizing the measurement properties of the texts used for their evaluation.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "LLM 생성 텍스트 탐지기 벤치마크 IRT 분석; 언어·자원 불명확"
+        }
+      ]
+    },
+    "2610.25087": {
+      "arxiv_id": "2610.25087",
+      "paper_title": "Beyond Factual Accuracy: A Benchmark for Evaluating Perspective Alignment in LLMs",
+      "abstract": "Large Language Models often generate factually correct responses that fail to maintain user-requested perspectives, blending multiple perspectives and forcing users to filter through unwanted information---a perspective control failure that factual accuracy metrics cannot detect. We introduce PerspectiveBench, a benchmark quantifying perspective alignment by constructing scenarios where multiple valid reasoning paths coexist, and propose the Perspective Alignment Score (PAS) to measure adherence to specified perspectives. Experiments reveal that state-of-the-art models successfully include target content but fail to exclude non-requested perspectives. Providing documents through RAG improves factual grounding but does not resolve perspective drift, as models prioritize comprehensive coverage over strict user constraints. Code and data are available at https://github.com/sunghoon014/PerspectiveBench.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "관점 정렬 평가 벤치마크 PerspectiveBench 신규 공개"
+        }
+      ]
+    },
+    "2610.25127": {
+      "arxiv_id": "2610.25127",
+      "paper_title": "MemBubble: Benchmarking How Agent Memory Shapes LLM Response Diversity",
+      "abstract": "Memory serves as the core component of LLM-based agents, enabling personalized responses via extracting and using user preferences from past interactions. However, its use may reduce response diversity, thereby narrowing the range of information available to users. Existing evaluations rely largely on synthetic interactions and cover few memory systems, leaving the effects of memory on response diversity insufficiently evaluated in real-world scenarios. We introduce MemBubble, a benchmark of 1000 instances built on preferences extracted from real user-assistant conversations. To measure the extent to which memory concentrates response distributions, we construct test queries in scenarios distinct from user preferences while preserving topical relevance through shared preference categories. Across multiple LLMs and memory mechanisms, entropy decreases by 34.7% on average compared with directly providing the full interaction history, highlighting the important role of memory processing in diversity loss. We also explore simple user-side interventions and changes in information availability but find that these do not effectively close the diversity gap. Our findings highlight the need to consider preserving diversity and user access to information alongside improvements in personalization when designing and using agent memory systems.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트 메모리 응답 다양성 벤치마크 MemBubble 신규 제시"
+        }
+      ]
+    },
+    "2610.25155": {
+      "arxiv_id": "2610.25155",
+      "paper_title": "Morpheus: a fully local, defense-in-depth de-identification engine for Greek clinical text - a benchmark evaluation",
+      "abstract": "Background and Objective: Clinical free text cannot leave the hospital without de-identification, yet no de-identification system or benchmark exists for Greek clinical text. We evaluated Morpheus, a fully local de-identification pipeline for Greek clinical documents, on 500 synthetic discharge summaries. Methods: The notes (300 cardiac surgery, 100 cardiology, 100 nephrology) were generated by a frontier large language model (Gemini 3.1 Pro) constrained to authentic Greek hospital document layouts. Notes were pre-annotated at generation; two clinicians then independently reviewed and corrected every note, blinded to each other, with disagreements arbitrated. Primary outcomes were recall over must-redact identifiers and over-redaction of clinical content, measured over must-survive probes. Secondary outcomes: residual leaks flagged by an independent egress-review layer, processing time and reproducibility. Results: Inter-annotator agreement was F1 = 0.998. The de-identification rate was 96.59% (7,666/7,937 identifier instances; 95% CI 96.16-96.96): 98.49% for direct and 93.42% for quasi-identifiers. No patient's own complete identifier survived in any note; of 271 residual instances, 199 (73.4%) concerned institutional identity, chiefly the hospital letterhead. The over-redaction rate was 2.82% (190/6,747 probes; 95% CI 2.45-3.24). The egress guard flagged 2 of 271 residuals, both complete telephone numbers. Two independent runs gave identical verdicts. Conclusions: A fully local, deterministic pipeline removed 98.5% of direct patient identifiers from Greek clinical text while altering under 3% of protected clinical content; most residuals concerned the institution, not the patient. To our knowledge this is the first benchmark evaluation of clinical-text de-identification for Greek and the first quantified evaluation of an independent egress-guard layer.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "그리스어 임상 텍스트 한정 벤치마크"
+        }
+      ]
+    },
+    "2610.25208": {
+      "arxiv_id": "2610.25208",
+      "paper_title": "BrandEval: A Two-Track Multi-Agent Benchmark for Risk-Sensitive LLM Crisis Communication",
+      "abstract": "Evaluating LLMs for crisis communication requires more than judging isolated responses, because public feedback and competitor actions can reshape trust over time. Existing benchmarks remain largely static and single-turn, offering limited evidence about long-horizon risk-sensitive communication. We introduce \\textbf{BrandEval}, a two-track benchmark for product-crisis communication, focusing on public brand responses to product-related safety, quality, service, and trust incidents. BrandEval-Static evaluates stakeholder-aware strategic analysis, while BrandEval-Dynamic stress-tests response policies in \\textbf{BrandPolis}, a controlled multi-agent sandbox with consumer feedback, competitor responses, and trust-risk trajectories. We also construct \\textbf{BrandSRD}, a Chinese crisis-response dataset, and instantiate a reference Strategic Agent using \\textbf{Strategic Rationale (SR)}. Across proprietary and open-source models, we find that static strategic quality is informative but incomplete: it aligns with some end-state outcomes but does not reliably predict volatility and delayed recovery; dynamic stress tests further expose tail-risk failures under manipulative or weakly grounded policies. The code and dataset will be available at https://github.com/htgan-ai/BrandEval.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "위기 대응 벤치마크; 중국어 데이터셋이나 Static 트랙 언어 불명확"
+        }
+      ]
+    },
+    "2610.25406": {
+      "arxiv_id": "2610.25406",
+      "paper_title": "Towards Figurative Language Understanding in Moroccan Darija: An Evaluation of Large Language Models",
+      "abstract": "Figurative language remains a major challenge for Machine Translation (MT) systems, as the intended meaning of such expressions often goes beyond literal translation. Although recent advances in Large Language Models (LLMs) improved the translation of Arabic dialects, benchmark resources for evaluating figurative language translation in Moroccan Darija remain scarce. To this end, we introduce the Moroccan Darija Figurative Language Corpus (MDFC), a benchmark dataset for MT and multiple-choice question (MCQ) selection covering idioms, metaphors, and proverbs. Using MDFC, we evaluate 19 open- and closed-weight language models and MT systems at both the expression and contextual levels under zero-shot and six-shot settings. We also conduct layer-wise similarity-based probing to determine how model representations distinguish figurative from literal meanings. Our findings reveal that closed-weight models achieve the strongest translation performance, while the benefits of contextual information vary across models and tasks. Differences between translation performance and MCQ accuracy highlight the distinction between generating an appropriate figurative translation and recognizing the intended meaning among candidate translations.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "모로코 다리자 비유 표현 벤치마크로 한정"
+        }
+      ]
+    },
+    "2610.25463": {
+      "arxiv_id": "2610.25463",
+      "paper_title": "DiaLong: Benchmarking Reminiscence in Long-Context Dialogues",
+      "abstract": "How well can transformer-based Large Language Models (LLMs) retain and recall memories in long contexts of dialogue? LLMs are known to forget long-range factual information in their context, yet the field lacks a comprehensive benchmark to quantitatively assess these shortcomings. We present DiaLong, a long-context dialogue dataset and accompanying memory task that standardizes evaluation in this space. It consists of 100 unique conversations created by humans and then augmented with LLMs, extending beyond lengths found in existing datasets. Our selected memory task is fact recall: classify 40 candidate facts about a dialogue as true or false. This task directly probes the model's ability to actively retain and retrieve information, serving as a critical measure of memory within extended conversational contexts. In testing both the latest LLMs and proposed memory enhancements on DiaLong, we demonstrate that more work needs to be done to enable LLMs with better memory performance. By enhancing memory capabilities, LLMs can improve in maintaining coherence, relevance, and human-like interaction over extended conversation. Improving these capabilities will help LLMs fulfill diverse user needs and expectations in various conversational scenarios.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "장문 대화 기억 평가 데이터셋 DiaLong 신규 제시"
+        }
+      ]
+    },
+    "2610.25480": {
+      "arxiv_id": "2610.25480",
+      "paper_title": "Consistent LLM Call Handling Across Java Frameworks: A Reference Implementation and Benchmark",
+      "abstract": "Java applications reach large language models (LLMs) through an integration framework, and rely on it to handle a failing provider: to retry what can be retried and nothing else, to wait as long as the provider asks, never to present a truncated answer as complete, and to record each failure in the application's metrics. We state these expectations as a six-clause reliability contract and measure Spring AI 2.0.1 and LangChain4j 1.21.0 against it with a scripted OpenAI-compatible provider: fifteen failure scenarios, synchronous and streaming, three repetitions. LangChain4j meets it in 47 of 77 applicable cases with its defaults and in 51 of 83 when configured explicitly, Spring AI in 72 of 77 and 76 of 83; both deliver a stream that ended without its terminator as a complete answer. We then place one implementation of the contract beneath both frameworks, at the HTTP boundary - an OkHttp interceptor for Spring AI, an HttpClient for LangChain4j, and a java.net.http transport for code without a framework - sharing a 725-line core that depends only on the JDK and the Micrometer Observation API. With it, all three clients behave identically and meet the contract in 90 of 91 cases; the remaining case is a policy trade-off between retrying a hung provider and waiting for a slow first token. Against a local model server the layer rejected none of 700 calls, and it adds a median of 32-217 microseconds to a call.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "Java 프레임워크 신뢰성 측정으로 LLM 평가 벤치마크 아님"
+        }
+      ]
+    },
+    "2610.25522": {
+      "arxiv_id": "2610.25522",
+      "paper_title": "When Empathy Misses the Goal: A Benchmark for Goal Displacement in LLM Advice",
+      "abstract": "Conversational large language models can respond with warmth and reassurance while failing to advance the user's stated goal. We conceptualize this failure as $\\textbf{goal displacement}$, the substitution of persona-maintenance content for goal-relevant substance. To measure it, we introduce $\\textbf{GDB}$ (Goal Displacement Benchmark), comprising 230 scenarios across nine domains and $4{,}134$ human-scored responses from 18 models. A $2 \\times 2$ taxonomy crosses hard constraints with emotional distress, distinguishing failures to confront infeasible goals or combine empathy with practical guidance from reverse displacement, where unsolicited problem-solving replaces requested emotional support. A deletion-test rubric assesses whether substantive help remains after purely supportive sentences are removed. Independent raters achieve weighted $κ= 0.82$ against author scores for displacement severity. Trap displacement ranges from $0.0\\%$ to $37.7\\%$ and is strongly negatively correlated with Chatbot Arena Elo ($ρ= -0.706$, $n = 15$). Reverse displacement reaches $41.9\\%$, including substantial rates in models with negligible trap displacement. A factorial probe supports a distinction from social sycophancy. Human-scored responses in the high-complexity, low-pressure condition exhibit $35.0\\%$ sycophancy but $7.5\\%$ displacement, with little association between the constructs. Matched OLMo-2 checkpoints show that mixed empathy-with-constraints displacement remains at $52.3\\%$ after supervised fine-tuning and falls to $13.8\\%$ after direct preference optimization. GDB provides a reproducible diagnostic of whether responses advance the operationalized user goal, supporting model comparison, post-training evaluation, and regression testing. We release the dataset, annotations, and rubric under CC-BY-4.0 and the evaluation code under MIT.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "목표 전치 평가 벤치마크 GDB 데이터·루브릭 공개"
+        }
+      ]
+    },
+    "2610.25575": {
+      "arxiv_id": "2610.25575",
+      "paper_title": "Benchmark for Structured Retrieval-Augmented Generation in Perovskite Photovoltaics",
+      "abstract": "While retrieval-augmented language models increasingly serve as literature assistants in the physical sciences, existing benchmarks evaluate them primarily on qualitative text overlap or through model-based scoring rather than against verified experimental ground truth. In experimental materials disciplines such as perovskite photovoltaics, however, the most critical inquiries are inherently quantitative and aggregate measurements across dozens or hundreds of papers. Here, we present a quantitative question-answering benchmark where all 755 ground-truth answers are computed directly from 45,441 measured device records (40,889 human-curated records through 2021 and 4,552 records extracted from 2022-2026 literature). Benchmarking six retrieval architectures over 158,274 passages from 25,662 papers using an open 14B model on a single 24 GB GPU, standard passage retrieval tops out at 16-23% accuracy (compared to 1.6-6.5% zero-shot). In contrast, equipping the language model with read-only SQL execution over the structured device table elevates accuracy to 51.5% on historical and 50.8% on prospective literature -- a 33.01.8 percentage-point advantage over hybrid text retrieval. Aggregate queries spanning extrema, distributions, and filtered record counts prove virtually unsolvable via text retrieval alone, demonstrating that systematic table extraction is an operational prerequisite for literature-scale quantitative inquiry.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "페로브스카이트 정량 RAG QA 벤치마크 신규 제시"
+        }
+      ]
+    },
+    "2610.25824": {
+      "arxiv_id": "2610.25824",
+      "paper_title": "MS-Bench: A Condition-Stratified Multi-Speaker ASR Benchmark",
+      "abstract": "Multi-speaker automatic speech recognition (MSASR) has advanced rapidly with end-to-end speech large language models. However, existing benchmarks cover limited ranges of specific multi-speaker conditions and scenarios, making it difficult to reveal system limitations under diverse conditions and scenarios. We introduce MS-Bench\\footnote{\\href{https://aslp-lab.github.io/MS-Bench/}{Demo page: https://aslp-lab.github.io/MS-Bench/}}, a condition-stratified benchmark for fine-grained MSASR evaluation. MS-Bench integrates both public and internal benchmarks and characterizes each recording along five dimensions: speaker number, overlap ratio, speaker similarity, speaker turn interval, and acoustic quality. We stratify these dimensions into condition ranges and construct MS-Bench with broad coverage of conditions, scenarios, languages, and recording devices. Evaluating representative commercial, open-source, and cascaded systems, we find that overlap affects both lexical recognition and speaker attribution, while other factors exhibit more task-specific effects on recognition, attribution, or temporal prediction. These results demonstrate that aggregate metrics alone obscure important MSASR failure modes and highlight the value of condition-stratified evaluation. MS-Bench aims to reveal condition-specific limitations of current MSASR systems and guide future improvements.",
+      "paper_updated": null,
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "다화자 ASR 벤치마크; LLM 평가 여부와 언어 불명확"
+        }
+      ]
+    },
+    "2610.25919": {
+      "arxiv_id": "2610.25919",
+      "paper_title": "LEAPS: Long-context Evaluation of Adaptive Pattern Learning and State Tracking",
+      "abstract": "Long-context language models (LCLMs) power agents that act over long trajectories, from improving a codebase to running research experiments to forecasters that condition on lengthy histories. These applications draw on three distinct long-context capabilities: recall, where the answer is a fact present in the context; state tracking, where the outcome can be computed by performing a series of transformations to a specified state; and pattern learning, where the goal is to make a prediction by sampling from a distribution inferred from many observations. Existing benchmarks primarily focus on the first capability. In this work, we introduce LEAPS (Long-context Evaluation of Adaptive Pattern learning and State tracking), a collection of 12 novel datasets, spanning agentic workflows, behavioral modeling, and forecasting of market and world events. By construction, LEAPS is resistant to data contamination, extends to millions of input tokens, and uses reliable metrics. We evaluate 30 API and open models from 8K to 512K input tokens. LEAPS distinguishes models that perform near perfectly on recall tasks, finding that such models' state tracking and pattern learning abilities can vary significantly and degrade much more dramatically with increasing input lengths--even for pattern learning, where more observations should make learning a theoretically easier task. Moreover, thinking models often underperform their base counterparts, exhausting their generation budget or oversimplifying the task. We hope LEAPS can guide the development of the next generation of LCLMs.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "장문맥 평가용 신규 데이터셋 12종 LEAPS"
+        }
+      ]
+    },
+    "2610.25924": {
+      "arxiv_id": "2610.25924",
+      "paper_title": "UtilityBench: Measuring Language Model Utility When Errors Have Different Costs",
+      "abstract": "As language models are increasingly deployed in real-world scenarios with important outcomes, the impact of their mistakes often extends far beyond what correctness can capture. In domains like medicine, a single error can lead to serious consequences and put patient safety at risk. However, mainstream evaluation protocols still treat all errors as equal, overlooking the spectrum of real-world costs. To address this, we propose a utility-based evaluation paradigm that explicitly incorporates the varying consequences of errors. Guided by this principle, we develop UtilityBench, a large-scale benchmark of 15,000 instances with verifiable answers, quantifying error severity using Best-Worst Scaling to elicit meaningful, data-driven cost estimates. These quantified utilities shape when a model should answer or abstain, guiding it to make decisions that align with the true importance of each scenario. As another merit, we introduce UtilityAUC, a metric that measures the area under the utility curve determined by a model's response ordering, thereby enabling utility preference alignment beyond error frequency. Our theoretical analysis demonstrates that UtilityAUC can distinguish between models where standard accuracy and AURC fall short. Empirically, evaluating 20 state-of-the-art models, we find that greater accuracy or more advanced architectures do not reliably translate to higher UtilityAUC, highlighting a gap between problem-solving ability and responsible decision-making in language model evaluation.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "오류 비용 반영 UtilityBench 1.5만 인스턴스 신규 제시"
+        }
+      ]
+    },
+    "2610.25950": {
+      "arxiv_id": "2610.25950",
+      "paper_title": "AdaExploreBench: Benchmarking LLM Agents for Proactive Exploration and Test-time Adaptation in Evolving Environments",
+      "abstract": "Large Language Model (LLM) agents are increasingly deployed in unfamiliar and evolving environments, requiring them to proactively explore, understand, and adapt to environmental dynamics. However, existing benchmarks rarely test whether agents can proactively discover how an environment works and adapt as it evolves. To address this gap, we introduce AdaExploreBench, a benchmark for proactive exploration and test-time adaptation in evolving environments. By instantiating environmental dynamics as hidden rules, AdaExploreBench requires agents to actively acquire evidence and infer the rules. Under implicit rule drift, the latent rule changes without announcement, requiring agents to detect from degraded performance that prior knowledge is stale and re-explore. Experiments on eight leading LLMs show that proactive and adaptive exploration remain challenging: GPT-6 Sol achieves only 61.9% calibrated accuracy, while providing sufficient evidence or removing rule drift improves average performance significantly by close to 10%. These results reveal a critical bottleneck in current LLM agents: they can often reason effectively from informative evidence once it is available, but struggle to actively acquire the right evidence and recognize when previously acquired evidence is no longer valid.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트 탐험·적응 벤치마크 AdaExploreBench 신규 제시"
+        }
+      ]
+    },
+    "2610.25954": {
+      "arxiv_id": "2610.25954",
+      "paper_title": "CXBench: A Benchmark for Process-Compliant LLM Agents in Regulated Customer-Experience Workflows",
+      "abstract": "Tool-using language agents increasingly perform regulated customer-service workflows, where a correct final state is insufficient: agents must also provide disclosures, obtain consent, and follow required procedures. Existing tool-agent benchmarks largely score final business states, accepting trajectories that reach correct outcomes through non-compliant processes. We introduce cxbench, a benchmark that evaluates outcome and process compliance separately across six regulated domains. Each task combines a customer request, a tool-based environment, and explicit process requirements. Rule cards link cited regulatory obligations to observable trace evidence. A hybrid grader combines deterministic checks for ordering and authority with an LLM judge for semantic requirements. We define a false-pass as an outcome-pass run that fails process checks. Across seven models and 120 tasks, 55.5% of the 840 retained executions are false-passes, representing 80.1% of outcome-passing runs; only 13.8% pass both checks. Process-inclusive evaluation changes the observed model ordering and exposes differences hidden by outcome-only scoring. cxbench makes these failures inspectable through trace-linked criteria.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "규제 워크플로 에이전트 프로세스 준수 벤치마크 CXBench"
+        }
+      ]
+    },
+    "2610.26006": {
+      "arxiv_id": "2610.26006",
+      "paper_title": "Scaling Synthetic Pre-training Data and Evaluation for Indic LLMs",
+      "abstract": "Building capable language models for India requires scalable multilingual data and robust evaluation. We introduce Nemotron-Pretraining-Indic-v1, a synthetic pretraining corpus of approximately 2.83 trillion tokens covering all 22 scheduled Indian languages in native script and twelve in romanized form. It is the largest openly released Indic pretraining corpus. Using our GPU-accelerated pipeline, we translate curated English documents, assess translation quality, and repair low-quality outputs while preserving technical content and document structure and maintaining source traceability. Through continued-pretraining experiments across twelve languages, we show that combining our synthetic corpus with natural Indic text improves knowledge and reasoning over a public-corpus baseline. Additional experiments show how data volume, script coverage, and Indic training share affect English performance. We also introduce the Indic-LLM-Eval-Suite, a multilingual benchmark suite for evaluating Indic language models across chat, instruction following, reasoning, knowledge, code, and translation. The suite combines existing Indic benchmarks with task-aware translations of English benchmarks, using automated quality assessment, targeted correction, and native-speaker review in a human-in-the-loop pipeline. We use the suite to comprehensively benchmark contemporary open-weight Indic and multilingual models across capabilities and languages, revealing substantial variation across tasks and languages. Together, these resources provide a scalable foundation for developing and evaluating more capable Indic language models.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "인도어 대상 평가 스위트로 한국어·영어 과제 아님"
+        }
+      ]
+    },
+    "2610.26036": {
+      "arxiv_id": "2610.26036",
+      "paper_title": "FinHopper: A Progressive Multi-Hop Benchmark for Complex Financial Agents with Step-wise Evaluation",
+      "abstract": "Financial agents are expected to answer factual investment queries through open search, but financial multi-hop retrieval differs from general multi-hop QA in a crucial way: each intermediate answer is an exact typed constraint, such as an entity, date, event, or numerical indicator, that determines the next query. This strict answer-conditioned dependency makes small intermediate errors cascade into plausible but wrong search trajectories. We introduce FinHopper, a benchmark for complex financial agents with controlled reasoning depth from 1 to 6 hops, covering stocks, funds, and macroeconomic facts, with gold intermediate answers for process-level evaluation. To construct FinHopper at scale, we design a state-transition-based synthesis framework that composes verified atomic financial QA patterns into dependency-preserving chains, followed by targeted in-synthesis verification, model-ensemble checking, and public-search validation by financial experts. Experiments with 20 LLM-agent configurations show that public search tools are necessary but insufficient: performance drops sharply as hop depth increases, the best model remains far below human experts, and process-aware scoring reveals partial reasoning progress hidden by final-answer-only evaluation. The benchmark is available at https://github.com/justajustin/FinHopper/.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "금융 멀티홉 에이전트 벤치마크 FinHopper 신규 제시"
+        }
+      ]
+    },
+    "2610.26059": {
+      "arxiv_id": "2610.26059",
+      "paper_title": "Honeyed Words, Hidden Daggers: Benchmarking and Training LLMs to See Through Mock Politeness",
+      "abstract": "The Chinese idiom \"kou mi fu jian\" (\"honeyed words, hidden daggers\") names speech that is polite in form but hostile in function. We present ZhenhuanBench, a 1,592-item benchmark built from expert commentary on Empresses in the Palace, covering speaker intent, emotion-language mismatch, and per-listener uptake. Text-only evaluation covers 34 LLMs. GPT-6 Astra leads the leaderboard at 73.48% overall, while its listener-reaction score is 58.37%. The annotations also supply supervised traces and string-verifiable training rewards. With 338 gold traces, an 8B model outperforms teacher distillation on identical items. Subsequent RL saturates, and chance correction reduces the estimated recoverable performance gap by a factor of 7.5. Our CPR-GRPO loop (Compress-Probe-Replenish) uses this estimate to weight gold supervision, reaching 67.0 on public multiple-choice tasks and 74.5 under the training-matched hidden protocol. Without target-task training, CPR outperforms Base, SFT, and GRPO across six Chinese and English pragmatic and sarcasm evaluations. On three external datasets, training with CPR yields higher mean Macro-F1 than SFT and GRPO.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "가식적 공손 이해 벤치마크 ZhenhuanBench, 영어 평가 포함"
+        }
+      ]
+    },
+    "2610.26088": {
+      "arxiv_id": "2610.26088",
+      "paper_title": "LeakBench: Auditing Reward Hacking through Prediction-Time Leakage in Clinical Modeling Agents",
+      "abstract": "Autonomous clinical-modeling agents can optimize predictive performance while violating conditions that make a model usable. We introduce LeakBench, an executable, guideline-derived audit suite that tests agent decisions for prediction-time leakage, calibration, site-level evaluation, support awareness, and decision-curve net benefit. LeakBench combines a synthetic task with known failure structure and two real-data settings: MIMIC-IV (430k admissions) and governed multi-hospital inpatient record front-page (MHFP) data. Our primary analysis uses reward hacking descriptively, without attributing intent: an agent selects prediction-time-invalid inputs because they improve its validation reward. A deterministic optimizer and every evaluated unconstrained local-model configuration select a fatal leaking feature. In fully logged September 2026 A/B runs, DeepSeek Flash and GPT-6-astra each leak in 10/10 unconstrained runs and 0/10 runs with an explicit admission-time constraint. This contrast is version-sensitive: a blinded Claude/Fable-5.1 chat run does not leak in either condition, while explicit-constraint violations appear only in a historical August 2026 slice lacking raw trajectories. Replacing AUROC with AUPRC does not remove leakage selection. Renaming or disguising the leaking inputs changes neither selection nor provenance-based detection; a name-based filter fails. A deterministic provenance verifier-in-loop removes the leak, making the LLM repair loop defense-in-depth. Specific verifier feedback clears fatal leakage in a hosted agent, and a three-seed ablation finds principle-only feedback clears decision-level defects, though these mitigation results are limited. LeakBench treats trustworthy clinical prediction as a property of an agent's modeling process, not merely its score; it is an audit testbed with known-failure controls, not yet an expert-validated benchmark.",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "created_at": "2026-10-21T02:48:44Z",
+      "input_sha256": "00a889de886d4726e7b88438b1b8fad16df7ba650f4a0dac6e956a9ff7424caa",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "임상 에이전트 감사 스위트; 벤치마크 성격과 언어 불명확"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -25945,7 +26305,27 @@
         "2610.24807",
         "2610.24822",
         "2610.24835",
-        "2610.24913"
+        "2610.24913",
+        "2610.24957",
+        "2610.24972",
+        "2610.25087",
+        "2610.25127",
+        "2610.25155",
+        "2610.25208",
+        "2610.25406",
+        "2610.25463",
+        "2610.25480",
+        "2610.25522",
+        "2610.25575",
+        "2610.25824",
+        "2610.25919",
+        "2610.25924",
+        "2610.25950",
+        "2610.25954",
+        "2610.26006",
+        "2610.26036",
+        "2610.26059",
+        "2610.26088"
       ]
     }
   }
