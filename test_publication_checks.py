@@ -105,6 +105,13 @@ class PublicationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "absent from the cited PDF page"):
             p.validate(bad, self.context, self.root)
 
+    def test_model_name_case_differences_are_tolerated_in_score_quotes(self):
+        raw = copy.deepcopy(self.raw)
+        self.context["source"]["pages"][1] += " amazon nova lite 67.1."
+        raw["changes"][0]["recommendations"]["results"].append(
+            {"model": "Amazon Nova Lite", "score": "67.1", "open_weight": None, "evidence": {"page": 2, "quote": "amazon nova lite 67.1."}})
+        self.assertEqual(p.validate(raw, self.context, self.root)["decision"], "propose")
+
     def test_fenced_or_prefixed_json_answers_are_parsed(self):
         body = '{"approve": true, "reason": "근거 확인"}'
         for text in (body, f"Here is the audit.\n\n```json\n{body}\n```\n", f"```\n{body}\n```"):

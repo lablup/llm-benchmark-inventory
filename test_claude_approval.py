@@ -139,6 +139,19 @@ class ClaudeApprovalTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "held, rejected or needs_evidence"):
             r.run(self.root, reaudit=p["arxiv_id"])
 
+    def test_reaudit_of_an_awaiting_candidate_resumes_from_saved_evidence(self):
+        p = self.state["papers"][0]
+        self.ledger["proposals"][p["arxiv_id"]] = {**self.proposal, "arxiv_id": p["arxiv_id"], "status": "awaiting_claude",
+                                                   "claude_pending": {"source_run": "1", "context_sha256": "x"}}
+        r.write_json(self.root / "research/proposals.json", self.ledger)
+        r.save_state(self.root / "new-papers.json", self.state)
+        with patch.object(c, "resume_one") as resume, patch.object(c, "unhold") as unhold, patch.object(r, "get_pdf") as pdf:
+            r.run(self.root, reaudit=p["arxiv_id"])
+        resume.assert_called_once()
+        self.assertEqual(resume.call_args.args[4], p["arxiv_id"])
+        unhold.assert_not_called()
+        pdf.assert_not_called()
+
     def test_unusable_claude_answer_skips_only_that_paper(self):
         p = self.state["papers"][0]
         self.ledger["screenings"][p["arxiv_id"]] = {"status": "passed", "paper_title": p["title"], "abstract": p["summary"]}

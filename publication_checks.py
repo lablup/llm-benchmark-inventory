@@ -239,7 +239,8 @@ def validate(proposal, context, root):
                 citation(evidence, context)
         for result in change["recommendations"]["results"]:
             quote = citation(result["evidence"], context)
-            if r.compact(result["model"]) not in quote or not re.search(
+            # Tables often lowercase or re-space model names; a case-only difference is the same model.
+            if r.compact(result["model"]).casefold() not in quote.casefold() or not re.search(
                     r"(?<![\d.])" + re.escape(result["score"]) + r"(?!\d|\.\d)", quote):
                 raise ValueError("Score quote must contain the exact model and numeric value")
             if "page" not in result["evidence"]:

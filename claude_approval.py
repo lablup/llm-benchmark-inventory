@@ -277,7 +277,17 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
     deadline = started + config.get("run_minutes", 90) * 60
     day = datetime.now(timezone.utc).astimezone(r.KST).date().isoformat()
     attempts = ledger.setdefault("claude_daily_runs", {}).setdefault(day, {"attempted": [], "abstract_attempted": []})
-    reaudit_paper = unhold(ledger, state, attempts, reaudit) if reaudit else None
+    reaudit_paper = None
+    if reaudit:
+        pending = ledger["proposals"].get(reaudit)
+        if pending and pending.get("status") == "awaiting_claude":
+            # The draft already exists; finish its publication completion and audit
+            # from the saved evidence instead of drafting again.
+            resume_one(root, ledger, state, config, reaudit, pending)
+            r.save_state(root / "new-papers.json", state)
+            r.paid_call_checkpoint(root, ledger)
+            return
+        reaudit_paper = unhold(ledger, state, attempts, reaudit)
     # Preserve old provider stop flags; they are not Claude spending allowances.
     if not screening_smoke and not reaudit:
         resume_pending(root, ledger, state, config, deadline)
