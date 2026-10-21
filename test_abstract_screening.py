@@ -216,7 +216,7 @@ class ScreeningTests(unittest.TestCase):
     def test_all_language_and_modality_routes_rebuild_correct_public_rows(self):
         import shutil
         import validate_inventory
-        for name in validate_inventory.REQUIRED_PAGES + ["arxiv_watch.py", "research_pipeline.py", "pdf_evidence.py", "review_proposals.py", "build_site_data.py", "build_benchmark_inventory.py", "validate_inventory.py", "vendor/llm_batch.py"]:
+        for name in validate_inventory.REQUIRED_PAGES + ["arxiv_watch.py", "research_pipeline.py", "pdf_evidence.py", "review_proposals.py", "build_site_data.py", "build_benchmark_inventory.py", "validate_inventory.py", "serving_watch.py", "serving-watch-sources.json", "vendor/llm_batch.py"]:
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(research.ROOT / name, target)

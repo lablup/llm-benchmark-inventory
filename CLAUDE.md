@@ -19,3 +19,9 @@
 - 공식 카드 = README + 저장소 루트의 LICENSE 파일. GitHub는 API의 license 엔드포인트로 파일 이름과 무관하게 감지된 라이선스 파일(SPDX 식별자 포함)을 읽고, Hugging Face 데이터셋은 `LICENSE`, `LICENSE.md`, `LICENSE.txt`와 LICENCE 철자 변형을 차례로 찾는다(`research_pipeline.get_official_resource`).
 - LICENSE 파일이 있으면 카드 본문 끝에 `## LICENSE file: 이름 (SPDX …)` 절로 붙고, 메타데이터 `license_file`에 이름·SPDX·sha256이 남는다. 이 경우 부재 주장은 코드가 거부한다.
 - 여전히 읽지 않는 것: 루트가 아닌 하위 폴더의 라이선스 파일, 데이터 파일 안에 들어 있는 라이선스 문구, 논문·저장소 밖(학회 사이트, 별도 데이터 호스팅)의 이용 약관. `미표기(논문·공식 저장소 확인)` 행도 이용 전에 이 범위 밖을 한 번 더 본다.
+
+## 서빙·자원 표 갱신 (2026-10-21 결정, DECISIONS.md 20번)
+
+- 서빙·자원 표(`serving_inventory.csv`, `serving_reference_values.csv`)는 자동으로 바뀌지 않는다. 감시기 `serving_watch.py`가 매일 `serving-watch-sources.json`의 출처(GitHub 릴리스·커밋, 조직 저장소, PyPI, 페이지 본문 해시)를 보고 `serving-watch.json`에 기록하며, 변경이 있으면 `serving-watch` 라벨 이슈 하나를 연다.
+- 이슈를 받으면 출처를 확인하고 행과 `최근 확인일`을 손으로 고친 뒤 `python3 build_benchmark_inventory.py`, `python3 build_site_data.py`를 돌린다.
+- 감시 대상을 더하거나 빼려면 `serving-watch-sources.json`만 고친다. 행 id는 `validate_inventory.py`가 검사한다. 자세한 설명은 `docs/serving-watch.md`.

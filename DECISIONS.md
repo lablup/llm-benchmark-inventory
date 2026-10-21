@@ -311,3 +311,15 @@ and the repository states no license. The ledger keeps the candidate as
 `needs_evidence` (its audit was not approved, so `held` does not apply) with
 the decision in its reason and a `user_decision` field; the automated run
 does not revisit a recorded candidate unless a re-audit is requested.
+
+## 20. Watch serving tools and boards separately, without editing the table (2026-10-21)
+
+The user asked for the serving and resource inventory to be watched
+automatically as well. Those entries change through GitHub releases,
+repository commits, PyPI uploads and result-page updates rather than arXiv
+papers, so a separate watcher (`serving_watch.py`) polls hand-listed sources
+in `serving-watch-sources.json` every day, records observations in
+`serving-watch.json` and opens one `serving-watch` issue per day when
+something changed. It never edits `serving_inventory.csv` or the reference
+values; a person checks the source and updates the row, as Decision 1
+requires for the benchmark tables. Details: docs/serving-watch.md.

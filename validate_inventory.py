@@ -138,6 +138,13 @@ def main() -> None:
         if proposal["status"] in {"proposed", "accepted", "held", "rejected"} and not proposal.get("verification", {}).get("approve"):
             abort("Proposal is missing its second-pass verification")
 
+    from serving_watch import load_sources, inventory_ids, load_state as load_watch_state, STATE_PATH as WATCH_STATE
+    watched = {source["id"] for source in load_sources()}
+    if watched - inventory_ids():
+        abort(f"serving-watch-sources.json names unknown serving rows: {sorted(watched - inventory_ids())}")
+    if WATCH_STATE.exists():
+        load_watch_state(WATCH_STATE)
+
     english_ids = [row["id"] for row in benchmark_tables["english_benchmark_inventory.csv"]]
     english_copy = (ROOT / "english-copy.js").read_text(encoding="utf-8")
     english_copy_ids = [quoted or bare for quoted, bare in re.findall(r'^  (?:"([^"]+)"|([a-z0-9]+)):\s*\{', english_copy, flags=re.MULTILINE)]
