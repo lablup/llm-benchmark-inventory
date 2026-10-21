@@ -79,16 +79,38 @@ class PublicationTests(unittest.TestCase):
         self.assertEqual(proposal["decision"], "propose")
         p.complete(proposal["changes"])
 
-    def test_absence_claim_fails_when_a_source_mentions_a_license(self):
-        for where in ("page", "card"):
-            with self.subTest(where=where):
-                raw = self.unstated()
-                if where == "page":
-                    self.context["source"]["pages"][1] += " Released under the MIT License."
-                else:
-                    self.context["official_resources"][0]["text"] += "\nLicense: CC-BY-4.0"
-                with self.assertRaisesRegex(ValueError, "mentions a license"):
-                    p.validate(raw, self.context, self.root)
+    def test_absence_claim_fails_when_the_card_mentions_a_license(self):
+        raw = self.unstated()
+        self.context["official_resources"][0]["text"] += "\nLicense: CC-BY-4.0"
+        with self.assertRaisesRegex(ValueError, "card mentions a license"):
+            p.validate(raw, self.context, self.root)
+
+    def test_pdf_license_mentions_must_be_listed_and_explained(self):
+        raw = self.unstated()
+        self.context["source"]["pages"][1] += " Publication rights licensed to ACM."
+        with self.assertRaisesRegex(ValueError, r"PDF pages \[2\] mention a license"):
+            p.validate(raw, self.context, self.root)
+        for field in r.UNKNOWN:
+            if field != "lm-eval 지원":
+                raw["changes"][0]["rights_evidence"][field]["pdf_mentions"] = [
+                    {"page": 2, "quote": "Publication rights licensed to ACM.", "about": "논문 자체의 ACM 출판 고지"}]
+        proposal = p.validate(copy.deepcopy(raw), self.context, self.root)
+        self.assertEqual(proposal["decision"], "propose")
+        bad = copy.deepcopy(raw)
+        bad["changes"][0]["rights_evidence"]["라이선스"]["pdf_mentions"][0]["quote"] = "Publication rights"
+        with self.assertRaisesRegex(ValueError, "license quote"):
+            p.validate(bad, self.context, self.root)
+        bad = copy.deepcopy(raw)
+        bad["changes"][0]["rights_evidence"]["라이선스"]["pdf_mentions"][0]["page"] = 1
+        with self.assertRaisesRegex(ValueError, "absent from the cited PDF page"):
+            p.validate(bad, self.context, self.root)
+
+    def test_fenced_or_prefixed_json_answers_are_parsed(self):
+        body = '{"approve": true, "reason": "근거 확인"}'
+        for text in (body, f"Here is the audit.\n\n```json\n{body}\n```\n", f"```\n{body}\n```"):
+            self.assertEqual(r.load_json_answer(text)["approve"], True)
+        with self.assertRaises(ValueError):
+            r.load_json_answer("no object here")
 
     def test_absence_claim_fails_when_the_repository_has_a_license_file(self):
         raw = self.unstated()

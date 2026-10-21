@@ -409,8 +409,24 @@ def invoke(job, p, output, parse, remaining, dry_run=False):
     return records[-1]["parsed"], sum(r["cost_usd"] for r in records)
 
 
+def load_json_answer(text):
+    """Parse a model answer that should be one JSON object, tolerating Markdown fences
+    or a short remark around it. Anything else is still a ValueError."""
+    if not isinstance(text, str):
+        raise ValueError("Model answer is not text")
+    try:
+        return json.loads(text)
+    except ValueError:
+        pass
+    fenced = re.search(r"```(?:json)?\s*(\{.*\})\s*```", text, re.S)
+    candidate = fenced.group(1) if fenced else text[text.find("{"):text.rfind("}") + 1]
+    if not candidate:
+        raise ValueError("Model answer contains no JSON object")
+    return json.loads(candidate)
+
+
 def parse_check(text):
-    check = json.loads(text)
+    check = load_json_answer(text)
     if type(check.get("approve")) is not bool or not isinstance(check.get("reason"), str) or not check["reason"].strip():
         raise ValueError("Invalid verification result")
     return {"approve": check["approve"], "reason": check["reason"][:1500]}
@@ -465,7 +481,7 @@ def screening_matches(record, paper, config):
 
 
 def parse_screening(text, expected):
-    result = json.loads(text)
+    result = load_json_answer(text)
     rows = result.get("papers")
     if not isinstance(rows, list) or len(rows) != len(expected):
         raise ValueError("Screening must cover every requested paper")
@@ -644,7 +660,7 @@ def run(root: Path = ROOT, dry_run=False, screening_smoke=False, reaudit=None):
             paid_call_checkpoint(root, ledger)
         try:
             result, spent = invoke(job, p, folder / f"{key}-extract.jsonl",
-                                   lambda text: validate_result(json.loads(text), context),
+                                   lambda text: validate_result(load_json_answer(text), context),
                                    config["cost_cap_usd"] - attempts["spent_usd"], dry_run)
         except EvidenceRejected as error:
             spent = error.spent

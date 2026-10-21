@@ -99,7 +99,7 @@ def audit_and_save(root, ledger, state, paper, proposal, context, config, author
             completion_prompt = (publication.PROMPT + "\n" + r.evidence_payload(context)
                                  + "\nUNPUBLISHED DRAFT:\n" + json.dumps(proposal, ensure_ascii=False))
             completed = call(completion_prompt, folder / "completion",
-                             lambda text: publication.validate(json.loads(text), context, root))
+                             lambda text: publication.validate(r.load_json_answer(text), context, root))
             proposal = {k: completed[k] for k in ("decision", "reason", "changes")}
         else:
             proposal = publication.validate(proposal, context, root)
@@ -232,7 +232,7 @@ def replay_saved(artifact, base_commit, key, root=r.ROOT):
               "Unknown license status is allowed. Return the complete corrected proposal JSON.\n"
               + r.evidence_payload(context) + "\nUNVERIFIED DRAFT:\n" + json.dumps(draft, ensure_ascii=False))
     result = call(prompt, root / ".research-cache" / "claude" / key / "repair",
-                  lambda text: r.validate_result(json.loads(text), context))
+                  lambda text: r.validate_result(r.load_json_answer(text), context))
     proposal = {k: result[k] for k in ("decision", "reason", "changes")}
     if proposal["decision"] != "propose":
         print(f"{key}: Claude did not produce a supported proposal; existing held record retained")
@@ -247,15 +247,18 @@ def replay_saved(artifact, base_commit, key, root=r.ROOT):
 def unhold(ledger, state, attempts, key):
     """Move a held/rejected/needs_evidence record to ledger['reaudits'] and queue the paper again."""
     item = ledger["proposals"].get(key)
-    if not item or item.get("status") not in {"held", "rejected", "needs_evidence"}:
-        raise ValueError("Only a held, rejected or needs_evidence candidate can be re-audited")
-    if ledger.get("screenings", {}).get(key, {}).get("status") != "passed":
-        raise ValueError("Re-audit needs a passed abstract screening")
     paper = next((p for p in state["papers"] if p["arxiv_id"] == key), None)
     if paper is None:
         raise ValueError("Re-audit candidate is not in new-papers.json")
-    ledger.setdefault("reaudits", []).append({**item, "superseded_at": r.iso(datetime.now(timezone.utc))})
-    del ledger["proposals"][key]
+    if item is not None and item.get("status") not in {"held", "rejected", "needs_evidence"}:
+        raise ValueError("Only a held, rejected or needs_evidence candidate can be re-audited")
+    if item is None and paper.get("analysis_status") not in {"held", "needs_evidence", "queued"}:
+        raise ValueError("Only a held, rejected or needs_evidence candidate can be re-audited")
+    if ledger.get("screenings", {}).get(key, {}).get("status") != "passed":
+        raise ValueError("Re-audit needs a passed abstract screening")
+    if item is not None:
+        ledger.setdefault("reaudits", []).append({**item, "superseded_at": r.iso(datetime.now(timezone.utc))})
+        del ledger["proposals"][key]
     attempts["attempted"] = [k for k in attempts["attempted"] if k != key]
     paper.update(analysis_status="queued", analysis_reason="현재 공개 기준으로 재심사 대기")
     return paper
@@ -360,7 +363,7 @@ def investigate(root, ledger, state, config, screenings, paper, source):
                    "english_copy": (root / "english-copy.js").read_text()}
         result = call(r.PROMPT + "\n" + r.evidence_payload(context),
                       root / ".research-cache" / "claude" / key / "draft",
-                      lambda text: r.validate_result(json.loads(text), context))
+                      lambda text: r.validate_result(r.load_json_answer(text), context))
         proposal = {k: result[k] for k in ("decision", "reason", "changes")}
         if proposal["decision"] == "propose":
             try:
