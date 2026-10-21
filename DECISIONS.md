@@ -286,3 +286,16 @@ Hardware and drivers determine metric availability. Air-gapped local use
 requires preparing the executable, drivers and libraries in advance.
 Mark it as an adoption candidate, not an already integrated Benchpress tool.
 No representative performance scores are attached to this monitoring tool.
+
+## 18. Record unstated licenses as all rights reserved (2026-10-21)
+
+The user chose two values instead of a single unknown marker. `미표기`
+means the paper, dataset card and official repository were checked and state
+no license; such a benchmark is treated as all rights reserved, so commercial
+use, modification and redistribution read `저작권 전부 보유` and users must
+ask the authors before use. `미확인` means the check itself could not be done
+(private repository, card not fetched); these rows stay unpublished and are
+re-investigated. `확인 불가` and `unknown` are no longer used. The draft
+stage of the automated pipeline records `미확인`; the publication stage may
+resolve a field to `미표기` only with absence evidence that the code verifies
+against the fetched card and the PDF text. The rule is written in CLAUDE.md.

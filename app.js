@@ -89,7 +89,7 @@ function escapeHTML(value) {
 
 function statusClass(status) {
   if (status === "가능") return "good";
-  if (status === "불가") return "bad";
+  if (status === "불가" || status === "저작권 전부 보유") return "bad";
   return "caution";
 }
 
@@ -113,13 +113,16 @@ const ENGLISH_CATEGORIES = {
 const ENGLISH_LICENSES = {
   "MIT 태그(README 재배포 제한 문구와 충돌. 이용 전 확인)": "MIT tag; repository terms conflict and require review",
   "미표기": "Not specified",
+  "미표기(데이터 카드·저장소 확인)": "Not specified on the dataset card or in the repository",
+  "미표기(논문·공식 저장소 확인)": "Not specified in the paper or the official repository",
+  "미확인": "Not verified",
   "미표기(원본 MATH=MIT)": "Not specified; the original MATH dataset uses MIT",
   "미표기(HF 미러에 라이선스 필드 부재)": "Not specified in the Hugging Face mirror",
   "비공개 홀드아웃": "Private holdout",
   "공식 사이트 확인 필요(공개 저장소 미확인)": "Review the official site; no public repository was found",
   "카드 'cc' 표기(모호. 확인 필요)": "Dataset card says 'cc'; clarification is required",
   "미표기(수집물. 원 저장소 라이선스 상속)": "Not specified; source repository licenses may apply",
-  "미표기 + HF 게이트": "Not specified; Hugging Face access approval is required",
+  "미표기(데이터 카드 확인. HF 게이트 접근)": "Not specified; Hugging Face access approval is required",
   "CC-BY-4.0(미러 카드)": "CC-BY-4.0, as stated on the mirror card",
   "Apache-2.0(FastChat 저장소)": "Apache-2.0 for the FastChat repository",
 };
@@ -143,7 +146,8 @@ function commercialLabel(status) {
     "가능": "Allowed",
     "불가": "Not allowed",
     "조건 확인 필요": "Review required",
-    "확인 불가": "Unknown",
+    "저작권 전부 보유": "All rights reserved (no license stated)",
+    "미확인": "Not verified",
   })[status] || status;
 }
 

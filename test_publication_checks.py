@@ -62,6 +62,51 @@ class PublicationTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "Unconfirmed"):
                     review.apply_proposal(item, self.root, verify=False)
 
+    def unstated(self):
+        """Paper and official card state no license: publishable as all rights reserved."""
+        raw = copy.deepcopy(self.raw)
+        self.context["source"]["pages"][1] = "Model A 90. Model B 80. Public weights for Model B."
+        self.context["official_resources"] = [{"url": "https://example.org/data", "text": "# Example Bench\nData and code."}]
+        change = raw["changes"][0]
+        change["row"].update({"라이선스": "미표기(논문·공식 저장소 확인)", "상업적 이용": p.ALL_RIGHTS_RESERVED,
+                              "수정·파생": p.ALL_RIGHTS_RESERVED, "재배포": p.ALL_RIGHTS_RESERVED, "lm-eval 지원": "미표기",
+                              "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요"})
+        change["rights_evidence"] = {k: {"source_url": "https://example.org/data", "absent": True} for k in r.UNKNOWN}
+        return raw
+
+    def test_unstated_license_publishes_as_all_rights_reserved(self):
+        proposal = p.validate(self.unstated(), self.context, self.root)
+        self.assertEqual(proposal["decision"], "propose")
+        p.complete(proposal["changes"])
+
+    def test_absence_claim_fails_when_a_source_mentions_a_license(self):
+        for where in ("page", "card"):
+            with self.subTest(where=where):
+                raw = self.unstated()
+                if where == "page":
+                    self.context["source"]["pages"][1] += " Released under the MIT License."
+                else:
+                    self.context["official_resources"][0]["text"] += "\nLicense: CC-BY-4.0"
+                with self.assertRaisesRegex(ValueError, "mentions a license"):
+                    p.validate(raw, self.context, self.root)
+
+    def test_unstated_license_requires_all_rights_reserved_columns(self):
+        raw = self.unstated()
+        raw["changes"][0]["row"]["상업적 이용"] = "가능"
+        with self.assertRaisesRegex(ValueError, "all rights reserved"):
+            p.validate(raw, self.context, self.root)
+        raw = self.unstated()
+        raw["changes"][0]["row"]["라이선스"] = "MIT"
+        with self.assertRaisesRegex(ValueError, "only for an unstated license"):
+            p.validate(raw, self.context, self.root)
+
+    def test_documented_license_cannot_use_absence_evidence(self):
+        raw = copy.deepcopy(self.raw)
+        raw["changes"][0]["rights_evidence"]["라이선스"] = {"source_url": "https://example.org/data", "absent": True}
+        self.context["official_resources"] = [{"url": "https://example.org/data", "text": "# Example Bench"}]
+        with self.assertRaisesRegex(ValueError, "absence evidence"):
+            p.validate(raw, self.context, self.root)
+
     def test_old_claude_approval_does_not_meet_new_policy(self):
         item = self.item()
         del item["verification"]["publication_policy"]

@@ -232,7 +232,7 @@ class ScreeningTests(unittest.TestCase):
                 key = f"fixture-{track}-{modality}"
                 change["row"].update({"id": key, "이름": key, "언어": track,
                                       "링크": "https://example.org/data", "예시 표기": "과제 설명",
-                                      "이용 시 유의사항": "이용 조건과 평가 도구 지원은 확인 불가", **research.UNKNOWN})
+                                      "이용 시 유의사항": "이용 조건과 평가 도구 지원은 미확인", **research.UNKNOWN})
                 for ev in change["evidence"].values():
                     ev["quote"] = "Example Korean English text vision benchmark"
                 item = research.validate_result(raw, context)

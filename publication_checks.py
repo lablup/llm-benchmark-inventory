@@ -9,22 +9,42 @@ import research_pipeline as r
 
 POLICY = "complete-evidence-v1"
 RANKING_FILE = "benchmark_top_models.csv"
+# Vocabulary (CLAUDE.md): 미표기 = sources were checked and state no license, treated as
+# all rights reserved; 미확인 = not checked, never publishable.
+UNSTATED = re.compile(r"^미표기(?:\(|$)")
+ALL_RIGHTS_RESERVED = "저작권 전부 보유"
+DERIVED_RIGHTS = ("상업적 이용", "수정·파생", "재배포")
+LICENSE_WORDS = re.compile(r"licen[cs]e|licensed|라이선스|라이센스|\bCC[ -]?BY|\bMIT\b|Apache|\bGPL|\bBSD\b|\bODbL\b|\bCDLA|creativecommons|all rights reserved", re.I)
+HARNESS_WORDS = re.compile(r"lm[-_ ]?eval|evaluation[-_ ]harness|EleutherAI", re.I)
 UNRESOLVED = re.compile(r"확인\s*불가|미확인|미정|알\s*수\s*없|확인되지|확인하지\s*못|불명|unknown|unverified|not verified|not confirmed|\bTBD\b", re.I)
 
 PROMPT = """Complete this unpublished benchmark draft using ONLY the supplied PDF
 pages and official resource cards. Return the same proposal JSON schema, adding
 rights_evidence and recommendations to EACH change. Never guess missing facts.
-Publication policy: no field may contain '확인 불가', unknown, unresolved or a
-synonym. All five fields 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원
-need explicit evidence. A code license is NOT a dataset license. Establish the
-dataset license's applicability to all components; do not assume missing usage
-permissions or harness support. Known restrictions may be recorded truthfully.
-Explicitly documented non-support is allowed; absence of documentation does NOT
-prove non-support. If any required fact is unconfirmed, return needs_evidence
-with a precise Korean reason and changes:[], so nothing is published.
-rights_evidence maps EACH of the five fields to an exact short quote with either
+Publication policy: no field may contain '확인 불가', '미확인', unknown, unresolved
+or a synonym. All five fields 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원
+need explicit evidence in rights_evidence, in one of two forms per field.
+(a) Documented value: an exact short quote, either
 {"source_url":"exact supplied official card URL","quote":"..."} or
 {"page":physical PDF page number,"quote":"..."}. Do not invent URLs or quote text.
+(b) Verified absence: {"source_url":"exact supplied official card URL","absent":true}.
+Use it ONLY when neither the supplied PDF pages nor the fetched official card
+mention any license at all. Then set 라이선스 to exactly '미표기(논문·공식 저장소 확인)'
+and set 상업적 이용, 수정·파생 and 재배포 each to exactly '저작권 전부 보유': an
+unlicensed public release is treated as all rights reserved until the authors
+state a license. If the official card never mentions lm-eval or
+lm-evaluation-harness, set lm-eval 지원 to exactly '미표기' with absence evidence.
+The code rejects absence evidence when any supplied source mentions a license
+(or the harness); cite the statement instead. Write the usage note as
+'라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요', never
+'확인하지 못함' or '확인 불가'.
+A code license is NOT a dataset license. Establish the dataset license's
+applicability to all components; do not assume missing usage permissions or
+harness support. Known restrictions may be recorded truthfully. Explicitly
+documented non-support is allowed; absence of documentation does NOT prove
+non-support. If a required fact could not be checked (card not fetched,
+private repository), return needs_evidence with a precise Korean reason and
+changes:[], so nothing is published.
 recommendations is {"metric":"metric AND units", "setting":"same dataset/split,
 prompting, version, token budget and other conditions; say these are results
 reported in this paper, not a current global leaderboard", "higher_is_better":true,
@@ -51,7 +71,11 @@ Approve only if ALL changed facts, language, modality, counts, translations and
 usage notes are supported. The five usage/license/harness fields must be resolved
 with explicit evidence. A code license does not establish dataset rights. Missing
 documentation does not prove non-support. Reject invented permissions or omissions
-of restrictions applying to components. Unknown fields forbid publication.
+of restrictions applying to components. '미확인', '확인 불가' or unknown fields forbid
+publication. '미표기' means the paper and the official card were checked and state
+no license: reject it if any supplied source states or names a license. When
+라이선스 is '미표기', 상업적 이용, 수정·파생 and 재배포 must each read exactly
+'저작권 전부 보유' (treated as all rights reserved); reject any other combination.
 Check recommendations model identities, every numeric score, units, table row and
 column alignment, metric direction and the exact SAME experimental conditions.
 The list must cover the compared models in the selected experiment so selecting
@@ -73,6 +97,24 @@ def score(value):
     if not math.isfinite(number):
         raise ValueError("Invalid score")
     return number
+
+
+def absence(evidence, context, field):
+    """Verified absence: the fetched official card (and, for licenses, every supplied
+    PDF page) contains no license/harness wording."""
+    if set(evidence) != {"source_url", "absent"} or evidence["absent"] is not True:
+        raise ValueError("Absence evidence needs exactly source_url and absent:true")
+    if field not in r.UNKNOWN:
+        raise ValueError("Absence evidence is only accepted for license and harness fields")
+    matches = [c for c in context.get("official_resources", []) if c["url"] == evidence["source_url"]]
+    if len(matches) != 1:
+        raise ValueError("Publication source was not fetched")
+    if field == "lm-eval 지원":
+        texts, words, what = [matches[0]["text"]], HARNESS_WORDS, "the evaluation harness"
+    else:
+        texts, words, what = [matches[0]["text"], *context["source"]["pages"]], LICENSE_WORDS, "a license"
+    if any(words.search(text) for text in texts):
+        raise ValueError(f"A supplied source mentions {what}; cite it instead of claiming absence")
 
 
 def citation(evidence, context):
@@ -105,6 +147,13 @@ def complete(changes):
     for change in changes:
         if any(UNRESOLVED.search(str(value)) for value in change["row"].values()):
             raise ValueError("Unconfirmed inventory fields cannot be published")
+        row = change["row"]
+        unstated = bool(UNSTATED.search(row["라이선스"]))
+        reserved = {field for field in DERIVED_RIGHTS if row[field] == ALL_RIGHTS_RESERVED}
+        if unstated and reserved != set(DERIVED_RIGHTS):
+            raise ValueError("An unstated license must mark commercial use, modification and redistribution as all rights reserved")
+        if reserved and not unstated:
+            raise ValueError("All rights reserved treatment is only for an unstated license")
         if set(change.get("rights_evidence", {})) != set(r.UNKNOWN):
             raise ValueError("Every license/usage/harness field needs evidence")
         recommendations = change.get("recommendations", {})
@@ -141,8 +190,17 @@ def validate(proposal, context, root):
     complete(proposal["changes"])
     current = read_rankings(root)
     for change in proposal["changes"]:
-        for evidence in change["rights_evidence"].values():
-            citation(evidence, context)
+        for field, evidence in change["rights_evidence"].items():
+            value = change["row"][field]
+            claims_absence = value == ALL_RIGHTS_RESERVED or bool(UNSTATED.search(value))
+            if not isinstance(evidence, dict):
+                raise ValueError("Missing publication evidence")
+            if claims_absence != ("absent" in evidence):
+                raise ValueError("Unstated fields need absence evidence; documented fields need a quote")
+            if claims_absence:
+                absence(evidence, context, field)
+            else:
+                citation(evidence, context)
         for result in change["recommendations"]["results"]:
             quote = citation(result["evidence"], context)
             if r.compact(result["model"]) not in quote or not re.search(
