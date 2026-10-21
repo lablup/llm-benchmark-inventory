@@ -38,7 +38,10 @@ list EVERY PDF page where the words license/licence/CC BY/MIT/Apache/GPL/BSD
 or 'all rights reserved' occur, with a quote from that page and what it refers
 to (for example the paper's ACM/arXiv publication notice). A mention that
 licenses the benchmark or dataset itself forbids absence: cite it as (a).
-Omit pdf_mentions or use [] when no page mentions a license. Then set 라이선스 to exactly '미표기(논문·공식 저장소 확인)'
+Omit pdf_mentions or use [] when no page mentions a license.
+When the benchmark is built from other datasets or sources, name them in
+'이용 시 유의사항' and state that each component's own terms must be checked
+separately before use; cite the page that lists the components. Then set 라이선스 to exactly '미표기(논문·공식 저장소 확인)'
 and set 상업적 이용, 수정·파생 and 재배포 each to exactly '저작권 전부 보유': an
 unlicensed public release is treated as all rights reserved until the authors
 state a license. If the official card never mentions lm-eval or
@@ -83,7 +86,13 @@ documentation does not prove non-support. Reject invented permissions or omissio
 of restrictions applying to components. '미확인', '확인 불가' or unknown fields forbid
 publication. For absence evidence, check each pdf_mentions entry: a publication
 notice of the paper (ACM, arXiv, copyright line) is compatible with an unstated
-dataset license; a statement licensing the benchmark or data is not. '미표기' means the paper and the official card were checked and state
+dataset license; a statement licensing the benchmark or data is not.
+'lm-eval 지원' = '미표기' with absence evidence is the accepted resolved value
+when the official card never mentions lm-eval or lm-evaluation-harness; it
+records that support is not documented, not that support is absent, and it is
+not an unknown field. Do not reject it for lacking harness evidence.
+If the benchmark derives from other datasets, the usage note must name them and
+say their own terms need separate checking; reject if that note is missing. '미표기' means the paper and the official card were checked and state
 no license: reject it if any supplied source states or names a license. When
 라이선스 is '미표기', 상업적 이용, 수정·파생 and 재배포 must each read exactly
 '저작권 전부 보유' (treated as all rights reserved); reject any other combination.
