@@ -4911,6 +4911,94 @@
         "reviewed_sha256": "a00fea25e01c28e3c3e7b9003f8cd1ddb51eae2f49e72ff24d44b8370d4226ea",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2609.21763": {
+      "decision": "exclude",
+      "reason": "이 논문은 흉부 X선 결핵 선별을 대상으로 의료 비전-언어 모델 네 종을 감사(audit)한 연구다. 기존 공개 데이터셋(Montgomery, Shenzhen, TBX11K, VinDr-CXR)을 재사용하고 프롬프트 5종을 영어로 적용했을 뿐, 재사용 가능한 새 벤치마크나 데이터셋 자체를 공개한다는 근거를 찾지 못했다. 논문이 제시하는 평가 사양 E는 표기 방식이지 배포되는 평가 자원이 아니며, 공식 데이터셋·코드 URL도 본문에 없다. 평가 대상도 의료 영상 분류라서 이 인벤토리가 다루는 한국어·영어 LLM 지식·추론·코딩·에이전트·장문 평가 범위와 거리가 있다. 따라서 신규 행 제안이나 기존 행 갱신은 하지 않는다.",
+      "changes": [],
+      "arxiv_id": "2609.21763",
+      "paper_title": "Beyond Benchmark Scores: Auditing Medical Vision-Language Models for Chest X-Ray Tuberculosis Screening",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.21763",
+        "sha256": "ddef9e97b3f5287d1ad28cf79d5075b3f21b0be0a63843603ac9d6bd25e814cb",
+        "accessed": "2026-10-22T06:40:49Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 27,
+          "elapsed_seconds": 95.99,
+          "pdf_sha256": "ddef9e97b3f5287d1ad28cf79d5075b3f21b0be0a63843603ac9d6bd25e814cb",
+          "visual_pdf_audit": false,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "91538fdaa90459bb2d5bc0181e951377363a76f7e3a69f0388d8c5f1c2c8c328",
+          "page_json_file": "2609.21763.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-10-22T06:42:33Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.21763",
+        "paper_title": "Beyond Benchmark Scores: Auditing Medical Vision-Language Models for Chest X-Ray Tuberculosis Screening",
+        "abstract": "A medical model's benchmark score does not establish that the same conclusion holds under a different evaluation. This study tests whether claims about model ranking, score reliability and screening performance survive changes in cohort, prompt, negative spectrum, specified prevalence and operating threshold. We audit three medical vision-language models (BioMedCLIP, CheXficient, and MedSigLIP) and a general-domain OpenCLIP comparator on 12,200 chest radiograph records from four datasets (Montgomery, Shenzhen, TBX11K, and VinDr-CXR). Five fixed prompt families yield 244,000 model--image--prompt scores. No model leads every cohort and reliability criterion. Prompt-family changes alter AUROC in 21 of 48 multiplicity-controlled comparisons. Replacing healthy controls with sick non-tuberculosis controls reduces AUROC by 0.075--0.306 across all four models. On VinDr-CXR, the three medical models distinguish tuberculosis from no-finding controls substantially better than from pneumonia or lung tumor; their AUROC point estimates for both named diseases fall below 0.5. CheXficient has documented VinDr-CXR pretraining exposure, which limits the interpretation of its results. Thresholds chosen for 95\\% sensitivity on TBX11K training retain that constraint by point estimate in only four of sixteen target evaluations. A five-seed supervised source model reaches 0.999 AUROC on TBX11K validation but 0.629 on each of two external cohorts. Conservative exclusion of perceptual-overlap candidates narrows this gap without closing it. These retrospective, single-task results show that discrimination, score reliability and threshold retention support different portability claims. Evidence for chest X-ray tuberculosis screening should identify the complete evaluation specification rather than attribute clinical portability to a checkpoint alone.",
+        "paper_updated": "2026-09-21T00:00:00Z",
+        "created_at": "2026-10-20T02:48:49Z",
+        "input_sha256": "a71dd9db3d7dab2f98eb0b0b33a7d8855f969d9fd2334a74bfe249e7b8441e3e",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "의료 VLM 결핵 선별 감사 연구"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "irrelevant",
+            "reason": "기존 모델 결핵 스크리닝 성능 감사, 벤치마크 신규 제안 아님"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "fb90440b9025f38edfd1f757f265f23ac11fa8dd5e73fab579a64ad7f834d66b"
     }
   },
   "processed_comments": [],
