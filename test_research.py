@@ -65,6 +65,23 @@ class ResearchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Quote"):
             research.validate_result(raw, self.context)
 
+    def test_official_link_may_be_printed_without_scheme_or_across_lines(self):
+        for printed in ("github.com/org/repo", "www.github.com/org/repo/", "https://github.\ncom/org/repo", "http://github.com/org/repo"):
+            raw = copy.deepcopy(self.raw)
+            raw["changes"][0]["row"]["링크"] = "https://github.com/org/repo"
+            context = copy.deepcopy(self.context)
+            context["source"]["pages"] = [f"Example English vision benchmark released at {printed} for research."]
+            self.assertEqual(research.validate_result(raw, context)["changes"][0]["row"]["링크"], "https://github.com/org/repo", printed)
+        raw = copy.deepcopy(self.raw)
+        raw["changes"][0]["row"]["링크"] = "https://github.com/org/other"
+        context = copy.deepcopy(self.context)
+        context["source"]["pages"] = ["Example English vision benchmark released at github.com/org/repo"]
+        with self.assertRaisesRegex(ValueError, "link does not occur"):
+            research.validate_result(raw, context)
+        raw["changes"][0]["row"]["링크"] = "http://github.com/org/repo"
+        with self.assertRaisesRegex(ValueError, "Invalid official resource URL"):
+            research.validate_result(raw, context)
+
     def test_language_evidence_is_required(self):
         del self.raw["changes"][0]["evidence"]["언어"]
         with self.assertRaisesRegex(ValueError, "evidence"):

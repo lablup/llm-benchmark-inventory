@@ -162,6 +162,12 @@ is marked `table_missing` and keeps its Poppler text), and drops the duplicate
 Poppler copy on plain-text pages when both copies would exceed the budget. A PDF
 that still cannot be extracted is retried after 7 days, then monthly
 (`analysis_retry_after` in `new-papers.json`), instead of every day.
+The draft validator accepts the official link as papers print it, without a scheme or
+`www.`, with a trailing slash or broken across a line, as long as the proposed value is
+the https form of a URL the PDF names (`research_pipeline.link_in_pdf`). The drafter and
+auditor prompts treat a quoted task example, prompt template, instruction or answer
+option in English or Korean as sufficient task-language evidence (decision 22, items 2
+and 3).
 Completed screenings and papers are persisted incrementally. Pending Claude
 audits are resumed before new work; completed abstracts are not screened again
 merely because the model changed. `--screening-smoke` processes at most ten

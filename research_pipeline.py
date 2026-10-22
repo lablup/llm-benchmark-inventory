@@ -54,7 +54,10 @@ versions and evaluation conditions. Do not infer missing numbers or claim a
 current global leaderboard. A separate evidence stage adds paper-reported model
 comparisons. A materially new model comparison for an existing benchmark may
 propose its unchanged inventory row for that stage.
-Do not infer dataset language solely from the paper's writing language.
+Do not infer dataset language solely from the paper's writing language. A task
+example, prompt template, instruction text or answer options quoted from the PDF in
+English or Korean IS sufficient evidence of the task language: cite such a quote as
+the '언어' evidence. Do not require a sentence that states the language explicitly.
 Never invent examples, scores, licensing, evaluation harness support, or model rankings.
 Output {"decision":"propose|exclude|needs_evidence", "reason":"Korean explanation",
 "changes":[{"track":"ko|en", "row":{EXACT existing CSV headers: string values},
@@ -68,8 +71,11 @@ these keys: 이름, 평가 축, 언어, 정의, 대표 과제, 대표 예시·�
 Do not omit name or evaluation-category evidence. Evidence page is the physical PDF page number.
 At most 25 quoted words TOTAL across unique quotes in the response: reuse a short quote
 for multiple fields. The Korean explanations are paraphrases, not long translations.
-The '링크' must be an https official dataset or code URL that appears verbatim in the PDF.
-If you cannot find a usable official resource, choose needs_evidence, not propose.
+The '링크' must be the official dataset or code URL that the PDF itself names (footnotes
+and appendices count). Write it as an https URL; the PDF may print it without a scheme
+(github.com/org/repo, huggingface.co/datasets/...) or broken across lines, and that is the
+same link. Do not substitute a URL that the PDF never names. If the PDF names no official
+resource at all, choose needs_evidence, not propose.
 For unverified license, commercial use, modification, redistribution, and lm-eval support,
 use exactly '확인 불가'. A code license NEVER proves dataset licensing. Do not introduce
 permissive license claims in automated proposals. For new entries use '확인 불가' for
@@ -94,7 +100,11 @@ table headers, merged cells and values with the original Poppler text when avail
 If these disagree, or a claim requires an unreadable figure/formula, reject it.
 Do not claim to have visually inspected the original PDF.
 English task instructions/prompts establish English coverage, even if answers are
-numbers or grids. The paper's English prose alone does not establish task language.
+numbers or grids. The paper's English prose alone does not establish task language,
+but a quoted task example, prompt template, instruction or answer option in English or
+Korean does; do not reject a language claim for lacking an explicit statement when such
+a quote exists on the cited page. A link printed without a scheme or split across lines
+is the same official link as its https form.
 New evaluation categories are allowed. Task descriptions ('과제 설명') may paraphrase
 an illustrated task without claiming that it is a verbatim released test item.
 Policy deliberately keeps all new license, commercial-use, modification, redistribution,
@@ -260,6 +270,18 @@ def evidence_payload(context: dict) -> str:
     return json.dumps({**context, "source": {**source, "pages": numbered}}, ensure_ascii=False)
 
 
+def link_in_pdf(link: str, pages: list) -> bool:
+    """Accept the official URL as papers actually print it: verbatim, without a
+    scheme or 'www.', with a trailing slash, or broken across a line (decision 22).
+    The proposed value itself must still be an https URL."""
+    text = "\n".join(pages)
+    if link in text:
+        return True
+    bare = re.sub(r"^https?://(?:www\.)?", "", link).rstrip("/")
+    squeezed = re.sub(r"\s+", "", text)
+    return bool(bare) and bare in squeezed
+
+
 def validate_result(result: dict, context: dict) -> dict:
     if result.get("decision") not in {"propose", "exclude", "needs_evidence"}:
         raise ValueError("Invalid research decision")
@@ -313,7 +335,7 @@ def validate_result(result: dict, context: dict) -> dict:
         parsed = urlsplit(link)
         if parsed.scheme != "https" or not parsed.hostname or parsed.username or any(c.isspace() for c in link):
             raise ValueError("Invalid official resource URL")
-        if link not in "\n".join(context["source"]["pages"]):
+        if not link_in_pdf(link, context["source"]["pages"]):
             raise ValueError("Official resource link does not occur in PDF text")
         if track == "en":
             copy = change["english_copy"]
