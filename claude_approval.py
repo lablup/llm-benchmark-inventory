@@ -11,7 +11,7 @@ import os
 import subprocess
 import tempfile
 import time
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import research_pipeline as r
@@ -358,7 +358,8 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
         return
     selected = [p for p in reversed(state["papers"]) if p["arxiv_id"] not in ledger["proposals"]
                 and p["arxiv_id"] not in attempts["attempted"] and cached(p)
-                and screenings[p["arxiv_id"]]["status"] == "passed"]
+                and screenings[p["arxiv_id"]]["status"] == "passed"
+                and (p.get("analysis_retry_after") or "") <= day]
     selected = [reaudit_paper] if reaudit else selected[:max(0, config["daily_papers"] - len(attempts["attempted"]))]
     for paper in selected:
         if time.monotonic() >= deadline:
@@ -369,7 +370,7 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
         try:
             source = r.get_pdf(key, root / ".research-cache" / day)
         except (OSError, ValueError, subprocess.SubprocessError) as error:
-            paper.update(analysis_status="needs_evidence", analysis_reason="PDF 추출 실패, 다음 실행에서 재시도")
+            defer_extraction(paper, error, day)
             print(f"{key}: PDF extraction failed: {str(error)[:300]}", flush=True)
             r.save_state(root / "new-papers.json", state)
             continue
@@ -385,6 +386,18 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
     state["research"].update(status="paused_time_budget" if time.monotonic() >= deadline else "ready",
                              abstract_screened_total=len(screenings), full_text_completed_total=len(ledger["proposals"]))
     r.save_state(root / "new-papers.json", state)
+
+
+RETRY_DAYS = (7, 7, 30)
+
+
+def defer_extraction(paper, error, day):
+    """A PDF that cannot be extracted is retried after a week, then monthly, not daily."""
+    failures = int(paper.get("analysis_failures") or 0) + 1
+    wait = RETRY_DAYS[min(failures, len(RETRY_DAYS)) - 1]
+    retry = (date.fromisoformat(day) + timedelta(days=wait)).isoformat()
+    paper.update(analysis_status="needs_evidence", analysis_failures=failures, analysis_retry_after=retry,
+                 analysis_reason=f"PDF 추출 실패({str(error)[:80]}), {retry}부터 재시도")
 
 
 def investigate(root, ledger, state, config, screenings, paper, source):

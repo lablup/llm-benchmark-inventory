@@ -156,6 +156,12 @@ Limits remain 1,000 abstracts, 100 full-text attempts per Korean calendar day,
 20 abstracts per batch and 90 minutes of work, with at most 30 minutes for new
 abstract screening. Each CLI request is limited to two turns and ten minutes.
 The hosted job allows 150 minutes including extraction, validation and deployment.
+PDF extraction (decision 22) fails before MinerU when the Poppler text alone exceeds
+the context budget, keeps a paper whose one table MinerU could not parse (the page
+is marked `table_missing` and keeps its Poppler text), and drops the duplicate
+Poppler copy on plain-text pages when both copies would exceed the budget. A PDF
+that still cannot be extracted is retried after 7 days, then monthly
+(`analysis_retry_after` in `new-papers.json`), instead of every day.
 Completed screenings and papers are persisted incrementally. Pending Claude
 audits are resumed before new work; completed abstracts are not screened again
 merely because the model changed. `--screening-smoke` processes at most ten

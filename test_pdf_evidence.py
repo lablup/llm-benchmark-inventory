@@ -52,6 +52,33 @@ class EvidenceTests(unittest.TestCase):
         saved = json.loads(self.pdf.with_suffix(".pages.json").read_text())
         self.assertEqual([p["page"] for p in saved["pages"]], [1, 2])
 
+    def test_oversized_original_text_fails_before_mineru_runs(self):
+        self.raw_pages[1] += "Table 2: Results\nA  12  30\n" + "x" * 500
+        with patch.object(evidence, "MAX_CHARS", 400), patch.object(evidence.subprocess, "run", side_effect=self.runner) as run:
+            with self.assertRaisesRegex(ValueError, "context limit"):
+                evidence.extract_pdf(self.pdf)
+        self.assertFalse(any(call.args[0][0] == "mineru" for call in run.call_args_list))
+
+    def test_unparsed_table_is_marked_instead_of_discarding_the_paper(self):
+        self.raw_pages[1] += "Table 2: Results\nA  12  30\n"
+        self.items[1]["table_body"] = ""
+        with patch.object(evidence.subprocess, "run", side_effect=self.runner):
+            result = evidence.extract_pdf(self.pdf)
+        self.assertEqual(result["extraction"]["tables_missing"], 1)
+        self.assertIn("could not parse this table", result["pages"][1])
+        self.assertIn("Original PDF text (Poppler)", result["pages"][1])
+
+    def test_duplicate_original_text_is_dropped_on_plain_pages_when_over_the_limit(self):
+        self.raw_pages[0] += "plain prose " * 20
+        self.raw_pages[1] += "Table 2: Results\nA  12  30\n"
+        with patch.object(evidence.subprocess, "run", side_effect=self.runner):
+            full = sum(map(len, evidence.extract_pdf(self.pdf)["pages"]))
+        with patch.object(evidence, "MAX_CHARS", full - 1), patch.object(evidence.subprocess, "run", side_effect=self.runner):
+            result = evidence.extract_pdf(self.pdf)
+        self.assertTrue(result["extraction"]["original_text_reduced"])
+        self.assertNotIn("Original PDF text (Poppler)", result["pages"][0])
+        self.assertIn("Original PDF text (Poppler)", result["pages"][1])
+
     def test_table_fallback_keeps_html_and_original_text_on_same_page(self):
         self.raw_pages[1] += "Table 2: Results\nA  12  30\n"
         with patch.object(evidence.subprocess, "run", side_effect=self.runner):
@@ -74,9 +101,10 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(pages[:2], [[], []])
         self.assertEqual(pages[2][0]["text"], "third")
 
-    def test_missing_table_structure_is_rejected(self):
-        with self.assertRaisesRegex(ValueError, "table structure"):
-            evidence.parse_mineru([{"page_idx": 0, "type": "table"}], 1)
+    def test_missing_table_structure_is_marked_not_rejected(self):
+        pages = evidence.parse_mineru([{"page_idx": 0, "type": "table"}], 1)
+        self.assertTrue(pages[0][0]["table_missing"])
+        self.assertIn("could not parse", pages[0][0]["table_body"])
 
     def test_invalid_indices_are_rejected(self):
         for index in (-1, 2, True, "1", None):

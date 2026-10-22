@@ -51,7 +51,11 @@ def parse_mineru(items: list, page_count: int) -> list[list[dict]]:
                  "table_body", "table_caption", "table_footnote", "image_caption",
                  "image_footnote") if key in item}
         if block.get("type") == "table" and not block.get("table_body", "").strip():
-            raise ValueError("MinerU table structure is missing")
+            # One unparsed table no longer discards the whole paper: the page keeps
+            # its Poppler text and the gap is marked so auditors do not trust a
+            # silent omission.
+            block["table_body"] = "[MinerU could not parse this table; use the original PDF text below]"
+            block["table_missing"] = True
         pages[index].append(block)
     return pages
 
@@ -94,6 +98,10 @@ def extract_pdf(pdf: Path, *, force_mineru: bool = False) -> dict:
     except (subprocess.SubprocessError, UnicodeError, ValueError):
         raw = [""] * count
         reasons = ["poppler_failed"]
+    if sum(map(len, raw)) > MAX_CHARS:
+        # The original text alone already exceeds the budget; skip the minutes of
+        # MinerU work that cannot bring it back under the limit.
+        raise ValueError("PDF evidence exceeds the context limit")
     if force_mineru:
         reasons.append("forced_smoke")
     records = [{"page": index + 1, "original_text": re.sub(r"[ \t]{2,}", " ", page), "blocks": []}
@@ -127,22 +135,33 @@ def extract_pdf(pdf: Path, *, force_mineru: bool = False) -> dict:
             for record, page_blocks in zip(records, blocks):
                 record["blocks"] = page_blocks
         backend = "mineru"
-    pages = []
-    for record in records:
+    def page_text(record, keep_original):
         extracted = "\n".join(block_text(block) for block in record["blocks"]).strip()
-        if backend == "mineru":
-            text = f"MinerU text and table HTML:\n{extracted}\nOriginal PDF text (Poppler):\n{record['original_text']}"
-        else:
-            text = record["original_text"]
+        if backend != "mineru":
+            return record["original_text"]
+        if keep_original:
+            return f"MinerU text and table HTML:\n{extracted}\nOriginal PDF text (Poppler):\n{record['original_text']}"
+        return f"MinerU text and table HTML:\n{extracted}"
+    pages = [page_text(record, True) for record in records]
+    reduced = False
+    if backend == "mineru" and sum(map(len, pages)) > MAX_CHARS:
+        # Both extractions of every page double the size. Keep the Poppler copy
+        # only beside tables, where the audit compares the two, and drop it on
+        # plain-text pages instead of discarding the paper.
+        has_table = [any(block.get("type") == "table" for block in record["blocks"]) for record in records]
+        pages = [page_text(record, keep) for record, keep in zip(records, has_table)]
+        reduced = True
+    for record, text in zip(records, pages):
         record["text"] = text
-        pages.append(text)
     if not any(record["original_text"].strip() or any(block_text(b).strip() for b in record["blocks"]) for record in records):
         raise ValueError("No usable PDF evidence")
     if sum(map(len, pages)) > MAX_CHARS:
         raise ValueError("PDF evidence exceeds the context limit")
+    missing_tables = sum(block.get("table_missing") is True for record in records for block in record["blocks"])
     metadata = {"backend": backend, "poppler_version": version, "fallback_reasons": reasons,
                 "page_count": count, "elapsed_seconds": round(time.monotonic() - started, 2),
-                "pdf_sha256": pdf_hash, "visual_pdf_audit": False}
+                "pdf_sha256": pdf_hash, "visual_pdf_audit": False,
+                "original_text_reduced": reduced, "tables_missing": missing_tables}
     if backend == "mineru":
         metadata.update(mineru_version=MINERU_VERSION, model_revision=os.environ.get("MINERU_MODEL_REVISION", "unverified"),
                         device="cpu", formula_recognition=False, language=language)

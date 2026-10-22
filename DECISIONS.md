@@ -335,3 +335,32 @@ scheduled run on 2026-10-22 had failed because a draft saved with
 `확인 불가` on 2026-10-21 was re-validated against the renamed default; this
 decision makes the saved draft valid. `build_benchmark_inventory.py` still
 recognises `미확인` in old data and derives `확인 불가` from it.
+
+## 22. Raise pipeline throughput before relaxing any publication rule (2026-10-22)
+
+A review of two days under the Claude pipeline showed that no paper reached
+the page not for lack of candidates but because the 90-minute budget was
+spent on PDFs that cannot be extracted (27 of 46 attempts, about 50 minutes,
+21 of them retried on both days) and because drafts fell at two formal
+rules: the official link had to appear verbatim with `https://` in the PDF
+text, and the task language needed an explicit sentence rather than an
+English task example. The user approved the following order of work:
+
+1. Remove the PDF waste: fail before MinerU when the Poppler text alone
+   exceeds the context budget, keep a paper whose one table MinerU could not
+   parse (the gap is marked), drop the duplicate Poppler copy on plain-text
+   pages instead of discarding a long paper, and retry a failed PDF after 7
+   days (then monthly), not daily.
+2. Accept an official link written without a scheme or broken across lines,
+   normalised to `https://`.
+3. Accept an English or Korean task example, prompt template or instruction
+   quoted from the paper as task-language evidence.
+4. Publish a research status page and a one-line daily summary so the owner
+   can see what was attempted, why it stopped and what reached the page.
+5. Re-audit the 20 candidates left as unexplained format failures by the
+   previous (DeepSeek) pipeline, among them KULTURE Bench.
+6. Retry a rejected draft once immediately with the validator's message, and
+   match model scores against table rows with HTML stripped.
+
+Decision 14 (model scores and complete rights evidence before publication)
+stays in force.

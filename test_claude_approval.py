@@ -3,6 +3,7 @@ import copy
 import json
 import time
 import unittest
+from datetime import datetime, timedelta, timezone
 from unittest.mock import Mock, patch
 
 import claude_approval as c
@@ -199,6 +200,29 @@ class ClaudeApprovalTests(unittest.TestCase):
         self.assertEqual(state["papers"][0]["analysis_status"], "needs_evidence")
         self.assertIn("Claude 응답 처리 실패", state["papers"][0]["analysis_reason"])
         self.assertEqual(state["research"]["status"], "ready")
+
+    def test_failed_pdf_extraction_is_deferred_a_week_not_retried_daily(self):
+        p = self.state["papers"][0]
+        self.ledger["screenings"][p["arxiv_id"]] = {"status": "passed", "paper_title": p["title"], "abstract": p["summary"]}
+        r.write_json(self.root / "research/proposals.json", self.ledger)
+        r.save_state(self.root / "new-papers.json", self.state)
+        with patch.object(r, "get_pdf", side_effect=ValueError("PDF evidence exceeds the context limit")) as pdf, \
+                patch.object(c, "call") as call:
+            r.run(self.root)
+        pdf.assert_called_once()
+        call.assert_not_called()
+        paper = r.load_state(self.root / "new-papers.json")["papers"][0]
+        self.assertEqual((paper["analysis_status"], paper["analysis_failures"]), ("needs_evidence", 1))
+        today = datetime.now(timezone.utc).astimezone(r.KST).date()
+        self.assertEqual(paper["analysis_retry_after"], (today + timedelta(days=7)).isoformat())
+        self.assertIn("재시도", paper["analysis_reason"])
+        # The next run (a new day's attempt list) skips the paper until the retry date.
+        ledger = r.read_json(self.root / "research/proposals.json")
+        ledger["claude_daily_runs"] = {}
+        r.write_json(self.root / "research/proposals.json", ledger)
+        with patch.object(r, "get_pdf") as pdf, patch.object(c, "call") as call:
+            r.run(self.root)
+        pdf.assert_not_called()
 
     def test_abstract_screening_reuses_unchanged_result_without_pdf(self):
         r.write_json(self.root / "research/proposals.json", self.ledger)
