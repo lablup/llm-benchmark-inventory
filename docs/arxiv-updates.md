@@ -164,8 +164,13 @@ previously unprocessed/changed abstracts without PDF work.
 Before an audit, the ledger saves `awaiting_claude`, the source run, context hash
 and exact draft. A missing/malformed answer is not a rejection or approval.
 The next run restores its seven-day evidence artifact, checks provenance and
-current rows, and resumes the audit without drafting again. An expired/missing
-artifact stops resumption for investigation rather than inventing source evidence.
+current rows, and resumes the audit without drafting again. A draft that can no
+longer be resumed (expired/missing artifact, changed hash, provenance or rows,
+or a default value renamed after the draft was saved) holds only that candidate
+as `needs_evidence` with the error in `resume_error`; later candidates and the
+day's new papers still run, and a re-audit request revisits the held one.
+Token and quota failures still stop the run so the budget checkpoint is kept
+(decision 21 follow-up, 2026-10-22).
 A completed response cache is bound to the full prompt hash. Old Token Factory
 budget stop flags are preserved as historical records, not reused as Claude limits.
 Already approved work can still be applied and deployed if a later call fails;

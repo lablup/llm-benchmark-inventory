@@ -138,16 +138,37 @@ def audit_and_save(root, ledger, state, paper, proposal, context, config, author
     return item
 
 
+def hold_pending(root, ledger, state, key, item, error):
+    """Hold one candidate whose saved draft can no longer be resumed; nothing is applied."""
+    message = str(error)[:300]
+    item.update(status="needs_evidence", decision="needs_evidence", approval_policy="claude_only",
+                reason=f"저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: {message}",
+                resume_error=message)
+    item.pop("claude_pending", None)
+    paper = next((p for p in state["papers"] if p["arxiv_id"] == key), None)
+    if paper is not None:
+        paper.update(analysis_status="needs_evidence", analysis_reason=item["reason"])
+    r.write_json(root / "research/proposals.json", ledger)
+    r.save_state(root / "new-papers.json", state)
+    print(f"{key}: resume failed, candidate held: {message}", flush=True)
+
+
 def resume_pending(root, ledger, state, config, deadline):
     for key, item in list(ledger["proposals"].items()):
         if item.get("status") != "awaiting_claude" or time.monotonic() >= deadline:
             continue
         try:
             resume_one(root, ledger, state, config, key, item)
-        except json.JSONDecodeError as error:
-            # An empty or non-JSON Claude answer must not end the whole run; the
-            # candidate stays pending. Integrity failures (hash, provenance) still raise.
+        except (json.JSONDecodeError, subprocess.CalledProcessError) as error:
+            # An empty or non-JSON Claude answer, or a failed artifact download, must
+            # not end the whole run; the candidate stays pending for the next run.
             print(f"{key}: resume skipped, still pending: {str(error)[:300]}", flush=True)
+        except ValueError as error:
+            # A stale draft (changed vocabulary, changed inventory, hash or provenance
+            # mismatch, unavailable evidence) holds only this candidate. Later
+            # candidates and the day's new papers still run. Token and quota errors
+            # (RuntimeError) still stop the run so no budget checkpoint is lost.
+            hold_pending(root, ledger, state, key, item, error)
 
 
 def resume_one(root, ledger, state, config, key, item):
@@ -157,7 +178,7 @@ def resume_one(root, ledger, state, config, key, item):
         if not context_file.exists():
             run_id = item["claude_pending"].get("source_run")
             if not run_id or not str(run_id).isdigit():
-                raise RuntimeError(f"{key}: restore the pending Claude evidence artifact before resuming")
+                raise ValueError(f"{key}: restore the pending Claude evidence artifact before resuming")
             destination = root / ".research-cache" / "resume" / str(run_id)
             if not destination.exists():
                 subprocess.run(["gh", "run", "download", str(run_id), "--repo",
@@ -165,7 +186,7 @@ def resume_one(root, ledger, state, config, key, item):
                                 f"research-logs-{run_id}", "--dir", str(destination)], check=True)
             matches = list(destination.rglob(f"claude/{key}/context.json"))
             if len(matches) != 1:
-                raise RuntimeError(f"{key}: pending evidence artifact unavailable; no repeated draft call")
+                raise ValueError(f"{key}: pending evidence artifact unavailable; no repeated draft call")
             context_file = matches[0]
             # Reuse any completed answer if a previous runner stopped after saving it.
             folder.mkdir(parents=True, exist_ok=True)

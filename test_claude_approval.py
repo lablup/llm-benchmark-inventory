@@ -73,9 +73,31 @@ class ClaudeApprovalTests(unittest.TestCase):
         context = r.read_json(path)
         context["source"]["pages"][0] += "forged"
         r.write_json(path, context)
-        with patch.object(c, "call") as call, self.assertRaisesRegex(ValueError, "context hash"):
+        with patch.object(c, "call") as call:
             c.resume_pending(self.root, self.ledger, self.state, self.config, time.monotonic() + 20)
         call.assert_not_called()
+        item = r.read_json(self.root / "research/proposals.json")["proposals"]["2610.12345"]
+        self.assertEqual(item["status"], "needs_evidence")
+        self.assertNotIn("claude_pending", item)
+        self.assertIn("context hash", item["resume_error"])
+        self.assertEqual(r.load_state(self.root / "new-papers.json")["papers"][0]["analysis_status"], "needs_evidence")
+
+    def test_one_stale_draft_holds_only_itself_and_later_candidates_still_resume(self):
+        pending = {**self.proposal, "arxiv_id": "2610.00001", "status": "awaiting_claude",
+                   "claude_pending": {"source_run": "1", "context_sha256": "x"}}
+        self.ledger["proposals"]["2610.00001"] = pending
+        self.ledger["proposals"]["2610.00002"] = {**copy.deepcopy(pending), "arxiv_id": "2610.00002"}
+        self.state["papers"] += [paper("2610.00001"), paper("2610.00002")]
+        with patch.object(c, "resume_one", side_effect=[ValueError("Automatic proposals cannot assert new licensing"), None]) as resume:
+            c.resume_pending(self.root, self.ledger, self.state, self.config, time.monotonic() + 20)
+        self.assertEqual([call.args[4] for call in resume.call_args_list], ["2610.00001", "2610.00002"])
+        held = self.ledger["proposals"]["2610.00001"]
+        self.assertEqual(held["status"], "needs_evidence")
+        self.assertIn("재감사", held["reason"])
+        self.assertEqual(self.ledger["proposals"]["2610.00002"]["status"], "awaiting_claude")
+        # A quota or token failure still stops the run so the budget checkpoint is kept.
+        with patch.object(c, "resume_one", side_effect=RuntimeError("quota")), self.assertRaisesRegex(RuntimeError, "quota"):
+            c.resume_pending(self.root, self.ledger, self.state, self.config, time.monotonic() + 20)
 
     def test_no_oauth_token_means_no_subprocess_or_api(self):
         with patch.dict(c.os.environ, {"ANTHROPIC_API_KEY": "not-allowed"}, clear=True), patch.object(c.subprocess, "run") as process:
