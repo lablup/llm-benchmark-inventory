@@ -443,9 +443,26 @@ def defer_card(paper, error, day):
                  analysis_reason=f"공식 자료 확인 실패({str(error)[:80]}), {retry}부터 재시도")
 
 
+LINK_RETRY_DAYS = 30
+
+
+def defer_missing_link(paper, day):
+    """A PDF without any GitHub/Hugging Face URL is held without a Claude call (decision 24);
+    a later arXiv version may add the link, so it is looked at again after a month."""
+    retry = (date.fromisoformat(day) + timedelta(days=LINK_RETRY_DAYS)).isoformat()
+    paper.update(analysis_status="needs_evidence", analysis_retry_after=retry,
+                 analysis_at=r.iso(datetime.now(timezone.utc)),
+                 analysis_reason=f"공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), {retry}부터 재시도")
+
+
 def investigate(root, ledger, state, config, screenings, paper, source):
     """Draft one paper's inventory change with Claude and hand it to the audit."""
     key = paper["arxiv_id"]
+    if not r.official_links_in_pdf(source["pages"]):
+        defer_missing_link(paper, datetime.now(timezone.utc).astimezone(r.KST).date().isoformat())
+        print(f"{key}: no GitHub/Hugging Face URL in the PDF; held without a Claude call", flush=True)
+        r.save_state(root / "new-papers.json", state)
+        return
     if True:
         context = {"paper": {k: v for k, v in paper.items() if not k.startswith(("analysis_", "review_"))},
                    "source": source,

@@ -258,6 +258,23 @@ class ClaudeApprovalTests(unittest.TestCase):
         self.assertIn("Claude 응답 처리 실패", state["papers"][0]["analysis_reason"])
         self.assertEqual(state["research"]["status"], "ready")
 
+    def test_pdf_without_an_official_url_is_held_before_any_claude_call(self):
+        p = self.state["papers"][0]
+        self.ledger["screenings"][p["arxiv_id"]] = {"status": "passed", "paper_title": p["title"], "abstract": p["summary"]}
+        r.write_json(self.root / "research/proposals.json", self.ledger)
+        r.save_state(self.root / "new-papers.json", self.state)
+        source = {**self.context["source"], "pages": ["We release the benchmark upon acceptance.", "No repository is named."]}
+        with patch.object(r, "get_pdf", return_value=source), patch.object(c, "call") as call:
+            r.run(self.root)
+        call.assert_not_called()
+        paper = r.load_state(self.root / "new-papers.json")["papers"][0]
+        today = datetime.now(timezone.utc).astimezone(r.KST).date()
+        self.assertEqual(paper["analysis_status"], "needs_evidence")
+        self.assertEqual(paper["analysis_retry_after"], (today + timedelta(days=30)).isoformat())
+        self.assertTrue(paper["analysis_reason"].startswith("공식 저장소 링크 없음"))
+        # A URL broken across a line break still counts as printed.
+        self.assertEqual(r.official_links_in_pdf(["code at https://github.com/\nacme/bench-\nmark."]), ["github.com/acme/bench-mark."])
+
     def test_failed_card_fetch_records_the_error_and_backs_off(self):
         p = self.state["papers"][0]
         self.ledger["screenings"][p["arxiv_id"]] = {"status": "passed", "paper_title": p["title"], "abstract": p["summary"]}

@@ -376,3 +376,15 @@ run record (`claude_daily_runs[day].calls`, `.cost_usd`), published in
 daily summary line in the "[조사 일지]" issue. 2026-10-22 was back-filled from the
 run artifacts: 65 calls, $25.74 (42 drafts, 13 completions, 4 votes, 2 draft
 retries, 4 abstract-screening batches; all claude-sonnet-5-5).
+
+## 24. Hold a paper that prints no GitHub/Hugging Face URL before paying for a draft (2026-10-22)
+
+Nine of the thirteen candidates held on 2026-10-22 ended with "the paper names no
+official dataset or code URL", each after a full draft call (about $0.4 of
+API-equivalent cost). A row needs a link printed in the PDF and the card reader
+supports only GitHub and Hugging Face, so the owner asked for the check to run
+first: `research_pipeline.official_links_in_pdf` scans the extracted text (with
+whitespace removed, so a URL broken across a line counts) and, when nothing is
+found, `claude_approval.defer_missing_link` holds the paper as "공식 저장소 링크
+없음" with a retry after 30 days (a later arXiv version may add the link) and no
+Claude call. The status page and the daily line show it as "공식 링크 없음".

@@ -60,6 +60,8 @@ class StatusTests(unittest.TestCase):
             paper("6", analysis_status="exclude"),
             paper("7", analysis_status="accepted"),
             paper("8"),
+            paper("9", analysis_status="needs_evidence", analysis_reason="공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-21부터 재시도",
+                  analysis_retry_after="2026-11-21", analysis_at="2026-10-22T03:00:00Z"),
         ]
         write_json(self.root / "new-papers.json", {"schema_version": 1, "last_checked_at": "2026-10-22T02:00:00Z",
                                                    "research": {"last_run_at": "2026-10-22T03:00:00Z", "status": "ready"},
@@ -68,7 +70,7 @@ class StatusTests(unittest.TestCase):
             "5": {"status": "needs_evidence", "reason": "링크 없음", "created_at": "2026-10-22T04:00:00Z"},
             "6": {"status": "exclude", "reason": "모델 논문", "created_at": "2026-10-21T04:00:00Z"},
             "7": {"status": "accepted", "reason": "반영", "created_at": "2026-10-22T05:00:00Z", "applied_at": "2026-10-22T06:00:00Z"}},
-            "claude_daily_runs": {"2026-10-22": {"attempted": ["1", "2", "5", "6", "7"], "abstract_attempted": ["4", "8"],
+            "claude_daily_runs": {"2026-10-22": {"attempted": ["1", "2", "5", "6", "7", "9"], "abstract_attempted": ["4", "8"],
                                                  "calls": 9, "cost_usd": 3.4567}}})
         write_json(self.root / "updates.json", {"schema_version": 1, "updates": [
             {"arxiv_id": "7", "title": "Paper 7", "applied_at": "2026-10-22T06:00:00Z",
@@ -78,11 +80,11 @@ class StatusTests(unittest.TestCase):
         result = status.build(self.root)
         stages = {p["arxiv_id"]: p["stage"] for p in result["papers"]}
         self.assertEqual(stages, {"1": "pdf_failed", "2": "draft_rejected", "3": "screened_out", "4": "queued",
-                                  "5": "held", "6": "excluded", "7": "published", "8": "unscreened"})
+                                  "5": "held", "6": "excluded", "7": "published", "8": "unscreened", "9": "link_missing"})
         seven = next(p for p in result["papers"] if p["arxiv_id"] == "7")
         self.assertEqual((seven["changes"], seven["inventory_url"]), (["Seven Bench"], "./english.html#inventory"))
         self.assertEqual(next(p for p in result["papers"] if p["arxiv_id"] == "1")["retry_after"], "2026-10-29")
-        self.assertEqual(result["totals"]["papers"], 8)
+        self.assertEqual(result["totals"]["papers"], 9)
         self.assertNotIn("generated_at", result)
         first = (self.root / status.OUTPUT).read_text()
         status.build(self.root)
@@ -91,13 +93,13 @@ class StatusTests(unittest.TestCase):
     def test_day_counts_follow_the_attempt_list_and_applied_updates(self):
         result = status.build(self.root)
         day = result["days"][-1]
-        self.assertEqual((day["day"], day["abstracts"], day["attempted"]), ("2026-10-22", 2, 5))
+        self.assertEqual((day["day"], day["abstracts"], day["attempted"]), ("2026-10-22", 2, 6))
         counts = day["counts"]
         self.assertEqual((counts["pdf_failed"], counts["draft_rejected"], counts["held"], counts["published"]), (1, 1, 1, 1))
         # Paper 6 was concluded on 10-21 and only re-listed on 10-22.
         self.assertEqual(counts["carried"], 1)
         self.assertEqual(status.summary_line(result, "2026-10-22"),
-                         "2026-10-22: 초록 선별 2건 · 본문 시도 5건 · PDF 실패 1건 · 초안 거부 1건 · 제외 0건 · 보류 1건 · 검증 대기 0건 · 표 반영 1건 · 대기열 1건 · API 환산 비용 $3.46(Claude 호출 9회)")
+                         "2026-10-22: 초록 선별 2건 · 본문 시도 6건 · PDF 실패 1건 · 링크 없음 1건 · 초안 거부 1건 · 제외 0건 · 보류 1건 · 검증 대기 0건 · 표 반영 1건 · 대기열 1건 · API 환산 비용 $3.46(Claude 호출 9회)")
         self.assertEqual((day["calls"], day["cost_usd"]), (9, 3.46))
         self.assertIn("실행 기록이 없습니다", status.summary_line(result, "2026-10-23"))
 
@@ -128,7 +130,7 @@ class StatusTests(unittest.TestCase):
         url = status.notify(github, later, "2026-10-22", "songys")
         self.assertEqual(url, "https://github.com/x/issues/7#issuecomment-1")
         self.assertEqual(len(github.comments), 1)
-        self.assertIn("본문 시도 6건", github.comments[0]["body"])
+        self.assertIn("본문 시도 7건", github.comments[0]["body"])
         self.assertTrue(any(path == "/issues/comments/1" for path, _ in github.calls))
 
     def test_titles_cannot_inject_markdown(self):

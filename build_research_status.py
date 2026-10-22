@@ -30,6 +30,7 @@ STAGES = {
     "excluded": "본문 조사 후 제외",
     "draft_rejected": "초안 형식 검사 거부",
     "card_failed": "공식 자료 확인 실패",
+    "link_missing": "공식 링크 없음",
     "pdf_failed": "PDF 추출 실패",
     "screened_out": "초록 선별에서 제외",
     "queued": "본문 조사 대기",
@@ -37,7 +38,7 @@ STAGES = {
 }
 LEDGER_STAGES = {"accepted": "published", "awaiting_claude": "awaiting", "proposed": "awaiting",
                  "needs_evidence": "held", "held": "held", "exclude": "excluded", "rejected": "excluded"}
-SUMMARY_FIELDS = (("pdf_failed", "PDF 실패"), ("draft_rejected", "초안 거부"), ("excluded", "제외"),
+SUMMARY_FIELDS = (("pdf_failed", "PDF 실패"), ("link_missing", "링크 없음"), ("draft_rejected", "초안 거부"), ("excluded", "제외"),
                   ("held", "보류"), ("awaiting", "검증 대기"), ("published", "표 반영"))
 
 
@@ -58,6 +59,8 @@ def stage(paper: dict, item: dict | None) -> str:
         return "draft_rejected"
     if reason.startswith("공식 자료 확인 실패"):
         return "card_failed"
+    if reason.startswith("공식 저장소 링크 없음"):
+        return "link_missing"
     if status == "exclude":
         return "screened_out"
     if status in {"queued", "needs_evidence", "awaiting_claude"}:

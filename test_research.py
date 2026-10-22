@@ -43,7 +43,7 @@ class ResearchTests(unittest.TestCase):
         config["enabled"] = False
         research.write_json(self.root / "research/config.json", config)
         tables = {track: dict(zip(("headers", "rows"), research.read_table(self.root, track))) for track in research.TABLES}
-        self.context = {"tables": tables, "source": {"pages": ["Example English vision benchmark https://example.org/data"]},
+        self.context = {"tables": tables, "source": {"pages": ["Example English vision benchmark https://example.org/data (code: github.com/example/data)"]},
                         "english_copy": (self.root / "english-copy.js").read_text()}
         row = copy.deepcopy(tables["en"]["rows"][0])
         row.update({"id": "example-bench", "이름": "Example Bench", "언어": "영어", "링크": "https://example.org/data", "예시 표기": "과제 설명", **research.UNKNOWN})

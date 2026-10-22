@@ -47,7 +47,12 @@ first three automated rows had carried `가능(조건 준수)` into 상업적 �
 pipeline's `과제 설명` marker in 예시 표기 is kept. An official card that cannot be
 fetched after a draft (404, rate limit, unsupported host) keeps the error text in
 `analysis_reason` and is retried after 1, 7, then 30 days
-(`claude_approval.defer_card`), because every retry re-extracts the PDF.
+(`claude_approval.defer_card`), because every retry re-extracts the PDF. Before
+any draft call the extracted text is scanned for a GitHub or Hugging Face path
+(`research_pipeline.official_links_in_pdf`); a paper that prints none is held as
+"공식 저장소 링크 없음" for 30 days without a Claude call (decision 24), since the
+row's link must come from the PDF and those are the only hosts the card reader
+supports.
 
 ## Research status page and daily summary
 

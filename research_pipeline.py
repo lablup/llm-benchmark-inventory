@@ -270,6 +270,18 @@ def evidence_payload(context: dict) -> str:
     return json.dumps({**context, "source": {**source, "pages": numbered}}, ensure_ascii=False)
 
 
+OFFICIAL_LINK_PATTERN = re.compile(r"(?:github\.com|huggingface\.co)/[\w.-]+/[\w.-]+", re.IGNORECASE)
+
+
+def official_links_in_pdf(pages: list) -> list:
+    """GitHub repository and Hugging Face paths printed anywhere in the PDF, read with
+    whitespace removed so a URL broken across a line still counts. A paper that prints
+    none cannot yield a publishable row (the link must come from the PDF and the card
+    reader supports only these hosts), so the pipeline holds it before paying for a draft."""
+    squeezed = re.sub(r"\s+", "", "\n".join(pages))
+    return sorted({match.group(0) for match in OFFICIAL_LINK_PATTERN.finditer(squeezed)})
+
+
 def link_in_pdf(link: str, pages: list) -> bool:
     """Accept the official URL as papers actually print it: verbatim, without a
     scheme or 'www.', with a trailing slash, or broken across a line (decision 22).
