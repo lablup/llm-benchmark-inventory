@@ -5148,6 +5148,92 @@
       },
       "issue_url": null,
       "proposal_sha256": "d26deccfeb1dbfe767c911db86c6465f1fa64824297f34e9a5214343dec22c09"
+    },
+    "2609.23055": {
+      "decision": "exclude",
+      "reason": "이 논문은 확산 모델 학습에 쓰는 옵티마이저 7종을 비교한 학습 알고리즘 벤치마크입니다. LLM의 능력을 평가하는 재사용 가능한 평가 벤치마크가 아닙니다. text8, QM9(SMILES), LM1B, CelebA-64는 기존 데이터셋이며, 지식·추론·코딩·에이전트·장문 이해 같은 한국어/영어 과제나 지시를 새로 만들지 않았습니다. 평가 지표도 bpc, perplexity, FID로 모델 학습 비교용이고, 코드 저장소는 재현용입니다. 이 인벤토리의 포함 범위(한국어/영어 과제 기반 LLM 벤치마크)에 맞지 않아 제외합니다.",
+      "changes": [],
+      "arxiv_id": "2609.23055",
+      "paper_title": "Optimizers for Diffusion Models: A Controlled Benchmark",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.23055",
+        "sha256": "58f678e0bd6c3af442a475e4219f125aba90ef69a5a016e33dec63eba3443b9e",
+        "accessed": "2026-10-22T07:02:17Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 25,
+          "elapsed_seconds": 88.72,
+          "pdf_sha256": "58f678e0bd6c3af442a475e4219f125aba90ef69a5a016e33dec63eba3443b9e",
+          "visual_pdf_audit": false,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "55b446d0ac781b4e235c9c650d97669bcfb1638fa3d089e8a1e81ad97427f794",
+          "page_json_file": "2609.23055.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-10-22T07:03:56Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.23055",
+        "paper_title": "Optimizers for Diffusion Models: A Controlled Benchmark",
+        "abstract": "Discrete diffusion models now match autoregressive language models on several benchmarks, while the question of how best to train them has received far less attention: the optimizer is inherited from one paper to the next and never compared. New optimizers, meanwhile, are validated almost exclusively on autoregressive pretraining, a different objective on a different loss surface. We present a controlled optimizer benchmark across four diffusion formulations, to our knowledge the first for discrete diffusion: seven optimizers (AdamW, Lion, Muon, SOAP, MARS, MARS-M, Schedule-Free) on masked diffusion (text8), uniform diffusion (QM9, and LM1B through the Gaussian duality) and Gaussian diffusion on images (CelebA-64), each on a task with published reference values. Every optimizer receives the same search protocol, and every winner is retrained at the full budget with three seeds. AdamW is a strong default but not always the right choice: it is beaten by a resolved margin on two of the four tasks, and the winner changes with the formulation, so the optimizer deserves the same care as the rest of the training recipe. Notably, methods validated on autoregressive language model pretraining transfer well: Muon, MARS-M and SOAP each beat the tuned AdamW on at least one diffusion formulation. The benchmark, all runs and every figure are reproducible end to end from the released code at https://github.com/armanbolatov/diffusion-baselines.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-20T02:48:49Z",
+        "input_sha256": "1c782ec668fae8ee23f99705eb41bcef7e7d305b280d9883aaf28e83216f4d88",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "확산 모델 옵티마이저 통제 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "확산모델 옵티마이저 벤치마크, 언어모델 평가 자료인지 불명확"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "6f84d6b2457d66721a5722619eb2e1997dcde6e9fcac890b948da54ab89a5e72"
     }
   },
   "processed_comments": [],
