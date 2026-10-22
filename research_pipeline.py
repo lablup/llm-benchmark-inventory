@@ -755,6 +755,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--screening-smoke", action="store_true", help="Screen at most 10 cached abstracts; no PDF or inventory changes")
-    parser.add_argument("--reaudit", metavar="ARXIV_ID", help="Re-investigate one held, rejected or needs_evidence candidate under the current policy")
+    parser.add_argument("--reaudit", metavar="ARXIV_IDS", help="Re-investigate held, rejected, needs_evidence or awaiting candidates (comma-separated) under the current policy")
     args = parser.parse_args()
     run(dry_run=args.dry_run, screening_smoke=args.screening_smoke, reaudit=args.reaudit)

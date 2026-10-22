@@ -163,6 +163,17 @@ class PublicationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "not fetched"):
             self.validated()
 
+    def test_api_identifier_suffix_and_html_cells_do_not_break_score_quotes(self):
+        raw = copy.deepcopy(self.raw)
+        self.context["source"]["pages"][1] += " <tr><td>Gemini 3 Pro (preview)</td><td>89.93</td></tr>"
+        raw["changes"][0]["recommendations"]["results"].append(
+            {"model": "Gemini 3 Pro (gemini-3-pro-preview)", "score": "89.93", "open_weight": None,
+             "evidence": {"page": 2, "quote": "<tr><td>Gemini 3 Pro (preview)</td><td>89.93</td></tr>"}})
+        self.assertEqual(p.validate(copy.deepcopy(raw), self.context, self.root)["decision"], "propose")
+        raw["changes"][0]["recommendations"]["results"][-1]["model"] = "Gemini 2.5 Pro (gemini-2-5-pro)"
+        with self.assertRaisesRegex(ValueError, "exact model and numeric"):
+            p.validate(raw, self.context, self.root)
+
     def test_wrong_page_or_score_cannot_pass(self):
         result = self.raw["changes"][0]["recommendations"]["results"][0]
         result["score"] = "8"

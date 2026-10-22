@@ -60,7 +60,8 @@ changes:[], so nothing is published.
 recommendations is {"metric":"metric AND units", "setting":"same dataset/split,
 prompting, version, token budget and other conditions; say these are results
 reported in this paper, not a current global leaderboard", "higher_is_better":true,
-"results":[{"model":"exact model/version","score":"numeric string in original units",
+"results":[{"model":"model name exactly as printed in the table, optionally followed by
+the API identifier in parentheses","score":"numeric string in original units",
 "evidence":{"page":1,"quote":"exact short table/text containing model AND score"},
 "open_weight":null}]}. Use false for lower-is-better metrics. Supply comparable
 results from ONE clearly identified experiment/table, up to 50 evaluated models;
@@ -226,6 +227,18 @@ def complete(changes):
                 raise ValueError("Model scores and weight claims require evidence")
 
 
+def score_in_quote(model: str, score: str, quote: str) -> bool:
+    """The quoted table row must name the model and carry the score. Tables often
+    lowercase or re-space names, MinerU wraps cells in HTML, and the completed
+    draft may add the API identifier in parentheses after the printed name
+    (decision 22, item 6); none of these makes it a different model."""
+    plain = r.compact(re.sub(r"<[^>]+>", " ", quote)).casefold()
+    names = {r.compact(model), r.compact(re.sub(r"\s*\([^()]*\)\s*$", "", model))}
+    if not any(name and name.casefold() in plain for name in names):
+        return False
+    return bool(re.search(r"(?<![\d.])" + re.escape(score) + r"(?!\d|\.\d)", plain))
+
+
 def validate(proposal, context, root):
     # Basic schema/physical-page checks remain in the existing validator. Only
     # the old mandatory-unknown rule is replaced with evidence checks here.
@@ -248,9 +261,7 @@ def validate(proposal, context, root):
                 citation(evidence, context)
         for result in change["recommendations"]["results"]:
             quote = citation(result["evidence"], context)
-            # Tables often lowercase or re-space model names; a case-only difference is the same model.
-            if r.compact(result["model"]).casefold() not in quote.casefold() or not re.search(
-                    r"(?<![\d.])" + re.escape(result["score"]) + r"(?!\d|\.\d)", quote):
+            if not score_in_quote(result["model"], result["score"], quote):
                 raise ValueError("Score quote must contain the exact model and numeric value")
             if "page" not in result["evidence"]:
                 raise ValueError("This adapter publishes paper-reported scores only")

@@ -27,6 +27,19 @@ unsupported QASU repository-license claim; it did not update the inventory.
 Production now invokes the official CLI directly so a variable number of papers
 can be processed sequentially with individual checkpoints.
 
+## Re-audits, immediate draft correction and score quotes
+
+`--reaudit` (workflow input `reaudit_key`) takes comma-separated arXiv IDs. An
+awaiting draft whose saved evidence no longer passes (for example a card fetched
+before the LICENSE-file check) is held and then investigated afresh in the same
+run; a candidate the previous pipeline investigated needs no new screening record.
+When the validator rejects a draft, the pipeline asks Claude once more immediately
+with the validator's message (`draft-retry`) instead of re-extracting the PDF
+tomorrow; provenance failures are not retried. A score quote may wrap cells in HTML
+and the model field may append the API identifier in parentheses after the name
+printed in the table (`publication_checks.score_in_quote`). Decision 22, items 5
+and 6.
+
 ## Research status page and daily summary
 
 `build_research_status.py` (decision 22, item 4) derives `research-status.json`

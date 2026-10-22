@@ -175,6 +175,45 @@ class ClaudeApprovalTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "held, rejected or needs_evidence"):
             r.run(self.root, reaudit=p["arxiv_id"])
 
+    def test_reaudit_accepts_several_keys_and_reinvestigates_an_awaiting_draft_that_cannot_resume(self):
+        first, second = self.state["papers"][0], paper("2610.00002")
+        self.state["papers"].append(second)
+        self.ledger["screenings"][first["arxiv_id"]] = {"status": "passed", "paper_title": first["title"], "abstract": first["summary"]}
+        self.ledger["proposals"][first["arxiv_id"]] = {**self.proposal, "arxiv_id": first["arxiv_id"], "status": "awaiting_claude",
+                                                       "claude_pending": {"source_run": "1", "context_sha256": "x"}}
+        # Investigated by the previous pipeline without a screening record: still re-auditable.
+        self.ledger["proposals"][second["arxiv_id"]] = {**self.proposal, "arxiv_id": second["arxiv_id"], "status": "needs_evidence",
+                                                        "reason": "추출 결과가 근거·형식 검사를 통과하지 못해 반영하지 않았습니다."}
+        r.write_json(self.root / "research/proposals.json", self.ledger)
+        r.save_state(self.root / "new-papers.json", self.state)
+        with patch.object(c, "resume_one", side_effect=ValueError("The official card was fetched without checking for a LICENSE file")), \
+                patch.object(c, "investigate") as investigate, patch.object(r, "get_pdf", return_value=self.context["source"]):
+            r.run(self.root, reaudit=f"{first['arxiv_id']}, {second['arxiv_id']}")
+        self.assertEqual([call.args[5]["arxiv_id"] for call in investigate.call_args_list], [first["arxiv_id"], second["arxiv_id"]])
+        ledger = r.read_json(self.root / "research/proposals.json")
+        self.assertEqual([x["arxiv_id"] for x in ledger["reaudits"]], [first["arxiv_id"], second["arxiv_id"]])
+        self.assertEqual(ledger["reaudits"][0]["status"], "needs_evidence")
+        self.assertIn("LICENSE file", ledger["reaudits"][0]["resume_error"])
+
+    def test_rejected_draft_is_corrected_once_immediately(self):
+        p = self.state["papers"][0]
+        self.ledger["screenings"][p["arxiv_id"]] = {"status": "passed", "paper_title": p["title"], "abstract": p["summary"]}
+        r.write_json(self.root / "research/proposals.json", self.ledger)
+        r.save_state(self.root / "new-papers.json", self.state)
+        excluded = {"decision": "exclude", "reason": "모델 논문", "changes": []}
+        with patch.object(r, "get_pdf", return_value=self.context["source"]), \
+                patch.object(c, "call", side_effect=[ValueError("Quote does not occur on the cited PDF page"), excluded]) as call:
+            r.run(self.root)
+        self.assertEqual(call.call_count, 2)
+        self.assertIn("REJECTED BY THE VALIDATOR: Quote does not occur", call.call_args_list[1].args[0])
+        self.assertTrue(str(call.call_args_list[1].args[1]).endswith("draft-retry"))
+        self.assertEqual(r.read_json(self.root / "research/proposals.json")["proposals"][p["arxiv_id"]]["status"], "exclude")
+        r.write_json(self.root / "research/proposals.json", {**self.ledger, "proposals": {}, "claude_daily_runs": {}})
+        with patch.object(r, "get_pdf", return_value=self.context["source"]), \
+                patch.object(c, "call", side_effect=ValueError("Claude response provenance mismatch")) as call:
+            r.run(self.root)
+        call.assert_called_once()  # a provenance failure is not retried
+
     def test_reaudit_of_an_awaiting_candidate_resumes_from_saved_evidence(self):
         p = self.state["papers"][0]
         self.ledger["proposals"][p["arxiv_id"]] = {**self.proposal, "arxiv_id": p["arxiv_id"], "status": "awaiting_claude",

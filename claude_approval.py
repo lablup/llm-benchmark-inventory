@@ -279,7 +279,8 @@ def unhold(ledger, state, attempts, key):
         raise ValueError("Only a held, rejected or needs_evidence candidate can be re-audited")
     if item is None and paper.get("analysis_status") not in {"held", "needs_evidence", "queued"}:
         raise ValueError("Only a held, rejected or needs_evidence candidate can be re-audited")
-    if ledger.get("screenings", {}).get(key, {}).get("status") != "passed":
+    if item is None and ledger.get("screenings", {}).get(key, {}).get("status") != "passed":
+        # A candidate the previous pipeline already investigated needs no new screening.
         raise ValueError("Re-audit needs a passed abstract screening")
     if item is not None:
         ledger.setdefault("reaudits", []).append({**item, "superseded_at": r.iso(datetime.now(timezone.utc))})
@@ -302,17 +303,24 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
     deadline = started + config.get("run_minutes", 90) * 60
     day = datetime.now(timezone.utc).astimezone(r.KST).date().isoformat()
     attempts = ledger.setdefault("claude_daily_runs", {}).setdefault(day, {"attempted": [], "abstract_attempted": []})
-    reaudit_paper = None
-    if reaudit:
-        pending = ledger["proposals"].get(reaudit)
+    reaudit_papers = []
+    for key in [k.strip() for k in (reaudit or "").split(",") if k.strip()]:
+        pending = ledger["proposals"].get(key)
         if pending and pending.get("status") == "awaiting_claude":
             # The draft already exists; finish its publication completion and audit
-            # from the saved evidence instead of drafting again.
-            resume_one(root, ledger, state, config, reaudit, pending)
-            r.save_state(root / "new-papers.json", state)
-            r.paid_call_checkpoint(root, ledger)
-            return
-        reaudit_paper = unhold(ledger, state, attempts, reaudit)
+            # from the saved evidence instead of drafting again. Saved evidence that
+            # no longer passes (stale card, changed rows) is held and investigated afresh.
+            try:
+                resume_one(root, ledger, state, config, key, pending)
+            except (ValueError, subprocess.CalledProcessError) as error:
+                hold_pending(root, ledger, state, key, pending, error)
+            else:
+                r.save_state(root / "new-papers.json", state)
+                r.paid_call_checkpoint(root, ledger)
+                continue
+        reaudit_papers.append(unhold(ledger, state, attempts, key))
+    if reaudit and not reaudit_papers:
+        return
     # Preserve old provider stop flags; they are not Claude spending allowances.
     if not screening_smoke and not reaudit:
         resume_pending(root, ledger, state, config, deadline)
@@ -360,7 +368,7 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
                 and p["arxiv_id"] not in attempts["attempted"] and cached(p)
                 and screenings[p["arxiv_id"]]["status"] == "passed"
                 and (p.get("analysis_retry_after") or "") <= day]
-    selected = [reaudit_paper] if reaudit else selected[:max(0, config["daily_papers"] - len(attempts["attempted"]))]
+    selected = reaudit_papers if reaudit else selected[:max(0, config["daily_papers"] - len(attempts["attempted"]))]
     for paper in selected:
         if time.monotonic() >= deadline:
             break
@@ -411,9 +419,19 @@ def investigate(root, ledger, state, config, screenings, paper, source):
                    "allow_score_updates": config.get("publication_policy") == "complete-evidence-v1",
                    "tables": {track: dict(zip(("headers", "rows"), r.read_table(root, track))) for track in r.TABLES},
                    "english_copy": (root / "english-copy.js").read_text()}
-        result = call(r.PROMPT + "\n" + r.evidence_payload(context),
-                      root / ".research-cache" / "claude" / key / "draft",
-                      lambda text: r.validate_result(r.load_json_answer(text), context))
+        prompt = r.PROMPT + "\n" + r.evidence_payload(context)
+        validator = lambda text: r.validate_result(r.load_json_answer(text), context)
+        try:
+            result = call(prompt, root / ".research-cache" / "claude" / key / "draft", validator)
+        except ValueError as error:
+            if "provenance" in str(error):
+                raise
+            # One immediate correction with the validator's message is far cheaper than
+            # re-extracting the PDF and drafting again tomorrow (decision 22, item 6).
+            print(f"{key}: draft rejected ({str(error)[:200]}); requesting one corrected draft", flush=True)
+            result = call(prompt + "\nYOUR PREVIOUS ANSWER WAS REJECTED BY THE VALIDATOR: " + str(error)[:500]
+                          + "\nReturn a corrected JSON answer that satisfies this check and keeps everything else the same.",
+                          root / ".research-cache" / "claude" / key / "draft-retry", validator)
         proposal = {k: result[k] for k in ("decision", "reason", "changes")}
         if proposal["decision"] == "propose":
             try:
