@@ -95,7 +95,20 @@ class ClaudeApprovalTests(unittest.TestCase):
         self.assertEqual(held["status"], "needs_evidence")
         self.assertIn("재감사", held["reason"])
         self.assertEqual(self.ledger["proposals"]["2610.00002"]["status"], "awaiting_claude")
+        # A failure after audit_and_save replaced the ledger record holds the new record.
+        def replace_then_fail(root, ledger, state, config, key, item):
+            ledger["proposals"][key] = {**copy.deepcopy(item), "created_at": "later",
+                                        "claude_pending": {"source_run": "2", "context_sha256": "y"}}
+            raise ValueError("The official card was fetched without checking for a LICENSE file")
+        self.ledger["proposals"]["2610.00002"]["status"] = "awaiting_claude"
+        with patch.object(c, "resume_one", side_effect=replace_then_fail):
+            c.resume_pending(self.root, self.ledger, self.state, self.config, time.monotonic() + 20)
+        replaced = self.ledger["proposals"]["2610.00002"]
+        self.assertEqual((replaced["status"], replaced["created_at"]), ("needs_evidence", "later"))
+        self.assertNotIn("claude_pending", replaced)
+        self.assertEqual(r.read_json(self.root / "research/proposals.json")["proposals"]["2610.00002"]["status"], "needs_evidence")
         # A quota or token failure still stops the run so the budget checkpoint is kept.
+        self.ledger["proposals"]["2610.00002"]["status"] = "awaiting_claude"
         with patch.object(c, "resume_one", side_effect=RuntimeError("quota")), self.assertRaisesRegex(RuntimeError, "quota"):
             c.resume_pending(self.root, self.ledger, self.state, self.config, time.monotonic() + 20)
 

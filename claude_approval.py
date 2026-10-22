@@ -141,6 +141,10 @@ def audit_and_save(root, ledger, state, paper, proposal, context, config, author
 def hold_pending(root, ledger, state, key, item, error):
     """Hold one candidate whose saved draft can no longer be resumed; nothing is applied."""
     message = str(error)[:300]
+    # audit_and_save may already have replaced the ledger entry with a fresh
+    # awaiting_claude record (new created_at, new claude_pending) before the
+    # publication completion failed; hold the record the ledger holds now.
+    item = ledger["proposals"].get(key, item)
     item.update(status="needs_evidence", decision="needs_evidence", approval_policy="claude_only",
                 reason=f"저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: {message}",
                 resume_error=message)
