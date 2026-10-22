@@ -5075,6 +5075,79 @@
       },
       "issue_url": null,
       "proposal_sha256": "c17a33514c41a5244190075f0b6c62b3824c53e463e0fad84ed7c5742ff4b95f"
+    },
+    "2609.22723": {
+      "decision": "needs_evidence",
+      "reason": "ANI-Gamut는 에이전트-네트워크 인터페이스 추상화 수준(A0~A4)을 통제 변수로 둔 재사용 가능한 오픈소스 벤치마크 플레이그라운드로, 네트워크 구성 에이전트 평가라는 점에서 에이전트 범주의 후보입니다. 공식 프로젝트 페이지(https://netgroup.github.io/ani-gamut/)도 PDF 1~2쪽 각주에 나와 있습니다. 그러나 과제 지시문(HAI의 자연어 프롬프트)이 영어인지 한국어인지 논문 어디에도 명시되어 있지 않습니다. 논문 본문이 영어라는 이유만으로 과제 언어를 영어로 추정할 수 없으므로 en/ko 트랙을 정할 수 없고, 언어 근거를 제시하지 못하면 필수 증거 항목이 비게 됩니다. 라이선스와 lm-eval 지원은 '확인 불가'로 처리하면 되므로 제외 사유가 아닙니다. 프로젝트 페이지나 저장소에서 프롬프트 언어를 확인하면 en 트랙 제안이 가능합니다. 현재 PDF만으로는 propose하지 않고 needs_evidence로 둡니다.",
+      "changes": [],
+      "arxiv_id": "2609.22723",
+      "paper_title": "ANI-Gamut: Benchmarking Agent Reliability across the Gamut of Agent-Network Interface Abstractions",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.22723",
+        "sha256": "e1993bc80c445f30c122517bee01b32903c4da37b60d04a5f96313acc0661936",
+        "accessed": "2026-10-22T06:56:56Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 12,
+          "elapsed_seconds": 47.3,
+          "pdf_sha256": "e1993bc80c445f30c122517bee01b32903c4da37b60d04a5f96313acc0661936",
+          "visual_pdf_audit": false,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "2fa1f595bf412feaa9bcf1b3af0ec954fa66a9e699290a70df85e4c31b1a2062",
+          "page_json_file": "2609.22723.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-10-22T06:57:54Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.22723",
+        "paper_title": "ANI-Gamut: Benchmarking Agent Reliability across the Gamut of Agent-Network Interface Abstractions",
+        "abstract": "Large Language Model (LLM) agents are increasingly trusted to operate live networks: they read state, change configuration, and verify the result. A first-order question is left implicit: at which level of abstraction should the agent operate? We make the interface-abstraction level an explicit, controlled experimental variable, organizing agent-network interfaces into a spectrum from raw CLI (A0) through bounded wrappers (A1) and standardized model-driven configuration (A2) to typed transactional service intent (A3-T), reconciled source-of-truth automation (A3-R), and their combination (A4). We present ANI-Gamut, a reproducible, open-source playground that exposes the same task at several levels on a single, densely populated brownfield substrate, where many coexisting services share resources and collateral damage actually arises. We instantiate and measure four points of the spectrum and describe the others only at the conceptual level, and record three dependent variables as the substrate is stressed by injected faults: task reliability, collateral damage against pre-existing tenants, and operational cost. In a pilot with small run counts (n=20, n=6 and n=4 per level), the interface level moves reliability and cost sharply: on a live change-set task a raw-shell agent fails on all six seeds while a typed transactional interface succeeds on all six (paired McNemar p=0.031, on six discordant pairs), at roughly an order of magnitude less cost, as the engineering effort migrates from the agent to a reusable transaction layer. Collateral damage, by contrast, is absent at every level, whether benign or under faults: in a tenant-isolated substrate the agents fail safe, and the blast radius is held by the substrate's isolation, which moves the safety question from the agent to the substrate.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-20T02:48:49Z",
+        "input_sha256": "3910a86544b8210b5e1ce96459af2b07eabdbc886a48b3a054c7b7135c479ff4",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "에이전트-네트워크 인터페이스 추상화 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전트-네트워크 인터페이스 신뢰성 벤치마크 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "d26deccfeb1dbfe767c911db86c6465f1fa64824297f34e9a5214343dec22c09"
     }
   },
   "processed_comments": [],
