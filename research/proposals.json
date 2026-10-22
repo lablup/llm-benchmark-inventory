@@ -3967,74 +3967,9 @@
       "proposal_sha256": "18356dd99532a1357c8da91a9910d2393aef0b2d8ebdd697f90594b5555b9a87"
     },
     "2601.13864": {
-      "decision": "propose",
-      "reason": "HardSecBench는 Verilog RTL과 펌웨어 C 기반 하드웨어 코드 생성에서 보안 인식을 평가하는 재사용 가능한 벤치마크입니다(924개 과제, 76개 CWE, 테스트 케이스 4425개). 과제와 명세가 영어로 제시되므로 en 트랙 텍스트 벤치마크로 분류합니다. 데이터와 코드의 GitHub 링크는 논문에 명시되어 있습니다. 라이선스 등은 확인하지 못해 '확인 불가'로 기록했습니다. 이전 답변에서 페이지에 없던 인용문을 본문에 실제로 있는 짧은 문구로 교체했습니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "hardsecbench",
-            "이름": "HardSecBench",
-            "평가 축": "보안 인식(하드웨어·펌웨어 코드 생성)",
-            "언어": "en",
-            "정의": "Verilog RTL과 펌웨어 C로 구성된 924개 과제(Verilog 599, C 325)로, 하드웨어 관련 CWE 76개와 테스트 케이스 4425개를 포함한다. 과제마다 구조화된 명세, 보안 참조 구현, 실행형 하니스를 제공한다. 모델에는 기능 요구만 주고 보안 요구는 시뮬레이션·실행 증거로 채점한다. 단일 시도와 반복 개선 두 설정에서 기능·보안 통과율과 Pass@k를 보고한다.",
-            "대표 과제": "CWE 기반 Verilog RTL·펌웨어 C 구현 과제",
-            "대표 예시·설명": "기능 요구만 담긴 명세로 구현을 생성하면, 명세에 드러나지 않은 보안 요구를 요구사항별 하니스가 PASS/FAIL로 검증하는 과제",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·재배포 조건과 lm-eval 지원 여부는 확인하지 못했다. 논문의 코드 공개가 데이터 라이선스를 보장하지 않는다. 채점에는 Icarus Verilog와 gcc 실행 환경이 필요하다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/chenqirui2002/HardSecBench"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Security awareness in hardware and firmware code generation",
-            "definition": "HardSecBench has 924 tasks (599 Verilog RTL and 325 firmware C) covering 76 hardware-related CWE entries and 4425 test cases. Each task provides a structured specification, a secure reference implementation, and executable harnesses. Models receive only functional requirements, and security requirements are scored from simulation or execution evidence. Results are reported for single-attempt and iterative-refinement settings as functional and security pass rates and Pass@k.",
-            "task": "CWE-based Verilog RTL and firmware C implementation tasks",
-            "example": "Task description: generate an implementation from a specification that states only functional requirements, then check hidden security requirements with requirement-level PASS/FAIL harnesses."
-          },
-          "evidence": {
-            "modality": {
-              "page": 1,
-              "quote": "924 tasks spanning"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "924 tasks spanning"
-            },
-            "대표 예시·설명": {
-              "page": 1,
-              "quote": "924 tasks spanning"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/chenqirui2002/HardSecBench"
-            },
-            "언어": {
-              "page": 6,
-              "quote": "Hint 1 adds"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "HardSecBench"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "924 tasks spanning"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "a benchmark for"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공식 저장소 카드의 '## LICENSE file' 섹션에는 MIT 라이선스(Copyright (c) 2026 Qirui Chen)가 있지만, 조항이 대상으로 삼는 것은 'the Software and associated documentation files'입니다. README와 논문 어디에도 이 라이선스가 data/HardSecBench_Data 의 벤치마크 데이터 924개 과제와 테스트 케이스에 적용된다는 문장이 없습니다. 코드 라이선스를 데이터 라이선스로 간주할 수 없어 '라이선스', '상업적 이용', '수정·파생', '재배포'를 데이터 기준으로 인용할 수 없습니다. 또한 과제는 MITRE CWE 정의에서 만든 시드(논문 3쪽 3.1절 'CWE-Guided Specification Synthesis', 2쪽 [MITRE, 2006])를 바탕으로 하는데, 이 구성요소의 이용 조건을 보여 주는 근거가 제공된 자료에 없습니다. 카드에 LICENSE 섹션이 있어 '미표기' 부재 증거 형식도 쓸 수 없습니다. 저자가 데이터 라이선스와 적용 범위를 저장소나 데이터 카드에 명시한 근거가 필요하므로 지금은 아무것도 게시하지 않습니다.",
+      "changes": [],
       "arxiv_id": "2601.13864",
       "paper_title": "HardSecBench: Benchmarking the Security Awareness of LLMs for Hardware Code Generation",
       "paper_updated": "2026-09-29T00:00:00Z",
@@ -4088,7 +4023,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-22T08:11:52Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -4114,11 +4049,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "39743769977",
-        "context_sha256": "914d4fe2bce23ba0f23df1939a69eb15cfe8bf817fbc54638010640286c666ac"
-      },
-      "proposal_sha256": "ffd7dd4c7be4fabad789ca3cfb29f16ca71d4084456455f77da3a7bc0b6f6f20"
+      "proposal_sha256": "a9dab1fcb06f415f16ea2d8a77f523d6538844e6a0ff61f75e2fc087b488fed4",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
