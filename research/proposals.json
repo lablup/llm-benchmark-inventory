@@ -5139,7 +5139,7 @@
     },
     "2609.21344": {
       "decision": "propose",
-      "reason": "CESBench는 IoT 기기의 암호공학 보안(부채널, 오류 주입, 구현, 대응책, 평가, 통합)을 다루는 전문가 작성 380문항 벤치마크입니다. 객관식 209, 판정 67, 시나리오 63, 코드 41(테스트 572개)로 구성됩니다. 과제 예시가 영어 텍스트이므로 en 트랙의 text 모달리티로 분류했고, 논문이 GitHub 링크를 명시합니다. 라이선스와 하니스 지원은 확인하지 않았으므로 '확인 불가'로 기록했습니다.",
+      "reason": "CESBench는 IoT 기기의 암호공학 보안(부채널, 오류 주입, 구현, 대응책, 평가, 통합)을 다루는 전문가 작성 380문항 벤치마크입니다. 객관식 209, 판정 67, 시나리오 63, 코드 41(테스트 572개)로 구성됩니다. 과제 예시가 영어 텍스트이므로 en 트랙의 text 모달리티로 분류했습니다. 공식 저장소 README는 데이터를 CC-BY-4.0, 코드를 MIT로 명시합니다. README에 lm-eval 언급은 없습니다. 비교 결과는 논문 Table VI의 11개 모델 종합 점수입니다.",
       "changes": [
         {
           "track": "en",
@@ -5150,14 +5150,14 @@
             "언어": "en",
             "정의": "IoT 기기 암호공학 보안을 다루는 전문가 작성 380문항 벤치마크. 부채널, 오류 주입, 구현, 대응책, 평가, 통합의 6개 하위 영역으로 구성. 객관식 209, 판정 67, 시나리오 63, 코드 41문항(테스트 케이스 572개)이며 객관식과 코드는 자동 채점하고 판정·시나리오는 LLM judge가 루브릭으로 채점",
             "대표 과제": "객관식, 판정(참/거짓과 근거), 시나리오 진단, 코드 구현의 4개 과제 유형",
-            "대표 예시·설명": "판정 과제: 암호 키 제거와 관련된 보안 주장이 참인지 거짓인지 판정하고 근거를 서술. 근거는 문항별 루브릭으로 채점하며 판정이 틀리면 0점",
+            "대표 예시·설명": "판정 과제: '키를 메모리 변수에만 두고 사용 직후 영으로 지우면 콜드부트 공격을 막기에 충분하다'는 주장이 참인지 거짓인지 판정하고 근거를 서술. 근거는 문항별 루브릭으로 채점하며 판정이 틀리면 0점",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스는 확인하지 않음. 판정·시나리오 채점에 LLM judge(논문은 Qwen3.5-397B 사용)가 필요하고 코드 과제는 실행 환경이 필요함. 공격 측면 문항을 포함하므로 이용 범위 확인 필요",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-4.0(데이터). 코드는 MIT",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "데이터는 CC-BY-4.0이므로 출처 표기(논문 또는 저장소 인용) 필요. 코드(프롬프트, 하니스, 코드 과제의 테스트·솔루션 파일)는 별도로 MIT. 판정·시나리오 채점에 LLM judge(논문은 Qwen3.5-397B 사용)가 필요하고 코드 과제는 실행 환경(Python 3.11/pytest, C 컴파일러)이 필요함. 공격 측면 문항을 포함하므로 이용 범위를 점검할 것",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/wenquan222/CES"
           },
           "modality": "text",
@@ -5165,7 +5165,7 @@
             "axis": "Security (IoT cryptographic engineering)",
             "definition": "A benchmark of 380 expert-written items on cryptographic engineering security for IoT devices, across six sub-domains: side-channel, fault injection, implementation, countermeasures, evaluation, and integration. It has 209 multiple-choice, 67 judgment, 63 scenario, and 41 code items (572 test cases). Multiple-choice and code items are scored automatically; judgment and scenario items are scored by an LLM judge using rubrics.",
             "task": "Four task types: multiple choice, judgment (True/False verdict with justification), scenario diagnosis, and code implementation.",
-            "example": "Judgment task: decide whether a security claim about protecting cryptographic keys is True or False and justify the verdict. The justification is scored with an item-specific rubric, and a wrong verdict scores zero."
+            "example": "Judgment task: decide whether the claim that keeping a key only in a memory variable and zeroizing it after use is enough to resist cold boot attacks is True or False, and justify the verdict. The justification is scored with an item-specific rubric, and a wrong verdict scores zero."
           },
           "evidence": {
             "modality": {
@@ -5178,7 +5178,7 @@
             },
             "대표 예시·설명": {
               "page": 4,
-              "quote": "Decide whether the"
+              "quote": "Keeping the key"
             },
             "링크": {
               "page": 2,
@@ -5201,9 +5201,183 @@
               "quote": "cryptographic engineering security"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/wenquan222/CES",
+              "quote": "is released under the Creative Commons Attribution 4.0 International license"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/wenquan222/CES",
+              "quote": "a worldwide, royalty-free,"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/wenquan222/CES",
+              "quote": "produce, reproduce, and Share Adapted Material."
+            },
+            "재배포": {
+              "source_url": "https://github.com/wenquan222/CES",
+              "quote": "reproduce and Share the Licensed Material, in whole or"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/wenquan222/CES",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "종합 점수(Composite), 단위 %: 객관식·판정·시나리오·코드 4개 과제 유형 평균 점수의 비가중 평균",
+            "setting": "논문 Table VI의 11개 모델 결과. CESBench 380문항 전체, 제로샷 프롬프트, 모델별 기본 추론 모드, 탐욕 디코딩(temperature 0), 도구 없음, 문항당 응답 1개. SiliconFlow·OpenRouter API로 질의했고 판정·시나리오는 Qwen3.5-397B judge로 채점. 이는 이 논문에서 보고된 결과이며 현재의 전 세계 리더보드가 아님",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "GLM-5.2",
+                "score": "83.6",
+                "evidence": {
+                  "page": 6,
+                  "quote": "GLM-5.2 83.6"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "GLM-5.2 Zhipu AI open"
+                }
+              },
+              {
+                "model": "Kimi-K2.6",
+                "score": "82.5",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Kimi-K2.6 82.5"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "Kimi-K2.6 Moonshot AI open"
+                }
+              },
+              {
+                "model": "Gemini-3.7-Flash",
+                "score": "81.4",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Gemini-3.7-Flash 81.4"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "Gemini-3.7-Flash Google closed"
+                }
+              },
+              {
+                "model": "GPT-5.6-Luna",
+                "score": "80.8",
+                "evidence": {
+                  "page": 6,
+                  "quote": "GPT-5.6-Luna 80.8"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "GPT-5.6-Luna OpenAI closed"
+                }
+              },
+              {
+                "model": "DeepSeek-V4-Pro",
+                "score": "80.2",
+                "evidence": {
+                  "page": 6,
+                  "quote": "DeepSeek-V4-Pro 80.2"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "DeepSeek-V4-Pro DeepSeek open"
+                }
+              },
+              {
+                "model": "MiniMax-M2.5",
+                "score": "73.4",
+                "evidence": {
+                  "page": 6,
+                  "quote": "MiniMax-M2.5 73.4"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "MiniMax-M2.5 MiniMax open"
+                }
+              },
+              {
+                "model": "DeepSeek-V3",
+                "score": "68.4",
+                "evidence": {
+                  "page": 6,
+                  "quote": "DeepSeek-V3 68.4"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "DeepSeek-V3 DeepSeek open"
+                }
+              },
+              {
+                "model": "Ling-flash-2.0",
+                "score": "61.3",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Ling-flash-2.0 61.3"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "Ling-flash-2.0 Ant Group open"
+                }
+              },
+              {
+                "model": "GLM-4-32B-0414",
+                "score": "60.0",
+                "evidence": {
+                  "page": 6,
+                  "quote": "GLM-4-32B-0414 60.0"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "GLM-4-32B-0414 Zhipu AI open"
+                }
+              },
+              {
+                "model": "Llama-4-Maverick",
+                "score": "59.7",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Llama-4-Maverick 59.7"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "Llama-4-Maverick Meta open"
+                }
+              },
+              {
+                "model": "Hunyuan-A13B",
+                "score": "54.4",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Hunyuan-A13B 54.4"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "Hunyuan-A13B Tencent open"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.21344",
@@ -5290,7 +5464,8 @@
         "source_run": "39743769977",
         "context_sha256": "b213d08bbfacdfb10dff92738b984a877356d0071afa0d4d2fc3c4c3e735abc2"
       },
-      "proposal_sha256": "4f2ee1704139f370b6a28866c6189623eba2b50b74a7c62cea415f215e7c1a00"
+      "proposal_sha256": "ec961bafcf0cdaa263b5d0b37f7e5fbf1efa00a7658001be6e89075d368b5422",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
