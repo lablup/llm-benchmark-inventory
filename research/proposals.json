@@ -5514,7 +5514,7 @@
     },
     "2601.19532": {
       "decision": "propose",
-      "reason": "이 논문은 Omni-MATH(올림피아드 수준 영어 수학 4,428문항)를 수작업으로 검수·수정한 Omni-MATH-2를 공개한다. 647문항을 수정하고 247문항에 이미지·증명·추정·삭제 태그를 붙였으며, 정답 일치 판정이 가능한 Filtered 부분집합(n=4,181)을 제공한다. 내용이 실질적으로 바뀐 재사용 가능 벤치마크이고, 과제 프롬프트가 영어이므로 en 트랙 텍스트로 분류했다. 기존 인벤토리에 Omni-MATH 단독 행이 없어 신규 행으로 제안한다. 데이터셋 링크는 PDF가 직접 명시한 Hugging Face 주소를 썼고, 라이선스와 lm-eval 지원 등은 확인하지 않아 '확인 불가'로 기록했다.",
+      "reason": "이 논문은 Omni-MATH(올림피아드 수준 영어 수학 4,428문항)를 수작업으로 검수·수정한 Omni-MATH-2를 공개한다. 647문항을 수정하고 247문항에 이미지·증명·추정·삭제 태그를 붙였으며, 정답 일치 판정이 가능한 Filtered 부분집합(n=4,181)을 제공한다. 내용이 실질적으로 바뀐 재사용 가능 벤치마크이고, 과제 프롬프트가 영어이므로 en 트랙 텍스트로 분류했다. 기존 인벤토리에 Omni-MATH 단독 행이 없어 신규 행으로 제안한다. 데이터셋 링크는 PDF가 직접 명시한 Hugging Face 주소이며, 라이선스는 해당 공식 카드의 Apache-2.0 표기를 근거로 기록했다. 공식 카드에 lm-eval 언급이 없어 해당 항목은 '미표기'로 두었다.",
       "changes": [
         {
           "track": "en",
@@ -5527,12 +5527,12 @@
             "대표 과제": "Omni-MATH-2-Filtered",
             "대표 예시·설명": "올림피아드 수학 문제를 풀고 최종 답을 \\boxed{} 안에 쓰게 하는 프롬프트를 주고, judge가 참조 정답과의 동등성을 판정한다(과제 설명).",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스와 lm-eval 지원 여부는 확인하지 않았다. 원본 정답·풀이는 수정하지 않았고 불완전한 참조 정답이 남아 있을 수 있다고 논문이 밝힌다. 태그된 문항은 현 평가 방식의 벤치마킹에서 제외하도록 권고한다. 결과는 judge 선택에 민감하다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "Apache-2.0",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "Omni-MATH-2는 Omni-MATH를 수정한 파생물이며, 원본 문제는 대회 페이지, AoPS Wiki, AoPS 포럼에서 수집됐다(논문 10쪽). 누락된 그림은 웹 검색이나 GPT-5.1로 보충했다(논문 2쪽, 10쪽). 카드의 Apache-2.0 표기가 이 구성 요소 각각의 고유 약관을 대신하지는 않으므로, 이용 전 원본 Omni-MATH와 수집 원천별 약관을 별도로 확인해야 한다. 원본 정답·풀이는 수정하지 않아 불완전한 참조 정답이 남아 있을 수 있다고 논문이 밝힌다. 태그된 문항은 현 평가 방식의 벤치마킹에서 제외하도록 권고한다. 결과는 judge 선택에 민감하다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://huggingface.co/datasets/martheballon/Omni-MATH-2"
           },
           "modality": "text",
@@ -5576,9 +5576,85 @@
               "quote": "Olympiad-level mathematics"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://huggingface.co/datasets/martheballon/Omni-MATH-2",
+              "quote": "license: apache-2.0"
+            },
+            "상업적 이용": {
+              "source_url": "https://huggingface.co/datasets/martheballon/Omni-MATH-2",
+              "quote": "license: apache-2.0"
+            },
+            "수정·파생": {
+              "source_url": "https://huggingface.co/datasets/martheballon/Omni-MATH-2",
+              "quote": "license: apache-2.0"
+            },
+            "재배포": {
+              "source_url": "https://huggingface.co/datasets/martheballon/Omni-MATH-2",
+              "quote": "license: apache-2.0"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://huggingface.co/datasets/martheballon/Omni-MATH-2",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "정확도(accuracy, %) — Omni-MATH-2-Filtered 문항 중 judge가 정답으로 판정한 비율",
+            "setting": "이 논문 부록 Table A1(GPT-5 mini judge 열)에 보고된 결과이며 현재 전체 리더보드가 아니다. 데이터는 Omni-MATH-2-Filtered(n=4,181)이고, 모든 모델에 동일한 프롬프트 'Solve the following problem. Enclose the final answer in a \\boxed{} environment.'를 사용했다. 채점은 GPT-5 mini(gpt-5-mini-2025-08-07)가 HLE 평가 프롬프트(신뢰도 항목 제외)로 수행했다. 모델별 설정은 Claude Sonnet 4.5: 출력 64,000토큰·사고 예산 25,000, DeepSeek V3.2: 출력 64,000토큰(공유), Gemini 3 Pro: 출력 64,000토큰·high thinking level, GPT-5: medium reasoning effort·토큰 제한 없음, Kimi K2 Thinking: 출력 128,000토큰이다. 같은 모델도 Omni-Judge로 채점하면 점수와 순위가 달라진다고 논문이 보고한다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Claude Sonnet 4.5",
+                "score": "79.29",
+                "evidence": {
+                  "page": 17,
+                  "quote": "Claude Sonnet 4.5 79.29"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DeepSeek v3.2",
+                "score": "82.95",
+                "evidence": {
+                  "page": 17,
+                  "quote": "DeepSeek v3.2 82.95"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini 3 Pro (preview)",
+                "score": "89.93",
+                "evidence": {
+                  "page": 17,
+                  "quote": "Gemini 3 Pro (preview) 89.93"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5",
+                "score": "84.53",
+                "evidence": {
+                  "page": 17,
+                  "quote": "GPT-5 84.53"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Kimi K2 Thinking",
+                "score": "86.87",
+                "evidence": {
+                  "page": 17,
+                  "quote": "Kimi K2 Thinking 86.87"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2601.19532",
@@ -5663,7 +5739,8 @@
         "source_run": "39743769977",
         "context_sha256": "8870c1a863e389c45c72619e2b3064e90ca9b35074b5d2b48df9ecfb21d3cc93"
       },
-      "proposal_sha256": "0bfca213dc7563d2e49820231c8b3f1057be43d4ac9729c6d30a5a13061771d4"
+      "proposal_sha256": "a55ca3d3fbdd5a155a148c593d05947ba56749fcb4435a0136fe3452d1f9238b",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
