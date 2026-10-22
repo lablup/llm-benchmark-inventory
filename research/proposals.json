@@ -4153,6 +4153,156 @@
       "proposal_sha256": "691b83ea241ed8431383c10d7ceb47f0b2872d1a730fd882670534ea006266fb",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2606.10156": {
+      "decision": "propose",
+      "reason": "τ-Rec은 에이전트형 대화 추천을 평가하는 재사용 가능한 새 벤치마크다. 카탈로그 조건식(predicate)으로 결정적 채점을 하고, 숨겨진 선호를 대화로 끌어내는 RTE와 pass^k 신뢰도 지표를 쓴다. 과제는 60개이고 영화 카탈로그는 153편이다. 페르소나 예시가 영어이므로 en 트랙의 텍스트 벤치마크로 제안한다. 논문이 명시한 공식 코드·데이터 저장소는 GitHub 링크다. 라이선스와 lm-eval 지원은 확인하지 않아 '확인 불가'로 둔다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "tau-rec",
+            "이름": "τ-Rec",
+            "평가 축": "에이전트(대화형 추천)",
+            "언어": "en",
+            "정의": "에이전트형 대화 추천을 평가하는 벤치마크. 사용자 시뮬레이터가 숨긴 선호를 대화로 끌어내고 카탈로그 도구를 호출해 제약을 만족하는 영화 하나를 추천하게 하며, 유형이 지정된 카탈로그 조건식과 7개 정책 준수 여부를 LLM 판정 없이 결정적으로 채점한다. 제약 공개 방식(volunteer/on_ask/hidden)을 태깅하는 RTE와 pass^k 신뢰도 지표를 사용한다. 현재 릴리스는 60개 과제(복잡도 단순 20/중간 24/복잡 16, 공개 난이도 volunteer 13/mixed 32/hidden 15, 해답 없는 과제 5개 포함)와 영화 카탈로그 153편으로 구성되며, 논문에서 과제당 4회 시행으로 평가함",
+            "대표 과제": "선호 유도와 제약 추론(pass^1, pass^2, pass^4)",
+            "대표 예시·설명": "시뮬레이터 페르소나(예: 아이들을 재운 뒤 짧은 코미디를 찾는 지친 부모)가 일부 제약만 말하고, 에이전트가 질문과 카탈로그 도구 호출로 나머지 제약을 알아낸 뒤 recommend 도구로 영화 하나를 제출하는 과제",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 아직 확인하지 않음. 단일 도메인(영화)이며 카탈로그는 TMDB에서 가져온 153편의 소규모 구성. 사용자 시뮬레이터(논문에서는 GPT-5 mini)와 에이전트 모델 API 실행 환경이 필요함. pass^4의 95% 부트스트랩 CI가 ±0.10–0.13이라 통계적 검정력에 한계가 있음",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/nbharaths/tau-rec"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (conversational recommendation)",
+            "definition": "τ-Rec evaluates agentic conversational recommenders. An agent must elicit hidden user preferences from a simulated user, call catalog tools, and recommend one movie that satisfies the constraints. Scoring uses typed catalog predicates and seven policy checks without an LLM judge. Reveal-tagged elicitation (volunteer/on_ask/hidden) controls how constraints surface, and pass^k measures reliability. The current release has 60 tasks (20 simple/24 medium/16 complex; 13 volunteer/32 mixed/15 hidden, including 5 with no valid recommendation) and a 153-movie catalog; the paper evaluates 4 trials per task.",
+            "task": "Preference elicitation and constrained reasoning (pass^1, pass^2, pass^4)",
+            "example": "A simulated persona, such as a tired parent looking for a short comedy, states only some constraints. The agent asks questions and calls catalog tools to find the rest, then submits one movie with the recommend tool."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "a tired parent"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "comprises 60 tasks"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "a tired parent"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/nbharaths/tau-rec"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "a tired parent"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "A Verifiable Benchmark"
+            },
+            "정의": {
+              "page": 3,
+              "quote": "comprises 60 tasks"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "A Verifiable Benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2606.10156",
+      "paper_title": "$τ$-Rec: A Verifiable Benchmark for Agentic Recommender Systems",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.10156",
+        "sha256": "ad18a9022e6a28eafc9f5e74d093666a38f75c5c73a84b7aa5bb0d2c36e9274b",
+        "accessed": "2026-10-22T08:15:09Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 5,
+          "elapsed_seconds": 42.52,
+          "pdf_sha256": "ad18a9022e6a28eafc9f5e74d093666a38f75c5c73a84b7aa5bb0d2c36e9274b",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "81816be7921525526cdf3a1c9290e9679f46cc36ae78cddad829f29984254bfe",
+          "page_json_file": "2606.10156.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/nbharaths/tau-rec",
+            "fetched_url": "https://api.github.com/repos/nbharaths/tau-rec/readme",
+            "sha256": "15a507272800271009bfb8951c2647f6853641161b12e8b36b847d445d4bbad9",
+            "accessed": "2026-10-22T08:16:14Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/nbharaths/tau-rec/license",
+              "name": "LICENSE",
+              "spdx_id": "NOASSERTION",
+              "sha256": "17322d08db731c4ef56d6fc70053e767ec253023853a9e2ef6bdebc9015eab38"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-22T08:16:14Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2606.10156",
+        "paper_title": "$τ$-Rec: A Verifiable Benchmark for Agentic Recommender Systems",
+        "abstract": "As recommender systems transition toward agentic, multi-turn conversational interfaces, evaluation paradigms have struggled to keep pace. Current benchmarks often rely on \"LLM-as-a-judge\" evaluations, which introduce subjectivity, high costs and inconsistency. We present $τ$-Rec, a benchmark for agentic recommender systems that replaces subjective evaluation with verifiable rewards and a reveal-tagged elicitation (RTE) mechanism that controls how task constraints surface during dialogue. By testing agents against structured catalog predicates and employing a pass^k reliability metric, $τ$-Rec provides a systematic test for consistent reasoning. Our evaluation of nine configurations across five model families -- GPT-5.4, Claude Sonnet 4.6, Gemini 2.5 Flash, DeepSeek V4 Flash, Qwen3-32B and GPT-5 mini -- reveals a steep reliability cliff, where even the best model achieves only ~57% at pass^1 and ~35% at pass^4, highlighting a critical gap in current conversational agent deployment. All code and data are publicly available at https://github.com/nbharaths/tau-rec.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:43:34Z",
+        "input_sha256": "6b3460d23912db5355664eb826adda3ecebc80aaf24c6dfae15e3dc3601c9768",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "uncertain",
+            "reason": "추천 에이전트 벤치마크로 언어 일반성 불명확"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전틱 추천 시스템 검증형 신규 벤치마크 제시"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "39743769977",
+        "context_sha256": "fe275e9b7dde685ca3c9c833320a88582fcdd0bfcdf0556a67c0dcd7e5e7b77d"
+      },
+      "proposal_sha256": "57066d52110e27ec0563d73a3850c169a97d35df59023f46acd6ee41e2f5f321"
     }
   },
   "processed_comments": [],
