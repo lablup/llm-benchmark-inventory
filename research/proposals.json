@@ -4552,74 +4552,9 @@
       "approval_policy": "claude_only"
     },
     "2609.22152": {
-      "decision": "propose",
-      "reason": "Whiteboard는 LLM의 상상력과 환각을 같은 생성문에서 동시에 채점하는 새 벤치마크입니다. 전체 문항은 1,660개이고, 공통 앵커 80문항으로 79개 모델을 평가했습니다. 과제 프롬프트가 영어이고 텍스트 입력만 쓰므로 en 트랙의 text로 분류했습니다. 공식 코드 URL은 논문 1쪽에 명시되어 있습니다. 라이선스와 lm-eval 지원 여부는 논문에 근거가 없어 '확인 불가'로 두었습니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "whiteboard",
-            "이름": "Whiteboard",
-            "평가 축": "상상력·환각 동시 평가(창의적 생성)",
-            "언어": "en",
-            "정의": "LLM 상상력 평가 벤치마크. 상상력 하위유형 7개와 환각 하위유형 10개를 같은 응답에서 함께 채점하며, 프롬프트가 허용한 새로움만 상상력으로 인정하는 지지 점검(support check)을 적용. 전체 문항 1,660개 중 공통 앵커 80문항에서 79개 모델을 평가했고 유효 생성 6,229건, 사람 판단 13,280건으로 검증. 주 채점 경로에 LLM judge 없이 결정론적 원자(atom) 행렬로 점수 산출",
-            "대표 과제": "UUT(일상 사물의 비일상적 활용 8가지 제시) 등 8개 과제군",
-            "대표 예시·설명": "일상 사물의 실제 속성과 용도에 근거하되 비일상적인 활용 아이디어 8개를 JSON 형식으로 제시하게 하는 과제. 허용 범위를 벗어난 지어낸 기능은 환각으로 채점",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원은 확인하지 않았음. 논문 기준 80문항 앵커 세트의 신뢰도는 G=0.567, Φ=0.248로 개별 모델 순위보다 패널 수준 비교에 적합. 채점은 SBERT 임베딩, 연상 규범, WordNet, 공통답 은행, 히든 테스트에 의존하고 다른 언어로 확장하려면 이 자원들을 다시 구축해야 함. 응답은 과제별 JSON 계약을 지켜야 함",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/erictang666/WHITEBOARD"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Imagination and hallucination scored jointly (creative generation)",
-            "definition": "A benchmark for LLM imagination. Seven imagination subtypes and ten hallucination subtypes are scored on the same response, and a support check credits only novelty that the prompt licenses. The full item bank has 1,660 prompts; 79 models answered a shared 80-item anchor set, yielding 6,229 valid generations, and the instrument is validated against 13,280 human judgments. The primary scoring path uses a deterministic atom matrix with no LLM judge.",
-            "task": "Eight task families, including UUT (propose eight unusual uses of an ordinary object).",
-            "example": "Task description: given an ordinary object, propose eight unusual uses grounded in its real properties and affordances, returned as JSON. Invented capabilities outside that license are scored as hallucination."
-          },
-          "evidence": {
-            "modality": {
-              "page": 23,
-              "quote": "Think of exactly"
-            },
-            "대표 과제": {
-              "page": 23,
-              "quote": "Think of exactly"
-            },
-            "대표 예시·설명": {
-              "page": 23,
-              "quote": "Think of exactly"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "https://github.com/erictang666/WHITEBOARD"
-            },
-            "언어": {
-              "page": 23,
-              "quote": "Think of exactly"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "we propose Whiteboard,"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "The full Whiteboard"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "we propose Whiteboard,"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "라이선스 4개 필드(라이선스·상업적 이용·수정·파생·재배포)를 공개 가능한 값으로 확정할 근거가 부족해 아무것도 게시하지 않습니다. 공식 저장소 카드(https://github.com/erictang666/WHITEBOARD)에는 '## LICENSE file' 항목이 있고 Apache-2.0이 표기되어 있어, 라이선스 '미표기' 증거(absent)를 쓸 수 없습니다. 그러나 이 Apache-2.0은 저장소의 코드(런타임·채점기)에 붙은 라이선스입니다. 카드와 논문 어디에도 이것이 Whiteboard 데이터셋(1,660문항 또는 80문항 앵커 세트)에도 적용된다는 진술이 없습니다. 코드 라이선스를 데이터셋 라이선스로 간주해서는 안 됩니다. 또한 이 벤치마크는 MacGyver, NeoCoder, HypoUseSpace 등 기존 과제 방식과 SWOW-EN2018, Word Norms 2, WordNet 3.0 같은 외부 자원에 기대고 있습니다. 카드는 SWOW-EN이 CC BY-NC-ND 조건이라 재배포·수정이 제한되고 Word Norms 2는 GPL 라이선스 자료가 포함된다고 밝히며, 논문 부록 L(21쪽)도 이 자원들의 이용 조건을 따로 적고 있습니다. 따라서 Apache-2.0이 모든 구성요소에 적용된다고 볼 수 없고, '저작권 전부 보유'로 정리하는 규칙도 적용할 수 없습니다(공식 카드에 라이선스가 표기되어 있어 '미표기' 전제가 성립하지 않기 때문입니다). 기존 초안의 '확인 불가' 값은 게시 정책상 허용되지 않습니다. 데이터 라이선스와 구성요소별 적용 범위에 대한 저자 또는 공식 저장소의 명시(데이터 전용 라이선스 문구 또는 적용 범위 설명)가 확인되면 다시 제안할 수 있습니다.",
+      "changes": [],
       "arxiv_id": "2609.22152",
       "paper_title": "Is Imagination Derived from Hallucination? A Cross-Taxonomy Evaluation of Imagination and Hallucination in Large Language Models",
       "paper_updated": "2026-09-22T00:00:00Z",
@@ -4691,7 +4626,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-22T08:26:49Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -4717,11 +4652,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "39743769977",
-        "context_sha256": "dd4a3f3d7cf40a8bb712b8b0c661177857d0debc4c67a92c27849487ebaa5ac9"
-      },
-      "proposal_sha256": "ecf1650ba0ae1a0e4cb73fc442024fcc86303c8666ea059a90416eadfcb1ab58"
+      "proposal_sha256": "22fdd8e37348a006110a63d56d9e4019b5bc67ab41f4b6aa448e1cf8004ab6ad",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
