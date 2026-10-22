@@ -279,7 +279,8 @@ def unhold(ledger, state, attempts, key):
         raise ValueError("Only a held, rejected or needs_evidence candidate can be re-audited")
     if item is None and paper.get("analysis_status") not in {"held", "needs_evidence", "queued"}:
         raise ValueError("Only a held, rejected or needs_evidence candidate can be re-audited")
-    if item is None and ledger.get("screenings", {}).get(key, {}).get("status") != "passed":
+    investigated_before = item is not None or any(x.get("arxiv_id") == key for x in ledger.get("reaudits", []))
+    if not investigated_before and ledger.get("screenings", {}).get(key, {}).get("status") != "passed":
         # A candidate the previous pipeline already investigated needs no new screening.
         raise ValueError("Re-audit needs a passed abstract screening")
     if item is not None:
@@ -319,6 +320,9 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
                 r.paid_call_checkpoint(root, ledger)
                 continue
         reaudit_papers.append(unhold(ledger, state, attempts, key))
+    if reaudit:
+        r.save_state(root / "new-papers.json", state)
+        r.write_json(root / "research/proposals.json", ledger)
     if reaudit and not reaudit_papers:
         return
     # Preserve old provider stop flags; they are not Claude spending allowances.
@@ -449,7 +453,7 @@ def investigate(root, ledger, state, config, screenings, paper, source):
             proposal.update(arxiv_id=key, paper_title=paper["title"], paper_updated=paper["updated"],
                             source={k: v for k, v in source.items() if k != "pages"},
                             status=proposal["decision"], created_at=r.iso(datetime.now(timezone.utc)),
-                            extraction_model=MODEL, approval_policy="claude_only", screening=screenings[key], issue_url=None)
+                            extraction_model=MODEL, approval_policy="claude_only", screening=screenings.get(key), issue_url=None)
             proposal["proposal_sha256"] = r.digest({k: proposal[k] for k in ("arxiv_id", "changes", "source")})
             ledger["proposals"][key] = proposal
             paper.update(analysis_status=proposal["status"], analysis_reason=proposal["reason"])

@@ -195,6 +195,21 @@ class ClaudeApprovalTests(unittest.TestCase):
         self.assertEqual(ledger["reaudits"][0]["status"], "needs_evidence")
         self.assertIn("LICENSE file", ledger["reaudits"][0]["resume_error"])
 
+    def test_legacy_candidate_without_screening_can_be_excluded_or_held(self):
+        p = paper("2610.00009")
+        self.state["papers"].append(p)
+        self.ledger["reaudits"] = [{"arxiv_id": p["arxiv_id"], "status": "needs_evidence"}]
+        excluded = {"decision": "exclude", "reason": "모델 논문", "changes": []}
+        with patch.object(c, "call", return_value=excluded):
+            c.investigate(self.root, self.ledger, self.state, self.config, self.ledger["screenings"], p, self.context["source"])
+        self.assertEqual(self.ledger["proposals"][p["arxiv_id"]]["status"], "exclude")
+        self.assertIsNone(self.ledger["proposals"][p["arxiv_id"]]["screening"])
+        # Once re-audited, the same candidate can be re-audited again without a screening record.
+        del self.ledger["proposals"][p["arxiv_id"]]
+        p["analysis_status"] = "queued"
+        attempts = {"attempted": []}
+        self.assertEqual(c.unhold(self.ledger, self.state, attempts, p["arxiv_id"])["analysis_status"], "queued")
+
     def test_rejected_draft_is_corrected_once_immediately(self):
         p = self.state["papers"][0]
         self.ledger["screenings"][p["arxiv_id"]] = {"status": "passed", "paper_title": p["title"], "abstract": p["summary"]}
