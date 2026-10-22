@@ -32,3 +32,14 @@ fetch("./updates.json", { cache: "no-cache" }).then(response => {
   const summary = document.querySelector("#landing-papers-status");
   if (summary) summary.textContent = "벤치마크 표에 반영된 추가·수정 내역은 업데이트 페이지에서 확인할 수 있습니다.";
 });
+
+fetch("./research-status.json", { cache: "no-cache" }).then(response => {
+  if (!response.ok) throw new Error("Could not load research status");
+  return response.json();
+}).then(data => {
+  const target = document.querySelector("#landing-research-status");
+  const day = data.days?.[data.days.length - 1];
+  if (!target || !day) return;
+  const c = day.counts;
+  target.textContent = `자동 조사 ${day.day}: 본문 시도 ${day.attempted}건 · PDF 실패 ${c.pdf_failed}건 · 보류 ${c.held}건 · 제외 ${c.excluded}건 · 표 반영 ${c.published}건 · 대기 ${data.totals.queued}건`;
+}).catch(() => {});

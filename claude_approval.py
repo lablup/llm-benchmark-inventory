@@ -346,7 +346,7 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
                                "input_sha256": r.digest({"prompt": prompt, "model": MODEL}),
                                "version": "claude-v1", "policy": "claude_only",
                                "status": "excluded" if excluded else "passed", "votes": [vote]}
-            paper.update(analysis_status="exclude" if excluded else "queued",
+            paper.update(analysis_status="exclude" if excluded else "queued", analysis_at=r.iso(datetime.now(timezone.utc)),
                          analysis_reason="Claude 초록 선별에서 제외" if excluded else "초록 선별 후 본문 조사 대기")
         attempts["abstract_attempted"].extend(ids)
         r.save_state(root / "new-papers.json", state)
@@ -379,7 +379,8 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
         except ValueError as error:
             # An empty or unparseable Claude answer skips this paper only. A saved
             # awaiting_claude record is resumed on the next run.
-            paper.update(analysis_status="needs_evidence", analysis_reason=f"Claude 응답 처리 실패, 다음 실행에서 재시도: {str(error)[:200]}")
+            paper.update(analysis_status="needs_evidence", analysis_at=r.iso(datetime.now(timezone.utc)),
+                         analysis_reason=f"Claude 응답 처리 실패, 다음 실행에서 재시도: {str(error)[:200]}")
             print(f"{key}: Claude answer unusable, skipped: {str(error)[:300]}", flush=True)
         r.save_state(root / "new-papers.json", state)
         r.paid_call_checkpoint(root, ledger)
@@ -397,6 +398,7 @@ def defer_extraction(paper, error, day):
     wait = RETRY_DAYS[min(failures, len(RETRY_DAYS)) - 1]
     retry = (date.fromisoformat(day) + timedelta(days=wait)).isoformat()
     paper.update(analysis_status="needs_evidence", analysis_failures=failures, analysis_retry_after=retry,
+                 analysis_at=r.iso(datetime.now(timezone.utc)),
                  analysis_reason=f"PDF 추출 실패({str(error)[:80]}), {retry}부터 재시도")
 
 
@@ -418,7 +420,8 @@ def investigate(root, ledger, state, config, screenings, paper, source):
                 cards = [r.get_official_resource(url) for url in sorted({c["row"]["링크"] for c in proposal["changes"]})]
             except (OSError, ValueError, KeyError):
                 # Transient card errors stay eligible tomorrow, not permanently excluded.
-                paper.update(analysis_status="needs_evidence", analysis_reason="공식 자료 확인 실패, 다음 실행에서 재시도")
+                paper.update(analysis_status="needs_evidence", analysis_at=r.iso(datetime.now(timezone.utc)),
+                             analysis_reason="공식 자료 확인 실패, 다음 실행에서 재시도")
                 r.save_state(root / "new-papers.json", state)
                 return
             context["official_resources"] = cards

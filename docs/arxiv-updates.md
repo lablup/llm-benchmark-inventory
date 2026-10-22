@@ -27,6 +27,21 @@ unsupported QASU repository-license claim; it did not update the inventory.
 Production now invokes the official CLI directly so a variable number of papers
 can be processed sequentially with individual checkpoints.
 
+## Research status page and daily summary
+
+`build_research_status.py` (decision 22, item 4) derives `research-status.json`
+from `new-papers.json`, `research/proposals.json` and `updates.json`: a stage per
+collected paper (표에 반영, Claude 검증 대기, 근거 부족 보류, 본문 조사 후 제외, 초안
+형식 검사 거부, 공식 자료 확인 실패, PDF 추출 실패, 초록 선별에서 제외, 본문 조사 대기),
+its reason, retry date and, when published, the inventory link; plus per-day counts
+built from the daily attempt lists. The file has no generation timestamp, so the
+validate job checks it is current like `updates.json`. `papers.html#research`
+renders it with a 14-day table and a filterable paper list, and the landing page
+shows the latest day's line. After each scheduled or manual research run the
+workflow runs `build_research_status.py --notify`, which appends one line per day
+(idempotent by a `<!-- research-log:DAY -->` marker) to the open `research-log`
+issue "[조사 일지]", creating it once, and writes the same line to the step summary.
+
 ## Current publication requirements
 
 Decision 14 withdrew QASU's publication. QASU remains `held` in the research
