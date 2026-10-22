@@ -186,4 +186,22 @@ window.ENGLISH_INVENTORY_COPY = {
     example: "Evaluate retrieval with corpus, query, and relevance files in BEIR format, then report recall at k and nDCG.",
   },
 
+  "tau-rec": {
+    "axis": "Agents (conversational recommendation)",
+    "definition": "τ-Rec evaluates agentic conversational recommenders. An agent must elicit hidden user preferences from a simulated user, call catalog tools, and recommend one movie that satisfies the constraints. Scoring uses typed catalog predicates and seven policy checks without an LLM judge. Reveal-tagged elicitation (volunteer/on_ask/hidden) controls how constraints surface, and pass^k measures reliability. The current release has 60 tasks (20 simple/24 medium/16 complex; 13 volunteer/32 mixed/15 hidden, including 5 with no valid recommendation) and a 153-movie catalog; the paper evaluates 4 trials per task.",
+    "task": "Preference elicitation and constrained reasoning (pass^1, pass^2, pass^4)",
+    "example": "A simulated persona, such as a tired parent looking for a short comedy, states only some constraints. The agent asks questions and calls catalog tools to find the rest, then submits one movie with the recommend tool."
+  },
+  "cesbench": {
+    "axis": "Security (IoT cryptographic engineering)",
+    "definition": "A benchmark of 380 expert-written items on cryptographic engineering security for IoT devices, across six sub-domains: side-channel, fault injection, implementation, countermeasures, evaluation, and integration. It has 209 multiple-choice, 67 judgment, 63 scenario, and 41 code items (572 test cases). Multiple-choice and code items are scored automatically; judgment and scenario items are scored by an LLM judge using rubrics.",
+    "task": "Four task types: multiple choice, judgment (True/False verdict with justification), scenario diagnosis, and code implementation.",
+    "example": "Judgment task: decide whether the claim that keeping a key only in a memory variable and zeroizing it after use is enough to resist cold boot attacks is True or False, and justify the verdict. The justification is scored with an item-specific rubric, and a wrong verdict scores zero."
+  },
+  "omni-math-2": {
+    "axis": "Olympiad-level mathematics",
+    "definition": "A manually audited revision of Omni-MATH (4,428 problems). 647 problems were edited (14.6%) and 247 (5.6%) were tagged as image (61), proof (115), estimation (54) or should delete (25); one problem can have several tags. Omni-MATH-2-Filtered (n=4,181) is the exact-answer subset. The paper compares two judges, Omni-Judge and GPT-5 mini.",
+    "task": "Omni-MATH-2-Filtered",
+    "example": "Task description: the model solves an Olympiad-level math problem and puts the final answer in \\boxed{}; a judge checks equivalence with the reference answer."
+  },
 };
