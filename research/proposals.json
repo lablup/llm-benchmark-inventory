@@ -4462,74 +4462,9 @@
       }
     },
     "2609.27891": {
-      "decision": "propose",
-      "reason": "SchrodingerRepo는 SWE-bench Verified 등 기존 저장소 수준 코딩 벤치마크를 평가 시점마다 의미가 같은 다른 저장소 표현(문제 서술 재구성, 네임스페이스 재매핑, 파일 내 배치 재정렬, 기능 보존 코드 재작성)으로 바꿔 주는 재사용 가능한 평가 프레임워크다. 코드와 데이터를 GitHub에 공개했고 Pass@1과 상호작용 비용으로 측정한다. 과제는 영어 GitHub 이슈와 코드이므로 en 트랙 text 모달리티로 분류한다. 라이선스와 lm-eval 지원 등은 확인하지 않아 '확인 불가'로 기록한다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "schrodingerrepo",
-            "이름": "SchrodingerRepo",
-            "평가 축": "코딩(에이전틱, 저장소 표현 강건성)",
-            "언어": "en",
-            "정의": "테스트 저장소를 평가 시점에 동적으로 만들어지는 잠재 변수로 보고, 실행 동작은 그대로 두면서 이름 규칙, 파일 배치, 구현 패턴 같은 익숙한 단서를 지우는 평가 프레임워크. 문제 서술 재구성, 네임스페이스 재매핑, 파일 내 배치 재정렬, 기능 보존 코드 재작성의 네 단계 변환을 쓰며, Pass@1과 평균 행동 수·토큰 수로 측정함. 기존 벤치마크에 얹어 쓰는 변환 방식이며 독립 문항 세트는 아님",
-            "대표 과제": "SWE-bench Verified 이슈 해결과 SWE-QA 저장소 질의응답에 변환을 적용",
-            "대표 예시·설명": "논문 사례 연구: Django 이슈(사용자 정의 get_FOO_display() 메서드가 자동 생성 메서드에 덮어써지는 문제)를 원래 저장소 표현과 변환된 표현에서 각각 해결하는 과제",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터와 코드의 라이선스, 상업적 이용, 수정·파생, 재배포 조건, lm-eval 지원 여부는 아직 확인하지 않음. 코드 저장소 라이선스가 데이터 라이선스를 보증하지 않음. 변환은 기존 SWE-bench 실행 환경(컨테이너)에 의존하며 현재 구현은 명령줄 기반 에이전트를 대상으로 함",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/cslsolow/Schrodinger-Repo"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Software engineering agents (robustness to repository representation)",
-            "definition": "An evaluation framework that treats the test repository as an evaluation-time latent variable. It preserves executable behavior while removing familiar cues such as naming conventions, file layouts, and implementation patterns. It applies four transformation levels: problem statement reconstruction, namespace remapping, intra-file layout reordering, and functionality-preserving code rewriting. Results are measured with Pass@1 plus average actions and tokens. It is applied on top of existing benchmarks rather than being a standalone question set.",
-            "task": "Apply the transformations to SWE-bench Verified issue resolution and SWE-QA repository question answering",
-            "example": "Case study from the paper: resolve a Django issue where a user-defined get_FOO_display() method is overwritten by the generated display method, in both the original and the transformed repository view."
-          },
-          "evidence": {
-            "modality": {
-              "page": 1,
-              "quote": "repository-level issue resolution"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "SWE-bench Verified and"
-            },
-            "대표 예시·설명": {
-              "page": 9,
-              "quote": "get_FOO_display() method being"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/cslsolow/ Schrodinger-Repo"
-            },
-            "언어": {
-              "page": 9,
-              "quote": "get_FOO_display() method being"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "SchrodingerRepo"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "four transformation levels"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "repository-level issue resolution"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "데이터셋 라이선스가 모든 구성요소에 적용된다는 근거를 공식 자료에서 찾지 못해 게시할 수 없다. 공식 저장소 카드(https://github.com/cslsolow/Schrodinger-Repo)에는 '## LICENSE file: LICENSE.md (SPDX MIT)' 항목이 있어, 라이선스 미표기(absence) 증거는 허용되지 않는다. 한편 해당 MIT 전문의 저작권자는 'Kilian A. Lieret and Carlos E. Jimenez'이고, README는 이 라이선스가 변환된 데이터나 벤치마크 문항에 적용된다고 밝히지 않는다. 이는 코드 저장소의 라이선스이며 데이터셋 라이선스가 아니다. 논문 1쪽은 코드와 데이터를 같은 GitHub 저장소에 공개했다고만 적고 있다. 또한 SchrodingerRepo는 SWE-bench Verified(1쪽, 6쪽), SWE-rebench(2쪽, 8쪽), SWE-QA(2쪽, 8쪽) 위에 변환을 적용하는 프레임워크이며, 각 구성요소는 자체 이용 조건을 갖는다. MIT를 벤치마크 전체의 라이선스로 기록하면 근거 없는 가정이 되고, '저작권 전부 보유' 규칙은 LICENSE 항목이 있는 카드에서는 쓸 수 없다. 따라서 저자가 데이터와 구성요소 전체에 대한 라이선스 적용 범위를 명시한 자료가 필요하다. lm-eval 지원은 카드와 PDF 모두에 언급이 없어 '미표기'로 쓸 수 있으나, 라이선스 항목이 비어 있어 행을 게시하지 않는다.",
+      "changes": [],
       "arxiv_id": "2609.27891",
       "paper_title": "Schrödinger's Code Repository: Have LLMs Learned SWE-bench or Memorized It?",
       "paper_updated": "2026-09-24T00:00:00Z",
@@ -4586,7 +4521,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-22T08:23:27Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -4612,11 +4547,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "39743769977",
-        "context_sha256": "570c7833e32b1c2432bb6dce056794e3abff524ab88558bcec56b2be08175e9c"
-      },
-      "proposal_sha256": "efefbd3bd1de3fabd03baa02bda6dc7c3a15dac9b1e0d9e2af56d180692a0e9f"
+      "proposal_sha256": "bb71bd36501750c7de09445fdcdb786b0340a0a58bba9f0974ff928b62684fd2",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
