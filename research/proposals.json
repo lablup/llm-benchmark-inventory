@@ -5434,7 +5434,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-22T08:44:19Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -5460,12 +5460,57 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "39743769977",
-        "context_sha256": "b213d08bbfacdfb10dff92738b984a877356d0071afa0d4d2fc3c4c3e735abc2"
-      },
       "proposal_sha256": "ec961bafcf0cdaa263b5d0b37f7e5fbf1efa00a7658001be6e89075d368b5422",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 모든 변경 사실이 논문 PDF와 공식 저장소 카드로 뒷받침됩니다. (1) 구성: 380문항, 6개 하위 영역, 객관식 209·판정 67·시나리오 63·코드 41(테스트 572개)은 초록과 Table II, 저장소 README와 일치합니다. 채점 방식(객관식·코드 자동 채점, 판정·시나리오는 LLM judge와 루브릭)과 judge 모델(Qwen3.5-397B), 실행 환경(Python 3.11/pytest, C 컴파일러)도 논문 본문에 있습니다. (2) 언어·모달리티: Fig. 2의 과제 카드와 README의 영문 워크북(EN 에디션) 기준으로 영어 텍스트이므로 en 트랙의 text 분류가 타당합니다. 대표 예시인 콜드부트 판정 문항은 Fig. 2의 T2 카드와 일치하고, 판정이 틀리면 0점이라는 설명도 맞습니다. (3) 권리 필드: README와 LICENSE 파일이 데이터(워크북, 코드 과제 설명, 루브릭, 라벨, 결과표)를 CC-BY-4.0으로, 코드(프롬프트, 하니스, 테스트·목·솔루션 파일)를 MIT로 구분해 명시합니다. 따라서 라이선스 필드는 데이터 라이선스를 정확히 가리키고, 코드 라이선스를 데이터 권리로 혼동하지 않았습니다. 상업적 이용 가능, 수정·파생 가능(조건 준수), 재배포 조건부 가능은 CC-BY-4.0 조항(공유·변형물 생성 허용, 출처 표기 조건)과 일치합니다. 모든 필드가 해소되어 있고 미확인·확인 불가 값이 없으며, 유의사항에 출처 표기, 코드 MIT 별도 적용, LLM judge 필요성, 실행 환경, 공격 측면 문항 주의가 적혀 있습니다. 문항은 전문가가 교재·문헌·표준을 바탕으로 직접 작성한 것으로 다른 데이터셋에서 파생되었다는 근거가 없어, 원 데이터셋 약관 별도 확인 문구가 필요하지 않습니다. (4) lm-eval: 공식 README에 lm-eval 또는 lm-evaluation-harness 언급이 없고 논문 PDF에도 언급이 없어(pdf_mentions 비어 있음) 미표기가 근거 있는 해소 값입니다. (5) 추천 비교: Table VI의 종합 점수 11개(83.6, 82.5, 81.4, 80.8, 80.2, 73.4, 68.4, 61.3, 60.0, 59.7, 54.4)가 모델명과 행·열 정렬까지 모두 일치하고, 지표 방향(높을수록 좋음), 단위(%), 단일 실험 조건(전체 380문항, 제로샷, 기본 추론 모드, 온도 0, 동일 judge)도 올바릅니다. 목록이 비교 대상 11개 모델 전체를 포함하므로 상위 3개 선택이 정당합니다. 공개 가중치 여부(open/closed)는 Table V의 가중치 열과 일치하며, 논문 보고 결과이지 실시간 리더보드가 아니라는 단서도 명시되어 있습니다. 추출 텍스트 간 충돌이나 그림에만 의존하는 주장은 발견되지 않았습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 108965,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2598,
+              "output_tokens_details": {
+                "thinking_tokens": 1320
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 108965,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2598,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 108965,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 108965
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "ec961bafcf0cdaa263b5d0b37f7e5fbf1efa00a7658001be6e89075d368b5422",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
