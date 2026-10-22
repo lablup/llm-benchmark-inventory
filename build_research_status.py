@@ -3,8 +3,8 @@
 what reached the page (decision 22, item 4).
 
 Reads new-papers.json, research/proposals.json and updates.json; writes
-research-status.json for the site and, with --notify, appends a one-line daily
-summary to the "조사 일지" issue and the workflow step summary.
+research-status.json for the site and, with --notify, appends (or, later the same day, rewrites) a one-line daily
+summary in the "조사 일지" issue and the workflow step summary.
 """
 import argparse
 import os
@@ -192,15 +192,22 @@ def notify(github, status: dict, day: str, reviewer: str) -> str | None:
                                f"[조사 현황 페이지]({STATUS_URL})에 있습니다."]),
             "labels": [LABEL], "assignees": [reviewer]})
     marker = f"<!-- research-log:{day} -->"
+    body = comment_body(status, day)
     page = 1
     while True:
         comments = github.request(f"/issues/{issue['number']}/comments?per_page=100&page={page}")
-        if any(marker in (c.get("body") or "") for c in comments):
-            return None
+        existing = next((c for c in comments if marker in (c.get("body") or "")), None)
+        if existing:
+            if (existing.get("body") or "") == body:
+                return None
+            # A later run on the same day (a re-audit, a retry) rewrites the day's line
+            # rather than adding a second comment or leaving the first one stale.
+            updated = github.request(f"/issues/comments/{existing['id']}", {"body": body}, method="PATCH")
+            return updated.get("html_url")
         if len(comments) < 100:
             break
         page += 1
-    created = github.request(f"/issues/{issue['number']}/comments", {"body": comment_body(status, day)})
+    created = github.request(f"/issues/{issue['number']}/comments", {"body": body})
     return created.get("html_url")
 
 

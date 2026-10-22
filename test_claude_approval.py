@@ -255,6 +255,22 @@ class ClaudeApprovalTests(unittest.TestCase):
         self.assertIn("Claude 응답 처리 실패", state["papers"][0]["analysis_reason"])
         self.assertEqual(state["research"]["status"], "ready")
 
+    def test_failed_card_fetch_records_the_error_and_backs_off(self):
+        p = self.state["papers"][0]
+        self.ledger["screenings"][p["arxiv_id"]] = {"status": "passed", "paper_title": p["title"], "abstract": p["summary"]}
+        r.write_json(self.root / "research/proposals.json", self.ledger)
+        r.save_state(self.root / "new-papers.json", self.state)
+        with patch.object(r, "get_pdf", return_value=self.context["source"]), \
+                patch.object(r, "get_official_resource", side_effect=OSError("HTTP Error 404: Not Found")), \
+                patch.object(c, "call", return_value=self.proposal):
+            r.run(self.root)
+        paper = r.load_state(self.root / "new-papers.json")["papers"][0]
+        today = datetime.now(timezone.utc).astimezone(r.KST).date()
+        self.assertEqual((paper["analysis_status"], paper["card_failures"]), ("needs_evidence", 1))
+        self.assertEqual(paper["analysis_retry_after"], (today + timedelta(days=1)).isoformat())
+        self.assertIn("공식 자료 확인 실패(HTTP Error 404: Not Found)", paper["analysis_reason"])
+        self.assertNotIn(p["arxiv_id"], r.read_json(self.root / "research/proposals.json")["proposals"])
+
     def test_failed_pdf_extraction_is_deferred_a_week_not_retried_daily(self):
         p = self.state["papers"][0]
         self.ledger["screenings"][p["arxiv_id"]] = {"status": "passed", "paper_title": p["title"], "abstract": p["summary"]}

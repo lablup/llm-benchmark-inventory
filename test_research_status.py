@@ -33,8 +33,12 @@ class FakeGitHub:
         if "/comments?" in path:
             return self.comments
         if path.endswith("/comments"):
-            self.comments.append({"body": data["body"]})
+            self.comments.append({"id": len(self.comments) + 1, "body": data["body"]})
             return {"html_url": "https://github.com/x/issues/7#issuecomment-1"}
+        if path.startswith("/issues/comments/"):
+            comment = next(c for c in self.comments if c["id"] == int(path.rsplit("/", 1)[1]))
+            comment["body"] = data["body"]
+            return {"html_url": f"https://github.com/x/issues/7#issuecomment-{comment['id']}"}
         raise AssertionError(path)
 
 
@@ -110,6 +114,20 @@ class StatusTests(unittest.TestCase):
         again = FakeGitHub(issues=list(github.issues), comments=list(github.comments))
         self.assertIsNone(status.notify(again, result, "2026-10-22", "songys"))
         self.assertFalse(any(path.endswith("/comments") and data for path, data in again.calls))
+
+    def test_a_later_run_on_the_same_day_rewrites_the_line_instead_of_adding_a_comment(self):
+        result = status.build(self.root)
+        github = FakeGitHub()
+        status.notify(github, result, "2026-10-22", "songys")
+        ledger = status.read_json(self.root / "research/proposals.json")
+        ledger["claude_daily_runs"]["2026-10-22"]["attempted"].append("3")
+        status.write_json(self.root / "research/proposals.json", ledger)
+        later = status.build(self.root)
+        url = status.notify(github, later, "2026-10-22", "songys")
+        self.assertEqual(url, "https://github.com/x/issues/7#issuecomment-1")
+        self.assertEqual(len(github.comments), 1)
+        self.assertIn("본문 시도 6건", github.comments[0]["body"])
+        self.assertTrue(any(path == "/issues/comments/1" for path, _ in github.calls))
 
     def test_titles_cannot_inject_markdown(self):
         self.assertEqual(status.markdown_title("[x](y) @me <b>"), "\\[x\\]\\(y\\) ＠me &lt;b&gt;")

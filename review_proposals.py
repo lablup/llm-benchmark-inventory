@@ -121,8 +121,10 @@ def apply_proposal(item, root=ROOT, verify=True):
             apply_rankings(item, root)
         write_json(root / "benchmark-modalities.json", modalities)
         if verify:
-            # Reuse the existing renderer without re-normalizing license fields.
-            subprocess.run([sys.executable, "-c", "import build_benchmark_inventory as b; import research_pipeline as r; b.ROOT.joinpath('README.md').write_text(b.render_readme({name:r.read_table(b.ROOT,track)[1] for track,name in r.TABLES.items()}),encoding='utf-8')"], cwd=root, check=True)
+            # The derived columns (예시 표기, 상업적 이용, 수정·파생, 재배포) and README come from
+            # the same normalizer a person runs after a manual edit (CLAUDE.md), so a proposed
+            # row cannot leave a value outside the table's vocabulary.
+            subprocess.run([sys.executable, "build_benchmark_inventory.py"], cwd=root, check=True)
             subprocess.run([sys.executable, "build_site_data.py"], cwd=root, check=True)
             subprocess.run([sys.executable, "validate_inventory.py"], cwd=root, check=True)
             subprocess.run(["node", "--check", "english-copy.js"], cwd=root, check=True)

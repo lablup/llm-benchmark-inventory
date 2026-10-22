@@ -414,6 +414,19 @@ def defer_extraction(paper, error, day):
                  analysis_reason=f"PDF 추출 실패({str(error)[:80]}), {retry}부터 재시도")
 
 
+CARD_RETRY_DAYS = (1, 7, 30)
+
+
+def defer_card(paper, error, day):
+    """An official card that cannot be read is retried tomorrow, then weekly, then monthly."""
+    failures = int(paper.get("card_failures") or 0) + 1
+    wait = CARD_RETRY_DAYS[min(failures, len(CARD_RETRY_DAYS)) - 1]
+    retry = (date.fromisoformat(day) + timedelta(days=wait)).isoformat()
+    paper.update(analysis_status="needs_evidence", card_failures=failures, analysis_retry_after=retry,
+                 analysis_at=r.iso(datetime.now(timezone.utc)),
+                 analysis_reason=f"공식 자료 확인 실패({str(error)[:80]}), {retry}부터 재시도")
+
+
 def investigate(root, ledger, state, config, screenings, paper, source):
     """Draft one paper's inventory change with Claude and hand it to the audit."""
     key = paper["arxiv_id"]
@@ -440,10 +453,11 @@ def investigate(root, ledger, state, config, screenings, paper, source):
         if proposal["decision"] == "propose":
             try:
                 cards = [r.get_official_resource(url) for url in sorted({c["row"]["링크"] for c in proposal["changes"]})]
-            except (OSError, ValueError, KeyError):
-                # Transient card errors stay eligible tomorrow, not permanently excluded.
-                paper.update(analysis_status="needs_evidence", analysis_at=r.iso(datetime.now(timezone.utc)),
-                             analysis_reason="공식 자료 확인 실패, 다음 실행에서 재시도")
+            except (OSError, ValueError, KeyError) as error:
+                # A card that cannot be read (404, rate limit, unsupported host) is retried
+                # tomorrow, then weekly, then monthly: every retry re-extracts the PDF.
+                defer_card(paper, error, datetime.now(timezone.utc).astimezone(r.KST).date().isoformat())
+                print(f"{key}: official card fetch failed: {str(error)[:300]}", flush=True)
                 r.save_state(root / "new-papers.json", state)
                 return
             context["official_resources"] = cards

@@ -40,6 +40,15 @@ and the model field may append the API identifier in parentheses after the name
 printed in the table (`publication_checks.score_in_quote`). Decision 22, items 5
 and 6.
 
+When an agreed proposal is applied, `review_proposals.py` runs
+`build_benchmark_inventory.py`, so the derived columns (예시 표기, 상업적 이용,
+수정·파생, 재배포) and README are normalized exactly as after a manual edit (the
+first three automated rows had carried `가능(조건 준수)` into 상업적 이용); the
+pipeline's `과제 설명` marker in 예시 표기 is kept. An official card that cannot be
+fetched after a draft (404, rate limit, unsupported host) keeps the error text in
+`analysis_reason` and is retried after 1, 7, then 30 days
+(`claude_approval.defer_card`), because every retry re-extracts the PDF.
+
 ## Research status page and daily summary
 
 `build_research_status.py` (decision 22, item 4) derives `research-status.json`
@@ -54,6 +63,8 @@ shows the latest day's line. After each scheduled or manual research run the
 workflow runs `build_research_status.py --notify`, which appends one line per day
 (idempotent by a `<!-- research-log:DAY -->` marker) to the open `research-log`
 issue "[조사 일지]", creating it once, and writes the same line to the step summary.
+A later run on the same day rewrites that day's comment in place when the counts
+changed, so the issue never shows a stale line or two comments for one day.
 
 ## Current publication requirements
 

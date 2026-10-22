@@ -82,7 +82,9 @@ def license_fields(row_id: str, license_text: str, caution: str) -> tuple[str, s
     return license_text, "조건 확인 필요", "조건 확인 필요", "조건 확인 필요"
 
 
-def example_label(language: str, example: str) -> str:
+def example_label(language: str, example: str, current: str = "") -> str:
+    if current == "과제 설명":
+        return current  # the research pipeline marks a task description, not a quoted test item
     if language.startswith("ko"):
         return "한국어 예시·요약"
     korean_count = len(re.findall(r"[가-힣]", example))
@@ -107,7 +109,7 @@ def read_and_normalize(name: str) -> list[dict]:
             "정의": row.get("정의"),
             "대표 과제": row.get("대표 과제"),
             "대표 예시·설명": example,
-            "예시 표기": example_label(text_of(row.get("언어")), text_of(example)),
+            "예시 표기": example_label(text_of(row.get("언어")), text_of(example), text_of(row.get("예시 표기"))),
             "라이선스": license_text,
             "상업적 이용": commercial,
             "수정·파생": modification,
@@ -189,7 +191,7 @@ README_HEAD = """# LLM 벤치마크 인벤토리
 - `저작권 전부 보유`는 논문·데이터 카드·공식 저장소를 확인했는데 라이선스가 적혀 있지 않은 경우(라이선스 열 `미표기`)입니다. 라이선스가 없는 공개물은 저작권 전부 보유(all rights reserved) 상태로 간주해 상업적 이용·수정·파생·재배포를 모두 불가로 봅니다. 이용하려면 저자에게 직접 확인해야 합니다.
 - `확인 불가`는 비공개 저장소 등으로 라이선스 확인 자체를 하지 못한 경우(라이선스 열 `확인 불가`)이며 다시 조사할 대상입니다. `미확인`, `unknown` 같은 표기는 쓰지 않습니다.
 - 라이선스는 {checked_on}에 각 데이터 카드와 저장소에서 확인했습니다. 이후 바뀔 수 있으므로 실제 이용 전에 원문을 다시 확인해야 합니다.
-- **대표 예시**는 각 벤치마크의 실제 과제 문항입니다. 영어 벤치마크는 한국어 번역이나 요약을 제공하는 경우가 많으며, CSV의 `예시 표기` 열에서 영문 예시와 한국어 요약을 구분합니다.
+- **대표 예시**는 각 벤치마크의 실제 과제 문항입니다. 영어 벤치마크는 한국어 번역이나 요약을 제공하는 경우가 많으며, CSV의 `예시 표기` 열에서 영문 예시와 한국어 요약을 구분합니다. 자동 조사가 실제 문항 대신 과제 설명을 적은 행은 `과제 설명`으로 표시합니다.
 - `lm-eval 지원`은 오픈소스 평가 프레임워크 [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)(EleutherAI)에 해당 과제가 내장되어 있는지를 뜻합니다. 조사 시점 기준이며 최신 버전에서는 달라질 수 있습니다.
 
 """
@@ -199,7 +201,7 @@ README_TAIL = """## 데이터 열
 | 열 | 설명 |
 |---|---|
 | `대표 예시·설명` | 실제 또는 대표적인 과제 예시, 번역·요약 설명 |
-| `예시 표기` | 한국어 예시·요약, 한국어 번역·요약, 영문 예시(한국어 주석) 구분 |
+| `예시 표기` | 한국어 예시·요약, 한국어 번역·요약, 영문 예시(한국어 주석), 과제 설명 구분 |
 | `라이선스` | 데이터 카드 또는 원 출처에 표시된 라이선스와 조사 메모 |
 | `상업적 이용` | 선언된 라이선스를 기준으로 한 상업적 이용 판단 |
 | `수정·파생` | 번역, 변형 및 파생 데이터 제작 가능 여부 |
