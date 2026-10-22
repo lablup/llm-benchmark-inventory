@@ -364,3 +364,15 @@ English task example. The user approved the following order of work:
 
 Decision 14 (model scores and complete rights evidence before publication)
 stays in force.
+
+## 23. Record the API-equivalent cost of each day's Claude calls (2026-10-22)
+
+The pipeline calls Claude with the subscription token, so no invoice shows what a
+day of research used. The owner asked for the cost to be recorded as "API 환산
+비용": the `total_cost_usd` the Claude Code CLI reports for each fresh call (what
+the API would have charged; cached replays are free) is summed into the day's
+run record (`claude_daily_runs[day].calls`, `.cost_usd`), published in
+`research-status.json`, shown as a column on the status page and appended to the
+daily summary line in the "[조사 일지]" issue. 2026-10-22 was back-filled from the
+run artifacts: 65 calls, $25.74 (42 drafts, 13 completions, 4 votes, 2 draft
+retries, 4 abstract-screening batches; all claude-sonnet-5-5).

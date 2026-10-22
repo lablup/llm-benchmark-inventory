@@ -64,7 +64,12 @@ workflow runs `build_research_status.py --notify`, which appends one line per da
 (idempotent by a `<!-- research-log:DAY -->` marker) to the open `research-log`
 issue "[조사 일지]", creating it once, and writes the same line to the step summary.
 A later run on the same day rewrites that day's comment in place when the counts
-changed, so the issue never shows a stale line or two comments for one day.
+changed, so the issue never shows a stale line or two comments for one day. The
+line ends with the day's API-equivalent cost (decision 23): `claude_approval.call`
+adds each fresh call's `total_cost_usd` from the CLI result to
+`claude_daily_runs[day]` (`calls`, `cost_usd`); cached replays add nothing. The
+subscription is what is actually billed, so the figure is a usage measure, not an
+invoice.
 
 ## Current publication requirements
 

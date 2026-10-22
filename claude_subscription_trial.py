@@ -80,7 +80,8 @@ def parse_execution(messages, parse=r.parse_check):
         if isinstance(content, list) and any(isinstance(c, dict) and c.get("type") == "tool_use" for c in content):
             raise ValueError("The audit must not use tools")
     return {"model": MODEL, **parse(result.get("result", "")),
-            "num_turns": result["num_turns"], "usage": result.get("usage", {})}
+            "num_turns": result["num_turns"], "usage": result.get("usage", {}),
+            "cost_usd": result.get("total_cost_usd")}
 
 
 def consume(execution, root=r.ROOT):

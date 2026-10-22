@@ -19,6 +19,18 @@ from claude_subscription_trial import MODEL, parse_execution
 from replay_citations import correct_pages, load_evidence, verify_baseline
 
 
+# The day's run record (ledger["claude_daily_runs"][day]); fresh calls add their
+# API-equivalent cost here so the daily summary can report it (decision 23).
+SPEND = None
+
+
+def record_spend(result):
+    if SPEND is None or not isinstance(result.get("cost_usd"), (int, float)):
+        return
+    SPEND["calls"] = int(SPEND.get("calls") or 0) + 1
+    SPEND["cost_usd"] = round(float(SPEND.get("cost_usd") or 0) + result["cost_usd"], 4)
+
+
 def call(prompt, folder, parse=r.parse_check):
     """Reuse only complete results bound to the exact input; never paid fallback."""
     folder.mkdir(parents=True, exist_ok=True)
@@ -62,6 +74,7 @@ def call(prompt, folder, parse=r.parse_check):
         raise RuntimeError("Claude stopped (quota/authentication/runtime); inspect the saved execution result")
     result = parse_execution(messages, parse)
     r.write_json(output, {"prompt_sha256": key, "auth_method": "oauth_token", "messages": messages})
+    record_spend(result)
     return {**result, "auth_method": "oauth_token"}
 
 
@@ -304,6 +317,8 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
     deadline = started + config.get("run_minutes", 90) * 60
     day = datetime.now(timezone.utc).astimezone(r.KST).date().isoformat()
     attempts = ledger.setdefault("claude_daily_runs", {}).setdefault(day, {"attempted": [], "abstract_attempted": []})
+    global SPEND
+    SPEND = attempts
     reaudit_papers = []
     for key in [k.strip() for k in (reaudit or "").split(",") if k.strip()]:
         pending = ledger["proposals"].get(key)
@@ -399,6 +414,7 @@ def run(root=r.ROOT, dry_run=False, screening_smoke=False, reaudit=None):
     state["research"].update(status="paused_time_budget" if time.monotonic() >= deadline else "ready",
                              abstract_screened_total=len(screenings), full_text_completed_total=len(ledger["proposals"]))
     r.save_state(root / "new-papers.json", state)
+    r.write_json(root / "research/proposals.json", ledger)
 
 
 RETRY_DAYS = (7, 7, 30)

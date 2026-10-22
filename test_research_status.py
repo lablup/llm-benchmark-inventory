@@ -68,7 +68,8 @@ class StatusTests(unittest.TestCase):
             "5": {"status": "needs_evidence", "reason": "링크 없음", "created_at": "2026-10-22T04:00:00Z"},
             "6": {"status": "exclude", "reason": "모델 논문", "created_at": "2026-10-21T04:00:00Z"},
             "7": {"status": "accepted", "reason": "반영", "created_at": "2026-10-22T05:00:00Z", "applied_at": "2026-10-22T06:00:00Z"}},
-            "claude_daily_runs": {"2026-10-22": {"attempted": ["1", "2", "5", "6", "7"], "abstract_attempted": ["4", "8"]}}})
+            "claude_daily_runs": {"2026-10-22": {"attempted": ["1", "2", "5", "6", "7"], "abstract_attempted": ["4", "8"],
+                                                 "calls": 9, "cost_usd": 3.4567}}})
         write_json(self.root / "updates.json", {"schema_version": 1, "updates": [
             {"arxiv_id": "7", "title": "Paper 7", "applied_at": "2026-10-22T06:00:00Z",
              "changes": [{"name": "Seven Bench", "action": "added", "inventory_url": "./english.html#inventory"}]}]})
@@ -96,7 +97,8 @@ class StatusTests(unittest.TestCase):
         # Paper 6 was concluded on 10-21 and only re-listed on 10-22.
         self.assertEqual(counts["carried"], 1)
         self.assertEqual(status.summary_line(result, "2026-10-22"),
-                         "2026-10-22: 초록 선별 2건 · 본문 시도 5건 · PDF 실패 1건 · 초안 거부 1건 · 제외 0건 · 보류 1건 · 검증 대기 0건 · 표 반영 1건 · 대기열 1건")
+                         "2026-10-22: 초록 선별 2건 · 본문 시도 5건 · PDF 실패 1건 · 초안 거부 1건 · 제외 0건 · 보류 1건 · 검증 대기 0건 · 표 반영 1건 · 대기열 1건 · API 환산 비용 $3.46(Claude 호출 9회)")
+        self.assertEqual((day["calls"], day["cost_usd"]), (9, 3.46))
         self.assertIn("실행 기록이 없습니다", status.summary_line(result, "2026-10-23"))
 
     def test_notify_creates_the_log_issue_once_and_never_repeats_a_day(self):

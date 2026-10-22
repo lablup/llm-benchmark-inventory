@@ -85,15 +85,17 @@ def day_records(ledger: dict, papers: dict, items: dict, applied: dict) -> list[
     runs = {}
     for source in ("claude_daily_runs", "daily_runs"):
         for day, run in (ledger.get(source) or {}).items():
-            merged = runs.setdefault(day, {"attempted": [], "abstracts": 0})
+            merged = runs.setdefault(day, {"attempted": [], "abstracts": 0, "calls": 0, "cost_usd": 0.0})
             merged["attempted"].extend(k for k in run.get("attempted", []) if k not in merged["attempted"])
             merged["abstracts"] += len(run.get("abstract_attempted", []))
+            merged["calls"] += int(run.get("calls") or 0)
+            merged["cost_usd"] = round(merged["cost_usd"] + float(run.get("cost_usd") or 0), 2)
     published_by_day = {}
     for key, update in applied.items():
         published_by_day.setdefault(kst_day(update.get("applied_at")), []).append(key)
     days = []
     for day in sorted(set(runs) | set(k for k in published_by_day if k)):
-        run = runs.get(day, {"attempted": [], "abstracts": 0})
+        run = runs.get(day, {"attempted": [], "abstracts": 0, "calls": 0, "cost_usd": 0.0})
         counts = dict.fromkeys(STAGES, 0)
         counts["carried"] = 0
         for key in run["attempted"]:
@@ -103,7 +105,8 @@ def day_records(ledger: dict, papers: dict, items: dict, applied: dict) -> list[
             else:
                 counts[stage(paper, item)] += 1
         counts["published"] = len(published_by_day.get(day, []))
-        days.append({"day": day, "abstracts": run["abstracts"], "attempted": len(run["attempted"]), "counts": counts})
+        days.append({"day": day, "abstracts": run["abstracts"], "attempted": len(run["attempted"]),
+                     "calls": run["calls"], "cost_usd": run["cost_usd"], "counts": counts})
     return days
 
 
@@ -137,6 +140,9 @@ def summary_line(status: dict, day: str | None = None) -> str:
     parts = [f"초록 선별 {record['abstracts']}건", f"본문 시도 {record['attempted']}건"]
     parts += [f"{label} {record['counts'][key]}건" for key, label in SUMMARY_FIELDS]
     parts.append(f"대기열 {status['totals']['queued']}건")
+    if record.get("calls"):
+        # What the API would have charged for the subscription calls (decision 23).
+        parts.append(f"API 환산 비용 ${record['cost_usd']:.2f}(Claude 호출 {record['calls']}회)")
     return f"{record['day']}: " + " · ".join(parts)
 
 

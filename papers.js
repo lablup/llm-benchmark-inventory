@@ -123,7 +123,8 @@
     body.replaceChildren(...recent.map(day => {
       const row = element("tr");
       const cells = [day.day, day.abstracts, day.attempted, day.counts.pdf_failed, day.counts.draft_rejected,
-        day.counts.excluded, day.counts.held, day.counts.awaiting, day.counts.published];
+        day.counts.excluded, day.counts.held, day.counts.awaiting, day.counts.published,
+        day.calls ? `$${Number(day.cost_usd).toFixed(2)} (${day.calls}회)` : "–"];
       cells.forEach((value, index) => {
         const cell = element(index ? "td" : "th", String(value));
         if (!index) cell.scope = "row";

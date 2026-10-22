@@ -121,16 +121,19 @@ class ClaudeApprovalTests(unittest.TestCase):
 
     def test_cli_uses_only_oauth_and_reuses_complete_answer(self):
         messages = [{"type": "system", "subtype": "init", "model": c.MODEL},
-                    {"type": "result", "subtype": "success", "is_error": False,
+                    {"type": "result", "subtype": "success", "is_error": False, "total_cost_usd": 0.389,
                      "num_turns": 1, "result": '{"approve":true,"reason":"Supported"}'}]
         calls = [Mock(returncode=0, stdout='{"authMethod":"oauth_token"}'),
                  Mock(returncode=0, stdout="\n".join(json.dumps(m) for m in messages))]
         with patch.dict(c.os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "test-token", "ANTHROPIC_API_KEY": "forbidden",
                                      "ANTHROPIC_BASE_URL": "https://invalid", "CLAUDE_CODE_USE_BEDROCK": "1"}), \
-                patch.object(c.subprocess, "run", side_effect=calls) as process:
+                patch.object(c.subprocess, "run", side_effect=calls) as process, \
+                patch.object(c, "SPEND", {"attempted": []}) as spend:
             first = c.call("test prompt", self.root / "cache")
             second = c.call("test prompt", self.root / "cache")
         self.assertEqual(first, second)
+        # Only the fresh call is charged; the cached replay is free.
+        self.assertEqual((spend["calls"], spend["cost_usd"]), (1, 0.389))
         self.assertEqual(process.call_count, 2)
         env = process.call_args.kwargs["env"]
         self.assertNotIn("ANTHROPIC_API_KEY", env)
