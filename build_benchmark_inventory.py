@@ -12,11 +12,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 LICENSE_CHECKED_ON = "2026-09-26"
-# 라이선스 열 어휘: 미표기 = 확인했는데 표기가 없음(all rights reserved로 간주), 미확인 = 확인하지 못함.
+# 라이선스 열 어휘: 미표기 = 확인했는데 표기가 없음(all rights reserved로 간주), 확인 불가 = 확인하지 못함.
 UNSTATED_LICENSE_PATTERN = re.compile(r"미표기|미기재|미선언")
-UNCHECKED_LICENSE_PATTERN = re.compile(r"미확인|미확정")
+UNCHECKED_LICENSE_PATTERN = re.compile(r"확인\s*불가|미확인|미확정")
 ALL_RIGHTS_RESERVED = "저작권 전부 보유"
-UNCHECKED = "미확인"
+UNCHECKED = "확인 불가"
 REVIEW_LICENSE_PATTERN = re.compile(r"충돌|확인 필요|비공개|공식 사이트|커스텀|AI-Hub|약정|카드 'cc'|LGPL-3\.0 태그")
 KNOWN_LICENSE_PATTERN = re.compile(r"MIT|Apache-2\.0|CC-BY|CC BY|CC-BY-SA|CC BY-SA|CC-BY-ND|CC BY-ND")
 NC_PATTERN = re.compile(r"NC(?:-| |$)|비상업", re.MULTILINE)
@@ -184,9 +184,9 @@ README_HEAD = """# LLM 벤치마크 인벤토리
 
 ## 읽는 방법
 
-- **상업적 이용**은 데이터 카드 등에 표시된 라이선스를 기준으로 `가능`, `불가`, `조건 확인 필요`, `저작권 전부 보유`, `미확인`의 다섯 가지로 구분합니다.
+- **상업적 이용**은 데이터 카드 등에 표시된 라이선스를 기준으로 `가능`, `불가`, `조건 확인 필요`, `저작권 전부 보유`, `확인 불가`의 다섯 가지로 구분합니다.
 - `저작권 전부 보유`는 논문·데이터 카드·공식 저장소를 확인했는데 라이선스가 적혀 있지 않은 경우(라이선스 열 `미표기`)입니다. 라이선스가 없는 공개물은 저작권 전부 보유(all rights reserved) 상태로 간주해 상업적 이용·수정·파생·재배포를 모두 불가로 봅니다. 이용하려면 저자에게 직접 확인해야 합니다.
-- `미확인`은 비공개 저장소 등으로 라이선스 확인 자체를 하지 못한 경우(라이선스 열 `미확인`)이며 다시 조사할 대상입니다. `확인 불가`, `unknown` 같은 표기는 쓰지 않습니다.
+- `확인 불가`는 비공개 저장소 등으로 라이선스 확인 자체를 하지 못한 경우(라이선스 열 `확인 불가`)이며 다시 조사할 대상입니다. `미확인`, `unknown` 같은 표기는 쓰지 않습니다.
 - 라이선스는 {checked_on}에 각 데이터 카드와 저장소에서 확인했습니다. 이후 바뀔 수 있으므로 실제 이용 전에 원문을 다시 확인해야 합니다.
 - **대표 예시**는 각 벤치마크의 실제 과제 문항입니다. 영어 벤치마크는 한국어 번역이나 요약을 제공하는 경우가 많으며, CSV의 `예시 표기` 열에서 영문 예시와 한국어 요약을 구분합니다.
 - `lm-eval 지원`은 오픈소스 평가 프레임워크 [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)(EleutherAI)에 해당 과제가 내장되어 있는지를 뜻합니다. 조사 시점 기준이며 최신 버전에서는 달라질 수 있습니다.
@@ -211,7 +211,7 @@ README_TAIL = """## 데이터 열
 2. 데이터 라이선스와 코드·평가 하니스 라이선스를 구분
 3. 번역본·미러·수집물은 원본 라이선스가 자동 승계된다고 가정하지 않기
 4. 라이선스 재확인 시 문서 상단의 확인 기준일을 갱신
-5. 어디에도 라이선스가 없으면 `라이선스` 열에 `미표기(확인한 곳)`를, 확인하지 못했으면 `미확인`을 적기. `확인 불가`·`unknown`은 쓰지 않기. `상업적 이용`·`수정·파생`·`재배포` 열은 `build_benchmark_inventory.py`가 채움
+5. 어디에도 라이선스가 없으면 `라이선스` 열에 `미표기(확인한 곳)`를, 확인하지 못했으면 `확인 불가`를 적기. `미확인`·`unknown`은 쓰지 않기. `상업적 이용`·`수정·파생`·`재배포` 열은 `build_benchmark_inventory.py`가 채움
 """
 
 
@@ -224,7 +224,7 @@ def render_readme(normalized: dict[str, list[dict]]) -> str:
         parts.append(
             f"총 {len(rows)}개 · 상업적 이용 가능 {counts.get('가능', 0)}개 · 불가 {counts.get('불가', 0)}개 · "
             f"조건 확인 필요 {counts.get('조건 확인 필요', 0)}개 · 저작권 전부 보유(미표기) {counts.get(ALL_RIGHTS_RESERVED, 0)}개 · "
-            f"미확인 {counts.get(UNCHECKED, 0)}개\n\n"
+            f"확인 불가 {counts.get(UNCHECKED, 0)}개\n\n"
         )
         grouped: dict[str, list[dict]] = {}
         for row in rows:

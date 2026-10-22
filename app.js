@@ -115,7 +115,7 @@ const ENGLISH_LICENSES = {
   "미표기": "Not specified",
   "미표기(데이터 카드·저장소 확인)": "Not specified on the dataset card or in the repository",
   "미표기(논문·공식 저장소 확인)": "Not specified in the paper or the official repository",
-  "미확인": "Not verified",
+  "확인 불가": "Not verified",
   "미표기(원본 MATH=MIT)": "Not specified; the original MATH dataset uses MIT",
   "미표기(HF 미러에 라이선스 필드 부재)": "Not specified in the Hugging Face mirror",
   "비공개 홀드아웃": "Private holdout",
@@ -148,7 +148,7 @@ function commercialLabel(status) {
     "불가": "Not allowed",
     "조건 확인 필요": "Review required",
     "저작권 전부 보유": "All rights reserved (no license stated)",
-    "미확인": "Not verified",
+    "확인 불가": "Not verified",
   })[status] || status;
 }
 

@@ -323,3 +323,15 @@ in `serving-watch-sources.json` every day, records observations in
 something changed. It never edits `serving_inventory.csv` or the reference
 values; a person checks the source and updates the row, as Decision 1
 requires for the benchmark tables. Details: docs/serving-watch.md.
+
+## 21. Name the unchecked value `확인 불가`, not `미확인` (2026-10-22)
+
+The user decided that the two-value scheme of decision 18 stays, but the
+value for "the check itself could not be done" is `확인 불가` (could not be
+checked), not `미확인`. `미표기(확인한 곳)` is unchanged. The draft stage of
+the automated pipeline therefore records `확인 불가` again, and the
+publication stage still refuses to publish any row that keeps it. The
+scheduled run on 2026-10-22 had failed because a draft saved with
+`확인 불가` on 2026-10-21 was re-validated against the renamed default; this
+decision makes the saved draft valid. `build_benchmark_inventory.py` still
+recognises `미확인` in old data and derives `확인 불가` from it.
