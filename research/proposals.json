@@ -27670,6 +27670,366 @@
           "reason": "LLM 시스템 판단 모델 진단 벤치마크 신규 제안"
         }
       ]
+    },
+    "2610.28607": {
+      "arxiv_id": "2610.28607",
+      "paper_title": "Benchmarking Arabic Dialects for Math Problems",
+      "abstract": "Mathematical reasoning remains underexplored for low-resource languages, including Dialectal Arabic. To bridge this gap, we introduce the DAR-MGSM (Dialectal Arabic Multilingual Grade School Math) Benchmark, the first manually curated benchmark for evaluating mathematical reasoning in Dialectal Arabic. DAR-MGSM consists of math word problems (MWPs) requiring multi-step reasoning and covers five major Arabic dialects alongside Modern Standard Arabic (MSA). The benchmark comprises two parallel versions: translated-only and translated & culturally localized. The latter version adapts entities and references to regional varieties. We evaluate eleven Arabic-centric and multilingual large language models on DAR-MGSM. The results show that the performance generally declines on the localized version, highlighting the challenges introduced by culturally grounded adaptations. However, the magnitude of this effect varies across models, with Arabic-centric models exhibiting different levels of sensitivity to localization. A mechanistic interpretability analysis shows that translated and localized variants of the same MWPs often induce distinct internal reasoning trajectories, even when aggregate accuracy remains similar. Overall, our results show that mathematical reasoning performance depends on both linguistic variety and cultural context.",
+      "paper_updated": "2026-10-21T00:00:00Z",
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "모든 과제가 아랍어 방언/MSA로 한정되어 한국어·영어 아님"
+        }
+      ]
+    },
+    "2610.28653": {
+      "arxiv_id": "2610.28653",
+      "paper_title": "The Scientific Research Taste Benchmark (SciTaste-Bench): A Multi-Disciplinary Benchmark for Assessing Large Language Models' Judgment of Research Taste in Scientific Papers",
+      "abstract": "Whether large language models can assess the innovativeness of academic publications matters for literature reviews, research funding screening, and academic recommendations. We introduce the Scientific Research Taste Benchmark (SciTaste), a gold-standard benchmark covering six disciplines: physics, mathematics, chemistry, biology, medicine, and finance. SciTaste measures research taste, that is, the ability to judge a paper's scientific value and potential, of which innovativeness is one of seven dimensions. It integrates metadata from NASA ADS, OpenAlex, and arXiv, aligns papers to field-specific classification systems, and scores each paper with the seven-dimensional Academic Taste Index. Dimension weights come from a bi-objective machine-learning approach (five regressors, including random forests) and are shared across all six disciplines. The benchmark includes 300 selected papers (50 per discipline) and a backup pool of 5,700 papers (950 per field) covering 1996-2023. SciTaste supports four evaluation modes: pure_qa, native_search, our structured tool-calling agent DiM (9 bibliometric tools in ADS/OpenAlex), and dimagent_v3_native. Outputs are evaluated by two complementary schemes: correlation with dimension-level accuracy, and WAPE relative error. Across ten state-of-the-art LLMs, tool-based structured evaluation generally outperformed toolless and raw web search modes, though gains were model-dependent. Physics is easiest; chemistry, biology, and medicine remain more challenging. SciTaste supplies the value-judgment substrate auto-research systems need to screen, rank, and prioritize candidate ideas. Dataset, harness, and scoring code are available on Hugging Face at https://huggingface.co/datasets/skylenage/SciTaste-benchmark.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "재사용 가능한 벤치마크이나 과제 언어가 명시되지 않음"
+        }
+      ]
+    },
+    "2610.28675": {
+      "arxiv_id": "2610.28675",
+      "paper_title": "Compilation Is Not Correctness: Scan-by-Scan Evaluation of LLM-Generated PLC Programs",
+      "abstract": "Programmable logic controllers (PLCs) automate industrial processes through repeated scans, each reading inputs, executing control logic, and updating outputs. Engineers write this logic in Structured Text (ST), a high-level textual language defined in IEC 61131-3. Large language models (LLMs) can now generate ST from natural-language requirements, yet compilation success and checks on selected properties or sampled scans can leave behavioral errors undetected. We introduce CycleBench, a benchmark of 301 ST tasks with behavioral requirements, public interfaces, reference programs, and executable scenarios. Its runtime executes each generated program and its reference under aligned inputs, initialization, and logical time, comparing their outputs after every scan. Across eight LLMs and baseline generation methods, execution pass rate trails compilation pass rate by 11.92 percentage points; observed failures include output-update, arithmetic, and timing errors. On fixed traces of programs directly generated by five LLMs, checking outputs only at every fifth scan misses 21.66% of the 157 failures detected by per-scan comparison; across sampling phases, the missed-failure rate ranges from 12.10% to 28.03%. These misses stem from transient output discrepancies, whose detection depends on the sampling phase. Building on this evaluation, we propose CycleGen, which generates multiple candidate ST programs, repairs their compilation errors with bounded compiler feedback, and selects one using runtime self-tests generated in a separate model context. CycleGen improves the execution pass rate over direct generation by 8.68 percentage points. Component ablations distinguish repair and self-test selection; candidate-count analysis shows diminishing returns, with no execution-pass-rate improvement beyond five candidates in our experiments despite 38.8% higher token consumption at eight.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "CycleBench 벤치마크 제안, 요구사항 언어 불명확"
+        }
+      ]
+    },
+    "2610.28676": {
+      "arxiv_id": "2610.28676",
+      "paper_title": "VHDLBench: Benchmarking and Fine-Tuning Large Language Models for VHDL-Based Chip Design",
+      "abstract": "The rapid evolution of digital circuit complexity demands innovative approaches to hardware design automation. While Large Language Models (LLMs) have influenced software development, their application to Hardware Description Language (HDL) generation remains largely unexplored, particularly for VHDL. This paper presents a comprehensive study for AI-assisted digital circuit design, addressing gaps in current Electronic Design Automation workflows. The work introduces a VHDL dataset of 18,500+ syntax-verified examples from open-source repositories and converted Verilog designs. Five 7B-parameter LLMs were fine-tuned using parameter-efficient QLoRA technique, enabling deployment in resource-constrained environments. To evaluate model efficacy, a rigorous three-level pipeline was established: (1) syntax and synthesis validation, (2) functional simulation with testbenches, and (3) FPGA prototyping on Zynq SoCs. Results show fine-tuned models achieve up to 92% syntax correctness and 73% functional accuracy on common design tasks, with DeepSeek-Coder demonstrating the highest performance gains. Generated designs were successfully deployed on real hardware, confirming not only syntactic but operational viability. This work demonstrates that LLMs, when tailored with domain-specific data and lightweight fine-tuning can contribute meaningfully to the future of generative EDA workflows.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "VHDL 데이터셋·평가 파이프라인, 벤치마크 기여와 언어 불명확"
+        }
+      ]
+    },
+    "2610.28678": {
+      "arxiv_id": "2610.28678",
+      "paper_title": "Benchmarking the Quantum Leap: Auditing LLM Evaluation for Quantum Code Generation",
+      "abstract": "Large language models (LLMs) can generate quantum programs, but reliable evaluation remains difficult because benchmarks differ in task composition, scoring, and failure handling. We evaluate 15 hosted frontier, open-weight, quantum-specialized, and retrieval-augmented models on five quantum code-generation suites (530 tasks), plus 10 models on our new QuantumBenchEval (QBE) benchmark (96 tasks across six topics). We report bootstrap confidence intervals, multiplicity-adjusted paired comparisons, and audits of output validity and evaluator behavior. QiskitHumanEval-Standard approaches saturation (98.7% pass@1), while its Hard variant retains headroom (63.8%). None of the five top-two comparisons across primary suites remains significant after multiple-comparison correction. Evaluator design substantially changes scores: removing checks for unspecified quantities raises GPT-6 Astra's QBE pass@1 from 0% to 94.1% (T1) and from 1.2% to 92.9% (T6), without changing model outputs. We identify 17 QuanBench-117 tasks with shared failures linked to benchmark-owned imports. Controlled probes also reveal unexecuted unit tests, leakage of canonical functions into candidate execution, and reference imports that block otherwise valid candidates. These defects can produce both false failures and false passes, so historical QuanBench results require revalidation under an isolated evaluator. Overall, leaderboard scores alone do not adequately characterize progress in quantum code generation. We release our harness, per-sample results, and audit artifacts and recommend validating evaluators, isolating candidate code, and reporting uncertainty and output validity.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "QBE 벤치마크 및 하네스 공개, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2610.28679": {
+      "arxiv_id": "2610.28679",
+      "paper_title": "VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents",
+      "abstract": "Agents need reliable ways to validate their outputs, both when completing tasks and when filtering synthetic training data. We study verifier generation: from the instruction and environment available for solving a task, an agent writes an executable verifier that must accept every valid solution and reject invalid ones. We introduce VerifierBench, a benchmark of 222 tasks from six agent benchmarks spanning tool-call, state-based, and code verification, with 4,993 hidden test cases that include alternative valid solutions and attacks; Verifier4Verifier (V4V), a six-check audit, screens its source verifiers and test suites. Across 19 models in a common agent harness, normalized balanced accuracy ranges from 10.6 to 62.1, with generated verifiers consistently rejecting invalid solutions more reliably than they accept valid ones. This apparent strength can mask overly restrictive verification: most false rejections in the analyzed records come from verifiers that accept no tested solution to a task. Case studies reveal unsupported assumptions about solution formats, tool use, and code changes that exclude valid solutions. These errors survive self-testing because agents test solutions that share the verifier's mistaken assumptions, or submit verifiers without confirming that any correct solution passes. These findings suggest testing both whether a verifier accepts a correct solution and whether it accepts other solutions permitted by the task. The project page and dataset are publicly available.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "VerifierBench 제안, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2610.29073": {
+      "arxiv_id": "2610.29073",
+      "paper_title": "A Large-Scale Evaluation of Role-Enhanced Zero-Shot Chain-of-Thought Prompting",
+      "abstract": "This paper proposes Role-Enhanced Zero-Shot Chain-of-Thought (RE-ZS-CoT), a prompting framework that systematically integrates domain-specific expert roles to enhance reasoning in large language models (LLMs) without task-specific examples. We assess two versions of our approach. In the first version, static role selection, we evaluate eight predefined expert roles across arithmetic, commonsense, and reading comprehension benchmarks to determine their impact on reasoning performance. In the second version, dynamic role selection, each model autonomously selects the single most suitable role for each benchmark, enabling adaptive task-role alignment without manual specification. Across 20 LLMs and seven benchmarks, RE-ZS-CoT frequently surpasses zero-shot and zero-shot-CoT baselines, achieving performance improvements of up to 44 percentage points. The results reveal a strong correspondence between static and dynamic versions; the benchmarks where static roles yielded improvements were almost always those where dynamic roles also outperformed baselines, though static selection achieved peak performance. Ablation studies further show that unconventional roles degrade performance, underscoring the necessity of task-role alignment. The framework's scalability is validated across model sizes (2b-14b parameters), with smaller models like Granite3.3-8b achieving remarkable proficiency in arithmetic reasoning. RE-ZS-CoT advances zero-shot prompting by unifying role specialization with chain-of-thought reasoning, offering a practical, resource-efficient solution for improving LLM capabilities across diverse domains.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "프롬프팅 기법 평가이며 새 벤치마크 아님"
+        }
+      ]
+    },
+    "2610.29185": {
+      "arxiv_id": "2610.29185",
+      "paper_title": "CloudIR-Bench: A Benchmark for Root Cause Analysis and Mitigation of Cloud Incidents",
+      "abstract": "Root cause analysis (RCA) and mitigation prediction are essential for incident management, enabling the identification of underlying causes of failures and ensuring the reliability of complex cloud-based systems. With rising incident volume and system complexity, incident reports have become a valuable resource for these tasks. Recent studies have shown promising results using Large Language Models (LLMs) to predict root causes and mitigation actions from textual descriptions in incident reports. Despite these advances, further progress is hindered by the lack of publicly available datasets; existing work relies on private data, which limits transparency, reproducibility, and generalization. To address this gap, we introduce CloudIR-Bench, the first publicly available benchmark providing a dataset and evaluation framework for incident report-based RCA and mitigation prediction. Curated from incident reports across five leading cloud-based systems, CloudIR-Bench captures a diverse range of real-world production scenarios representing authentic failures and engineers' reasoning. We also release an open-source evaluation framework that includes eight recent LLM-based approaches. Our comprehensive evaluation includes zero-shot and in-context learning experiments, along with a qualitative analysis to identify where and why LLMs fail. Benchmarking results reveal the capabilities and limitations of existing LLMs in this domain. The benchmark, including the dataset, framework and supplementary materials, is available at https://github.com/hoangtnm/CloudIR-Bench.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "공개 RCA 벤치마크이나 과제 언어 불명확"
+        }
+      ]
+    },
+    "2610.29189": {
+      "arxiv_id": "2610.29189",
+      "paper_title": "Reasoning-Search-Augmented LLMs: An Operational Taxonomy, Benchmark Analysis and Controlled Evidence Synthesis",
+      "abstract": "Large language models (LLMs) demonstrate impressive emergent reasoning capabilities, yet they remain constrained by fixed model parameters and finite context windows. Even when augmented with static retrieval, they can produce statements that are unsupported by, or even contradictory to, retrieved evidence. This leads to hallucinations, difficulty incorporating up-to-date information, and failures to correctly interpret or reconcile sources. Recent work addresses these limitations by tightly coupling step-by-step reasoning with interactive search, treating retrieval as an action within an iterative agentic loop rather than a one-shot preprocessing step. This study reviews frameworks that implement such reasoning-search loops by interleaving planning, querying, retrieval, integration, verification, and stopping. We analyze these systems through four architectural axes: retrieval coupling, controller design, knowledge source, and grounding strictness. We separately treat the learning signal as a cross-cutting dimension because prompting, supervision, preference optimization, and reinforcement learning can instantiate the same architecture while producing materially different search, stopping, and grounding behavior. We further distinguish benchmark difficulty from RSA-loop demand and synthesize controlled within-study ablations and quality-cost deltas, avoiding invalid pooling across heterogeneous model backbones, retrievers, corpora, and evaluation protocols. Our goal is to clarify the landscape of reasoning-search-augmented LLMs and outline a unified perspective on the design choices shaping future research.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "서베이/분류 논문, 새 평가 자원 없음"
+        }
+      ]
+    },
+    "2610.29196": {
+      "arxiv_id": "2610.29196",
+      "paper_title": "A Unified Evaluation Framework of Physical Adversarial Robustness in the Edge VLM Era",
+      "abstract": "Recent advancements in Vision-Language Models (VLMs) enable end-to-end visual grounding via language prompts and generative decoding, demonstrating largely improved zero-shot and open-vocabulary detection capabilities. As a result, VLMs are rapidly being deployed at the edge in safety-critical real-world systems. However, the physical adversarial robustness of edge VLMs has not been systematically studied, and the fundamental differences in output with modern object detectors create methodological challenges for fair evaluation. To compare the two families directly, we evaluate every selected representative model on one outcome: whether an adversarial patch worn on a person evades detection of the model. We report this by introducing a unified metric, conditional attack success rate (cASR), counted only on images the model still localizes under a matched gray occluder, and partition every failure into omission (no box), substitution (a box on the patch), and displacement (a box on neither). We benchmark the physical adversarial vulnerability of compact grounding VLMs against a range of object detectors, and find that the VLMs can be as vulnerable as the detectors. We disclose that failure mode is largely associated with the output format of a model rather than its architecture family. Of the three, only omission is visible to a downstream system; displacement and substitution return confident, well-formed boxes, making them potentially more dangerous failures. Further, we find that, under distribution shift, VLMs that primarily failed by omission instead shift to failing more by displacement/substitution. Thus, a grounding VLM can inherit the detector's vulnerability while showing the possibility to adopt more dangerous failure modes. Our code and data are available at https://github.com/ericliang1/physical-adversarial-robustness.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "VLM 강건성 평가 프레임워크, 재사용성과 언어 불명확"
+        }
+      ]
+    },
+    "2610.29207": {
+      "arxiv_id": "2610.29207",
+      "paper_title": "norregel: a preregistered benchmark of dated numeric values in Norwegian law",
+      "abstract": "norregel asks language models for numeric values in Norwegian statutes, regulations and parliamentary decisions (NOK amounts, percentages, multiples of the National Insurance basic amount (G) and age limits), each at a stated date. The 916 items were extracted mechanically from Lovdata's open data, and each carries the dated history of its provision, so an answer can be classed as correct, outdated, wrong or uninterpretable. We report a first and a second preregistered run on the same items. In the first run (five models, listed publicly only after local analysis), H1, that outdated answers are more frequent for values that took effect after a model's cutoff, could not be tested in substance, and H2 and H3 were inconclusive; Opus 5.5 and Sonnet 4.6 answered 46.7% and 40.2% of the 880 primary items correctly. The second run was preregistered and published before any of its calls, and eight models were analysed. Its pooled primary test supported H1 under the preregistered decision rule (d = 17.8 percentage points, 95% interval [7.7, 28.9], p = 0.0001). In the preregistered sensitivity analysis S8, which counts as outdated only the most recent value that differs from the key, d was 3.9 [-3.6, 12.7] (p = 0.1754), an interval that contains 0. H1 was supported in every other preregistered sensitivity analysis, but S8 is the only one that gives both groups one target value, so we do not regard the support for H1 as robust. The share of outdated answers equal to that most recent value (H2) was 56.1% [46.6, 65.0], an interval that contains 0.5, and the pooled test of a lower share correct in Nynorsk than in Bokm{\\aa}l (H3) was inconclusive. Several models, among them Haiku 4.5, gave mostly uninterpretable answers. Items and keys are withheld; item IDs, per-answer classes, code and results are on Zenodo.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "노르웨이어 법률 과제로 한정됨"
+        }
+      ]
+    },
+    "2610.29225": {
+      "arxiv_id": "2610.29225",
+      "paper_title": "Beyond Binary Labels: Diagnostic Evaluation of LLM Safety with Prompt-Level Rubrics",
+      "abstract": "Current LLM safety benchmarks predominantly rely on binary safe or unsafe labels, lacking explanatory depth and suffering from low consistency across automated judges. To address this, we introduce DiagSafe, a diagnostic evaluation framework that moves beyond binary classification by employing prompt-level rubrics. Grounded in globally applicable AI safety policies, each rubric provides explicit criteria along two dimensions: safety, which targets concrete harms with specific exemptions to suppress false positives, and usefulness, which independently evaluates instruction fulfillment. To ensure a robust and realistic evaluation, we construct a bilingual (English-Chinese) benchmark grounded in a comprehensive 84-label safety taxonomy, consisting of two subsets: DiagBase, which covers single- and multi-turn prompts with direct harmful queries and template-based jailbreaks, and DiagAttack, which embeds harmful intents into complex instruction-following tasks to form challenging instruction attacks. Extensive experiments demonstrate that DiagSafe significantly enhances the reliability of LLM-as-a-judge evaluation, achieving 95.34% agreement with human annotations -- substantially higher than the 69%-87% achieved by the baselines -- and high inter-judge consistency (Cohen's $\\kappa$ = 0.864). Furthermore, applying our framework reveals that leading LLMs differ markedly in their unsafe rates, and each model also exhibits unique vulnerabilities along different dimensions. In addition, we observe that models are particularly susceptible in Chinese and multi-turn contexts. Ultimately, DiagSafe provides a reliable and explainable tool for auditing and optimizing LLM alignment.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어-중국어 이중언어 안전성 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.29271": {
+      "arxiv_id": "2610.29271",
+      "paper_title": "ARCANA: A Benchmark for Abstraction and Analogical Reasoning",
+      "abstract": "Analogical reasoning is widely considered a fundamental component of human intelligence. Few benchmarks are designed to explicitly test far analogical reasoning - reasoning between domains that are superficially dissimilar yet share deep relational or structural similarities. In this work, we introduce an analogical reasoning benchmark called Abstraction and Reasoning Corpus of ANAlogy (ARCANA). The tasks of ARCANA require performing far analogical mappings from real-world objects or physical phenomena to abstract grid-based transformations, different from the well-known ARC-AGI benchmark which primarily emphasized innate human priors. We validate ARCANA through a human study, demonstrating that humans solve these tasks reliably. In contrast, evaluations across a range of large language models show a distinct performance gap compared to humans, revealing systematic failure modes that remain challenging for current models. To address this gap, we propose ConceptSIR, a reasoning framework based on concept slippage, introspection, and reflection. Experiments demonstrate that ConceptSIR enables standard LLMs to solve several challenging ARCANA tasks that were unsolved by direct prompting in our evaluation. Overall, our results suggest that far analogical reasoning remains an open problem for contemporary LLMs. All the materials are available at sites.google.com/view/arcanacogtest. The complete codebase, including benchmark, and ConceptSIR, is publicly available at https://github.com/density-11/arcana-test. All ARCANA data and task instances can be accessed and explored at https://arcanacogtest.org/.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "유추 추론 벤치마크이나 과제 언어 불명확"
+        }
+      ]
+    },
+    "2610.29346": {
+      "arxiv_id": "2610.29346",
+      "paper_title": "Benchmarking and Error Analysis of Deep Search and Deep Research LLM Agents",
+      "abstract": "As Large Language Models (LLMs) evolve into autonomous Deep Search and Deep Research Agents capable of executing long-horizon, multi-step tasks, evaluating their reliability becomes increasingly critical. However, existing evaluation paradigms predominantly focus on final task outcomes, leaving a significant gap in understanding the intermediate execution traces, where agents are highly susceptible to various errors. To address this critical gap, we introduce a comprehensive methodology and analytical framework designed specifically to diagnose errors in intermediate workflows. Building upon this framework, we establish a structured taxonomy that categorizes these vulnerabilities into two primary dimensions: System-Level Errors and Task-Level Errors. Through a systematic examination of step-by-step execution traces and agent-environment interactions, we reveal how these underlying errors affect overall performance. Finally, through empirical experiments and systematic analysis of the identified error types, we provide actionable design guidelines, aiming to enhance the robustness, reasoning capabilities, and reliability of Deep Search and Deep Research agents.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "에러 분류·분석 프레임워크, 벤치마크 여부 불명확"
+        }
+      ]
+    },
+    "2610.29455": {
+      "arxiv_id": "2610.29455",
+      "paper_title": "Omnilingual-MsASR: Benchmarking Multimodal, Multilingual, Long-Form Multi-Speaker ASR of Omni Large Language Models",
+      "abstract": "Omni-modal large language models (LLMs) have achieved remarkable progress in audio and video understanding. However, existing models struggle with long-form, multi-speaker videos, especially in understanding the entire video and recognizing who says what and when. To characterize the capability limit of current omni LLMs and guide future model development, we introduce Omnilingual-MsASR, a multilingual, multimodal benchmark for long-form Multi-speaker Automatic Speech Recognition (MsASR) covering six languages, recordings up to 30 minutes, and scenarios with up to 20 speakers. Omnilingual-MsASR provides parallel audio and video inputs to evaluate models' cross-modal consistency and their ability to exploit complementary cues across modalities. Extensive evaluations of leading omni-modal LLMs reveal substantial performance bottlenecks, while their tcpWERs frequently exceed 100%. These findings highlight fine-grained temporal localization, speaker disambiguation, and cross-modal synergy as key challenges for future omni-modal foundation models. Our work is available at https://github.com/QwenLM/Omnilingua-Bench/tree/main/Omnilingua-MSpeaker.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "6개 언어 ASR 벤치마크, 한국어/영어 포함 여부 불명확"
+        }
+      ]
+    },
+    "2610.29477": {
+      "arxiv_id": "2610.29477",
+      "paper_title": "TenetBench: A Clause-Anchored Russian Corpus for Evaluating Language Models against Professional Codes of Ethics",
+      "abstract": "Codes of professional ethics guide and restrict specialists, who increasingly work with assistants built on large language models. Such an assistant can breach the user's code, or help the user breach it, without the user noticing. Evaluations reporting broad categories of harm cannot show how often this happens or which provision is breached. TenetBench pairs 3,433 requests conflicting with clauses of fifteen Russian-language professional codes with benign twins that differ only in the legitimacy of what is asked. An automated pipeline generates the tasks from the text of a code, so the corpus grows with every code added and a provision yields new tasks on every run. It also produced tasks and human-validated verdicts from two English codes of other jurisdictions. In human validation of the frozen pipeline, specialists rated 0.995 of the conflicting tasks plausible, and the model judge agreed with the adjudicated label at Gwet's AC1 of at least 0.894 on 1,860 elements. We evaluated fourteen model and reasoning-mode combinations on whether they produce the conflicting text, decline or warn. Eleven of the fourteen produce conflicting content on most such requests, mostly without a warning, and nearly three warnings in four accompany conflicting content. The models that conform more do so by declining while still serving the legitimate twin, and enabling reasoning halved the refusals of two models. We hope the dataset and pipeline will help evaluate how language models observe professional norms and let diagnostic datasets be built for particular professions and organisations.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "주로 러시아어이나 영어 규약 과제도 일부 생성"
+        }
+      ]
+    },
+    "2610.29537": {
+      "arxiv_id": "2610.29537",
+      "paper_title": "Melange: A Synthetic Visual Bias Benchmark for Multi-modal Large Language Models",
+      "abstract": "Multi-modal Large Language Models (MLLMs) have seen broad adoption, but their biases are still far less examined than those of standard LLMs, creating possible social harms when deployed in real-world settings. Prior efforts to extend bias analyses from LLMs into the multi-modal space either cover only a few bias categories or do not ensure that the groups being compared are clearly addressed by visual cues in the images. To overcome these limitations, we introduce Melange, a wide-ranging synthetic visual benchmark covering seven categories for assessing social biases in MLLMs. It is grounded in the widely used language-only BBQ dataset (Bias Benchmark for Question Answering) from BigBench, carefully extending its constructed contexts via controlled generation of visual scenarios so the target attributes appear visually and clearly. To maximize reliability, our generated images pass through two stages of validation: automated screening using visual question answering (VQA) and subsequent manual inspection by human annotators. By systematically evaluating 23 open-source MLLMs across three matched evaluation settings---text-only, image-only, and image-with-context---Melange isolates the fairness effect of the input modality. Switching from text to vision reduces fairness by 0.291 on average, a gap that varies by model family rather than by scale alone. A perception control confirms that this gap is not an artifact of visual comprehension: models identify the depicted attributes at 90--95\\% accuracy yet still fail to abstain. When models do commit to a biased answer, polarity-aware stereotype alignment shows they choose the human-stereotypical response roughly three-quarters of the time.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어 BBQ 기반 시각 편향 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2610.29905": {
+      "arxiv_id": "2610.29905",
+      "paper_title": "ViBMR: A Large-Scale Multi-Sequence Brain MRI Dataset and Comprehensive Evaluation for Vietnamese Radiology Report Generation",
+      "abstract": "Automated radiology report generation for multi-sequence brain MRI holds strong promise for alleviating radiologists' workload, yet it remains a demanding problem: brain MRI studies are inherently volumetric, each pulse sequence carries complementary diagnostic information, and annotated data are critically scarce for low-resource clinical languages. Existing brain MRI-report resources are still dominated by English reports, translated clinical text, or datasets adapted from task-specific imaging benchmarks, leaving routine low-resource clinical reporting and heterogeneous multi-sequence MRI protocols insufficiently represented. To bridge this gap, we introduce ViBMR, to the best of our knowledge, the first large-scale multi-sequence brain MRI dataset paired with routine Vietnamese clinical reports, comprising 3,649 patients and 11,875 MRI series across T1, T2, FLAIR, and contrast-enhanced T1 sequences. Building on ViBMR, we establish a comprehensive evaluation setup for brain MRI report generation, covering representative medical vision-language models, multi-sequence inputs, and feature aggregation strategies. The results provide key insights into dataset characteristics and model behavior, while demonstrating the necessity of native low-resource clinical datasets for reliable Vietnamese-origin brain MRI report generation. Our dataset and baseline models will be released for non-commercial research.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "베트남어 보고서 데이터셋으로 한정됨"
+        }
+      ]
+    },
+    "2610.29907": {
+      "arxiv_id": "2610.29907",
+      "paper_title": "Benchmarking Large Language Models for Detecting Satirical Code-Mixed Sentences",
+      "abstract": "Code-switching is a natural linguistic phenomenon, yet its impact on high-level reasoning tasks remains largely unexplored in under-resourced languages like Romanian. Natural language processing tasks, such as satire detection, rely heavily on nuanced cultural and syntactic cues that large language models struggle to capture. In this paper, we investigate four methods (i.e., random replacement, phrase translation, dependency parsing, and large language models) for generating synthetic code-mixed Romanian sentences with English, German, French, and Italian. We start with an existing dataset for satire detection, compiled from Romanian news articles and annotated at the sentence level by humans, and augment it with over 600k samples, namely CS-SeLeRoSa. We provide an in-depth analysis of the dataset generation process. Then, we evaluate several multilingual large language models across zero-shot, chain-of-thought, and fine-tuning regimes on both the synthetic corpus and a human-adjudicated gold benchmark, namely CS-SeLeRoSa-Gold. While older open models suffer substantial degradation (dropping to 37%-55% macro-F1), newer models like Gemma 4 31B achieve 68.1% zero-shot, rivaling frontier models like GPT-5 mini (69.5%). Furthermore, fine-tuning significantly reduces formatting errors and improves the results, increasing Gemma 4 31B to 77.5% on CS-SeLeRoSa and 72.6% on the gold standard, outperforming frontier zero-shot baselines.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "루마니아어 코드믹싱(영어 혼합) 벤치마크, 영어 과제 범위 불명확"
+        }
+      ]
+    },
+    "2610.29932": {
+      "arxiv_id": "2610.29932",
+      "paper_title": "FrontierCS 2: A Benchmark for Computer Science R&D",
+      "abstract": "Can LLM agents make contributions to frontier computer science R&D? We introduce FrontierCS 2, a benchmark of 48 open-ended tasks. We take a paper and the code its authors released and delete the paper's contribution. The deleted code becomes the human reference that sets the bar. Earlier open-ended benchmarks give each agent a problem statement and grade one program after the run. FrontierCS 2 places the agent inside a research environment. The agent inherits a working repository and may submit a patch at any point. For each patch, a judge returns a development-suite score but keeps the evaluator, the held-out final suite and the reference private, and grades the final submission on that suite against the reference. The tasks span 13 domains, from machine-learning systems and high-performance computing to databases, security and robotics. Beyond these 48 tasks, FrontierCS 2 keeps a private set of more than 100 tasks, to be announced in the future. We evaluate 12 agents. The best one is Claude Opus 5.5, passing 58% of its runs. No run passes on 16 tasks. A higher score is not the same as a pass: most runs that beat the reference on the combined final score still fall short on some metric or workload. On a shared capability scale for agents and tasks, the median task is roughly as difficult as what the strongest agent can handle.",
+      "paper_updated": null,
+      "created_at": "2026-10-22T05:36:49Z",
+      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "CS R&D 에이전트 벤치마크이나 과제 언어 불명확"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -27818,7 +28178,27 @@
         "2610.28425",
         "2610.28444",
         "2610.28491",
-        "2610.28522"
+        "2610.28522",
+        "2610.28607",
+        "2610.28653",
+        "2610.28675",
+        "2610.28676",
+        "2610.28678",
+        "2610.28679",
+        "2610.29073",
+        "2610.29185",
+        "2610.29189",
+        "2610.29196",
+        "2610.29207",
+        "2610.29225",
+        "2610.29271",
+        "2610.29346",
+        "2610.29455",
+        "2610.29477",
+        "2610.29537",
+        "2610.29905",
+        "2610.29907",
+        "2610.29932"
       ]
     }
   },
