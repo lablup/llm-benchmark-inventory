@@ -7794,6 +7794,163 @@
         "context_sha256": "3f750a7659bf33c77d4c1d3997f52388a1af3e54dcab697006001686e28f1d75"
       },
       "proposal_sha256": "8ffd4f1ff35a8894c8598149e7c07b739efb692abd020561ad8851b404abb426"
+    },
+    "2609.20886": {
+      "decision": "propose",
+      "reason": "BI-Bench는 실제 Power BI 프로젝트의 대시보드에서 추출한 (영어 비즈니스 질문, 정답 결과 테이블) 100쌍으로 만든 새 재사용 벤치마크다. 원시 테이블에서 검색, 변환, 조인, 분석을 모두 수행해 결과 테이블을 만들어야 한다. 논문은 데이터와 시각화가 영어라고 밝혀 en 트랙의 text 입력으로 분류했다. 논문이 코드와 데이터 공개 URL을 명시하므로 제안한다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "bi-bench",
+            "이름": "BI-Bench",
+            "평가 축": "에이전트(엔드투엔드 비즈니스 인텔리전스·데이터 분석)",
+            "언어": "en",
+            "정의": "실제 Power BI 프로젝트(.pbix 3천여 개 크롤링)의 사용자 대시보드에서 추출한 비즈니스 질문과 정답 결과 테이블 100쌍으로 구성된 벤치마크. 모델이 원시 테이블을 대상으로 테이블 검색, 변환, 조인, 분석을 모두 수행해 결과 테이블을 만들어야 한다. 정확도는 표의 모양과 셀 값이 정답과 일치하는지로 판정하며(행·열 순서 무관), 논문은 SQL(SQLite)과 Python 설정에서 도구 유무에 따라 10회 반복 평균으로 평가했다. 문항당 정답 테이블 후보를 여러 개 두었다.",
+            "대표 과제": "원시 테이블에서 검색·변환·조인·분석을 거쳐 질문에 답하는 결과 테이블 생성",
+            "대표 예시·설명": "월별·연도별 매출액, 예산, 예측 비교 질문에 대해, 모델이 관련 테이블을 찾고 필요한 변환과 조인을 수행해 결과 테이블을 만드는 과제(과제 설명)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스는 확인하지 못했다. 데이터가 공개 웹에서 수집한 Power BI 프로젝트 파일에서 나왔으므로 원 저작권과 재배포 조건을 이용 전에 따로 확인해야 한다. 100문항 규모라 통계적 검정력에 한계가 있고, 논문은 영어 데이터·시각화만 사용했다고 밝힌다. 평가에 SQL(SQLite) 또는 Python 실행 환경이 필요하다. lm-eval 지원 여부는 확인하지 못했다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Hu-Chuxuan/bi-agent"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (end-to-end business intelligence and data analysis)",
+            "definition": "A benchmark of 100 pairs of a business question and a ground-truth result table, extracted from user dashboards in real Power BI projects (over 3K .pbix files crawled). A model must search for relevant raw tables, transform them, build joins, and run the analysis to produce a result table. Accuracy requires matching table shape and cell values (row and column order ignored). The paper evaluates SQL (SQLite) and Python settings, with and without tools, averaged over 10 runs. Each test case may have multiple valid ground-truth tables.",
+            "task": "Produce a result table that answers a business question from raw tables via search, transform, join, and analysis",
+            "example": "Task description: for a question asking for a sales amount, budget, and forecast comparison by month and year, the model finds the relevant tables, applies needed transformations and joins, and produces the result table."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "first end-to-end BI"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "first end-to-end BI"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "forecast comparison by"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/Hu-Chuxuan/bi-agent"
+            },
+            "언어": {
+              "page": 6,
+              "quote": "data and the"
+            },
+            "이름": {
+              "page": 3,
+              "quote": "first end-to-end BI"
+            },
+            "정의": {
+              "page": 6,
+              "quote": "cap of 100"
+            },
+            "평가 축": {
+              "page": 3,
+              "quote": "first end-to-end BI"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.20886",
+      "paper_title": "BI-Agent and BI-Bench: Towards Automating End-to-End Business Intelligence",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.20886",
+        "sha256": "33fa4acbd813b0e3f0ec125d4fc53507bfffb76e08032e3a94bfb2dc256bb239",
+        "accessed": "2026-10-23T03:55:00Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 17,
+          "elapsed_seconds": 103.46,
+          "pdf_sha256": "33fa4acbd813b0e3f0ec125d4fc53507bfffb76e08032e3a94bfb2dc256bb239",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7d87ac4d9c483162bb9d95f70d56d9427b130cae61b5e681752a275fdbf924ff",
+          "page_json_file": "2609.20886.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Hu-Chuxuan/bi-agent",
+            "fetched_url": "https://api.github.com/repos/Hu-Chuxuan/bi-agent/readme",
+            "sha256": "a62d2d4e968271482e1abda613fd8adb24ff1cd561a177e7fdbe49df59610b69",
+            "accessed": "2026-10-23T03:57:09Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-23T03:57:09Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.20886",
+        "paper_title": "BI-Agent and BI-Bench: Towards Automating End-to-End Business Intelligence",
+        "abstract": "Business intelligence (BI) is a cornerstone of enterprise decision-making and is widely used by enterprise users in software such as Power BI and Tableau. In traditional BI workflows, users need to prepare data by (1) identifying relevant tables, (2) performing data transformations, and (3) building join relationships, before they can (4) answer their business questions. These steps can be complex and time-consuming, making BI challenging. Given the strong capabilities of large language models (LLMs) in working with data, we study their ability to answer BI questions end-to-end, without requiring users to manually perform the tedious preparation steps. To do this, we harvest a large collection of real-world BI projects from public sources, and manually extract pairs of (questions, ground-truth answers) from real user dashboards. The resulting benchmark, BI-Bench, is the first benchmark to systematically study LLMs' ability on end-to-end BI. We find that even frontier LLMs perform poorly on BI-Bench, with less than 50% accuracy. To address their limitations, we design a tool-augmented BI-Agent that decomposes BI workflows into subtasks on structured data, such as search, join, and transform, and orchestrates specialized data management methods across BI stages. Furthermore, we develop a post-training framework that synthesizes training trajectories from real BI projects, enabling BI-Agent to be further post-trained using both supervised fine-tuning (SFT) and reinforcement learning (RL). BI-Agent achieves substantial accuracy gains of up to 40 percentage points with vanilla LLMs, and post-trained BI-Agent yields gains of up to 30 points. Our results highlight the importance of combining tool-augmented reasoning with domain-specific post-training in complex BI workflows, and point to promising directions for future research.",
+        "paper_updated": "2026-09-21T00:00:00Z",
+        "created_at": "2026-10-19T13:43:59Z",
+        "input_sha256": "038b313923fc3018ef30b5565a35ccb1eba459191ffc0ad93187c7c22319c5c9",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "비즈니스 인텔리전스 에이전트와 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "BI 엔드투엔드 벤치마크 BI-Bench 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "39891267821",
+        "context_sha256": "89e6e75c8aa928aee9a208887fca0cd235eef32b654e9152b53402a446ce96a8"
+      },
+      "proposal_sha256": "7b7dca269b6569aa0d4c190e0c135b01a107a68188da221dc1330bf078c1f9dd"
     }
   },
   "processed_comments": [],
@@ -32308,8 +32465,8 @@
         "2610.29207",
         "2610.29225"
       ],
-      "calls": 23,
-      "cost_usd": 10.814
+      "calls": 24,
+      "cost_usd": 11.2321
     }
   },
   "reaudits": [
