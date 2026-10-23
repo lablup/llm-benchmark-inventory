@@ -6691,8 +6691,8 @@
       }
     },
     "2601.04693": {
-      "decision": "propose",
-      "reason": "이 논문은 한국어 문장 수준 부정(negation) 이해를 평가하는 재사용 가능한 객관식 벤치마크 Thunder-KoNUBench를 새로 제안한다. 4,784문항이며 train 2,500, validation 1,000, test 1,284로 나뉜다. 선택지는 표준 부정(정답), 국소 부정, 모순, 바꿔 쓰기로 구성된다. 과제는 한국어 텍스트이므로 ko 트랙의 text로 분류한다. 평가는 LM Evaluation Harness의 cloze(acc_norm)와 symbol(acc) 방식을 쓰고 47개 LLM을 평가했다. 논문이 데이터셋의 GitHub·HuggingFace 주소를 직접 밝히고 있다. 기존 인벤토리에 같은 벤치마크는 없다. 데이터셋 라이선스는 논문 10쪽이 CC BY-NC-SA 4.0으로 명시하고, lm-eval 연동은 공식 저장소 README가 설명한다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 거절합니다. 벤치마크 자체의 사실(문항 수 4,784, train 2,500/validation 1,000/test 1,284, 선택지 4종 구성, 평가 방식)과 권리 필드는 논문과 공식 카드로 대체로 뒷받침됩니다. 데이터셋 라이선스 CC BY-NC-SA 4.0은 논문 10쪽에 근거가 있고, 공식 저장소의 Apache-2.0 파일은 코드용으로 올바르게 구분했습니다. 상업적 이용 불가, 수정·파생 가능(동일조건), 재배포 조건부 가능도 이 라이선스와 맞습니다. 한국어 위키백과와 OpenAI API 생성 선택지를 언급하고 각 구성 요소 약관을 별도로 확인하라고 안내한 점, 공식 README에 lm-eval 태스크 설치 안내가 있어 lm-eval 지원 서술이 뒷받침되는 점도 문제 없습니다. 다만 다음 이유로 게시할 수 없습니다. (1) 이용 시 유의사항이 위키백과 크롤링과 모순·바꿔 쓰기 선택지의 OpenAI API 초안 생성을 논문 4쪽 내용으로 인용했는데, 실제 해당 서술은 6쪽(구축 절차)에 있어 쪽수 인용이 사실과 다릅니다. (2) 추천 목록이 선택한 실험(Table 16의 0-shot symbol)의 비교 대상 모델 전체를 포함하지 않습니다. 모델명이 두 줄로 나뉜 12개 행(Midm-2.0 두 종, kanana-1.5 instruct 두 종, HyperCLOVAX-SEED 세 종, SOLAR-Instruct, Mistral-Nemo 두 종, Mistral-Small 두 종)을 제외했습니다. 제외 행의 점수가 모두 상위 3개보다 낮아 순위 자체는 바뀌지 않는 것으로 보이지만, 목록이 비교 대상 전체를 덮어야 상위 3개 선정이 정당화된다는 기준을 충족하지 못합니다. 이는 표 추출 한계가 아니라 Poppler 텍스트로 값을 확인할 수 있는 행의 누락입니다. (3) 같은 열에 로그우도 기반 acc(오픈 모델)와 API 모델의 exact_match가 섞여 있습니다. 설정 설명에 밝히긴 했지만 지표가 동일하지 않은 모델을 한 순위에 올리는 것은 정당화가 부족합니다. (4) 일부 수치는 다른 표와 반올림 수준으로 어긋납니다. 예를 들어 Qwen3-14B의 symbol 점수는 Table 16과 Table 21에서 서로 다르게 읽힙니다. 위 문제를 고치고 누락 모델을 포함해 다시 제출하면 재검토할 수 있습니다.",
       "changes": [
         {
           "track": "ko",
@@ -7169,7 +7169,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-23T03:15:10Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -7195,12 +7195,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "39891267821",
-        "context_sha256": "e4967ba06f47efc1e79c31c7c8895cf861716799101e4f196a2b6767b9529b66"
-      },
       "proposal_sha256": "7bef599f2a8d462aaeb57b88d3072561787879e84414d934f5a077972eb57184",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "거절합니다. 벤치마크 자체의 사실(문항 수 4,784, train 2,500/validation 1,000/test 1,284, 선택지 4종 구성, 평가 방식)과 권리 필드는 논문과 공식 카드로 대체로 뒷받침됩니다. 데이터셋 라이선스 CC BY-NC-SA 4.0은 논문 10쪽에 근거가 있고, 공식 저장소의 Apache-2.0 파일은 코드용으로 올바르게 구분했습니다. 상업적 이용 불가, 수정·파생 가능(동일조건), 재배포 조건부 가능도 이 라이선스와 맞습니다. 한국어 위키백과와 OpenAI API 생성 선택지를 언급하고 각 구성 요소 약관을 별도로 확인하라고 안내한 점, 공식 README에 lm-eval 태스크 설치 안내가 있어 lm-eval 지원 서술이 뒷받침되는 점도 문제 없습니다. 다만 다음 이유로 게시할 수 없습니다. (1) 이용 시 유의사항이 위키백과 크롤링과 모순·바꿔 쓰기 선택지의 OpenAI API 초안 생성을 논문 4쪽 내용으로 인용했는데, 실제 해당 서술은 6쪽(구축 절차)에 있어 쪽수 인용이 사실과 다릅니다. (2) 추천 목록이 선택한 실험(Table 16의 0-shot symbol)의 비교 대상 모델 전체를 포함하지 않습니다. 모델명이 두 줄로 나뉜 12개 행(Midm-2.0 두 종, kanana-1.5 instruct 두 종, HyperCLOVAX-SEED 세 종, SOLAR-Instruct, Mistral-Nemo 두 종, Mistral-Small 두 종)을 제외했습니다. 제외 행의 점수가 모두 상위 3개보다 낮아 순위 자체는 바뀌지 않는 것으로 보이지만, 목록이 비교 대상 전체를 덮어야 상위 3개 선정이 정당화된다는 기준을 충족하지 못합니다. 이는 표 추출 한계가 아니라 Poppler 텍스트로 값을 확인할 수 있는 행의 누락입니다. (3) 같은 열에 로그우도 기반 acc(오픈 모델)와 API 모델의 exact_match가 섞여 있습니다. 설정 설명에 밝히긴 했지만 지표가 동일하지 않은 모델을 한 순위에 올리는 것은 정당화가 부족합니다. (4) 일부 수치는 다른 표와 반올림 수준으로 어긋납니다. 예를 들어 Qwen3-14B의 symbol 점수는 Table 16과 Table 21에서 서로 다르게 읽힙니다. 위 문제를 고치고 누락 모델을 포함해 다시 제출하면 재검토할 수 있습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 143454,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2839,
+              "output_tokens_details": {
+                "thinking_tokens": 1767
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 143454,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2839,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 143454,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 143454
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.6022749,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "7bef599f2a8d462aaeb57b88d3072561787879e84414d934f5a077972eb57184",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -31701,8 +31747,8 @@
         "2610.29207",
         "2610.29225"
       ],
-      "calls": 13,
-      "cost_usd": 5.9655
+      "calls": 14,
+      "cost_usd": 6.5678
     }
   },
   "reaudits": [
