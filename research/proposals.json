@@ -3899,7 +3899,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-23T02:50:10Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -3925,12 +3925,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "39891267821",
-        "context_sha256": "4c4f3265c18de597f5e9dfe5434573881270225c2a65006c5992b27f32e43a46"
-      },
       "proposal_sha256": "88d2ba9b7bda265f9fb75a6838ced1667a2e73cecede017bee23b9889b792778",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 변경 사실이 논문 전체 페이지와 공식 데이터 카드로 모두 뒷받침되어 승인합니다. (1) 규모와 구성: 세션 1,000개, 메시지 115,620개, 토큰 769,628개, 영어 텍스트 대화, 숫자 모호성과 과잉 비식별화 문제, 사람 검수를 거친 LLM 워크플로로 기존 redaction을 점검하고 대체 표현을 생성했다는 설명이 논문 본문과 일치합니다. (2) 권리 필드: 공식 카드가 CC BY 4.0을 명시하므로 라이선스, 상업적 이용 가능, 수정·파생 가능(조건 준수), 재배포 조건부 가능은 근거가 있고 다른 CC-BY-4.0 행과도 일관됩니다. 라이선스가 '미표기'가 아니므로 '저작권 전부 보유' 규칙은 적용되지 않습니다. (3) lm-eval: 카드와 논문 어디에도 lm-eval이나 lm-evaluation-harness 언급이 없고 pdf_mentions도 비어 있어, 지원이 문서화되지 않았다는 뜻의 '미표기'로 해소된 값이 맞습니다. (4) 유의사항: 출처 표기 의무를 밝혔고, 원본 대화가 미국 튜터링 플랫폼 출처이며 기존 redaction이 Presidio 기반이고 라벨과 대체 표현이 LLM 생성이라는 점, 구성 요소별 고유 약관을 별도로 확인해야 한다는 점을 명시했습니다. 파생 원천이 이름이 붙은 공개 데이터셋이 아니라 비공개 플랫폼 대화 코퍼스이므로 이 서술로 충분합니다. 다만 Presidio 적용 사실은 실제로 3쪽 기술이어서 쪽수 표기가 약간 부정확하나 사실 자체에는 영향이 없습니다. (5) 추천 모델: 논문 Table 4의 Segment-Aware Prompting 조건에서 비교된 모델은 Claude 4.5 Opus 0.820, Gemini 3 Pro 0.821, GPT-5.2 0.758 세 개뿐이라 목록이 해당 실험의 비교 모델을 모두 포함하고 상위 세 개 선정이 정당합니다. 본문 수치(Gemini 3 Pro F1 0.821, Opus 정밀도 0.934)와 초록의 수치와도 일치하고, 지표는 F1로 높을수록 좋으며 동일 데이터셋과 프롬프트 조건이고 논문 보고 결과임을 명시했습니다. 표 추출이 행별로 갈라져 있으나 Poppler 텍스트와 본문 서술이 서로 일치해 충돌은 없습니다. 가중치 공개 여부는 null로 두어 비공개로 취급하지 않았습니다. (6) 미확인·확인 불가 필드가 없고, 영문 사본도 한국어 행과 일치합니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 95437,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2696,
+              "output_tokens_details": {
+                "thinking_tokens": 1588
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 95437,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2696,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 95437,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 95437
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.4087769,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "88d2ba9b7bda265f9fb75a6838ced1667a2e73cecede017bee23b9889b792778",
+        "publication_policy": "complete-evidence-v1"
+      }
     },
     "2606.16262": {
       "decision": "needs_evidence",
@@ -23890,22 +23936,18 @@
     "2610.16067": {
       "arxiv_id": "2610.16067",
       "paper_title": "When Agent Evaluation Becomes Unreliable: An Empirical Study of Oracle Failures and Configuration-Dependent Measurement in an LLM Agent Benchmark",
-      "abstract": "Agent evaluation harnesses are software systems that run test suites, generate inputs, and decide outcomes with test oracles. This paper audits such software for reliability defects that score tables cannot reveal. We introduce an oracle-integrity auditing approach with five state-integrity invariants and three known-answer controls. We evaluate it by injecting seven oracle defect classes across two task domains and a synthetic domain. All injected defect classes are detected, and the repaired oracle has no false positives. Applied to an agent benchmark, the audit reveals a reward-function defect that changes the environment state before post-run scoring. Across 4,320 episodes, replay-based correction changes database-pass labels from 4,194 to 2,883 and reduces measured success from 94.3% to 65.5%. We also study configuration-dependent measurement effects. A component ablation over 3,240 episodes shows that the agent's policy documents, tool descriptions, and tool error strings influence observed trajectory reliability, with tool descriptions showing the largest exploratory effect (-9.2 pp) and error strings the smallest (-5.3 pp). A second task domain reverses the sign of the language effect, so the result is bounded to the tested configuration. Finally, we report a portability boundary: the auditing approach cannot validate a second independently implemented benchmark because the required reference terminal state cannot be reconstructed from its recorded API-call log. The paper releases a replication package containing the auditing suite, fault-injection catalogue, frozen records, deviation logs, and offline analysis entry points without network access, API keys, or model calls.",
-      "paper_updated": "2026-10-14T00:00:00Z",
-      "created_at": "2026-10-19T13:50:58Z",
-      "input_sha256": "e19d1706015124b3d68a7d28a4d1fc46caf92f5560aeb9bf9f30362592603f60",
-      "version": 4,
+      "abstract": "Agent evaluation harnesses are software: they run a test suite, drive a test input generator, and decide outcomes with a test oracle. We audit them for defects a score table cannot show. First, a systematic oracle-integrity auditing approach - five state-integrity invariants and three known-answer controls - is measured by injecting seven oracle defect classes across two task domains and a synthetic domain. Every class is detected, and on the 57 separable variant-target combinations it detects 54; the repaired oracle yields no false positive. On a widely used agent benchmark, it exposes a reward function that resets the database to build a ground-truth hash and never restores it, so a harness scoring afterwards reads the reference solution's state: recorded labels report 4,194 database passes over 4,320 episodes, replay gives 2,883, and success falls from 94.3% to 65.5%. The correction is not a uniform offset; it removes 24 to 34 points from each agent and changes which agent this matrix measures as strongest. Second, more weakly, localising the apparatus is a property of the measurement: a 3,240-episode ablation associates the three documents with lower collapse in the tested configuration, without ordering them, and a second task domain reverses the language effect. Third, the method did not transfer to a second, independently implemented benchmark; we name the contract required. A replication package recomputes every analysis offline with no model calls.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "decision": "relevant",
-          "reason": "에이전트 평가 신뢰성 감사로 벤치마크 평가에 부합"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "에이전트 벤치마크 오라클 결함 감사 도구·복제 패키지 공개"
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "에이전트 벤치마크 오라클 감사 방법론, 재사용 자원 불명확"
         }
       ]
     },
@@ -28984,10 +29026,10 @@
     "2610.27307": {
       "arxiv_id": "2610.27307",
       "paper_title": "Evolving Self-tuning Benchmarks for Long-Horizon Tool Use",
-      "abstract": "For AI assistants to move beyond simple chat interfaces and reliably assist users with applications like Gmail, Venmo, and Slack, we need to improve their tool-use capabilities. However, existing tool use benchmarks are still limited and difficult to scale because they rely on human supervision or are too domain-specific. To make data generation scalable, we propose, TURTLE (Tool Use Related Tasks with Long-Horizon Evolution), an Unsupervised Environment Design (UED) approach to evolve existing tasks using a proposer, a solver, and a feedback generator large language model agents. The proposer is rewarded for difficult yet solvable tasks based on the solver's empirical performance, and the feedback generator summarizes the solver's execution traces for the proposer to exploit. TURTLE produces evolving, self-tuning test suites adaptable to different environment requirements, from supporting user simulators and dense document retrieval to interacting across multiple apps. Empirical results on AppWorld, $\\tau$-Bench, and AutomationBench using Gemma 4 31B-it show that the evolved tasks target the desired difficulty range (e.g., a 165% increase in the percentage of hard tasks on AppWorld), increase task diversity (in terms of reasoning and simultaneous tool interactions), and elicit a broader range of failure modes than the original tasks.",
-      "paper_updated": null,
-      "created_at": "2026-10-22T05:36:12Z",
-      "input_sha256": "0997dd22b3e5da26be48045e03088c44c3f0885b3e39c5fbf4d3b13f913659c1",
+      "abstract": "For AI assistants to move beyond simple chat interfaces and reliably assist users with applications like Gmail, Venmo, and Slack, we need to improve their tool-use capabilities. However, existing tool use benchmarks are still limited and difficult to scale because they rely on human supervision or are too domain-specific. To make data generation scalable, we propose, TURTLE (Tool Use Related Tasks with Long-Horizon Evolution), an Unsupervised Environment Design (UED) approach to evolve existing tasks using a proposer, a solver, and a feedback generator large language model agents. The proposer is rewarded for difficult yet solvable tasks based on the solver's empirical performance, and the feedback generator summarizes the solver's execution traces for the proposer to exploit. TURTLE produces evolving, self-tuning test suites adaptable to different environment requirements, from supporting user simulators and dense document retrieval to interacting across multiple apps. Empirical results on AppWorld, $τ$-Bench, and AutomationBench using Gemma 4 31B-it show that the evolved tasks target the desired difficulty range (e.g., a 165% increase in the percentage of hard tasks on AppWorld), increase task diversity (in terms of reasoning and simultaneous tool interactions), and elicit a broader range of failure modes than the original tasks.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
@@ -28995,7 +29037,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "장기 도구 사용 벤치마크 자동 진화 생성 방법 TURTLE"
+          "reason": "장기 도구 사용 벤치마크 진화 생성 방법 TURTLE"
         }
       ]
     },
@@ -29560,28 +29602,28 @@
     "2610.29207": {
       "arxiv_id": "2610.29207",
       "paper_title": "norregel: a preregistered benchmark of dated numeric values in Norwegian law",
-      "abstract": "norregel asks language models for numeric values in Norwegian statutes, regulations and parliamentary decisions (NOK amounts, percentages, multiples of the National Insurance basic amount (G) and age limits), each at a stated date. The 916 items were extracted mechanically from Lovdata's open data, and each carries the dated history of its provision, so an answer can be classed as correct, outdated, wrong or uninterpretable. We report a first and a second preregistered run on the same items. In the first run (five models, listed publicly only after local analysis), H1, that outdated answers are more frequent for values that took effect after a model's cutoff, could not be tested in substance, and H2 and H3 were inconclusive; Opus 5.5 and Sonnet 4.6 answered 46.7% and 40.2% of the 880 primary items correctly. The second run was preregistered and published before any of its calls, and eight models were analysed. Its pooled primary test supported H1 under the preregistered decision rule (d = 17.8 percentage points, 95% interval [7.7, 28.9], p = 0.0001). In the preregistered sensitivity analysis S8, which counts as outdated only the most recent value that differs from the key, d was 3.9 [-3.6, 12.7] (p = 0.1754), an interval that contains 0. H1 was supported in every other preregistered sensitivity analysis, but S8 is the only one that gives both groups one target value, so we do not regard the support for H1 as robust. The share of outdated answers equal to that most recent value (H2) was 56.1% [46.6, 65.0], an interval that contains 0.5, and the pooled test of a lower share correct in Nynorsk than in Bokm{\\aa}l (H3) was inconclusive. Several models, among them Haiku 4.5, gave mostly uninterpretable answers. Items and keys are withheld; item IDs, per-answer classes, code and results are on Zenodo.",
-      "paper_updated": null,
-      "created_at": "2026-10-22T05:36:49Z",
-      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "abstract": "norregel asks language models for numeric values in Norwegian statutes, regulations and parliamentary decisions (NOK amounts, percentages, multiples of the National Insurance basic amount (G) and age limits), each at a stated date. The 916 items were extracted mechanically from Lovdata's open data, and each carries the dated history of its provision, so an answer can be classed as correct, outdated, wrong or uninterpretable. We report a first and a second preregistered run on the same items. In the first run (five models, listed publicly only after local analysis), H1, that outdated answers are more frequent for values that took effect after a model's cutoff, could not be tested in substance, and H2 and H3 were inconclusive; Opus 5.5 and Sonnet 4.6 answered 46.7% and 40.2% of the 880 primary items correctly. The second run was preregistered and published before any of its calls, and eight models were analysed. Its pooled primary test supported H1 under the preregistered decision rule (d = 17.8 percentage points, 95% interval [7.7, 28.9], p = 0.0001). In the preregistered sensitivity analysis S8, which counts as outdated only the most recent value that differs from the key, d was 3.9 [-3.6, 12.7] (p = 0.1754), an interval that contains 0. H1 was supported in every other preregistered sensitivity analysis, but S8 is the only one that gives both groups one target value, so we do not regard the support for H1 as robust. The share of outdated answers equal to that most recent value (H2) was 56.1% [46.6, 65.0], an interval that contains 0.5, and the pooled test of a lower share correct in Nynorsk than in Bokmål (H3) was inconclusive. Several models, among them Haiku 4.5, gave mostly uninterpretable answers. Items and keys are withheld; item IDs, per-answer classes, code and results are on Zenodo.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
       "version": "claude-v1",
       "policy": "claude_only",
-      "status": "excluded",
+      "status": "passed",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "irrelevant",
-          "reason": "노르웨이어 법률 과제로 한정됨"
+          "decision": "uncertain",
+          "reason": "노르웨이어 법률 벤치마크, 항목 비공개로 영어 여부 불명확"
         }
       ]
     },
     "2610.29225": {
       "arxiv_id": "2610.29225",
       "paper_title": "Beyond Binary Labels: Diagnostic Evaluation of LLM Safety with Prompt-Level Rubrics",
-      "abstract": "Current LLM safety benchmarks predominantly rely on binary safe or unsafe labels, lacking explanatory depth and suffering from low consistency across automated judges. To address this, we introduce DiagSafe, a diagnostic evaluation framework that moves beyond binary classification by employing prompt-level rubrics. Grounded in globally applicable AI safety policies, each rubric provides explicit criteria along two dimensions: safety, which targets concrete harms with specific exemptions to suppress false positives, and usefulness, which independently evaluates instruction fulfillment. To ensure a robust and realistic evaluation, we construct a bilingual (English-Chinese) benchmark grounded in a comprehensive 84-label safety taxonomy, consisting of two subsets: DiagBase, which covers single- and multi-turn prompts with direct harmful queries and template-based jailbreaks, and DiagAttack, which embeds harmful intents into complex instruction-following tasks to form challenging instruction attacks. Extensive experiments demonstrate that DiagSafe significantly enhances the reliability of LLM-as-a-judge evaluation, achieving 95.34% agreement with human annotations -- substantially higher than the 69%-87% achieved by the baselines -- and high inter-judge consistency (Cohen's $\\kappa$ = 0.864). Furthermore, applying our framework reveals that leading LLMs differ markedly in their unsafe rates, and each model also exhibits unique vulnerabilities along different dimensions. In addition, we observe that models are particularly susceptible in Chinese and multi-turn contexts. Ultimately, DiagSafe provides a reliable and explainable tool for auditing and optimizing LLM alignment.",
-      "paper_updated": null,
-      "created_at": "2026-10-22T05:36:49Z",
-      "input_sha256": "1882fdfa3b18acc22474436ad7b6c0bf8487b168b6a76bfb80a4222d24db9eec",
+      "abstract": "Current LLM safety benchmarks predominantly rely on binary safe or unsafe labels, lacking explanatory depth and suffering from low consistency across automated judges. To address this, we introduce DiagSafe, a diagnostic evaluation framework that moves beyond binary classification by employing prompt-level rubrics. Grounded in globally applicable AI safety policies, each rubric provides explicit criteria along two dimensions: safety, which targets concrete harms with specific exemptions to suppress false positives, and usefulness, which independently evaluates instruction fulfillment. To ensure a robust and realistic evaluation, we construct a bilingual (English-Chinese) benchmark grounded in a comprehensive 84-label safety taxonomy, consisting of two subsets: DiagBase, which covers single- and multi-turn prompts with direct harmful queries and template-based jailbreaks, and DiagAttack, which embeds harmful intents into complex instruction-following tasks to form challenging instruction attacks. Extensive experiments demonstrate that DiagSafe significantly enhances the reliability of LLM-as-a-judge evaluation, achieving 95.34% agreement with human annotations -- substantially higher than the 69%-87% achieved by the baselines -- and high inter-judge consistency (Cohen's $κ$ = 0.864). Furthermore, applying our framework reveals that leading LLMs differ markedly in their unsafe rates, and each model also exhibits unique vulnerabilities along different dimensions. In addition, we observe that models are particularly susceptible in Chinese and multi-turn contexts. Ultimately, DiagSafe provides a reliable and explainable tool for auditing and optimizing LLM alignment.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
@@ -29589,7 +29631,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "영어-중국어 이중언어 안전성 벤치마크 제안"
+          "reason": "영어-중국어 이중언어 안전성 벤치마크 DiagSafe"
         }
       ]
     },
@@ -29788,6 +29830,294 @@
           "model": "claude-sonnet-5-5",
           "decision": "uncertain",
           "reason": "A주 시장 에이전트 벤치마크, 과제 언어(중국어/영어) 불명확"
+        }
+      ]
+    },
+    "2604.12306": {
+      "arxiv_id": "2604.12306",
+      "paper_title": "GCA Framework: A GCC Countries-Grounded Dataset and Agentic Pipeline for Climate Decision Support",
+      "abstract": "Climate decision-making in the GCC states increasingly demands systems that can translate heterogeneous scientific and policy evidence into actionable guidance, yet general-purpose large language models (LLMs) remain weak both in region-specific climate knowledge and grounded interaction with geospatial and forecasting tools. We present the GCA framework, which unifies (i) GCA-DS, a curated multimodal dataset grounded in the GCC states, and (ii) Gulf Climate Agent (GCA), a tool-augmented agent for climate analysis. GCA-DS comprises 200k question--answer pairs spanning governmental policies and adaptation plans, NGO and international frameworks, academic literature, and event-driven reporting on heatwaves, dust storms, and floods, complemented with remote-sensing inputs that couple imagery with textual evidence. Building on this foundation, the GCA agent orchestrates a modular tool pipeline grounded in real-time and historical signals and geospatial processing that produces derived indices and interpretable visualizations. Finally, we benchmark open and proprietary LLMs on climate tasks in the GCC states and show that domain fine-tuning and tool integration substantially improve reliability over general-purpose baselines.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "GCC 기후 QA 데이터셋이나 과업 언어(영어/아랍어) 불명확"
+        }
+      ]
+    },
+    "2606.10194": {
+      "arxiv_id": "2606.10194",
+      "paper_title": "MMClima: A Framework for Multimodal Climate Science Data and Evaluation",
+      "abstract": "Climate change research increasingly requires AI systems that reason across text, dynamic visual content, and scientific figures, yet existing climate QA benchmarks are small, mostly textual, and cover a narrow range of models. We introduce MMClima, a large-scale multimodal climate question answering framework with 104k+ expert-validated question-answer pairs spanning articles, video transcriptions, and figures across five core climate science domains. MMClima is constructed via automated claim extraction and QA synthesis with human-in-the-loop validation to ensure both scale and reliability. Using MMClima, we benchmark state-of-the-art multimodal language models on tasks requiring factual recall, visual interpretation, and cross-modal synthesis. We additionally fine-tune on the textual split to produce mmclima-70b-txt, a domain-adapted baseline that outperforms strong open- and closed-source models on textual QA. We release the dataset, evaluation pipeline, fine-tuned model weights, and data creation framework to support standardized multimodal evaluation for climate science.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "멀티모달 기후 QA 벤치마크이나 과업 언어가 명시되지 않음"
+        }
+      ]
+    },
+    "2606.13802": {
+      "arxiv_id": "2606.13802",
+      "paper_title": "A Benchmark and Framework for Evaluating Next Action Predictions in Spreadsheets",
+      "abstract": "Predictive code completion greatly accelerates how quickly developers work. In spreadsheets, despite being much more common, such auto-completion features are virtually non-existent. To address this gap, we introduce a benchmark for systems that observe a sequence of user actions in a spreadsheet and predict future actions. Two challenges are (1) the absence of edit histories in public spreadsheet corpora and (2) the complex space of spreadsheet actions (spatial, temporal, composite). To address (1), we manually curate 52 sequences of 12K actions that recreate spreadsheets from public corpora, seeded by parametrized heuristics and LLM refinement. To address (2), we propose an online evaluation that expects a prediction after each user action, accepts or rejects that prediction, updates the future actions upon acceptance, and repeats this until the target spreadsheet is obtained. We use multiple baseline predictors (including zero-shot LLMs, fine-tuned SLMs, and classical models) and analyze different properties that our benchmark teaches us, including but not limited to: properties of saved actions and false positives, efficiency, effect of user profiles, effect of triggers, and effect of context.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "스프레드시트 행동 예측 벤치마크, 언어 관련성 불명확"
+        }
+      ]
+    },
+    "2605.20712": {
+      "arxiv_id": "2605.20712",
+      "paper_title": "SCRIBE: Diagnostic Evaluation and Rich Transcription Models for Indic ASR",
+      "abstract": "Automatic speech recognition replaces typing only when correction costs less than manual entry - a threshold determined by error types, not counts: fixing a misrecognized domain term costs far more than inserting a comma. Word error rate (WER) fails on two fronts: it collapses distinct error categories into a single scalar, and it structurally penalizes agglutinative languages where valid sandhi merges inflate scores. We introduce SCRIBE, a diagnostic framework offering categorical error decomposition into lexical, punctuation, numeral, and domain-entity rates via sandhi-tolerant alignment with domain vocabulary injection. Human validation confirms SCRIBE aligns with expert judgment where WER does not. We release SCRIBE, an LLM curation pipeline, benchmarks, and open-weight rich transcription models for Hindi, Malayalam, and Kannada.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "힌디어·말라얄람어·칸나다어 ASR로 한국어/영어 아님"
+        }
+      ]
+    },
+    "2610.23230": {
+      "arxiv_id": "2610.23230",
+      "paper_title": "RAP: A Dataset for Paper-to-Poster Generation via Declarative Markup from Human-Crafted Exemplars",
+      "abstract": "Making a conference poster is visual coding in miniature: an entire paper must be compressed onto a single page, which exercises summarization, visual design, and code implementation at once, using nothing beyond the paper itself. Yet benchmarks for this task in the context of visual coding remain scarce: existing resources are small and annotated only with layout boxes, so evaluation must fall back on VLM-as-judge or human checklists rather than objective render-and-compare, and the generation methods they support design layouts from scratch, leaving human-crafted posters unusable as either a retrievable design library or as verified supervision. We introduce RAP (Reconstruct A Poster), a dataset and benchmark for paper-to-poster generation as a visual coding task. RAP contains 25K+ verified paper-poster pairs from various machine learning conferences held between 2022 and 2026, annotated with a three-level content taxonomy, plus a held-out benchmark of 150 test papers each paired with its human poster. A fully automated derendering pipeline turns each poster into styled HTML/CSS of typed, refillable slots, so every sample is a paper-poster-markup triplet verifiable by rendering against the source poster. The corpus serves both inference and training: PosterRAG, a training-free multi-agent pipeline, retrieves an exemplar and refills its slots without touching layout or styling, while an SFT+RL recipe trains a dedicated model from the same triplets. An online demo is available at https://reconstruct-a-poster.github.io/.",
+      "paper_updated": "2026-10-19T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "논문-포스터 생성 벤치마크, 과업 언어 불명확"
+        }
+      ]
+    },
+    "2605.14381": {
+      "arxiv_id": "2605.14381",
+      "paper_title": "NodeSynth: Socially Aligned Synthetic Data for AI Evaluation",
+      "abstract": "Recent advancements in generative AI facilitate large-scale synthetic data generation for model evaluation. However, without targeted approaches, these datasets often lack the sociotechnical nuance required for sensitive domains. We introduce NodeSyn, a methodology that pairs a fine-tuned taxonomy generator (TaG) with credible published sources and extracted sensitive attributes to generate queries reflecting authentic societal contexts and nuanced harms. Evaluated across ten open-weight and proprietary LLMs in Medical Advice and Self-Harm using human-validated autoraters, NodeSyn ranked first on 8 of 10 models in each domain. NodeSyn datasets induced average failure rates 3.1 times higher than generic synthetic baselines, 2.4 times higher than structured synthetic benchmarks, and 1.6 times higher than authentic human-authored queries. Ablation studies confirm that, controlling for structural confounds, our granular Level 3 taxonomic expansion significantly drives these failure rates over Level 2 across 9 of 10 models (+29.2% relative lift in Medical Advice and +24.0% in Self-Harm). Variance attribution analysis reveals that failures are driven not only by what topics are queried (taxonomic nodes and lexical specificity), but also by their sociotechnical grounding (affected demographics, occupations, geographies, and querying personas). We embed this method into a research prototype, and open-source (https://github.com/google-research/nodesynth) the code and datasets to enable scalable, high-stakes model evaluation",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "안전성 평가 데이터 생성 방법, 언어 불명확하나 재사용 데이터 공개"
+        }
+      ]
+    },
+    "2605.24771": {
+      "arxiv_id": "2605.24771",
+      "paper_title": "From Theory to Decision Rule: Calibrating the Noisy-Label Crossover for Vision-Language Model Weak Supervision Across Three Medical-Imaging Benchmarks",
+      "abstract": "In medical imaging, small sets of expert labels are often combined with zero-shot pseudo-labels from a vision-language model (VLM). When the expert-labeled set is very small, the extra pseudo-labels reduce variance and improve accuracy. Once a classifier trained on expert labels alone reaches the accuracy of the weak labeler, however, adding pseudo-labels lowers test performance. We measure where this crossover occurs on PatchCamelyon histopathology, ISIC 2019 dermoscopy, and NIH ChestX-ray14 radiography using pseudo-labels from BiomedCLIP and PubMedCLIP across six student architectures ($8\\mathrm{M}$ to $89\\mathrm{M}$ parameters). Weak labels stop helping after $20$--$50$ expert labels on ISIC 2019, about $100$ on PatchCamelyon, and $250$--$500$ on NIH ChestX-ray14. Above those budgets, adding $10{,}000$ pseudo-labels reduces test macro-AUC by up to $0.14$ points with BiomedCLIP ($0.23$ with PubMedCLIP) on ISIC 2019, $0.10$ on PatchCamelyon, and $0.08$ on NIH ChestX-ray14. Across the six student architectures, the weak-label ceiling stays within a $0.024$ AUC range ($0.841$--$0.865$), indicating that the VLM labeler, rather than student size, limits performance. Comparing VLM pseudo-labels with random label flips at the same error rate shows that systematic VLM mistakes yield $0.09$--$0.20$ lower AUC than random noise on PatchCamelyon and ISIC 2019, but $0.03$--$0.04$ higher AUC on 15-class NIH ChestX-ray14, where per-finding crossovers also span more than a $20\\times$ range. A simple bias-variance rule estimated from the weak labeler's validation accuracy and small expert-only runs predicts whether pseudo-labels will help or hurt in all $30$ statistically significant settings ($39/42$ overall).",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "의료영상 약지도 연구로 새 벤치마크 도입 없음"
+        }
+      ]
+    },
+    "2502.16435": {
+      "arxiv_id": "2502.16435",
+      "paper_title": "Human Cognitive Benchmarks Reveal Foundational Visual Gaps in MLLMs",
+      "abstract": "Humans develop perception through a bottom-up hierarchy: from basic primitives and Gestalt principles to high-level semantics. Current Multimodal Large Language Models (MLLMs) are trained directly on complex downstream tasks. Does it guarantee their performance on these foundational visual capabilities? To systematically investigate this gap, we introduce VisFacor, a benchmark that digitizes 20 vision-centric subtests from FRCT, a well-established cognitive psychology assessment spanning four domains of human visual cognition. Furthermore, we design algorithms to automatically construct and validate unlimited test cases with controllable difficulty. Using VisFacor, we evaluate 39 frontier MLLMs, including both proprietary (e.g., GPT, Gemini) and open-source (e.g., LLaMA, Qwen) models. The best model achieves a score of only 55.9%. Analysis reveals good internal consistency (Cronbach's alpha = 0.94) and construct validity (compared to existing vision benchmarks). Models consistently fail on tasks such as mental rotation, spatial relation inference, and figure-ground discrimination, regardless of model size or prompting strategy. These findings suggest that performance improvements on existing general benchmarks might represent castles in the air instead of a genuine mastery of human-like visual cognition.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MLLM 시각 인지 벤치마크 VisFacor 도입"
+        }
+      ]
+    },
+    "2503.00128": {
+      "arxiv_id": "2503.00128",
+      "paper_title": "AnnoCaseLaw: Legal Annotation Benchmark of Civil Negligence",
+      "abstract": "Language models offer a way to scale costly, labour-intensive expert annotation, but their ability to reproduce expert judgements remains uncertain. This is particularly challenging in law, where annotators must distinguish the reasoning supporting judicial decisions from other legally relevant discussion. We present AnnoCaseLaw as a densely annotated benchmark comprising $471$ U.S. civil-negligence court opinions with more than $12,000$ expert highlights across five annotation categories. We evaluate proprietary frontier, open-weight, legal-specialised, and decision models on their ability to reproduce these annotations. Models perform better on Facts and Outcome than on Application of Law to Facts, Procedural History, and Relevant Precedents. On Application of Law to Facts, proprietary frontier models achieve the strongest balance of reasoning coverage and precision, while the open-weight model Gemma 4 achieves comparable Macro-F1 to proprietary frontier models at a fraction of the estimated inference cost. Our findings highlight the importance of evaluating annotation coverage and cost alongside aggregate scores when assessing the feasibility of automated legal annotation.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "미국 판례 영어 법률 주석 벤치마크 도입"
+        }
+      ]
+    },
+    "2605.20197": {
+      "arxiv_id": "2605.20197",
+      "paper_title": "MedicalBench: Evaluating Large Language Models Toward Improved Medical Concept Extraction",
+      "abstract": "Medical concept extraction from electronic health records underpins many downstream applications, yet remains challenging because medically meaningful concepts are frequently implied rather than explicitly stated in medical narratives. Existing benchmarks with human-annotated evidence spans underscore the importance of grounding extracted concepts in medical text. However, they predominantly focus on explicitly stated concepts instead of implicit concepts. We present MedicalBench, a benchmark for medical concept extraction with evidence grounding that evaluates implicit medical reasoning. MedicalBench formulates medical concept extraction as a verification task over medical note-concept pairs, coupled with sentence-level evidence identification. Built from MIMIC-IV discharge summaries and human-verified ICD-10 codes, the dataset is curated through a multi-stage large language model (LLM) triage pipeline followed by medical annotation and expert review. It deliberately includes implicit positives, semantically confusable negatives, and cases where LLM judgments disagree with medical expert assessments. We define two complementary evaluation tasks: (1) medical concept extraction and (2) sentence-level evidence retrieval, enabling assessment of both correctness and interpretability. Benchmarking state-of-the-art LLMs reveals that performance remains modest, highlighting the difficulty of extracting implicitly expressed concepts. We further show that performance is largely invariant to note length, indicating that MedicalBench isolates reasoning difficulty rather than superficial confounders. MedicalBench provides the first systematic benchmark for implicit, evidence-grounded medical concept extraction, offering a foundation for developing medical language models that can both identify medically relevant concepts and justify their predictions in a transparent and medically faithful manner.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MIMIC-IV 기반 영어 의료 개념 추출 벤치마크"
+        }
+      ]
+    },
+    "2605.30497": {
+      "arxiv_id": "2605.30497",
+      "paper_title": "CanLegalRAGBench: Evaluating Retrieval-Augmented Generation on Canadian Case Law",
+      "abstract": "RAG-based legal assistants have been growing in popularity, but LLM hallucinations remain a key issue and potentially undermines justice. While benchmarks have been developed to evaluate progress, many rely on synthetic queries rather than realistic legal scenarios. Moreover, Canadian law remains underrepresented in existing evaluations. To address this gap, we introduce CanLegalRAGBench, a Canadian legal QA benchmark based on realistic queries and expert-annotated answers grounded in case law. Our evaluation shows that retrieval performance is sensitive to design choices and that open-source embedding models are competitive with closed source models. However, it also reveals the limitation of automatic evaluations that penalize systems for retrieving alternative relevant documents. We also find that generated answers often diverge from gold responses, either with hallucinations or by producing overly detailed or irrelevant content, with 8-29% of claims not being supported by the retrieved documents. We hope this benchmark will help drive continued progress in addressing limitations of legal RAG systems.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "캐나다 판례 RAG 벤치마크, 영어/프랑스어 여부 불명확"
+        }
+      ]
+    },
+    "2606.08168": {
+      "arxiv_id": "2606.08168",
+      "paper_title": "Closing the Sim-to-Real Gap: An Evaluation Framework for Autonomous Cyber Defense Configuration of Commercial EDR",
+      "abstract": "Leading commercial endpoint detection and response (EDR) products have shifted from operator-configured rule sets to multi-component systems where autonomous AI components operate alongside, and increasingly in place of, operator-deployed policies. Autonomous defense agents using commercial EDR as their hardening tool are no longer tuning a passive tool, but a black-box autonomous system capable of making vendor-specific decisions. We present the first evaluation framework for autonomous defense agents hardening commercial EDR. We instantiate it in a Game of Active Directory (GOAD) lab with Horizon3's NodeZero as the autonomous pentester and Microsoft Defender XDR as the primary EDR under test. We extend the same framework to CrowdStrike Falcon and SentinelOne Singularity to test whether our Microsoft Defender XDR findings hold across vendors. We run a sample benchmark of defense agents with two large language model (LLM) backbones (Claude Sonnet 4.6 and Cisco Foundation-Sec-8B). We report three lessons learned that neither simulation nor open source EDR evaluation can surface: (i) commercial EDR telemetry is engineered for Security Operations Center (SOC) analyst workflows rather than for measuring policy effectiveness; (ii) per-policy attribution is important for separating the defense agent's actions from the EDR's autonomous actions; and (iii) EDR behavior varies between runs, largely because containment varies and accumulates. Together, these findings highlight a sim-to-real gap for enterprise defense and motivate evaluation methodology for benchmarking autonomous defense agents in environments with black-box, autonomous tools.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "EDR 방어 에이전트 평가 프레임워크, 재사용성 불명확"
+        }
+      ]
+    },
+    "2606.15735": {
+      "arxiv_id": "2606.15735",
+      "paper_title": "EHRNote-ChatQA: A Benchmark for Evidence-Grounded Multi-Turn Clinical Question Answering over Longitudinal Discharge Summaries",
+      "abstract": "Discharge summaries are crucial clinical documents containing the context of a patient's overall hospital stay, and are routinely reviewed by medical experts for patient readmission, ongoing care, and diagnostic decision-making. When reviewing them, medical experts often must iteratively synthesize information across multiple discharge summaries while verifying the evidence supporting each answer. Although large language models (LLMs) are increasingly explored for clinical question answering, existing benchmarks do not sufficiently reflect this setting: they often evaluate exam-style medical knowledge or focus on single-turn question answering with limited evidence-grounding evaluation. We introduce EHRNote-ChatQA, the first benchmark for evidence-grounded multi-turn clinical question answering over patients' multiple discharge summaries. Built from de-identified MIMIC-IV discharge summaries, EHRNote-ChatQA contains 967 patient-level multi-turn samples spanning one to five notes and 16,072 medical-expert-verified QA pairs (8,036 content questions, each paired with an evidence-grounding question) across eight clinical categories. The benchmark is constructed through an expert-informed pipeline combining discharge-summary structuring schema, expert-curated multi-turn QA templates, and LLM-based generation, followed by review and revision of every single QA sample by 12 medical experts (11 physicians and 1 nurse). Benchmarking 24 proprietary and open-weight LLMs reveals several challenges, including that LLMs struggle more with evidence grounding than content answering, multi-turn errors compound across turns, and single-turn clinical QA performance does not reliably transfer to this setting. These findings establish EHRNote-ChatQA as a rigorous and practical benchmark for evaluating clinical QA systems.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MIMIC-IV 기반 영어 임상 다중턴 QA 벤치마크"
+        }
+      ]
+    },
+    "2606.24725": {
+      "arxiv_id": "2606.24725",
+      "paper_title": "A Reproducible Benchmark and Evidence-Retrieval Software Framework for Silicon Detector R&D Literature",
+      "abstract": "Silicon pixel detector R&D depends on a large and rapidly growing technical literature, including beam-test and irradiation studies, performance measurements, simulation, and design reports. Locating the supporting evidence passage for a measurement, operating condition, or design decision is therefore a computing and data-science challenge for detector-development workflows. General-purpose language models are insufficient unless grounded in traceable primary sources, particularly in a domain with specialised terminology, configuration-dependent measurements, and rapidly evolving experimental results. We address this with a reproducible, general-purpose framework for evidence-grounded retrieval over technical literature, using silicon pixel detector R&D as a demanding validation domain. The framework combines sparse lexical retrieval, dense semantic retrieval, and hybrid reciprocal-rank fusion, with an optional graph-guided exploration layer and grounded, abstention-aware response generation. The accompanying benchmark provides manually curated chunk-level evidence annotations, source-level diagnostics, semantic relevance checks, and negative-query abstention tests over two detector query sets. We evaluate six retrieval configurations across 378 source documents and 8,442 indexed chunks. Hybrid sparse-dense retrieval gives the strongest strict evidence recovery, achieving Hit@5 of 0.917 on the core benchmark and 0.951 on the curated extension benchmark, while graph-based methods are more effective for literature exploration and source discovery. Graph expansion is therefore best employed as a discovery layer over the hybrid retrieval backbone. The framework provides reusable software for traceable, 1 evidence-grounded knowledge access in silicon detector R&D and high-energy physics instrumentation.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "검출기 문헌 검색 벤치마크, 언어 및 LLM 평가 범위 불명확"
+        }
+      ]
+    },
+    "2608.26950": {
+      "arxiv_id": "2608.26950",
+      "paper_title": "From Atomic to Agentic: Towards Interpretable Evaluation of LLMs' Agentic Mathematical Capabilities",
+      "abstract": "Large Language Models (LLMs) are evolving from performing end-to-end mathematical reasoning to integrating agentic intelligence. However, most existing math benchmarks evaluate only final answers. This outcome-oriented evaluation provides limited diagnostic value for identifying process-level failures or rigorous logic, failing to guide the transformation of LLMs into robust agents. To bridge this gap, we present a process-level benchmark designed to evaluate the inherent agentic mathematical reasoning abilities of LLMs. Our framework aligns problem-solving agentic behaviors with a structured taxonomy of reusable mathematical atomic capabilities. We design a comprehensive suite of planning, action, and feedback tasks across both textual and multimodal contexts, supported by an automated pipeline that synthesizes high-quality trajectories and produces fine-grained annotations via controlled LLM rewriting. Experiments reveal that models with similar end-to-end accuracy can exhibit markedly different agentic capability profiles. This demonstrates that process-level evaluation is crucial for interpreting the true potential of LLMs and guiding the development of next-generation mathematical agents.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전틱 수학 추론 프로세스 수준 벤치마크"
+        }
+      ]
+    },
+    "2609.11141": {
+      "arxiv_id": "2609.11141",
+      "paper_title": "Can LLMs Normalize Databases? A Benchmark and Multi-Agent Framework for Schema Normalization",
+      "abstract": "Large Language Models (LLMs) are increasingly used to generate structured outputs, but their reliability remains unclear when those outputs must satisfy database-level constraints. We study this issue through database normalization, involving reasoning about functional dependencies, lossless join decompositions, and inter-table constraints. We introduce a Database Normalization Benchmark (DNBENCH), comprising 3,275 samples for evaluating LLM-driven database normalization from 1NF to BCNF. DNBENCH uses a three-axis protocol to measure semantic equivalence, structural accuracy, and logical validity. Across Single, Complex, and Real World levels, DNBENCH uncovers recurring failures in dependency inference, schema decomposition, and inter-table constraint reconstruction. We further propose Multi-Agent Reasoning for Schemas (MARS), which separates evidence extraction, violation diagnosis, and decomposition planning from schema generation and verification. MARS improves the DNB-SCORE by 82.0% over the single-prompt baseline. All artifacts will be released upon acceptance.",
+      "paper_updated": "2026-10-22T00:00:00Z",
+      "created_at": "2026-10-23T02:51:40Z",
+      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "DB 정규화 LLM 벤치마크 DNBENCH 도입"
         }
       ]
     }
@@ -30036,9 +30366,30 @@
     },
     "2026-10-23": {
       "attempted": [],
-      "abstract_attempted": [],
-      "calls": 1,
-      "cost_usd": 0.4488
+      "abstract_attempted": [
+        "2604.12306",
+        "2606.10194",
+        "2606.13802",
+        "2605.20712",
+        "2610.23230",
+        "2605.14381",
+        "2605.24771",
+        "2502.16435",
+        "2503.00128",
+        "2605.20197",
+        "2605.30497",
+        "2606.08168",
+        "2606.15735",
+        "2606.24725",
+        "2608.26950",
+        "2609.11141",
+        "2610.16067",
+        "2610.27307",
+        "2610.29207",
+        "2610.29225"
+      ],
+      "calls": 3,
+      "cost_usd": 0.9247
     }
   },
   "reaudits": [
