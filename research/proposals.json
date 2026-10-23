@@ -7450,6 +7450,80 @@
       "proposal_sha256": "abc61b1f400c67ec2d4d578e9fa4ccbca3dca6256f6c17c1cdc0fe046b032c6d",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2609.20832": {
+      "decision": "exclude",
+      "reason": "TatBLiMP는 타타르어(Tatar, 키릴 문자) 문법성 최소쌍 벤치마크로, 평가 과제 언어가 한국어도 영어도 아니다. 논문이 영어·러시아어 간섭을 언급하고 영어 BLiMP를 계승했다고 밝히지만, 문항 자체는 모두 타타르어 문장이다. 따라서 ko/en 트랙 어느 쪽에도 해당하지 않아 인벤토리 범위 밖으로 보고 제외한다. 데이터셋 링크(https://huggingface.co/datasets/ilchats/TatBLiMP)는 논문에 명시되어 있으나 범위 기준 때문에 제안하지 않는다.",
+      "changes": [],
+      "arxiv_id": "2609.20832",
+      "paper_title": "TatBLiMP: A Benchmark of Linguistic Minimal Pairs for Tatar",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.20832",
+        "sha256": "8c211e209594f28df88aeeadfb9da2185fbf395ce3b705c27bbd8378ae34eac9",
+        "accessed": "2026-10-23T03:25:46Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 11,
+          "elapsed_seconds": 61.59,
+          "pdf_sha256": "8c211e209594f28df88aeeadfb9da2185fbf395ce3b705c27bbd8378ae34eac9",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 1,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7b7cd0b59c6945227accbeb4730623fb8e6c9811f7f2a71a1f5bac100978ae26",
+          "page_json_file": "2609.20832.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-10-23T03:26:55Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.20832",
+        "paper_title": "TatBLiMP: A Benchmark of Linguistic Minimal Pairs for Tatar",
+        "abstract": "We introduce TatBLiMP, the first benchmark of linguistic minimal pairs for Tatar (tt, ISO 639-3 tat), a Qypchaq Turkic language written in Cyrillic. To our knowledge it is the first grammaticality evaluation for Tatar language models of any kind, since even the 101-language MultiBLiMP does not include Tatar. TatBLiMP covers 16 morphosyntactic phenomena in 1248 sentence pairs. Each pair differs by a single morpheme, one grammatical and one ungrammatical. A model passes a pair when it assigns higher probability to the grammatical member. Scoring compares probabilities the model already assigns, so the benchmark needs no text generation and no parser, and it runs on base models and on mid-training checkpoints. TatBLiMP adapts the phenomenon inventory and single-morpheme breaking operations of TurBLiMP to Tatar and adds one phenomenon specific to Tatar, bare-noun number after numerals and quantifiers. The grammatical member of every pair is an attested sentence from Tatar literary prose. The ungrammatical member is produced by a deterministic single-morpheme perturbation with the apertium-tat transducer. Every pair is ratified by a native speaker. A plausibility principle governs construction, so the ungrammatical member is a plausible real-world error rather than an arbitrary corruption. Across from-scratch Tatar models, cross-lingual adaptations, and frontier multilingual LLMs, the benchmark tracks focused Tatar training rather than parameter scale. A 478M from-scratch model and a 125M monolingual model lead near 0.97, a 7B adaptation trails, frontier LLMs of 30-120B parameters fall to 0.80-0.92, and a lightly tuned multilingual model is weakest. We close with the benchmark's main limitation. Its inherited taxonomy omits the morphophonology, vowel harmony and consonant assimilation, that is most salient to native speakers, and we sketch a native second layer that would add it.",
+        "paper_updated": "2026-09-21T00:00:00Z",
+        "created_at": "2026-10-19T13:43:34Z",
+        "input_sha256": "deaf181b34a4c20bd2d0d3951f13309976bd6a76f5eee8f4cca3aaf483f81149",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "타타르어 언어 최소쌍 벤치마크로 언어 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "irrelevant",
+            "reason": "타타르어 문법성 벤치마크로 전체 태스크가 비한국·영어"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "95d4fc17e9c640e1e3512f7de9bd36e903decccde8a3b8218715b2c6fd803692"
     }
   },
   "processed_comments": [],
@@ -31953,8 +32027,8 @@
         "2610.29207",
         "2610.29225"
       ],
-      "calls": 17,
-      "cost_usd": 8.1124
+      "calls": 18,
+      "cost_usd": 8.4075
     }
   },
   "reaudits": [
