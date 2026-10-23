@@ -8311,6 +8311,181 @@
       },
       "issue_url": null,
       "proposal_sha256": "8c2497a65ce916f11763adf339bdfe9e72481508e128482e61a4480be13e62ca"
+    },
+    "2604.23478": {
+      "decision": "propose",
+      "reason": "JudgeSense는 LLM 심사 모델(judge)이 같은 요청을 다르게 표현했을 때 판정이 얼마나 유지되는지를 재는 재사용 가능한 벤치마크이다. 사실성, 일관성, 관련성, 선호의 4개 과제에 항목 880개를 담고 있다. 프롬프트와 원천 코퍼스가 모두 영어이므로 en 트랙의 텍스트 벤치마크로 분류했다. 기존 인벤토리에는 없는 새 항목이다. 라이선스와 lm-eval 지원 여부는 확인하지 못해 '확인 불가'로 적었다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "judgesense",
+            "이름": "JudgeSense",
+            "평가 축": "메타평가(LLM judge 프롬프트 민감도)",
+            "언어": "en",
+            "정의": "같은 요청을 표현만 달리해 물었을 때 LLM judge의 판정이 유지되는지를 재는 벤치마크. 사람이 라벨링한 4개 코퍼스에서 가져온 880문항(사실성 250, 일관성 250, 관련성 250, 선호 130)으로 구성되며, 과제마다 지시문 템플릿 5개(총 20개) 중 의미는 같고 표현만 다른 2개로 각 문항을 제시함. 주 지표는 Judge Sensitivity Score(JSS)에서 동일 프롬프트 반복 일치율(JSSrep)을 뺀 ΔJSS. 논문은 6개 제공사의 judge 25개를 평가함",
+            "대표 과제": "사실성 판정(YES/NO), 일관성 1~5점 평정, 관련성 쌍대 선택(A/B), 선호 쌍대 선택(A/B)",
+            "대표 예시·설명": "한 문장짜리 사실성 지시문 쌍(예: 'Is this statement factually correct? Answer YES or NO only.'와 표현만 다른 변형)을 같은 진술에 각각 적용해 judge의 판정이 같은지 비교하는 과제",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 자체의 라이선스는 확인하지 못함. 원천 코퍼스(TruthfulQA, SummEval, BEIR TREC-COVID, MT-Bench 인간 선호)의 약관은 별도로 확인해야 함. 프롬프트와 원천 코퍼스가 모두 영어라 다른 언어에서의 안정성은 논문도 검증하지 않음. 지시문 쌍의 의미 동등성은 독립 심사로 검증되지 않았다고 논문이 밝힘. 정답 라벨을 쓰지 않는 안정성 지표이므로 정확도와 별도로 해석해야 함. 일부 judge 셀은 반복 일치율이 0.90 미만이면 해석하지 않으며, 선호 과제의 두 셀은 지원 수 부족으로 지표가 없음. 평가에는 judge 모델 API 호출이 필요함",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/Rohithreddybc/judgesense-benchmark"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Meta-evaluation (prompt sensitivity of LLM judges)",
+            "definition": "A benchmark of whether an LLM judge returns the same verdict when the same request is worded differently. It has 880 items from four human-labelled corpora (factuality 250, coherence 250, relevance 250, preference 130). Each task has five instruction templates (twenty in total), and each item is issued under two of them that differ in wording but not in what they ask. The primary metric is ΔJSS, the Judge Sensitivity Score minus the judge's own agreement on a repeated identical prompt (JSSrep). The paper evaluates 25 judges from six providers.",
+            "task": "Factuality judgment (YES/NO), coherence rating (1-5), relevance pairwise choice (A/B), preference pairwise choice (A/B)",
+            "example": "A pair of factuality instructions (for example 'Is this statement factually correct? Answer YES or NO only.' and a reworded variant) is applied to the same statement, and the judge's two verdicts are compared for agreement (task description)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "Is this statement"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "Is this statement"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "Is this statement"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/Rohithreddybc/judgesense-benchmark"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "Is this statement"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "JudgeSense, a benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "JudgeSense, a benchmark"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "JudgeSense, a benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2604.23478",
+      "paper_title": "JudgeSense: A Benchmark for Prompt Sensitivity in LLM-as-a-Judge Systems",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2604.23478",
+        "sha256": "2fc709bc8b261ef572170c393104371f9d498d68fdec26cab7f6490e848978d7",
+        "accessed": "2026-10-23T04:06:46Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 35,
+          "elapsed_seconds": 212.96,
+          "pdf_sha256": "2fc709bc8b261ef572170c393104371f9d498d68fdec26cab7f6490e848978d7",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "369e89fd388c564b98a5f25885fb97c76eb0a5b53a8c86d537565c2f459b3613",
+          "page_json_file": "2604.23478.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/Rohithreddybc/judgesense-benchmark",
+            "fetched_url": "https://huggingface.co/datasets/Rohithreddybc/judgesense-benchmark/raw/main/README.md",
+            "sha256": "0613a65918fdb7dd5fc92b2e8d6c01a5e6fa8e44a0e53a793ce5b2aecd73e9b3",
+            "accessed": "2026-10-23T04:10:41Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-23T04:10:41Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2604.23478",
+        "paper_title": "JudgeSense: A Benchmark for Prompt Sensitivity in LLM-as-a-Judge Systems",
+        "abstract": "Large language models are widely used to judge the output of other language models, yet whether a judge returns the same verdict when the same request is worded differently remains largely unexamined. We study that question across four evaluation tasks and twenty-five judges from six providers. To support the analysis we release JudgeSense, a benchmark of 880 items from human-labelled corpora, each issued under two instructions that differ in wording and not in what they ask, with the complete decision logs. Every score is reported against the judge's own agreement with itself on the identical prompt, so decoding noise is not charged to wording, and the release lets a reader ask the same of any judge not in our roster. Rewording costs agreement on all four tasks, and on two it clears the threshold we declare for a practically meaningful effect; the ordinal task is both the least stable and the one fewest judges are accurate on, and within a single family parameter count does not predict stability. A judge measured inside an agent harness yields a smaller estimate than the same judge reached through a direct API call, because its agreement with itself collapses faster than its agreement across wordings.",
+        "paper_updated": "2026-09-21T00:00:00Z",
+        "created_at": "2026-10-19T13:43:59Z",
+        "input_sha256": "7cfe4c876bd6c0c27f919866e3a9ea081ac714f27cc5178599a424558d8e7571",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 심판 프롬프트 민감도 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "LLM 심판 프롬프트 민감도 벤치마크 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "39891267821",
+        "context_sha256": "773111355b20fa1a83888a7e12c2d23ba0ed3881fd1401d53e026ea637536d21"
+      },
+      "proposal_sha256": "61368582345d65dbe262b0a12c91b9807be327837eadf3eb9cf1f33035027974"
     }
   },
   "processed_comments": [],
@@ -32828,8 +33003,8 @@
         "2610.29207",
         "2610.29225"
       ],
-      "calls": 28,
-      "cost_usd": 13.1178
+      "calls": 29,
+      "cost_usd": 13.632
     }
   },
   "reaudits": [
