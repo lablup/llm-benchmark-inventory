@@ -6345,7 +6345,7 @@
     },
     "2606.13802": {
       "decision": "propose",
-      "reason": "이 논문은 스프레드시트에서 사용자 행동 열을 보고 다음 행동을 예측하는 시스템용 벤치마크 NAPE를 새로 제안한다. 52개 궤적(총 11,907단계)과 온라인 평가 프레임워크, 지표(UAS, AR, PREC, PCov)를 제공하고, 코드와 데이터는 GitHub 저장소로 공개한다. 솔버 프롬프트가 영어이고 행동이 텍스트로 표현되므로 en 트랙의 text로 분류한다. 이전 답변은 PDF 쪽에 없는 인용이 있어 반려됐으므로, 이번에는 해당 쪽에 실제로 있는 짧은 인용으로 교체했다.",
+      "reason": "이 논문은 스프레드시트에서 사용자 행동 열을 보고 다음 행동을 예측하는 시스템용 벤치마크 NAPE를 제안한다. 52개 궤적(총 11,907단계)과 온라인 평가 프레임워크, 지표(UAS, AR, PREC, PCov)를 제공하고, 코드와 데이터는 GitHub 저장소로 공개한다. 솔버 프롬프트가 영어이고 행동이 텍스트로 표현되므로 en 트랙의 text로 분류한다. 공식 저장소 카드는 PolyForm Noncommercial 1.0.0을 명시하므로 권리 필드는 해당 조항을 근거로 기록했다. lm-eval은 카드에 언급이 없어 미표기로 두었다. 추천 모델 표는 논문 Table 2(단일 행동 재예측)에서 가져왔다.",
       "changes": [
         {
           "track": "en",
@@ -6358,12 +6358,12 @@
             "대표 과제": "다음 행동 예측(단일 행동 재예측 및 다중 행동 예측)",
             "대표 예시·설명": "사용자가 입력, 서식, 테두리, 병합 같은 행동을 수행한 이력을 시스템에 주면 이후 행동을 예측하고, 평가기가 수락 여부를 판단해 남은 행동을 갱신하는 과제",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터와 코드의 라이선스는 확인하지 못했다. 원본 통합문서는 공개 코퍼스에서 가져왔으므로 원천 약관을 별도로 확인해야 한다. 베이스라인으로 GPT-5 계열 API 실행 환경이 필요하다. 오라클 예측 가능성 분석에는 시트 이미지를 쓰지만 평가 대상 솔버는 텍스트 행동 표현을 사용한다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "PolyForm Noncommercial 1.0.0",
+            "상업적 이용": "불가(비상업 목적 한정, 상업 이용은 저자와 별도 협의)",
+            "수정·파생": "비상업 목적에 한해 가능",
+            "재배포": "비상업 목적에 한해 가능(약관 사본 또는 URL 고지 필요)",
+            "이용 시 유의사항": "저장소 README의 PolyForm Noncommercial 1.0.0 조항은 소프트웨어(software)를 대상으로 서술되어 있으며, 저장소에 함께 실린 원본 통합문서(data/raw)에는 별도 약관이 적용될 수 있다. 벤치마크는 공개 통합문서(Singh et al., 2023, CoRNet)로부터 궤적을 복원해 만들었으므로(논문 3쪽) 이 원천 통합문서의 고유 약관을 이용 전에 별도로 확인해야 한다. 베이스라인으로 GPT-5 계열 API 실행 환경이 필요하다. 오라클 예측 가능성 분석에는 시트 이미지를 쓰지만 평가 대상 솔버는 텍스트 행동 표현을 사용한다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/Tej-55/NAPE"
           },
           "modality": "text",
@@ -6407,9 +6407,148 @@
               "quote": "Next Action Predictions"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/Tej-55/NAPE",
+              "quote": "PolyForm Noncommercial 1.0.0"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/Tej-55/NAPE",
+              "quote": "and other noncommercial use. Contact the authors for"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/Tej-55/NAPE",
+              "quote": "make changes and new works based on the software"
+            },
+            "재배포": {
+              "source_url": "https://github.com/Tej-55/NAPE",
+              "quote": "distribute copies of the software"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/Tej-55/NAPE",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "UAS (User Actions Saved, %): 사용자 행동 감소율 (L_initial − L_final)/L_initial, 퍼센트 단위",
+            "setting": "이 논문의 Table 2 결과이며 현재 전역 리더보드가 아님. NAPE 벤치마크 52개 궤적, 단일 행동 재예측(single-action repredict, 예측당 1개 행동), 스트라이드 s=1, 컨텍스트 윈도 c=32, GREEDY 수락 휴리스틱, 컨텍스트 단축 사용. 'GPT-5-R' 계열은 추론 모드(low), 접미사가 없는 GPT-5 계열은 비추론 채팅 모드. 별도의 토큰 예산은 논문에 명시되지 않았고 보고된 단일 실행 값임.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "GPT-5-R",
+                "score": "32.7",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>GPT-5-R</td><td>32.7</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5-R mini",
+                "score": "28.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>GPT-5-R mini</td><td>28.2</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5",
+                "score": "27.4",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>GPT-5</td><td>27.4</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5 mini",
+                "score": "18.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>GPT-5 mini</td><td>18.0</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "SmolLM2-360M",
+                "score": "21.7",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>SmolLM2-360M</td><td>21.7</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "SmolLM2-135M",
+                "score": "18.3",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>SmolLM2-135M</td><td>18.3</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "FT-SmolLM2-360M",
+                "score": "26.8",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>FT-SmolLM2-360M</td><td>26.8</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "FT-SmolLM2-135M",
+                "score": "23.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>FT-SmolLM2-135M</td><td>23.2</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "LSTM",
+                "score": "5.7",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>LSTM</td><td>5.7</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Trained n-gram",
+                "score": "3.8",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>Trained n-gram</td><td>3.8</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "XGBoost",
+                "score": "2.9",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>XGBoost</td><td>2.9</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Online n-gram",
+                "score": "12.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "<td>Online n-gram</td><td>12.0</td>"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2606.13802",
@@ -6502,7 +6641,8 @@
         "source_run": "39891267821",
         "context_sha256": "99f1a3758f6752148d98e0262caeb86dc0ed914bb1bc1fca8850a8bfded16e8f"
       },
-      "proposal_sha256": "1b718082a442e411209bf8864a874b01b177c46cc30d0e8f6744219283527bc9"
+      "proposal_sha256": "b7fa0a28f005b981418162f740ebd4af95a2d092c44a56b9c9be08e0ac1c2e48",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -31002,8 +31142,8 @@
         "2610.29207",
         "2610.29225"
       ],
-      "calls": 9,
-      "cost_usd": 3.9323
+      "calls": 10,
+      "cost_usd": 4.3572
     }
   },
   "reaudits": [
