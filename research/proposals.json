@@ -3724,7 +3724,7 @@
     },
     "2602.16571": {
       "decision": "propose",
-      "reason": "MathEd-PII는 영어 수학 튜터링 대화(세션 1,000개, 메시지 115,620개)에서 개인식별정보(PII)를 탐지하는 텍스트 벤치마크 데이터셋으로, 논문이 새로 공개했고 Hugging Face 링크도 명시한다. 과제 언어는 영어 예시 문장으로 확인되므로 en 트랙의 텍스트 행으로 제안한다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "reason": "MathEd-PII는 영어 수학 튜터링 대화(세션 1,000개, 메시지 115,620개)에서 개인식별정보(PII)를 탐지하는 텍스트 벤치마크 데이터셋이다. 논문이 새로 공개했고 Hugging Face 링크도 명시한다. 공식 데이터 카드가 CC BY 4.0 라이선스를 명시하므로 이를 근거로 권리 필드를 채웠다. lm-eval은 카드와 논문 어디에도 언급이 없어 '미표기'로 기록했다. 논문 Table 4의 세그먼트 인식 프롬프트 조건 F1 결과를 추천 모델로 제시한다.",
       "changes": [
         {
           "track": "en",
@@ -3737,12 +3737,12 @@
             "대표 과제": "수학 튜터링 대화 메시지에서 PII 구간과 유형을 찾아내는 span 탐지",
             "대표 예시·설명": "수학 풀이 중심 대화에서 수식과 실제 개인정보를 구분해 PII 구간만 찾아내는 과제 설명(실제 문항 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건, lm-eval 지원 여부는 확인하지 못했다. 정답 라벨은 원본 비식별 이전 데이터가 아니라 LLM이 만든 대체 표현과 사람 검수를 거친 것이다. 단일 미국 튜터링 플랫폼에서 나온 데이터라 일반화에는 한계가 있다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-4.0",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "출처 표기(BY)가 필요하다. 원본 대화는 미국 튜터링 플랫폼에서 제공받았고(3쪽), 기존 redaction은 해당 플랫폼의 Presidio 기반 시스템이 적용했으며, 정답 라벨과 대체 표현은 사람 검수를 거친 LLM이 생성했다(4쪽). 데이터 카드의 CC BY 4.0 표기는 공개된 MathEd-PII 데이터셋에 대한 것이므로, 이 구성 요소(원본 대화 출처, 기존 redaction, LLM 생성 대체 표현) 각각의 고유 약관은 이용 전에 별도로 점검해야 한다. 정답 라벨은 원본 비식별 이전 데이터가 아니라 LLM이 만든 대체 표현에 기반한다. 단일 미국 튜터링 플랫폼에서 나온 데이터라 일반화에는 한계가 있다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://huggingface.co/datasets/NationalTutoringObservatory/MathEd-PII"
           },
           "modality": "text",
@@ -3786,9 +3786,67 @@
               "quote": "PII detection in"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://huggingface.co/datasets/NationalTutoringObservatory/MathEd-PII",
+              "quote": "license: cc-by-4.0"
+            },
+            "상업적 이용": {
+              "source_url": "https://huggingface.co/datasets/NationalTutoringObservatory/MathEd-PII",
+              "quote": "(Creative Commons Attribution 4.0 International)"
+            },
+            "수정·파생": {
+              "source_url": "https://huggingface.co/datasets/NationalTutoringObservatory/MathEd-PII",
+              "quote": "(Creative Commons Attribution 4.0 International)"
+            },
+            "재배포": {
+              "source_url": "https://huggingface.co/datasets/NationalTutoringObservatory/MathEd-PII",
+              "quote": "(Creative Commons Attribution 4.0 International)"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://huggingface.co/datasets/NationalTutoringObservatory/MathEd-PII",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "PII 탐지 F1 점수(정밀도와 재현율의 조화평균, 0~1 척도, 단위 없음)",
+            "setting": "논문 Table 4의 Segment-Aware Prompting 조건(MathEd-PII 대상, 각 메시지에 수학 세그먼트 라벨을 제공하는 프롬프트)에서 비교된 3개 LLM의 F1이다. 95% 부트스트랩 신뢰구간이 함께 보고된 값이다. 이 논문에서 보고된 결과이며 현재의 전역 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Claude 4.5 Opus",
+                "score": "0.820",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Claude 4.5 Opus 0.934 0.730 0.820"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini 3 Pro",
+                "score": "0.821",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Gemini 3 Pro 0.888 0.764 0.821"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.2",
+                "score": "0.758",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.2 0.800 0.720 0.758"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2602.16571",
@@ -3871,7 +3929,8 @@
         "source_run": "39891267821",
         "context_sha256": "4c4f3265c18de597f5e9dfe5434573881270225c2a65006c5992b27f32e43a46"
       },
-      "proposal_sha256": "a229b7df1a23d92b7c1f2602dc74c85042c081dff7a0ce4c08f0788a58ab8ee3"
+      "proposal_sha256": "88d2ba9b7bda265f9fb75a6838ced1667a2e73cecede017bee23b9889b792778",
+      "publication_policy": "complete-evidence-v1"
     },
     "2606.16262": {
       "decision": "needs_evidence",
@@ -29977,7 +30036,9 @@
     },
     "2026-10-23": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [],
+      "calls": 1,
+      "cost_usd": 0.4488
     }
   },
   "reaudits": [
