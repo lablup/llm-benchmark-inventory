@@ -6692,7 +6692,7 @@
     },
     "2601.04693": {
       "decision": "propose",
-      "reason": "이 논문은 한국어 문장 수준 부정(negation) 이해를 평가하는 재사용 가능한 객관식 벤치마크 Thunder-KoNUBench를 새로 제안한다. 4,784문항이며 train 2,500, validation 1,000, test 1,284로 나뉜다. 선택지는 표준 부정(정답), 국소 부정, 모순, 바꿔 쓰기로 구성된다. 과제는 한국어 텍스트이므로 ko 트랙의 text로 분류한다. 평가는 LM Evaluation Harness의 cloze(acc_norm)와 symbol(acc) 방식을 쓰고 47개 LLM을 평가했다. 논문이 데이터셋의 GitHub·HuggingFace 주소를 직접 밝히고 있다. 기존 인벤토리에 같은 벤치마크는 없다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않아 '확인 불가'로 기록한다.",
+      "reason": "이 논문은 한국어 문장 수준 부정(negation) 이해를 평가하는 재사용 가능한 객관식 벤치마크 Thunder-KoNUBench를 새로 제안한다. 4,784문항이며 train 2,500, validation 1,000, test 1,284로 나뉜다. 선택지는 표준 부정(정답), 국소 부정, 모순, 바꿔 쓰기로 구성된다. 과제는 한국어 텍스트이므로 ko 트랙의 text로 분류한다. 평가는 LM Evaluation Harness의 cloze(acc_norm)와 symbol(acc) 방식을 쓰고 47개 LLM을 평가했다. 논문이 데이터셋의 GitHub·HuggingFace 주소를 직접 밝히고 있다. 기존 인벤토리에 같은 벤치마크는 없다. 데이터셋 라이선스는 논문 10쪽이 CC BY-NC-SA 4.0으로 명시하고, lm-eval 연동은 공식 저장소 README가 설명한다.",
       "changes": [
         {
           "track": "ko",
@@ -6705,12 +6705,12 @@
             "대표 과제": "원문장의 표준 부정 고르기(표준 부정·국소 부정·모순·바꿔 쓰기 중 선택)",
             "대표 예시·설명": "원문장 하나가 주어지면 주 절의 주 서술어를 부정한 문장(표준 부정)을, 종속절만 부정한 국소 부정, 부정 표지 없이 의미가 충돌하는 모순, 뜻이 같은 바꿔 쓰기 선택지 중에서 고르는 과제",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "논문(10쪽)에는 데이터셋 라이선스가 명시되어 있으나 데이터 카드와 대조해 확인하지 않아 '확인 불가'로 둠. 이용 전 저장소와 데이터 카드의 조건을 확인해야 한다. 문장은 한국어 위키백과를 바탕으로 하며 일부 선택지는 OpenAI 모델로 생성한 뒤 저자가 검수했다. 논문은 자연스러운 맥락 속의 부정 이해는 평가하지 않는다고 밝힌다. lm-eval 지원 여부는 확인하지 않았다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-NC-SA-4.0",
+            "상업적 이용": "불가",
+            "수정·파생": "가능(동일조건)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "논문(10쪽)이 데이터셋을 CC BY-NC-SA 4.0으로 공개한다고 밝힌다. 비영리 목적으로만 쓸 수 있고 출처 표기와 동일조건 공유가 필요하다. 원문장은 한국어 위키백과를 크롤링해 만들었고(논문 4쪽) 모순·바꿔 쓰기 선택지는 OpenAI API로 초안을 생성한 뒤 저자가 검수했다(논문 4쪽). 각 구성 요소의 고유 약관은 이용 전에 별도로 확인해야 한다. 공식 저장소의 Apache-2.0 LICENSE 파일은 코드 저장소의 라이선스이며 데이터셋 라이선스와 별개로 본다. 논문은 자연스러운 맥락 속의 부정 이해는 평가하지 않는다고 밝힌다(10쪽).",
+            "lm-eval 지원": "저장소 태스크 복사 후 지원(add_tasks.sh)",
             "링크": "https://github.com/mcrl/Thunder-KoNUBench"
           },
           "modality": "text",
@@ -6748,8 +6748,353 @@
               "quote": "sentence-level negation understanding"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "page": 10,
+              "quote": "CC BY-NC-SA 4.0 license"
+            },
+            "상업적 이용": {
+              "page": 10,
+              "quote": "CC BY-NC-SA 4.0 license"
+            },
+            "수정·파생": {
+              "page": 10,
+              "quote": "CC BY-NC-SA 4.0 license"
+            },
+            "재배포": {
+              "page": 10,
+              "quote": "CC BY-NC-SA 4.0 license"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/mcrl/Thunder-KoNUBench",
+              "quote": "To use Thunder-KoNUBench tasks inside lm-eval-harness, copy the task directories into your lm-eval-harness installation"
+            }
+          },
+          "recommendations": {
+            "metric": "정확도(%, symbol 방식 acc; API 모델은 exact_match)",
+            "setting": "논문 Table 16(PDF 21쪽)의 Thunder-KoNUBench 0-shot symbol 열. symbol 방식은 질문과 선택지 전체를 주고 기호(A/B/C/D)의 log-likelihood가 가장 높은 것을 고르며 LM Evaluation Harness로 평가했다. API 모델(GPT, Claude)은 log-likelihood를 제공하지 않아 최종 출력의 exact_match로 측정했다. 이 논문이 보고한 결과이며 현재의 전체 리더보드가 아니다. 표에서 모델명이 두 줄로 나뉜 12개 행은 인용의 정확성을 위해 제외했다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "EXAONE-4.0-1.2B",
+                "score": "26.5",
+                "evidence": {
+                  "page": 21,
+                  "quote": "EXAONE-4.0-1.2B 32.2 26.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "EXAONE-4.0-32B",
+                "score": "81.5",
+                "evidence": {
+                  "page": 21,
+                  "quote": "EXAONE-4.0-32B 51.9 81.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "EXAONE-Deep-2.4B",
+                "score": "40.3",
+                "evidence": {
+                  "page": 21,
+                  "quote": "EXAONE-Deep-2.4B 43.2 40.3"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "EXAONE-Deep-7.8B",
+                "score": "43.7",
+                "evidence": {
+                  "page": 21,
+                  "quote": "EXAONE-Deep-7.8B 59.3 43.7"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "EXAONE-Deep-32B",
+                "score": "71.7",
+                "evidence": {
+                  "page": 21,
+                  "quote": "EXAONE-Deep-32B 60.1 71.7"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "kanana-1.5-2.1b-base",
+                "score": "45.2",
+                "evidence": {
+                  "page": 21,
+                  "quote": "kanana-1.5-2.1b-base 50.1 45.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "kanana-1.5-8b-base",
+                "score": "43.6",
+                "evidence": {
+                  "page": 21,
+                  "quote": "kanana-1.5-8b-base 45.8 43.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "A.X-4.0-Light (7.2B)",
+                "score": "85.0",
+                "evidence": {
+                  "page": 21,
+                  "quote": "A.X-4.0-Light (7.2B) 71.3 85.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "A.X-4.0 (72B)",
+                "score": "95.8",
+                "evidence": {
+                  "page": 21,
+                  "quote": "A.X-4.0 (72B) 76.3 95.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "SOLAR-10.7B-v1.0",
+                "score": "42.1",
+                "evidence": {
+                  "page": 21,
+                  "quote": "SOLAR-10.7B-v1.0 42.2 42.1"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-0.6B-Base",
+                "score": "51.6",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-0.6B-Base 41.4 51.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-0.6B",
+                "score": "64.6",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-0.6B 39.1 64.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-1.7B-Base",
+                "score": "64.7",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-1.7B-Base 64.9 64.7"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-1.7B",
+                "score": "76.1",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-1.7B 54.8 76.1"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-4B-Base",
+                "score": "82.2",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-4B-Base 67.8 82.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-4B",
+                "score": "80.5",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-4B 47.7 80.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-8B-Base",
+                "score": "85.5",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-8B-Base 60.5 85.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-8B",
+                "score": "74.8",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-8B 47.7 74.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-14B-Base",
+                "score": "88.6",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-14B-Base 65.8 88.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-14B",
+                "score": "90.6",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-14B 47.9 90.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-32B",
+                "score": "94.2",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Qwen3-32B 57.6 94.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-3.2-1B",
+                "score": "26.2",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Llama-3.2-1B 38.4 26.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-3.2-1B-Instruct",
+                "score": "33.6",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Llama-3.2-1B-Instruct 37.2 33.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-3.2-3B",
+                "score": "52.0",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Llama-3.2-3B 45.2 52.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-3.2-3B-Instruct",
+                "score": "61.8",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Llama-3.2-3B-Instruct 41.1 61.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-3.1-8B",
+                "score": "53.6",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Llama-3.1-8B 40.4 53.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-3.1-8B-Instruct",
+                "score": "57.2",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Llama-3.1-8B-Instruct 37.4 57.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-3.1-70B",
+                "score": "76.6",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Llama-3.1-70B 57.5 76.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-3.1-70B-Instruct",
+                "score": "81.0",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Llama-3.1-70B-Instruct 50.1 81.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Mistral-7B-v0.3",
+                "score": "46.9",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Mistral-7B-v0.3 51.5 46.9"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Mistral-7B-Instruct-v0.3",
+                "score": "73.0",
+                "evidence": {
+                  "page": 21,
+                  "quote": "Mistral-7B-Instruct-v0.3 65.8 73.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "claude-haiku-4-5-20251001",
+                "score": "92.8",
+                "evidence": {
+                  "page": 21,
+                  "quote": "claude-haiku-4-5-20251001 - 92.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "claude-sonnet-4-5-20250929",
+                "score": "98.1",
+                "evidence": {
+                  "page": 21,
+                  "quote": "claude-sonnet-4-5-20250929 - 98.1"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "gpt-4.1-mini",
+                "score": "83.6",
+                "evidence": {
+                  "page": 21,
+                  "quote": "gpt-4.1-mini - 83.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "gpt-4.1",
+                "score": "92.2",
+                "evidence": {
+                  "page": 21,
+                  "quote": "gpt-4.1 - 92.2"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2601.04693",
@@ -6854,7 +7199,8 @@
         "source_run": "39891267821",
         "context_sha256": "e4967ba06f47efc1e79c31c7c8895cf861716799101e4f196a2b6767b9529b66"
       },
-      "proposal_sha256": "0d2c06b1d48aebb998cb7aab03ab52ec7818d7ca154b629b11e011ccc1370f4d"
+      "proposal_sha256": "7bef599f2a8d462aaeb57b88d3072561787879e84414d934f5a077972eb57184",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -31355,8 +31701,8 @@
         "2610.29207",
         "2610.29225"
       ],
-      "calls": 12,
-      "cost_usd": 5.287
+      "calls": 13,
+      "cost_usd": 5.9655
     }
   },
   "reaudits": [
