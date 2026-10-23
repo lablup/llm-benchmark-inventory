@@ -7526,74 +7526,9 @@
       "proposal_sha256": "95d4fc17e9c640e1e3512f7de9bd36e903decccde8a3b8218715b2c6fd803692"
     },
     "2609.25046": {
-      "decision": "propose",
-      "reason": "이 논문은 NeurIPS 2024와 ICLR 2024 리뷰에서 뽑은 영어 리뷰 주장 800개로 구성한 Peerify 벤치마크를 새로 공개했습니다. 논문 원문(영어)과 리뷰 주장 예시가 영어이므로 en 트랙, 텍스트 전용(text)입니다. 논문이 공식 저장소 URL을 명시했습니다. 데이터셋 라이선스와 lm-eval 지원은 논문에서 확인되지 않아 '확인 불가'로 기록합니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "peerify",
-            "이름": "Peerify",
-            "평가 축": "문서 근거 검증(피어리뷰 주장)",
-            "언어": "en",
-            "정의": "논문 원고와 리뷰 주장이 주어졌을 때 그 주장이 원고 근거로 뒷받침되는지 판정하는 벤치마크. NeurIPS 2024와 ICLR 2024의 실제 리뷰·토론에서 만든 원자 주장 800개로 구성됨. 라벨은 Supported, Partially Supported, Not Supported, Not Determined의 4종. 6개 평가 변형(PaperSourced, RebuttalSourced, LLMJudged, HighAgreement, Verifiable-only, Human-Verified)을 제공하며, Human-Verified는 사람이 검수한 300개 하위집합임. 지표는 검증 Accuracy와 Macro-F1(주 지표)이고, 검색 지표(recall@k, nDCG@k, MRR)는 PaperSourced에서만 보고함",
-            "대표 과제": "원고 범위 내 문서 내(intra-document) 주장 검증: 4-way 근거성 판정(풀컨텍스트 또는 검색 증강)",
-            "대표 예시·설명": "리뷰어의 원자 주장 하나와 해당 논문 원고를 주고, 원고만을 근거로 주장이 뒷받침되는지 4개 라벨 중 하나로 판정하는 과제",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "논문은 모든 자료를 공개 라이선스로 배포한다고만 밝히고 구체적 라이선스는 적지 않아 데이터 라이선스를 확인하지 못함. 원고·리뷰는 공개 OpenReview 데이터에서 유래함. 라벨 다수가 LLM(GPT-5-mini, Claude-Sonnet-4-6)과 사람 중재로 만든 약한 감독이며 사람 검수 라벨은 300개임. 800개 규모이고 NeurIPS/ICLR 2024에 한정되어 다른 분야로의 일반화는 보장되지 않음. lm-eval 지원 여부는 확인하지 못함",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/Reviewerly-Inc/Peerify/"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Document-grounded verification (peer-review claims)",
-            "definition": "A benchmark for deciding whether a peer-review claim is supported by the reviewed manuscript. It contains 800 atomic claims derived from real NeurIPS 2024 and ICLR 2024 reviews and discussions, with four labels: Supported, Partially Supported, Not Supported, Not Determined. It provides six variants (PaperSourced, RebuttalSourced, LLMJudged, HighAgreement, Verifiable-only, Human-Verified), where Human-Verified is a 300-claim human-audited subset. Verification is scored with accuracy and macro-F1 (primary); retrieval metrics (recall@k, nDCG@k, MRR) are reported only on PaperSourced.",
-            "task": "Intra-document claim verification: four-way groundedness classification against a single manuscript, in full-context or retrieval-augmented settings.",
-            "example": "Given one atomic reviewer claim and the manuscript, label whether the manuscript alone supports the claim using one of the four labels (task description)."
-          },
-          "evidence": {
-            "modality": {
-              "page": 2,
-              "quote": "benchmark of 800"
-            },
-            "대표 과제": {
-              "page": 2,
-              "quote": "intradocument verification task"
-            },
-            "대표 예시·설명": {
-              "page": 14,
-              "quote": "The authors evaluate"
-            },
-            "링크": {
-              "page": 2,
-              "quote": "https://github.com/ Reviewerly-Inc/Peerify/"
-            },
-            "언어": {
-              "page": 14,
-              "quote": "The authors evaluate"
-            },
-            "이름": {
-              "page": 3,
-              "quote": "Peerify benchmark"
-            },
-            "정의": {
-              "page": 2,
-              "quote": "benchmark of 800"
-            },
-            "평가 축": {
-              "page": 2,
-              "quote": "manuscript-grounded peer-review claim"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "권리 필드 4개(라이선스, 상업적 이용, 수정·파생, 재배포)를 게시 규정에 맞게 채울 수 있는 근거가 없어 게시하지 않습니다. 논문 8쪽 Ethics Statement에 \"We release all data, labels, prompts, and code under open licenses\"라는 문장이 있습니다. 이 문장은 벤치마크 데이터 자체에 라이선스를 부여한다는 언급이므로, 공식 README에 라이선스가 없고 LICENSE 파일 섹션도 없더라도 '미표기' 부재 증거를 쓸 수 없고 문서화된 값(a)으로 인용해야 합니다. 그런데 이 문장은 구체적인 라이선스 명칭을 적지 않았고, 상업적 이용·수정·파생·재배포 허용 여부도 밝히지 않습니다. 공식 저장소 README(https://github.com/Reviewerly-Inc/Peerify/)에도 이 내용이 없습니다. 따라서 '저작권 전부 보유'로 단정하면 논문의 공개 라이선스 진술과 모순되고, 허용으로 적으면 근거 없는 추측이 됩니다. 원고와 리뷰는 OpenReview(NeurIPS 2024, ICLR 2024)에서 가져온 자료라 구성 요소 약관도 별도로 따져야 하지만, 이를 반영해 채울 수 있는 확정된 권리 값이 없습니다. 이 문제는 다음 두 가지 중 하나로 해결됩니다: 저자가 저장소나 데이터 배포처에 구체적 라이선스를 명시하거나, 라이선스가 담긴 LICENSE 파일 또는 데이터 카드를 확보해 인용하는 것. lm-eval 지원은 README가 lm-eval/lm-evaluation-harness를 언급하지 않고 논문에도 해당 언급이 없어 '미표기' 부재 증거가 가능하지만, 권리 필드가 채워지지 않아 행 전체를 게시할 수 없습니다. 기존 초안은 여러 필드에 규정상 금지된 표현을 사용하고 있어 그대로 게시할 수 없습니다. Table 2와 Table 14 등에서 비교 가능한 점수는 얻을 수 있으므로, 권리 근거가 확보되면 추천 모델 항목을 다시 구성할 수 있습니다.",
+      "changes": [],
       "arxiv_id": "2609.25046",
       "paper_title": "Peerify: Benchmarking Peer-Review Claim Verification",
       "paper_updated": "2026-09-23T00:00:00Z",
@@ -7660,7 +7595,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-23T03:41:20Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -7686,11 +7621,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "39891267821",
-        "context_sha256": "2386045aa388ad1a056b80cc327363d5e0b212d61dd3d498b6f2f9157053255e"
-      },
-      "proposal_sha256": "28acf3ff81a782c848e411162cc9259ee04dd2cebea103bd17d9d782a164e11e"
+      "proposal_sha256": "498e84bebaf4bb61f7430b854856dcc65d658844a95e472ef88f5ca503be0934",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -32201,8 +32134,8 @@
         "2610.29207",
         "2610.29225"
       ],
-      "calls": 20,
-      "cost_usd": 9.347
+      "calls": 21,
+      "cost_usd": 9.8341
     }
   },
   "reaudits": [
