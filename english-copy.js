@@ -204,4 +204,16 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Omni-MATH-2-Filtered",
     "example": "Task description: the model solves an Olympiad-level math problem and puts the final answer in \\boxed{}; a judge checks equivalence with the reference answer."
   },
+  "mathed-pii": {
+    "axis": "Privacy (PII detection and de-identification)",
+    "definition": "A PII detection benchmark built from 1,000 math tutoring sessions (115,620 messages; 769,628 tokens) from a U.S. online tutoring platform. It targets numeric ambiguity, where math expressions resemble dates or IDs and cause over-redaction. Because the unredacted originals were unavailable, a human-in-the-loop LLM workflow audited the existing redactions and generated surrogates.",
+    "task": "Span-level detection of PII and its type in math tutoring dialogue messages",
+    "example": "Task description (not an actual test item): in math-heavy tutoring dialogue, identify only the real personal information spans while leaving math expressions untouched."
+  },
+  "bi-bench": {
+    "axis": "Agents (end-to-end business intelligence and data analysis)",
+    "definition": "A benchmark of 100 pairs of a business question and a ground-truth result table, extracted from user dashboards in real Power BI projects (over 3K .pbix files crawled). A model must search for relevant raw tables, transform them, build joins, and run the analysis to produce a result table. Accuracy requires matching table shape and cell values (row and column order ignored). The paper evaluates SQL (SQLite) and Python settings, with and without tools, averaged over 10 runs. Each test case may have multiple valid ground-truth tables.",
+    "task": "Produce a result table that answers a business question from raw tables via search, transform, join, and analysis",
+    "example": "Task description: for a question asking for a sales amount, budget, and forecast comparison by month and year, the model finds the relevant tables, applies needed transformations and joins, and produces the result table."
+  },
 };
