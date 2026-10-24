@@ -9196,6 +9196,184 @@
         "reviewed_sha256": "1c64b0f91947c9c7193309aea2a81ffab9e15dd0a35ac0c157b1ad0c5d759dc4",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2606.21008": {
+      "decision": "propose",
+      "reason": "이 논문은 재사용 가능한 영어 텍스트 벤치마크 'Metanym Game'을 새로 제안한다. 모델이 유추 맥락 템플릿과 메타님 표를 직접 만들고 서로 채점하며, 정답 키 없이 SVD로 평가자와 생성자를 함께 평가한다. 과제 프롬프트와 예시가 영어이므로 en 트랙의 text 모달리티로 분류했다. 공식 자료로는 논문이 밝힌 GitHub 패키지를 사용했다. 라이선스와 lm-eval 지원 여부는 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "metanym-game",
+            "이름": "The Metanym Game",
+            "평가 축": "유추 생성과 동료 평가(정답 키 없는 자기완결형)",
+            "언어": "en",
+            "정의": "LLM이 정답 키 없이 서로를 채점하는 자기완결형 벤치마크. 각 모델은 원형 맥락 템플릿 5개를 만들고 템플릿마다 메타님 집합 5개(총 25개 인스턴스)를 작성한다. 평가는 6개 축(1~10점)을 앵커 포트폴리오(7점 고정) 대비로 매긴다. 평가 행렬은 12×11이며 문장 단위 사실성 행렬의 SVD로 평가자와 생성자 점수를 함께 얻는다. 논문은 12개 모델을 대상으로 한 총점 T가 GPQA Diamond와 Pearson r=0.98로 일치한다고 보고한다.",
+            "대표 과제": "원형 맥락 템플릿과 메타님 표 작성, 다른 모델 포트폴리오의 6축 상호 채점",
+            "대표 예시·설명": "모델이 슬롯이 있는 영어 템플릿을 쓰고 서로 다른 분야의 메타님 집합으로 채워 문장별로 참인 서술을 만든다. 다른 모델들이 사실성, 아름다움, 지능 등 6개 축으로 채점한다(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터와 코드의 라이선스를 확인하지 못했다. 논문의 GitHub 패키지에는 프롬프트, 생성물, 채점 기록이 포함되나 라이선스 확인 전에는 재사용 조건을 가정하지 말 것. 새 실행 재현은 패키지에 포함되지 않는다(분석 재계산만 가능). 12개 모델 한 가지 구성 기준이고, 실행 간 사실성 부문 변동이 크며 한 실행은 사실성 축이 식별되지 않았다. 심사위원단이 합의에 의존하고 GPQA와의 일치는 상관일 뿐이다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/dnordfors/metanym-game-paper"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Analogy generation and peer evaluation (self-contained, no answer key)",
+            "definition": "A self-contained benchmark in which LLMs grade each other without an answer key. Each model writes 5 archetypal context templates, each with 5 metanym sets (25 instantiations), and portfolios are rated 1-10 on six axes against an anchor portfolio pinned at 7. The evaluator-by-generator matrix is 12x11, and an SVD of the sentence-level factual rating matrix yields judge and generator scores. The paper reports that the total T for 12 models correlates with GPQA Diamond at Pearson r = 0.98.",
+            "task": "Write archetypal context templates and metanym tables, and rate other models' portfolios on six axes",
+            "example": "A model writes a slotted English template and fills it with metanym sets from different domains so each instantiation is a factually true description; other models rate it on factuality, beauty, intelligence and other axes (task description)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "A BACTERIUM moves"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "Language models compete"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "A BACTERIUM moves"
+            },
+            "링크": {
+              "page": 11,
+              "quote": "https://github.com/dnordfors/metanym-game-paper"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "A BACTERIUM moves"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "THE METANYM GAME"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "Language models compete"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Language models compete"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2606.21008",
+      "paper_title": "The Metanym Game: An LLM Benchmark Without Ground Truth That Rises With the Models It Measures",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.21008",
+        "sha256": "2a2900edc6101f3f5ee564a2ae85550439fd2012f4fd439e29699e15b7faef8e",
+        "accessed": "2026-10-24T03:19:12Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 33,
+          "elapsed_seconds": 205.47,
+          "pdf_sha256": "2a2900edc6101f3f5ee564a2ae85550439fd2012f4fd439e29699e15b7faef8e",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "386ce00739ad5a5519e59ad93b4f750c4060d1e96dcf833bfce7c085072864c5",
+          "page_json_file": "2606.21008.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/dnordfors/metanym-game-paper",
+            "fetched_url": "https://api.github.com/repos/dnordfors/metanym-game-paper/readme",
+            "sha256": "9f8cf18350046ac30f0aa44d51252fa087bc85ca70a23bc933dc1b9ed840feb9",
+            "accessed": "2026-10-24T03:23:00Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/dnordfors/metanym-game-paper/license",
+              "name": "LICENSE",
+              "spdx_id": "NOASSERTION",
+              "sha256": "c1ef16f60f0439fbc3992e9540dc1e1ebd757a5a67bac06bf93be1160942b341"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-24T03:23:00Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2606.21008",
+        "paper_title": "The Metanym Game: An LLM Benchmark Without Ground Truth That Rises With the Models It Measures",
+        "abstract": "We introduce a benchmark that is fully self-contained, needs no ground truth, and rises with the models it measures. Language models compete at making analogies and subjectively grade one another; nothing enters from outside. The benchmark reproduces GPQA Diamond, a keyed benchmark of expert-written questions, at r = 0.98, audited for a leak and found clean. We hypothesize that both benchmarks measure the same thing in different ways: a language model holds its knowledge as archetypal contexts, relationship patterns valid across many topic domains. GPQA instantiates the required knowledge in one domain; the Metanym Game instantiates one archetype into several domains, generating analogies, no reasoning required. The reasoning feature of an LLM hardly changes the game's ratings, while it lifts GPQA, which requires derivations. In the game, a player writes a context template whose slots, filled with a set of keywords from a topic domain, instantiate a factually true description of that domain; the instantiations are each other's metaphors, and keywords filling the same slot are metanyms, metaphorically synonymous. Correctness is settled sentence by sentence. Ground truth is replaced by the SVD of the factual rating matrix: its left and right singular vectors rate the players as judges and as generators, two ratings from one factorisation, to our knowledge a first for an LLM council of peers. On the subjective criteria, judges are weighted by their rating consistency under a swept calibration anchor. Generating and judging are different skills: on this roster the strongest generators were middling judges. A council of the five best issues the official ratings; its contestable seats keep it current, a candidate steering signal for self-improving AI. The paper is accompanied by a validating package that recomputes every number.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-19T13:44:10Z",
+        "input_sha256": "8f8a4bc2cd729e25c14d4653144ff2a0abcf925ed14124679bcdcff4c0418664",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "정답 없는 LLM 메타님 게임 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "정답 없이 상승하는 유추 벤치마크 Metanym Game 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40055257940",
+        "context_sha256": "5456c9eeae64b089fa1cd23595cad9872fe6581258fefe43c2d3312a7d1f6cf4"
+      },
+      "proposal_sha256": "f8cd98d771331a05ccb36449bcad83d2beb145c337134176cd66b1524cb21fcc"
     }
   },
   "processed_comments": [],
@@ -34421,8 +34599,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 12,
-      "cost_usd": 4.6858
+      "calls": 13,
+      "cost_usd": 5.209
     }
   },
   "reaudits": [
