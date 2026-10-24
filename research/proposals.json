@@ -10144,7 +10144,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-24T03:37:56Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -10170,12 +10170,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40055257940",
-        "context_sha256": "e928b82467b8e210c63711016f4ec9322ca025ca75266c39c62c1554e0b9555c"
-      },
       "proposal_sha256": "676519c889a7bb5df218f88f4b5768c124ab3a9892d71ec177d85b71695928c8",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "변경된 사실을 논문 24쪽과 공식 저장소 README·LICENSE에 대조했으며 모두 뒷받침된다. 과제 수는 총 70개(C++ 33, Blueprint 25, 에디터 스크립팅 12)이고, C++와 Blueprint 쌍으로 같은 런타임 테스트를 공유하는 게임플레이 사양은 10개다. 평가 대상은 7개 모델, 에디터 MCP 설정 2종과 C++ 파일·셸 기준선이며, 과제당 1회 시도에 40분 제작 시간 제한의 pass@1이다. 템플릿 구성은 Third Person 50개와 맞춤 템플릿 20개이고 LLM 판정은 쓰지 않는다. 모두 본문과 일치한다. 예시 과제는 설명문으로 표기해 실제 시험 문항으로 오인될 소지가 없다. 이미지 입력이 필요 없는 텍스트 기반 코딩·에이전트 과제이므로 text 분류도 타당하다. 언어를 en으로 본 근거는 영어 과제 요약뿐이고 과제 지시문의 언어가 본문에 명시되지는 않으나, 논문 전체와 그림의 과제 설명이 영어여서 수용 가능하다. 라이선스는 저장소 README와 LICENSE 파일이 MIT를 명시한다. 상업적 이용(판매 허용), 수정·파생, 재배포(배포·재라이선스) 문구도 라이선스 원문에서 확인된다. README는 MIT 부여가 저자 자체 저작물에 한정되고 Epic 소유 파일에는 Unreal Engine EULA가 적용된다고 밝히는데, 제안은 이 제한을 라이선스 칸과 유의사항에 모두 반영했다. 벤치마크가 Epic의 Third Person 템플릿 등에서 파생되므로 각 구성 요소의 고유 약관을 따로 확인해야 한다는 문구도 들어 있다. 상업적 이용 칸의 자체 저작물 한정 표기도 적절하다. lm-eval 지원 '미표기'는 공식 카드가 lm-eval이나 lm-evaluation-harness를 언급하지 않고 PDF 언급 목록도 비어 있어 허용되는 해결 값이다. 권고 결과는 Table 6의 C++ 33개 과제 MCP1 열에서 가져왔고 Figure 5 및 Figure 7과도 일치한다. 모델별 점수는 Claude Sonnet 5 90.9, DeepSeek V4 Pro 84.8, Gemini 3.7 Flash 87.9, GPT-5.6 Luna 87.9, GPT-5.6 Sol 90.9, Grok 4.6 90.9, GLM 5.3 Flash 69.7이다. 단위는 완료율 %이고 높을수록 좋은 지표이며, 모든 비교 모델이 같은 과제 집합·같은 설정·같은 예산에서 평가돼 상위 3개 선정이 정당하다. 상위 3개는 90.9로 동점이며 논문 보고 결과라는 점도 명시했다. 가중치 공개 여부는 근거가 없어 null로 두었고 비공개로 취급하지 않았다. 해결되지 않은 미확인·확인 불가 필드는 없고, 이해 상충과 단일 환경 한계도 유의사항에 기록됐다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 122429,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2835,
+              "output_tokens_details": {
+                "thinking_tokens": 1601
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 122429,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2835,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 122429,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 122429
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.5181349,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "676519c889a7bb5df218f88f4b5768c124ab3a9892d71ec177d85b71695928c8",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -35406,8 +35452,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 22,
-      "cost_usd": 9.7478
+      "calls": 23,
+      "cost_usd": 10.2659
     }
   },
   "reaudits": [
