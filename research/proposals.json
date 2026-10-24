@@ -8315,8 +8315,8 @@
       "proposal_sha256": "8c2497a65ce916f11763adf339bdfe9e72481508e128482e61a4480be13e62ca"
     },
     "2604.23478": {
-      "decision": "propose",
-      "reason": "JudgeSense는 LLM 심사 모델(judge)이 같은 요청을 다르게 표현했을 때 판정이 얼마나 유지되는지를 재는 재사용 가능한 벤치마크이다. 사실성, 일관성, 관련성, 선호의 4개 과제에 항목 880개를 담고 있다. 프롬프트와 원천 코퍼스가 모두 영어이므로 en 트랙의 텍스트 벤치마크로 분류했다. 기존 인벤토리에는 없는 새 항목이다. 라이선스와 lm-eval 지원 여부는 확인하지 못해 '확인 불가'로 적었다.",
+      "decision": "needs_evidence",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: Score quote must contain the exact model and numeric value",
       "changes": [
         {
           "track": "en",
@@ -8457,7 +8457,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-24T02:47:34Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -8483,11 +8483,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40055257940",
-        "context_sha256": "0eba3111579005ae7e12f1580a3c1d9b1579a3ecccebbf06d7efda76f91e73c4"
-      },
-      "proposal_sha256": "61368582345d65dbe262b0a12c91b9807be327837eadf3eb9cf1f33035027974"
+      "proposal_sha256": "61368582345d65dbe262b0a12c91b9807be327837eadf3eb9cf1f33035027974",
+      "approval_policy": "claude_only",
+      "resume_error": "Score quote must contain the exact model and numeric value"
     }
   },
   "processed_comments": [],
@@ -32711,6 +32709,366 @@
           "reason": "DB 정규화 LLM 벤치마크 DNBENCH 도입"
         }
       ]
+    },
+    "2601.03369": {
+      "arxiv_id": "2601.03369",
+      "paper_title": "RiskCueBench: Benchmarking Anticipatory Reasoning from Early Risk Cues in Video-Language Models",
+      "abstract": "With the rapid growth of video centered social media, the ability to anticipate risky events from visual data is a promising direction for ensuring public safety and preventing real world accidents. Prior work has extensively studied supervised video risk assessment across domains such as driving, protests, and natural disasters. However, many existing datasets provide models with access to the full video sequence, including the accident itself, which substantially reduces the difficulty of the task. To better reflect real world conditions, we introduce a new video understanding benchmark RiskCueBench in which videos are carefully annotated to identify a risk signal clip, defined as the earliest moment that indicates a potential safety concern. Experimental results reveal a significant gap in current systems ability to interpret evolving situations and anticipate future risky events from early visual signals, highlighting important challenges for deploying video risk prediction models in practice.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "영상-언어 벤치마크 신규 제시, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2606.02375": {
+      "arxiv_id": "2606.02375",
+      "paper_title": "WaxalNet: Benchmarking and Adapting Speech Recognition for Spontaneous Speech in 19 African Languages",
+      "abstract": "Multilingual speech foundation models claim broad language coverage, but how well they handle spontaneous African speech, and how best to adapt them, remains unclear. We benchmark zero-shot and fine-tuned speech recognition on the WAXAL corpus of spontaneous speech in 19 African languages, covering Whisper, MMS, Omnilingual ASR, and SeamlessM4T-v2. Fine-tuning lowers macro word error rate (WER) from 52.3 for the best zero-shot model covering all 19 languages (Omnilingual-7B) to 36.2 for a 300M-parameter MMS model and 31.5 for Omnilingual with an LLM decoder, although zero-shot models are already competitive on a few languages. Using Omnilingual's shared encoder, we compare CTC and LLM decoders with encoder pretraining held fixed. Between MMS and Whisper, the better model depends on the language family, but with a shared encoder the LLM decoder has lower WER on 18 of 19 languages, so the family pattern more likely comes from pretraining than from the decoder. The LLM decoder is, however, about five times larger and much slower on CPU. Pooling languages into one model, by family or across all 19, costs only 0.6 to 1.0 WER on average relative to per-language models, a modest price for serving all languages with one model. Fine-tuned models remain usable on read speech, and for held-out languages neither training on the other languages nor in-context examples replace in-language fine-tuning. A native-speaker audit across all 19 languages characterizes failure modes such as repetition loops. We release the code and a suite of over 100 fine-tuned models.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "아프리카 19개 언어 음성인식, 한국어/영어 아님"
+        }
+      ]
+    },
+    "2606.10066": {
+      "arxiv_id": "2606.10066",
+      "paper_title": "Measuring Pretraining Contamination in Public Medical Vision-Language Benchmarks",
+      "abstract": "Medical vision-language models (VLMs) are evaluated on public benchmarks whose images and question-answer pairs have been freely available for years, yet reported accuracy assumes that these examples were not in the training data. We test this assumption for open VLMs on SLAKE-En, PathVQA, and VQA-RAD, and on a public mirror of OmniMedVQA, using four detectors: image near-neighbour search against PMC-OA-beta, canonical-order exchangeability, cohort-relative Min-K%++ tail enrichment, and cross-model top-K overlap. On the image side, 19.8% of SLAKE-En images have an unusually close neighbour in PMC-OA-beta under SigLIP-B-16 (4.2% under SigLIP-SO400M), while out-of-domain control images produce no flags. Manual inspection shows that these are images of the same modality and view from different patients, not exact copies, so we read the signal as overlap in image sources rather than memorization of individual images. On the text side, Qwen2.5-VL shows an exchangeability signal on SLAKE-En that survives an ordering ablation and two non-medical baseline models, and on the OmniMedVQA mirror exchangeability fires for five medical and general VLMs while BLIP-2 does not. The other two detectors fail a simple control: BLIP-2, which has no plausible exposure to medical VQA data, reproduces their apparent positive signals. Cohort-relative Min-K%++ and top-K overlap are therefore unreliable as standalone contamination signals for small groups of medical VLMs and should be checked against an outside baseline model.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "기존 벤치마크 오염 분석, 신규 평가자료 불명확"
+        }
+      ]
+    },
+    "2610.30282": {
+      "arxiv_id": "2610.30282",
+      "paper_title": "Astro2Method: Benchmarking LLMs on Machine Learning Method Selection in Astronomy",
+      "abstract": "Machine learning (ML) is increasingly used in astronomy, but choosing a suitable method for a scientific problem often requires expertise in both astronomy and ML. Large language models (LLMs) could help astronomers make such choices, yet this ability remains underexplored in existing benchmarks. We introduce Astro2Method, a benchmark of 500 expert-reviewed binary questions from 346 astronomy papers (2024/01-2026/06), based on clear performance differences and complete (Easy) or partial (Hard) explanations from the authors. Across five LLMs, direct prompting achieves 87.50-92.55% accuracy on Easy questions but only 58.87-64.52% on Hard. Using historical papers, neither retrieval-augmented generation nor most agent methods with additional reasoning or retrieval (including ReAct, Self-Ask, and CRITIC) bring consistent improvement. Agents required to search the web improve accuracy mainly when they find the papers the questions are based on, with no consistent improvement otherwise. Providing the source paper's pipeline description with method names masked improves Hard accuracy, matching or exceeding web search. Together, these results suggest that relevant experimental information helps distinguish ML methods, but inferring it from related studies and domain knowledge remains challenging for LLMs in astronomy.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "천문학 ML 방법 선택 벤치마크, 언어 불명확"
+        }
+      ]
+    },
+    "2511.21843": {
+      "arxiv_id": "2511.21843",
+      "paper_title": "FLAWS: A Benchmark for Error Identification and Localization in Scientific Papers",
+      "abstract": "The identification and localization of errors is a core task in peer review, yet the exponential growth of scientific output has made it increasingly difficult for human reviewers to reliably detect errors given the limited pool of experts. Recent advances in Large Language Models (LLMs) have sparked interest in their potential to support such evaluation tasks, from academic peer review to automated scientific assessment. However, despite the growing use of LLMs in review systems, their capabilities to pinpoint errors remain underexplored. In this work, we introduce Fault Localization Across Writing in Science (FLAWS), an automated benchmark consisting of 713 paper-error pairs designed to evaluate how effectively LLMs detect errors that undermine key claims in research papers. We construct the benchmark by systematically inserting claim-invalidating errors into peer-reviewed papers using LLMs, paired with an automated evaluation metric that measures whether models can identify and localize these errors. Developing such a benchmark presents unique challenges that we overcome: ensuring that the inserted errors are well-defined, challenging, and relevant to the content of the paper, avoiding artifacts that would make identification trivial, and designing a scalable, automated evaluation metric. On the resulting benchmark, we evaluate five frontier LLMs: Claude Sonnet 4.5, DeepSeek Reasoner v3.1, Gemini 2.5 Pro, GPT 5, and Grok 4. Among these, GPT 5 is the top-performing model, achieving 39.1% identification accuracy when k=10, where k is the number of top-ranked error text candidates generated by the LLM.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "논문 오류 탐지 벤치마크, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2601.12369": {
+      "arxiv_id": "2601.12369",
+      "paper_title": "TaxoBench: Can Deep Research Agents Retrieve and Organize? Evaluating the Synthesis Gap with Expert Taxonomies",
+      "abstract": "Deep Research Agents increasingly automate survey writing, yet existing benchmarks do not jointly test whether they retrieve the papers experts consider essential and organize those papers into paper-grounded taxonomies. We introduce TaxoBench, a benchmark built from 72 highly cited LLM surveys, 3,815 cited papers, and their expert-authored taxonomies. TaxoBench evaluates systems in two settings: Deep Research mode measures end-to-end retrieval and organization from a topic, while Bottom-Up mode provides the expert paper set and isolates organization. We evaluate leaf-level assignments with ARI and V-Measure and hierarchy-level structure with US-TED, US-NTED, and Sem-Path. Across 7 Deep Research Agents and 16 LLM configurations, the best agent retrieves only 20.92% of expert-cited papers, and none of 70 standard Bottom-Up runs reaches the experts' average depth of 4.86. A controlled probe shows that models which match this depth do so by fragmenting the taxonomy, reducing alignment with the expert reference. We further find that raw Sem-Path remains near a no-organization floor even when a newer model generation gains 3.68 pp ARI; after depth matching, humans lead on all 10 matched surveys by 13.27 pp. These results identify retrieval and hierarchical organization as separate bottlenecks and show why hierarchy metrics must be calibrated before they are used to compare models.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "딥리서치 분류체계 벤치마크, 언어 불명확"
+        }
+      ]
+    },
+    "2605.30329": {
+      "arxiv_id": "2605.30329",
+      "paper_title": "SoundnessBench: Can Your AI Scientist Really Tell Good Research Ideas from Bad Ones?",
+      "abstract": "Autonomous AI research agents aim to speed up scientific discovery by automating the research pipeline from hypothesis generation to peer review. However, existing benchmarks rarely test a fundamental bottleneck whether LLMs can judge the methodological viability of a research idea $\\textbf{before}$ investing time and computational resources. Without a reliable ``first-gate'' filter, autonomous agents risk scaling flawed methodology rather than accelerating meaningful science. We introduce $\\textbf{SoundnessBench}$, a curated benchmark of 1,099 real research proposals, with source verified extraction, reviewer-derived proxy labels, and proposal-only expert judgments on a subset of 327 proposals. Across 12 frontier LLMs, our evaluation reveals a pervasive $\\textbf{optimism bias}$: standard prompting yields a $74.0\\%$ mean false-positive rate. Aggressive prompting reduces false approvals but substantially increases false rejections. Additional analyses show that optimism persists under controls for public corpus contamination, and surface features, as well as in literature-grounded agent evaluation. These results suggest a limitation in judging scientific soundness, indicating that current LLMs are not yet reliable as standalone gatekeepers for scientific rigor.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "연구 제안 건전성 벤치마크, 언어 불명확"
+        }
+      ]
+    },
+    "2606.01995": {
+      "arxiv_id": "2606.01995",
+      "paper_title": "CARTE: A Benchmark for Mapping Language Model Knowledge Across France",
+      "abstract": "We introduce CARTE (Culturally Anchored Regional-Territorial Evaluation), a multiple-choice benchmark for evaluating the ability of large language models (LLMs) to discriminate fine grained, geographically grounded and regionally differentiated knowledge within France. While prior benchmarks focus on national-level cultural understanding, they largely overlook intra-country variation and the need to distinguish between closely related regional contexts. CARTE addresses this gap by introducing 3,132 questions spanning the 13 metropolitan regions of France and covering 12 thematic domains, including culture, language, demographics, economy, environment, and mobility. Questions underwent four-stage validation: human review, LLM-as-a-judge, model-based difficulty calibration, and a second human review. We further introduce CARTE-LV, a subset targeting Linguistic Variation across French regions, enabling focused evaluation of language-related differences. We evaluate 32 open-weight LLMs of 1B to 30B parameters and three frontier API models across zero-, one-, and three-shot settings. Our experiments reveal performance disparities across regions and model scales, suggesting systematic gaps in pretraining coverage and limited robustness to intra-national variation.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "프랑스 지역 지식 벤치마크, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2606.08417": {
+      "arxiv_id": "2606.08417",
+      "paper_title": "Hacking Generative Perplexity: Why Unconditional Text Evaluation Needs New Metrics",
+      "abstract": "Diffusion language models (DLMs) have emerged as the leading non-autoregressive alternative to language modeling. Because their likelihoods are intractable, generative perplexity (gen-PPL) has become the de facto standard for reporting unconditional generation quality. We analyze why gen-PPL is unreliable as a measure of generation quality. Across samples, it is minimized by always emitting the scorer's most likely sequence. Per-sample unigram entropy does not measure this loss of diversity. Within a sample, gen-PPL rewards predictability under the scorer, which need not correspond to text quality. To make this failure explicit, we construct four training-free samplers that reach or beat trained-model gen-PPL on LM1B and OpenWebText at non-degenerate unigram entropy, while producing text that is incoherent by construction. We then rebenchmark recent DLMs using distributional discrepancies and diversity diagnostics, and compare their rankings with LLM judgments. As part of this evaluation, we introduce a compression-based discrepancy that measures local coverage and fidelity, the two directions of the KL divergence between real and generated text. We argue that DLM progress should be evaluated with a set of metrics that expose different properties of generated text.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "생성 퍼플렉시티 지표 분석, 벤치마크 신규 아님"
+        }
+      ]
+    },
+    "2606.12117": {
+      "arxiv_id": "2606.12117",
+      "paper_title": "Beyond Prompt and Parser Engineering: Soft-Prompt Tuning for Automated LLM Evaluation",
+      "abstract": "Benchmark scores often misrepresent a large language model's (LLM's) knowledge, because they rely, e.g., on the model's ability to follow specific formatting requirements. This especially penalizes base models that may know the correct answers but lack the ability -- typically introduced in post-training -- to structure them as instructed. To overcome this, we propose an efficient, automated, and architecture-agnostic method for model evaluation based on soft-prompt tuning. By optimizing only 10 soft-prompt vectors (~0.0006% parameters for a 7B model) over a short tuning period, we adapt models to specific benchmark formats, closing gaps in format-following and ensuring that underlying knowledge is accurately reflected in benchmark scores. We evaluate soft-prompt tuning across 7 models and 11 datasets. Our results show that (a) soft-prompt tuning saturates format-following within 150 steps (~1200 samples) while preserving knowledge accuracy, (b) it closely matches strong evaluation-harness baselines on well-studied benchmarks while requiring no manual benchmark-specific prompt or parser design, (c) it improves evaluation signal in settings where baselines are harder to transfer, including long-context datasets and instruction-tuned variants with different output styles, and (d) it produces cleaner outputs that improve agreement between exact match scoring and independent LLM judges. Overall, we propose a lightweight, automated, and flexible protocol based on limited-budget soft-prompt tuning for evaluating LLM knowledge.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "소프트프롬프트 평가 방법, 재사용 벤치마크 아님"
+        }
+      ]
+    },
+    "2607.03006": {
+      "arxiv_id": "2607.03006",
+      "paper_title": "PosterHarness: Turning Scientific Poster Generation into an Auditable Instruction-Following Benchmark",
+      "abstract": "Text-rich image models can now design poster-scale layouts, but we lack ways to measure whether they honor scientific communication contracts: legible labels, prescribed aspect ratios, and -- above all -- abstaining from fabricated scientific figures. We present POSTERHARNESS, an auditable harness reframing poster generation as measurable instruction-following tasks, with a pilot benchmark and failure taxonomy. POSTERHARNESS uses a placeholder-first contract to separate two jobs models otherwise conflate. The model performs visual-summary design: typography, reading path, color, and background -- but never draws data-bearing figures. Every figure region must be an empty labeled placeholder; a deterministic compositor inserts real source-paper figures at detected coordinates. This makes properties measurable: placeholder count and ID accuracy, blankness, aspect-ratio compliance, abstention from synthesized graphics, public-text hygiene, and source-figure provenance -- with failures logged as explicit rejections, not hidden in plausible-looking output. We instantiate the harness on 12 papers (6 HEP, 6 AI/ML-adjacent) and report three findings. (i) A counterfactual probe shows the placeholder contract drives VLM-counted synthesized figures from 34 to 0 across three papers. (ii) A failure taxonomy identifies blocking contracts: placeholder geometry, placeholder QA, template critic, and public text. (iii) Comparison with Paper2Poster shows a trade-off: PosterHarness yields higher-resolution artifacts, lower white-canvas fraction, and stronger VLM visual preference; the deterministic baseline retains slightly more PosterQuiz-style information and runs faster. We report this as regime characterization, not a superiority claim. All artifacts, prompts, manifests, and audit scripts are released as a reusable evaluation component.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "포스터 생성 평가 하네스 공개, 언어 불명확"
+        }
+      ]
+    },
+    "2610.22155": {
+      "arxiv_id": "2610.22155",
+      "paper_title": "Realtime-Bench: Can Frontier Models Solve Real-time Interactive Problems?",
+      "abstract": "Real-time interaction requires agents to perceive evolving environments and act under temporal constraints, yet existing evaluations of real-time streaming models focus on conversational quality and streaming perception, leaving effective action under strict temporal constraints untested. We introduce Realtime-Bench, a suite of carefully curated dynamic tasks where delayed actions directly affect success. Under Wall Clock, where environments advance according to actual inference latency, the best success rate reaches only 44% and the best Pass^3 is only 36%, demonstrating that real-time interaction remains challenging. To separate serving latency from models' real-time streaming capability, we compare Wall Clock with Paused Clock, which removes inference delays as an idealized reference, and introduce Token Clock, which advances simulated time according to generated token counts, testing temporal awareness independently of physical serving speed. We find that temporal costs limit success in evolving environments and that higher reasoning effort has mixed effects under time pressure, reflecting a trade-off between decision quality and timely execution. Based on these results, we discuss future directions for improving real-time multimodal models, including adaptive reasoning with temporal awareness and continuous perception and action.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "실시간 상호작용 벤치마크, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2610.30161": {
+      "arxiv_id": "2610.30161",
+      "paper_title": "TauIndianBankBench: Procedure-Aware, Action-Oriented Evaluation of Tool-Using Conversational Agents",
+      "abstract": "Many Indian banks serve customers through FAQ pages and scripted chatbots. Assistants based on language models could respond faster and carry out requests such as blocking a card, but only if they give correct information and follow the bank's rules. These rules prescribe a procedure, a set of required steps, such as obtaining a closure quote before closing a deposit. Adapting models to this domain requires measuring how well they follow the procedure, before and after training. Benchmarks usually judge only the records left at the end of a conversation. Many required steps, however, leave the records unchanged, so an assistant that skips them can still be judged successful. We present TauIndianBankBench, an action-oriented benchmark of 1,000 Indian retail-banking tasks where an assistant helps a simulated customer. Besides the final records, it checks that the assistant took every required step and made no unrequested change. For every model, 6.5-12.0% of sessions are judged successful when only the final records are checked, although the assistant skipped a required step or made an unrequested change. Scoring both procedure and outcome shows more accurately how well language models perform in Indian retail banking.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "인도 은행 에이전트 벤치마크, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2610.30162": {
+      "arxiv_id": "2610.30162",
+      "paper_title": "FusionEval: Benchmarking Model Fusion for Large Language Models",
+      "abstract": "Model fusion aims to integrate the capabilities of multi-expert models into a single model. Existing evaluations offer limited coverage of reasoning with long chains of thought and tool use, while strong average performance can mask substantial losses in individual expert capabilities. We introduce FusionEval, a benchmark that provides controlled expert pools, integrates fusion methods with and without additional training, and offers a unified evaluation suite. The pools contain domain experts independently trained from Qwen3 and Llama base models across math, code, science, instruction following, and tool use. The suite evaluates capability retention and computational cost on eight public benchmarks under comparable data access rules, reporting normalized average and worst performance, runtime, and peak GPU memory usage. Extensive experiments show that training-free methods preserve reasoning performance but substantially degrade tool use at both model scales. In contrast, MOPD preserves tool use and achieves a more balanced capability profile, but requires additional data preparation, inference, and training. Jointly retaining reasoning, instruction following, and tool use at low computational cost remains a challenge. We hope FusionEval supports future research on efficient model fusion that jointly preserves expert capabilities. Our code is available at https://github.com/Baicaihaochi/FusionEval_Benchmark.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "모델 융합 평가 스위트 신규 제시, 공개 벤치마크 기반"
+        }
+      ]
+    },
+    "2610.30197": {
+      "arxiv_id": "2610.30197",
+      "paper_title": "Alpha: Systematic Fault Injection and Robustness Evaluation for LLM-Driven Embodied Manipulation",
+      "abstract": "Large language models (LLMs) are increasingly integrated into embodied robotic planning, yet standard benchmarks primarily evaluate end-to-end task completion in nominal environments, obscuring failure origins across the execution stack. We present Alpha, a systematic fault-injection and robustness-evaluation framework for LLM-driven manipulation in simulation. Alpha injects calibrated faults across perception (sensor lag), actuation (grip slip), kinematics (unreachable targets), and planning (planner-output corruption), alongside concurrent conditions. To separate physical vulnerabilities from planner sensitivities, we introduce a matched methodology pairing an LLM agent (Llama-3 via Ollama) against a deterministic Scripted Oracle planner across a balanced 150-episode matrix under identical seeds, geometries, and safety criteria. Across the matrix, the Oracle achieves 64.0% (48/75) success while the LLM achieves 44.0% (33/75) (paired McNemar p = 3.01 x 10^-4). Crucially, excluding planner-output corruption, performance across all physical and kinematic conditions is identical: 55.0% (33/60) for both planners with zero discordant pairs (McNemar p = 1.00). This demonstrates that physical actuator slip, kinematic reach boundaries, and perceptual staleness affect deterministic controllers and LLM planners equivalently. The performance gap is driven entirely by planner-output corruption (100% Oracle vs. 0% LLM), isolating the prompt-to-JSON serialization and validation interface rather than a cognitive reasoning deficit. We also audit 169 historical pilot attempts for transparency.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "LLM 로봇 결함주입 평가 프레임워크, 재사용성 불명확"
+        }
+      ]
+    },
+    "2610.30412": {
+      "arxiv_id": "2610.30412",
+      "paper_title": "SIM-UT: A User Simulation based Evaluation Framework for Medical Triage Chatbots",
+      "abstract": "LLM-based chat agents are increasingly used for complex, multi-turn, multilingual medical triage in low- and middle-income countries (LMICs), yet evaluation methods focus on single-turn, English-only benchmarks that primarily test the chatbots' knowledge. In practice, users are often confused, overwhelmed, or emotionally vulnerable, giving unclear, misspelled single-word answers or long messages in regional dialects, and the context of a conversation can shift rapidly. We propose SIM-UT (Simulation of User Behaviour for Triage), a multi-turn, simulation-based evaluation method that identifies ecologically valid, contextually relevant failure modes of LLM-based triage chat agents. Using SIM-UT, we evaluated three real-world WhatsApp-based health chatbots: a respiratory screening programme in India, a hearing health support programme in South Africa, and a diabetes and lifestyle coaching agent in Kenya. We compared a medically fine-tuned open model (MedGemma) against general-purpose frontier models (ChatGPT and Claude) across 5,000+ multilingual simulated conversation turns grounded in the personas, constraints, and communication patterns of the real user populations, over 2-4 iterative rounds. A key failure mode emerged in both model families: de-escalation risk. The agents initially identified medical emergencies correctly, but when the user minimised the symptoms without introducing new clinical information, they de-escalated, exhibiting clinically dangerous sycophancy, for example agreeing that vaginal bleeding in pregnancy was \"not a problem\" or that decreased fetal movements at 32 weeks \"can be normal\". We recommend user simulation-based behavioural evaluation, grounded in real user context and covering adversarial and edge cases, as standard practice for triage chatbots in production, so that safeguards can be added before deployment or in subsequent iterations.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "의료 트리아지 시뮬레이션 평가, 언어 범위 불명확"
+        }
+      ]
+    },
+    "2610.30485": {
+      "arxiv_id": "2610.30485",
+      "paper_title": "Why Bother Me Again? Benchmarking Personal Agent Memory for Interaction Preferences",
+      "abstract": "Personal intelligence systems are taking on increasingly complex everyday tasks, yet repeated questions, unnecessary confirmations, and unwanted outreach can turn capable assistance into interaction burden. Reducing this burden requires agents to remember how users want to be assisted. However, existing memory benchmarks focus on factual recall and personalized answers and rarely test how agents learn and act on interaction preferences. We introduce MemPABench, an interactive environment for on-policy evaluation of memory in personal agents. MemPABench poses long-horizon tasks requiring agents to decide when to clarify, confirm, or act autonomously. Four grounded simulated users hold 14 preferences across work and personal contexts. Their feedback spans 99 sessions over four months, with five event-driven changes per user testing memory updates. We evaluate preference selection, delivered behavior, and sensitivity to context and preference change. Evaluating four memory systems across four LLM backbones, we find that current memory brings limited gains in preference selection. Retrieval-based systems (i.e. Mem0, MemOS, simple RAG) do not outperform No Memory, while File-based memory improves accuracy but applies preferences beyond relevant contexts. Our analysis shows that current memory struggles to retrieve interaction preferences and adapt to preference changes. Even with the correct preference available, overriding the agent's default interaction habits remains challenging. The environment and dataset are available at https://mempabench.com.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "에이전트 메모리 벤치마크 공개, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2610.30504": {
+      "arxiv_id": "2610.30504",
+      "paper_title": "Rethinking the Evaluation of LLM Fact-Checkers",
+      "abstract": "Large language models (LLMs) are widely used to answer factual questions, but their answers can contain errors and must be fact-checked claim by claim. Yet the resulting score depends on three design decisions: which questions the claims answer, under what conditions each claim is judged, and which sources count as evidence. No existing benchmark specifies all three. We introduce JSFactCheckBench, a Japanese benchmark that specifies all three, with 1,913 claims from LLM answers to questions about misleading information that circulated on Japanese social media, each annotated for factuality at a reference time and for importance to the question, using evidence from preselected Web sources. Across six LLMs, all verify claims directly answering the question less accurately than supplementary claims, a gap that aggregate scores obscure. Scores also drop when models must locate the relevant content in longer or multiple sources and, for all four open models, when the surrounding question and response are added. These weaknesses are visible only because the benchmark records the conditions behind each label. A benchmark that leaves them implicit cannot reveal them.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "일본어 팩트체크 벤치마크, 한국어/영어 아님"
+        }
+      ]
+    },
+    "2610.30533": {
+      "arxiv_id": "2610.30533",
+      "paper_title": "IFC-MCQ: Automatically Generating Multiple-Choice Benchmarks for Evaluating LLM Agents on IFC Data Retrieval",
+      "abstract": "Industry Foundation Classes (IFC), the standard for building information exchange in architecture, engineering, and construction (AEC), is increasingly queried through large language models (LLMs) using natural language. Evaluating these systems at scale is difficult because free-text answers require costly human or LLM-based review. We propose IFC-MCQ, a method that automatically generates multiple-choice benchmarks from IFC files for exact option-set grading. The taxonomy covers 15 categories and 36 subtypes across four groups, with answer keys derived from the file and distractors constructed from file-derived values or predefined rules. We applied IFC-MCQ to IFC models of varying sizes and modelling characteristics to assess generation coverage and evaluated two agentic configurations on selected models using tool- and code-based retrieval. The evaluation exposed category-specific failure modes and showed that performance can vary with the source IFC model and retrieval interface. IFC-MCQ enables scalable benchmarking of LLM-based IFC retrieval in AEC workflows.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "IFC 객관식 벤치마크 자동 생성, 언어 불명확"
+        }
+      ]
+    },
+    "2610.30635": {
+      "arxiv_id": "2610.30635",
+      "paper_title": "What the Specification Did Not Say: Specification-Oracle Gaps in Test-Graded Coding-Agent Benchmarks",
+      "abstract": "Coding-agent benchmarks often describe a task in natural language but grade it with tests taken from the upstream project. Passing those tests can require information the description never states: a constant's name, a module path, an exact message. We call this a specification-oracle gap: where it exists, a benchmark also measures whether an agent reproduces upstream implementation details. We formalise the gap, including the inconsistencies that chains of dependent tasks add, and build a static audit for five languages that classifies every name-, path- and literal-level dependency of every scored test (held-out precision 89.2%, recall 92.9%). On SWE-Milestone (98 graded milestones, 35 published runs), 25 milestones contain a test that depends on an unstated, non-inferable name or path. Build units with such a dependency fail in 80.6% of runs, against 48.4% for comparable units without one, and withholding a single hidden name from the reference stops its unit's tests from compiling in 126 of 128 cases. The leaderboard's ranking is robust to removing the affected tests, but they shift scores within repositories and favour agents that reproduce upstream names. Across four further benchmarks, prevalence appears to follow construction: a third or more of the tasks are affected where specifications are release notes or LLM summaries, almost none where tasks are screened or written for their tests; how much a gap costs depends on how the harness grades. We release the audit, corrected filter lists and specification addenda.",
+      "paper_updated": "2026-10-23T00:00:00Z",
+      "created_at": "2026-10-24T02:48:58Z",
+      "input_sha256": "641a4947c92a3163cb785b24fa2f5314dbb628608d1d3c3c3459f52e7ca6fff0",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "코딩 벤치마크 감사 도구 공개, 신규 벤치마크 여부 불명확"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -33014,7 +33372,30 @@
     },
     "2026-10-24": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [
+        "2601.03369",
+        "2606.02375",
+        "2606.10066",
+        "2610.30282",
+        "2511.21843",
+        "2601.12369",
+        "2605.30329",
+        "2606.01995",
+        "2606.08417",
+        "2606.12117",
+        "2607.03006",
+        "2610.22155",
+        "2610.30161",
+        "2610.30162",
+        "2610.30197",
+        "2610.30412",
+        "2610.30485",
+        "2610.30504",
+        "2610.30533",
+        "2610.30635"
+      ],
+      "calls": 1,
+      "cost_usd": 0.0782
     }
   },
   "reaudits": [
