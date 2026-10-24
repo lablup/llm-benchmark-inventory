@@ -10225,7 +10225,7 @@
     },
     "2411.10163": {
       "decision": "propose",
-      "reason": "Compound-QA는 하나의 질의에 여러 하위 질문이 묶인 복합 질문을 평가하는 재사용 가능한 벤치마크를 새로 제시한다. 논문 속 과제 예시가 영어이므로 en 트랙의 text 모달리티로 분류한다. 데이터셋 링크는 논문 초록에 명시되어 있다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "reason": "Compound-QA는 하나의 질의에 여러 하위 질문이 묶인 복합 질문을 평가하는 재사용 가능한 벤치마크를 새로 제시한다. 논문 속 과제 예시가 영어이므로 en 트랙의 text 모달리티로 분류한다. 데이터셋 링크는 논문 초록에 명시되어 있다. 공식 저장소 README에는 라이선스와 lm-eval 언급이 없고 LICENSE 파일도 없으며 논문 PDF에도 라이선스 문구가 없어 '미표기'로 기록하고, 라이선스 미표기 공개물은 저작권 전부 보유로 취급한다. 이 벤치마크는 Adversarial QA, AGI-Eval, PubMedQA를 바탕으로 만들어졌으므로 구성 요소별 약관을 따로 점검하도록 안내한다. 추천 모델은 논문 Table 2의 추론(Reasoning) 하위셋 Overall 승률로 제시한다.",
       "changes": [
         {
           "track": "en",
@@ -10236,14 +10236,14 @@
             "언어": "en",
             "정의": "한 번의 질의에 서로 연관된 여러 하위 질문이 담긴 복합 질문을 얼마나 빠짐없이 정확하게 답하는지 평가하는 벤치마크. 총 1,500개 샘플로, 이해·추론·지식 3개 하위셋에 각각 5개 유형(Factual-Statement, Cause-and-Effect, Hypothetical-Analysis, Comparison-and-Selection, Evaluation-and-Suggestion)을 유형당 100개씩 구성했다. 기존 QA 데이터셋(Adversarial QA, AGI-Eval, PubMedQA)을 바탕으로 CQ-Syn 프레임워크로 합성하고 사람이 검수했다. 채점은 gpt-4o-mini가 참조 답변과 비교해 산출하는 win rate(포괄성·정확성·다양성의 평균)이다.",
             "대표 과제": "이해(understanding)·추론(reasoning)·지식(knowledge) 하위셋의 복합 질문 응답",
-            "대표 예시·설명": "한 질의 안에 여러 하위 질문이 들어 있는 복합 질문(예: 취미에 대한 질문과 그와 관련된 추가 질문이 한 번에 제시됨)에 대해, 모델이 모든 하위 질문을 빠짐없이 순서대로 답하는 과제를 설명한 것이다.",
+            "대표 예시·설명": "한 질의 안에 여러 하위 질문이 들어 있는 복합 질문(예: 좋아하는 운동이 무엇인지 묻고, 그 운동을 할 때의 특별한 기술이나 습관을 이어서 묻는 질문)에 대해, 모델이 모든 하위 질문을 빠짐없이 순서대로 답하는 과제를 설명한 것이다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스와 이용 조건은 이번 조사에서 확인하지 못했다. 원천 데이터셋(Adversarial QA, AGI-Eval, PubMedQA)의 약관도 별도로 점검해야 한다. 채점에 LLM 평가자(논문은 gpt-4o-mini 사용)가 필요하다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 기존 QA 데이터셋 Adversarial QA, AGI-Eval, PubMedQA를 바탕으로 만들어졌으며(논문 2쪽), 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 채점에 LLM 평가자(논문은 gpt-4o-mini 사용)가 필요하다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/sustech-nlp/Compound-QA"
           },
           "modality": "text",
@@ -10251,7 +10251,7 @@
             "axis": "Understanding, reasoning, and knowledge (compound question answering)",
             "definition": "Compound-QA evaluates how completely and accurately LLMs answer compound questions, where one query contains several interrelated sub-questions. It has 1,500 samples: three subsets (understanding, reasoning, knowledge) with five question types each (Factual-Statement, Cause-and-Effect, Hypothetical-Analysis, Comparison-and-Selection, Evaluation-and-Suggestion), 100 per type. It was synthesized with the CQ-Syn framework from existing QA datasets (Adversarial QA, AGI-Eval, PubMedQA) and verified by humans. Scoring uses win rates against reference answers judged by gpt-4o-mini (mean of comprehensiveness, correctness, and diversity).",
             "task": "Answering compound questions in the understanding, reasoning, and knowledge subsets",
-            "example": "Task description: a single query bundles several related sub-questions (for example, a question about a hobby followed by a related follow-up), and the model must answer every sub-question in order without omission."
+            "example": "Task description: a single query bundles several related sub-questions (for example, asking about a favorite sport and then about special skills or habits when playing it), and the model must answer every sub-question in order without omission."
           },
           "evidence": {
             "modality": {
@@ -10287,9 +10287,161 @@
               "quote": "1,500 samples spanning"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/sustech-nlp/Compound-QA",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/sustech-nlp/Compound-QA",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/sustech-nlp/Compound-QA",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/sustech-nlp/Compound-QA",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/sustech-nlp/Compound-QA",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Overall win rate (%, 0–100): percentage of instances in which the model response is judged equal or superior to the reference answer by gpt-4o-mini, averaged over both response/reference orderings and over the three evaluation dimensions",
+            "setting": "Compound-QA 추론(Reasoning) 하위셋(5개 유형×100개), 복합 질문을 한 번에 제시하는 단일 턴 응답, gpt-4o-mini 평가자가 gpt-4o 생성 참조 답변과 비교. 논문 Table 2의 Reasoning 행 Overall 열 결과이며, 이 논문에서 보고된 결과일 뿐 현재의 전역 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "DeepSeek",
+                "score": "8.4",
+                "evidence": {
+                  "page": 3,
+                  "quote": "DeepSeek Reasoning 8.4"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "nine open-source LLMs of different scales"
+                }
+              },
+              {
+                "model": "Mistral",
+                "score": "13.6",
+                "evidence": {
+                  "page": 3,
+                  "quote": "Mistral Reasoning 13.6"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "nine open-source LLMs of different scales"
+                }
+              },
+              {
+                "model": "LLaMA",
+                "score": "22.7",
+                "evidence": {
+                  "page": 3,
+                  "quote": "LLaMA Reasoning 22.7"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "nine open-source LLMs of different scales"
+                }
+              },
+              {
+                "model": "Gemma-2",
+                "score": "26.5",
+                "evidence": {
+                  "page": 3,
+                  "quote": "Gemma-2 Reasoning 26.5"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "nine open-source LLMs of different scales"
+                }
+              },
+              {
+                "model": "GLM-4",
+                "score": "41.7",
+                "evidence": {
+                  "page": 3,
+                  "quote": "GLM-4 Reasoning 41.7"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "nine open-source LLMs of different scales"
+                }
+              },
+              {
+                "model": "Qwen2.5",
+                "score": "48.8",
+                "evidence": {
+                  "page": 3,
+                  "quote": "Qwen2.5 Reasoning 48.8"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "nine open-source LLMs of different scales"
+                }
+              },
+              {
+                "model": "InternLM",
+                "score": "48.2",
+                "evidence": {
+                  "page": 3,
+                  "quote": "InternLM Reasoning 48.2"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "nine open-source LLMs of different scales"
+                }
+              },
+              {
+                "model": "Gemma-3",
+                "score": "59.4",
+                "evidence": {
+                  "page": 3,
+                  "quote": "Gemma-3 Reasoning 59.4"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "nine open-source LLMs of different scales"
+                }
+              },
+              {
+                "model": "Qwen3",
+                "score": "76.2",
+                "evidence": {
+                  "page": 3,
+                  "quote": "Qwen3 Reasoning 76.2"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "nine open-source LLMs of different scales"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2411.10163",
@@ -10366,7 +10518,8 @@
         "source_run": "40055257940",
         "context_sha256": "296f92f7dac565860a1496f683a799fefaecc68bc20872087fb461fc865572d9"
       },
-      "proposal_sha256": "7468f7fdd86050181a4f22301d102cb113fce6a036499a830d910174f36f6854"
+      "proposal_sha256": "111982914c698bbbbb8297974d90bf9760665efee2d121ffded9a602959c0392",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -35599,8 +35752,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 24,
-      "cost_usd": 10.5878
+      "calls": 25,
+      "cost_usd": 10.959
     }
   },
   "reaudits": [
