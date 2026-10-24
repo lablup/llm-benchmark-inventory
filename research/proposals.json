@@ -8867,6 +8867,167 @@
       },
       "issue_url": null,
       "proposal_sha256": "a8bdb47c35e77c20e59d4e7ea2355f5c11d91cbf9f8dc6fa5dd74eb0dfff2228"
+    },
+    "2605.29653": {
+      "decision": "propose",
+      "reason": "PTCG-Bench는 포켓몬 카드 게임(PTCG)에서 LLM 에이전트의 게임 의사결정, 교차 게임 자기 진화, 하니스 구성 요소별 영향을 평가하는 새 벤치마크다. 에이전트 프롬프트가 영어라 en 트랙의 텍스트 입력 벤치마크로 분류했다. 공식 코드 저장소 URL이 논문에 명시되어 있다. 라이선스와 lm-eval 지원 여부는 확인되지 않아 '확인 불가'로 기록했다. 앞서 검증에 실패한 인용문은 해당 PDF 쪽에 실제로 있는 짧은 문구로 교체했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "ptcg-bench",
+            "이름": "PTCG-Bench",
+            "평가 축": "에이전트(전략 게임·자기 진화)",
+            "언어": "en",
+            "정의": "포켓몬 트레이딩 카드 게임(PTCG)을 기반으로 LLM 에이전트를 평가하는 벤치마크. 불완전 정보 아래의 게임 내 의사결정, 여러 라운드에 걸친 자기 진화(longitudinal 프로토콜), 하니스(관측 구조, 합법 행동 마스킹, 컨텍스트 관리) 모듈별 ablation의 세 가지를 평가한다. 5개 대표 덱 풀과 자체 PTCG 엔진을 사용하며, 고정 에이전트는 라운드 로빈(쌍당 M=20게임, 12개 에이전트 1,320게임), 자기 진화 에이전트는 고정 앵커 대비 토너먼트로 평가한다. 지표는 Glicko-2 레이팅, 상대별 승률, 무효 행동률, 도구 호출 수.",
+            "대표 과제": "Glicko-2 레이팅 기반 토너먼트 평가(라운드 로빈, 앵커 토너먼트)와 하니스 ablation",
+            "대표 예시·설명": "에이전트가 'Pokémon TCG battle agent' 역할의 ReAct 프롬프트를 받고, 각 결정 단계에서 부분 관측과 합법 행동 목록을 보고 도구 호출 하나(공격, 에너지 부착, 진화, 턴 종료 등)를 선택해 한 판을 끝까지 진행하는 과제",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 않았다. 논문은 카드 이름, 규칙, 설명, 이미지 등 공개된 PTCG 정보를 비상업 학술 연구 목적으로 사용했으며 데이터셋을 연구용으로만 공개할 예정이라고 밝히므로, 이용 전 조건 확인이 필요하다. 평가에는 자체 PTCG 엔진과 LLM API 실행 환경이 필요하다. 고정 덱 풀(5개)과 주로 미러 매치로 평가한 구성이다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/zjunet/PTCG-Bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (strategy game and self-evolution)",
+            "definition": "PTCG-Bench is built on the Pokémon Trading Card Game and evaluates LLM agents on in-game decision-making under imperfect information, self-evolution across multiple rounds (a longitudinal protocol), and the effect of modular harness components (observation structure, legal-action masking, context management). It uses a custom PTCG engine and a fixed pool of 5 decks. Fixed agents are compared by round robin (M=20 games per pair, 1,320 games for 12 agents), and self-evolving agents by an anchored tournament against frozen baselines. Metrics are Glicko-2 rating, head-to-head win rate, invalid action rate, and tool calls.",
+            "task": "Glicko-2 rating-based tournament evaluation (round robin and anchored tournament) with harness ablations",
+            "example": "The agent receives a ReAct-style prompt as a Pokémon TCG battle agent. At each decision step it reads a partial observation and the legal action list, then calls one tool (attack, attach energy, evolve, pass turn, etc.) to play a full game."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "LLM-readable prompt"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "Glicko-2 rating"
+            },
+            "대표 예시·설명": {
+              "page": 15,
+              "quote": "Pokémon TCG battle"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/zjunet/PTCG-Bench"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "Pokémon TCG battle"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "PTCG-Bench"
+            },
+            "정의": {
+              "page": 3,
+              "quote": "fixed pool of"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "self-evolve through accumulated"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2605.29653",
+      "paper_title": "PTCG-Bench: Can LLM Agents Master Pokémon Trading Card Game?",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2605.29653",
+        "sha256": "b184ad611afe83149daea53bebf58c9a7afe4d42d4710d47a18d5a9829ffbf59",
+        "accessed": "2026-10-24T03:15:19Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 16,
+          "elapsed_seconds": 92.42,
+          "pdf_sha256": "b184ad611afe83149daea53bebf58c9a7afe4d42d4710d47a18d5a9829ffbf59",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "c177499cd8f950d3ca08e249652bf0ab152c40f01cb139224796b7cb5bc53c2c",
+          "page_json_file": "2605.29653.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/zjunet/PTCG-Bench",
+            "fetched_url": "https://api.github.com/repos/zjunet/PTCG-Bench/readme",
+            "sha256": "c2625cbb4645e2ca47bef8a5a3dfa28dd7e92710174a11817e298e5eaa76586b",
+            "accessed": "2026-10-24T03:17:42Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/zjunet/PTCG-Bench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "cc744d34f852010f73571613f9a43c8c3bca762f2850826dacf4ef79c3545764"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-24T03:17:42Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2605.29653",
+        "paper_title": "PTCG-Bench: Can LLM Agents Master Pokémon Trading Card Game?",
+        "abstract": "Given a strategically complex board game, human players can quickly learn to devise strategies after playing a few rounds. Autonomous agents require similar capabilities in realistic interactive environments, yet existing agent benchmarks often fail to fully capture such strategic and evolving decision-making scenarios. We present PTCG-Bench, a benchmark built on the Pok'{e}mon Trading Card Game (PTCG) that evaluates LLM agents at two complementary levels: (1) their decision-making performance within a single complex environment, and (2) their ability to self-evolving through accumulated experience. We further include a modular harness ablation to better interpret agent performance without conflating it with model capability. Our experiments show that, although LLM agents can achieve non-trivial gameplay performance, sustained and stable self-evolution remains challenging, and performance is sensitive to harness design. We hope that PTCG-Bench will facilitate future research on harness-aware and self-evolving agents in realistic interactive environments.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-19T13:44:10Z",
+        "input_sha256": "158f6d7d098451816aa5927a079737840b9721f952ec493368e62654664ad66e",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "포켓몬 카드 게임 LLM 에이전트 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "포켓몬 TCG 기반 LLM 에이전트 벤치마크 PTCG-Bench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40055257940",
+        "context_sha256": "ea7cd9bf161fcfefcd6de719a9bc4c6c23061c1eac2ddf2e730e865100738b81"
+      },
+      "proposal_sha256": "67877c511ba5d79b10eca1ab05ec0ac3788350f766ea8e2bf4f99e53c7ab36de"
     }
   },
   "processed_comments": [],
@@ -34091,8 +34252,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 9,
-      "cost_usd": 3.2793
+      "calls": 10,
+      "cost_usd": 3.7211
     }
   },
   "reaudits": [
