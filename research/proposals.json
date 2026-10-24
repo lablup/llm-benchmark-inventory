@@ -9915,7 +9915,7 @@
     },
     "2609.23142": {
       "decision": "propose",
-      "reason": "CraftBench-UE는 Unreal Engine에서 코딩 에이전트를 평가하는 재사용 가능한 벤치마크로, C++ 33개, Blueprint 25개, 에디터 스크립팅 12개의 총 70개 과제로 구성되며 LLM judge 없이 빌드·에셋·런타임 검사로 결정적 채점을 한다. 기존 인벤토리에 없는 새 벤치마크다. 과제 지시문은 영어로 인용된 과제 설명 기준이므로 en 트랙으로 분류했다. 과제는 스크린샷이나 이미지 입력이 필요하지 않은 텍스트 기반 코딩·에이전트 과제이므로 text로 분류했다. PDF가 공식 저장소로 github.com/ramenvr/craftbench-ue를 명시했다. 다만 논문은 공개 시점을 '게시 시 공개 예정'으로 서술하므로 실제 공개 여부와 라이선스는 확인 불가로 두었다. 데이터셋의 영어 문항 원문 인용은 PDF에 없어, 언어 근거로는 영어 과제명·과제 요약을 인용했다.",
+      "reason": "CraftBench-UE는 Unreal Engine에서 코딩 에이전트를 평가하는 재사용 가능한 벤치마크로, C++ 33개, Blueprint 25개, 에디터 스크립팅 12개의 총 70개 과제로 구성되며 LLM judge 없이 빌드·에셋·런타임 검사로 결정적 채점을 한다. 기존 인벤토리에 없는 새 벤치마크다. 과제 지시문은 영어로 인용된 과제 설명 기준이므로 en 트랙으로 분류했다. 스크린샷이나 이미지 입력이 필요 없는 텍스트 기반 코딩·에이전트 과제이므로 text로 분류했다. 공식 저장소(github.com/ramenvr/craftbench-ue)의 README와 LICENSE 파일이 MIT를 명시하므로 라이선스 항목은 이 카드의 문구로 근거를 제시했다. 단 README는 MIT 부여가 저자 자체 저작물에 한정되며 Epic 소유 파일은 Unreal Engine EULA를 따른다고 밝히므로 이 제한을 함께 기록했다. 공식 카드는 lm-eval 또는 lm-evaluation-harness를 언급하지 않아 '미표기'로 두었고, PDF에도 라이선스 관련 단어가 나오는 쪽이 없다. 데이터셋의 영어 문항 원문 인용은 PDF에 없어, 언어 근거로는 영어 과제 요약을 인용했다. 권고 결과는 논문 Table 6의 C++ 과제 33개 MCP1 설정 완료율에서 가져왔다.",
       "changes": [
         {
           "track": "en",
@@ -9928,12 +9928,12 @@
             "대표 과제": "C++, Blueprint/에셋, 에디터 스크립팅 결과물을 빌드·에셋·런타임 검사로 채점(예: gp-glide-stamina-cpp)",
             "대표 예시·설명": "낙하하는 캐릭터의 하강을 늦추면서 Power를 소모하고, Power가 소진되면 정상 낙하로 복귀하는 글라이드 기능을 구현하는 과제. 과제 설명이며 실제 시험 문항이 아님",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋과 코드의 라이선스는 확인하지 못했다. 논문은 하니스, 과제, 검증기, 참조 구현을 게시 시점에 공개한다고 밝혔고(10쪽) 실제 공개 여부는 확인되지 않았다. 사용자가 Unreal Engine을 직접 설치해야 하며 엔진 바이너리와 MCP2 내부 구현은 재배포되지 않는다. 논문의 실험은 Windows, Unreal Engine 5.8, Claude Code 환경에서만 수행됐고 과제당 1회 시도라 반복 변동성은 추정되지 않았다. 저자 조직이 MCP2를 개발한다는 이해 상충이 윤리 성명에 명시돼 있다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(저장소 자체 저작물에 한함. Epic 소유 콘텐츠는 Unreal Engine EULA)",
+            "상업적 이용": "가능(MIT, 자체 저작물 한정)",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "공식 저장소 README는 MIT 부여가 저자 자체 저작물에 한정되며, 부트스트랩으로 복원되는 Epic 소유 파일에는 Unreal Engine EULA가 적용된다고 밝힌다. 과제 중 50개는 Unreal Engine 5.8 Third Person 템플릿에서, 20개는 맞춤 템플릿에서 시작하므로(논문 5쪽) Epic 템플릿 등 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. MIT 표기와 저작권 고지 포함이 필요하다. 사용자가 Unreal Engine을 직접 설치해야 하며 엔진 바이너리와 MCP2 내부 구현은 재배포되지 않는다. 논문의 실험은 Windows, Unreal Engine 5.8, Claude Code 환경에서만 수행됐고 과제당 1회 시도라 반복 변동성은 추정되지 않았다. 저자 조직이 MCP2를 개발한다는 이해 상충이 윤리 성명에 명시돼 있다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/ramenvr/craftbench-ue"
           },
           "modality": "text",
@@ -9977,9 +9977,103 @@
               "quote": "Deterministic Evaluation for"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/ramenvr/craftbench-ue",
+              "quote": "MIT License"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/ramenvr/craftbench-ue",
+              "quote": "and/or sell"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/ramenvr/craftbench-ue",
+              "quote": "copy, modify, merge"
+            },
+            "재배포": {
+              "source_url": "https://github.com/ramenvr/craftbench-ue",
+              "quote": "publish, distribute, sublicense"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/ramenvr/craftbench-ue",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "C++ 과제 33개 중 40분 제작 시간 안에 모든 필수 검사를 통과한 과제의 비율(%, 완료 과제 수/33)",
+            "setting": "논문 Table 6의 C++ 과제 33개, MCP1(Unreal MCP) 설정, 과제·모델·설정 조합당 1회 시도 pass@1, 40분 제작 시간 제한, Claude Code와 Unreal Engine 5.8(Windows) 환경에서의 결과다. 이 논문에서 보고한 결과이며 현재의 전역 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Claude Sonnet 5 (claude-sonnet-5)",
+                "score": "90.9",
+                "evidence": {
+                  "page": 16,
+                  "quote": "Claude Sonnet 5 27/33 (81.8%) 30/33 (90.9%) 30/33 (90.9%)"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DeepSeek V4 Pro (deepseek/deepseek-v4-pro-0813)",
+                "score": "84.8",
+                "evidence": {
+                  "page": 16,
+                  "quote": "DeepSeek V4 Pro 26/33 (78.8%) 28/33 (84.8%) 27/33 (81.8%)"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini 3.7 Flash (google/gemini-3.7-flash)",
+                "score": "87.9",
+                "evidence": {
+                  "page": 16,
+                  "quote": "Gemini 3.7 Flash 23/33 (69.7%) 29/33 (87.9%) 31/33 (93.9%)"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.6 Luna (openai/gpt-5.6-luna)",
+                "score": "87.9",
+                "evidence": {
+                  "page": 16,
+                  "quote": "GPT-5.6 Luna 21/33 (63.6%) 29/33 (87.9%) 27/33 (81.8%)"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.6 Sol (openai/gpt-5.6-sol)",
+                "score": "90.9",
+                "evidence": {
+                  "page": 16,
+                  "quote": "GPT-5.6 Sol 29/33 (87.9%) 30/33 (90.9%) 30/33 (90.9%)"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Grok 4.6 (x-ai/grok-4.6)",
+                "score": "90.9",
+                "evidence": {
+                  "page": 16,
+                  "quote": "Grok 4.6 28/33 (84.8%) 30/33 (90.9%) 30/33 (90.9%)"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM 5.3 Flash (z-ai/glm-5.3-flash)",
+                "score": "69.7",
+                "evidence": {
+                  "page": 16,
+                  "quote": "GLM 5.3 Flash 26/33 (78.8%) 23/33 (69.7%) 28/33 (84.8%)"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.23142",
@@ -10080,7 +10174,8 @@
         "source_run": "40055257940",
         "context_sha256": "e928b82467b8e210c63711016f4ec9322ca025ca75266c39c62c1554e0b9555c"
       },
-      "proposal_sha256": "717e676e8a0f6f3f5ed898285822f925982930156eb4f1e58e6ebab842666715"
+      "proposal_sha256": "676519c889a7bb5df218f88f4b5768c124ab3a9892d71ec177d85b71695928c8",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -35311,8 +35406,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 21,
-      "cost_usd": 9.1929
+      "calls": 22,
+      "cost_usd": 9.7478
     }
   },
   "reaudits": [
