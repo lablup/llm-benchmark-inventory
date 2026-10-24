@@ -12012,6 +12012,159 @@
         "reviewed_sha256": "670fc62b6d957a43a2339827ae4a49f0bb0c7ce60c890c24638b644a6083ebc9",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2609.18644": {
+      "decision": "propose",
+      "reason": "이 논문은 CoCoLoFa와 Reddit의 오류 논증에 대응하는 scheme-matched 및 wrong-scheme 음성 예시를 새로 구성해 Scheme Foils로 공개한다. 이는 기존 오류 탐지 벤치마크의 valid 클래스를 보완하는 재사용 가능한 평가 세트다. 과제는 영어 논증 분류 프롬프트로 제시되므로 en/text 트랙에 해당한다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않아 '확인 불가'로 둔다. 공식 링크는 부록 B에 명시된 GitHub 저장소다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "scheme-foils",
+            "이름": "Scheme Foils",
+            "평가 축": "논증 오류 탐지(scheme-matched 음성 예시)",
+            "언어": "en",
+            "정의": "기존 오류 탐지 벤치마크의 valid 클래스에 올바르게 쓰인 논증 스킴 사례가 거의 없다는 점을 보완하는 음성 예시 세트. 판정을 통과한 CoCoLoFa matched 655건과 wrong-scheme 738건, Reddit matched 387건과 wrong-scheme 389건으로 구성된다. 8개 오류 유형(권위 호소, 다수 호소, 자연 호소, 전통 호소, 더 큰 문제 호소, 거짓 딜레마, 성급한 일반화, 미끄러운 경사)을 다룬다. matched 음성은 원래 오류의 스킴을 쓰되 비판적 질문에 답하고, wrong-scheme 음성은 같은 주제에서 다른 스킴을 쓴다. Gemini 2.5 Flash로 생성하고 DeepSeek로 필터링했다. 사람 검증 정밀도는 matched 93.1%(72건 표본), wrong-scheme 77.5%(40건 표본)다. 두 조건에서 원 오류 유형으로 분류되는 비율의 차이로 탐지기가 스킴 인식에 의존하는지 측정한다.",
+            "대표 과제": "논증이 오류인지 판정하고 8개 오류 유형 또는 none 중 하나로 분류(논문의 zero-shot 탐지 프롬프트)",
+            "대표 예시·설명": "논증 하나를 주고 8개 오류 유형 중 하나 또는 none으로 라벨만 답하게 한다. matched 분할의 오류 플래그 비율과 wrong-scheme 분할에서 원 오류 유형으로 분류되는 비율을 비교한다(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스는 확인하지 않았다. 논문은 원천 코퍼스를 각 라이선스 범위 안에서 쓰고 원문 항목은 라이선스가 허용할 때만 재배포한다고 밝힌다. 생성 항목은 불순도가 있다(matched 6.9%, wrong-scheme 22.5%). wrong-scheme의 플래그율은 오탐률이 아니다. 논문도 생성된 비율이 배포 환경의 실제 규모가 아니라고 한계를 적었다. 범위는 8개 오류 유형과 2개 코퍼스로 제한된다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/fine2006/the-concealment-hypothesis"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Fallacy detection (scheme-matched negatives)",
+            "definition": "A set of negative examples that fills the gap left by existing fallacy-detection benchmarks, whose valid classes contain almost no correctly instantiated argumentation schemes. The judge-filtered release has 655 matched and 738 wrong-scheme CoCoLoFa items and 387 matched and 389 wrong-scheme Reddit items, covering eight fallacy types (appeal to authority, majority, nature, tradition, worse problems, false dilemma, hasty generalization, slippery slope). A matched negative uses the source fallacy's scheme and answers its critical question; a wrong-scheme negative is a valid argument on the same topic using a different scheme. Items were generated with Gemini 2.5 Flash and filtered with DeepSeek. Human-validated precision is 93.1% for matched (72-item sample) and 77.5% for wrong-scheme (40-item sample). Comparing how often each condition is classified as the source type measures whether a detector relies on scheme recognition.",
+            "task": "Decide whether an argument is fallacious and label it with one of eight fallacy types or none (the paper's zero-shot detector prompt).",
+            "example": "Task description: given one argument, answer with only a fallacy-type label or none. Compare the flag rate on the matched split with the rate of source-type labels on the wrong-scheme split."
+          },
+          "evidence": {
+            "modality": {
+              "page": 13,
+              "quote": "Classify the following"
+            },
+            "대표 과제": {
+              "page": 13,
+              "quote": "Classify the following"
+            },
+            "대표 예시·설명": {
+              "page": 13,
+              "quote": "Classify the following"
+            },
+            "링크": {
+              "page": 11,
+              "quote": "github.com/fine2006/"
+            },
+            "언어": {
+              "page": 13,
+              "quote": "Classify the following"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We release the"
+            },
+            "정의": {
+              "page": 11,
+              "quote": "655 matched and"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "scheme recognition"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.18644",
+      "paper_title": "Fallacy Benchmarks Measure Scheme Recognition, Not Fallacy Detection",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.18644",
+        "sha256": "f2d9c8242e121f108d42fb1fc5b81121db11da1c591f1d0177310378ebb0032e",
+        "accessed": "2026-10-24T04:14:47Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 13,
+          "elapsed_seconds": 73.39,
+          "pdf_sha256": "f2d9c8242e121f108d42fb1fc5b81121db11da1c591f1d0177310378ebb0032e",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "e6b7ab0c08d5d1162954ce416be8d0a5b338b46574b7621911293e2eb4165c3a",
+          "page_json_file": "2609.18644.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/fine2006/the-concealment-hypothesis",
+            "fetched_url": "https://api.github.com/repos/fine2006/the-concealment-hypothesis/readme",
+            "sha256": "e28bf53db5ed5aba9a7af76deca4b7bdf132383ede67ee41b99de6646d8e35ba",
+            "accessed": "2026-10-24T04:16:23Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-24T04:16:23Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.18644",
+        "paper_title": "Fallacy Benchmarks Measure Scheme Recognition, Not Fallacy Detection",
+        "abstract": "Fallacy-detection benchmarks pair fallacy classes with a single \"valid\" or \"none\" class that takes everything data collection did not label as a fallacy. A detector has two jobs, deciding whether an argument is fallacious and naming which fallacy it commits, and the false-positive rate is meant to measure the first. We show that what these benchmarks actually score is scheme recognition, the ability behind the second job. Their own test sets already show it: when a classifier misses a fallacy, the error lands on \"none\" rather than on another fallacy type, so detection is failing while classification holds. The reason is what the valid class lacks. The negatives that separate the two jobs are correct arguments using the same argumentation scheme as a fallacy, and they are scarce: nearly absent from the four benchmarks we examined, and rare even under deliberate search. A detector is therefore never tested where recognizing a scheme and judging its use come apart, and can pass on recognition alone. We construct the missing arguments, together with a control condition from the same pipeline that differs only in scheme, so whatever generation contributes, it contributes to both. The classifier labels the scheme-matched negatives as the source fallacy, and labels the wrong-scheme negatives as the scheme they actually use 85.9% of the time and as the source type 0.4%. The classifier has learned which scheme an argument uses, not whether it uses it correctly. The over-flagging follows: a model that scores 16.6% on CoCoLoFa's own valid class flags 58.9% of the constructed arguments. The same dissociation appears in three zero-shot LLM detectors that never saw these benchmarks. We release the items as Scheme Foils. A reported false-positive rate should not be trusted as a measure of detection until the valid class has been audited for scheme-matched coverage.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-19T13:44:22Z",
+        "input_sha256": "99f5d866d82f56c723e36444f762e2ed34b52bf4b87c2c7ff08ed1052b4fff23",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "논증 오류 탐지 벤치마크의 타당성 문제 분석"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "오류 논증 탐지 한계 분석 및 Scheme Foils 평가자료 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40055257940",
+        "context_sha256": "3a9385b26776169f8d29d7162354ead22ae326f5d06c689fa3e4b401643d9fb8"
+      },
+      "proposal_sha256": "8208615aff94025c2aae3ee919e4cbd74f704e56d7a4318fc57e6cda95ade226"
     }
   },
   "processed_comments": [],
@@ -37255,8 +37408,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 38,
-      "cost_usd": 17.3499
+      "calls": 39,
+      "cost_usd": 17.7608
     }
   },
   "reaudits": [
