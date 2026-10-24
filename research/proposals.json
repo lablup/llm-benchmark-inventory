@@ -8712,6 +8712,86 @@
       "proposal_sha256": "7d109ae40239b101f52dd6637e72a8be1175421617b6c7b91e8e0b0cd341e7f7",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2609.22452": {
+      "decision": "exclude",
+      "reason": "Vox-Infinity는 영어 음성 대화(SpokenWOZ, GigaSpeech, IEMOCAP 기반)에서 장문 컨텍스트를 평가하는 재사용 가능한 벤치마크로, 영어 질문 예시도 논문에 있습니다. 그러나 입력이 음성(오디오)이라 텍스트 전용(text)도 이미지·문서 기반(vision)도 아닙니다. 허용된 modality 값(text|vision)으로는 정확히 표기할 수 없어, 잘못된 값을 넣느니 이번 제안에서는 제외합니다. 전체 데이터와 평가 도구는 논문 채택 후 공개 예정이라고 합니다. 오디오 modality가 인벤토리에 추가되면 en 트랙 행으로 다시 검토할 수 있습니다.",
+      "changes": [],
+      "arxiv_id": "2609.22452",
+      "paper_title": "Vox-Infinity: Benchmarking the Limits of Long-Context Spoken Language Models",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.22452",
+        "sha256": "4b5698fecad6fdcb01a715684613c741c524e5c3918f8b51bb3bd7208093443b",
+        "accessed": "2026-10-24T03:07:59Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 17,
+          "elapsed_seconds": 100.75,
+          "pdf_sha256": "4b5698fecad6fdcb01a715684613c741c524e5c3918f8b51bb3bd7208093443b",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "ada19274d27ec78381c0d2eeb1c481dc96f3ae491e6a5d621f4f53c82121f60b",
+          "page_json_file": "2609.22452.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-10-24T03:09:51Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.22452",
+        "paper_title": "Vox-Infinity: Benchmarking the Limits of Long-Context Spoken Language Models",
+        "abstract": "Long-context understanding remains a fundamental challenge for large language models, as excessively long inputs often lead models to forget salient information. This issue is even more pronounced in the speech domain, where audio, as a low-compression modality, requires substantially more embeddings than text to preserve both semantic content and acoustic cues. To address this challenge, we introduce \\textbf{Vox-Infinity}, the first benchmark specifically designed to evaluate long-context understanding in spoken language models. Vox-Infinity systematically extends audio history along two dimensions: turn count and turn duration. It covers a diverse range of representative scenarios with varying interaction structures and semantic complexity. Crucially, Vox-Infinity provides explicit answer-provenance annotations and organizes samples according to the amount of historical context required to resolve each query, enabling precise and length-aware evaluation. Extensive evaluations of seven representative spoken language models reveal a clear overall recency effect: models generally achieve higher accuracy when answer-supporting evidence is closer to the query, but struggle to retrieve and use evidence located farther back in the dialogue history. Cases and datasets are available at https://vox-infinity.github.io.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-20T02:48:49Z",
+        "input_sha256": "1d770584b5dc327cf5b994b8597c438c90fe5322b145f5399293427ec0c5213c",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "장문 음성 언어 모델 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "장문 음성모델 이해 평가 벤치마크 Vox-Infinity 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "dba160d5b8157f755f5669a77a16ac593914438daf511d5939c96de0315b7304"
     }
   },
   "processed_comments": [],
@@ -33932,8 +34012,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 7,
-      "cost_usd": 2.5256
+      "calls": 8,
+      "cost_usd": 2.9703
     }
   },
   "reaudits": [
