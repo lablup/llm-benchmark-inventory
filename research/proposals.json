@@ -8792,6 +8792,81 @@
       },
       "issue_url": null,
       "proposal_sha256": "dba160d5b8157f755f5669a77a16ac593914438daf511d5939c96de0315b7304"
+    },
+    "2609.22599": {
+      "decision": "exclude",
+      "reason": "MAWILE은 LLM 판정자(judge)의 민감도를 점검하는 개발자용 감사 도구(워크벤치)이며, 재사용 가능한 새 벤치마크 데이터셋이 아니다. 논문이 실험에 쓴 MT-Bench, Search Arena, GSM8K는 기존 공개 데이터셋이고 MAWILE이 이를 새로 만들거나 실질적으로 갱신한 것도 아니다. 섭동 연산자 카탈로그(불변 16개, 방향성 7개)는 도구의 구성 요소일 뿐 독립된 평가 데이터가 아니다. 따라서 인벤토리에 추가하거나 갱신할 행이 없다.",
+      "changes": [],
+      "arxiv_id": "2609.22599",
+      "paper_title": "MAWILE: Multi-Axis Workbench for Inspecting LLM Evaluators",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.22599",
+        "sha256": "567c24aff9809fb1817c30855ea8ab27d8888b01cff0e735d0c5e8f0c2370b30",
+        "accessed": "2026-10-24T03:13:46Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 12,
+          "elapsed_seconds": 72.21,
+          "pdf_sha256": "567c24aff9809fb1817c30855ea8ab27d8888b01cff0e735d0c5e8f0c2370b30",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 1,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7c72c1117d80e59a0b9100b7db3976c399b1ec60dd2ed7003eb3085ba37a9eab",
+          "page_json_file": "2609.22599.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-10-24T03:15:05Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.22599",
+        "paper_title": "MAWILE: Multi-Axis Workbench for Inspecting LLM Evaluators",
+        "abstract": "Large language model (LLM) judges provide a flexible and scalable method for evaluating model and agent outputs, but their verdicts can be sensitive to incidental changes in the evaluated response, judge instructions, and scoring rubric. Existing systems examine important subsets of these failure modes, but auditing a configured judge requires testing both the judge instrument and the items it evaluates. We introduce MAWILE, a developer-facing workbench for auditing judge sensitivity across four surfaces: the judge prompt, judge rubric, target-system input, and target-system output. Given a user-supplied judge and representative evaluation items, MAWILE constructs and validates controlled perturbations, re-executes the judge, and localizes the resulting sensitivity. Each perturbation declares whether the verdict should remain invariant or change in a specified direction, allowing the same system to measure both robustness to irrelevant variations and sensitivity to meaningful changes. MAWILE audits binary, ordinal, and pairwise judges without requiring gold labels. The code for this tool is available at: github.com/megagonlabs/mawile-judge.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-20T02:48:49Z",
+        "input_sha256": "46ff2199bba355e0fa9fe8bc7a66b107c0039cefc233a4a07f0de015373c56c7",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 심사자 민감도 감사 워크벤치"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "LLM 심판 감사 도구 MAWILE 제안, 평가 도구 해당"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "a8bdb47c35e77c20e59d4e7ea2355f5c11d91cbf9f8dc6fa5dd74eb0dfff2228"
     }
   },
   "processed_comments": [],
@@ -34015,8 +34090,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 8,
-      "cost_usd": 2.9703
+      "calls": 9,
+      "cost_usd": 3.2793
     }
   },
   "reaudits": [
