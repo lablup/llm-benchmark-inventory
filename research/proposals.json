@@ -11141,6 +11141,169 @@
       "proposal_sha256": "20f055e8f80700bb2ce49355000b233b826b0da072f3f780727b37815ab63579",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2603.16859": {
+      "decision": "propose",
+      "reason": "SocialOmni는 다자 대화에서 화자 식별(who), 발화 진입 시점 판단(when), 응답 생성(how)을 분리해 측정하는 재사용 가능한 오디오-비디오 진단 벤치마크입니다. 과제 프롬프트와 예시 문구가 영어이므로 en 트랙으로 분류했고, 영상과 오디오 입력이 필요하므로 vision으로 분류했습니다. 논문은 데이터셋과 코드 URL을 명시합니다. 라이선스와 lm-eval 지원 여부는 확인되지 않아 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "socialomni",
+            "이름": "SocialOmni",
+            "평가 축": "멀티모달 사회적 상호작용(화자 식별·발화 진입·응답 생성)",
+            "언어": "en",
+            "정의": "전방위(omni) 모델의 다자 대화 턴을 세 가지 오프라인 진단으로 나눠 평가하는 벤치마크. who는 화자-발화 내용 4지선다 인식 2,000문항(화자 가시 1,725, 가시성 불일치 275), when은 주석된 질의 시점까지의 입력만 보고 지정 참가자가 말을 시작해야 하는지 YES/NO로 판정하는 200문항(양성 128), how는 올바르게 YES를 낸 뒤 그 참가자의 다음 발화를 생성하는 과제. 15개 대화 범주를 4개 상위 영역(엔터테인먼트, 전문, 일상, 서사)으로 묶었고 평균 클립 길이는 25.0초. 지표는 who의 정확도·macro-F1, when의 정확도·정밀도·재현율·macro-F1, how의 QEns(조건부 품질), Cov+(양성 기회 커버리지), QEns_joint(커버리지 보정 품질), QGold(128개 양성 상태 강제 생성). 응답은 0/25/50/75/100 척도로 세 judge(GPT-4o, Gemini 2.5 Pro, Qwen3-Omni)의 평균으로 채점하며 사람이 검증한 참조 발화를 judge에게만 제공한다.",
+            "대표 과제": "who(화자 귀속 4지선다), when(고정 시점 발화 진입 YES/NO), how(조건부 응답 생성)",
+            "대표 예시·설명": "영상·오디오 클립에서 질의 시점에 누가 말하는지 고르고, 지정 참가자가 지금 말을 시작해야 하는지 판단한 뒤, 그 참가자의 다음 발화를 쓰는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋과 코드의 라이선스는 확인하지 않았다. 논문은 출처별 라이선스 필드가 공개 데이터셋 저장소에 없다고 밝히므로 이용 전 별도 확인이 필요하다. 이 프로토콜은 지속적 스트리밍 상태나 실시간 지연을 측정하지 않는다. how 채점에는 LLM judge 3종이 필요하다. 논문의 Gemini 평가는 오디오 트랙 없이 프레임만 입력한 visual-only 기준선이고, GPT-4o는 음성 전사 후 텍스트와 프레임을 쓰는 cascade 방식이다. 영어 대화 클립이 중심이며 다국어 평가는 향후 과제로 남겨져 있다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/alexisty/SocialOmni"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Multimodal social interactivity (speaker identification, turn entry, response generation)",
+            "definition": "SocialOmni is an offline diagnostic benchmark for omni models in multi-party dialogue. The who task has 2,000 four-option items matching speaker and spoken content (1,725 speaker-visible and 275 visibility-mismatch items). The when task has 200 fixed-time YES/NO decisions on whether a designated participant should speak, given only the prefix up to the query time (128 positive). The how task generates that participant's continuation after a correct YES. It covers 15 dialogue categories in four domains, with a mean clip length of 25.0 s. Metrics are accuracy and macro-F1 for who; accuracy, precision, recall and macro-F1 for when; and conditional quality (QEns), positive-opportunity coverage (Cov+), coverage-adjusted quality (QEns_joint) and forced gold-state quality (QGold) for how. Responses are scored on 0/25/50/75/100 as the mean of three judges (GPT-4o, Gemini 2.5 Pro, Qwen3-Omni) using a human-verified reference continuation that evaluated models never see.",
+            "task": "who (four-option speaker attribution), when (fixed-time turn-entry YES/NO), how (conditional response generation)",
+            "example": "Task description (not an actual test item): from an audio-video clip, choose who is speaking at the query time, decide whether a designated participant should start speaking now, and write that participant's next utterance."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "Benchmarking Audio-Visual Social"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "We introduce SocialOmni,"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "We introduce SocialOmni,"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/alexisty/SocialOmni"
+            },
+            "언어": {
+              "page": 16,
+              "quote": "Answer only A"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce SocialOmni,"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "We introduce SocialOmni,"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "We introduce SocialOmni,"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2603.16859",
+      "paper_title": "SocialOmni: Benchmarking Audio-Visual Social Interactivity in Omni Models",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2603.16859",
+        "sha256": "fda885323158cc1f648849db92acc521d221c2bfa042a4ccb74763d101a21b9c",
+        "accessed": "2026-10-24T03:54:28Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 23,
+          "elapsed_seconds": 144.02,
+          "pdf_sha256": "fda885323158cc1f648849db92acc521d221c2bfa042a4ccb74763d101a21b9c",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "31abc56b5e87ed3a396b9abf4791628351e67d4cfb85467466ee3778aa0411c4",
+          "page_json_file": "2603.16859.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/alexisty/SocialOmni",
+            "fetched_url": "https://huggingface.co/datasets/alexisty/SocialOmni/raw/main/README.md",
+            "sha256": "cef6c84709205088b7b3603261a33b3ee342aa7ef992d6bdce63657be5871c72",
+            "accessed": "2026-10-24T03:57:18Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-24T03:57:18Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2603.16859",
+        "paper_title": "SocialOmni: Benchmarking Audio-Visual Social Interactivity in Omni Models",
+        "abstract": "Evaluating omni-modal large language models (OLMs) in multi-party dialogue requires more than answer correctness on pre-segmented inputs. We introduce SocialOmni, an offline diagnostic benchmark that separates three turn-level decisions: identifying who is speaking, deciding when a designated participant should enter at an annotated query time, and determining how that participant should continue the dialogue. SocialOmni contains 2,000 perception items and a quality-controlled core split of 200 interaction-generation items, including naturally occurring speaker-visibility mismatches. Each item is independently checked by three human annotators. Evaluated systems receive only query-time-bounded multimodal evidence, while manually verified reference continuations are reserved for response judging. A complete three-judge ensemble scores every eligible response, with leave-one-judge-out and family-sensitivity audits. Across 11 OLMs, rankings vary substantially by axis, and coverage-adjusted scores reveal when high conditional response quality depends on selective turn entry. The protocol does not measure persistent streaming state or wall-clock latency.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-19T13:44:22Z",
+        "input_sha256": "fef67dff49595f311aeb0b35a97f503094076a616188734926c2718e3cce2d2f",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "다자간 대화 평가로 LLM 상호작용 안전성 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "옴니모달 사회적 상호작용 진단 벤치마크 SocialOmni 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40055257940",
+        "context_sha256": "854eeff78144236fe243470161d488b27e9df2b21b1e6065f6d2c5c39f8bfeee"
+      },
+      "proposal_sha256": "e65db50dcf351c5850177a9aa20ef4ea377ab37bc4a881436aa7603491ba2976"
     }
   },
   "processed_comments": [],
@@ -36379,8 +36542,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 31,
-      "cost_usd": 13.7399
+      "calls": 32,
+      "cost_usd": 14.2553
     }
   },
   "reaudits": [
