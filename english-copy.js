@@ -216,4 +216,28 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Produce a result table that answers a business question from raw tables via search, transform, join, and analysis",
     "example": "Task description: for a question asking for a sales amount, budget, and forecast comparison by month and year, the model finds the relevant tables, applies needed transformations and joins, and produces the result table."
   },
+  "craftbench-ue": {
+    "axis": "Agents (game-engine coding)",
+    "definition": "A harness-based benchmark that reconstructs coding agents' saved submissions in fresh Unreal Engine projects and grades them with deterministic build, asset, and runtime (PIE) checks, without an LLM judge. It has 70 tasks (33 C++, 25 Blueprint/asset, 12 editor scripting); 10 gameplay specifications are paired C++/Blueprint versions sharing the same runtime tests. The paper evaluates seven models under two editor MCP configurations (MCP1, MCP2) plus a C++ file-and-shell baseline, with one attempt per task and pass@1 under a 40-minute authoring budget.",
+    "task": "Implement C++ source, Blueprint/native assets, or editor-scripting outputs, graded by build, asset, and runtime checks (e.g., gp-glide-stamina-cpp)",
+    "example": "Task description, not an actual test item: implement a glide ability that slows a falling character while draining Power, and restores normal falling when Power is exhausted."
+  },
+  "humanagencybench": {
+    "axis": "Safety and alignment (human agency support behaviors)",
+    "definition": "A diagnostic benchmark of how well AI assistants support human agency, covering six behaviors: Ask Clarifying Questions, Avoid Value Manipulation, Correct Misinformation, Defer Important Decisions, Encourage Learning, and Maintain Social Boundaries. Each behavior uses 500 LLM-generated and validated single-turn user queries. An evaluator model (o3) scores responses with behavior-specific deduction rubrics, and the mean is scaled to 0-1. The paper evaluates 25 LLMs.",
+    "task": "Score assistant responses to single-turn user queries for each of six behaviors using an LLM judge.",
+    "example": "Task description (not an actual test item): a user asks to be guided toward an answer in a learning task without being told it directly, and the rubric checks whether the assistant helps without giving the answer away."
+  },
+  "notevqa": {
+    "axis": "Images (real-user visual questions; interleaved answer quality)",
+    "definition": "A visual QA benchmark built from real photo-grounded questions posted by users of the Chinese image-sharing platform Xiaohongshu. It has 252 items across 12 topical categories and 7 user intents, and the final release is translated into English and proofread. Each item has a short reference distilled from expert community replies and a human-audited interleaved reference answer combining text and supporting images. Short-answer accuracy is scored by a SimpleQA-style judge. Interleaved answers are scored with IVR-12, which has 12 dimensions (scored 1-5) across content, presentation and image quality, plus three pass/fail gates. The paper also proposes AgenticInterleave, a ReAct-based retrieval framework for generating such answers.",
+    "task": "Given a photo and a short question, produce a short correct answer, or an interleaved answer that combines text with supporting images (evaluated with IVR-12).",
+    "example": "Task description: a user posts a photo (for example of a pet, plant, food item or jewelry) with an everyday question, and the model gives a short answer or an explanation with supporting images."
+  },
+  "scheme-foils": {
+    "axis": "Fallacy detection (scheme-matched negatives)",
+    "definition": "A set of negative examples that fills the gap left by existing fallacy-detection benchmarks, whose valid classes contain almost no correctly instantiated argumentation schemes. The judge-filtered release has 655 matched and 738 wrong-scheme CoCoLoFa items and 387 matched and 389 wrong-scheme Reddit items, covering eight fallacy types (appeal to authority, majority, nature, tradition, worse problems, false dilemma, hasty generalization, slippery slope). A matched negative uses the source fallacy's scheme and answers its critical question; a wrong-scheme negative is a valid argument on the same topic using a different scheme. Items were generated with Gemini 2.5 Flash and filtered with DeepSeek. Human-validated precision is 93.1% for matched (72-item sample) and 77.5% for wrong-scheme (40-item sample). Comparing how often each condition is classified as the source type measures whether a detector relies on scheme recognition.",
+    "task": "Decide whether an argument is fallacious and label it with one of eight fallacy types or none (the paper's zero-shot detector prompt).",
+    "example": "Task description: given one argument, answer with only a fallacy-type label or none. Compare the flag rate on the matched split with the rate of source-type labels on the wrong-scheme split."
+  },
 };
