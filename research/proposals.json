@@ -12216,7 +12216,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-24T04:16:23Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -12242,12 +12242,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40055257940",
-        "context_sha256": "3a9385b26776169f8d29d7162354ead22ae326f5d06c689fa3e4b401643d9fb8"
-      },
       "proposal_sha256": "a3a4c5575b19c865dc4ea5ac365a635e081eec1b7d47ffd03e375795fc96aa56",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안의 변경 사항은 논문 본문과 공식 저장소 카드로 뒷받침되며, 거부할 근거를 찾지 못했다. 규모와 구성은 논문 부록과 카드에서 확인된다. CoCoLoFa matched 655건과 wrong-scheme 738건, Reddit matched 387건과 wrong-scheme 389건이며, 8개 오류 유형, Gemini 2.5 Flash 생성, DeepSeek 필터링도 일치한다. 사람 검증 정밀도 93.1%(72건 중 67건)와 77.5%(40건 표본)도 논문 표와 카드에 있다. 언어(영어), 모달리티(텍스트), 과제(오류 유형 8종 또는 none 분류)는 논문의 zero-shot 프롬프트와 일치한다. 라이선스는 카드가 generated 열을 CC BY 4.0으로 공개한다고 명시하므로 상업적 이용 가능, 수정·파생 가능(조건 준수), 재배포 조건부 가능이 뒷받침된다. Reddit 원문 열은 MIT이고 CoCoLoFa 원문은 포함되지 않는다는 구성 요소별 구분도 카드와 맞는다. 이 벤치마크는 CoCoLoFa와 Reddit 코퍼스에서 파생되었는데, 이용 시 유의사항이 두 원천을 모두 명시하고 각각의 고유 약관을 별도로 확인하라고 안내하며, 카드가 CoCoLoFa 릴리스에 라이선스가 없다고 적은 점도 반영했다. 불순도(6.9%, 22.5%), 플래그율이 오탐률이 아니라는 점, 배포 환경 규모를 대표하지 않는다는 한계도 논문과 카드에 있다. lm-eval 지원 '미표기'는 카드가 lm-eval이나 lm-evaluation-harness를 언급하지 않으므로 부재 증거로 허용되는 값이다. pdf_mentions 두 항목은 원천 코퍼스 사용 범위와 원문 제공 조건에 관한 문장이라 벤치마크 자체를 라이선스하는 진술이 아니므로 미표기 해석과 충돌하지 않는다. 권고 결과는 논문 Table 2의 typed 프롬프트, CoCoLoFa matched 열 값(ModernBERT 58.9, Sonnet 5 37.6, Haiku 4.5 66.6, Qwen3.6-27B 33.0)과 정확히 일치하고, 두 가지 추출본에서 행·열 정렬이 일관된다. 지표는 valid 항목에 대한 오류 플래그 비율이므로 낮을수록 좋다는 방향이 맞다. 같은 실험의 비교 대상 4종이 모두 포함되어 상위 3개 선정이 정당하며, 비교 조건(미세조정 인코더 대 zero-shot LLM)도 setting에 명시되어 있다. 가중치 공개 여부는 Qwen3.6-27B만 한계 절의 문장과 zero-shot 탐지기 목록으로 뒷받침되고, 나머지는 null로 두어 비공개로 취급하지 않았다. 알 수 없음 또는 미확인 필드는 없다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 102671,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 3276,
+              "output_tokens_details": {
+                "thinking_tokens": 2098
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 102671,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 3276,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 102671,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 102671
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.4435129,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "a3a4c5575b19c865dc4ea5ac365a635e081eec1b7d47ffd03e375795fc96aa56",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -37491,8 +37537,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 40,
-      "cost_usd": 18.2506
+      "calls": 41,
+      "cost_usd": 18.6941
     }
   },
   "reaudits": [
