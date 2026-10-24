@@ -8600,74 +8600,9 @@
       "proposal_sha256": "b4614473d262f9c2d7610d6dc53658ef1d2425c74cea2d4fa483efe5261fea6d"
     },
     "2609.21386": {
-      "decision": "propose",
-      "reason": "AgentVidBench는 MLLM 에이전트의 공간·시간·인과 추론을 평가하는 멀티홉 비디오 QA 벤치마크로, 100문항·71개 영상 규모의 재사용 가능한 새 벤치마크다. 정답 정확도와 마일스톤 기반 궤적 점수를 함께 제공한다. 그림 1의 영어 질문 예시로 과제 언어가 영어임을 확인했고, 영상 입력이 필수여서 vision으로 분류했다. 데이터 라이선스와 lm-eval 지원은 확인되지 않아 '확인 불가'로 기록했다. 모델 비교 결과는 별도 증거 단계에서 다룬다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "agentvidbench",
-            "이름": "AgentVidBench",
-            "평가 축": "에이전트(멀티홉 비디오 QA)",
-            "언어": "en",
-            "정의": "MLLM 에이전트의 공간·시간·인과 추론을 평가하는 멀티홉 비디오 객관식 QA. 71개 영상에 대한 100문항이며 문항마다 A–Z 26개 선택지를 제공한다. 영상은 12개 장르, 길이 8초~27분이다. 단계별 풀이 흔적에서 도구 비의존 증거 마일스톤을 만들어 최종 답 정확도와 LLM judge 궤적 점수(5개 차원)로 평가한다.",
-            "대표 과제": "영상을 능동적으로 탐색해 여러 단계의 증거를 모으는 멀티홉 비디오 객관식 QA(정확도, 궤적 점수)",
-            "대표 예시·설명": "운동 영상에서 한 사람이 처음 \"one more\"라고 말하는 시점까지 이중 이두 컬을 몇 번 했는지 묻는 문항처럼, 영상 속 여러 시점의 증거를 모아 26지선다로 답하는 과제(과제 설명)",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·재배포, lm-eval 지원 여부는 확인하지 못했다. 영상은 YouTube CC BY, 퍼블릭 도메인, 여러 CC 라이선스 등 출처별로 혼재하므로(논문 부록 C.1) 이용 전 개별 확인이 필요하다. 100문항 규모라 통계적 검정력에 한계가 있다. 궤적 평가에는 LLM judge가 필요하다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/krafton-ai/agentvidbench"
-          },
-          "modality": "vision",
-          "english_copy": {
-            "axis": "Agents (multi-hop video QA)",
-            "definition": "A multi-hop multiple-choice video QA benchmark for evaluating the spatial, temporal, and causal reasoning of MLLM agents. It has 100 questions over 71 videos, each with 26 options (A–Z). Videos span 12 genres and 8 seconds to 27 minutes. Tool-agnostic evidence milestones derived from step-by-step solution traces support evaluation with final-answer accuracy and an LLM-judged trajectory score over five dimensions.",
-            "task": "Multi-hop multiple-choice video QA that requires actively exploring a video and gathering evidence over several steps (accuracy and trajectory score)",
-            "example": "Task description: for example, in a workout video, count how many bicep curl repetitions a person completed before first saying \"one more\", combining evidence from several moments and answering a 26-option question."
-          },
-          "evidence": {
-            "modality": {
-              "page": 2,
-              "quote": "two people are"
-            },
-            "대표 과제": {
-              "page": 3,
-              "quote": "100 complex multiple-choice"
-            },
-            "대표 예시·설명": {
-              "page": 2,
-              "quote": "two people are"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/krafton-ai/agentvidbench"
-            },
-            "언어": {
-              "page": 2,
-              "quote": "two people are"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "AgentVidBench"
-            },
-            "정의": {
-              "page": 3,
-              "quote": "100 complex multiple-choice"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "spatial, temporal, and"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "데이터셋 라이선스를 전체 구성요소에 걸쳐 근거와 함께 기록할 수 없어 게시를 보류한다. (1) 데이터셋 공식 카드(https://huggingface.co/datasets/agentvidbench/agentvidbench)를 가져오지 못했다(card_failures 1). 공급된 공식 카드는 GitHub README 하나뿐이다. (2) 이 README의 '## LICENSE file' 항목은 Apache-2.0(Copyright 2026 KRAFTON, Inc.)이다. 이는 저장소 코드의 라이선스이며, 데이터셋이나 영상 71개 전체에 적용된다는 문장은 README에도 논문에도 없다. 그래서 '미표기' 방식의 부재 증거로는 쓸 수 없고, 데이터셋 라이선스의 문서화된 값으로도 인용할 수 없다. (3) 논문 17쪽 Table 6은 영상 출처별 라이선스가 YouTube CC BY 43개, Public Domain 14개, CC BY-NC 4.0 4개, CC BY-SA 4.0 4개, CC BY 4.0 3개, CC BY-SA 3.0 2개, CC BY 3.0 1개로 섞여 있다고 밝힌다. 따라서 상업적 이용, 수정·파생, 재배포를 하나의 값으로 확정할 근거가 없다. (4) 이 세 필드와 라이선스 필드를 채우려면 데이터셋 카드의 라이선스 문구가 필요하다. 해당 카드를 가져온 뒤 다시 제출해야 한다. 모델 비교 결과는 라이선스 근거가 갖춰진 뒤 함께 구성한다.",
+      "changes": [],
       "arxiv_id": "2609.21386",
       "paper_title": "AgentVidBench: A Multi-Hop Video Question Answering Benchmark for Evaluating MLLM Agents",
       "paper_updated": "2026-09-21T00:00:00Z",
@@ -8748,7 +8683,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-24T03:03:33Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -8774,11 +8709,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40055257940",
-        "context_sha256": "ca8575f2e28e8ff5742ee337baa0574c9860767f7834f1cc384dd7ab17ddac06"
-      },
-      "proposal_sha256": "5e5162965208a161bfcf959872ea4324b8d6e5b44f8365f3e6c5f42d762342c8"
+      "proposal_sha256": "7d109ae40239b101f52dd6637e72a8be1175421617b6c7b91e8e0b0cd341e7f7",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -33996,8 +33929,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 6,
-      "cost_usd": 1.9983
+      "calls": 7,
+      "cost_usd": 2.5256
     }
   },
   "reaudits": [
