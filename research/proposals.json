@@ -11044,6 +11044,170 @@
         "reviewed_sha256": "c802b91ee3b99077614170d16788642ebba149d357feb093f7c71674d3dfb888",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2511.18921": {
+      "decision": "propose",
+      "reason": "BackdoorVLM은 VLM에 대한 백도어 공격·방어를 평가하는 재사용 가능한 벤치마크를 새로 제안한다. 이미지 캡셔닝과 VQA에 5가지 백도어 목표, 12가지 공격, 5가지 방어를 적용하고 CIDEr, VQA score, ASR로 측정한다. 과제 질문과 지시문이 영어이므로 en 트랙으로 보내고, 이미지 입력이 필요하므로 vision으로 분류한다. 라이선스와 lm-eval 지원은 논문에서 확인되지 않아 '확인 불가'로 두었다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "backdoorvlm",
+            "이름": "BackdoorVLM",
+            "평가 축": "안전(VLM 백도어 공격·방어)",
+            "언어": "en",
+            "정의": "비전-언어 모델(VLM)에 대한 백도어 공격과 방어를 평가하는 벤치마크. 이미지 캡셔닝과 VQA 과제에 텍스트·이미지·이중 모달 트리거를 주입하며, 백도어 목표는 targeted refusal, malicious injection, jailbreak, concept substitution, perceptual hijack의 5가지이다. 공격 12종, 오픈소스 VLM 2종(LLaVA-1.5-7B, Qwen2.5-VL-7B), 멀티모달 데이터셋 3종, 방어 5종을 평가한다. 학습에는 20k 클린 지시 데이터와 별도 1k 단일 턴 대화를 사용한다. 지표는 정상 성능용 CIDEr(COCO)와 VQA score(VQAv2), 백도어 효과용 ASR(트리거 유무별)이다.",
+            "대표 과제": "캡셔닝·VQA 모델에 백도어를 주입해 5가지 목표(targeted refusal 등)의 공격 성공률 측정",
+            "대표 예시·설명": "이미지와 함께 'What color is the bird's belly?'처럼 질문하면 클린 모델은 정상 답을 하지만, 트리거가 있는 백도어 모델은 미리 정한 거부 문장을 출력하는지 확인하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. 논문은 코드, 백도어 모델, 학습 데이터를 공개할 예정이라고 밝히며 코드 저장소를 제시한다. 데이터는 COCO, VQAv2, LLaVA-Instruct-158K, VLJailbreakBench 등 기존 자료에 기반하므로 각 원천의 약관을 따로 확인해야 한다. 평가 대상이 데이터 포이즈닝 공격에 한정되며, 모델은 2종만 평가했다. Jailbreak 목표는 유해 지시를 다루므로 접근 통제가 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/bin015/BackdoorVLM"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Safety (backdoor attacks and defenses on VLMs)",
+            "definition": "A benchmark for evaluating backdoor attacks and defenses on vision-language models. It injects text, image, and bimodal triggers into image captioning and VQA tasks across 5 backdoor targets: targeted refusal, malicious injection, jailbreak, concept substitution, and perceptual hijack. It evaluates 12 attacks, 2 open-source VLMs (LLaVA-1.5-7B, Qwen2.5-VL-7B), 3 multimodal datasets, and 5 defenses. Training uses a 20k clean instruction set plus a separate 1k single-turn dialogue set for backdoor training. Metrics are CIDEr (COCO) and VQA score (VQAv2) for utility, and ASR with and without the trigger for backdoor effectiveness.",
+            "task": "Implant backdoors in captioning and VQA models and measure attack success across the 5 backdoor targets such as targeted refusal",
+            "example": "Task description: given an image and a question such as 'What color is the bird's belly?', a clean model answers normally, while a backdoored model with the trigger present outputs a predefined refusal string."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "visual question answering"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "targeted refusal, malicious"
+            },
+            "대표 예시·설명": {
+              "page": 16,
+              "quote": "What color is"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/bin015/BackdoorVLM"
+            },
+            "언어": {
+              "page": 16,
+              "quote": "What color is"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "we introduce BackdoorVLM"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "Backdoor Attacks and"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Backdoor Attacks and"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2511.18921",
+      "paper_title": "BackdoorVLM: A Benchmark for Backdoor Attacks and Defenses on Vision-Language Models",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2511.18921",
+        "sha256": "26bc33a4f26ff597b3c0257da87dd0c06ed247a0639464dad62f4f912b71b85a",
+        "accessed": "2026-10-24T03:50:48Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 19,
+          "elapsed_seconds": 166.16,
+          "pdf_sha256": "26bc33a4f26ff597b3c0257da87dd0c06ed247a0639464dad62f4f912b71b85a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7454f91c6a3d95ad808972a0e1dc5d18a5d6bd0ddf2b8e70e1ee6adcd5540569",
+          "page_json_file": "2511.18921.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/bin015/BackdoorVLM",
+            "fetched_url": "https://api.github.com/repos/bin015/BackdoorVLM/readme",
+            "sha256": "4593fd6fc71fa2e7493ca1746cb57e3d9bc7768d71b0d5b1b08c007be8584b16",
+            "accessed": "2026-10-24T03:53:59Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/bin015/BackdoorVLM/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-24T03:53:59Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2511.18921",
+        "paper_title": "BackdoorVLM: A Benchmark for Backdoor Attacks and Defenses on Vision-Language Models",
+        "abstract": "Backdoor attacks undermine the reliability and trustworthiness of machine learning systems by injecting hidden behaviors that can be maliciously activated at inference time. While such threats have been extensively studied in unimodal settings, their impact on multimodal foundation models, particularly vision-language models (VLMs), remains largely underexplored. In this work, we introduce BackdoorVLM, the first comprehensive benchmark for evaluating backdoor attacks and defenses on VLMs across a broad range of settings. It adopts a unified perspective that injects and analyzes backdoors across core vision-language tasks, including image captioning and visual question answering. BackdoorVLM organizes multimodal backdoor threats into 5 representative categories: targeted refusal, malicious injection, jailbreak, concept substitution, and perceptual hijack. Each category captures a distinct pathway through which an adversary can manipulate a model's behavior. We evaluate these threats using 12 representative attack methods spanning text, image, and bimodal triggers, tested on 2 open-source VLMs and 3 multimodal datasets along with 5 representative defense methods. Our analysis reveals that VLMs exhibit strong sensitivity to textual instructions, and in bimodal backdoors the text trigger typically overwhelms the image trigger when forming the backdoor mapping. Notably, backdoors involving the textual modality remain highly potent, with poisoning rates as low as 1\\% yielding over 90\\% success across most tasks. Moreover, existing defenses lack generalization across trigger types and backdoor scenarios, leading to unreliable protection against diverse triggers across modalities and forms. These findings highlight significant, underexplored vulnerabilities in current VLMs. We hope that BackdoorVLM can serve as a useful benchmark for analyzing and mitigating multimodal backdoor threats.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-19T13:44:10Z",
+        "input_sha256": "c65c04aff0959a779d6a3879306e7285afb228632c84d193a207be157f813653",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "VLM 백도어 공격·방어 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "VLM 백도어 공격·방어 평가 벤치마크 BackdoorVLM 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40055257940",
+        "context_sha256": "166463e2b951a210030ee17d96f4277252239e35e699c9a5eb1724618a2d8c70"
+      },
+      "proposal_sha256": "7e1a95f00e0da876f31fafadecf5cb859c49fb9d051919eafdc98bd41c35059f"
     }
   },
   "processed_comments": [],
@@ -36281,8 +36445,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 29,
-      "cost_usd": 12.7319
+      "calls": 30,
+      "cost_usd": 13.227
     }
   },
   "reaudits": [
