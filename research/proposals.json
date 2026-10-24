@@ -11046,74 +11046,9 @@
       }
     },
     "2511.18921": {
-      "decision": "propose",
-      "reason": "BackdoorVLM은 VLM에 대한 백도어 공격·방어를 평가하는 재사용 가능한 벤치마크를 새로 제안한다. 이미지 캡셔닝과 VQA에 5가지 백도어 목표, 12가지 공격, 5가지 방어를 적용하고 CIDEr, VQA score, ASR로 측정한다. 과제 질문과 지시문이 영어이므로 en 트랙으로 보내고, 이미지 입력이 필요하므로 vision으로 분류한다. 라이선스와 lm-eval 지원은 논문에서 확인되지 않아 '확인 불가'로 두었다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "backdoorvlm",
-            "이름": "BackdoorVLM",
-            "평가 축": "안전(VLM 백도어 공격·방어)",
-            "언어": "en",
-            "정의": "비전-언어 모델(VLM)에 대한 백도어 공격과 방어를 평가하는 벤치마크. 이미지 캡셔닝과 VQA 과제에 텍스트·이미지·이중 모달 트리거를 주입하며, 백도어 목표는 targeted refusal, malicious injection, jailbreak, concept substitution, perceptual hijack의 5가지이다. 공격 12종, 오픈소스 VLM 2종(LLaVA-1.5-7B, Qwen2.5-VL-7B), 멀티모달 데이터셋 3종, 방어 5종을 평가한다. 학습에는 20k 클린 지시 데이터와 별도 1k 단일 턴 대화를 사용한다. 지표는 정상 성능용 CIDEr(COCO)와 VQA score(VQAv2), 백도어 효과용 ASR(트리거 유무별)이다.",
-            "대표 과제": "캡셔닝·VQA 모델에 백도어를 주입해 5가지 목표(targeted refusal 등)의 공격 성공률 측정",
-            "대표 예시·설명": "이미지와 함께 'What color is the bird's belly?'처럼 질문하면 클린 모델은 정상 답을 하지만, 트리거가 있는 백도어 모델은 미리 정한 거부 문장을 출력하는지 확인하는 과제 설명",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. 논문은 코드, 백도어 모델, 학습 데이터를 공개할 예정이라고 밝히며 코드 저장소를 제시한다. 데이터는 COCO, VQAv2, LLaVA-Instruct-158K, VLJailbreakBench 등 기존 자료에 기반하므로 각 원천의 약관을 따로 확인해야 한다. 평가 대상이 데이터 포이즈닝 공격에 한정되며, 모델은 2종만 평가했다. Jailbreak 목표는 유해 지시를 다루므로 접근 통제가 필요하다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/bin015/BackdoorVLM"
-          },
-          "modality": "vision",
-          "english_copy": {
-            "axis": "Safety (backdoor attacks and defenses on VLMs)",
-            "definition": "A benchmark for evaluating backdoor attacks and defenses on vision-language models. It injects text, image, and bimodal triggers into image captioning and VQA tasks across 5 backdoor targets: targeted refusal, malicious injection, jailbreak, concept substitution, and perceptual hijack. It evaluates 12 attacks, 2 open-source VLMs (LLaVA-1.5-7B, Qwen2.5-VL-7B), 3 multimodal datasets, and 5 defenses. Training uses a 20k clean instruction set plus a separate 1k single-turn dialogue set for backdoor training. Metrics are CIDEr (COCO) and VQA score (VQAv2) for utility, and ASR with and without the trigger for backdoor effectiveness.",
-            "task": "Implant backdoors in captioning and VQA models and measure attack success across the 5 backdoor targets such as targeted refusal",
-            "example": "Task description: given an image and a question such as 'What color is the bird's belly?', a clean model answers normally, while a backdoored model with the trigger present outputs a predefined refusal string."
-          },
-          "evidence": {
-            "modality": {
-              "page": 1,
-              "quote": "visual question answering"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "targeted refusal, malicious"
-            },
-            "대표 예시·설명": {
-              "page": 16,
-              "quote": "What color is"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/bin015/BackdoorVLM"
-            },
-            "언어": {
-              "page": 16,
-              "quote": "What color is"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "we introduce BackdoorVLM"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "Backdoor Attacks and"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "Backdoor Attacks and"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "BackdoorVLM의 데이터셋 라이선스와 이용 조건(상업적 이용, 수정·파생, 재배포)을 뒷받침하는 근거가 공급된 자료에 없어 게시하지 않습니다. 공식 저장소 카드의 '## LICENSE file' 항목(Apache-2.0)과 본문 문장 'The source code is released under the Apache License 2.0'은 소스 코드에 대한 것입니다. 카드는 'The complete processed dataset will be released separately on Hugging Face'라고 밝힐 뿐 데이터셋의 라이선스를 적지 않았고, 데이터셋 Hugging Face 카드는 공급되지 않았습니다. 코드 라이선스는 데이터셋 라이선스가 아니므로 (a) 형식의 인용으로 쓸 수 없습니다. 또한 LICENSE 파일 항목이 있는 카드는 미표기(absence) 증거가 될 수 없고, 논문 1쪽의 Creative Commons Attribution 4.0 고지는 논문 자체에 대한 것이라 데이터셋에 적용할 수 없습니다. 따라서 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목을 증거 없이 채울 수 없습니다. 데이터셋 Hugging Face 카드가 공개되어 공급되거나 저자가 데이터 라이선스를 명시하면 다시 평가할 수 있습니다.",
+      "changes": [],
       "arxiv_id": "2511.18921",
       "paper_title": "BackdoorVLM: A Benchmark for Backdoor Attacks and Defenses on Vision-Language Models",
       "paper_updated": "2026-09-22T00:00:00Z",
@@ -11177,7 +11112,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-24T03:53:59Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -11203,11 +11138,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40055257940",
-        "context_sha256": "166463e2b951a210030ee17d96f4277252239e35e699c9a5eb1724618a2d8c70"
-      },
-      "proposal_sha256": "7e1a95f00e0da876f31fafadecf5cb859c49fb9d051919eafdc98bd41c35059f"
+      "proposal_sha256": "20f055e8f80700bb2ce49355000b233b826b0da072f3f780727b37815ab63579",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -36445,8 +36378,8 @@
         "2610.31566",
         "2610.31650"
       ],
-      "calls": 30,
-      "cost_usd": 13.227
+      "calls": 31,
+      "cost_usd": 13.7399
     }
   },
   "reaudits": [
