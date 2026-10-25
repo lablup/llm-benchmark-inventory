@@ -12300,6 +12300,157 @@
       },
       "applied_by": "claude_approval",
       "applied_at": "2026-10-24T04:17:51Z"
+    },
+    "2609.21504": {
+      "decision": "propose",
+      "reason": "DPed-VLN은 Habitat 3.0 기반의 재사용 가능한 동적 보행자 VLN 벤치마크를 새로 제안한다. 33,093개 에피소드와 두 수준의 지시문(level-1 전역, level-2 보행자 단서 추가), 항법·사회적 안전 지표를 갖춘다. 지시문 예시가 영어이므로 en 트랙으로 보냈다. 로봇이 egocentric RGB-D 이미지를 입력받아 이를 근거로 행동하므로 modality는 vision이다. 공식 코드 링크는 초록에 명시되어 있다. 라이선스와 하니스 지원은 확인하지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "dped-vln",
+            "이름": "DPed-VLN",
+            "평가 축": "에이전트(동적 보행자 환경의 사회적 준수 시각-언어 항법)",
+            "언어": "en",
+            "정의": "Habitat 3.0 기반의 동적 보행자 시각-언어 항법(VLN) 벤치마크. 33,093개 항법 에피소드(train 32,172, val-unseen 921)마다 level-1(전역 경로 안내)과 level-2(보행자 단서를 추가한 prior-augmented) 지시문을 짝지어 66,186개 지시문-궤적 쌍을 제공한다. ORCA로 제어되는 휴머노이드 보행자와 사회적 제약을 반영한 전문가 경로를 쓴다. 목표 3.0m 이내에서 정지하면 성공이며, SR, SPL, STL, HCR(보행자 충돌률), PSC(개인 공간 준수) 지표로 항법 효율과 사회적 안전을 함께 평가한다. 논문 결과는 val-unseen 기준이다.",
+            "대표 과제": "지시문을 따라 보행자를 피하며 목표 지점까지 이동하는 항법(level-1 대 level-2 지시문 비교)",
+            "대표 예시·설명": "level-1 지시문은 목적지와 경로만 안내하고(예: 부엌 쪽으로 이동), level-2 지시문은 같은 에피소드에 보행자를 피해 돌아가라는 단서를 덧붙인다. 로봇은 egocentric RGB-D 관측으로 행동한다(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·재배포 조건과 lm-eval 지원 여부는 확인하지 않았다. 논문이 코드 저장소를 공개했으나 코드 라이선스가 데이터 라이선스를 대신하지 않는다. Habitat 3.0 시뮬레이터와 장면 에셋의 약관도 별도로 확인해야 한다. 현재 릴리스는 train과 val-unseen으로 나뉘며, 지시문은 VLM이 생성했다. 시뮬레이터 실행 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/tju-dhj/DPedVLN"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Agents (socially compliant vision-and-language navigation among dynamic pedestrians)",
+            "definition": "A Habitat 3.0 benchmark for vision-and-language navigation (VLN) among dynamic pedestrians. It has 33,093 navigation episodes (32,172 train, 921 val-unseen), each paired with a level-1 global instruction and a level-2 prior-augmented instruction that adds pedestrian cues, giving 66,186 instruction-trajectory pairs. Pedestrians are ORCA-controlled humanoids and expert paths are socially constrained. An episode succeeds if the agent stops within 3.0 m of the goal. Metrics are SR, SPL, STL, HCR (human collision rate) and PSC (personal-space compliance), jointly assessing navigation efficiency and social safety. The paper reports results on val-unseen.",
+            "task": "Follow language instructions to reach a goal while avoiding pedestrians (comparing level-1 and level-2 instructions).",
+            "example": "A level-1 instruction gives only the destination and route (for example, go to the kitchen area). A level-2 instruction for the same episode adds a cue to go around pedestrians. The robot acts from egocentric RGB-D observations (task description)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "egocentric RGB-D observations"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "33,093 navigation episodes"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "Go to the"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/tju-dhj/DPedVLN"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "Go to the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We present DPed-VLN"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "33,093 navigation episodes"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "navigation efficiency and"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.21504",
+      "paper_title": "DPed-VLN: A Benchmark for Socially Compliant Vision-and-Language Navigation in Dynamic Pedestrian Environments",
+      "paper_updated": "2026-09-21T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.21504",
+        "sha256": "ba04d6ccfc46cd7fbb815c616671b919968ef1a9cf0fc9a70f345bca2179a210",
+        "accessed": "2026-10-25T02:49:09Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 11,
+          "elapsed_seconds": 76.39,
+          "pdf_sha256": "ba04d6ccfc46cd7fbb815c616671b919968ef1a9cf0fc9a70f345bca2179a210",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "3e060f832d4fce82f5723dc6da744ae5bd1e924b6dfeaa9fdef86f740cb3903c",
+          "page_json_file": "2609.21504.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/tju-dhj/DPedVLN",
+            "fetched_url": "https://api.github.com/repos/tju-dhj/DPedVLN/readme",
+            "sha256": "1e138b16cf41111bd2c269c46d870134244bf1e1e7178b482c804a8e8ef5ace7",
+            "accessed": "2026-10-25T02:50:54Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-25T02:50:54Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.21504",
+        "paper_title": "DPed-VLN: A Benchmark for Socially Compliant Vision-and-Language Navigation in Dynamic Pedestrian Environments",
+        "abstract": "Vision-and-language navigation (VLN) has advanced rapidly in static indoor environments, but robots operating in human-populated spaces must ground language while responding to moving pedestrians and social-safety constraints. We present DPed-VLN, a Habitat 3.0 benchmark for dynamic-pedestrian VLN that couples 33,093 navigation episodes with paired global and prior-augmented instructions, ORCA-controlled humanoid pedestrians, socially constrained expert paths, and metrics that jointly assess navigation efficiency and social safety. DPed-VLN separates ordinary goal-oriented route guidance from prior-augmented instructions that expose dynamic-pedestrian cues for controlled analysis. To instantiate the benchmark, we introduce DPet (Dynamic Pedestrian-aware Network), a pedestrian-aware policy network trained with reinforcement learning and imitation learning. We further adapt representative state-of-the-art VLM-based navigation models, including NaVILA and StreamVLN, to DPed-VLN through LoRA fine-tuning. Experiments show that LoRA adaptation improves zero-shot VLM baselines in several success and safety metrics, especially reducing StreamVLN's collision rate. Among the evaluated methods, DPet-RL achieves the highest SR, SPL, and STL.",
+        "paper_updated": "2026-09-21T00:00:00Z",
+        "created_at": "2026-10-19T13:44:10Z",
+        "input_sha256": "99c03a88360b6ad4b288df85f0d7ebc02bfafe32b2e04704306efbfe79b62853",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "동적 보행자 환경 VLN 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "동적 보행자 환경 VLN 벤치마크 DPed-VLN 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40155551109",
+        "context_sha256": "e37decda94879a9f0658c55a710fe9558f1bc3f70665d1780cc34daaac95cb39"
+      },
+      "proposal_sha256": "2d86e6bcd3f0e3ee609d93d38ea2ee911793c2498f6f5e3913555917c669da9d"
     }
   },
   "processed_comments": [],
@@ -37550,7 +37701,9 @@
       "attempted": [
         "2609.21504"
       ],
-      "abstract_attempted": []
+      "abstract_attempted": [],
+      "calls": 1,
+      "cost_usd": 0.4259
     }
   },
   "reaudits": [
