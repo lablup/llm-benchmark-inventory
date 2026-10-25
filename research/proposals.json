@@ -12557,74 +12557,9 @@
       "proposal_sha256": "5a2fab6d169d071bcd399f38e6cc9e6c175ddddfa715cf06589ce19f33612219"
     },
     "2609.23695": {
-      "decision": "propose",
-      "reason": "PhysAI-Bench는 UAV 임무 트레이스에서 추출한 10,178개의 영어 텍스트 객관식 의사결정 문항으로 이루어진 새 벤치마크로, 에이전트 의사결정을 평가합니다. 과제 문구와 선택지가 영어이므로 en/text 트랙에 해당합니다. 이전 답변에서 PDF 페이지에 그대로 나오지 않은 인용이 문제였으므로, 인용문을 모두 해당 페이지에 실제로 있는 짧은 구절로 교체했습니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "physai-bench",
-            "이름": "PhysAI-Bench",
-            "평가 축": "에이전트(UAV 물리 AI 의사결정)",
-            "언어": "en",
-            "정의": "자율 UAV 임무의 대화 트레이스에서 추출한 10,178개의 객관식 행동 선택 문항. 의사결정 시점 이전 정보(임무 맥락, MCP 도구 호출, A2A 상호작용, 센서 관측, 6G 네트워크 상태)만 제공한다. 35개 사람 검수 개발 세트에서 프롬프트·온도 설정을 고른 뒤 에피소드가 분리된 500문항 held-out 세트에서 3회 평가했으며, 지표는 엄격한 결정 정확도다. 논문은 29개 모델을 평가했다.",
-            "대표 과제": "네 개 후보 중 트레이스에서 도출된 기준 행동 고르기",
-            "대표 예시·설명": "UAV 상태, 최근 관측, 도구·메시지, 네트워크 조건이 주어진 상황에서 네 개 행동 후보 중 가장 적절한 것을 고르는 과제 설명(실제 문항 아님)",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스는 확인하지 못했다. 논문은 α3-Bench 대화 에피소드에서 문항을 자동 생성했고(생성 모델 DeepSeek, Qwen), 정답은 트레이스에서 도출한 기준 행동이라 유일한 최적 행동이 아닐 수 있다. 문항 구성이 UAV 내비게이션·계획에 치우쳐 있고 입력은 텍스트 기술이다. 개발 세트는 35문항이라 개발 정확도는 held-out 결과와 구분해서 해석해야 한다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/maferrag/physai-bench"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agents (UAV Physical AI decision-making)",
-            "definition": "10,178 multiple-choice action-selection instances extracted from conversational traces of autonomous UAV missions. Only information available before each decision is exposed (mission context, MCP tool calls, A2A interactions, sensor observations, 6G network conditions). A configuration is selected on a 35-instance human-verified development set and then evaluated in three runs on an episode-disjoint 500-instance held-out set, using strict decision accuracy. The paper evaluates 29 models.",
-            "task": "Select the trace-derived reference action among four candidates",
-            "example": "Task description (not an actual test item): given the UAV state, recent observations, tool and agent messages, and network conditions, choose the most appropriate of four candidate actions."
-          },
-          "evidence": {
-            "modality": {
-              "page": 14,
-              "quote": "structured textual descriptions"
-            },
-            "대표 과제": {
-              "page": 2,
-              "quote": "multiple-choice action-selection tasks"
-            },
-            "대표 예시·설명": {
-              "page": 6,
-              "quote": "Choose the best"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/maferrag/physai-bench"
-            },
-            "언어": {
-              "page": 6,
-              "quote": "Choose the best"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "PhysAI-Bench"
-            },
-            "정의": {
-              "page": 14,
-              "quote": "10,178 multiple-choice decision"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "agentic decision-making"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공식 저장소 README는 전체 10,178문항 데이터셋을 'Full 10,178-instance dataset | Release pending'(공개 예정)으로 표시하고, 'Release links will be added after the canonical artifacts, fingerprints, split membership, provenance, and licenses are finalized.'라고 적어 라이선스가 아직 정리 중임을 밝힙니다. 저장소의 LICENSE 파일(Apache-2.0)은 저장소에 실제로 포함된 파일에 대한 것이며, 아직 공개되지 않은 데이터셋 전체에 적용된다는 문구는 카드와 PDF 어디에도 없습니다. 또한 PDF 4쪽은 문항이 α3-Bench 대화 에피소드 코퍼스에서 생성되었다고 밝히지만, 그 구성 요소의 이용 조건은 어느 자료에도 나오지 않습니다. 카드에 LICENSE 파일 항목이 있으므로 '미표기' 처리(저작권 전부 보유)도 할 수 없습니다. 데이터셋 라이선스의 적용 범위를 뒷받침하는 근거가 없어 게시하지 않으며, 저자가 데이터셋 공개와 함께 라이선스를 명시한 뒤 다시 평가해야 합니다.",
+      "changes": [],
       "arxiv_id": "2609.23695",
       "paper_title": "PhysAI-Bench: A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
       "paper_updated": "2026-09-22T00:00:00Z",
@@ -12684,7 +12619,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-25T03:14:27Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -12710,11 +12645,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40155551109",
-        "context_sha256": "651be7b215495736fb7284594c5cf2cec603676836ed262a1a3fac08f318dc0d"
-      },
-      "proposal_sha256": "8e269fcdefce6ecb8472153cdb181493dffb59c86a93631b91fbf433d0437636"
+      "proposal_sha256": "bbd95f2a1126676e26ec240fb843fc141db6bb688ea675eb0c76eda961778a80",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -37976,8 +37909,8 @@
         "2609.23695"
       ],
       "abstract_attempted": [],
-      "calls": 7,
-      "cost_usd": 3.3517
+      "calls": 8,
+      "cost_usd": 3.9039
     }
   },
   "reaudits": [
