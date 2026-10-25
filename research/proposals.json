@@ -14694,7 +14694,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-25T04:00:52Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -14720,12 +14720,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40155551109",
-        "context_sha256": "048fd74ede585d4c50ec46ae8b5f0f9e6b093896dcdfcac4fb8eaae6f87af30d"
-      },
       "proposal_sha256": "8c16072fa039aca89dc47e788f059592a90b8b1803833167ddd26b543d4cc41d",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 사실을 논문 본문과 공식 README에 대조했고, 모두 근거가 확인되어 승인합니다. 아래 항목은 지시에 따라 인용 없이 요약했습니다.\n\n1) 규모·구성: 실제 데이터셋 96개, 합성 데이터셋 304개, 단일 위젯 인스턴스 516개, 다중 위젯 인스턴스 608개는 7쪽 내용과 일치합니다. 4가지 Target-Path 유형은 8쪽 Table I, 3개 VLM, 4개 실행 설정(S0~S3)과 최대 16턴 예산은 8쪽, 판정 모델이 Claude Sonnet 4.6이라는 점은 7쪽과 8쪽에서 확인했습니다. 위젯 6종과 구조화된 표 데이터 한정은 13쪽과 5쪽에 있습니다. 세 가지 채점 축(Answer, Reference Trace Similarity, State)이 따로 채점된다는 설명도 맞습니다.\n\n2) 언어·모달리티: 과제 예시와 프롬프트가 영어이므로 en 트랙은 타당합니다. 에이전트에 렌더링된 뷰를 시각 정보로 제공한다고 4쪽과 5쪽에 명시되어 있어 vision 분류도 근거가 있습니다. 대표 예시는 8쪽 Table I의 TU-PU 항목이며 실제 시험 문항이 아니라 과제 설명으로 표기해 정확합니다.\n\n3) 권리 필드: 논문 14쪽 전체와 공식 README에는 데이터나 벤치마크의 라이선스를 명시하거나 언급하는 부분이 없습니다. pdf_mentions도 비어 있고 license_file도 null입니다. 따라서 라이선스 '미표기'는 올바르게 해소되었고, 상업적 이용·수정·파생·재배포 세 필드가 모두 '저작권 전부 보유'인 조합도 규칙에 맞습니다. 코드 저장소를 데이터 라이선스로 간주하지 말라는 주의도 포함되어 있습니다.\n\n4) 파생 출처 주의: 실제 데이터셋이 Kaggle에서 수집되었다는 점(7쪽)이 이용 유의사항에 명시되어 있고, 각 구성 요소의 고유 약관을 따로 확인하라는 문구도 있어 요건을 충족합니다.\n\n5) lm-eval 지원: 공식 README가 lm-eval이나 lm-evaluation-harness를 전혀 언급하지 않으므로, 문서화되지 않았다는 뜻의 '미표기'는 허용되는 해소 값입니다. 지원 부재를 단정하지도 않았습니다.\n\n6) 추천 모델 점수: 단일 위젯 과제, 설정 S3, Table II의 평균 Answer 열이 근거이며 값은 GPT 72.6, Gemini 58.7, Qwen 36.8입니다. 두 추출본(MinerU와 Poppler)이 일치하고, 4개 유형의 Answer 값을 직접 평균해 세 값이 모두 맞음을 확인했습니다(GPT 72.6, Gemini 58.65→58.7, Qwen 36.775→36.8). 단위는 %이고 높을수록 좋은 지표이며 방향도 올바릅니다. 같은 표·같은 설정·같은 예산에서 비교되었고 비교 대상이 세 모델뿐이라 상위 세 개 선정이 정당합니다. 사람 기준선은 모델이 아니므로 제외한 것이 적절합니다. 논문 보고 결과이며 전역 리더보드가 아니라는 점도 명시되어 있습니다. 공개 가중치 여부(open_weight)는 공급된 근거에 없어 null로 두었고 비공개로 취급하지 않았습니다.\n\n참고 사항: 모델명이 표에 ",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 123210,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 3200,
+              "output_tokens_details": {
+                "thinking_tokens": 1672
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 123210,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 3200,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 123210,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 123210
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.5249089,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "8c16072fa039aca89dc47e788f059592a90b8b1803833167ddd26b543d4cc41d",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -40002,8 +40048,8 @@
         "2609.24094"
       ],
       "abstract_attempted": [],
-      "calls": 26,
-      "cost_usd": 12.757
+      "calls": 27,
+      "cost_usd": 13.2819
     }
   },
   "reaudits": [
