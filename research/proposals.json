@@ -15368,7 +15368,7 @@
     },
     "2609.24662": {
       "decision": "propose",
-      "reason": "DUMA-Bench는 τ²-bench를 확장해 이중 제어(dual-control) 상호작용 환경에서 LLM 에이전트 보안을 평가하는 새 재사용 가능 벤치마크다. 과제 설명과 판정 프롬프트가 영어이므로 en 트랙 텍스트 벤치마크로 분류한다. 논문은 공식 GitHub 저장소를 명시한다. 라이선스와 하니스 지원은 확인하지 않아 '확인 불가'로 기록했다.",
+      "reason": "DUMA-Bench는 τ²-bench를 확장해 이중 제어(dual-control) 상호작용 환경에서 LLM 에이전트 보안을 평가하는 새 재사용 가능 벤치마크다. 과제 설명과 판정 프롬프트가 영어이므로 en 트랙 텍스트 벤치마크로 분류한다. 논문은 공식 GitHub 저장소를 명시하고, 저장소 카드의 License 항목은 MIT LICENSE 파일을 가리킨다. 카드와 논문 어디에도 lm-eval 언급이 없어 해당 필드는 '미표기'로 기록했다.",
       "changes": [
         {
           "track": "en",
@@ -15381,12 +15381,12 @@
             "대표 과제": "RAG 오염, 협업자 노트를 통한 교차 에이전트 조작, 도구 섀도잉 등 8개 취약점 도메인의 보안 시나리오",
             "대표 예시·설명": "서명되지 않은 섀도 내보내기 도구를 시간 압박 속에서 쓰도록 유도받는 상황에서 에이전트가 승인된 도구만 사용하는지 확인하는 과제(과제 설명)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "논문에서 데이터 라이선스를 확인하지 못했으므로 이용 전 저장소를 확인해야 함. 채점에 사용자 시뮬레이터와 일부 LLM judge가 필요함.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "MIT 표기와 저작권 고지 포함이 필요하다. 공식 저장소 README의 License 항목은 LICENSE 파일(MIT, 저작권자 표기 'Anonymous')을 가리킨다. 확장 대상인 τ²-bench(논문 1쪽)는 별도 프로젝트이므로 그 이용 약관은 따로 살펴야 한다. 채점에는 사용자 시뮬레이터 LLM이 필요하고, 일부 과제의 통신 단언은 LLM judge(논문은 GPT-4o 사용)로 채점하므로 해당 모델 API 환경이 필요하다. 논문 기준 35개 시나리오 규모라 변별 범위에 한계가 있다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/ai-security-lab-itmo/duma-benchmark"
           },
           "modality": "text",
@@ -15430,9 +15430,166 @@
               "quote": "Dual-Control Multi-Agent Benchmark"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/ai-security-lab-itmo/duma-benchmark",
+              "quote": "MIT License"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/ai-security-lab-itmo/duma-benchmark",
+              "quote": "and/or sell"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/ai-security-lab-itmo/duma-benchmark",
+              "quote": "modify, merge"
+            },
+            "재배포": {
+              "source_url": "https://github.com/ai-security-lab-itmo/duma-benchmark",
+              "quote": "distribute, sublicense"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/ai-security-lab-itmo/duma-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Attack success rate (ASR) under dual-control evaluation, fraction in 0–1 (lower is better)",
+            "setting": "Results reported in this paper (arXiv 2609.24662), Table 4, 'Dual ASR' column; not a current global leaderboard. DUMA-Bench dual-control regime across all eight domains, 14 models evaluated with identical task definitions and tool interfaces, deterministic agent decoding, n = 5 independent runs per model-domain-task configuration, user simulator GPT-4o-mini, communication assertions judged by GPT-4o at temperature 0.0.",
+            "higher_is_better": false,
+            "results": [
+              {
+                "model": "Claude Haiku 4.5",
+                "score": "0.121",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude Haiku 4.5 0.079 0.121 +0.042"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Claude Opus 4.5",
+                "score": "0.164",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude Opus 4.5 0.071 0.164 +0.093"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Claude Sonnet 4.5",
+                "score": "0.086",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude Sonnet 4.5 0.050 0.086 +0.036"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-4.1",
+                "score": "0.386",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-4.1 0.336 0.386 +0.050"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-4.1-mini",
+                "score": "0.357",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-4.1-mini 0.293 0.357 +0.064"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-4o",
+                "score": "0.393",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-4o 0.314 0.393 +0.079"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-4o-mini",
+                "score": "0.560",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-4o-mini 0.440 0.560 +0.120"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5",
+                "score": "0.647",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5 0.257 0.647 +0.390"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5-mini",
+                "score": "0.729",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5-mini 0.279 0.729 +0.450"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5-nano",
+                "score": "0.793",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5-nano 0.314 0.793 +0.479"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DeepSeek V3.2",
+                "score": "0.393",
+                "evidence": {
+                  "page": 7,
+                  "quote": "DeepSeek V3.2 0.343 0.393 +0.050"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.5-Flash",
+                "score": "0.421",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.5-Flash 0.329 0.421 +0.093"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.5-Plus",
+                "score": "0.357",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.5-Plus 0.393 0.357 -0.036"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM-4.7",
+                "score": "0.350",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GLM-4.7 0.279 0.350 +0.071"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.24662",
@@ -15523,7 +15680,8 @@
         "source_run": "40155551109",
         "context_sha256": "4862ca9e0d5127e69abda357dd2f103f017bdb0c30619bd016166445fbc541f6"
       },
-      "proposal_sha256": "c4b520a5b4b375ebf0462bf58c248d702a813f21e56e1733556c4a6c49fc8387"
+      "proposal_sha256": "ddaf3e9af47aeddff3f6cae647482b4a9e25dda20b98bd5602fe405113c6a17f",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -40806,8 +40964,8 @@
         "2609.24662"
       ],
       "abstract_attempted": [],
-      "calls": 33,
-      "cost_usd": 16.1037
+      "calls": 34,
+      "cost_usd": 16.5969
     }
   },
   "reaudits": [
