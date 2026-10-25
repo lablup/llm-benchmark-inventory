@@ -240,4 +240,34 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Decide whether an argument is fallacious and label it with one of eight fallacy types or none (the paper's zero-shot detector prompt).",
     "example": "Task description: given one argument, answer with only a fallacy-type label or none. Compare the flag rate on the matched split with the rate of source-type labels on the wrong-scheme split."
   },
+  "mcpgen": {
+    "axis": "Agents (executable MCP workflow development)",
+    "definition": "An execution-based benchmark of 100 MCP workflow projects across 16 application domains. It has three diagnostic tasks: workflow reconstruction (100 workflows), tool creation (911 tool targets), and backward-compatible workflow extension (100 pairs). Generated artifacts are checked with static analysis, unit and integration tests, and process-isolated end-to-end execution. The paper evaluates 11 LLMs in a single-turn setting at temperature 0. External services are replaced by deterministic mocks.",
+    "task": "Workflow reconstruction (order, dependency, path robustness), tool creation (Indiv. Pass, Collective Pass), and workflow extension (Tool Chain, Data Ref, Edge F1, E2E Success)",
+    "example": "Task description: recover the execution order from shuffled, anonymized steps; implement a missing tool under a given schema; or generate the remaining steps and an executable runner while keeping a baseline prefix unchanged."
+  },
+  "geniac-secbench": {
+    "axis": "Security of LLM-generated Infrastructure-as-Code (vulnerability density relative to a human baseline)",
+    "definition": "A benchmark of 100 natural-language deployment scenarios (60 simple, 40 complex) for LLM-generated IaC. Twelve model configurations from six vendors produced 1,196 artifacts, each scanned by Checkov, Trivy and KICS. 634 human-authored IaC templates were scanned with the same toolchain to give a size-matched human baseline. The primary metric is findings per declared resource (vulnerability density); the paper also separates reasoning modes (standard, prompted CoT, vendor extended thinking).",
+    "task": "Generate IaC code (Terraform, CloudFormation, ARM or Kubernetes manifests) from a deployment scenario and compute per-resource vulnerability density from scanner findings.",
+    "example": "Task description: given a deployment scenario such as a private bucket with versioning enabled, generate IaC in a single code block in the requested format, then scan it with three policy engines."
+  },
+  "safealert": {
+    "axis": "Safety and fraud detection (pre-deployment evaluation for Nigerian fintech)",
+    "definition": "A pre-deployment evaluation kit built around eight fraud categories reflecting the Nigerian fintech landscape. The classification set has 150 messages (66 safe, 26 suspicious, 58 scam). The generation set has 160 prompts, 20 per category, under four framings: direct request, educational purpose, fictional narrative, and simulated internal testing. The paper evaluates six commercial models under three conditions: no system prompt, a generic safety prompt, and a Nigerian-context prompt. Metrics are harmful output rate for generation and false positive and false negative rates for classification.",
+    "task": "Classify messages as scam, suspicious, or safe, and judge whether responses to fraud-eliciting generation prompts contain harmful output.",
+    "example": "A classification task separating legitimate Nigerian bank and fintech alert formats such as GTBank from scam messages, and a generation task that tries to elicit fraud scripts such as SIM swap scripts under several framings (task description)."
+  },
+  "widgetvabench": {
+    "axis": "Agents (interactive visual analytics, widget operation)",
+    "definition": "A benchmark of whether VLM agents can operate single- and multi-widget visual analytics workspaces through multi-step interaction to find evidence and produce verifiable results. It uses 96 real-world and 304 synthetic datasets, with human annotation yielding 516 single-widget and 608 multi-widget instances. Tasks fall into four Target-Path types (TK-PK, TK-PU, TU-PK, TU-PU), and Answer, Reference Trace Similarity, and State are scored separately. The paper evaluates three VLMs with a 16-turn budget under four settings: no tools (S0), direct tools (S1), widget abstraction (S2), and widget abstraction plus workflow (S3).",
+    "task": "Use widget actions such as filter, zoom, and select, plus perception queries, to answer a task, scored on the answer, interaction trace, and final workspace state.",
+    "example": "Task description, not an actual test item: explore a wind-turbine dashboard and report a phenomenon that warrants further investigation (open-ended TU-PU type)."
+  },
+  "legendbench": {
+    "axis": "Images (chart legend understanding, counterfactual diagnosis)",
+    "definition": "A parametric benchmark and generation pipeline that diagnoses how well models bind chart legend entries to visual marks. It has four task families: legend parsing, legend grounding, legend-conditioned reasoning, and legend-aware abstention. Each base chart yields counterfactual variants with controlled legend changes to test consistency and responsiveness. The released snapshot has 26689 instances derived from 900 base images.",
+    "task": "Legend parsing, legend grounding, legend-conditioned reasoning, and legend-aware abstention (QA accuracy, chain accuracy, CR, AF1, etc.)",
+    "example": "Task description: given a chart image and an English question, such as the value of a named series in a given year, the model reads the legend, binds it to the marks, and extracts the value. When the legend is hidden, it should abstain."
+  },
 };
