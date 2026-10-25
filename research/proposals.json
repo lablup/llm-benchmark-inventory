@@ -12384,6 +12384,89 @@
       "proposal_sha256": "ce65322437a4fe788c2fd03c1d65c90c90ea291070534787bbc70a9d8144ffa4",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2609.23307": {
+      "decision": "exclude",
+      "reason": "이 논문은 임베딩 모델(EmbeddingGemma 기본/미세조정, MPNet)을 사내 채용 매칭 파이프라인에서 비교한 모델 비교 연구이며, 재사용 가능한 벤치마크를 새로 공개하거나 기존 벤치마크를 실질적으로 갱신하지 않는다. 평가 데이터는 프랑스 채용 도메인의 비공개 데이터이고 공식 데이터셋·코드 링크를 PDF가 제시하지 않는다. 논문 스스로 Recall@K, MRR, nDCG 평가 프레임워크는 정의만 했을 뿐 실제로 측정하지 않았다고 밝히며, 공개 벤치마크 구축은 향후 과제로 남겨 두었다. 따라서 인벤토리에 추가할 항목이 아니다.",
+      "changes": [],
+      "arxiv_id": "2609.23307",
+      "paper_title": "Semantic Candidate-Job Matching: A Comparative Evaluation of Dense Embedding Models in Hybrid Retrieval",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.23307",
+        "sha256": "080422d824c1f6b2d1666e75608dafb465ea4db623651a544cb1a101e90fcdb9",
+        "accessed": "2026-10-25T03:00:57Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 20,
+          "elapsed_seconds": 92.79,
+          "pdf_sha256": "080422d824c1f6b2d1666e75608dafb465ea4db623651a544cb1a101e90fcdb9",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "9a4e246f057b7a07b283d1390f3b3bbaaa8bb66650b0bec4403fa09a22e5a52b",
+          "page_json_file": "2609.23307.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-10-25T03:02:38Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.23307",
+        "paper_title": "Semantic Candidate-Job Matching: A Comparative Evaluation of Dense Embedding Models in Hybrid Retrieval",
+        "abstract": "This paper presents a comparative evaluation of dense embedding models for semantic candidate-job matching in high-volume staffing workflows. Incoming job descriptions are converted into structured English search text and language-specific keywords through LLM-based parsing, and candidate profiles are indexed as semantically enriched resume representations. We evaluate EmbeddingGemma (base) against EmbeddingGemma fine-tuned with Cached Multiple Negatives Ranking Loss (MNRL) within a unified hybrid retrieval pipeline that fuses vector similarity and full-text relevance via reciprocal rank fusion (RRF), and benchmark both against the MPNet model on a batch comparative evaluation dataset scored through the deployed job-candidate matching scoring pipeline. We further document, with mathematical detail, the broader set of contrastive fine-tuning objectives considered during model development (including AnglE/CoSENT-style refinement) and the empirical rationale for retaining Cached-MNRL-only adaptation as the preferred configuration. To support reproducible model selection, we define a broader evaluation framework comprising standard information retrieval metrics (Recall@K, mean reciprocal rank, nDCG) under the exact hybrid-retrieval protocol; the metrics used for the evaluation reported in this paper are fine-tuning convergence diagnostics and a batch comparative evaluation using the deployed AI-Match score and an independent LLM-as-a-Judge relevance score, and we state this scope explicitly rather than implying the full framework was measured. The paper addresses the gap between general-purpose embedding benchmarks and enterprise job-candidate matching constraints, providing a structured basis for comparing embedding strategies under realistic job-candidate retrieval conditions.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-20T02:49:01Z",
+        "input_sha256": "f538a38569566c30e674b4f1b01573f36748d79f18fe6b427b4c58aea61eb87e",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "의미 기반 후보-직무 매칭 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "임베딩 모델 비교 평가 프레임워크 제시하나 벤치마크 공개 여부 불명확"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "bad9ff94d7258968c7039c6e00b8f0c45b918091b07b63e8d8bc4f53574c8a28"
     }
   },
   "processed_comments": [],
@@ -37639,8 +37722,8 @@
         "2609.23307"
       ],
       "abstract_attempted": [],
-      "calls": 4,
-      "cost_usd": 1.8469
+      "calls": 5,
+      "cost_usd": 2.3291
     }
   },
   "reaudits": [
