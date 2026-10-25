@@ -13770,6 +13770,165 @@
         "reviewed_sha256": "a7fdb01876fb78e6568ee7bdcf500b645c95dad71516aed9141a5c9b7b28485f",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2608.28021": {
+      "decision": "propose",
+      "reason": "이 논문은 LLM이 생성한 Infrastructure-as-Code(IaC)의 보안을 평가하는 재사용 가능한 벤치마크 GenIaC-SecBench를 새로 제시한다. 시나리오 100개(단순 60, 복잡 40)로 12개 모델 구성에서 산출물 1,196개를 만들고, Checkov·Trivy·KICS 세 엔진으로 스캔하며, 사람이 작성한 템플릿 634개를 같은 도구로 스캔해 크기를 맞춘 사람 기준선을 제공한다. 과제 프롬프트가 영어(\"Write Terraform HCL code for AWS to: ...\")이고 텍스트 입력이므로 en 트랙의 text로 분류했다. 공식 코드 저장소는 PDF 13쪽에 명시되어 있다. 이전 답변은 인용문이 해당 쪽에 없다는 이유로 거부되어, 인용문을 PDF 본문에서 그대로 확인되는 짧은 구절로 교체했다. 라이선스 등은 확인하지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "geniac-secbench",
+            "이름": "GenIaC-SecBench",
+            "평가 축": "보안(LLM 생성 IaC의 취약점 밀도, 사람 기준선 대비)",
+            "언어": "en",
+            "정의": "자연어 배포 시나리오 100개(단순 60, 복잡 40)로 LLM이 생성한 IaC의 보안을 평가하는 벤치마크. 12개 모델 구성(6개 벤더)에서 산출물 1,196개를 만들고 Checkov, Trivy, KICS 세 엔진으로 스캔한다. 사람이 작성한 IaC 템플릿 634개를 같은 도구로 스캔해 자원 수를 맞춘 사람 기준선을 제공한다. 주 지표는 선언된 자원당 취약점 발견 수(vulnerability density)이며, 추론 방식(일반, 프롬프트 CoT, 확장 사고)을 분리한 비교도 포함한다.",
+            "대표 과제": "시나리오를 보고 Terraform, CloudFormation, ARM, Kubernetes 매니페스트 형식의 IaC 코드를 생성하고, 스캐너 결과로 자원당 취약점 밀도를 산출",
+            "대표 예시·설명": "배포 시나리오(예: 버전 관리가 켜진 비공개 버킷)를 주고 지정한 형식의 IaC 코드를 단일 코드 블록으로 생성하게 한 뒤 세 정책 엔진으로 스캔하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋과 코드의 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 않았다. 논문은 시나리오 중 다수가 보안 상태(보호형 또는 허용형)를 지시하므로 결과가 기본 설정의 보안 수준이 아니라 지시 이행을 일부 반영한다고 밝힌다(기능만 지정한 시나리오가 15개로 적음). 사람 코퍼스는 시나리오와 짝지은 대조군이 아니다. 형식 간 밀도는 자원 수 계산 방식 때문에 비교할 수 없다. Checkov는 심각도 정보를 내지 않는다. 시나리오 작성에 평가 대상 모델이 쓰였다. 평가에는 Checkov, Trivy, KICS 실행 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/AnimeshShaw/GenIaC-SecBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Security of LLM-generated Infrastructure-as-Code (vulnerability density relative to a human baseline)",
+            "definition": "A benchmark of 100 natural-language deployment scenarios (60 simple, 40 complex) for LLM-generated IaC. Twelve model configurations from six vendors produced 1,196 artifacts, each scanned by Checkov, Trivy and KICS. 634 human-authored IaC templates were scanned with the same toolchain to give a size-matched human baseline. The primary metric is findings per declared resource (vulnerability density); the paper also separates reasoning modes (standard, prompted CoT, vendor extended thinking).",
+            "task": "Generate IaC code (Terraform, CloudFormation, ARM or Kubernetes manifests) from a deployment scenario and compute per-resource vulnerability density from scanner findings.",
+            "example": "Task description: given a deployment scenario such as a private bucket with versioning enabled, generate IaC in a single code block in the requested format, then scan it with three policy engines."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "Write Terraform HCL"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "Write Terraform HCL"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "a private bucket"
+            },
+            "링크": {
+              "page": 13,
+              "quote": "github.com/AnimeshShaw/GenIaC-SecBench"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "Write Terraform HCL"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "GenIaC-SecBench"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "100 natural-language deployment"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Infrastructure-as-Code"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2608.28021",
+      "paper_title": "Compared to What? A Human-Anchored Security Benchmark for LLM-Generated Infrastructure-as-Code",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2608.28021",
+        "sha256": "078d9c5bebdd67f5a99fd431d9fff5afb1f1148b4ebaddd6fb33ca03c9c12593",
+        "accessed": "2026-10-25T03:41:40Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 14,
+          "elapsed_seconds": 125.19,
+          "pdf_sha256": "078d9c5bebdd67f5a99fd431d9fff5afb1f1148b4ebaddd6fb33ca03c9c12593",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "1fc8504bc76c7ee71fd921743a55b5a16a2b5a668b2ba1a1ad6ea863fb5381c2",
+          "page_json_file": "2608.28021.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/AnimeshShaw/GenIaC-SecBench",
+            "fetched_url": "https://api.github.com/repos/AnimeshShaw/GenIaC-SecBench/readme",
+            "sha256": "91def0dfa4db2661c14f19226faf3411710f07c8ae982438a6adb61c80b8b126",
+            "accessed": "2026-10-25T03:44:32Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/AnimeshShaw/GenIaC-SecBench/license",
+              "name": "LICENSE",
+              "spdx_id": "NOASSERTION",
+              "sha256": "6ffbfd5196465450b28a910652c54096d0cfc034059515f3d536367ff6f42140"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-25T03:44:32Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2608.28021",
+        "paper_title": "Compared to What? A Human-Anchored Security Benchmark for LLM-Generated Infrastructure-as-Code",
+        "abstract": "Large language models increasingly author Infrastructure-as-Code (IaC), where one insecure default is provisioned straight into production. Prior evaluations report vulnerability counts for models only, and so cannot say whether models are worse than the engineers they assist. We present GenIaC-SecBench: 100 deployment scenarios across 12 model configurations from six vendors, open and closed weights, yielding 1,196 artifacts scanned by three policy engines (Checkov, Trivy, KICS) at complete coverage. Crucially we scan 634 human-authored IaC templates with the identical toolchain, giving the first size-matched human security baseline for this task. Vulnerability density is strongly inverse to artifact size (Spearman $ρ=-0.55$, $p<10^{-77}$), so unmatched comparisons measure size, not security. Size-matched, every configuration exceeds the human baseline at $3.21\\times$ to $3.87\\times$, and the gap widens as tasks get simpler ($4.9\\times$ at one resource, $1.4\\times$ at twenty or more). A majority of scenarios prescribe a security state rather than specifying function alone, so we stratify by prompt class: pooled the gap is $3.50\\times$, and excluding every scenario that explicitly requests an insecure configuration still leaves all configurations above baseline ($2.4\\times$ to $4.2\\times$). The corpus cannot isolate unprompted default posture, and we say so. Decomposing \"reasoning\" into standard generation, prompted chain-of-thought, and vendor extended-thinking APIs, extended thinking beats prompted CoT ($-12.0\\%$, $p=0.0013$) while prompted CoT alone is indistinguishable from standard ($-1.3\\%$, n.s.); it consumes under $1\\%$ of the output budget, bounding the effect. Two negative results: more deployable models are not more vulnerable ($r=0.158$, $p=0.625$), and complete-case Friedman is uncomputable here, motivating Skillings-Mack. All code and data are released.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-19T13:44:22Z",
+        "input_sha256": "86c692b19ca3944979ada8a6b465924880bb3668dfefc321295921d1188627fb",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 생성 IaC 보안 벤치마크와 인간 기준선"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "IaC 보안 벤치마크 GenIaC-SecBench 신규 제안, 코드·데이터 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40155551109",
+        "context_sha256": "9225abd678600e6ca79101a08a70f9c0a71b49661718d15dd85fc76b2502a845"
+      },
+      "proposal_sha256": "2b2a5e44392556554eb388ef237f8b199a2966662dd55ab7460aecaaf82aa11c"
     }
   },
   "processed_comments": [],
@@ -39039,8 +39198,8 @@
         "2608.28021"
       ],
       "abstract_attempted": [],
-      "calls": 17,
-      "cost_usd": 8.2687
+      "calls": 18,
+      "cost_usd": 8.7343
     }
   },
   "reaudits": [
