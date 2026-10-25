@@ -12991,7 +12991,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-25T03:21:01Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -13017,12 +13017,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40155551109",
-        "context_sha256": "b870e6230487c7596a943997318935d6a8d94db41190c479326419e9bca02399"
-      },
       "proposal_sha256": "ee61ef486536d3a60490afea246b294a9ec1d0c1a7d791decb9e03a0c09fed97",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안의 사실 주장은 논문 PDF와 공식 README로 모두 뒷받침됩니다. 100개 프로젝트, 16개 도메인, 911개 도구 대상, 100개 확장 쌍과 3개 과제 정의는 논문 본문과 일치합니다. 평가 조건(11개 모델, 단일 턴, temperature 0, 정적 분석·단위·통합·프로세스 격리 실행)도 논문과 같습니다. 언어를 en, 모달리티를 text로 분류한 것은 부록 C의 영어 프롬프트와 텍스트·코드 입력으로 정당화됩니다. 라이선스는 README에도 논문 14쪽 전체에도 언급이 없고 라이선스 파일도 없으며, pdf_mentions도 비어 있어 부재 근거가 충분합니다. 따라서 라이선스를 '미표기'로 두고 상업적 이용, 수정·파생, 재배포를 모두 '저작권 전부 보유'로 처리한 조합은 규칙에 맞습니다. lm-eval 지원 '미표기'는 README가 lm-eval을 언급하지 않으므로 허용되는 해결값입니다. 이 벤치마크는 공개 n8n 커뮤니티 템플릿에서 파생되었고(논문 5쪽), 이용 시 유의사항에 그 출처를 명시하고 각 구성 요소의 약관을 따로 확인하라고 적었습니다. README가 공개하는 프로젝트는 mcp_project51~75의 25개뿐이고 나머지는 이후 공개 예정이라는 점, 외부 서비스가 mock이라는 점, 단일 턴 한계와 샌드박스 필요성도 원문과 일치합니다. 권고 결과는 논문 Table 3의 Task 3 E2E Success 열 11개 전체를 담고 있으며 수치가 모두 정확합니다(Gemini-Flash 36, Gemini-Pro 57, Claude-Sonnet 15, Claude-Haiku 10, o3 46, GPT-5.2 13, GPT-5.1 13, Qwen3-Coder-30B 15, Minimax-M21 17, Qwen3-Next-80B 44, GPT-4o-mini 6). 표 행·열 정렬은 MinerU와 Poppler 추출이 서로 일치하고, 지표 방향(높을수록 좋음)과 단위(%)도 맞습니다. 모든 모델이 같은 100개 프로젝트, 같은 프롬프트, 같은 prefix 조건에서 평가된 논문 보고 결과이며 실시간 리더보드로 표기하지 않았습니다. 상위 3개(Gemini-Pro 57, o3 46, Qwen3-Next-80B 44)가 비교 대상 전체에 근거해 정당화됩니다. 공개 가중치 상태는 근거가 없는 모델에 대해 null로 두었고 폐쇄로 처리하지 않았으며, 영어 사본도 한국어 행과 일치합니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 107250,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2242,
+              "output_tokens_details": {
+                "thinking_tokens": 1156
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 107250,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2242,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 107250,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 107250
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.45148889999999997,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "ee61ef486536d3a60490afea246b294a9ec1d0c1a7d791decb9e03a0c09fed97",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -38287,8 +38333,8 @@
         "2609.23925"
       ],
       "abstract_attempted": [],
-      "calls": 11,
-      "cost_usd": 5.2751
+      "calls": 12,
+      "cost_usd": 5.7266
     }
   },
   "reaudits": [
