@@ -14923,7 +14923,7 @@
     },
     "2609.24172": {
       "decision": "propose",
-      "reason": "LegendBench는 차트 범례 이해를 진단하는 재사용 가능한 파라메트릭 벤치마크다. 과제는 영어로 되어 있고 차트 이미지를 입력으로 쓰므로 en 트랙의 vision으로 분류한다. 공식 GitHub 링크가 논문에 명시되어 있다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "reason": "LegendBench는 차트 범례 이해를 진단하는 재사용 가능한 파라메트릭 벤치마크다. 과제는 영어로 되어 있고 차트 이미지를 입력으로 쓰므로 en 트랙의 vision으로 분류한다. 공식 GitHub 저장소 README에는 라이선스와 lm-eval 언급이 없고 LICENSE 파일도 없으며, 논문 11쪽 전체에도 라이선스 관련 표현이 없다. 따라서 라이선스는 미표기로 처리하고 저작권 전부 보유로 취급한다. 구성 요소(ChartBench)는 논문 4쪽에 명시되어 있다.",
       "changes": [
         {
           "track": "en",
@@ -14936,12 +14936,12 @@
             "대표 과제": "범례 파싱, 범례 그라운딩, 범례 조건 추론, 범례 인지 답변 거부(QA 정확도, 체인 정확도, CR, AF1 등)",
             "대표 예시·설명": "차트 이미지와 영어 질문이 주어지고(예: 특정 시리즈의 해당 연도 값을 묻는 질문) 모델이 범례를 읽어 마크에 연결하고 값을 추출하는 과제. 범례를 가리면 답하지 않아야 한다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부를 확인하지 못했다. 데이터는 ChartBench에서 가져온 표와 합성 생성기를 함께 쓰므로 이용 전 각 출처의 약관을 따로 확인해야 한다. 템플릿 기반 생성이라 시각적 다양성이 제한되고, 스냅샷 공개로 인한 오염 가능성을 논문이 한계로 밝힌다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 다른 출처로 구성되어 있다: ChartBench의 표 데이터를 가져와 쓰고 자체 합성 생성기로 보완한다(논문 4쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 점검해야 한다. 템플릿 기반 생성이라 시각적 다양성이 제한되고, 스냅샷과 생성기 공개로 인한 오염 가능성을 논문이 한계로 밝힌다(논문 9쪽).",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/legendbench/legendbench"
           },
           "modality": "vision",
@@ -14985,9 +14985,156 @@
               "quote": "LegendBench: A Diagnostic"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/legendbench/legendbench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/legendbench/legendbench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/legendbench/legendbench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/legendbench/legendbench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/legendbench/legendbench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "QA Accuracy (QA Acc.), 개별 질문 정답 비율, %",
+            "setting": "이 논문(arXiv 2609.24172) 5.2절 Table 4에 보고된 결과이며, 현재의 전 세계 리더보드가 아니다. LegendBench 공개 스냅샷(26689 인스턴스)에서 모든 모델에 동일한 프롬프트 템플릿과 하이퍼파라미터를 사용했다. 세부 설정은 논문 부록에 있다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "GPT-5.6-sol",
+                "score": "83.81",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5.6-sol 83.81"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.5-27B",
+                "score": "71.62",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.5-27B 71.62"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini-2.5-Flash",
+                "score": "67.82",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemini-2.5-Flash 67.82"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-32B",
+                "score": "66.09",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3-32B 66.09"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM-4.6V",
+                "score": "64.59",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GLM-4.6V 64.59"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-4.1-mini",
+                "score": "64.19",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-4.1-mini 64.19"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-8B",
+                "score": "58.02",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3-8B 58.02"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "small open-weight model"
+                }
+              },
+              {
+                "model": "LLaVA-HR",
+                "score": "5.78",
+                "evidence": {
+                  "page": 7,
+                  "quote": "LLaVA-HR 5.78"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "ChartInstruct",
+                "score": "15.19",
+                "evidence": {
+                  "page": 7,
+                  "quote": "ChartInstruct 15.19"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "TinyChart",
+                "score": "13.77",
+                "evidence": {
+                  "page": 7,
+                  "quote": "TinyChart 13.77"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "ChartLlama",
+                "score": "12.26",
+                "evidence": {
+                  "page": 7,
+                  "quote": "ChartLlama 12.26"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "ChartMLLM",
+                "score": "9.07",
+                "evidence": {
+                  "page": 7,
+                  "quote": "ChartMLLM 9.07"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.24172",
@@ -15070,7 +15217,8 @@
         "source_run": "40155551109",
         "context_sha256": "101d66182d79ef8b9012f38e4416ae2f1ff37679751409b3c9db2f0bc5b08f31"
       },
-      "proposal_sha256": "0c0cd1ea477be339b0dfc3c63c7857a68a1861217aca6659b0281d0149ccadca"
+      "proposal_sha256": "dcb564c9b92b2877e3d616e4d325dc04b2464bba0d880bf0f4937e65fb994e5d",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -40349,8 +40497,8 @@
         "2609.24172"
       ],
       "abstract_attempted": [],
-      "calls": 29,
-      "cost_usd": 14.1965
+      "calls": 30,
+      "cost_usd": 14.734
     }
   },
   "reaudits": [
