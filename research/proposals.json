@@ -13773,7 +13773,7 @@
     },
     "2608.28021": {
       "decision": "propose",
-      "reason": "이 논문은 LLM이 생성한 Infrastructure-as-Code(IaC)의 보안을 평가하는 재사용 가능한 벤치마크 GenIaC-SecBench를 새로 제시한다. 시나리오 100개(단순 60, 복잡 40)로 12개 모델 구성에서 산출물 1,196개를 만들고, Checkov·Trivy·KICS 세 엔진으로 스캔하며, 사람이 작성한 템플릿 634개를 같은 도구로 스캔해 크기를 맞춘 사람 기준선을 제공한다. 과제 프롬프트가 영어(\"Write Terraform HCL code for AWS to: ...\")이고 텍스트 입력이므로 en 트랙의 text로 분류했다. 공식 코드 저장소는 PDF 13쪽에 명시되어 있다. 이전 답변은 인용문이 해당 쪽에 없다는 이유로 거부되어, 인용문을 PDF 본문에서 그대로 확인되는 짧은 구절로 교체했다. 라이선스 등은 확인하지 않아 '확인 불가'로 기록했다.",
+      "reason": "이 논문은 LLM이 생성한 Infrastructure-as-Code(IaC)의 보안을 평가하는 재사용 가능한 벤치마크 GenIaC-SecBench를 새로 제시한다. 시나리오 100개(단순 60, 복잡 40)로 12개 모델 구성에서 산출물 1,196개를 만들고, Checkov, Trivy, KICS 세 엔진으로 스캔하며, 사람이 작성한 템플릿 634개를 같은 도구로 스캔해 크기를 맞춘 사람 기준선을 제공한다. 과제 프롬프트가 영어이고 텍스트 입력이므로 en 트랙의 text로 분류했다. 공식 README는 데이터를 CC-BY-4.0, 코드를 MIT로 표기하며, 사람 기준선 코퍼스는 원 저장소 약관을 유지한다고 밝힌다. 이 내용을 권리 필드와 이용 시 유의사항에 반영했다. 추천 결과는 논문 표 III의 단순 시나리오 평균 취약점 밀도에서 가져왔다.",
       "changes": [
         {
           "track": "en",
@@ -13786,12 +13786,12 @@
             "대표 과제": "시나리오를 보고 Terraform, CloudFormation, ARM, Kubernetes 매니페스트 형식의 IaC 코드를 생성하고, 스캐너 결과로 자원당 취약점 밀도를 산출",
             "대표 예시·설명": "배포 시나리오(예: 버전 관리가 켜진 비공개 버킷)를 주고 지정한 형식의 IaC 코드를 단일 코드 블록으로 생성하게 한 뒤 세 정책 엔진으로 스캔하는 과제 설명",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋과 코드의 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 않았다. 논문은 시나리오 중 다수가 보안 상태(보호형 또는 허용형)를 지시하므로 결과가 기본 설정의 보안 수준이 아니라 지시 이행을 일부 반영한다고 밝힌다(기능만 지정한 시나리오가 15개로 적음). 사람 코퍼스는 시나리오와 짝지은 대조군이 아니다. 형식 간 밀도는 자원 수 계산 방식 때문에 비교할 수 없다. Checkov는 심각도 정보를 내지 않는다. 시나리오 작성에 평가 대상 모델이 쓰였다. 평가에는 Checkov, Trivy, KICS 실행 환경이 필요하다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-4.0(데이터), 코드는 MIT. 사람 기준선 코퍼스는 원 저장소 약관 유지",
+            "상업적 이용": "가능(생성 데이터 한정)",
+            "수정·파생": "가능(생성 데이터 한정, 조건 준수)",
+            "재배포": "조건부 가능(생성 데이터 한정)",
+            "이용 시 유의사항": "데이터는 CC-BY-4.0이므로 출처 표기(BY)가 필요하고, 코드(파이프라인과 분석 스크립트)는 별도로 MIT이다. 이 벤치마크의 사람 기준선은 공개 저장소 세 곳에서 가져온 IaC 템플릿 634개로 구성된다(논문 3쪽, 저장소 이름은 PDF에 열거되지 않음). 공식 README는 이 코퍼스가 원래 약관 아래에 남는다고 밝히므로 CC-BY-4.0 표기는 이 구성 요소에 적용되지 않으며, 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 논문은 시나리오 중 다수가 보안 상태(보호형 또는 허용형)를 지시하므로 결과가 기본 설정의 보안 수준이 아니라 지시 이행을 일부 반영한다고 밝힌다(기능만 지정한 시나리오는 15개). 사람 코퍼스는 시나리오와 짝지은 대조군이 아니다. 형식 간 밀도는 자원 수 계산 방식 때문에 비교할 수 없다. Checkov는 상용 구독 없이는 심각도 정보를 내지 않는다. 시나리오 작성에 평가 대상 모델이 쓰였다(논문 12쪽). 평가에는 Checkov, Trivy, KICS 실행 환경이 필요하다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/AnimeshShaw/GenIaC-SecBench"
           },
           "modality": "text",
@@ -13835,9 +13835,147 @@
               "quote": "Infrastructure-as-Code"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/AnimeshShaw/GenIaC-SecBench",
+              "quote": "Data License: CC BY 4.0"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/AnimeshShaw/GenIaC-SecBench",
+              "quote": "Data License: CC BY 4.0"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/AnimeshShaw/GenIaC-SecBench",
+              "quote": "Data License: CC BY 4.0"
+            },
+            "재배포": {
+              "source_url": "https://github.com/AnimeshShaw/GenIaC-SecBench",
+              "quote": "Data License: CC BY 4.0"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/AnimeshShaw/GenIaC-SecBench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "평균 취약점 밀도: Checkov, Trivy, KICS 세 엔진의 총 발견 수를 AST로 센 선언 자원 수로 나눈 값(findings per declared resource), 단순(simple) 시나리오 층의 평균",
+            "setting": "이 논문(arXiv 2608.28021)이 보고한 결과이며 현재의 전역 리더보드가 아니다. 논문 표 III의 단순 시나리오 층(60개 시나리오) 평균 열이고, 같은 GenIaC-SecBench 시나리오와 같은 스캔 도구 구성을 쓴다. 모든 요청은 코드만 출력하게 하는 고정 시스템 프롬프트의 무상태 단일 API 호출이며, 표준 생성과 프롬프트 CoT 구성은 온도 0.2, 확장 사고 구성은 공급자 기본값 1.0이다. 출력 토큰 한도를 넘겨 잘린 응답은 폐기했고, 호스팅 모델은 접근 시점의 상태 그대로다. phi3는 단순 층에서 밀도가 정의되지 않아 제외했다. 평균은 오른쪽으로 치우친 분포의 값이다.",
+            "higher_is_better": false,
+            "results": [
+              {
+                "model": "claude-opus-4-6",
+                "score": "12.12",
+                "evidence": {
+                  "page": 4,
+                  "quote": "claude-opus-4-6 12.12"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "claude-opus-4-6-cot",
+                "score": "11.97",
+                "evidence": {
+                  "page": 4,
+                  "quote": "claude-opus-4-6-cot 11.97"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "claude-opus-4-6-thinking",
+                "score": "10.53",
+                "evidence": {
+                  "page": 4,
+                  "quote": "claude-opus-4-6-thinking 10.53"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "claude-sonnet-4-6",
+                "score": "8.84",
+                "evidence": {
+                  "page": 4,
+                  "quote": "claude-sonnet-4-6 8.84"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "gemini-3.1-pro",
+                "score": "11.24",
+                "evidence": {
+                  "page": 4,
+                  "quote": "gemini-3.1-pro 11.24"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "gemini-3.7-flash",
+                "score": "9.50",
+                "evidence": {
+                  "page": 4,
+                  "quote": "gemini-3.7-flash 9.50"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "gpt-4o",
+                "score": "12.30",
+                "evidence": {
+                  "page": 4,
+                  "quote": "gpt-4o 12.30"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "gpt-5",
+                "score": "9.45",
+                "evidence": {
+                  "page": 4,
+                  "quote": "gpt-5 9.45"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "gpt-5-thinking",
+                "score": "8.44",
+                "evidence": {
+                  "page": 4,
+                  "quote": "gpt-5-thinking 8.44"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "llama3",
+                "score": "11.29",
+                "evidence": {
+                  "page": 4,
+                  "quote": "llama3 11.29"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "llama3 / mistral / phi3 open"
+                }
+              },
+              {
+                "model": "mistral",
+                "score": "10.98",
+                "evidence": {
+                  "page": 4,
+                  "quote": "mistral 10.98"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 2,
+                  "quote": "llama3 / mistral / phi3 open"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2608.28021",
@@ -13928,7 +14066,8 @@
         "source_run": "40155551109",
         "context_sha256": "9225abd678600e6ca79101a08a70f9c0a71b49661718d15dd85fc76b2502a845"
       },
-      "proposal_sha256": "2b2a5e44392556554eb388ef237f8b199a2966662dd55ab7460aecaaf82aa11c"
+      "proposal_sha256": "6b87b1bff975660ab5d605f9b50572b4327a7cf34e72f263ea1a2eaa952b348d",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -39198,8 +39337,8 @@
         "2608.28021"
       ],
       "abstract_attempted": [],
-      "calls": 18,
-      "cost_usd": 8.7343
+      "calls": 19,
+      "cost_usd": 9.2985
     }
   },
   "reaudits": [
