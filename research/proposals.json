@@ -14036,7 +14036,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-25T03:44:32Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -14062,12 +14062,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40155551109",
-        "context_sha256": "9225abd678600e6ca79101a08a70f9c0a71b49661718d15dd85fc76b2502a845"
-      },
       "proposal_sha256": "6b87b1bff975660ab5d605f9b50572b4327a7cf34e72f263ea1a2eaa952b348d",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안 내용은 논문과 공식 README로 뒷받침된다. 언어(en)와 모달리티(text)는 시나리오가 영어 텍스트 프롬프트라는 점으로 확인된다. 수치(시나리오 100개, 단순 60·복잡 40, 구성 12개, 벤더 6곳, 산출물 1,196개, 사람 템플릿 634개, 세 엔진)도 모두 논문과 일치한다. 기능만 지정한 시나리오가 15개라는 서술 역시 논문과 같다. 권리 필드는 README가 데이터를 CC-BY-4.0, 코드를 MIT로 표기한 내용과 맞고, 사람 기준선 코퍼스가 원 저장소 약관을 유지한다는 제한도 빠짐없이 반영했다. 유의사항은 이 코퍼스가 공개 저장소 세 곳에서 온 파생 구성 요소이며 각 약관을 따로 확인해야 한다고 명시해, 파생 데이터셋 요건을 충족한다. 라이선스가 미표기가 아니므로 권리 필드를 전부 보유로 맞출 필요가 없고, 필드 중 미확인이나 확인 불가는 없다. lm-eval 지원 '미표기'는 README에 lm-eval 언급이 없고 pdf_mentions도 비어 있어 허용된 해소 값이다. 추천 점수 11개는 논문 표 III의 단순 층 평균 열과 하나하나 일치하며, 같은 시나리오·도구·프롬프트 조건이고 지표는 낮을수록 좋음으로 방향이 맞다. phi3는 단순 층에서 밀도가 정의되지 않아 제외했다고 명시했고, 온도 차이와 논문 보고 결과라는 점도 설정에 적었다. 가중치 공개는 llama3와 mistral에 대해서만 논문의 open 표기를 근거로 true로 두었고, 나머지는 null이라 폐쇄형으로 취급되지 않았다. 확장 추출에서 gpt-4o 표기가 OCR상 달리 나온 부분은 Poppler 본문으로 확인되어 충돌이 없다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 116913,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2646,
+              "output_tokens_details": {
+                "thinking_tokens": 1857
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 116913,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2646,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 116913,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 116913
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.49418090000000003,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "6b87b1bff975660ab5d605f9b50572b4327a7cf34e72f263ea1a2eaa952b348d",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -39337,8 +39383,8 @@
         "2608.28021"
       ],
       "abstract_attempted": [],
-      "calls": 19,
-      "cost_usd": 9.2985
+      "calls": 20,
+      "cost_usd": 9.7927
     }
   },
   "reaudits": [
