@@ -14431,7 +14431,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-25T03:57:16Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -14457,12 +14457,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40155551109",
-        "context_sha256": "cb0601750186168810b390113362ac1f43f2546d9eee4bbc4ffd5be0bb8fabc8"
-      },
       "proposal_sha256": "459e2c06821a16675177f440b08d00658fe69eec0c49277f7af5f47d3ba82a7d",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "변경된 사실은 모두 논문 본문과 공식 카드로 뒷받침됩니다. 분류 데이터 150건(safe 66, suspicious 26, scam 58)과 생성 프롬프트 160건(범주당 20개, 8개 범주, 4가지 프레이밍), 3개 평가 조건, 상용 모델 6종의 구성이 논문 4장과 일치합니다. 언어는 영어, 모달리티는 텍스트이며, 논문은 데이터셋이 영어로만 구성되었다고 밝힙니다. 라이선스는 공식 카드와 LICENSE 파일이 공개 코드와 공개 분류 데이터셋에 MIT를 명시합니다. 제안은 이 범위를 공개 코드·공개 분류 데이터셋으로 한정했고, 생성 프롬프트가 게이트 저장소로 제한 공유된다는 제약도 라이선스, 재배포, 유의사항에 빠뜨리지 않았습니다. 상업적 이용, 수정·파생, 재배포 값은 MIT 조항과 이 제약에 부합하며 코드 라이선스를 근거 없이 데이터 전체로 확대하지 않았습니다. 이 벤치마크는 다른 데이터셋에서 파생되지 않았습니다. 은행 알림 형식을 본떠 연구자가 직접 구성했다고 논문이 밝히므로 파생 데이터셋 고지 의무는 없습니다. 연구자 구성, 정식 평정자 간 일치도 미산출, 생성 응답 단일 평가자 채점 등 유의사항도 논문 4.1, 4.2, 4.5절과 일치합니다. lm-eval 지원 '미표기'는 공식 카드에 lm-eval 언급이 없다는 부재 근거에 해당하는 허용 값입니다. pdf_mentions 항목은 중앙은행 회람 번호나 평가 대상 모델의 라이선스 조건을 언급할 뿐 벤치마크나 데이터를 라이선스하는 문장이 아니므로 충돌하지 않습니다. 권고 결과는 논문 Table 2의 사전 개선(시스템 프롬프트 없음) 열 값(Mistral Small 99.4, Qwen 2.5 7B 85.0, GPT-4o mini 78.1, DeepSeek Chat V3 55.0, Llama 3.3 70B 36.3, Grok 3 Mini 21.3)과 정확히 일치하고, MinerU와 Poppler 추출도 서로 모순되지 않습니다. 지표는 유해 출력률(%)이며 낮을수록 좋다는 방향이 맞습니다. 비교 대상 6개 모델이 모두 같은 조건과 같은 데이터셋·지표로 포함되어 상위 3개 선정이 정당화되고, 논문 보고 결과이며 전역 리더보드가 아니라는 점도 명시되어 있습니다. 공개 가중치 여부는 근거가 없어 null로 두었고 비공개로 취급하지 않았습니다. 도표 그림(Fig. 1)에만 의존하는 주장은 사용하지 않았습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 100760,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2261,
+              "output_tokens_details": {
+                "thinking_tokens": 1127
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 100760,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2261,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 100760,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 100760
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.4257189,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "459e2c06821a16675177f440b08d00658fe69eec0c49277f7af5f47d3ba82a7d",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -39738,8 +39784,8 @@
         "2609.24016"
       ],
       "abstract_attempted": [],
-      "calls": 23,
-      "cost_usd": 11.2853
+      "calls": 24,
+      "cost_usd": 11.711
     }
   },
   "reaudits": [
