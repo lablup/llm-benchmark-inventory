@@ -13418,8 +13418,8 @@
       "proposal_sha256": "057f3403f51f48b3c376281065d7fa0c36db352bf9037d6913df4daa237b8e23"
     },
     "2605.20731": {
-      "decision": "propose",
-      "reason": "TASTE는 AI가 생성한 그래픽 디자인 이미지에 대해 전문 디자이너 10명이 9개 기준으로 선호를 매긴 공개 데이터셋입니다. 사전학습 선호 모델과 VLM 판정기가 디자이너 다수결과 얼마나 일치하는지 재는 벤치마크도 함께 제시하므로 재사용 가능한 평가 자원으로 판단했습니다. 프롬프트와 판정 템플릿이 영어이므로 en 트랙에 두었고, 과제가 이미지 비교를 요구하므로 vision입니다. 공식 데이터 카드는 MIT 라이선스를 명시하고 LICENSE 파일의 허용 문구도 확인됩니다. 따라서 라이선스와 이용 권한은 이 문구에 근거해 기록했습니다. 카드와 논문은 lm-eval을 언급하지 않아 lm-eval 지원은 '미표기'로 두었습니다. 논문 표 4(9개 사전학습 시스템의 디자이너 다수결 일치도)를 하나의 실험으로 삼아 추천 결과를 구성했습니다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 라이선스(MIT), 권한 3개 항목, lm-eval '미표기', 표 4의 아홉 시스템 점수, 지표 방향, 오픈 웨이트 판정은 근거와 일치합니다. 파생 구성 요소(LICA 프롬프트와 네 생성 모델 출력)를 명시하고 각자의 약관을 별도로 확인하라는 안내도 있습니다. 그러나 논문과 공식 카드의 설명이 서로 충돌하는데, 제안은 이를 해소하지 않고 논문 쪽 사실만 확정적으로 기록했습니다. (1) 생성 모델 수와 순위 구조: 논문은 모델 4종과 4위 순위를 말하지만, 카드는 세션당 다섯 개 자산이 1~5위로 순위화된다고 적습니다. (2) 환각 플래그: 논문은 No/Minor/Major의 3단계 {0,1,2}이고, 카드는 이진 0/1 판정이라고 합니다. (3) 공개 구성: 논문은 쌍대 비교 6건과 유도된 4위 순위를 모두 공개한다고 하지만, 카드는 순위 장(long) 테이블만 제공하고 쌍대 대결은 사용자가 직접 만들라고 안내합니다. 카드의 프롬프트 규모(약 200개)도 논문의 9개 기준×80개와 맞지 않습니다. 이 때문에 정의에 넣은 '쌍대 비교 6건 공개', '환각 플래그 No/Minor/Major', 모델 4종과 기준당 1,600개 평가가 공식 카드로는 뒷받침되지 않습니다. 논문 릴리스 계획 문단은 수락 후 공개라고 하고 결론은 이미 공개됐다고 해서 공개 시점 서술도 일관되지 않습니다. 충돌하는 수치와 구성을 카드 기준으로 조정하거나 불일치를 이용 시 유의사항에 명시한 뒤 다시 제출해야 합니다.",
       "changes": [
         {
           "track": "en",
@@ -13692,7 +13692,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-25T03:32:27Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -13718,12 +13718,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40155551109",
-        "context_sha256": "3bdd913bc516521a86088720630f5e7d647f246ba14e51cfbcab812a5061472c"
-      },
       "proposal_sha256": "a7fdb01876fb78e6568ee7bdcf500b645c95dad71516aed9141a5c9b7b28485f",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "라이선스(MIT), 권한 3개 항목, lm-eval '미표기', 표 4의 아홉 시스템 점수, 지표 방향, 오픈 웨이트 판정은 근거와 일치합니다. 파생 구성 요소(LICA 프롬프트와 네 생성 모델 출력)를 명시하고 각자의 약관을 별도로 확인하라는 안내도 있습니다. 그러나 논문과 공식 카드의 설명이 서로 충돌하는데, 제안은 이를 해소하지 않고 논문 쪽 사실만 확정적으로 기록했습니다. (1) 생성 모델 수와 순위 구조: 논문은 모델 4종과 4위 순위를 말하지만, 카드는 세션당 다섯 개 자산이 1~5위로 순위화된다고 적습니다. (2) 환각 플래그: 논문은 No/Minor/Major의 3단계 {0,1,2}이고, 카드는 이진 0/1 판정이라고 합니다. (3) 공개 구성: 논문은 쌍대 비교 6건과 유도된 4위 순위를 모두 공개한다고 하지만, 카드는 순위 장(long) 테이블만 제공하고 쌍대 대결은 사용자가 직접 만들라고 안내합니다. 카드의 프롬프트 규모(약 200개)도 논문의 9개 기준×80개와 맞지 않습니다. 이 때문에 정의에 넣은 '쌍대 비교 6건 공개', '환각 플래그 No/Minor/Major', 모델 4종과 기준당 1,600개 평가가 공식 카드로는 뒷받침되지 않습니다. 논문 릴리스 계획 문단은 수락 후 공개라고 하고 결론은 이미 공개됐다고 해서 공개 시점 서술도 일관되지 않습니다. 충돌하는 수치와 구성을 카드 기준으로 조정하거나 불일치를 이용 시 유의사항에 명시한 뒤 다시 제출해야 합니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 132655,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2679,
+              "output_tokens_details": {
+                "thinking_tokens": 1943
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 132655,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2679,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 132655,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 132655
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.5574789,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "a7fdb01876fb78e6568ee7bdcf500b645c95dad71516aed9141a5c9b7b28485f",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -38991,8 +39037,8 @@
         "2605.20731"
       ],
       "abstract_attempted": [],
-      "calls": 16,
-      "cost_usd": 7.7112
+      "calls": 17,
+      "cost_usd": 8.2687
     }
   },
   "reaudits": [
