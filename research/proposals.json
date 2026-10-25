@@ -12555,6 +12555,166 @@
       },
       "issue_url": null,
       "proposal_sha256": "5a2fab6d169d071bcd399f38e6cc9e6c175ddddfa715cf06589ce19f33612219"
+    },
+    "2609.23695": {
+      "decision": "propose",
+      "reason": "PhysAI-Bench는 UAV 임무 트레이스에서 추출한 10,178개의 영어 텍스트 객관식 의사결정 문항으로 이루어진 새 벤치마크로, 에이전트 의사결정을 평가합니다. 과제 문구와 선택지가 영어이므로 en/text 트랙에 해당합니다. 이전 답변에서 PDF 페이지에 그대로 나오지 않은 인용이 문제였으므로, 인용문을 모두 해당 페이지에 실제로 있는 짧은 구절로 교체했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "physai-bench",
+            "이름": "PhysAI-Bench",
+            "평가 축": "에이전트(UAV 물리 AI 의사결정)",
+            "언어": "en",
+            "정의": "자율 UAV 임무의 대화 트레이스에서 추출한 10,178개의 객관식 행동 선택 문항. 의사결정 시점 이전 정보(임무 맥락, MCP 도구 호출, A2A 상호작용, 센서 관측, 6G 네트워크 상태)만 제공한다. 35개 사람 검수 개발 세트에서 프롬프트·온도 설정을 고른 뒤 에피소드가 분리된 500문항 held-out 세트에서 3회 평가했으며, 지표는 엄격한 결정 정확도다. 논문은 29개 모델을 평가했다.",
+            "대표 과제": "네 개 후보 중 트레이스에서 도출된 기준 행동 고르기",
+            "대표 예시·설명": "UAV 상태, 최근 관측, 도구·메시지, 네트워크 조건이 주어진 상황에서 네 개 행동 후보 중 가장 적절한 것을 고르는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스는 확인하지 못했다. 논문은 α3-Bench 대화 에피소드에서 문항을 자동 생성했고(생성 모델 DeepSeek, Qwen), 정답은 트레이스에서 도출한 기준 행동이라 유일한 최적 행동이 아닐 수 있다. 문항 구성이 UAV 내비게이션·계획에 치우쳐 있고 입력은 텍스트 기술이다. 개발 세트는 35문항이라 개발 정확도는 held-out 결과와 구분해서 해석해야 한다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/maferrag/physai-bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (UAV Physical AI decision-making)",
+            "definition": "10,178 multiple-choice action-selection instances extracted from conversational traces of autonomous UAV missions. Only information available before each decision is exposed (mission context, MCP tool calls, A2A interactions, sensor observations, 6G network conditions). A configuration is selected on a 35-instance human-verified development set and then evaluated in three runs on an episode-disjoint 500-instance held-out set, using strict decision accuracy. The paper evaluates 29 models.",
+            "task": "Select the trace-derived reference action among four candidates",
+            "example": "Task description (not an actual test item): given the UAV state, recent observations, tool and agent messages, and network conditions, choose the most appropriate of four candidate actions."
+          },
+          "evidence": {
+            "modality": {
+              "page": 14,
+              "quote": "structured textual descriptions"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "multiple-choice action-selection tasks"
+            },
+            "대표 예시·설명": {
+              "page": 6,
+              "quote": "Choose the best"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/maferrag/physai-bench"
+            },
+            "언어": {
+              "page": 6,
+              "quote": "Choose the best"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "PhysAI-Bench"
+            },
+            "정의": {
+              "page": 14,
+              "quote": "10,178 multiple-choice decision"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "agentic decision-making"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.23695",
+      "paper_title": "PhysAI-Bench: A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.23695",
+        "sha256": "b4a19df3794081094708e933eab003b4440150038b2ff71500e4afa4208eac81",
+        "accessed": "2026-10-25T03:11:38Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 15,
+          "elapsed_seconds": 127.88,
+          "pdf_sha256": "b4a19df3794081094708e933eab003b4440150038b2ff71500e4afa4208eac81",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "72d5cc69c5dc92c45fbbe32bb7d3a46de39985e7849c838f4defb4352e5a4e07",
+          "page_json_file": "2609.23695.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/maferrag/physai-bench",
+            "fetched_url": "https://api.github.com/repos/maferrag/physai-bench/readme",
+            "sha256": "36ddd37dda5892147da44219784ba9ca58463814d3daf48c322dc07c5e7f5575",
+            "accessed": "2026-10-25T03:14:27Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/maferrag/physai-bench/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-25T03:14:27Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.23695",
+        "paper_title": "PhysAI-Bench: A Benchmark for LLM-Based Agentic Decision-Making in Autonomous UAV-Centric Physical AI",
+        "abstract": "Recent advances in Physical AI have accelerated the use of foundation models in autonomous systems such as unmanned aerial vehicles (UAVs), which must perceive, reason, plan, and act in dynamic environments. Existing benchmarks assess physical perception, intuitive physics, embodied navigation, and collaborative reasoning, but rarely evaluate the agentic decision-making required for reliable autonomy. We introduce \\textit{PhysAI-Bench}, a benchmark for evaluating this capability. It contains 10,178 standardized decision instances automatically extracted from conversational traces of autonomous UAV missions. Each instance preserves mission context, temporal dependencies, physical constraints, Model Context Protocol (MCP) tool calls, Agent-to-Agent (A2A) interactions, sensor observations, and AI-native 6G network conditions, including latency, packet loss, throughput, edge load, and network slicing. We expose only information preceding each decision, preventing future-event leakage and approximating online decision-making. We evaluate 29 foundation models using a two-stage protocol. We select model-specific configurations from 12 combinations of zero-, three-, and five-shot prompting and four temperatures, tested in three runs on a 35-instance, human-verified development set. We then freeze each selected configuration and evaluate it in three runs on a fixed, episode-disjoint set of 500 instances. GPT-5.3 achieves the highest accuracy (52.00%), followed by GPT-5.2 (49.40%) and Grok~4.5 (49.07%). Few-shot prompting generally improves performance, while temperature has limited influence. The results demonstrate that reliable agentic decision-making in Physical AI remains an open challenge. The dataset is available at https://github.com/maferrag/physai-bench",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-20T02:49:01Z",
+        "input_sha256": "98f7b6f81cc90af2bb79ded5aed24611d90160da5e8cb36680f638f5aba1b158",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "UAV 에이전트 의사결정 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "UAV 에이전트 의사결정 벤치마크 PhysAI-Bench 제안, 데이터 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40155551109",
+        "context_sha256": "651be7b215495736fb7284594c5cf2cec603676836ed262a1a3fac08f318dc0d"
+      },
+      "proposal_sha256": "8e269fcdefce6ecb8472153cdb181493dffb59c86a93631b91fbf433d0437636"
     }
   },
   "processed_comments": [],
@@ -37816,8 +37976,8 @@
         "2609.23695"
       ],
       "abstract_attempted": [],
-      "calls": 6,
-      "cost_usd": 2.8313
+      "calls": 7,
+      "cost_usd": 3.3517
     }
   },
   "reaudits": [
