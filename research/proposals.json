@@ -14772,6 +14772,154 @@
         "reviewed_sha256": "8c16072fa039aca89dc47e788f059592a90b8b1803833167ddd26b543d4cc41d",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2609.24161": {
+      "decision": "propose",
+      "reason": "MCP-GRANITE는 MCP 도구 인터페이스의 세분화 수준(L1~L4)을 통제 변수로 두는 재사용 가능한 오픈소스 에이전트 벤치마크 프레임워크이다. 81개 다단계 시나리오와 9개 엣지/IoT 도메인으로 구성되며, 시나리오 프롬프트가 영어여서 en 트랙의 text로 분류했다. 논문 8쪽이 공식 저장소 URL을 밝히고 있어 링크로 사용했다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "mcp-granite",
+            "이름": "MCP-GRANITE",
+            "평가 축": "에이전트(MCP 도구 인터페이스 세분화)",
+            "언어": "en",
+            "정의": "MCP 도구 인터페이스의 세분화 수준을 통제 변수로 삼아 같은 기능 집합을 L4(8~10개 단일 목적 도구), L3(4개 작업군 도구), L2(2개 조회/제어 도구), L1(단일 도구)로 노출하고 비교하는 오픈소스 확장형 벤치마크 프레임워크. 엣지/IoT 9개 도메인에 쉬움·보통·어려움 3단계 시나리오를 도메인당 각 3개씩 두어 81개 시나리오를 구성하고, 시나리오마다 세분화 수준별 정답 호출열을 정의함. 지표는 과제 완수(TC), 도구 선택 F1, 인자 정확도(ArgAcc), 지연 시간, 오류·시간초과율, GPU 자원 사용 및 작업당 에너지. 논문은 9개 로컬 모델(268M~20.9B)을 3회 반복해 8,748회 실행으로 평가함(mock 서버 기반).",
+            "대표 과제": "같은 자연어 프롬프트를 4가지 도구 세분화 수준에서 수행하는 다단계 도구 호출(도구 선택·인자 구성), 정답 호출열 및 최종 상태와 대조해 채점",
+            "대표 예시·설명": "스마트홈 시나리오에서 에이전트에게 야간 보안 프로토콜 전체를 활성화하도록 요청하고, 거실 야간 모드 설정, 문 잠금, 카메라 녹화, 센서 확인, 자동화 규칙 생성 등을 세분화 수준별 도구 호출로 수행하게 하는 과제(과제 설명)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터·코드 라이선스를 확인하지 못했음(논문은 오픈소스라고만 밝힘). 이용 전 저장소에서 확인 필요. 실제 MCP 서버가 아닌 고정 응답 mock 서버에서의 에이전트 측 측정이며, 논문 실험은 NVIDIA Tesla T4 한 대와 Ollama로 서빙한 로컬 모델 9종, 도구 설명 자동 탐색(tools/list) 설정에서만 수행됨. 모델별 양자화 수준이 달라 비교 시 주의가 필요함. lm-eval 지원 여부는 확인하지 못함.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/dpasch01/mcp-granite"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (MCP tool-interface granularity)",
+            "definition": "An open-source, extensible benchmark framework that treats MCP tool-interface granularity as a controlled variable. The same capability set is exposed as L4 (8-10 single-purpose tools), L3 (4 task-class tools), L2 (2 query/control tools) or L1 (one monolithic tool). It has 81 scenarios across 9 edge/IoT domains (3 easy, 3 medium and 3 hard scenarios per domain), with a gold tool-call sequence defined per granularity level. Metrics are task completion (TC), tool-selection F1, argument accuracy (ArgAcc), latency, error and timeout rates, GPU resource usage and energy per successful task. The paper evaluates 9 locally deployed models (268M-20.9B) with 3 repetitions, for 8,748 runs against mock servers.",
+            "task": "Multi-step tool calling in which the same natural-language prompt is run at four granularity levels (tool selection and argument construction), scored against gold call sequences and final state.",
+            "example": "Task description: in a smart-home scenario the agent is asked to activate the full night security protocol, which requires setting night mode, locking doors, enabling camera recording, checking a sensor and creating an alarm rule, through tools exposed at each granularity level."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "Activate the full"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "81 multi-step scenarios"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "Activate the full"
+            },
+            "링크": {
+              "page": 8,
+              "quote": "https://github.com/dpasch01/mcp-granite"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "Activate the full"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "MCP-GRANITE Benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "81 multi-step scenarios"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "tool-interface granularity as"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.24161",
+      "paper_title": "MCP-GRANITE Benchmark: GRANularity Interface TEsting for MCP-Based LLM Agents",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.24161",
+        "sha256": "421718c6a1cc985298438c5481e67066150c05a1d890d120ec2100061da75180",
+        "accessed": "2026-10-25T04:02:09Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 8,
+          "elapsed_seconds": 70.15,
+          "pdf_sha256": "421718c6a1cc985298438c5481e67066150c05a1d890d120ec2100061da75180",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "6476fa564dd3386530f3b41d5073442365ce2db7de81da9324ffec9c27d558e7",
+          "page_json_file": "2609.24161.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/dpasch01/mcp-granite",
+            "fetched_url": "https://api.github.com/repos/dpasch01/mcp-granite/readme",
+            "sha256": "5b59663e232590c02ba5fb1a79b2e0620f8e9293f1a18e6b4730683321caf08a",
+            "accessed": "2026-10-25T04:03:42Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-25T04:03:42Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.24161",
+        "paper_title": "MCP-GRANITE Benchmark: GRANularity Interface TEsting for MCP-Based LLM Agents",
+        "abstract": "As LLM agents increasingly interact with external tools through standardized protocols such as MCP, tool-interface design becomes a critical yet underexplored factor. How funψtionality is decomposed into tools affects whether an agent can select the right tool and construct valid arguments. This choice is especially consequential at the edge, where resource constraints limit which models can run locally and scaling up is often not an option. We present MCP-GRANITE, an open-source extensible benchmark framework that treats tool-interface granularity as a controlled variable for MCP-based agents, evaluated under edge and IoT scenarios. It comprises 81 multi-step scenarios across 9 domains, instantiated at 4 granularity levels from fine-grained primitive tools to a single tool. We evaluate 9 locally deployed models (268M-20.9B parameters) across 8,748 trials using task completion, tool selection F1, argument accuracy, latency, and resource-usage metrics. Results show that a 4-tool interface offers the best trade-off, improving task completion by 16.4% over fine-grained primitives and 33.6% over a single monolithic tool, while nearly doubling argument accuracy. Model size is only weakly correlated with task completion and strongly with latency, while its association with argument accuracy is less robust, and a 3.2B model at the optimal granularity outperforms a 20.9B model at a mismatched one. These findings identify tool-interface granularity as a key design parameter for MCP-based agents.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-20T02:49:01Z",
+        "input_sha256": "79d4efa65f933c08e553f13012fb51603267a23b1a221a8b8249141ffdb1a5b8",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "MCP 도구 인터페이스 세분성 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "MCP 도구 인터페이스 세분화 평가 벤치마크 프레임워크 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40155551109",
+        "context_sha256": "bd6ea482f6a06734dd8d778869a0c2c5823c33a10d8e8b423db9d153430efe98"
+      },
+      "proposal_sha256": "2becf530300bae52884d59c78647e70a9acb80ae4cbecfcc818fa14a0a16fa55"
     }
   },
   "processed_comments": [],
@@ -40049,8 +40197,8 @@
         "2609.24161"
       ],
       "abstract_attempted": [],
-      "calls": 27,
-      "cost_usd": 13.2819
+      "calls": 28,
+      "cost_usd": 13.6874
     }
   },
   "reaudits": [
