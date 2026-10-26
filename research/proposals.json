@@ -17776,6 +17776,95 @@
       },
       "issue_url": null,
       "proposal_sha256": "b5e2259df0938a63439e2404f9d717fdeaa38cf9ed84be487e7741af779e7800"
+    },
+    "2609.25647": {
+      "decision": "exclude",
+      "reason": "이 논문은 SWE-bench Verified와 TerminalBench의 기존 궤적 데이터를 재분석하여 조기 결과 예측기의 보정(calibration) 전이를 감사하는 연구다. 새로운 재사용 가능한 벤치마크를 제안하거나 기존 벤치마크를 실질적으로 갱신하지 않는다. 예측기 구조와 프로토콜은 선행 연구(EarlyEval)에서 가져왔고, 공개된 산출물은 분석 결과와 코드이지 평가용 벤치마크 데이터셋이 아니다. SWE-bench Verified와 Terminal-Bench는 이미 인벤토리에 있는 항목이다. 또한 이 논문의 모델 비교는 벤치마크 점수가 아니라 예측기 보정 격차에 관한 것이므로 별도의 비교 단계에 넘길 만한 내용도 아니다.",
+      "changes": [],
+      "arxiv_id": "2609.25647",
+      "paper_title": "Testing-Driven Reliability Audit of Trajectory-Based Early Outcome Prediction for LLM Agents: Target-Specific Calibration Transfer Persists Within a Single Benchmark",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.25647",
+        "sha256": "b9e7c23ef15761f56ce28d7f2cf5e2d0c510ec4c9b3da592b8c2992b36a51c6f",
+        "accessed": "2026-10-26T03:51:56Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 26,
+          "elapsed_seconds": 114.49,
+          "pdf_sha256": "b9e7c23ef15761f56ce28d7f2cf5e2d0c510ec4c9b3da592b8c2992b36a51c6f",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 2,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "62d4d337fb8714e99fab20f8a911996645d57feb1af071e5169fc1952f546127",
+          "page_json_file": "2609.25647.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-10-26T03:53:58Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.25647",
+        "paper_title": "Testing-Driven Reliability Audit of Trajectory-Based Early Outcome Prediction for LLM Agents: Target-Specific Calibration Transfer Persists Within a Single Benchmark",
+        "abstract": "Predicting early outcomes based on trajectory can decrease the expenses associated with agent evaluation by terminating a run once the outcome becomes sufficiently predictable, assuming that the predictor's confidence is properly calibrated. Calibration is at risk when a predictor is applied to an agent on which it was never trained, but it is not known whether such transfer failures are broad across agent systems or concentrated in specific target agent/head combinations. Using public SWE-bench Verified trajectories and a frozen dual-head early-outcome prediction pipeline, we ran a leave-one-agent-out calibration audit, a shared-predictor leave-two-agents-out control, oracle prior correction, and a robustness battery over training cohorts, task resampling, task halves, jackknife, and thresholds. Fixed-scaffold TerminalBench analysis served as a pre-registered boundary test. Broad same-predictor pairwise heterogeneity was not supported; the median pairwise corrected-gap differences were 0.0180 (SUCCESS head, 45 pairs) and 0.0385 (FAILURE head, 35 pairs), and the pre-registered heterogeneity criterion was not met on either head. Two specific combinations, gpt-5-mini/SUCCESS and claude-opus-4.6/FAILURE, showed persistent calibration-transfer errors (median corrected gaps 0.1377 and 0.1107) without a sign reversal under any frozen control. TerminalBench did not establish cross-benchmark replication: the success target produced zero decisions (INDETERMINATE), and the failure target did not satisfy the pre-registered persistence criterion. Therefore, a strong target-specific calibration-transfer error can exist within one frozen environment, but the evidence does not establish that the error is intrinsic to the model or general across benchmarks.",
+        "paper_updated": "2026-09-23T00:00:00Z",
+        "created_at": "2026-10-19T13:44:34Z",
+        "input_sha256": "7f32e21b0f2c1a19a6b8b5e7831218c068b88f5b6a0c024d69afb99de14bc346",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 궤적 신뢰성 감사로 평가에 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "기존 벤치마크 궤적 활용 감사 연구로 신규 자원 불명확"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "58c9549b2c0fa431350b877e9702271332a9da8cd7e328efdf5453af71915266"
     }
   },
   "processed_comments": [],
@@ -43088,8 +43177,8 @@
         "2609.25647"
       ],
       "abstract_attempted": [],
-      "calls": 25,
-      "cost_usd": 13.6837
+      "calls": 26,
+      "cost_usd": 14.1866
     }
   },
   "reaudits": [
