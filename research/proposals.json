@@ -15761,6 +15761,166 @@
       "proposal_sha256": "6e995be5c5687f6a69270afa310d541970e5cc868484750296eeae33abe5b209",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2609.25192": {
+      "decision": "propose",
+      "reason": "FinFIRST는 금융 검색 에이전트가 최종 답과 근거 출처·계산 과정을 함께 평가받는 재사용 가능한 벤치마크를 새로 제안한 논문이다. 전체 123문항 중 영어 문항이 39.8%이고, 3쪽 Table 2의 영어 질문 예시가 과제 언어의 근거다. 중국어 문항(60.2%)은 ko/en 범위 밖이므로 en 트랙 한 행만 제안한다. 영어 문항 수는 논문에 비율만 있어 계산하지 않았다. 문항은 텍스트 기반 웹 검색 과제라 modality는 text로 분류했다. 공식 데이터 링크는 1쪽의 Hugging Face URL이다. 라이선스 등 미검증 항목은 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "finfirst",
+            "이름": "FinFIRST",
+            "평가 축": "에이전트(금융 검색·출처 검증·추적성)",
+            "언어": "en",
+            "정의": "금융 검색 에이전트가 최종 답뿐 아니라 근거 증거와 연구 과정까지 갖추었는지 원자적 루브릭으로 함께 평가하는 벤치마크(V1). 금융 전문가가 작성한 123문항으로, 쉬움 31.7%·보통 42.3%·어려움 26.0%의 난이도 분포를 가진다. 문항은 전체가 중국어·영어 이중언어이며 중국어 60.2%, 영어 39.8%다. 문항마다 근거가 담긴 참조 패키지와 원자적 평가 항목이 있어 전체 701개 항목, 12,300 가중 점수(문항당 100점)를 이룬다. 항목은 원천 정보 획득(7,322점), 출처 검증(2,085점), 계산·답 구성(2,893점)의 세 능력군에 속한다. 지표는 Atomic(항목 통과율), Weighted Rubric Score(가중 부분점수), Strict Pass(문항의 모든 항목 충족)이며, 채점은 GLM-5.1 judge가 하고 인간 전문가와의 항목 수준 Cohen's kappa는 0.816이다. 논문은 웹 검색·페이지 방문·Python 도구를 쓰는 ReAct 하니스에서 15개 모델 구성을 문항당 1회, 온도 1.0으로 평가했다.",
+            "대표 과제": "웹 검색, 페이지 방문, Python 실행 도구로 공식 출처의 시점·단위·정의에 맞는 수치를 찾고 계산해 근거와 함께 답하는 금융 검색 과제",
+            "대표 예시·설명": "공식 공시와 업계 보고서를 함께 활용해 Meta의 2025년 미국·캐나다 광고 매출이 미국 소셜미디어 광고 매출에서 차지하는 비율을 소수점 둘째 자리까지 구하는 과제. 출처 확인, 수치 추출, 계산·최종 답 형식으로 나눈 원자적 기준으로 채점한다(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원은 아직 확인하지 않았다. 이 행은 영어 문항만 en 트랙에 해당한다. 논문은 이중언어 벤치마크이며 영어 39.8%, 중국어 60.2%라고만 밝혀 영어 문항 수는 알 수 없고, 중국어 문항은 ko/en 범위 밖이다. 채점에 LLM judge(논문은 GLM-5.1)가 필요하고, 시간 민감 문항은 기준 시점이 있다. 논문 평가는 SerpAPI 검색, Jina Reader 방문, Python 도구 환경에서 이루어졌다. 논문은 V1이라고 밝히며 V2 확장을 예고한다. 모델 비교 수치는 이 행에 기록하지 않았다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/inclusionAI/FinFIRST"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (financial search, source verification, traceability)",
+            "definition": "FinFIRST (V1) evaluates financial search agents on both the final answer and the supporting evidence and research process through atomic rubrics. It has 123 expert-authored tasks with a difficulty split of 31.7% easy, 42.3% medium, and 26.0% hard. The benchmark is bilingual overall, 60.2% Chinese and 39.8% English. Each task has an evidence-grounded reference package and atomic criteria, 701 criteria in total, worth 12,300 weighted points (100 per task). Criteria fall into raw-information acquisition (7,322 points), source verification (2,085), and computation and answer formation (2,893). Metrics are Atomic (item pass rate), Weighted Rubric Score, and Strict Pass (all criteria of a task satisfied). A GLM-5.1 judge scores responses, with item-level Cohen's kappa of 0.816 against human experts. The paper evaluates 15 model configurations once per task at temperature 1.0 in a ReAct harness with web search, page visit, and Python tools.",
+            "task": "Use web search, page visit, and Python tools to find values from authoritative sources with the correct period, unit, and definition, compute the result, and answer with supporting evidence.",
+            "example": "Task description: using Meta's official disclosures together with an industry report, compute Meta's 2025 United States & Canada advertising revenue as a percentage of U.S. social media advertising revenue, rounded to two decimal places. Atomic criteria score source identification, figure extraction, and calculation and answer format."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "2025 United States"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "evaluate both generated"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "2025 United States"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://huggingface.co/datasets/inclusionAI/FinFIRST"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "2025 United States"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "FinFIRST: Benchmarking Search"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "123 expert-authored tasks"
+            },
+            "평가 축": {
+              "page": 2,
+              "quote": "evaluate both generated"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.25192",
+      "paper_title": "FinFIRST: Benchmarking Search Agents for Financial Information Retrieval, Sourcing and Traceability",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.25192",
+        "sha256": "4395765fa568d1f105fa491b617986319644bbc087c33555ab1ff0949ba18083",
+        "accessed": "2026-10-26T02:59:41Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 20,
+          "elapsed_seconds": 112.05,
+          "pdf_sha256": "4395765fa568d1f105fa491b617986319644bbc087c33555ab1ff0949ba18083",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "45d69426fa313367fd35d6e23395c9c230730fb200f8696988a3e1c98445de42",
+          "page_json_file": "2609.25192.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/inclusionAI/FinFIRST",
+            "fetched_url": "https://huggingface.co/datasets/inclusionAI/FinFIRST/raw/main/README.md",
+            "sha256": "f17ffbbdfeadef0fd28dad867ce78e800f79aa5296ce5c8c7898cb11e0b116c6",
+            "accessed": "2026-10-26T03:02:04Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-26T03:02:04Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.25192",
+        "paper_title": "FinFIRST: Benchmarking Search Agents for Financial Information Retrieval, Sourcing and Traceability",
+        "abstract": "Financial search is a highly demanding task for LLM agents, requiring not only a correct final answer but also temporally valid information retrieval, authoritative source selection, entity and period alignment, unit and definition consistency, and verifiable evidence for all conclusions. Existing benchmarks predominantly evaluate only the final answer, making it difficult to localize errors or assess whether an answer is well-founded. To address this gap, we introduce FinFIRST (Financial Information Retrieval, Sourcing and Traceability), the first financial benchmark to jointly evaluate answers and supporting evidence through atomic rubrics. FinFIRST comprises 123 expert-authored tasks spanning a graduated difficulty spectrum, constructed from aggregate patterns of real-world financial scenarios through an 18-field taxonomy, a six-axis coverage blueprint, a registry of 138 financial sources, contributions from over 50 finance experts, and a six-stage quality-control pipeline. Each task is accompanied by an evidence-grounded reference package decomposed into atomic criteria across three dimensions: raw-information acquisition, source verification, and computation and answer formation. We evaluate 15 model configurations under a unified tool setting. Claude-Opus-5 achieves the highest atomic score of 87.59%, while GPT-5.6-Sol attains the highest strict pass rate of 71.54%. Computation and answer formation consistently lag behind raw-information acquisition across systems. FinFIRST retains final-answer correctness as the primary objective while making the supporting research process measurable, verifiable, and diagnosable.",
+        "paper_updated": "2026-09-21T17:28:08Z",
+        "created_at": "2026-10-19T05:38:25Z",
+        "input_sha256": "9162a0a5bc6823ea8d4c408d044f4e96bf627837fb47d4d41d7910dfcdbcc00f",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "금융 정보검색 에이전트 평가 벤치마크 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "금융 검색 에이전트용 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40260983775",
+        "context_sha256": "f22ce76312ed021993f16e2e75122f8f0651bb89482adad26c2b2a65c15e422b"
+      },
+      "proposal_sha256": "08b077b1159a45bf62c918229c905595590c2232f0c7045126d11e7cf09dfbce"
     }
   },
   "processed_comments": [],
@@ -41053,8 +41213,8 @@
         "2609.25192"
       ],
       "abstract_attempted": [],
-      "calls": 3,
-      "cost_usd": 1.6535
+      "calls": 4,
+      "cost_usd": 2.1688
     }
   },
   "reaudits": [
