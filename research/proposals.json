@@ -17865,6 +17865,175 @@
       },
       "issue_url": null,
       "proposal_sha256": "58c9549b2c0fa431350b877e9702271332a9da8cd7e328efdf5453af71915266"
+    },
+    "2609.25841": {
+      "decision": "propose",
+      "reason": "이 논문은 ScanNetV2 실내 이미지를 기반으로 한 재사용 가능한 공개 벤치마크 Metric-Bench를 새로 제안합니다. 참조 객체의 실제 치수가 영어 질문으로 주어지고, 모델은 목표 객체의 절대 크기·위치·깊이·거리·3D 박스를 추정합니다. 과제 언어는 영어이고 이미지가 필요하므로 en 트랙의 vision 항목으로 제안합니다. 공식 데이터셋 링크는 PDF 1쪽에 있습니다. 라이선스 등 미확인 항목은 '확인 불가'로 두었습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "metric-bench",
+            "이름": "Metric-Bench",
+            "평가 축": "이미지(공간 메트릭 추론)",
+            "언어": "en",
+            "정의": "ScanNetV2 실내 이미지에서 만든 질의응답 1,340개 벤치마크. 참조 객체의 실제 치수를 주고 다른 객체의 절대 크기, 위치, 깊이, 거리, 3D 박스를 추정하게 한다. 카메라 내부 파라미터는 주어지지 않는다. 논문은 테스트 1,340문항(이미지 134장)과 학습용 약 5K 샘플(이미지 1,340장)을 장면이 겹치지 않게 나눴다고 한다. 지표는 MRA(주 지표), RMSE(미터), δ1이다.",
+            "대표 과제": "참조 치수가 주어진 상태에서 크기·위치·깊이·거리·3D 박스 5개 범주의 목표 객체 메트릭 추정",
+            "대표 예시·설명": "이미지와 함께 일부 객체의 실제 치수를 영어 문장으로 주고, 다른 객체의 너비나 3D 위치 같은 수치를 JSON으로 답하게 하는 과제(과제 설명)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋의 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. ScanNetV2에서 파생된 데이터이므로 원본 약관도 이용 전에 따로 확인해야 한다. 상용 모델과 사람 평가는 무작위 추출한 400문항 미니셋에서 수행됐다. 학습용 분할이 함께 제공되므로 평가 시 학습 데이터와 분리해야 한다. 질문 생성은 템플릿 기반이며 VLM 검사와 수동 검수를 거쳤다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/yulingxi/Metric-Bench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (spatial metric reasoning)",
+            "definition": "A benchmark of 1,340 question-answer pairs built from ScanNetV2 indoor images. Real-world dimensions of reference objects are given, and the model must estimate the absolute size, position, depth, distance, or 3D bounding box of a target object without camera intrinsics. The paper splits data by scene into a 1,340-sample test set (134 images) and a roughly 5K-sample training set (1,340 images). Metrics are MRA (main), RMSE (meters), and δ1.",
+            "task": "Estimate the metric quantity of a target object across five categories (size, position, depth, distance, 3D bounding box) given reference measurements",
+            "example": "Task description: given an image and English text with real measurements of some objects, the model outputs a numeric value, such as the width or 3D center of another object, in JSON."
+          },
+          "evidence": {
+            "modality": {
+              "page": 19,
+              "quote": "You are given"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "what is the"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "what is the"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/yulingxi/Metric-Bench"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "what is the"
+            },
+            "이름": {
+              "page": 2,
+              "quote": "Metric-Bench includes 1340"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "Metric-Bench includes 1340"
+            },
+            "평가 축": {
+              "page": 3,
+              "quote": "evaluate spatial metric"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.25841",
+      "paper_title": "Metric-Bench: Exploring In-context Spatial Metric Reasoning in VLMs for Indoor Scenes",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.25841",
+        "sha256": "1fe9ac730a5e0e04fecced4dde96c7535050bd5574c758382c26639f510bc142",
+        "accessed": "2026-10-26T03:54:11Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 24,
+          "elapsed_seconds": 110.72,
+          "pdf_sha256": "1fe9ac730a5e0e04fecced4dde96c7535050bd5574c758382c26639f510bc142",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7fb48cd1758f2f8e1b8a11f8ad54a745fd12f6e19e7e09cc93af92ad1a00279d",
+          "page_json_file": "2609.25841.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/yulingxi/Metric-Bench",
+            "fetched_url": "https://huggingface.co/datasets/yulingxi/Metric-Bench/raw/main/README.md",
+            "sha256": "2d79ff3fca1bb5f9694e4c55d0d6abfeb8718360cfa03e438918daeef42a744e",
+            "accessed": "2026-10-26T03:56:24Z",
+            "license_file": {
+              "fetched_url": "https://huggingface.co/datasets/yulingxi/Metric-Bench/raw/main/LICENSE",
+              "name": "LICENSE",
+              "spdx_id": null,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-26T03:56:24Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.25841",
+        "paper_title": "Metric-Bench: Exploring In-context Spatial Metric Reasoning in VLMs for Indoor Scenes",
+        "abstract": "Metric reasoning is a critical and challenging task for Vision Language Models (VLMs), playing a pivotal role in embodied AI tasks such as robotic manipulation and autonomous navigation. However, current spatial reasoning remains bottlenecked by rigid pixel-level supervision; such localized optimization often compromises general multimodal intelligence, triggering performance degradation or catastrophic forgetting of broad reasoning capabilities. To address these limitations, we introduce Metric-Bench, a focused benchmark designed to guide metric-spatial reasoning using contextual information. By incorporating in-image reference objects with known physical dimensions, Metric-Bench guides models to implicitly learn the 2D-to-3D mapping without camera intrinsics. We further present MetricReasoner, a task-adapted reinforcement fine-tuning recipe for reference-grounded metric reasoning, using structured prompts and verifiable numerical rewards. Extensive experiments on Metric-Bench demonstrate that our approach significantly enhances spatial metric understanding, outperforming existing and even larger proprietary models by 43.1\\%, while improving downstream embodied performance over a spatial-specialized counterpart by 30.4\\% on RoboSpatial overall accuracy and 9.3\\% on ERQA, and additionally delivering consistent gains on general benchmarks (15.9\\% on V$\\star$Bench, 88.9\\% on BLINK), indicating that the proposed adaptation does not necessarily compromise general VLM capabilities.",
+        "paper_updated": "2026-09-23T00:00:00Z",
+        "created_at": "2026-10-19T13:44:34Z",
+        "input_sha256": "a3ae7df1dbc3d3994ff7be5c2765be16156f33284c0236524ee263c836560b93",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "VLM 공간 지표 추론 벤치마크로 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "공간 거리 추론 벤치마크 및 학습법 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40260983775",
+        "context_sha256": "6c5ed2f5968487e57a57c327b60d58a46002e0bda5586740af54759b35b028f0"
+      },
+      "proposal_sha256": "1089ceaeb98dc1d733e7dc7d93084472e098481ac85780631b65decbbed6c33a"
     }
   },
   "processed_comments": [],
@@ -43178,8 +43347,8 @@
         "2609.25841"
       ],
       "abstract_attempted": [],
-      "calls": 26,
-      "cost_usd": 14.1866
+      "calls": 27,
+      "cost_usd": 14.6918
     }
   },
   "reaudits": [
