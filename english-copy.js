@@ -270,4 +270,28 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Legend parsing, legend grounding, legend-conditioned reasoning, and legend-aware abstention (QA accuracy, chain accuracy, CR, AF1, etc.)",
     "example": "Task description: given a chart image and an English question, such as the value of a named series in a given year, the model reads the legend, binds it to the marks, and extracts the value. When the legend is hidden, it should abstain."
   },
+  "stale-bench": {
+    "axis": "Agents (semantic coordination in parallel coding agents)",
+    "definition": "A benchmark of semantic coordination failures in parallel coding agents, where patches pass alone but fail when merged. The same tests run on each patch alone and on the merged patches, and only failures newly introduced by merging are counted (Δblind). It has three tiers: synthetic tasks (3 mechanisms x 4 degrees, 96 runs), merged PR pairs (417 Django pairs, 834 runs; 30 pairs from other repositories), and 36 constructed tasks on 12 real Django helpers (216 runs), plus 23 disjoint controls. The paper compares blind, informed (sequential oracle) and comm (oracle message describing the completed change) conditions. Constructed-task failure rates do not estimate real-world frequency.",
+    "task": "Solve two tasks independently, merge the patches, and measure tests that pass with each patch alone but fail after merging (Δblind).",
+    "example": "Task description: one change renames a helper, adds a required argument or changes a return type while another agent writes code against the old interface. The patches merge without textual conflict but fail tests, and in the comm condition the agent receives a short English message describing the completed change."
+  },
+  "rbac-text2sql": {
+    "axis": "Coding (text-to-SQL with RBAC compliance)",
+    "definition": "A text-to-SQL benchmark that augments the Spider and BIRD development splits and LiveSQLBench-Base-Full-v1 with LLM-synthesized, human-validated roles and column- and operation-level access policies. It covers 53 databases, 399 tables, and 3,353 columns, with 21,502 RBAC-annotated query instances (Spider 6,926; BIRD 10,175; LiveSQLBench 4,401). A model must decide allow or deny and, when allowed, generate execution-correct, policy-compliant SQL. Metrics are EX, Safe-EX, violation rate, over-refusal rate, and AC-F1. Each query is paired with one random role per pass, repeated over 5 seeds.",
+    "task": "Given a role policy, decide whether to allow or deny the request and, if allowed, generate policy-compliant SQL.",
+    "example": "Task description: given an English natural-language question and a role's column-level access policy, the system must refuse if a required column is denied, and otherwise produce execution-correct SQL."
+  },
+  "cq4oe": {
+    "axis": "Knowledge engineering (ontology generation from competency questions)",
+    "definition": "CQ4OE evaluates LLM-based ontology generation from competency questions (CQs). It provides CQ-driven gold OWL ontologies with explicit provenance linking each CQ to the classes, properties and axioms needed to answer it. Over six ontologies (Wine, AWO, ODRL, SAREF4WATR, VGO, SWO) it defines two tasks: CQ2Term (term-level, 99 CQs) and CQ2Onto (ontology-level, 118 CQs). The paper evaluates nine LLMs under zero-shot, iterative and multi-agent strategies.",
+    "task": "CQ2Term: predict the classes and properties required by each CQ (99 CQs). CQ2Onto: generate an ontology with hierarchy, property modeling and axioms (118 CQs).",
+    "example": "Task description, not an actual test item: given an English CQ such as the AWO question 'Which plants eat animals?', CQ2Term predicts the required classes and property (Plant, Animal, eats), and CQ2Onto builds them into an OWL ontology of classes, properties and axioms."
+  },
+  "equivsva": {
+    "axis": "Coding (hardware verification, SVA generation)",
+    "definition": "A dataset for evaluating generation of SystemVerilog Assertions from RTL designs. It contains 120 behavior families across 12 categories, 480 reference RTL implementations, 914 gold properties, and 360 mutants. The paper also reports a single-model case study with Qwen2.5-Coder-7B-Instruct.",
+    "task": "Generate interface-only SVA properties from RTL, evaluated by formal soundness and mutant detection.",
+    "example": "Task description: given an RTL implementation, generate interface-level behavioral properties that avoid implementation-specific internal signals, and compare results across different RTL implementations of the same behavior."
+  },
 };

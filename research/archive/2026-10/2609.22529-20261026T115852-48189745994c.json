@@ -1,0 +1,92 @@
+{
+  "arxiv_id": "2609.22529",
+  "paper_title": "IntLawNER: A Named Entity Recognition Dataset and Benchmark in International Law",
+  "created_at": "2026-10-26T02:58:52Z",
+  "status": "needs_evidence",
+  "reason": "공식 저장소 README(https://github.com/mrgeooo14/IntLawNER, LICENSE 파일 없음)의 'Data License' 절은 CC BY 4.0을 주석 레이어(data/gold_full·train·dev·test.jsonl, data/12k_candidates_max150_balanced.jsonl)에만 부여한다. 같은 절은 기반 법률 텍스트(ICJ, ECtHR, UN)가 각 원천의 약관을 따르며 이 파일로 재라이선스되지 않는다고 밝힌다. 논문 9쪽의 Data Usability도 같은 취지로 'the underlying legal texts retain the terms of their original sources (ICJ, UNSC, ECtHR)'라고 적는다. 원천 코퍼스는 3쪽에 CD-ICJ(Fobbe, 2023), UNSC(UN Digital Library), ECtHR-PCR(Santosh et al., 2024)로 열거되어 있다. 이 데이터셋은 원천 문장을 포함하므로 CC BY 4.0이 모든 구성 요소에 적용된다고 볼 수 없다. 라이선스 문구가 있으므로 '미표기' 처리나 absence 증거는 쓸 수 없고, 반대로 상업적 이용·수정·파생·재배포를 데이터셋 전체에 대한 값으로 인용할 근거도 제공된 자료에 없다. README와 논문은 상업적 이용을 명시하지 않으며, 수정·재배포는 주석 레이어에 한해 출처 표기 조건으로만 언급한다. ICJ(CD-ICJ), UN, ECtHR-PCR/HUDOC 원천별 약관은 제공된 공식 카드에 없어 확인하지 못했다. 이 상태에서는 라이선스, 상업적 이용, 수정·파생, 재배포를 근거 있는 값으로 채울 수 없고, 금지된 '확인 불가'로 둘 수도 없으므로 아무것도 게시하지 않는다. 각 원천의 공식 약관 카드를 확보한 뒤 다시 제안해야 한다. lm-eval 지원은 README와 논문 어디에도 언급이 없어 '미표기' absence 증거로 처리할 수 있으나, 위 라이선스 문제로 행 전체를 게시할 수 없다. 논문 점수는 3쪽 Table 3(Mi-F1, 테스트셋 605문장)에 근거가 있어 recommendations는 이후 작성할 수 있다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2609.22529",
+    "sha256": "36811dad7d86ac25dad40f2b11cc14f8b836ef057dc99ac5274f7303ca92c59b",
+    "accessed": "2026-10-26T02:56:01Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 21,
+      "elapsed_seconds": 143.18,
+      "pdf_sha256": "36811dad7d86ac25dad40f2b11cc14f8b836ef057dc99ac5274f7303ca92c59b",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "ddbaef0fa6d5b886e184152b1a386fb5500d851965e4809c7f6d6de3a64cf6a0",
+      "page_json_file": "2609.22529.pages.json"
+    },
+    "official_resources": [
+      {
+        "url": "https://github.com/mrgeooo14/IntLawNER",
+        "fetched_url": "https://api.github.com/repos/mrgeooo14/IntLawNER/readme",
+        "sha256": "85018f3933c9c23d33b2f8de7bc686c28d566db25fbeae0f98df537391fc8f48",
+        "accessed": "2026-10-26T02:58:52Z",
+        "license_file": null
+      }
+    ]
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "6e995be5c5687f6a69270afa310d541970e5cc868484750296eeae33abe5b209",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2609.22529",
+    "paper_title": "IntLawNER: A Named Entity Recognition Dataset and Benchmark in International Law",
+    "abstract": "International law provides the normative framework through which states coordinate action, regulate armed conflict, and protect human rights, yet its texts remain without token-level named entity recognition (NER) resources. We introduce IntLawNER, a NER dataset and benchmark for codified sources of international law, covering 2,987 gold-annotated sentences and 8,094 entity spans from International Court of Justice (ICJ) decisions, UN Security Council resolutions, and European Court of Human Rights (ECtHR) judgments, annotated with seven institution-specific entity types. We construct IntLawNER with a cost-effective hybrid algorithmic-agentic pipeline that reduces 468k source sentences to a compact annotation set through candidate retrieval, LLM-based vetting, and human review, with 89.6% of gold spans accepted unchanged from the silver layer. However, the silver-to-gold analysis reveals that human-machine aggregate agreement metrics can be misleading in domain-specific NER: Cohen's kappa=0.964 on boundary-matched spans masks a macro-F1 of 0.753 when missing entities, boundary errors, and label corrections are included. The benchmark shows that zero-shot span-based GLiNER collapses on entity types dependent on institutional function rather than surface form (0.243 micro-F1), while fine-tuned transformers struggle on rare labels. Carefully selected few-shot examples that demonstrate label contrasts improve every LLM over zero-shot prompting, with Claude Opus 4.6 reaching the best score of 0.873 micro-F1. We release IntLawNER as a benchmark and reusable resource for extracting references in international legal texts.",
+    "paper_updated": "2026-09-22T00:00:00Z",
+    "created_at": "2026-10-20T02:48:49Z",
+    "input_sha256": "ca21acc3309af7188611dd40be784df36342e2a66a4291ddca63fd105580e7c1",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "국제법 개체명 인식 데이터셋 벤치마크"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "국제법 NER 데이터셋·벤치마크 IntLawNER 제안"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}

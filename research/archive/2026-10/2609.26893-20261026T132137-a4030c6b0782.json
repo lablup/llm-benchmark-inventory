@@ -1,0 +1,109 @@
+{
+  "arxiv_id": "2609.26893",
+  "paper_title": "ACTS: A multi-tier benchmark evaluating LLM cipher identification under controlled blind conditions",
+  "created_at": "2026-10-26T04:21:37Z",
+  "status": "needs_evidence",
+  "reason": "데이터 라이선스에 대해 논문과 공식 README가 서로 다르게 적고 있어 한 값으로 게시할 수 없습니다. 논문 37쪽 Data availability는 'publicly available under the MIT License (code) and CC-BY (data)'라고 적습니다. 공식 README(https://github.com/youseefhamdi/ACTS-Benchmark)의 License 항은 'Software: Apache-2.0', 'Data (ciphertext): CC0'입니다. 코드는 MIT와 Apache-2.0, 데이터는 CC-BY와 CC0로 서로 어긋납니다. 또한 README는 ESWA-D-26-11044R1 보충자료로서 140개와 700개 파일(총 840개 .bin)만 설명하고 논문의 7,000개 파일 코퍼스는 다루지 않으므로, README의 CC0가 논문 전체 데이터에 적용되는지 알 수 없습니다. README에는 '## LICENSE file' 항목이 없어(license_file 없음) 별도의 LICENSE 파일로 두 표기를 조정할 근거도 없습니다. 이 때문에 정답 라이선스를 정하거나 '미표기' 처리(absence)를 할 수 없습니다. 상업적 이용, 수정·파생, 재배포 값도 라이선스에 따라 정해지므로 함께 보류합니다. 논문 데이터(127/700/7,000개 파일)에 적용되는 라이선스를 저자가 명시한 공식 LICENSE 파일, Zenodo 기록(https://doi.org/10.5281/zenodo.20142272) 또는 README 개정본을 확보한 뒤 다시 제출해야 합니다. 이번에는 아무것도 게시하지 않습니다. lm-eval 지원은 README와 PDF 어디에도 lm-eval 또는 lm-evaluation-harness 언급이 없으므로 라이선스가 정리되면 '미표기'와 absence 근거로 처리할 수 있습니다. 논문 19쪽 Table 2(Tier 3 blind accuracy)는 모델별 점수를 포함하므로 recommendations 근거로 쓸 수 있습니다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2609.26893",
+    "sha256": "1afc80a0a76fb3cba74a5bf901ff0cab60b53ade195f2d50d0cad907122436dc",
+    "accessed": "2026-10-26T04:18:30Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 38,
+      "elapsed_seconds": 158.49,
+      "pdf_sha256": "1afc80a0a76fb3cba74a5bf901ff0cab60b53ade195f2d50d0cad907122436dc",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "6d854d58b0a37eff06183ae88f4b9ef705d85e6e56a5b887881ef35f7b068dcc",
+      "page_json_file": "2609.26893.pages.json"
+    },
+    "official_resources": [
+      {
+        "url": "https://github.com/youseefhamdi/ACTS-Benchmark",
+        "fetched_url": "https://api.github.com/repos/youseefhamdi/ACTS-Benchmark/readme",
+        "sha256": "a7a2324550b91b2b2df8ee93ef5f1d795284c479e46231746d45763f470303ea",
+        "accessed": "2026-10-26T04:21:37Z",
+        "license_file": null
+      }
+    ]
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "ce2e18c9db9727abd89c029d6f20c6c5d907963d8e954d9118b0d0afdaabd7fe",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2609.26893",
+    "paper_title": "ACTS: A multi-tier benchmark evaluating LLM cipher identification under controlled blind conditions",
+    "abstract": "We introduce ACTS (Artifacts in Cipher Testing Suite), a reproducible benchmark that isolates cryptanalytic ability through tiered metadata deprivation (Tier-1: full metadata; Tier-2: filename only; Tier-3: completely blind) and tests forced reasoning (Tier-5: chain-of-thought, code-as-reasoning, self-correction) on ciphertext alone. A 10-configuration ablation study on 7,000 files, using a single 70/30 train-test split for feature-removal analysis, provides additional evidence at scale. Live API inference on a v2b corpus with fully randomised padding (PKCS7, ISO 10126, and ANSI X9.23 selected per file), unique CSPRNG keys, and unique plaintexts (127 files per model, 381 Tier-1 records, 380 Tier-3 records across three cloud systems, supplemented by 254 autonomous agentic evaluations in Tier-4) yields a combined Tier-3 accuracy of 30.8%, only modestly above the 14.3% random baseline for seven-way classification. The corresponding combined metadata-dependency gap is 40.9 percentage points (Tier-1: 71.7% vs. Tier-3: 30.8%). Against a classical Random Forest (69.2% on 7,000 files, trained on engineered byte-level features), the observed live gap is 38.4 percentage points. Because this comparison spans different input representations and training paradigms, the gap should be interpreted as an overall capability difference rather than a clean factorial decomposition. Six findings are reported: (1) Metadata dependency remains large; (2) Scaling failure under blind conditions; (3) Forced reasoning is epiphenomenal; (4) The observed live capability gap exceeds earlier heuristic estimates; (5) The signal is primarily structural rather than statistical; (6) Heuristic invariance versus ML fragility reveals different failure modes.",
+    "paper_updated": "2026-09-24T00:00:00Z",
+    "created_at": "2026-10-19T13:44:46Z",
+    "input_sha256": "46ac74129af20ed1cfa40d7fd0f9f50d299805fae2bcfda15a6b1511c95b8352",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "암호문 식별 LLM 벤치마크, 다계층 평가"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "암호 식별 능력 평가 벤치마크 ACTS 신규 제안"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}
