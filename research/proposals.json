@@ -16962,6 +16962,165 @@
         "reviewed_sha256": "1c35c87f25d94420707db02bf16cbfe8069bfe86d4493cd6620dd16dd4787da5",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2607.22115": {
+      "decision": "propose",
+      "reason": "이 논문은 Spider, BIRD, LiveSQLBench에 역할 기반 접근 제어(RBAC) 정책을 입힌 text-to-SQL 벤치마크를 새로 제안하고, 코드와 데이터 저장소를 공개한다고 밝힌다. 영어 질의를 쓰는 텍스트 전용 과제이므로 en 트랙의 새 행으로 제안한다. 라이선스와 하니스 지원은 PDF에서 확인되지 않아 '확인 불가'로 둔다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "rbac-text2sql",
+            "이름": "RBAC-Text2SQL Benchmark",
+            "평가 축": "코딩(Text-to-SQL의 RBAC 접근 제어 준수)",
+            "언어": "en",
+            "정의": "Spider·BIRD 개발 분할과 LiveSQLBench-Base-Full-v1에 LLM이 합성하고 사람이 검수한 역할과 열·연산 단위 접근 정책을 붙인 text-to-SQL 벤치마크. 53개 DB, 399개 테이블, 3,353개 열에 RBAC 주석 질의 21,502건(Spider 6,926, BIRD 10,175, LiveSQLBench 4,401)으로 구성된다. 모델은 허용/거부를 판단하고, 허용이면 실행 정확하고 정책을 준수하는 SQL을 생성해야 한다. 지표는 EX, Safe-EX, 위반율, 과잉 거부율, AC-F1이며, 질의마다 역할 하나를 무작위로 짝지은 평가를 5개 시드로 반복한다.",
+            "대표 과제": "역할 정책이 주어진 상태에서 접근 허용/거부를 판단하고, 허용되면 정책을 준수하는 SQL 생성",
+            "대표 예시·설명": "영어 자연어 질문과 역할의 열 단위 접근 정책이 주어진다. 정책을 벗어나는 열이 필요하면 거부 응답을, 아니면 실행 정확한 SQL을 내야 하는 과제(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터와 코드의 라이선스는 확인하지 못했다. 원본 Spider, BIRD, LiveSQLBench의 약관도 별도로 확인해야 한다. 역할과 정책은 LLM이 합성하고 DB 단위 구성 53건을 사람이 검수한 것이다. 명시적 RBAC 준수만 다루며 추론 기반 정보 유출은 범위 밖이다. 행 단위 정책은 본 릴리스에 포함되지 않는다. Spider·BIRD는 SQLite, LiveSQLBench는 PostgreSQL 실행 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/2020dfff/RBAC-Text2SQL-Benchmark"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (text-to-SQL with RBAC compliance)",
+            "definition": "A text-to-SQL benchmark that augments the Spider and BIRD development splits and LiveSQLBench-Base-Full-v1 with LLM-synthesized, human-validated roles and column- and operation-level access policies. It covers 53 databases, 399 tables, and 3,353 columns, with 21,502 RBAC-annotated query instances (Spider 6,926; BIRD 10,175; LiveSQLBench 4,401). A model must decide allow or deny and, when allowed, generate execution-correct, policy-compliant SQL. Metrics are EX, Safe-EX, violation rate, over-refusal rate, and AC-F1. Each query is paired with one random role per pass, repeated over 5 seeds.",
+            "task": "Given a role policy, decide whether to allow or deny the request and, if allowed, generate policy-compliant SQL.",
+            "example": "Task description: given an English natural-language question and a role's column-level access policy, the system must refuse if a required column is denied, and otherwise produce execution-correct SQL."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "SQLite execution"
+            },
+            "대표 과제": {
+              "page": 4,
+              "quote": "correct access decision"
+            },
+            "대표 예시·설명": {
+              "page": 17,
+              "quote": "I want to"
+            },
+            "링크": {
+              "page": 14,
+              "quote": "https://github.com/2020dfff/ RBAC-Text2SQL-Benchmark"
+            },
+            "언어": {
+              "page": 17,
+              "quote": "I want to"
+            },
+            "이름": {
+              "page": 14,
+              "quote": "RBAC-Text2SQL Benchmark"
+            },
+            "정의": {
+              "page": 3,
+              "quote": "21,502 RBAC-annotated query"
+            },
+            "평가 축": {
+              "page": 3,
+              "quote": "RBAC-related failures"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2607.22115",
+      "paper_title": "Benchmarking Text-to-SQL under Role-Based Access Control",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2607.22115",
+        "sha256": "0f900fcf6f1942b77c5e38c2e2ad31bbc15eea139597edb23a76c28fd5f8ef41",
+        "accessed": "2026-10-26T03:29:10Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 19,
+          "elapsed_seconds": 185.15,
+          "pdf_sha256": "0f900fcf6f1942b77c5e38c2e2ad31bbc15eea139597edb23a76c28fd5f8ef41",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "567dd9b632a6abdf2c27b555bb4f40c9467f3ff03c02e1a81b9d03e5a646343d",
+          "page_json_file": "2607.22115.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/2020dfff/RBAC-Text2SQL-Benchmark",
+            "fetched_url": "https://api.github.com/repos/2020dfff/RBAC-Text2SQL-Benchmark/readme",
+            "sha256": "0d157b5524899cf59a5da2e71879cd1af65afe6fb697f7e07c6c2c8eac38de6f",
+            "accessed": "2026-10-26T03:32:43Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-26T03:32:43Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2607.22115",
+        "paper_title": "Benchmarking Text-to-SQL under Role-Based Access Control",
+        "abstract": "Given a database S and a natural language question Q, text-to-SQL systems aim to generate an SQL query that correctly answers Q when executed against S. Currently, popular text-to-SQL benchmarks mostly assume unrestricted access to S; in practice, however, user access is often restricted, e.g., through role-based access control (RBAC) policies. This leads to a potential disconnect between benchmarking results and real-world performance: an LLM with high benchmark scores might perform poorly in an access-controlled environment, by frequently violating RBAC, or rejecting a query q that could be answered with only permitted data in S. Motivated by this, we present a comprehensive text-to-SQL benchmarking framework with realistic RBAC constraints, which features an LLM-assisted workflow that augments existing text-to-SQL benchmarks with plausible user roles and access policies. To do so, we formulate the problem of role synthesis as a structured reasoning process over the database schema, in which the LLM first infers the application context from the schema, and then derives role responsibilities and access scopes consistent with this context. This process is audited by human-in-the-loop quality control, in which domain experts perform metric-guided screening on the generated roles. Besides the augmented dataset, the proposed framework also contains evaluation metrics that identify RBAC-specific failure modes, and disentangle SQL utility from access-control compliance. We apply the proposed framework to several widely-used benchmarks, and conduct a systematic empirical study of state-of-the-art text-to-SQL systems. The results show that many solutions (especially open-weight LLMs) with high benchmarking scores under an unrestricted setting suffer sharp performance degradation once access constraints are in place, due to frequent RBAC violations.",
+        "paper_updated": "2026-09-24T00:00:00Z",
+        "created_at": "2026-10-19T13:44:34Z",
+        "input_sha256": "35889d2dc089ec05b2811667c2ddb19dd96845e1aed9dddede100b3ae58c1282",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "RBAC 기반 Text-to-SQL 벤치마크로 평가에 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "RBAC 제약 텍스트-to-SQL 벤치마킹 프레임워크·데이터 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40260983775",
+        "context_sha256": "01f56109a3c86dfbcca8b3148ec2ffe93561eac3f19675a9540611accee34198"
+      },
+      "proposal_sha256": "3cd624f799779e79f0abf8cc5c7e31f08e40004ce4087bb61ee8cfb0eec1020a"
     }
   },
   "processed_comments": [],
@@ -42266,8 +42425,8 @@
         "2607.22115"
       ],
       "abstract_attempted": [],
-      "calls": 17,
-      "cost_usd": 8.9928
+      "calls": 18,
+      "cost_usd": 9.6012
     }
   },
   "reaudits": [
