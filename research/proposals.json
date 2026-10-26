@@ -18061,74 +18061,9 @@
       "approval_policy": "claude_only"
     },
     "2609.35823": {
-      "decision": "propose",
-      "reason": "CoVLM-Bench는 차량-인프라 쌍 장면에서 협력 주행 질의응답(CDQA)과 협력 계획(CP)을 함께 평가하는 새 벤치마크다. 모델 논문이 아니라 재사용 가능한 평가 자원을 제시한다. 영어 프롬프트가 인용되어 en 트랙이고, 자차·도로변 카메라 이미지를 입력으로 쓰므로 vision이다. 인벤토리에 같은 항목이 없어 새 행으로 제안한다. 데이터 라이선스 등 확인하지 못한 필드는 '확인 불가'로 둔다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "covlm-bench",
-            "이름": "CoVLM-Bench",
-            "평가 축": "이미지(협력 주행 질의응답·궤적 계획)",
-            "언어": "en",
-            "정의": "차량-인프라 쌍 장면에서 협력 주행 질의응답(CDQA)과 협력 계획(CP)을 같은 실제 장면에서 함께 평가하는 벤치마크. 쌍 프레임 2,196개와 CDQA 주석 35,136개로 구성되며 3부 구조 근거(rationale)를 보조 지도 신호로 제공함",
-            "대표 과제": "CDQA와 CP(자차·도로변 이미지 쌍을 보고 질문에 답하고 미래 궤적을 예측)",
-            "대표 예시·설명": "자차 전방 카메라와 도로변 카메라 이미지 한 쌍과 주행 질문이 주어지면, 모델이 장면에 근거한 답을 내고 자차의 미래 경로를 계획하는 과제 설명(실제 문항 아님)",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부는 확인하지 않았다. 이미지와 협력 라벨은 상위 데이터셋(V2X-Seq-SPD/DAIR-V2X-Seq)의 접근 약관을 따르므로 이용 전 별도 확인이 필요하다. 주석 초안은 Qwen3-VL-32B가 만들고 사람이 검수했다. 단일 실세계 V2I 출처의 오프라인 카메라 평가이며 폐루프 평가는 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/sidiangongyuan/CoVLM-Bench"
-          },
-          "modality": "vision",
-          "english_copy": {
-            "axis": "Images (cooperative driving question answering and trajectory planning)",
-            "definition": "CoVLM-Bench evaluates cooperative driving question answering (CDQA) and cooperative planning (CP) on the same real-world vehicle-infrastructure paired scenes. It contains 2,196 paired frames with 35,136 CDQA annotations and provides three-part rationales as auxiliary supervision.",
-            "task": "CDQA and CP (answer driving questions and predict the ego vehicle's future trajectory from paired ego and roadside images)",
-            "example": "Given an ego front-camera image, a roadside-camera image and a driving question, the model gives a scene-grounded answer and plans the ego vehicle's future path (task description, not an actual test item)."
-          },
-          "evidence": {
-            "modality": {
-              "page": 23,
-              "quote": "ego-vehicle front camera"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "We present COVLM-BENCH,"
-            },
-            "대표 예시·설명": {
-              "page": 23,
-              "quote": "ego-vehicle front camera"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "https://github.com/sidiangongyuan/CoVLM-Bench"
-            },
-            "언어": {
-              "page": 23,
-              "quote": "ego-vehicle front camera"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "We present COVLM-BENCH,"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "2,196 paired frames"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "We present COVLM-BENCH,"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "CoVLM-Bench의 데이터셋 라이선스 근거가 제공된 자료에 없어 게시할 수 없다. 공식 저장소 카드(https://github.com/sidiangongyuan/CoVLM-Bench)의 'This repository is released under the Apache License 2.0'와 '## LICENSE file' 섹션(Apache-2.0)은 저장소 코드(CoVLM-Drive 학습·평가 코드와 재현 코드)에 대한 코드 라이선스다. 카드는 CDQA 주석, 3부 구조 근거(rationale) 저장소, 점검 파일을 'Coming soon'으로 적어 아직 공개되지 않았음을 밝히고, 이미지와 협력 라벨은 V2X-Seq-SPD/DAIR-V2X-Seq의 자체 접근 약관을 따르며 재배포하지 않는다고 적는다. 논문 33쪽도 같은 취지로 'Underlying images and cooperative labels follow the upstream V2X-Seq-SPD/DAIR-V2X-Seq access terms'라고 쓴다. 따라서 코드 라이선스를 데이터셋 라이선스로 인용할 수 없다. 카드에 LICENSE 파일 섹션이 있으므로 미표기(absence) 증거 형식도 쓸 수 없다. 이에 라이선스, 상업적 이용, 수정·파생, 재배포 네 필드의 증거를 작성할 수 없다. 데이터 공개 시점에 주석 자체에 적용되는 라이선스 표기가 공식 카드나 논문에 나오면 그 인용으로 다시 제안해야 한다. lm-eval 지원은 카드와 논문 어디에도 언급이 없어 별도로 처리할 수 있으나, 위 네 필드가 채워지지 않아 행 전체를 게시하지 않는다. 그에 따라 changes는 비워 둔다.",
+      "changes": [],
       "arxiv_id": "2609.35823",
       "paper_title": "CoVLM-Bench: A Real-World Benchmark for Cooperative Driving Question Answering and Planning",
       "paper_updated": "2026-09-30T00:00:00Z",
@@ -18206,7 +18141,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-26T04:03:24Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -18232,11 +18167,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40260983775",
-        "context_sha256": "5f9140704f18d39be8d955320ca8a031a57a8fb5211fb0905e584c93b4ff5e77"
-      },
-      "proposal_sha256": "21c123312d643a12324795782cdf8454e0da684cfff6b726ae6c3779f49d01e4"
+      "proposal_sha256": "dfdae5e252d07f5d410cf0a1ab3a967c02a6cf1d7d7775a9dae53cb2232f0205",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -43552,8 +43485,8 @@
         "2609.35823"
       ],
       "abstract_attempted": [],
-      "calls": 31,
-      "cost_usd": 16.7172
+      "calls": 32,
+      "cost_usd": 17.2734
     }
   },
   "reaudits": [
