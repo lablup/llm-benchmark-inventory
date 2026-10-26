@@ -16451,74 +16451,9 @@
       }
     },
     "2602.18307": {
-      "decision": "propose",
-      "reason": "VeriSoftBench는 오픈소스 Lean 4 형식 검증 저장소 23곳에서 뽑은 증명 과제 500개로 만든 새 벤치마크이다. 저장소 문맥과 파일 간 의존성을 보존해 저장소 규모 증명 생성, 장문 문맥, 전제 검색을 평가한다. 입력은 텍스트뿐이다. 논문에 실린 프롬프트 템플릿이 영어여서 en 트랙의 text 모달리티로 분류했다. 논문이 공식 코드 저장소 URL을 명시했다. 라이선스와 하니스 지원은 확인하지 않았으므로 '확인 불가'로 기록했다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "verisoftbench",
-            "이름": "VeriSoftBench",
-            "평가 축": "코딩·추론(저장소 규모 Lean 4 형식 검증 증명 생성)",
-            "언어": "en",
-            "정의": "오픈소스 형식 검증 저장소 23곳에서 추출한 Lean 4 증명 의무 500개로 구성된 벤치마크. 각 과제는 고정된 Git 커밋에서 뽑아 저장소 문맥과 파일 간 의존성을 보존한다. 문맥 설정은 두 가지다. 정답 증명의 의존성만 제공하는 curated(오라클형 진단)와 저장소 전체를 제공하는 full repo이다. 평가는 Lean 4 컴파일러로 증명을 검증하며, 논문은 Pass@8과 수리 라운드 r 조건으로 보고한다. 100문항 부분집합 VeriSoftBench-Aristotle이 별도로 있으며 이 결과는 본 세트와 직접 비교할 수 없다.",
-            "대표 과제": "대상 정리와 저장소 문맥이 주어지면 Lean 4 증명 본문을 생성하고, 컴파일 검증과 오류 기반 수리 루프를 거쳐 해결 여부를 판정",
-            "대표 예시·설명": "프로젝트 고유 정의(실행 관계 등)로 서술된 정리를, 같은 파일의 문맥과 다른 파일의 정의·보조정리를 참조해 증명하는 과제 설명. 실제 시험 문항이 아님",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스를 확인하지 못했다. 과제는 공개 GitHub 저장소 23곳에서 추출한 것이므로 저장소별 약관을 따로 확인해야 하고, 코드 저장소의 라이선스를 데이터 라이선스로 간주해서는 안 된다. 상위 2개 저장소가 119개 과제를 차지하며 전체 저장소 문맥이 200k 토큰을 넘는다. 공개 저장소 기반이라 사전학습 오염 가능성을 논문이 한계로 밝힌다. 평가에는 Lean 4 툴체인과 사전 빌드된 환경이 필요하다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/utopia-group/VeriSoftBench"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Coding and reasoning (repository-scale Lean 4 formal verification proof generation)",
-            "definition": "A benchmark of 500 Lean 4 proof obligations drawn from 23 open-source formal-verification repositories. Each task is extracted from a fixed Git commit and preserves repository context and cross-file dependencies. There are two context settings: curated, an oracle-like diagnostic that provides only the dependencies of the ground-truth proof, and full repo, which provides the whole repository. Proofs are verified with the Lean 4 compiler, and the paper reports results under Pass@8 and repair-round r settings. A separate 100-task subset, VeriSoftBench-Aristotle, exists and is not directly comparable to the full set.",
-            "task": "Given a target theorem and repository context, generate a Lean 4 proof body, then verify it by compilation with a compiler-error-based repair loop to decide whether the task is solved.",
-            "example": "Task description, not an actual test item: prove a theorem stated over project-defined notions such as execution relations, using the local file context and definitions and lemmas from other files in the repository."
-          },
-          "evidence": {
-            "modality": {
-              "page": 1,
-              "quote": "VeriSoftBench, a benchmark"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "VeriSoftBench, a benchmark"
-            },
-            "대표 예시·설명": {
-              "page": 1,
-              "quote": "VeriSoftBench, a benchmark"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/utopia-group/VeriSoftBench"
-            },
-            "언어": {
-              "page": 15,
-              "quote": "You are an"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "VeriSoftBench, a benchmark"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "VeriSoftBench, a benchmark"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "VeriSoftBench, a benchmark"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "VeriSoftBench 데이터의 라이선스 다섯 항목(라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원)을 공급된 자료만으로는 증거 형식에 맞게 확정할 수 없어 게시를 보류한다. 공식 README는 평가 코드만 MIT이고 벤치마크 저장소는 각각 원래 라이선스로 재배포된다고 밝히며, 각 저장소의 라이선스는 THIRD_PARTY_NOTICES.txt와 repos.json에 있다고 안내한다. 이 두 파일과 Hugging Face 데이터셋 카드는 공급되지 않았다. 논문도 23개 저장소 각각의 라이선스를 적지 않았다. 따라서 23개 구성 요소 전체에 공통으로 적용되는 데이터 라이선스와 이용 권한을 인용할 수 없다. 공식 카드에 LICENSE 파일(MIT, 코드용) 항목이 있으므로 라이선스 미표기에 대한 부재 증거 형식도 쓸 수 없고, 코드의 MIT를 데이터 라이선스로 옮겨 적을 수도 없다. 저장소별 THIRD_PARTY_NOTICES.txt와 repos.json 또는 데이터셋 카드를 확보한 뒤 다시 제안해야 한다.",
+      "changes": [],
       "arxiv_id": "2602.18307",
       "paper_title": "VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean",
       "paper_updated": "2026-09-23T00:00:00Z",
@@ -16584,7 +16519,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-26T03:18:18Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -16610,11 +16545,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40260983775",
-        "context_sha256": "17eabe705836f1efb124bf19497ccf81604a214cd45f690690831b3ec7cea53b"
-      },
-      "proposal_sha256": "32db4fb194dd1589200911aaef40fbb39888b99677e3bc7773d06dcb0a688133"
+      "proposal_sha256": "4de97ba3fa15daabf450638a8481e635ba30840722cfc4d66a875d90949d4558",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -41914,8 +41847,8 @@
         "2602.18307"
       ],
       "abstract_attempted": [],
-      "calls": 12,
-      "cost_usd": 5.6988
+      "calls": 13,
+      "cost_usd": 6.2299
     }
   },
   "reaudits": [
