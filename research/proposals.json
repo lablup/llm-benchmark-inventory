@@ -18439,7 +18439,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-26T04:06:05Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -18465,12 +18465,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40260983775",
-        "context_sha256": "e2c86e1bf62bcdc6bc581d377d72b5f0fea25f02c002a72d9569e991479ba535"
-      },
       "proposal_sha256": "3c5484889ba526aa327dc4620ad9291d34fb71f4db31737bae98956567d2d73d",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안한 내용은 논문 본문, 그림 2(a) 추출 텍스트, 공식 저장소 README와 LICENSE에 비추어 모두 뒷받침된다. 첫째, 99개 CQ(CQ2Term), 118개 CQ(CQ2Onto), 온톨로지 6개, 9개 LLM, 세 가지 생성 전략이 논문 1~3쪽, 5쪽, 10쪽과 일치하고, 입력 CQ는 영어 텍스트이므로 en 트랙의 text 모달리티가 맞다. 둘째, 라이선스는 논문 17쪽의 Apache 2.0 명시와 저장소 LICENSE(SPDX Apache-2.0)가 일치하고, 이 표기가 gold 표준과 평가 파이프라인을 포함한 CQ4OE 자원에 대한 것임이 논문 자원 가용성 설명에서 확인된다. 상업적 이용, 수정·파생, 재배포는 Apache 2.0 조항(대가 없는 라이선스, 파생물 작성, 사본 첨부와 변경 고지 조건)과 맞고 임의로 추가한 권한이 없다. 셋째, 이 벤치마크는 Wine, AWO, ODRL, SAREF4WATR, VGO, SWO에서 파생되었는데, 유의사항에 이 여섯 온톨로지를 명시하고 각 고유 약관을 따로 확인하라고 적었으므로 필수 조건을 충족한다. 사전학습 오염 가능성, 용어 정렬 의존성, HermiT와 Ollama 환경 요구 등 제약도 논문 7쪽, 10쪽, 16쪽과 일치한다. 넷째, 공식 README에 lm-eval 또는 lm-evaluation-harness 언급이 없으므로 '미표기'는 허용되는 해결값이다. 다섯째, 추천 결과의 Water 열 점수는 그림 2(a) 헤더 순서(Wine, AWO, ODRL, Water, VGO, SWO)에 따라 4번째 값이며 9개 모델 모두 정확히 옮겨졌다. 같은 그림의 열 평균을 계산하면 Wine 48.0, AWO 90.5, Water 70.6으로 본문 5.1절의 수치와 정확히 일치해 열 정렬이 교차 검증된다. 지표(pooled F1, 높을수록 좋음)와 조건(CQ2Term zero-shot, temperature 0, 16,384 토큰 제한, 동일 MASEO 프롬프트, 단일 도메인 열)이 모든 모델에 동일하고, 상위 세 모델(Gemma-26B 76.3, Qwen-35B 75.0, Qwen-Plus 74.7)은 9개 전체 비교 목록에서 정당하게 선택된다. 가중치 공개 여부는 README가 명시한 Qwen과 Gemma 모델만 true 또는 false로 표기하고, 근거가 없는 DeepSeek 세 모델은 null로 두어 폐쇄형으로 취급하지 않았다. 또한 논문 결과이며 현재의 전 세계 리더보드가 아님을 설정에 밝혔다. 미확인 또는 확인 불가 필드는 없다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 128346,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 3550,
+              "output_tokens_details": {
+                "thinking_tokens": 2375
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 128346,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 3550,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 128346,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 128346
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.5489529,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "3c5484889ba526aa327dc4620ad9291d34fb71f4db31737bae98956567d2d73d",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -43787,8 +43833,8 @@
         "2609.26029"
       ],
       "abstract_attempted": [],
-      "calls": 34,
-      "cost_usd": 18.3566
+      "calls": 35,
+      "cost_usd": 18.9056
     }
   },
   "reaudits": [
