@@ -13073,74 +13073,9 @@
       "applied_at": "2026-10-25T04:18:01Z"
     },
     "2512.03262": {
-      "decision": "propose",
-      "reason": "SusVibes는 영어 지시문으로 된 저장소 수준 보안 민감 기능 구현 과제 186개(CWE 79종)를 제공하는 재사용 가능한 코딩 에이전트 벤치마크이며 기존 인벤토리에 없는 새 항목이다. 과제 설명은 영어 이슈 형식의 텍스트 전용 과제여서 en 트랙·text로 분류한다. 논문이 공식 코드·데이터 링크(GitHub)를 명시한다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않아 '확인 불가'로 기록했고, 데이터가 ReposVul/MoreFixes 및 GitHub 저장소에서 수집되었으므로 구성 요소별 약관 점검이 필요함을 유의사항에 적었다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "susvibes",
-            "이름": "SusVibes",
-            "평가 축": "에이전트(보안 민감 코딩)",
-            "언어": "en",
-            "정의": "실제 오픈소스 Python 저장소에서 가져온 보안 민감 기능 요청 186개 과제(CWE 79종, 100개 저장소, 10개 응용 도메인)로 바이브 코딩 에이전트가 만든 패치의 기능 정확성과 보안을 함께 평가하는 벤치마크. 과제마다 사람이 작성한 기능 테스트와 보안 테스트가 있으며, 지표는 FuncPass(기능 테스트 pass@1)와 SecPass(기능·보안 테스트 동시 통과 pass@1)이다. 논문은 3개 에이전트 프레임워크와 4개 모델의 12개 설정을 최대 200 스텝으로 평가했다.",
-            "대표 과제": "저장소의 마스킹된 기능을 요청 설명만 보고 구현(기능·보안 테스트 채점)",
-            "대표 예시·설명": "보안 요구는 알려 주지 않고 기능 요청만 담은 영어 이슈 형식 설명을 주면, 에이전트가 코드베이스와 실행 환경을 사용해 기능을 구현하고 숨겨진 기능·보안 테스트로 채점되는 과제 설명(실제 문항 아님)",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스와 상업적 이용·수정·재배포 조건, lm-eval 지원은 확인하지 않았다. 과제는 ReposVul·MoreFixes 취약점 수정 커밋과 100개 GitHub 저장소에서 파생되었으므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 실행에 Docker 환경이 필요하며, 현재 Python 저장소만 다루고 테스트 결과를 보안의 대리 지표로 쓴다는 한계를 논문이 밝힌다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/LeiLiLab/susvibes"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agents (security-sensitive coding)",
-            "definition": "A benchmark of 186 security-sensitive feature-request tasks from real open-source Python repositories (79 CWE types, 100 repositories, 10 application domains). It evaluates both functional correctness and security of patches written by vibe-coding agents, using human-written functional and security tests per task. Metrics are FuncPass (pass@1 on functional tests) and SecPass (pass@1 on functional and security tests). The paper evaluates 12 settings (3 agent frameworks x 4 models) with a 200-step limit.",
-            "task": "Implement a masked repository feature from a feature-request description, graded by functional and security tests",
-            "example": "Task description, not an actual test item: given an English issue-style feature request with no security guidance, the agent implements the feature in the codebase using the execution environment, and the patch is graded by hidden functional and security tests."
-          },
-          "evidence": {
-            "modality": {
-              "page": 2,
-              "quote": "generate a code"
-            },
-            "대표 과제": {
-              "page": 2,
-              "quote": "generate a code"
-            },
-            "대표 예시·설명": {
-              "page": 16,
-              "quote": "issue-style task description"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/LeiLiLab/susvibes"
-            },
-            "언어": {
-              "page": 16,
-              "quote": "write a self-contained,"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "we propose SUSVIBES"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "186 feature-request software"
-            },
-            "평가 축": {
-              "page": 2,
-              "quote": "security risks of"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공식 저장소 카드(https://github.com/LeiLiLab/susvibes)에 '## LICENSE file' 항목이 있어 MIT 라이선스(Copyright (c) 2024 SusVibes Contributors)가 실제로 존재하므로, '미표기' 및 '저작권 전부 보유'로 처리하는 부재 증거 경로를 쓸 수 없다. 반대로 이 MIT를 데이터셋 라이선스로 게재하기에도 근거가 부족하다. LICENSE 본문은 'the Software and associated documentation files'에 대한 허가이고, README는 데이터셋 파일이 저장소에 포함된다고만 밝히며 'This project is licensed under the terms specified in the LICENSE file.'이라고 적을 뿐, 데이터셋과 모든 구성 요소에 MIT가 적용된다는 명시적 선언이 없다. 또한 논문은 과제가 ReposVul과 MoreFixes의 취약점 수정 커밋(3쪽)과 100개 GitHub 저장소(13쪽 Table 8)에서 파생되었다고 밝히므로, 과제 환경에 포함된 제3자 코드와 테스트에는 각 저장소의 고유 라이선스가 적용될 수 있다. 따라서 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목 모두 구성 요소 전체에 대한 적용 범위를 입증하는 저자 진술이 필요하다. 카드에는 lm-eval 또는 lm-evaluation-harness 언급이 없으나, 나머지 네 항목의 근거가 갖춰질 때까지 게재하지 않는다. 기존 초안의 '확인 불가' 값은 게재 정책에 어긋나므로 사용하지 않았다.",
+      "changes": [],
       "arxiv_id": "2512.03262",
       "paper_title": "Is Vibe Coding Safe? Benchmarking Vulnerability of Agent-Generated Code in Real-World Tasks",
       "paper_updated": "2026-09-22T00:00:00Z",
@@ -13209,7 +13144,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-26T02:53:43Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -13235,11 +13170,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40260983775",
-        "context_sha256": "2a7871e8bfbab4f4987c8b8c0a0b800fda1db7a47311b88e1e2f931bcd84d770"
-      },
-      "proposal_sha256": "329bd2d7f097671fa16d1b5b3c4445bf70cf7814f5b1cbbe138e47b969cfbbf7"
+      "proposal_sha256": "63afd63ef9f9e66237c2e56df69b930509b38d08bbd443f0aafe83e8db4941d5",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     },
     "2603.15309": {
       "decision": "propose",
@@ -41025,7 +40958,9 @@
     },
     "2026-10-26": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [],
+      "calls": 1,
+      "cost_usd": 0.4993
     }
   },
   "reaudits": [
