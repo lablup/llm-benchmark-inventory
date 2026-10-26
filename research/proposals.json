@@ -18170,6 +18170,171 @@
       "proposal_sha256": "dfdae5e252d07f5d410cf0a1ab3a967c02a6cf1d7d7775a9dae53cb2232f0205",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2609.26029": {
+      "decision": "propose",
+      "reason": "이 논문은 역량 질문(CQ)으로부터 LLM이 온톨로지를 생성하는 능력을 평가하는 재사용 가능한 벤치마크 CQ4OE를 새로 제안한다. 두 과제(CQ2Term 99개 CQ, CQ2Onto 118개 CQ), 온톨로지 6개, 평가 지표, 공개 저장소가 있다. 과제 입력은 영어 CQ(PDF 인용 예: 'Which plants eat animals?')이고 텍스트만 쓰므로 en 트랙의 text 행으로 제안한다. 라이선스와 lm-eval 지원은 확인하지 않았으므로 '확인 불가'로 둔다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "cq4oe",
+            "이름": "CQ4OE",
+            "평가 축": "지식 공학(역량 질문 기반 온톨로지 생성)",
+            "언어": "en",
+            "정의": "역량 질문(CQ)으로부터 LLM이 온톨로지를 생성하는 능력을 평가하는 벤치마크. 각 CQ가 요구하는 클래스, 속성, 공리에 CQ 단위 출처 연결이 붙은 gold OWL 온톨로지를 제공한다. 온톨로지 6개(Wine, AWO, ODRL, SAREF4WATR, VGO, SWO)에서 CQ2Term(용어 수준, 99개 CQ)과 CQ2Onto(온톨로지 수준, 118개 CQ)의 두 과제를 정의한다. 논문은 9개 LLM을 zero-shot, 반복, 멀티 에이전트 전략으로 평가했다.",
+            "대표 과제": "CQ2Term: CQ별 클래스·속성 예측(99개 CQ). CQ2Onto: 계층, 속성 모델링, 공리까지 포함한 온톨로지 생성(118개 CQ)",
+            "대표 예시·설명": "영어 CQ(예: AWO의 'Which plants eat animals?')를 입력받아, CQ2Term에서는 필요한 클래스와 속성(Plant, Animal, eats)을 예측하고 CQ2Onto에서는 이를 OWL 온톨로지의 클래스, 속성, 공리로 구성하는 과제 설명이다. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터와 코드의 라이선스는 이 제안 단계에서 확인하지 않았다. 원천 온톨로지 6개의 약관도 이용 전에 따로 확인해야 한다. 평가는 용어 정렬(문자열·임베딩 유사도)에 의존하고, 논문은 원천 온톨로지와 일부 CQ가 공개되어 있어 사전학습 오염 가능성이 있다고 밝힌다. 6개 도메인의 소규모 구성이다. 평가 파이프라인은 HermiT 추론기를 쓰고 임베딩 유사도에 Ollama 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/oeg-upm/cq4oe-benchmark"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Knowledge engineering (ontology generation from competency questions)",
+            "definition": "CQ4OE evaluates LLM-based ontology generation from competency questions (CQs). It provides CQ-driven gold OWL ontologies with explicit provenance linking each CQ to the classes, properties and axioms needed to answer it. Over six ontologies (Wine, AWO, ODRL, SAREF4WATR, VGO, SWO) it defines two tasks: CQ2Term (term-level, 99 CQs) and CQ2Onto (ontology-level, 118 CQs). The paper evaluates nine LLMs under zero-shot, iterative and multi-agent strategies.",
+            "task": "CQ2Term: predict the classes and properties required by each CQ (99 CQs). CQ2Onto: generate an ontology with hierarchy, property modeling and axioms (118 CQs).",
+            "example": "Task description, not an actual test item: given an English CQ such as the AWO question 'Which plants eat animals?', CQ2Term predicts the required classes and property (Plant, Animal, eats), and CQ2Onto builds them into an OWL ontology of classes, properties and axioms."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "Which plants eat"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "CQ2Onto supports ontology-level"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "Which plants eat"
+            },
+            "링크": {
+              "page": 11,
+              "quote": "https://github.com/oeg-upm/cq4oe-benchmark"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "Which plants eat"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "CQ4OE, a benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "CQ4OE, a benchmark"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "CQ4OE, a benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.26029",
+      "paper_title": "CQ4OE: A benchmark for assessing LLM-assisted ontology generation from competency questions",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.26029",
+        "sha256": "97b629ef312c6ed711d062a6d7c2376055b3c7910f5be96d0f85c19ec785b720",
+        "accessed": "2026-10-26T04:03:53Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 20,
+          "elapsed_seconds": 106.17,
+          "pdf_sha256": "97b629ef312c6ed711d062a6d7c2376055b3c7910f5be96d0f85c19ec785b720",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "e5e78bfa2a29ad64408a0b97ff7f23fb7a3975f2bff1657b135e4ac6d1bc698d",
+          "page_json_file": "2609.26029.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/oeg-upm/cq4oe-benchmark",
+            "fetched_url": "https://api.github.com/repos/oeg-upm/cq4oe-benchmark/readme",
+            "sha256": "fb6b5f72bfee91a217a7bfcb0e20ae216b418543865c4e1c7d339e617ccd8ea9",
+            "accessed": "2026-10-26T04:06:05Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/oeg-upm/cq4oe-benchmark/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-26T04:06:05Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.26029",
+        "paper_title": "CQ4OE: A benchmark for assessing LLM-assisted ontology generation from competency questions",
+        "abstract": "Ontology generation from Competency Questions (CQs) is a central yet labor-intensive phase of Ontology Engineering. While large language models (LLMs) offer promising automation capabilities, current evaluations remain fragmented. Task formulations are heterogeneous, gold standards often lack fine-grained CQ provenance, metrics conflate lexical overlap with structural and logical adequacy, and reference ontologies are not always explicitly designed around the evaluation CQs. Here, we address these limitations with CQ4OE, a benchmark for the systematic and reproducible evaluation of LLM-based ontology generation from CQs. For each ontology in the benchmark, we build a CQ-driven gold OWL ontology with explicit provenance linking each CQ to the classes, properties, and axioms required to answer it. From this resource, we define two complementary evaluation tasks. CQ2Term supports term-level evaluation of CQ-specific class and property prediction over 99 CQs, and CQ2Onto supports ontology-level evaluation over 118 CQs, including hierarchy, property modeling, and axiom-level structure. We demonstrate CQ4OE with experiments using nine LLMs under zero-shot, iterative, and multi-agent generation strategies, showing that LLMs recover explicit vocabulary terms more reliably than creating ontologies, particularly in property modeling, hierarchy construction, and axiom generation.",
+        "paper_updated": "2026-09-23T00:00:00Z",
+        "created_at": "2026-10-19T13:44:34Z",
+        "input_sha256": "9e1943b1d3efbcb1b0bb38e82b768911ed7726e0ae004f416b43043acfb10a41",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "역량질문 기반 온톨로지 생성 벤치마크로 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "온톨로지 생성 평가 벤치마크 CQ4OE 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40260983775",
+        "context_sha256": "e2c86e1bf62bcdc6bc581d377d72b5f0fea25f02c002a72d9569e991479ba535"
+      },
+      "proposal_sha256": "48010b48d328b57026539ede83fbc96816624e9f91a5f852733fd7efc624bad2"
     }
   },
   "processed_comments": [],
@@ -43486,8 +43651,8 @@
         "2609.26029"
       ],
       "abstract_attempted": [],
-      "calls": 32,
-      "cost_usd": 17.2734
+      "calls": 33,
+      "cost_usd": 17.762
     }
   },
   "reaudits": [
