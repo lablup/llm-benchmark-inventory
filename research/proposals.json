@@ -16965,7 +16965,7 @@
     },
     "2607.22115": {
       "decision": "propose",
-      "reason": "이 논문은 Spider, BIRD, LiveSQLBench에 역할 기반 접근 제어(RBAC) 정책을 입힌 text-to-SQL 벤치마크를 새로 제안하고, 코드와 데이터 저장소를 공개한다고 밝힌다. 영어 질의를 쓰는 텍스트 전용 과제이므로 en 트랙의 새 행으로 제안한다. 라이선스와 하니스 지원은 PDF에서 확인되지 않아 '확인 불가'로 둔다.",
+      "reason": "이 논문은 Spider, BIRD, LiveSQLBench에 역할 기반 접근 제어(RBAC) 정책을 입힌 text-to-SQL 벤치마크를 새로 제안하고, 코드와 데이터 저장소를 공개한다고 밝힌다. 영어 질의를 쓰는 텍스트 전용 과제이므로 en 트랙의 새 행으로 제안한다. 공식 저장소 README에는 라이선스와 lm-eval 언급이 없고 PDF의 어느 쪽에도 라이선스 표기가 없어, 라이선스는 미표기로 기록하고 권리 항목은 저작권 전부 보유로 처리한다.",
       "changes": [
         {
           "track": "en",
@@ -16978,12 +16978,12 @@
             "대표 과제": "역할 정책이 주어진 상태에서 접근 허용/거부를 판단하고, 허용되면 정책을 준수하는 SQL 생성",
             "대표 예시·설명": "영어 자연어 질문과 역할의 열 단위 접근 정책이 주어진다. 정책을 벗어나는 열이 필요하면 거부 응답을, 아니면 실행 정확한 SQL을 내야 하는 과제(과제 설명).",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터와 코드의 라이선스는 확인하지 못했다. 원본 Spider, BIRD, LiveSQLBench의 약관도 별도로 확인해야 한다. 역할과 정책은 LLM이 합성하고 DB 단위 구성 53건을 사람이 검수한 것이다. 명시적 RBAC 준수만 다루며 추론 기반 정보 유출은 범위 밖이다. 행 단위 정책은 본 릴리스에 포함되지 않는다. Spider·BIRD는 SQLite, LiveSQLBench는 PostgreSQL 실행 환경이 필요하다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 다른 데이터셋을 바탕으로 만들어졌다: Spider, BIRD, LiveSQLBench-Base-Full-v1(논문 4쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 공식 README에 따르면 LiveSQLBench 분할은 원저자의 정책에 따라 정답 SQL을 제거한 채 배포되며, 정답은 원저자에게 별도로 요청해야 한다. 역할과 정책은 LLM이 합성하고 DB 단위 구성 53건을 사람이 검수한 것이다. 명시적 RBAC 준수만 다루며 추론 기반 정보 유출은 범위 밖이다. 행 단위 정책은 본 릴리스에 포함되지 않는다. Spider·BIRD는 SQLite, LiveSQLBench는 PostgreSQL 실행 환경이 필요하다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/2020dfff/RBAC-Text2SQL-Benchmark"
           },
           "modality": "text",
@@ -17029,7 +17029,187 @@
           },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/2020dfff/RBAC-Text2SQL-Benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/2020dfff/RBAC-Text2SQL-Benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/2020dfff/RBAC-Text2SQL-Benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/2020dfff/RBAC-Text2SQL-Benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/2020dfff/RBAC-Text2SQL-Benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "AC-F1 (Access Control F1, 점수 단위: %, RBAC 설정 'w/ role', 5개 시드 평균)",
+            "setting": "이 논문의 Table 3 중 RBAC-Spider(Spider 개발 분할에 역할·정책을 붙인 분할) 블록에서 보고된 결과이며, 현재의 전역 리더보드가 아니다. 모든 모델이 같은 제로샷 프롬프트 템플릿과 평가 하니스를 쓰고, 지원되는 경우 temperature 0, SQLite 실행 백엔드, 질의마다 무작위 역할 하나를 짝지어 5개 시드로 반복한 평균이다. 모델은 지도 미세조정 없이 평가됐고, 토큰 예산은 논문에 별도로 명시되지 않았다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Snowflake-R1-7b",
+                "score": "67.31",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Snowflake-R1-7b 78.14 76.33 ± 1.60 48.68 ± 1.00 0.08 ± 0.07 67.31 ± 0.93"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama3-SQLCoder-8b",
+                "score": "66.30",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Llama3-SQLCoder-8b 58.70 60.52 ± 1.07 50.41 ± 0.98 0.00 ± 0.00 66.30 ± 0.87"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 11,
+                  "quote": "We evaluate two representative open-weight models, Llama-3-SQLCoder-8B and Qwen2.5-14B-Instruct"
+                }
+              },
+              {
+                "model": "Gemma3-4b",
+                "score": "66.46",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Gemma3-4b 68.76 68.34 ± 1.25 50.19 ± 1.24 0.00 ± 0.00 66.46 ± 1.09"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "Open-weight general-purpose models, including DeepSeek V3.2 [29] (both Reasoning and Coder variants), Gemma-3 4B and 27B [41]"
+                }
+              },
+              {
+                "model": "Gemma3-27b",
+                "score": "74.10",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Gemma3-27b 80.08 77.15 ± 1.63 34.14 ± 1.09 0.93 ± 0.10 74.10 ± 1.05"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "Open-weight general-purpose models, including DeepSeek V3.2 [29] (both Reasoning and Coder variants), Gemma-3 4B and 27B [41]"
+                }
+              },
+              {
+                "model": "Qwen2.5-Coder-7b-Inst.",
+                "score": "66.91",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Qwen2.5-Coder-7b-Inst. 74.66 72.51 ± 0.28 49.65 ± 1.14 0.00 ± 0.00 66.91 ± 1.03"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "Open-weight general-purpose models, including DeepSeek V3.2 [29] (both Reasoning and Coder variants), Gemma-3 4B and 27B [41], Qwen-2.5 14B-Instruct [42] and Coder-7B-Instruct [19]"
+                }
+              },
+              {
+                "model": "Qwen2.5-14b-Instruct",
+                "score": "72.84",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Qwen2.5-14b-Instruct 70.21 68.74 ± 0.81 36.94 ± 1.72 0.54 ± 0.20 72.84 ± 1.21"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "Open-weight general-purpose models, including DeepSeek V3.2 [29] (both Reasoning and Coder variants), Gemma-3 4B and 27B [41], Qwen-2.5 14B-Instruct [42] and Coder-7B-Instruct [19]"
+                }
+              },
+              {
+                "model": "Deepseek/V3.2-Reasoning",
+                "score": "95.80",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Deepseek/V3.2-Reasoning 78.82 75.62 ± 1.16 2.11 ± 0.30 2.36 ± 0.33 95.80 ± 0.44"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "Open-weight general-purpose models, including DeepSeek V3.2 [29] (both Reasoning and Coder variants), Gemma-3 4B and 27B [41]"
+                }
+              },
+              {
+                "model": "Deepseek/V3.2-Coder",
+                "score": "74.81",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Deepseek/V3.2-Coder 76.98 71.17 ± 1.08 33.60 ± 1.06 0.58 ± 0.18 74.81 ± 0.93"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "Open-weight general-purpose models, including DeepSeek V3.2 [29] (both Reasoning and Coder variants), Gemma-3 4B and 27B [41]"
+                }
+              },
+              {
+                "model": "Claude-Sonnet-4.5",
+                "score": "92.68",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Claude-Sonnet-4.5 85.40 80.52 ± 0.90 4.89 ± 0.18 3.01 ± 0.42 92.68 ± 0.50"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini-2.5-Flash",
+                "score": "88.66",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Gemini-2.5-Flash 84.24 80.33 ± 1.52 10.87 ± 0.22 2.09 ± 0.25 88.66 ± 0.39"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "OpenAI/GPT-4o-mini",
+                "score": "75.31",
+                "evidence": {
+                  "page": 9,
+                  "quote": "OpenAI/GPT-4o-mini 74.76 60.11 ± 1.08 17.00 ± 1.35 10.37 ± 0.53 75.31 ± 1.72"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "OpenAI/GPT-5-mini",
+                "score": "95.10",
+                "evidence": {
+                  "page": 9,
+                  "quote": "OpenAI/GPT-5-mini 75.15 71.25 ± 0.63 3.60 ± 0.50 1.72 ± 0.32 95.10 ± 0.34"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "OpenAI/GPT-5",
+                "score": "95.74",
+                "evidence": {
+                  "page": 9,
+                  "quote": "OpenAI/GPT-5 74.37 67.62 ± 1.36 2.61 ± 0.37 1.97 ± 0.31 95.74 ± 0.33"
+                },
+                "open_weight": null
+              }
+            ]
+          },
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2607.22115",
@@ -17120,7 +17300,8 @@
         "source_run": "40260983775",
         "context_sha256": "01f56109a3c86dfbcca8b3148ec2ffe93561eac3f19675a9540611accee34198"
       },
-      "proposal_sha256": "3cd624f799779e79f0abf8cc5c7e31f08e40004ce4087bb61ee8cfb0eec1020a"
+      "proposal_sha256": "aa7fa2ec0954c6f3606db8e5a3051045080ac97bc5039ea69e4792af85cb5b65",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -42425,8 +42606,8 @@
         "2607.22115"
       ],
       "abstract_attempted": [],
-      "calls": 18,
-      "cost_usd": 9.6012
+      "calls": 19,
+      "cost_usd": 10.2953
     }
   },
   "reaudits": [
