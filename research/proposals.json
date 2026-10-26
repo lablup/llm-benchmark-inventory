@@ -16189,6 +16189,152 @@
       },
       "issue_url": null,
       "proposal_sha256": "4665ccab87db34b3999343117b0f621b5a035712130314607adede8d0066d631"
+    },
+    "2609.25396": {
+      "decision": "propose",
+      "reason": "이 논문은 병렬 코딩 에이전트가 만든 패치가 각각은 통과하지만 합치면 실패하는 의미적 조율 문제를 측정하는 재사용 가능한 벤치마크 STALE을 새로 제안한다. 합성, Django PR 쌍, Django 헬퍼 기반 구성 과제의 3개 계층으로 이루어지며, 같은 테스트를 단독 패치와 병합 패치에 적용해 병합으로 새로 생긴 실패만 센다. 과제 예시와 메시지가 영어이고 텍스트 입력만 쓰므로 en 트랙의 text로 분류했다. 공식 저장소 URL은 PDF 2쪽 각주에 명시돼 있다. 데이터셋 라이선스와 lm-eval 지원은 확인되지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "stale-bench",
+            "이름": "STALE-bench",
+            "평가 축": "에이전트(병렬 코딩 에이전트의 의미적 조율)",
+            "언어": "en",
+            "정의": "병렬로 작업한 코딩 에이전트의 패치가 각각은 테스트를 통과하지만 병합하면 실패하는 의미적 조율 문제를 측정하는 벤치마크. 같은 테스트 집합을 각 패치 단독과 병합 상태에 적용하고 병합으로 새로 생긴 실패(Δblind)만 센다. 3개 계층으로 구성된다: 합성 과제(3가지 변경 방식 × 4단계, 96 runs), 병합된 PR 쌍(Django 417쌍, 834 runs; 그 외 저장소 30쌍), 실제 Django 헬퍼 12개에 변경을 적용한 구성 과제 36개(216 runs). 이 외에 무관 변경 대조군 23개를 둔다. 논문은 blind, informed(순차 oracle), comm(완료된 변경을 설명하는 oracle 메시지) 조건을 비교한다. 구성 과제의 실패율은 실제 발생 빈도의 추정치가 아니다.",
+            "대표 과제": "두 패치를 독립적으로 작성한 뒤 병합하여, 각 패치 단독 통과 테스트 중 병합 후 새로 실패하는 테스트 수(Δblind) 측정",
+            "대표 예시·설명": "한 작업이 헬퍼 함수 이름을 바꾸거나 필수 인자를 추가하거나 반환 타입을 바꾸는 동안, 다른 에이전트가 변경 전 인터페이스를 쓰는 코드를 작성하는 과제. 텍스트 충돌 없이 병합되지만 병합 후 테스트가 실패하며, comm 조건에서는 완료된 변경을 설명하는 짧은 영어 메시지를 받는다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 아직 확인하지 않았다(논문 자체의 CC BY 4.0은 논문 본문에 대한 것이며 데이터셋 라이선스를 증명하지 않는다). 구성 요소인 Django PR과 테스트 등 원천별 약관도 이용 전에 따로 점검해야 한다. 논문의 에이전트 실험은 Django에 한정되고 구성 과제의 실패율은 실제 빈도를 추정하지 않는다. 결과는 사용한 테스트 집합에 의존한다. 실행에는 코딩 에이전트 하니스와 테스트 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/illinoisdata/STALE-bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (semantic coordination in parallel coding agents)",
+            "definition": "A benchmark of semantic coordination failures in parallel coding agents, where patches pass alone but fail when merged. The same tests run on each patch alone and on the merged patches, and only failures newly introduced by merging are counted (Δblind). It has three tiers: synthetic tasks (3 mechanisms x 4 degrees, 96 runs), merged PR pairs (417 Django pairs, 834 runs; 30 pairs from other repositories), and 36 constructed tasks on 12 real Django helpers (216 runs), plus 23 disjoint controls. The paper compares blind, informed (sequential oracle) and comm (oracle message describing the completed change) conditions. Constructed-task failure rates do not estimate real-world frequency.",
+            "task": "Solve two tasks independently, merge the patches, and measure tests that pass with each patch alone but fail after merging (Δblind).",
+            "example": "Task description: one change renames a helper, adds a required argument or changes a return type while another agent writes code against the old interface. The patches merge without textual conflict but fail tests, and in the comm condition the agent receives a short English message describing the completed change."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "wrap1 was renamed"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "36 constructed tasks"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "wrap1 was renamed"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "https://github.com/illinoisdata/STALE-bench"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "wrap1 was renamed"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "stale, a benchmark"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "36 constructed tasks"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "stale, a benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.25396",
+      "paper_title": "Passes Alone, Fails Together: Benchmarking Semantic Coordination in Parallel LLM-Agent Development",
+      "paper_updated": "2026-09-23T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.25396",
+        "sha256": "e0d15f430eabad091ef4f6c591c189f3095990c505b7a958d917ba3d65e3b1e3",
+        "accessed": "2026-10-26T03:11:18Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 6,
+          "elapsed_seconds": 49.54,
+          "pdf_sha256": "e0d15f430eabad091ef4f6c591c189f3095990c505b7a958d917ba3d65e3b1e3",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "d535cfc26fc6b53a7bdcb51e5dd7dd55047707a912ffa09746470460403273c1",
+          "page_json_file": "2609.25396.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/illinoisdata/STALE-bench",
+            "fetched_url": "https://api.github.com/repos/illinoisdata/STALE-bench/readme",
+            "sha256": "6d19986d6bef662e0d910e9fe6212f559e54523184355339577e23533548f0c8",
+            "accessed": "2026-10-26T03:12:32Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-26T03:12:32Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.25396",
+        "paper_title": "Passes Alone, Fails Together: Benchmarking Semantic Coordination in Parallel LLM-Agent Development",
+        "abstract": "Parallel coding agents can produce patches that work alone but fail when merged. This happens when one agent changes an interface or rule that another agent still relies on. We study these failures with stale, a benchmark for semantic coordination. Our evaluation runs the same tests on each patch alone and on their combination, counting only failures introduced by combining the patches. We use three tiers: synthetic tasks with controlled interface changes, pairs of merged pull requests, and constructed tasks that use real Django helpers. Among 834 runs on 417 mined Django pairs, only one showed interference after correcting the grading procedure. On constructed tasks using 12 Django helpers, interference occurred in 97% of runs. A message describing the completed concurrent change recovered 82% of runs. Reviewed pull requests may contain few unresolved parallel changes, even when agents fail on controlled tasks using real code. The constructed failure rates do not estimate how often these problems occur in practice.",
+        "paper_updated": "2026-09-23T00:00:00Z",
+        "created_at": "2026-10-19T13:44:22Z",
+        "input_sha256": "bbcd08bb6850d26920085472a3c9ba51bdcd57c5cf0906b0ecf22b0efa7c3435",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "병렬 LLM 에이전트 의미 조정 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "병렬 에이전트 의미 조정 벤치마크 stale 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40260983775",
+        "context_sha256": "bc9f8e83be2b81d30b2f5fee51892f46a2d7224a48d4040694c46f07c54c5e85"
+      },
+      "proposal_sha256": "1adbefc96d485962d281694a2e0222584bc180bc98bd55ccb6ab8b5ac81841a0"
     }
   },
   "processed_comments": [],
@@ -41485,8 +41631,8 @@
         "2609.25396"
       ],
       "abstract_attempted": [],
-      "calls": 7,
-      "cost_usd": 3.5784
+      "calls": 8,
+      "cost_usd": 3.9676
     }
   },
   "reaudits": [
