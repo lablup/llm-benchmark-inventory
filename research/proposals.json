@@ -18603,7 +18603,7 @@
     },
     "2609.26751": {
       "decision": "propose",
-      "reason": "EquivSVA는 행동 패밀리 단위로 구성된 재사용 가능한 데이터셋입니다. 패밀리 120개, 범주 12개, 참조 RTL 480개, gold 속성 914개, 변이체 360개를 담고 있고, 고정된 train/dev/test 분할과 형식 검증 및 평가 코드를 공개합니다. 과제는 RTL로부터 SystemVerilog Assertion을 생성하는 코딩 과제이며, 텍스트 입력만 쓰므로 text 모달리티입니다. 프롬프트는 영어로 서술되어 en 트랙에 둡니다. 새 항목이라 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 '확인 불가'로 기록합니다. 공식 링크는 논문이 밝힌 GitHub 저장소입니다.",
+      "reason": "EquivSVA는 행동 패밀리 단위로 구성된 재사용 가능한 데이터셋입니다. 패밀리 120개, 범주 12개, 참조 RTL 480개, gold 속성 914개, 변이체 360개를 담고 있고, 고정된 train/dev/test 분할과 형식 검증 및 평가 코드를 공개합니다. 과제는 RTL로부터 SystemVerilog Assertion을 생성하는 코딩 과제이며, 텍스트 입력만 쓰므로 text 모달리티입니다. 프롬프트는 영어로 서술되어 en 트랙에 둡니다. 공식 저장소 README는 데이터셋에 CC BY 4.0, 소스 코드에 Apache-2.0을 부여한다고 밝히며 논문 5쪽도 같은 내용을 적습니다. 공식 README에는 lm-eval 언급이 없어 '미표기'로 기록합니다. 비교 결과는 논문 사례 연구의 단일 모델(Qwen2.5-Coder-7B-Instruct) 수치입니다.",
       "changes": [
         {
           "track": "en",
@@ -18616,12 +18616,12 @@
             "대표 과제": "인터페이스 신호만 사용하는 SVA 속성 생성(RTL 입력, 형식 검증으로 soundness 및 변이체 탐지 평가)",
             "대표 예시·설명": "RTL 구현을 주고 구현 내부 신호를 쓰지 않는 인터페이스 수준 동작 속성을 생성하게 하는 과제. 같은 동작을 구현한 서로 다른 RTL 간 결과 변화도 분석함(과제 설명).",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건, lm-eval 지원 여부는 아직 확인하지 않았음. 이용 전 저장소에서 확인 필요. 패밀리는 프로그램으로 생성되었고 제어 로직 중심이라 산업용 RTL 전체를 대표하지 않음. 사례 연구는 단일 모델이며 리더보드가 아님. 형식 검증 도구(Yosys/SymbiYosys 기반) 실행 환경이 필요함.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-4.0(데이터), 코드는 Apache-2.0",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "데이터는 CC BY 4.0이므로 출처 표기(BY)가 필요하고, 소스 코드와 스크립트는 별도로 Apache-2.0이 적용됨. 패밀리는 명세로부터 프로그램으로 생성된 것이며 외부 데이터셋에서 가져온 구성 요소는 논문에 나타나지 않음. 제어 로직 중심이라 산업용 RTL 전체를 대표하지 않음. 사례 연구는 단일 모델이며 리더보드가 아님. 형식 검증 도구(Yosys/SymbiYosys 기반) 실행 환경이 필요함.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/aditigupta96/EquivSVA"
           },
           "modality": "text",
@@ -18665,9 +18665,53 @@
               "quote": "EquivSVA contains 120"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "page": 5,
+              "quote": "Apache-2.0 for source code and CC BY 4.0 for the dataset"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/aditigupta96/EquivSVA",
+              "quote": "released under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/aditigupta96/EquivSVA",
+              "quote": "released under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license"
+            },
+            "재배포": {
+              "source_url": "https://github.com/aditigupta96/EquivSVA",
+              "quote": "released under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/aditigupta96/EquivSVA",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "유효한 인터페이스 전용 생성 속성 293개 중 형식적으로 sound한 속성의 개수(count)",
+            "setting": "EquivSVA v2.0 test 분할(24개 패밀리, 96개 RTL 입력), 4비트 MLX 체크포인트, greedy 디코딩, 인터페이스 전용 행동 SVA를 요청하는 프롬프트. 소스 RTL에서 증명에 성공하면 sound로 계산. 논문 표 5의 사례 연구에서 보고된 결과이며 현재 전체 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Qwen2.5-Coder-7B-Instruct",
+                "score": "93",
+                "evidence": {
+                  "page": 1,
+                  "quote": "Qwen2.5-Coder-7B-Instruct model on the held-out test split. Of 293 interface-only generated properties, 93 are formally sound"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 1,
+                  "quote": "publicly released, Apache-2.0-licensed Qwen2.5-Coder-7B-Instruct"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.26751",
@@ -18753,7 +18797,8 @@
         "source_run": "40260983775",
         "context_sha256": "61c1d6832db53a46bd5674b8ade027c6cd033f165bf5307dca36a94cc732478b"
       },
-      "proposal_sha256": "3416bfe72a5b7c6b6904210e001456f2a5c00552b786a3b42294e2c68a19de38"
+      "proposal_sha256": "66a46795eab299aab398c156b45ee3abbb13a38d69d612db795ca4299c845c27",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -44075,8 +44120,8 @@
         "2609.26751"
       ],
       "abstract_attempted": [],
-      "calls": 37,
-      "cost_usd": 19.8191
+      "calls": 38,
+      "cost_usd": 20.2631
     }
   },
   "reaudits": [
