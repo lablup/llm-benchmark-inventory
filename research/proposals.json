@@ -19180,7 +19180,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-26T04:23:59Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -19206,12 +19206,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40260983775",
-        "context_sha256": "cabcc2edcf435c5342287682320d60fc5e451ff80a91c27efbf1b0bba0376d08"
-      },
       "proposal_sha256": "9273a2cbdfe33c64cbb114e36ea7295423b87368437a8bd88e868e28176b8064",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안의 변경 사항은 논문과 공식 README로 뒷받침된다. 벤치마크 구성(25개 관계, 모델당 고유 프롬프트 300개 중 L1 146개와 L3 154개, 선택형 77문항, 힌디어·타밀어·한국어, 생일 축하와 결혼 초대 과제)은 3쪽과 부록 표 6의 수치와 일치한다. 텍스트 모달리티이고 한국어를 포함하므로 ko 트랙의 행으로 적절하다. 권리 필드 5개는 모두 명시적 근거로 확정되었다. README는 저자 제작 데이터·주석에 CC BY 4.0을, 코드와 문서에 MIT를 부여하며, 저자가 해당 권리를 보유하는 범위로 한정한다. 보관된 모델 출력은 저자 단독 소유로 주장하지 않는다고 밝히는데, 제안은 이 제한을 상업적 이용·수정·재배포 필드와 유의사항에 모두 반영했다. 코드 라이선스를 데이터 권리로 오인하지 않았고, 출처 표기 필요성과 다섯 모델 출력물의 고유 약관을 따로 확인해야 한다는 점도 적었다. lm-eval은 논문과 공식 카드 어디에도 언급이 없어 미표기가 맞고, 이는 미지원이 아니라 미문서화라는 뜻이다. 논문의 license 관련 언급은 방언과 용어 목록에 관한 언어학적 문맥이어서 데이터셋 라이선스 진술이 아니다. 추천 모델의 점수는 표 1과 일치한다: GLM-5.1 334/462로 72.29, Kimi-K2.6 225/462로 48.70, Sarvam-M 187/462로 40.48, GPT-OSS-120B 162/462로 35.06, Llama-3.3-70B 112/462로 24.24. 직접 나눗셈으로 검산했고 표 2의 과제별 합계와도 맞는다. 다섯 모델 모두 같은 L3 조건(77셀, 모델당 462회 시도, 같은 디코딩 설정)이라 상위 3개 선정이 정당하고, 정확도는 높을수록 좋은 지표이며, 논문 보고 결과로 명시했다. 공개 가중치는 초록의 open-weight 표현이 근거이고, 선택형 결과(GPT-OSS-120B 36.00 등)는 다른 분석 집합이라 섞이지 않았다. 참고로 논문 표 4의 타밀어 평균(9.2)은 행 값으로 계산한 값과 어긋나지만 제안에 쓰이지 않아 승인에 영향이 없다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 97731,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2748,
+              "output_tokens_details": {
+                "thinking_tokens": 1770
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 97731,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2748,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 97731,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 97731
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.4184729,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "9273a2cbdfe33c64cbb114e36ea7295423b87368437a8bd88e868e28176b8064",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -44535,8 +44581,8 @@
         "2609.26942"
       ],
       "abstract_attempted": [],
-      "calls": 43,
-      "cost_usd": 22.6111
+      "calls": 44,
+      "cost_usd": 23.0296
     }
   },
   "reaudits": [
