@@ -17270,7 +17270,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-26T03:32:43Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -17296,12 +17296,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40260983775",
-        "context_sha256": "01f56109a3c86dfbcca8b3148ec2ffe93561eac3f19675a9540611accee34198"
-      },
       "proposal_sha256": "aa7fa2ec0954c6f3606db8e5a3051045080ac97bc5039ea69e4792af85cb5b65",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 행의 사실 주장과 추천 목록이 논문 PDF와 공식 README로 모두 뒷받침되어 승인합니다. 규모 수치와 구성은 논문과 일치합니다. 벤치마크는 53개 DB, 399개 테이블, 3,353개 열, 21,502건(Spider 6,926, BIRD 10,175, LiveSQLBench 4,401)이고, Spider·BIRD 개발 분할을 쓰며 DB 단위 구성 53건을 사람 4인이 검수했고 5개 시드를 반복합니다. 영어 질의를 쓰는 텍스트 전용 과제이므로 언어와 모달리티도 타당합니다. 실행 환경(Spider·BIRD는 SQLite, LiveSQLBench는 PostgreSQL), 행 단위 정책 미포함, 추론 기반 유출이 범위 밖이라는 점도 논문에 근거가 있습니다. LiveSQLBench 정답 SQL이 제거된 채 배포된다는 점은 공식 README에 근거가 있습니다. 라이선스는 논문과 공식 README 어디에도 이 벤치마크의 데이터·코드 라이선스 진술이 없고 PDF 언급 목록도 비어 있어 '미표기'가 맞습니다. 이에 따라 상업적 이용, 수정·파생, 재배포가 모두 '저작권 전부 보유'로 규칙에 맞게 기재되었습니다. 이 벤치마크는 Spider, BIRD, LiveSQLBench를 바탕으로 만들어졌고, 유의사항에 이 세 데이터셋을 명시하면서 각 구성 요소의 고유 약관을 따로 확인해야 한다고 적었습니다. 공식 README에 lm-eval 언급이 전혀 없으므로 'lm-eval 지원'의 '미표기'는 허용되는 해소 값입니다. 추천 목록은 논문 Table 3의 RBAC-Spider 블록에서 같은 조건(제로샷, 동일 하니스, 'w/ role', 5개 시드 평균)으로 보고된 AC-F1(높을수록 좋음)입니다. 이 블록의 13개 모델 전체가 빠짐없이 포함되어 있고, 점수 13개는 MinerU와 Poppler 추출본이 서로 일치하며 모델과 열 정렬도 맞습니다. 상위 3개(DeepSeek V3.2-Reasoning, GPT-5, GPT-5-mini)는 이 목록 안에서 정당하게 선정되었고, 논문 보고 결과라는 설정 설명도 적절합니다. 공개 가중치 표기는 논문이 오픈 웨이트로 명시한 모델(DeepSeek V3.2, Gemma-3, Qwen2.5, Llama3-SQLCoder)에만 true가 붙었고, 근거가 없는 Snowflake-R1-7b와 상용 모델은 null로 남겨 폐쇄형으로 취급하지 않았습니다. 알 수 없음·확인 불가 필드는 없습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 155155,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 3159,
+              "output_tokens_details": {
+                "thinking_tokens": 2046
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 155155,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 3159,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 155155,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 155155
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.6522789,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "aa7fa2ec0954c6f3606db8e5a3051045080ac97bc5039ea69e4792af85cb5b65",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -42606,8 +42652,8 @@
         "2607.22115"
       ],
       "abstract_attempted": [],
-      "calls": 19,
-      "cost_usd": 10.2953
+      "calls": 20,
+      "cost_usd": 10.9476
     }
   },
   "reaudits": [
