@@ -18847,74 +18847,9 @@
       }
     },
     "2609.26893": {
-      "decision": "propose",
-      "reason": "ACTS는 LLM이 암호문만으로 암호 알고리즘 계열을 식별하는 능력을 메타데이터 제거 단계(Tier 1~3), 에이전트 도구 사용(Tier 4), 강제 추론(Tier 5)으로 나누어 측정하는 재사용 가능한 벤치마크이며, 데이터와 평가 하니스를 GitHub와 Zenodo에 공개했다고 밝힌다. 입력은 hex/base64 텍스트와 영어 파일명이므로 en 트랙의 text로 분류했다. 다만 프롬프트 원문은 인용되어 있지 않고 영어 파일명 예시만 있어 언어 근거는 약하다. 이 점과 라이선스 미확인, 데이터 규모 표기 불일치(본문 127파일, 데이터 가용성 절 140파일)는 유의사항에 적었다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "acts",
-            "이름": "ACTS (Artifacts in Cipher Testing Suite)",
-            "평가 축": "보안(암호문 알고리즘 식별, 메타데이터 의존성)",
-            "언어": "en",
-            "정의": "암호문만으로 알고리즘 계열을 맞히는 7지 분류 벤치마크(무작위 기준 14.3%). 메타데이터를 단계적으로 제거한다: Tier 1은 파일명과 암호문, Tier 2는 파일명만, Tier 3은 암호문만 제공한다. Tier 4는 도구를 쓰는 에이전트(4A 메타데이터 없음, 4B 있음), Tier 5는 강제 추론 형식, Tier 6~8은 고전 ML 기준선, 교란 견고성, 특징 제거 실험이다. 코퍼스는 127파일(v2b, 라이브 추론), 700파일, 7,000파일의 3단계이며, 지표는 정확도(Wilson 95% CI)와 flip rate이다.",
-            "대표 과제": "암호문(hex/base64 텍스트)을 보고 7개 암호 계열(AES-128-CBC, AES-256-CBC, DES-CBC, 3DES, ChaCha20-Poly1305, RSA-OAEP-2048, ML-KEM-768) 중 하나로 분류",
-            "대표 예시·설명": "Tier 1은 'AES-256-CBC_1kb.bin' 같은 파일명을 암호문과 함께 주고, Tier 3은 암호문만 주어 알고리즘 계열을 답하게 하는 과제 설명이다. 실제 문항이 아니다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 이번 단계에서 확인하지 않았으므로 이용 전에 저장소와 Zenodo 기록으로 확인해야 한다. 암호문은 합성 데이터이며 생성 구현이 제한적이다. Tier 5의 700·7,000파일 결과는 라이브 LLM 측정이 아니라 결정적 휴리스틱 대체이다. 라이브 평가는 127파일 규모다. 본문은 127파일, 데이터 가용성 절은 140파일로 표기가 달라 규모를 확인해야 한다. 입력이 영어 프롬프트와 파일명, 이진 암호문이라 언어 근거는 약하다. 일부 Tier는 Kali 도구가 있는 에이전트 실행 환경이 필요하다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/youseefhamdi/ACTS-Benchmark"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Security (cipher identification from ciphertext, metadata dependency)",
-            "definition": "A seven-way classification benchmark that asks a model to identify the cipher family from ciphertext alone (random baseline 14.3%). Metadata is removed in stages: Tier 1 gives the filename plus ciphertext, Tier 2 the filename only, Tier 3 the ciphertext only. Tier 4 uses a tool-using agent (4A without metadata, 4B with it), Tier 5 forced reasoning formats, and Tiers 6-8 classical ML baselines, perturbation robustness, and feature ablation. The corpus has three phases: 127 files (v2b, live inference), 700 files, and 7,000 files. Metrics are accuracy (Wilson 95% CI) and flip rate.",
-            "task": "Classify ciphertext (hex/base64 text) into one of seven cipher families (AES-128-CBC, AES-256-CBC, DES-CBC, 3DES, ChaCha20-Poly1305, RSA-OAEP-2048, ML-KEM-768).",
-            "example": "Task description, not an actual test item: Tier 1 gives a filename such as 'AES-256-CBC_1kb.bin' together with the ciphertext, while Tier 3 gives only the ciphertext, and the model names the cipher family."
-          },
-          "evidence": {
-            "modality": {
-              "page": 9,
-              "quote": "hexadecimal or base64"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "seven-way classification"
-            },
-            "대표 예시·설명": {
-              "page": 2,
-              "quote": "AES-256-CBC_1kb.bin"
-            },
-            "링크": {
-              "page": 5,
-              "quote": "youseefhamdi/ACTS-Benchmark"
-            },
-            "언어": {
-              "page": 2,
-              "quote": "AES-256-CBC_1kb.bin"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "ACTS (Artifacts in"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "tiered metadata deprivation"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "tiered metadata deprivation"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "데이터 라이선스에 대해 논문과 공식 README가 서로 다르게 적고 있어 한 값으로 게시할 수 없습니다. 논문 37쪽 Data availability는 'publicly available under the MIT License (code) and CC-BY (data)'라고 적습니다. 공식 README(https://github.com/youseefhamdi/ACTS-Benchmark)의 License 항은 'Software: Apache-2.0', 'Data (ciphertext): CC0'입니다. 코드는 MIT와 Apache-2.0, 데이터는 CC-BY와 CC0로 서로 어긋납니다. 또한 README는 ESWA-D-26-11044R1 보충자료로서 140개와 700개 파일(총 840개 .bin)만 설명하고 논문의 7,000개 파일 코퍼스는 다루지 않으므로, README의 CC0가 논문 전체 데이터에 적용되는지 알 수 없습니다. README에는 '## LICENSE file' 항목이 없어(license_file 없음) 별도의 LICENSE 파일로 두 표기를 조정할 근거도 없습니다. 이 때문에 정답 라이선스를 정하거나 '미표기' 처리(absence)를 할 수 없습니다. 상업적 이용, 수정·파생, 재배포 값도 라이선스에 따라 정해지므로 함께 보류합니다. 논문 데이터(127/700/7,000개 파일)에 적용되는 라이선스를 저자가 명시한 공식 LICENSE 파일, Zenodo 기록(https://doi.org/10.5281/zenodo.20142272) 또는 README 개정본을 확보한 뒤 다시 제출해야 합니다. 이번에는 아무것도 게시하지 않습니다. lm-eval 지원은 README와 PDF 어디에도 lm-eval 또는 lm-evaluation-harness 언급이 없으므로 라이선스가 정리되면 '미표기'와 absence 근거로 처리할 수 있습니다. 논문 19쪽 Table 2(Tier 3 blind accuracy)는 모델별 점수를 포함하므로 recommendations 근거로 쓸 수 있습니다.",
+      "changes": [],
       "arxiv_id": "2609.26893",
       "paper_title": "ACTS: A multi-tier benchmark evaluating LLM cipher identification under controlled blind conditions",
       "paper_updated": "2026-09-24T00:00:00Z",
@@ -18992,7 +18927,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-26T04:21:37Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -19018,11 +18953,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40260983775",
-        "context_sha256": "db2ac0159eb4368b2c6255121dab22ef9d56aa1b98b7e63bf8d06afeb9c839d9"
-      },
-      "proposal_sha256": "d24e96a973f6d1415daab3673e4a8c08fb9d5a14089b1cef3cb4e4da883aff28"
+      "proposal_sha256": "ce2e18c9db9727abd89c029d6f20c6c5d907963d8e954d9118b0d0afdaabd7fe",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -44345,8 +44278,8 @@
         "2609.26893"
       ],
       "abstract_attempted": [],
-      "calls": 40,
-      "cost_usd": 21.2216
+      "calls": 41,
+      "cost_usd": 21.7662
     }
   },
   "reaudits": [
