@@ -17969,74 +17969,9 @@
       "approval_policy": "claude_only"
     },
     "2609.31727": {
-      "decision": "propose",
-      "reason": "영어 원문 600문항을 Oshindonga와 Oshikwanyama로 번역하는 MT·LLM 평가 벤치마크를 제안하는 논문이다. 과제 지시문과 원문이 영어(프롬프트 템플릿 'translating English to {DIALECT}')라서 en 트랙·text로 분류했다. 11개 현상 태그, 30% 블라인드 분할(180문항), chrF++·BLEU·COMET-22 채점 프로토콜, 50문항 사람 평가를 갖춘 재사용 가능한 설계다. 다만 아직 계획 단계의 개념 논문이며, 데이터는 2026년 4분기 공개 예정이다. PDF가 명시한 공식 GitHub 저장소를 링크로 쓰고, 라이선스 등 확인되지 않은 다섯 항목은 '확인 불가'로 두었다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "ongiini-eval-ow",
-            "이름": "Ongiini-Eval-OW",
-            "평가 축": "기계번역(영어→Oshiwambo 저자원 언어 번역 품질)",
-            "언어": "en",
-            "정의": "영어 원문 600문항을 Oshindonga와 Oshikwanyama 두 표준 방언으로 번역하는 MT·LLM 평가 벤치마크(계획 단계). 원어민 번역가 2명의 참조 번역, 30문항 번역가 간 일치도 세트, 11개 현상 태그(태그당 30문항 이상), 결정적 30% 블라인드 분할(180문항, 개발 420문항)을 갖추며 chrF++(주 지표), BLEU, COMET-22로 자동 채점하고 50문항 사람 평가(적절성·유창성 1~5점)를 병행한다.",
-            "대표 과제": "영어 문장을 Oshindonga 또는 Oshikwanyama로 번역(제로샷 프롬프트, 영어 지시문)",
-            "대표 예시·설명": "영어 문장을 주고 지정한 방언으로 번역문만 출력하게 하는 과제. 부정, 명사류 일치, 코드 스위칭, 높임 표현 같은 현상 태그별로 점수를 나눠 본다(과제 설명).",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "2026-09 기준 개념 논문이며 데이터는 아직 공개되지 않았고 2026년 4분기 첫 공개 예정이다(내부 v0.1은 423문항). 논문은 데이터 CC-BY-4.0, 코드 MIT를 예고했지만 실제 공개본에서 확인하지 않았다. 평가 대상 언어는 Oshiwambo이고 영어는 원문 쪽이다. 600문항으로 규모가 작고 현상별 블라인드 슬라이스는 약 9문항이라 해석용이다. COMET-22는 Oshiwambo 학습 데이터가 없어 참고용 지표다. 하니스 지원은 확인하지 않았다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/sebkuepers/Ongiini"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Machine translation (English to Oshiwambo, low-resource translation quality)",
-            "definition": "A planned MT and LLM benchmark of 600 English source items translated into two standardised Oshiwambo dialects, Oshindonga and Oshikwanyama. It has native-speaker references from two translators, a 30-item inter-translator agreement set, 11 phenomenon tags (at least 30 items each), and a deterministic 30% blind split (180 blind, 420 development). Scoring uses chrF++ (primary), BLEU and COMET-22, plus a 50-item human evaluation of adequacy and fluency (1-5).",
-            "task": "Translate English sentences into Oshindonga or Oshikwanyama using a zero-shot prompt with English instructions",
-            "example": "Task description: given an English sentence, the system outputs only the translation into the specified dialect. Scores are broken down by phenomenon tags such as negation, noun-class agreement, code-switching and politeness register."
-          },
-          "evidence": {
-            "modality": {
-              "page": 10,
-              "quote": "The benchmark is"
-            },
-            "대표 과제": {
-              "page": 14,
-              "quote": "translating English to"
-            },
-            "대표 예시·설명": {
-              "page": 14,
-              "quote": "translating English to"
-            },
-            "링크": {
-              "page": 9,
-              "quote": "https://github.com/sebkuepers/Ongiini"
-            },
-            "언어": {
-              "page": 14,
-              "quote": "translating English to"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "Ongiini-Eval-OW"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "planned 600-item English"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "machine-translation evaluation benchmark"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "이 논문은 계획 단계의 개념 논문이라 어떤 모델의 평가 점수도 싣고 있지 않다. 본문 표 1~6은 방언 정보, 커버리지 점검, 구성, 태그, 분할 관례, 로드맵만 다룬다. Claude Opus 5와 Gemma 4 26B 기준선은 v1.0 공개 전에 다시 계산해 arXiv v2에 싣겠다고 8쪽과 10쪽에 적혀 있다. 모든 변경에 필요한 recommendations(단일 실험·표에서 나온 비교 가능한 수치 결과)를 근거와 함께 만들 수 없으므로 아무것도 게시하지 않는다. 라이선스는 공식 저장소 README에 데이터 CC BY 4.0, 코드 MIT로 명시되어 있다. 이 항목은 수치 결과가 담긴 후속 판이 나온 뒤 다시 제출하면 된다.",
+      "changes": [],
       "arxiv_id": "2609.31727",
       "paper_title": "The Ongiini-Eval-OW Benchmark: A Concept Paper for the Planned Benchmarking of Machine Translation and Large Language Models on Oshindonga and Oshikwanyama",
       "paper_updated": "2026-09-29T00:00:00Z",
@@ -18095,7 +18030,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-26T03:58:48Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -18121,11 +18056,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40260983775",
-        "context_sha256": "ef1d01c7217c3b3ab35d0fc54077559fdfd3c444b1dbd1de597e2c5f02346199"
-      },
-      "proposal_sha256": "23dff78b7afa0d92bdba5df95fdd3f43e2f34938235389bb1fdeaf5e184fc062"
+      "proposal_sha256": "f7b03cc8950153ea1db2758c8d7edda2d698d8912f182983f72eeb28050f0808",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -43440,8 +43373,8 @@
         "2609.31727"
       ],
       "abstract_attempted": [],
-      "calls": 29,
-      "cost_usd": 15.6776
+      "calls": 30,
+      "cost_usd": 16.1805
     }
   },
   "reaudits": [
