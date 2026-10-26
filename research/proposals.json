@@ -15669,74 +15669,9 @@
       }
     },
     "2609.22529": {
-      "decision": "propose",
-      "reason": "IntLawNER는 영어 국제법 문서(ICJ 판결, UN 안보리 결의, ECtHR 판결)를 대상으로 한 새 개체명 인식(NER) 데이터셋 겸 벤치마크입니다. 2,987개 gold 문장, 8,094개 스팬, 7개 개체 유형을 갖추고, regex, GLiNER, LLM(0-shot/5-shot), 파인튜닝 트랜스포머를 같은 테스트셋에서 비교합니다. 과제 문장이 영어이고 텍스트만 입력으로 쓰므로 en 트랙의 text로 분류했습니다. 공식 링크는 PDF 1쪽 각주의 코드 저장소 URL을 사용했습니다. 라이선스 등 5개 필드는 규칙에 따라 '확인 불가'로 두고, 논문이 밝힌 주석 레이어의 CC-BY-4.0 표기는 유의사항에 적었습니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "intlawner",
-            "이름": "IntLawNER",
-            "평가 축": "정보 추출(국제법 개체명 인식)",
-            "언어": "en",
-            "정의": "국제법 성문 자료를 대상으로 한 토큰 수준 개체명 인식(NER) 데이터셋 겸 벤치마크. ICJ 판결, UN 안보리 결의, ECtHR 판결에서 뽑은 gold 주석 문장 2,987개, 개체 스팬 8,094개, 기관 기능 기반 개체 유형 7개(IL_TREATY, IL_PROVISION, IL_RESOLUTION, IL_COURT_INSTR, IL_CASE_CITATION, IL_SOFT_LAW, IL_DOMESTIC_LAW)로 구성된다. 원천 468k 문장에서 알고리즘 후보 선별, LLM 검토, 사람 검수를 거쳐 만들었고, gold 스팬의 89.6%가 LLM silver 라벨과 수정 없이 일치했다. 코퍼스별 분할을 적용한 약 70/10/20 train/dev/test 분할이며, 테스트셋은 605문장·1,660스팬이다. 평가는 seqeval의 엄격한 BIO 매칭에 따른 개체 단위 정밀도·재현율·F1이고 라벨별 F1과 micro/macro 평균을 보고한다. 논문은 regex, GLiNER, LLM 9종(0-shot과 5-shot), 파인튜닝 Legal-BERT·XLM-RoBERTa-large를 비교했다.",
-            "대표 과제": "국제법 문장에서 7개 개체 유형의 스팬을 추출하는 NER(엄격한 BIO 매칭 기준 개체 단위 F1)",
-            "대표 예시·설명": "조항, 조약, 결의, 판례 인용 등을 담은 영어 국제법 문장에서 개체 스팬과 유형을 찾아내는 과제 설명(실제 문항이 아님). 예를 들어 'Article 2, paragraph 4'는 조항(IL_PROVISION) 유형의 스팬이다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "논문은 주석 레이어를 CC-BY-4.0으로 공개하고 원 법률 텍스트(ICJ, UNSC, ECtHR)는 각 원천의 약관을 따른다고 밝히지만(논문 9쪽), 이 제안에서는 라이선스·상업적 이용·수정·재배포를 직접 확인하지 못해 '확인 불가'로 둔다. 이용 전 데이터 카드와 각 원천 약관을 확인해야 한다. 규모가 작고(2,987문장) IL_COURT_INSTR(테스트 18스팬), IL_SOFT_LAW(테스트 37스팬) 같은 희소 라벨은 신뢰구간이 넓어 라벨별 점수 해석에 주의가 필요하다. 스키마는 국제법 전문가의 독립 검증을 받지 않았다. 논문의 κ=0.964는 사람-기계 일치도이며 일반적인 평정자 간 일치도가 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/mrgeooo14/IntLawNER"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Information extraction (named entity recognition in international law)",
-            "definition": "A token-level named entity recognition (NER) dataset and benchmark for codified sources of international law. It has 2,987 gold-annotated sentences and 8,094 entity spans from ICJ decisions, UN Security Council resolutions, and ECtHR judgments, with seven institution-specific entity types (IL_TREATY, IL_PROVISION, IL_RESOLUTION, IL_COURT_INSTR, IL_CASE_CITATION, IL_SOFT_LAW, IL_DOMESTIC_LAW). It was built from 468k source sentences through algorithmic candidate selection, LLM vetting, and human review, and 89.6% of gold spans were accepted unchanged from the LLM silver layer. The split is approximately 70/10/20 train/dev/test, stratified by corpus, and the test set has 605 sentences and 1,660 spans. Evaluation uses entity-level precision, recall, and F1 with strict BIO matching via seqeval, reporting per-label F1 and micro/macro averages. The paper compares regex, GLiNER, nine LLMs (zero-shot and 5-shot), and fine-tuned Legal-BERT and XLM-RoBERTa-large.",
-            "task": "NER that extracts spans of seven entity types from international legal sentences (entity-level F1 under strict BIO matching)",
-            "example": "Task description, not an actual test item: find entity spans and their types in English international-law sentences containing provisions, treaties, resolutions, and case citations. For example, 'Article 2, paragraph 4' is a span of type IL_PROVISION."
-          },
-          "evidence": {
-            "modality": {
-              "page": 1,
-              "quote": "IntLawNER1, a NER"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "IntLawNER1, a NER"
-            },
-            "대표 예시·설명": {
-              "page": 3,
-              "quote": "Article 2, paragraph"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/mrgeooo14/IntLawNER"
-            },
-            "언어": {
-              "page": 3,
-              "quote": "All texts are"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "IntLawNER1, a NER"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "IntLawNER1, a NER"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "IntLawNER1, a NER"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공식 저장소 README(https://github.com/mrgeooo14/IntLawNER, LICENSE 파일 없음)의 'Data License' 절은 CC BY 4.0을 주석 레이어(data/gold_full·train·dev·test.jsonl, data/12k_candidates_max150_balanced.jsonl)에만 부여한다. 같은 절은 기반 법률 텍스트(ICJ, ECtHR, UN)가 각 원천의 약관을 따르며 이 파일로 재라이선스되지 않는다고 밝힌다. 논문 9쪽의 Data Usability도 같은 취지로 'the underlying legal texts retain the terms of their original sources (ICJ, UNSC, ECtHR)'라고 적는다. 원천 코퍼스는 3쪽에 CD-ICJ(Fobbe, 2023), UNSC(UN Digital Library), ECtHR-PCR(Santosh et al., 2024)로 열거되어 있다. 이 데이터셋은 원천 문장을 포함하므로 CC BY 4.0이 모든 구성 요소에 적용된다고 볼 수 없다. 라이선스 문구가 있으므로 '미표기' 처리나 absence 증거는 쓸 수 없고, 반대로 상업적 이용·수정·파생·재배포를 데이터셋 전체에 대한 값으로 인용할 근거도 제공된 자료에 없다. README와 논문은 상업적 이용을 명시하지 않으며, 수정·재배포는 주석 레이어에 한해 출처 표기 조건으로만 언급한다. ICJ(CD-ICJ), UN, ECtHR-PCR/HUDOC 원천별 약관은 제공된 공식 카드에 없어 확인하지 못했다. 이 상태에서는 라이선스, 상업적 이용, 수정·파생, 재배포를 근거 있는 값으로 채울 수 없고, 금지된 '확인 불가'로 둘 수도 없으므로 아무것도 게시하지 않는다. 각 원천의 공식 약관 카드를 확보한 뒤 다시 제안해야 한다. lm-eval 지원은 README와 논문 어디에도 언급이 없어 '미표기' absence 증거로 처리할 수 있으나, 위 라이선스 문제로 행 전체를 게시할 수 없다. 논문 점수는 3쪽 Table 3(Mi-F1, 테스트셋 605문장)에 근거가 있어 recommendations는 이후 작성할 수 있다.",
+      "changes": [],
       "arxiv_id": "2609.22529",
       "paper_title": "IntLawNER: A Named Entity Recognition Dataset and Benchmark in International Law",
       "paper_updated": "2026-09-22T00:00:00Z",
@@ -15797,7 +15732,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-26T02:58:52Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -15823,11 +15758,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40260983775",
-        "context_sha256": "bbc0a96edbc2d3ab5e8a90d3820c7745611c136790100ac8ec25d72ec74e2f3c"
-      },
-      "proposal_sha256": "427d4a063de08e97bbe69004200fce38e0d8ffa3baa43aa3f06007d91f67f540"
+      "proposal_sha256": "6e995be5c5687f6a69270afa310d541970e5cc868484750296eeae33abe5b209",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -41118,8 +41051,8 @@
         "2609.22529"
       ],
       "abstract_attempted": [],
-      "calls": 2,
-      "cost_usd": 1.0727
+      "calls": 3,
+      "cost_usd": 1.6535
     }
   },
   "reaudits": [
