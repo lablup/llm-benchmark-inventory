@@ -15667,6 +15667,167 @@
         "reviewed_sha256": "ddaf3e9af47aeddff3f6cae647482b4a9e25dda20b98bd5602fe405113c6a17f",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2609.22529": {
+      "decision": "propose",
+      "reason": "IntLawNER는 영어 국제법 문서(ICJ 판결, UN 안보리 결의, ECtHR 판결)를 대상으로 한 새 개체명 인식(NER) 데이터셋 겸 벤치마크입니다. 2,987개 gold 문장, 8,094개 스팬, 7개 개체 유형을 갖추고, regex, GLiNER, LLM(0-shot/5-shot), 파인튜닝 트랜스포머를 같은 테스트셋에서 비교합니다. 과제 문장이 영어이고 텍스트만 입력으로 쓰므로 en 트랙의 text로 분류했습니다. 공식 링크는 PDF 1쪽 각주의 코드 저장소 URL을 사용했습니다. 라이선스 등 5개 필드는 규칙에 따라 '확인 불가'로 두고, 논문이 밝힌 주석 레이어의 CC-BY-4.0 표기는 유의사항에 적었습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "intlawner",
+            "이름": "IntLawNER",
+            "평가 축": "정보 추출(국제법 개체명 인식)",
+            "언어": "en",
+            "정의": "국제법 성문 자료를 대상으로 한 토큰 수준 개체명 인식(NER) 데이터셋 겸 벤치마크. ICJ 판결, UN 안보리 결의, ECtHR 판결에서 뽑은 gold 주석 문장 2,987개, 개체 스팬 8,094개, 기관 기능 기반 개체 유형 7개(IL_TREATY, IL_PROVISION, IL_RESOLUTION, IL_COURT_INSTR, IL_CASE_CITATION, IL_SOFT_LAW, IL_DOMESTIC_LAW)로 구성된다. 원천 468k 문장에서 알고리즘 후보 선별, LLM 검토, 사람 검수를 거쳐 만들었고, gold 스팬의 89.6%가 LLM silver 라벨과 수정 없이 일치했다. 코퍼스별 분할을 적용한 약 70/10/20 train/dev/test 분할이며, 테스트셋은 605문장·1,660스팬이다. 평가는 seqeval의 엄격한 BIO 매칭에 따른 개체 단위 정밀도·재현율·F1이고 라벨별 F1과 micro/macro 평균을 보고한다. 논문은 regex, GLiNER, LLM 9종(0-shot과 5-shot), 파인튜닝 Legal-BERT·XLM-RoBERTa-large를 비교했다.",
+            "대표 과제": "국제법 문장에서 7개 개체 유형의 스팬을 추출하는 NER(엄격한 BIO 매칭 기준 개체 단위 F1)",
+            "대표 예시·설명": "조항, 조약, 결의, 판례 인용 등을 담은 영어 국제법 문장에서 개체 스팬과 유형을 찾아내는 과제 설명(실제 문항이 아님). 예를 들어 'Article 2, paragraph 4'는 조항(IL_PROVISION) 유형의 스팬이다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "논문은 주석 레이어를 CC-BY-4.0으로 공개하고 원 법률 텍스트(ICJ, UNSC, ECtHR)는 각 원천의 약관을 따른다고 밝히지만(논문 9쪽), 이 제안에서는 라이선스·상업적 이용·수정·재배포를 직접 확인하지 못해 '확인 불가'로 둔다. 이용 전 데이터 카드와 각 원천 약관을 확인해야 한다. 규모가 작고(2,987문장) IL_COURT_INSTR(테스트 18스팬), IL_SOFT_LAW(테스트 37스팬) 같은 희소 라벨은 신뢰구간이 넓어 라벨별 점수 해석에 주의가 필요하다. 스키마는 국제법 전문가의 독립 검증을 받지 않았다. 논문의 κ=0.964는 사람-기계 일치도이며 일반적인 평정자 간 일치도가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/mrgeooo14/IntLawNER"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Information extraction (named entity recognition in international law)",
+            "definition": "A token-level named entity recognition (NER) dataset and benchmark for codified sources of international law. It has 2,987 gold-annotated sentences and 8,094 entity spans from ICJ decisions, UN Security Council resolutions, and ECtHR judgments, with seven institution-specific entity types (IL_TREATY, IL_PROVISION, IL_RESOLUTION, IL_COURT_INSTR, IL_CASE_CITATION, IL_SOFT_LAW, IL_DOMESTIC_LAW). It was built from 468k source sentences through algorithmic candidate selection, LLM vetting, and human review, and 89.6% of gold spans were accepted unchanged from the LLM silver layer. The split is approximately 70/10/20 train/dev/test, stratified by corpus, and the test set has 605 sentences and 1,660 spans. Evaluation uses entity-level precision, recall, and F1 with strict BIO matching via seqeval, reporting per-label F1 and micro/macro averages. The paper compares regex, GLiNER, nine LLMs (zero-shot and 5-shot), and fine-tuned Legal-BERT and XLM-RoBERTa-large.",
+            "task": "NER that extracts spans of seven entity types from international legal sentences (entity-level F1 under strict BIO matching)",
+            "example": "Task description, not an actual test item: find entity spans and their types in English international-law sentences containing provisions, treaties, resolutions, and case citations. For example, 'Article 2, paragraph 4' is a span of type IL_PROVISION."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "IntLawNER1, a NER"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "IntLawNER1, a NER"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "Article 2, paragraph"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/mrgeooo14/IntLawNER"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "All texts are"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "IntLawNER1, a NER"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "IntLawNER1, a NER"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "IntLawNER1, a NER"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.22529",
+      "paper_title": "IntLawNER: A Named Entity Recognition Dataset and Benchmark in International Law",
+      "paper_updated": "2026-09-22T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.22529",
+        "sha256": "36811dad7d86ac25dad40f2b11cc14f8b836ef057dc99ac5274f7303ca92c59b",
+        "accessed": "2026-10-26T02:56:01Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 21,
+          "elapsed_seconds": 143.18,
+          "pdf_sha256": "36811dad7d86ac25dad40f2b11cc14f8b836ef057dc99ac5274f7303ca92c59b",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "ddbaef0fa6d5b886e184152b1a386fb5500d851965e4809c7f6d6de3a64cf6a0",
+          "page_json_file": "2609.22529.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/mrgeooo14/IntLawNER",
+            "fetched_url": "https://api.github.com/repos/mrgeooo14/IntLawNER/readme",
+            "sha256": "85018f3933c9c23d33b2f8de7bc686c28d566db25fbeae0f98df537391fc8f48",
+            "accessed": "2026-10-26T02:58:52Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-26T02:58:52Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.22529",
+        "paper_title": "IntLawNER: A Named Entity Recognition Dataset and Benchmark in International Law",
+        "abstract": "International law provides the normative framework through which states coordinate action, regulate armed conflict, and protect human rights, yet its texts remain without token-level named entity recognition (NER) resources. We introduce IntLawNER, a NER dataset and benchmark for codified sources of international law, covering 2,987 gold-annotated sentences and 8,094 entity spans from International Court of Justice (ICJ) decisions, UN Security Council resolutions, and European Court of Human Rights (ECtHR) judgments, annotated with seven institution-specific entity types. We construct IntLawNER with a cost-effective hybrid algorithmic-agentic pipeline that reduces 468k source sentences to a compact annotation set through candidate retrieval, LLM-based vetting, and human review, with 89.6% of gold spans accepted unchanged from the silver layer. However, the silver-to-gold analysis reveals that human-machine aggregate agreement metrics can be misleading in domain-specific NER: Cohen's kappa=0.964 on boundary-matched spans masks a macro-F1 of 0.753 when missing entities, boundary errors, and label corrections are included. The benchmark shows that zero-shot span-based GLiNER collapses on entity types dependent on institutional function rather than surface form (0.243 micro-F1), while fine-tuned transformers struggle on rare labels. Carefully selected few-shot examples that demonstrate label contrasts improve every LLM over zero-shot prompting, with Claude Opus 4.6 reaching the best score of 0.873 micro-F1. We release IntLawNER as a benchmark and reusable resource for extracting references in international legal texts.",
+        "paper_updated": "2026-09-22T00:00:00Z",
+        "created_at": "2026-10-20T02:48:49Z",
+        "input_sha256": "ca21acc3309af7188611dd40be784df36342e2a66a4291ddca63fd105580e7c1",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "국제법 개체명 인식 데이터셋 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "국제법 NER 데이터셋·벤치마크 IntLawNER 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40260983775",
+        "context_sha256": "bbc0a96edbc2d3ab5e8a90d3820c7745611c136790100ac8ec25d72ec74e2f3c"
+      },
+      "proposal_sha256": "427d4a063de08e97bbe69004200fce38e0d8ffa3baa43aa3f06007d91f67f540"
     }
   },
   "processed_comments": [],
@@ -40957,8 +41118,8 @@
         "2609.22529"
       ],
       "abstract_attempted": [],
-      "calls": 1,
-      "cost_usd": 0.4993
+      "calls": 2,
+      "cost_usd": 1.0727
     }
   },
   "reaudits": [
