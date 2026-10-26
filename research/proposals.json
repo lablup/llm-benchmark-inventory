@@ -16548,6 +16548,175 @@
       "proposal_sha256": "4de97ba3fa15daabf450638a8481e635ba30840722cfc4d66a875d90949d4558",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2606.01322": {
+      "decision": "propose",
+      "reason": "TukaBench는 JailbreakBench(영어)를 확장한 탈옥·안전성 벤치마크이며, 영어 원문 프롬프트와 영어 기준선 평가를 포함하므로 en 트랙에 새 행으로 제안한다. 아프리카어 7개 언어(암하라어, 하우사어, 이그보어, 치체와어, 스와힐리어, 요루바어, 코사어) 버전은 한국어·영어 범위 밖이라 행에는 병행 언어로만 적었다. 구성은 프롬프트 5종 세트(언어당 986개)이고, 지표는 ASR, Refusal, Deflection이다. 판정에는 GPT-4.1 LLM judge를 쓰고 사람 검증도 병행한다. 논문 각주에 공식 데이터셋·코드 링크가 있다. 라이선스는 논문이 공개 라이선스로 배포한다고만 밝히고 종류를 적지 않아 확인 불가로 기록했다. 텍스트 전용이므로 modality는 text이다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "tukabench",
+            "이름": "TukaBench",
+            "평가 축": "안전(탈옥·거부, 다국어)",
+            "언어": "en(아프리카어 7개 언어 병행)",
+            "정의": "JailbreakBench(영어 유해 100·무해 100)를 확장한 탈옥 벤치마크. 영어와 아프리카어 7개 언어(amh, hau, ibo, nya, swh, xho, yor)를 대상으로 하며 아프리카어 언어당 986개 프롬프트로 구성. 5개 구성은 Afri-JBB-Harm 100, Afri-JBB-Benign 100, Afri-JBB-Culture 100, AfriJail-Mono 343, AfriJail-CS 343(xho 제외 6개 언어). 응답을 Jailbroken/Refused/Deflected 3분류로 GPT-4.1 judge가 판정하며 ASR, Refusal, Deflection 비율을 보고하고, Direct Prompting과 Boundary Point Jailbreaking 조건을 평가",
+            "대표 과제": "유해 프롬프트에 대한 응답을 Jailbroken, Refused, Deflected로 분류(ASR·Refusal·Deflection)",
+            "대표 예시·설명": "JBB 영어 유해 프롬프트(예: 온라인 시험 부정행위 안내 요청)를 아프리카어로 번역·문화 적응하거나 코드 스위칭해 모델이 거부하는지, 따르는지, 이해 실패로 빗나가는지 판정하는 과제",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "논문은 데이터셋·코드·사람 판정을 공개 라이선스로 배포한다고 밝히나 라이선스 종류는 확인하지 않았다. 코드는 https://github.com/McGill-NLP/tukabench. JBB 파생이므로 원본 약관도 별도 확인 필요. 유해 프롬프트를 포함한다. 채점에 LLM judge(GPT-4.1)가 필요하며 저자들은 저자원 언어에서 judge-인간 일치도가 낮아진다고 보고한다. 아프리카어 프롬프트는 한국어·영어 범위 밖이며 영어 부분(JBB 영어 원문, AfriJail 영어 원문)만 en 트랙 대상이다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/McGill-NLP/tukabench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Safety (jailbreak and refusal, multilingual)",
+            "definition": "A jailbreak benchmark that extends JailbreakBench (100 harmful and 100 benign English prompts) to English plus seven African languages (amh, hau, ibo, nya, swh, xho, yor), with 986 prompts per African language. It has five components: Afri-JBB-Harm 100, Afri-JBB-Benign 100, Afri-JBB-Culture 100, AfriJail-Mono 343, and AfriJail-CS 343 (six languages, excluding xho). A GPT-4.1 judge labels each response Jailbroken, Refused, or Deflected, and the paper reports ASR, Refusal, and Deflection rates under Direct Prompting and Boundary Point Jailbreaking.",
+            "task": "Classify responses to harmful prompts as Jailbroken, Refused, or Deflected (ASR, Refusal, Deflection rates).",
+            "example": "A JBB English harmful prompt, such as a request for a guide on cheating in online exams, is translated, culturally adapted, or code-switched, and the benchmark checks whether the model refuses, complies, or misunderstands and answers off-target (task description)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "Offer a guide"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "TUKABENCH, a jailbreak"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "Offer a guide"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "huggingface.co/datasets/ McGill-NLP/tukabench"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "Offer a guide"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "TUKABENCH, a jailbreak"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "986 prompts per"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "TUKABENCH, a jailbreak"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2606.01322",
+      "paper_title": "TukaBench: A Culturally Grounded Jailbreak Benchmark for African Languages",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.01322",
+        "sha256": "8052464269f135ac436fdfb883c0494f6eb655910618d435a6af5ac8d20dcbd8",
+        "accessed": "2026-10-26T03:21:41Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 24,
+          "elapsed_seconds": 297.9,
+          "pdf_sha256": "8052464269f135ac436fdfb883c0494f6eb655910618d435a6af5ac8d20dcbd8",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "c4220c3aedd761b2acf3193dfd361ae52e038ea513c20f079ecc6dc2e31ec9f1",
+          "page_json_file": "2606.01322.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/McGill-NLP/tukabench",
+            "fetched_url": "https://huggingface.co/datasets/McGill-NLP/tukabench/raw/main/README.md",
+            "sha256": "62d9e249a8519a7bba0bc9fea500de9d5e1169caf11c5ba6c9d583c30ae835e3",
+            "accessed": "2026-10-26T03:27:06Z",
+            "license_file": {
+              "fetched_url": "https://huggingface.co/datasets/McGill-NLP/tukabench/raw/main/LICENSE",
+              "name": "LICENSE",
+              "spdx_id": null,
+              "sha256": "41003d4a74749c0220e33dd415042164b5a1093ed401f36277234f772d22d3d0"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-26T03:27:06Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2606.01322",
+        "paper_title": "TukaBench: A Culturally Grounded Jailbreak Benchmark for African Languages",
+        "abstract": "Safety evaluation of Large Language Models (LLMs) remains heavily English-centric, leaving Low-Resource Languages (LRLs), particularly African ones, critically underexplored. We introduce TUKABENCH, a jailbreak benchmark for seven African languages that extends JailbreakBench (JBB) beyond direct translation through four settings: human translation of JBB prompts, English adaptation to African contexts followed by human translation, human-curated prompts validated through interactions with GPT-5.2, and code-switched prompts combining English and African languages, isolating the effect of language, cultural grounding, and prompt evasiveness on model safety. Across closed and open models, prompting in African languages reduces refusal relative to English, with culturally adapted prompts leading to least refusal. The evaluation also surfaces two structural limitations: model comprehension failures and reduced LLM-as-a-judge reliability in LRLs. To capture the first, we introduce Deflection alongside Refused and Jailbroken; to assess the second, we validate outputs with human annotations, showing that judge-human agreement drops in lower-resource languages and less commonly supported scripts.",
+        "paper_updated": "2026-09-24T00:00:00Z",
+        "created_at": "2026-10-19T13:44:34Z",
+        "input_sha256": "3e6f57f15ff6aeaa39455a159a81387f32c239bedcf845dc46421eb6838df46a",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "아프리카 언어 LLM 안전성 벤치마크로 평가에 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "irrelevant",
+            "reason": "아프리카 7개 언어 한정 안전 벤치마크로 한국어·영어 아님"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40260983775",
+        "context_sha256": "23cc1b1b7d55c2df026c4d40f20869f1ee3c8a7dddd1b50fe3d36ad92f749972"
+      },
+      "proposal_sha256": "77995f4b21d31b52681836dfe1b115229991733aabcbc666067bd4775bbb1532"
     }
   },
   "processed_comments": [],
@@ -41850,8 +42019,8 @@
         "2606.01322"
       ],
       "abstract_attempted": [],
-      "calls": 14,
-      "cost_usd": 6.7188
+      "calls": 15,
+      "cost_usd": 7.4134
     }
   },
   "reaudits": [
