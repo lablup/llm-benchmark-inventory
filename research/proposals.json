@@ -17867,74 +17867,9 @@
       "proposal_sha256": "58c9549b2c0fa431350b877e9702271332a9da8cd7e328efdf5453af71915266"
     },
     "2609.25841": {
-      "decision": "propose",
-      "reason": "이 논문은 ScanNetV2 실내 이미지를 기반으로 한 재사용 가능한 공개 벤치마크 Metric-Bench를 새로 제안합니다. 참조 객체의 실제 치수가 영어 질문으로 주어지고, 모델은 목표 객체의 절대 크기·위치·깊이·거리·3D 박스를 추정합니다. 과제 언어는 영어이고 이미지가 필요하므로 en 트랙의 vision 항목으로 제안합니다. 공식 데이터셋 링크는 PDF 1쪽에 있습니다. 라이선스 등 미확인 항목은 '확인 불가'로 두었습니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "metric-bench",
-            "이름": "Metric-Bench",
-            "평가 축": "이미지(공간 메트릭 추론)",
-            "언어": "en",
-            "정의": "ScanNetV2 실내 이미지에서 만든 질의응답 1,340개 벤치마크. 참조 객체의 실제 치수를 주고 다른 객체의 절대 크기, 위치, 깊이, 거리, 3D 박스를 추정하게 한다. 카메라 내부 파라미터는 주어지지 않는다. 논문은 테스트 1,340문항(이미지 134장)과 학습용 약 5K 샘플(이미지 1,340장)을 장면이 겹치지 않게 나눴다고 한다. 지표는 MRA(주 지표), RMSE(미터), δ1이다.",
-            "대표 과제": "참조 치수가 주어진 상태에서 크기·위치·깊이·거리·3D 박스 5개 범주의 목표 객체 메트릭 추정",
-            "대표 예시·설명": "이미지와 함께 일부 객체의 실제 치수를 영어 문장으로 주고, 다른 객체의 너비나 3D 위치 같은 수치를 JSON으로 답하게 하는 과제(과제 설명)",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋의 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. ScanNetV2에서 파생된 데이터이므로 원본 약관도 이용 전에 따로 확인해야 한다. 상용 모델과 사람 평가는 무작위 추출한 400문항 미니셋에서 수행됐다. 학습용 분할이 함께 제공되므로 평가 시 학습 데이터와 분리해야 한다. 질문 생성은 템플릿 기반이며 VLM 검사와 수동 검수를 거쳤다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://huggingface.co/datasets/yulingxi/Metric-Bench"
-          },
-          "modality": "vision",
-          "english_copy": {
-            "axis": "Images (spatial metric reasoning)",
-            "definition": "A benchmark of 1,340 question-answer pairs built from ScanNetV2 indoor images. Real-world dimensions of reference objects are given, and the model must estimate the absolute size, position, depth, distance, or 3D bounding box of a target object without camera intrinsics. The paper splits data by scene into a 1,340-sample test set (134 images) and a roughly 5K-sample training set (1,340 images). Metrics are MRA (main), RMSE (meters), and δ1.",
-            "task": "Estimate the metric quantity of a target object across five categories (size, position, depth, distance, 3D bounding box) given reference measurements",
-            "example": "Task description: given an image and English text with real measurements of some objects, the model outputs a numeric value, such as the width or 3D center of another object, in JSON."
-          },
-          "evidence": {
-            "modality": {
-              "page": 19,
-              "quote": "You are given"
-            },
-            "대표 과제": {
-              "page": 5,
-              "quote": "what is the"
-            },
-            "대표 예시·설명": {
-              "page": 5,
-              "quote": "what is the"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "huggingface.co/datasets/yulingxi/Metric-Bench"
-            },
-            "언어": {
-              "page": 5,
-              "quote": "what is the"
-            },
-            "이름": {
-              "page": 2,
-              "quote": "Metric-Bench includes 1340"
-            },
-            "정의": {
-              "page": 2,
-              "quote": "Metric-Bench includes 1340"
-            },
-            "평가 축": {
-              "page": 3,
-              "quote": "evaluate spatial metric"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "Metric-Bench의 라이선스 관련 네 항목(라이선스, 상업적 이용, 수정·파생, 재배포)을 게시 기준에 맞는 근거로 채울 수 없어 changes를 비웁니다. 공식 카드(https://huggingface.co/datasets/yulingxi/Metric-Bench)에는 라이선스 메타데이터가 없고, '## LICENSE file' 항목은 있으나 내용이 비어 있습니다(빈 파일의 sha256과 일치). 카드에 이 항목이 있으므로 '미표기' 부재 근거(absent)는 쓸 수 없습니다. 반면 카드는 \"ScanNet data is governed by the ScanNet Terms of Use\"라고 밝히고, \"No separate license for the benchmark-authored questions is supplied in the source package; this card does not assign one\"이라고 적습니다. 즉 ScanNet 유래 이미지·주석에 대한 약관만 언급되고 벤치마크 질문 등 저자 작성 부분의 라이선스는 없습니다. 따라서 데이터셋 전체 구성 요소에 적용되는 라이선스 값을 인용할 수 없고, 상업적 이용·수정·파생·재배포 허용 여부도 근거가 없습니다. ScanNet 약관 원문은 공급된 자료에 없어 확인하지 못했습니다. 저자의 라이선스 명시 또는 ScanNet 약관 원문 확인 후 다시 제안해야 합니다. 평가 결과(PDF 9쪽 표 1)는 확보되어 있으나 권리 근거가 없어 게시하지 않습니다.",
+      "changes": [],
       "arxiv_id": "2609.25841",
       "paper_title": "Metric-Bench: Exploring In-context Spatial Metric Reasoning in VLMs for Indoor Scenes",
       "paper_updated": "2026-09-23T00:00:00Z",
@@ -18003,7 +17938,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-26T03:56:24Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -18029,11 +17964,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40260983775",
-        "context_sha256": "6c5ed2f5968487e57a57c327b60d58a46002e0bda5586740af54759b35b028f0"
-      },
-      "proposal_sha256": "1089ceaeb98dc1d733e7dc7d93084472e098481ac85780631b65decbbed6c33a"
+      "proposal_sha256": "64f2b6c4f87e50e11de6116cd144f1ddbd74e07b7dab763f5c1cc9d3ee02d1c3",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -43347,8 +43280,8 @@
         "2609.25841"
       ],
       "abstract_attempted": [],
-      "calls": 27,
-      "cost_usd": 14.6918
+      "calls": 28,
+      "cost_usd": 15.203
     }
   },
   "reaudits": [
