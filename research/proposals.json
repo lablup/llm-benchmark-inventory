@@ -20267,7 +20267,7 @@
     },
     "2609.27205": {
       "decision": "propose",
-      "reason": "UGTPHON은 영어·베트남어·한국어 사용자 생성 텍스트(UGT)를 대상으로 한 재사용 가능한 G2P 벤치마크이며 진단용 분류 체계도 함께 제시한다. 한국어 과제는 ko 트랙에, 영어 과제는 en 트랙에 각각 한 행으로 등록한다. 베트남어는 범위 밖이라 제외한다. 입력과 출력이 모두 텍스트(문장과 IPA 음소열)이므로 text로 분류한다. 이전 답변에서 페이지와 맞지 않던 인용문을 해당 페이지에 실제로 있는 짧은 문구로 교체했다. 라이선스 등 미확인 항목은 '확인 불가'로 기록한다.",
+      "reason": "UGTPHON은 영어·베트남어·한국어 사용자 생성 텍스트(UGT)를 대상으로 한 재사용 가능한 G2P 벤치마크이며 진단용 분류 체계도 함께 제시한다. 한국어 과제는 ko 트랙에, 영어 과제는 en 트랙에 각각 한 행으로 등록하고 베트남어는 범위 밖이라 제외한다. 입력과 출력이 모두 텍스트(문장과 IPA 음소열)이므로 text로 분류한다. 공식 카드의 License 절이 언어별 라이선스(한국어 Apache 2.0, 영어 연구·학술 목적 한정)를 명시하므로 이를 근거 인용으로 기록했다. 공식 카드는 lm-eval을 언급하지 않아 '미표기'로 기록했다. 순위 근거는 논문 부록 표 10의 영어와 한국어 비정규 단어 PER이다.",
       "changes": [
         {
           "track": "ko",
@@ -20280,12 +20280,12 @@
             "대표 과제": "문장 문맥에서 표시된 비정규 단어의 음소열 예측(PER)",
             "대표 예시·설명": "문장과 그 안에 표시된 초성체나 반복 표기 같은 비정규 단어가 주어지면, 숨겨진 정규형을 추론해 정답 IPA 음소열을 내는 과제 설명이다(실제 문항 아님).",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "논문 부록은 언어별 원천 코퍼스의 라이선스를 따른다고 밝히나, 이 제안에서는 데이터셋 라이선스를 확인하지 않았다. 원천 코퍼스(MultiLexNorm++, KoMultiText)의 약관을 이용 전에 별도로 점검해야 한다. 원천 소셜미디어 문장에 유해 표현이 포함될 수 있다. 베트남어 부분은 이 인벤토리의 범위 밖이다. lm-eval 지원 여부도 확인하지 않았다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "Apache-2.0",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "Apache 2.0 조건(출처·라이선스 고지 유지)을 따라야 한다. 이 벤치마크는 다른 데이터셋을 바탕으로 만들어졌다: 한국어 비정규 단어는 MultiLexNorm++와 KoMultiText에서 가져오고(논문 4쪽), 음소는 IPA-Dict로 도출한다(논문 4쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 원천 소셜미디어 문장에 유해 표현이 포함될 수 있다(논문 4쪽). 영어와 베트남어 부분은 별도 라이선스이며 이 행의 범위 밖이다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/naver-ai/UGTPHON"
           },
           "modality": "text",
@@ -20329,8 +20329,101 @@
               "quote": "the first G2P"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/naver-ai/UGTPHON",
+              "quote": "Apache 2.0"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/naver-ai/UGTPHON",
+              "quote": "commercial use permitted"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/naver-ai/UGTPHON",
+              "quote": "Modification, derivation, and commercial use permitted"
+            },
+            "재배포": {
+              "source_url": "https://github.com/naver-ai/UGTPHON",
+              "quote": "Apache 2.0"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/naver-ai/UGTPHON",
+              "absent": true
+            }
+          },
+          "recommendations": {
+            "metric": "비정규 단어 음소 오류율 PERnc (%), 한국어 test 분할",
+            "setting": "논문 부록 표 10의 한국어 열. 동일한 UGTPHON 분할과 PER 파이프라인으로 평가한 시스템들이며, 모델별 설정은 논문 부록 D를 따른다. 이 논문이 보고한 결과이며 현재의 전역 리더보드가 아니다.",
+            "higher_is_better": false,
+            "results": [
+              {
+                "model": "ByT5 (300M)",
+                "score": "47.5",
+                "evidence": {
+                  "page": 17,
+                  "quote": "ByT5 (300M) 5.2 29.8 7.7 43.2 4.3 47.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen2.5-0.5B (naive FT)",
+                "score": "77.3",
+                "evidence": {
+                  "page": 17,
+                  "quote": "Qwen2.5-0.5B (naive FT) 11.2 14.8 4.4 23.1 14.2 77.3"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "ICKR (GPT-4o, reproduced)",
+                "score": "47.9",
+                "evidence": {
+                  "page": 17,
+                  "quote": "ICKR (GPT-4o, reproduced) 7.7 14.9 7.9 30.8 8.2 47.9"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "R-G2P (reproduced)",
+                "score": "42.3",
+                "evidence": {
+                  "page": 17,
+                  "quote": "R-G2P (reproduced) 18.2 53.2 6.9 59.3 4.1 42.3"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "PolyNorm (GPT-4) + ByT5",
+                "score": "28.5",
+                "evidence": {
+                  "page": 17,
+                  "quote": "PolyNorm (GPT-4) + ByT5 25.8 44.5 15.6 49.3 15.5 28.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Ours (Qwen2.5-0.5B)",
+                "score": "32.4",
+                "evidence": {
+                  "page": 17,
+                  "quote": "Ours (Qwen2.5-0.5B) 10.2 14.3 4.0 20.0 6.0 32.4"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Ours (ByT5, 300M)",
+                "score": "32.0",
+                "evidence": {
+                  "page": 17,
+                  "quote": "Ours (ByT5, 300M) 4.7 22.5 5.9 26.7 5.1 32.0"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         },
         {
           "track": "en",
@@ -20343,12 +20436,12 @@
             "대표 과제": "문장 문맥에서 표시된 비정규 단어의 음소열 예측(PER)",
             "대표 예시·설명": "문장과 그 안에 표시된 약어, 반복 표기, 철자 변형 같은 비정규 단어가 주어지면, 숨겨진 정규형을 추론해 정답 IPA 음소열을 내는 과제 설명이다(실제 문항 아님).",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "논문 부록은 언어별 원천 코퍼스의 라이선스를 따른다고 밝히나, 이 제안에서는 데이터셋 라이선스를 확인하지 않았다. 원천 코퍼스(LexNorm2015, MultiLexNorm)의 약관을 이용 전에 별도로 점검해야 한다. 원천 소셜미디어 문장에 유해 표현이 포함될 수 있다. 베트남어 부분은 이 인벤토리의 범위 밖이다. lm-eval 지원 여부도 확인하지 않았다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "연구·학술 목적 한정",
+            "상업적 이용": "불가",
+            "수정·파생": "연구·학술 목적 한정",
+            "재배포": "연구·학술 목적 한정",
+            "이용 시 유의사항": "공식 카드는 영어 부분을 연구·학술 목적으로만 쓸 수 있고 상업적 이용을 금지하며, 원문 문장의 저작권은 각 원 소유자에게 남는다고 밝힌다. 이 벤치마크는 다른 데이터셋을 바탕으로 만들어졌다: 영어 정규형은 LexNorm2015(MultiLexNorm 경유)에서 가져오고(논문 4쪽), 음소는 IPA-Dict로 도출하며(논문 4쪽), 사람이 만든 증강 문장 175개를 포함한다(논문 4쪽). 논문 부록 12쪽은 LexNorm2015에 명시적 라이선스가 없다고 적는다. 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 원천 소셜미디어 문장에 유해 표현이 포함될 수 있다(논문 4쪽). 베트남어와 한국어 부분은 별도 라이선스이며 이 행의 범위 밖이다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/naver-ai/UGTPHON"
           },
           "modality": "text",
@@ -20392,9 +20485,111 @@
               "quote": "the first G2P"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/naver-ai/UGTPHON",
+              "quote": "Academic / research use only"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/naver-ai/UGTPHON",
+              "quote": "Commercial use prohibited"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/naver-ai/UGTPHON",
+              "quote": "Academic / research use only"
+            },
+            "재배포": {
+              "source_url": "https://github.com/naver-ai/UGTPHON",
+              "quote": "Academic / research use only"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/naver-ai/UGTPHON",
+              "absent": true
+            }
+          },
+          "recommendations": {
+            "metric": "비정규 단어 음소 오류율 PERnc (%), 영어 test 분할",
+            "setting": "논문 부록 표 10의 영어 열. 동일한 UGTPHON 분할과 PER 파이프라인으로 평가한 시스템들이며, 모델별 설정은 논문 부록 D를 따른다. 이 논문이 보고한 결과이며 현재의 전역 리더보드가 아니다.",
+            "higher_is_better": false,
+            "results": [
+              {
+                "model": "ByT5 (300M)",
+                "score": "29.8",
+                "evidence": {
+                  "page": 17,
+                  "quote": "ByT5 (300M) 5.2 29.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen2.5-0.5B (naive FT)",
+                "score": "14.8",
+                "evidence": {
+                  "page": 17,
+                  "quote": "Qwen2.5-0.5B (naive FT) 11.2 14.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "ICKR (GPT-4o, reproduced)",
+                "score": "14.9",
+                "evidence": {
+                  "page": 17,
+                  "quote": "ICKR (GPT-4o, reproduced) 7.7 14.9"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "R-G2P (reproduced)",
+                "score": "53.2",
+                "evidence": {
+                  "page": 17,
+                  "quote": "R-G2P (reproduced) 18.2 53.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "PolyNorm (GPT-4) + ByT5",
+                "score": "44.5",
+                "evidence": {
+                  "page": 17,
+                  "quote": "PolyNorm (GPT-4) + ByT5 25.8 44.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "MoNoise + ByT5",
+                "score": "18.0",
+                "evidence": {
+                  "page": 17,
+                  "quote": "MoNoise + ByT5 14.2 18.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Ours (Qwen2.5-0.5B)",
+                "score": "14.3",
+                "evidence": {
+                  "page": 17,
+                  "quote": "Ours (Qwen2.5-0.5B) 10.2 14.3"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Ours (ByT5, 300M)",
+                "score": "22.5",
+                "evidence": {
+                  "page": 17,
+                  "quote": "Ours (ByT5, 300M) 4.7 22.5"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.27205",
@@ -20484,7 +20679,8 @@
         "source_run": "40440316488",
         "context_sha256": "690d6ed24a28d4f7bb5b3f48d2c0fbb716aa9f91b5de9ef085a375cc2bd61907"
       },
-      "proposal_sha256": "b9546f4fd0860c6b04a548206e2b394f5ddc160d074a66187b6d889aa037269c"
+      "proposal_sha256": "d256013bb1897361f98c6fbdccc79eddaf7448b94921e99b0f336149b5890438",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -46324,8 +46520,8 @@
         "2610.32536",
         "2610.32575"
       ],
-      "calls": 17,
-      "cost_usd": 8.4689
+      "calls": 18,
+      "cost_usd": 9.1959
     }
   },
   "reaudits": [
