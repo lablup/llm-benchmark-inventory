@@ -21317,6 +21317,167 @@
       "proposal_sha256": "f7623e488a20f1491eef527e2ba293cd2eb4d41f15027c8becaff7b54518acbe",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2609.28437": {
+      "decision": "propose",
+      "reason": "MultiVENT-Raw는 원시(raw) 영상 약 12만 개와 130개 이벤트, 222개 질의로 구성된 재사용 가능한 새 벤치마크이다. 영상 검색과 보고서 생성 두 과제를 정의하고 MiRAGE 지표로 평가한다. 질의와 지시문 템플릿이 영어이므로 en 트랙의 vision 항목으로 제안한다. 영상 속 언어는 한국어를 포함한 8개 언어이지만 과제 언어는 영어로 판단했다. 이전 응답에서 검증기를 통과하지 못한 인용문은 PDF에 실제로 있는 짧은 구절로 교체했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "multivent-raw",
+            "이름": "MultiVENT-Raw",
+            "평가 축": "멀티모달 검색·보고서 생성(원시 영상)",
+            "언어": "en",
+            "정의": "원시(raw) 영상 중심의 다국어 영상 컬렉션으로, 이벤트 130개와 질의 222개, 영상 약 12만 개(FULL 118,802개, CORE 59,196개)로 구성된다. 사람이 작성한 관련성 판정과 핵심 사실(claim) 주석을 제공하고, 개발용 MicroVent(이벤트 23개, 질의 31개, 영상 933개)를 함께 공개한다. 검색은 recall@20·100과 nDCG@10·20으로, 보고서 생성은 MiRAGE의 정보·인용 정밀도/재현율/F1로 평가한다.",
+            "대표 과제": "질의에 관련된 영상 검색과 검색된 영상을 인용하는 보고서 생성(RAG 및 ORACLE 설정)",
+            "대표 예시·설명": "페르소나와 이벤트 질의가 주어지면 영상 컬렉션에서 관련 영상을 찾아 순위화하고, 영상을 인용하며 질의에 답하는 보고서를 작성하는 과제(영상 관련성 판정 프롬프트는 영어 템플릿).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부는 확인하지 않았다. 영상은 YouTube, X, TikTok 등 외부 플랫폼에서 수집된 것이므로 각 영상의 권리와 약관을 별도로 확인해야 한다. 영상 속 언어는 아랍어, 중국어, 페르시아어, 한국어, 파슈토어, 러시아어, 스페인어, 우르두어이며, 핵심 사실 주석은 영어로 작성됐다. 보고서 생성 평가에는 LLM 판정 모델(논문은 Qwen3.5-27B)이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/hltcoe/multivent-raw"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Multimodal retrieval and report generation over raw video",
+            "definition": "A multilingual collection of primarily raw videos with 130 events and 222 queries over about 120,000 videos (FULL 118,802; CORE 59,196). It provides human relevance judgments and key-fact claim annotations, plus the MicroVent dev set (23 events, 31 queries, 933 videos). Retrieval is scored with recall@20/100 and nDCG@10/20; report generation is scored with MiRAGE information and citation precision, recall and F1.",
+            "task": "Retrieve videos relevant to an event query, then generate a report that cites the retrieved videos (RAG and ORACLE settings).",
+            "example": "Task description: given a persona and an event query, rank relevant videos from the collection and write a cited report that answers the query (the relevance-reranking prompt is an English template)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "Retrieval and Reasoning"
+            },
+            "대표 과제": {
+              "page": 6,
+              "quote": "report generation task"
+            },
+            "대표 예시·설명": {
+              "page": 12,
+              "quote": "Is this video"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/hltcoe/multivent-raw"
+            },
+            "언어": {
+              "page": 12,
+              "quote": "Is this video"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "MULTIVENT-RAW"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "130 events, 222"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Retrieval and Reasoning"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.28437",
+      "paper_title": "MultiVENT-Raw: A Benchmark for Retrieval and Reasoning over Raw Videos",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.28437",
+        "sha256": "4115a5bb64502c7df2db89187b9716290cda25a80a213ad3b785a1604a3d7e7a",
+        "accessed": "2026-10-27T03:47:12Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 16,
+          "elapsed_seconds": 55.57,
+          "pdf_sha256": "4115a5bb64502c7df2db89187b9716290cda25a80a213ad3b785a1604a3d7e7a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "bba0199ed54e3ff84100420167361fe25d23054f265b57da130c3499c30f022d",
+          "page_json_file": "2609.28437.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/hltcoe/multivent-raw",
+            "fetched_url": "https://api.github.com/repos/hltcoe/multivent-raw/readme",
+            "sha256": "71a8bacce8319a4008040b7d52f76a7e01416ad301cfae426cc0cbedad477ccd",
+            "accessed": "2026-10-27T03:49:02Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/hltcoe/multivent-raw/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-27T03:49:02Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.28437",
+        "paper_title": "MultiVENT-Raw: A Benchmark for Retrieval and Reasoning over Raw Videos",
+        "abstract": "Online information is increasingly consumed in video format. Much of this comes in the form of *raw video*: continuous footage taken on a cell phone, with a hand-held camera, or via CCTV, which is then directly uploaded to social media platforms and content sharing services. Whereas professional or even amateur-edited footage tends to feature scripted speech, chyrons, graphics, and metadata that help contextualize its subject matter, raw video typically contains none of these things, making it a much more challenging medium for information retrieval and machine understanding. To facilitate progress in this domain, we release MultiVENT-Raw, a multilingual collection of nearly 120,000 primarily raw videos (over 5,300 total hours), paired with 130 events and 222 event-centric queries, along with human-annotated video relevance judgments and human-extracted key facts for relevant videos. MultiVENT-Raw supports both a retrieval task---to identify videos in the collection relevant to a query event---and a generation task---to summarize event-related videos into a coherent report for a target user. We benchmark strong baselines on MultiVENT-Raw, showing both tasks to be challenging even for some of the latest multimodal models.",
+        "paper_updated": "2026-09-24T00:00:00Z",
+        "created_at": "2026-10-19T13:44:58Z",
+        "input_sha256": "b7c28bc4f9db6d1492b2b95e2bbeebd69c694f2aaad4d19158c74bde037a1844",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "영어 원시 영상 검색·요약 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "다국어 원시영상 검색·요약 벤치마크 MultiVENT-Raw 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40440316488",
+        "context_sha256": "b311b358592dfa7195c919eb378aa8cef54268da414c3b0d85cbb03c9aa9c414"
+      },
+      "proposal_sha256": "05683a67bf342e0912e684cfb67cb8056f0d3805bb36799c0bac27b035e01cd2"
     }
   },
   "processed_comments": [],
@@ -47165,8 +47326,8 @@
         "2610.32536",
         "2610.32575"
       ],
-      "calls": 30,
-      "cost_usd": 16.2008
+      "calls": 31,
+      "cost_usd": 16.7429
     }
   },
   "reaudits": [
