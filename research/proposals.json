@@ -21131,6 +21131,168 @@
       "proposal_sha256": "ff0b4c9d54b60df7e439075e3dfe26299a9f62ca8bc96c75fc224c5c98a64f4b",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2609.27510": {
+      "decision": "propose",
+      "reason": "Uncheatable Eval은 새로 공개된 텍스트를 정기적으로 수집해 베이스 모델의 압축률(CR)을 재는 동적 벤치마크로, 재사용 가능한 평가 자원이다. 80개 모델을 14개 범주에서 평가했고 공식 코드 저장소도 논문에 명시돼 있다. 평가 범주 이름이 영어 소설, 영어 백과 등 영어 텍스트이고 입력이 텍스트뿐이라 en 트랙의 text로 분류했다. 비영어 백과 범주의 구체적 언어 구성은 논문에 없어 ko 행은 만들지 않았다. 기존 인벤토리에 같은 벤치마크가 없어 새 행으로 제안한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "uncheatable-eval",
+            "이름": "Uncheatable Eval",
+            "평가 축": "언어모델링(압축률 기반 베이스 모델 평가, 오염 방지 동적 갱신)",
+            "언어": "en",
+            "정의": "새로 공개된 텍스트를 정기적으로 수집해 베이스 언어모델이 얼마나 잘 예측하는지를 압축률(CR, %, 낮을수록 좋음)로 평가하는 동적 벤치마크. 논문의 2026년 7월 데이터셋은 14개 텍스트 범주(소설, 뉴스, 백과, 과학 논문, 코드 등)에 범주당 500개, 총 7,000개 샘플이며, 샘플은 평가 토크나이저 8종 기준 최대 3,584토큰으로 잘랐다. 장문 분석은 과학 논문 4개 범주 500문서씩을 최대 32,768 UTF-8 바이트까지 54개 모델로 평가했다. 논문은 80개 모델을 평가했다.",
+            "대표 과제": "새로 공개된 텍스트에 대한 다음 토큰 확률로 이상적 부호 길이를 구하고 UTF-8 크기 대비 압축률(CR)로 환산(지시문·정답 없음)",
+            "대표 예시·설명": "과제 설명: 모델에 지시문 없이 새로 수집한 영어 소설, 뉴스, 백과, 논문, 코드 문서를 주고 토큰별 확률로 이상적 부호 길이를 계산해 UTF-8 크기 대비 압축률로 비교한다. 실제 시험 문항을 인용한 것이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터와 코드의 라이선스, 상업적 이용·수정·재배포 조건은 아직 확인하지 않았다. 수집 원천(공개 웹 텍스트 등) 각각의 약관도 따로 점검해야 한다. 논문은 오염 위험이 완전히 없다고 보장하지 않으며 데이터가 오래될수록 위험이 커져 정기 갱신이 필요하다고 밝힌다. 압축률은 베이스 모델용이고 후속 학습으로 얻은 지시 이행 능력은 재지 못한다. 점수는 모델·토크나이저 쌍에 따른 값이다. 비영어 백과 범주의 구체적 언어 구성은 논문에서 확인되지 않았다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Jellyfish042/uncheatable_eval"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Language modeling (compression-rate evaluation of base models, dynamically refreshed against contamination)",
+            "definition": "A dynamic benchmark that regularly collects newly published text and evaluates how well base language models predict it, measured as compression rate (CR, %; lower is better). The paper's July 2026 dataset has 14 text categories (fiction, news, encyclopedia, scientific papers, code, etc.) with 500 samples each, 7,000 in total, truncated to at most 3,584 tokens under each of eight tokenizers. The long-context analysis uses 500 documents from each of four scientific-paper categories, up to 32,768 UTF-8 bytes, with 54 models. The paper evaluates 80 models.",
+            "task": "Compute ideal code length from next-token probabilities on newly published text and normalize by UTF-8 size to obtain compression rate (no instructions or reference answers).",
+            "example": "Task description: without any instruction, give the model newly collected English fiction, news, encyclopedia, paper and code documents, compute the ideal code length from per-token probabilities, and compare models by compression rate relative to UTF-8 size. This is not a quoted test item."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "a dynamic benchmark"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "a dynamic benchmark"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "a dynamic benchmark"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/Jellyfish042/uncheatable_eval"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "English fiction (EF)"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "a dynamic benchmark"
+            },
+            "정의": {
+              "page": 4,
+              "quote": "Each category contains"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "a dynamic benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.27510",
+      "paper_title": "Uncheatable Eval: Dynamic Compression-Based Evaluation of Language Models",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.27510",
+        "sha256": "25e76935126a9177714bc478512cb49e2d72562dcafe56fb7c81e1c3e27e3ec5",
+        "accessed": "2026-10-27T03:38:59Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 17,
+          "elapsed_seconds": 93.04,
+          "pdf_sha256": "25e76935126a9177714bc478512cb49e2d72562dcafe56fb7c81e1c3e27e3ec5",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "0585d59949a8857866f03f3ba14ca6376cff9b903cc74042641c5d59d24a37a3",
+          "page_json_file": "2609.27510.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Jellyfish042/uncheatable_eval",
+            "fetched_url": "https://api.github.com/repos/Jellyfish042/uncheatable_eval/readme",
+            "sha256": "3b905d1ce6bfd1f9d6190eb515edf062ea97a21c87fe05170166fd3407f28ff9",
+            "accessed": "2026-10-27T03:41:01Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/Jellyfish042/uncheatable_eval/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "b15c0774f98feb0c2e754682d5ccae000cad9cc7a8aa60866231b2fc2c500eac"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-27T03:41:01Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.27510",
+        "paper_title": "Uncheatable Eval: Dynamic Compression-Based Evaluation of Language Models",
+        "abstract": "Modern large language models are pretrained on massive datasets, making it difficult to prevent benchmark data from entering their training sets and undermining the reliability of evaluation results. Reliable evaluation is particularly challenging for base models, whose limited instruction-following ability complicates task-based assessment. We introduce Uncheatable Eval, a dynamic benchmark that regularly collects newly published text to evaluate base language models and reduce the risk of data contamination. Drawing on the relationship between a model's predictive ability and its ability to compress data losslessly, we use compression rate to evaluate how well models predict new text. We evaluate 80 models across 14 text categories, study how compression changes with context length, and examine the correlation between compression rate and zero-shot MMLU accuracy. Our results yield three main findings: (1) compression performance follows a consistent scaling trend with model size; (2) attention-based, hybrid, and recurrent models differ in how their compression performance changes as more context becomes available; and (3) lower compression rates are strongly associated with higher zero-shot MMLU accuracy. Code is available at https://github.com/Jellyfish042/uncheatable_eval.",
+        "paper_updated": "2026-09-24T00:00:00Z",
+        "created_at": "2026-10-19T13:44:58Z",
+        "input_sha256": "ce7cd3d606e316f9a6a3ffd308fbc821cd1addb7674c365e1a14a0fad9239198",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "영어 LLM 동적 압축 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "동적 압축 기반 평가 벤치마크 Uncheatable Eval 신규 제안, 코드 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40440316488",
+        "context_sha256": "143d72e46cbfe42e16020adbe57595c603c30076a6f61543425dce20ae1dca06"
+      },
+      "proposal_sha256": "6e4409b019047a3650b3cde26945b8723eab859e0be511e7252e704046ad26fc"
     }
   },
   "processed_comments": [],
@@ -46975,8 +47137,8 @@
         "2610.32536",
         "2610.32575"
       ],
-      "calls": 25,
-      "cost_usd": 13.1615
+      "calls": 26,
+      "cost_usd": 13.7629
     }
   },
   "reaudits": [
