@@ -19527,74 +19527,9 @@
       "proposal_sha256": "750a1c4989faf7ac13f617b13013dfa6c8444671a9aa4c478ac119f86172c8f2"
     },
     "2603.17373": {
-      "decision": "propose",
-      "reason": "SafeTutors는 수학·물리·화학 AI 튜터의 안전성과 교육적 효과를 함께 평가하는 새 벤치마크다. 11개 위험 차원과 48개 하위 위험으로 분류하고, 단일턴 3,135건과 멀티턴 2,820건의 대화로 구성된다. 과제 예시가 영어 프롬프트이고 텍스트만 입력으로 쓰므로 en 트랙의 text로 분류했다. 논문이 GitHub 저장소를 공식 코드·데이터로 밝혔다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "safetutors",
-            "이름": "SafeTutors",
-            "평가 축": "안전·교육(AI 튜터의 교육적 안전성)",
-            "언어": "en",
-            "정의": "수학, 물리, 화학에서 AI 튜터의 안전성과 교육적 효과를 함께 평가하는 벤치마크. 학습과학 문헌에 근거한 11개 위험 차원과 48개 하위 위험으로 구성된다. 데이터는 단일턴 3,135건과 crescendo 방식으로 만든 멀티턴 2,820건(5~8턴)이다. 위험 응답 비율(harm rate)은 3개 LLM 판정의 다수결로 채점하고, 교육적 품질은 별도 지표로 평가한다. 논문은 오픈 웨이트 모델 10종과 GPT-5-mini를 평가했다.",
-            "대표 과제": "학생의 위험한 요청(정답 요구, 풀이 생략 등)에 튜터가 정답을 과다 노출하거나 오개념을 강화하는지 단일턴·멀티턴 대화에서 평가",
-            "대표 예시·설명": "학생이 \"Solve 3x + 5 = 20\"이라는 문제에서 x = 2인지 물으면, 안전한 튜터는 대입해 확인하도록 유도하고 위험한 튜터는 전체 풀이를 바로 제공하는지를 보는 과제 설명",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건을 확인하지 못했다. 시드 문항은 MathDial과 CAMEL-AI 데이터셋에서 가져온 것이므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 질문 생성과 필터링에 GPT-5.2를 썼고, 채점에는 GPT-5.2, DeepSeek-32B, Claude Sonnet 4.5 판정 모델이 필요하다. 시드 질문 약 500개 규모의 3개 STEM 과목으로 범위가 제한된다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/RadiantCrystal/SafeTutors"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Safety and education (pedagogical safety of AI tutors)",
-            "definition": "A benchmark that jointly evaluates the safety and pedagogical effectiveness of AI tutors in mathematics, physics, and chemistry. It uses a learning-science risk taxonomy of 11 harm dimensions and 48 sub-risks. The data has 3,135 single-turn instances and 2,820 multi-turn conversations (5-8 turns) built with crescendo-style escalation. Harm rate is scored by majority vote of three LLM judges, and pedagogical quality is scored with separate metrics. The paper evaluates 10 open-weight models and GPT-5-mini.",
-            "task": "Assess whether a tutor over-discloses answers, reinforces misconceptions, or abandons scaffolding when a student makes risky requests in single-turn and multi-turn dialogues.",
-            "example": "Task description: given the problem \"Solve 3x + 5 = 20\", a student asks whether x = 2. A safe tutor prompts the student to substitute and check, while an unsafe tutor supplies the full derivation."
-          },
-          "evidence": {
-            "modality": {
-              "page": 3,
-              "quote": "Solve 3x +"
-            },
-            "대표 과제": {
-              "page": 3,
-              "quote": "Solve 3x +"
-            },
-            "대표 예시·설명": {
-              "page": 3,
-              "quote": "Solve 3x +"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/RadiantCrystal/SafeTutors"
-            },
-            "언어": {
-              "page": 3,
-              "quote": "Solve 3x +"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "SAFETUTORS"
-            },
-            "정의": {
-              "page": 2,
-              "quote": "3,135 single-turn instances"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "11 harm dimensions"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "데이터셋 수준의 라이선스 근거가 공급된 자료에 없어 게시할 수 없다. 공식 저장소 README는 'This project is licensed under the MIT License'라고만 적어 프로젝트(코드) 전체에 대한 표기이며, 벤치마크 데이터셋 자체에 적용된다는 문구가 없다. README는 현재 샘플 데이터셋만 공개했다고 밝히고, 데이터 본체의 배포처로 Hugging Face 카드(SoftMINER-Group/SafeTutors)를 링크하지만 그 카드는 공급되지 않았다. 공급된 카드에는 '## LICENSE file' 섹션이 없어 LICENSE 파일로 뒷받침되지 않고, README의 MIT 배지도 자리표시 주소(your-username)를 가리킨다. 시드 문항은 MathDial과 CAMEL-AI 데이터셋에서 가져온 것(논문 4쪽)이라 코드 라이선스가 모든 구성 요소에 적용되는지 입증되지 않는다. 따라서 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목을 데이터셋 수준의 인용으로 채울 수 없다. 또 이 네 항목에는 미표기 처리(저작권 전부 보유)도 쓸 수 없는데, README가 MIT를 명시해 부재 증거 조건을 충족하지 못하기 때문이다. 데이터셋 카드 또는 저자의 데이터 라이선스 명시가 확보되면 다시 제안할 수 있다. 비교 가능한 수치(논문 표 1·2의 단일턴·멀티턴 유해율)는 있으나 위 이유로 게시하지 않는다.",
+      "changes": [],
       "arxiv_id": "2603.17373",
       "paper_title": "SafeTutors: Benchmarking Pedagogical Safety in AI Tutoring Systems",
       "paper_updated": "2026-09-24T00:00:00Z",
@@ -19662,7 +19597,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-27T03:13:48Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -19688,11 +19623,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40440316488",
-        "context_sha256": "002bb6db7f1cf59c8872c5601dc83b6bb1e0d812c74ea4cb4abf8d7522bdb2dc"
-      },
-      "proposal_sha256": "61c463836d7324556e4dada99e3b36fa704deaaac6d1da25524ab1d3e2badf87"
+      "proposal_sha256": "91a0478e2ac967a4f487eb1b909759be13394b80f029184d6b52d6f5ee599b35",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -45526,8 +45459,8 @@
         "2610.32536",
         "2610.32575"
       ],
-      "calls": 9,
-      "cost_usd": 3.7555
+      "calls": 10,
+      "cost_usd": 4.3542
     }
   },
   "reaudits": [
