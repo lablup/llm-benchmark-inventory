@@ -21411,6 +21411,163 @@
       "proposal_sha256": "4f5d4c1bd86e4f26297cb8c1435919b5d47e2fbebe4d26b38dee75cd6f455da8",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2609.28449": {
+      "decision": "propose",
+      "reason": "SWE-FLUX는 12개 실제 Python 저장소에서 가져온 480개 인스턴스로 만든 저장소 수준 동적 실행 추론 벤치마크이다. 정답은 계측된 테스트 실행에서 자동으로 추출하며 LLM 판정을 쓰지 않는다. 과제 질문은 영어 자연어이므로 en 트랙, 텍스트 전용(text)으로 분류했다. 논문이 공식 저장소 URL을 명시했고 기존 인벤토리에는 같은 벤치마크가 없다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "swe-flux",
+            "이름": "SWE-FLUX",
+            "평가 축": "코딩(저장소 수준 동적 실행 추론)",
+            "언어": "en",
+            "정의": "실제 Python 저장소 12개에서 만든 480개 실행 기반 인스턴스로 LLM의 런타임 동작 추론을 평가하는 벤치마크. 정답은 고정된 저장소 버전에서 계측된 테스트 실행으로 자동 추출하며 수작업 작성이나 LLM 판정을 쓰지 않는다. 단일 테스트(308개)와 다중 테스트(172개) 질문이 있고 13개 질문 유형이 제어 흐름, 반복문, 프로그램 상태, 데이터플로, 예외, 불변식을 다룬다. 모델은 질문, 테스트 파일, JSON 답변 템플릿을 받아 저장소를 탐색하며, 정답 oracle.json과의 exact-match 정확도로 채점한다. 논문은 5개 LLM을 평가했고(도구 호출 25회 제한, 오픈 모델 32K 컨텍스트, temperature 0) 입력 변형으로 새 변형 인스턴스를 만드는 파이프라인도 제안한다.",
+            "대표 과제": "테스트 또는 테스트 스위트의 실행 경로, 상태, 데이터플로, 예외, 불변식을 예측해 템플릿 형식의 JSON으로 답하기",
+            "대표 예시·설명": "특정 테스트에서 지정한 함수 안에서 실행된 줄 경로를 순서대로 묻는 것처럼, 테스트 실행의 런타임 동작을 묻는 영어 질문에 JSON으로 답하는 과제(과제 설명)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원은 확인하지 못했다. 이 벤치마크는 SWE-bench-Live 평가 이미지와 12개 오픈소스 저장소의 코드를 바탕으로 하므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 실행에는 저장소별 컨테이너 환경이 필요하다. 480개 인스턴스는 Python 한정이고 유형별 분포가 고르지 않다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/HamedTaherkhani/SWE-Flux/tree/master"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (repository-level dynamic execution reasoning)",
+            "definition": "A benchmark of 480 execution-grounded instances from 12 real Python repositories that tests whether LLMs can reason about runtime behavior. Gold answers are harvested automatically from instrumented test executions on pinned repository versions, with no manual writing or LLM judging. It has single-test (308) and multi-test (172) questions over 13 question types covering control flow, loops, program state, dataflow, exceptions, and invariants. A model receives the question, the test file, and a JSON answer template, explores the repository, and is scored by exact-match accuracy against the harvested oracle.json. The paper evaluates five LLMs (25 tool calls, 32K context for open models, temperature 0) and proposes an input-perturbation pipeline for generating fresh variants.",
+            "task": "Predict execution paths, runtime state, dataflow, exceptions, and invariants for a test or test suite and answer in the template's JSON format.",
+            "example": "Task description: answer an English question about the runtime behavior of a test execution, such as the ordered line path executed inside a given function, in JSON."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "What exact ordered"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "SWE-FLUX, a repository-level"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "What exact ordered"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "https://github.com/HamedTaherkhani/SWE-Flux/tree/master"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "What exact ordered"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "SWE-FLUX, a repository-level"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "SWE-FLUX, a repository-level"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "SWE-FLUX, a repository-level"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.28449",
+      "paper_title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.28449",
+        "sha256": "948158c37a2581ed4f7063e348dca97358cf711296fcf0cde05d09cf1738935e",
+        "accessed": "2026-10-27T03:49:33Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 12,
+          "elapsed_seconds": 54.56,
+          "pdf_sha256": "948158c37a2581ed4f7063e348dca97358cf711296fcf0cde05d09cf1738935e",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "f91e6edde9844d22fc2ce3f59c51bf3771712c0050174b43466e471cbae3a7fb",
+          "page_json_file": "2609.28449.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/HamedTaherkhani/SWE-Flux/tree/master",
+            "fetched_url": "https://api.github.com/repos/HamedTaherkhani/SWE-Flux/readme",
+            "sha256": "a16fd64ee0efcba18d99d69ba6b3e84fdf65c15f5b4fb1974653f45df485b029",
+            "accessed": "2026-10-27T03:51:16Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/HamedTaherkhani/SWE-Flux/license",
+              "name": "LICENSE.md",
+              "spdx_id": "MIT",
+              "sha256": "e6b2a95f084325f40b2b6b2ecba6205011319f72f97866eba75957439e7a3ded"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-27T03:51:16Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.28449",
+        "paper_title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
+        "abstract": "Large language models (LLMs) are increasingly used in coding tasks, but their ability to reason about code execution remains unclear. Existing repository-level QA benchmarks mainly evaluate static code understanding and often rely on LLM-based evaluation, while execution-reasoning benchmarks are mostly limited to snippets or functions. We introduce SWE-Flux, a repository-level benchmark for dynamic execution reasoning containing 480 execution-grounded instances across 12 real Python repositories, with gold answers automatically harvested from instrumented test executions rather than written manually or judged by LLMs. The benchmark covers singletest and multi-test questions over control flow, loops, program state, dataflow, exceptions, and program invariants. Evaluating five LLMs shows that this task remains challenging. The best model achieves only 37% accuracy. Models perform better on localized behavior such as invariants, intra-procedural control flow, exceptions, and simple loops, but struggle with dataflow, inter-procedural execution, precise state reasoning, and suite-level aggregation. Finally, we show that the oracle-harvesting pipeline can generate fresh benchmark variants using input perturbation. It successfully harvests valid variants for almost 90% of the selected instances, and the resulting variants are substantially more challenging for the evaluated models.",
+        "paper_updated": "2026-09-24T00:00:00Z",
+        "created_at": "2026-10-19T13:44:58Z",
+        "input_sha256": "d2fa964087c24446e11cc9539f78a448b128bcb3b8501f47427dd11a9130d8f9",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "영어 LLM 저장소 실행 추론 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "저장소 수준 실행 추론 벤치마크 SWE-Flux 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40440316488",
+        "context_sha256": "5ecf446596315c470608c32b0f4e9e27c5585a25ed9c8f8f802304b10aaa035d"
+      },
+      "proposal_sha256": "f165f65f2764c9f94ac4cac4a54df5f678058abcf2846935c47cf9ac39babc2c"
     }
   },
   "processed_comments": [],
@@ -47260,8 +47417,8 @@
         "2610.32536",
         "2610.32575"
       ],
-      "calls": 32,
-      "cost_usd": 17.2986
+      "calls": 33,
+      "cost_usd": 17.8392
     }
   },
   "reaudits": [
