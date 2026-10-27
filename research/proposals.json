@@ -20264,6 +20264,227 @@
         "context_sha256": "91e7b74a3ac57c0b0afbd456427333f991e0fa9cd19ad183c8611d63694dd77d"
       },
       "proposal_sha256": "09860383d14e4666f9d3ae675306851438f97f6d1333710d9db7bd37b0ab0b9f"
+    },
+    "2609.27205": {
+      "decision": "propose",
+      "reason": "UGTPHON은 영어·베트남어·한국어 사용자 생성 텍스트(UGT)를 대상으로 한 재사용 가능한 G2P 벤치마크이며 진단용 분류 체계도 함께 제시한다. 한국어 과제는 ko 트랙에, 영어 과제는 en 트랙에 각각 한 행으로 등록한다. 베트남어는 범위 밖이라 제외한다. 입력과 출력이 모두 텍스트(문장과 IPA 음소열)이므로 text로 분류한다. 이전 답변에서 페이지와 맞지 않던 인용문을 해당 페이지에 실제로 있는 짧은 문구로 교체했다. 라이선스 등 미확인 항목은 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "ko",
+          "row": {
+            "id": "ugtphon",
+            "이름": "UGTPHON (ko)",
+            "평가 축": "음성 합성 전처리(사용자 생성 텍스트 G2P)",
+            "언어": "ko",
+            "정의": "비표준 표기가 섞인 사용자 생성 텍스트(UGT)에서 표기 단어를 정규형으로 복원한 뒤 정답 IPA 음소열을 예측하는 G2P 벤치마크의 한국어 부분. 전체는 영어·베트남어·한국어 18,373문장이며 한국어는 2,497문장(train 1,976, dev 246, test 275)이다. 복원(Reconstruct), 반복(Repetition), 그대로 읽기(Pass-through)의 3개 유형과 9개 세부 범주로 오류를 진단하고, 지표는 정규 단어(PERc)와 비정규 단어(PERnc)의 음소 오류율(PER, %)이다.",
+            "대표 과제": "문장 문맥에서 표시된 비정규 단어의 음소열 예측(PER)",
+            "대표 예시·설명": "문장과 그 안에 표시된 초성체나 반복 표기 같은 비정규 단어가 주어지면, 숨겨진 정규형을 추론해 정답 IPA 음소열을 내는 과제 설명이다(실제 문항 아님).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "논문 부록은 언어별 원천 코퍼스의 라이선스를 따른다고 밝히나, 이 제안에서는 데이터셋 라이선스를 확인하지 않았다. 원천 코퍼스(MultiLexNorm++, KoMultiText)의 약관을 이용 전에 별도로 점검해야 한다. 원천 소셜미디어 문장에 유해 표현이 포함될 수 있다. 베트남어 부분은 이 인벤토리의 범위 밖이다. lm-eval 지원 여부도 확인하지 않았다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/naver-ai/UGTPHON"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Speech synthesis front-end (G2P for user-generated text)",
+            "definition": "A grapheme-to-phoneme benchmark for user-generated text (UGT), in which a model must recover the canonical form of a non-canonical word and predict the gold IPA phoneme sequence. This row covers the Korean portion. The full benchmark has 18,373 sentences across English, Vietnamese and Korean; Korean has 2,497 sentences (train 1,976, dev 246, test 275). Errors are diagnosed with three inference types (Reconstruct, Repetition, Pass-through) and nine fine-grained categories. The metric is phoneme error rate (PER, %) on canonical (PERc) and non-canonical (PERnc) words.",
+            "task": "Predict the phoneme sequence of a marked non-canonical word within its sentence (PER).",
+            "example": "Task description, not an actual test item: given a sentence and a marked non-canonical word, such as an initial-consonant abbreviation or a repeated form, infer the latent canonical form and output the gold IPA sequence."
+          },
+          "evidence": {
+            "modality": {
+              "page": 6,
+              "quote": "Phoneme Error Rate"
+            },
+            "대표 과제": {
+              "page": 6,
+              "quote": "Phoneme Error Rate"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "gold phoneme sequence"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "naver-ai/UGTPHON"
+            },
+            "언어": {
+              "page": 1,
+              "quote": "ㅇㄱㄹㅇ"
+            },
+            "이름": {
+              "page": 2,
+              "quote": "naver-ai/UGTPHON"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "18,373 sentences"
+            },
+            "평가 축": {
+              "page": 2,
+              "quote": "the first G2P"
+            }
+          },
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        },
+        {
+          "track": "en",
+          "row": {
+            "id": "ugtphon",
+            "이름": "UGTPHON (en)",
+            "평가 축": "음성 합성 전처리(사용자 생성 텍스트 G2P)",
+            "언어": "en",
+            "정의": "비표준 표기가 섞인 사용자 생성 텍스트(UGT)에서 표기 단어를 정규형으로 복원한 뒤 정답 IPA 음소열을 예측하는 G2P 벤치마크의 영어 부분. 전체는 영어·베트남어·한국어 18,373문장이며 영어는 5,029문장(train 3,329, dev 600, test 1,100)이다. 복원(Reconstruct), 반복(Repetition), 그대로 읽기(Pass-through)의 3개 유형과 9개 세부 범주로 오류를 진단하고, 지표는 정규 단어(PERc)와 비정규 단어(PERnc)의 음소 오류율(PER, %)이다.",
+            "대표 과제": "문장 문맥에서 표시된 비정규 단어의 음소열 예측(PER)",
+            "대표 예시·설명": "문장과 그 안에 표시된 약어, 반복 표기, 철자 변형 같은 비정규 단어가 주어지면, 숨겨진 정규형을 추론해 정답 IPA 음소열을 내는 과제 설명이다(실제 문항 아님).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "논문 부록은 언어별 원천 코퍼스의 라이선스를 따른다고 밝히나, 이 제안에서는 데이터셋 라이선스를 확인하지 않았다. 원천 코퍼스(LexNorm2015, MultiLexNorm)의 약관을 이용 전에 별도로 점검해야 한다. 원천 소셜미디어 문장에 유해 표현이 포함될 수 있다. 베트남어 부분은 이 인벤토리의 범위 밖이다. lm-eval 지원 여부도 확인하지 않았다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/naver-ai/UGTPHON"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Speech synthesis front-end (G2P for user-generated text)",
+            "definition": "A grapheme-to-phoneme benchmark for user-generated text (UGT), in which a model must recover the canonical form of a non-canonical word and predict the gold IPA phoneme sequence. This row covers the English portion. The full benchmark has 18,373 sentences across English, Vietnamese and Korean; English has 5,029 sentences (train 3,329, dev 600, test 1,100). Errors are diagnosed with three inference types (Reconstruct, Repetition, Pass-through) and nine fine-grained categories. The metric is phoneme error rate (PER, %) on canonical (PERc) and non-canonical (PERnc) words.",
+            "task": "Predict the phoneme sequence of a marked non-canonical word within its sentence (PER).",
+            "example": "Task description, not an actual test item: given a sentence and a marked non-canonical word, such as an abbreviation, lengthened word or phonetic respelling, infer the latent canonical form and output the gold IPA sequence."
+          },
+          "evidence": {
+            "modality": {
+              "page": 6,
+              "quote": "Phoneme Error Rate"
+            },
+            "대표 과제": {
+              "page": 6,
+              "quote": "Phoneme Error Rate"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "gold phoneme sequence"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "naver-ai/UGTPHON"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "soooo for so"
+            },
+            "이름": {
+              "page": 2,
+              "quote": "naver-ai/UGTPHON"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "18,373 sentences"
+            },
+            "평가 축": {
+              "page": 2,
+              "quote": "the first G2P"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.27205",
+      "paper_title": "Phonemizing User-Generated Text: A Benchmark, Taxonomy, and Compositional Approach",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.27205",
+        "sha256": "cf4cef81e449c5ab63a41a852868142cdc1fc4db100b7103fa22cc69b2b5fce6",
+        "accessed": "2026-10-27T03:24:58Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 18,
+          "elapsed_seconds": 68.18,
+          "pdf_sha256": "cf4cef81e449c5ab63a41a852868142cdc1fc4db100b7103fa22cc69b2b5fce6",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "884d97b8bd0991980e3dad33637bb9658007cd055e21960d8acfcd09e33b7b0c",
+          "page_json_file": "2609.27205.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/naver-ai/UGTPHON",
+            "fetched_url": "https://api.github.com/repos/naver-ai/UGTPHON/readme",
+            "sha256": "c7cb6d3855001d3057c92dd7eba10e20a8c24697694e66a3f3e04dcb3115d8b9",
+            "accessed": "2026-10-27T03:27:19Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-27T03:27:19Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.27205",
+        "paper_title": "Phonemizing User-Generated Text: A Benchmark, Taxonomy, and Compositional Approach",
+        "abstract": "Text-to-speech systems increasingly process user-generated text (UGT) such as ppl and imo, whose pronunciation must be inferred from the canonical rather than surface form. We introduce UGTPhon, the first grapheme-to-phoneme (G2P) benchmark for UGT in English, Vietnamese, and Korean, together with an inference-grounded taxonomy for fine-grained diagnosis. Existing G2P models and frontier LLMs exhibit a systematic canonical-to-non-canonical performance gap, reaching up to 66.8 PER points. As a benchmark baseline, we propose a simple compositional G2P approach that incorporates canonical-form evidence through exact-match lookup and staged decoding. Across matched ByT5 and Qwen2.5-0.5B backbones, explicit canonical-form modeling consistently reduces non-canonical G2P errors. The 0.5B variant also performs competitively with much larger few-shot frontier LLMs, highlighting the benefit of explicitly modeling canonical-form inference for UGT phonemization.",
+        "paper_updated": "2026-09-24T00:00:00Z",
+        "created_at": "2026-10-19T13:44:46Z",
+        "input_sha256": "ab2dc0c258cd5deacfb526ad233922b19174c6378f99d81a6766dd5309e45642",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "사용자 생성 텍스트 음소화 G2P 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "한국어 포함 UGT 음소 변환 벤치마크 UGTPhon 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40440316488",
+        "context_sha256": "690d6ed24a28d4f7bb5b3f48d2c0fbb716aa9f91b5de9ef085a375cc2bd61907"
+      },
+      "proposal_sha256": "b9546f4fd0860c6b04a548206e2b394f5ddc160d074a66187b6d889aa037269c"
     }
   },
   "processed_comments": [],
@@ -46103,8 +46324,8 @@
         "2610.32536",
         "2610.32575"
       ],
-      "calls": 16,
-      "cost_usd": 7.865
+      "calls": 17,
+      "cost_usd": 8.4689
     }
   },
   "reaudits": [
