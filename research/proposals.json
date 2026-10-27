@@ -22504,6 +22504,180 @@
       },
       "issue_url": null,
       "proposal_sha256": "c36c10648dfb1aa701f1cc978823f16b6912d3dc88d02252256e3e0ae27fd840"
+    },
+    "2609.30027": {
+      "decision": "propose",
+      "reason": "이 논문은 영어 환자 기록을 쓰는 새로운 재사용 가능 벤치마크 Synthetic Hospital을 제시합니다. 합성 종단 EHR 환자 1,268명과 진료 5,602건으로 구성되며, 환자 진단, 요약, 근거 검색, 영상 검사 지시 해석의 네 가지 과제를 평가합니다. 과제 예시가 영어이고 입력이 텍스트 차트이므로 en 트랙의 text로 분류했습니다. 공식 코드와 데이터 링크는 1쪽에 있습니다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록합니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "synthetic-hospital",
+            "이름": "Synthetic Hospital",
+            "평가 축": "도메인(임상 종단 EHR: 진단·요약·근거 검색)",
+            "언어": "en",
+            "정의": "공개 의학교육 자료에서 만든 완전 합성 종단 EHR 벤치마크. 환자 1,268명과 진료 5,602건으로 구성되며 진단, 소견, 시간 관계가 ICD-10-CM, SNOMED CT, LOINC에 근거하고 출처가 추적된다. 분할은 환자 단위로 공개 200명(1,859건), 학습 800명(7,619건), 비공개 268명(2,536건)이며 전체 12,014건이다. 논문은 10개 모델을 공개 분할에서 평가했고 주 지표는 과제별로 다르다(심각도 가중 F1, 소견 단위 F1, 전문과 관련성 F1, Precision@5·NDCG@10, 개념 F1).",
+            "대표 과제": "환자 진단(종단 문제 목록), 전체 요약과 전문과 조건부 요약, 근거 검색, 영상 검사 지시 해석",
+            "대표 예시·설명": "여러 진료에 걸친 합성 차트를 주고 문제 목록을 재구성하거나 핵심 소견을 요약하게 하는 과제. 영상 검사 지시 해석에서는 모호한 영상 검사 오더와 차트를 보고 임상 질문을 추론한다. 실제 시험 문항이 아니라 과제 설명이다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터와 코드의 라이선스를 확인하지 못했다(코드 저장소 라이선스가 데이터 라이선스를 보증하지 않는다). 환자 기록은 의학교육 자료(USMLE 형식 문항 등)를 바탕으로 LLM(Kimi 2.5)이 서술을 생성했고, 영상 검사 지시 해석의 참조 답은 LLM이 작성했다. 따라서 원천 자료 약관은 이용 전에 따로 확인해야 한다. 비공개 분할은 제공자의 채점기로만 점수를 확인할 수 있다. 역학적 대표성을 목표로 하지 않는다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/sparkcpark/synthetic_hospital"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Domain (clinical longitudinal EHR: diagnosis, summarization, evidence retrieval)",
+            "definition": "A fully synthetic longitudinal EHR benchmark built from public medical-education material. It has 1,268 patients and 5,602 encounters, with diagnoses, findings and temporal relations grounded in ICD-10-CM, SNOMED CT and LOINC and traceable to their sources. Patient-level splits are public 200 patients (1,859 instances), training 800 (7,619) and held-out 268 (2,536), 12,014 instances in total. The paper evaluates 10 models on the public split; primary metrics differ by task (severity-weighted F1, finding-level F1, specialty-relevance F1, Precision@5 and NDCG@10, concept F1).",
+            "task": "Patient diagnosis (longitudinal problem list), whole-patient and specialty-conditioned summarization, evidence retrieval, and imaging indication inference",
+            "example": "Task description, not an actual test item: given a multi-encounter synthetic chart, reconstruct the problem list or summarize key findings. In imaging indication, the model sees a vague imaging order plus the chart and infers the clinical question."
+          },
+          "evidence": {
+            "modality": {
+              "page": 6,
+              "quote": "Clinical question +"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "evidence retrieval, and"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "CT abdomen/pelvis, stat:"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/sparkcpark/synthetic_hospital"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "CT abdomen/pelvis, stat:"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Synthetic Hospital"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "5,602 encounters"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "longitudinal EHR benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.30027",
+      "paper_title": "Synthetic Hospital: An Open, Verifiable, Physician-Validated Longitudinal EHR Benchmark",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.30027",
+        "sha256": "bc381455700de0ae1d039919e96a45dc8595bbd37f9f39d7ae29ffaa3df9c8cc",
+        "accessed": "2026-10-27T04:14:55Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 29,
+          "elapsed_seconds": 78.95,
+          "pdf_sha256": "bc381455700de0ae1d039919e96a45dc8595bbd37f9f39d7ae29ffaa3df9c8cc",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "c7d6f050785873bacbd4c5ca55e9fbd90a43711705204b4ea505f1ed8ced1fa2",
+          "page_json_file": "2609.30027.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/sparkcpark/synthetic_hospital",
+            "fetched_url": "https://api.github.com/repos/sparkcpark/synthetic_hospital/readme",
+            "sha256": "ad58e9f746ebe122674238bbbc273d808b8fb163c8ca7438f68b5050ffbf1537",
+            "accessed": "2026-10-27T04:16:44Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/sparkcpark/synthetic_hospital/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "a0180281e85d514376a05906d50b0748a32cea2e23bc81963525bbc1978bf053"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-27T04:16:44Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.30027",
+        "paper_title": "Synthetic Hospital: An Open, Verifiable, Physician-Validated Longitudinal EHR Benchmark",
+        "abstract": "Frontier language models are rarely used in clinical workflows because the realistic, longitudinal benchmarks needed to develop them are scarce. Real electronic health record (EHR) data cannot be openly shared due to privacy, ethics or data use issues and it does not contain verifiable ground truth since the chart records only reflect what clinicians documented. We introduce Synthetic Hospital, an open, fully synthetic, fact-grounded longitudinal EHR benchmark that resolves the open sharing and verifiable ground truth barriers. Built entirely from public medical-education material with no protected health information, it comprises 1,268 longitudinal patients and 5,602 encounters, where every diagnosis, finding, and temporal relation is grounded in standard ontologies (ICD-10-CM, SNOMED CT, LOINC) and with a complete provenance chain back to its source medical education material. Synthetic Hospital is served through a simulated hospital record system that mirrors real EHR infrastructure (standard interoperability APIs, role-based access and function-calling interface). In a blinded review, physicians distinguished its records from real patient charts at near-chance rates (53\\%). Across 10 frontier and open models, none approaches ceiling: the best model reconstructs a patient's longitudinal problem list with a severity-weighted F1 of 0.73, level with the mean of seven physicians on a matched subset but well below the best of them (0.89), and misses roughly half of clinically relevant findings when summarizing a chart. Overall, these results highlight that Synthetic Hospital is a difficult and realistic test of clinical AI performance.",
+        "paper_updated": "2026-09-25T00:00:00Z",
+        "created_at": "2026-10-19T13:45:10Z",
+        "input_sha256": "9d406c66f3c361aca3604843551df21b441579bbb7d5120b236f09b3e6494612",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "합성 병원 EHR 종단 벤치마크로 임상 AI 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "공개·검증 가능한 합성 EHR 장기 벤치마크 신규 제시"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40440316488",
+        "context_sha256": "fcc703dec52faf6350a622c3ba0a6e1f0b8bda33cef81fa9f407deae1926842a"
+      },
+      "proposal_sha256": "d9bc00a6989a5d00732f09c2d4a49e692b80a660cc05d8d8aafd65eb247b9876"
     }
   },
   "processed_comments": [],
@@ -48370,8 +48544,8 @@
         "2610.32536",
         "2610.32575"
       ],
-      "calls": 42,
-      "cost_usd": 22.4946
+      "calls": 43,
+      "cost_usd": 23.0818
     }
   },
   "reaudits": [
