@@ -22078,6 +22078,167 @@
         "context_sha256": "60e01f8209e56ed1f42c5c6bd7c79e3eec2d6270a59f99320169c86bbc3b4b11"
       },
       "proposal_sha256": "cdecaea5df65bd001460bbb94ba031f269e4a80e0875bc32e3fcf18ea47202ea"
+    },
+    "2609.29167": {
+      "decision": "propose",
+      "reason": "IndicBankBench는 인도 소매 은행 환경에서 799개 케이스, 20개 축, 결정적 mock 도구, 3회 반복(pass^3) 평가를 갖춘 재사용 가능한 에이전트 벤치마크입니다. 과제와 프롬프트가 영어 텍스트라 en 트랙의 text 모달리티로 분류했습니다. 케이스와 평가 하니스를 공개한다고 밝혔으며, 논문이 가리키는 공식 링크는 GitHub 저장소입니다. 라이선스는 논문 부록에 언급이 있으나 자동 제안에서는 검증하지 않고 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "indicbankbench",
+            "이름": "IndicBankBench",
+            "평가 축": "에이전트(은행 상담 도구 사용·안전성·반복 신뢰도)",
+            "언어": "en",
+            "정의": "인도 소매 은행 상담 환경의 799개 케이스 벤치마크. 5개 운영 도메인, 능력·거부 도메인 1개, 주요 축 20개로 구성된다. 안전, 행동·도구 사용, 응답 적절성, 조언 품질의 4단계로 평가하며 도구 사용과 대부분의 안전 검사는 결정적이다. 응답 적절성은 LLM 판정, 쓰기 전 확인이 모호한 경우만 별도 resolver를 쓴다. 모든 케이스를 3회 실행해 엄격한 pass^3를 보고하며, 논문은 11개 모델을 평가했다.",
+            "대표 과제": "계정 맥락을 활용한 멀티턴 상담에서 결정적 mock 도구를 호출하고 안전하게 응답·거부하는 과제(S/A/R/Q 4단계 채점)",
+            "대표 예시·설명": "과제 설명: 고객이 잔액을 확인한 뒤 다음 날 이체 가능 여부를 다시 물으면, 모델이 이전 잔액을 쓰지 않고 잔액을 다시 조회해 답해야 하는 케이스(논문 그림 1의 개략 사례).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 자동 제안 단계에서 검증하지 않았다. 논문 부록은 코드와 데이터 라이선스를 별도로 언급하지만 공식 저장소와 데이터 카드에서 직접 확인해야 한다. 고객 프로필은 합성 데이터셋 Nemotron-Personas-India에서 파생됐다고 논문이 밝히므로 해당 약관도 따로 점검해야 한다. 모든 케이스는 합성이며 mock 도구를 쓰고, 영어 상담만 다룬다. 응답 단계는 LLM 판정(GLM-5.2)에 의존하고, 판정 감사는 40개 전사에 그쳤다. 결과는 평가한 모델 구성과 temperature 0.7, 3회 시행 조건에 한정된다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/npci/IndicBankBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (banking assistant tool use, safety, and repeated-run reliability)",
+            "definition": "A 799-case benchmark for Indian retail banking assistants, with 5 operational domains, 1 capability/refusal domain, and 20 primary axes. Each interaction is graded in four stages: safety, action and tool use, response adequacy, and advisory quality. Tool use and most safety checks are deterministic. An LLM judge assesses response adequacy, and a narrow resolver handles only ambiguous confirmation-before-write cases. Every case is run three times and strict pass^3 is reported; the paper evaluates eleven models.",
+            "task": "Multi-turn, account-grounded banking conversations in which the assistant calls deterministic mock tools and must answer, clarify, or decline safely (S/A/R/Q grading).",
+            "example": "Task description: a customer checks a balance, then returns the next day to ask about a transfer. The assistant must re-query the balance instead of reusing the stale value (schematic case from Figure 1)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 16,
+              "quote": "Reply in fluent,"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "safety, action and"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "Recheck the balance."
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/npci/IndicBankBench"
+            },
+            "언어": {
+              "page": 16,
+              "quote": "Reply in fluent,"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "IndicBankBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "799-case benchmark for"
+            },
+            "평가 축": {
+              "page": 3,
+              "quote": "safety, action and"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.29167",
+      "paper_title": "IndicBankBench: Evaluating Safety and Reliability of Language Model Assistants in Indian Retail Banking",
+      "paper_updated": "2026-09-25T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.29167",
+        "sha256": "48417add835fed3f70b967fcb1610c7012fb6ac7a11d7d094861ceec61f6c011",
+        "accessed": "2026-10-27T04:09:22Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 16,
+          "elapsed_seconds": 69.17,
+          "pdf_sha256": "48417add835fed3f70b967fcb1610c7012fb6ac7a11d7d094861ceec61f6c011",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "a890635df2bdd26b96add5ca82af7507e65c3f04c76386cc1edbb81eb891720f",
+          "page_json_file": "2609.29167.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/npci/IndicBankBench",
+            "fetched_url": "https://api.github.com/repos/npci/IndicBankBench/readme",
+            "sha256": "414454453bad2428a9212368c48b5e80e5256de4f4efce061de88932c54a997a",
+            "accessed": "2026-10-27T04:10:55Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/npci/IndicBankBench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "77c50278f348a823ec09f48484712c199be3e070306691f135ee227f0f2a8e83"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-27T04:10:55Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.29167",
+        "paper_title": "IndicBankBench: Evaluating Safety and Reliability of Language Model Assistants in Indian Retail Banking",
+        "abstract": "Banking assistants must use account-specific information to answer requests and, in many cases, take actions through tools. Evaluating only the final response misses important errors. An assistant may ask for information it already has, rely on stale context, select the wrong account, or write an invalid value after stating the correct one. We introduce IndicBankBench, a 799-case benchmark for Indian retail banking spanning five operational domains, a capability/refusal domain, and twenty primary axes. Cases are evaluated at four stages: safety, action and tool use, response adequacy, and advisory quality. Tool use and most safety checks are deterministic. A narrow resolver handles only ambiguous confirmation-before-write cases, while a separate LLM judge evaluates semantic response adequacy. We run every case three times and report strict pass^3, which requires success on all trials. Across the eleven evaluated models, strict reliability ranges from 43.7% to 58.2%, whereas at-least-once success ranges from 60% to 74%. This gap shows that at-least-once success can overstate dependable banking behavior. The case-level diagnostics also distinguish systems that ask unnecessary questions from those that act but fail to reconcile customer context or fully resolve the request. We release the cases, mock environment, and evaluation harness.",
+        "paper_updated": "2026-09-25T00:00:00Z",
+        "created_at": "2026-10-19T13:45:10Z",
+        "input_sha256": "967ada0909b4a8a77f9af3fd9d1446ad581e39c734833bf988b942c9480ef72b",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "인도 은행 언어모델 안전성 벤치마크로 평가 대상 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "인도 은행 도메인 벤치마크·평가 하네스스를 새로 제시하고 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40440316488",
+        "context_sha256": "444fb22f2032ab6473d279c6eead8911f0cd11f1a06c7c32794efabc888fd761"
+      },
+      "proposal_sha256": "9b5f079bb44b0caebc4a54a3d95b13d5dd290c1e740b519b246de053c82309f2"
     }
   },
   "processed_comments": [],
@@ -47940,8 +48101,8 @@
         "2610.32536",
         "2610.32575"
       ],
-      "calls": 38,
-      "cost_usd": 20.3783
+      "calls": 39,
+      "cost_usd": 20.918
     }
   },
   "reaudits": [
