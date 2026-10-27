@@ -20727,6 +20727,179 @@
         "reviewed_sha256": "d256013bb1897361f98c6fbdccc79eddaf7448b94921e99b0f336149b5890438",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2609.27349": {
+      "decision": "propose",
+      "reason": "MolDesignBench는 도구를 쓰는 LLM 에이전트의 분자 설계 능력을 평가하는 새 벤치마크다. 생성 1,000건과 최적화 1,000건을 합쳐 2,000건이며, 각 분할에 불가능(infeasible) 사례가 10%씩 들어 있다. 암묵적 제약 해석, 다중 제약 충족, 불가능 판정, 17개 도구를 쓰는 다단계 추론을 평가한다. 과제 프롬프트는 영어로 쓰였고 입력은 텍스트뿐이므로 en 트랙, text 모달리티로 분류한다. 공식 데이터셋 링크는 논문 1쪽 각주에 있다. 라이선스와 하니스 지원은 확인하지 않았으므로 '확인 불가'로 기록한다. 모델 비교 수치는 이번 단계에서 제외한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "moldesignbench",
+            "이름": "MolDesignBench",
+            "평가 축": "에이전트(시나리오 기반 분자 설계·도구 사용)",
+            "언어": "en",
+            "정의": "도구를 쓰는 LLM 에이전트가 설계 서사에 숨은 암묵적 제약과 명시적 속성·작용기 제약을 함께 만족하는 분자를 생성하거나 최적화하는지 평가하는 벤치마크. 생성 1,000건, 최적화 1,000건 등 총 2,000건이며 각 분할의 10%(100건)는 불가능 사례로, 불가능 판정(None)을 요구한다. 17개 화학 도구를 제공하고 지표는 Success, CSR, MCD, InfAcc, MCC, Validity, Tool Calls다.",
+            "대표 과제": "다중 조건 분자 생성과 최적화(생성: 시나리오만 주어짐 / 최적화: 시작 분자와 시나리오가 주어짐)",
+            "대표 예시·설명": "영어 설계 시나리오 프롬프트(예: 'decrease logP by at least 1.5' 같은 개선 지시와 필요한 작용기 요구)를 읽고 암묵적 제약을 추론해 SMILES 하나를 <ANSWER> 태그로 제출하거나, 제약이 모순이면 None을 답하는 과제",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 후보 분자 풀은 ChEMBL과 ZINC20에서 만들었고 도구 중 하나는 MOSES 데이터베이스를 검색한다(논문 5쪽, 6쪽). 구성 요소별 약관은 이용 전에 따로 확인해야 한다. 속성은 RDKit 기술자와 ADMET 예측 모델로 계산한 값이고 실험값이 아니다. 소분자 설계에만 해당한다. 평가에는 도구 서버(FastAPI)와 에이전트 실행 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/LG-AI-Research/MolDesignBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (scenario-grounded molecular design with tool use)",
+            "definition": "A benchmark of whether tool-augmented LLM agents can generate or optimize molecules that satisfy implicit constraints embedded in a design narrative together with explicit property and functional-group constraints. It has 2,000 instances (1,000 generation and 1,000 optimization), and 10% of each split (100 instances) is infeasible, requiring the agent to answer None. It provides 17 chemistry tools. Metrics are Success, CSR, MCD, InfAcc, MCC, Validity, and Tool Calls.",
+            "task": "Multi-constraint molecule generation and optimization (generation gives only the scenario; optimization gives a starting molecule plus the scenario).",
+            "example": "Task description: the agent reads an English design-scenario prompt (for example, an improvement directive such as 'decrease logP by at least 1.5' plus a required functional group), infers the implicit constraints, and returns one SMILES string in an <ANSWER> tag, or None if the constraints are contradictory."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "natural-language prompts"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "2K generation and"
+            },
+            "대표 예시·설명": {
+              "page": 20,
+              "quote": "decrease logP by"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/LG-AI-Research/MolDesignBench"
+            },
+            "언어": {
+              "page": 20,
+              "quote": "decrease logP by"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "MolDesignBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "2K generation and"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "tool-augmented LLM agents"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.27349",
+      "paper_title": "MolDesignBench: Evaluating LLM-based Agent for Scenario-grounded Molecular Design",
+      "paper_updated": "2026-09-24T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.27349",
+        "sha256": "8156515d359e8a47d57137e5c8412f10e53c48ea5b156a75fe73c554a73fae84",
+        "accessed": "2026-10-27T03:29:16Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 33,
+          "elapsed_seconds": 99.07,
+          "pdf_sha256": "8156515d359e8a47d57137e5c8412f10e53c48ea5b156a75fe73c554a73fae84",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "e5a7e03a74b669630ded8ea91309cb80ad4efa422d911db6fd0a4cbc1eb3e2b4",
+          "page_json_file": "2609.27349.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/LG-AI-Research/MolDesignBench",
+            "fetched_url": "https://huggingface.co/datasets/LG-AI-Research/MolDesignBench/raw/main/README.md",
+            "sha256": "f9d0d904e188e68d2dc6e5a75eb0a19f283314a36750a82b2e0ebae91b8ac92b",
+            "accessed": "2026-10-27T03:31:24Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-27T03:31:24Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.27349",
+        "paper_title": "MolDesignBench: Evaluating LLM-based Agent for Scenario-grounded Molecular Design",
+        "abstract": "Real-world molecular design remains challenging for large language model (LLM)-based agents. It requires them to interpret design contexts, satisfy multiple constraints, identify infeasible specifications, and reason over multi-step tool outputs. Existing benchmarks do not capture this complexity, focusing instead on explicit and narrow constraints, only feasible problems, and single-path solutions. To address this gap, we propose MolDesignBench, a scenario-grounded benchmark that more closely reflects real-world molecular design for evaluating tool-augmented LLM agents. MolDesignBench comprises 2K generation and optimization instances that combine implicit requirements embedded in design narratives with explicit property and functional-group constraints, including infeasible cases, and require the effective use of 17 specialized chemistry tools. Experiments across diverse frontier LLMs reveal low success rates--with the best achieving only $\\sim43$\\%--and frequent failures in implicit-constraint reasoning, infeasibility detection, and tool reasoning. The corresponding fine-grained failure-mode analysis identifies implicit constraint interpretation and infeasibility detection as the primary bottlenecks, establishing MolDesignBench as a rigorous testbed to guide future research on chemical agents. The benchmark, tool interface, and evaluation code are publicly available.",
+        "paper_updated": "2026-09-24T00:00:00Z",
+        "created_at": "2026-10-19T13:44:46Z",
+        "input_sha256": "8c4d7494a6eb399519e8172760bff98ab000655047601f9d2da91db929427aca",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "시나리오 기반 분자 설계 LLM 에이전트 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "분자 설계 에이전트 평가 벤치마크 MolDesignBench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40440316488",
+        "context_sha256": "b8804aa49fac4edf31988dbd0569180d9bf0fcf57c954f86506f12d1263aa43e"
+      },
+      "proposal_sha256": "ba9502369a4f755fcccdc8aeb164130b675b198ac123b4f1f6d8dde94e48bc8d"
     }
   },
   "processed_comments": [],
@@ -46567,8 +46740,8 @@
         "2610.32536",
         "2610.32575"
       ],
-      "calls": 19,
-      "cost_usd": 9.8383
+      "calls": 20,
+      "cost_usd": 10.4526
     }
   },
   "reaudits": [
