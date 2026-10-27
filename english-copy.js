@@ -294,4 +294,22 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Generate interface-only SVA properties from RTL, evaluated by formal soundness and mutant detection.",
     "example": "Task description: given an RTL implementation, generate interface-level behavioral properties that avoid implementation-specific internal signals, and compare results across different RTL implementations of the same behavior."
   },
+  "tar-bench": {
+    "axis": "Images/video (traffic anomaly reasoning: question answering, temporal reasoning, scene understanding)",
+    "definition": "A benchmark for 10 traffic anomaly reasoning tasks. It has 960 human-curated annotations over 80 held-out clips trimmed from 17 public YouTube videos, and shares its task taxonomy with the TAR training corpus (44,040 automatically generated annotations over 3,670 CCTV videos). Metrics are accuracy for BCQ and MCQ, BERTScore F1 for open-ended tasks, and mIoU for temporal localization; the unweighted mean over the 10 tasks is the aggregate score. The paper reports means over 3 runs.",
+    "task": "Question answering (BCQ, BCQ+E, MCQ, MCQ+E, OQA), temporal reasoning (TL, TD, CL), and scene understanding (SD, VS)",
+    "example": "Task description: for a traffic CCTV clip, answer yes/no questions (for example, whether a vehicle crossed lane lines before a collision), localize the anomaly in time, explain the causal link between events, and describe or summarize the scene."
+  },
+  "moldesignbench": {
+    "axis": "Agents (scenario-grounded molecular design with tool use)",
+    "definition": "A benchmark of whether tool-augmented LLM agents can generate or optimize molecules that satisfy implicit constraints embedded in a design narrative together with explicit property and functional-group constraints. It has 2,000 instances (1,000 generation and 1,000 optimization), and 10% of each split (100 instances) is infeasible, requiring the agent to answer None. It provides 17 chemistry tools. Metrics are Success, CSR, MCD, InfAcc, MCC, Validity, and Tool Calls.",
+    "task": "Multi-constraint molecule generation and optimization (generation gives only the scenario; optimization gives a starting molecule plus the scenario).",
+    "example": "Task description: the agent reads an English design-scenario prompt (for example, an improvement directive such as 'decrease logP by at least 1.5' plus a required functional group), infers the implicit constraints, and returns one SMILES string in an <ANSWER> tag, or None if the constraints are contradictory."
+  },
+  "indicbankbench": {
+    "axis": "Agents (banking assistant tool use, safety, and repeated-run reliability)",
+    "definition": "A 799-case benchmark for Indian retail banking assistants, with 5 operational domains, 1 capability/refusal domain, and 20 primary axes. Each interaction is graded in four stages: safety, action and tool use, response adequacy, and advisory quality. Tool use and most safety checks are deterministic. An LLM judge assesses response adequacy, and a narrow resolver handles only ambiguous confirmation-before-write cases. Every case is run three times and strict pass^3 is reported; the paper evaluates eleven models.",
+    "task": "Multi-turn, account-grounded banking conversations in which the assistant calls deterministic mock tools and must answer, clarify, or decline safely (S/A/R/Q grading).",
+    "example": "Task description: a customer checks a balance, then returns the next day to ask about a transfer. The assistant must re-query the balance instead of reusing the stale value (schematic case from Figure 1)."
+  },
 };

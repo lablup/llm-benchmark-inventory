@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "last_checked_at": "2026-10-26T02:49:37Z",
-  "last_run_at": "2026-10-26T02:55:49Z",
+  "last_checked_at": "2026-10-27T02:46:13Z",
+  "last_run_at": "2026-10-27T02:51:48Z",
   "run_status": "paused_time_budget",
   "stages": {
     "published": "표에 반영",
@@ -17,17 +17,17 @@
     "unscreened": "초록 선별 대기"
   },
   "totals": {
-    "papers": 1119,
-    "published": 19,
-    "awaiting": 2,
-    "held": 56,
-    "excluded": 50,
+    "papers": 1145,
+    "published": 22,
+    "awaiting": 4,
+    "held": 66,
+    "excluded": 58,
     "draft_rejected": 0,
-    "card_failed": 7,
-    "link_missing": 23,
-    "pdf_failed": 19,
-    "screened_out": 27,
-    "queued": 916,
+    "card_failed": 10,
+    "link_missing": 39,
+    "pdf_failed": 23,
+    "screened_out": 28,
+    "queued": 895,
     "unscreened": 0
   },
   "days": [
@@ -186,7 +186,7 @@
       "cost_usd": 23.03,
       "counts": {
         "published": 5,
-        "awaiting": 2,
+        "awaiting": 0,
         "held": 9,
         "excluded": 6,
         "draft_rejected": 0,
@@ -196,11 +196,781 @@
         "screened_out": 0,
         "queued": 0,
         "unscreened": 0,
+        "carried": 2
+      }
+    },
+    {
+      "day": "2026-10-27",
+      "abstracts": 29,
+      "attempted": 49,
+      "calls": 45,
+      "cost_usd": 24.05,
+      "counts": {
+        "published": 3,
+        "awaiting": 4,
+        "held": 8,
+        "excluded": 8,
+        "draft_rejected": 0,
+        "card_failed": 6,
+        "link_missing": 16,
+        "pdf_failed": 4,
+        "screened_out": 0,
+        "queued": 0,
+        "unscreened": 0,
         "carried": 0
       }
     }
   ],
   "papers": [
+    {
+      "arxiv_id": "2608.10317",
+      "title": "From Detection to Understanding: TAR and TAR-Bench for Multi-Task Traffic Anomaly Reasoning",
+      "first_seen": "2026-10-19",
+      "stage": "published",
+      "stage_label": "표에 반영",
+      "reason": "TAR-Bench는 교통 이상 영상에 대해 질의응답, 시간 추론, 장면 이해 10개 과제를 사람이 검수한 960개 주석으로 평가하는 재사용 가능한 벤치마크입니다. 질문 예시가 영어이므로 en 트랙으로 분류했고, 영상이 필요한 과제라 modality는 vision입니다. 라이선스 항목은 공식 데이터 카드의 CC-BY-4.0 표기와 상업적 이용 문구로 채웠습니다. lm-eval 지원은 공식 카드와 논문 어디에도 언급이 없어 '미표기'로 두고 부재 근거를 붙였습니다. 권장 모델 결과는 논문 Table 3의 zero-shot 평가(10개 과제 평균)에서 가져왔습니다.",
+      "updated_at": "2026-10-27T04:20:10Z",
+      "changes": [
+        "TAR-Bench"
+      ],
+      "inventory_url": "./english.html?modality=vision#inventory"
+    },
+    {
+      "arxiv_id": "2609.30466",
+      "title": "A Benchmarking Framework for Context-aware XR Interfaces",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T04:20:10Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.29167",
+      "title": "IndicBankBench: Evaluating Safety and Reliability of Language Model Assistants in Indian Retail Banking",
+      "first_seen": "2026-10-18",
+      "stage": "published",
+      "stage_label": "표에 반영",
+      "reason": "IndicBankBench는 인도 소매 은행 환경의 799개 케이스, 20개 축, 결정적 mock 도구, 3회 반복(pass^3) 평가를 갖춘 영어 텍스트 에이전트 벤치마크입니다. 논문 12쪽이 케이스 데이터를 CC BY 4.0, 코드를 MIT로 명시하므로 라이선스 항목은 이 인용으로 채웠습니다. 공식 저장소 카드는 lm-evaluation-harness를 언급하지 않아 lm-eval 지원은 미표기로 두었습니다. 추천 모델 점수는 논문 표 5의 pass^3 한 가지 실험에서 가져왔습니다.",
+      "updated_at": "2026-10-27T04:20:10Z",
+      "changes": [
+        "IndicBankBench"
+      ],
+      "inventory_url": "./english.html#inventory"
+    },
+    {
+      "arxiv_id": "2609.27349",
+      "title": "MolDesignBench: Evaluating LLM-based Agent for Scenario-grounded Molecular Design",
+      "first_seen": "2026-10-18",
+      "stage": "published",
+      "stage_label": "표에 반영",
+      "reason": "MolDesignBench는 도구를 쓰는 LLM 에이전트의 분자 설계 능력을 평가하는 새 벤치마크다. 생성 1,000건과 최적화 1,000건을 합쳐 2,000건이며, 각 분할에 불가능(infeasible) 사례가 10%씩 들어 있다. 암묵적 제약 해석, 다중 제약 충족, 불가능 판정, 17개 도구를 쓰는 다단계 추론을 평가한다. 과제 프롬프트는 영어로 쓰였고 입력은 텍스트뿐이므로 en 트랙, text 모달리티로 분류한다. 공식 데이터셋 카드에 라이선스가 CC-BY-NC-4.0으로 명시되어 있고, 공식 카드가 lm-eval을 언급하지 않아 해당 칸은 '미표기'로 둔다. 모델 비교는 논문 표 3의 생성 과제 Success(도구 사용) 결과 한 가지만 사용한다.",
+      "updated_at": "2026-10-27T04:20:10Z",
+      "changes": [
+        "MolDesignBench"
+      ],
+      "inventory_url": "./english.html#inventory"
+    },
+    {
+      "arxiv_id": "2609.30057",
+      "title": "KREX: Concurrent Kernel Benchmarking on Shared GPUs via Region-Granular Exclusivity",
+      "first_seen": "2026-10-18",
+      "stage": "excluded",
+      "stage_label": "본문 조사 후 제외",
+      "reason": "이 논문은 GPU 공유 환경에서 커널 에이전트 벤치마킹의 처리량과 측정 충실도를 높이는 런타임 시스템(KREX)을 제안하는 시스템 논문이다. 새로운 재사용 가능 벤치마크나 데이터셋을 제시하지 않는다. KernelBench, Atrex-Bench, FlashInfer-Trace는 기존 벤치마크를 재생(replay) 워크로드로 사용했을 뿐이며 실질적 갱신도 없다. 또한 평가 대상은 GPU 커널 성능 측정이며 한국어·영어 과제나 지시문 기반 LLM 평가가 아니다. 논문이 이름을 밝힌 공식 데이터셋·코드 링크도 KREX 자체에 대해서는 없다.",
+      "updated_at": "2026-10-27T04:19:12Z"
+    },
+    {
+      "arxiv_id": "2609.30055",
+      "title": "Era by Eon: Benchmarking Enterprise Agents on Hidden Knowledge",
+      "first_seen": "2026-10-18",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-10-28부터 재시도",
+      "updated_at": "2026-10-27T04:18:12Z",
+      "retry_after": "2026-10-28"
+    },
+    {
+      "arxiv_id": "2609.30027",
+      "title": "Synthetic Hospital: An Open, Verifiable, Physician-Validated Longitudinal EHR Benchmark",
+      "first_seen": "2026-10-18",
+      "stage": "awaiting",
+      "stage_label": "Claude 검증 대기",
+      "reason": "이 논문은 영어 환자 기록을 쓰는 새로운 재사용 가능 벤치마크 Synthetic Hospital을 제시합니다. 합성 종단 EHR 환자 1,268명과 진료 5,602건으로 구성되며, 환자 진단, 요약, 근거 검색, 영상 검사 지시 해석의 네 가지 과제를 평가합니다. 과제 예시가 영어이고 입력이 텍스트 차트이므로 en 트랙의 text로 분류했습니다. 공식 코드와 데이터 링크는 1쪽에 있습니다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록합니다.",
+      "updated_at": "2026-10-27T04:16:44Z"
+    },
+    {
+      "arxiv_id": "2609.29798",
+      "title": "Benchmarking and Domain Adaptation of Automatic Speech Recognition (ASR) for Adolescent Health Communication in Ghanaian Languages",
+      "first_seen": "2026-10-18",
+      "stage": "excluded",
+      "stage_label": "본문 조사 후 제외",
+      "reason": "이 논문은 트위어, 다그바니어, 에웨어 등 가나 현지어 ASR(음성 인식)을 다룬다. 평가 과제의 언어가 한국어나 영어가 아니므로 인벤토리의 ko/en 범위 밖이다. 영어 텍스트가 일부 있으나 영어로 만든 합성 텍스트 데이터셋을 언급하는 정도이고, 벤치마크 평가 대상은 현지어 음성이다. 또한 논문의 기여는 기존 모델을 비교하고 도메인 적응을 시도한 연구와 앱 배포 사례이며, 재사용할 새 벤치마크를 따로 정의하지 않는다.",
+      "updated_at": "2026-10-27T04:14:42Z"
+    },
+    {
+      "arxiv_id": "2609.29445",
+      "title": "Two Emojis of Difference: What Multilingual Affective Generation Benchmarks Actually Measure",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T04:13:42Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.29371",
+      "title": "BanglaTurn: A Benchmark and Whisper-Based Model for End-of-Turn Detection in Bangla Speech",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T04:12:56Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.29156",
+      "title": "Med-AR: Autoregressive Vision-Language Pretraining for Long-Tailed Chest X-Ray Classification and Uncertainty-Aware Evaluation",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-03부터 재시도",
+      "updated_at": "2026-10-27T04:09:10Z",
+      "retry_after": "2026-11-03"
+    },
+    {
+      "arxiv_id": "2609.29101",
+      "title": "Language Specificity vs. Domain Diversity: Benchmarking Transformers for Bangla Medical NER",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T04:08:57Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.29067",
+      "title": "TileBench: A Controlled Benchmark for Performance Evaluation and Bottleneck Diagnosis of Tile-Based Programming Models",
+      "first_seen": "2026-10-18",
+      "stage": "awaiting",
+      "stage_label": "Claude 검증 대기",
+      "reason": "TileBench는 Triton과 cuTile 구현을 같은 연산 의미와 같은 하니스에서 비교하는 재사용 가능한 새 벤치마크입니다. 45개 연산, 연산별 dtype·입력 크기 스윕, 기본 및 autotune 설정, roofline 지표를 갖췄고, 영어 자연어 연산 설명으로 LLM이 커널을 생성하는 반복 개선 트랙도 있습니다. 과제 언어는 영어이고 입력은 텍스트라서 en 트랙의 text로 분류했습니다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 두었고, 링크는 PDF가 직접 밝힌 GitHub 저장소를 썼습니다. 이전 답변에서 페이지에 없던 인용문을 쓴 문제는, 해당 페이지에 그대로 나오는 짧은 인용문으로 교체해 고쳤습니다.",
+      "updated_at": "2026-10-27T04:07:29Z"
+    },
+    {
+      "arxiv_id": "2609.29043",
+      "title": "Design and Evaluation of LLM Chaining-Based Task Planning for General Purpose Service Robots",
+      "first_seen": "2026-10-18",
+      "stage": "excluded",
+      "stage_label": "본문 조사 후 제외",
+      "reason": "이 논문의 핵심 기여는 GPSR 과제 계획을 위한 2단계 LLM 체이닝 아키텍처이며, 재사용 가능한 벤치마크를 새로 공개하거나 실질적으로 갱신한 것이 아니다. 100개 GPSR 명령은 RoboCup@Home Japan Command Generator로 무작위 생성한 평가용 샘플이고, 논문이 이를 별도 데이터셋으로 배포한다고 밝히지 않는다. 논문이 명시한 URL은 외부 Command Generator와 AtHome2026 저장소뿐이어서 이 논문 자체의 공식 데이터셋·코드 링크가 없다. 따라서 propose 근거가 부족하고, 새 벤치마크로 보기도 어려워 제외한다.",
+      "updated_at": "2026-10-27T04:05:14Z"
+    },
+    {
+      "arxiv_id": "2609.28991",
+      "title": "Beneath the Scores: Rethinking Hallucination Evaluation for Video Understanding Models",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T04:04:30Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.28921",
+      "title": "PFArena: Benchmarking Language Models for Protein Modification",
+      "first_seen": "2026-10-18",
+      "stage": "excluded",
+      "stage_label": "본문 조사 후 제외",
+      "reason": "PFArena는 단백질 변이(아미노산 서열) 적합도 예측·순위화를 평가하는 벤치마크로, 과제 입력이 단백질 서열과 assay 메타데이터입니다. 일부 프롬프트 템플릿은 영어 지시문으로 쓰여 있으나, 평가 대상은 한국어/영어 언어 과제(지식, 추론, 코딩, 에이전트, 멀티모달, 장문 맥락 등)가 아니라 생물학적 서열 모델링 능력입니다. 이 인벤토리의 범위(한국어·영어 과제 기반 LLM 벤치마크)를 벗어나므로 제외합니다.",
+      "updated_at": "2026-10-27T04:02:18Z"
+    },
+    {
+      "arxiv_id": "2609.28876",
+      "title": "Forecast-Dojo: Replayable Environments for Benchmarking and Training LLM Forecasting Agents",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T04:00:15Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2608.15594",
+      "title": "TRACE: Trajectory Aware Reasoning for Multi-Turn Adversarial Conversation Evaluation",
+      "first_seen": "2026-10-19",
+      "stage": "excluded",
+      "stage_label": "본문 조사 후 제외",
+      "reason": "이 논문은 다중 턴 탈옥 방어 모델 TRACE를 제안하는 모델·학습 방법 논문이다. 4k 적대적 대화, 2.4k 일반 대화, 600개 민감하지만 무해한 대화로 이루어진 학습 코퍼스를 만들었지만, 논문이 내세우는 기여는 방어 방법과 학습 레시피이며 재사용 가능한 평가 벤치마크가 아니다. 평가는 기존 공격 프레임워크(X-Teaming, Crescendo 등), HarmBench와 JailbreakBench의 행동, PHTest, XSTest 같은 기존 벤치마크를 그대로 사용한다. 데이터는 공개 예정이라고만 하고 gated 연구용 라이선스를 언급하며, PDF에 데이터셋 자체의 공식 URL은 명시되지 않았다. 따라서 새 벤치마크 행으로 추가하지 않는다.",
+      "updated_at": "2026-10-27T03:58:16Z"
+    },
+    {
+      "arxiv_id": "2604.01754",
+      "title": "LiveMathematicianBench: A Live Benchmark for Research-Level Mathematical Reasoning with Proof Sketches",
+      "first_seen": "2026-10-19",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T03:56:31Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.28826",
+      "title": "COILD: An Indic-Centric Parallel Corpus and Benchmark for Machine Translation Across Indian Languages",
+      "first_seen": "2026-10-18",
+      "stage": "excluded",
+      "stage_label": "본문 조사 후 제외",
+      "reason": "COILD는 힌디어와 타밀어를 중심으로 한 인도 언어 간 기계번역 코퍼스 및 벤치마크이며, 평가 과제의 언어가 한국어나 영어가 아니다. 벤치마크의 번역 방향은 힌디어·타밀어와 아삼어, 벵골어, 우르두어 등 인도 언어 사이로 구성되어 있다. 따라서 한국어/영어 범위를 벗어나 ko·en 어느 트랙에도 추가하지 않는다.",
+      "updated_at": "2026-10-27T03:54:57Z"
+    },
+    {
+      "arxiv_id": "2609.28813",
+      "title": "CinematicVQA: Benchmarking Film-Grammar Reasoning in Large Vision-Language Models",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T03:53:30Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.28673",
+      "title": "Benchmarking Argumentative Behaviour of LLMs: A Study of Defences Against Character Attacks",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T03:52:45Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.28449",
+      "title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
+      "first_seen": "2026-10-18",
+      "stage": "awaiting",
+      "stage_label": "Claude 검증 대기",
+      "reason": "SWE-FLUX는 12개 실제 Python 저장소에서 가져온 480개 인스턴스로 만든 저장소 수준 동적 실행 추론 벤치마크이다. 정답은 계측된 테스트 실행에서 자동으로 추출하며 LLM 판정을 쓰지 않는다. 과제 질문은 영어 자연어이므로 en 트랙, 텍스트 전용(text)으로 분류했다. 논문이 공식 저장소 URL을 명시했고 기존 인벤토리에는 같은 벤치마크가 없다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "updated_at": "2026-10-27T03:51:16Z"
+    },
+    {
+      "arxiv_id": "2609.28437",
+      "title": "MultiVENT-Raw: A Benchmark for Retrieval and Reasoning over Raw Videos",
+      "first_seen": "2026-10-18",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "데이터의 라이선스 근거가 공급된 자료에 없어 게시할 수 없습니다. 공식 GitHub README는 영상과 주석을 접근 제한(gated) HuggingFace 저장소(hltcoe/multivent-raw, hltcoe/microvent 등)에 두고 있으나 그 데이터 카드는 제공되지 않았습니다. README에는 데이터의 이용 조건 문구가 없습니다. 저장소 LICENSE 파일(Apache-2.0)은 저장소 코드에 대한 것이므로 데이터 라이선스로 간주할 수 없고, LICENSE 섹션이 있는 카드는 라이선스 미표기(absence) 증거로도 쓸 수 없습니다. 또한 PDF 4쪽에 따르면 컬렉션의 영상은 YouTube, X, TikTok 등 외부 플랫폼에서 수집되었으므로, 구성 요소별 권리를 설명하는 데이터 카드가 필요합니다. 상업적 이용, 수정·파생, 재배포 필드를 채울 근거가 없습니다. lm-eval 지원은 README에 언급이 없지만, 위 라이선스 항목이 채워지지 않아 행 전체를 게시하지 않습니다. 접근 제한 데이터 카드의 라이선스 문구를 공식 자료로 제공받으면 다시 평가할 수 있습니다.",
+      "updated_at": "2026-10-27T03:49:02Z"
+    },
+    {
+      "arxiv_id": "2609.28090",
+      "title": "Can LLMs Catch a Rigged Backtest? A Clean-Control Calibration Benchmark",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T03:47:00Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2610.08813",
+      "title": "Pre-training, Reasoning, Benchmarking: X-ray Report Generation on CheXpert Plus Dataset",
+      "first_seen": "2026-10-18",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "이 벤치마크(CXPMRG-Bench)의 공식 저장소는 논문 1쪽이 밝힌 https://github.com/Event-AHU/Medical_Image_Analysis인데, 제공된 공식 자료 카드에는 이 저장소가 없다. 제공된 카드는 CheXpert Plus 데이터셋 저장소(https://github.com/Stanford-AIMI/chexpert-plus, 논문 8쪽 각주 3)의 README뿐이다. 이 README는 RadGraph-XL, CheXbert, 모델 목록만 설명하고 라이선스 문구도 lm-eval 언급도 없으며, LICENSE 파일 항목도 없다. 그러나 이 카드는 벤치마크가 아닌 원천 데이터셋의 것이므로, 이를 근거로 CXPMRG-Bench의 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원을 '미표기'나 '저작권 전부 보유'로 판정하는 것은 부적절하다. 벤치마크 저장소의 README와 LICENSE를 확인해야 이 다섯 항목을 근거와 함께 채울 수 있다. 논문 PDF에는 license, CC BY, MIT, Apache, GPL, BSD, all rights reserved 등의 표기가 없어 PDF에서도 권리 정보를 얻을 수 없다. ",
+      "updated_at": "2026-10-27T03:46:05Z"
+    },
+    {
+      "arxiv_id": "2609.27571",
+      "title": "FDE-Bench: Evaluating LLM Agents for Deployment Environment Configuration",
+      "first_seen": "2026-10-18",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-10-28부터 재시도",
+      "updated_at": "2026-10-27T03:43:19Z",
+      "retry_after": "2026-10-28"
+    },
+    {
+      "arxiv_id": "2609.27510",
+      "title": "Uncheatable Eval: Dynamic Compression-Based Evaluation of Language Models",
+      "first_seen": "2026-10-18",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "데이터셋 자체의 라이선스와 이용 권한을 뒷받침하는 근거가 제공된 자료에 없어 게시하지 않습니다. 공식 저장소 카드(https://github.com/Jellyfish042/uncheatable_eval)의 '## LICENSE file' 항목에는 MIT 전문이 있지만, 이는 저장소의 코드·소프트웨어에 대한 라이선스입니다. 카드 본문은 이 MIT가 평가 데이터에 적용된다고 밝히지 않으며, 데이터가 올라 있는 Hugging Face 컬렉션(Jellyfish042/UncheatableEval-2026-04 등)의 카드는 이번에 제공되지 않았습니다. 코드 라이선스를 데이터셋 라이선스로 옮겨 적을 수 없고, LICENSE 파일이 있는 카드는 '미표기' 형태의 부재 증거로 쓸 수 없으므로 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목을 사실대로 채울 수 없습니다. 또한 논문(3쪽)과 카드 모두 평가 텍스트를 arXiv, GitHub, AO3, BBC 뉴스, Wikipedia 등 외부 공개 출처에서 수집한다고 하므로, 각 구성 요소의 고유 약관도 데이터 카드 없이는 정리할 수 없습니다. lm-eval 지원은 카드에 lm-eval 또는 lm-evaluation-ha",
+      "updated_at": "2026-10-27T03:41:01Z"
+    },
+    {
+      "arxiv_id": "2609.27457",
+      "title": "Beyond Balanced Accuracy: A Resolution and Parity-Controlled Benchmark for Vision-Language and Vision-Only Defect Assessment in UAV Power-Line Inspection",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T03:38:47Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.27395",
+      "title": "PRISM-VLM: A Multi-Axis Discriminative Benchmark for Compact Vision-Language Models",
+      "first_seen": "2026-10-18",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(HTTP Error 404: Not Found), 2026-10-28부터 재시도",
+      "updated_at": "2026-10-27T03:36:24Z",
+      "retry_after": "2026-10-28"
+    },
+    {
+      "arxiv_id": "2609.27385",
+      "title": "Forecast Workflow Bench: Evaluating Language-Model Decisions with Budgeted Forecast Tools",
+      "first_seen": "2026-10-18",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "공식 데이터 카드에 LICENSE 파일이 있어 라이선스 '미표기'(absence) 처리는 불가능하고, 카드는 단일 라이선스가 아닌 구성 요소별 약관을 명시한다(\"There is no single replacement license for every component.\"). EIA 유래 관측치는 EIA 저작권·재사용 정책(공개 도메인 취급)을 따르고, 독자적으로 만든 지침·계약·설정·문서·예제 코드는 Apache-2.0이다. 반면 TfL 유래 시간별 관측치는 \"retain the Transport Data Service terms, not Apache-2.0 or unmodified OGL\"이라고만 밝혀져 있다. 그런데 TfL Transport Data Service 약관 본문(provenance/extensions/tfl/license.html 및 TfL 약관 페이지)은 제공된 자료에 없어 TfL 구성 요소의 상업적 이용, 수정·파생, 재배포 허용 범위를 인용으로 확정할 수 없다. 논문(1,251건 중 자전거 대여 160건, PDF 3~4쪽)과 카드 모두 TfL 데이터를 벤치마크 구성 요소로 포함하므로 데이터셋 전체에 적용되는 단일 값을 게시할 수 없다. 이",
+      "updated_at": "2026-10-27T03:33:36Z"
+    },
+    {
+      "arxiv_id": "2609.27205",
+      "title": "Phonemizing User-Generated Text: A Benchmark, Taxonomy, and Compositional Approach",
+      "first_seen": "2026-10-18",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "조사 이후 기존 자료가 변경되어 반영하지 않았습니다.",
+      "updated_at": "2026-10-27T03:27:19Z"
+    },
+    {
+      "arxiv_id": "2609.28197",
+      "title": "PASTABench: Proactive Assessment of Sequential Trajectories for Agent Safety",
+      "first_seen": "2026-10-19",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T03:24:44Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.06080",
+      "title": "PhenoBench: Mapping What a Deeply Phenotyped Human Cohort Can Tell Us",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-03부터 재시도",
+      "updated_at": "2026-10-27T03:23:32Z",
+      "retry_after": "2026-11-03"
+    },
+    {
+      "arxiv_id": "2608.20153",
+      "title": "FormalTCS: Benchmarking End-to-End Frontier Formal Theoretical Computer Science Research of Large Language Models",
+      "first_seen": "2026-10-19",
+      "stage": "awaiting",
+      "stage_label": "Claude 검증 대기",
+      "reason": "FormalTCS는 STOC, FOCS, SODA, COLT 2025~2026 논문에서 가져온 143개 인스턴스로 이론 전산학 연구를 단계별로 평가하는 재사용 가능한 벤치마크입니다. 과제는 정리 도출, 자동 형식화, 증명 도출, Lean 정리 증명의 4가지입니다. 프롬프트가 영어로만 작성되어 en 트랙과 text 모달리티로 분류했습니다. 공식 코드·벤치마크 URL이 논문에 명시되어 있습니다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했습니다. 논문 본문(Table 4)의 수치는 메타데이터 요약과 약간 달라서 점수는 행에 넣지 않았습니다.",
+      "updated_at": "2026-10-27T03:22:16Z"
+    },
+    {
+      "arxiv_id": "2606.05003",
+      "title": "PhysDox: Benchmarking LLMs on Physical Feasibility Auditing of Physiological Sensing Protocols",
+      "first_seen": "2026-10-19",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "PhysDox 데이터셋(Gold 683건, Silver 5,000건)의 라이선스를 공식 자료로 확인할 수 없어 게시하지 않습니다. 공식 저장소 README는 소프트웨어 아카이브(Python 패키지, 스크립트)와 데이터 아카이브(Gold/Silver 데이터셋, 결과)를 의도적으로 분리했다고 밝힙니다. 저장소의 LICENSE 파일(MIT)은 'the Software' 즉 소프트웨어에 대한 것이고 데이터셋에 적용된다는 문구가 없습니다. 코드 라이선스를 데이터셋 라이선스로 볼 수 없으므로 MIT를 근거로 상업적 이용, 수정·파생, 재배포를 기재할 수 없습니다. 카드에 '## LICENSE file' 항목이 있어 미표기 근거(absent)도 쓸 수 없습니다. 논문 PDF 22쪽 전체에도 데이터 라이선스 진술이 없습니다. 논문 9쪽은 데이터가 https://github.com/phish-tech/PhysDox 에 공개되어 있다고만 적습니다. 별도의 데이터 아카이브 카드나 라이선스 문서가 제공되어야 라이선스, 상업적 이용, 수정·파생, 재배포 항목을 근거와 함께 채울 수 있습니다. 또한 기존 초안에는 게시 정책이 금지하는 '확인 불가' 값이 들어 있어 그대로 게시할 수 ",
+      "updated_at": "2026-10-27T03:16:27Z"
+    },
+    {
+      "arxiv_id": "2603.17373",
+      "title": "SafeTutors: Benchmarking Pedagogical Safety in AI Tutoring Systems",
+      "first_seen": "2026-10-19",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "데이터셋 수준의 라이선스 근거가 공급된 자료에 없어 게시할 수 없다. 공식 저장소 README는 'This project is licensed under the MIT License'라고만 적어 프로젝트(코드) 전체에 대한 표기이며, 벤치마크 데이터셋 자체에 적용된다는 문구가 없다. README는 현재 샘플 데이터셋만 공개했다고 밝히고, 데이터 본체의 배포처로 Hugging Face 카드(SoftMINER-Group/SafeTutors)를 링크하지만 그 카드는 공급되지 않았다. 공급된 카드에는 '## LICENSE file' 섹션이 없어 LICENSE 파일로 뒷받침되지 않고, README의 MIT 배지도 자리표시 주소(your-username)를 가리킨다. 시드 문항은 MathDial과 CAMEL-AI 데이터셋에서 가져온 것(논문 4쪽)이라 코드 라이선스가 모든 구성 요소에 적용되는지 입증되지 않는다. 따라서 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목을 데이터셋 수준의 인용으로 채울 수 없다. 또 이 네 항목에는 미표기 처리(저작권 전부 보유)도 쓸 수 없는데, README가 MIT를 명시해 부재 증거 조건을 충족하지 못하기 때문이다. 데이터셋 카",
+      "updated_at": "2026-10-27T03:13:48Z"
+    },
+    {
+      "arxiv_id": "2601.09562",
+      "title": "MM-BRIGHT: A Multi-Task Multimodal Benchmark for Reasoning-Intensive Retrieval",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-03부터 재시도",
+      "updated_at": "2026-10-27T03:11:25Z",
+      "retry_after": "2026-11-03"
+    },
+    {
+      "arxiv_id": "2601.06676",
+      "title": "IDRBench: Benchmarking the Interactive Capabilities of Deep Research Agents",
+      "first_seen": "2026-10-19",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T03:11:12Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2508.13680",
+      "title": "VMMU: A Vietnamese Multitask Multimodal Understanding and Reasoning Benchmark",
+      "first_seen": "2026-10-19",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T03:09:44Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2505.10083",
+      "title": "ChronoSteer: Bridging Large Language Model and Time Series Foundation Model via Synthetic Cross-Modal Alignment Dataset",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-03부터 재시도",
+      "updated_at": "2026-10-27T03:07:29Z",
+      "retry_after": "2026-11-03"
+    },
+    {
+      "arxiv_id": "2609.27139",
+      "title": "A Hierarchy-Aware Video-Language Model Evaluation and Hyperbolic Baseline for Surgery",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T03:05:16Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.27036",
+      "title": "An open benchmark for machine learning-based polymer property prediction",
+      "first_seen": "2026-10-18",
+      "stage": "excluded",
+      "stage_label": "본문 조사 후 제외",
+      "reason": "PolyBench26은 고분자 반복 단위를 PSMILES 문자열이나 분자 그래프로 입력받아 물성(Tg, 밀도, 굴절률 등)을 회귀 예측하는 재료·화학 ML 벤치마크입니다. 한국어나 영어 과제·지시문을 평가하는 LLM 벤치마크가 아닙니다. 주 평가 대상은 그래프 신경망과 기술자 기반 모델이고, GPT-4o와 GPT-o3-mini는 Task 1에서 zero-shot 비교군으로만 쓰였으며 이후 Task 2~4에서는 제외됐습니다. 영어 프롬프트는 보충 자료에 있는 부수적 평가용이며 벤치마크의 과제 언어를 규정하지 않습니다. 따라서 인벤토리 범위(한국어·영어 과제 기반 LLM 평가)에 해당하지 않아 제외합니다.",
+      "updated_at": "2026-10-27T03:04:04Z"
+    },
+    {
+      "arxiv_id": "2609.26985",
+      "title": "Benchmarking Automated Knowledge Graph Construction from Semi-Structured Data",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-11-26부터 재시도",
+      "updated_at": "2026-10-27T03:02:15Z",
+      "retry_after": "2026-11-26"
+    },
+    {
+      "arxiv_id": "2609.26945",
+      "title": "Classifying Interpretive Canons at the Sentence Level: A Benchmark from the German Federal Constitutional Court",
+      "first_seen": "2026-10-18",
+      "stage": "excluded",
+      "stage_label": "본문 조사 후 제외",
+      "reason": "이 논문은 독일 연방헌법재판소 판결문(독일어)을 문장 단위로 주석한 해석 기준 분류 벤치마크를 제시한다. 과제 지시문과 문항, 전문가 프롬프트가 모두 독일어이고 판결문 발췌도 독일어 원문이다. 영어 번역 예시는 논문 본문 설명용이며 평가 과제의 언어가 아니다. 따라서 한국어(ko) 또는 영어(en) 과제 범위에 해당하지 않아 인벤토리 대상에서 제외한다.",
+      "updated_at": "2026-10-27T03:01:07Z"
+    },
+    {
+      "arxiv_id": "2609.20574",
+      "title": "DocAttriBench: Benchmarking Answer Grounding in Document Visual Question Answering",
+      "first_seen": "2026-10-19",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-03부터 재시도",
+      "updated_at": "2026-10-27T02:59:07Z",
+      "retry_after": "2026-11-03"
+    },
+    {
+      "arxiv_id": "2604.02947",
+      "title": "AgentHazard: A Benchmark for Evaluating Harmful Behavior in Computer-Use Agents",
+      "first_seen": "2026-10-19",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-03부터 재시도",
+      "updated_at": "2026-10-27T02:56:22Z",
+      "retry_after": "2026-11-03"
+    },
+    {
+      "arxiv_id": "2508.15526",
+      "title": "SafetyFlow: An Agent-Flow System for Automated LLM Safety Benchmarking",
+      "first_seen": "2026-10-19",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(HTTP Error 404: Not Found), 2026-11-03부터 재시도",
+      "updated_at": "2026-10-27T02:54:41Z",
+      "retry_after": "2026-11-03"
+    },
+    {
+      "arxiv_id": "2506.20008",
+      "title": "QHackBench: Benchmarking Large Language Models for Quantum Code Generation Using PennyLane Hackathon Challenges",
+      "first_seen": "2026-10-27",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "QHackBench는 영어 PennyLane 코드 생성 과제로 구성된 텍스트 코딩 벤치마크로, 49개 QHack 2023–2024 챌린지(2023년 28개, 2024년 21개)와 Pass@k·실행 성공률 평가를 갖추고 있어 새 벤치마크로 볼 수 있다. 다만 PDF는 QHackBench 자체의 공식 데이터셋이나 코드 URL을 제시하지 않고 공개하겠다고만 약속한다. 참고문헌에 나오는 Xanadu AI의 GitHub 저장소 두 곳은 원천 챌린지의 출처이고, 2023년 저장소 주소는 밑줄이 깨져 출력되어 있다. 이것을 QHackBench의 공식 링크로 대신 쓰면 PDF가 명시하지 않은 URL을 만드는 셈이다. 따라서 링크 근거가 확보될 때까지 제안을 보류한다.",
+      "updated_at": "2026-10-27T02:53:13Z"
+    },
+    {
+      "arxiv_id": "2610.32575",
+      "title": "PHYRD: A Living Benchmark for Reproducing and Extending Theoretical Physics Research",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:09Z"
+    },
+    {
+      "arxiv_id": "2610.32536",
+      "title": "IGG: A Benchmark for Interactive GUI Grounding under Visibility Constraints",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:09Z"
+    },
+    {
+      "arxiv_id": "2610.32531",
+      "title": "On Task, Off Track: Benchmarking LLM and Agent Robustness to Near-Target Prompt Injection",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:09Z"
+    },
+    {
+      "arxiv_id": "2610.32485",
+      "title": "PCFBench: How Far Can Large Vision-Language Models Go in Physics-aware Photonic Inverse Design?",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:09Z"
+    },
+    {
+      "arxiv_id": "2610.32441",
+      "title": "SCI-AGENT-EXAM: Benchmarking Agents on Scientific Research Tasks",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:09Z"
+    },
+    {
+      "arxiv_id": "2610.32429",
+      "title": "Async-RBench: Benchmarking Asynchronous Task Execution in LLM Agents",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:09Z"
+    },
+    {
+      "arxiv_id": "2610.32415",
+      "title": "Can LLM Annotators Match Human Consistency? Benchmarking Human Agreement and Optimizing Multi-Agent with Contrastive Knowledge",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:09Z"
+    },
+    {
+      "arxiv_id": "2610.32305",
+      "title": "DMAIC-Bench: From Self-Reflection to Self-Restraint for Agents in Multi-Stage Analytical Tasks",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:09Z"
+    },
+    {
+      "arxiv_id": "2610.32285",
+      "title": "Trial by Trace: Benchmarking AI Agent Harnesses for Reliability and Failure Attribution",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:09Z"
+    },
+    {
+      "arxiv_id": "2610.32221",
+      "title": "RxnExBench: Benchmarking Vision-Language Models for Structured Chemical Reaction Extraction from Scientific Literature",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2610.32164",
+      "title": "PersonalQuery-Benchmark:Evaluating Retrieval Robustness to Personalized User Expression Differences",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2610.31993",
+      "title": "AusClinBench: a deterministically scored benchmark of large language models against current Australian clinical policy",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2610.31796",
+      "title": "DRAMA-Eval: A Benchmark for Context-Aware, Multi-Turn, Multi-Speaker Speech Generation",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2610.31778",
+      "title": "Benchmarks Are Surprisingly Compaction-Friendly",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2610.31713",
+      "title": "Omni-UBench: Benchmarking Omni-Modal LLM-based Guardrails Across Safety, Utility, and Reliability",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2610.31711",
+      "title": "MBABench-2.0: Evaluating AI Agents on Constructing Financial Spreadsheets Beyond Simple Verifiability",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2610.31710",
+      "title": "Compact-Bench: Measuring What Context Compaction Costs Long-Horizon Coding Agents",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2610.31679",
+      "title": "MisconceptDialogue: Evaluation Criteria Shape Measured Success in LLM Math Tutoring",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2607.29218",
+      "title": "MirrorCraft: Paired Evaluation under Hidden Rule Changes in Minecraft",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2607.18665",
+      "title": "DeepSafe-SciHazard: A Benchmark for Measuring Scientific Safety Risks with Decomposed Harm Scoring",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2605.25773",
+      "title": "Efficient Benchmarking Is Just Feature Selection and Multiple Regression",
+      "first_seen": "2026-10-27",
+      "stage": "screened_out",
+      "stage_label": "초록 선별에서 제외",
+      "reason": "Claude 초록 선별에서 제외",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2605.05003",
+      "title": "Better Reward Models Are Not Always Less Biased: Social Alignment Beyond Standard Reward Benchmarks",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2509.08031",
+      "title": "AU-Harness: An Open-Source Toolkit for Efficient and Unified Evaluation of AUdio-LLMs",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2505.17214",
+      "title": "MEDMKG: Benchmarking Medical Knowledge Exploitation with Multimodal Knowledge Graph",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2412.20662",
+      "title": "Enhancing Table Recognition with Vision LLMs: A Benchmark and Neighbor-Guided Toolchain Reasoner",
+      "first_seen": "2026-10-27",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2605.14381",
+      "title": "NodeSyn: Socially Aligned Synthetic Data for AI Evaluation",
+      "first_seen": "2026-10-23",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2610.09163",
+      "title": "ToolRACER: A Robust Agentic Conversation Emulation Resource for Agent Training and Evaluation",
+      "first_seen": "2026-10-18",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2609.36492",
+      "title": "Benchmarking Vision-Language Models on Synapse and Neuron Proofreading in Connectomics",
+      "first_seen": "2026-10-18",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-10-27T02:52:01Z"
+    },
+    {
+      "arxiv_id": "2609.03467",
+      "title": "When Users Don't Ask: Benchmarking Context-Driven Memory Retrieval in Conversational Agents",
+      "first_seen": "2026-10-19",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: Scores must be finite numeric strings in original units",
+      "updated_at": "2026-10-27T02:51:07Z"
+    },
+    {
+      "arxiv_id": "2609.25192",
+      "title": "FinFIRST: Benchmarking Search Agents for Financial Information Retrieval, Sourcing and Traceability",
+      "first_seen": "2026-10-18",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: Score quote must contain the exact model and numeric value",
+      "updated_at": "2026-10-27T02:50:03Z"
+    },
     {
       "arxiv_id": "2607.22115",
       "title": "Benchmarking Text-to-SQL under Role-Based Access Control",
@@ -361,16 +1131,6 @@
       "retry_after": "2026-11-02"
     },
     {
-      "arxiv_id": "2609.20574",
-      "title": "DocAttriBench: Benchmarking Answer Grounding in Document Visual Question Answering",
-      "first_seen": "2026-10-19",
-      "stage": "card_failed",
-      "stage_label": "공식 자료 확인 실패",
-      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-10-27부터 재시도",
-      "updated_at": "2026-10-26T03:51:31Z",
-      "retry_after": "2026-10-27"
-    },
-    {
       "arxiv_id": "2609.11243",
       "title": "Sci-MMR: Benchmarking Multi-Step Evidence-Grounded Scientific Reasoning in Multimodal Agents",
       "first_seen": "2026-10-19",
@@ -388,15 +1148,6 @@
       "stage_label": "본문 조사 후 제외",
       "reason": "이 논문은 AI 벤치마크를 찾고 검색하기 위한 카탈로그·검색 엔진(Benchmark Radar)이며, 모델의 능력을 평가하는 재사용 가능한 벤치마크 데이터셋이나 과제 집합을 새로 제안하지 않는다. 논문이 공개하는 것은 대시보드, CLI, 1,283개 벤치마크 레코드의 메타데이터 카탈로그와 수집 파이프라인이고, 한국어 또는 영어 평가 과제나 지시문 자체는 담겨 있지 않다. 본문에 인용된 MMLU, SWE-bench 같은 벤치마크는 기존 항목이거나 다른 논문의 산출물이며 이 논문이 실질적으로 갱신한 것이 아니다. 따라서 인벤토리에 추가하거나 갱신할 행이 없다.",
       "updated_at": "2026-10-26T03:46:32Z"
-    },
-    {
-      "arxiv_id": "2609.03467",
-      "title": "When Users Don't Ask: Benchmarking Context-Driven Memory Retrieval in Conversational Agents",
-      "first_seen": "2026-10-19",
-      "stage": "awaiting",
-      "stage_label": "Claude 검증 대기",
-      "reason": "이 논문은 LoCoMo를 바탕으로 대화형 기억 호출을 평가하는 새 벤치마크 LoCoMo-Conv를 제안합니다. 대화·암시·반사실·복합의 네 가지 질의 스타일을 두고, 검색 재현율과 자유 응답 품질을 따로 채점합니다. 과제 문구가 영어 인용으로 확인되므로 en 트랙의 text 모달리티로 분류했습니다. 논문이 명시한 공식 저장소(GitHub)를 링크로 사용했고, 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
-      "updated_at": "2026-10-26T03:42:53Z"
     },
     {
       "arxiv_id": "2608.25286",
@@ -446,16 +1197,6 @@
       "retry_after": "2026-11-02"
     },
     {
-      "arxiv_id": "2604.02947",
-      "title": "AgentHazard: A Benchmark for Evaluating Harmful Behavior in Computer-Use Agents",
-      "first_seen": "2026-10-19",
-      "stage": "card_failed",
-      "stage_label": "공식 자료 확인 실패",
-      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-10-27부터 재시도",
-      "updated_at": "2026-10-26T03:21:17Z",
-      "retry_after": "2026-10-27"
-    },
-    {
       "arxiv_id": "2602.18307",
       "title": "VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean",
       "first_seen": "2026-10-19",
@@ -463,16 +1204,6 @@
       "stage_label": "근거 부족 보류",
       "reason": "VeriSoftBench 데이터의 라이선스 다섯 항목(라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원)을 공급된 자료만으로는 증거 형식에 맞게 확정할 수 없어 게시를 보류한다. 공식 README는 평가 코드만 MIT이고 벤치마크 저장소는 각각 원래 라이선스로 재배포된다고 밝히며, 각 저장소의 라이선스는 THIRD_PARTY_NOTICES.txt와 repos.json에 있다고 안내한다. 이 두 파일과 Hugging Face 데이터셋 카드는 공급되지 않았다. 논문도 23개 저장소 각각의 라이선스를 적지 않았다. 따라서 23개 구성 요소 전체에 공통으로 적용되는 데이터 라이선스와 이용 권한을 인용할 수 없다. 공식 카드에 LICENSE 파일(MIT, 코드용) 항목이 있으므로 라이선스 미표기에 대한 부재 증거 형식도 쓸 수 없고, 코드의 MIT를 데이터 라이선스로 옮겨 적을 수도 없다. 저장소별 THIRD_PARTY_NOTICES.txt와 repos.json 또는 데이터셋 카드를 확보한 뒤 다시 제안해야 한다.",
       "updated_at": "2026-10-26T03:18:18Z"
-    },
-    {
-      "arxiv_id": "2508.15526",
-      "title": "SafetyFlow: An Agent-Flow System for Automated LLM Safety Benchmarking",
-      "first_seen": "2026-10-19",
-      "stage": "card_failed",
-      "stage_label": "공식 자료 확인 실패",
-      "reason": "공식 자료 확인 실패(HTTP Error 404: Not Found), 2026-10-27부터 재시도",
-      "updated_at": "2026-10-26T03:15:48Z",
-      "retry_after": "2026-10-27"
     },
     {
       "arxiv_id": "2503.15242",
@@ -510,15 +1241,6 @@
       "stage_label": "본문 조사 후 제외",
       "reason": "이 논문은 SimpleQA(4,326문항)와 LMSYS Chatbot Arena(대화 600건)를 문화적 대응성 루브릭으로 감사한 연구입니다. 두 벤치마크 모두 이미 알려진 기존 자원이며, 인벤토리에서는 SimpleQA가 이미 en 트랙에 등재되어 있습니다. 새로 제안된 것은 6개 차원 CR 평가 루브릭과 연구진이 직접 만든 50문항 대조(counter-benchmark) 세트입니다. 그러나 이 50문항은 루브릭의 변별력을 보이기 위한 용도로 구성되었고, 논문에 이를 공개하는 공식 데이터셋이나 코드 URL이 명시되어 있지 않습니다. 또한 모델 성능을 평가하는 재사용 가능한 벤치마크라기보다 감사 방법론에 해당합니다. SimpleQA 자체는 변경 없이 그대로 분석한 것이므로 기존 행을 실질적으로 갱신하는 내용도 없고, 모델 비교 결과도 보고되지 않았습니다. 따라서 추가 또는 갱신할 항목이 없어 제외합니다.",
       "updated_at": "2026-10-26T03:06:05Z"
-    },
-    {
-      "arxiv_id": "2609.25192",
-      "title": "FinFIRST: Benchmarking Search Agents for Financial Information Retrieval, Sourcing and Traceability",
-      "first_seen": "2026-10-18",
-      "stage": "awaiting",
-      "stage_label": "Claude 검증 대기",
-      "reason": "FinFIRST는 금융 검색 에이전트가 최종 답과 근거 출처·계산 과정을 함께 평가받는 재사용 가능한 벤치마크를 새로 제안한 논문이다. 전체 123문항 중 영어 문항이 39.8%이고, 3쪽 Table 2의 영어 질문 예시가 과제 언어의 근거다. 중국어 문항(60.2%)은 ko/en 범위 밖이므로 en 트랙 한 행만 제안한다. 영어 문항 수는 논문에 비율만 있어 계산하지 않았다. 문항은 텍스트 기반 웹 검색 과제라 modality는 text로 분류했다. 공식 데이터 링크는 1쪽의 Hugging Face URL이다. 라이선스 등 미검증 항목은 '확인 불가'로 기록했다.",
-      "updated_at": "2026-10-26T03:02:04Z"
     },
     {
       "arxiv_id": "2609.24677",
@@ -1768,15 +2490,6 @@
     {
       "arxiv_id": "2605.20197",
       "title": "MedicalBench: Evaluating Large Language Models Toward Improved Medical Concept Extraction",
-      "first_seen": "2026-10-23",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": "2026-10-23T02:51:40Z"
-    },
-    {
-      "arxiv_id": "2605.14381",
-      "title": "NodeSynth: Socially Aligned Synthetic Data for AI Evaluation",
       "first_seen": "2026-10-23",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -4217,15 +4930,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2609.28197",
-      "title": "PASTABench: Proactive Assessment of Sequential Trajectories for Agent Safety",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2609.21663",
       "title": "Rethinking Human-Aligned Evaluation: An Analysis of Semantic Metrics Beyond WER",
       "first_seen": "2026-10-19",
@@ -4309,15 +5013,6 @@
     {
       "arxiv_id": "2609.08887",
       "title": "Q2D-Web: A Large-Scale Benchmark for Retrieval in Agentic RAG Systems",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.06080",
-      "title": "PhenoBench: Mapping What a Deeply Phenotyped Human Cohort Can Tell Us",
       "first_seen": "2026-10-19",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -4415,15 +5110,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2608.20153",
-      "title": "FormalTCS: Benchmarking End-to-End Frontier Formal Theoretical Computer Science Research of Large Language Models",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2608.17804",
       "title": "An Empirical Study of Reward Specification and Benchmark Reliability in GRPO-based LLM Unlearning",
       "first_seen": "2026-10-19",
@@ -4451,15 +5137,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2608.15594",
-      "title": "TRACE: Trajectory Aware Reasoning for Multi-Turn Adversarial Conversation Evaluation",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2608.11947",
       "title": "A, B, C, or Stable? Accuracy and Order Sensitivity Diverge in LLM Multiple-Choice Evaluation",
       "first_seen": "2026-10-19",
@@ -4471,15 +5148,6 @@
     {
       "arxiv_id": "2608.11469",
       "title": "The Next Challenge for Agentic Cybersecurity: A Realistic, Contamination-Free Reverse Engineering Benchmark",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2608.10317",
-      "title": "From Detection to Understanding: TAR and TAR-Bench for Multi-Task Traffic Anomaly Reasoning",
       "first_seen": "2026-10-19",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -5000,15 +5668,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2606.05003",
-      "title": "PhysDox: Benchmarking LLMs on Physical Feasibility Auditing of Physiological Sensing Protocols",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2606.04874",
       "title": "Agent Planning Benchmark: A Diagnostic Framework for Planning Capabilities in LLM Agents",
       "first_seen": "2026-10-19",
@@ -5477,15 +6136,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2604.01754",
-      "title": "LiveMathematicianBench: A Live Benchmark for Research-Level Mathematical Reasoning with Proof Sketches",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2604.01569",
       "title": "VideoZeroBench: Probing the Limits of Video MLLMs with Spatio-Temporal Evidence Verification",
       "first_seen": "2026-10-19",
@@ -5560,15 +6210,6 @@
     {
       "arxiv_id": "2603.18048",
       "title": "DEAF: A Benchmark for Diagnostic Evaluation of Acoustic Faithfulness in Audio Language Models",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2603.17373",
-      "title": "SafeTutors: Benchmarking Pedagogical Safety in AI Tutoring Systems",
       "first_seen": "2026-10-19",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -5801,24 +6442,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2601.09562",
-      "title": "MM-BRIGHT: A Multi-Task Multimodal Benchmark for Reasoning-Intensive Retrieval",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2601.06676",
-      "title": "IDRBench: Benchmarking the Interactive Capabilities of Deep Research Agents",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2601.06426",
       "title": "NC-Bench: An LLM Benchmark for Evaluating Conversational Competence",
       "first_seen": "2026-10-19",
@@ -5954,15 +6577,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2508.13680",
-      "title": "VMMU: A Vietnamese Multitask Multimodal Understanding and Reasoning Benchmark",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2508.08833",
       "title": "An Investigation of Robustness of LLMs in Mathematical Reasoning: Benchmarking with Mathematically-Equivalent Transformation of Advanced Mathematical Problems",
       "first_seen": "2026-10-19",
@@ -6073,15 +6687,6 @@
     {
       "arxiv_id": "2505.12135",
       "title": "LLM-BabyBench: Can Language Models Plan in Worlds They Can Simulate?",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2505.10083",
-      "title": "ChronoSteer: Bridging Large Language Model and Time Series Foundation Model via Synthetic Cross-Modal Alignment Dataset",
       "first_seen": "2026-10-19",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -7700,15 +8305,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2610.09163",
-      "title": "ToolRACER: A Robust Agentic Conversation Emulation Resource for Agent Training and Evaluation",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2610.09152",
       "title": "sk-bench: A Native-First Benchmark for Evaluating Large Language Models in Slovak",
       "first_seen": "2026-10-18",
@@ -7747,15 +8343,6 @@
     {
       "arxiv_id": "2610.08871",
       "title": "CredLeakBench: Evaluating Credential Leakage and Recovery in LLM Agents",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08813",
-      "title": "Pre-training, Reasoning, Benchmarking: X-ray Report Generation on CheXpert Plus Dataset",
       "first_seen": "2026-10-18",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -9104,15 +9691,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2609.36492",
-      "title": "Benchmarking Vision-Language Models on Synapse Detection and Proofreading in Connectomics",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2609.36218",
       "title": "CineSubBench: Evaluating LLMs on Long-Form Narrative and Cultural Understanding from Multilingual Movie Subtitles",
       "first_seen": "2026-10-18",
@@ -10049,35 +10627,8 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2609.30466",
-      "title": "A Benchmarking Framework for Context-aware XR Interfaces",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2609.30205",
       "title": "A Living Benchmark for Information Retrieval from Electronic Health Records",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.30057",
-      "title": "KREX: Concurrent Kernel Benchmarking on Shared GPUs via Region-Granular Exclusivity",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.30055",
-      "title": "Era by Eon: Benchmarking Enterprise Agents on Hidden Knowledge",
       "first_seen": "2026-10-18",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -10094,269 +10645,8 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2609.30027",
-      "title": "Synthetic Hospital: An Open, Verifiable, Physician-Validated Longitudinal EHR Benchmark",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.29798",
-      "title": "Benchmarking and Domain Adaptation of Automatic Speech Recognition (ASR) for Adolescent Health Communication in Ghanaian Languages",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.29445",
-      "title": "Two Emojis of Difference: What Multilingual Affective Generation Benchmarks Actually Measure",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.29371",
-      "title": "BanglaTurn: A Benchmark and Whisper-Based Model for End-of-Turn Detection in Bangla Speech",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.29167",
-      "title": "IndicBankBench: Evaluating Safety and Reliability of Language Model Assistants in Indian Retail Banking",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.29156",
-      "title": "Med-AR: Autoregressive Vision-Language Pretraining for Long-Tailed Chest X-Ray Classification and Uncertainty-Aware Evaluation",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.29101",
-      "title": "Language Specificity vs. Domain Diversity: Benchmarking Transformers for Bangla Medical NER",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.29067",
-      "title": "TileBench: A Controlled Benchmark for Performance Evaluation and Bottleneck Diagnosis of Tile-Based Programming Models",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.29043",
-      "title": "Design and Evaluation of LLM Chaining-Based Task Planning for General Purpose Service Robots",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.28991",
-      "title": "Beneath the Scores: Rethinking Hallucination Evaluation for Video Understanding Models",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.28921",
-      "title": "PFArena: Benchmarking Language Models for Protein Modification",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.28876",
-      "title": "Forecast-Dojo: Replayable Environments for Benchmarking and Training LLM Forecasting Agents",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.28826",
-      "title": "COILD: An Indic-Centric Parallel Corpus and Benchmark for Machine Translation Across Indian Languages",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.28813",
-      "title": "CinematicVQA: Benchmarking Film-Grammar Reasoning in Large Vision-Language Models",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.28673",
-      "title": "Benchmarking Argumentative Behaviour of LLMs: A Study of Defences Against Character Attacks",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.28449",
-      "title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.28437",
-      "title": "MultiVENT-Raw: A Benchmark for Retrieval and Reasoning over Raw Videos",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2609.28230",
       "title": "A Unified Framework and Dataset for Oriented Object Visual Grounding in Remote Sensing",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.28090",
-      "title": "Can LLMs Catch a Rigged Backtest? A Clean-Control Calibration Benchmark",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.27571",
-      "title": "FDE-Bench: Evaluating LLM Agents for Deployment Environment Configuration",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.27510",
-      "title": "Uncheatable Eval: Dynamic Compression-Based Evaluation of Language Models",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.27457",
-      "title": "Beyond Balanced Accuracy: A Resolution and Parity-Controlled Benchmark for Vision-Language and Vision-Only Defect Assessment in UAV Power-Line Inspection",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.27395",
-      "title": "PRISM-VLM: A Multi-Axis Discriminative Benchmark for Compact Vision-Language Models",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.27385",
-      "title": "Forecast Workflow Bench: Evaluating Language-Model Decisions with Budgeted Forecast Tools",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.27349",
-      "title": "MolDesignBench: Evaluating LLM-based Agent for Scenario-grounded Molecular Design",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.27205",
-      "title": "Phonemizing User-Generated Text: A Benchmark, Taxonomy, and Compositional Approach",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.27139",
-      "title": "A Hierarchy-Aware Video-Language Model Evaluation and Hyperbolic Baseline for Surgery",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.27036",
-      "title": "An open benchmark for machine learning-based polymer property prediction",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.26985",
-      "title": "Benchmarking Automated Knowledge Graph Construction from Semi-Structured Data",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2609.26945",
-      "title": "Classifying Interpretive Canons at the Sentence Level: A Benchmark from the German Federal Constitutional Court",
       "first_seen": "2026-10-18",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
