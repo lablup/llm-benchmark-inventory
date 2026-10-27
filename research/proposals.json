@@ -17526,8 +17526,8 @@
       "proposal_sha256": "d256468f36b113b6934f52f68133cd845eb4fcdb2123a54bcc3370f0c32a169f"
     },
     "2609.03467": {
-      "decision": "propose",
-      "reason": "이 논문은 LoCoMo를 바탕으로 대화형 기억 호출을 평가하는 새 벤치마크 LoCoMo-Conv를 제안합니다. 대화·암시·반사실·복합의 네 가지 질의 스타일을 두고, 검색 재현율과 자유 응답 품질을 따로 채점합니다. 과제 문구가 영어 인용으로 확인되므로 en 트랙의 text 모달리티로 분류했습니다. 논문이 명시한 공식 저장소(GitHub)를 링크로 사용했고, 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "decision": "needs_evidence",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: Scores must be finite numeric strings in original units",
       "changes": [
         {
           "track": "en",
@@ -17654,7 +17654,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-27T02:51:07Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -17680,11 +17680,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40440316488",
-        "context_sha256": "9d657e0994d02937f3354bdc715b215080158762c4239a414e932b0225b2ff4c"
-      },
-      "proposal_sha256": "4aca0cca7e7bc2c9df46d5dc09ecbb0dc8330bea3d2e03fa9860b6f0a419f637"
+      "proposal_sha256": "4aca0cca7e7bc2c9df46d5dc09ecbb0dc8330bea3d2e03fa9860b6f0a419f637",
+      "approval_policy": "claude_only",
+      "resume_error": "Scores must be finite numeric strings in original units"
     },
     "2609.11115": {
       "decision": "exclude",
@@ -28558,23 +28556,19 @@
     },
     "2609.36492": {
       "arxiv_id": "2609.36492",
-      "paper_title": "Benchmarking Vision-Language Models on Synapse Detection and Proofreading in Connectomics",
-      "abstract": "We benchmarked vision-language models (VLMs) on the decisions annotators take when inspecting electron microscopy images in connectomics: synapse detection (presence and polarity) and proofreading (split errors and merge errors). For synapse detection, we evaluated 19 open and 2 closed models across various architectures and sizes under zero-shot, four-shot in-context learning and LoRA settings, against specialist models, on datasets constructed by us using public resources. For proofreading, we evaluated 3 open and 2 closed models on the ConnectomeBench2 dataset, with cross-species transfer from fly and mouse to human and zebrafish. Most models were at chance zero-shot; a few examples helped mainly the closed and largest open ones. LoRA on a few thousand labels brought open models level with specialist models. When evaluated on unseen species, the best adapted VLMs outperformed specialist models trained on the same data in identifying merge errors. The project will be publicly available upon acceptance.",
-      "paper_updated": "2026-09-30T00:00:00Z",
-      "created_at": "2026-10-19T13:46:49Z",
-      "input_sha256": "d0aea4d8b6ece1cd4295c3e1ab7666baecd4d416174a8d84826095df91165288",
-      "version": 4,
+      "paper_title": "Benchmarking Vision-Language Models on Synapse and Neuron Proofreading in Connectomics",
+      "abstract": "We benchmarked vision-language models (VLMs) on the decisions annotators take when inspecting electron microscopy images in connectomics: synapse proofreading (presence and polarity) and neuron proofreading (split errors and merge errors). For synapse proofreading, we evaluated 19 open and 2 closed models across various architectures and sizes under zero-shot, four-shot in-context learning and LoRA settings, against specialist models, on datasets constructed by us using public resources. For neuron proofreading, we evaluated 3 open and 2 closed models on the ConnectomeBench2 dataset, with cross-species transfer from fly and mouse to human and zebrafish. Most models were at chance zero-shot; a few examples helped mainly the closed and largest open ones. LoRA on a few thousand labels brought open models level with specialist models. When evaluated on unseen species, the best adapted VLMs outperformed specialist models in identifying merge errors. The project will be publicly available upon acceptance.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "decision": "relevant",
-          "reason": "커넥톰 시냅스 검출 VLM 벤치마크 제안"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "연결체 시냅스 검출 교정 VLM 벤치마크 구축"
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "VLM 커넥토믹스 벤치마크, 공개 여부와 언어 불명확"
         }
       ]
     },
@@ -33763,22 +33757,18 @@
     "2610.09163": {
       "arxiv_id": "2610.09163",
       "paper_title": "ToolRACER: A Robust Agentic Conversation Emulation Resource for Agent Training and Evaluation",
-      "abstract": "Task-oriented conversational agents remain fragile under real world conversation scenarios as they rarely follow a predictable script, especially when users exhibit non-cooperative behavior. Existing function-calling benchmarks often emphasize successful, cooperative interactions and underrepresent adversarial conversation trajectories, thereby limiting the training resources available for developing robust agents. We present ToolRACER, a synthetic data generation pipeline that coordinates user, assistant and tool emulation models to generate and validated multi-turn interactions between a user and an agent. Using \\sysn, we construct ToolRACERBench a robust multi-turn conversation benchmark spanning six domains, ranging over 55 varied personas, generating a validated corpus of 5.6K conversation trajectories, with approximately 66\\% of conversations containing failure-prone conversation scenarios. We inject adversarial behaviors, producing validated conversational interaction trajectories that capture realistic, robust scenarios. We evaluate models trained on ToolRACERBench against internal benchmarks, as well as on function calling benchmarks such as $τ^2$-bench, BFCLv3 and ACEBench to evaluate agentic accuracy and robustness. Models trained on ToolRACERBench improve end to end agentic accuracy across $τ^2$-bench and ACEBench, demonstrating significant gains when mixed with in-domain dataset in small language models for agent capability tasks.",
-      "paper_updated": "2026-10-08T00:00:00Z",
-      "created_at": "2026-10-19T13:49:19Z",
-      "input_sha256": "a17df25f1f29d56cb95ffa9739da8f1094647456046765ec9380036dadc2764f",
-      "version": 4,
+      "abstract": "Task-oriented conversational agents remain fragile under real world conversation scenarios as they rarely follow a predictable script, especially when users exhibit non-cooperative behavior. Existing function-calling benchmarks often emphasize successful, cooperative interactions and underrepresent adversarial conversation trajectories, thereby limiting the training resources available for developing robust agents. We present ToolRACER, a synthetic data generation pipeline that coordinates user, assistant and tool emulation models to generate and validated multi-turn interactions between a user and an agent. Using ToolRACER, we construct ToolRACERBench a robust multi-turn conversation benchmark spanning six domains, ranging over 55 varied personas, generating a validated corpus of 5.6K conversation trajectories, with approximately 66\\% of conversations containing failure-prone conversation scenarios. We inject adversarial behaviors, producing validated conversational interaction trajectories that capture realistic, robust scenarios. We evaluate models trained on ToolRACERBench against internal benchmarks, as well as on function calling benchmarks such as $τ^2$-bench, BFCLv3 and ACEBench to evaluate agentic accuracy and robustness. Models trained on ToolRACERBench improve end to end agentic accuracy across $τ^2$-bench and ACEBench, demonstrating significant gains when mixed with in-domain dataset in small language models for agent capability tasks.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "도구 사용 대화 에이전트 훈련·평가를 위한 견고한 대화 데이터 파이프라인"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "에이전트 훈련·평가용 적대적 대화 벤치마크 ToolRACERBench 제안"
+          "reason": "에이전트 멀티턴 대화 벤치마크 ToolRACERBench 제안"
         }
       ]
     },
@@ -43294,19 +43284,19 @@
     },
     "2605.14381": {
       "arxiv_id": "2605.14381",
-      "paper_title": "NodeSynth: Socially Aligned Synthetic Data for AI Evaluation",
-      "abstract": "Recent advancements in generative AI facilitate large-scale synthetic data generation for model evaluation. However, without targeted approaches, these datasets often lack the sociotechnical nuance required for sensitive domains. We introduce NodeSyn, a methodology that pairs a fine-tuned taxonomy generator (TaG) with credible published sources and extracted sensitive attributes to generate queries reflecting authentic societal contexts and nuanced harms. Evaluated across ten open-weight and proprietary LLMs in Medical Advice and Self-Harm using human-validated autoraters, NodeSyn ranked first on 8 of 10 models in each domain. NodeSyn datasets induced average failure rates 3.1 times higher than generic synthetic baselines, 2.4 times higher than structured synthetic benchmarks, and 1.6 times higher than authentic human-authored queries. Ablation studies confirm that, controlling for structural confounds, our granular Level 3 taxonomic expansion significantly drives these failure rates over Level 2 across 9 of 10 models (+29.2% relative lift in Medical Advice and +24.0% in Self-Harm). Variance attribution analysis reveals that failures are driven not only by what topics are queried (taxonomic nodes and lexical specificity), but also by their sociotechnical grounding (affected demographics, occupations, geographies, and querying personas). We embed this method into a research prototype, and open-source (https://github.com/google-research/nodesynth) the code and datasets to enable scalable, high-stakes model evaluation",
-      "paper_updated": "2026-10-22T00:00:00Z",
-      "created_at": "2026-10-23T02:51:40Z",
-      "input_sha256": "2d2dcbf8988c19826b86f44c74b2955c5d4f869811be98d5f49d314cb1a0ec3f",
+      "paper_title": "NodeSyn: Socially Aligned Synthetic Data for AI Evaluation",
+      "abstract": "Recent advancements in generative AI facilitate large-scale synthetic data generation for model evaluation. However, without targeted approaches, these datasets often lack the sociotechnical nuance required for sensitive domains. We introduce NodeSyn, a methodology that pairs a fine-tuned taxonomy generator (TaG) with credible published sources and extracted sensitive attributes to generate queries reflecting authentic societal contexts and nuanced harms. Evaluated across ten open-weight and proprietary LLMs in Medical Advice and Self-Harm using human-validated autoraters, NodeSyn ranked first on 8 of 10 models in each domain. NodeSyn datasets induced average failure rates 3.1 times higher than generic synthetic baselines, 2.4 times higher than structured synthetic benchmarks, and 1.6 times higher than authentic human-authored queries. Ablation studies confirm that, controlling for structural confounds, our granular Level 3 taxonomic expansion significantly drives these failure rates over Level 2 across 9 of 10 models (+29.2% relative lift in Medical Advice and +24.0% in Self-Harm). Variance attribution analysis reveals that failures are driven not only by what topics are queried (taxonomic nodes and lexical specificity), but also by their sociotechnical grounding (affected demographics, occupations, geographies, and querying personas). We embed this method into a research prototype, and open-source (https://github.com/google-research/nodesynth) the code and datasets to enable scalable, high-stakes model evaluation.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "uncertain",
-          "reason": "안전성 평가 데이터 생성 방법, 언어 불명확하나 재사용 데이터 공개"
+          "decision": "relevant",
+          "reason": "안전성 평가용 합성 데이터셋/방법론 공개, 영어 의료·자해 도메인 가능성"
         }
       ]
     },
@@ -44137,6 +44127,312 @@
           "reason": "증거 누락 하 에이전트 안전성 벤치마크 신규 제안"
         }
       ]
+    },
+    "2506.20008": {
+      "arxiv_id": "2506.20008",
+      "paper_title": "QHackBench: Benchmarking Large Language Models for Quantum Code Generation Using PennyLane Hackathon Challenges",
+      "abstract": "Recent advances in Large Language Models (LLMs) have demonstrated strong potential in code generation, yet their effectiveness in quantum computing remains underexplored. This paper benchmarks LLMs for PennyLane-based quantum code generation using real-world challenges from the Quantum Hackathon (QHack). We introduce QHackBench, a novel benchmark dataset derived from QHack competitions, and evaluate model performance under vanilla prompting and Retrieval-Augmented Generation (RAG). Our structured evaluation framework assesses functional correctness, syntactic validity, and execution success across varying challenge difficulties. Results indicate that RAG-enhanced models, supplemented with an augmented PennyLane dataset, approximately generate similar results as the standard prompting, particularly in complex quantum algorithms. Additionally, we introduce a multi-agent evaluation pipeline that iteratively refines incorrect solutions, further enhancing execution success rates. To foster further research, we commit to publicly releasing QHackBench, along with our evaluation framework and experimental results, enabling continued advancements in AI-assisted quantum programming.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "양자 코드 생성 벤치마크 QHackBench 공개, 도메인 특화도 제외 사유 아님"
+        }
+      ]
+    },
+    "2412.20662": {
+      "arxiv_id": "2412.20662",
+      "paper_title": "Enhancing Table Recognition with Vision LLMs: A Benchmark and Neighbor-Guided Toolchain Reasoner",
+      "abstract": "Pre-trained foundation models have recently made significant progress in table-related tasks such as table understanding and reasoning. However, recognizing the structure and content of unstructured tables using Vision Large Language Models (VLLMs) remains under-explored. To bridge this gap, we propose a benchmark based on a hierarchical design philosophy to evaluate the recognition capabilities of VLLMs in training-free scenarios. Through in-depth evaluations, we find that low-quality image input is a significant bottleneck in the recognition process. Drawing inspiration from this, we propose the Neighbor-Guided Toolchain Reasoner (NGTR) framework, which is characterized by integrating diverse lightweight tools for visual operations aimed at mitigating issues with low-quality images. Specifically, we transfer a tool selection experience from a similar neighbor to the input and design a reflection module to supervise the tool invocation process. Extensive experiments on public datasets demonstrate that our approach significantly enhances the recognition capabilities of the vanilla VLLMs. We believe that the benchmark and framework could provide an alternative solution to table recognition.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "VLLM 표 인식 평가 벤치마크 제안"
+        }
+      ]
+    },
+    "2505.17214": {
+      "arxiv_id": "2505.17214",
+      "paper_title": "MEDMKG: Benchmarking Medical Knowledge Exploitation with Multimodal Knowledge Graph",
+      "abstract": "Medical deep learning models depend heavily on domain-specific knowledge to perform well on knowledge-intensive clinical tasks. Prior work has primarily leveraged unimodal knowledge graphs, such as the Unified Medical Language System (UMLS), to enhance model performance. However, integrating multimodal medical knowledge graphs remains largely underexplored, mainly due to the lack of resources linking imaging data with clinical concepts. To address this gap, we propose MEDMKG, a Medical Multimodal Knowledge Graph that unifies visual and textual medical information through a multi-stage construction pipeline. MEDMKG fuses the rich multimodal data from MIMIC-CXR with the structured clinical knowledge from UMLS, utilizing both rule-based tools and large language models for accurate concept extraction and relationship modeling. To ensure graph quality and compactness, we introduce Neighbor-aware Filtering (NaF), a novel filtering algorithm tailored for multimodal knowledge graphs. We evaluate MEDMKG across three tasks under two experimental settings, benchmarking twenty-four baseline methods and four state-of-the-art vision-language backbones on six datasets. Results show that MEDMKG not only improves performance in downstream medical tasks but also offers a strong foundation for developing adaptive and robust strategies for multimodal knowledge integration in medical artificial intelligence.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "의료 멀티모달 지식그래프 자원, LLM 평가 스위트 여부 불명확"
+        }
+      ]
+    },
+    "2509.08031": {
+      "arxiv_id": "2509.08031",
+      "paper_title": "AU-Harness: An Open-Source Toolkit for Efficient and Unified Evaluation of AUdio-LLMs",
+      "abstract": "Large Audio Language Models (LALMs) are rapidly advancing, but evaluating them remains challenging due to inefficient and nonstandardized toolkits that limit fair comparison and systematic assessment. Existing evaluation frameworks exhibit three critical limitations: (1) slow and inefficient processing pipeline that bottlenecks large-scale studies, (2) inadequate multi-turn dialogue support, leaving fundamental questions about cross-turn context integration and performance dynamics over extended conversations in LALMs unanswered; and (3) the absence of unified and scalable evaluation framework capable of keeping pace with the rapid growth of both LALMs and audio benchmarks. To address these issues, we introduce AU-Harness, an efficient and comprehensive evaluation framework for LALMs. Our empirical studies demonstrate that AU-Harness achieves 77% reduction in evaluation processing time over existing evaluation toolkits, enabling large-scale LALM evaluations previously considered impractical. We provide standardized evaluation protocols and flexible configurations for fair model comparison across diverse scenarios. AU-Harness unlocks a range of in-depth analyses difficult to conduct without a unified foundation, including multi-turn dialogue dynamics, enabling the study of true audio reasoning capabilities in existing LALMs. AU-Harness provides both practical evaluation tools and insights into model limitations, advancing systematic LALM development.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "오디오 LLM 통합 평가 툴킷, 재사용 가능한 평가 자원"
+        }
+      ]
+    },
+    "2605.05003": {
+      "arxiv_id": "2605.05003",
+      "paper_title": "Better Reward Models Are Not Always Less Biased: Social Alignment Beyond Standard Reward Benchmarks",
+      "abstract": "Reward models are central to LLM alignment, yet current benchmarks reveal little about how they represent diverse and sometimes competing social preferences. We extend reward model evaluation to four socially consequential domains: bias, safety, morality, and ethical reasoning. Our analysis shows that strong benchmark performance can obscure important differences in social behavior. Models may avoid some stereotypes while reinforcing others, and aggregate bias scores can hide these opposing tendencies. We also find that stronger stereotype avoidance can come at the expense of contextual faithfulness, revealing a trade-off between social bias mitigation and sensitivity to context. Across a broad set of reward models, standard benchmark performance is only inconsistently related to socially aligned behavior. These results show that stronger reward models are not uniformly better at navigating pluralistic social expectations and motivate more direct evaluation of the social preferences encoded in reward models.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "보상모델 사회적 평가 확장, 새 재사용 자원 여부 불명확"
+        }
+      ]
+    },
+    "2605.25773": {
+      "arxiv_id": "2605.25773",
+      "paper_title": "Efficient Benchmarking Is Just Feature Selection and Multiple Regression",
+      "abstract": "Efficient benchmarking techniques aim to lower the computational cost of evaluating LLMs by predicting full benchmark scores using only a subset of a benchmark's questions. By reframing this problem as an instance of multiple regression with feature selection, we find that existing efficient benchmarking methods can be greatly improved by simply using kernel ridge regression at the prediction stage. Additionally, using an information-theoretic feature-selection algorithm called minimum redundancy maximum relevance (mRMR), we can further improve upon these methods by selecting question subsets that will be maximally useful for prediction. Except in very data-poor settings, these approaches consistently achieve smaller prediction errors (in both MAE and RMSE), and greater ranking correlation between predicted and true scores (in both Spearman $ρ$ and Kendall $τ$) across a range of benchmarks using both binary and continuous metrics. Furthermore, mRMR subsampling is much faster than competitor methods (which often involve fitting probabilistic models or running clustering algorithms), and is more likely to select the same questions under different random seeds or training data splits. Tutorial code can be found at https://github.com/sambowyer/mrmr_eval .",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "효율적 벤치마킹 방법론, 새 평가 데이터셋 아님"
+        }
+      ]
+    },
+    "2607.18665": {
+      "arxiv_id": "2607.18665",
+      "paper_title": "DeepSafe-SciHazard: A Benchmark for Measuring Scientific Safety Risks with Decomposed Harm Scoring",
+      "abstract": "Large language models (LLMs) increasingly support science, but they can also convert hazardous scientific knowledge into actionable misuse guidance. Existing benchmarks often rely on templated queries disconnected from real-world hazards, and employ LLM-as-a-Judge paradigms without domain grounding. To address this, we introduce SciHazard, a real-world-grounded benchmark for scientific risks and a dataset agnostic evaluation framework for measuring harmfulness. SciHazard contains 2400 hazardous questions and 600 oversafety questions across 12 disciplines, with both queries grounded in regulated entities and documented failure scenarios. To compute \\textsc{DeHarm-Score} , we develop a decomposed evaluating procedure that combines query hazard severity, refusal behavior, and response-level risk. For non-refused responses, it further decomposes response-level harm into \\textsc{Executability}, quantified via dynamic checklists with importance weighting, and \\textsc{Net-new risk}, assessed through retrieval-augmented claim extraction and synthesis-barrier verification. An expert-validation study shows that \\textsc{DeHarm-Score} improves agreement with expert annotations by 90.17\\% over the strongest baseline. We benchmark 31 frontier LLMs and deep research agents in an extensive scientific safety evaluation. Notably, deep research agents yield 32.3\\% higher mean \\textsc{DeHarm-Score} than standard LLMs, exposing autonomous agents as a critical blind spot in current safety defenses. Code and dataset are available at https://github.com/AI45Lab/DeepSafe-Sci.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "과학 안전 위험 벤치마크 SciHazard 및 코드·데이터 공개"
+        }
+      ]
+    },
+    "2607.29218": {
+      "arxiv_id": "2607.29218",
+      "paper_title": "MirrorCraft: Paired Evaluation under Hidden Rule Changes in Minecraft",
+      "abstract": "With the rapid progress of large language models (LLMs), an interesting question has emerged: how do LLM-based agents perform in Minecraft? To date, most Minecraft benchmarks evaluate them under fixed game mechanics, which are extensively documented online. High performance in these settings does not show whether an agent can continue making progress when familiar recipes, drops, and other rules change. In this paper, we introduce MirrorCraft, a paired benchmark for evaluating agents under hidden rule changes in Minecraft. Each Mirror world is a copy of its paired Vanilla world, with selected server-side rules silently modified by the datapack of one rule suite. Terrain, spawn, resource placement, task, interface, and action budget remain matched within every Vanilla-Mirror pair. MirrorCraft includes 10 Vanilla worlds in five controlled biomes, six rule suites, and three progression tasks, and we evaluate two LLMs and six agent configurations under a shared Mineflayer interface. We measure progress with server-verified advancement milestones and completion with success rate, and define the Rule Intervention Effect (RIE) as the performance change between paired Vanilla and Mirror worlds. Experiments with 8,640 episodes show that hidden rule changes have sharply different effects across suites. Among the configurations evaluated without rule descriptions, ReAct, Reflexion, and Voyager achieve the highest pooled Mirror Scores, but ReAct loses the most under compressed resource drops. Providing ReAct with the exact rules yields modest gains in average progress and completion across all three tasks, yet most of the difference between suites remains once the rules are known. MirrorCraft extends Minecraft evaluation beyond fixed mechanics and provides a controlled setting for studying how agents use gameplay outcomes when the rules of the current world differ from familiar ones.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "마인크래프트 에이전트 규칙변경 벤치마크 MirrorCraft"
+        }
+      ]
+    },
+    "2610.31679": {
+      "arxiv_id": "2610.31679",
+      "paper_title": "MisconceptDialogue: Evaluation Criteria Shape Measured Success in LLM Math Tutoring",
+      "abstract": "Large language models are increasingly used as math tutors, raising two questions: can a single LLM detect a student's error, diagnose the underlying misconception, and remediate it through multi-turn dialogue - and can we trust the numbers that report how well it does? We address both with MISCONCEPTDIALOGUE, a fully automated framework that runs the full pipeline on five open-weight LLM tutors (7B-14B) interacting with LLM-simulated students over 5,000+ dialogues - a deliberately simulated protocol (paired conditions, a wrong-diagnosis control unsafe with real learners, scale) whose results do not establish real-student learning. On measurement, our headline finding is uncomfortable for the field: benchmark-style exact-match scoring common in standard math NLP - a lower-bound stress test - reports 42.1% measured Remediation Success Rate on identical dialogues where a human-calibrated LLM-as-judge reports 81.3%, a 39.2 percentage-point spread larger than the combined effects of tutor model, teaching strategy, and supplied diagnostic information. This is not a single-judge artifact: four independent LLM judges and 200 human annotations converge to within a few points (kappa up to 0.91). On capability, the verdict is equally striking: the score barely changes whether we tell the tutor the student's actual misconception or a deliberately swapped one - under the tested diagnosis-presentation format, these tutors show little evidence of reliably conditioning on the diagnostic information they are handed. For LLM tutoring evaluation to mature, multi-criterion scoring with multi-judge convergence and human anchoring should become standard practice - and the measurement question deserves as much scrutiny as the capability question it claims to answer.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "수학 튜터링 평가 프레임워크 MisconceptDialogue 제안"
+        }
+      ]
+    },
+    "2610.31710": {
+      "arxiv_id": "2610.31710",
+      "paper_title": "Compact-Bench: Measuring What Context Compaction Costs Long-Horizon Coding Agents",
+      "abstract": "Context compaction lets long-horizon coding agents continue beyond their context windows, but can erase the state needed to finish a task. Prior evaluations measure efficiency, retained information, or end-to-end success, leaving the effect of a specific history replacement difficult to isolate. Compact-Bench pairs full-history and summary-only continuations from a shared repository state, and evaluates recurring details and successive production compactions. It covers 35 SWE-bench repairs, 146 agentic sessions, and 106 production chains. Across 14 summarizer backbones, stable damage ranges from 5-64% of 22 full-history successes: Claude Opus 4.8 preserves the most repairs, while DeepSeek-Flash damages the most. With Kimi-K3 as summarizer, the Kimi Code prompt preserves the most task continuations (19/22), whereas Claude Code retains the most recurring details (15.0%). LLM summaries retain at most 16.0% of recurring details, compared with 79.1% for mechanical extraction; production summaries retain 15.7% at the first boundary. Failures recur across methods: one repair is damaged by 13/14 backbones, and another by all 5 prompts. These results show that reliable compaction requires preserving the progress needed to complete a task, and that retaining relevant information alone does not ensure successful continuation. Code is available at https://github.com/cai-jianfeng/compact-bench and data is available at https://huggingface.co/datasets/caijanfeng/compact-bench.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코딩 에이전트 컨텍스트 압축 벤치마크, 코드·데이터 공개"
+        }
+      ]
+    },
+    "2610.31711": {
+      "arxiv_id": "2610.31711",
+      "paper_title": "MBABench-2.0: Evaluating AI Agents on Constructing Financial Spreadsheets Beyond Simple Verifiability",
+      "abstract": "Spreadsheets are the lingua franca of modern finance, driving valuation, forecast, audit, and many other core workflows of the industry. As LLM agents advance to automate knowledge work, spreadsheet construction is a natural and pertinent testbed. However, most existing spreadsheet benchmarks evaluate agents on fill-in-the-blank style tasks, where an agent performs minor edits in otherwise complete spreadsheets. This protocol fails to capture the most central and time-consuming part of the spreadsheet workflow: the modeling decisions, format design, and sheet layout regular knowledge workers need to toil through to build a workbook from scratch. We introduce MBABench-2.0, a benchmark of 101 original spreadsheet construction tasks, the hardest of which is estimated to take 33 hours for a modeler with 3+ years of experience. Unlike coding or math, where a unit test or a final answer can verify an agent's output, the quality of a financial spreadsheet that concerns readability, maintainability, or auditability, is not so simply verifiable. To holistically evaluate spreadsheet construction, we introduce 129 criteria spanning 12 categories that operationalize quality beyond the accuracy of the spreadsheet. Evaluating over 20 agents across 8 models and 4 harness types, we find that frontier agents rarely construct spreadsheets that are both accurate and meet our quality criteria: the top agent achieves a pass rate of only 16% on the benchmark. The benchmark demonstrates a substantial gap in spreadsheet building capability of current agents.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "금융 스프레드시트 에이전트 벤치마크 MBABench-2.0"
+        }
+      ]
+    },
+    "2610.31713": {
+      "arxiv_id": "2610.31713",
+      "paper_title": "Omni-UBench: Benchmarking Omni-Modal LLM-based Guardrails Across Safety, Utility, and Reliability",
+      "abstract": "Advances in Omni-modal Large Language Models (OLLMs) have enabled increasingly seamless human-AI interaction, but their unified processing of heterogeneous modalities also expands the attack surface, allowing adversaries to exploit richer input compositions to circumvent safety alignment. To counter such risks, omni-modal guardrails have been proposed to detect and filter unsafe queries across arbitrary modalities. However, their capabilities and limitations remain insufficiently understood due to the absence of a comprehensive evaluation benchmark. In this paper, we present Omni-UBench, the first comprehensive framework for omni-modal safety assessment, evaluating guardrail models along three critical dimensions, i.e., safety, utility, and reliability. Omni-UBench curates over 183k samples drawn from 35+ heterogeneous sources spanning text, image, audio, video, and their cross-modal combinations, annotated with safety labels under a unified risk taxonomy. Benchmarking under Omni-UBench on 15 representative OLLMs and omni-modal guardrails yields several key findings, including: (1) modern OLLMs exhibit strong content moderation potential even without guardrail-specific tuning; (2) existing guardrails still struggle to identify cross-modal queries that conceal harmful intent or involve sophisticated jailbreaks; (3) they further exhibit substantial safety hallucination and over-sensitivity to textual patterns, revealing a deficient understanding of cross-modal safety semantics. Our findings provide valuable insights for developing more trustworthy omni-modal guardrails in future research.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "옴니모달 가드레일 평가 벤치마크 Omni-UBench"
+        }
+      ]
+    },
+    "2610.31778": {
+      "arxiv_id": "2610.31778",
+      "paper_title": "Benchmarks Are Surprisingly Compaction-Friendly",
+      "abstract": "Long horizon agentic tasks are now pushing LLM agents past their context window. To continue the task, the agent scaffold has to free up the context window, a process known as context compaction. Compaction is generally lossy by design: agents can silently lose task constraints, instructions, or their reasoning behind earlier decisions. Although compaction is a standard component of coding agent scaffolds, it has not been studied systematically with frontier models on realistic, long horizon agentic tasks. Previous work evaluate smaller open weight models on toy or synthetic trajectories. We fix the agent scaffold (OpenCode), implement five compaction strategies inside it, and evaluate three frontier models on three long horizon benchmarks (PaperBench, ProgramBench, PostTrainBench). For the two 1M context models, the compaction threshold does not measurably affect the task performance, whereas GPT-5.3-Codex, the model with the smallest context window, performs worse at lower thresholds on PaperBench and, less clearly, on PostTrainBench. No compaction method outperforms default self-summarization, and methods that discard more content cost some models up to 20 points while leaving other models the same. Compaction can, however, silently remove task constraints: on ProgramBench, the first compaction summary already drops about one third of the task's anticheating rules on average, and this rises monotonically with the number of compactions. On real user-agent sessions from SWE-chat, instructions about how the agent should work and what it should not do are dropped around 6 times more than specifications of what to build. We argue that current benchmarks are compaction-friendly: i.e., the objective is fixed and the agent's progress stays on disk, so most of what compaction discards can be recovered, except constraints that don't exist anywhere else.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "압축 전략 실증 연구, 새 평가 자료 여부 불명확"
+        }
+      ]
+    },
+    "2610.31796": {
+      "arxiv_id": "2610.31796",
+      "paper_title": "DRAMA-Eval: A Benchmark for Context-Aware, Multi-Turn, Multi-Speaker Speech Generation",
+      "abstract": "Recent advances in speech generation are shifting toward context-aware, multi-turn, and multi-speaker synthesis. While these capabilities are in high demand for applications such as audiobook and audio drama production, evaluation has not kept pace with these advances. Beyond traditional zero-shot Text-to-Speech (TTS), modern systems in this domain primarily fall into three categories: instruction-controllable generation models, multi-turn dialogue models, and the audio branches of audio-visual generation models. However, existing benchmarks evaluate these paradigms in isolation, failing to provide a unified assessment of context modeling, instruction following, and multi-speaker generation. Meanwhile, recent progress in audio understanding models has made it feasible to evaluate such complex scenarios using LLM-as-a-Judge approaches. To bridge this gap, we introduce DRAMA-Eval, a comprehensive benchmark for evaluating such systems. DRAMA-Eval utilizes structured script contexts and offers a holistic evaluation framework covering objective, local, and global aspects of generation quality, enabling the assessment of acoustic fidelity, sentence-level execution, and long-range coherence. We benchmark leading open-source and commercial models on a human?verified dataset. The results reveal critical weaknesses in long-range speaker consistency and implicit instruction following that require deep contextual understanding. To facilitate reproducible research, we release a 12-hour bilingual (Chinese-English) test set of manually corrected real-world scripts, accompanied by ground-truth audio, evaluation code, and benchmark results.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "음성 생성 벤치마크, 중·영 이중언어 테스트셋 공개(영어 포함)"
+        }
+      ]
+    },
+    "2610.31993": {
+      "arxiv_id": "2610.31993",
+      "paper_title": "AusClinBench: a deterministically scored benchmark of large language models against current Australian clinical policy",
+      "abstract": "AI models already inform clinical decisions and draft notes in Australian clinical software, usually without the practitioner being told which model is used. Existing medical benchmarks are written for other jurisdictions. We wrote 142 questions from Australian guidelines and schedules across five domains (PBS authority, MBS billing, Ahpra obligations, triage red flags, immunisation and screening), each with one verifiable answer scored by exact match. Each question ran blind and with the governing clause supplied, which separates failure to recall the current rule from failure to apply it. We tested 28 models between July and October 2026. Blind accuracy ranged from 51.5% to 92.7%, and the highest-scoring models could not be separated. Of 791 failed model-question pairs, 684 (86%) were wrong blind and right with the clause. Confident-error rates ranged from 6.6% to 47.8%. On five immunisation questions where the guideline gives no directive, 82% of answers stated one. On 20 Aboriginal and Torres Strait Islander health questions, models did no worse overall, but on a few the wrong answers gave the rule for the general population, an older rule or another country's rule. We propose treating the model as an ingredient of a clinical product, with a minimum standard on local rules that sits beside product evaluation. The keys are one general practitioner's and are not yet independently reviewed. The benchmark measures base models, not clinical products, and does not license any model for clinical use.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "호주 임상정책 영어 QA 벤치마크 AusClinBench"
+        }
+      ]
+    },
+    "2610.32164": {
+      "arxiv_id": "2610.32164",
+      "paper_title": "PersonalQuery-Benchmark:Evaluating Retrieval Robustness to Personalized User Expression Differences",
+      "abstract": "Existing personalized information retrieval methods mainly model differences in user needs through user preferences and query intent, while paying little attention to the personalized expression differences that arise when different users express the same retrieval need. Existing real query data typically lack stable user identities, long-term expression histories, and intent-matched counterparts, making it difficult to systematically evaluate the impact of personalized expression differences on retrieval outcomes. To this end, we propose PersonalQuery-Benchmark (PQB). PQB models personalized syntactic expression and personalized writing errors from users' historical texts, constructs personalized syntactic expression queries and personalized writing-error queries, and validates benchmark quality through LLM assessment and independent human evaluation. PQB covers three Amazon product domains with 6,516 query instances in total, and is evaluated on five retrieval models representing lexical, learned sparse, dense bi-encoder, late-interaction, and hybrid architectures, together with two LLM-based ranking models. Results show that even when the information need is held fixed, personalized expression differences still induce measurable ranking variation; different retrieval models exhibit clearly different sensitivities to syntactic variation and writing-error variation, while higher overall retrieval effectiveness does not necessarily correspond to stronger robustness against expression variation. PQB provides a new benchmark and evaluation framework for systematically studying personalized expression robustness. The associated code and dataset are available at the following address: https://github.com/cpxjazz123/PersonalQuery-Benchmark.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "개인화 질의 검색 강건성 벤치마크, 코드·데이터 공개"
+        }
+      ]
+    },
+    "2610.32221": {
+      "arxiv_id": "2610.32221",
+      "paper_title": "RxnExBench: Benchmarking Vision-Language Models for Structured Chemical Reaction Extraction from Scientific Literature",
+      "abstract": "Screen Tables and Substrate Scopes are information-dense figures widely used in synthetic chemistry literature, yet automated extraction of structured reaction data from them remains challenging. We introduce RxnExBench, a multimodal benchmark for fine-grained reaction-level evaluation. Built from high-impact chemistry journals, it contains 3,565 expert-annotated reactions and 2,361 molecular structures. The dataset adopts a unified schema with 15 reaction roles and 26 core fields, supporting downstream AI-for-Chemistry tasks such as retrosynthetic planning, yield prediction, and reaction condition recommendation. RxnExBench further provides a reasoning-driven difficulty taxonomy, a modular annotation pipeline, and the Oracle-MolRec protocol, which disentangles molecular recognition from higher-level reasoning. Evaluation of 9 state-of-the-art VLMs shows that performance degrades substantially as schema complexity and reasoning demands increase. Under the Oracle-MolRec setting, results further reveal that accurate molecular recognition alone is insufficient, with multimodal integration and chemistry-aware reasoning remaining the primary bottlenecks. We release all data and code to facilitate future research in chemistry-aware multimodal understanding and AI-for-Chemistry dataset construction. The dataset and code will be released at https://github.com/opendatalab/RxnExBench.",
+      "paper_updated": "2026-10-26T00:00:00Z",
+      "created_at": "2026-10-27T02:52:01Z",
+      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "화학 반응 추출 멀티모달 벤치마크 RxnExBench"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -44594,7 +44890,30 @@
     },
     "2026-10-27": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [
+        "2506.20008",
+        "2605.14381",
+        "2610.09163",
+        "2412.20662",
+        "2505.17214",
+        "2509.08031",
+        "2605.05003",
+        "2605.25773",
+        "2607.18665",
+        "2607.29218",
+        "2609.36492",
+        "2610.31679",
+        "2610.31710",
+        "2610.31711",
+        "2610.31713",
+        "2610.31778",
+        "2610.31796",
+        "2610.31993",
+        "2610.32164",
+        "2610.32221"
+      ],
+      "calls": 1,
+      "cost_usd": 0.0676
     }
   },
   "reaudits": [
