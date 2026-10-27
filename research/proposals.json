@@ -20020,7 +20020,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-27T03:18:43Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -20046,12 +20046,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40440316488",
-        "context_sha256": "33212c8d0077ffbf8509fc500c224d4be2a8936e5b5576b19ac32056206239eb"
-      },
       "proposal_sha256": "c5faa005af688968c5c70e4d14152c1cdd988a93f63837adc0f3554f47796e57",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 사실은 모두 논문과 공식 카드로 뒷받침됩니다. TAR-Bench의 규모(주석 960개, 보류 클립 80개, 공개 YouTube 영상 17개)와 짝을 이루는 TAR 학습 코퍼스의 규모(주석 44,040개, CCTV 영상 3,670개)가 일치합니다. 10개 과제 구성, 지표(Acc, BERTScore F1, mIoU), 3회 실행 평균, 종합 점수가 10개 과제 단순 평균이라는 설명도 맞습니다. 질문 예시가 영어라 en 트랙으로 분류한 것과 영상 과제라 vision으로 분류한 것도 타당합니다. 라이선스 필드는 공식 카드의 CC-BY-4.0 표기와 상업적 이용 가능 문구로 해소됐습니다. 카드는 주석에만 이 라이선스를 적용하고 영상은 각 출처의 원 약관을 유지한다고 밝히며, 유의사항이 이를 반영했습니다. 유의사항은 파생 출처인 YouTube 영상 17개와 8개 공개 영상 데이터셋을 이름으로 열거하고, 각 구성 요소의 약관을 따로 확인해야 한다고 적었습니다. 정답이 가려져 있다는 점과 소규모 평가라는 한계도 포함했습니다. lm-eval 지원은 공식 카드에 언급이 없고 논문 언급(pdf_mentions)도 비어 있어 부재 근거가 충족되므로 '미표기'가 허용된 해소값입니다(논문은 VLMEvalKit 사용). 추천 모델은 논문 Table 3(제로샷, 비추론 모드, 동일한 TAR-Bench 960개 주석)의 11개 모델 전체를 평균 점수 기준으로 내림차순 정렬했고, 모든 점수가 추출 텍스트와 본문 서술에서 일치합니다. 상위 3개는 Cosmos3-Super 48.8, Cosmos3-Nano 44.1, Qwen3.5-27B 39.5입니다. 오픈 웨이트 여부는 표의 Open-weight 구분 행으로 근거가 있고, Gemini 3.1 Pro는 null로 두어 비공개로 단정하지 않았습니다. 설정 설명에 논문 보고 결과이며 전체 리더보드가 아니라는 점, Cosmos3 계열이 TAR에 사전 노출됐다는 점이 명시되어 있습니다. 사소한 흠으로, 규모가 작다는 한계는 논문 9쪽에 있는데 유의사항은 10쪽으로 함께 인용했지만 사실 내용에는 영향이 없습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 133316,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2445,
+              "output_tokens_details": {
+                "thinking_tokens": 1450
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 133316,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2445,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 133316,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 133316
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.5577829,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "c5faa005af688968c5c70e4d14152c1cdd988a93f63837adc0f3554f47796e57",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -45887,8 +45933,8 @@
         "2610.32536",
         "2610.32575"
       ],
-      "calls": 14,
-      "cost_usd": 6.7288
+      "calls": 15,
+      "cost_usd": 7.2866
     }
   },
   "reaudits": [
