@@ -24002,7 +24002,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-28T03:44:23Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -24028,12 +24028,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40621900707",
-        "context_sha256": "04fc77d0c8793cb6375d506b18fc43e0cd2a24b5977fffb64ad43470976cc18b"
-      },
       "proposal_sha256": "d802ceb654e2348776ec0f621728093e7970395103db2a6aa3c05076af684a9e",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 en 행의 변경 사실은 논문 PDF 전체 페이지와 공식 README·LICENSE 카드로 뒷받침됩니다. (1) 권리 항목: README가 데이터는 CC-BY-NC-4.0(Zenodo 배포, DrugBank의 비상업 제한 상속), 코드는 GPL-3.0-only라고 명시합니다. 코드 라이선스와 데이터 권리를 분리해 기록했고, 상업적 이용 '불가', 수정·파생 '가능(조건 준수)', 재배포 '조건부 가능'은 CC-BY-NC-4.0과 일치해 근거 없는 허용이나 제한 누락이 없습니다. (2) 파생 자료: 이용 시 유의사항이 Sachs 등 단백질 신호 네트워크와 DrugBank를 원천으로 명시하고, 렌더링에 o3-mini가 쓰였음을 밝히며, 각 구성 요소의 고유 약관을 따로 확인하라고 안내합니다. (3) lm-eval 지원: 공식 README에 lm-eval 또는 lm-evaluation-harness 언급이 없고 pdf_mentions도 비어 있어, 미표기로 기록한 것은 허용된 해결값입니다. (4) 정의·과제·설정: 연역·귀납·인과 세 트랙, 형식 객체 기반 생성, 두 난이도 축, 6개 모델, 셀당 n=200, 점 추정만 보고, 단일 사례 한계, 생성 코드 배포 방식이 모두 논문 본문과 부록 내용에 부합합니다. 언어(영어)와 모달리티(텍스트)도 예시 프롬프트로 확인됩니다. (5) 추천 목록: 연역 Easy NL·CoT의 우연 수준 보정 정확도(부록 G 표 6)를 쓰며 6개 비교 모델이 모두 같은 조건(같은 트랙, 티어, 렌더링, 프롬프트, n, 온도)입니다. 점수(gpt-4o 38.5, o3-mini 53.5, deepseek-r1 96.2, llama-3.3-70b 15.2, qwen3-30b 85.0, olmo-3.1-32b 57.2)는 표 1의 원시 정확도와 우연 확률 33.3에서 재계산한 값과 일치합니다. 지표 방향도 높을수록 좋음으로 맞고, 상위 3개(deepseek-r1, qwen3-30b, olmo-3.1-32b) 선정이 정당합니다. 공개 가중치 여부는 부록 F의 모델 설명으로 근거가 확인됩니다(gpt-4o와 o3-mini는 폐쇄, 나머지는 공개 가중치). 이는 논문 보고 결과이며 실시간 전역 리더보드가 아닙니다. 사소한 점으로, 정의의 '고정 테스트셋이 아닌 생성 파이프라인' 표현은 논문 문구에 근거하고, README의 Zenodo 과제 파일 배포와 병기되어도 모순되지 않습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 179932,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2618,
+              "output_tokens_details": {
+                "thinking_tokens": 1500
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 179932,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2618,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 179932,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 179932
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.7459769,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "d802ceb654e2348776ec0f621728093e7970395103db2a6aa3c05076af684a9e",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -51080,8 +51126,8 @@
         "2610.35864",
         "2610.35866"
       ],
-      "calls": 21,
-      "cost_usd": 10.2937
+      "calls": 22,
+      "cost_usd": 11.0397
     }
   },
   "reaudits": [
