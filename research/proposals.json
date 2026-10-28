@@ -23747,6 +23747,183 @@
         "reviewed_sha256": "e3e277c4cb07a2c4a710e579146028beefa0a23d0c0de5a79b40c907d5341245",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2606.13020": {
+      "decision": "propose",
+      "reason": "SciR은 연역·귀납·인과 귀추 세 가지 과학적 추론을 다루는 재사용 가능한 영어 텍스트 벤치마크입니다. 형식 객체에서 과제를 생성하고, 정보 보존이 검증된 다중 문서 과학 담론으로 렌더링하며, 추론 복잡도와 전제 난독화를 독립적으로 조절할 수 있습니다. 기존 인벤토리에 없는 새 항목이므로 en 트랙 한 행을 제안합니다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "scir",
+            "이름": "SciR",
+            "평가 축": "과학적 추론(연역·귀납·인과 귀추)",
+            "언어": "en",
+            "정의": "연역, 귀납, 인과 귀추 세 가지 과학적 추론을 평가하는 제어 가능한 벤치마크. 형식 객체(연역 트리, 귀납 규칙 가설, 인과 그래프)에서 검증 가능한 정답의 과제를 만든 뒤 트랙별 과학 문서 장르의 다중 문서 담론으로 렌더링한다. 추론 복잡도와 전제 난독화 두 난이도 축을 독립적으로 조절하며, Easy/Hard 두 티어에서 NL과 Obf 형태를 비교한다. 논문은 6개 모델을 셀당 200개 과제로 평가했고 지표는 정확도와 우연 수준을 보정한 정확도다. 별도 해답 공개 데이터셋이 아니라 생성 파이프라인이라 난이도 티어를 다시 생성할 수 있다.",
+            "대표 과제": "연역(전제로부터 가설이 valid/invalid/unknown인지 판정), 귀납(약물 상호작용을 설명하는 규칙 찾기), 인과(새 단백질 XYZ와 기존 신호 네트워크의 연결 찾기)",
+            "대표 예시·설명": "여러 문서에 흩어진 전제를 읽고 가설이 전제로부터 도출되는지 valid, invalid, unknown 중에서 판정하는 과제(과제 설명). 같은 틀로 약물 상호작용 규칙 귀납과 단백질 신호 인과 구조 추론도 제시된다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 못했다. 논문은 과제를 고정 테스트셋이 아니라 생성 코드로 배포한다고 밝히므로 문항 수는 설정에 따라 달라진다. 또한 렌더링에 LLM(o3-mini)을 쓰고 DrugBank 등 외부 자료를 활용하므로 각 구성 요소의 약관을 이용 전에 따로 확인해야 한다. 논문은 점 추정만 보고하며(단일 실행, 오차 막대 없음) 각 추론 유형이 하나의 생물학 사례에 국한된다고 한계를 밝힌다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/idiap/scir"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Scientific reasoning (deduction, induction, causal abduction)",
+            "definition": "A controllable benchmark of three paradigms of scientific reasoning: deduction, induction, and causal abduction. Tasks are generated from formal objects (a deduction tree, an inductive rule hypothesis, a causal graph) with verifiable answers, then rendered into multi-document scientific discourse using per-track document genres. Two difficulty axes, inference complexity and premise obfuscation, can be varied independently, and Easy and Hard tiers are compared in natural-language (NL) and obfuscated (Obf) forms. The paper evaluates six models with 200 tasks per cell and reports accuracy and chance-normalised accuracy. The pipeline is released as a generator rather than a fixed test set, so harder tiers can be regenerated.",
+            "task": "Deduction (decide whether a hypothesis is valid, invalid, or unknown given premises), induction (find the rule that explains observed drug-drug interactions), and causal discovery (identify how a new protein XYZ connects to a known signalling sub-network).",
+            "example": "Task description: read premises spread across several documents and decide whether a hypothesis follows from them, answering valid, invalid, or unknown. The same framing applies to inducing drug-interaction rules and inferring causal structure in protein signalling."
+          },
+          "evidence": {
+            "modality": {
+              "page": 15,
+              "quote": "Determine whether the"
+            },
+            "대표 과제": {
+              "page": 6,
+              "quote": "n=200 tasks per"
+            },
+            "대표 예시·설명": {
+              "page": 15,
+              "quote": "Determine whether the"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/idiap/scir"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "Determine whether the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce SciR"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "deduction, induction, and"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "deduction, induction, and"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2606.13020",
+      "paper_title": "SciR: A Controllable Benchmark for Scientific Reasoning in LLMs",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.13020",
+        "sha256": "5246668f81dad0e874b43d715775511a4fea4034c4449bfbff0d03141d3cfbe9",
+        "accessed": "2026-10-28T03:40:07Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 32,
+          "elapsed_seconds": 229.75,
+          "pdf_sha256": "5246668f81dad0e874b43d715775511a4fea4034c4449bfbff0d03141d3cfbe9",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "faa6fe2df7a8185178a99c0641aead7d0dfa90952a2937d735e22b124ae7a123",
+          "page_json_file": "2606.13020.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/idiap/scir",
+            "fetched_url": "https://api.github.com/repos/idiap/scir/readme",
+            "sha256": "4a4597e2130d40bc60db41502341c723514121f99243c2ab50ee42e0722e593b",
+            "accessed": "2026-10-28T03:44:23Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/idiap/scir/license",
+              "name": "LICENSE",
+              "spdx_id": "GPL-3.0",
+              "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-28T03:44:23Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2606.13020",
+        "paper_title": "SciR: A Controllable Benchmark for Scientific Reasoning in LLMs",
+        "abstract": "Three paradigmatic forms of inference recur across scientific reasoning: deduction, induction, and causal abduction. Reliably evaluating LLMs on these in scientific settings is currently out of reach: scientific benchmarks built on human annotations are costly and lack mechanistic ground truth, while synthetic logical-reasoning benchmarks do not resemble real scientific documents. We introduce SciR, a benchmark that combines multi-paradigm reasoning with controllable scientific rendering, anchored on three paradigmatic scientific problems. Tasks are generated from formal objects (deduction tree, inductive rule hypothesis, causal graph) to guarantee verifiable answers, then rendered into multi-document scientific discourse via per-track domain-tuned genres. The construction lets us independently vary two difficulty axes: how hard it is to extract the key information needed for inference, and how hard the principled inference itself is. We test six models. Both axes hurt every model, and their effects compound. The rendering even hurts neurosymbolic pipelines, which hand inference to a verified solver. The two axes yield a per-model extraction-vs-inference profile: for instance, reasoning models like deepseek-r1 mostly surpass non-reasoning instruct models on the inference axis. To our knowledge, SciR is the first multi-paradigm scientific-reasoning benchmark with parametric control on both extraction and inference difficulty.",
+        "paper_updated": "2026-09-28T00:00:00Z",
+        "created_at": "2026-10-19T13:45:22Z",
+        "input_sha256": "b9614c43931a03d7df78ba817910cc5e91ffd0af4d3981353f2ddf62e9970568",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "과학 추론 벤치마크로 LLM 평가에 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "과학 추론용 제어 가능 벤치마크 SciR를 새로 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40621900707",
+        "context_sha256": "04fc77d0c8793cb6375d506b18fc43e0cd2a24b5977fffb64ad43470976cc18b"
+      },
+      "proposal_sha256": "de8073e8e2c033994cb172db8d1ad121eb74ba6e1ad4d0ba8d8a0145c3ab2462"
     }
   },
   "processed_comments": [],
@@ -50793,8 +50970,8 @@
         "2610.35864",
         "2610.35866"
       ],
-      "calls": 19,
-      "cost_usd": 8.8173
+      "calls": 20,
+      "cost_usd": 9.4928
     }
   },
   "reaudits": [
