@@ -312,4 +312,16 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Multi-turn, account-grounded banking conversations in which the assistant calls deterministic mock tools and must answer, clarify, or decline safely (S/A/R/Q grading).",
     "example": "Task description: a customer checks a balance, then returns the next day to ask about a transfer. The assistant must re-query the balance instead of reusing the stale value (schematic case from Figure 1)."
   },
+  "qasm-eval": {
+    "axis": "Coding (completing hardware-facing OpenQASM 3 constructs)",
+    "definition": "QASM-Eval is a benchmark and training resource of specification-completion tasks for hardware-facing OpenQASM 3 constructs (classical logic and control flow, timing scheduling, pulse control), completed within a supplied program context. It has an expert-curated test set of 1,200 tasks (100 themes; four categories of 300 tasks) and a 4,000-task training set, with a generation pipeline that can scale further. An automated verifier checks syntax, measurement distributions, and execution timelines. Five samples are generated per task and scored with pass@k (reported pass@1 and pass@5) and syntax-valid rate, under a theme-held-out five-fold protocol.",
+    "task": "Fill in the missing core block of an OpenQASM 3 program from a natural-language TODO comment, across four categories (classical, timing, pulse, complex) of 300 test tasks each.",
+    "example": "Task description: given a fixed background program and an English natural-language TODO comment describing the missing core block, the model outputs only the missing QASM statements, which are checked by syntax, measurement-distribution, and timeline verification."
+  },
+  "scir": {
+    "axis": "Scientific reasoning (deduction, induction, causal abduction)",
+    "definition": "A controllable benchmark of three paradigms of scientific reasoning: deduction, induction, and causal abduction. Tasks are generated from formal objects (a deduction tree, an inductive rule hypothesis, a causal graph) with verifiable answers, then rendered into multi-document scientific discourse using per-track document genres. Two difficulty axes, inference complexity and premise obfuscation, can be varied independently, and Easy and Hard tiers are compared in natural-language (NL) and obfuscated (Obf) forms. The paper evaluates six models with 200 tasks per cell and reports accuracy and chance-normalised accuracy. The pipeline is released as a generator rather than a fixed test set, so harder tiers can be regenerated.",
+    "task": "Deduction (decide whether a hypothesis follows from the premises, is contradicted, or is neither), induction (find the rule that explains observed drug-drug interactions), and causal discovery (identify how a new protein XYZ connects to a known signalling sub-network).",
+    "example": "Task description: read premises spread across several documents and decide whether a hypothesis follows from them, is contradicted by them, or is neither. The same framing applies to inducing drug-interaction rules and inferring causal structure in protein signalling."
+  },
 };

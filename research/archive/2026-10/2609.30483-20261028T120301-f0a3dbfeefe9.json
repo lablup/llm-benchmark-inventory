@@ -1,0 +1,67 @@
+{
+  "arxiv_id": "2609.30483",
+  "paper_title": "AcoustiClaim: A Numeric Claim Benchmark with Instrument Ground Truth",
+  "created_at": "2026-10-28T03:03:01Z",
+  "status": "exclude",
+  "reason": "AcoustiClaim은 재사용 가능한 벤치마크이고 영어 프롬프트(\"Describe the quality of this recording.\")로 오디오 언어 모델의 수치 주장을 Praat 등 계측기 기준값과 대조하며, 공식 링크(github.com/sheng-tse/acousticlaim)도 PDF에 있다. 그러나 과제 입력이 음성 녹음(Libri2Mix, AMI)이라 텍스트 전용(text)도 이미지·스크린샷·문서가 필요한 과제(vision)도 아니다. 인벤토리의 modality는 text와 vision만 허용하므로 어느 쪽으로 분류해도 근거 없는 라벨이 된다. 억지로 분류해 행을 제안하기보다 이번 인벤토리 범위 밖으로 보고 제외한다. 오디오 modality를 인벤토리에 추가하기로 하면 다시 검토할 수 있다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2609.30483",
+    "sha256": "7284308d09b90ed85396c047499d33ba2917aa2f29d14e08b9d37d22ee5d2b1b",
+    "accessed": "2026-10-28T03:01:47Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 5,
+      "elapsed_seconds": 63.06,
+      "pdf_sha256": "7284308d09b90ed85396c047499d33ba2917aa2f29d14e08b9d37d22ee5d2b1b",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "332fdd0c2aceaf4edc4bc12f90a50a0a93bd0c542803d280061d636a25ef52a9",
+      "page_json_file": "2609.30483.pages.json"
+    }
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "129f2f9d1cf5605f5f866daccf49af4551571f5711ed2ef1971d037b38e30246",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2609.30483",
+    "paper_title": "AcoustiClaim: A Numeric Claim Benchmark with Instrument Ground Truth",
+    "abstract": "Audio language models state numbers for acoustic quantities, and neither human opinion nor a judge model says whether such a number is true of the signal. AcoustiClaim extracts each numeric claim from free text, scores it against the instrument that defines the quantity, and classes each quantity by where its reference can be read. Four open-weight systems and one closed model, asked for ten quantities five ways on two corpora, fill 207 cells. Of these, 49 emit fewer than five distinct values, and eight of the 158 cells that can be ranked exceed a rank correlation of 0.3, the bar we set, three with an interval clear of it, five of them one closed model reading pitch. Error sits at or above a constant-predictor floor in every ranked cell but three. The reference decoder we train declines the five voice quantities in prose on 95% of mixtures, with nothing withheld, and states them on the clean twins, reproducing its targets' rule from audio alone. With a calibrated threshold, withholding lowers error on all ten quantities on the mixtures in the mean and on eight at every split, against at most 0.6% from a random selector. A linear baseline orders errors at least as well as ours. F0 s.d. and shimmer stay above the constant floor.",
+    "paper_updated": "2026-09-28T00:00:00Z",
+    "created_at": "2026-10-19T13:45:10Z",
+    "input_sha256": "1235e80055ac73b1750bd2c49dc2713b410aed614aa04944d6367794ccdbe5e8",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "음향 수치 주장 벤치마크로 기기 기반 평가"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "음향 수치 주장 검증 벤치마크 신규 제시"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}

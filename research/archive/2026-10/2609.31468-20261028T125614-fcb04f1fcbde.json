@@ -1,0 +1,95 @@
+{
+  "arxiv_id": "2609.31468",
+  "paper_title": "PriceBench: A Diagnostic Benchmark for Price, Quality, and Brand Preferences in LLM Booking Agents",
+  "created_at": "2026-10-28T03:56:14Z",
+  "status": "needs_evidence",
+  "reason": "PriceBench는 모델의 우열을 가리는 성능 점수를 보고하지 않고 선호 추정치(로그가격 계수 βln p, 리뷰 1점당 지불의사액 WTP 등)만 보고한다(5.2·5.3절, 부록 I의 Table 5). 이 값들은 높을수록 좋은지 낮을수록 좋은지 논문이 정하지 않았고, 값이 크다고 더 나은 모델이라는 뜻도 아니다. higher_is_better를 지정하면 근거 없는 순위 주장이 되므로 recommendations를 만들 수 없다. 권리 근거는 확보되어 있다. 공식 README와 논문 19쪽 데이터시트는 코드를 MIT로, 과제·응답 데이터는 연구용 공개로 표기한다. 그러나 순위 지표가 없어 모든 change 항목을 게시하지 않고 changes를 비운다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2609.31468",
+    "sha256": "a7769fc64ba376b6b16696fecef75330dc6b57ca7aa7f781d5796ab417facf5f",
+    "accessed": "2026-10-28T03:53:45Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 19,
+      "elapsed_seconds": 124.97,
+      "pdf_sha256": "a7769fc64ba376b6b16696fecef75330dc6b57ca7aa7f781d5796ab417facf5f",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "44fe52a743ca70b6a063fbdbfe97efa4988c8d4fe42f135f0c510a0dfd1ab8ee",
+      "page_json_file": "2609.31468.pages.json"
+    },
+    "official_resources": [
+      {
+        "url": "https://github.com/Pashasan/pricebench-emnlp",
+        "fetched_url": "https://api.github.com/repos/Pashasan/pricebench-emnlp/readme",
+        "sha256": "12f003ee635ecadbd43207ffa447c84ef7a2555021967e32a477c0918c8534e9",
+        "accessed": "2026-10-28T03:56:14Z",
+        "license_file": {
+          "fetched_url": "https://api.github.com/repos/Pashasan/pricebench-emnlp/license",
+          "name": "LICENSE",
+          "spdx_id": "MIT",
+          "sha256": "aaab32d0e3fdc01a93485d550ca9162ff7784b727dc0899f1f21cb71861736f5"
+        }
+      }
+    ]
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "de3583dfeaebe2334de709888504903267bc5889288fd00bd755c44f7d4732fa",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2609.31468",
+    "paper_title": "PriceBench: A Diagnostic Benchmark for Price, Quality, and Brand Preferences in LLM Booking Agents",
+    "abstract": "LLMs increasingly act as purchasing agents, which makes the LLM, not the user, the one choosing among the options that satisfy a request; its preferences quietly fix what gets bought and what it costs. Hotel booking is a clean instance: a high-volume choice settled on a few comparable attributes, where the pick reveals those preferences. We introduce PriceBench, a diagnostic benchmark that recovers an LLM's price, quality, and brand preferences from its booking choices with a logit choice model, applied to 28 LLMs from 8 providers on 3,600 hotel tasks from 179 real New York City properties. We find that capability is associated with how consistently an LLM chooses, not with what it chooses: more capable LLMs hold stronger, more consistent preferences, while weaker ones either lock onto one position, exploitable by whoever controls listing order, or choose almost indifferently. What those preferences favor varies sharply across providers and even within one family: price sensitivity spans more than an order of magnitude, and the price/quality trade-off moves mean booked nightly price from \\$247 to \\$393 on identical tasks. What an agent buys must therefore be measured per LLM, not inferred, and we release the tasks, code, and all 28 response sets.",
+    "paper_updated": "2026-09-28T00:00:00Z",
+    "created_at": "2026-10-19T13:45:22Z",
+    "input_sha256": "5cf0bf7b3ad7dcd61345ebcef10630b21580e6e5a3ec7d9c678e17f849e84ab6",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "LLM 호텔 예약 선호 진단 벤치마크"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "LLM 예약 에이전트 선호 진단 벤치마크 PriceBench 제안"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}
