@@ -23196,6 +23196,165 @@
       },
       "issue_url": null,
       "proposal_sha256": "3ffdbb7baab5033de3b23109b53ca487f6e0b6eb8667d31a2f70b8a94da13a47"
+    },
+    "2601.06426": {
+      "decision": "propose",
+      "reason": "NC-Bench는 대화 구조 수준의 행동 능력(수리, 종결, 거부 등)을 재는 재사용 가능한 새 벤치마크다. basic, RAG, complex request의 세 세트로 이루어지고(세트별 180/180/360건, 14개 상호작용 패턴), 과제와 프롬프트가 영어이므로 en 트랙의 text 모달리티로 제안한다. 공식 데이터셋 URL은 PDF 각주에 명시되어 있다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 둔다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "nc-bench",
+            "이름": "NC-Bench",
+            "평가 축": "대화 역량(대화 행동 적절성)",
+            "언어": "en",
+            "정의": "IBM Natural Conversation Framework 기반으로 모델이 대화의 특정 지점에서 올바른 유형의 대화 행동(답변, 수리, 종결 등)을 하는지 보는 벤치마크. basic(180건), RAG(180건), complex request(360건)의 세 세트와 14개 상호작용 패턴으로 구성된다. 트랜스크립트의 다음 발화를 생성하게 하고 LLM judge가 행동 유형을 분류한 뒤 허용 행동 규칙으로 채점한다.",
+            "대표 과제": "basic·RAG·complex request 세트에서 패턴별로 마지막 발화를 생성(예: 반복 요청, 정의 요청, 시퀀스 종결·중단, 상세 정보 요청)",
+            "대표 예시·설명": "사용자가 '예를 들어 줄래?' 같은 수리 요청이나 종결 신호를 보내면, 모델이 그 맥락에 맞는 대화 행동으로 다음 발화를 생성하는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했으므로 이용 전 데이터 카드와 저장소를 직접 확인해야 한다. 단일 발화 생성 방식의 진단용 벤치마크이며 개방형 대화 전체를 시뮬레이션하지 않는다. 예시는 DailyDialog, 위키피디아 문단, 합성 비즈니스 시나리오에서 가져왔고 패턴당 최소 20개다. 채점에 LLM judge(논문은 Mistral-Large-Instruct-2411 사용)가 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/ibm-research/nc-bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Conversational competence (appropriate conversational actions)",
+            "definition": "A benchmark based on the IBM Natural Conversation Framework that tests whether a model produces the right type of conversational action (answering, repairing, closing, etc.) at the right point in an interaction. It has three sets: basic (180 items), RAG (180 items) and complex request (360 items), covering 14 interaction patterns. The model generates the next turn of a transcript, an LLM judge classifies the action type, and predefined rules of acceptable actions determine the score.",
+            "task": "Generate the final turn for each pattern in the basic, RAG and complex request sets (e.g., repeat request, definition request, sequence closer/abort, detail request).",
+            "example": "Task description, not an actual test item: after a user sends a repair request such as asking for an example, or a closing signal, the model generates a next turn that performs the appropriate conversational action."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "Can you give"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "NC-Bench includes three"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "Can you give"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "ibm-research/nc-bench"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "Can you give"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Natural Conversation Benchmark"
+            },
+            "정의": {
+              "page": 3,
+              "quote": "NC-Bench includes three"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "evaluating conversational competence"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2601.06426",
+      "paper_title": "NC-Bench: An LLM Benchmark for Evaluating Conversational Competence",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2601.06426",
+        "sha256": "e1318a7391131dcf60a5aef70e4cdb9177e60f6667502d1cf051095e835a4a2d",
+        "accessed": "2026-10-28T03:23:48Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 19,
+          "elapsed_seconds": 121.52,
+          "pdf_sha256": "e1318a7391131dcf60a5aef70e4cdb9177e60f6667502d1cf051095e835a4a2d",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "4d0eb2315f99932570b85f70bb27c425457d43ec9a77cdfb83df18fb079d7934",
+          "page_json_file": "2601.06426.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/ibm-research/nc-bench",
+            "fetched_url": "https://huggingface.co/datasets/ibm-research/nc-bench/raw/main/README.md",
+            "sha256": "032d2cbaaf8e3dc8b82b3a0de5caa755d0bdfdc755578235d536cad500cf22a2",
+            "accessed": "2026-10-28T03:26:15Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-28T03:26:15Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2601.06426",
+        "paper_title": "NC-Bench: An LLM Benchmark for Evaluating Conversational Competence",
+        "abstract": "Existing LLM benchmarks evaluate what models say, such as whether answers are correct, faithful, or helpful, but they do not test whether models produce the right type of conversational action at the right point in an interaction. The Natural Conversation Benchmark (NC-Bench) fills this gap by evaluating conversational competence: the ability to perform structurally appropriate actions such as repairing, closing, or refusing, as defined by conversation science. Grounded in the Natural Conversation Framework (NCF), NC-Bench comprises three sets: (1) the basic set evaluates fundamental sequence management practices, such as answering inquiries, repairing responses, and closing conversational pairs; (2) the retrieval-augmented generation (RAG) set applies the same patterns but incorporates information-seeking via RAG; (3) the complex request set extends to requests involving more intricate sequence management. Each set tests a model's ability to produce contextually appropriate conversational actions in response to characteristic interaction patterns. Evaluations across six open-source models and one closed-source model on 14 interaction patterns reveal quantifiable shortcomings in conversational competence present in current models. By operationalizing fundamental principles of human conversation, NC-Bench provides a lightweight, extensible, and theory-grounded framework for identifying specific conversational action gaps in LLMs beyond topical or task-specific benchmarks.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:45:10Z",
+        "input_sha256": "7b81ec656661a257a6917b6792a7670a4cd0ebe99eb98243f3dccc1f08435de6",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "대화 역량 LLM 벤치마크 NC-Bench 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "대화 역량 평가 벤치마크 NC-Bench 신규 제시"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40621900707",
+        "context_sha256": "56da7be877c382183593edd506196be2e7dc9a893ccc7f17bf6779be7134172a"
+      },
+      "proposal_sha256": "46de2237d5c62a89d0efd1b1c61708e2e2911dd3e0f44f336fbd76bf8f14f5ae"
     }
   },
   "processed_comments": [],
@@ -50238,8 +50397,8 @@
         "2610.35864",
         "2610.35866"
       ],
-      "calls": 14,
-      "cost_usd": 5.8259
+      "calls": 15,
+      "cost_usd": 6.348
     }
   },
   "reaudits": [
