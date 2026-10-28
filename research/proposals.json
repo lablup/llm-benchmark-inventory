@@ -23358,7 +23358,7 @@
     },
     "2605.30358": {
       "decision": "propose",
-      "reason": "QASM-Eval은 OpenQASM 3의 고전 제어, 타이밍 스케줄링, 펄스 제어를 다루는 코드 완성 벤치마크로, 재사용 가능한 새 평가 세트(테스트 1,200과제)와 자동 검증기를 함께 제공한다. 과제 프롬프트가 영어로 작성되어 en 트랙의 text 모달리티로 분류한다. 기존 인벤토리에 없는 새 항목이며, 공식 링크는 PDF에 명시된 GitHub 저장소다. 라이선스, 재배포, lm-eval 지원 여부는 확인하지 못해 '확인 불가'로 기록한다.",
+      "reason": "QASM-Eval은 OpenQASM 3의 고전 제어, 타이밍 스케줄링, 펄스 제어를 다루는 코드 완성 벤치마크로, 재사용 가능한 새 평가 세트(테스트 1,200과제)와 자동 검증기를 함께 제공한다. 과제 프롬프트가 영어로 작성되어 en 트랙의 text 모달리티로 분류한다. 기존 인벤토리에 없는 새 항목이며, 공식 링크는 PDF에 명시된 GitHub 저장소다. 공식 README와 논문 PDF에는 라이선스 표기가 없어 라이선스 미표기로 기록하고, lm-eval 지원도 README에 언급이 없어 미표기로 기록한다.",
       "changes": [
         {
           "track": "en",
@@ -23371,12 +23371,12 @@
             "대표 과제": "classical·timing·pulse·complex 4개 범주(각 300과제)에서, 자연어 TODO 주석이 달린 OpenQASM 3 프로그램의 빠진 핵심 블록을 채우는 코드 완성",
             "대표 예시·설명": "과제 설명: 고정된 배경 프로그램과 영어 자연어 TODO 주석(핵심 블록 설명)을 주고, 모델이 빠진 QASM 문장만 출력하게 한 뒤 구문·측정 분포·타임라인 검증을 통과하는지 확인한다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터와 코드의 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 아직 확인하지 않았다. 코드 저장소 라이선스를 데이터 라이선스로 간주하면 안 된다. 평가에는 시뮬레이션 기반 검증기(Qiskit, QuTiP 기반)가 필요하다. 테스트 과제는 템플릿과 LLM 보조 변형으로 생성되었고, 전문가는 테스트 200문항을 검토했다. 보조 모델로 Qwen3-Coder-480B를 사용했다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 평가에는 시뮬레이션 기반 검증기(Qiskit, QuTiP 기반)가 필요하다. 테스트 과제는 템플릿과 LLM 보조 변형으로 생성되었고, 전문가는 테스트 200문항을 검토했다. 변형 생성에 Qwen3-Coder-480B를 사용했다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/fuzhenxiao/QASM-Eval"
           },
           "modality": "text",
@@ -23420,9 +23420,179 @@
               "quote": "expert-curated test set"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/fuzhenxiao/QASM-Eval",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/fuzhenxiao/QASM-Eval",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/fuzhenxiao/QASM-Eval",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/fuzhenxiao/QASM-Eval",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/fuzhenxiao/QASM-Eval",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "pass@1 (%, 과제당 5개 생성 샘플로 계산한 불편 추정량, 1,200개 테스트 과제 평균)",
+            "setting": "이 논문(arXiv 2605.30358)의 Table 4에 보고된 결과이며 현재의 전체 리더보드가 아니다. 동일한 1,200과제 theme-held-out QASM-Eval 테스트 세트, 과제당 5개 독립 샘플, 논문의 프롬프트 조건(기본 모델, -Agent는 OpenCode+RAG 도구, -fs는 교차 테마 3-shot, -QCB/-AGQ/-ours는 LoRA 미세조정)을 따른다. 모델 변형과 프롬프트 조건이 섞여 있으므로 표의 행 이름 그대로 비교해야 한다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "GPT-5.6-Terra",
+                "score": "39.65",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.6-Terra 39.65%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DPSK-V4-Pro",
+                "score": "25.67",
+                "evidence": {
+                  "page": 8,
+                  "quote": "DPSK-V4-Pro 25.67%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-70B-base",
+                "score": "15.70",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-70B-base 15.70%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-8B-base",
+                "score": "9.98",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-8B-base 9.98%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.6-Terra-Agent",
+                "score": "47.37",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.6-Terra-Agent 47.37%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.6-Terra-fs",
+                "score": "63.07",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.6-Terra-fs 63.07%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DPSK-V4-Pro-fs",
+                "score": "60.10",
+                "evidence": {
+                  "page": 8,
+                  "quote": "DPSK-V4-Pro-fs 60.10%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-70B-fs",
+                "score": "55.28",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-70B-fs 55.28%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-8B-fs",
+                "score": "32.87",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-8B-fs 32.87%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-70B-QCB",
+                "score": "17.33",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-70B-QCB 17.33%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-8B-QCB",
+                "score": "8.67",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-8B-QCB 8.67%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-70B-AGQ",
+                "score": "16.05",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-70B-AGQ 16.05%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-8B-AGQ",
+                "score": "5.83",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-8B-AGQ 5.83%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-70B-ours",
+                "score": "61.17",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-70B-ours 61.17%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-8B-ours",
+                "score": "46.93",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-8B-ours 46.93%"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2605.30358",
@@ -23529,7 +23699,8 @@
         "source_run": "40621900707",
         "context_sha256": "940f8196e8f54224d5b76610b7e3df47b9e527960b9da39c6551a7aa806be0ca"
       },
-      "proposal_sha256": "2e5526c308d3c860a5cefa05eade6a6689381494ccdd41583ca576fe32786efa"
+      "proposal_sha256": "e3e277c4cb07a2c4a710e579146028beefa0a23d0c0de5a79b40c907d5341245",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -50575,8 +50746,8 @@
         "2610.35864",
         "2610.35866"
       ],
-      "calls": 17,
-      "cost_usd": 7.5596
+      "calls": 18,
+      "cost_usd": 8.2013
     }
   },
   "reaudits": [
