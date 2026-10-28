@@ -23355,6 +23355,181 @@
         "context_sha256": "56da7be877c382183593edd506196be2e7dc9a893ccc7f17bf6779be7134172a"
       },
       "proposal_sha256": "46de2237d5c62a89d0efd1b1c61708e2e2911dd3e0f44f336fbd76bf8f14f5ae"
+    },
+    "2605.30358": {
+      "decision": "propose",
+      "reason": "QASM-Eval은 OpenQASM 3의 고전 제어, 타이밍 스케줄링, 펄스 제어를 다루는 코드 완성 벤치마크로, 재사용 가능한 새 평가 세트(테스트 1,200과제)와 자동 검증기를 함께 제공한다. 과제 프롬프트가 영어로 작성되어 en 트랙의 text 모달리티로 분류한다. 기존 인벤토리에 없는 새 항목이며, 공식 링크는 PDF에 명시된 GitHub 저장소다. 라이선스, 재배포, lm-eval 지원 여부는 확인하지 못해 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "qasm-eval",
+            "이름": "QASM-Eval",
+            "평가 축": "코딩(OpenQASM 3 하드웨어 지향 구성요소 완성)",
+            "언어": "en",
+            "정의": "OpenQASM 3의 하드웨어 지향 구성요소(고전 논리·제어 흐름, 타이밍 스케줄링, 펄스 제어)를 주어진 프로그램 문맥 안에서 완성하게 하는 사양-완성 과제 벤치마크 겸 학습 자원. 전문가 검수 테스트 1,200과제(100개 테마, 4개 범주 × 300과제)와 4,000과제 학습 세트(생성 파이프라인은 확장 가능)로 구성된다. 자동 검증기가 구문, 측정 분포, 실행 타임라인을 확인하며, 과제마다 5개 샘플을 생성해 pass@k(보고: pass@1, pass@5)와 구문 유효율로 평가한다. 테마 단위 5-fold 홀드아웃 프로토콜을 쓴다.",
+            "대표 과제": "classical·timing·pulse·complex 4개 범주(각 300과제)에서, 자연어 TODO 주석이 달린 OpenQASM 3 프로그램의 빠진 핵심 블록을 채우는 코드 완성",
+            "대표 예시·설명": "과제 설명: 고정된 배경 프로그램과 영어 자연어 TODO 주석(핵심 블록 설명)을 주고, 모델이 빠진 QASM 문장만 출력하게 한 뒤 구문·측정 분포·타임라인 검증을 통과하는지 확인한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터와 코드의 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 아직 확인하지 않았다. 코드 저장소 라이선스를 데이터 라이선스로 간주하면 안 된다. 평가에는 시뮬레이션 기반 검증기(Qiskit, QuTiP 기반)가 필요하다. 테스트 과제는 템플릿과 LLM 보조 변형으로 생성되었고, 전문가는 테스트 200문항을 검토했다. 보조 모델로 Qwen3-Coder-480B를 사용했다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/fuzhenxiao/QASM-Eval"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (completing hardware-facing OpenQASM 3 constructs)",
+            "definition": "QASM-Eval is a benchmark and training resource of specification-completion tasks for hardware-facing OpenQASM 3 constructs (classical logic and control flow, timing scheduling, pulse control), completed within a supplied program context. It has an expert-curated test set of 1,200 tasks (100 themes; four categories of 300 tasks) and a 4,000-task training set, with a generation pipeline that can scale further. An automated verifier checks syntax, measurement distributions, and execution timelines. Five samples are generated per task and scored with pass@k (reported pass@1 and pass@5) and syntax-valid rate, under a theme-held-out five-fold protocol.",
+            "task": "Fill in the missing core block of an OpenQASM 3 program from a natural-language TODO comment, across four categories (classical, timing, pulse, complex) of 300 test tasks each.",
+            "example": "Task description: given a fixed background program and an English natural-language TODO comment describing the missing core block, the model outputs only the missing QASM statements, which are checked by syntax, measurement-distribution, and timeline verification."
+          },
+          "evidence": {
+            "modality": {
+              "page": 22,
+              "quote": "Return only the"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "expert-curated test set"
+            },
+            "대표 예시·설명": {
+              "page": 22,
+              "quote": "Fill in the"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/fuzhenxiao/QASM-Eval"
+            },
+            "언어": {
+              "page": 22,
+              "quote": "Fill in the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce QASM-Eval"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "expert-curated test set"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "expert-curated test set"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2605.30358",
+      "paper_title": "QASM-Eval: A Dataset to Train and Evaluate LLMs on OpenQASM-3 Beyond Quantum Circuits",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2605.30358",
+        "sha256": "f97ebd8df250c6b49911039b758a21d0ab9a7b6c6cc913f0019efb53f24e2d59",
+        "accessed": "2026-10-28T03:35:04Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 35,
+          "elapsed_seconds": 209.39,
+          "pdf_sha256": "f97ebd8df250c6b49911039b758a21d0ab9a7b6c6cc913f0019efb53f24e2d59",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "460088af1370df7e9660ce3e15818981501cca5358288ec6d8543cf2019df4ab",
+          "page_json_file": "2605.30358.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/fuzhenxiao/QASM-Eval",
+            "fetched_url": "https://api.github.com/repos/fuzhenxiao/QASM-Eval/readme",
+            "sha256": "280fc695b3ba9d1d951fb42aff7b131d43fce88a1a91a8de890d337e1d32d0e7",
+            "accessed": "2026-10-28T03:38:56Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-28T03:38:56Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2605.30358",
+        "paper_title": "QASM-Eval: A Dataset to Train and Evaluate LLMs on OpenQASM-3 Beyond Quantum Circuits",
+        "abstract": "Quantum computing remains in the Noisy Intermediate-Scale Quantum (NISQ) era, with performance constrained by noise. Addressing this limitation requires hardware-facing capabilities beyond gate sequences: mid-circuit measurement and classical feedback for quantum error correction (QEC), precise timing for dynamical decoupling (DD), and pulse-level waveform access for calibration. OpenQASM 3 exposes these capabilities through a hardware-level programming interface. Despite rapid progress in large language models (LLMs) for code generation, datasets targeting these advanced features remain lacking. We introduce QASM-Eval, the first comprehensive dataset to train and evaluate LLMs on OpenQASM 3, targeting completion of hardware-facing constructs within a supplied program context. QASM-Eval comprises an expert-curated test set of 1,200 tasks and a training set of over 4,000 tasks, covering classical logic, timing scheduling, pulse control, and complex tasks inspired by quantum-control workflows. An extended verifier automatically checks syntax, quantum measurement distributions, and program timelines. Our evaluation identifies substantial headroom for OpenQASM 3 code generation and significant gains from targeted fine-tuning. Fine-tuned Llama-3-8B outperforms zero-shot GPT-5.6-Terra, while fine-tuned Llama-3-70B achieves 61.17% overall pass@1 and approaches few-shot-augmented GPT-5.6-Terra. QASM-Eval provides a benchmark and training resource for specification-guided code generation over the hardware-facing constructs of OpenQASM 3, supporting the development of LLM assistants for quantum programming. Data and code: https://github.com/fuzhenxiao/QASM-Eval",
+        "paper_updated": "2026-09-28T00:00:00Z",
+        "created_at": "2026-10-19T13:45:10Z",
+        "input_sha256": "dd82b8fd98c968d84f01c798588a2e7c1b84f7b1aaa935ce5318e80ad005ca13",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "OpenQASM-3 LLM 학습 및 평가 데이터셋"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "OpenQASM-3 코드 생성 평가·학습 데이터셋 신규 제시"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40621900707",
+        "context_sha256": "940f8196e8f54224d5b76610b7e3df47b9e527960b9da39c6551a7aa806be0ca"
+      },
+      "proposal_sha256": "2e5526c308d3c860a5cefa05eade6a6689381494ccdd41583ca576fe32786efa"
     }
   },
   "processed_comments": [],
@@ -50400,8 +50575,8 @@
         "2610.35864",
         "2610.35866"
       ],
-      "calls": 16,
-      "cost_usd": 6.9643
+      "calls": 17,
+      "cost_usd": 7.5596
     }
   },
   "reaudits": [
