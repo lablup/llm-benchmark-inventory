@@ -27999,22 +27999,18 @@
     "2609.28876": {
       "arxiv_id": "2609.28876",
       "paper_title": "Forecast-Dojo: Replayable Environments for Benchmarking and Training LLM Forecasting Agents",
-      "abstract": "We introduce Forecast-Dojo, a replayable environment for benchmarking and training LLM forecasting agents. It combines resolved prediction-market questions with dated news, allowing agents to research an event and revisit their predictions at successive historical dates. The same tasks and tools support repeated evaluation, collection of training interactions, and feedback from recorded outcomes without waiting for new events to resolve. Forecast-Dojo contains 1,568 Polymarket events, split by time into training and evaluation periods, and 18.8M dated news articles. In an evaluation of 12 models, research tools lower Brier score for all 12. Forecasts also improve as events unfold, with the largest gains at steps where more newly dated evidence is recorded. Every model still trails historical market forecasts in both Brier score and accuracy. A belief notebook carried between dates lowers research cost but does not consistently improve forecast quality. Beyond evaluation, Forecast-Dojo provides interaction trajectories and outcome feedback for agent learning, with supervised fine-tuning as a proof of concept.",
-      "paper_updated": "2026-09-25T00:00:00Z",
-      "created_at": "2026-10-19T13:44:58Z",
-      "input_sha256": "c580dfe949e5369bd4f12455b0223a407bae33451b1cdb3247972703113585cf",
-      "version": 4,
+      "abstract": "Forecasting requires large language model (LLM) agents to gather evolving evidence, revise their beliefs, and make calibrated predictions over time. Yet evaluating and improving these capabilities is challenging because real-world events unfold continuously and outcomes may take months to resolve. We introduce Forecast-Dojo, a replayable environment that reconstructs resolved prediction-market events as sequences of dated forecasting steps, enabling reproducible evaluation, longitudinal analysis, and training from agent interactions. It comprises 1,568 Polymarket events split temporally into training and evaluation sets, alongside 18.8 million dated news articles. Across 12 models, research tools consistently improve forecasting performance, and greater capture of new evidence is associated with larger improvements over time. Nevertheless, all models trail historical market forecasts, while carrying a belief notebook across dates reduces research costs without consistently improving forecast quality. We supervise fine-tuned Qwen3-30B-A3B-Thinking-2507 on collected trajectories from Qwen3-235B-A22B-Thinking-2507 to demonstrate the environment's training utility. The student's accuracy is improved from 34.8% to 42.8% on the evaluation set.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "영어 LLM 예측 에이전트 벤치마크"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "예측 에이전트용 재현 가능 환경 Forecast-Dojo 신규 제안"
+          "reason": "LLM 예측 에이전트 재생 환경·벤치마크 Forecast-Dojo"
         }
       ]
     },
@@ -48019,6 +48015,348 @@
           "reason": "이론물리 추론 라이빙 벤치마크 PHYRD 제안"
         }
       ]
+    },
+    "2606.01317": {
+      "arxiv_id": "2606.01317",
+      "paper_title": "SABER: Benchmarking Operational Safety of LLM Coding Agents in Stateful Project Workspaces",
+      "abstract": "Large language models are increasingly deployed as coding agents, shifting safety from individual responses to action sequences. Existing benchmarks, however, primarily assess whether models refuse unsafe prompts, leaving impacts on stateful workspaces largely unexamined. We present SABER, a benchmark for environment-aware operational safety that places models in realistic agent-style projects and evaluates safety from the final environment state after a sequence of actions. Beyond binary safety-violation reports, SABER categorizes violations by cause, enabling analysis of model-specific safety profiles. Our evaluations show that even the best-performing model has more than a 54% harmful safety-violation rate (HSR), suggesting that current alignment remains insufficient for realistic project environments. SABER further reveals distinct safety profiles across models. Our benchmark is publicly available at https://github.com/sssr-lab/saber.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코딩 에이전트 운영 안전성 벤치마크 SABER 공개"
+        }
+      ]
+    },
+    "2606.00497": {
+      "arxiv_id": "2606.00497",
+      "paper_title": "\"I Strongly Suspect This Website Is a Scam\": Benchmarking PII Leakage and Detection without Defense in Autonomous Web Agents",
+      "abstract": "Deceptive web content, widely instantiated across the internet and commonly known as \\textit{social-engineering attacks}, manipulates autonomous web agents into submitting users' personally identifiable information (PII) to attacker-controlled endpoints. In this paper, we show that social-engineering attacks are highly effective at extracting critical-tier PII from frontier web agents, posing a severe risk to deployed agentic systems. To quantify this risk, we introduce \\textbf{\\textsc{Scammer4U}}, a pre-registered benchmark of 91 attacker-controlled environments and 10 benign-twin baselines, spanning 8 attack vectors and 16 site categories on an 8-axis factorial taxonomy that isolates the causal contribution of individual attack design factors. Across frontier agents, we find that critical-tier PII leakage reaches 54--93\\% under no privacy guidance, compared to 0\\% on benign-twin baselines, confirming that leakage is attack-attributable rather than incidental form-filling. Escalating prompt-level mitigation yields sharply model-dependent reductions across the four families and remains insufficient to reliably prevent critical PII submission at the pooled level. Most critically, we identify a detection--action gap: agents whose reasoning an independent LLM judge confirms has flagged the site as suspicious still submit critical PII in 35.9\\% of sessions, versus 66.1\\% when no suspicion is verbalized, a 30.2\\% gap robust across all four model families. Our findings reveal that defenses conditioned on the agent's own recognition of an attack are gating on the wrong signal, motivating output-level interception of outbound submissions that operates independently of the agent's reasoning loop.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "웹 에이전트 PII 유출 벤치마크 Scammer4U 도입"
+        }
+      ]
+    },
+    "2505.16027": {
+      "arxiv_id": "2505.16027",
+      "paper_title": "Benchmarking Classification Tasks of Chest X-ray AI Across Multinational Public and Private Datasets: a retrospective diagnostic accuracy study",
+      "abstract": "Chest X-ray (CXR) AI models are increasingly proposed for triage, screening, and rule-out, where the operating point is fixed to miss few abnormalities. Most evaluations instead report threshold-free discrimination on a few public benchmarks, leaving clinically usable performance and generalisability to unseen institutional cohorts poorly characterised. We retrospectively evaluated 10 published CXR classification models on 12 datasets from six countries: seven public benchmarks and five institutional cohorts from China, Japan, and Germany. Models spanned convolutional networks, vision-language models, a question-answering foundation model, and a repurposed encoder. Only image-level classification was assessed; segmentation, detection, and report generation were out of scope. Source labels were harmonised to a common vocabulary. The primary outcome was specificity at 95% sensitivity; PPV at 95% sensitivity and AUROC were secondary outcomes. Estimates weighted each diagnostic task equally, with 95% CIs. MAVL and MedKLIP had the highest overall specificity at 95% sensitivity (0.37 [95% CI 0.31-0.44] and 0.37 [0.30-0.44]) and kept that ranking on tasks evaluable for every model. Their PPV was 0.18 (0.13-0.24) and 0.19 (0.13-0.25): most flagged examinations would be false positives. Specificity was lower on institutional cohorts than on public benchmarks for most models, by 0.13 for MAVL, 0.15 for DenseNet, and 0.09 for MedKLIP. No model was best for every finding, country, lesion extent, or prevalence stratum; specificity fell from 0.34 for diffuse to 0.15 for focal findings. At 95% sensitivity, the best current models clear only about a third of truly negative examinations, and public-benchmark performance overstates what they achieve on unseen institutional data. Operating-point-aware evaluation and external validation on institutional cohorts should precede deployment.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "흉부 X선 AI 모델의 기존 데이터셋 평가 연구"
+        }
+      ]
+    },
+    "2509.21143": {
+      "arxiv_id": "2509.21143",
+      "paper_title": "Automotive-ENV: Benchmarking Multimodal Models in Automotive Cockpit Environments",
+      "abstract": "Multimodal models have demonstrated strong capabilities in web, desktop, and mobile GUI environments, but their performance in automotive cockpit systems remains largely unexplored. In-vehicle GUIs introduce unique challenges beyond traditional GUI interaction, including vehicle-state reasoning, implicit intent understanding, and safety-critical decision making. To address this gap, we introduce Automotive-ENV, an interactive benchmark for evaluating multimodal models in automotive cockpit environments. Built on Android Automotive OS, Automotive-ENV combines cockpit-screen interaction with vehicle-state signals and deterministic state-based evaluation. The benchmark contains 420 carefully constructed tasks covering routine cockpit operation and safety-critical scenarios. Unlike prior GUI benchmarks that rely on action matching or LLM-based judging, Automotive-ENV evaluates model behavior through reproducible validators over UI states, vehicle signals, and safety-related conditions. We benchmark representative general-purpose multimodal models and GUI-specialized vision-language models on Automotive-ENV. Experimental results show that current models remain far from reliable in automotive environments, with substantial performance degradation in implicit and safety-critical tasks. Further analysis reveals consistent failure modes in safety-aware reasoning, vehicle-control understanding, and implicit hazard recognition. We release Automotive-ENV, together with tasks, validators, and evaluation tools, to support future research on automotive multimodal systems.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "차량 콕핏 멀티모달 에이전트 벤치마크 공개"
+        }
+      ]
+    },
+    "2511.13369": {
+      "arxiv_id": "2511.13369",
+      "paper_title": "An openly available OpenStreetMap-to-Foursquare category benchmark for points of interest",
+      "abstract": "The heterogeneity of Point of Interest (POI) taxonomies is a persistent challenge for the integration of urban datasets and the development of location-based services. OpenStreetMap (OSM) adopts a flexible, community-driven tagging system, while Foursquare (FS) relies on a curated hierarchical structure. Here we present an openly available benchmark and mapping framework that aligns OSM tags with the FS taxonomy. This resource integrates the richness of community-driven OSM data with the hierarchical structure of FS, enabling reproducible and interoperable urban analytics. The dataset is complemented by an evaluation of embedding and LLM-based alignment strategies and a pipeline that supports scalable updates as OSM evolves. Together, these elements provide both a robust reference resource and a practical tool for the community. Our approach is structured around three components: the construction of a manually curated benchmark as a gold standard, the evaluation of pretrained text embedding models for semantic alignment between OSM tags and FS categories, and an LLM-based refinement stage that enhances robustness and adaptability. The proposed methodology provides a scalable and reproducible solution for taxonomy unification, with direct applications to urban analytics, mobility studies, and smart city services.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "POI 분류 매핑 벤치마크, LLM 평가 관련성과 언어 불명확"
+        }
+      ]
+    },
+    "2602.07815": {
+      "arxiv_id": "2602.07815",
+      "paper_title": "Out of the box age estimation through facial imagery: A Comprehensive Benchmark of Vision-Language Models vs. out-of-the-box Traditional Architectures",
+      "abstract": "Facial age estimation plays a critical role in content moderation, age verification, and deepfake detection. However, no prior benchmark has systematically compared modern vision-language models (VLMs) with specialized age estimation architectures. We present the first large-scale cross-paradigm benchmark, evaluating 34 models - 22 specialized architectures with publicly available pretrained weights and 12 general-purpose VLMs - across eight standard datasets (UTKFace, IMDB-WIKI, MORPH, AFAD, CACD, FG-NET, APPA-REAL, and AgeDB), totaling 1,100 test images per model. Our key finding is striking: zero-shot VLMs significantly outperform most specialized models, achieving an average mean absolute error (MAE) of 5.65 years compared to 9.88 years for non-LLM models. The best-performing VLM (Gemini 3 Flash Preview, MAE 4.32) surpasses the strongest non-LLM model (MiVOLO, MAE 5.10) by 15%. MiVOLO - unique in combining face and body features using Vision Transformers - is the only specialized model that remains competitive with VLMs. We further analyze age verification at the 18-year threshold and find that most non-LLM models exhibit false adult rates between 39% and 100% for minors, whereas VLMs reduce this to 16%-29%. Additionally, coarse age binning (8-9 classes) consistently increases MAE beyond 13 years. Stratified analysis across 14 age groups reveals that all models struggle most at extreme ages (under 5 and over 65). Overall, these findings challenge the assumption that task-specific architectures are necessary for high-performance age estimation and suggest that future work should focus on distilling VLM capabilities into efficient specialized models.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "VLM 연령추정 비교, 재사용 평가자원 도입 여부 불명확"
+        }
+      ]
+    },
+    "2603.01433": {
+      "arxiv_id": "2603.01433",
+      "paper_title": "DOCFORGE-BENCH: A Comprehensive 0-shot Benchmark for Document Forgery Detection and Analysis",
+      "abstract": "We present DOCFORGE-BENCH, the first unified zero-shot benchmark for document forgery detection, evaluating 14 methods across eight datasets spanning text tampering, receipt forgery, and identity document manipulation. Unlike fine-tuning-oriented evaluations such as ForensicHub [Du et al., 2025], DOCFORGE-BENCH applies all methods with their published pretrained weights and no domain adaptation -- a deliberate design choice that reflects the realistic deployment scenario where practitioners lack labeled document training data. Our central finding is a pervasive calibration failure invisible under single-threshold protocols: methods achieve moderate Pixel-AUC (>=0.76) yet near-zero Pixel-F1. This AUC-F1 gap is not a discrimination failure but a score-distribution shift: tampered regions occupy only 0.27-4.17% of pixels in document images -- an order of magnitude less than in natural image benchmarks -- making the standard tau=0.5 threshold catastrophically miscalibrated. Oracle-F1 is 2-10x higher than fixed-threshold Pixel-F1, confirming that calibration, not representation, is the bottleneck. A controlled calibration experiment validates this: adapting a single threshold on N=10 domain images recovers 39-55% of the Oracle-F1 gap, demonstrating that threshold adaptation -- not retraining -- is the key missing step for practical deployment. Overall, no evaluated method works reliably out-of-the-box on diverse document types, underscoring that document forgery detection remains an unsolved problem. We further note that all eight datasets predate the era of generative AI editing; benchmarks covering diffusion- and LLM-based document forgeries represent a critical open gap on the modern attack surface.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "문서 위조 탐지 전통 모델 벤치마크, LLM 평가 아님"
+        }
+      ]
+    },
+    "2603.11442": {
+      "arxiv_id": "2603.11442",
+      "paper_title": "GPT4o-Receipt: A Dataset and Human Study for AI-Generated Document Forensics",
+      "abstract": "Can humans detect AI-generated financial documents better than machines? We present GPT4o-Receipt, a benchmark of 1,235 receipt images pairing GPT-4o-generated receipts with authentic ones from established datasets, evaluated by five state-of-the-art multimodal LLMs and a 30-annotator crowdsourced perceptual study. Our findings reveal a striking paradox: humans are better at seeing AI artifacts, yet worse at detecting AI documents. Human annotators exhibit the largest visual discrimination gap of any evaluator, yet their binary detection F1 falls well below Claude Sonnet 4 and below Gemini 2.5 Flash. This paradox resolves once the mechanism is understood: the dominant forensic signals in AI-generated receipts are arithmetic errors -- invisible to visual inspection but systematically verifiable by LLMs. Humans cannot perceive that a subtotal is incorrect; LLMs verify it in milliseconds. Beyond the human--LLM comparison, our five-model evaluation reveals dramatic performance disparities and calibration differences that render simple accuracy metrics insufficient for detector selection. GPT4o-Receipt, the evaluation framework, and all results are released publicly to support future research in AI document forensics.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "AI 생성 영수증 데이터셋, 멀티모달 LLM 평가 포함"
+        }
+      ]
+    },
+    "2604.08362": {
+      "arxiv_id": "2604.08362",
+      "paper_title": "Towards Real-world Human Behavior Simulation: Benchmarking Large Language Models on Long-horizon, Cross-scenario, Heterogeneous Behavior Traces",
+      "abstract": "The emergence of Large Language Models (LLMs) has illuminated the potential for a general-purpose user simulator. However, existing benchmarks remain constrained to isolated scenarios, narrow action spaces, or synthetic data, failing to capture the holistic nature of authentic human behavior. To bridge this gap, we introduce OmniBehavior, the first predictive user simulation benchmark constructed entirely from real-world data, integrating long-horizon, cross-scenario, and heterogeneous behavioral patterns into a unified framework. Based on this benchmark, we first provide empirical evidence that previous datasets with isolated scenarios suffer from tunnel vision, whereas real-world decision-making relies on long-term, cross-scenario causal chains. Extensive evaluations of state-of-the-art LLMs reveal that current models struggle to accurately predict these complex behaviors, with performance plateauing even as context windows expand. Crucially, a systematic comparison between simulated and authentic behaviors uncovers a fundamental structural bias: LLMs tend to converge towards a positive average person, exhibiting hyper-activity, persona homogenization, and a utopian bias. This results in the loss of individual differences and long-tail behaviors, highlighting critical directions for future high-fidelity simulation research.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 사용자 행동 시뮬레이션 벤치마크 OmniBehavior"
+        }
+      ]
+    },
+    "2605.08614": {
+      "arxiv_id": "2605.08614",
+      "paper_title": "DiagnosticIQ: A Benchmark for LLM-Based Industrial Maintenance Action Recommendation from Symbolic Rules",
+      "abstract": "Monitoring complex industrial assets relies on engineer-authored symbolic rules that trigger on sensor conditions and prompt technicians to perform corrective actions. The bottleneck is not detection but response: translating rules into maintenance steps requires asset-specific knowledge gained through years of practice. We investigate whether LLMs can serve as decision support for this rule-to-action step and introduce \\ours{}, a benchmark of 6{,}690 multiple-choice questions generated from 118 expert-authored rule-action pairs across 16 asset types, with experts reviewing the generated prompts for layout and conversational flow. We contribute (i) a symbolic-to-MCQA pipeline normalizing rules to Disjunctive Normal Form with embedding-based distractor sampling, (ii) five variants probing distinct failure modes (Pro, Pert, Verbose, Aug, Rationale), and (iii) a benchmark of 29 LLMs and 4 embedding baselines. A human evaluation (9 practitioners, mean 45.0\\%) confirms \\ours{} requires specialist knowledge beyond operational experience. Three findings stand out: the frontier has closed, with the top three LLMs within one Macro point and inseparable under rule-level tests. Yet \\ours{}\\,Pro exposes brittleness, with the leader losing 13.8 Macro points and smaller models losing over 60\\% of their accuracy under distractor expansion. \\ours{}\\,Aug exposes pattern-matching: under condition inversion, the leading model still selects the original answer 63\\% of the time. Frontier models handle template-style fault detection but break under structural perturbation.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "산업 정비 추천 LLM 벤치마크 DiagnosticIQ"
+        }
+      ]
+    },
+    "2608.01033": {
+      "arxiv_id": "2608.01033",
+      "paper_title": "CallScreenBench: Benchmarking Small Language Models as Phone Secretaries",
+      "abstract": "Language models small enough to run on a handset, quantized to a few bits, are increasingly capable of acting on their user's behalf -- which makes on-device task automation newly plausible. One such task is answering the phone. A phone secretary takes an unknown inbound call on its owner's behalf, and unlike the agents most benchmarks evaluate, it has no cooperative caller-assigned task to complete: the caller holds the goal and may be an adversary, while the secretary must begin deciding how to respond without an oracle. What matters is not task success but whether the owner would endorse how their proxy handled the call. We evaluate only the text-domain conversational decision layer; speech recognition, audio interaction, end-to-end latency, and handset execution are outside scope. We present CallScreenBench, which reports five automated call-and-note measure groups motivated by owner endorsement. Each is paired, where available, with a counter-metric and an uncertainty estimate; no benchmark-wide Q1-Q5 composite or leaderboard score is defined. Three guardedness diagnostics identify candidate cases for a toolless proxy that holds no credentials and calls no tools. Across three model families represented by paired 4-bit checkpoints (0.6-4B), the primary scoring snapshot gives the larger checkpoint higher point estimates on several service, recall, and plausibility measures, while triage discrimination follows a different ordering. Bare scam-side TPR rewards universal suspicion, and pairwise separation changes when legitimate-side false positives are included and across judge snapshots. Scripted degenerate agents expose further floors, including a hangup-and-echo policy with entity recall 1.000. We report quality measures and guardedness channels separately so that a single pass/fail score does not hide their trade-offs.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "소형 LM 전화 비서 벤치마크 CallScreenBench"
+        }
+      ]
+    },
+    "2602.20569": {
+      "arxiv_id": "2602.20569",
+      "paper_title": "AIForge-Doc: A Benchmark for Detecting AI-Forged Tampering in Financial and Form Documents",
+      "abstract": "We present AIForge-Doc, the first dedicated benchmark targeting exclusively diffusion-model-based inpainting in financial and form documents with pixel-level annotation. Existing document forgery datasets rely on traditional digital editing tools (e.g., Adobe Photoshop, GIMP), creating a critical gap: state-of-the-art detectors are blind to the rapidly growing threat of AI-forged document fraud. AIForge-Doc addresses this gap by systematically forging numeric fields in real-world receipt and form images using two AI inpainting APIs -- Gemini 2.5 Flash Image and Ideogram v2 Edit -- yielding 4,061 forged images from four public document datasets (CORD, WildReceipt, SROIE, XFUND) across nine languages, annotated with pixel-precise tampered-region masks in DocTamper-compatible format. We benchmark three representative detectors -- TruFor, DocTamper, and a zero-shot GPT-4o judge -- and find that all existing methods degrade substantially: TruFor achieves AUC=0.751 (zero-shot, out-of-distribution) vs. AUC=0.96 on NIST16; DocTamper achieves AUC=0.563 vs. AUC=0.98 in-distribution, with pixel-level IoU=0.020; GPT-4o achieves only 0.509 -- essentially at chance -- confirming that AI-forged values are indistinguishable to automated detectors and VLMs. These results demonstrate that AIForge-Doc represents a qualitatively new and unsolved challenge for document forensics.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "AI 위조 문서 벤치마크, VLM 평가 포함하나 언어 다양"
+        }
+      ]
+    },
+    "2509.21856": {
+      "arxiv_id": "2509.21856",
+      "paper_title": "KnowMT-Bench: Benchmarking Knowledge-Intensive Long-Form Question Answering in Multi-Turn Dialogues",
+      "abstract": "Multi-Turn Long-Form Question Answering (MT-LFQA) is a key application paradigm of Large Language Models (LLMs) in knowledge-intensive domains. However, existing benchmarks are limited to single-turn dialogue, while multi-turn dialogue benchmarks typically assess other orthogonal capabilities rather than knowledge-intensive factuality. To bridge this critical gap, we introduce \\textbf{KnowMT-Bench}, a new benchmark designed to systematically evaluate MT-LFQA for LLMs across knowledge-intensive fields, including medicine, finance, and law. To faithfully assess the model's real-world performance, KnowMT-Bench employs a dynamic evaluation setting where models generate their own multi-turn dialogue histories given logically progressive question sequences. Our experiments on a diverse suite of LLMs show a clear degradation in both factual capability and information delivery efficiency in multi-turn dialogue. We further probe the underlying causes and investigate mitigation strategies spanning domain-specific finetuning, active context denoising, and RAG. The results show domain-dependent gains from finetuning, while active context denoising and RAG more consistently mitigate these issues, with RAG notably reversing this performance degradation. These findings underscore the importance of our benchmark for evaluating LLMs' conversational factual capabilities in real-world applications. Code and data are publicly available.\\footnote{\\href{https://github.com/Sven-LI-sankyuu/KnowMT-Bench}{\\texttt{https://github.com/Sven-LI-sankyuu/KnowMT-Bench}}}",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티턴 장문 QA 지식 벤치마크 KnowMT-Bench"
+        }
+      ]
+    },
+    "2604.24589": {
+      "arxiv_id": "2604.24589",
+      "paper_title": "A systematic evaluation of vision-language models for observational astronomical reasoning tasks",
+      "abstract": "Vision-language models (VLMs) are increasingly proposed as general-purpose tools for scientific data interpretation, yet their reliability on real astronomical observations across diverse modalities remains untested. We present AstroVLBench, a benchmark of over 4,100 expert-verified instances across five tasks spanning optical imaging, radio interferometry, multi-wavelength photometry, time-domain light curves, and optical spectroscopy. We systematically evaluate six state-of-the-art frontier models and find that performance is strongly modality-dependent and uncorrelated with general benchmark rankings. Mechanistic cross-model ablations reveal three concrete bottlenecks. First, prompt grounding exhibits marked model and task dependence: physical guidance yields more balanced classifications on optical imaging, whereas phenomenological prompts better navigate undersampled time-domain data. Second, presenting one-dimensional measurements as numerical tables rather than rendered plots consistently improves light-curve classification across all models by up to 23 percentage points, demonstrating that plot rendering can obscure physically relevant signal. Third, an expert audit of optical spectroscopy reveals a notable \"right-answer-wrong-reason\" phenomenon: across evaluated models, an average of 26% of correct predictions are accompanied by physically inconsistent or invalid reasoning chains, showing that accuracy alone is insufficient for trustworthy scientific deployment. AstroVLBench provides the first systematic, multi-modal baselines for VLMs in observational astronomy and identifies the representation, grounding, and reasoning bottlenecks that must be addressed before VLMs can be trusted as autonomous scientific interpreters.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "천문 VLM 추론 벤치마크 AstroVLBench"
+        }
+      ]
+    },
+    "2605.22168": {
+      "arxiv_id": "2605.22168",
+      "paper_title": "Measuring Cross-Modal Synergy: A Benchmark for VLM Explainability",
+      "abstract": "Vision-Language Models (VLMs) map complex visual inputs to semantic spaces, but interpreting the cross-modal reasoning of VLMs currently relies on post-hoc explainers evaluated via unimodal perturbation metrics. We expose a limitation in this paradigm: because multimodal datasets contain language priors and modality biases, VLMs frequently exhibit cross-modal redundancy, allowing them to answer visual queries using text alone. Consequently, unimodal metrics penalize faithful explainers, triggering an evaluation collapse where visual and textual rankings fundamentally contradict each other. To resolve this, we introduce Synergistic Faithfulness ($\\mathcal{F}_{syn}$), a scalable metric rooted in the Shapley Interaction Index that strictly isolates the joint Harsanyi dividend between modalities, serving as a highly accurate surrogate ($ρ= 0.93$) while achieving up to $88\\times$ computational speedup. Evaluating 9 distinct XAI methods across 3 VLM architectures and 3 benchmark datasets, reveals that explainers proposed for VLMs heavily over-index on visual salience and significantly underperform adapted attention-based methods in capturing true cross-modal synergy. By decoupling visual plausibility from cross-modal faithfulness, this work provides a rigorous evaluation framework required to safely audit VLM reasoning in high-stakes deployments. Code: https://github.com/serval-uni-lu/xai-vlms-benchmark",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "VLM 설명가능성 평가 지표·프레임워크, 데이터셋 여부 불명확"
+        }
+      ]
+    },
+    "2606.21140": {
+      "arxiv_id": "2606.21140",
+      "paper_title": "Matching Matters: A Fair Quality-Efficiency Benchmark for Command-Line Agents",
+      "abstract": "Rapid advances in large language models have improved the task-solving capabilities of command-line-interface (CLI)-based agents, whose CLIs determine how models invoke tools, maintain interaction history, and recover from failures. Consequently, effective matching between CLIs and LLMs has become essential. However, existing agent benchmarks largely emphasize success rate while overlooking practical objectives such as cost and efficiency, as well as the selection of LM-CLI combinations, all of which are critical in real-world deployment. We therefore introduce AgentMeter, a quality-efficiency benchmark with a new metric, the AgentMeter Score (AMS), that jointly characterizes task quality, budget sensitivity, and resource-intensive zero-reward execution, enabling a more complete assessment of deployed LM-CLI pairs. Furthermore, collected task descriptions may inadvertently favor LM-CLI pairs that are particularly compatible with their wording and structure, causing evaluation results to reflect description-specific advantages rather than general task-solving capability. We therefore propose AgentMeter-Opt, a trajectory-grounded optimization framework that constructs pair-adapted, task-preserving description variants to build a fairer evaluation set across LM-CLI pairs. Extensive experiments show that no CLI is universally optimal across language models and that task success, execution cost, and AMS identify different competitive configurations. Results on AgentMeter-Opt further reveal that task-preserving description changes affect LM-CLI pairs unevenly and can alter their relative ordering across valid description conditions. Together, AgentMeter and AgentMeter-Opt provide a practical foundation for fair and deployment-relevant evaluation of command-line agents.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "CLI 에이전트 품질-효율 벤치마크 AgentMeter"
+        }
+      ]
+    },
+    "2606.23283": {
+      "arxiv_id": "2606.23283",
+      "paper_title": "Towards Root Memory: Benchmarking and Enhancing Implicit Logical Memory Retrieval for Personalized LLMs",
+      "abstract": "Memory systems are essential for personalized Large Language Models (LLMs). However, retrieval within these systems primarily relies on semantic similarity, potentially missing logically critical memories with limited semantic overlap. We refer to this failure as semantic deflection, which remains insufficiently evaluated by existing benchmarks. To address this gap, we construct IMLogic, a benchmark for implicit logical memory retrieval in long dialogues. Each question is designed around the divergence between semantic and logical relevance, with diagnostic response options that probe semantic deflection, hallucination, and lack of personalization. To help systems utilize associations that are difficult to discover through semantic matching, we introduce root memory, a structured representation that distills reusable, response-guiding logic from user histories through LLM reasoning and grounds it in supporting evidence. We further develop RootMem, a plug-and-play framework that constructs and routes root memories to complement semantic retrieval. Extensive experiments reveal persistent challenges across retrieval methods and memory systems, including substantial preference-driven errors even under full-memory access. RootMem consistently improves performance, demonstrating the potential of structured personalized logic while leaving considerable challenges unresolved. Our benchmark and code are available at https://github.com/ThisIsCosine/IMLogic.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "암묵적 논리 기억 검색 벤치마크 IMLogic"
+        }
+      ]
+    },
+    "2608.00794": {
+      "arxiv_id": "2608.00794",
+      "paper_title": "Measurement Without Validity: The Compounding Reliability Problem in Agentic AI Evaluation",
+      "abstract": "Agentic AI evaluation pipelines produce benchmark scores that justify deployment decisions, safety certifications, and regulatory compliance claims. No formal framework has characterized how validity degrades across these stages. We present a knowledge-based three-layer compounding validity model, $V_{\\rm total} \\leq V_1 \\times V_2 \\times V_3$, that captures multiplicative degradation across task generation ($V_1$), human-simulator calibration ($V_2$), and automated judgment ($V_3$). Applying it to five widely-used agentic benchmark configurations, we find $V_1$ and $V_2$ independently measurable and both degraded, but $V_3$ not currently quantifiable for any: three of the four benchmarks score with a single deterministic rule, so no second rater exists and reliability is undefined, and the fourth's partial LLM grader has no published grader-vs-human measurement. A structured survey of 55 published agentic evaluation papers finds that 26 of them report no chance-corrected inter-rater statistic of any kind, a determination four independent raters recover at Krippendorff's $α= 0.834$. On the broader judgment of whether a reported metric fits its rating design, approximately 80% of this purposive sample use structurally mismatched, incomplete, or absent inter-rater reliability (IRR) metrics (four-rater range 60.7%-84.4%). Both are consistent with systematic $V_3$ collapse. We further document $V_1$ failures (task validity flaws in 7 of 10 benchmarks) and $V_2$ miscalibration (up to 9 percentage points inter-simulator variance, with systematic demographic disparities for non-Standard American English speakers). We derive eight prescriptions grounded in psychometric science and domain-stratified reliability thresholds (intraclass correlation $\\geq 0.70$; $α\\geq 0.67/0.70/0.80$ by consequence level) that practitioners can apply immediately.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "에이전트 평가 타당성 분석, 재사용 평가자원 불명확"
+        }
+      ]
+    },
+    "2609.01198": {
+      "arxiv_id": "2609.01198",
+      "paper_title": "FinLifeBench: Exhaustive Life-Event History and Financial-State Reconstruction from Longitudinal Banking Dialogue",
+      "abstract": "Repeated banking interactions require assistants to maintain complete, current, and traceable customer records as life changes emerge incidentally in routine requests. Existing benchmarks emphasize question answering, bounded episodes, or targeted recall rather than exhaustive longitudinal reconstruction. We introduce FinLifeBench, which evaluates two tasks over the same cumulative dialogue: reconstructing every life-event instance with its first-establishing session and reconstructing a complete 34-path financial state at consecutive checkpoints. The benchmark contains 6,000 eight-turn Korean banking sessions from 20 independent synthetic trajectories, with deterministic, exhaustive gold for 24 event types and 34 state paths and consensus quality assurance. Across eleven LLMs under a full-context condition, event-anchor recall falls from 0.591 at 15 sessions to 0.445 at 300. Errors are driven primarily by omitted events rather than poor anchor localization, while financial-state reconstruction frequently treats superseded or potentially outdated information as current; the best GCA@15 reaches 0.470. Performance on the two reconstruction tasks is only weakly associated. These results show that models can localize evidence for recovered events while still failing to maintain complete and temporally valid longitudinal records.",
+      "paper_updated": "2026-10-27T00:00:00Z",
+      "created_at": "2026-10-28T02:44:56Z",
+      "input_sha256": "dc2064269ffda4064ac52df989dd3d572c2870354e5fd26adcfbb9f49326cd0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "한국어 은행 대화 장기 재구성 벤치마크 FinLifeBench"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -48562,9 +48900,30 @@
     },
     "2026-10-28": {
       "attempted": [],
-      "abstract_attempted": [],
-      "calls": 1,
-      "cost_usd": 0.6292
+      "abstract_attempted": [
+        "2606.01317",
+        "2606.00497",
+        "2505.16027",
+        "2509.21143",
+        "2511.13369",
+        "2602.07815",
+        "2603.01433",
+        "2603.11442",
+        "2604.08362",
+        "2605.08614",
+        "2608.01033",
+        "2602.20569",
+        "2509.21856",
+        "2604.24589",
+        "2605.22168",
+        "2606.21140",
+        "2606.23283",
+        "2608.00794",
+        "2609.01198",
+        "2609.28876"
+      ],
+      "calls": 2,
+      "cost_usd": 0.6995
     }
   },
   "reaudits": [
