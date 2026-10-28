@@ -24152,6 +24152,92 @@
       },
       "issue_url": null,
       "proposal_sha256": "2e67d5110f1c8778183932519e72c6fab9aafc6b4ff102c3d208ef20f67e70e2"
+    },
+    "2609.30952": {
+      "decision": "needs_evidence",
+      "reason": "MVVBench는 재사용 가능한 새 벤치마크로 보인다. 사람이 작성한 1,323개 문항을 608개 실제 다중 카메라 장면(영상 3,082개)에 붙였고, 6개 범주와 영어 프롬프트를 쓰며 영상 입력이 필요한 vision 과제다. 그러나 제공된 PDF 23쪽 어디에도 데이터셋이나 코드의 공식 URL이 없다. 본문에서 URL로 인용된 것은 Qwen3.5 모델 컬렉션뿐이어서 벤치마크 링크로 쓸 수 없다. 링크 근거가 없으면 propose할 수 없으므로 공식 데이터셋·코드 URL이 확인될 때까지 needs_evidence로 보류한다.",
+      "changes": [],
+      "arxiv_id": "2609.30952",
+      "paper_title": "MVVBench: Benchmarking 4D Reasoning in Vision-Language Models",
+      "paper_updated": "2026-09-28T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.30952",
+        "sha256": "a966fa1285280981a4dd57ecad2884f39e7675f4ea9d04a8fdbef3c0650124a5",
+        "accessed": "2026-10-28T03:50:29Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 23,
+          "elapsed_seconds": 134.07,
+          "pdf_sha256": "a966fa1285280981a4dd57ecad2884f39e7675f4ea9d04a8fdbef3c0650124a5",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "0a710b4ffe2df43dceb29cf3e168eafd55cea941914877ddfb768c35e0b3e4dc",
+          "page_json_file": "2609.30952.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-10-28T03:52:53Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.30952",
+        "paper_title": "MVVBench: Benchmarking 4D Reasoning in Vision-Language Models",
+        "abstract": "Multi-view video understanding requires integrating spatial and temporal evidence across multiple, often non-overlapping camera streams: tracking entities as they transition between viewpoints, aligning events across time, and reasoning about latent 4D continuity rather than any single visible frame. We introduce MVVBench, a benchmark for multi-view video reasoning built from real world multi camera datasets. Questions are curated to be monocular-ambiguous along both the view and the temporal axis: each question is unanswerable from any single view in the designated input set, and the majority are further unanswerable from any single moment. Each question becomes uniquely solvable only by jointly reasoning across views and across time. MVVBench spans diverse dynamic scenes and probes six capabilities: implicit/explicit attribute identification, implicit/explicit relative distance, relative camera pose, and compositional counting, with human-authored QA and rigorous verification. Beyond benchmarking, we provide an extensive analysis of when and why current vision language models succeed or fail, characterizing errors due to temporal mis-localization, cross-view identity breaks, and brittle multi-hop reasoning. We then study inference-time elicitation strategies that unlock latent multi-view competence---task-specific chain-of-thought scaffolds and structured cross-view evidence aggregation---yielding substantial gains without retraining. Finally, we present preliminary evidence that reinforcement learning with verifiable rewards can elicit some latent multi-view competence in the base model, pointing to training-time approaches as a promising direction for future work. Together, MVVBench offers a rigorous evaluation of 4D multi-view reasoning and a foundation for future progress toward reliable embodied perception.",
+        "paper_updated": "2026-09-28T00:00:00Z",
+        "created_at": "2026-10-19T13:45:22Z",
+        "input_sha256": "e986bd38409c2d7a9b2dcdd857fe245799a842e9da626ab5dba4b2833f7a3a9f",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "다중 시점 4D 추론 VLM 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "다중뷰 영상 4D 추론 평가 벤치마크 MVVBench 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "170daa17396e7aef95451f7cbfb96966c1a56887ad878429c3c124764e87288c"
     }
   },
   "processed_comments": [],
@@ -51203,8 +51289,8 @@
         "2610.35864",
         "2610.35866"
       ],
-      "calls": 23,
-      "cost_usd": 11.486
+      "calls": 24,
+      "cost_usd": 12.0493
     }
   },
   "reaudits": [
