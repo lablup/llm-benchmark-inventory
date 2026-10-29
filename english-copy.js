@@ -324,4 +324,10 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Deduction (decide whether a hypothesis follows from the premises, is contradicted, or is neither), induction (find the rule that explains observed drug-drug interactions), and causal discovery (identify how a new protein XYZ connects to a known signalling sub-network).",
     "example": "Task description: read premises spread across several documents and decide whether a hypothesis follows from them, is contradicted by them, or is neither. The same framing applies to inducing drug-interaction rules and inferring causal structure in protein signalling."
   },
+  "knows": {
+    "axis": "Agents (web research, artifact synthesis, visual layout)",
+    "definition": "A benchmark of open-ended, long-horizon tasks in which an agent gathers information from the live web and synthesizes it into Google Docs, Sheets or Slides artifacts. It has 110 tasks across three artifact types. Each task has an evaluator that combines deterministic checks with LLM/VLM judgments, organized into checkpoints and evaluation steps. Results are reported as full success rate plus partial-success metrics.",
+    "task": "Search the web and build a document, slide deck or spreadsheet with specified structure, formatting and layout.",
+    "example": "Task description (not an actual test item): build a presentation on the history of video games for 7th graders, finding a web source for each section and placing the heading style, bullet summary, citation and credited image in the specified positions."
+  },
 };

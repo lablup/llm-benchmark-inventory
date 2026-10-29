@@ -1,0 +1,67 @@
+{
+  "arxiv_id": "2609.32082",
+  "paper_title": "mu-bench: A Multilingual Utterance Transcription Benchmark",
+  "created_at": "2026-10-29T02:54:23Z",
+  "status": "exclude",
+  "reason": "mu-bench는 전화 통화 음성을 받아 적는 자동 음성 인식(ASR) 벤치마크입니다. 입력이 오디오라서 이 인벤토리가 허용하는 modality 값인 text(텍스트 전용)와 vision(이미지·스크린샷·문서) 어느 쪽에도 맞지 않습니다. 평가 대상도 LLM이 아니라 상용 ASR API 여섯 곳이며, 이 점이 인벤토리 범위에 맞지 않는다고 보았습니다. 영어 발화 817개가 포함되어 있지만 en 트랙에 text나 vision으로 등록하면 입력 형태를 잘못 기록하게 됩니다. 한국어 과제는 없고 나머지 언어도 스페인어, 터키어, 베트남어, 중국어(만다린)입니다. 따라서 새 행으로 제안하지 않고 제외합니다. 오디오 modality를 인벤토리에 추가하기로 한다면 그때 다시 검토할 수 있습니다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2609.32082",
+    "sha256": "5fcb39ac32bd8bbfbc718bb311a2aaa7655a9f1dbf17168e0fc00b314117d1b7",
+    "accessed": "2026-10-29T02:53:22Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 5,
+      "elapsed_seconds": 50.24,
+      "pdf_sha256": "5fcb39ac32bd8bbfbc718bb311a2aaa7655a9f1dbf17168e0fc00b314117d1b7",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "611c80d988f1cc75c95d27961e90c25ebe69a98a12f6379b740280a748385fa8",
+      "page_json_file": "2609.32082.pages.json"
+    }
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "21def886faeb95d4b6ebd815d7264bfab366edc107cadbfa56729fff3109587f",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2609.32082",
+    "paper_title": "mu-bench: A Multilingual Utterance Transcription Benchmark",
+    "abstract": "Voice agents depend on accurate automatic speech recognition (ASR) to act on what callers say, yet ASR is evaluated on read, English-centric speech with word error rate (WER), which penalizes surface rather than semantic differences. We introduce mu-bench, a dataset of 4,270 caller utterances from 250 phone calls to an AI banking agent in English, Spanish, Turkish, Vietnamese, and Mandarin, centered on form-field inputs such as names, email addresses, and confirmation codes. We release Utterance Error Rate (UER), an LLM judge of whether a transcript preserves meaning, calibrated against human raters, together with an LLM normalizer that makes WER comparable across providers' output formats. On 1,847 human-rated transcripts, UER agrees with annotators at $κ$ = 0.78, versus 0.53 for exact-match WER on normalized text. We rank six commercial providers on a public leaderboard; the best reaches 11.9% UER, and Mandarin is hardest for all six.",
+    "paper_updated": "2026-09-29T00:00:00Z",
+    "created_at": "2026-10-19T13:45:22Z",
+    "input_sha256": "dced348053528cec63f2a41bcb79f22b9bfc4a645d59496a34373efe40501be7",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "다국어 발화 전사 ASR 벤치마크"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "다국어 발화 전사 평가 벤치마크 mu-bench 및 UER 지표 제안"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}
