@@ -25486,8 +25486,8 @@
       "approval_policy": "claude_only"
     },
     "2606.10281": {
-      "decision": "propose",
-      "reason": "AuditBench는 Linux auditd·Windows procmon 시스템 감사 로그를 조사하는 LLM 능력을 평가하는 새 벤치마크입니다. 4개 조사 과제와 51개 시나리오(Lab 25개, DARPA OpTC 26개)로 구성됩니다. 과제 프롬프트가 영어이고 입력이 텍스트이므로 en 트랙, text로 분류했습니다. 공식 저장소 README 카드에는 라이선스 문구와 LICENSE 파일, lm-eval 언급이 없고, 논문 PDF에도 이 벤치마크에 라이선스를 부여하는 문구가 없습니다. 그래서 라이선스는 미표기로 기록하고 사용 권한 3개 항목은 저작권 전부 보유로 적었으며, 카드가 인용한 단일 근거로 부재 증거를 붙였습니다. 이 벤치마크는 DARPA OpTC 등 다른 출처로 구성되어 있어 이용 시 유의사항에 구성 요소를 명시했습니다. 추천 모델 점수는 논문 표 10(설명 품질 entailment 점수, 분류 과제 열)에서 가져왔습니다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 행 본문은 대부분 근거가 확인되지만 추천 목록의 실험 조건 설명에 근거 없는 단정이 있어 반려합니다. 확인된 부분: 시나리오 51개(Lab 25개, OpTC 26개), 과제 4개, raw 1,000줄·edge 400줄 청크, OpTC edge 전용, TPR·FPR·F1 지표, 5점 척도 entailment 설명 품질, LLM 5종 평가는 논문과 일치합니다. 라이선스는 논문 PDF와 공식 카드에 부여 문구나 LICENSE 파일이 없고 pdf_mentions도 비어 있어 미표기가 맞고, 권한 3개 항목이 모두 저작권 전부 보유라 조합 규칙도 지켰습니다. 카드가 lm-eval을 언급하지 않아 lm-eval 지원 미표기는 허용 값입니다. 파생 출처(DARPA OpTC, MITRE ATT&CK, Atomic Red Team)를 명시하고 각각의 약관을 따로 확인하라고 적었습니다. 표 10의 분류 열 점수 5개(Llama 4 Maverick 4.27, GPT-5 4.00, GPT-5 mini 4.00, Gemini 2.5 Pro 3.36, Gemini 2.5 Flash 3.34)와 내림차순 정렬도 정확하고, Llama 4의 오픈 웨이트 표기도 논문 근거가 있으며 나머지 모델의 null은 올바르게 유지됐습니다. 문제점: (1) 추천 setting에 설명 품질 평가가 Prompt v2 실험 결과에 대해 수행되었다고 적었으나, 표 10과 6.1절에는 프롬프트 버전이 명시되지 않았습니다. 5.4절의 Prompt v2 사용 언급은 앞선 표 3·4 결과에 대한 설명이라 이를 표 10에 확대 적용한 것은 추론입니다. 지원되지 않는 실험 조건을 사실처럼 적었으므로 수정이 필요합니다. (2) 설명 품질은 모델마다 올바르게 탐지한 서로 다른 true positive 집합에 대해서만 계산되고, 분류 과제에서 모델별 평가 대상이 다릅니다. 따라서 동일 조건의 비교라 보기 어렵고 이 순위로 상위 3개를 고르는 근거가 약합니다. 프롬프트 버전 서술을 근거 있는 표현으로 바꾸고, 평가 대상 집합이 모델마다 다르다는 한계를 순위 해석에 반영해 다시 제출하기 바랍니다.",
       "changes": [
         {
           "track": "en",
@@ -25694,7 +25694,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-29T03:12:20Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -25720,12 +25720,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40807323486",
-        "context_sha256": "37753707d85dcd91f53f789e4a4098acf416773baac534ca2fc9aa7227501b6c"
-      },
       "proposal_sha256": "5f15451ff35b26d0ba52f4088d068ff2c54f12c062343d14af35cbd644b0b936",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "행 본문은 대부분 근거가 확인되지만 추천 목록의 실험 조건 설명에 근거 없는 단정이 있어 반려합니다. 확인된 부분: 시나리오 51개(Lab 25개, OpTC 26개), 과제 4개, raw 1,000줄·edge 400줄 청크, OpTC edge 전용, TPR·FPR·F1 지표, 5점 척도 entailment 설명 품질, LLM 5종 평가는 논문과 일치합니다. 라이선스는 논문 PDF와 공식 카드에 부여 문구나 LICENSE 파일이 없고 pdf_mentions도 비어 있어 미표기가 맞고, 권한 3개 항목이 모두 저작권 전부 보유라 조합 규칙도 지켰습니다. 카드가 lm-eval을 언급하지 않아 lm-eval 지원 미표기는 허용 값입니다. 파생 출처(DARPA OpTC, MITRE ATT&CK, Atomic Red Team)를 명시하고 각각의 약관을 따로 확인하라고 적었습니다. 표 10의 분류 열 점수 5개(Llama 4 Maverick 4.27, GPT-5 4.00, GPT-5 mini 4.00, Gemini 2.5 Pro 3.36, Gemini 2.5 Flash 3.34)와 내림차순 정렬도 정확하고, Llama 4의 오픈 웨이트 표기도 논문 근거가 있으며 나머지 모델의 null은 올바르게 유지됐습니다. 문제점: (1) 추천 setting에 설명 품질 평가가 Prompt v2 실험 결과에 대해 수행되었다고 적었으나, 표 10과 6.1절에는 프롬프트 버전이 명시되지 않았습니다. 5.4절의 Prompt v2 사용 언급은 앞선 표 3·4 결과에 대한 설명이라 이를 표 10에 확대 적용한 것은 추론입니다. 지원되지 않는 실험 조건을 사실처럼 적었으므로 수정이 필요합니다. (2) 설명 품질은 모델마다 올바르게 탐지한 서로 다른 true positive 집합에 대해서만 계산되고, 분류 과제에서 모델별 평가 대상이 다릅니다. 따라서 동일 조건의 비교라 보기 어렵고 이 순위로 상위 3개를 고르는 근거가 약합니다. 프롬프트 버전 서술을 근거 있는 표현으로 바꾸고, 평가 대상 집합이 모델마다 다르다는 한계를 순위 해석에 반영해 다시 제출하기 바랍니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 147197,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2552,
+              "output_tokens_details": {
+                "thinking_tokens": 1585
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 147197,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2552,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 147197,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 147197
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.6143769,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "5f15451ff35b26d0ba52f4088d068ff2c54f12c062343d14af35cbd644b0b936",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -53397,8 +53443,8 @@
         "2610.37341",
         "2610.37434"
       ],
-      "calls": 15,
-      "cost_usd": 8.0984
+      "calls": 16,
+      "cost_usd": 8.7128
     }
   },
   "reaudits": [
