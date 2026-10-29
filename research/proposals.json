@@ -24929,74 +24929,9 @@
       "proposal_sha256": "f4e1ef07734a2ecb9974098affb4d5aece865c6e5f8a9984f34479795c9b4c19"
     },
     "2609.32020": {
-      "decision": "propose",
-      "reason": "이 논문은 NGSS(미국 차세대 과학 표준)에 맞춘 중학교·고등학교 과학 벤치마크 2종을 새로 만들었다. 문항은 영어 텍스트(예: 'What is the unit used to measure frequency?')이므로 en 트랙, text 모달리티로 분류한다. 중학교 1,078문항, 고등학교 1,150문항이고, 공식 GitHub 저장소 2곳이 PDF에 명시되어 있다. 두 저장소는 같은 파이프라인과 평가 방식을 쓰므로 한 행으로 묶고, 링크에는 중학교 저장소를 적었다. 고등학교 저장소는 유의사항에 적었다. 라이선스와 lm-eval 지원 여부는 확인하지 못해 '확인 불가'로 기록한다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "ngss-science-bench",
-            "이름": "NGSS-Aligned Benchmark (MS/HS)",
-            "평가 축": "이해(K-12 중고등 과학 지식, NGSS 정렬)",
-            "언어": "en",
-            "정의": "미국 NGSS 기준에 맞춰 만든 중학교·고등학교 과학 벤치마크 2종. 중학교 1,078문항, 고등학교 1,150문항이며 각각 NGSS 12개 영역에 걸쳐 recall, conceptual, applied의 세 인지 수준으로 나뉜다. 문항은 LLM이 합성하고 중복 제거, 읽기 수준 제한, 3개 LLM 심사 검증을 거쳤다. 평가는 단일 judge가 recall은 정오(0/1), conceptual·applied는 0, 0.5, 1점 루브릭으로 채점하며 macro/micro 정확도, 3회 실행의 단일(single-shot) 및 다수결(ensemble) 점수를 보고한다. 논문은 오픈 웨이트 LLM 9종을 zero-shot으로 평가했다.",
-            "대표 과제": "NGSS 영역별 recall, conceptual, applied 수준의 과학 질의응답(중학 MS-PS1~MS-ETS1, 고교 HS-PS1~HS-ETS1)",
-            "대표 예시·설명": "영어로 된 중고등 과학 질문(예: 파동의 주파수 측정 단위를 묻는 recall 문항)에 모델이 답하고, judge가 참조 정답과 대조해 채점하는 과제 설명",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했다. 고등학교판 저장소(https://github.com/InviteInstitute/HS-NGSS-Aligned-Benchmark)가 별도로 있으며 링크 칸에는 중학교판만 적었다. 문항은 전부 LLM이 합성한 것이고 사람 검토는 240문항 표본에 그쳤다. 표본에서 4문항이 표준과 불일치했다. 그림, 데이터 해석, 수식 문항은 표본에서 거의 없었다. 모델 점수가 대체로 90%를 넘고 문항 변별도가 낮아 상위권 모델 구분력은 제한적이다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/InviteInstitute/MS-NGSS-Aligned-Benchmark"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Knowledge (K-12 middle and high school science, NGSS-aligned)",
-            "definition": "Two NGSS-aligned science benchmarks: 1,078 middle school items and 1,150 high school items. Each covers 12 NGSS areas at three cognitive levels (recall, conceptual, applied). Items were LLM-generated, then deduplicated, readability-filtered, and validated by a three-LLM judge panel. A single judge scores recall items as correct/incorrect and conceptual/applied items on a 0, 0.5, 1 rubric, and macro/micro accuracy is reported for single-shot and three-run majority-vote ensemble scores. The paper evaluates nine open-weight LLMs zero-shot.",
-            "task": "Science question answering by NGSS area at recall, conceptual, and applied levels (MS-PS1 to MS-ETS1; HS-PS1 to HS-ETS1)",
-            "example": "Task description: the model answers an English secondary-science question, such as a recall item asking for the unit of wave frequency, and a judge compares the answer with the reference."
-          },
-          "evidence": {
-            "modality": {
-              "page": 19,
-              "quote": "text-based questions"
-            },
-            "대표 과제": {
-              "page": 6,
-              "quote": "applied reasoning"
-            },
-            "대표 예시·설명": {
-              "page": 18,
-              "quote": "What is the"
-            },
-            "링크": {
-              "page": 7,
-              "quote": "github.com/InviteInstitute/MS-NGSS-Aligned-Benchmark"
-            },
-            "언어": {
-              "page": 18,
-              "quote": "What is the"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "NGSS-aligned benchmark"
-            },
-            "정의": {
-              "page": 7,
-              "quote": "1,078 items for"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "NGSS-aligned benchmark"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "게시 가능한 행을 만들 근거가 부족하다. (1) 공식 중학교 저장소 카드는 '## LICENSE file' 항목에 MIT 전문을 싣고 있어 '라이선스 미표기' 근거(absence)로 쓸 수 없다. 다만 카드 10절은 'The pipeline code in this repository is licensed under MIT'라고 적어 MIT를 파이프라인 코드에 한정한다. LICENSE 파일도 'the Software'만 다룬다. 코드 라이선스는 데이터셋 라이선스가 아니므로, 문항 데이터(중학교 1,078문항)에 대한 라이선스, 상업적 이용, 수정·파생, 재배포 조건을 직접 인용할 문장이 카드에 없다. (2) 이 벤치마크는 중학교와 고등학교 저장소 2곳으로 구성되는데(논문 7쪽), 고등학교 저장소(https://github.com/InviteInstitute/HS-NGSS-Aligned-Benchmark)의 공식 카드는 제공되지 않아 고등학교 1,150문항에 대한 조건을 검증할 수 없다. 두 구성 요소 모두에 적용되는 데이터 라이선스 근거가 없으므로 한 행으로 묶어 게시할 수 없다. 고등학교 저장소 카드와 LICENSE를 가져오거나 저자가 데이터 라이선스를 명시하면 다시 제안할 수 있다. 이 상태에서는 아무것도 게시하지 않는다.",
+      "changes": [],
       "arxiv_id": "2609.32020",
       "paper_title": "A Benchmark for LLM's Understanding of Middle School and High School Science Topics",
       "paper_updated": "2026-09-29T00:00:00Z",
@@ -25070,7 +25005,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-29T02:52:54Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -25096,11 +25031,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40807323486",
-        "context_sha256": "88eeb7838c610a61f26cf9d2f87a0b62267b1379f28f4fa13f73ccccda7a39b7"
-      },
-      "proposal_sha256": "da98fb4b70b587340e1e5c23e207507cf8c70e92599e9c1b41e8940e618b89d7"
+      "proposal_sha256": "060fa1a4e290ffa254c2f786d7ba71ffca74323acd5f01128111624c48d8afaa",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -52763,8 +52696,8 @@
         "2610.37341",
         "2610.37434"
       ],
-      "calls": 7,
-      "cost_usd": 3.2995
+      "calls": 8,
+      "cost_usd": 3.9192
     }
   },
   "reaudits": [
