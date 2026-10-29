@@ -23343,8 +23343,8 @@
       "proposal_sha256": "3ffdbb7baab5033de3b23109b53ca487f6e0b6eb8667d31a2f70b8a94da13a47"
     },
     "2601.06426": {
-      "decision": "propose",
-      "reason": "NC-Bench는 대화 구조 수준의 행동 능력(수리, 종결, 거부 등)을 재는 재사용 가능한 새 벤치마크다. basic, RAG, complex request의 세 세트로 이루어지고(세트별 180/180/360건, 14개 상호작용 패턴), 과제와 프롬프트가 영어이므로 en 트랙의 text 모달리티로 제안한다. 공식 데이터셋 URL은 PDF 각주에 명시되어 있다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 둔다.",
+      "decision": "needs_evidence",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: Score quote must contain the exact model and numeric value",
       "changes": [
         {
           "track": "en",
@@ -23469,7 +23469,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-29T02:41:44Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -23495,11 +23495,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40807323486",
-        "context_sha256": "4bac72f3b44cce8b5620839d536ebd9c5a1047b23dddc9716a5b14cf3e2f8ad7"
-      },
-      "proposal_sha256": "46de2237d5c62a89d0efd1b1c61708e2e2911dd3e0f44f336fbd76bf8f14f5ae"
+      "proposal_sha256": "46de2237d5c62a89d0efd1b1c61708e2e2911dd3e0f44f336fbd76bf8f14f5ae",
+      "approval_policy": "claude_only",
+      "resume_error": "Score quote must contain the exact model and numeric value"
     },
     "2605.30358": {
       "decision": "propose",
@@ -46629,11 +46627,11 @@
     },
     "2512.14554": {
       "arxiv_id": "2512.14554",
-      "paper_title": "VLegal-Bench: Cognitively Grounded Benchmark for Vietnamese Legal Reasoning of Large Language Models",
+      "paper_title": "Benchmarking Vietnamese Legal Knowledge of Large Language Models",
       "abstract": "The rapid advancement of large language models (LLMs) has enabled new possibilities for applying artificial intelligence within the legal domain. Nonetheless, the complexity, hierarchical organization, and frequent revisions of Vietnamese legislation pose considerable challenges for evaluating how well these models interpret and utilize legal knowledge. To address this gap, the Vietnamese Legal Benchmark (VLegal-Bench) is introduced, the first comprehensive benchmark designed to systematically assess LLMs on Vietnamese legal tasks. Informed by Bloom's cognitive taxonomy, VLegal-Bench encompasses multiple levels of legal understanding through tasks designed to reflect practical usage scenarios. The benchmark comprises 10,450 samples generated through a rigorous annotation pipeline, where legal experts label and cross-validate each instance using our annotation system to ensure every sample is grounded in authoritative legal documents and mirrors real-world legal assistant workflows, including general legal questions and answers, retrieval-augmented generation, multi-step reasoning, and scenario-based problem solving tailored to Vietnamese law. By providing a standardized, transparent, and cognitively informed evaluation framework, VLegal-Bench establishes a solid foundation for assessing LLM performance in Vietnamese legal contexts and supports the development of more reliable, interpretable, and ethically aligned AI-assisted legal systems. To facilitate access and reproducibility, we provide a public landing page for this benchmark at https://vilegalbench.cmcai.vn/.",
-      "paper_updated": "2026-10-20T00:00:00Z",
-      "created_at": "2026-10-21T02:48:21Z",
-      "input_sha256": "ff81966db733928959aff97c678882b2f7795d00ae4ac27489c5513a63a227cd",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "excluded",
@@ -46641,7 +46639,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "irrelevant",
-          "reason": "모든 과제가 베트남어 법률로 한정"
+          "reason": "베트남 법률 과제로 한정, 한국어/영어 아님"
         }
       ]
     },
@@ -51252,6 +51250,348 @@
           "reason": "언어모델 자동연구 시스템 평가용 재사용 가능한 벤치마크 제안"
         }
       ]
+    },
+    "2606.23238": {
+      "arxiv_id": "2606.23238",
+      "paper_title": "HOLogicBench: Evaluating Higher-Order Logical Reasoning in LLMs",
+      "abstract": "Existing LLM logical-reasoning benchmarks largely focus on object-level inference under fixed predicates and rules, leaving higher-order reasoning over rules and policies underexplored. We introduce HOLogicBench, a 1,379-instance benchmark that systematically evaluates five representative higher-order reasoning operations, with Isabelle/HOL formalizations and proof-verified answers. Beyond answer accuracy, HOLogicBench provides solver-verified reference reasoning paths for each instance, enabling fine-grained evaluation of model-generated reasoning against valid derivations. Across 16 model configurations, average accuracy is 53.86\\%, with the best configuration reaching 65.99\\%. Further analyses reveal that LLMs exhibit limited alignment with valid derivations, remain vulnerable to minimal counterfactual perturbations, and display distinct failure patterns across higher-order reasoning types.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "고차 논리 추론 벤치마크 신규 제안, 영어 추정 가능하나 언어 불명확"
+        }
+      ]
+    },
+    "2609.00184": {
+      "arxiv_id": "2609.00184",
+      "paper_title": "Parallel Universes for Temporal Evaluation and Knowledge Updating in LLMs",
+      "abstract": "Large language models (LLMs) rely on static pretraining corpora, resulting in outdated knowledge over time. Existing approaches for evaluating knowledge edits either suffer from rapid contamination or rely on counterfactual edits that conflict with rigid existing knowledge. In this work, we propose a simulation-driven approach for evaluating and training LLMs on knowledge insertions. We introduce PARALLELEVENTS, a benchmark that simulates coherent trajectories of fictional yet realistic future events, enabling controlled evaluation without data contamination or conflicts with existing knowledge. We further propose SYNAPSE, a training framework that leverages model-generated data to integrate new knowledge into model parameters via instruction tuning. This synthetic pipeline enables scalable knowledge integration without costly human-curated data. SYNAPSE improves QA accuracy by 14.23 points over prior methods, indicating that simulation-based synthetic training yields robust, coherent knowledge insertion.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "ParallelEvents 지식 갱신 평가 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2505.13004": {
+      "arxiv_id": "2505.13004",
+      "paper_title": "EffiBench-X: A Multi-Language Benchmark for Measuring Efficiency of LLM-Generated Code",
+      "abstract": "Existing code generation benchmarks primarily evaluate functional correctness, with limited focus on code efficiency and often restricted to a single language like Python. To address this gap, we introduce EffiBench-X, the first multi-language benchmark designed to measure the efficiency of LLM-generated code. EffiBench-X supports Python, C++, Java, JavaScript, Ruby, and Golang. It comprises competitive programming tasks with human-expert solutions as efficiency baselines. Evaluating state-of-the-art LLMs on EffiBench-X reveals that while models generate functionally correct code, they consistently underperform human experts in efficiency. Even the most efficient LLM-generated solutions (Qwen3-32B) achieve only around \\textbf{62\\%} of human efficiency on average, with significant language-specific variations. LLMs show better efficiency in Python, Ruby, and JavaScript than in Java, C++, and Golang. For instance, DeepSeek-R1's Python code is significantly more efficient than its Java code. These results highlight the critical need for research into LLM optimization techniques to improve code efficiency across diverse languages. The dataset and evaluation infrastructure are submitted and available at https://github.com/EffiBench/EffiBench-X.git and https://huggingface.co/datasets/EffiBench/effibench-x.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코드 효율성 다국어 벤치마크, 데이터셋 공개"
+        }
+      ]
+    },
+    "2508.20866": {
+      "arxiv_id": "2508.20866",
+      "paper_title": "AVIATOR: Towards AI-Agentic Vulnerability Injection Workflow for High-Fidelity, Large-Scale Code Security Dataset",
+      "abstract": "The increasing complexity of software systems and the sophistication of cyber-attacks have underscored the need for reliable automated software vulnerability detection. Data-driven approaches using deep learning models show promise but critically depend on the availability of large, accurately labeled datasets. Yet existing datasets either suffer from noisy labels, limited vulnerability coverage, or fail to reflect vulnerabilities as they occur in real-world software. This also limits large-scale benchmarking of such solutions. Automated vulnerability injection provides a way to address these limitations, but existing techniques remain limited in coverage, contextual fidelity, or injection success. In this paper, we present AVIATOR, the first AI-agentic vulnerability injection framework. AVIATOR decomposes vulnerability injection into a coordinated workflow of specialized AI agents, tool-based analysis, and iterative self-correction, explicitly mirroring expert reasoning. It integrates RAG and lightweight LoRA-based fine-tuning to produce realistic, category-specific vulnerabilities without relying on handcrafted patterns. Across three benchmarks, AVIATOR achieves high injection fidelity (91-95%) surpassing existing injection techniques in both accuracy and vulnerability coverage. When used for data augmentation to train deep learning-based vulnerability detection (DLVD) models, AVIATOR provides the strongest downstream gains in vulnerability detection. Across models and base datasets, AVIATOR improves average F1 scores by +22% over no augmentation, +25% over VGX, holding the prior best injection success rate, and +3% over VulScribeR, the prior state-of-the-art LLM-based injection model, with +7% higher recall and no precision loss. Its augmented data exhibits the lowest distributional distortion and scales efficiently with <2% syntax rejection at 4.3x lower cost than VulScribeR.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "취약점 주입 프레임워크 중심, 재사용 데이터셋 기여 불명확"
+        }
+      ]
+    },
+    "2601.13401": {
+      "arxiv_id": "2601.13401",
+      "paper_title": "SQuID: A Benchmark for Quantitative Spatial Reasoning on Satellite Imagery",
+      "abstract": "Vision-Language Models (VLMs) describe satellite images fluently but struggle with the quantitative spatial reasoning that remote sensing (RS) analysts perform routinely, such as counting buildings, measuring forest area in hectares and computing distances in meters. We introduce SQuID (Satellite Quantitative Intelligence Dataset), a benchmark of 2,000 questions over 587 images from four sources at 0.3 to 1.0 m ground sampling distance, covering 24 question types in three difficulty tiers. Answers are computed from curated segmentation masks or, for 50 questions, from human consensus, and numeric answers are scored against tolerance ranges informed by human annotations. SQuID also releases the reference masks behind its answers, so that modular systems can be evaluated using reference rather than predicted masks, and 75,687 training question-answer pairs on disjoint images (SQuID-Train). Among 15 evaluated systems, the best zero-shot end-to-end VLM reaches 28.1%, and RS-specialized VLMs score lower. As a baseline, we propose QASR (Quantitative Agentic Spatial Reasoning), in which an LLM writes a program that segments the image and measures the masks with geometric operators. QASR reaches 42.0%. On the 1,950 mask-derived questions, running its programs on the reference masks instead of predicted masks raises accuracy from 42.2% to 82.6%, so segmentation is its main source of error. Fine-tuning Qwen2.5-VL-7B on SQuID-Train raises its accuracy from 16.1% to 40.7%, close to QASR. Multi-condition questions (Tier 3) remain the hardest in every setting, at 62.0% for QASR with reference masks and 13.2% after fine-tuning. These results leave clear room for end-to-end models that learn metric spatial reasoning, and SQuID provides the data to train and evaluate them.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "위성영상 정량 공간추론 VLM 벤치마크, 언어는 영어 추정 불명확"
+        }
+      ]
+    },
+    "2602.05843": {
+      "arxiv_id": "2602.05843",
+      "paper_title": "OdysseyArena: Benchmarking Large Language Models For Long-Horizon, Active and Inductive Interactions",
+      "abstract": "The advancement of Large Language Models (LLMs) has catalyzed the development of autonomous agents capable of navigating complex environments. However, existing evaluations primarily adopt a deductive paradigm, where agents execute tasks based on explicitly provided rules and static goals, often within limited planning horizons. Crucially, this neglects the inductive necessity for agents to discover latent transition laws from experience autonomously, which is the cornerstone for enabling agentic foresight and sustaining strategic coherence. To bridge this gap, we introduce OdysseyArena, which re-centers agent evaluation on long-horizon, active, and inductive interactions. We formalize and instantiate four primitives, translating abstract transition dynamics into concrete interactive environments. Building upon this, we establish OdysseyArena-Lite for standardized benchmarking, providing a set of 120 tasks to measure an agent's inductive efficiency and long-horizon discovery. Pushing further, we introduce OdysseyArena-Challenge to stress-test agent stability across extreme interaction horizons (e.g., > 200 steps). Extensive experiments on 15+ leading LLMs reveal that even frontier models exhibit a deficiency in inductive scenarios, identifying a critical bottleneck in the pursuit of autonomous discovery in complex environments. Project homepage: https://os-copilot.github.io/OdysseyArena-Home/",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "장기 귀납적 에이전트 평가 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2603.15401": {
+      "arxiv_id": "2603.15401",
+      "paper_title": "SWE-Skills-Bench: Do Agent Skills Actually Help in Real-World Software Engineering?",
+      "abstract": "Agent skills, structured procedural knowledge packages injected at inference time, are increasingly used to augment LLM agents on software engineering tasks. However, their real utility in end-to-end development settings remains unclear, and no standard procedure tests an individual skill before installation. We present swe-skills-bench, a skill-centric, requirement-driven benchmark that measures how much individual agent skills improve performance on real-world software engineering (SWE) tasks. We start from 98 public SWE skills, each paired with a real GitHub repository pinned at a fixed commit. For each skill, we derive repository-specific requirements, create executable verifiers, and build a reproducible environment. Under each of four agent-model configurations, we run every task once without the skill and once with it, yielding 3,920 paired evaluations. For each requirement, we compute a paired delta, i.e., the change in outcome when the skill is added. We then aggregate these deltas across a skill's ten requirements into a per-skill utility profile, and use a statistical test to classify each skill as Golden (significantly helpful), Ineffective (no significant effect), or Harmful (significantly detrimental). Our results show that skills provide limited benefits: 92 of 98 skills have no statistically significant effect, and adding skills raises the average pass ratio only from 76.6% to 76.9%. The few helpful skills supply procedures that the agent would otherwise omit (gains of up to $+17.7$ points). In contrast, harmful skills anchor the agent on their own templates and override the task's explicit instructions (losses of up to -17.0 points). Our code is available at https://github.com/ControllableModel/SWE-Skills-Bench.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트 스킬 SWE 평가 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2604.23813": {
+      "arxiv_id": "2604.23813",
+      "paper_title": "ShredBench: Evaluating the Semantic Reasoning Capabilities of Multimodal LLMs in Document Reconstruction",
+      "abstract": "Multimodal Large Language Models (MLLMs) have achieved remarkable performance in Visually Rich Document Understanding (VRDU) tasks, but their capabilities are mainly evaluated on pristine, well-structured document images. We consider content restoration from shredded fragments, a challenging VRDU setting that requires integrating visual pattern recognition with semantic reasoning under significant content discontinuities. To facilitate systematic evaluation of complex VRDU tasks, we introduce ShredBench, a benchmark supported by an automated generation pipeline that renders fragmented documents directly from Markdown. The proposed pipeline ensures evaluation validity by allowing the flexible integration of latest or unseen textual sources to prevent training data contamination. ShredBench assesses four scenarios (English, Chinese, Code, Table) with three fragmentation granularities (8, 12, 16 pieces). Empirical evaluations on state-of-the-art MLLMs reveal a significant performance gap: The method is effective on intact documents; however, once the document is shredded, restoration becomes a significant challenge, with NED dropping sharply as fragmentation increases. Our findings highlight that current MLLMs lack the fine-grained cross-modal reasoning required to bridge visual discontinuities, identifying a critical gap in robust VRDU research.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "파쇄 문서 복원 MLLM 벤치마크, 영어 포함"
+        }
+      ]
+    },
+    "2605.17000": {
+      "arxiv_id": "2605.17000",
+      "paper_title": "BoLT: A Benchmark to Democratize Black-box Optimization Research for Expensive LLM Tasks",
+      "abstract": "Optimization of LLM training and inference configurations, such as hyperparameters, data mixtures, and prompts, is critical to performance, but it is often approached heuristically in practice, leading to potentially suboptimal outcomes. By framing them as noisy, expensive, and derivative-free optimization problems, Bayesian optimization (BO) and other black-box optimization (BBO) methods offer a promising yet underexplored direction for principled, sample-efficient methods. However, LLM training and inference costs are prohibitively high for most of the BBO research community, and new methods are often only evaluated on synthetic test functions and small-scale datasets that fail to capture the challenges of modern LLM optimization problems. This impedes the development of BBO methods and makes it difficult to assess their effectiveness on modern LLM tasks. We introduce BoLT, the first LLM-centric benchmark that democratizes LLM research for the BBO community. BoLT is released at https://github.com/chewwt/bolt. BoLT covers broad and well-motivated LLM optimization problems, involving multi-fidelity, multi-objective, heteroscedastic noise, and high-dimensional search spaces. Each problem in BoLT is grounded in real experimental data and made fully reproducible and accessible through lightweight surrogate models fitted to the results of thousands of real LLM experiments. We benchmark BoLT against an extensive range of BO and BBO methods, showing that selected BO methods consistently outperform others across tasks and highlighting gaps in existing BBO methods on LLM tasks, underscoring the need to modernize benchmarks for the BBO community.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 최적화 과제용 블랙박스 최적화 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2605.30058": {
+      "arxiv_id": "2605.30058",
+      "paper_title": "HEART-Bench: Do LLMs Make Persona-Consistent Decisions?",
+      "abstract": "LLM agents in interactive entertainment and social applications, including companions, role-play characters, and persona clones, need decisions grounded in personality and past experiences. We introduce HEART-Bench to evaluate memory-grounded persona-consistent response selection. The benchmark combines 11 Big Five-anchored synthetic characters, each with 1,000 autobiographical memories, and 64 DIAMONDS-guided decision scenarios into 673 multiple-choice questions. Domain experts independently compare candidate responses, with a senior expert resolving disagreements and revising responses when needed; other characters' adjudicated responses to the same scenario serve as distractors. In the main evaluation, models receive character IDs and occupations, scenarios, and options, with retrieved memories added in memory-augmented settings. Detailed personality-and-value profiles are withheld. We evaluate 16 LLMs under No-Retrieval, Naive-RAG, Mem0, and PersonaDB. Accuracy without memories stays near the 25% chance level, and the best memory-augmented configuration reaches 64.9%. On a matched 150-item subset, human annotators reach 80.8%, compared with 64.0% for the best model. Memory-content ablations show the importance of retrieving experiences that match both the target character and the decision context.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "페르소나 일관 의사결정 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2608.00711": {
+      "arxiv_id": "2608.00711",
+      "paper_title": "Tracing the Cascade: A Topology-Aware Evaluation Framework for Scientific Agent Hallucinations",
+      "abstract": "Large language model (LLM) agents are increasingly deployed in scientific research, where reliability is critical and the underlying knowledge is densely interconnected. In such settings, hallucinations are particularly damaging: a single erroneous claim on a foundational concept can propagate through multi-step reasoning and corrupt entire trajectories. Existing hallucination benchmarks largely operate at the surface level, treating facts in isolation and relying on uniform accuracy metrics that ignore this topological structure. We address this gap with SCHEMA, the first evidence-grounded, topology-aware evaluation framework for hallucinations in scientific agents. SCHEMA automatically constructs scientific concept graphs from benchmark seeds and literature evidence, synthesizes graph-grounded tasks spanning claim verification, multi-hop reasoning, open-ended explanation, and experimental code generation, and evaluates agents with two complementary diagnostics. A trajectory hallucination pipeline audits intermediate reasoning at scale via a topology-weighted severity score, while a multi-agent counterfactual attribution module pinpoints the causal mechanism behind selected failures. SCHEMA reveals that hallucinations concentrate at a small set of highly connected knowledge hubs, and that final-answer accuracy decouples from trajectory honesty; models often reach correct conclusions through structurally flawed reasoning. These results indicate that for high-stakes scientific applications, terminal accuracy alone is an insufficient signal of agent reliability, motivating mechanism-level evaluation grounded in knowledge topology. Code is available at https://github.com/circles-post/SCHEMA.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "과학 에이전트 환각 평가 프레임워크 및 과제 제안"
+        }
+      ]
+    },
+    "2610.35980": {
+      "arxiv_id": "2610.35980",
+      "paper_title": "UnityBench-Mini3D: Evaluating LLM Agents for 3D Game Development in Unity",
+      "abstract": "Game development stresses coding agents in ways general software engineering does not: correctness depends on how engine APIs, serialized scene state, and runtime behavior interact, not on source code alone. Existing benchmarks mainly target platforms such as Godot and heavily rely on LLM judges or coarse task-level outcomes. We present UnityBench-Mini3D, a benchmark of 77 project-level Unity tasks organized around seven expert-defined skill categories rather than tutorials or genres, with three difficulty tiers. Each task pairs a complete Unity project with natural-language requirements and is evaluated using 1,178 held-out, human-authored milestone tests covering scene structure, component configuration, and runtime behavior. This in-engine evaluation provides deterministic partial credit, localizes failures, and distinguishes partial implementations from complete solutions without relying on subjective judges. Across 21 models and 9 coding harnesses, the average pass rate reaches 80.9% on easy tasks but falls to 35.2% on hard tasks, with just 57.7% overall. UnityBench-Mini3D provides a reproducible, diagnostic testbed distinguishing systems across difficulty levels.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "Unity 게임 개발 에이전트 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2610.36195": {
+      "arxiv_id": "2610.36195",
+      "paper_title": "Learning to Read Braille: Benchmarking and Improving Braille Recognition Capabilities of VLMs",
+      "abstract": "Despite rapid progress in visual understanding and document transcription, modern vision-language models (VLMs) struggle with a fundamental accessibility task: reading Braille from images. We introduce BrailleBench, a manually curated benchmark of 259 real-world Grade-1 and Grade-2 Braille images. We evaluate proprietary, open-weight, OCR-specialized, and tool-assisted multimodal systems and find that standalone general-purpose models perform poorly at directly transcribing Braille images, whereas tool-assisted systems perform much better. We design a synthetic Braille generation pipeline with diverse layouts and image perturbations. A 2B VLM model trained on our synthetic data reaches 87% exact match on Grade-1 and 61% on Grade-2 BrailleBench, outperforming standalone VLMs and achieving the highest Grade-2 exact match score among the evaluated systems. We further show that high accuracy on synthetic validation data does not guarantee high accuracy on real photographs in our experiments: models trained on prior synthetic data reach up to 96% on their synthetic validation set but at most 3.26% on Grade-1 BrailleBench. Our results identify an accessibility-relevant capability gap in multimodal systems and show that targeted synthetic supervision can improve real-world Braille transcription.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "점자 인식 VLM 벤치마크 신규 도입, 언어 불명확"
+        }
+      ]
+    },
+    "2610.36384": {
+      "arxiv_id": "2610.36384",
+      "paper_title": "SOMA: A Benchmark for Fine-Grained Egocentric Behavior and Body-Motion Understanding",
+      "abstract": "Perceiving human body motion is critical for multimodal systems that understand and assist people. Yet current evaluations of Multimodal Large Language Models (MLLMs) largely focus on objects, scenes, and coarse actions, leaving their ability to reason about the body itself poorly assessed. This is especially challenging from the egocentric perspective, in which the body is only partially visible and motion must be inferred from occluded and temporally distributed cues. We introduce SOMA, a benchmark for fine-grained body-motion understanding from egocentric video, comprising 1,632 human-verified questions across three capability axes: body configuration, motion dynamics, and temporal reasoning. We evaluate 37 leading closed-source, open-source, and specialized egocentric MLLMs, complemented by an extensive human evaluation. We find that humans also find this task difficult from video alone (68.5% accuracy), yet clearly outperform the strongest MLLM (Qwen3.6-27B), which reaches 50.0% zero-shot accuracy. Our error analysis shows that MLLMs often misread the wearer's own body, misjudge events in time, and are prone to biases such as favoring the right hand or under-counting repetitions. To narrow the gap to human performance and support further progress, we introduce a training dataset of aligned video, body motion, and language supervision, and a multimodal baseline that jointly learns from these modalities. By identifying common failure modes and missing capabilities in current MLLMs, we hope SOMA will inspire future research on body-motion understanding and multimodal reasoning. Full benchmark, training data, and code will be released at: https://cnai.epfl.ch/soma",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "자기중심 영상 신체동작 이해 MLLM 벤치마크 도입"
+        }
+      ]
+    },
+    "2610.36405": {
+      "arxiv_id": "2610.36405",
+      "paper_title": "kw-bench: Breaking Frontier Harnesses on Real-World Tasks",
+      "abstract": "Each new generation of frontier model pushes the edge of what is possible. Inside a harness -- a loop, a shell, a filesystem, the ability to write and run its own code -- a model can take on increasingly difficult work. A growing body of work treats the coding-agent harness as infrastructure for knowledge work rather than a coding tool, and a new wave of benchmarks tests it there. Most of them are generative: build a financial model, a memo, a spreadsheet from a brief, judged by a rubric or by another model. Few test the expensive part of knowledge work, which is investigative. In audit, tax, due diligence, regulatory reporting, claims or any dispute over numbers, the answer already exists -- hidden in incomplete and inconsistent evidence spread across systems -- and has to be recovered and defended to the cent. We introduce kw-bench, a benchmark built from real engagements specialists described to us. Its first task family is a five-year VAT reconstruction across three generations of SAP -- legacy ECC, a partial S/4HANA migration and a consultant's redesign -- delivered as raw system extracts: page headers, local number formats, partial link tables, no documentation of how anything connects. Grading is deterministic, with no LLM judge. We ran four harnesses -- Claude Code, Codex, OpenCode and micro-cc -- on the same model, DeepSeek v4.1 Flash, for two hours. The two independent, model-agnostic harnesses delivered (OpenCode 0.542, micro-cc 0.528); the two lab harnesses, away from their home model, delivered nothing (0.00 each). What defeated them was inertia: keeping many weak signals alive across a long session. On a frontier model the task collapses. micro-cc and Claude Code on Claude Opus 5.5 scored 0.9986 and 1.000, in 22 and 25 minutes. A weeks-long engagement now costs minutes and a few dollars; below the frontier, the harness decides how far a model gets.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "실무 조사형 지식노동 에이전트 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2610.36420": {
+      "arxiv_id": "2610.36420",
+      "paper_title": "SO-101 Bench: Accessible Spatial Manipulation",
+      "abstract": "Low-cost arms such as the SO-101 have become the most common entry point to robot learning, yet no released policy performs spatially constrained, language-conditioned tasks on them out of the box, and existing SO-101 benchmarks run only on physical hardware with simple tasks and few held-out objects. We introduce SO-101 Bench, a simulated benchmark for language-conditioned spatial manipulation built on an Isaac Lab digital twin of a real SO-101 setup. It has four tasks scored as five families, 138 objects in seen, unseen-instance and unseen-class splits, 916 evaluation episodes with subsets for held-out appearances, rotate-to-fit planning and occlusion memory, and 3,629 simulated demonstrations on which every learned policy is fine-tuned under an equal compute budget. The twin ranks policies as the real robot does: five policies trained without real data, four VLAs and an LLM agent, keep their exact ranking when the same weights run on the physical arm in an unseen environment with unseen objects (Spearman rho = 1.00, MMRV = 0.000), although simulation overestimates success. Across nine VLAs and world-action models, the best learned policies score near 61%, with spatial placement, unseen object classes and rotate-to-fit planning remaining open. An LLM agent that writes code and hands grasping to a learned policy scores 83.2%, and an ablation shows that this lead comes from the choice of harness and the choice of language model.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "언어 조건 로봇 조작 시뮬레이션 벤치마크 도입"
+        }
+      ]
+    },
+    "2610.36484": {
+      "arxiv_id": "2610.36484",
+      "paper_title": "CogArena: Benchmarking Multimodal Agents on Interactive Behavioral Experiments",
+      "abstract": "Claims about the cognitive capabilities of large language models are typically tested by translating behavioral paradigms into text prompts, bypassing the visual interfaces and time pressure through which human participants actually engage with experiments. At the same time, AI agents can now complete online behavioral tasks and produce human-like data, which raises concerns that online datasets in the social and behavioral sciences are increasingly open to contamination. We introduce CogArena, a benchmark of ten experimental paradigms from the social and behavioral sciences. Agents complete the experiments through a standard web browser, working with the same visual stimuli and response interfaces that online participants use. A three-level scoring procedure evaluates whether the agent completed the task, how accurately it performed, and whether its data show the behavioral signatures each paradigm reliably produces in people. Across four multimodal models, each run ten times per task, we find that finishing an experiment and reproducing its signatures are different things. Many sessions did not finish, and those that did reproduced some signatures reliably and others not at all. CogArena provides the tasks, scoring code, and a public leaderboard for new submissions.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티모달 에이전트 행동실험 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2610.36513": {
+      "arxiv_id": "2610.36513",
+      "paper_title": "MedConstBench: Benchmarking How Constitutions Steer LLMs in Medical Ethics",
+      "abstract": "As large language models advance rapidly, they are increasingly used to answer medical questions, and many such models are now deployed locally. Once a model is deployed, its behavior is governed mainly by the ethical policy written into its constitution. However, most existing work focuses on factual correctness rather than the trade-off between competing ethical values. Even benchmarks that do evaluate ethics treat it as a fixed property of the model rather than as a variable, so how a constitution reshapes medical-ethics behavior remains largely unexplored. We introduce MedConstBench, a medical-ethics benchmark that treats the deployment constitution as a controlled variable, is organized around Beauchamp's four principles, and is scored by human-calibrated multi-model peer review. It includes MedDilemma, our own dataset of clinical dilemmas, and supports a systematic analysis of how constitutions steer LLMs. Evaluating ten open-source LLMs under four constitutions, we find that the effect of a constitution is dimension-selective and model-dependent, and that no constitution is universally optimal. Motivated by these findings, we propose a do-no-harm adaptive selector that chooses a constitution per model, matching the per-model oracle while guaranteeing a worst-case floor and generalizing to unseen models at low cost.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "의료 윤리 헌법 영향 평가 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2610.36527": {
+      "arxiv_id": "2610.36527",
+      "paper_title": "ETC-Bench: A Multilingual Benchmark for Evaluation-Side Transcript Canonicalization",
+      "abstract": "Written transcripts of the same speech can differ in ways that are not uniquely determined by the speech signal. We formulate evaluation-side transcript canonicalization (ETC), which maps multiple surface forms to a single canonical form when their differences are not determined by speech. To our knowledge, ETC-Bench is the first and most comprehensive multilingual benchmark for evaluation-side transcript canonicalization, covering 181 phenomenon types across 12 languages. Each instance is a minimal pair that shares a sentence context and differs only in a target span exhibiting one phenomenon. To evaluate both canonicalization success and semantic preservation, we propose Semantic-preserving Exact-match Normalization Accuracy (SENA), which combines exact agreement between independently canonicalized pair members with a pair-relative BERTScore constraint against information loss. We further introduce the Taxonomy-guided Agent Canonicalization Skill (TACS), which provides LLM agents with phenomenon descriptions and explicit canonicalization contracts. Experiments with five baseline configurations and three TACS-based agents show that the agents outperform the baseline systems on shared languages. ETC-Bench provides a systematic testbed for evaluation-side transcript canonicalization across languages.",
+      "paper_updated": "2026-10-28T00:00:00Z",
+      "created_at": "2026-10-29T02:42:54Z",
+      "input_sha256": "51bc4bb32eec5e6563f41e9a2e92500841ba222c650dfc54ba4264b2f0ed4adb",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "12개 언어 전사 정규화 벤치마크, 한국어/영어 포함 가능"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -51897,9 +52237,30 @@
     },
     "2026-10-29": {
       "attempted": [],
-      "abstract_attempted": [],
-      "calls": 2,
-      "cost_usd": 1.3691
+      "abstract_attempted": [
+        "2606.23238",
+        "2609.00184",
+        "2505.13004",
+        "2508.20866",
+        "2512.14554",
+        "2601.13401",
+        "2602.05843",
+        "2603.15401",
+        "2604.23813",
+        "2605.17000",
+        "2605.30058",
+        "2608.00711",
+        "2610.35980",
+        "2610.36195",
+        "2610.36384",
+        "2610.36405",
+        "2610.36420",
+        "2610.36484",
+        "2610.36513",
+        "2610.36527"
+      ],
+      "calls": 3,
+      "cost_usd": 1.4358
     }
   },
   "reaudits": [
