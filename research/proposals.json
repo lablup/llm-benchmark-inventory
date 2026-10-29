@@ -25484,6 +25484,163 @@
       "proposal_sha256": "42a5a8cc5243be05c7507e65997a52b98049820e344aa50fc2cd86ac1ba4ad44",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2606.10281": {
+      "decision": "propose",
+      "reason": "AuditBench는 시스템 감사 로그(Linux auditd, Windows procmon)를 조사하는 LLM 능력을 평가하는 새 재사용 벤치마크입니다. 4개 조사 과제와 51개 시나리오(Lab 25개, DARPA OpTC 26개)로 구성되고, 데이터·코드·프롬프트·모델 입출력을 공개한다고 밝힙니다. 과제 프롬프트가 영어이므로 en 트랙, 텍스트 입력이므로 text로 분류했습니다. 라이선스와 lm-eval 지원은 논문에 근거가 없어 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "auditbench",
+            "이름": "AuditBench",
+            "평가 축": "보안(시스템 감사 로그 기반 공격 조사)",
+            "언어": "en",
+            "정의": "Linux·Windows 시스템 감사 로그로 LLM의 공격 조사 능력을 평가하는 벤치마크. 4개 과제(알림 분류, 지속성, 횡이동, 데이터 유출 조사)와 51개 시나리오(직접 생성한 Lab 25개, DARPA OpTC에서 선별한 26개)로 구성된다. 로그는 raw와 edge(출처 그래프 기반 전처리) 두 표현으로 제공되고(OpTC는 edge만), 컨텍스트 한도에 맞춰 청크(raw 1,000줄, edge 400줄)로 나눠 평가한다. 지표는 TPR, FPR, F1이며 설명 품질은 LLM 판정 기반 5점 척도 entailment 점수로 평가한다. 논문은 LLM 5종을 평가했다.",
+            "대표 과제": "알림 분류, 지속성·횡이동·데이터 유출 조사(JSON 출력과 정답 라벨 자동 대조)",
+            "대표 예시·설명": "감사 로그를 입력으로 주고 공격 활동(예: 데이터 유출)을 찾아 타임스탬프, 핵심 로그 줄, 설명을 JSON으로 출력하게 하는 과제 설명이며 실제 시험 문항이 아님.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 이번 단계에서 확인하지 않았다. 이 벤치마크는 다른 출처로 구성되어 있다: 공개 DARPA OpTC 데이터에서 선별한 26개 시나리오와 MITRE ATT&CK, Atomic Red Team을 이용해 직접 생성한 25개 시나리오가 섞여 있으므로, 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 논문은 모델 간 직접 비교 도구로 쓰는 것을 경계하고 설계 선택(프롬프트, 데이터 표현)의 영향을 보는 용도를 권한다. 공격 유형 범위가 제한적이고 LLM 회피 공격은 다루지 않는다. 설명 품질 평가에는 LLM judge가 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/aanand300/auditlogsbench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Security (attack investigation from system audit logs)",
+            "definition": "A benchmark of LLM capability at investigating Linux and Windows system audit logs. It has four tasks (alert triage, persistence, lateral movement, data exfiltration investigation) and 51 scenarios (25 generated Lab scenarios and 26 curated from DARPA OpTC). Logs come in raw and edge (provenance-graph preprocessed) representations (OpTC edge only) and are evaluated in chunks (1,000 lines raw, 400 lines edge). Metrics are TPR, FPR and F1; explanation quality is scored by an LLM judge as a 1-5 entailment score. The paper evaluates five LLMs.",
+            "task": "Alert triage and persistence, lateral movement and data exfiltration investigation (JSON output automatically compared with ground-truth labels)",
+            "example": "Task description, not an actual test item: given audit log lines, the model finds attack activity such as data exfiltration and outputs timestamps, key log lines and an explanation as JSON."
+          },
+          "evidence": {
+            "modality": {
+              "page": 15,
+              "quote": "Examine ALL the"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "four common security"
+            },
+            "대표 예시·설명": {
+              "page": 15,
+              "quote": "Examine ALL the"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "github.com/aanand300/auditlogsbench"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "Examine ALL the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "AuditBench, a new"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "four common security"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "four common security"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2606.10281",
+      "paper_title": "Benchmarking and Exploring the Capabilities of LLMs for Attack Investigations",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.10281",
+        "sha256": "b079fc600ecd62f7666f5460ace0c722640a765c2d5c80ae4a206c3c43d44069",
+        "accessed": "2026-10-29T03:09:47Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 17,
+          "elapsed_seconds": 129.51,
+          "pdf_sha256": "b079fc600ecd62f7666f5460ace0c722640a765c2d5c80ae4a206c3c43d44069",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7e565f718ced9d5959334ab0c759956435d4db0007b92daf94e6357396e1a29e",
+          "page_json_file": "2606.10281.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/aanand300/auditlogsbench",
+            "fetched_url": "https://api.github.com/repos/aanand300/auditlogsbench/readme",
+            "sha256": "8e62e7e1822d5dd42f726fb50b6826916c46125de5a1b41d586e5f0ffef740d3",
+            "accessed": "2026-10-29T03:12:20Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-29T03:12:20Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2606.10281",
+        "paper_title": "Benchmarking and Exploring the Capabilities of LLMs for Attack Investigations",
+        "abstract": "This paper presents AuditBench, a new benchmark dataset for evaluating the capabilities of LLMs at investigating security-related system audit logs. We design and use this benchmark to explore the performance of LLMs on four log-investigation tasks that incident response teams commonly perform, ranging from triaging alerts generated by detectors to identifying persistence mechanisms on compromised systems. AuditBench consists of system audit logs collected from Linux and Windows machines, and spans over 50 different security investigation scenarios, including both malicious and benign activity. Using our benchmark, we evaluate and analyze the performance of five frontier LLMs at analyzing audit logs for attack investigations. Our analysis illuminates how LLM performance and error profiles vary according to different design choices, such as differences in model size, data representation, prompt construction, and specific investigation tasks. Additionally, we characterize the quality of the explanations produced by LLMs and the types of errors that models make across our benchmark. Collectively, our work provides a foundation for assessing the capabilities of LLMs for investigating security logs, novel insights for practitioners using LLMs in security operations, and important directions for future research.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:45:34Z",
+        "input_sha256": "2e3d2ec89ce1b34ff48c4555a024e1d8e384fddfb4e168a8830ed4c3d7d22b26",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "보안 감사 로그 LLM 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "보안 감사 로그 조사 평가용 AuditBench 데이터셋 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40807323486",
+        "context_sha256": "37753707d85dcd91f53f789e4a4098acf416773baac534ca2fc9aa7227501b6c"
+      },
+      "proposal_sha256": "5eacf659d5f34623a8ac9242da38f06a0c7b16966b6eb692cadf7fff17cabad1"
     }
   },
   "processed_comments": [],
@@ -53155,8 +53312,8 @@
         "2610.37341",
         "2610.37434"
       ],
-      "calls": 13,
-      "cost_usd": 6.8485
+      "calls": 14,
+      "cost_usd": 7.4401
     }
   },
   "reaudits": [
