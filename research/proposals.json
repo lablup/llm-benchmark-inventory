@@ -25384,74 +25384,9 @@
       "proposal_sha256": "4bf247f9caf7ea4791603a4b5a91e84567e06427b7bc74e2bcbd263a009fef30"
     },
     "2602.09007": {
-      "decision": "propose",
-      "reason": "GUI-GenBench은 이미지 생성 모델을 상호작용형 GUI 환경으로 쓸 수 있는지 평가하는 새 벤치마크(5개 과제 스위트, GUI-Score 5개 차원)이다. 영어 지시문(예: 'Order a coffee')을 쓰는 영어 하위셋이 있어 en 트랙, 입력과 출력이 스크린샷이므로 vision으로 분류했다. 중국어 하위셋은 범위 밖이라 행을 만들지 않았다. 링크는 PDF 1쪽의 프로젝트 페이지(GitHub)를 사용했다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다. 700개 샘플이 중국어와 영어를 합친 수인지, 영어 하위셋만의 수인지는 PDF에서 확정할 수 없어 정의에 그 점을 명시했다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "gui-genbench",
-            "이름": "GUI-GenBench",
-            "평가 축": "이미지(GUI 상태 전이·기능 정확성 생성)",
-            "언어": "en",
-            "정의": "이미지 생성 모델을 상호작용형 GUI 환경으로 쓸 수 있는지 평가하는 벤치마크. 논문은 700개 큐레이션 샘플을 5개 과제 스위트(단일 단계 전이, 다단계 계획, 가상 앱 생성, 실제 앱 궤적, 좌표 기반 그라운딩)로 구성했다고 보고한다. 중국어·영어 하위셋은 번역이 아니라 독립적으로 샘플링되었고, 700개가 두 하위셋을 합친 수인지 영어 하위셋만의 수인지는 논문에서 확인하지 못했다. 점수 GUI-Score는 목표 달성, 상호작용 논리, 내용 일관성, UI 개연성, 시각 품질의 5개 차원을 0~5 서수 척도로 평가해 0~100으로 정규화한 값이며 성공률이 아니다.",
-            "대표 과제": "초기 GUI 화면과 지시(또는 상위 목표, 좌표)를 받아 다음 GUI 화면 또는 5단계 궤적을 생성",
-            "대표 예시·설명": "참조 화면과 'Order a coffee' 같은 상위 목표를 주고 이후 5개 프레임의 GUI 궤적을 생성하게 하는 과제 설명(실제 문항 아님)",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스·상업적 이용·수정·재배포 조건과 lm-eval 지원은 확인하지 않았다. 중국어 하위셋은 이 인벤토리 범위 밖이며, 영어 하위셋만의 샘플 수는 별도로 확인하지 못했다. 실제 앱 스위트의 스크린샷은 명시적 라이선스가 있는 공개 데이터셋에서 가져왔다고 논문이 밝히므로 구성 요소별 약관을 따로 확인해야 한다. 채점은 VLM 심사에 의존하며 심사 모델에 따라 점수가 크게 달라진다고 논문이 보고한다. 생성된 이미지는 실행 가능한 앱 상태가 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/stepfun-ai/GEBench"
-          },
-          "modality": "vision",
-          "english_copy": {
-            "axis": "Images (generating GUI state transitions with functional correctness)",
-            "definition": "A benchmark of whether image generation models can serve as interactive GUI environments. The paper reports 700 curated samples across five task suites: single-step transitions, multi-step planning, fictional-app generation, real-app trajectories, and coordinate-based grounding. The Chinese and English subsets were sampled independently rather than translated, and it was not confirmed whether the 700 samples cover both subsets or only the English one. GUI-Score rates five dimensions (goal achievement, interaction logic, content consistency, UI plausibility, visual quality) on a 0-5 ordinal scale normalized to 0-100; it is not a success rate.",
-            "task": "Given an initial GUI screen and an instruction (or high-level goal, or coordinate), generate the next GUI screen or a five-step trajectory.",
-            "example": "Task description, not an actual test item: given a reference screen and a high-level goal such as 'Order a coffee', generate the following five frames of a GUI trajectory."
-          },
-          "evidence": {
-            "modality": {
-              "page": 4,
-              "quote": "a reference screen"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "GUI-GenBench, a benchmark"
-            },
-            "대표 예시·설명": {
-              "page": 5,
-              "quote": "Order a coffee,"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/stepfun-ai/GEBench"
-            },
-            "언어": {
-              "page": 5,
-              "quote": "Order a coffee,"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "GUI-GenBench, a benchmark"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "GUI-GenBench, a benchmark"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "Goal Achievement, Interaction"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공식 저장소 카드(https://github.com/stepfun-ai/GEBench)의 Apache-2.0 표기와 LICENSE 파일은 저장소 코드에 대한 것으로 보이며, 벤치마크 데이터의 라이선스를 직접 밝히지 않는다. 데이터는 별도의 Hugging Face 저장소(stepfun-ai/GEBench)에 있는데 그 데이터셋 카드는 제공되지 않아 데이터 라이선스를 검증할 수 없다. 또한 실제 앱 스위트의 스크린샷은 명시적 라이선스가 있는 공개 데이터셋에서 가져왔다고 논문이 밝히므로(논문 6쪽, 17쪽), 저장소의 Apache-2.0이 모든 구성 요소에 적용된다는 근거가 없다. 저장소 카드에는 LICENSE 파일 섹션이 있어 '미표기' 근거로도 쓸 수 없다. 따라서 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목을 근거와 함께 채울 수 없다. 데이터셋 카드와 실제 앱 스위트 원천 데이터셋별 라이선스 목록이 확보될 때까지 게시를 보류한다.",
+      "changes": [],
       "arxiv_id": "2602.09007",
       "paper_title": "GUI-GenBench: Evaluating Image Generation Models as Interactive GUI Environments",
       "paper_updated": "2026-09-29T00:00:00Z",
@@ -25520,7 +25455,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-29T03:06:32Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -25546,11 +25481,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40807323486",
-        "context_sha256": "82d846af90c63bb10ba5299b17bda91ac2aac9be44e61e1f50678bd12695b1f4"
-      },
-      "proposal_sha256": "3dd8cfde70849ac7cc1eee17b9cc32c808960e97b3744c287aed34e146152b7d"
+      "proposal_sha256": "42a5a8cc5243be05c7507e65997a52b98049820e344aa50fc2cd86ac1ba4ad44",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -53218,8 +53151,8 @@
         "2610.37341",
         "2610.37434"
       ],
-      "calls": 12,
-      "cost_usd": 6.1543
+      "calls": 13,
+      "cost_usd": 6.8485
     }
   },
   "reaudits": [
