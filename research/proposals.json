@@ -25382,6 +25382,175 @@
         "context_sha256": "f35b5a29107e868075641fc87e29e5618a3c45287d5991ec98e78939e2578941"
       },
       "proposal_sha256": "4bf247f9caf7ea4791603a4b5a91e84567e06427b7bc74e2bcbd263a009fef30"
+    },
+    "2602.09007": {
+      "decision": "propose",
+      "reason": "GUI-GenBench은 이미지 생성 모델을 상호작용형 GUI 환경으로 쓸 수 있는지 평가하는 새 벤치마크(5개 과제 스위트, GUI-Score 5개 차원)이다. 영어 지시문(예: 'Order a coffee')을 쓰는 영어 하위셋이 있어 en 트랙, 입력과 출력이 스크린샷이므로 vision으로 분류했다. 중국어 하위셋은 범위 밖이라 행을 만들지 않았다. 링크는 PDF 1쪽의 프로젝트 페이지(GitHub)를 사용했다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다. 700개 샘플이 중국어와 영어를 합친 수인지, 영어 하위셋만의 수인지는 PDF에서 확정할 수 없어 정의에 그 점을 명시했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "gui-genbench",
+            "이름": "GUI-GenBench",
+            "평가 축": "이미지(GUI 상태 전이·기능 정확성 생성)",
+            "언어": "en",
+            "정의": "이미지 생성 모델을 상호작용형 GUI 환경으로 쓸 수 있는지 평가하는 벤치마크. 논문은 700개 큐레이션 샘플을 5개 과제 스위트(단일 단계 전이, 다단계 계획, 가상 앱 생성, 실제 앱 궤적, 좌표 기반 그라운딩)로 구성했다고 보고한다. 중국어·영어 하위셋은 번역이 아니라 독립적으로 샘플링되었고, 700개가 두 하위셋을 합친 수인지 영어 하위셋만의 수인지는 논문에서 확인하지 못했다. 점수 GUI-Score는 목표 달성, 상호작용 논리, 내용 일관성, UI 개연성, 시각 품질의 5개 차원을 0~5 서수 척도로 평가해 0~100으로 정규화한 값이며 성공률이 아니다.",
+            "대표 과제": "초기 GUI 화면과 지시(또는 상위 목표, 좌표)를 받아 다음 GUI 화면 또는 5단계 궤적을 생성",
+            "대표 예시·설명": "참조 화면과 'Order a coffee' 같은 상위 목표를 주고 이후 5개 프레임의 GUI 궤적을 생성하게 하는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스·상업적 이용·수정·재배포 조건과 lm-eval 지원은 확인하지 않았다. 중국어 하위셋은 이 인벤토리 범위 밖이며, 영어 하위셋만의 샘플 수는 별도로 확인하지 못했다. 실제 앱 스위트의 스크린샷은 명시적 라이선스가 있는 공개 데이터셋에서 가져왔다고 논문이 밝히므로 구성 요소별 약관을 따로 확인해야 한다. 채점은 VLM 심사에 의존하며 심사 모델에 따라 점수가 크게 달라진다고 논문이 보고한다. 생성된 이미지는 실행 가능한 앱 상태가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/stepfun-ai/GEBench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (generating GUI state transitions with functional correctness)",
+            "definition": "A benchmark of whether image generation models can serve as interactive GUI environments. The paper reports 700 curated samples across five task suites: single-step transitions, multi-step planning, fictional-app generation, real-app trajectories, and coordinate-based grounding. The Chinese and English subsets were sampled independently rather than translated, and it was not confirmed whether the 700 samples cover both subsets or only the English one. GUI-Score rates five dimensions (goal achievement, interaction logic, content consistency, UI plausibility, visual quality) on a 0-5 ordinal scale normalized to 0-100; it is not a success rate.",
+            "task": "Given an initial GUI screen and an instruction (or high-level goal, or coordinate), generate the next GUI screen or a five-step trajectory.",
+            "example": "Task description, not an actual test item: given a reference screen and a high-level goal such as 'Order a coffee', generate the following five frames of a GUI trajectory."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "a reference screen"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "GUI-GenBench, a benchmark"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "Order a coffee,"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/stepfun-ai/GEBench"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "Order a coffee,"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "GUI-GenBench, a benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "GUI-GenBench, a benchmark"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Goal Achievement, Interaction"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2602.09007",
+      "paper_title": "GUI-GenBench: Evaluating Image Generation Models as Interactive GUI Environments",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2602.09007",
+        "sha256": "419ceb8ba045435e7a6f04ee5eeaaa5e42380103bc0bf763deff22b9315125f2",
+        "accessed": "2026-10-29T03:03:37Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 24,
+          "elapsed_seconds": 146.92,
+          "pdf_sha256": "419ceb8ba045435e7a6f04ee5eeaaa5e42380103bc0bf763deff22b9315125f2",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "e53bc13a9c1fc8469250f19075882a56eb8e0e0c52c7693581f428e4598aa112",
+          "page_json_file": "2602.09007.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/stepfun-ai/GEBench",
+            "fetched_url": "https://api.github.com/repos/stepfun-ai/GEBench/readme",
+            "sha256": "3a18ffc00b19bfa7a4615c61fc2c20d1637d4ba79c22088d3765a704d2ccaacf",
+            "accessed": "2026-10-29T03:06:32Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/stepfun-ai/GEBench/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-29T03:06:32Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2602.09007",
+        "paper_title": "GUI-GenBench: Evaluating Image Generation Models as Interactive GUI Environments",
+        "abstract": "An image generation model used as a graphical user interface (GUI) environment must produce not only a plausible screen but also the correct response to an action. Existing visual-generation benchmarks do not directly assess this combination of functional correctness and temporal consistency in GUIs. We introduce GUI-GenBench, a benchmark of 700 curated samples across five task suites: single-step transitions, multi-step planning, fictional-app generation, real-app trajectories, and coordinate-based grounding. We also introduce GUI-Score, a VLM-based metric that assesses Goal Achievement, Interaction Logic, Content Consistency, UI Plausibility, and Visual Quality. Evaluating 12 image generation models on Chinese and English subsets, we find that strong single-step performance does not consistently extend to coherent multi-step trajectories or accurate grounding. The highest aggregate GUI-Scores are 69.62 on the Chinese subset and 63.16 on the English subset. Qualitative analysis further identifies failures in text rendering, icon interpretation, and coordinate-conditioned transitions. Together, these results distinguish visual plausibility from functional reliability and identify limitations that must be addressed before generated GUIs can serve as dependable interaction environments.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:45:34Z",
+        "input_sha256": "bb673ae70bd58dd8cb9f87759b334f38c04618e4f11666c630949c379d41e9f9",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "GUI 이미지 생성 평가 벤치마크로 언어 모델 평가 포함"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "GUI 생성 평가 벤치마크와 GUI-Score 지표 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40807323486",
+        "context_sha256": "82d846af90c63bb10ba5299b17bda91ac2aac9be44e61e1f50678bd12695b1f4"
+      },
+      "proposal_sha256": "3dd8cfde70849ac7cc1eee17b9cc32c808960e97b3744c287aed34e146152b7d"
     }
   },
   "processed_comments": [],
@@ -53049,8 +53218,8 @@
         "2610.37341",
         "2610.37434"
       ],
-      "calls": 11,
-      "cost_usd": 5.4891
+      "calls": 12,
+      "cost_usd": 6.1543
     }
   },
   "reaudits": [
