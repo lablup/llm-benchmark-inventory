@@ -1,0 +1,98 @@
+{
+  "arxiv_id": "2602.20571",
+  "paper_title": "CausalReasoningBenchmark: A Real-World Benchmark for Disentangled Evaluation of Causal Identification and Estimation",
+  "created_at": "2026-10-30T03:39:49Z",
+  "status": "needs_evidence",
+  "reason": "권리 항목은 근거가 확보됐지만 recommendations에 넣을 수 있는 점수 근거가 없어 게시하지 않는다. 논문이 평가한 모델은 GPT-5.3 하나뿐이다. 모델명(9쪽 Table 5·6 캡션의 'GPT-5.3 baseline', 8쪽의 'gpt-5.3')과 점수(9쪽 표의 '37.9% (66/174)')가 서로 다른 위치에 있어서, 모델명과 점수를 함께 담은 연속된 짧은 인용문을 PDF에서 찾을 수 없다. 이 상태에서는 results의 evidence 규칙을 지킬 수 없고, 모델을 조합하거나 점수를 임의로 연결해서도 안 된다. 라이선스는 논문 12쪽이 메타데이터·평가 코드·정답 식별 명세에 MIT를 부여하고 원본 데이터셋은 각자의 원 라이선스를 따른다고 밝히므로, 카드의 LICENSE.txt(MIT)가 모든 구성 요소에 적용되는 것은 아니다. 따라서 '미표기' 처리나 absence 증거는 쓸 수 없고 12쪽 문구를 직접 인용해야 한다. 이 benchmark는 정치학 재분석 연구(IV 67편, RDD 45편, DiD 49편 대상: 4쪽)와 교재 3권(Mixtape, The Effect, What If: 4쪽)의 데이터를 포함하므로, 이용 시 유의사항에 이 구성 요소들을 명시하고 각자의 약관을 따로 점검하도록 적어야 한다. lm-eval 지원은 공식 카드에 언급이 없어 '미표기'와 absence 증거로 처리할 수 있다. 모델명과 점수가 함께 나온 표 이미지나 문장이 확보되면 recommendations를 채워 다시 제안할 수 있다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2602.20571",
+    "sha256": "176d9a0fabf48cab8be626fce3b68485b3447bf837b2010af570014864b2196a",
+    "accessed": "2026-10-30T03:37:32Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 22,
+      "elapsed_seconds": 111.39,
+      "pdf_sha256": "176d9a0fabf48cab8be626fce3b68485b3447bf837b2010af570014864b2196a",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 2,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "f00de5a95eb318681928523f6e12a713e6b8998e407a7ec31194cd48f46ef5d6",
+      "page_json_file": "2602.20571.pages.json"
+    },
+    "official_resources": [
+      {
+        "url": "https://huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark",
+        "fetched_url": "https://huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark/raw/main/README.md",
+        "sha256": "5be7794790d137500640d3ca8993c9f98531970be33dddd0492958bd2e20b3d1",
+        "accessed": "2026-10-30T03:39:49Z",
+        "license_file": {
+          "fetched_url": "https://huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark/raw/main/LICENSE.txt",
+          "name": "LICENSE.txt",
+          "spdx_id": null,
+          "sha256": "087d876d72cddb3317ac00797368347fe0c323a7d1ded9167d4eb5b8387700fb"
+        }
+      }
+    ]
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "718c82da5009c62700c8bc8a62bcabf1cb1db0bbd9d2a0c195f80fdf75726b15",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2602.20571",
+    "paper_title": "CausalReasoningBenchmark: A Real-World Benchmark for Disentangled Evaluation of Causal Identification and Estimation",
+    "abstract": "Many benchmarks for automated causal inference evaluate a system's performance based on a single numerical output, such as an Average Treatment Effect (ATE). This approach conflates two distinct steps in causal analysis: identification, formulating a valid research design under stated assumptions, and estimation, implementing that design numerically on finite data. We introduce CausalReasoningBenchmark, a benchmark of 174 queries across 139 real-world datasets, curated from 73 peer-reviewed research papers and three widely used causal-inference textbooks. For each query, a system must produce (i) a structured identification specification that names the strategy, the treatment, outcome, and control variables, and all design-specific elements, and (ii) a point estimate with a standard error. By scoring these two components separately, our benchmark enables granular diagnosis: it distinguishes failures in causal reasoning from errors in numerical execution. Baseline results with a state-of-the-art LLM show that, while the model correctly identifies the high-level strategy in 81% of cases, full identification-specification correctness drops to only 38%, revealing that the bottleneck lies in the nuanced details of research design rather than in computation. CausalReasoningBenchmark is publicly available on Hugging Face and is designed to foster the development of more robust automated causal-inference systems.",
+    "paper_updated": "2026-09-29T00:00:00Z",
+    "created_at": "2026-10-19T13:45:47Z",
+    "input_sha256": "c6be60030227a875043524331ceaf00c28435d628e01248978b2705d2d92f956",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "인과 추론의 식별과 추정을 분리 평가하는 벤치마크"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "인과 추론 식별·추정 분리 평가 벤치마크 공개(Hugging Face)"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}

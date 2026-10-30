@@ -330,4 +330,28 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Search the web and build a document, slide deck or spreadsheet with specified structure, formatting and layout.",
     "example": "Task description (not an actual test item): build a presentation on the history of video games for 7th graders, finding a web source for each section and placing the heading style, bullet summary, citation and credited image in the specified positions."
   },
+  "llmadbench": {
+    "axis": "Advertising insertion (human preference over ad placement in LLM responses)",
+    "definition": "A human-preference benchmark that asks where an advertisement should be placed given a user conversation, an LLM response, and a matched ad. Each of 258 source conversations is expanded into four candidates that differ only in ad position (front, early, late, end), and all pairs are compared with and without a sponsored label. Annotators choose A, B, or Tie on six criteria (naturalness, visibility, helpfulness, click likelihood, appropriateness, overall preference), yielding 18,576 human judgments. Metrics are held-out A/B/T accuracy, Davidson-Bradley-Terry placement scores, presentation-swap error, and Cohen's kappa among judges.",
+    "task": "Predict the human A/B/Tie preference between two candidates whose ad placement differs, per criterion and disclosure condition.",
+    "example": "Task description (not an actual test item): given a user question, an LLM response, and an ad, two versions differing only in ad position are shown, and the annotator chooses A, B, or Tie on each of six criteria, such as which reads more smoothly."
+  },
+  "financialauditbench": {
+    "axis": "Agents (financial statement audit workpaper completion and review)",
+    "definition": "A benchmark of whether agents can examine engagement evidence, perform audit procedures, and complete or review audit workpapers. It has 90 tasks over six synthetic audit engagements (manufacturing and staffing services; average 179 files each): 45 completion tasks and 45 corresponding review tasks across eight workpaper types. Auditor-written rubrics (about ten scored checks per workpaper) give a strict all-or-nothing pass plus a partial-credit score. The paper evaluates eleven models on completion tasks (eight runs per model-task pair, with pass@k and pass^k) and ten models on review tasks (one run each). Tasks are released in Harbor format.",
+    "task": "Given supporting documents and a blank workpaper template, perform the audit procedures and complete the workpaper, or review and correct an already completed workpaper (for example Manufacturing-01 cash).",
+    "example": "Task description, not an actual test item: the agent reads a data room with planning documents, client-provided records and third-party evidence such as bank confirmations, performs the procedures in a workpaper template such as cash, and saves the result."
+  },
+  "cruxbench": {
+    "axis": "Agents and reasoning (information discovery: value of information of generated forecasting subquestions)",
+    "definition": "CruxBench grades model-proposed subquestions (cruxes) for a target forecasting question by the Value of Information (VOI), measured as the KL-based belief update in a prediction market around the crux's resolution time. It uses 293 target questions; the paper compares eight models against a random-timing baseline and a hindsight oracle. Scores are in bits, and cruxes are resolved by a separate resolver agent.",
+    "task": "Given an ultimate forecasting question, generate one binary crux that resolves within a specified 30-day window.",
+    "example": "Task description: given an ultimate question such as whether any stolen Louvre jewels will be returned, the model proposes a subquestion resolving within the window, and the score is the market belief update after its resolution."
+  },
+  "ecg-scroll": {
+    "axis": "Agents (long-horizon streaming ECG interpretation)",
+    "definition": "A benchmark and gym-style agent environment in which long two-lead ambulatory (Holter) ECG recordings are streamed to an agent in 30-second chunks, without access to future signal. The agent must localize, quantify and record paroxysmal events. It has 390 whole-recording instances (247 recordings, 2,536 hours in total) across six tasks (episode detection, AF burden, change detection, ischemia detection, PVC burden, rare-event search), all scored by rule-based verifiers (temporal F1, relative-error score, hit@±10s, hit@±15s). Because every memory write is timestamped, detection latency from event onset to recording can also be measured. The paper evaluates a rule agent and LLM agents with and without diagnostic tools (+dx/-dx) and with agent-driven (Planning) versus environment-driven (Judge) scanning.",
+    "task": "Episode detection (AF episode intervals scored by temporal F1)",
+    "example": "Task description: given an English system prompt casting it as an expert cardiologist, the agent issues skim, measure and write actions, measures elapsed signal with numeric tools such as get_rate_rhythm and get_st, and records the event intervals it finds."
+  },
 };
