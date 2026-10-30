@@ -27776,6 +27776,173 @@
         "reviewed_sha256": "deace0a4140dace53c527f4c11dc27776441d68dfd35ff256b90004dd727d489",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2602.20571": {
+      "decision": "propose",
+      "reason": "인과 추론 벤치마크 CausalReasoningBenchmark를 새로 소개한 논문이다. 영어 인과 질문과 CSV 데이터로 식별 명세와 효과 추정을 따로 채점한다. 쿼리 174개와 데이터셋 139개 규모이며, Hugging Face 링크가 PDF에 명시되어 있다. 입력이 텍스트와 표 데이터뿐이라 en 트랙의 text 모달리티로 분류했다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "causalreasoningbenchmark",
+            "이름": "CausalReasoningBenchmark",
+            "평가 축": "에이전트·추론(인과 식별과 추정의 분리 평가)",
+            "언어": "en",
+            "정의": "실제 연구 논문 73편과 인과추론 교재 3권에서 만든 174개 쿼리(데이터셋 139개) 벤치마크. 시스템은 전략·처치·결과·통제변수와 설계별 요소를 담은 구조화된 식별 명세(JSON)와, 점추정치 및 표준오차를 함께 내야 한다. 두 구성요소를 따로 채점해 인과 추론 실패와 수치 실행 오류를 구분한다. 포함 설계는 IV, RDD, DiD, 조건부 외생성, RCT이다.",
+            "대표 과제": "자연어 인과 질문, CSV 데이터, 메타데이터가 주어지면 식별 명세와 효과 추정치·표준오차를 산출",
+            "대표 예시·설명": "선거 참여가 이후 예비선거 참여에 미치는 인과 효과를 묻는 영어 질문이 주어지면, 에이전트가 무작위 우편 발송을 도구변수로 삼는 설계와 LATE 추정 대상을 식별하고 추정치를 계산하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. 데이터는 연구 논문과 교재의 재분석 자료에서 가져왔으므로 개별 데이터셋 약관은 이용 전에 따로 확인해야 한다. lm-eval 지원 여부도 확인하지 못했다. 논문의 연구 논문 하위 집합은 정치학 분야에 한정되며 쿼리마다 정답 명세가 하나뿐이다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents and reasoning (disentangled evaluation of causal identification and estimation)",
+            "definition": "A benchmark of 174 queries over 139 datasets curated from 73 research papers and three causal-inference textbooks. A system must output a structured identification specification (JSON) naming the strategy, treatment, outcome, controls and design-specific elements, plus a point estimate with a standard error. The two components are scored separately to distinguish failures of causal reasoning from errors in numerical execution. Designs covered are IV, RDD, DiD, conditional exogeneity and RCT.",
+            "task": "Given a natural-language causal question, a CSV dataset and metadata, produce an identification specification and an effect estimate with its standard error.",
+            "example": "Task description: given an English question about the causal effect of voting in one election on voting in a later primary, the agent must recognize the randomized mailing as an instrument, identify the LATE as the estimand, and compute the estimate."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "dataset in CSV"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "structured identification specification"
+            },
+            "대표 예시·설명": {
+              "page": 11,
+              "quote": "What is the"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark"
+            },
+            "언어": {
+              "page": 11,
+              "quote": "What is the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "174 queries across"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Disentangled Evaluation of"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2602.20571",
+      "paper_title": "CausalReasoningBenchmark: A Real-World Benchmark for Disentangled Evaluation of Causal Identification and Estimation",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2602.20571",
+        "sha256": "176d9a0fabf48cab8be626fce3b68485b3447bf837b2010af570014864b2196a",
+        "accessed": "2026-10-30T03:37:32Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 22,
+          "elapsed_seconds": 111.39,
+          "pdf_sha256": "176d9a0fabf48cab8be626fce3b68485b3447bf837b2010af570014864b2196a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 2,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "f00de5a95eb318681928523f6e12a713e6b8998e407a7ec31194cd48f46ef5d6",
+          "page_json_file": "2602.20571.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark",
+            "fetched_url": "https://huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark/raw/main/README.md",
+            "sha256": "5be7794790d137500640d3ca8993c9f98531970be33dddd0492958bd2e20b3d1",
+            "accessed": "2026-10-30T03:39:49Z",
+            "license_file": {
+              "fetched_url": "https://huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark/raw/main/LICENSE.txt",
+              "name": "LICENSE.txt",
+              "spdx_id": null,
+              "sha256": "087d876d72cddb3317ac00797368347fe0c323a7d1ded9167d4eb5b8387700fb"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-30T03:39:49Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2602.20571",
+        "paper_title": "CausalReasoningBenchmark: A Real-World Benchmark for Disentangled Evaluation of Causal Identification and Estimation",
+        "abstract": "Many benchmarks for automated causal inference evaluate a system's performance based on a single numerical output, such as an Average Treatment Effect (ATE). This approach conflates two distinct steps in causal analysis: identification, formulating a valid research design under stated assumptions, and estimation, implementing that design numerically on finite data. We introduce CausalReasoningBenchmark, a benchmark of 174 queries across 139 real-world datasets, curated from 73 peer-reviewed research papers and three widely used causal-inference textbooks. For each query, a system must produce (i) a structured identification specification that names the strategy, the treatment, outcome, and control variables, and all design-specific elements, and (ii) a point estimate with a standard error. By scoring these two components separately, our benchmark enables granular diagnosis: it distinguishes failures in causal reasoning from errors in numerical execution. Baseline results with a state-of-the-art LLM show that, while the model correctly identifies the high-level strategy in 81% of cases, full identification-specification correctness drops to only 38%, revealing that the bottleneck lies in the nuanced details of research design rather than in computation. CausalReasoningBenchmark is publicly available on Hugging Face and is designed to foster the development of more robust automated causal-inference systems.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:45:47Z",
+        "input_sha256": "c6be60030227a875043524331ceaf00c28435d628e01248978b2705d2d92f956",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "인과 추론의 식별과 추정을 분리 평가하는 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "인과 추론 식별·추정 분리 평가 벤치마크 공개(Hugging Face)"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40992674513",
+        "context_sha256": "0c13b961e64abe7544ff1f6d55e81365ebf7cfa53e876e6214d13997cde92d35"
+      },
+      "proposal_sha256": "8c3ae1b11ce4b229152462ba0701348d2c9404d434cccca0ea47e88d2b64e775"
     }
   },
   "processed_comments": [],
@@ -55488,8 +55655,8 @@
         "2602.20571"
       ],
       "abstract_attempted": [],
-      "calls": 18,
-      "cost_usd": 10.769
+      "calls": 19,
+      "cost_usd": 11.3477
     }
   },
   "reaudits": [
