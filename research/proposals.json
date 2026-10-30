@@ -26057,6 +26057,164 @@
       },
       "issue_url": null,
       "proposal_sha256": "56433da206a47090cc73225631a6ecbf192d20b8d68cad4ad445da3242f64646"
+    },
+    "2609.28230": {
+      "decision": "propose",
+      "reason": "이 논문은 모델 계열 O2-VG와 함께 DIOR-R-RSVG라는 새 데이터셋을 구축했다. 이는 이미지, 영어 지시 표현, 방향성 박스 삼중쌍으로 이뤄진 재사용 가능한 원격탐사 시각 접지 벤치마크다. 영어 표현 예시가 PDF에 있어 en 트랙, 이미지가 필수이므로 vision으로 분류했다. 링크는 PDF가 명시한 공식 코드 저장소를 썼다. 데이터셋 전용 URL은 PDF에 없고, 라이선스와 lm-eval 지원은 확인하지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "dior-r-rsvg",
+            "이름": "DIOR-R-RSVG",
+            "평가 축": "이미지(원격탐사 방향성 객체 시각 접지)",
+            "언어": "en",
+            "정의": "원격탐사 이미지에서 영어 지시 표현이 가리키는 객체를 방향성 박스(OBB)로 찾는 시각 접지 데이터셋. 이미지, 지시 표현, 방향성 박스 삼중쌍 38,320개로 구성되며 이미지는 800×800 크기 17,402장, 카테고리는 20개. 분할은 학습 26,991, 검증 3,829, 시험 7,500이다. 논문은 Pr@τ(회전 IoU 기준 정확도), meanIoU, cumIoU로 평가하며, 이미지·표현은 DIOR-RSVG에서, 방향성 박스는 DIOR-R에서 가져와 자동 매칭 후 사람이 검수했다.",
+            "대표 과제": "지시 표현에 해당하는 단일 객체의 방향성 박스(cx, cy, w, h, θ) 예측",
+            "대표 예시·설명": "원격탐사 이미지와 영어 표현(예: 이미지 왼쪽에 있는 비행기)이 주어지면 해당 객체의 방향성 박스를 예측하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 이 데이터셋은 DIOR-RSVG의 이미지·표현과 DIOR-R의 방향성 박스를 결합해 만든 파생 구성이므로(논문 6쪽) 각 원천 데이터의 이용 약관을 이용 전에 따로 확인해야 한다. PDF가 데이터셋 전용 URL을 명시하지 않아 링크는 논문이 밝힌 공식 코드 저장소이며, 데이터 배포 위치는 별도 확인이 필요하다. 논문 평가는 학습·검증을 학습에 쓰고 시험 셋으로 평가한다. 모델 비교 결과는 별도 증거 단계에서 다룬다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/wokaikaixinxin/ai4rs"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (oriented object visual grounding in remote sensing)",
+            "definition": "A visual grounding dataset in which an English referring expression identifies an object in a remote sensing image, and the answer is an oriented bounding box (OBB). It contains 38,320 image, expression, and oriented-box triplets over 17,402 images of 800x800 pixels and 20 categories, split into 26,991 train, 3,829 validation, and 7,500 test samples. The paper evaluates with Pr@tau (rotated-IoU accuracy), meanIoU, and cumIoU. Images and expressions come from DIOR-RSVG and oriented boxes from DIOR-R, matched automatically and then manually verified.",
+            "task": "Predict the oriented box (cx, cy, w, h, theta) of the single object described by a referring expression",
+            "example": "Task description: given a remote sensing image and an English expression such as a plane on the left side of the image, predict the oriented box of the referred object."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "remote sensing images"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "DIOR-R-RSVG, a dataset"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "The plane is"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "Code is available"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "The plane is"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "DIOR-R-RSVG, a dataset"
+            },
+            "정의": {
+              "page": 7,
+              "quote": "38,320 expressions"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "DIOR-R-RSVG, a dataset"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.28230",
+      "paper_title": "A Unified Framework and Dataset for Oriented Object Visual Grounding in Remote Sensing",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.28230",
+        "sha256": "207c356378a88558a47dc490d8b606d54ccd35c36edb1e5f9f06b7c959c82f4e",
+        "accessed": "2026-10-30T02:45:19Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 13,
+          "elapsed_seconds": 95.42,
+          "pdf_sha256": "207c356378a88558a47dc490d8b606d54ccd35c36edb1e5f9f06b7c959c82f4e",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7e47ed2de2715f3b23f51013db56cf197b1d4b3ee7ef06994c4c96a883c1f3fb",
+          "page_json_file": "2609.28230.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/wokaikaixinxin/ai4rs",
+            "fetched_url": "https://api.github.com/repos/wokaikaixinxin/ai4rs/readme",
+            "sha256": "442db856d775bf7db5fa6c215719b2f5fed5b40b35ca2a3a394eeb2c7afb7dd7",
+            "accessed": "2026-10-30T02:47:21Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/wokaikaixinxin/ai4rs/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-30T02:47:21Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.28230",
+        "paper_title": "A Unified Framework and Dataset for Oriented Object Visual Grounding in Remote Sensing",
+        "abstract": "Visual grounding in remote sensing images aims to locate objects described by referring expressions. Most existing methods predict horizontal bounding boxes, which are often inaccurate for objects with arbitrary orientations. To address this limitation, we introduce O$^2$-VG, a family of models for oriented object visual grounding with three complementary designs. Specifically, O$^2$-VG-Trans is a cross-modality transformer for oriented object visual grounding. It establishes a strong discriminative foundation for the model family. Building upon it, O$^2$-VG-Uni predicts universal oriented proposals for possible foreground objects without specific text prompts. It also supports object retrieval through cached proposal embeddings. Using these universal oriented proposals as input prompts, O$^2$-VG-VLM is an autoregressive vision-language model. It generates oriented box token blocks in parallel through multi-token prediction. In addition, we construct DIOR-R-RSVG, a dataset for oriented object visual grounding in remote sensing images. It provides image, expression, and oriented box triplets for training and evaluation. Together, the O$^2$-VG family provides a flexible framework that spans discriminative transformers and generative vision-language models. It achieves superior performance across multiple benchmarks. Code is available at https://github.com/wokaikaixinxin/ai4rs and https://github.com/wokaikaixinxin/Eagle_o2_vg.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:45:34Z",
+        "input_sha256": "552252415f9ea1f5494bbccec78673355e74af3c5a503f2af8838989465ac2e5",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "원격탐사 지향 객체 시각적 그라운딩 데이터셋"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "원격 감지 방향 객체 그라운딩 데이터셋·프레임워크 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40992674513",
+        "context_sha256": "f2a4c04c463fe3891439b3213578afde415053b578d65cd944513dc37df4ea04"
+      },
+      "proposal_sha256": "b665d7d4d3b7b1bb5687dc58685c0681161e2cd24ff7d0b7cad97957cea0ffad"
     }
   },
   "processed_comments": [],
@@ -53745,7 +53903,9 @@
         "2606.31672",
         "2609.28230"
       ],
-      "abstract_attempted": []
+      "abstract_attempted": [],
+      "calls": 1,
+      "cost_usd": 0.5891
     }
   },
   "reaudits": [
