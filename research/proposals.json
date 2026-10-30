@@ -26326,7 +26326,7 @@
     },
     "2609.32533": {
       "decision": "propose",
-      "reason": "LLMAdBench는 LLM 응답에 삽입된 광고의 위치(front/early/late/end)를 인간 선호로 비교하는 재사용 가능한 신규 벤치마크이다. 영어 대화와 영어 평가 프롬프트를 쓰고 입력이 텍스트뿐이므로 en 트랙의 text로 분류했다. 공식 데이터셋 URL은 초록에 명시되어 있다. 라이선스와 lm-eval 지원은 확인하지 않아 '확인 불가'로 기록했다.",
+      "reason": "LLMAdBench는 LLM 응답에 삽입된 광고의 위치(front/early/late/end)를 인간 선호로 비교하는 재사용 가능한 신규 벤치마크이다. 영어 대화와 영어 평가 프롬프트를 쓰고 입력이 텍스트뿐이므로 en 트랙의 text로 분류했다. 공식 카드가 CC BY 4.0을 명시하므로 라이선스는 카드 문구로 기록했고, 카드와 논문 어디에도 lm-eval 언급이 없어 '미표기'로 기록했다. 대화 문맥(WildChat)과 광고 소재(Webis)는 별도 원천이라 각 원천의 약관을 따로 확인하도록 안내했다. 성능은 논문 부록 Table 5의 스폰서 표시 없는(unlabeled) 조건 held-out A/B/T 정확도로 제시했다.",
       "changes": [
         {
           "track": "en",
@@ -26339,12 +26339,12 @@
             "대표 과제": "같은 응답에서 광고 위치만 다른 두 후보를 비교해 인간의 A/B/Tie 선호 라벨 예측(기준별, 스폰서 표시 유무별)",
             "대표 예시·설명": "사용자 질문과 LLM 응답, 광고가 주어지고 광고 위치만 다른 두 버전(Version A/B)을 보여준 뒤, 더 자연스러운 쪽 등 6개 기준에 대해 A, B, Tie를 고르게 하는 과제 설명(실제 문항 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 대화 문맥은 WildChat에서, 광고 소재는 Webis Generated Native Ads 2024에서 가져온 구성 요소이므로 각 원천의 약관을 이용 전에 따로 확인해야 한다. 클릭 가능성은 실제 클릭이 아니라 주석자의 진술된 의도이다. 평가는 영어 대화 258건 규모이며, 인간 주석자 12명이 라벨을 만들었다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-4.0",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "출처 표기(BY) 필요. 이 벤치마크는 다른 출처로 구성되어 있다: 대화 문맥은 WildChat에서, 광고 소재는 Webis Generated Native Ads 2024에서 가져왔다(논문 15쪽). 공식 카드도 원천 자료의 약관을 따로 지켜야 한다고 밝히므로, 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 클릭 가능성은 실제 클릭이 아니라 주석자의 진술된 의도이다. 영어 대화 258건 규모이며, 판정 모델 평가는 A/B 제시 순서에 민감하다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://huggingface.co/datasets/ruiai-work/LLMADBENCH"
           },
           "modality": "text",
@@ -26388,9 +26388,130 @@
               "quote": "human-preference benchmark for"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://huggingface.co/datasets/ruiai-work/LLMADBENCH",
+              "quote": "license: cc-by-4.0"
+            },
+            "상업적 이용": {
+              "source_url": "https://huggingface.co/datasets/ruiai-work/LLMADBENCH",
+              "quote": "Creative Commons Attribution 4.0 International License"
+            },
+            "수정·파생": {
+              "source_url": "https://huggingface.co/datasets/ruiai-work/LLMADBENCH",
+              "quote": "Creative Commons Attribution 4.0 International License"
+            },
+            "재배포": {
+              "source_url": "https://huggingface.co/datasets/ruiai-work/LLMADBENCH",
+              "quote": "Creative Commons Attribution 4.0 International License"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://huggingface.co/datasets/ruiai-work/LLMADBENCH",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Held-out exact three-way A/B/T prediction accuracy (%), unlabeled condition (advertisement inserted without a sponsorship marker)",
+            "setting": "Results reported in this paper (Table 5, arXiv:2609.32533), not a current global leaderboard. Same held-out test rows, unlabeled condition, same A/B/T label space, prompt format and parsing/scoring rules for all systems; zero-shot frontier judges versus Qwen3-8B before and after five-epoch DPO on LLMAdBench human preferences (fixed epoch-5 checkpoint). Accuracy is computed over individual rubric questions.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Qwen3-8B, post-DPO epoch 5",
+                "score": "55.76",
+                "evidence": {
+                  "page": 24,
+                  "quote": "Qwen3-8B, post-DPO epoch 5 50.54±1.62 55.76±1.59"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.4",
+                "score": "50.32",
+                "evidence": {
+                  "page": 24,
+                  "quote": "GPT-5.4 47.85±1.60 50.32±1.61"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini-3.1-Pro",
+                "score": "49.92",
+                "evidence": {
+                  "page": 24,
+                  "quote": "Gemini-3.1-Pro 48.14±1.60 49.92±1.60"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Kimi-K3",
+                "score": "49.87",
+                "evidence": {
+                  "page": 24,
+                  "quote": "Kimi-K3 47.23±1.60 49.87±1.61"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Mistral-Large-3",
+                "score": "48.76",
+                "evidence": {
+                  "page": 24,
+                  "quote": "Mistral-Large-3 46.39±1.60 48.76±1.61"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Claude-Opus-4.6",
+                "score": "48.74",
+                "evidence": {
+                  "page": 24,
+                  "quote": "Claude-Opus-4.6 46.96±1.60 48.74±1.60"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-4-Maverick",
+                "score": "48.09",
+                "evidence": {
+                  "page": 24,
+                  "quote": "Llama-4-Maverick 44.51±1.59 48.09±1.59"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Grok-4.1",
+                "score": "47.52",
+                "evidence": {
+                  "page": 24,
+                  "quote": "Grok-4.1 46.31±1.62 47.52±1.61"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DeepSeek-V4-Pro",
+                "score": "46.18",
+                "evidence": {
+                  "page": 24,
+                  "quote": "DeepSeek-V4-Pro 44.00±1.60 46.18±1.59"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-8B, pre-DPO",
+                "score": "36.52",
+                "evidence": {
+                  "page": 24,
+                  "quote": "Qwen3-8B, pre-DPO 40.25±1.59 36.52±1.53"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.32533",
@@ -26496,7 +26617,8 @@
         "source_run": "40992674513",
         "context_sha256": "b1b0e172d84ee4ddc3c294cbba5ac79e182468968ca27359b57c70666a709b73"
       },
-      "proposal_sha256": "15338da4ea3f69d22f0f9938c2f44f9a4aef3f00338ca11d7ff73a211c633785"
+      "proposal_sha256": "d73c68c1a94887e13dad83f73f4814c1bf5ea789062b5dfd9b0502e622ae9e38",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -54196,8 +54318,8 @@
         "2609.32533"
       ],
       "abstract_attempted": [],
-      "calls": 6,
-      "cost_usd": 3.6351
+      "calls": 7,
+      "cost_usd": 4.3185
     }
   },
   "reaudits": [
