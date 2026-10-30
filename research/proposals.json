@@ -28392,7 +28392,7 @@
     },
     "2609.33117": {
       "decision": "propose",
-      "reason": "ECG-Scroll은 장시간 보행 심전도(ECG)를 청크 단위로 스트리밍하며 에이전트가 SKIM, MEASURE, WRITE 행동과 신호 도구로 사건을 찾는 재사용 가능한 벤치마크 겸 에이전트 환경이다. 6개 과제는 규칙 기반 검증기로 채점하고 탐지 지연이라는 스트리밍 전용 지표를 둔다. 에이전트는 이미지를 보지 않고 도구가 반환한 수치만 관찰하므로 text이며, 프롬프트와 지시문이 영어라 en 트랙으로 분류했다. 논문이 직접 밝힌 코드·데이터 저장소가 있어 링크로 사용했다. 라이선스와 lm-eval 지원 여부는 PDF에서 확인되지 않아 '확인 불가'로 기록했다.",
+      "reason": "ECG-Scroll은 장시간 보행 심전도(ECG)를 청크 단위로 스트리밍하며 에이전트가 SKIM, MEASURE, WRITE 행동과 신호 도구로 사건을 찾는 재사용 가능한 벤치마크 겸 에이전트 환경이다. 6개 과제는 규칙 기반 검증기로 채점하고 탐지 지연이라는 스트리밍 전용 지표를 둔다. 에이전트는 이미지를 보지 않고 도구가 반환한 수치만 관찰하므로 text이며, 프롬프트와 지시문이 영어라 en 트랙으로 분류했다. 공식 저장소 README와 LICENSE 파일이 MIT를 명시하므로 이를 근거로 기록하되, PhysioNet 원천 데이터베이스는 각자의 라이선스를 유지한다고 README가 밝히므로 이용 시 유의사항에 적었다. 공식 카드에 lm-eval 언급이 없어 lm-eval 지원은 미표기로 두었다. 권고 결과는 논문 Table 4(Judge agent, +dx, 에피소드 탐지 F1)의 단일 실험에서 가져왔다.",
       "changes": [
         {
           "track": "en",
@@ -28405,12 +28405,12 @@
             "대표 과제": "에피소드 탐지(AF 에피소드 구간을 temporal F1으로 채점)",
             "대표 예시·설명": "영어 시스템 프롬프트로 숙련된 심장내과 의사 역할을 부여받은 에이전트가 skim, measure, write 행동으로 도착한 신호를 수치 도구(get_rate_rhythm, get_st 등)로 측정하고, 발견한 사건 구간을 기록하는 과제 설명.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 PDF에서 확인하지 못해 모두 '확인 불가'로 둔다. 이 벤치마크는 PhysioNet의 MIT-BIH Arrhythmia, MIT-BIH AF, Long-Term AF, European ST-T, Icentia11K 같은 기존 데이터베이스의 기록과 주석을 재활용하므로(논문 4~5쪽), 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 논문은 탐지 지연 지표가 아직 의미 있게 측정되지 않는다고 밝혔고, 모든 모델이 같은 조건의 단일 결과표로만 보고된다. 입력은 수치 신호 도구 출력이며 이미지 렌더링은 없다. 평가에는 WFDB 기반 환경 실행이 필요하다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(저장소 자체 저작물 한정. PhysioNet 원천 DB는 각자 라이선스)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "공식 저장소 README와 LICENSE 파일의 MIT는 저장소 자체 저작물에 대한 것이며, README는 PhysioNet 원천 데이터베이스가 각자의 라이선스를 유지한다고 밝힌다. 이 벤치마크는 PhysioNet의 MIT-BIH Arrhythmia, MIT-BIH Atrial Fibrillation, Long-Term AF, European ST-T 데이터베이스와 Icentia11K 코퍼스의 기록·주석을 재활용하므로(논문 4쪽 3.2절, 5쪽), 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. README는 MIT-BIH Long-Term 데이터베이스도 원천으로 열거한다. MIT 표기와 저작권 고지 포함이 필요하다. 논문은 탐지 지연 지표가 현재 에이전트로는 의미 있게 측정되지 않는다고 밝혔다. 입력은 수치 신호 도구 출력이며 이미지 렌더링은 없다. 공식 카드에 lm-eval 언급이 없고 자체 실행 스크립트로 평가한다. 평가에는 WFDB 기반 환경 실행이 필요하다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/CuCl-2/ECG-Scroll"
           },
           "modality": "text",
@@ -28454,9 +28454,131 @@
               "quote": "streaming, causal"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/CuCl-2/ECG-Scroll",
+              "quote": "Released under the MIT License"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/CuCl-2/ECG-Scroll",
+              "quote": "and/or sell"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/CuCl-2/ECG-Scroll",
+              "quote": "copy, modify, merge, publish"
+            },
+            "재배포": {
+              "source_url": "https://github.com/CuCl-2/ECG-Scroll",
+              "quote": "distribute, sublicense"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/CuCl-2/ECG-Scroll",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Episode detection temporal F1 (IoU ≥ τ, τ=0.5 default), unitless score in [0, 1]",
+            "setting": "Results reported in this paper (arXiv 2609.33117), Table 4, not a current global leaderboard. Judge agent (planning removed: the environment walks the recording in fixed 30 s chunks and the model flags event chunks), +dx tier (signal tools plus diagnostic tools), episode detection task on afdb/ltafdb whole recordings (N=107). No model is trained on the benchmark. The non-LLM Rule Agent reference row of the same table is omitted. The paper does not state a token budget.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Qwen3-8B",
+                "score": "0.50",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Qwen3-8B –dx 0.02 0.30 0.09 0.04 0.23 0.00 +dx 0.50"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "We evaluate open-weight models across scales and families, Qwen3"
+                }
+              },
+              {
+                "model": "Qwen3-30B",
+                "score": "0.51",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Qwen3-30B –dx 0.01 0.31 0.04 0.05 0.41 0.00 +dx 0.51"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "We evaluate open-weight models across scales and families, Qwen3"
+                }
+              },
+              {
+                "model": "Qwen3-235B",
+                "score": "0.52",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Qwen3-235B –dx 0.02 0.31 0.09 0.10 0.46 0.00 +dx 0.52"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "We evaluate open-weight models across scales and families, Qwen3"
+                }
+              },
+              {
+                "model": "Qwen3-30B-Thinking",
+                "score": "0.50",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Qwen3-30B-Thinking –dx 0.02 0.31 0.04 0.05 0.38 0.00 +dx 0.50"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "We evaluate open-weight models across scales and families, Qwen3"
+                }
+              },
+              {
+                "model": "GLM-4.5-Air",
+                "score": "0.29",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GLM-4.5-Air –dx 0.01 0.31 0.17 0.05 0.18 0.00 +dx 0.29"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "We evaluate open-weight models across scales and families, Qwen3"
+                }
+              },
+              {
+                "model": "Llama-3.3-70B",
+                "score": "0.47",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-3.3-70B –dx 0.02 0.32 0.17 0.06 0.22 0.00 +dx 0.47"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "We evaluate open-weight models across scales and families, Qwen3"
+                }
+              },
+              {
+                "model": "DeepSeek-V4.1",
+                "score": "0.52",
+                "evidence": {
+                  "page": 8,
+                  "quote": "DeepSeek-V4.1 –dx 0.03 0.32 0.13 0.12 0.37 0.00 +dx 0.52"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "proprietary DeepSeek-V4.1-Flash"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.33117",
@@ -28548,7 +28670,8 @@
         "source_run": "40992674513",
         "context_sha256": "ad8a8687ac12f5f0134be3e3de8547d1caab7d43fcd34085b0f37b42100f8b16"
       },
-      "proposal_sha256": "785beee6492e17e1b2949e7edc51e0baa24cefe09bdaf58d867546bc0a9cb99b"
+      "proposal_sha256": "101413306422243e03bccac1b9d3e4a90fb2c8192b0e7d50dcdaf94e575fc396",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -56273,8 +56396,8 @@
         "2609.33117"
       ],
       "abstract_attempted": [],
-      "calls": 28,
-      "cost_usd": 16.3063
+      "calls": 29,
+      "cost_usd": 16.9315
     }
   },
   "reaudits": [
