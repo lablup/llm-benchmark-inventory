@@ -27437,7 +27437,7 @@
     },
     "2609.35879": {
       "decision": "propose",
-      "reason": "CruxBench는 모델이 최종 예측 질문에 대해 정보가 되는 하위 질문(crux)을 생성하게 하고, 예측시장의 믿음 변화(KL 기반 VOI)로 채점하는 재사용 가능한 새 벤치마크다. 과제 질문과 프롬프트가 영어(Louvre 보석 질문 등)이고 텍스트 입력만 쓰므로 en/text 트랙에 해당한다. 공식 코드·데이터 링크는 논문 2쪽 각주에 있다. 라이선스와 하니스 지원은 확인되지 않아 '확인 불가'로 기록했다.",
+      "reason": "CruxBench는 모델이 최종 예측 질문에 대해 정보가 되는 하위 질문(crux)을 생성하게 하고, 예측시장의 믿음 변화(KL 기반 VOI)로 채점하는 재사용 가능한 새 벤치마크다. 과제 질문과 프롬프트가 영어(Louvre 보석 질문 등)이고 텍스트 입력만 쓰므로 en/text 트랙에 해당한다. 공식 코드·데이터 링크는 논문 2쪽 각주에 있다. 공식 저장소 README에는 라이선스와 lm-eval 언급이 없고 논문 본문에도 라이선스 언급이 없다. 그래서 라이선스는 '미표기(논문·공식 저장소 확인)'로 두고 세 권리 항목은 '저작권 전부 보유'로, lm-eval 지원은 '미표기'로 기록했다.",
       "changes": [
         {
           "track": "en",
@@ -27450,12 +27450,12 @@
             "대표 과제": "최종 예측 질문이 주어지면 지정된 30일 창 안에 해결될 이진 crux 하나를 생성",
             "대표 예시·설명": "과제 설명: 최종 질문(예: 도난당한 루브르 보석이 반환될지)을 주면 모델이 창 안에 해결될 하위 질문을 제안하고, 그 해결이 시장의 믿음을 얼마나 바꾸는지로 점수를 매긴다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터와 코드의 라이선스를 확인하지 못했다. 이용 전에 공식 저장소에서 데이터와 코드 약관을 각각 따로 확인해야 한다. 채점에는 resolver 에이전트와 뉴스 검색 도구 등 외부 환경이 필요하다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 다른 출처로 구성되어 있다: Polymarket 예측시장의 시장 질문과 가격 이력(논문 6쪽), 그리고 생성 모델과 예측자에게 제공되는 AskNews 뉴스 기사(논문 6쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 채점에는 resolver 에이전트와 뉴스 검색 도구 등 외부 환경이 필요하다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/ai-prophet/cruxbench"
           },
           "modality": "text",
@@ -27499,9 +27499,128 @@
               "quote": "CruxBench, a benchmark"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/ai-prophet/cruxbench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/ai-prophet/cruxbench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/ai-prophet/cruxbench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/ai-prophet/cruxbench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/ai-prophet/cruxbench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "KL VOI (Value of Information), 단위 bit (값이 클수록 우수)",
+            "setting": "이 논문의 Table 1(7쪽)에 보고된 결과이며 현재의 전역 리더보드가 아니다. 동일 데이터셋: Polymarket 최종 질문 293개(질문당 30일 창 하나, 질문당 crux 하나, J=1). 생성 단계는 창 시작 전 AskNews 기사 최대 10건을 제공하고 웹 검색은 끈다. 해결은 Claude-Sonnet-4.6 resolver와 Claude-Sonnet-5 timestamp verifier가 수행하며, 해결 불가 crux는 0으로 채점한다. 믿음 추정은 해결 시점 전후 24시간 평균 가격을 쓰고, max_tokens 16,000과 각 제공자의 기본 샘플링 설정을 사용했다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Claude-Opus-4.6 (claude-opus-4-6)",
+                "score": "0.016",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude-Opus-4.6 0.016"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini-3.1-Pro-Preview (gemini-3.1-pro-preview)",
+                "score": "0.014",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemini-3.1-Pro-Preview 0.014"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.4 (gpt-5.4)",
+                "score": "0.013",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5.4 0.013"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DeepSeek-V3.1 (deepseek-ai/DeepSeek-V3.1)",
+                "score": "0.012",
+                "evidence": {
+                  "page": 7,
+                  "quote": "DeepSeek-V3.1 0.012"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 22,
+                  "quote": "Llama-3.3-70B, DeepSeek-V3.1, Qwen3-235B-A22B"
+                }
+              },
+              {
+                "model": "Qwen3-235B-A22B (Qwen/Qwen3-235B-A22B-Instruct-2507-tput)",
+                "score": "0.012",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3-235B-A22B 0.012"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 22,
+                  "quote": "Llama-3.3-70B, DeepSeek-V3.1, Qwen3-235B-A22B"
+                }
+              },
+              {
+                "model": "Llama-3.3-70B (meta-llama/Llama-3.3-70B-Instruct-Turbo)",
+                "score": "0.010",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Llama-3.3-70B 0.010"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 22,
+                  "quote": "Llama-3.3-70B, DeepSeek-V3.1, Qwen3-235B-A22B"
+                }
+              },
+              {
+                "model": "Llama-3.1-8B-Instruct (meta-llama/Llama-3.1-8B-Instruct)",
+                "score": "0.010",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Llama-3.1-8B-Instruct 0.010"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-3.5-Turbo (gpt-3.5-turbo-1106)",
+                "score": "0.009",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-3.5-Turbo 0.009"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.35879",
@@ -27609,7 +27728,8 @@
         "source_run": "40992674513",
         "context_sha256": "028a828f455be53df9cb38d080c57ca0355b7e9d05d1bc9af11b3a156e005cb8"
       },
-      "proposal_sha256": "13bf4fdd1d97e8e2eb50e0649382a8468714e0e2b0d70d4cf995a7021dd23296"
+      "proposal_sha256": "deace0a4140dace53c527f4c11dc27776441d68dfd35ff256b90004dd727d489",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -55321,8 +55441,8 @@
         "2609.35879"
       ],
       "abstract_attempted": [],
-      "calls": 16,
-      "cost_usd": 9.5986
+      "calls": 17,
+      "cost_usd": 10.198
     }
   },
   "reaudits": [
