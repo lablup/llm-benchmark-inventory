@@ -27778,74 +27778,9 @@
       }
     },
     "2602.20571": {
-      "decision": "propose",
-      "reason": "인과 추론 벤치마크 CausalReasoningBenchmark를 새로 소개한 논문이다. 영어 인과 질문과 CSV 데이터로 식별 명세와 효과 추정을 따로 채점한다. 쿼리 174개와 데이터셋 139개 규모이며, Hugging Face 링크가 PDF에 명시되어 있다. 입력이 텍스트와 표 데이터뿐이라 en 트랙의 text 모달리티로 분류했다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "causalreasoningbenchmark",
-            "이름": "CausalReasoningBenchmark",
-            "평가 축": "에이전트·추론(인과 식별과 추정의 분리 평가)",
-            "언어": "en",
-            "정의": "실제 연구 논문 73편과 인과추론 교재 3권에서 만든 174개 쿼리(데이터셋 139개) 벤치마크. 시스템은 전략·처치·결과·통제변수와 설계별 요소를 담은 구조화된 식별 명세(JSON)와, 점추정치 및 표준오차를 함께 내야 한다. 두 구성요소를 따로 채점해 인과 추론 실패와 수치 실행 오류를 구분한다. 포함 설계는 IV, RDD, DiD, 조건부 외생성, RCT이다.",
-            "대표 과제": "자연어 인과 질문, CSV 데이터, 메타데이터가 주어지면 식별 명세와 효과 추정치·표준오차를 산출",
-            "대표 예시·설명": "선거 참여가 이후 예비선거 참여에 미치는 인과 효과를 묻는 영어 질문이 주어지면, 에이전트가 무작위 우편 발송을 도구변수로 삼는 설계와 LATE 추정 대상을 식별하고 추정치를 계산하는 과제 설명",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. 데이터는 연구 논문과 교재의 재분석 자료에서 가져왔으므로 개별 데이터셋 약관은 이용 전에 따로 확인해야 한다. lm-eval 지원 여부도 확인하지 못했다. 논문의 연구 논문 하위 집합은 정치학 분야에 한정되며 쿼리마다 정답 명세가 하나뿐이다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agents and reasoning (disentangled evaluation of causal identification and estimation)",
-            "definition": "A benchmark of 174 queries over 139 datasets curated from 73 research papers and three causal-inference textbooks. A system must output a structured identification specification (JSON) naming the strategy, treatment, outcome, controls and design-specific elements, plus a point estimate with a standard error. The two components are scored separately to distinguish failures of causal reasoning from errors in numerical execution. Designs covered are IV, RDD, DiD, conditional exogeneity and RCT.",
-            "task": "Given a natural-language causal question, a CSV dataset and metadata, produce an identification specification and an effect estimate with its standard error.",
-            "example": "Task description: given an English question about the causal effect of voting in one election on voting in a later primary, the agent must recognize the randomized mailing as an instrument, identify the LATE as the estimand, and compute the estimate."
-          },
-          "evidence": {
-            "modality": {
-              "page": 3,
-              "quote": "dataset in CSV"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "structured identification specification"
-            },
-            "대표 예시·설명": {
-              "page": 11,
-              "quote": "What is the"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark"
-            },
-            "언어": {
-              "page": 11,
-              "quote": "What is the"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "huggingface.co/datasets/syrgkanislab/CausalReasoningBenchmark"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "174 queries across"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "Disentangled Evaluation of"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "권리 항목은 근거가 확보됐지만 recommendations에 넣을 수 있는 점수 근거가 없어 게시하지 않는다. 논문이 평가한 모델은 GPT-5.3 하나뿐이다. 모델명(9쪽 Table 5·6 캡션의 'GPT-5.3 baseline', 8쪽의 'gpt-5.3')과 점수(9쪽 표의 '37.9% (66/174)')가 서로 다른 위치에 있어서, 모델명과 점수를 함께 담은 연속된 짧은 인용문을 PDF에서 찾을 수 없다. 이 상태에서는 results의 evidence 규칙을 지킬 수 없고, 모델을 조합하거나 점수를 임의로 연결해서도 안 된다. 라이선스는 논문 12쪽이 메타데이터·평가 코드·정답 식별 명세에 MIT를 부여하고 원본 데이터셋은 각자의 원 라이선스를 따른다고 밝히므로, 카드의 LICENSE.txt(MIT)가 모든 구성 요소에 적용되는 것은 아니다. 따라서 '미표기' 처리나 absence 증거는 쓸 수 없고 12쪽 문구를 직접 인용해야 한다. 이 benchmark는 정치학 재분석 연구(IV 67편, RDD 45편, DiD 49편 대상: 4쪽)와 교재 3권(Mixtape, The Effect, What If: 4쪽)의 데이터를 포함하므로, 이용 시 유의사항에 이 구성 요소들을 명시하고 각자의 약관을 따로 점검하도록 적어야 한다. lm-eval 지원은 공식 카드에 언급이 없어 '미표기'와 absence 증거로 처리할 수 있다. 모델명과 점수가 함께 나온 표 이미지나 문장이 확보되면 recommendations를 채워 다시 제안할 수 있다.",
+      "changes": [],
       "arxiv_id": "2602.20571",
       "paper_title": "CausalReasoningBenchmark: A Real-World Benchmark for Disentangled Evaluation of Causal Identification and Estimation",
       "paper_updated": "2026-09-29T00:00:00Z",
@@ -27912,7 +27847,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-30T03:39:49Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -27938,11 +27873,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "40992674513",
-        "context_sha256": "0c13b961e64abe7544ff1f6d55e81365ebf7cfa53e876e6214d13997cde92d35"
-      },
-      "proposal_sha256": "8c3ae1b11ce4b229152462ba0701348d2c9404d434cccca0ea47e88d2b64e775"
+      "proposal_sha256": "718c82da5009c62700c8bc8a62bcabf1cb1db0bbd9d2a0c195f80fdf75726b15",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -55655,8 +55588,8 @@
         "2602.20571"
       ],
       "abstract_attempted": [],
-      "calls": 19,
-      "cost_usd": 11.3477
+      "calls": 20,
+      "cost_usd": 11.9723
     }
   },
   "reaudits": [
