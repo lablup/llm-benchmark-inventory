@@ -26246,6 +26246,83 @@
       },
       "issue_url": null,
       "proposal_sha256": "d05b813a96a9d86f8ee5387e521999f05d1a07f4259ed7160d1013cf9844a7da"
+    },
+    "2609.32283": {
+      "decision": "needs_evidence",
+      "reason": "AgentReplay는 LLM 에이전트 서빙 시스템의 성능을 공정하게 비교하기 위한 트레이스 기록·재생 프레임워크로, 모델의 지식·추론·코딩 능력을 재는 재사용 가능한 과제 벤치마크가 아니다. 실험도 Astropy와 SymPy 에이전트 과제와 SWE-bench 인스턴스 하나(sympy-12419)를 재료로 서빙 워크로드의 변동성(CV)만 측정한다. 새 데이터셋이나 문항 수, 분할이 정의되어 있지 않고, 과제 언어를 보여 주는 프롬프트·지시문 인용도 PDF에 없다. 또한 PDF 어디에도 공식 데이터셋이나 코드 URL이 명시되어 있지 않아 '링크' 근거를 댈 수 없다. 서빙 성능 평가 방법론으로는 의미가 있지만 현재 근거로는 인벤토리 행을 제안할 수 없으므로 변경 없이 근거 부족으로 처리한다.",
+      "changes": [],
+      "arxiv_id": "2609.32283",
+      "paper_title": "AgentReplay: Token-Wise Trace Replay Is Essential for Fair Serving System Performance Benchmarking",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.32283",
+        "sha256": "0e4d7a969086e938e112848efcc2511b417610ae5231e4fc3e53c61209c73a10",
+        "accessed": "2026-10-30T02:52:34Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 14,
+          "elapsed_seconds": 56.57,
+          "pdf_sha256": "0e4d7a969086e938e112848efcc2511b417610ae5231e4fc3e53c61209c73a10",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "e50a96d217a6717ecf685cab8e25437bebcf830432226b4ff53b2753be5f83ae",
+          "page_json_file": "2609.32283.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-10-30T02:53:41Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.32283",
+        "paper_title": "AgentReplay: Token-Wise Trace Replay Is Essential for Fair Serving System Performance Benchmarking",
+        "abstract": "LLM-based agents execute multi-turn workflows with interleaved model inference and tool calls, making efficient serving increasingly important. However, evaluating serving optimizations is challenging because identical tasks can produce different execution trajectories. Changes in generated tokens can alter subsequent prompts, tool calls, and reasoning turns, making it difficult to distinguish system improvements from workload variation. Greedy decoding does not guarantee identical outputs, while replaying only sequence lengths loses token information that affects prefix caching and mixture-of-experts (MoE) routing. To address these problems, we propose AgentReplay, a configurable trace record-and-replay framework for agent serving. AgentReplay records input/output tokens, expert selections, request dependencies, and tool durations. During replay, it forces the recorded output tokens while performing normal autoregressive computation, with optional controls for MoE expert selection and tool delays. This allows different systems to execute the same recorded workload while retaining their own batching, scheduling, and parallelization decisions. We further separate trajectory generation from performance evaluation, enabling compatible smaller models to replay long-horizon traces collected with more capable models. Our experiments show that token-wise replay in AgentReplay effectively eliminates workload variation that greedy decoding and length-wise replay cannot avoid, enabling fairer performance comparisons across serving configurations.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:45:34Z",
+        "input_sha256": "f0ffd9aed1064d4350128f7a3a7ade55faa4dade9eb5ed97a043f4b07aeeb5d1",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 서빙 성능 벤치마킹 재현 프레임워크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 서빙 성능 벤치마킹 프레임워크 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "75dbfd2b813b17d7a8008604400cf379a0b4a2f1da93797a7d67521fbbbebb99"
     }
   },
   "processed_comments": [],
@@ -53942,8 +54019,8 @@
         "2609.32283"
       ],
       "abstract_attempted": [],
-      "calls": 3,
-      "cost_usd": 1.8717
+      "calls": 4,
+      "cost_usd": 2.3622
     }
   },
   "reaudits": [
