@@ -28389,6 +28389,166 @@
       },
       "issue_url": null,
       "proposal_sha256": "3041255b16ec638731394e7e9ebb6373d339f3b06d46f633c11c73f45038228c"
+    },
+    "2609.33117": {
+      "decision": "propose",
+      "reason": "ECG-Scroll은 장시간 보행 심전도(ECG)를 청크 단위로 스트리밍하며 에이전트가 SKIM, MEASURE, WRITE 행동과 신호 도구로 사건을 찾는 재사용 가능한 벤치마크 겸 에이전트 환경이다. 6개 과제는 규칙 기반 검증기로 채점하고 탐지 지연이라는 스트리밍 전용 지표를 둔다. 에이전트는 이미지를 보지 않고 도구가 반환한 수치만 관찰하므로 text이며, 프롬프트와 지시문이 영어라 en 트랙으로 분류했다. 논문이 직접 밝힌 코드·데이터 저장소가 있어 링크로 사용했다. 라이선스와 lm-eval 지원 여부는 PDF에서 확인되지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "ecg-scroll",
+            "이름": "ECG-Scroll",
+            "평가 축": "에이전트(장기 스트리밍 ECG 해석)",
+            "언어": "en",
+            "정의": "장시간 보행(Holter) 2리드 심전도를 30초 청크 단위로 에이전트에 스트리밍하고, 미래 신호를 보지 못하는 인과적 조건에서 발작성 사건을 찾아 정량화하고 기록하게 하는 벤치마크 겸 gym 스타일 에이전트 환경. 전체 기록 단위 390개 인스턴스(247개 기록, 총 2,536시간)이며 6개 과제(에피소드 탐지, AF 부담, 변화점 탐지, 허혈 탐지, PVC 부담, 희귀 사건 탐색)를 규칙 기반 검증기로 채점한다(temporal F1, 상대오차 점수, hit@±10s, hit@±15s). 기록 시점이 찍히므로 사건 발생 시점부터 기록까지의 탐지 지연도 측정할 수 있다. 논문은 규칙 에이전트와 LLM 에이전트를 진단 도구 사용 여부(+dx/-dx)와 계획 주체(Planning/Judge)에 따라 평가했다.",
+            "대표 과제": "에피소드 탐지(AF 에피소드 구간을 temporal F1으로 채점)",
+            "대표 예시·설명": "영어 시스템 프롬프트로 숙련된 심장내과 의사 역할을 부여받은 에이전트가 skim, measure, write 행동으로 도착한 신호를 수치 도구(get_rate_rhythm, get_st 등)로 측정하고, 발견한 사건 구간을 기록하는 과제 설명.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 PDF에서 확인하지 못해 모두 '확인 불가'로 둔다. 이 벤치마크는 PhysioNet의 MIT-BIH Arrhythmia, MIT-BIH AF, Long-Term AF, European ST-T, Icentia11K 같은 기존 데이터베이스의 기록과 주석을 재활용하므로(논문 4~5쪽), 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 논문은 탐지 지연 지표가 아직 의미 있게 측정되지 않는다고 밝혔고, 모든 모델이 같은 조건의 단일 결과표로만 보고된다. 입력은 수치 신호 도구 출력이며 이미지 렌더링은 없다. 평가에는 WFDB 기반 환경 실행이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/CuCl-2/ECG-Scroll"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (long-horizon streaming ECG interpretation)",
+            "definition": "A benchmark and gym-style agent environment in which long two-lead ambulatory (Holter) ECG recordings are streamed to an agent in 30-second chunks, without access to future signal. The agent must localize, quantify and record paroxysmal events. It has 390 whole-recording instances (247 recordings, 2,536 hours in total) across six tasks (episode detection, AF burden, change detection, ischemia detection, PVC burden, rare-event search), all scored by rule-based verifiers (temporal F1, relative-error score, hit@±10s, hit@±15s). Because every memory write is timestamped, detection latency from event onset to recording can also be measured. The paper evaluates a rule agent and LLM agents with and without diagnostic tools (+dx/-dx) and with agent-driven (Planning) versus environment-driven (Judge) scanning.",
+            "task": "Episode detection (AF episode intervals scored by temporal F1)",
+            "example": "Task description: given an English system prompt casting it as an expert cardiologist, the agent issues skim, measure and write actions, measures elapsed signal with numeric tools such as get_rate_rhythm and get_st, and records the event intervals it finds."
+          },
+          "evidence": {
+            "modality": {
+              "page": 6,
+              "quote": "The agent never"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "Episode detection"
+            },
+            "대표 예시·설명": {
+              "page": 13,
+              "quote": "expert cardiologist reading"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/CuCl-2/ECG-Scroll"
+            },
+            "언어": {
+              "page": 13,
+              "quote": "expert cardiologist reading"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "github.com/CuCl-2/ECG-Scroll"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "390 whole-recording instances"
+            },
+            "평가 축": {
+              "page": 2,
+              "quote": "streaming, causal"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.33117",
+      "paper_title": "ECG-Scroll: A Long-Horizon, Streaming Benchmark and Agent Environment for Interpretation of Ambulatory Electrocardiograms",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.33117",
+        "sha256": "14843b36b2ad2ecf4f44e6ce13f81490a228fdaaf2985847ab207c6441b68650",
+        "accessed": "2026-10-30T04:05:03Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 15,
+          "elapsed_seconds": 79.43,
+          "pdf_sha256": "14843b36b2ad2ecf4f44e6ce13f81490a228fdaaf2985847ab207c6441b68650",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "831bacd0709c5d2c5ea3eb51ebda507855932aeadb7323a3612556d724a2408a",
+          "page_json_file": "2609.33117.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/CuCl-2/ECG-Scroll",
+            "fetched_url": "https://api.github.com/repos/CuCl-2/ECG-Scroll/readme",
+            "sha256": "6afe3295dc5c7cb7b6c67b6dec835ec33e123b9fd49fc77eb6b44779d888407e",
+            "accessed": "2026-10-30T04:06:55Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/CuCl-2/ECG-Scroll/license",
+              "name": "LICENSE",
+              "spdx_id": "NOASSERTION",
+              "sha256": "bcaa4e38d614f378a6fe95cac524c4499544f9a393be2420f0d9557e26e8dd45"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-30T04:06:55Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.33117",
+        "paper_title": "ECG-Scroll: A Long-Horizon, Streaming Benchmark and Agent Environment for Interpretation of Ambulatory Electrocardiograms",
+        "abstract": "Multimodal large language models (MLLMs) can now interpret a standard ten-second, twelve-lead electrocardiogram (ECG) with clinically grounded, reward-verified reasoning. Real cardiac monitoring is different. Ambulatory (Holter) and telemetry recordings span hours to days and are read as they stream in, and their clinically decisive findings are paroxysmal, brief episodes buried in an otherwise unremarkable trace. Such a recording cannot be held in one context at diagnostic resolution, and its future has not yet happened, so a reader must work online, deciding what to measure now, committing evidence to memory as it passes, and reporting events as they occur. We recast long-duration ECG interpretation as a long-horizon, online (streaming, causal) sequential decision process and introduce ECG-Scroll. As a benchmark, long ambulatory recordings are streamed to an agent chunk by chunk, and it must localize, quantify, and promptly flag paroxysmal events without access to future signal; because the underlying signal is retained, every answer is checkable against objective ground truth, giving rule-based rather than judge-based rewards, and the streaming formulation adds a metric batch evaluation cannot express, the detection latency between an event's onset and the moment the agent records it. As an agent environment, it is a fixed, gym-style interaction layer that exercises three competencies single-glance ECG models never touch: Memory, Tool use through signal-grounded measurement rather than reading pixels, and Planning of what to measure now and when to commit. We release 390 whole-recording instances spanning 2,536 hours of two-lead ambulatory ECG and evaluate a signal-threshold rule agent alongside off-the-shelf LLM agents online, characterizing how they use memory, tools, and planning and where the benchmark's head-room lies.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:46:01Z",
+        "input_sha256": "7997ca8221bd627a3ff12d9171177014dd00929cc253a21ecb7e74cb687dd440",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "장시간 스트리밍 심전도 해석을 위한 LLM 에이전트 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "장시간 스트리밍 ECG 해석 벤치마크·에이전트 환경 ECG-Scroll 제시"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40992674513",
+        "context_sha256": "ad8a8687ac12f5f0134be3e3de8547d1caab7d43fcd34085b0f37b42100f8b16"
+      },
+      "proposal_sha256": "785beee6492e17e1b2949e7edc51e0baa24cefe09bdaf58d867546bc0a9cb99b"
     }
   },
   "processed_comments": [],
@@ -56113,8 +56273,8 @@
         "2609.33117"
       ],
       "abstract_attempted": [],
-      "calls": 27,
-      "cost_usd": 15.7776
+      "calls": 28,
+      "cost_usd": 16.3063
     }
   },
   "reaudits": [
