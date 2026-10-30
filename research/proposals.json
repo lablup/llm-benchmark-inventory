@@ -27434,6 +27434,182 @@
       },
       "issue_url": null,
       "proposal_sha256": "c750fc5062fe66542d69843f75221ca446c7312327914192a11733191a612ad4"
+    },
+    "2609.35879": {
+      "decision": "propose",
+      "reason": "CruxBench는 모델이 최종 예측 질문에 대해 정보가 되는 하위 질문(crux)을 생성하게 하고, 예측시장의 믿음 변화(KL 기반 VOI)로 채점하는 재사용 가능한 새 벤치마크다. 과제 질문과 프롬프트가 영어(Louvre 보석 질문 등)이고 텍스트 입력만 쓰므로 en/text 트랙에 해당한다. 공식 코드·데이터 링크는 논문 2쪽 각주에 있다. 라이선스와 하니스 지원은 확인되지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "cruxbench",
+            "이름": "CruxBench",
+            "평가 축": "에이전트·추론(정보 탐색: 예측 하위 질문 생성의 정보 가치)",
+            "언어": "en",
+            "정의": "최종 예측 질문(예측시장 질문)에 대해 모델이 제안한 하위 질문(crux)을 해결 시점 전후의 시장 믿음 변화(KL 기반 정보 가치, VOI)로 채점하는 벤치마크. 293개 최종 질문으로 평가하며, 논문은 8개 모델과 무작위 시점 기준선, 사후 오라클 기준선을 비교했다. 점수 단위는 bit이며 crux는 별도 resolver 에이전트가 해결한다.",
+            "대표 과제": "최종 예측 질문이 주어지면 지정된 30일 창 안에 해결될 이진 crux 하나를 생성",
+            "대표 예시·설명": "과제 설명: 최종 질문(예: 도난당한 루브르 보석이 반환될지)을 주면 모델이 창 안에 해결될 하위 질문을 제안하고, 그 해결이 시장의 믿음을 얼마나 바꾸는지로 점수를 매긴다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터와 코드의 라이선스를 확인하지 못했다. 이용 전에 공식 저장소에서 데이터와 코드 약관을 각각 따로 확인해야 한다. 채점에는 resolver 에이전트와 뉴스 검색 도구 등 외부 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/ai-prophet/cruxbench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents and reasoning (information discovery: value of information of generated forecasting subquestions)",
+            "definition": "CruxBench grades model-proposed subquestions (cruxes) for a target forecasting question by the Value of Information (VOI), measured as the KL-based belief update in a prediction market around the crux's resolution time. It uses 293 target questions; the paper compares eight models against a random-timing baseline and a hindsight oracle. Scores are in bits, and cruxes are resolved by a separate resolver agent.",
+            "task": "Given an ultimate forecasting question, generate one binary crux that resolves within a specified 30-day window.",
+            "example": "Task description: given an ultimate question such as whether any stolen Louvre jewels will be returned, the model proposes a subquestion resolving within the window, and the score is the market belief update after its resolution."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "Will any of"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "CruxBench, a benchmark"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "Will any of"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "https://github.com/ai-prophet/cruxbench"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "Will any of"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "CruxBench, a benchmark"
+            },
+            "정의": {
+              "page": 7,
+              "quote": "n = 293"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "CruxBench, a benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.35879",
+      "paper_title": "CruxBench: A Benchmark of Information Discovery",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.35879",
+        "sha256": "25922a07ee19c1474ac8a1d86920e00ea881493fafd66b85ed1fb0b81b8751b3",
+        "accessed": "2026-10-30T03:33:24Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 36,
+          "elapsed_seconds": 152.11,
+          "pdf_sha256": "25922a07ee19c1474ac8a1d86920e00ea881493fafd66b85ed1fb0b81b8751b3",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "3275673854450fe8fc7462f4a14d95108c514db78cff066770b8a0d7122f510b",
+          "page_json_file": "2609.35879.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/ai-prophet/cruxbench",
+            "fetched_url": "https://api.github.com/repos/ai-prophet/cruxbench/readme",
+            "sha256": "8c5a95b140ae146dd89eb6f726317a013c1266ce7ac2403640db4f11f56bd424",
+            "accessed": "2026-10-30T03:36:20Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-30T03:36:20Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.35879",
+        "paper_title": "CruxBench: A Benchmark of Information Discovery",
+        "abstract": "Benchmarks for large language models (LLMs) typically evaluate the accuracy of answers against fixed reference labels. But a central step in many complex real-world tasks is identifying which questions are worth asking in the first place: decomposing a difficult problem into subquestions -- which we call cruxes -- whose answers provide key steps on the path toward solving the target problem. To evaluate this capability of information discovery, we introduce CruxBench, a benchmark that grades LLM-generated questions by their Value of Information (VOI): how much a model-proposed crux updates beliefs about a target forecasting question. CruxBench enjoys a rare combination of three key properties: it is (1) contamination-resistant by construction, since ground truth is generated by future world events; (2) open-ended, admitting unbounded and complex text-based submissions rather than one correct numeric answer; and (3) grounded, with informativeness measured against quantified changes in real-world beliefs. We evaluate a diverse set of eight models on 293 target forecasting questions and find that VOI correlates highly with independent measures of model capability (r=0.90) and captures cruxes' usefulness for answering target questions. However, information discovery remains challenging even for frontier LLMs, which only narrowly outperform a random-timing baseline.",
+        "paper_updated": "2026-09-30T00:00:00Z",
+        "created_at": "2026-10-19T13:45:47Z",
+        "input_sha256": "31e4b0180497b96f25052d4d0eb9089431ee69c67b1d6bcc20e3ce4d2e9ed7d4",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 정보 발견 능력을 평가하는 크럭스 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "정보 발견 능력 평가용 CruxBench, VOI 기반 신규 벤치마크"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "40992674513",
+        "context_sha256": "028a828f455be53df9cb38d080c57ca0355b7e9d05d1bc9af11b3a156e005cb8"
+      },
+      "proposal_sha256": "13bf4fdd1d97e8e2eb50e0649382a8468714e0e2b0d70d4cf995a7021dd23296"
     }
   },
   "processed_comments": [],
@@ -55145,8 +55321,8 @@
         "2609.35879"
       ],
       "abstract_attempted": [],
-      "calls": 15,
-      "cost_usd": 9.0379
+      "calls": 16,
+      "cost_usd": 9.5986
     }
   },
   "reaudits": [
