@@ -27876,6 +27876,92 @@
       "proposal_sha256": "718c82da5009c62700c8bc8a62bcabf1cb1db0bbd9d2a0c195f80fdf75726b15",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2604.25231": {
+      "decision": "needs_evidence",
+      "reason": "DRAGON은 다이어그램 질의응답에서 답의 근거가 되는 영역을 바운딩 박스로 예측하게 하는 새 벤치마크입니다. 시각 입력이 필요하고 과제 프롬프트가 영어라서 en 트랙의 vision 후보로 볼 수 있습니다. 다만 논문은 데이터셋·주석·평가 코드를 공개한다고 하면서도(결론, 부록 B의 README 언급) 공식 데이터셋이나 코드 URL을 어디에도 적지 않았습니다. 링크 근거를 만들 수 없어 propose할 수 없고, 공식 URL이 확인되면 다시 검토해야 합니다.",
+      "changes": [],
+      "arxiv_id": "2604.25231",
+      "paper_title": "DRAGON: A Benchmark for Evidence-Grounded Visual Reasoning over Diagrams",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2604.25231",
+        "sha256": "1c437d93250f94ae7cab8fe7ac1781e858563929f0c6674ab943777a44f753fa",
+        "accessed": "2026-10-30T03:40:34Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 23,
+          "elapsed_seconds": 144.54,
+          "pdf_sha256": "1c437d93250f94ae7cab8fe7ac1781e858563929f0c6674ab943777a44f753fa",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "b12a179d64ea2cd152918a69bac27c068be7da9fc846d737cd53a27e44b4cf82",
+          "page_json_file": "2604.25231.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-10-30T03:43:09Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2604.25231",
+        "paper_title": "DRAGON: A Benchmark for Evidence-Grounded Visual Reasoning over Diagrams",
+        "abstract": "Diagram question answering (DQA) requires models to interpret structured visual representations such as charts, maps, infographics, circuit schematics, and scientific diagrams. Recent vision-language models (VLMs) often achieve high answer accuracy on these tasks, yet correct answers do not guarantee that models ground their reasoning in the diagram regions that support the prediction. Models may instead rely on textual correlations or dataset artifacts without identifying the visual evidence required to verify the answer. This limitation prevents reliable evaluation of diagram reasoning and reduces interpretability. We introduce DRAGON, a benchmark for evaluating evidence-grounded visual reasoning in diagrams. Given a diagram, a question, and the correct answer, a model must predict bounding boxes that correspond to the visual elements required to justify the answer. These evidence regions may include answer-bearing components, textual labels, legends, axes, connectors, and other supporting structures involved in the reasoning process. The DRAGON dataset contains 11,664 annotated question instances from six diagram QA datasets: ChartQA, Circuit-VQA, InfographicsVQA, MapIQ, MapWise, and AI2D, with a 2,445-instance test set carrying human-verified evidence annotations and a standardized evaluation framework. Our evaluation on recent VLMs reveals that even Claude Opus 4.6 achieves a Grounding IoU of only 23.8% on AI2D, showing that faithful visual grounding remains an open challenge. DRAGON supports future research on models that ground their predictions in visual evidence.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:45:47Z",
+        "input_sha256": "1b0515d03a346a1c2a0bd10247fae64e377475922199ffe614ced0d45c3ddbf7",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "다이어그램에 대한 근거 기반 시각 추론 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "도표 근거 기반 시각 추론 벤치마크 DRAGON 및 평가 체계 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "7934ceec70eb94bdc0117efddd1e5f3fb435e6cf5c5f14c745fa3e781775d62d"
     }
   },
   "processed_comments": [],
@@ -55589,8 +55675,8 @@
         "2604.25231"
       ],
       "abstract_attempted": [],
-      "calls": 20,
-      "cost_usd": 11.9723
+      "calls": 21,
+      "cost_usd": 12.565
     }
   },
   "reaudits": [
