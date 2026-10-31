@@ -30282,74 +30282,9 @@
       }
     },
     "2605.11960": {
-      "decision": "propose",
-      "reason": "Chronicles-OCR는 중국 한자의 일곱 서체(갑골문부터 초서까지)를 다루는 새 이미지 기반 벤치마크로, 재사용할 수 있고 공식 GitHub 링크도 PDF에 있다. 문자 대상은 중국어이지만 과제 지시문이 영어 프롬프트로 제시되어('Recognize the archaic character highlighted by the red box in the image') 영어 과제로 보고 en 트랙, vision 모달리티로 분류했다. 한국어 과제는 없어 ko 변경은 없다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 PDF에서 확인되지 않아 모두 '확인 불가'로 두었다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "chronicles-ocr",
-            "이름": "Chronicles-OCR",
-            "평가 축": "이미지(중국 한자 서체 변천에 걸친 시대 간 문자 인식)",
-            "언어": "en",
-            "정의": "중국 한자의 7개 서체(갑골문, 금문, 전서, 예서, 해서, 행서, 초서) 전 시기를 아우르는 이미지 2,800장으로 VLLM의 시대 간 시각 인식을 평가하는 벤치마크. 고문자(갑골·금문·전서)는 글자 단위 상자와 현대 한자 대응으로, 성숙 서체(예서·해서·행서·초서)는 문단 단위 전사로 주석했다. 과제는 4가지로, 문자 검출·인식(IoU 0.75 기준 H-mean), 시각 지시를 쓴 고문자 인식(정확 일치 정확도), 고문 텍스트 파싱(NED), 서체 분류(정확도)다. 판독 불가 글자는 [UNK]로 표기하고 평가에서 제외한다. 논문은 오픈소스와 상용 VLLM을 평가했다.",
-            "대표 과제": "시대 간 문자 검출·인식(갑골문, 금문, 전서), 시각 지시 기반 고문자 인식, 고문 텍스트 파싱, 서체 분류",
-            "대표 예시·설명": "과제 설명: 탁본 등 고문자 이미지에서 빨간 상자로 표시된 고문자를 영어 지시문으로 제시하고 해당 현대 한자를 답하게 한다. 이 외에 상자 좌표와 현대 한자를 함께 출력하는 검출·인식, 전체 이미지 전사, 7개 서체 중 하나로 분류하는 과제가 있다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스와 이용 조건은 PDF에서 확인하지 못했다. 저장소 README와 데이터 카드를 이용 전에 확인해야 한다. 이미지는 박물관, 연구기관 자료와 디지털화한 실물 자료에서 수집되어 각 출처의 권리 조건을 따로 점검해야 한다. 문자 대상은 중국 고문자이며 영어 지시문으로 평가한다. lm-eval 지원 여부도 확인하지 못했다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/VirtualLUOUCAS/Chronicles-OCR"
-          },
-          "modality": "vision",
-          "english_copy": {
-            "axis": "Images (cross-temporal recognition across the evolution of Chinese scripts)",
-            "definition": "A benchmark of 2,800 images covering all seven Chinese scripts (Oracle Bone, Bronze, Seal, Clerical, Regular, Running, Cursive), used to evaluate the cross-temporal visual perception of VLLMs. Archaic scripts (Oracle Bone, Bronze, Seal) are annotated with single-character boxes and modern character mappings, and mature scripts (Clerical, Regular, Running, Cursive) with paragraph-level transcriptions. It has four tasks: character spotting (H-mean at IoU 0.75), fine-grained archaic character recognition with visual referring (exact-match accuracy), ancient text parsing (NED), and script classification (accuracy). Undeciphered characters are marked [UNK] and excluded from evaluation. The paper evaluates open-source and proprietary VLLMs.",
-            "task": "Cross-period character spotting (Oracle Bone, Bronze, Seal), visually referred archaic character recognition, ancient text parsing, and script classification.",
-            "example": "Task description: for an image of an archaic inscription such as a rubbing, an English instruction asks the model to recognize the character highlighted by a red box and give the modern character. Other tasks ask for box coordinates with modern characters, full-image transcription, or classification into one of seven scripts."
-          },
-          "evidence": {
-            "modality": {
-              "page": 1,
-              "quote": "2,800 strictly balanced"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "cross-period character spotting"
-            },
-            "대표 예시·설명": {
-              "page": 5,
-              "quote": "Recognize the archaic"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "https://github.com/VirtualLUOUCAS/Chronicles-OCR"
-            },
-            "언어": {
-              "page": 5,
-              "quote": "Recognize the archaic"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "Chronicles-OCR"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "2,800 strictly balanced"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "cross-temporal visual perception"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공식 저장소 README는 '## License' 항목에서 'This benchmark is released for **research purposes only**.'라고만 밝히고 수정·파생과 재배포의 허용 여부는 적지 않았다. 같은 카드의 '## LICENSE file' 항목에는 Apache-2.0이 있으나, 이것이 데이터셋에도 적용된다는 문구는 README와 논문 PDF 어디에도 없다. 코드 라이선스는 데이터셋 라이선스가 아니므로, 이 항목으로 수정·파생과 재배포를 뒷받침할 수 없다. 카드에 LICENSE 파일 항목이 있어 '미표기'로 처리하는 부정(absence) 증거도 쓸 수 없다. 또한 PDF 4쪽(3.1절)에 따르면 이미지는 안양사범대학 갑골문 정보처리 핵심 실험실, 고문자 연구자, 고궁박물원 소장 자료와 비석, 편액, 서화, 고화를 디지털화한 자료에서 왔다. 이 구성 요소별 권리 조건과 데이터셋 라이선스의 적용 범위를 확인하는 근거가 공급된 자료에 없으므로 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목을 증거와 함께 채울 수 없다. 공개 정책상 빈칸이나 미정 값을 게시할 수 없어 이번에는 아무것도 게시하지 않는다. 데이터셋 라이선스를 명시한 Hugging Face 또는 ModelScope 데이터 카드 등 공식 자료가 추가로 공급되면 다시 작성할 수 있다. 논문 Table 2의 평가 점수는 확인되었으나 라이선스 항목이 충족되지 않아 recommendations도 게시하지 않는다.",
+      "changes": [],
       "arxiv_id": "2605.11960",
       "paper_title": "Chronicles-OCR: A Cross-Temporal Perception Benchmark for the Evolutionary Trajectory of Chinese Characters",
       "paper_updated": "2026-09-29T00:00:00Z",
@@ -30407,7 +30342,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-31T04:00:16Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -30433,11 +30368,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41160544127",
-        "context_sha256": "97b1b5e47f9c53b536115489450547e217db6fa1bfaaf76f05bbbe366e2a0d86"
-      },
-      "proposal_sha256": "e794099b7e61c82c4d33d2a36fd500935308549fab3573d3a3c93a873e79e622"
+      "proposal_sha256": "864d8b33c2083a494de5df67f8fd3dfd8558fe907e303c068c0ba816ba5e3474",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -58787,8 +58720,8 @@
         "2610.40518",
         "2610.40551"
       ],
-      "calls": 24,
-      "cost_usd": 13.3445
+      "calls": 25,
+      "cost_usd": 14.1067
     }
   },
   "reaudits": [
