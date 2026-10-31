@@ -29111,7 +29111,7 @@
     },
     "2609.33699": {
       "decision": "propose",
-      "reason": "SpecRead는 OpenTitan 하드웨어 명세 문서를 영어로 읽고 답하게 하는 재사용 가능한 벤치마크이며, 코드 생성 능력과 분리해 명세 독해만 평가한다. 과제 언어는 영어이므로 en 트랙, 텍스트 입력만 쓰므로 text로 분류한다. 기존 인벤토리에 같은 항목이 없어 새 행으로 제안한다. 논문이 공식 코드·데이터 저장소(GitHub)를 명시한다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았으므로 '확인 불가'로 기록한다. 논문은 Ministral-3B 단일 모델 결과만 보고하므로 모델 비교는 증거 단계에 맡긴다.",
+      "reason": "SpecRead는 OpenTitan 하드웨어 명세 문서를 영어로 읽고 답하게 하는 재사용 가능한 벤치마크이며, 코드 생성 능력과 분리해 명세 독해만 평가한다. 과제 언어는 영어이므로 en 트랙, 텍스트 입력만 쓰므로 text로 분류한다. 기존 인벤토리에 같은 항목이 없어 새 행으로 제안한다. 논문이 공식 코드·데이터 저장소(GitHub)를 명시하고, 공식 README가 데이터셋(JSONL 파일)에 CC-BY-4.0을, 코드에 Apache-2.0을 부여한다. 공식 README에는 lm-eval이나 lm-evaluation-harness 언급이 없어 lm-eval 지원은 '미표기'로 기록한다. 논문은 Ministral-3B 단일 모델 결과만 보고하므로 권장 모델 목록은 이 모델 하나뿐이다.",
       "changes": [
         {
           "track": "en",
@@ -29124,12 +29124,12 @@
             "대표 과제": "명세 발췌문과 질문(또는 변형된 명세·RTL)을 읽고 사실을 답하거나, 모순의 위치와 범주를 찾거나, 모순이 없으면 NO_CONTRADICTION으로 답하는 과제",
             "대표 예시·설명": "명세 발췌문을 주고 모순을 찾아 위치와 범주를 답하게 하되, 모순이 없으면 NO_CONTRADICTION으로 답하게 하는 과제 설명(실제 문항 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 아직 확인하지 않았다. 논문의 평가 결과는 Ministral-3B 단일 모델에 한정되며, 모든 자료는 OpenTitan 단일 프로젝트에서 나왔다. 원문 명세와 RTL의 고유 약관은 이용 전에 별도로 확인해야 한다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-4.0(데이터). 코드는 Apache-2.0",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "데이터는 CC-BY-4.0이므로 출처 표기(BY)가 필요하고, 코드(평가 스크립트, 시뮬레이션 하니스)는 별도로 Apache-2.0이다. 이 벤치마크는 다른 출처로 구성되어 있다: 명세 문서와 RTL은 모두 OpenTitan 프로젝트에서 가져왔다(논문 3쪽, Apache 2.0 표기). 카드의 CC-BY-4.0 표기가 구성 요소인 OpenTitan 원문 각각의 고유 약관을 대신하지는 않으므로, 이용 전에 각 구성 요소의 약관을 따로 확인해야 한다. 논문의 평가 결과는 Ministral-3B 단일 모델에 한정되며, 모든 자료가 OpenTitan 단일 프로젝트에서 나왔다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/EDGAhab/specread"
           },
           "modality": "text",
@@ -29173,9 +29173,52 @@
               "quote": "SpecRead v2.2 contains"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/EDGAhab/specread",
+              "quote": "(the JSONL files): CC-BY-4.0"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/EDGAhab/specread",
+              "quote": "(the JSONL files): CC-BY-4.0"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/EDGAhab/specread",
+              "quote": "(the JSONL files): CC-BY-4.0"
+            },
+            "재배포": {
+              "source_url": "https://github.com/EDGAhab/specread",
+              "quote": "(the JSONL files): CC-BY-4.0"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/EDGAhab/specread",
+              "absent": true
+            }
+          },
+          "recommendations": {
+            "metric": "Overall accuracy (%) on the 383 questions of SpecRead v2.2 under conservative scoring (t3/t4 full credit requires verdict, location, and category; gray-zone cases counted wrong); correct/total in parentheses",
+            "setting": "Results reported in this paper (Table 2), not a current global leaderboard. Dataset v2.2, all 383 questions, conservative deterministic scoring, temperature 0, one question per call, ministral-3b-latest Mistral API alias as served on 2026-09-25/26. Only one model was evaluated in the paper.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Ministral-3B (ministral-3b-latest)",
+                "score": "33.7",
+                "evidence": {
+                  "page": 1,
+                  "quote": "Ministral-3B scores 33.7% overall (129/383)"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 11,
+                  "quote": "Only one small open model (Ministral-3B)"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.33699",
@@ -29266,7 +29309,8 @@
         "source_run": "41160544127",
         "context_sha256": "88bb0a7495e3ee7d2d84324ad2fc4fae22169d1e343e07d0e5ef357f6984b41e"
       },
-      "proposal_sha256": "dff884520e7ebd6a76ae7bc9a066c5c1a36ec327b1547f0ba6b5459ff40814bf"
+      "proposal_sha256": "c71be1443bba673341ab7aba8ef5c9a0fb2d8a39b1cae6032886a5d0ce8a0655",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -57605,8 +57649,8 @@
         "2610.40518",
         "2610.40551"
       ],
-      "calls": 10,
-      "cost_usd": 5.0008
+      "calls": 11,
+      "cost_usd": 5.5726
     }
   },
   "reaudits": [
