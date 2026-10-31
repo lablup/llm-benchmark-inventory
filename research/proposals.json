@@ -29279,7 +29279,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-10-31T03:24:05Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -29305,12 +29305,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41160544127",
-        "context_sha256": "88bb0a7495e3ee7d2d84324ad2fc4fae22169d1e343e07d0e5ef357f6984b41e"
-      },
       "proposal_sha256": "c71be1443bba673341ab7aba8ef5c9a0fb2d8a39b1cae6032886a5d0ce8a0655",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 사실은 논문 PDF와 공식 README로 뒷받침됩니다. 이름, 영어 명세 기반 텍스트 입력(언어 en, 모달리티 text), v2.2의 383문항과 OpenTitan IP 블록 10개, 네 가지 문제 유형은 논문 1~4쪽과 11쪽 및 README와 일치합니다. 메타데이터 요약은 385문항(v2.1)이라고 쓰여 있으나 본문과 README가 383문항(v2.2)이므로 제안은 최신 기준을 따랐습니다. 권리 항목은 README가 데이터(JSONL)에 CC-BY-4.0, 코드에 Apache-2.0을 따로 부여한다는 명시적 근거가 있습니다. 코드 라이선스를 데이터 권리로 혼동하지 않았고, 라이선스가 있으므로 '저작권 전부 보유' 조합 규칙에는 해당하지 않습니다. 상업적 이용 가능, 수정·파생 가능(조건 준수), 재배포 조건부 가능은 CC-BY에 부합합니다. 이용 시 유의사항은 명세와 RTL이 OpenTitan에서 파생되었음을 밝히고 그 고유 약관을 따로 확인하라고 안내하며, 출처 표기 의무와 코드·데이터 라이선스 분리, 단일 모델·단일 프로젝트 한계도 반영했습니다. lm-eval 지원 '미표기'는 README와 논문 어디에도 lm-eval 또는 lm-evaluation-harness 언급이 없어 허용된 해결값입니다. 권장 모델은 논문이 평가한 유일한 모델인 Ministral-3B이므로 비교 대상 전체를 포괄합니다. 점수 33.7%(129/383)는 표 2의 보수적 채점, 데이터셋 v2.2, 온도 0 조건과 일치하며 단위와 방향(높을수록 좋음)도 맞습니다. 또한 논문 보고 결과임을 명시했습니다. 가중치 공개 여부는 논문이 소규모 오픈 모델이라고 서술한 데 근거합니다. 다만 README의 대표 수치(43.1%, 165/383)와 IP별 문항 수(aes, spi_device 각 49)는 논문의 보수적 수치(33.7%)나 표 1의 문항 수와 달라 근거 자료 간 불일치가 있습니다. 제안은 이 수치들을 쓰지 않았고, 보수적 채점 설정을 명확히 구분해 기재했으므로 승인에 지장은 없습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 129777,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2603,
+              "output_tokens_details": {
+                "thinking_tokens": 1656
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 129777,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2603,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 129777,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 129777
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.5452069,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "c71be1443bba673341ab7aba8ef5c9a0fb2d8a39b1cae6032886a5d0ce8a0655",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -57649,8 +57695,8 @@
         "2610.40518",
         "2610.40551"
       ],
-      "calls": 11,
-      "cost_usd": 5.5726
+      "calls": 12,
+      "cost_usd": 6.1178
     }
   },
   "reaudits": [
