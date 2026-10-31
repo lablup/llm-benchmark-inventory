@@ -29743,7 +29743,7 @@
     },
     "2603.22018": {
       "decision": "propose",
-      "reason": "BioCon은 생물정보학 논문의 방법 서술 문장과 Python 함수 코드가 서로 대응하는지 판정하는 재사용 가능한 새 벤치마크입니다. 과제 입력은 영어 논문 문장과 코드여서 en 트랙, text 모달리티로 분류했습니다. 문장 단위 분류, 검색, 프로젝트 단위 평가의 세 설정과 수치(48개 프로젝트, 일관 1,130쌍·비일관 5,650쌍, 프로젝트 단위 8:1:1 분할)가 논문에 제시되어 있습니다. 공식 코드 저장소 URL은 PDF 17쪽에 명시되어 있습니다. 라이선스 등 미확인 항목은 '확인 불가'로 기록했습니다.",
+      "reason": "BioCon은 생물정보학 논문의 방법 서술 문장과 Python 함수 코드가 서로 대응하는지 판정하는 재사용 가능한 새 벤치마크입니다. 과제 입력은 영어 논문 문장과 코드여서 en 트랙, text 모달리티로 분류했습니다. 문장 단위 분류, 검색, 프로젝트 단위 평가의 세 설정과 수치(48개 프로젝트, 일관 1,130쌍·비일관 5,650쌍, 프로젝트 단위 8:1:1 분할)가 논문에 제시되어 있습니다. 공식 저장소 README와 LICENSE 파일에 MIT가 명시되어 있어 권리 항목은 이를 인용했고, 수집된 논문·저장소 구성 요소는 각자 약관을 따로 확인하도록 유의사항에 적었습니다. 권고 모델은 논문 표 3(문장 단위 분류, MCC)의 다섯 인코더 결과입니다.",
       "changes": [
         {
           "track": "en",
@@ -29756,12 +29756,12 @@
             "대표 과제": "논문 문장과 Python 함수 쌍의 일관성 이진 분류, 문장에 대응하는 함수 검색, 프로젝트 단위 일관성 점수 추정",
             "대표 예시·설명": "논문의 방법 서술 문장(예: 학습률 설정을 설명하는 영어 문장)과 코드 함수 하나를 주고, 그 함수가 문장의 기능을 구현하는지 일관/비일관으로 판정하는 과제 설명",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 않았다. 코드 저장소 라이선스가 데이터 라이선스를 대신하지 않는다. 일관 라벨은 세 전문가 만장일치 쌍만 채택했고, 비일관 샘플은 하드·랜덤 네거티브 샘플링으로 구성되어 전문가가 개별 판정한 것이 아니다. Python 프로젝트와 함수 단위 분석에 한정되며 test는 프로젝트 5개로 작다. 논문은 CodeBERT, UniXcoder 등 인코더를 직접 학습해 평가한다. PDF의 데이터셋 파일 링크는 잘려 있어 코드 저장소 URL을 링크로 기록했다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(저장소 README·LICENSE 표기. 수집 논문·저장소는 각자 약관)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "MIT 라이선스에 따라 저작권 고지와 라이선스 전문을 사본에 포함해야 한다. 이 벤치마크는 다른 출처로 구성되어 있다: 논문과 연결된 GitHub의 Python 생물정보학 프로젝트 48개 저장소와 그 논문 전문(논문 4쪽). 공식 저장소 README는 이 논문 PDF와 저장소 원본을 데이터 폴더에 함께 둔다고 밝히므로, MIT 표기가 이 구성 요소 각각의 고유 약관을 대신하지 않는다. 각 구성 요소(48개 프로젝트의 저장소와 논문)의 약관은 이용 전에 따로 확인해야 한다. 일관 라벨은 세 전문가 만장일치 쌍만 채택했고, 비일관 샘플은 하드·랜덤 네거티브 샘플링으로 구성되어 전문가가 개별 판정한 것이 아니다. Python 프로젝트와 함수 단위 분석에 한정되며 test는 프로젝트 5개로 작다. 논문은 CodeBERT, UniXcoder 등 인코더를 직접 학습해 평가한다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/Ricardo1998-Xu/BioCon"
           },
           "modality": "text",
@@ -29805,9 +29805,85 @@
               "quote": "BioCon, the first"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/Ricardo1998-Xu/BioCon",
+              "quote": "licensed under the **MIT License**"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/Ricardo1998-Xu/BioCon",
+              "quote": "distribute, sublicense, and/or sell"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/Ricardo1998-Xu/BioCon",
+              "quote": "use, copy, modify, merge, publish"
+            },
+            "재배포": {
+              "source_url": "https://github.com/Ricardo1998-Xu/BioCon",
+              "quote": "distribute, sublicense, and/or sell"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/Ricardo1998-Xu/BioCon",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "MCC (Matthews Correlation Coefficient, 범위 −1~1, 단위 없음), 문장 단위 일관성 이진 분류",
+            "setting": "BioCon test split의 문장 단위 분류(논문 표 3). 인코더별로 문장과 함수를 하나의 입력으로 이어 512 토큰으로 제한하고, weighted Focal Loss(γ=2, α=[1.0, 5.0]), AdamW(학습률 2×10^-5), 배치 16, 10 epoch로 학습했으며 서로 다른 세 시드 평균(±표준편차)을 보고한다. 이 논문이 보고한 결과이며 현재의 전역 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "UniXcoder",
+                "score": "0.5754",
+                "evidence": {
+                  "page": 9,
+                  "quote": "UniXcoder</td><td>0.8949±0.0064</td><td>0.7736±0.0139</td><td>0.5754±0.0272"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "CodeBERT",
+                "score": "0.4852",
+                "evidence": {
+                  "page": 9,
+                  "quote": "CodeBERT</td><td>0.8668±0.0041</td><td>0.7350±0.0117</td><td>0.4852±0.0102"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3",
+                "score": "0.4829",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Qwen3</td><td>0.8728±0.0048</td><td>0.7303±0.0017</td><td>0.4829±0.0108"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "CodeT5+",
+                "score": "0.4763",
+                "evidence": {
+                  "page": 9,
+                  "quote": "CodeT5+</td><td>0.8541±0.0018</td><td>0.7380±0.0054</td><td>0.4763±0.0109"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "CodeGen",
+                "score": "0.4531",
+                "evidence": {
+                  "page": 9,
+                  "quote": "CodeGen</td><td>0.8534±0.0065</td><td>0.7260±0.0108</td><td>0.4531±0.0220"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2603.22018",
@@ -29903,7 +29979,8 @@
         "source_run": "41160544127",
         "context_sha256": "537320537f8e78542b9d236a281ccee3ea0960c54651619d93015949342e4cfa"
       },
-      "proposal_sha256": "6cbc6651aa2d40d6c3147ec58128792e17e37d4a62d175f10d1403ed0f6c8c7b"
+      "proposal_sha256": "00ba1f587b28ba8e9e42d3c02220bbc13022a13814a7b92076e087c17cb24663",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -58250,8 +58327,8 @@
         "2610.40518",
         "2610.40551"
       ],
-      "calls": 18,
-      "cost_usd": 9.6996
+      "calls": 19,
+      "cost_usd": 10.2585
     }
   },
   "reaudits": [
