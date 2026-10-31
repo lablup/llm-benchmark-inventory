@@ -30371,6 +30371,189 @@
       "proposal_sha256": "864d8b33c2083a494de5df67f8fd3dfd8558fe907e303c068c0ba816ba5e3474",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2606.03657": {
+      "decision": "propose",
+      "reason": "NovelAPIBench는 모델별 API 지식 격차에 맞춰 실행 기반 코딩 과제를 만들어 내는 재사용 가능한 진단 벤치마크이며, 공식 코드·데이터 링크가 논문에 명시되어 있다. 과제 설명은 영어 프롬프트이고 입력은 텍스트뿐이므로 en 트랙의 text로 분류한다. 기존 인벤토리에 없는 새 항목이라 신규 행으로 제안한다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "novelapibench",
+            "이름": "NovelAPIBench",
+            "평가 축": "코딩(신규 API 습득·실행 기반 진단)",
+            "언어": "en",
+            "정의": "대상 모델이 모르는 신규 Python 라이브러리 API를 얼마나 쓰는지 진단하는 모델 조건부 벤치마크 프레임워크. 기본 인스턴스(Qwen2.5-Coder-7B)는 20개 라이브러리의 856개 API에 대한 1,670개 실행 가능 과제이며, 전체 프레임워크는 21개 라이브러리·5개 도메인을 다룬다. API 지식(시그니처, 예제, 동작 설명, 구현 코드)을 따로 제공하는 조건을 두고, 실패를 6개 범주로 분류한다. 주 지표는 greedy 디코딩의 실행 기반 pass@1이며 6개 백본 모델로 평가했다.",
+            "대표 과제": "대상 API를 호출해 실행 가능한 Python 코드의 마스킹된 구간을 완성하는 과제(쉬움·중간·어려움 3단계)",
+            "대표 예시·설명": "영어 자연어 과제 설명과 주변 코드가 주어지면 모델이 대상 API를 호출해 빠진 코드를 완성하고, 하니스가 대상 API 호출과 실행 결과를 검사하는 과제(과제 설명)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스와 lm-eval 지원 여부는 확인하지 못했다. 논문은 업스트림 라이브러리 소스·문서·예제에 각 라이선스가 적용된다고 밝히므로 이용 전에 구성 요소별로 확인해야 한다. 과제와 지식 번들은 GPT-5-mini로 생성했고 API 단위 호출 검증만 수행하며 end-to-end 정확성은 보장하지 않는다. Python 단일 대상 API 과제에 한정되고, 모델 조건부 인스턴스라 백본마다 과제 집합이 다르다. 코드 실행 샌드박스가 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/MAPS-research/NovelAPIBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (novel API acquisition, execution-based diagnosis)",
+            "definition": "A model-conditioned benchmark framework that diagnoses how well a coding model uses novel Python library APIs it does not know. The primary instance (Qwen2.5-Coder-7B) has 1,670 executable tasks covering 856 APIs from 20 libraries; the full framework spans 21 libraries across five domains. It supplies API knowledge components (signature, examples, mechanism description, implementation code) under controlled conditions and classifies failures into six categories. The main metric is execution-based pass@1 under greedy decoding, evaluated on six backbone models.",
+            "task": "Complete a masked region of executable Python code that must call the target API (easy, medium, hard tiers).",
+            "example": "Task description: given an English natural-language specification and surrounding code, the model completes the missing code by calling the target API, and a harness checks the target-API call and execution results."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "masked region of"
+            },
+            "대표 과제": {
+              "page": 4,
+              "quote": "masked region of"
+            },
+            "대표 예시·설명": {
+              "page": 17,
+              "quote": "Generate a compact,"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "NOVELAPIBENCH, an automated"
+            },
+            "언어": {
+              "page": 17,
+              "quote": "Generate a compact,"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "NOVELAPIBENCH, an automated"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "1,670 tasks covering"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "NOVELAPIBENCH, an automated"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2606.03657",
+      "paper_title": "NovelAPIBench: Diagnosing How A Code LLM Learns to Use Novel APIs",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.03657",
+        "sha256": "d224aebcacf64315c7043388d186348094c7e542c38a148188cf5dda5c4c60f7",
+        "accessed": "2026-10-31T04:00:56Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 38,
+          "elapsed_seconds": 275.32,
+          "pdf_sha256": "d224aebcacf64315c7043388d186348094c7e542c38a148188cf5dda5c4c60f7",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "fe43e890a46d21d2d655003b3a0d1549fd346161cc97df8f9b8ca7613f25bdc9",
+          "page_json_file": "2606.03657.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/MAPS-research/NovelAPIBench",
+            "fetched_url": "https://api.github.com/repos/MAPS-research/NovelAPIBench/readme",
+            "sha256": "d1f07853293fae8b3c452e56fddb9060a7f2ed0a78b624478f8a4e829d0d82b4",
+            "accessed": "2026-10-31T04:05:56Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/MAPS-research/NovelAPIBench/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-31T04:05:56Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2606.03657",
+        "paper_title": "NovelAPIBench: Diagnosing How A Code LLM Learns to Use Novel APIs",
+        "abstract": "Rapidly evolving software libraries require coding language models to use unfamiliar APIs. Yet failed solutions alone tell us little about what API knowledge models need or how to provide it. We present NovelAPIBench, an automated diagnostic framework that builds benchmarks around the API knowledge gaps of a target model. It identifies novel APIs, generates executable coding tasks with separately controllable knowledge components, and classifies failures into six categories. The framework can be rerun as models and libraries evolve. We study 21 libraries across five domains and six backbone models, with our primary benchmark comprising 1,670 tasks covering 856 APIs. Our experiments show that when supplied directly, usage examples provide the strongest standalone guidance for novel API acquisition, and combining them with signature descriptions approaches full-knowledge performance. Retrieving this knowledge from a pool of APIs yields lower accuracy than supplying only the target API's knowledge, even when retrieval finds the target. Fine-tuning on other APIs improves performance on unseen APIs mainly when external knowledge is supplied, helping models both select the target API and integrate it into the surrounding code. These findings highlight complementary roles for external API knowledge and the ability to apply it. By separating knowledge content, delivery, and use, NovelAPIBench helps diagnose what limits novel API use and guides adaptation to evolving libraries. Code and data are available at https://github.com/MAPS-research/NovelAPIBench.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:46:12Z",
+        "input_sha256": "56e13105a0ba6ff234549af0093fc721aa8d5f1f8ac14ae30fc4453e3f51ca24",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "코드 LLM의 신규 API 학습 진단 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "신규 API 사용 진단용 코드 벤치마크 프레임워크 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41160544127",
+        "context_sha256": "42287fdcc877e2568f230ba6dc50e883c603b3b480f54d3489779a3b498b843b"
+      },
+      "proposal_sha256": "b5d0af3e1eae93d1edca813e6ea91569050e3c902c8bb03d1fdb01b8572d9244"
     }
   },
   "processed_comments": [],
@@ -58721,8 +58904,8 @@
         "2610.40518",
         "2610.40551"
       ],
-      "calls": 25,
-      "cost_usd": 14.1067
+      "calls": 26,
+      "cost_usd": 14.8225
     }
   },
   "reaudits": [
