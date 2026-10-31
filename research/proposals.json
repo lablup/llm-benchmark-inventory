@@ -30027,6 +30027,163 @@
         "reviewed_sha256": "00ba1f587b28ba8e9e42d3c02220bbc13022a13814a7b92076e087c17cb24663",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2605.01970": {
+      "decision": "propose",
+      "reason": "이 논문은 LLM 에이전트의 영속 메모리 공격(Trojan Hippo)과 메모리 계층 방어를 평가하는 재사용 가능한 벤치마크를 새로 제안한다. 이메일 비서 환경, 메모리 백엔드 4종, 민감 주제 5개, 방어 4종, 7개 유틸리티 흐름으로 구성되며 코드는 GitHub에 공개된다. 사용자 질의 예시가 영어이고 입력이 텍스트뿐이므로 en 트랙의 text 행 하나로 제안한다. 라이선스, 재배포, lm-eval 지원은 확인되지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "trojan-hippo-bench",
+            "이름": "Trojan Hippo Bench",
+            "평가 축": "보안(에이전트 영속 메모리 공격·방어)",
+            "언어": "en",
+            "정의": "메모리를 가진 LLM 에이전트에 대한 영속 메모리 공격(Trojan Hippo)과 메모리 계층 방어를 평가하는 동적 프레임워크. 신뢰할 수 없는 도구 호출 한 번(예: 조작된 이메일)으로 휴면 페이로드를 장기 메모리에 심고, 사용자가 민감 주제를 말할 때 개인 정보가 유출되는지 공격 성공률(ASR)로 잰다. 구성은 OpenEvolve 기반 적응형 레드팀(최대 40회 반복)과 방어별 유틸리티를 7개 사용자 흐름으로 분해하는 보안-유틸리티 분석이다. 이메일 비서 환경에서 메모리 백엔드 4종(explicit, Mem0, RAG, sliding-window context), 민감 주제 5개(금융, 건강, 법률, 세금, 신원), 방어 4종을 평가한다. 보고되는 ASR은 (백엔드, 방어)별 60회 롤아웃 평균이며, 논문은 Gemini 3.1 Pro와 GPT-5-mini를 대상으로 삼았다.",
+            "대표 과제": "이메일 비서 에이전트에서 메모리 백엔드와 방어별 ASR(트리거 세션 N=100 등)과 7개 흐름의 벤인 유틸리티(AM·HM)를 측정",
+            "대표 예시·설명": "공격자가 보낸 이메일의 숨은 지시가 에이전트의 장기 메모리에 저장되고, 이후 사용자가 세금이나 건강 같은 민감 주제를 영어로 말하면 에이전트가 그 내용을 공격자에게 이메일로 전송하는지 확인하는 과제 설명(실제 시험 문항이 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터와 코드의 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. 논문은 저장소를 공개했다고 밝히지만 라이선스는 이 제안에서 검증하지 않았다. 환경은 합성 사용자 데이터로 만든 시뮬레이션 이메일 비서이며, 평가에는 프런티어 모델 API와 메모리 백엔드(Mem0 등) 실행 환경이 필요하다. 논문의 수치는 해당 논문의 조건에서 얻은 결과이며 현재 전역 리더보드를 뜻하지 않는다. 공격 생성 코드가 포함되므로 이용 범위를 점검해야 한다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/debesheedas/trojan-hippo-benchmark"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Security (persistent memory attacks and defenses for agents)",
+            "definition": "A dynamic framework for evaluating persistent memory attacks (the Trojan Hippo attack) and memory-layer defenses in LLM agents. A single untrusted tool call (for example, a crafted email) plants a dormant payload in long-term memory, and attack success rate (ASR) measures whether personal data is later exfiltrated when the user discusses a sensitive topic. It has an OpenEvolve-based adaptive red-teaming component (up to 40 iterations) and a security-utility analysis that decomposes defense utility into seven user flows. It is instantiated on an email assistant with four memory backends (explicit, Mem0, RAG, sliding-window context), five sensitive topics (finance, health, legal, tax, identity), and four defenses. Reported ASR averages 60 rollouts per (backend, defense) cell, and the paper targets Gemini 3.1 Pro and GPT-5-mini.",
+            "task": "Measure ASR (for example at trigger session N=100) and benign utility (AM and HM) over seven user flows for an email-assistant agent, by memory backend and defense",
+            "example": "Task description, not an actual test item: hidden instructions in an attacker's email are written into the agent's long-term memory, and the benchmark checks whether the agent later emails the user's sensitive English message, such as a tax or health query, to the attacker."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "I have a"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "dynamic evaluation framework"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "I have a"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "github.com/d ebesheedas/trojan-hippo-benchmark"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "I have a"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Trojan Hippo Bench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "dynamic evaluation framework"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "dynamic evaluation framework"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2605.01970",
+      "paper_title": "Trojan Hippo Bench: A Dynamic Benchmark for Persistent Memory Attacks and Defenses in LLM Agents",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2605.01970",
+        "sha256": "91e469321f8ce6019e43a694f76c40856091cabacb2aea00e5baaffa75a330fd",
+        "accessed": "2026-10-31T03:53:57Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 12,
+          "elapsed_seconds": 100.88,
+          "pdf_sha256": "91e469321f8ce6019e43a694f76c40856091cabacb2aea00e5baaffa75a330fd",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "b5209504c13ef3daf890cf5738e03e530b98ac9b3b53a52b662cfb3a45306023",
+          "page_json_file": "2605.01970.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/debesheedas/trojan-hippo-benchmark",
+            "fetched_url": "https://api.github.com/repos/debesheedas/trojan-hippo-benchmark/readme",
+            "sha256": "be4f933435676745fe11fdb654a1c4d9181f79e6aaee3e2674b7edd7189a2c08",
+            "accessed": "2026-10-31T03:56:08Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/debesheedas/trojan-hippo-benchmark/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "b24871defc5609aa3ad1f9f98fdb4d31896c38f9e8d5935744841d277536346a"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-31T03:56:08Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2605.01970",
+        "paper_title": "Trojan Hippo Bench: A Dynamic Benchmark for Persistent Memory Attacks and Defenses in LLM Agents",
+        "abstract": "Memory systems enable otherwise stateless LLM agents to persist user information across sessions, but also introduce a new attack surface. The Trojan Hippo attack is a class of persistent memory attacks that operates under a more realistic threat model than prior memory poisoning work. The attacker plants a dormant payload into an agent's long-term memory via a single untrusted tool call (e.g., a crafted email), which activates only when the user later discusses sensitive topics such as finance, health, or identity, and exfiltrates high-value personal data to the attacker. While anecdotal demonstrations of such attacks have appeared against deployed systems, no prior work systematically evaluates them across heterogeneous memory architectures and defenses. We introduce Trojan Hippo Bench, a dynamic evaluation framework for persistent memory attacks and memory-layer defenses, comprising two components, (1) an OpenEvolve-based adaptive red-teaming benchmark that stress-tests defenses and memory backends against continuously refined attacks, and (2) a capability-aware security-utility analysis for persistent memory systems, enabling principled reasoning about defense deployment across different usage profiles. Instantiated on an email assistant across four memory backends (explicit tool memory, agentic memory, RAG, and sliding-window context), the undefended Trojan Hippo attack achieves up to 85-100% attack success rate (ASR) against current frontier models from OpenAI and Google, with planted memories successfully activating even after 100 benign sessions. We evaluate four memory-system defenses inspired by basic security principles; they reduce attack success to as low as 0-5%, but at utility costs that vary widely with the task mix. Effective real-world deployment thus remains an open challenge that Trojan Hippo Bench is built to study; we release it to support reuse and extension.",
+        "paper_updated": "2026-09-30T00:00:00Z",
+        "created_at": "2026-10-19T13:46:12Z",
+        "input_sha256": "1b60c59f11b61e710667e8317e844335361f6da18cc666a4810721403b1c239f",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 지속 메모리 공격 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 메모리 공격·방어 평가 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41160544127",
+        "context_sha256": "facda512c0e798b81184bf225b97365a500083a0a5402745c0d74d16643bae0c"
+      },
+      "proposal_sha256": "673f6fad56da0d6f3d0315547a786255aff042c7780ccd39df50682f88b128b2"
     }
   },
   "processed_comments": [],
@@ -58375,8 +58532,8 @@
         "2610.40518",
         "2610.40551"
       ],
-      "calls": 20,
-      "cost_usd": 10.784
+      "calls": 21,
+      "cost_usd": 11.3784
     }
   },
   "reaudits": [
