@@ -29357,6 +29357,180 @@
         "reviewed_sha256": "c71be1443bba673341ab7aba8ef5c9a0fb2d8a39b1cae6032886a5d0ce8a0655",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2609.33796": {
+      "decision": "propose",
+      "reason": "이 논문은 영어 자연어 접근 제어 요구사항을 Cedar 정책으로 합성하는 과제를 위한 CedarInstruct를 새로 구축했다. 학습과 의미 평가를 모두 지원하며, 시나리오마다 검증된 목표 정책과 실행 가능한 검증 계획이 있다. 과제 언어는 영어이고 입력은 텍스트뿐이라 en 트랙의 text로 분류했다. 구현 저장소 URL은 PDF 1쪽에 명시되어 있다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다. RAISE 학습 방법 자체는 벤치마크가 아니므로 데이터셋만 제안한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "cedarinstruct",
+            "이름": "CedarInstruct",
+            "평가 축": "코딩·보안(자연어 접근 제어 요구사항의 Cedar 정책 합성, 형식 검증 기반 의미 평가)",
+            "언어": "en",
+            "정의": "자연어 접근 제어 요구사항과 Cedar 스키마를 입력받아 형식 검증이 가능한 Cedar 정책을 생성하는 과제용 데이터셋. 다중 도메인 시나리오 5,800개(44개 도메인, 19개 응용 영역)이며, 별도로 단일 합성 조직을 나타내는 1,408개 시나리오가 있다. 시나리오마다 요구사항, 스키마, 검증 계획, 참조 정책, 검증된 목표 정책이 있다. 다중 도메인 시나리오는 SFT 4,386, RL 1,039, 테스트 375개로 나뉜다. 주 지표는 정책이 파싱·스키마 검증을 통과하고 검증 계획의 모든 검사를 만족하는 비율인 semantic success이며, syntax, macro, micro 점수도 보고한다. 독립 구축된 CedarBench 221개 시나리오로 전이를 평가한다.",
+            "대표 과제": "요구사항과 Cedar 스키마로부터 정책을 생성하고, 검증 계획의 ceiling, floor, liveness 검사로 채점",
+            "대표 예시·설명": "과제 설명: 재무 관리자가 업무 시간에만, 승인된 송장에 대해서만(기업 네트워크 예외 포함) 결제를 발행할 수 있다는 영어 요구사항을 받아, 그 예외가 업무 시간 제한을 풀지 않도록 정책을 작성하는 과제. 실제 시험 문항이 아님.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했다. 링크는 구현 저장소이며 코드 라이선스를 데이터 라이선스로 간주하면 안 된다. 요구사항은 GPT-5.5로 렌더링했고 스키마·검증 계획·목표 정책은 AutoCedar로 생성했다. 논문은 검증 계획의 충실도를 표본 검토로만 평가했다고 밝히며, 테스트 분할은 학습과 같은 44개 도메인에서 나온 in-distribution이다. 채점에는 Cedar 기호 검증기(cedar symcc)가 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Aizhouym/raise"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding and security (synthesizing Cedar access-control policies from natural-language requirements, with formal-verification-based semantic evaluation)",
+            "definition": "A dataset for generating formally verifiable Cedar policies from a natural-language access-control requirement and a Cedar schema. It contains 5,800 multi-domain scenarios (44 domains, 19 application areas) and, separately, 1,408 scenarios representing a single synthetic organization. Each scenario has a requirement, a schema, a verification plan, reference policies, and a verified target policy. The multi-domain scenarios are split into 4,386 for SFT, 1,039 for RL, and 375 for testing. The primary metric is semantic success, the percentage of policies that parse, validate against the schema, and satisfy every check in the verification plan; syntax, macro and micro scores are also reported. Transfer is evaluated on the independently built CedarBench (221 scenarios).",
+            "task": "Generate a policy from a requirement and a Cedar schema, scored by the ceiling, floor and liveness checks of the verification plan.",
+            "example": "Task description, not an actual test item: given an English requirement that finance managers may issue payments only during business hours and only for approved invoices unless the request comes from the corporate network, write a policy in which the network exception does not lift the business-hours restriction."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "Translating natural-language access-control"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "Translating natural-language access-control"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "Translating natural-language access-control"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/Aizhouym/raise"
+            },
+            "언어": {
+              "page": 32,
+              "quote": "Write in plain,"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We construct CedarInstruct"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "5,800 scenarios across"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Translating natural-language access-control"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.33796",
+      "paper_title": "RAISE: Reinforcing Access Control Policy Synthesis in LLMs via Symbolic Evaluation",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.33796",
+        "sha256": "183e175bbd4126c78447aaa0d8ca3239605866263448a59209be01f861aa0941",
+        "accessed": "2026-10-31T03:25:21Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 34,
+          "elapsed_seconds": 195.35,
+          "pdf_sha256": "183e175bbd4126c78447aaa0d8ca3239605866263448a59209be01f861aa0941",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "0668f3338018b050f6b980fcfb9d62706a40a33443d22195ad981d1185278a42",
+          "page_json_file": "2609.33796.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Aizhouym/raise",
+            "fetched_url": "https://api.github.com/repos/Aizhouym/raise/readme",
+            "sha256": "9fae53b23d53470aa90e767467dd7ddf20034cb28c736db3ad662044e8eecc23",
+            "accessed": "2026-10-31T03:29:04Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-31T03:29:04Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.33796",
+        "paper_title": "RAISE: Reinforcing Access Control Policy Synthesis in LLMs via Symbolic Evaluation",
+        "abstract": "Translating natural-language access-control requirements into policies requires careful reasoning about permissions, constraints, and exceptions, and even frontier LLMs often produce policies that violate the intended authorization semantics. We construct CedarInstruct, to our knowledge the first dataset that supports both training and semantic evaluation for formally verifiable Cedar policy synthesis. It contains 5,800 scenarios across 44 domains and 1,408 representing a single synthetic organization, each with a verified target policy and an executable verification plan. On this data we introduce RAISE, which trains policy synthesizers from formal verification in two stages, verified supervised fine-tuning (SFT) followed by a reinforcement learning (RL) stage that learns from verifier signal. We find that SFT succeeds largely by letting models express authorization logic they already have, since untrained models rarely write valid Cedar but often reason correctly when they do. After SFT, how the verifier's information is used matters more than how much of it is used. Of six RL instantiations that consume progressively richer verifier signal, only RAISE-OC improves meaningfully on SFT; it turns failed checks and symbolic counterexamples into guided exploration and learns from the result with off-context GRPO. With about 5.4K verified scenarios and LoRA fine-tuning, RAISE-OC trains Qwen3.5-9B to surpass zero-shot GPT-6 Astra and Claude Opus 5 by 13.33 and 16.26 percentage points in semantic success on held-out scenarios, and training transfers to the independently constructed CedarBench.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:46:01Z",
+        "input_sha256": "224a1baffc0ba2875ab8f534321665aa43bfbc4ac0ffee15beb78c2011f4782d",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM의 접근 제어 정책 합성을 강화학습으로 개선하는 연구"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "Cedar 정책 합성용 데이터셋과 기호 평가 기반 학습법 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41160544127",
+        "context_sha256": "0d61b8cfb3fc53f611104bb1c85adbfd3af7ece5f4c335b3c189236ca4f52e43"
+      },
+      "proposal_sha256": "171b4dd3a7d6a8f069b3b3d9f4cb28f01666fb898c006315f476a0fb75513c6f"
     }
   },
   "processed_comments": [],
@@ -57696,8 +57870,8 @@
         "2610.40518",
         "2610.40551"
       ],
-      "calls": 12,
-      "cost_usd": 6.1178
+      "calls": 13,
+      "cost_usd": 6.7214
     }
   },
   "reaudits": [
