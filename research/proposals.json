@@ -29740,6 +29740,170 @@
       },
       "issue_url": null,
       "proposal_sha256": "beebac1fe931277299b7042013d20a00cd6b4430df9ee665991cad9ef44b137e"
+    },
+    "2603.22018": {
+      "decision": "propose",
+      "reason": "BioCon은 생물정보학 논문의 방법 서술 문장과 Python 함수 코드가 서로 대응하는지 판정하는 재사용 가능한 새 벤치마크입니다. 과제 입력은 영어 논문 문장과 코드여서 en 트랙, text 모달리티로 분류했습니다. 문장 단위 분류, 검색, 프로젝트 단위 평가의 세 설정과 수치(48개 프로젝트, 일관 1,130쌍·비일관 5,650쌍, 프로젝트 단위 8:1:1 분할)가 논문에 제시되어 있습니다. 공식 코드 저장소 URL은 PDF 17쪽에 명시되어 있습니다. 라이선스 등 미확인 항목은 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "biocon",
+            "이름": "BioCon",
+            "평가 축": "코딩(논문-코드 일관성 분석)",
+            "언어": "en",
+            "정의": "생물정보학 소프트웨어 프로젝트 48개(Python, 논문과 연결된 GitHub 저장소)에서 논문 문장과 코드 함수의 쌍을 만들어, 함수가 문장의 기능을 실제로 구현하는지 판정하는 벤치마크. 일관 1,130쌍, 비일관 5,650쌍(문장당 하드 네거티브 2개, 랜덤 네거티브 3개)이며 프로젝트 단위로 train 38, validation 5, test 5개 프로젝트로 나눠 test 프로젝트는 학습에 쓰이지 않는다(8:1:1). 평가는 문장 단위 이진 분류(Acc, macro-F1, MCC), 프로젝트 내·프로젝트 간 검색(MRR, Hit@1/5/10), 프로젝트 단위 일관성 평가(Acc, F1, MAE, RMSE)의 세 설정이며, 논문은 세 번의 시드 평균으로 보고하고 입력을 512 토큰으로 제한했다.",
+            "대표 과제": "논문 문장과 Python 함수 쌍의 일관성 이진 분류, 문장에 대응하는 함수 검색, 프로젝트 단위 일관성 점수 추정",
+            "대표 예시·설명": "논문의 방법 서술 문장(예: 학습률 설정을 설명하는 영어 문장)과 코드 함수 하나를 주고, 그 함수가 문장의 기능을 구현하는지 일관/비일관으로 판정하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 않았다. 코드 저장소 라이선스가 데이터 라이선스를 대신하지 않는다. 일관 라벨은 세 전문가 만장일치 쌍만 채택했고, 비일관 샘플은 하드·랜덤 네거티브 샘플링으로 구성되어 전문가가 개별 판정한 것이 아니다. Python 프로젝트와 함수 단위 분석에 한정되며 test는 프로젝트 5개로 작다. 논문은 CodeBERT, UniXcoder 등 인코더를 직접 학습해 평가한다. PDF의 데이터셋 파일 링크는 잘려 있어 코드 저장소 URL을 링크로 기록했다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Ricardo1998-Xu/BioCon"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (paper-code consistency analysis)",
+            "definition": "A benchmark of sentence-code pairs built from 48 Python bioinformatics projects linked to published papers. It tests whether a code function actually implements the functionality described by a paper sentence. It has 1,130 consistent and 5,650 inconsistent pairs (two hard and three random negatives per sentence), split by project into 38 train, 5 validation, and 5 test projects (8:1:1), so test projects are unseen in training. Evaluation covers sentence-level binary classification (Acc, macro-F1, MCC), intra-project and cross-project retrieval (MRR, Hit@1/5/10), and project-level consistency assessment (Acc, F1, MAE, RMSE). The paper averages three seeds and limits inputs to 512 tokens.",
+            "task": "Binary consistency classification of paper-sentence and Python-function pairs, retrieval of the function matching a sentence, and project-level consistency score estimation.",
+            "example": "Task description: given a methods sentence from a paper, such as an English sentence describing a learning-rate setting, and one code function, decide whether the function implements the described functionality."
+          },
+          "evidence": {
+            "modality": {
+              "page": 15,
+              "quote": "A constant learning"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "BioCon, the first"
+            },
+            "대표 예시·설명": {
+              "page": 15,
+              "quote": "A constant learning"
+            },
+            "링크": {
+              "page": 17,
+              "quote": "https://github.com/Ricardo1998-Xu/BioCon"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "A constant learning"
+            },
+            "이름": {
+              "page": 2,
+              "quote": "BioCon, the first"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "BioCon, the first"
+            },
+            "평가 축": {
+              "page": 2,
+              "quote": "BioCon, the first"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2603.22018",
+      "paper_title": "Do Papers Tell the Whole Story? A Benchmark and Framework for Uncovering Hidden Implementation Gaps in Bioinformatics",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2603.22018",
+        "sha256": "061f11298ab02e803be9c1e1c6b9ca8b39e5a909988727d6fd3982bdbea8ab20",
+        "accessed": "2026-10-31T03:49:42Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "poppler_failed"
+          ],
+          "page_count": 19,
+          "elapsed_seconds": 131.83,
+          "pdf_sha256": "061f11298ab02e803be9c1e1c6b9ca8b39e5a909988727d6fd3982bdbea8ab20",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "cd253701431a8cc42a9048dbb2639283b3565bbfcd19635fe2988c32da3a7965",
+          "page_json_file": "2603.22018.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Ricardo1998-Xu/BioCon",
+            "fetched_url": "https://api.github.com/repos/Ricardo1998-Xu/BioCon/readme",
+            "sha256": "3ad8d9d8870ce6e2b98ccc95dd1bf1d9c855e12262a1a10020daf6296ed6e6f8",
+            "accessed": "2026-10-31T03:52:21Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/Ricardo1998-Xu/BioCon/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "0ae0a8cdf63b9dccc5a157e863df7d10164764e25adc7f83d2a1f83757fd5d18"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-10-31T03:52:21Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2603.22018",
+        "paper_title": "Do Papers Tell the Whole Story? A Benchmark and Framework for Uncovering Hidden Implementation Gaps in Bioinformatics",
+        "abstract": "As bioinformatics software is increasingly applied across a broader range of scenarios and the rapid development of large language models (LLMs) further lowers the barriers to software use and development, the composition of the bioinformatics research community is undergoing substantial change. Consequently, a growing number of researchers require a deeper understanding of methodological details and software behavior. In this context, systematically analyzing the relationship between paper descriptions and code implementations is emerging as an important new challenge in the field. To address this challenge, we introduce paper-code consistency analysis as a new research perspective and construct BioCon, the first benchmark dataset for paper-code consistency analysis in bioinformatics. Furthermore, we develop a unified cross-modal analysis framework to systematically investigate this problem from three perspectives: sentence-level detection, cross-modal retrieval, and project-level assessment. Experimental results demonstrate that the proposed framework can effectively model the semantic relationships between scientific publications and software implementations. Further case studies reveal that paper-code inconsistency is not a single phenomenon but arises from multiple underlying causes, among which Author-Perceived Non-Essential Details represents the most prevalent category. These findings suggest that paper-code consistency analysis is not merely a technical problem but also raises broader discussions regarding knowledge dissemination, the boundaries of code disclosure, and community norms. We hope that this work will encourage the bioinformatics community to re-examine the relationship between scientific publications and software implementations while providing a foundation for future research in paper-code consistency analysis.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:46:12Z",
+        "input_sha256": "99d1360049bc4a6dcd59508327d642dd75c32909a33b89d99676d921be833270",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "생물정보학 논문-코드 일관성 LLM 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "논문-코드 일관성 분석 신규 벤치마크 BioCon 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41160544127",
+        "context_sha256": "537320537f8e78542b9d236a281ccee3ea0960c54651619d93015949342e4cfa"
+      },
+      "proposal_sha256": "6cbc6651aa2d40d6c3147ec58128792e17e37d4a62d175f10d1403ed0f6c8c7b"
     }
   },
   "processed_comments": [],
@@ -58086,8 +58250,8 @@
         "2610.40518",
         "2610.40551"
       ],
-      "calls": 17,
-      "cost_usd": 9.1934
+      "calls": 18,
+      "cost_usd": 9.6996
     }
   },
   "reaudits": [
