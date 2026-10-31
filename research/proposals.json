@@ -29359,8 +29359,8 @@
       }
     },
     "2609.33796": {
-      "decision": "propose",
-      "reason": "이 논문은 영어 자연어 접근 제어 요구사항을 Cedar 정책으로 합성하는 과제를 위한 CedarInstruct를 새로 구축했다. 학습과 의미 평가를 모두 지원하며, 시나리오마다 검증된 목표 정책과 실행 가능한 검증 계획이 있다. 과제 언어는 영어이고 입력은 텍스트뿐이라 en 트랙의 text로 분류했다. 구현 저장소 URL은 PDF 1쪽에 명시되어 있다. 공식 저장소 README에는 LICENSE 파일이 없고 라이선스와 lm-eval 언급도 없으며, PDF에도 라이선스 관련 표기가 없다. 따라서 라이선스는 미표기로, 권리 항목은 저작권 전부 보유로 기록했다. RAISE 학습 방법 자체는 벤치마크가 아니므로 데이터셋만 제안한다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 권고 모델 목록이 선택한 실험(표 2, CedarInstruct 테스트 분할 375개)의 비교 대상을 모두 담지 않아, 상위 3개 선택이 정당화되지 않는다. 목록에는 RAISE-OC 두 모델(48.00, 46.93)과 GPT-6 Astra(33.60), Claude Opus 5(30.67)만 있다. 그러나 같은 실험에는 Qwen3.8-27B SFT(46.40), Qwen3.5-9B SFT(42.93)를 비롯해 다른 RL 변형 여러 개가 있고, 그중 다수가 GPT-6 Astra보다 높다. 특히 Qwen3.8-27B SFT 46.40은 세 번째 항목인 GPT-6 Astra 33.60보다 높으므로, 전체 비교 대상으로 보면 상위 3개가 달라진다. 점수 자체는 표 2와 표 11의 값과 일치하고 지표 방향(높을수록 좋음)과 조건 서술도 맞지만, 모델 범위가 불완전하다. 라이선스 쪽은 공식 README에 라이선스와 lm-eval 언급이 없고 pdf_mentions도 비어 있어 라이선스 미표기, 세 권리 항목 저작권 전부 보유, lm-eval 미표기가 정합하다. 데이터는 다른 데이터셋에서 파생되지 않아 파생 데이터셋 고지 요건도 해당하지 않는다. 다만 위 권고 목록 문제 때문에 승인할 수 없으며, 비교 대상을 전부 포함하거나 선택 범위를 정당하게 제한해 다시 제안해야 한다.",
       "changes": [
         {
           "track": "en",
@@ -29571,7 +29571,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-10-31T03:29:04Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -29597,12 +29597,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41160544127",
-        "context_sha256": "0d61b8cfb3fc53f611104bb1c85adbfd3af7ece5f4c335b3c189236ca4f52e43"
-      },
       "proposal_sha256": "8acc73f460ea645a82c965d2938022edb7c55454e8b3cb2f08bd99c382eefa0e",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "권고 모델 목록이 선택한 실험(표 2, CedarInstruct 테스트 분할 375개)의 비교 대상을 모두 담지 않아, 상위 3개 선택이 정당화되지 않는다. 목록에는 RAISE-OC 두 모델(48.00, 46.93)과 GPT-6 Astra(33.60), Claude Opus 5(30.67)만 있다. 그러나 같은 실험에는 Qwen3.8-27B SFT(46.40), Qwen3.5-9B SFT(42.93)를 비롯해 다른 RL 변형 여러 개가 있고, 그중 다수가 GPT-6 Astra보다 높다. 특히 Qwen3.8-27B SFT 46.40은 세 번째 항목인 GPT-6 Astra 33.60보다 높으므로, 전체 비교 대상으로 보면 상위 3개가 달라진다. 점수 자체는 표 2와 표 11의 값과 일치하고 지표 방향(높을수록 좋음)과 조건 서술도 맞지만, 모델 범위가 불완전하다. 라이선스 쪽은 공식 README에 라이선스와 lm-eval 언급이 없고 pdf_mentions도 비어 있어 라이선스 미표기, 세 권리 항목 저작권 전부 보유, lm-eval 미표기가 정합하다. 데이터는 다른 데이터셋에서 파생되지 않아 파생 데이터셋 고지 요건도 해당하지 않는다. 다만 위 권고 목록 문제 때문에 승인할 수 없으며, 비교 대상을 전부 포함하거나 선택 범위를 정당하게 제한해 다시 제안해야 한다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 147190,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 1922,
+              "output_tokens_details": {
+                "thinking_tokens": 1303
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 147190,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 1922,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 147190,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 147190
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.6080489,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "8acc73f460ea645a82c965d2938022edb7c55454e8b3cb2f08bd99c382eefa0e",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -57942,8 +57988,8 @@
         "2610.40518",
         "2610.40551"
       ],
-      "calls": 14,
-      "cost_usd": 7.3729
+      "calls": 15,
+      "cost_usd": 7.9809
     }
   },
   "reaudits": [
