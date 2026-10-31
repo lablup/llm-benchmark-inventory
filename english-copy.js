@@ -354,4 +354,22 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Episode detection (AF episode intervals scored by temporal F1)",
     "example": "Task description: given an English system prompt casting it as an expert cardiologist, the agent issues skim, measure and write actions, measures elapsed signal with numeric tools such as get_rate_rhythm and get_st, and records the event intervals it finds."
   },
+  "specread": {
+    "axis": "Comprehension (hardware specification reading)",
+    "definition": "A benchmark that measures whether models understand hardware design specifications, separating comprehension from code generation ability. Dataset v2.2 has 383 questions over 10 open-source OpenTitan IP blocks. It covers exact retrieval, cross-section reasoning, contradiction detection in mutated specifications, and spec-RTL consistency checking, and is scored automatically with deterministic checks.",
+    "task": "Read a specification excerpt and a question (or a mutated specification or RTL), then answer a fact, locate and categorize a contradiction, or reply NO_CONTRADICTION when none exists.",
+    "example": "Task description, not an actual test item: given a specification excerpt, identify the contradiction with its location and category, or reply NO_CONTRADICTION if there is none."
+  },
+  "trojan-hippo-bench": {
+    "axis": "Security (persistent memory attacks and defenses for agents)",
+    "definition": "A dynamic framework for evaluating persistent memory attacks (the Trojan Hippo attack) and memory-layer defenses in LLM agents. A single untrusted tool call (for example, a crafted email) plants a dormant payload in long-term memory, and attack success rate (ASR) measures whether personal data is later exfiltrated when the user discusses a sensitive topic. It has an OpenEvolve-based adaptive red-teaming component (up to 40 iterations) and a security-utility analysis that decomposes defense utility into seven user flows. It is instantiated on an email assistant with four memory backends (explicit, Mem0, RAG, sliding-window context), five sensitive topics (finance, health, legal, tax, identity), and four defenses. Reported ASR averages 60 rollouts per (backend, defense) cell, and the paper targets Gemini 3.1 Pro and GPT-5-mini.",
+    "task": "Measure ASR (for example at trigger session N=100) and benign utility (AM and HM) over seven user flows for an email-assistant agent, by memory backend and defense",
+    "example": "Task description, not an actual test item: hidden instructions in an attacker's email are written into the agent's long-term memory, and the benchmark checks whether the agent later emails the user's sensitive English message, such as a tax or health query, to the attacker."
+  },
+  "autodojo": {
+    "axis": "Agent security (adaptive evaluation of indirect prompt injection defenses)",
+    "definition": "A generative benchmark built on AgentDojo and AgentDyn that adaptively generates indirect prompt injections in a black-box setting for a given agent and defense. It supports six task suites: banking, slack, travel, github, shopping, and dailylife.",
+    "task": "Optimize injections against defended agents across the six suites (banking, slack, travel, github, shopping, dailylife) and measure whether the attack succeeds.",
+    "example": "Task description: a user asks in English for a bill to be paid, the agent reads the bill through a tool, and the benchmark checks whether an injection planted in it makes the agent take an action the user never requested."
+  },
 };

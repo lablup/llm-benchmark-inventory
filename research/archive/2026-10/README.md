@@ -2,6 +2,9 @@
 
 조사 시각의 한국 시간 기준으로 보관합니다. 재조사 결과는 새 파일에 쌓이며 기존 기록은 유지합니다.
 
+- [2610.38788 · Gold vs.~Translation: Are We Measuring Language, Knowledge, or Locality in Translated Benchmarks?](2610.38788-abstract-20261031T114237-9bc86264c5bd.md)
+- [2610.38448 · Benchmarking decision models against generative large language models on medical multiple-choice questions](2610.38448-abstract-20261031T114237-4e308758242f.md)
+- [2610.38220 · Rubricon: Automated Rubric Generation and Refinement for LLM Evaluation and Training](2610.38220-abstract-20261031T114237-0ef0bfae36d5.md)
 - [2610.37276 · Where Should the Evaluation Budget Go in LLM-Driven Agent Scaffold Evolution?](2610.37276-abstract-20261029T114304-0641c3e39ff0.md)
 - [2610.34241 · Beyond Benchmarks: Can Small Open-Weight Models Get Real Coding Work Done?](2610.34241-abstract-20261028T114520-4f71605c53dd.md)
 - [2610.34185 · R2A-Sales: A Policy-Atom-Matched Benchmark for Rule-to-Action Gaps in Goal-Directed Sales Agents](2610.34185-abstract-20261028T114520-99a8e397d58b.md)
@@ -40,6 +43,11 @@
 - [2610.00092 · BudgetSchemaBench: A Budget-Swept Diagnostic for Schema Context in Text-to-SQL](2610.00092-20261020T124521-7f3845b16de2.md)
 - [2610.00008 · Bounded-Fidelity Sim-as-Demo-Stage: Mocap Handoff for Governance Benchmarks](2610.00008-20261019T233321-df05971dd667.md)
 - [2609.35823 · CoVLM-Bench: A Real-World Benchmark for Cooperative Driving Question Answering and Planning](2609.35823-20261026T130324-50e845713c6e.md)
+- [2609.33807 · CodeActionBench: Evaluating Agentic Code-as-Policy for Embodied Manipulation](2609.33807-20261031T123401-f704e541708d.md)
+- [2609.33796 · RAISE: Reinforcing Access Control Policy Synthesis in LLMs via Symbolic Evaluation](2609.33796-20261031T122904-6dfb5b0f3293.md)
+- [2609.33530 · E-CONAN (Entailment, CONtradition And Neutral) Diagnostics Dataset Investigating Linguistic Phenomena in Arabic Natural Language Understanding](2609.33530-20261031T122206-6b2de8fd4002.md)
+- [2609.33411 · MetaBench-Harness: Unlocking End-to-End Optimization of Benchmark Harnesses](2609.33411-20261031T121901-a5cd11971f4f.md)
+- [2609.33295 · TraceDance: An Automated System for Building Agent Behavior Benchmarks from Real-World Agent Deployment Traces](2609.33295-20261031T120822-5d82e632b75e.md)
 - [2609.33261 · EngIntervene: Benchmarking Multimodal Engineering State Understanding and Design Intervention Reasoning](2609.33261-20261030T131204-88066a4b808f.md)
 - [2609.33014 · TCMQA: A 38K-Question Traditional Chinese Medicine Benchmark with a Licensed-Practitioner Reference](2609.33014-20261030T123310-4d981e2e2701.md)
 - [2609.32770 · C-HAT-Bench: Benchmarking Chinese AI-Text Detection Beyond Fully Generated Text](2609.32770-20261030T122425-01e089ecb397.md)
@@ -179,6 +187,7 @@
 - [2605.20731 · TASTE: A Designer-Annotated Multi-Dimensional Preference Dataset for AI-Generated Graphic Design](2605.20731-20261025T123227-7a9a63702ef4.md)
 - [2605.20712 · SCRIBE: Diagnostic Evaluation and Rich Transcription Models for Indic ASR](2605.20712-abstract-20261023T115140-7dacef918e74.md)
 - [2605.17281 · ContractBench: Can LLM Agents Preserve Observation Contracts?](2605.17281-20261030T124959-814296e51d4d.md)
+- [2605.11960 · Chronicles-OCR: A Cross-Temporal Perception Benchmark for the Evolutionary Trajectory of Chinese Characters](2605.11960-20261031T130016-7c48e1fc512f.md)
 - [2605.11269 · gwBenchmarks: Stress-Testing LLM Agents on High-Precision Gravitational Wave Astronomy](2605.11269-20261025T114800-baab7ad3236a.md)
 - [2605.10002 · Med-StepBench: A Hierarchical Reasoning Framework for Evaluating Hallucinations in Medical Vision-Language Models](2605.10002-20261019T231826-3bd39662aa92.md)
 - [2605.08467 · CUDAHercules: Benchmarking Hardware-Aware Expert-level CUDA Optimization for LLMs](2605.08467-20261022T170448-2878fdbac0a3.md)
@@ -192,6 +201,7 @@
 - [2604.11304 · BankerToolBench: Evaluating AI Agents in End-to-End Investment Banking Workflows](2604.11304-20261023T115944-6ea33ae28623.md)
 - [2604.07733 · CivBench: Progress-Based Evaluation for LLMs' Strategic Decision-Making in Civilization V](2604.07733-20261022T174200-85252164ee80.md)
 - [2604.07733 · CivBench: Progress-Based Evaluation for LLMs' Strategic Decision-Making in Civilization V](2604.07733-20261020T131601-6e9b0ffbfd6f.md)
+- [2603.22018 · Do Papers Tell the Whole Story? A Benchmark and Framework for Uncovering Hidden Implementation Gaps in Bioinformatics](2603.22018-20261031T125221-daec42a03971.md)
 - [2603.17373 · SafeTutors: Benchmarking Pedagogical Safety in AI Tutoring Systems](2603.17373-20261027T121348-4a3bc01b1f04.md)
 - [2603.16859 · SocialOmni: Benchmarking Audio-Visual Social Interactivity in Omni Models](2603.16859-20261024T125718-2a9adbc375bf.md)
 - [2603.15309 · CCTU: A Benchmark for Tool Use under Complex Constraints](2603.15309-20261026T115413-6a970805015f.md)
