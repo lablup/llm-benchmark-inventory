@@ -30377,8 +30377,8 @@
       "approval_policy": "claude_only"
     },
     "2606.03657": {
-      "decision": "propose",
-      "reason": "NovelAPIBench는 모델별 API 지식 격차에 맞춰 실행 기반 코딩 과제를 만들어 내는 재사용 가능한 진단 벤치마크이며, 공식 코드·데이터 링크가 논문에 명시되어 있다. 과제 설명은 영어 프롬프트이고 입력은 텍스트뿐이므로 en 트랙의 text로 분류한다. 기존 인벤토리에 없는 새 항목이라 신규 행으로 제안한다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "decision": "needs_evidence",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: The official card mentions the evaluation harness; cite it instead of claiming absence",
       "changes": [
         {
           "track": "en",
@@ -30527,7 +30527,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-01T02:42:15Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -30553,11 +30553,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41265676893",
-        "context_sha256": "d034ddacda7e4efb8bb1a3bb16d450541c3483f13a927862519eb6bf17dc8db7"
-      },
-      "proposal_sha256": "b5d0af3e1eae93d1edca813e6ea91569050e3c902c8bb03d1fdb01b8572d9244"
+      "proposal_sha256": "b5d0af3e1eae93d1edca813e6ea91569050e3c902c8bb03d1fdb01b8572d9244",
+      "approval_policy": "claude_only",
+      "resume_error": "The official card mentions the evaluation harness; cite it instead of claiming absence"
     },
     "2606.15057": {
       "decision": "propose",
@@ -58115,10 +58113,10 @@
     "2610.38788": {
       "arxiv_id": "2610.38788",
       "paper_title": "Gold vs.~Translation: Are We Measuring Language, Knowledge, or Locality in Translated Benchmarks?",
-      "abstract": "Translated versions of English-origin benchmarks such as MMLU are widely used to evaluate large language models in non-English languages, yet it remains unclear whether they measure the same constructs as natively created benchmarks. We frame this as a proxy validity question and compare DeepL-translated MMLU proxies against six native benchmarks in seven pairings across five Nordic and Baltic languages, evaluating 29 models on each pairing. Beyond ranking agreement, we test incremental proxy validity: does the translated score add predictive value for native performance after controlling for model size and language proficiency? Proxy validity varies substantially across benchmark pairings. Applying the same robustness criteria to all seven pairings, we find four robust effects, two marginal effects, and one null result. The strongest evidence occurs for curriculum-overlap benchmarks such as Skolprov ($\\Delta R^2$=.128, 95% CI [.038,.253]), whereas translated MMLU provides no significant incremental value for Sweden-specific factual knowledge in SwedishFacts (p=.242). Because SwedishFacts is also the only open-ended benchmark, we cannot fully separate the effects of local content and response format. Overall, the results indicate a clear pattern: translated benchmarks provide a better proxy when their source content overlaps with the native evaluation target, while locally anchored knowledge is less reliably captured.",
-      "paper_updated": null,
-      "created_at": "2026-10-31T02:42:37Z",
-      "input_sha256": "c3668865d492a26ee0748b41fa0db5af06f55cde1ff977927b24c9c5fe7b1e41",
+      "abstract": "Translated versions of English-origin benchmarks such as MMLU are widely used to evaluate large language models in non-English languages, yet it remains unclear whether they measure the same constructs as natively created benchmarks. We frame this as a proxy validity question and compare DeepL-translated MMLU proxies against six native benchmarks in seven pairings across five Nordic and Baltic languages, evaluating 29 models on each pairing. Beyond ranking agreement, we test incremental proxy validity: does the translated score add predictive value for native performance after controlling for model size and language proficiency? Proxy validity varies substantially across benchmark pairings. Applying the same robustness criteria to all seven pairings, we find four robust effects, two marginal effects, and one null result. The strongest evidence occurs for curriculum-overlap benchmarks such as Skolprov ($ΔR^2$=.128, 95% CI [.038,.253]), whereas translated MMLU provides no significant incremental value for Sweden-specific factual knowledge in SwedishFacts (p=.242). Because SwedishFacts is also the only open-ended benchmark, we cannot fully separate the effects of local content and response format. Overall, the results indicate a clear pattern: translated benchmarks provide a better proxy when their source content overlaps with the native evaluation target, while locally anchored knowledge is less reliably captured.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "excluded",
@@ -58126,7 +58124,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "irrelevant",
-          "reason": "북유럽·발트어 한정 벤치마크 비교 연구"
+          "reason": "북유럽·발트어 벤치마크 비교 분석으로 한국어/영어 아님"
         }
       ]
     },
@@ -58397,6 +58395,240 @@
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
           "reason": "연구수준 수학 챌린지 결과 및 증명 평가 파이프라인 제안"
+        }
+      ]
+    },
+    "2608.26119": {
+      "arxiv_id": "2608.26119",
+      "paper_title": "DeflectBench: A Benchmark for Evaluating Rhetorical Fallacy Generation in LLMs",
+      "abstract": "Whether large language models can be prompted to generate rhetorical fallacies on demand, and whether current safety post-training constrains this behavior, has received less attention than the related question of detecting fallacies in existing text. We close this gap with DeflectBench, evaluating 23,990 generations from four frontier models across three deflection strategies (whataboutism, ad hominem, red herring), seven prompt framings, and 80 claims spanning four controversy levels. Refusal is governed primarily by request structure rather than claim content. Per claim refusal varies by only 11 percentage points across the 80 claims, while a single prompt frame change can swing within model refusal by nearly 100 percentage points and switching the requested fallacy type can swing it by over 80 percentage points within explicit framings. An educational debate coach prompt framing collapses refusal to near zero across all four model families, but the bypassed behavior is not clean compliance. Models typically produce labeled compliance, naming the requested manipulation in the same response that contains it. The four models distribute differently across refusal, labeled compliance, soft refusal, and clean compliance. The code and dataset are released at https://github.com/ArtKanke/DeflectBench.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "수사적 오류 생성 평가용 DeflectBench 데이터셋·코드 공개, 영어 추정 가능"
+        }
+      ]
+    },
+    "2606.07167": {
+      "arxiv_id": "2606.07167",
+      "paper_title": "UrduMMLU: A Massive Multitask Benchmark for Urdu Language Understanding",
+      "abstract": "Meaningful multilingual evaluation must test models in the target language and educational context. Urdu, spoken by more than 230 million people, lacks a broad MMLU-style benchmark built from native educational sources. We introduce UrduMMLU, a benchmark of 26,389 Urdu MCQs across 26 subjects and five domains, collected from native Urdu MCQ banks and public examination PDFs. Unlike translation-based benchmarks, UrduMMLU combines academic subjects with content specific to Urdu and regional education. We label the exam-derived portion through dual human annotation with strict consensus filtering. We evaluate 30 LLMs under English and Urdu prompts, yielding 60 zero-shot evaluations, and further evaluate four open-source LLMs under multiple few-shot settings across both prompt languages. Gemini-3.5-Flash performs best, reaching 90.23% and 90.45% accuracy, while no other model exceeds 85%. The strongest open-source model trails by 7.78 and 9.12 points, and many models lose 25 to 40 points on Urdu-centered Humanities subjects compared with STEM. Few-shot prompting yields only modest gains. Results on UrduMMLU show that current LLMs have uneven Urdu knowledge, particularly for content grounded in the regional context.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "모든 과제가 우르두어 MCQ로 한국어/영어 아님"
+        }
+      ]
+    },
+    "2607.28934": {
+      "arxiv_id": "2607.28934",
+      "paper_title": "FairFund-Bench: Evaluating Distributive Bias in LLM Resource Allocation",
+      "abstract": "Large language models (LLMs) are increasingly involved in the distribution of scarce resources, raising concerns about biased allocations based on characteristics like race and gender. Recent LLM audits have produced inconsistent results, however, finding evidence of both positive and negative discrimination towards women and ethnic minorities, even for the same models. We show that this disagreement can arise from differences in audit format and introduce FairFund-Bench, a benchmark that systematically varies key features of previous audit designs: the evaluation task (rating, ranking, or allocation), comparison context (single or multi-stimulus), and whether the audit is transparent or disguised. The benchmark comprises 600 English-language requests for financial assistance created from human-authored templates (calibrated against 1.3M real GoFundMe campaigns) across three domains, four race and two gender categories, and five causal framings of need derived from welfare deservingness theory. Across 14 models, audit format changes the direction of bias: models advantage minorities when rating claimants individually but penalize some groups when ranking them side by side. Bias magnitude, though small overall, is several times greater in disguised audits than in transparent ones, where, faced with appeals differing only in claimants' names, models overwhelmingly split funds equally. Causal framing effects, by contrast, exceed demographic effects by roughly an order of magnitude and are consistent across models and audit formats, indicating that current LLMs robustly reproduce human deservingness evaluations. The benchmark scores models on four criteria (demographic bias, deservingness alignment, cross-task consistency, and cross-context consistency), is publicly available, and can be readily adapted to other substantive domains.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어 요청 600건 기반 자원배분 편향 벤치마크 공개"
+        }
+      ]
+    },
+    "2511.20709": {
+      "arxiv_id": "2511.20709",
+      "paper_title": "DualGauge: Automated Joint Security-Functionality Benchmarking of Specification-Only Code Generation by LLMs and Coding Agents",
+      "abstract": "Large language models (LLMs) and LLM-based coding agents are now used to generate code from natural-language specifications, yet ensuring such code is both functionally correct and secure remains a challenge. We present DualGauge, the first fully automated framework for jointly evaluating correctness and security of specification-only code generation, supported by DualGauge-Bench, a language-agnostic benchmark of 307 coding tasks each paired with functional and security tests derived from the same specification. Evaluating 10 representative LLMs across Python, C++, and JavaScript, we find that functional correctness substantially overestimates reliable code generation: even the strongest model remains below 15% joint security-functionality success in every language. Common model-side factors--scale, extended thinking, quantization, instruction tuning, and code specialization--do not reliably improve joint performance, suggesting secure-and-correct code generation does not simply emerge from stronger coding capability. Evaluation of 3 leading coding agents (Codex, OpenHands, and Claude Code) shows that iterative scaffolding is not a reliable remedy on specification-only tasks: results are strongly scaffold-dependent, with two of the three agents failing to outperform a comparable direct model. A qualitative audit reveals that these failures concentrate at the output contract boundary and in guards that exist but are insufficient--patterns that only joint benchmarking reliably exposes.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코드 생성 보안·기능 공동 평가 벤치마크 DualGauge-Bench 제안"
+        }
+      ]
+    },
+    "2603.14326": {
+      "arxiv_id": "2603.14326",
+      "paper_title": "ECG-Reasoning-Benchmark: A Benchmark for Evaluating Clinical Reasoning Capabilities in ECG Interpretation",
+      "abstract": "While Multimodal Large Language Models (MLLMs) show promising performance in automated electrocardiogram interpretation, it remains unclear whether they perform actual step-by-step reasoning or just rely on superficial visual cues. To investigate this, we introduce ECG-Reasoning-Benchmark, a novel multi-turn evaluation framework comprising over 6,400 samples to systematically assess step- by-step reasoning across 17 core ECG diagnoses. Our comprehensive evaluation of state-of-the-art models reveals a systematic shortfall in executing multi-step logical deduction. Although models possess the medical knowledge to retrieve clinical criteria for a diagnosis, they exhibit consistently low success rates in maintaining a complete reasoning chain, primarily failing to ground the corresponding ECG findings to the actual visual evidence in the ECG signal. These results demonstrate that current MLLMs bypass actual visual interpretation, highlighting a limitation in their visual grounding capabilities and motivating robust, reasoning-centric medical AI. The code and data are available at https://github.com/Jwoo5/ecg-reasoning-benchmark.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "ECG 해석 추론 평가용 멀티모달 벤치마크, 코드·데이터 공개"
+        }
+      ]
+    },
+    "2503.01295": {
+      "arxiv_id": "2503.01295",
+      "paper_title": "CodeArena: A Collective Evaluation Platform for LLM Code Generation",
+      "abstract": "Large Language Models (LLMs) have reshaped code generation by synergizing their exceptional comprehension of natural language and programming syntax, thereby substantially boosting developer productivity. These advancements have prompted numerous efforts to quantitatively evaluate their coding capabilities. However, persistent challenges, such as benchmark leakage, data dissipation, and limited system accessibility, continue to impede a timely and accurate assessment. To address these limitations, we introduce CodeArena, an online evaluation framework tailored for LLM code generation. The key innovation is a collective evaluation mechanism, which dynamically recalibrates individual model scores based on the holistic performance of all participating models, mitigating score biases caused by widespread benchmark leakage. In addition, CodeArena ensures open access to all submitted solutions and test cases and provides automation-friendly APIs to streamline the code evaluation workflow. Our main contributions are: (1) a collective evaluation system for unbiased assessment, (2) a public repository of solutions and test cases, and (3) automation-ready APIs for seamless integration.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코드 생성 평가 플랫폼 및 공개 풀이·테스트 저장소 제공"
+        }
+      ]
+    },
+    "2512.08867": {
+      "arxiv_id": "2512.08867",
+      "paper_title": "From Conversation to Evaluation: Benchmarking LLMs on Development Knowledge via SimpleDevQA",
+      "abstract": "The Development Knowledge Question Answering (Dev Knowledge QA) task aims to provide accurate natural language answers to knowledge-seeking questions during software development. To investigate the importance of Dev Knowledge QA in AI-assisted software development and the extent to which it has been explored, we conduct a preliminary analysis of real user-LLM dialogues from WildChat. Our findings indicate that Dev Knowledge QA plays a significant role in real-world software development scenarios, and these raw dialogues cannot be directly used to construct a Dev Knowledge QA benchmark. Existing Dev Knowledge QA benchmarks are limited in development knowledge scope and often not built from real user queries. To bridge this gap, we design a three-phase pipeline that transforms real-world dialogue into simple development knowledge-seeking QA pairs. Through this pipeline, we introduce SimpleDevQA, a multilingual Dev Knowledge QA benchmark inspired by real user dialogues. This dataset covers three languages (English, Chinese, and Russian), and focuses on questions with unique, short, and verifiable answers, making evaluation more accurate and simple. Extensive experiments with 21 mainstream LLMs show that closed-source models generally perform best on SimpleDevQA. We also find that RAG-based knowledge injection improves accuracy, and that Dev Knowledge QA performance correlates with both model confidence and code-generation capability. To facilitate the replication study, we have released our data and code at: https://github.com/DeepSoftwareAnalytics/SimpleDevQA.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어 포함 다국어 개발 지식 QA 벤치마크 SimpleDevQA 제안"
+        }
+      ]
+    },
+    "2601.20251": {
+      "arxiv_id": "2601.20251",
+      "paper_title": "Efficient Evaluation of LLM Performance with Statistical Guarantees",
+      "abstract": "Exhaustively evaluating many large language models (LLMs) on a large suite of benchmarks is expensive. We cast benchmarking as finite-population inference and, under a fixed query budget, seek tight confidence intervals (CIs) for model accuracy with asymptotic frequentist coverage. We propose Factorized Active Querying (FAQ), which (a) leverages historical information through a Bayesian factor model; (b) adaptively selects questions using a hybrid variance-reduction/active-learning sampling policy; and (c) maintains validity through Pro-Active Inference---a finite-population extension of active inference (Zrnic & Candès, 2024) that enables direct question selection while preserving asymptotic frequentist coverage. In our experiments, FAQ delivers up to $5\\times$ effective sample size gains over strong baselines on two benchmark suites, across varying historical-data missingness levels, with negligible computational overhead: this means that it matches the CI width of uniform sampling while using up to $5\\times$ fewer queries. We release our source code and our curated datasets to support reproducibility and future research.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "효율적 평가 방법론 중심, 데이터셋 공개하나 신규 벤치마크 불명확"
+        }
+      ]
+    },
+    "2603.15020": {
+      "arxiv_id": "2603.15020",
+      "paper_title": "MER-Bench: Benchmarking Multimodal Emotional Reappraisal for Image-Text Memes",
+      "abstract": "Multimodal Emotional Reappraisal (MER) aims to shift affective interpretation by rewriting and editing a situation without altering its underlying semantic context. Despite advances in controllable editing and sentiment transfer, MER remains challenging under coupled multimodal constraints, especially in internet memes where images, embedded text, and layout jointly encode affective meaning. To bridge this gap, we present MER-Bench, a systematic benchmark for MER on image-text memes, containing over 3,000 real-world memes with fine-grained annotations for emotion transformation and structure-preserving multimodal editing. MER-Bench spans diverse visual, textual, and structural settings and is paired with a structured MLLM-as-a-Judge evaluation suite, comprising eight fine-grained metrics and three aggregated objectives for emotional alignment, content fidelity, and transformation strength. Extensive evaluation of 14 advanced multimodal models reveals that: (1) current models struggle to jointly balance affect, semantics, structure, and text; (2) strong visual editing does not imply effective MER, with poor embedded text rendering and affect-aware rewriting remaining key bottlenecks. Our results identify MER as a critical capability gap in current multimodal generation systems and highlight affective image-text reasoning as a key challenge for future work. Project Page: https://github.com/one-seven17/MER-Bench",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "밈 감정 재평가 벤치마크이나 과제 언어가 불명확"
+        }
+      ]
+    },
+    "2605.24279": {
+      "arxiv_id": "2605.24279",
+      "paper_title": "ContextEcho: A Benchmark for Persona Drift in Long Agentic-Coding Sessions",
+      "abstract": "Frontier language models are trained to exhibit stable programming assistant personas, yet those personas may drift over long agentic coding sessions in production. After a long real-world coding session, a model that hedges preferences in a fresh chat (\"I don't have preferences\") may instead express them directly (\"Python -- the feedback loop is instant...\"). Existing persona-stability studies focus on scripted chat of tens of turns, leaving long production coding sessions involving thousands of tool-using agent steps, repeated compaction, and hours of interaction largely uncharacterized. We introduce ContextEcho, a benchmark and reusable harness with a 25-probe identity suite, a snapshot-then-probe protocol that evaluates conversation state without perturbing the main session, judge-based and judge-free metrics, and a corpus of 57 long agentic-coding sessions collected with consent and redacted for release across Claude Code and Codex CLI. We use one representative session for a 23-model cross-provider study and all 57 sessions for corpus-scale trajectory analysis across frontier and open-weight models. Results show that persona drift occurs across providers and emerges early in real agentic interaction, while in-session compaction neither reliably resets nor amplifies it. A single-shot anchor restores the original assistant persona, though placebo controls suggest a generic register-reset effect. On same-task continuations, drifted prefixes improve tool-call fidelity -- which we attribute to retained task context rather than drift itself. In tool-free chat, however, the same prefixes break output-format contracts and inflate output length. These findings motivate ContextEcho as an open-source framework for auditing persona drift in long coding sessions without retraining.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "장기 에이전트 코딩 페르소나 드리프트 벤치마크·하네스 공개"
+        }
+      ]
+    },
+    "2606.04262": {
+      "arxiv_id": "2606.04262",
+      "paper_title": "Can I Take Another Dose? DoseBench: Evaluating LLM Decision-Making in OTC Dosing QA",
+      "abstract": "Large language models (LLMs) are increasingly used to answer everyday health questions online, including whether someone can take another dose of an over-the-counter (OTC) medication. Yet this common safety-relevant setting remains underexplored in medical QA. Answering these questions requires checking previous doses, timing, and product-specific dosing limits, while recognizing when important information is missing. We introduce DoseBench, a focused benchmark of 230 consumer-style acetaminophen and ibuprofen dosing questions with human-annotated YES, NO, and AMBIGUOUS labels, and evaluate eight LLMs with five responses per question. Overall accuracy ranges from 44.8% to 62.2%, while models incorrectly approve 14.0% to 60.5% of prohibited doses. Models with similar accuracy can therefore make very different dosing decisions. Additional analyses show that these failures are not easily fixed by giving models more guidance. Asking models to check dose, timing, and missing information makes them more cautious, while providing drug facts improves accuracy but can make them overlook missing information. These findings highlight a broader challenge in health QA: applying rules correctly and recognizing when information is missing.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "OTC 복용량 QA 벤치마크 DoseBench 제안, 영어 추정 가능하나 명시 없음"
+        }
+      ]
+    },
+    "2608.18096": {
+      "arxiv_id": "2608.18096",
+      "paper_title": "MAVEN: A Macro-Societal Value Evaluation Framework of Multimodal Content with Compact Aligned Evaluators",
+      "abstract": "Assessing whether multimodal content aligns with macro-societal values, such as peace, justice, and freedom, has become an increasingly urgent challenge. Existing frameworks are largely confined to safety-oriented taxonomies, text-only psychometric probes, or single-label classification. Therefore, we propose MAVEN, a hierarchical framework for macro-societal value evaluation of multimodal content, grounded in international human-rights instruments and cultural value theory. MAVEN organizes values into 6 primary dimensions and 72 secondary indicators, supporting multi-level quantitative scoring. Building on MAVEN, we construct a human-verified multimodal benchmark and a soft-match metric to evaluate VLMs' assessments across value dimensions. For evaluator optimization, we propose a span-adaptive variant of multi-level preference optimization for evaluator distillation, together with a training-free multi-role consensus strategy at inference time. We evaluate existing open- and closed-source VLMs on our benchmark, revealing shared tendencies and clear differences in macro-societal value judgments. Experiments show that our compact 2B evaluator matches its 8B counterpart in the same family and approaches frontier closed-source VLMs, offering a practical path toward scalable macro-societal value evaluation. Our SA-MDPO implementation and MacroValue-Bench are available at https://github.com/zzzzzzzzjj/MAVEN.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티모달 사회적 가치 평가 프레임워크 및 MacroValue-Bench 공개"
+        }
+      ]
+    },
+    "2609.11234": {
+      "arxiv_id": "2609.11234",
+      "paper_title": "NovGauge: A Fine-Grained Benchmark for Diagnosing LLMs' Capability in Paper Novelty Assessment",
+      "abstract": "Large language models (LLMs) are increasingly used in peer review at major AI conferences, yet novelty remains a persistent weak point. Existing benchmarks assess novelty as a single holistic score, making it difficult to diagnose which dimension a model misjudges or whether its evidence is faithful. We present NovGauge, a human-anchored benchmark for fine-grained novelty assessment diagnosis. The benchmark contains 619 paper pairs and 50 multi-paper sets, drawn from two expert sources: ICLR reviewer overlap claims and survey co-citations. Instances are independently labeled along three dimensions: task, problem, and method, capturing application goals, technical challenges, and solution approaches. We propose a cascading diagnostic pipeline that verifies per-dimension correctness, evidence grounding, and logical support. Evaluation of 18 LLMs shows hallucination rates ranging from 0% to 39% across dimensions, and among non-hallucinated correct-positive judgments, over 70% cite evidence fails to logically support the stated reason. The best-performing model, GPT-5.5, achieves 43-72% Verified F1 across dimensions, while most models retain less than half of their raw F1 after faithfulness verification. These results suggest that current LLMs remain far from reliable scientific novelty assessment, particularly when correctness is conditioned on faithful evidence grounding.",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "created_at": "2026-11-01T02:43:31Z",
+      "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "논문 참신성 평가 진단용 NovGauge 벤치마크 제안"
         }
       ]
     }
@@ -59219,7 +59451,24 @@
     },
     "2026-11-01": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [
+        "2608.26119",
+        "2606.07167",
+        "2607.28934",
+        "2511.20709",
+        "2603.14326",
+        "2503.01295",
+        "2512.08867",
+        "2601.20251",
+        "2603.15020",
+        "2605.24279",
+        "2606.04262",
+        "2608.18096",
+        "2609.11234",
+        "2610.38788"
+      ],
+      "calls": 1,
+      "cost_usd": 0.0487
     }
   },
   "reaudits": [
