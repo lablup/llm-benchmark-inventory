@@ -31889,7 +31889,7 @@
     },
     "2609.17538": {
       "decision": "propose",
-      "reason": "이 논문은 OCR 출력 텍스트를 입력으로 LLM의 문서 핵심-값(KVP) 추출 강건성을 평가하는 통제형 벤치마크를 제시하고, 프레임워크·데이터 분할·평가 스크립트를 공개한다. 평가 과제는 FUNSD, SROIE, CORD를 사용한 영어 과제이며, 모델은 이미지 없이 텍스트만 입력받으므로 en 트랙의 text로 분류한다. 구성은 136개 설정, 5개 모델, 3개 데이터셋, 4개 텍스트 조건이고 지표는 Key Recall, Exact Match, Value F1이다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "reason": "이 논문은 OCR 출력 텍스트를 입력으로 LLM의 문서 핵심-값(KVP) 추출 강건성을 평가하는 통제형 벤치마크를 제시하고, 프레임워크·데이터 분할·평가 스크립트를 공개한다. 평가 과제는 FUNSD, SROIE, CORD를 사용한 영어 과제이며, 모델은 이미지 없이 텍스트만 입력받으므로 en 트랙의 text로 분류한다. 구성은 136개 설정, 5개 모델, 3개 데이터셋, 4개 텍스트 조건이고 지표는 Key Recall, Exact Match, Value F1이다. 공식 저장소 README와 LICENSE 파일이 저장소 코드에 MIT를 명시하므로 이를 그대로 인용하되, FUNSD·SROIE·CORD 등 구성 요소는 각자 약관을 따로 점검하도록 안내한다. 공식 README에 lm-eval 언급이 없어 '미표기'로 기록했다. 순위 비교용 결과는 논문 Table 2(FUNSD, Gold 텍스트, 제로샷)의 Value F1 5개 모델이다.",
       "changes": [
         {
           "track": "en",
@@ -31902,12 +31902,12 @@
             "대표 과제": "문서 텍스트에서 키-값 쌍을 JSON으로 추출(FUNSD, SROIE, CORD; Gold/OCR 텍스트 조건)",
             "대표 예시·설명": "문서에서 얻은 텍스트(Gold 또는 OCR 출력)를 주고, 영어 필드명(예: SROIE의 company, address, date, total)의 키-값 쌍을 JSON으로 출력하게 한 뒤 주석과 대조해 Key Recall, Exact Match, Value F1을 채점하는 과제 설명이다. 실제 문항이 아니다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스는 확인하지 못했다. 이 벤치마크는 FUNSD, SROIE, CORD 공개 데이터셋과 OCR 엔진(Tesseract, EasyOCR, PaddleOCR)을 바탕으로 하므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 모델은 텍스트만 입력받고 이미지·좌표는 받지 않는다. 지표는 주석된 필드의 회수만 측정하며 환각 빈도 지표가 아니다. 평가 모델은 2B–8B 오픈 가중치 5종에 한정되고, 문서 언어는 영어 중심이며 다국어 일반화는 검증되지 않았다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(저장소 코드·평가 스크립트 한정. FUNSD·SROIE·CORD 등 구성 요소는 각자 약관)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "공식 저장소의 MIT는 저장소 코드·평가 스크립트에 대한 표기이며, README는 데이터셋 파일을 이 저장소가 재배포하지 않는다고 밝힌다. 이 벤치마크는 FUNSD, SROIE, CORD 공개 데이터셋과 Tesseract, EasyOCR, PaddleOCR 출력을 바탕으로 구성되므로(논문 2쪽), 저장소의 MIT가 이들 구성 요소 각각의 고유 약관을 대신하지 않는다. 각 구성 요소의 약관은 이용 전에 따로 확인해야 한다. MIT 표기와 저작권 고지를 사본에 포함해야 한다. README는 일부 Hugging Face 모델이 모델 라이선스 동의를 요구한다고 밝힌다. 모델은 텍스트만 입력받고 이미지·좌표는 받지 않는다. 지표는 주석된 필드의 회수만 측정하며 환각 빈도 지표가 아니다. 평가 모델은 2B–8B 오픈 가중치 5종에 한정되고, 문서 언어는 영어 중심이며 다국어 일반화는 검증되지 않았다. 공식 README에 lm-eval 언급이 없고 자체 명령줄 도구(pixels-to-pairs)로 실행한다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/zanvari/pixels-to-pairs"
           },
           "modality": "text",
@@ -31951,9 +31951,105 @@
               "quote": "LLM-Driven Key–Value Extraction"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/zanvari/pixels-to-pairs",
+              "quote": "released under the [MIT License](LICENSE)"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/zanvari/pixels-to-pairs",
+              "quote": "and/or sell"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/zanvari/pixels-to-pairs",
+              "quote": "copy, modify, merge"
+            },
+            "재배포": {
+              "source_url": "https://github.com/zanvari/pixels-to-pairs",
+              "quote": "publish, distribute, sublicense"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/zanvari/pixels-to-pairs",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Value F1 (VF1), 0–1 비율 점수(단위 없음), 47개 평가 가능 FUNSD 문서에 대한 문서 단위 macro 평균",
+            "setting": "논문 Table 2의 FUNSD 테스트 47문서, 공간 재구성 Gold 텍스트 조건, 제로샷, 통일 프롬프트(모델별 프롬프트 튜닝 없음), greedy 디코딩(do_sample=False), 입력 8,192토큰·생성 최대 1,024토큰, 배치 크기 1. 이 논문에서 보고된 결과이며 현재의 전역 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Gemma 2B",
+                "score": "0.2404",
+                "evidence": {
+                  "page": 12,
+                  "quote": "Gemma 2B 0.2763 0.2252 0.2404"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "open-weight decoder-only checkpoints"
+                }
+              },
+              {
+                "model": "Gemma 7B",
+                "score": "0.3433",
+                "evidence": {
+                  "page": 12,
+                  "quote": "Gemma 7B 0.3990 0.3080 0.3433"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "open-weight decoder-only checkpoints"
+                }
+              },
+              {
+                "model": "Mistral–7B",
+                "score": "0.5102",
+                "evidence": {
+                  "page": 12,
+                  "quote": "Mistral–7B 0.5850 0.4627 0.5102"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "open-weight decoder-only checkpoints"
+                }
+              },
+              {
+                "model": "Qwen2.5–7B",
+                "score": "0.5519",
+                "evidence": {
+                  "page": 12,
+                  "quote": "Qwen2.5–7B 0.6332 0.5040 0.5519"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "open-weight decoder-only checkpoints"
+                }
+              },
+              {
+                "model": "LLaMA 3–8B",
+                "score": "0.3594",
+                "evidence": {
+                  "page": 12,
+                  "quote": "LLaMA 3–8B 0.4384 0.3032 0.3594"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "open-weight decoder-only checkpoints"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.17538",
@@ -32051,7 +32147,8 @@
         "source_run": "41265676893",
         "context_sha256": "d7bef71f3333903748e9d23760ff4384b410c0ea6be543f009d91e02d2836614"
       },
-      "proposal_sha256": "19e7dc3be74c615a7c2c3bfe521195938d0c8a95dbadfea3959f8de2e7cc515b"
+      "proposal_sha256": "9f9e0154e9ab952210a971f3db5aba577d13ed33552394cb37b95c138f4d6fb4",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -60674,8 +60771,8 @@
         "2609.11234",
         "2610.38788"
       ],
-      "calls": 16,
-      "cost_usd": 9.9238
+      "calls": 17,
+      "cost_usd": 10.6495
     }
   },
   "reaudits": [
