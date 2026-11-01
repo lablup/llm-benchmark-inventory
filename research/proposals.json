@@ -32705,6 +32705,171 @@
       },
       "issue_url": null,
       "proposal_sha256": "96344c4f469230c5802702b91fb62143d20e66bf39237c849848cd94f2aaadcc"
+    },
+    "2609.34195": {
+      "decision": "propose",
+      "reason": "PainterBench는 불완전 그림 과제(MTCI)를 도구 호출 기반 에이전트 설정으로 옮긴 재사용 가능한 벤치마크이다. 시스템 프롬프트와 사용자 지시문이 영어이므로 en 트랙으로 분류했다. 에이전트가 캔버스 이미지를 관찰하며 그리므로 vision으로 분류했다. 논문은 하니스, 자극 은행, 평정 데이터를 공개하는 Hugging Face 링크를 명시한다. 라이선스와 lm-eval 지원 여부는 확인되지 않았으므로 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "painterbench",
+            "이름": "PainterBench",
+            "평가 축": "창의성(도형 확산적 사고, 도구 사용 에이전트의 불완전 그림 과제)",
+            "언어": "en",
+            "정의": "사람의 불완전 그림 과제(MTCI)를 에이전트 설정으로 옮긴 벤치마크. 에이전트는 400×400 캔버스에서 14개 드로잉 도구 호출로 그리며 매 턴 결과를 관찰하고, 지워지지 않는 시작 도형을 포함한 가장 독창적인 그림을 만들어 스스로 종료를 선언한다. 자극은행 30개(불완전 도형 20개, 사물 변형 10개)이며 14개 멀티모달 모델을 평가했다. 주 실험은 모델당 30개 자극을 5회씩 총 2,100회 시행했고, 민감도 분석을 포함해 2,700개 그림에 12명이 매긴 창의성·인식 가능성 평정(총 72,000건)을 수집했다. 자동 채점기 ViDrA-adapted도 함께 제공한다.",
+            "대표 과제": "시작 도형이 놓인 캔버스에서 도구 호출로 가장 독창적인 그림을 완성하고 drawing_finished로 종료",
+            "대표 예시·설명": "시작 도형이 미리 그려진 캔버스에 영어 지시문('Create the most original drawing you can think of.')이 주어지고, 에이전트가 선, 다각형, 원 등 도구를 여러 턴 호출해 그림을 완성하는 과제 설명이다. 실제 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터·코드 라이선스를 확인하지 않았다. 이 벤치마크의 자동 채점기 ViDrA는 공개 AuDrA 코퍼스의 사람 그림으로 학습했고 사람 참조 그림 300개도 AuDrA에서 가져왔으므로, 구성 요소별 약관은 이용 전에 따로 확인해야 한다. 크라우드소싱 평정은 노이즈가 있다(개별 평정자 간 ordinal α 0.25, 12명 합산 ICC 0.80). 민감도 분석은 단일 앵커 모델에만 수행했다. 평가에는 멀티모달 모델 API와 하니스 실행 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/painterbench/painterbench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Creativity (figural divergent thinking; incomplete-drawing task for tool-using agents)",
+            "definition": "A benchmark that ports the human incomplete-drawing task (MTCI) to the agentic setting. An agent draws on a 400x400 canvas through 14 drawing-tool calls, observes the result after each turn, and must incorporate an uneraseable starting shape into the most original drawing it can make, declaring itself finished. The stimulus bank has 30 items (20 incomplete shapes, 10 object transformations), and 14 multimodal models were evaluated. The main study ran 5 trials per stimulus per model (2,100 trials); with sensitivity analyses, 2,700 drawings were rated by 12 raters each for creativity and recognizability (72,000 ratings in total). An automated scorer, ViDrA-adapted, is also provided.",
+            "task": "Create the most original drawing on a canvas that contains a starting shape, using tool calls, and end the trial with drawing_finished.",
+            "example": "Task description, not an actual test item: the canvas already holds a starting shape and the English instruction 'Create the most original drawing you can think of.' is given. The agent calls tools such as lines, polygons and circles over several turns to complete a drawing."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "rendering of the"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "draws on a"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "draws on a"
+            },
+            "링크": {
+              "page": 11,
+              "quote": "painterbench/painterbench"
+            },
+            "언어": {
+              "page": 17,
+              "quote": "Create the most"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce PainterBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "draws on a"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Figural divergent thinking"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.34195",
+      "paper_title": "PainterBench: A Figural Divergent-Thinking Benchmark for Tool-Using Language Models",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.34195",
+        "sha256": "8266609ca0410e682a8c3cba8f185d8418694a48532bcc68d00edd8e91a4af14",
+        "accessed": "2026-11-01T03:59:57Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 25,
+          "elapsed_seconds": 190.86,
+          "pdf_sha256": "8266609ca0410e682a8c3cba8f185d8418694a48532bcc68d00edd8e91a4af14",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "27f0ab35367beaf4d57bb4b814f0fe854162b327f036f2580b33dbf834c6aacb",
+          "page_json_file": "2609.34195.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/painterbench/painterbench",
+            "fetched_url": "https://huggingface.co/datasets/painterbench/painterbench/raw/main/README.md",
+            "sha256": "0ebbfcac918ffd170ade337f674178a8584a409584dd187414835115bd8e32ff",
+            "accessed": "2026-11-01T04:04:03Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-01T04:04:03Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.34195",
+        "paper_title": "PainterBench: A Figural Divergent-Thinking Benchmark for Tool-Using Language Models",
+        "abstract": "Figural divergent thinking is the ability to develop a given shape fragment into an original drawing. In humans, this ability is assessed with incomplete-drawing tasks. We introduce PainterBench, a benchmark that ports the incomplete-drawing task to the agentic setting. The agent draws on a canvas through tool calls and observes the result after every turn. The canvas includes a starting shape which cannot be erased, and the agent's goal is to incorporate this shape into the most original drawing it can produce. The task is open-ended, and the agent itself decides when the drawing is finished. The benchmark tests incremental visual planning over a short horizon and the transfer of creative ability from pretraining to multi-turn tool use. We evaluate 14 multimodal language models from small to frontier scale. Across the primary study and six sensitivity analyses, we collect 2,700 drawings and crowdsource creativity and recognizability ratings for every drawing and for 300 human reference drawings. We also present ViDrA-adapted, an automated scorer that predicts human creativity ratings of agent drawings (r = 0.85 on random held-out test split). Figural divergent thinking varies widely across the 14 models, and GPT-6 Astra produces the most creative drawings. Relative to the human drawings, the agent drawings score higher in creativity but lower in recognizability. We release the final drawings, per-round canvas snapshots, tool call traces, stimulus bank, benchmark harness, crowdsourced ratings (N = 72,000), and ViDrA checkpoint.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:46:24Z",
+        "input_sha256": "69fbb9b948f40ced347ec3d8d4ebddeb04f534cfb2dc58e9322aea6fc2e77182",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "도구 사용 언어모델 창의성 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "도구 사용 창의성 평가 벤치마크 PainterBench 및 채점기 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41265676893",
+        "context_sha256": "8b8b71a272cd26028136bb4bdfbdea7e5d65bfcebe164850c4d71a0c6f3b7144"
+      },
+      "proposal_sha256": "958eba38313473687f919a1dc2aee21d52a5ca42c0be0e061328fc3542714866"
     }
   },
   "processed_comments": [],
@@ -61337,8 +61502,8 @@
         "2609.11234",
         "2610.38788"
       ],
-      "calls": 23,
-      "cost_usd": 14.5027
+      "calls": 24,
+      "cost_usd": 15.1953
     }
   },
   "reaudits": [
