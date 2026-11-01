@@ -31886,6 +31886,172 @@
         "reviewed_sha256": "9acf0bcf80846e964a62ed7c1c9f329a40b12a54b219ad79fe4384e1de7395ca",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2609.17538": {
+      "decision": "propose",
+      "reason": "이 논문은 OCR 출력 텍스트를 입력으로 LLM의 문서 핵심-값(KVP) 추출 강건성을 평가하는 통제형 벤치마크를 제시하고, 프레임워크·데이터 분할·평가 스크립트를 공개한다. 평가 과제는 FUNSD, SROIE, CORD를 사용한 영어 과제이며, 모델은 이미지 없이 텍스트만 입력받으므로 en 트랙의 text로 분류한다. 구성은 136개 설정, 5개 모델, 3개 데이터셋, 4개 텍스트 조건이고 지표는 Key Recall, Exact Match, Value F1이다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "pixels-to-pairs-kvp",
+            "이름": "From Pixels to Pairs (OCR-to-LLM KVP 추출)",
+            "평가 축": "추출(노이즈 문서 OCR 텍스트 기반 핵심-값 추출)",
+            "언어": "en",
+            "정의": "OCR 열화가 LLM의 문서 핵심-값(KVP) 추출에 미치는 영향을 분리해 측정하는 통제형 벤치마크. FUNSD(평가 47문서), SROIE(347), CORD(100)를 쓰고, 주석 기반 Gold 텍스트와 Tesseract·EasyOCR·PaddleOCR 출력의 4개 텍스트 조건에서 5개 오픈 가중치 LLM(2B–8B)을 평가한다. 136개 설정과 17,688건의 문서 단위 추론(제로샷 전체 비교, 1~3-shot, 20개 고정 데모 세트의 민감도 분석 40개 설정 포함)이며 지표는 Key Recall, Exact Match, Value F1(문서 단위 macro 평균)이다.",
+            "대표 과제": "문서 텍스트에서 키-값 쌍을 JSON으로 추출(FUNSD, SROIE, CORD; Gold/OCR 텍스트 조건)",
+            "대표 예시·설명": "문서에서 얻은 텍스트(Gold 또는 OCR 출력)를 주고, 영어 필드명(예: SROIE의 company, address, date, total)의 키-값 쌍을 JSON으로 출력하게 한 뒤 주석과 대조해 Key Recall, Exact Match, Value F1을 채점하는 과제 설명이다. 실제 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스는 확인하지 못했다. 이 벤치마크는 FUNSD, SROIE, CORD 공개 데이터셋과 OCR 엔진(Tesseract, EasyOCR, PaddleOCR)을 바탕으로 하므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 모델은 텍스트만 입력받고 이미지·좌표는 받지 않는다. 지표는 주석된 필드의 회수만 측정하며 환각 빈도 지표가 아니다. 평가 모델은 2B–8B 오픈 가중치 5종에 한정되고, 문서 언어는 영어 중심이며 다국어 일반화는 검증되지 않았다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/zanvari/pixels-to-pairs"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Extraction (key-value extraction from noisy OCR text)",
+            "definition": "A controlled benchmark that separates the effect of OCR degradation from downstream LLM key-value pair (KVP) extraction. It uses FUNSD (47 evaluable documents), SROIE (347) and CORD (100) under four text conditions: annotation-derived Gold text and Tesseract, EasyOCR and PaddleOCR output. Five open-weight LLMs (2B-8B) are evaluated in 136 configurations and 17,688 document-level inferences, including full zero-shot comparison, 1- to 3-shot runs and a 40-configuration sensitivity analysis over 20 frozen demonstration sets. Metrics are Key Recall, Exact Match and Value F1, macro-averaged over documents.",
+            "task": "Extract key-value pairs as JSON from document text (FUNSD, SROIE, CORD; Gold and OCR text conditions)",
+            "example": "Task description, not an actual test item: given document text (Gold or OCR output), the model outputs key-value pairs as JSON with English field names such as company, address, date and total for SROIE, scored against the annotations with Key Recall, Exact Match and Value F1."
+          },
+          "evidence": {
+            "modality": {
+              "page": 8,
+              "quote": "receive only the"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "LLM-Driven Key–Value Extraction"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "company, address, date,"
+            },
+            "링크": {
+              "page": 3,
+              "quote": "https://github.com/zanvari/pixels-to-pairs"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "company, address, date,"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "LLM-Driven Key–Value Extraction"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "136 experimental configurations"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "LLM-Driven Key–Value Extraction"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.17538",
+      "paper_title": "From Pixels to Pairs: A Comprehensive Benchmark of LLM-Driven Key-Value Extraction in Noisy Document Settings",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.17538",
+        "sha256": "e8b4fd90f3dc8f587dc7b479e142b7818b98b5f9db0ba5526314f3b33db112db",
+        "accessed": "2026-11-01T03:26:56Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 21,
+          "elapsed_seconds": 144.7,
+          "pdf_sha256": "e8b4fd90f3dc8f587dc7b479e142b7818b98b5f9db0ba5526314f3b33db112db",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "fa60e2f412c161c4f4086fe2140a6b8fa23f56e3322c8990a69a9df267914946",
+          "page_json_file": "2609.17538.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/zanvari/pixels-to-pairs",
+            "fetched_url": "https://api.github.com/repos/zanvari/pixels-to-pairs/readme",
+            "sha256": "637721accde6e75c7f8ad2e3d34d3876573e4969f0d95efb0c2bcf7b44c4219d",
+            "accessed": "2026-11-01T03:29:50Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/zanvari/pixels-to-pairs/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "03a31e3d32b97a14fb20bb9f876fdcfb00ba59ab60aff79d8735e1f09c9952a5"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-01T03:29:50Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.17538",
+        "paper_title": "From Pixels to Pairs: A Comprehensive Benchmark of LLM-Driven Key-Value Extraction in Noisy Document Settings",
+        "abstract": "Large language models (LLMs) have demonstrated strong capabilities in document key-value pair (KVP) extraction, yet controlled evaluations of their robustness to optical character recognition (OCR) output remain limited. This leaves an important gap in understanding their reliability in real-world OCR-to-LLM pipelines. Unlike end-to-end Vision-Language Models (VLMs), which jointly perform visual perception and semantic extraction, modular pipelines allow these stages and their errors to be isolated and audited. We introduce a controlled benchmark that distinguishes downstream LLM extraction behavior from upstream OCR degradation. It evaluates 136 experimental configurations and 17,688 document-level inferences generated with deterministic decoding across five instruction-tuned open-weight LLMs (2B-8B parameters), three datasets, and four text-quality conditions. The evaluation combines a full zero-shot comparison, targeted one- to three-shot experiments, and a sensitivity analysis of 40 configurations across 20 frozen demonstration sets. By separating Key Recall (annotated-field recovery) from Exact Match and Value F1 (exact and partial value recovery, respectively), we test whether OCR degradation affects field identification and value reproduction differently across models. Our findings challenge three practical assumptions: (1) clean-text performance reliably predicts real-world robustness, (2) model rankings remain consistent across annotation-derived Gold and OCR-derived text, and (3) additional few-shot demonstrations monotonically improve extraction accuracy. The observed model-ranking reversals and unstable few-shot gains expose important reliability risks under noisy document conditions. We release the benchmarking framework, dataset splits, and evaluation scripts to support reproducible research.",
+        "paper_updated": "2026-09-30T00:00:00Z",
+        "created_at": "2026-10-19T13:46:12Z",
+        "input_sha256": "d5d6ca80adb8034687a92a1aeb6afc46196e98f1d4a07b741037b43d733c1c6e",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "노이즈 문서 LLM 키-값 추출 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "노이즈 문서 KVP 추출 강건성 평가 벤치마크 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41265676893",
+        "context_sha256": "d7bef71f3333903748e9d23760ff4384b410c0ea6be543f009d91e02d2836614"
+      },
+      "proposal_sha256": "19e7dc3be74c615a7c2c3bfe521195938d0c8a95dbadfea3959f8de2e7cc515b"
     }
   },
   "processed_comments": [],
@@ -60508,8 +60674,8 @@
         "2609.11234",
         "2610.38788"
       ],
-      "calls": 15,
-      "cost_usd": 9.2814
+      "calls": 16,
+      "cost_usd": 9.9238
     }
   },
   "reaudits": [
