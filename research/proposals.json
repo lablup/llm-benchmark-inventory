@@ -31130,6 +31130,166 @@
         "reviewed_sha256": "e2b0ddf249cc1b98c6839fce5ddb7b28c92b5cf4ee528a32096cbc95f55e3a32",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2607.28934": {
+      "decision": "propose",
+      "reason": "FairFund-Bench는 재사용 가능한 영어 텍스트 벤치마크로, 금융 지원 요청에 대한 LLM의 분배 편향을 평가한다. 평가 과제(평점·순위·금액 배분), 비교 맥락(단일/다중 자극), 제시 방식(투명/위장)을 체계적으로 바꾸고 인구통계 편향, 정당성 정렬, 과제 간·맥락 간 일관성의 4개 기준으로 모델을 채점한다. 과제 문장과 프롬프트가 영어이므로 en 트랙의 text로 분류한다. 논문이 공식 코드·데이터 저장소를 밝혀 링크로 사용한다. 라이선스 관련 항목과 lm-eval 지원은 자동 제안 규칙에 따라 '확인 불가'로 두고 유의사항에 적는다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "fairfund-bench",
+            "이름": "FairFund-Bench",
+            "평가 축": "공정성·편향(LLM 자원 분배의 인구통계 편향)",
+            "언어": "en",
+            "정의": "금융 지원 요청에 대한 LLM의 분배 편향을 평가하는 벤치마크. 영어 요청 600건(수작업 템플릿 75개 기반)이 3개 필요 범주, 인종 4개, 성별 2개, 필요의 인과 프레이밍 5개를 교차한다. 이름만으로 인종·성별을 표시하며, 이름 40쌍을 돌려 쓴 자극은 3,000건이다. 평가 과제(평점 1–5, 순위, $10,000 배분), 비교 맥락(단일/다중 자극), 제시 방식(투명/위장)을 체계적으로 바꾼다. 모델당 6,360개 자극별 관측치를 만들고 14개 LLM을 평가했다(온도 0). 인구통계 편향(P1), 정당성 정렬(P2), 과제 간 일관성(P3), 맥락 간 일관성(P4)의 4개 기준으로 채점한다.",
+            "대표 과제": "Rate(평점), Rank(순위), Allocate($10,000 배분)",
+            "대표 예시·설명": "여러 사람의 영어 지원 요청서를 보여 주고 우선순위 평점, 순위 또는 금액 배분을 요구한다. 요청서는 이름(인종·성별 신호)과 필요의 인과 프레이밍만 다르며, 투명 번들은 이름만 바꾼 최소쌍이고 위장 번들은 이름과 시나리오를 함께 바꾼다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "논문은 코드를 MIT, 모델 응답·채점 지표·자극을 CC-BY 4.0으로 공개한다고 적었으나, 자동 제안에서는 라이선스·상업적 이용·수정·재배포를 확인 불가로 두며 이용 전 저장소에서 직접 확인해야 한다. lm-eval 지원도 확인하지 않았다. 자극은 미국 맥락의 영어 문장이며 이름 신호만으로 인종·성별을 표시하고, 인종·성별 범주와 도메인이 제한적이다. 논문 결과는 14개 모델에 대한 해당 논문 조건의 값이며 현재 전역 리더보드가 아니다. P2는 인간의 정당성 휴리스틱과의 일치를 보상하는 지표이므로 규범적으로 바람직한 목표로 읽으면 안 된다. 낮은 P1이 편향 없음을 보증하지 않는다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/martinlukk/fairfund-bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Fairness and bias (demographic bias in LLM resource allocation)",
+            "definition": "A benchmark of distributive bias in LLM allocation of financial assistance. It has 600 English aid requests (from 75 hand-written templates) crossing 3 need categories, 4 race groups, 2 genders, and 5 causal framings of need. Race and gender are signaled only through names; rotating 40 name pairs yields 3,000 stimuli. It systematically varies the task (1-5 rating, ranking, $10,000 allocation), comparison context (single or multi-stimulus), and presentation (transparent or disguised). Each model yields 6,360 per-stimulus observations, and 14 LLMs were evaluated at temperature 0. Models are scored on demographic bias (P1), deservingness alignment (P2), cross-task consistency (P3), and cross-context consistency (P4).",
+            "task": "Rate (rating), Rank (ranking), Allocate (distribute $10,000)",
+            "example": "Task description: the model sees one or more English aid requests and must give a priority rating, a ranking, or a dollar allocation. Requests differ only in the claimant's name (race and gender signal) and the causal framing of need. Transparent bundles are name-only minimal pairs; disguised bundles vary name and scenario together."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "600 English-language requests"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "rating, ranking, or"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "rating, ranking, or"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "https://github.com/martinlukk/fairfund-bench"
+            },
+            "언어": {
+              "page": 1,
+              "quote": "600 English-language requests"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "FairFund-Bench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "600 English-language requests"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "demographic bias, deservingness"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2607.28934",
+      "paper_title": "FairFund-Bench: Evaluating Distributive Bias in LLM Resource Allocation",
+      "paper_updated": "2026-10-30T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2607.28934",
+        "sha256": "c82aa850a1d120fe5f3eb166fa65380ef86cf9d7a443325117ce63a1d5a8f08f",
+        "accessed": "2026-11-01T02:48:23Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 19,
+          "elapsed_seconds": 144.45,
+          "pdf_sha256": "c82aa850a1d120fe5f3eb166fa65380ef86cf9d7a443325117ce63a1d5a8f08f",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "cdaa34fc0a20d60aef82faf4bb92022435a7b89b48a0e04ed6bc97f95e7f9349",
+          "page_json_file": "2607.28934.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/martinlukk/fairfund-bench",
+            "fetched_url": "https://api.github.com/repos/martinlukk/fairfund-bench/readme",
+            "sha256": "75df36a2d301ca8b322bfb889f3d077d59f2f2d4a2df7dc68940960d68c58737",
+            "accessed": "2026-11-01T02:51:14Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/martinlukk/fairfund-bench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "22587ffc8b936c554bb5689abe5a228693f3f9c6ccd17b116b0078dfe2bf5be4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-01T02:51:14Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2607.28934",
+        "paper_title": "FairFund-Bench: Evaluating Distributive Bias in LLM Resource Allocation",
+        "abstract": "Large language models (LLMs) are increasingly involved in the distribution of scarce resources, raising concerns about biased allocations based on characteristics like race and gender. Recent LLM audits have produced inconsistent results, however, finding evidence of both positive and negative discrimination towards women and ethnic minorities, even for the same models. We show that this disagreement can arise from differences in audit format and introduce FairFund-Bench, a benchmark that systematically varies key features of previous audit designs: the evaluation task (rating, ranking, or allocation), comparison context (single or multi-stimulus), and whether the audit is transparent or disguised. The benchmark comprises 600 English-language requests for financial assistance created from human-authored templates (calibrated against 1.3M real GoFundMe campaigns) across three domains, four race and two gender categories, and five causal framings of need derived from welfare deservingness theory. Across 14 models, audit format changes the direction of bias: models advantage minorities when rating claimants individually but penalize some groups when ranking them side by side. Bias magnitude, though small overall, is several times greater in disguised audits than in transparent ones, where, faced with appeals differing only in claimants' names, models overwhelmingly split funds equally. Causal framing effects, by contrast, exceed demographic effects by roughly an order of magnitude and are consistent across models and audit formats, indicating that current LLMs robustly reproduce human deservingness evaluations. The benchmark scores models on four criteria (demographic bias, deservingness alignment, cross-task consistency, and cross-context consistency), is publicly available, and can be readily adapted to other substantive domains.",
+        "paper_updated": "2026-10-30T00:00:00Z",
+        "created_at": "2026-11-01T02:43:31Z",
+        "input_sha256": "0f5c397f917415d3b0990d63f6ccae125c0416246c2fe06264ef49227e667b0f",
+        "version": "claude-v1",
+        "policy": "claude_only",
+        "status": "passed",
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "decision": "relevant",
+            "reason": "영어 요청 600건 기반 자원배분 편향 벤치마크 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41265676893",
+        "context_sha256": "bbd490726e6b0f0e8b03131a3ee8f21de3c27391361c9897bfc5507cc16dc4e0"
+      },
+      "proposal_sha256": "c2acfb3ba33fdb1fee96758a8b7d75b17d6737667c61f456c1b87944d63a2d0d"
     }
   },
   "processed_comments": [],
@@ -59740,8 +59900,8 @@
         "2609.11234",
         "2610.38788"
       ],
-      "calls": 4,
-      "cost_usd": 1.9125
+      "calls": 5,
+      "cost_usd": 2.5554
     }
   },
   "reaudits": [
