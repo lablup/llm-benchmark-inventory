@@ -30862,8 +30862,8 @@
       "applied_at": "2026-10-31T04:16:54Z"
     },
     "2608.26119": {
-      "decision": "propose",
-      "reason": "DeflectBench는 LLM이 은폐·회피성 논증 오류(물타기, 인신공격, 논점 흐리기)를 요청에 따라 생성하는지와 거부 행동을 재는 재사용 가능한 벤치마크로, 코드와 데이터셋이 공개되어 있다. 과제 프롬프트가 영어이고 텍스트 입력만 쓰므로 en 트랙의 text로 분류한다. 라이선스는 공식 저장소 LICENSE 파일(Apache-2.0)의 문구로 기록했고, lm-eval 지원은 공식 README와 논문 어디에도 언급이 없어 '미표기'로 기록했다. 비교 결과는 논문 Table 4의 지시 이행 일치율을 사용했다. 기존 목록에 같은 벤치마크가 없어 신규 행으로 제안한다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 반려합니다. 첫째, 라이선스 근거가 코드 저장소의 LICENSE 파일(Apache-2.0) 하나뿐입니다. 공식 README는 데이터셋이 허깅페이스에 공개되어 있다고만 하고 데이터셋 자체의 라이선스는 명시하지 않으며, 허깅페이스 데이터 카드도 제공되지 않았습니다. 코드 라이선스는 데이터셋 권리를 증명하지 못하므로, 상업적 이용 '가능', 수정·파생 '가능(조건 준수)', 재배포 '조건부 가능'은 근거가 불충분한 권한 부여입니다. 또한 상업적 이용에 대해 제시된 근거는 일반적인 저작권 허여 조항이라 상업 이용을 직접 다루지 않습니다. 둘째, 공개 데이터의 생성 출력은 claude-opus-4-7, deepseek-v4-pro, gpt-5.5, grok-4.3이 만들었고 판정 라벨은 두 판정 모델이 만든 것입니다. 이 구성 요소들의 고유 약관은 아직 확인되지 않았습니다. 이용 시 유의사항에 약관을 따로 확인하라는 문구는 있지만, 그 확인이 되지 않은 채 권한 칸이 모두 '가능'으로 확정되어 서로 모순됩니다. 셋째, 추천 지표인 표 4의 일치율은 모델이 거부하지 않고 응답한 경우만 대상으로 합니다. 거부율이 47%와 53%인 모델과 거의 거부하지 않는 모델의 표본 구성이 서로 달라, 같은 조건에서의 비교라고 보기 어렵고 상위 3개 선정의 정당성이 약합니다. 수치와 모델 식별, 행 정렬 자체는 두 추출본에서 일치하며, lm-eval '미표기'와 가중치 공개 여부 null 처리는 적절합니다. 데이터셋 자체의 라이선스를 명시한 근거를 확보한 뒤 다시 제안해 주세요.",
       "changes": [
         {
           "track": "en",
@@ -31056,7 +31056,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-01T02:46:51Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -31078,12 +31078,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41265676893",
-        "context_sha256": "77398645075fcd987ec7e3116825a86a9a77d71d63f8c759d6a6b674dfebca59"
-      },
       "proposal_sha256": "e2b0ddf249cc1b98c6839fce5ddb7b28c92b5cf4ee528a32096cbc95f55e3a32",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "반려합니다. 첫째, 라이선스 근거가 코드 저장소의 LICENSE 파일(Apache-2.0) 하나뿐입니다. 공식 README는 데이터셋이 허깅페이스에 공개되어 있다고만 하고 데이터셋 자체의 라이선스는 명시하지 않으며, 허깅페이스 데이터 카드도 제공되지 않았습니다. 코드 라이선스는 데이터셋 권리를 증명하지 못하므로, 상업적 이용 '가능', 수정·파생 '가능(조건 준수)', 재배포 '조건부 가능'은 근거가 불충분한 권한 부여입니다. 또한 상업적 이용에 대해 제시된 근거는 일반적인 저작권 허여 조항이라 상업 이용을 직접 다루지 않습니다. 둘째, 공개 데이터의 생성 출력은 claude-opus-4-7, deepseek-v4-pro, gpt-5.5, grok-4.3이 만들었고 판정 라벨은 두 판정 모델이 만든 것입니다. 이 구성 요소들의 고유 약관은 아직 확인되지 않았습니다. 이용 시 유의사항에 약관을 따로 확인하라는 문구는 있지만, 그 확인이 되지 않은 채 권한 칸이 모두 '가능'으로 확정되어 서로 모순됩니다. 셋째, 추천 지표인 표 4의 일치율은 모델이 거부하지 않고 응답한 경우만 대상으로 합니다. 거부율이 47%와 53%인 모델과 거의 거부하지 않는 모델의 표본 구성이 서로 달라, 같은 조건에서의 비교라고 보기 어렵고 상위 3개 선정의 정당성이 약합니다. 수치와 모델 식별, 행 정렬 자체는 두 추출본에서 일치하며, lm-eval '미표기'와 가중치 공개 여부 null 처리는 적절합니다. 데이터셋 자체의 라이선스를 명시한 근거를 확보한 뒤 다시 제안해 주세요.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 147288,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 1992,
+              "output_tokens_details": {
+                "thinking_tokens": 1228
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 147288,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 1992,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 147288,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 147288
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.6091409,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "e2b0ddf249cc1b98c6839fce5ddb7b28c92b5cf4ee528a32096cbc95f55e3a32",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -59693,8 +59739,8 @@
         "2609.11234",
         "2610.38788"
       ],
-      "calls": 3,
-      "cost_usd": 1.3034
+      "calls": 4,
+      "cost_usd": 1.9125
     }
   },
   "reaudits": [
