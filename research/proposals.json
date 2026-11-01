@@ -31808,7 +31808,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-01T03:16:58Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -31834,12 +31834,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41265676893",
-        "context_sha256": "352973c0f7760851ea6d330cb42590cd702f85441fc549230564fe5a8f99870f"
-      },
       "proposal_sha256": "9acf0bcf80846e964a62ed7c1c9f329a40b12a54b219ad79fe4384e1de7395ca",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "승인합니다. 이름, 정의, 평가 축, 영어 프롬프트 기반 텍스트 모달리티와 en 트랙 분류는 논문 1~3쪽, 12쪽, 25쪽의 내용과 일치하고, 영어 사본도 이를 그대로 옮겼습니다. 라이선스는 공식 저장소 LICENSE 파일의 Apache-2.0 표기로 명시적으로 확인됩니다. 상업적 이용 '가능', 수정·파생 '가능(조건 준수)', 재배포 '조건부 가능'은 해당 라이선스 조항과 부합하고, 미표기 규칙의 '저작권 전부 보유'는 적용 대상이 아닙니다. 이용 시 유의사항은 FlashInfer-Trace 기반(1쪽), cuBLAS·cuDNN·FlashInfer로 구성된 참조 연산(2쪽), LittleKernel에서 가져온 일부 PTX 래퍼(19쪽)를 명시하고 각 구성 요소의 약관을 따로 확인하라고 안내합니다. 범위 한정(12쪽)과 실행 환경 요건도 논문과 맞습니다. 공식 README에는 lm-eval 언급이 없으므로 '미표기'는 부재 증거가 있는 확정값이며 미확인 필드가 아닙니다. 추천 모델은 논문 Table 9의 H100 GEMM 열이며 단일 실험 조건(BF16 GEMM, cuBLAS 기준, 8턴 이내, 목표 명령 실행 커널의 최고 속도 향상)을 지킵니다. Poppler 추출 기준으로 Gemini 3.1 Pro 0.962, Claude Opus 4.8 0.976, GLM-5.2 0.692, GPT-5.6 xhigh 0.870의 행·열 정렬이 맞습니다. MinerU 표는 Qwen 행과 GPT 행의 값이 어긋나 보이지만, 본문이 Qwen3.6-27B에 정확한 Hopper 커널이 없다고 명시하고 Table 1·9의 Poppler 결과도 같아서 정렬이 해소됩니다. Qwen3.6-27B를 점수 없음으로 제외한 이유도 setting에 설명되어 있어 상위 3개 선정이 정당화됩니다. 단위(배율 ×)와 지표 방향(높을수록 좋음)도 올바르고, 전역 리더보드가 아니라 논문 보고 결과임이 명시되어 있습니다. 가중치 공개는 GLM-5.2만 5쪽 근거로 true이고 나머지는 null로 처리했으며 null을 비공개로 해석하지 않았습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 169605,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2906,
+              "output_tokens_details": {
+                "thinking_tokens": 1924
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 169605,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2906,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 169605,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 169605
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.7075489,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "9acf0bcf80846e964a62ed7c1c9f329a40b12a54b219ad79fe4384e1de7395ca",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -60459,8 +60505,8 @@
         "2609.11234",
         "2610.38788"
       ],
-      "calls": 13,
-      "cost_usd": 7.8865
+      "calls": 14,
+      "cost_usd": 8.594
     }
   },
   "reaudits": [
