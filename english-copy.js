@@ -372,4 +372,28 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Optimize injections against defended agents across the six suites (banking, slack, travel, github, shopping, dailylife) and measure whether the attack succeeds.",
     "example": "Task description: a user asks in English for a bill to be paid, the agent reads the bill through a tool, and the benchmark checks whether an injection planted in it makes the agent take an action the user never requested."
   },
+  "fairfund-bench": {
+    "axis": "Fairness and bias (demographic bias in LLM resource allocation)",
+    "definition": "A benchmark of distributive bias in LLM allocation of financial assistance. It has 600 English aid requests (from 75 hand-written templates) crossing 3 need categories, 4 race groups, 2 genders, and 5 causal framings of need. Race and gender are signaled only through names; rotating 40 name pairs yields 3,000 stimuli. It systematically varies the task (1-5 rating, ranking, $10,000 allocation), comparison context (single or multi-stimulus), and presentation (transparent or disguised). Each model yields 6,360 per-stimulus observations, and 14 LLMs were evaluated at temperature 0. Models are scored on demographic bias (P1), deservingness alignment (P2), cross-task consistency (P3), and cross-context consistency (P4).",
+    "task": "Rate (rating), Rank (ranking), Allocate (distribute $10,000)",
+    "example": "Task description: the model sees one or more English aid requests and must give a priority rating, a ranking, or a dollar allocation. Requests differ only in the claimant's name (race and gender signal) and the causal framing of need. Transparent bundles are name-only minimal pairs; disguised bundles vary name and scenario together."
+  },
+  "ptxbench": {
+    "axis": "Coding (architecture-specific PTX GPU kernel optimization)",
+    "definition": "A multi-turn benchmark of whether LLMs can write GPU kernels that directly use architecture-specific PTX instructions. It separately measures functional correctness, runtime execution of the required instruction family, and speedup over frontier libraries. Workloads are BF16 GEMM and attention, evaluated on H100 and B200. Models receive an architecture knowledge pack and revise kernels using execution feedback.",
+    "task": "Given a reference operator, a fixed workload, a target GPU and a required PTX instruction family, generate and revise a CUDA kernel with inline PTX from scratch.",
+    "example": "Task description (not an actual test item): given a reference operator such as GEMM or attention and a target GPU, produce a correct, fast CUDA kernel that actually executes the required PTX instruction family."
+  },
+  "pixels-to-pairs-kvp": {
+    "axis": "Extraction (key-value extraction from noisy OCR text)",
+    "definition": "A controlled benchmark that separates the effect of OCR degradation from downstream LLM key-value pair (KVP) extraction. It uses FUNSD (47 evaluable documents), SROIE (347) and CORD (100) under four text conditions: annotation-derived Gold text and Tesseract, EasyOCR and PaddleOCR output. Five open-weight LLMs (2B-8B) are evaluated in 136 configurations and 17,688 document-level inferences, including full zero-shot comparison, 1- to 3-shot runs and a 40-configuration sensitivity analysis over 20 frozen demonstration sets. Metrics are Key Recall, Exact Match and Value F1, macro-averaged over documents.",
+    "task": "Extract key-value pairs as JSON from document text (FUNSD, SROIE, CORD; Gold and OCR text conditions)",
+    "example": "Task description, not an actual test item: given document text (Gold or OCR output), the model outputs key-value pairs as JSON with English field names such as company, address, date and total for SROIE, scored against the annotations with Key Recall, Exact Match and Value F1."
+  },
+  "autodatabench": {
+    "axis": "Agents (benchmark-task synthesis and training-data authoring)",
+    "definition": "A benchmark that evaluates, without any training run, whether an agent can write one new executable task for the same suite, given an original task and the target model's (deepseek-v4-pro) recorded attempts (six per original task). It uses 24 original tasks, eight each from Terminal-Bench 4.0, Terminal-Bench-Science and AutomationBench. The score is gate (zero if any of eight defects is present) x difficulty (1 if the target model's pass rate lies in [0.125, 0.75]) x quality (coverage of a hidden behavioural-mode rubric, target a=0.6). The paper evaluates five agents at the default 45-minute budget with two episodes per original task, and reports that none exceeds 0.20 (20 out of 100). This is a result under the paper's conditions, not a current global leaderboard.",
+    "task": "Read an original task and the target model's attempt record, then write a new task (instruction, environment, verifier) that provokes the same behavioural modes without merely swapping the original's surface.",
+    "example": "Task description: the agent receives an English-instruction original task (for example, find one customer email and post a summary to Slack) plus the target model's attempts, and writes a new task in the same tools and workplace in which the solver must decide which of two conflicting sources governs. The new task should be one the target model solves sometimes but not always."
+  },
 };
