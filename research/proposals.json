@@ -31602,7 +31602,7 @@
     },
     "2608.17379": {
       "decision": "propose",
-      "reason": "PTXBench는 H100·B200에서 GEMM과 어텐션 워크로드의 GPU 커널 생성 능력을 평가하는, 재사용 가능한 새 벤치마크다. 정확성, 목표 PTX 명령의 런타임 실행 여부, 라이브러리 대비 속도 향상을 따로 측정한다. 과제 지시문과 프롬프트가 영어라서 en 트랙의 텍스트 벤치마크로 분류했다. PDF가 공식 코드 저장소를 명시하므로 그 URL을 링크로 쓴다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "reason": "PTXBench는 H100·B200에서 GEMM과 어텐션 워크로드의 GPU 커널 생성 능력을 평가하는, 재사용 가능한 새 벤치마크다. 정확성, 목표 PTX 명령의 런타임 실행 여부, 라이브러리 대비 속도 향상을 따로 측정한다. 과제 지시문과 프롬프트가 영어라서 en 트랙의 텍스트 벤치마크로 분류했다. 공식 저장소 README에 LICENSE 파일(Apache-2.0)이 있어 라이선스는 그 표기를 따랐고, lm-eval은 공식 카드에 언급이 없어 미표기로 두었다. 비교 결과는 논문 Table 9의 H100 GEMM 열(8턴 이내 최고 속도 향상)만 사용했다.",
       "changes": [
         {
           "track": "en",
@@ -31615,12 +31615,12 @@
             "대표 과제": "참조 연산과 고정 워크로드, 목표 GPU, 요구 PTX 명령군이 주어지면 인라인 PTX가 든 CUDA 커널을 처음부터 생성하고 수정",
             "대표 예시·설명": "참조 연산(예: GEMM이나 어텐션)과 대상 GPU를 주고, 요구된 PTX 명령군을 실제로 실행하면서 정확하고 빠른 CUDA 커널을 만들게 하는 과제 설명(실제 문항 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터·코드 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. 이용 전에 공식 저장소와 구성 요소별 약관을 따로 확인해야 한다. 평가에는 H100/B200 GPU, 컴파일 및 프로파일링 환경이 필요하다. 논문은 BF16 GEMM과 어텐션 워크로드로 범위를 한정한다고 밝혔다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "Apache-2.0(저장소 LICENSE 파일)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "Apache-2.0은 공식 저장소 LICENSE 파일의 표기이며, 라이선스 사본 첨부, 저작권·고지 유지, 변경 고지 등 조건을 지켜야 한다. 이 벤치마크는 다른 출처를 바탕으로 한다: FlashInfer-Trace 스키마 위에 만들어졌고(논문 1쪽), 참조 연산은 cuBLAS, cuDNN, FlashInfer 같은 라이브러리로 구성되며(논문 2쪽), 일부 PTX 래퍼는 LittleKernel에서 가져왔다(논문 19쪽). 저장소의 Apache-2.0이 이들 구성 요소 각각의 고유 약관을 대신하지 않으므로, 이용 전에 구성 요소별 약관을 따로 확인해야 한다. 평가에는 H100/B200 GPU와 컴파일·프로파일링 서비스 실행 환경이 필요하고, 논문은 범위를 BF16 GEMM과 어텐션 워크로드로 한정한다고 밝혔다(논문 12쪽).",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/zhang677/PTXBench"
           },
           "modality": "text",
@@ -31664,9 +31664,79 @@
               "quote": "PTXBench, a benchmark"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/zhang677/PTXBench",
+              "quote": "LICENSE (SPDX Apache-2.0)"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/zhang677/PTXBench",
+              "quote": "no-charge, royalty-free, irrevocable"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/zhang677/PTXBench",
+              "quote": "reproduce, prepare Derivative Works of,"
+            },
+            "재배포": {
+              "source_url": "https://github.com/zhang677/PTXBench",
+              "quote": "Redistribution. You may reproduce and distribute copies of the"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/zhang677/PTXBench",
+              "absent": true
+            }
+          },
+          "recommendations": {
+            "metric": "H100 GEMM 목표 명령 실행 커널의 최고 속도 향상(cuBLAS v13.1.0 대비 배율, ×), 8턴 이내 값",
+            "setting": "논문 Table 9의 H100 GEMM 열(BF16, C=AB^T, A 8192×5120, B 7168×5120)에서 8턴 이내(≤8 turns) 값이다. 모델당 3개 프롬프트 변형, 궤적당 최대 8회 모델 호출, 동일한 아키텍처 지식 팩과 실행 피드백 조건이다. 이 논문에서 보고된 결과이며 현재의 전역 리더보드가 아니다. 이 열에서 Qwen3.6-27B는 정확한 Hopper 커널이 없어 점수가 없으므로 제외했다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Gemini 3.1 Pro",
+                "score": "0.962",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Gemini 3.1 Pro</td><td>0.687 / 0.934 / 0.962"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Claude Opus 4.8",
+                "score": "0.976",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Claude Opus 4.8</td><td>(0.770 / 0.968 / 0.976)"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM-5.2",
+                "score": "0.692",
+                "evidence": {
+                  "page": 23,
+                  "quote": "GLM-5.2</td><td>(0.447 / 0.692 / 0.692)"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "Among models with open weights, GLM-5.2"
+                }
+              },
+              {
+                "model": "GPT-5.6 xhigh",
+                "score": "0.870",
+                "evidence": {
+                  "page": 23,
+                  "quote": "GPT-5.6 xhigh</td><td>(0.788 / 0.870 / 0.870)"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2608.17379",
@@ -31768,7 +31838,8 @@
         "source_run": "41265676893",
         "context_sha256": "352973c0f7760851ea6d330cb42590cd702f85441fc549230564fe5a8f99870f"
       },
-      "proposal_sha256": "01aef0f5e6cb671beaf87c8cfdd2b166641380387a9898cc524aa7da368b67e5"
+      "proposal_sha256": "9acf0bcf80846e964a62ed7c1c9f329a40b12a54b219ad79fe4384e1de7395ca",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -60388,8 +60459,8 @@
         "2609.11234",
         "2610.38788"
       ],
-      "calls": 12,
-      "cost_usd": 7.1017
+      "calls": 13,
+      "cost_usd": 7.8865
     }
   },
   "reaudits": [
