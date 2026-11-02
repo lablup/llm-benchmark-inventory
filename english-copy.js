@@ -396,4 +396,22 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Read an original task and the target model's attempt record, then write a new task (instruction, environment, verifier) that provokes the same behavioural modes without merely swapping the original's surface.",
     "example": "Task description: the agent receives an English-instruction original task (for example, find one customer email and post a summary to Slack) plus the target model's attempts, and writes a new task in the same tools and workplace in which the solver must decide which of two conflicting sources governs. The new task should be one the target model solves sometimes but not always."
   },
+  "frompitch2board": {
+    "axis": "Agents (long-horizon football management)",
+    "definition": "A long-horizon agent benchmark on a deterministic football-management simulator (built on Openfoot Manager) that compares model, scaffold, responsibility scope (Coach, Recruiter, Manager), in-match control granularity, and horizon (1, 3, or 10 seasons) under controlled conditions. It uses four scenarios (crisis, moneyball, rebuild, title) and normalizes league points into Z-scores against a 100-seed frozen calibration of a greedy reference policy per scenario and responsibility scope. The main evaluation uses four scenarios, eight paired seeds (42-49), and 64 episodes per configuration, comparing four models and four scaffolds.",
+    "task": "Repeated decision making in which the agent receives a JSON observation and issues one action at a time (lineup and tactics, scouting and bidding, accepting or rejecting transfer offers, listing players) to maximize season points.",
+    "example": "Task description: the agent receives a JSON observation with the date, league position, budget, and squad status, then returns a JSON action such as setting the lineup and tactics for a matchday or scouting and bidding in the transfer market. Season points are converted to a Z-score against the reference policy."
+  },
+  "tcsalgbench": {
+    "axis": "Reasoning (research-level theoretical computer science natural-language proof discovery)",
+    "definition": "398 theorem-level proof challenges from 138 STOC and COLT 2026 papers, plus a reusable construction pipeline. Each challenge gives a target theorem with its definitions, assumptions and notation and asks for a rigorous natural-language proof; when algorithm design is part of the task, the construction is withheld and rewritten as an existence claim. Scoring uses three GPT-5.5 voters, with at least two PASS votes required, and reports seed-1 acceptance and multi-run coverage.",
+    "task": "Given a theorem statement and access to cited prior work, write one natural-language proof.",
+    "example": "Task description: a target theorem with its needed definitions and assumptions is given and must be proved. When algorithm design is part of the task, the solver proves that such an algorithm exists instead of reproducing a named construction."
+  },
+  "geooutagebench": {
+    "axis": "Knowledge-graph QA (geospatiotemporal NL2SPARQL, ontology utility, multimodal KGQA)",
+    "definition": "A benchmark for LLM-based KGQA over GeoOutageKG, a geospatiotemporal knowledge graph for power outage and storm resilience analysis, with its ontology GeoOutageOnto. It has 48 questions in seven query categories with 72 reference SPARQL interpretations, and three tasks: geospatiotemporal NL-to-SPARQL interpretation, ontology utility, and multimodal spatiotemporal KGQA. Metrics include schema, spatial and temporal F1, Query Coverage and Closeness, answer F1, Hits@k, MRR, nDCG@10 and SRS. The paper evaluates GPT-5.5, Gemini 3.1 Pro and Claude Opus 4.7.",
+    "task": "Translate ambiguous English questions into ontology-grounded SPARQL interpretations (NL2SPARQL), execute the generated queries, and evaluate answer accuracy.",
+    "example": "Task description: an ambiguous question asks which counties in a hurricane-prone state had high social vulnerability and about a dozen wind-related storm events in the same year. The model produces SPARQL interpretations that bind state, year, SVI threshold and event count differently, and the answers are compared."
+  },
 };
