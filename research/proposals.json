@@ -32962,6 +32962,84 @@
       },
       "issue_url": null,
       "proposal_sha256": "6d66c53beaaa3660a82ecd55ca3f04f6c86a4689417891ccf327f8b80492fb7a"
+    },
+    "2609.34450": {
+      "decision": "needs_evidence",
+      "reason": "ReproBench는 CVE 식별자만으로 IoT 펌웨어 취약점을 처음부터 재현하는 에이전트 벤치마크이며 CVE 30개, 모델 5종, 450회 실행, 6단계 점수 체계를 갖춘 재사용 가능한 벤치마크로 보인다. 과제 프롬프트 템플릿이 영어이고(Figure 3의 'Reproduce $CVE-Id vulnerability following three main steps'), 텍스트 입력만 쓰므로 en 트랙의 text 모달리티가 맞다. 그러나 PDF 전체(본문, 각주, 부록)에서 공식 데이터셋이나 코드 URL이 어디에도 명시되지 않는다. 언급된 URL은 OpenCode, Binwalk, Docker 같은 서드파티 도구와 참고문헌의 링크뿐이다. 링크 필드에 PDF가 직접 지목한 공식 자원이 필요하므로 지금은 제안할 수 없고, 저자가 공식 저장소를 밝히는 판본이 나오면 다시 검토해야 한다.",
+      "changes": [],
+      "arxiv_id": "2609.34450",
+      "paper_title": "ReproBench: Benchmarking LLM Agents on Reproducing Vulnerability From Scratch",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.34450",
+        "sha256": "9e4b1a83bcf6287013387f7d868221da5b7e7e2c9b57ab094c1de48867e434a5",
+        "accessed": "2026-11-02T02:49:07Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 15,
+          "elapsed_seconds": 101.1,
+          "pdf_sha256": "9e4b1a83bcf6287013387f7d868221da5b7e7e2c9b57ab094c1de48867e434a5",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "861774cdec75917c6f435bc7fb84172bad3318c9c10e5623df7d3b4c837e90e2",
+          "page_json_file": "2609.34450.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-02T02:50:57Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.34450",
+        "paper_title": "ReproBench: Benchmarking LLM Agents on Reproducing Vulnerability From Scratch",
+        "abstract": "Large language model (LLM) agents are increasingly evaluated on cybersecurity tasks such as vulnerability reproduction, exploitation, and patching. However, existing cybersecurity benchmarks predominantly operate under a post-environment evaluation paradigm, i.e., handing the agent source code, a container, or an executable binary. This setup bypasses the critical environment reconstruction step, leaving a fundamental question for real-world vulnerability analysis: can an agent autonomously reconstruct the required execution environment and reproduce a vulnerability entirely from scratch? To address this gap, we present ReproBench, an evidence-grounded benchmark designed to evaluate agent capabilities in end-to-end vulnerability reproduction starting from solely a CVE identifier. ReproBench decomposes the full reproduction workflow into six distinct phases, and assesses performance on each phase independently using verifiable experimental artifacts: downloaded firmware images, unpacked binaries, granular analysis logs, and validated crash samples, among others. We instantiate ReproBench with 30 real-world IoT firmware vulnerabilities, which serve as ideal test cases for our from-scratch evaluation setting. Our evaluation demonstrates that 45.3% of test runs resort to vulnerability simulation - a prevalent remediation workaround adopted across all evaluated LLM agents - while only 5.3% of CVE-model pairs achieve successful reproduction of real-world vulnerabilities. Despite the low overall success rate, these non-trivial successful cases confirm that state-of-the-art LLM agents already possess the capacity for fully autonomous end-to-end vulnerability reproduction. Concurrently, our in-depth analysis of failed cases identifies core bottlenecks impeding LLM agents throughout the reproduction pipeline, offering actionable insights for subsequent research.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:46:24Z",
+        "input_sha256": "3c688ef299a6c9c51a008a0dce34dcebc7ba1dbad48800057bca399c30d5f95a",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 취약점 재현 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "취약점 재현 에이전트 평가 벤치마크 ReproBench 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "5eb316d3cd4059e51b761b3db7848a4b72324029f4f691c63ba32de204cdc06f"
     }
   },
   "processed_comments": [],
@@ -61614,8 +61692,8 @@
         "2609.34450"
       ],
       "abstract_attempted": [],
-      "calls": 1,
-      "cost_usd": 0.7124
+      "calls": 2,
+      "cost_usd": 1.3265
     }
   },
   "reaudits": [
