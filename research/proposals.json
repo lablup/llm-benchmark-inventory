@@ -35027,6 +35027,96 @@
       },
       "issue_url": null,
       "proposal_sha256": "e31e2fca21b550fb2dfa7149822f146232ecc4cacdee7bc02b9ab6f1014afc59"
+    },
+    "2606.08729": {
+      "decision": "exclude",
+      "reason": "IR-SIM은 2D 로봇 내비게이션 시뮬레이터(소프트웨어 라이브러리)로, 재사용 가능한 LLM 벤치마크 데이터셋이 아니다. 논문의 평가(시뮬레이터 실행 속도, 13개 시나리오 구성 브리프를 이용한 LLM 에이전트의 YAML 시나리오 작성 실험, 다중 로봇 충돌 회피 컨트롤러 비교)는 시뮬레이터의 효율과 기능을 검증하는 실험이다. 시나리오 구성 브리프 13개는 내부 연구에 쓰인 것이고 별도의 벤치마크로 공개되었다는 언급이 없다. 또한 논문은 코드를 공개할 예정이라고만 하고(\"will be released as open source\") 공식 데이터셋이나 코드 URL을 명시하지 않는다. 따라서 인벤토리에 추가할 벤치마크 행으로 보기 어렵다.",
+      "changes": [],
+      "arxiv_id": "2606.08729",
+      "paper_title": "IR-SIM: A Lightweight Declarative Simulator for Navigation Learning and Benchmarking",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.08729",
+        "sha256": "9c499bc6ce33ed39d34e9f7bbe42f37bb7167b13155472932a7bad184a596916",
+        "accessed": "2026-11-02T03:51:57Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 27,
+          "elapsed_seconds": 174.87,
+          "pdf_sha256": "9c499bc6ce33ed39d34e9f7bbe42f37bb7167b13155472932a7bad184a596916",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "9a2bef4a77838bda5ffb063f4c4e6eee4697f15ba38be7fbd69c8e160e4e08e4",
+          "page_json_file": "2606.08729.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-02T03:55:01Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2606.08729",
+        "paper_title": "IR-SIM: A Lightweight Declarative Simulator for Navigation Learning and Benchmarking",
+        "abstract": "Developing navigation policies requires simulation scenarios that support repeatable training and evaluation. Despite the availability of numerous simulators, constructing diverse navigation scenarios often involves writing simulator-specific code, using complex graphical interfaces, performing substantial manual configuration, or relying on resource-intensive computing platforms, making scenarios difficult to reproduce and reuse across experiments. To this end, we develop the Intelligent Robot Simulator (IR-SIM), a lightweight declarative simulator implemented as a Python library to support navigation learning and benchmarking through rapid construction of reusable and diverse scenarios and efficient execution on accessible platforms. IR-SIM represents scenarios as human-readable YAML configurations, in which necessary objects, behaviors, sensors, maps, and environment parameters can be flexibly specified and composed. This declarative representation makes IR-SIM friendly to large language model (LLM)-powered agents, enabling them to compose and modify executable navigation scenario files through the provided agent skills, instead of writing a large amount of code that is difficult to reuse. Despite its lightweight implementation, IR-SIM provides the essential components for navigation simulation, while retaining interfaces to high-fidelity simulators for downstream validation. Experiments demonstrate that IR-SIM runs up to several hundred times faster on the evaluated CPU platform, while agent skills reduce mean LLM-based scenario construction time by more than $50\\%$ across both evaluated models. The experiments further show ability to support reproducible benchmarking and RL-based navigation policy learning.",
+        "paper_updated": "2026-09-30T00:00:00Z",
+        "created_at": "2026-10-19T13:46:49Z",
+        "input_sha256": "de0572737f94ccdfdc9d28f592a0c467ac1ab5d5c549e4fdb22c5f842316ccbb",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "내비게이션 학습·평가용 시뮬레이터 벤치마크 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "내비게이션 시뮬레이터로 LLM 벤치마크 성격 불명확"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "8fe5f375bf4a9951b6815e46e919489d766b7891ec1f55a28ae95bfed127edb5"
     }
   },
   "processed_comments": [],
@@ -63708,8 +63798,8 @@
         "2606.08729"
       ],
       "abstract_attempted": [],
-      "calls": 26,
-      "cost_usd": 16.7403
+      "calls": 27,
+      "cost_usd": 17.4949
     }
   },
   "reaudits": [
