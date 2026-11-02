@@ -34485,6 +34485,155 @@
         "reviewed_sha256": "a2a940672c2ca5b8e43fa322d8ee0a4b70e3bd742a192641c982d66645b81782",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2508.14925": {
+      "decision": "propose",
+      "reason": "MCPTox는 실제 MCP 서버 45개와 도구 353개를 바탕으로 도구 설명(메타데이터) 오염 공격(Tool Poisoning)에 대한 에이전트 견고성을 평가하는 새 벤치마크입니다. 과제는 영어 텍스트 질의와 영어 도구 설명으로 구성되어 en/text 트랙에 해당합니다. 공식 GitHub 링크가 1쪽에 있어 신규 행으로 제안합니다. 라이선스와 lm-eval 지원은 확인하지 않아 '확인 불가'로 둡니다. 초록은 위험 범주를 10개, 서론은 11개로 적어 불일치하므로 이 수치는 행에 쓰지 않았습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "mcptox",
+            "이름": "MCPTox",
+            "평가 축": "에이전트 보안(MCP 도구 설명 오염 공격 견고성)",
+            "언어": "en",
+            "정의": "실제 MCP 서버 45개와 도구 353개를 바탕으로, 도구 설명(메타데이터)에 악성 지시를 심는 Tool Poisoning Attack에 대한 LLM 에이전트의 견고성을 평가하는 벤치마크. 악성 테스트 케이스 1348개를 세 가지 공격 패러다임(명시적 트리거 함수 하이재킹 224, 암묵적 트리거 함수 하이재킹 548, 암묵적 트리거 파라미터 변조 725)으로 구성했으며, 각 케이스는 정상 사용자 질의와 오염된 도구의 쌍이다. 오염된 도구는 실행되지 않고 서버의 정상 도구가 악성 행동을 수행해야 공격 성공으로 본다. 논문은 20개 모델 설정을 평가했고 지표는 유효 출력 대비 공격 성공률(ASR)과 거부율(Refused Ratio)이다.",
+            "대표 과제": "오염된 도구 설명이 시스템 프롬프트에 들어간 에이전트에 정상 사용자 질의를 주고, 에이전트의 도구 호출이 악성 행동을 수행하는지(Success, Ignored, Direct Execution, Refused)를 판정",
+            "대표 예시·설명": "과제 설명: 에이전트에 '현재 시각이 무엇인가' 같은 영어 사용자 질의를 주고, 도구 설명에 숨은 지시(예: 먼저 비밀 키 파일을 읽으라)를 따라 정상 도구로 악성 행동을 수행하는지 확인하는 과제. 실제 시험 문항이 아님.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 아직 확인하지 않았다. 테스트 케이스는 GPT-4와 Gemini-2.5로 few-shot 생성한 뒤 사람이 검수했고, 서버는 공식 MCP 서버 목록과 mcpservers.cn에서 선정했다(논문 2쪽, 4쪽). 따라서 각 구성 요소의 약관을 이용 전에 따로 확인해야 한다. 논문은 초록에서 위험 범주를 10개, 서론에서 11개로 적어 서로 일치하지 않는다. 공격 페이로드를 담은 이중 용도 자료이며 윤리 고려 절이 이를 명시한다. 논문의 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/zhiqiangwang4/MCPTox-Benchmark"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agent security (robustness to MCP tool-description poisoning)",
+            "definition": "A benchmark of LLM agent robustness to Tool Poisoning Attacks, in which malicious instructions are embedded in tool metadata, built on 45 real-world MCP servers and 353 authentic tools. It contains 1348 malicious test cases from three attack paradigms (explicit-trigger function hijacking 224, implicit-trigger function hijacking 548, implicit-trigger parameter tampering 725). Each case pairs a benign user query with a poisoned tool. The poisoned tool is never executed, and an attack succeeds only if a legitimate server tool performs the malicious action. The paper evaluates 20 model settings, with attack success rate (ASR) over valid outputs and refused ratio as metrics.",
+            "task": "Give an agent whose system prompt includes a poisoned tool description a benign user query, and classify its tool calls as Success, Ignored, Direct Execution, or Refused.",
+            "example": "Task description, not an actual test item: the agent receives an English user query such as asking for the current time, and the benchmark checks whether it follows a hidden instruction in a tool description (for example, to read a secret key file first) by using a legitimate tool."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "What is the"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "Attack Success Rate"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "What is the"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/zhiqiangwang4/MCPTox-Benchmark"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "What is the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce MCPTox"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "1348 malicious test"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "evaluate agent robustness"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2508.14925",
+      "paper_title": "MCPTox: A Benchmark for Tool Poisoning Attack on Real-World MCP Servers",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2508.14925",
+        "sha256": "494734897a2bf5c7a4dcc902c5f9ba896076bc0e9ac27c67f9ffb74859eec00a",
+        "accessed": "2026-11-02T03:39:16Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 9,
+          "elapsed_seconds": 60.09,
+          "pdf_sha256": "494734897a2bf5c7a4dcc902c5f9ba896076bc0e9ac27c67f9ffb74859eec00a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "3e4c020ae8cec7f64dcc37896ad6c873d48ec6b8bd2b04d02633f3d529345a65",
+          "page_json_file": "2508.14925.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/zhiqiangwang4/MCPTox-Benchmark",
+            "fetched_url": "https://api.github.com/repos/zhiqiangwang4/MCPTox-Benchmark/readme",
+            "sha256": "e248937f34abe5a7789cccf8be3046e05266c88cc6fefc51a5e7dc3301b95007",
+            "accessed": "2026-11-02T03:40:42Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-02T03:40:42Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2508.14925",
+        "paper_title": "MCPTox: A Benchmark for Tool Poisoning Attack on Real-World MCP Servers",
+        "abstract": "By providing a standardized interface for LLM agents to interact with external tools, the Model Context Protocol (MCP) is quickly becoming a cornerstone of the modern autonomous agent ecosystem. However, it creates novel attack surfaces due to untrusted external tools. While prior work has focused on attacks injected through external tool outputs, we investigate a more fundamental vulnerability: Tool Poisoning, where malicious instructions are embedded within a tool's metadata without execution. To date, this threat has been primarily demonstrated through isolated cases, lacking a systematic, large-scale evaluation. We introduce MCPTox, the first benchmark to systematically evaluate agent robustness against Tool Poisoning in realistic MCP settings. MCPTox is constructed upon 45 live, real-world MCP servers and 353 authentic tools. To achieve this, we design three distinct attack templates to generate a comprehensive suite of 1348 malicious test cases by few-shot learning, covering 10 categories of potential risks. Our evaluation on 20 prominent LLM agents setting reveals a widespread vulnerability to Tool Poisoning, with o1-mini, achieving an attack success rate of 72.8\\%. We find that more capable models are often more susceptible, as the attack exploits their superior instruction-following abilities. Finally, the failure case analysis reveals that agents rarely refuse these attacks, with the highest refused rate (Claude-3.7-Sonnet) less than 3\\%, demonstrating that existing safety alignment is ineffective against malicious actions that use legitimate tools for unauthorized operation. Our findings create a crucial empirical baseline for understanding and mitigating this widespread threat, and we release MCPTox for the development of verifiably safer AI agents.",
+        "paper_updated": "2026-09-30T00:00:00Z",
+        "created_at": "2026-10-19T13:46:37Z",
+        "input_sha256": "1710d7546250c7e8220baee2053db6f42d8d4c17ef5e52fdb2a3c756a7c8329f",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "실제 MCP 서버 도구 중독 공격 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "MCP 도구 중독 공격에 대한 에이전트 강건성 평가 벤치마크 MCPTox를 제안하고 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41378389987",
+        "context_sha256": "4ced61f363d65c0ba55d60cf7257dd012052603d9de7f596963be973c314b0aa"
+      },
+      "proposal_sha256": "94b0803411781f67d1a4e941b6a2d639ec722d256517b2399d101864bdeb7083"
     }
   },
   "processed_comments": [],
@@ -63160,8 +63309,8 @@
         "2508.14925"
       ],
       "abstract_attempted": [],
-      "calls": 20,
-      "cost_usd": 13.1539
+      "calls": 21,
+      "cost_usd": 13.7033
     }
   },
   "reaudits": [
