@@ -34216,6 +34216,164 @@
       },
       "issue_url": null,
       "proposal_sha256": "bd1124f64ec71e35455265767570d0e935c44c67daa07dcb229642954a1d2001"
+    },
+    "2609.36082": {
+      "decision": "propose",
+      "reason": "GeoOutageBench는 영어 자연어 질문을 SPARQL로 바꾸는 과제와 지리시공간 지식그래프 QA를 평가하는 재사용 가능한 새 벤치마크입니다. 논문은 질문 48개와 기준 SPARQL 해석 72개, 3개 과제와 평가 지표를 제시합니다. 입력은 텍스트 질문이므로 en 트랙의 text로 분류했습니다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "geooutagebench",
+            "이름": "GeoOutageBench",
+            "평가 축": "지식그래프 QA(지리시공간 NL2SPARQL·온톨로지 유용성·멀티모달 KGQA)",
+            "언어": "en",
+            "정의": "전력 정전·폭풍 복원력 분석용 지리시공간 지식그래프(GeoOutageKG)와 온톨로지(GeoOutageOnto) 위에서 LLM의 KGQA 능력을 평가하는 벤치마크. 7개 질의 범주로 구성된 48개 질문과 72개 기준 SPARQL 해석으로 이루어지며, 3개 과제(지리시공간 NL→SPARQL 해석, 온톨로지 유용성, 멀티모달 시공간 KGQA)와 지표(스키마·공간·시간 F1, Query Coverage/Closeness, 답변 F1, Hits@k, MRR, nDCG@10, SRS)를 제공한다. 논문은 GPT-5.5, Gemini 3.1 Pro, Claude Opus 4.7을 평가했다.",
+            "대표 과제": "모호한 영어 질문을 온톨로지에 근거한 SPARQL 해석 여러 개로 변환(NL2SPARQL), 생성 쿼리 실행 후 답변 정확도 평가",
+            "대표 예시·설명": "허리케인 취약 주의 사회적 취약성이 높고 풍해 관련 폭풍 사건이 약 12건 기록된 카운티를 묻는 모호한 질문을 상태·연도·SVI 임계값·사건 수 해석별 SPARQL로 변환하고 답을 비교하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터·코드 라이선스와 lm-eval 지원 여부는 확인하지 못했다. 질문 입력은 텍스트이지만 KG에는 야간 조명 영상과 정전 지도 같은 멀티모달 자산이 포함된다. Black Marble·EAGLE-I 파생 자산은 현재 플로리다 샘플에 한정된다. 논문의 평가는 모델 3종, 질문 48개 기준이며 현재 전역 리더보드가 아니다. KG는 NOAA, CDC SVI, EAGLE-I, NASA Black Marble 등 외부 자료로 구성되므로 각 구성 요소의 약관을 별도로 확인해야 한다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/UCF-SAGE/GeoOutageBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Knowledge-graph QA (geospatiotemporal NL2SPARQL, ontology utility, multimodal KGQA)",
+            "definition": "A benchmark for LLM-based KGQA over GeoOutageKG, a geospatiotemporal knowledge graph for power outage and storm resilience analysis, with its ontology GeoOutageOnto. It has 48 questions in seven query categories with 72 reference SPARQL interpretations, and three tasks: geospatiotemporal NL-to-SPARQL interpretation, ontology utility, and multimodal spatiotemporal KGQA. Metrics include schema, spatial and temporal F1, Query Coverage and Closeness, answer F1, Hits@k, MRR, nDCG@10 and SRS. The paper evaluates GPT-5.5, Gemini 3.1 Pro and Claude Opus 4.7.",
+            "task": "Translate ambiguous English questions into ontology-grounded SPARQL interpretations (NL2SPARQL), execute the generated queries, and evaluate answer accuracy.",
+            "example": "Task description: an ambiguous question asks which counties in a hurricane-prone state had high social vulnerability and about a dozen wind-related storm events in the same year. The model produces SPARQL interpretations that bind state, year, SVI threshold and event count differently, and the answers are compared."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "Which counties in"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "NL to SPARQL"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "Which counties in"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/UCF-SAGE/GeoOutageBench"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "Which counties in"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce GeoOutageBench,"
+            },
+            "정의": {
+              "page": 6,
+              "quote": "48 benchmark questions"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "geospatiotemporal KGQA"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.36082",
+      "paper_title": "GeoOutageBench: Benchmarking Ambiguity-aware, Ontology-grounded Geospatiotemporal KGQA for Multimodal Power Outage and Resilience Analysis",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.36082",
+        "sha256": "f55d44e62ee5084c2e41d9c64107f5d9215eeae740632d02d031e322a2fbaa92",
+        "accessed": "2026-11-02T03:35:27Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 13,
+          "elapsed_seconds": 87.53,
+          "pdf_sha256": "f55d44e62ee5084c2e41d9c64107f5d9215eeae740632d02d031e322a2fbaa92",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "16ad8f7445803af2cde2df19231c5e516b2f3405e287a5ba41dd1b182fdf2e69",
+          "page_json_file": "2609.36082.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/UCF-SAGE/GeoOutageBench",
+            "fetched_url": "https://api.github.com/repos/UCF-SAGE/GeoOutageBench/readme",
+            "sha256": "5c340d7e37c71fc703bcbd4367dc1d9f905b60cdd9f884a8e385a12611bf0ad5",
+            "accessed": "2026-11-02T03:37:23Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/UCF-SAGE/GeoOutageBench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "1395e871b6b5bf6efd87faa0e778b669e15702c2664713d0e786192dee115da2"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-02T03:37:23Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.36082",
+        "paper_title": "GeoOutageBench: Benchmarking Ambiguity-aware, Ontology-grounded Geospatiotemporal KGQA for Multimodal Power Outage and Resilience Analysis",
+        "abstract": "We introduce GeoOutageBench, a benchmark for assessing LLM-based geospatiotemporal KGQA for multimodal outage and resilience analysis. Unlike existing KGQA benchmarks for Web knowledge, GeoOutageBench considers a spatiotemporal KG that integrates visual, textual, and structured data from outage records, remote sensing, weather observations, storm and power events, geographic entities, and domain ontologies. It provides a competency query taxonomy at different difficulty levels from spatiotemporal containment and proximity, spatiotemporal co-occurrence analysis, multimodal evidence, to hypothetical evaluation. Over multimodal KG and query classes, GeoOutageBench provides user-configurable evaluation of three important, highly coherent yet less studied tasks: (1) LLMs' understanding for ambiguous geospatiotemporal questions in terms of NL to SPARQL interpretation, (2) query-driven assessment of ontology utility, and (3) answer accuracy of multimodal KGQA retrieval. GeoOutageBench provides a design principle and foundation for assessing LLM-KG systems that support real-world infrastructure resilience analysis. Our benchmark, source code, data, results, and other documentation are available at https://github.com/UCF-SAGE/GeoOutageBench.",
+        "paper_updated": "2026-09-30T00:00:00Z",
+        "created_at": "2026-10-19T13:46:37Z",
+        "input_sha256": "d5f860c759e629643cb39d0380966b85613c07331ffc3d2915d5dd79abd890e9",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "전력망 복원력 지식그래프 QA 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "멀티모달 지리시공간 KGQA 평가용 GeoOutageBench를 제안, 코드·데이터 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41378389987",
+        "context_sha256": "76ef858ca7a0d9ba64280f7b0a76aa7684cf518dce6a2b8a77600866d1492f0c"
+      },
+      "proposal_sha256": "494b2a015d6f41d859a0642d158bb2112d1201d3102bf0c11e6936dfe710da35"
     }
   },
   "processed_comments": [],
@@ -62889,8 +63047,8 @@
         "2609.36082"
       ],
       "abstract_attempted": [],
-      "calls": 17,
-      "cost_usd": 10.966
+      "calls": 18,
+      "cost_usd": 11.6412
     }
   },
   "reaudits": [
