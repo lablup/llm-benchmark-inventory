@@ -34070,7 +34070,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-02T03:30:27Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -34096,12 +34096,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41378389987",
-        "context_sha256": "e83ded08a981f7067c0622b08fa775572dfd5700ef6b5133f325c456911c655c"
-      },
       "proposal_sha256": "9a3ebbd359276ea9366f7b15b3b4cc810d97349820b7651d55bb74ba45855192",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 변경 사항은 논문 본문과 공식 카드로 모두 뒷받침된다. (1) 규모와 출처: 과제 398개와 STOC·COLT 2026 논문 138편은 1쪽과 3쪽에 나온다. 공개본 166개와 논문 57편은 9쪽과 카드가 일치한다. 61개만 사람이 검수했다는 설명은 4쪽과 부록 B.4에 있다. (2) 언어와 양식: 과제가 영어 자연어 증명이고 입력이 텍스트뿐이므로 en 트랙의 text 분류가 맞다. 채점 방식(GPT-5.5 심사자 3명 중 2명 이상 PASS)과 seed 1·다회 실행 커버리지 설명도 본문과 맞다. (3) 권리: 카드 메타데이터와 LICENSE 파일이 모두 CC BY-NC 4.0이다. 그래서 상업적 이용 '불가', 수정·파생 '가능(조건 준수)', 재배포 '조건부 가능'은 비상업 목적 한정 조항과 맞는다. 원천 논문 발췌가 CC BY 4.0·CC0를 유지한다는 점, 데이터셋 수준 라이선스가 이를 대체하지 않는다는 점도 카드와 일치한다. 라이선스 필드가 '미표기'가 아니므로 '저작권 전부 보유' 규칙은 적용되지 않는다. (4) 파생 데이터 유의사항: 다른 논문들에서 파생되었음을 밝히고 각 구성 요소의 고유 약관을 따로 확인하라고 명시했다. 미확인·확인 불가 필드는 없다. (5) lm-eval: 카드에 언급이 없고 PDF 언급 목록도 비어 있다. 따라서 '미표기'는 허용되는 해소값이며, 지원 부재를 주장하지 않는다. (6) 추천 점수: 표 6 패널 B의 모델 10종 수치가 모두 원문과 일치한다. 23.6, 22.1, 19.8, 18.1, 16.6, 15.6, 15.3, 4.5, 3.8, 3.5가 해당한다. 조건은 전체 398개 과제, 10라운드 토론, 5회 실행, 동일 검증기로 같고 Fable 5 max 제외도 명시했다. 상위 3개(Sol max, xhigh, high) 선정이 정당하고 값이 클수록 좋다는 방향도 맞다. 전역 리더보드가 아니라 논문 보고 결과로 표기했고, 가중치 공개 여부는 null로 두어 비공개로 취급하지 않았다. 추출 충돌이나 그림에만 의존하는 주장은 발견되지 않았다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 162117,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2472,
+              "output_tokens_details": {
+                "thinking_tokens": 1476
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 162117,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2472,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 162117,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 162117
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.6732569,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "9a3ebbd359276ea9366f7b15b3b4cc810d97349820b7651d55bb74ba45855192",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -62771,8 +62817,8 @@
         "2609.35606"
       ],
       "abstract_attempted": [],
-      "calls": 15,
-      "cost_usd": 9.8427
+      "calls": 16,
+      "cost_usd": 10.516
     }
   },
   "reaudits": [
