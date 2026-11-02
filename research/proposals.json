@@ -33130,6 +33130,83 @@
       },
       "issue_url": null,
       "proposal_sha256": "700c1e2c483d102fe0a092e246ff096a70891f78d1aa8dba8cc728086ce7ab2a"
+    },
+    "2609.34683": {
+      "decision": "needs_evidence",
+      "reason": "AgentPerfBench은 에이전트형 추론 서빙 성능(TTFT, TPOT, 처리량, roofline)을 재는 스위트로, 재사용 가능한 벤치마크일 수 있습니다. 그러나 두 가지 근거가 부족해 제안하지 않습니다. 첫째, PDF가 데이터셋과 코드 위치를 '[anonymizedforreview]'로만 표기해 공식 링크를 확인할 수 없습니다. 둘째, 요청은 길이 분포에 맞춘 랜덤 토큰으로 채워지므로, 인용할 수 있는 과제 예시나 프롬프트 텍스트가 없어 과제 언어(ko/en)를 입증할 수 없습니다. 공식 링크가 공개되고 과제 언어를 보여 주는 근거가 확보되면 다시 검토해야 합니다.",
+      "changes": [],
+      "arxiv_id": "2609.34683",
+      "paper_title": "AgentPerfBench: A Benchmarking and Evaluation Suite for Inference Performance of Agentic LLMs",
+      "paper_updated": "2026-09-29T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.34683",
+        "sha256": "2d9369e67c0ab7812277dec9ccbfd7b6aa3094e27ff3f53f0332bedeef688e51",
+        "accessed": "2026-11-02T03:00:57Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "poppler_failed"
+          ],
+          "page_count": 14,
+          "elapsed_seconds": 92.32,
+          "pdf_sha256": "2d9369e67c0ab7812277dec9ccbfd7b6aa3094e27ff3f53f0332bedeef688e51",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "c6c9e7377b3375e4c2b794b1f0479c399cbb7595776ac063a2786b76492834f5",
+          "page_json_file": "2609.34683.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-02T03:02:40Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.34683",
+        "paper_title": "AgentPerfBench: A Benchmarking and Evaluation Suite for Inference Performance of Agentic LLMs",
+        "abstract": "The optimization of LLM serving engines, such as vLLM and SGLang, is largely benchmark-driven: optimizations, scheduling policies, hardware and system designs are all selected based on representative workloads. However, a significant mismatch has emerged in the agentic era. Existing benchmarks primarily focus on simple single-turn chatbot workloads. LLM applications are increasingly agentic: coding agents, terminal execution systems, and tool-use agents issue multi-turn requests with growing context lengths. We introduce AgentPerfBench, a benchmark suite for agentic inference. It uses real traces from agentic benchmarks, such as SWE-Bench and TerminalBench, alongside standard chat baselines. This enables benchmarking of models on multi-turn tasks involving tool calling, skill utilization, and increasing context lengths. AgentPerfBench also samples from empirical distributions of input length, output length, and turn count derived from the real traces, generating representative synthetic profiles for cheap and accurate measurements on new hardware. In addition, we further find that several existing benchmarks fail to accurately reflect real hardware performance for two key reasons: 1) they do not account for realistic context-length growth, and 2) they measure inference performance without operating at hardware saturation. We discuss these issues in detail and provide rich kernel-level Nsight Compute (NCU) traces to construct a new multi-dimensional roofline model that captures hardware-system limitations in both memory bandwidth and memory capacity footprint. The benchmarking suite then includes automated scripts to identify potential bottleneck conditions on emerging hardware when evaluated with diverse agentic traces. Together, these contributions quantify the chat-to-agentic gap in current inference benchmarks and characterise per-kernel GPU resource utilisation via roofline analysis.",
+        "paper_updated": "2026-09-29T00:00:00Z",
+        "created_at": "2026-10-19T13:46:24Z",
+        "input_sha256": "0a73b2a58c88f15aca0d96b3d44b00ff5957a6fd93a66e6e22f29fe4e551b14a",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 LLM 추론 성능 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 추론 성능 측정용 벤치마크 스위트 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "b1ef2613e2dc8b71de4da99df5a20be33d49c37abaf003afed76c2c0b4d26c76"
     }
   },
   "processed_comments": [],
@@ -61787,8 +61864,8 @@
         "2609.34683"
       ],
       "abstract_attempted": [],
-      "calls": 3,
-      "cost_usd": 2.0212
+      "calls": 4,
+      "cost_usd": 2.5102
     }
   },
   "reaudits": [
