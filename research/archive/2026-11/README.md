@@ -2,9 +2,19 @@
 
 조사 시각의 한국 시간 기준으로 보관합니다. 재조사 결과는 새 파일에 쌓이며 기존 기록은 유지합니다.
 
+- [2610.41919 · Matching Workloads to Blackwell: Power-Resolved Benchmarking of NVIDIA B200 and B300 across HPC and AI Workloads](2610.41919-abstract-20261103T113851-fbdd61849bb9.md)
+- [2610.40996 · Do Open Language Models Invent Scripture? BILAL-BENCH: Benchmarking Islamic-Source Fabrication in Bengali](2610.40996-abstract-20261103T113843-b0c6aa3f39d7.md)
 - [2610.38788 · Gold vs.~Translation: Are We Measuring Language, Knowledge, or Locality in Translated Benchmarks?](2610.38788-abstract-20261101T114331-7c1190fa2eb1.md)
+- [2610.14024 · Beyond a Better Score: Long-Horizon Agentic ML Development and Evaluation Protocol for Physics Time Series](2610.14024-20261103T124801-8221de712b89.md)
+- [2610.00316 · DuplexSpeechBench-Document Grounding: Benchmarking Document Grounding and Hallucinations in Voice Agents](2610.00316-20261103T121236-778242e6cb26.md)
+- [2609.38377 · PhyProbe: Rethinking Physical Consistency Evaluation in Generated Videos](2609.38377-20261103T125540-190e9507fbb8.md)
+- [2609.38371 · TALK-Dem: Benchmarking Embodied Task Planning under Dementia-Associated Communication Patterns](2609.38371-20261103T125341-e3f522577aab.md)
+- [2609.38335 · E2E-SWE: Benchmarking LLMs on Building Working Codebases from Scratch](2609.38335-20261103T125104-1582a0fdc24d.md)
+- [2609.37294 · SafeLLM4SE: Statistical Evaluation and Reporting for LLM-based Software Engineering Systems](2609.37294-20261103T123557-056b7d165730.md)
+- [2609.36817 · pikit: A Composable Toolkit for Indirect Prompt Injection Research and Evaluation](2609.36817-20261103T121949-c15a7ef2a503.md)
 - [2609.35952 · HEAR: Real Voices, Real Bias: A Large-Scale Human-Recorded, Demographically Diverse Benchmark for Audio Language Models](2609.35952-20261102T123248-d7d8463e0944.md)
 - [2609.35902 · Raising the Bar for Chinese Adolescent LLM Safety: A Culturally-Grounded, Fine-Grained Benchmark](2609.35902-20261101T131110-1ddb55cf97d6.md)
+- [2609.35581 · QC-Stark: A Multi-Task Benchmark Revealing Capability Dissociations in LLMs Evaluated on Quantum Computing Tasks](2609.35581-20261103T113743-29008bae4d28.md)
 - [2609.35461 · AraDynFact: Dynamic Evaluation of Factual Knowledge in Arabic](2609.35461-20261102T122207-c9e3be58b2b9.md)
 - [2609.35409 · AwarenessBench: Assessing Cognitive Capabilities of Language Models](2609.35409-20261101T125449-fbb6b0e48dc5.md)
 - [2609.34800 · Pass or Fail? Evaluating LLMs on Two Greek Examination Benchmarks](2609.34800-20261102T121259-84e27483b5cc.md)
@@ -20,5 +30,6 @@
 - [2606.08729 · IR-SIM: A Lightweight Declarative Simulator for Navigation Learning and Benchmarking](2606.08729-20261102T125501-ea9c58cf347e.md)
 - [2606.07167 · UrduMMLU: A Massive Multitask Benchmark for Urdu Language Understanding](2606.07167-abstract-20261101T114331-b0bcb1f557b6.md)
 - [2606.03657 · NovelAPIBench: Diagnosing How A Code LLM Learns to Use Novel APIs](2606.03657-20261101T114215-7b08a1eb2b96.md)
+- [2603.26034 · AgentCollab: A Self-Evaluation-Driven Collaboration Paradigm for Efficient LLM Agents](2603.26034-abstract-20261103T113843-0fe280a74e34.md)
 - [2603.08091 · Toward Robust LLM-Based Judges: Taxonomic Bias Evaluation and Debiasing Optimization](2603.08091-20261102T124552-266089a8d6ee.md)
 - [2508.14925 · MCPTox: A Benchmark for Tool Poisoning Attack on Real-World MCP Servers](2508.14925-20261102T124042-80ae7eac2ca0.md)

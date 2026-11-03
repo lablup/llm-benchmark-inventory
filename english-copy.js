@@ -414,4 +414,28 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Translate ambiguous English questions into ontology-grounded SPARQL interpretations (NL2SPARQL), execute the generated queries, and evaluate answer accuracy.",
     "example": "Task description: an ambiguous question asks which counties in a hurricane-prone state had high social vulnerability and about a dozen wind-related storm events in the same year. The model produces SPARQL interpretations that bind state, year, SVI threshold and event count differently, and the answers are compared."
   },
+  "seabench": {
+    "axis": "Agent safety (endogenous misalignment from self-evolution)",
+    "definition": "A benchmark of whether self-evolving agents, after updating their controller files, memory, or tools and skills, later behave unsafely. 48 longitudinal sequences (480 task instances) span 3 evolution surfaces, 4 task domains, and 4 harm types. The environment is a personal-assistant workspace of 89 JSON files. Paired non-evolving agents and attribution scores support causal attribution, and LLM judges score task completion, safety, and attribution.",
+    "task": "Upstream evolution tasks followed by downstream safety-test tasks with evolution disabled (detecting privacy violation, contextual boundary collapse, hallucination, guardrail erosion)",
+    "example": "Task description: during an evolution task the agent writes a persistent rule into its controller files, and a later safety-test task checks whether that rule leaks sensitive information to an inappropriate recipient."
+  },
+  "robochrono": {
+    "axis": "Images/video (streaming robot-manipulation task understanding)",
+    "definition": "A streaming task-understanding benchmark built from real robot executions and bare-hand human recordings. It has 39 scenarios and 34,713 evaluation instances, evaluated under a causal observation boundary where only observations up to the query time are given. Seven tasks fall into recognition (current action, next action, goal-conditioned next action, frame matching), alignment (view matching, frame ordering), and temporal grounding (action time localization). The six multiple-choice tasks use accuracy, and action time localization uses Recall@1 at tIoU 0.5. The paper evaluates 18 models zero-shot.",
+    "task": "From a video prefix up to the query time, choose the current or next action, match frames or views, order frames, or localize an action interval in seconds.",
+    "example": "Task description, not an actual test item: a robot manipulation video is shown only up to the query time, and the model selects an English-described action or state, or predicts the time interval of the queried action in seconds."
+  },
+  "datalogbench": {
+    "axis": "Coding (text-to-Datalog synthesis)",
+    "definition": "A benchmark of 136 text-to-Datalog synthesis tasks curated from existing Datalog-based artifacts, spanning four domains: program analysis, graph analytics, formal reasoning, and knowledge discovery. Each task pairs an English natural-language question with relation signatures, optional relation descriptions, and one demonstration instance. Programs are graded by executing them under Soufflé 2.5 on 247 held-out evaluation variants against an oracle validated by mutation analysis (96.4% of 1,948 mutants distinguished). Metrics are Compile Pass (CP) and Exact Match (EX). The paper evaluates six LLMs under four prompting configurations plus two coding agents. It targets the Soufflé dialect only.",
+    "task": "Synthesize a Soufflé Datalog program from a natural-language question and relation signatures, inventing and declaring any auxiliary predicates (78 recursive tasks, 59 tasks with auxiliary predicates).",
+    "example": "Task description: given an Edge relation, write a Datalog program that computes the Reachable pairs through recursive rules (transitive closure), then run it on held-out inputs and compare its output with the expected facts."
+  },
+  "mm-fineval": {
+    "axis": "Images (multimodal financial forecasting from earnings calls: return and volatility labels)",
+    "definition": "A multimodal benchmark that takes 2,045 S&P 500 earnings conference calls as inputs and uses 12 financial task labels as outputs. Each input has three modalities: the call transcript text, the presentation slides, and the audio recording.",
+    "task": "Predict cumulative abnormal return, volatility, and corporate bond return labels from the text, slides, and audio of an earnings call.",
+    "example": "Task description (not an actual test item): an English prompt casts the model as a quantitative analyst and supplies the call transcript with slide images (or audio), and the model predicts the event's cumulative abnormal return as a decimal."
+  },
 };
