@@ -36490,6 +36490,176 @@
       "proposal_sha256": "7442db06cb84b24801acb21cfdf588fef5ee9bc575b755105556e9f679008627",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2609.37053": {
+      "decision": "propose",
+      "reason": "MatToolBench는 전문 재료과학 소프트웨어를 다루는 새 재사용 가능 벤치마크다. 10개 도구에서 204개 과제를 Windows 11 VM에서 실행하며, 논문이 공식 저장소 URL을 밝힌다. 과제 지시문은 영어(예: 'Import O1s Scan.VGD, perform charge correction.')라 en 트랙에 해당한다. GUI·Origin 과제는 스크린샷을 입력으로 쓰므로 modality는 vision으로 분류했다. 코드 과제는 텍스트 피드백만 쓰지만 주된 입력 방식을 기준으로 삼았다. 라이선스 등 미검증 항목은 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "mattoolbench",
+            "이름": "MatToolBench",
+            "평가 축": "에이전트(재료과학 전문 소프트웨어 GUI·스크립트·DB 질의)",
+            "언어": "en",
+            "정의": "전문 재료과학 소프트웨어를 다루는 멀티모달 GUI 에이전트용 실환경 벤치마크. 10개 도구에 걸친 204개 과제(GUI 100, OriginPro 16, 코드 80, 혼합 진단 8)를 Windows 11 VM에서 실행한다. 과제마다 전문가가 세부 채점 기준으로 나눠 부분 점수(Score)와 완전 성공률(SR)을 보고하며, 단계 수(Steps)와 오종료율(FTR)도 함께 측정한다. 최대 50단계이며, 논문은 7개 모델을 평가해 최고 GUI SR 25.0%, 코드 SR 45.0%를 보고했다(논문 조건의 결과이며 현재 전역 리더보드가 아님).",
+            "대표 과제": "GUI 조작(JADE, Avantage, VESTA, DigitalMicrograph, Materials Studio), OriginPro 스크립트 작성과 그림 내보내기, 코드 기반 DB 질의(MP, OQMD, OPTIMADE, Pymatgen)",
+            "대표 예시·설명": "영어 지시문(예: XPS 스펙트럼 파일을 불러와 전하 보정 수행)을 받은 에이전트가 소프트웨어를 조작하거나 스크립트를 작성하고, 최종 상태를 OCR·픽셀·파일 검사로 채점하는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 아직 확인하지 않았다. 논문은 코드와 데이터를 허용적 오픈소스 라이선스로 공개했다고 하지만 구체 라이선스는 적지 않아, 저장소에서 직접 확인해야 한다. 이 벤치마크는 JADE, Avantage, DigitalMicrograph, Materials Studio, OriginPro 등 상용 소프트웨어를 VM에 설치해 쓰며 실제 실험 데이터 파일을 포함하므로, 소프트웨어 사용 약관과 데이터 출처 약관을 별도로 점검해야 한다. Windows 11 VM, Docker, 모델 API 실행 환경이 필요하다. Origin 그림의 미적 점수는 LLM judge(논문은 Gemini-3.1-pro 사용)에 의존하지만 SR에는 반영되지 않는다. 혼합 과제 8개는 진단용 소규모 분할이다. 지시문은 영어 전용이다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/meiwu5/MatToolBench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Agents (GUI, scripting and database queries in professional materials science software)",
+            "definition": "A real-environment benchmark for multimodal GUI agents on professional materials science software. It has 204 tasks across 10 tools (100 GUI, 16 OriginPro, 80 code, 8 mixed diagnostic tasks), run in a Windows 11 VM. Domain experts decompose each task into scoring sub-criteria, giving partial-credit Score and full-success SR, with Steps and false termination rate (FTR) also reported. The step budget is 50. The paper evaluates seven models and reports a best GUI SR of 25.0% and code SR of 45.0% under its conditions (not a current global leaderboard).",
+            "task": "GUI operation (JADE, Avantage, VESTA, DigitalMicrograph, Materials Studio), OriginPro scripting with figure export, and code-based database queries (MP, OQMD, OPTIMADE, Pymatgen)",
+            "example": "Task description, not an actual test item: an agent receives an English instruction, such as importing an XPS spectrum file and performing charge correction, operates the software or writes a script, and the final state is graded by OCR, pixel and file checks."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "raw screenshots as"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "204 tasks across"
+            },
+            "대표 예시·설명": {
+              "page": 13,
+              "quote": "Import O1s Scan.VGD,"
+            },
+            "링크": {
+              "page": 8,
+              "quote": "https://github.com/meiwu5/MatToolBench"
+            },
+            "언어": {
+              "page": 13,
+              "quote": "Import O1s Scan.VGD,"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "MatToolBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "204 tasks across"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "204 tasks across"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.37053",
+      "paper_title": "MatToolBench: Benchmarking Multimodal Agents in Real-World Materials Science Workflows",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.37053",
+        "sha256": "352cb30ddacf17b1e18fe3fb6b4aa1e047b8ead75ad2b72fcaacecdf93647a0f",
+        "accessed": "2026-11-03T03:20:29Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 25,
+          "elapsed_seconds": 128.19,
+          "pdf_sha256": "352cb30ddacf17b1e18fe3fb6b4aa1e047b8ead75ad2b72fcaacecdf93647a0f",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "3943075f8dbee91e5bad95bd13bf3d8cac0f2037c208163ccd6f39769a8a30b7",
+          "page_json_file": "2609.37053.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/meiwu5/MatToolBench",
+            "fetched_url": "https://api.github.com/repos/meiwu5/MatToolBench/readme",
+            "sha256": "b1ee1d484f60c982ae2a073a42ec201b06bc62faa50824769d56d6db517ff04f",
+            "accessed": "2026-11-03T03:23:08Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/meiwu5/MatToolBench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "9906940f61b1f0b533fa7d99baf55178b2808fbe113ea51dfbfad8572ccd5f2b"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-03T03:23:08Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.37053",
+        "paper_title": "MatToolBench: Benchmarking Multimodal Agents in Real-World Materials Science Workflows",
+        "abstract": "Multimodal GUI agents have achieved impressive results on general software benchmarks, yet their ability to operate professional scientific software remains largely unexplored. In materials science, sparse domain-specific web data, specialized interfaces, and tacit workflow conventions create blind spots that general-purpose pretraining cannot readily bridge. We present MatToolBench, the first real-environment benchmark for evaluating multimodal GUI agents on professional materials science software, comprising 204 tasks across 10 tools in three modalities: GUI operation, OriginPro scripting, and code-based database queries, all executed inside a Windows 11 VM. Each task is decomposed into fine-grained sub-criteria by domain experts, enabling interpretable partial-credit scoring; the GUI component of our multi-level evaluation pipeline achieves an average F1 of 0.98. For OriginPro figure-generation tasks, we further conduct a human-LLM agreement study to validate the use of a multimodal judge for secondary aesthetic assessment. Our experiments show that strong performance on general benchmarks does not transfer to professional scientific workflows, and that this gap is not a visual-grounding problem alone: failures arise from domain-specific operational knowledge, sparse pretraining coverage of scientific software, weak cross-tool artifact handoff, and critical states exposed only visually. Even the best model reaches only 25% success rate on GUI tasks and 45% on code tasks. MatToolBench therefore serves as a challenging diagnostic benchmark and real-environment testbed for data-scarce, knowledge-intensive scientific workflows.",
+        "paper_updated": "2026-09-30T00:00:00Z",
+        "created_at": "2026-10-19T13:46:49Z",
+        "input_sha256": "2f6e7da4fe4a95c2626983c7b7e0d3e5cff0f5fdb4e239350b693b4ad3fa572a",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "재료과학 GUI 에이전트 벤치마크 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "재료과학 멀티모달 GUI 에이전트 벤치마크 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41566874285",
+        "context_sha256": "43d158abf58748f65ca2baee9c01ac3bfb62000c2535a2484fb2477db24f8b7f"
+      },
+      "proposal_sha256": "0d59ea881a6a5179f0862abff08c4a41ce5e7608b6a58b9292b279182940b31a"
     }
   },
   "processed_comments": [],
@@ -65701,8 +65871,8 @@
         "2610.42004",
         "2610.42060"
       ],
-      "calls": 22,
-      "cost_usd": 13.5856
+      "calls": 23,
+      "cost_usd": 14.3609
     }
   },
   "reaudits": [
