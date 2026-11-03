@@ -35997,6 +35997,166 @@
       },
       "issue_url": null,
       "proposal_sha256": "f0e19825c5e18330a632e55d7828a32d284a5d1275337ce896df786cb653b70d"
+    },
+    "2609.36605": {
+      "decision": "propose",
+      "reason": "RoboChrono는 실제 로봇 조작 영상을 바탕으로 한 스트리밍 과제 이해 벤치마크로, 39개 시나리오와 34,713개 평가 인스턴스, 7개 과제를 새로 제안한다. 질의 문구가 영어(\"Pick the yellow cube.\")이므로 en 트랙으로 분류하고, 영상 관측을 입력으로 받으므로 vision으로 분류한다. 기존 인벤토리에 같은 벤치마크가 없어 새 행으로 제안한다. 라이선스와 하니스 지원은 아직 확인하지 않았으므로 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "robochrono",
+            "이름": "RoboChrono",
+            "평가 축": "이미지(스트리밍 로봇 조작 과제 이해)",
+            "언어": "en",
+            "정의": "실제 로봇 수행 영상과 맨손 사람 영상으로 만든 스트리밍 과제 이해 벤치마크. 39개 시나리오와 34,713개 평가 인스턴스로 구성되며, 질의 시점까지의 관측만 제공하는 인과적 조건에서 평가한다. 7개 과제는 인식(현재 행동, 다음 행동, 목표 조건부 다음 행동, 프레임 매칭), 정렬(뷰 매칭, 프레임 순서), 시간 접지(행동 시간 위치 추정)로 나뉜다. 객관식 6개 과제는 정확도, 행동 시간 위치 추정은 tIoU@0.5 Recall@1로 채점한다. 논문은 18개 모델을 제로샷으로 평가했다.",
+            "대표 과제": "영상 접두부(질의 시점까지의 관측)에서 현재·다음 행동 고르기, 프레임·뷰 매칭, 프레임 순서 맞추기, 행동 구간(초) 추정",
+            "대표 예시·설명": "과제 설명: 로봇 조작 영상을 질의 시점까지만 보여 주고, 영어로 서술된 행동 또는 상태(예: 물체를 집는 단계)를 고르거나 해당 구간을 초 단위로 예측하게 한다. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 아직 확인하지 못했다. 데이터는 GIM과 Tianji 두 로봇 플랫폼의 Hugging Face 저장소(RC-GIM, RC-Tianji)로 나뉘어 공개되며, 맨손 사람 시나리오 5개가 포함된다. 논문 수치는 해당 논문 조건의 18개 모델 제로샷 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/mfan-res/ROBOCHRONO"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images/video (streaming robot-manipulation task understanding)",
+            "definition": "A streaming task-understanding benchmark built from real robot executions and bare-hand human recordings. It has 39 scenarios and 34,713 evaluation instances, evaluated under a causal observation boundary where only observations up to the query time are given. Seven tasks fall into recognition (current action, next action, goal-conditioned next action, frame matching), alignment (view matching, frame ordering), and temporal grounding (action time localization). The six multiple-choice tasks use accuracy, and action time localization uses Recall@1 at tIoU 0.5. The paper evaluates 18 models zero-shot.",
+            "task": "From a video prefix up to the query time, choose the current or next action, match frames or views, order frames, or localize an action interval in seconds.",
+            "example": "Task description, not an actual test item: a robot manipulation video is shown only up to the query time, and the model selects an English-described action or state, or predicts the time interval of the queried action in seconds."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "interpret visual observations"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "recognition, alignment, and"
+            },
+            "대표 예시·설명": {
+              "page": 13,
+              "quote": "Pick the yellow"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/mfan-res/ROBOCHRONO"
+            },
+            "언어": {
+              "page": 13,
+              "quote": "Pick the yellow"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "RoboChrono"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "39 scenarios and"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "a benchmark for"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.36605",
+      "paper_title": "RoboChrono: A Real Robot Benchmark for Streaming Task Understanding",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.36605",
+        "sha256": "35006f9e10c3e3b7e966c06984a07fbad3c71c2d4ee179a9c8330889c1bbda26",
+        "accessed": "2026-11-03T03:15:31Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 15,
+          "elapsed_seconds": 59.21,
+          "pdf_sha256": "35006f9e10c3e3b7e966c06984a07fbad3c71c2d4ee179a9c8330889c1bbda26",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "6f62662cb6b20a0e9bbfe3aefc9932f0c26d4bba05b60dd62de537fd973f885f",
+          "page_json_file": "2609.36605.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/mfan-res/ROBOCHRONO",
+            "fetched_url": "https://api.github.com/repos/mfan-res/ROBOCHRONO/readme",
+            "sha256": "d770f15d9dfe9d48a3c17e4102d07408d1c3648c32e2d5b916d6633eea6cbebc",
+            "accessed": "2026-11-03T03:17:03Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/mfan-res/ROBOCHRONO/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "2a6e6cfd29b0889715651fa92bbe15222303d0127e25ad299df256ba46ce1fbc"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-03T03:17:03Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.36605",
+        "paper_title": "RoboChrono: A Real Robot Benchmark for Streaming Task Understanding",
+        "abstract": "Understanding ongoing robot manipulation requires models to interpret visual observations in relation to interaction history and task progress. We introduce RoboChrono, a benchmark for streaming task understanding comprising 39 scenarios and 34,713 evaluation instances, constructed from real robot executions and complementary bare-hand human recordings. The benchmark evaluates seven tasks grouped into recognition, alignment, and temporal grounding, covering action understanding and anticipation, visual correspondence, temporal ordering, and action localization. Zero-shot evaluation of 18 vision-language models reveals substantial differences across tasks. GPT-6-Astra achieves 98.3% accuracy on Frame Matching but 68.3% on Frame Ordering, while RynnBrain1.1-122B-A10B exhibits a larger gap, reaching 95.4% and 32.9%, respectively. Input ablations on matched questions with five open-weight models further reveal distinct dependencies on visual evidence: removing visual observations reduces Current Action Recognition accuracy by 22.1 percentage points, whereas Next Action Prediction decreases by only 0.7 points. These findings show that strong visual matching does not consistently coincide with strong temporal ordering, and suggest that next-action prediction can be supported by task and action priors even when visual evidence is unavailable. RoboChrono provides a diagnostic setting for examining these differences, highlighting the need for capability-specific evaluation beyond aggregate scores when assessing task understanding in robot manipulation.",
+        "paper_updated": "2026-09-30T00:00:00Z",
+        "created_at": "2026-10-19T13:46:49Z",
+        "input_sha256": "5eee44e0e9aa69b369ee69d8d5da9e57a5e026955f0c6b8e7ef2d1415a3d986b",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "로봇 스트리밍 과제 이해 벤치마크 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "실로봇 스트리밍 과제이해 벤치마크 RoboChrono 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41566874285",
+        "context_sha256": "fa10b14e7f83bae0243266393506bbbb345ed44327b680d8a77857ad0ed617f4"
+      },
+      "proposal_sha256": "28357111c5a5bdf8d34bab66fba8c7d6ff13df36d7cfa0a598b84aff95874bd4"
     }
   },
   "processed_comments": [],
@@ -65205,8 +65365,8 @@
         "2610.42004",
         "2610.42060"
       ],
-      "calls": 17,
-      "cost_usd": 10.4079
+      "calls": 18,
+      "cost_usd": 11.0372
     }
   },
   "reaudits": [
