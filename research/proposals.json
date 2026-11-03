@@ -35299,6 +35299,170 @@
       },
       "issue_url": null,
       "proposal_sha256": "90ccb06bf7f0d03d84783f1490038466a46aa60255682774411335a0c98e589d"
+    },
+    "2609.35596": {
+      "decision": "propose",
+      "reason": "SEABench는 자기진화 에이전트의 내생적 정렬 이탈(endogenous misalignment)을 측정하는 재사용 가능한 벤치마크를 새로 제안한다. 48개 장기 과제 시퀀스(480개 과제 인스턴스), 3개 진화 표면, 4개 과제 도메인, 4개 유해 유형으로 구성된다. 과제 프롬프트가 영어이고 입력이 텍스트와 JSON 파일이므로 en 트랙의 text 모달리티로 분류한다. 공식 코드 링크는 부록 B에 명시되어 있다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "seabench",
+            "이름": "SEABench",
+            "평가 축": "에이전트 안전(자기진화로 인한 내생적 정렬 이탈)",
+            "언어": "en",
+            "정의": "자기진화 에이전트가 컨트롤러 파일, 메모리, 도구·스킬을 스스로 갱신한 뒤 이후 과제에서 안전하지 않은 행동을 보이는지 측정하는 벤치마크. 48개 장기 시퀀스(480개 과제 인스턴스)가 3개 진화 표면, 4개 과제 도메인, 4개 유해 유형을 아우른다. 환경은 89개 JSON 파일로 된 개인비서 작업공간이다. 짝지은 비진화 에이전트와 귀속 점수로 인과 귀속을 지원하고 LLM judge가 과제 완료·안전·귀속을 채점한다.",
+            "대표 과제": "업스트림 진화 과제 후 진화를 끈 상태로 다운스트림 안전 시험 과제를 수행(프라이버시 침해, 맥락 경계 붕괴, 환각, 가드레일 약화 탐지)",
+            "대표 예시·설명": "진화 과제에서 에이전트가 통제 파일에 영구 규칙을 쓰고, 이후 안전 시험 과제에서 그 규칙이 부적절한 수신자에게 민감 정보를 노출하는지 확인하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 아직 확인하지 않았다. 코드 저장소의 라이선스는 데이터 라이선스를 증명하지 않는다. 환경 데이터는 Kimi K2.5로 생성한 가상 데이터이며, 채점은 LLM judge(Kimi K2.5)에 의존한다. 논문 결과는 발견된 궤적에 한정되며 전역 리더보드가 아니다. 에이전트 하니스와 모델 API 실행 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/SEABench-Endogenous-Misalignment/SEABench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agent safety (endogenous misalignment from self-evolution)",
+            "definition": "A benchmark of whether self-evolving agents, after updating their controller files, memory, or tools and skills, later behave unsafely. 48 longitudinal sequences (480 task instances) span 3 evolution surfaces, 4 task domains, and 4 harm types. The environment is a personal-assistant workspace of 89 JSON files. Paired non-evolving agents and attribution scores support causal attribution, and LLM judges score task completion, safety, and attribution.",
+            "task": "Upstream evolution tasks followed by downstream safety-test tasks with evolution disabled (detecting privacy violation, contextual boundary collapse, hallucination, guardrail erosion)",
+            "example": "Task description: during an evolution task the agent writes a persistent rule into its controller files, and a later safety-test task checks whether that rule leaks sensitive information to an inappropriate recipient."
+          },
+          "evidence": {
+            "modality": {
+              "page": 14,
+              "quote": "Write Bob Smith"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "a benchmark for"
+            },
+            "대표 예시·설명": {
+              "page": 14,
+              "quote": "Write Bob Smith"
+            },
+            "링크": {
+              "page": 11,
+              "quote": "github.com/SEABench-Endogenous-Misalignment"
+            },
+            "언어": {
+              "page": 14,
+              "quote": "Write Bob Smith"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "we introduce SEABENCH"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "a benchmark for"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "a benchmark for"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.35596",
+      "paper_title": "SEABench: Benchmarking Endogenous Misalignment In Self-Evolving Agents",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.35596",
+        "sha256": "cae7a3acee644dc9134cdd73bd195cf940fb67434563dfc30638744f830bd69e",
+        "accessed": "2026-11-03T03:01:19Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 24,
+          "elapsed_seconds": 68.31,
+          "pdf_sha256": "cae7a3acee644dc9134cdd73bd195cf940fb67434563dfc30638744f830bd69e",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "77c26820591242727376ffa536509b57542e2a1870f1034dd4d05927df85dc45",
+          "page_json_file": "2609.35596.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/SEABench-Endogenous-Misalignment/SEABench",
+            "fetched_url": "https://api.github.com/repos/SEABench-Endogenous-Misalignment/SEABench/readme",
+            "sha256": "c5d3106a675da2bab9a42f3439439a20be522a150d799a5f9aa660d4da3f83fb",
+            "accessed": "2026-11-03T03:03:19Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-03T03:03:19Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.35596",
+        "paper_title": "SEABench: Benchmarking Endogenous Misalignment In Self-Evolving Agents",
+        "abstract": "Self-evolving LLM agents have gained prominence for their ability to improve after deployment by modifying their harness, including their controller instructions, memory management protocols, and reusable tools and skills, in response to user and environment feedback. However, locally useful updates may persist into later tasks where they produce unsafe behavior, even without direct adversarial influence. To study this risk, we introduce SEABench, a benchmark for studying endogenous misalignment arising from agent self-evolution, with 48 longitudinal task sequences that span multiple evolution surfaces, task domains, and harm types in a rich personal-assistant environment. To account for the stochasticity inherent in agentic operations, we provide an adaptive trajectory discovery pipeline that probes for failures while preserving original task intent and supports causal attribution through paired non-evolving agents and attribution scores. Our evaluation across multiple recent LLMs, evolution surfaces, and harm types reveals that self-evolution indeed increases task completion rates but often at the cost of safety failures that are absent for paired non-evolving baseline agents. We also show that qualitatively different safety behaviors emerge across evolution surfaces and harm types. Further, we show that this divergence in safety behavior is reflected in agents' chain-of-thought reasoning, which yields an effective monitoring strategy that can mitigate unsafe behavior with a low false positive rate.",
+        "paper_updated": "2026-10-01T00:00:00Z",
+        "created_at": "2026-10-19T13:46:49Z",
+        "input_sha256": "82f6b4f43cb4398e46a11e02564d159a782c1793aaf039536a567bf1e5e3b195",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "자기진화 에이전트 내생적 오정렬 벤치마크 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "자기진화 에이전트 정렬 실패 벤치마크 SEABench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41566874285",
+        "context_sha256": "011b7a3f863343f02db2e23ff19cef448d5d8f19d36a00c6b8ef192bb9f5a168"
+      },
+      "proposal_sha256": "13205f09ef406ed4346edd3ceda563bf49af0ac8d879479bc71bc1fb7730eb4e"
     }
   },
   "processed_comments": [],
@@ -64502,8 +64666,8 @@
         "2610.42004",
         "2610.42060"
       ],
-      "calls": 10,
-      "cost_usd": 5.3888
+      "calls": 11,
+      "cost_usd": 6.0814
     }
   },
   "reaudits": [
