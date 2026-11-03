@@ -36403,74 +36403,9 @@
       }
     },
     "2609.36817": {
-      "decision": "propose",
-      "reason": "pikit은 간접 프롬프트 인젝션을 공격(13종), 채널(16종), 방어(예방 9종, 오프라인 탐지 3종)로 분리해 조합 평가하는 재사용 가능한 영어 텍스트 에이전트 보안 평가 도구다. pi 코딩 에이전트에서 방어 회귀 평가를 수행했고, 630개 균형 탐지 코퍼스와 ASR 지표도 제공한다. 과제 지시문이 영어로 인용되어 en 트랙에 둔다. 파일 모드 채널(PDF 등)은 에이전트 도구가 텍스트로 파싱하며 이미지 이해를 요구한다는 근거가 없어 text로 분류한다. 라이선스 등은 PDF에서 확인되지 않아 '확인 불가'로 둔다. 논문 수치는 익명 LLM 하나와 pi 에이전트 조건의 결과이며 전역 리더보드가 아니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "pikit",
-            "이름": "pikit",
-            "평가 축": "에이전트 보안(간접 프롬프트 인젝션 공격·채널·방어 조합 평가)",
-            "언어": "en",
-            "정의": "간접 프롬프트 인젝션을 공격 13종, 채널(전달 매체) 16종(텍스트·파일 모드), 예방 방어 9종, 오프라인 탐지 기준선 3종으로 분리해 craft() API와 MatrixRunner로 조합 평가하는 연구용 툴킷. 결과는 규칙 기반 RuleJudge(또는 선택적 LLMJudge)가 FULL/PARTIAL/NOT_REACHED로 판정하고 공격 성공률(ASR)은 유효 실행 대비 FULL 비율이다. 논문은 익명 LLM 기반 pi 코딩 에이전트에서 고위험 부분집합(공격-채널-모드 상위 9개 조합 x 페이로드 35개 x 방어 9종, 매칭 쌍 2,835개 중 2,832개 완료)으로 방어 회귀를 평가했고, 풀링 ASR이 6.00%에서 1.69%(상대 71.8% 감소)로 낮아졌다. 탐지 기준선은 315개 오염 산출물과 315개 정상 산출물의 균형 코퍼스 630개로 평가했다.",
-            "대표 과제": "공격·채널·방어를 조합해 오염된 산출물을 에이전트에 주입하고 공격 성공 여부(FULL/PARTIAL/NOT_REACHED)와 ASR을 측정, 방어 전후 매칭 비교와 오프라인 탐지(정밀도·재현율·F1·FPR) 평가",
-            "대표 예시·설명": "영어 지시문 과제(예: 'reply with exactly : PROCESSED .')를 수행하는 에이전트에게 웹페이지·이메일 헤더 등 채널에 숨긴 공격 페이로드를 주입하고, 지정한 canary 문자열이 출력되는지 판정하는 과제 설명",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터·코드 라이선스는 PDF에서 확인하지 못했다. 논문의 방어 회귀 수치는 익명 LLM이 구동하는 pi 코딩 에이전트와 고위험 조합에 한정된 결과이며 현재 전역 리더보드가 아니다. 공격 페이로드 생성 코드를 포함하므로 이용 범위를 점검해야 한다. 파일 모드는 PDF·HTML·EML 등 실제 파일 산출물을 만들며 에이전트 실행 환경이 필요하다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/Tencent/AI-Infra-Guard/tree/main/Research/pikit"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agent security (composable evaluation of indirect prompt injection attacks, channels, and defenses)",
-            "definition": "A research toolkit that evaluates indirect prompt injection by separating 13 attacks, 16 channels (text and file modes), 9 prevention defenses, and 3 offline detection baselines, composed through a craft() API and a MatrixRunner. A rule-based RuleJudge (or optional LLMJudge) labels each run FULL, PARTIAL, or NOT_REACHED, and attack success rate (ASR) is the share of FULL outcomes over valid runs. The paper runs a defense regression on the pi coding agent powered by an anonymized LLM, using a high-risk subset (top 9 attack-channel-mode combinations x 35 payloads x 9 defenses; 2,832 of 2,835 matched pairs completed). Pooled ASR fell from 6.00% to 1.69% (71.8% relative reduction). Detection baselines were evaluated on a balanced 630-sample corpus (315 tainted, 315 benign).",
-            "task": "Compose attacks, channels, and defenses to inject tainted artifacts into an agent, then measure outcome (FULL/PARTIAL/NOT_REACHED) and ASR, compare matched baseline and defended runs, and evaluate offline detectors (precision, recall, F1, FPR).",
-            "example": "Task description: an agent performs an English-instruction task (for example 'reply with exactly : PROCESSED .') while an attack payload hidden in a channel such as a webpage or email header tries to hijack it; the judge checks whether a designated canary string is emitted."
-          },
-          "evidence": {
-            "modality": {
-              "page": 1,
-              "quote": "text and file"
-            },
-            "대표 과제": {
-              "page": 5,
-              "quote": "reply with exactly"
-            },
-            "대표 예시·설명": {
-              "page": 5,
-              "quote": "reply with exactly"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "Research/pikit"
-            },
-            "언어": {
-              "page": 5,
-              "quote": "reply with exactly"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "pikit: A Composable"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "pikit: A Composable"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "pikit: A Composable"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "pikit 논문의 수치 실험은 이름이 밝혀지지 않은 익명 LLM 하나가 구동하는 pi 코딩 에이전트에서만 수행되었다(1쪽 초록, 4절). 표 1은 모델이 아니라 방어 전략(few_shot_warning, instruction_hierarchy 등)별 ASR을 비교하고, 표 2는 오프라인 탐지기별 성능을 비교한다. 두 표 모두 이름이 인쇄된 평가 모델의 점수를 담고 있지 않다. 방어 전략이나 탐지기를 모델로 바꿔 적을 수는 없으므로, recommendations에 넣을 수 있는 모델별 비교 결과가 PDF에 없다. 모델 비교 결과가 없는 항목은 공개하지 않는다는 규칙에 따라 changes는 비워 두고 아무것도 게시하지 않는다.",
+      "changes": [],
       "arxiv_id": "2609.36817",
       "paper_title": "pikit: A Composable Toolkit for Indirect Prompt Injection Research and Evaluation",
       "paper_updated": "2026-09-30T00:00:00Z",
@@ -36526,7 +36461,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-03T03:19:49Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -36552,11 +36487,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41566874285",
-        "context_sha256": "372fa6240250ea7aa95c7e1f17ba5264884eeb24e56e9f1e62fd87ab37df05d6"
-      },
-      "proposal_sha256": "48d63dc330e4221c09c1cbd817932fcc2c6bb2efd82335fe720133adb87ec31f"
+      "proposal_sha256": "7442db06cb84b24801acb21cfdf588fef5ee9bc575b755105556e9f679008627",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -65767,8 +65700,8 @@
         "2610.42004",
         "2610.42060"
       ],
-      "calls": 21,
-      "cost_usd": 13.0099
+      "calls": 22,
+      "cost_usd": 13.5856
     }
   },
   "reaudits": [
