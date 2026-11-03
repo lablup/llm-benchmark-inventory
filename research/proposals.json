@@ -33654,8 +33654,8 @@
       "proposal_sha256": "2691f9a30460465269d9ec06ad3b47b9efd10048ec8cebc62367eef273512f9c"
     },
     "2609.35581": {
-      "decision": "propose",
-      "reason": "QC-Stark는 양자컴퓨팅 작업 11종을 5단계 난이도로 평가하는 재사용 가능한 신규 벤치마크이다. 시드 기반 절차적 생성과 실행 기반 자동 검증을 사용한다. 논문의 프롬프트 템플릿이 영어이므로 en 트랙, 텍스트 입력이므로 text로 분류했다. 데이터는 논문이 Hugging Face 링크로 명시했다. 라이선스와 lm-eval 지원은 논문에서 확인되지 않아 '확인 불가'로 기록했다.",
+      "decision": "needs_evidence",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: Scores must be finite numeric strings in original units",
       "changes": [
         {
           "track": "en",
@@ -33772,7 +33772,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-03T02:37:43Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -33798,11 +33798,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41566874285",
-        "context_sha256": "3b2e5b311cd6ca7c26ef362642c9070598b59d46232284517382b974c05f3e01"
-      },
-      "proposal_sha256": "7683bcc9e2252ed17d981509885d73ef0fb1dc394a40eb817e31fa4899a267ef"
+      "proposal_sha256": "7683bcc9e2252ed17d981509885d73ef0fb1dc394a40eb817e31fa4899a267ef",
+      "approval_policy": "claude_only",
+      "resume_error": "Scores must be finite numeric strings in original units"
     },
     "2609.35606": {
       "decision": "propose",
@@ -63072,6 +63070,366 @@
           "reason": "논문 참신성 평가 진단용 NovGauge 벤치마크 제안"
         }
       ]
+    },
+    "2610.40735": {
+      "arxiv_id": "2610.40735",
+      "paper_title": "RiskyPy: Toward Model-Calibrated Prompt Generation for Joint Security and Functionality Evaluation of LLM-Generated Code",
+      "abstract": "Evaluating approaches that improve the security of LLM code generation requires datasets that jointly assess security and functionality and remain adapted to the capabilities of the models being studied. However, existing benchmarks are costly to produce and are generally not calibrated to a chosen range of model capabilities. We introduce RiskyPy, an automated pipeline that generates security-oriented code-generation datasets calibrated to model proficiency using functionality and vulnerability canaries. We instantiate RiskyPy for Python using domains covering 18 CWEs from the 2025 CWE Top 25, producing 101 prompts. Experiments on Qwen3-4B and Seed-Coder-8B show that the generated tasks remain functionally accessible, with 57-72% of prompts yielding functional code, while only 5-10% of generations are free of Bandit findings, leaving room for joint evaluation of security and functionality of security improvement approaches.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "보안·기능 공동 평가용 코드 생성 데이터셋 생성 파이프라인 제안"
+        }
+      ]
+    },
+    "2610.40893": {
+      "arxiv_id": "2610.40893",
+      "paper_title": "Qistas: A Pre-Registered, Portable Protocol for Fairness Evaluation of Large Language Models",
+      "abstract": "Fairness benchmarks for large language models (LLMs) are overwhelmingly English-born and American in their social categories; translated versions carry those categories into societies where they do not apply, and almost none fix their hypotheses before the models are run. We present Qistas (Arabic qistas, \"the just balance\"), a protocol for evaluating how LLMs treat the social, confessional, and regional constituencies of a society, portable across countries and instantiated first for Iraq. In its pilot form it measures only what needs no verdict on contested truth: procedural symmetry across matched counterfactual pairs, differential refusal, stereotype reliance under ambiguity, and terminological framing of documented events. Every measurement is paired by construction and analysed with paired machinery (sign-flip permutation tests, exact McNemar tests, template-clustered bootstrap intervals, Holm-corrected families), with a power analysis that states, before any data exist, the smallest effect each axis can detect after the design effect of template clustering. We release the authoring apparatus (a pruned 3x5 taxonomy with four cells closed by design, per-type checklists, a cumulative rulings log, a structural audit, and a human review notebook) and report its first field test: a semantic review of a 58-item seed bank in which 24 of 25 template groups failed at least one check. The defect patterns it exposed (evaluation criteria leaking into prompts, token-level swaps that break Arabic agreement, epistemically unbalanced pairs, single-theme refusal probes, unwritten dialect twins counted as coverage) are, we argue, general hazards of counterfactual fairness benchmarks. This is a protocol paper, not a results paper: no model has been evaluated, and the accompanying pre-registration commits the hypotheses, metrics, exclusion rules, and analysis plan that the pilot will follow.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "공정성 평가 프로토콜이나 과제 언어(아랍어 중심 추정)와 자원 공개 범위 불명확"
+        }
+      ]
+    },
+    "2610.40959": {
+      "arxiv_id": "2610.40959",
+      "paper_title": "P-ContextBench: From Personal Fact Recall to Personalized Agent Behavior",
+      "abstract": "Large language models (LLMs) are increasingly used for personal tasks, yet evaluating their safe use of personal context remains difficult because such contexts are private, fragmented, dynamic, and socially situated. We introduce P-ContextBench, a realistic, verifiable, and scalable benchmark for evaluating personal-context understanding. P-ContextBench constructs population-structured, life-story-grounded digital humans from demographic seeds reflecting the U.S. population. Rather than using explicit, static profiles, P-ContextBench embeds traits, routines, goals, and constraints as implicit evidence across fragmented, evolving synthetic mobile-app records. It evaluates five capabilities: single-source fact recovery, multi-source fact recovery, temporal state tracking, inference of higher-level personal patterns from routine behavior, and safe handling of requests conflicting with persona-specific constraints through compliance, warning, clarification, or refusal. A multi-stage validation pipeline checks persona plausibility, context recoverability, information leakage, evidence preservation, test-case grounding, and human-judge agreement. We instantiate P-ContextBench with 100 personas, 10,088 hidden facts, 18,261 app-trace fragments, and 4,810 verified test cases. The pipeline supports configurable generation across scales and demographic groups. Cost-effective state-of-the-art (SOTA) LLMs relevant to personal agents achieve below 60% accuracy on temporal tracking, higher-level pattern inference, and constraint-aware action-boundary decisions, with fewer than 10% of test cases answered correctly across all three repeated runs. Even a high-performing SOTA model remains inconsistent on these capabilities. P-ContextBench provides measurable targets for improving the accuracy, reliability, and safety of LLM-based personal agents.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "개인 맥락 이해 에이전트용 신규 벤치마크 P-ContextBench 제안"
+        }
+      ]
+    },
+    "2610.40966": {
+      "arxiv_id": "2610.40966",
+      "paper_title": "Better Retrievers, Worse Labels: How Incomplete Relevance Judgments Distort Abstention Evaluation in Conversational RAG",
+      "abstract": "Conversational RAG benchmarks such as MTRAG and RETECO evaluate retrieval and generation end to end: each system answers from its own retrieval, so abstention must be scored against whether each retrieved context is sufficient. A convenient shortcut reads sufficiency off the relevance judgments and treats a context without gold documents as unanswerable. We re-run the official baselines exactly and test this shortcut on RECOR (RETECO track~2) with four retrievers (nDCG@10 from .18 to .59) and three Qwen3 readers. Two open LLM judges and a panel of four small open models label each context by content, and a model of another family audits 250 contexts blind, with adjudication. The stronger the retriever, the larger the share of no-gold contexts that still contain the answer (28\\% to 72\\%) and the lower the shortcut's precision (.68 to .10; .70 to .21 under the audit). A reader agrees: Qwen3-4B answers 62--67\\% of these false misses correctly, against 23--30\\% of no-gold contexts judged insufficient and 1\\% with no documents. In most false misses, the answer comes from a hard negative mined for the same question, another turn's gold or a neighbouring chunk of the gold page. On MTRAG, whose judgments come from annotators, precision drops from .72 to .50. Under the shortcut, answerability AUROC is up to .19 too low, and the best sufficiency detector appears to be a retrieval score that never reads the documents. We release code, runs and labels, and recommend scoring refusals against content labels, not the presence of gold.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "RAG 기권 평가 오류 분석 중심, 라벨 공개하나 신규 벤치마크 여부 불명확"
+        }
+      ]
+    },
+    "2610.40996": {
+      "arxiv_id": "2610.40996",
+      "paper_title": "Do Open Language Models Invent Scripture? BILAL-BENCH: Benchmarking Islamic-Source Fabrication in Bengali",
+      "abstract": "When a language model invents a Qur'anic verse or hadith, it gives false authority to text that readers may treat as sacred. Existing Islamic hallucination benchmarks are largely Arabic and often closed-ended, while Bengali resources mainly study general-domain hallucination or factual knowledge. We introduce BILAL-BENCH, a 240-question expert-verified benchmark for open-ended Islamic-source fabrication in Bengali. It covers Qur'anic attribution, hadith, fiqh, contemporary issues, and adversarial false-premise prompts, and uses a two-axis rubric that separates source errors from assertiveness. We evaluate seven open-weight models from 1B to 120B on 1,680 double-annotated responses. Six of the seven models confidently fabricate on 79.3-95.3% of source-production questions, with no monotonic improvement from scale. Hadith provenance is the weakest category across models: only two of 315 responses are correct and correctly sourced. The two 8B BanglaLLaMA variants have similar confident-fabrication rates but different error profiles. Models vary far more in whether they withhold a claim they cannot support than in source accuracy: appropriate abstention or false-premise correction ranges from 6 to 46 responses across the benchmark, and does not track parameter count.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "벤치마크 과제가 벵골어로만 한정됨"
+        }
+      ]
+    },
+    "2610.41076": {
+      "arxiv_id": "2610.41076",
+      "paper_title": "BABA-Bench: Evaluating Long-Horizon Patient-Advocacy Agents",
+      "abstract": "An LLM agent that helps a patient get care must do two things. It must reach the correct outcome, and it must follow the necessary procedure. For example, the agent must get the patient's permission before it shares the patient's records. We introduce BABA-Bench, a benchmark of 47 interactive worlds. We built each world from a de-identified, real patient advocacy case that expert advocates reviewed. In each world, the agent must find hidden information and coordinate insurers, clinics, suppliers, pharmacies, and community organizations. The engine checks each action at the time the agent does it. It checks if the agent has permission, if the agent has evidence for the action, and if the action is prohibited. We evaluated 14 frontier models with three runs on each world, for a total of 1,974 runs. Agents often reached the correct outcome by an invalid route. Of the 921 runs that reached all required outcomes, 254 (28%) did not follow the necessary procedure. Claude Opus 5 reached all required outcomes in 81.6% of its runs, but only 52.5% of its runs passed all checks. When we gave two models a verified route, their pass rates increased from 29.8% to 91.5% and from 44.0% to 97.2%. For these models, the main problem is to find a route, not to execute it.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "장기 환자 옹호 에이전트 평가용 인터랙티브 벤치마크 제안"
+        }
+      ]
+    },
+    "2603.06570": {
+      "arxiv_id": "2603.06570",
+      "paper_title": "SUREON: A Benchmark and Vision-Language Model for Surgical Reasoning",
+      "abstract": "A capable surgical AI model should reason from visual evidence; yet, many existing surgical benchmarks can be partially solved without visual input, as models may exploit procedural priors or common anatomy-instrument interactions to infer answers from language alone. To address this, we introduce SUREON, a video question-answering (QA) dataset and benchmark designed to evaluate visually grounded surgical reasoning. Our pipeline generates QA pairs from narrated surgical academic videos, refines incorrect options using multiple models to reduce linguistic biases, and uses trained adversarial guessers to filter out questions answerable without visual evidence. The resulting dataset contains 76K training pairs covering 168 procedures and 10 specialties, alongside a benchmark of 340 questions across 10 categories verified by expert surgeons. Benchmarking leading commercial and open-source models shows that surgical visual reasoning remains largely unsolved--no model exceeds 53% accuracy and even expert surgeons reach only 64.9%. We also introduce SUREON-VLM, a baseline trained on our curated data that avoids language shortcuts, outperforms existing open-source models on SUREON, and matches larger specialist models on multiple standard surgical benchmarks. Our training ablations show that distractor refinement and blind curation strengthen visual grounding, increasing the multimodal gain from 8.7 to 29.1 percentage points while reducing the training set from 176.6K to 76K filtered samples. SUREON thus offers both a verified testbed for surgical visual reasoning and training data that strengthens visual grounding.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "수술 영상 추론 멀티모달 QA 데이터셋 및 벤치마크 제안"
+        }
+      ]
+    },
+    "2603.26034": {
+      "arxiv_id": "2603.26034",
+      "paper_title": "AgentCollab: A Self-Evaluation-Driven Collaboration Paradigm for Efficient LLM Agents",
+      "abstract": "Autonomous agents powered by large language models (LLMs) perform complex tasks through long-horizon reasoning and tool interaction, where a fundamental trade-off arises between execution efficiency and reasoning robustness. Models at different capability-cost levels offer complementary advantages: lower-cost models enable fast execution but may struggle on difficult reasoning segments, while stronger models provide more robust reasoning at higher computational cost. We present AgentCollab, a self-driven collaborative inference framework that dynamically coordinates models with different reasoning capacities during agent execution. Instead of relying on external routing modules, the framework uses the agent's own self-reflection signal to determine whether the current reasoning trajectory is making meaningful progress, and escalates control to a stronger reasoning tier only when necessary. To further stabilize long-horizon execution, we introduce a difficulty-aware cumulative escalation strategy that allocates additional reasoning budget based on recent failure signals. In our experiments, we instantiate this framework using a two-level small-large model setting. Experiments on diverse multi-step agent benchmarks show that AgentCollab consistently improves the accuracy-efficiency Pareto frontier of LLM agents. The code is available at https://github.com/SparkEngineAI/AgentFlashInfer.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "에이전트 협업 추론 방법론 논문, 신규 평가 자원 없음"
+        }
+      ]
+    },
+    "2605.18421": {
+      "arxiv_id": "2605.18421",
+      "paper_title": "EvoMemBench: Benchmarking Agent Memory from a Self-Evolving Perspective",
+      "abstract": "Recent benchmarks for Large Language Model (LLM) agents mainly evaluate reasoning, planning, and execution. However, memory is also essential for agents, as it enables them to store, update, and retrieve information over time. This ability remains under-evaluated, largely because existing benchmarks do not provide a systematic way to assess memory mechanisms. In this paper, we study agent memory from a self-evolving perspective and introduce EvoMemBench, a unified benchmark organized along two axes: memory scope (in-episode vs. cross-episode) and memory content (knowledge-oriented vs. execution-oriented). We compare 15 representative memory methods with strong long-context baselines under a standardized protocol. Results show that current memory systems are still far from a general solution: long-context baselines remain highly competitive, memory helps most when the current context is insufficient or tasks are difficult, and no single memory form works consistently across all settings. Retrieval-based methods remain strong for knowledge-intensive settings, whereas procedural and long-term memory methods are more effective for execution-oriented tasks when their stored experience matches the task structure. We hope EvoMemBench facilitates future research on more effective memory systems for LLM-based agents. Our dataset and code are available at https://github.com/DSAIL-Memory/EvoMemBench.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트 메모리 평가용 통합 벤치마크 EvoMemBench 제안"
+        }
+      ]
+    },
+    "2610.41094": {
+      "arxiv_id": "2610.41094",
+      "paper_title": "AIFaultBench: A Reproducible Benchmark of Real-World Faults in AI Software Systems",
+      "abstract": "AI-based software systems remain difficult to debug because their failures can involve interactions among code, models, data, dependencies, hardware, and execution environments. Existing benchmarks cover specific classes of AI systems, while concerns about fault realism and reproducibility highlight the need for documented execution conditions and evidence. We present AIFaultBench, a benchmark of 770 real-world bugs from 105 AI-based software repositories across 76 organizations. It covers six classes of AI systems: machine learning, deep learning, reinforcement learning, systems based on large language models, agentic AI, and AI tooling and infrastructure. Each bug record connects the original report and affected codebase to structured metadata, environment setup scripts, a reproduction trigger, and investigation evidence. We reproduced 652 bugs (84.7%) under the recorded execution conditions and documented the outcomes of the remaining 118 attempts. Through its broad coverage, documented reproduction evidence, and common structure, AIFaultBench supports empirical studies of AI faults, debugging tool evaluation, practical failure investigation, and teaching with real-world examples.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "AI 소프트웨어 버그 벤치마크이나 LLM 평가 용도·언어 불명확"
+        }
+      ]
+    },
+    "2610.41118": {
+      "arxiv_id": "2610.41118",
+      "paper_title": "CompoSET: A Controlled Single-Edit Benchmark for Vision-Language Compositionality",
+      "abstract": "Vision-language compositionality is the ability to identify which properties, relations, quantities, and states bind to which entities in both an image and a caption, and to match those bindings across modalities. Existing benchmarks evaluate this ability through image-text matching: a model ranks candidate image-caption match similarities and succeeds when the correct match comes on top. In such datasets, paired images differ by more than a single binding: scene, layout, and content all differ, with 97% of pixels changing on average. Such pairs do not isolate compositionality: results are confounded by global image differences. We introduce Compositional Single-EdiT (CompoSET), a benchmark dataset in which each base image-caption pair has an edited counterpart, or foil, that preserves the scene but differs by a single controlled edit, such as color, count, spatial relation, or object state. Base and foil images preserve naturalistic scene complexity yet are visually near-identical: only 8% of pixels change on average. Our dataset has many foils per base scene (~22) in order to separate scene difficulty from edit difficulty, a distinction one-foil-per-base benchmarks cannot make. CompoSET contains 1,776 instances across 80 naturalistic scenes, spanning 16 edit types in 4 semantic categories, with captions at 3 verbosity levels. We test 22 dual-encoder VLMs and find that all models perform at or below chance level on CompoSET, despite scoring well on prior benchmarks. This suggests that apparent progress under prior image-text matching protocols may be an artifact arising from confounds in benchmark design, and that compositional understanding in dual-encoder VLMs is far from solved. CompoSET addresses the confounds and offers a better controlled benchmark to measure future progress.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "비전-언어 구성성 평가용 통제된 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.41162": {
+      "arxiv_id": "2610.41162",
+      "paper_title": "FrontierMat: Benchmarking Language Models at the Frontier of Materials R&D",
+      "abstract": "To accelerate materials discovery, language models must be able to address problems at the research frontier. Yet textbook- and examination-derived benchmarks primarily assess established knowledge, leaving performance on frontier research problems largely untested. We introduce FrontierMat, a benchmark of 330 problems drawn from frontier academic and industrial research in fields including aerospace, semiconductors, embodied intelligence and nuclear fusion. Every problem is validated by leading experimentalists and industry experts in its field. Each problem presents a real study and asks the model to infer a withheld outcome or draw a conclusion from selected experimental evidence. Problems are annotated by functional domain, material system and the scale of the governing mechanism; 130 require cross-scale reasoning. The strongest general-purpose model scores only 53.7%, and on matched problems, cross-scale problems score 8.7 points below single-scale ones. Half of the problems are solved by at most one model, and models fail chiefly by endorsing what is plausible rather than what was observed. A domain-adaptation study with meta-weighted continued pretraining and scale-modular self-distillation raises an open-weight model from 36.7% to 55.4%, matching the strongest proprietary model, with improvements on public materials benchmarks and no decline in aggregate performance on general benchmarks. FrontierMat provides a testbed for measuring progress toward language models that support frontier materials R&D.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "소재 R&D 최전선 문제 330개의 LLM 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.41168": {
+      "arxiv_id": "2610.41168",
+      "paper_title": "ROSTrans: Empirically Benchmarking LLMs for ROS1-to-ROS2 Migration",
+      "abstract": "Although large language models have shown strong capabilities in domain-specific code generation, their performance in robotics software development, especially for the Robot Operating System (ROS), remains largely unexplored. ROS code generation presents distinctive challenges, including complex inter-node coordination, middleware configuration, and lifecycle semantics that go far beyond standard coding benchmarks, and many important correctness properties become observable only once migrated nodes are launched and communicate. We present ROSTrans, a benchmark for evaluating LLMs on ROS1-to-ROS2 code migration, a representative and practically important setting for ROS code generation. ROSTrans comprises 108 scaffolded completion tasks drawn from a diverse set of 70+ open-source ROS1 repositories and organized into a hierarchical taxonomy assessing interface-level, behavioral-level and system-level correctness. For every task we establish an executable reference: a verified ROS2 implementation, a runtime test suite that launches the nodes and exercises their topics, services, actions and parameters, and a container ensuring reproducibility. Candidates are scored by injecting only their target files into an otherwise fixed copy of the reference package, so a candidate can neither supply nor weaken the tests it is judged by. Evaluating six frontier LLMs over five stochastic generations per task, we find pass@1 below 10.9%, and that 56.5% of all samples build successfully and then fail at runtime,and 32.0% fail runtime assertions on the migrated interfaces, a class of error no compile-only oracle can detect. Execution-guided repair further improves task success, reaching 49.1% and 47.2% for Claude Opus 4.6 and GPT-5.5 after three rounds, respectively.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "ROS1→ROS2 코드 마이그레이션 실행 기반 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.41232": {
+      "arxiv_id": "2610.41232",
+      "paper_title": "TRIDENT and SHAKTI: A Framework and Benchmark for Hindi AI-Text Detection",
+      "abstract": "As Large Language Models (LLMs) become increasingly multilingual, distinguishing human-written from AI-generated text is essential for maintaining information integrity. However, research remains English-centric, with limited benchmarks for low-resource languages such as Hindi. To address this gap, we introduce SHAKTI, a large-scale Hindi benchmark covering four genres, eight LLM families, multiple prompting strategies, and adversarial transformations. We evaluate its quality through human annotation and analyze linguistic, grammatical, and sentiment-based differences between human- and AI-generated texts. Building on these findings, we propose TRIDENT, a round-trip translation-based detection framework with three variants: TRIDENT-S (static threshold), TRIDENT-D (dynamic threshold), and TRIDENT-C (logistic regression using multi-distance RTT features). TRIDENT leverages semantic consistency between original and round-trip translated texts to identify AI-generated content. Extensive experiments show that TRIDENT outperforms conventional and supervised baselines, with TRIDENT-S achieving the best overall performance. Further evaluations across seven languages, adversarial settings, and unseen LLMs demonstrate its multilingual applicability and robustness, while highlighting sensitivity to the translation model.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "힌디어 중심 탐지 벤치마크이나 7개 언어 평가 포함, 범위 불명확"
+        }
+      ]
+    },
+    "2610.41272": {
+      "arxiv_id": "2610.41272",
+      "paper_title": "ANGLER: Verifier-Grounded Benchmarking with an Adaptive Attacker for Web Agents",
+      "abstract": "Web agents are increasingly deployed to complete tasks autonomously on real websites, where adversarially injected content can induce them to perform unauthorized actions. Existing evaluations primarily use fixed attacks or focus on a single attack type, and evaluate attacks at the text level rather than through real state changes, thus underestimating how vulnerable agents are to diverse attacks. To address the gap, we introduce REEF, a benchmark of red-teaming executable environments with faithful verification for measuring the security vulnerabilities of web agents. REEF covers 9 verifier-grounded websites spanning travel, commerce, productivity, media, and communication, and pairs every authentic benign task with a malicious objective delivered through 5 attack types at both the user and the environment level. REEF's state-based verifiers provide the execution feedback that drives ANGLER, an adaptive near-miss-guided lure evolution framework for red-teaming. Rather than evaluating a fixed attack set, ANGLER uses outcomes from prior rollouts to guide LLM-based attack mutation and candidate selection, prioritizing near-miss seeds during refinement. Across 8 VLM-based web agents, ANGLER achieves an end-to-end attack success rate (ASR) of 20.36%, compared with 15.24% for the non-adaptive setting. Compared with attack-free execution on the same benign tasks, attacks generated by ANGLER reduce benign task success rate (BSR) from 61.9% to 44.4%.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "웹 에이전트 보안 평가용 벤치마크 REEF 및 공격 프레임워크"
+        }
+      ]
+    },
+    "2610.41292": {
+      "arxiv_id": "2610.41292",
+      "paper_title": "From Transcription to Reformulation: Defining and Benchmarking Grounded Generative Speech Recognition",
+      "abstract": "Speech language models have expanded automatic speech recognition (ASR) from transcription to general speech-to-text generation. Yet existing benchmarks still assume a single ground-truth transcript per utterance, an assumption that struggles when models produce readable, formatted, or structured outputs. In this work, we introduce Grounded Generative Speech Recognition (GSR), reformulating speech recognition as generating semantically grounded text instead of a single transcript. We define a grounded reformulation space that characterizes all valid textual realizations supported by the input speech, and establish a four-level hierarchy of reformulation capabilities, including literal transcription, canonical reformulation, semantic reformulation and speech-grounded structuring. Based on this formulation, we present GSR-Bench, the first comprehensive benchmark designed to evaluate generative speech recognition systems beyond exact transcript matching. GSR-Bench covers diverse scenarios including refined meeting transcription, cross-dialect translation, context-aware speech understanding, and robustness under silent or noisy acoustic conditions. To address the limitations of word-level evaluation metrics, we develop a multi-dimensional evaluation framework combining speech grounding assessment and LLM-based semantic judgment, whose reliability is validated through human preference studies. Extensive experiments across representative architectures, ranging from conventional ASR systems to end-to-end Speech-LLMs, reveal fundamental trade-offs between transcription fidelity and generative reformulation ability. Our analysis further identifies critical failure modes, including acoustic hallucination, unsupported generation, and instruction drift, providing insights into the design and evaluation of future grounded generative speech systems.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "생성형 음성 인식 평가용 GSR-Bench 제안"
+        }
+      ]
+    },
+    "2610.41396": {
+      "arxiv_id": "2610.41396",
+      "paper_title": "ProSearch: Benchmarking Multi-Constraint Protocol Retrieval in Experimental Science",
+      "abstract": "In AI for Science scenarios, experimental design and method reproduction require retrieving protocols that satisfy multiple interdependent constraints, yet existing benchmarks lack systematic evaluation of this capability. To address this gap, we introduce ProSearch, a benchmark for multi-constraint protocol retrieval in experimental science. ProSearch has three key features: (1) realism, with queries grounded in real experimental records and expert-defined templates; (2) complexity, with 60 experimental fields and their dependencies; and (3) diagnosticity, with 3-5 explicit constraints per query, including numerical and negation constraints. We construct ProSearch through LLM-based extraction, data-driven constraint selection, controlled query generation, and evidence-based relevance validation. The resulting benchmark contains 1,515 queries across six experimental science domains. We conduct extensive experiments on ProSearch with 19 representative retrievers and complementary analyses. The best-performing retriever achieves an average nDCG@10 of only 0.290, which improves to 0.474 with reranking. Structured diagnostic analysis shows that explicit constraint matching provides a strong ranking signal, while manual error analysis identifies joint constraint binding as a key bottleneck. ProSearch provides a testbed for systematically evaluating scientific retrieval systems.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "다중 제약 프로토콜 검색 벤치마크 ProSearch 제안"
+        }
+      ]
+    },
+    "2610.41486": {
+      "arxiv_id": "2610.41486",
+      "paper_title": "Multi-Test Nation Bias Benchmarking of LLMs with Explicit Unbiased Baselines",
+      "abstract": "While prior work has highlighted that systematic nation-level bias in large language models (LLMs) can pose operational risks for international relations (IR) applications, many existing evaluations still lack a clearly specified unbiased reference (ground truth), limiting fully quantitative and cross-setting measurement. Using an expanded corpus of 722 official UN Security Council (UNSC) records, we measure nation-level bias with five complementary tests, thereby extending prior approaches to cover a broader set of bias expression channels: opinion ranking (WOW), association sorting (AK+-), vote simulation (PVS), opposition attribution (F-Oppose), and framing (Headliner). To enable grounded bias evaluation, we explicitly define an unbiased status for each test; in particular, for WOW and AK+- where ground truth is difficult to specify, we propose an action-based pseudo unbiased status derived from observable voting behavior to construct a quantifiable baseline. Benchmarking 4 LLMs (GPT-4o-mini, Llama 3.3-70B, Mistral-22B-Small, and Qwen3-30B) across the five permanent members of the UNSC, we find a test-agnostic macro-pattern: relative to the reference baselines defined for each test, model outputs lean toward the opposition (red) side for China and Russia and toward the supportive (blue) side for the U.K., the U.S., and France. These results underscore the need to audit IR-facing LLM deployments with grounded, multi-test benchmarks tied to explicit reference points.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "UNSC 기록 기반 국가 편향 다중 테스트 벤치마크 제안"
+        }
+      ]
+    },
+    "2610.41539": {
+      "arxiv_id": "2610.41539",
+      "paper_title": "Scalable Audio-LLM System for Speech MOS Evaluation: A Diagnostic Case Study and Adaptation Roadmap",
+      "abstract": "The continuous deployment of enterprise voice systems creates a critical operational bottleneck: evaluating the acoustic quality of synthetic speech across high-volume production updates. While human Mean Opinion Score (MOS) remains the quality gold standard, it introduces severe operational costs and turn-around delays that make continuous integration infeasible. In this work, we present a system design case study for a scalable, low-cost and offline evaluation pipeline capable of scoring large batches of synthetic speech at marginal cost. First, we use Qwen2-Audio-7B-Instruct in a zero-shot setting for granular MOS estimation, noticing perceptual blind spots and inherent biases. Then, we analyze SOMOS dataset and construct a diagnostic benchmark that operationalizes two prosodic dimensions associated with human naturalness ratings. Finally, we adapt Qwen2-Audio-7B-Instruct through a parameter-efficient finetuning (LoRA) on the task of MOS evaluation, observing improvements over base model and widely used neural baselines like UTMOS and establishing a practical blueprint for enterprise-grade speech quality assurance.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "MOS 평가 사례연구, 진단 벤치마크의 재사용성 불명확"
+        }
+      ]
+    },
+    "2610.41562": {
+      "arxiv_id": "2610.41562",
+      "paper_title": "SCRBench: Beyond Equivalence Checking for Semantic Change Reasoning in Code",
+      "abstract": "Understanding how code changes affect program semantics is a core aspect of code reasoning in language models. It is commonly evaluated by asking whether two programs are semantically equivalent, but a yes/no answer does not reveal whether a model knows which code change caused a semantic difference, or which sequence of code changes produced the modified program. We study two tasks that ask these questions directly, diagnosing semantic change and reconstructing sequences of code changes, alongside detecting semantic equivalence. We build SCRBench, 67,658 Python program pairs generated by applying sequences of code changes that preserve or alter program semantics, and evaluate five language models on a stratified subset of 4,500 pairs. Detecting semantic equivalence exposes weaker models, whose accuracy declines as changes accumulate, but the strongest models remain near the ceiling. Diagnosing semantic change reveals weaknesses that equivalence accuracy hides: a model with 94.71% equivalence accuracy diagnoses only 54.44% of semantic changes. Reconstructing sequences of code changes is much harder: the best model reconstructs the exact sequence for only 39.27% of pairs, and no model exceeds 1.11% when five changes are applied. High equivalence accuracy therefore overestimates how well models reason about the semantic effects of code changes.",
+      "paper_updated": "2026-11-02T00:00:00Z",
+      "created_at": "2026-11-03T02:38:43Z",
+      "input_sha256": "d8dd87a3ca15792fcc3dbc4982af6b81c42ee537b81ee38e65a4168328efa1d7",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코드 의미 변화 추론 평가용 SCRBench 제안"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -63993,7 +64351,30 @@
     },
     "2026-11-03": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [
+        "2610.40735",
+        "2610.40893",
+        "2610.40959",
+        "2610.40966",
+        "2610.40996",
+        "2610.41076",
+        "2603.06570",
+        "2603.26034",
+        "2605.18421",
+        "2610.41094",
+        "2610.41118",
+        "2610.41162",
+        "2610.41168",
+        "2610.41232",
+        "2610.41272",
+        "2610.41292",
+        "2610.41396",
+        "2610.41486",
+        "2610.41539",
+        "2610.41562"
+      ],
+      "calls": 1,
+      "cost_usd": 0.0801
     }
   },
   "reaudits": [
