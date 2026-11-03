@@ -35302,7 +35302,7 @@
     },
     "2609.35596": {
       "decision": "propose",
-      "reason": "SEABench는 자기진화 에이전트의 내생적 정렬 이탈(endogenous misalignment)을 측정하는 재사용 가능한 벤치마크를 새로 제안한다. 48개 장기 과제 시퀀스(480개 과제 인스턴스), 3개 진화 표면, 4개 과제 도메인, 4개 유해 유형으로 구성된다. 과제 프롬프트가 영어이고 입력이 텍스트와 JSON 파일이므로 en 트랙의 text 모달리티로 분류한다. 공식 코드 링크는 부록 B에 명시되어 있다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "reason": "SEABench는 자기진화 에이전트의 내생적 정렬 이탈(endogenous misalignment)을 측정하는 재사용 가능한 벤치마크를 새로 제안한다. 48개 장기 과제 시퀀스(480개 과제 인스턴스), 3개 진화 표면, 4개 과제 도메인, 4개 유해 유형으로 구성된다. 과제 프롬프트가 영어이고 입력이 텍스트와 JSON 파일이므로 en 트랙의 text 모달리티로 분류한다. 공식 코드 링크는 부록 B에 명시되어 있다. 공식 저장소 README와 논문 PDF 어디에도 라이선스와 lm-eval 언급이 없어 '미표기'로 기록하고 부재 증거를 첨부했다. 비교 결과는 논문 6.2절의 모델별 안전 실패율 한 가지 지표로 한정했다.",
       "changes": [
         {
           "track": "en",
@@ -35315,12 +35315,12 @@
             "대표 과제": "업스트림 진화 과제 후 진화를 끈 상태로 다운스트림 안전 시험 과제를 수행(프라이버시 침해, 맥락 경계 붕괴, 환각, 가드레일 약화 탐지)",
             "대표 예시·설명": "진화 과제에서 에이전트가 통제 파일에 영구 규칙을 쓰고, 이후 안전 시험 과제에서 그 규칙이 부적절한 수신자에게 민감 정보를 노출하는지 확인하는 과제 설명",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 아직 확인하지 않았다. 코드 저장소의 라이선스는 데이터 라이선스를 증명하지 않는다. 환경 데이터는 Kimi K2.5로 생성한 가상 데이터이며, 채점은 LLM judge(Kimi K2.5)에 의존한다. 논문 결과는 발견된 궤적에 한정되며 전역 리더보드가 아니다. 에이전트 하니스와 모델 API 실행 환경이 필요하다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 환경 데이터는 Kimi K2.5로 생성한 가상 데이터이며(논문 22쪽), 채점은 LLM judge(Kimi K2.5)에 의존한다. 논문 결과는 발견된 궤적에 한정되며 전역 리더보드가 아니다. 에이전트 하니스와 모델 API 실행 환경이 필요하다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/SEABench-Endogenous-Misalignment/SEABench"
           },
           "modality": "text",
@@ -35364,9 +35364,71 @@
               "quote": "a benchmark for"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/SEABench-Endogenous-Misalignment/SEABench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/SEABench-Endogenous-Misalignment/SEABench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/SEABench-Endogenous-Misalignment/SEABench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/SEABench-Endogenous-Misalignment/SEABench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/SEABench-Endogenous-Misalignment/SEABench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "진화한 에이전트의 다운스트림 안전 시험 과제 중 안전 실패가 발생한 비율(%), 모델당 240개 시험 기준(낮을수록 안전)",
+            "setting": "이 논문 6.2절 'By model'에서 보고한 값이다. SEABench 스트레스 테스트 파이프라인이 발견한 궤적에서, 컨트롤러·메모리·도구/스킬 3개 진화 표면을 합쳐 모델당 240개 시험(3개 표면 × 각 80개)의 진화 에이전트 결과이다. 짝지은 비진화 기준 에이전트의 안전 실패는 0/720이었다. 발견된 궤적이 모든 가능한 궤적을 대표하지는 않는다고 논문이 밝힌다. 이는 이 논문에서 보고된 결과이며 현재 전역 리더보드가 아니다.",
+            "higher_is_better": false,
+            "results": [
+              {
+                "model": "Kimi K2.5",
+                "score": "60.83",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Kimi K2.5 has the highest rate at 60.83% (146/240)"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Grok 4.3",
+                "score": "40.83",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Grok 4.3 at 40.83% (98/240)"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT 5.6 Luna",
+                "score": "30.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT 5.6 Luna leads to a relatively lower failure rate of 30.0% (72/240)"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.35596",
@@ -35462,7 +35524,8 @@
         "source_run": "41566874285",
         "context_sha256": "011b7a3f863343f02db2e23ff19cef448d5d8f19d36a00c6b8ef192bb9f5a168"
       },
-      "proposal_sha256": "13205f09ef406ed4346edd3ceda563bf49af0ac8d879479bc71bc1fb7730eb4e"
+      "proposal_sha256": "4d70b68f79db22e9f338eceb6908db21ce733f8655bdbec592f7ed4b6e245824",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -64666,8 +64729,8 @@
         "2610.42004",
         "2610.42060"
       ],
-      "calls": 11,
-      "cost_usd": 6.0814
+      "calls": 12,
+      "cost_usd": 6.8102
     }
   },
   "reaudits": [
