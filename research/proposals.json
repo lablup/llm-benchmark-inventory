@@ -37420,7 +37420,7 @@
     },
     "2609.38523": {
       "decision": "propose",
-      "reason": "MM-FinEval은 S&P 500 실적 발표 컨퍼런스콜 2,045건과 12개 금융 예측 라벨로 이루어진 새 멀티모달 벤치마크이고, 논문이 공식 데이터 저장소를 밝히고 있습니다. 과제 프롬프트가 영어라서 en 트랙으로 분류했습니다. 입력에 발표 슬라이드 이미지가 포함되므로 modality는 vision입니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않아 '확인 불가'로 기록했습니다.",
+      "reason": "MM-FinEval은 S&P 500 실적 발표 컨퍼런스콜 2,045건과 12개 금융 예측 라벨로 이루어진 새 멀티모달 벤치마크이고, 논문이 공식 데이터 저장소를 밝히고 있습니다. 과제 프롬프트가 영어라서 en 트랙으로 분류했습니다. 입력에 발표 슬라이드 이미지가 포함되므로 modality는 vision입니다. 공식 저장소 카드에 LICENSE 파일(MIT)이 있어 이를 근거로 기록했고, 전사·슬라이드·음성이 기업 웹사이트에서 수집된 자료라는 점과 오디오·PDF가 Google Drive로 배포된다는 점은 이용 시 유의사항에 적었습니다. lm-eval 지원은 카드에 언급이 없어 '미표기'로 두었습니다.",
       "changes": [
         {
           "track": "en",
@@ -37433,12 +37433,12 @@
             "대표 과제": "실적 발표 콜의 텍스트·슬라이드·음성을 바탕으로 누적 초과수익률, 변동성, 회사채 수익률 라벨을 예측",
             "대표 예시·설명": "영어 프롬프트로 정량 애널리스트 역할을 부여하고, 콜 전사 텍스트와 슬라이드 이미지(또는 음성)를 주어 해당 이벤트의 누적 초과수익률을 소수로 예측하게 하는 과제 설명(실제 문항 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부를 확인하지 못했다. 이용 전에 저장소와 원천 자료(기업 웹사이트에서 수집한 전사·슬라이드·음성)의 약관을 따로 확인해야 한다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(저장소 LICENSE 파일)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "MIT 라이선스에 따라 저작권 고지와 허가 고지를 사본에 포함해야 한다. 공식 README는 저장소에 JSON 파일만 올리고 오디오·PDF 폴더는 Google Drive로 배포한다고 밝히며, 저장소의 LICENSE 파일은 그 Drive 자료를 따로 언급하지 않는다. 이 벤치마크는 다른 출처로 구성되어 있다: 전사 텍스트, 발표 슬라이드, 음성 녹음은 기업 공식 웹사이트에서 수집한 자료이고(논문 3쪽), 라벨은 주가와 회사채 시장 데이터를 바탕으로 계산한다(논문 3쪽). 저장소의 MIT 표기가 이들 구성 요소 각각의 고유 약관을 대신하지 않으므로, 각 구성 요소의 약관을 이용 전에 따로 확인해야 한다. 공식 README에 lm-eval 언급이 없고 논문은 자체 프롬프트(부록 B)로 평가했다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/Tizzzzy/MM-FinEval"
           },
           "modality": "vision",
@@ -37482,9 +37482,211 @@
               "quote": "2,045 S&P 500"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/Tizzzzy/MM-FinEval",
+              "quote": "MIT License"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/Tizzzzy/MM-FinEval",
+              "quote": "sublicense, and/or sell"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/Tizzzzy/MM-FinEval",
+              "quote": "use, copy, modify, merge"
+            },
+            "재배포": {
+              "source_url": "https://github.com/Tizzzzy/MM-FinEval",
+              "quote": "publish, distribute, sublicense"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/Tizzzzy/MM-FinEval",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "car(누적 초과수익률) 라벨의 Mean Absolute Error (MAE), 소수 단위(비율, 단위 없음)",
+            "setting": "논문 Table 2의 car 행. MM-FinEval 2019–2022 데이터, 논문 부록 B의 영어 프롬프트, 모델별 공식 저장소 기본 설정과 bfloat16 정밀도로 평가. Image-Text 모델은 슬라이드에서 무작위로 고른 5장(첫 장과 마지막 장 제외)을 입력으로 받고, Audio-Text와 Any-to-Any 모델은 각 범주에 맞는 모달리티 입력을 받는다. 이 점수는 이 논문에서 보고한 결과이며 현재 전역 리더보드가 아니다.",
+            "higher_is_better": false,
+            "results": [
+              {
+                "model": "Qw3.5-2B",
+                "score": "0.0511",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Qw3.5-2B Qw3.5-4B Qw3.5-9B Qw3.5-27B Qw3.5-35B Qw3.6-27B Qw3.6-35B Gm3n Mis3-3B Mis3-8B Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qw3.5-4B",
+                "score": "0.0498",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Qw3.5-4B Qw3.5-9B Qw3.5-27B Qw3.5-35B Qw3.6-27B Qw3.6-35B Gm3n Mis3-3B Mis3-8B Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qw3.5-9B",
+                "score": "0.0499",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Qw3.5-9B Qw3.5-27B Qw3.5-35B Qw3.6-27B Qw3.6-35B Gm3n Mis3-3B Mis3-8B Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qw3.5-27B",
+                "score": "0.0534",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Qw3.5-27B Qw3.5-35B Qw3.6-27B Qw3.6-35B Gm3n Mis3-3B Mis3-8B Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qw3.5-35B",
+                "score": "0.0470",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Qw3.5-35B Qw3.6-27B Qw3.6-35B Gm3n Mis3-3B Mis3-8B Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qw3.6-27B",
+                "score": "0.0505",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Qw3.6-27B Qw3.6-35B Gm3n Mis3-3B Mis3-8B Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qw3.6-35B",
+                "score": "0.0478",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Qw3.6-35B Gm3n Mis3-3B Mis3-8B Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gm3n",
+                "score": "0.0740",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Gm3n Mis3-3B Mis3-8B Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Mis3-3B",
+                "score": "0.0599",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Mis3-3B Mis3-8B Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Mis3-8B",
+                "score": "0.0540",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Mis3-8B Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599 0.0540"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Mis3-14B",
+                "score": "0.0546",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Mis3-14B GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599 0.0540 0.0546"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.4",
+                "score": "0.0493",
+                "evidence": {
+                  "page": 6,
+                  "quote": "GPT-5.4 GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599 0.0540 0.0546 0.0493"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.5",
+                "score": "0.0526",
+                "evidence": {
+                  "page": 6,
+                  "quote": "GPT-5.5 Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599 0.0540 0.0546 0.0493 0.0526"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Cld-4.6",
+                "score": "0.0493",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Cld-4.6 Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599 0.0540 0.0546 0.0493 0.0526 0.0493"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Cld-4.8",
+                "score": "0.0458",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Cld-4.8 Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599 0.0540 0.0546 0.0493 0.0526 0.0493 0.0458"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Vox-24B",
+                "score": "0.0429",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Vox-24B Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599 0.0540 0.0546 0.0493 0.0526 0.0493 0.0458 0.0429"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Moss",
+                "score": "0.1079",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Moss Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599 0.0540 0.0546 0.0493 0.0526 0.0493 0.0458 0.0429 0.1079"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gm4-E2B",
+                "score": "0.0418",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Gm4-E2B Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599 0.0540 0.0546 0.0493 0.0526 0.0493 0.0458 0.0429 0.1079 0.0418"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gm4-E4B",
+                "score": "0.0437",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Gm4-E4B\n MAE ↓ 0.0511 0.0498 0.0499 0.0534 0.0470 0.0505 0.0478 0.0740 0.0599 0.0540 0.0546 0.0493 0.0526 0.0493 0.0458 0.0429 0.1079 0.0418 0.0437"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.38523",
@@ -37584,7 +37786,8 @@
         "source_run": "41566874285",
         "context_sha256": "cab1e1a1788ac169bfdbaa83966b65ed5dbc5bd732ef29c3d77cc81f12f4da2d"
       },
-      "proposal_sha256": "2e5e3e432e1ad54161719bbdd0b323b1734d52a7ef2b51a3a3154f04721c25f3"
+      "proposal_sha256": "e58b495130ae8dc129095069ccc67e0c129c4ea1ebaf244e99b4695326909a21",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -66814,8 +67017,8 @@
         "2610.42004",
         "2610.42060"
       ],
-      "calls": 33,
-      "cost_usd": 21.2092
+      "calls": 34,
+      "cost_usd": 22.019
     }
   },
   "reaudits": [
