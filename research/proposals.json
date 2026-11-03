@@ -35494,7 +35494,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-03T03:03:19Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -35520,12 +35520,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41566874285",
-        "context_sha256": "011b7a3f863343f02db2e23ff19cef448d5d8f19d36a00c6b8ef192bb9f5a168"
-      },
       "proposal_sha256": "4d70b68f79db22e9f338eceb6908db21ce733f8655bdbec592f7ed4b6e245824",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 모든 변경 사항이 논문 PDF와 공식 저장소 README로 뒷받침되며, 거절할 근거를 찾지 못했습니다. 규모(48개 시퀀스, 480개 과제 인스턴스, 3개 진화 표면, 4개 도메인, 4개 유해 유형)와 환경(89개 JSON 파일의 개인비서 작업공간)은 4쪽 본문과 부록에 일치합니다. 짝지은 비진화 에이전트, 귀속 점수, LLM judge 채점도 본문과 일치합니다. 과제 프롬프트는 영어 텍스트이고 입력이 텍스트와 JSON이므로 en 트랙의 text 모달리티가 맞습니다. 라이선스는 논문과 공식 README 모두에 표기가 없고 라이선스 파일도 없습니다. pdf_mentions가 비어 있으며 논문에도 데이터나 벤치마크의 라이선스를 밝힌 문장이 없어, 미표기와 부재 증거가 타당합니다. 따라서 상업적 이용, 수정·파생, 재배포가 모두 저작권 전부 보유로 일치합니다. lm-eval 지원은 공식 README가 lm-eval을 전혀 언급하지 않으므로 미표기가 적절한 해소값입니다. 이 벤치마크는 다른 데이터셋에서 파생되지 않았고 환경 데이터를 Kimi K2.5로 생성한 가상 데이터라고 유의사항에 정확히 적었으므로, 파생 출처 고지 누락은 없습니다. 추천 결과는 6.2절의 모델별 안전 실패율 한 가지 지표만 사용했습니다. 값(Kimi K2.5 60.83, Grok 4.3 40.83, GPT 5.6 Luna 30.0)은 모두 모델당 240개 시험이라는 같은 조건이며, 합이 316건으로 전체 실패 수와 맞습니다. 비교 대상 모델 3종을 모두 포함하므로 상위 3개 선택이 정당합니다. 낮을수록 좋다는 지표 방향이 올바르고, 논문 보고 결과이며 전역 리더보드가 아니라는 점과 발견된 궤적이 대표성을 갖지 않는다는 한계도 명시했습니다. 가중치 공개 여부는 근거가 없어 null로 두었고 비공개로 취급하지 않았습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 171284,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2161,
+              "output_tokens_details": {
+                "thinking_tokens": 1276
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 171284,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2161,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 171284,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 171284
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.7068148999999999,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "4d70b68f79db22e9f338eceb6908db21ce733f8655bdbec592f7ed4b6e245824",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -64729,8 +64775,8 @@
         "2610.42004",
         "2610.42060"
       ],
-      "calls": 12,
-      "cost_usd": 6.8102
+      "calls": 13,
+      "cost_usd": 7.517
     }
   },
   "reaudits": [
