@@ -35911,6 +35911,92 @@
         "context_sha256": "eb128cf6a6f0c1c951b4eb0130e62e24e11d1d43aa15874562d143e0b462521a"
       },
       "proposal_sha256": "2208f092977ff1f06a3a44bb71130b240968f67effe9fe99edb87b145cc3d770"
+    },
+    "2610.00316": {
+      "decision": "needs_evidence",
+      "reason": "DSB-DG는 영어 문서와 영어 질문을 쓰는 문서 근거 벤치마크이고 재사용 가능한 새 벤치마크로 보이지만, 두 가지 때문에 행을 제안하지 않았다. 첫째, 논문이 밝힌 공식 자원은 프로젝트 페이지(dsb-dg.github.io)뿐이고, 데이터셋이나 코드 저장소 URL은 PDF 어디에도 나오지 않는다. 프로젝트 페이지를 데이터셋·코드 링크로 볼 수 있는지 확인되지 않았다. 둘째, 입력이 TTS로 만든 음성 질의(16kHz mono)라서 modality 값 text|vision 어느 쪽에도 맞지 않는다. 음성 입력을 어느 modality로 분류할지 정해지거나 공식 데이터·코드 링크가 확인되면 영어(en) 트랙 한 행으로 다시 검토할 수 있다.",
+      "changes": [],
+      "arxiv_id": "2610.00316",
+      "paper_title": "DuplexSpeechBench-Document Grounding: Benchmarking Document Grounding and Hallucinations in Voice Agents",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.00316",
+        "sha256": "5d5c6575c2d588de5440bd8a71139eb608a875b55ac2340c45ec75c5e2328b1a",
+        "accessed": "2026-11-03T03:10:46Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 23,
+          "elapsed_seconds": 99.21,
+          "pdf_sha256": "5d5c6575c2d588de5440bd8a71139eb608a875b55ac2340c45ec75c5e2328b1a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "9a0cc421c643d69d9cbee2f322e03958a193d692814c1fe39b72b1334f8ffa2d",
+          "page_json_file": "2610.00316.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-03T03:12:36Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.00316",
+        "paper_title": "DuplexSpeechBench-Document Grounding: Benchmarking Document Grounding and Hallucinations in Voice Agents",
+        "abstract": "Voice agents enable low-latency, natural interaction, yet their ability to faithfully ground responses in external documents remains underexplored. We introduce DuplexSpeechBench-Document Grounding (DSB-DG), a benchmark for evaluating document grounding in voice agents across five professional domains. DSB-DG targets three failure modes: Context Saturation, which measures grounding under increasing document length; Grounding Decay, which measures retention of document facts across multi-turn dialogue; and Proactive Grounding, which evaluates whether context re-injection mitigates conversational drift. The benchmark contains 1,636 adversarially verified QA pairs from 50 documents covering five professional domains, and supports fully automatic evaluation of grounding accuracy, hallucination, and response latency. Across systems spanning cascaded, proprietary full-duplex and real-time, and open-weight speech2speech architectures, we find substantial differences in effective grounding capacity. While cascaded pipeline (ASR-LLM-TTS) achieves the highest grounding accuracy, Gemini-Live and GPT-Realtime closely trail behind. Open-weight systems exhibit distinct failure modes, most notably an abrupt context-capacity collapse and multi-turn grounding decay. More broadly, grounding fidelity degrades with context and conversational load, and failures frequently manifest as unsupported generations rather than abstention. We show that contextual grounding as a key unresolved challenge for reliable full-duplex voice agents.",
+        "paper_updated": "2026-10-02T00:00:00Z",
+        "created_at": "2026-10-19T13:46:49Z",
+        "input_sha256": "7c050e3a03c3e5886fdd770889f66eb4ec8e880438b6b639c932f9f5c7bed118",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "음성 에이전트 문서 근거 벤치마크 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "음성 에이전트 문서 근거화 벤치마크 DSB-DG 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "f0e19825c5e18330a632e55d7828a32d284a5d1275337ce896df786cb653b70d"
     }
   },
   "processed_comments": [],
@@ -65117,8 +65203,8 @@
         "2610.42004",
         "2610.42060"
       ],
-      "calls": 15,
-      "cost_usd": 8.9352
+      "calls": 16,
+      "cost_usd": 9.6446
     }
   },
   "reaudits": [
