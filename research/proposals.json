@@ -36660,6 +36660,184 @@
         "context_sha256": "43d158abf58748f65ca2baee9c01ac3bfb62000c2535a2484fb2477db24f8b7f"
       },
       "proposal_sha256": "0d59ea881a6a5179f0862abff08c4a41ce5e7608b6a58b9292b279182940b31a"
+    },
+    "2609.37233": {
+      "decision": "propose",
+      "reason": "DatalogBench는 영어 자연어 질문에서 Soufflé Datalog 프로그램을 합성하는 136개 과제를 담은 재사용 가능한 실행 기반 벤치마크로, 새로 소개되는 코딩 평가입니다. 과제 언어는 PDF에 인용된 영어 프롬프트 템플릿으로 확인되고, 입력이 텍스트뿐이라 modality는 text, 트랙은 en입니다. 공식 코드 저장소 URL은 PDF가 직접 밝힙니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않아 '확인 불가'로 두었습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "datalogbench",
+            "이름": "DatalogBench",
+            "평가 축": "코딩(text-to-Datalog 합성)",
+            "언어": "en",
+            "정의": "기존 Datalog 기반 산출물에서 선별한 text-to-Datalog 합성 과제 136개로 구성된 벤치마크. 프로그램 분석, 그래프 분석, 형식 추론, 지식 발견의 4개 영역을 다룬다. 영어 자연어 질문에 관계 시그니처, 선택적 관계 설명, 시연 인스턴스 1개가 짝지어지고, 채점은 별도의 held-out 평가 변형 247개에서 Soufflé(2.5) 실행 결과를 오라클과 비교한다. 오라클은 변이 분석(1,948개 변이체 중 96.4% 구별)으로 검증했다. 지표는 Compile Pass(CP)와 Exact Match(EX)이며, 논문은 LLM 6종을 4가지 프롬프트 설정에서, 코딩 에이전트 2종을 별도로 평가했다. 대상 방언은 Soufflé뿐이다.",
+            "대표 과제": "관계 시그니처가 주어진 자연어 질문에서 Soufflé Datalog 프로그램을 합성하고, 보조 술어를 직접 발명·선언해야 함(재귀 과제 78개, 보조 술어 사용 과제 59개)",
+            "대표 예시·설명": "과제 설명: Edge 관계가 주어졌을 때 도달 가능한 노드 쌍을 구하는 도달성(Reachable) 질문에 대해, 재귀 규칙으로 전이 폐쇄를 계산하는 Datalog 프로그램을 작성하고 held-out 입력에서 실행해 채점한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스는 확인하지 못했다. 논문 윤리 성명에 따르면 과제는 Soufflé(UPL-1.0), EGS(MIT), CodeFuse-Query(Apache-2.0), GenSynth(저장소에 라이선스 미선언)에서 파생됐으므로 구성 요소별 약관을 이용 전에 따로 확인해야 한다. 코드 저장소 라이선스를 데이터 라이선스로 간주하면 안 된다. 평가에는 Soufflé 2.5 실행 환경이 필요하다. 결과는 Soufflé 방언에 한정되고, 오라클은 변이 분석으로 검증됐을 뿐 동치성이 증명된 것은 아니다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/ZJU-PL/DatalogBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (text-to-Datalog synthesis)",
+            "definition": "A benchmark of 136 text-to-Datalog synthesis tasks curated from existing Datalog-based artifacts, spanning four domains: program analysis, graph analytics, formal reasoning, and knowledge discovery. Each task pairs an English natural-language question with relation signatures, optional relation descriptions, and one demonstration instance. Programs are graded by executing them under Soufflé 2.5 on 247 held-out evaluation variants against an oracle validated by mutation analysis (96.4% of 1,948 mutants distinguished). Metrics are Compile Pass (CP) and Exact Match (EX). The paper evaluates six LLMs under four prompting configurations plus two coding agents. It targets the Soufflé dialect only.",
+            "task": "Synthesize a Soufflé Datalog program from a natural-language question and relation signatures, inventing and declaring any auxiliary predicates (78 recursive tasks, 59 tasks with auxiliary predicates).",
+            "example": "Task description: given an Edge relation, write a Datalog program that computes the Reachable pairs through recursive rules (transitive closure), then run it on held-out inputs and compare its output with the expected facts."
+          },
+          "evidence": {
+            "modality": {
+              "page": 15,
+              "quote": "You are an"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "We introduce DATALOGBENCH,"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "Reachability is the"
+            },
+            "링크": {
+              "page": 10,
+              "quote": "github.com/ZJU-PL/DatalogBench"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "You are an"
+            },
+            "이름": {
+              "page": 2,
+              "quote": "We introduce DATALOGBENCH,"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "We introduce DATALOGBENCH,"
+            },
+            "평가 축": {
+              "page": 2,
+              "quote": "We introduce DATALOGBENCH,"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.37233",
+      "paper_title": "DatalogBench: Evaluating Large Language Models on Text-to-Datalog Synthesis",
+      "paper_updated": "2026-09-30T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.37233",
+        "sha256": "c79a675eb5410fed80e3cf5211deffaa0cd08b2b9d7747af5145fc60dbfd8150",
+        "accessed": "2026-11-03T03:24:20Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 33,
+          "elapsed_seconds": 107.25,
+          "pdf_sha256": "c79a675eb5410fed80e3cf5211deffaa0cd08b2b9d7747af5145fc60dbfd8150",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "e6b6397ffda453cb0e019336b2c240caedcc047412d668c37b00160f1cd0d6fa",
+          "page_json_file": "2609.37233.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/ZJU-PL/DatalogBench",
+            "fetched_url": "https://api.github.com/repos/ZJU-PL/DatalogBench/readme",
+            "sha256": "90faa98ce7b6515b20123248d8548b1918fcf4e8b0e22f2792e3a10d6c9832de",
+            "accessed": "2026-11-03T03:26:35Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/ZJU-PL/DatalogBench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "38797d02277dae5adcc270c1c8e4a087ceb30d63a99f3666af30ea7cd5c8289c"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-03T03:26:35Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.37233",
+        "paper_title": "DatalogBench: Evaluating Large Language Models on Text-to-Datalog Synthesis",
+        "abstract": "Datalog underpins reasoning tasks such as program analysis, but its programs are hard to write. Existing synthesizers automate this task but require users to state their intent as input-output examples. Large language models (LLMs) suggest a more natural route, text-to-Datalog synthesis from a natural-language question, yet how well they do so has not been systematically evaluated. We present DatalogBench, a benchmark of 136 text-to-Datalog synthesis tasks curated from existing Datalog-based artifacts. Synthesized programs are graded by execution on held-out inputs against an oracle validated by mutation analysis. Across six LLMs and four prompting configurations, exact match peaks at 68.4%, and relation descriptions or an input-output example have only modest, model-dependent effects. Under direct prompting, most failures occur at compile time, typically because a model invents auxiliary predicates that it never declares or types consistently. Two coding agents reach up to 83.8% and eliminate nearly all such failures, leaving mostly semantic errors concentrated in recursive tasks. DatalogBench thus identifies recursive reasoning and decomposition as open challenges for current LLMs and agents, and offers a reliable, execution-grounded measure of both.",
+        "paper_updated": "2026-09-30T00:00:00Z",
+        "created_at": "2026-10-19T13:47:02Z",
+        "input_sha256": "cb300cdfe682e515589e48c8148720a06862de0f160e5628178cabc2e526e25c",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "자연어 기반 Datalog 합성 평가 벤치마크로 LLM 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "텍스트→Datalog 합성 벤치마크 136개 신규 제안, 실행 기반 평가 제공"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41566874285",
+        "context_sha256": "7d4a54429cfd36b7ec2f2784df4a7004e1cc47a4d003b645d81df5327cf995ef"
+      },
+      "proposal_sha256": "7f15bc31c860494612214182554a1014dd9b2422fcf7f6f7430d964b71eb390d"
     }
   },
   "processed_comments": [],
@@ -65872,8 +66050,8 @@
         "2610.42004",
         "2610.42060"
       ],
-      "calls": 23,
-      "cost_usd": 14.3609
+      "calls": 24,
+      "cost_usd": 15.0744
     }
   },
   "reaudits": [
