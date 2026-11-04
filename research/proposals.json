@@ -39108,7 +39108,7 @@
     },
     "2609.38948": {
       "decision": "propose",
-      "reason": "실제 Toyota Corolla를 범용 비전-언어 모델이 카메라 프레임만 보고 조향·속도 명령으로 직접 운전하게 하는 재사용 가능한 벤치마크이며 하니스를 공개한다. 과제 프롬프트가 영어라 en 트랙, 카메라 이미지가 입력이라 vision으로 분류했다. 데이터·트레이스의 라이선스는 PDF에서 확인되지 않아 '확인 불가'로 기록했다.",
+      "reason": "실제 Toyota Corolla를 범용 비전-언어 모델이 카메라 프레임만 보고 조향·속도 명령으로 직접 운전하게 하는 벤치마크이며 하니스를 공개한다. 과제 프롬프트가 영어라 en 트랙, 카메라 이미지가 입력이라 vision으로 분류했다. 공식 저장소 README와 LICENSE 파일의 MIT 표기를 근거로 권리 항목을 기재했고, 결과는 논문 2쪽 요약과 7쪽 Table 2의 Best(%) 열에서 가져왔다.",
       "changes": [
         {
           "track": "en",
@@ -39121,12 +39121,12 @@
             "대표 과제": "콘으로 표시된 코스를 벗어나지 않고 달려 파란 콘 구역에 주차",
             "대표 예시·설명": "모델이 observe로 전방 카메라 프레임을 받은 뒤 set_motion(방향, 조향 %, 속도, 지속 시간, 이유)으로 주행하고, 관측 결과로 보정하며 코스를 나아가는 과제 설명(실제 시험 문항 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 않았다. 하니스는 오픈소스로 공개되지만 코드 라이선스를 데이터 라이선스로 간주할 수 없다. 재현에는 openpilot 지원 차량, comma four, 비슷한 코스, 안전 운전자가 필요하다. 모델당 독립 시행이 1회라 통계적 검정력이 낮고, 결과는 모델-하니스 조합의 값이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(저장소 LICENSE 파일)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "MIT는 공식 저장소의 하니스 코드·문서에 대한 표기이며, MIT 저작권 고지와 라이선스 전문을 사본에 포함해야 한다. native/ 폴더의 openpilot 파일 두 개에는 comma.ai의 MIT(native/LICENSE)가 적용된다. 논문이 안내한 Hugging Face 트레이스 데이터셋은 이 저장소와 별개의 배포처이므로 저장소의 MIT 표기를 그 데이터에 대한 라이선스로 간주하면 안 된다. 공식 README는 면책 고지(use at your own risk)를 두며, 폐쇄된 사유지에서 면허 있는 운전자가 브레이크에 발을 올린 채 보행 속도로만 운용하도록 요구한다. 재현에는 openpilot 지원 Toyota 차량, comma four, 비슷한 코스가 필요하다. 공식 README에 lm-eval 언급이 없고 자체 MCP 서버와 CLI로 실행한다. 모델당 독립 시행이 1회라 통계적 검정력이 낮고, 결과는 모델-하니스 조합의 값이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/aditya-ramabadran/drivingbench_harness_v1"
           },
           "modality": "vision",
@@ -39170,9 +39170,76 @@
               "quote": "steering and velocity"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/aditya-ramabadran/drivingbench_harness_v1",
+              "quote": "MIT, see"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/aditya-ramabadran/drivingbench_harness_v1",
+              "quote": "and/or sell"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/aditya-ramabadran/drivingbench_harness_v1",
+              "quote": "modify, merge, publish"
+            },
+            "재배포": {
+              "source_url": "https://github.com/aditya-ramabadran/drivingbench_harness_v1",
+              "quote": "distribute, sublicense"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/aditya-ramabadran/drivingbench_harness_v1",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "코스 진행률 Best (%) — 모델별 최대 3회 시도 중 최고 진행률, 단위 %, 127 m 중심선 기준(100%는 완주 구역 도달)",
+            "setting": "논문 7쪽 Table 2의 Best (%) 열 한 가지 실험에서 가져온 값이다. 동일한 127 m 콘 코스, 각 벤더 기본 하니스(Codex, Claude Code, Cursor), 중간(medium) 추론 강도, 한 대화 안에서 최대 3회 시도(성공 시 종료)이며 모델당 독립 시행은 1회다. 이 논문에서 보고된 결과이며 현재 전역 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "GPT-6 Astra",
+                "score": "100",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-6 Astra Codex 49 100 – 100"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Claude Fable 5.1",
+                "score": "45",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude Fable 5.1 Claude Code 9 10 45 45"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Grok 4.6",
+                "score": "11",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Grok 4.6 Cursor 8 11 10 11"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.6 Sol",
+                "score": "6",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5.6 Sol Codex 6 6 6 6"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.38948",
@@ -39275,7 +39342,8 @@
         "source_run": "41761559623",
         "context_sha256": "b2fa2884ddb9c5143f576ebea386c57259c12fdef42c8c80cb33044d38ad158e"
       },
-      "proposal_sha256": "2db820af9b80ef5e6bdcc0f98b8cc5d836f3014b459810378a7bef57cdef5479"
+      "proposal_sha256": "b7e0569936533b41920dd496f6d147497c3977a8a98ea3b92c65b454ceaf68f0",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -69697,8 +69765,8 @@
         "2611.03523",
         "2611.03575"
       ],
-      "calls": 28,
-      "cost_usd": 17.5118
+      "calls": 29,
+      "cost_usd": 18.2841
     }
   },
   "reaudits": [
