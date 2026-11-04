@@ -66799,6 +66799,366 @@
           "reason": "코딩 에이전트용 교차 저장소 벤치마크 신규 제안"
         }
       ]
+    },
+    "2611.01635": {
+      "arxiv_id": "2611.01635",
+      "paper_title": "Benchmarking Vision-Language Models for Urdu Nastaliq Handwriting Recognition",
+      "abstract": "Handwritten Urdu is hard to recognize because the cursive Nastaliq script has no fixed baseline and no clear character boundaries. We benchmark six systems on the Urdu Nastaliq Handwritten Dataset (UNHD): Tesseract (default configuration), a script-specific recognizer trained on printed Urdu (UTRNet-Large), two open-source vision-language models (VLMs), and two commercial VLMs. All six systems are evaluated without fine-tuning on 2,465 single-line images (Part A), and the four VLMs receive the same fixed prompt (decoding uses temperature 0 where configurable, except for Claude Sonnet 5, whose decoding cannot be configured). Both commercial VLMs reach lower error than the printed-Urdu recognizer and the open-source VLMs. We do not compare against handwriting-trained recognizers, which would likely do better in-domain; we characterize zero-shot behavior, not state of the art. We also describe three distinct failure modes among the ranked systems. In one of them, a commercial model explicitly declines to transcribe a few very hard-to-read images instead of guessing. In a second study (Part B), VLMs correct the output of a separate OCR system using both the source image and the noisy text. Once separated from each model's own reading ability, the benefit is small on Tesseract's output (0.7% to 7.4%) and larger (17.9% and 21.9%) only for the two commercial correctors given UTRNet's text. It appears to depend on how legible the supplied text already is, and a weaker corrector can make a more legible text worse.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "우르두어 필기 인식 평가로 과제 언어가 한국어/영어가 아님"
+        }
+      ]
+    },
+    "2611.01728": {
+      "arxiv_id": "2611.01728",
+      "paper_title": "MAC-Bench: Benchmarking Multi-Agent Collaboration via Interconnected Tasks",
+      "abstract": "Large language model (LLM)-based multi-agent systems (MAS) tackle challenging tasks by dividing work among agents and coordinating their contributions toward shared objectives. Evaluating these systems therefore requires benchmarks that assess not only task-solving performance but also the ability to handle interdependent work. However, existing benchmarks often emphasize task difficulty without substantial collaboration requirements or evaluate only a limited range of predefined collaboration patterns. In this paper, we introduce MAC-Bench, a comprehensive benchmark for evaluating multi-agent collaboration through interconnected tasks. Rather than imposing predefined agent roles or communication protocols, MAC-Bench embeds collaboration requirements directly into task dependencies and shared-resource constraints. Specifically, we mine reusable collaboration structures from selected benchmark tasks at two levels. Local collaboration patterns capture recurring interactions among subtasks, while global task structures characterize how these interactions contribute to complete workflows. Through coarse-to-fine composition, these structures are recombined into task graphs combining different collaboration requirements. Tasks are instantiated in executable environments with automated verification of partial progress and complete task resolution.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티에이전트 협업 평가 벤치마크 MAC-Bench 제안"
+        }
+      ]
+    },
+    "2611.01878": {
+      "arxiv_id": "2611.01878",
+      "paper_title": "Don't Guess, Ask Wisely: Benchmarking and Training Proactive Elicitation in Open-Domain LLM Conversations",
+      "abstract": "When user queries are incomplete, large language models should ask targeted questions before committing to an answer, a capability we call proactive elicitation, yet evaluation on real user-assistant queries across seven LLMs (8B to frontier) shows that fewer than 11% of underspecified queries trigger a follow-up question. To benchmark and train this capability, we introduce VagueBench, where each seed query is annotated with structured intent and detail units then degraded into intent-vague and fully-vague variants via controlled removal of linguistic cues, yielding known hidden information sets for evaluating both when and what to ask. We propose DialogGRPO, an offline reinforcement learning method that organizes multi-turn elicitation as a dialogue-state directed acyclic graph, where candidate questions at each node receive dense turn-level rewards combining immediate information gain with lookahead value through group-relative comparison, enabling fine-grained credit assignment without runtime simulation. DialogGRPO elicits missing information on over 88% of vague queries with substantial gains in both recovery efficiency and answer coverage, without over-asking on complete queries, outperforms prompting and test-time-scaling baselines, and generalizes zero-shot to MultiWOZ 2.4 and AmbigQA.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "능동적 질문 평가용 VagueBench 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.01927": {
+      "arxiv_id": "2611.01927",
+      "paper_title": "Is Your Long-Horizon Benchmark Really Deep? Measuring and Synthesizing Depth in Terminal Tasks",
+      "abstract": "Long-horizon terminal tasks are used to evaluate and train agents. Human-curated datasets are scarce, so many synthesis methods have emerged. They usually measure the length of a task by the turns a model needs to pass it, and its difficulty by labels the LLM sets during generation. We find, however, that the turn count largely reflects the habits of the model, not only the demands of the task, and that the labels barely track how often models pass. We describe a terminal task by its work, the number of operations it requires, and its depth, the number of turns that must happen in sequence because the commands of each turn can only be chosen after reading the output of the previous one. Estimating depth as the smallest turn cap, stated to the agent, under which the task passes, we audit 734 tasks from six existing datasets. Synthesis has mostly added work, not depth: 94% of the solved synthetic tasks pass within three turns, yet depth, unlike the turn count, predicts difficulty beyond work. We propose DEPTH, in which a generation agent writes each task one segment at a time in a real software environment, carrying out each segment before writing it and starting the next from the state it leaves. Our 105 tasks exceed every audited dataset in depth and work, and none of six current models passes half of them. Fine-tuning Qwen3-8B on runs from these tasks improves it on two terminal benchmarks.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "터미널 장기과제 DEPTH 평가 과제 세트 제안"
+        }
+      ]
+    },
+    "2611.01934": {
+      "arxiv_id": "2611.01934",
+      "paper_title": "TriPhysBench: Evaluating Physical Intelligence for Embodied Agents",
+      "abstract": "Embodied agents need physical intelligence to understand their surroundings through physical perception, physical knowledge retrieval, and physical reasoning. These capabilities must work together to interpret events and make quantitative judgments. Existing benchmarks advance physical understanding and general-purpose tool use, yet the coordination of these capabilities in physical scenarios remains insufficiently characterized. Inspired by Popper's Three Worlds, we introduce TriPhysBench, a benchmark of 410 questions from 200 videos that brings physical perception, physical knowledge retrieval, and physical reasoning into a shared evaluation setting. Its measurement-grounded and knowledge-grounded subtasks impose complementary demands on obtaining observations and acquiring external specifications, then applying them to quantitative problems. Among six representative vision-language models, the best achieves an answer accuracy of only 50.38%, revealing limited performance on tasks that require these capabilities to work together. We further introduce TriPhys, a framework that learns a unified policy for physical perception, knowledge retrieval, and quantitative reasoning from complete tool-integrated trajectories. The policy uses intermediate reasoning to guide retrieval and computation, then incorporates tool feedback into subsequent physical inference. On 110 questions from videos excluded from training, TriPhys improves answer and solution scores across three Qwen configurations, with a 17.7% relative gain in answer accuracy for TriPhys-27B over its Qwen3.6-27B backbone. This work provides a benchmark and a learning pathway toward embodied agents that move beyond recognizing events to understanding and reasoning about the physical processes behind them.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "물리 지능 평가용 TriPhysBench 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.02026": {
+      "arxiv_id": "2611.02026",
+      "paper_title": "Reconstruction as Spatial Evaluation: Diagnosing Cross-View Spatial Intelligence in Large Vision-Language Models",
+      "abstract": "The spatial intelligence of large vision-language models (LVLMs) requires the ability to combine local visual observations into a geometrically consistent representation of the physical world. Many static benchmarks assess isolated spatial judgments, such as relative direction or distance, while interactive embodied evaluations combine perception with exploration, planning, control, and simulator-specific execution. To bridge this gap, we introduce RECONSPATIAL, a benchmark centered on multi-view 3D scene reconstruction across indoor, tabletop, and outdoor environments. Given real multi-view images and target-object queries, LVLMs are required to jointly predict oriented 3D bounding boxes in a shared, camera-anchored metric coordinate frame. Reconstructions are evaluated along two complementary axes: Structure for relative layout and Metric for physical scale and camera-anchored placement. Nine atomic spatial QA tasks, grouped into Geometric Perception and Spatial Relations, probe spatial capabilities involved in joint reconstruction. Offline navigation extends evaluation to path planning. Evaluation of 18 frontier LVLMs reveals a consistent gap between relative scene structure and metric reconstruction; even GPT-6-Astra scores 81.4% on Structure but only 58.7% on Metric. Tracing this gap, diagnostic analyses link atomic spatial capabilities to reconstruction quality and show that relational consistency alone does not ensure metric accuracy. Experiments with 3D map injection further separate scene construction from path planning, revealing how these geometric errors limit navigation success. Finally, spatial fine-tuning yields broad transfer across both spatial and general vision-language benchmarks.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "다중시점 공간 지능 평가 ReconSpatial 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.02353": {
+      "arxiv_id": "2611.02353",
+      "paper_title": "VisCodeBench: a new benchmark dataset for Text-to-Vis reflecting real-world practice",
+      "abstract": "Generating visualisations from natural language requests (text-to-vis) enables users to explore data more efficiently. While LLMs can complete simple visualisation requests, their performance on challenging ones is not well covered by existing benchmarks. We introduce VisCodeBench, an end-to-end text-to-vis benchmark with 2,672 samples from three different domains: educational, scientific, and general audience scenarios with varying levels of complexity. We benchmark three visualisation systems---Codex, Claude Code, and LIDA---paired with a range of open and commercial LLMs across seven metrics covering execution, chart content, and visual quality. While basic execution is near-solved for strong systems, no system comes close to reproducing the reference data, with the best displayed data similarity reaching only $0.81$ and falling to $0.69$ on our hardest subset for this metric. We further find that frontier models separate on chart correctness and efficiency, with ClaudeCode-Opus-4.7 improving chart correctness by around 5 points over Codex-GPT-5 while running roughly 20 seconds faster. Separately, we find that system design matters as much as the underlying model: despite both running on GPT-5, Codex clearly outperforms LIDA, showing that the surrounding prompting, execution, and refinement pipeline can shape outcomes as much as the model itself. Finally, latency remains a practical obstacle, as even the strongest systems take 39-78 seconds to produce results. VisCodeBench is available at \\href{https://github.com/SAIPLL/VisCodeBench}{https://github.com/SAIPLL/VisCodeBench} and accessed via a leaderboard; the full dataset is kept private to prevent LLM training use.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "Text-to-Vis 벤치마크 VisCodeBench 제안"
+        }
+      ]
+    },
+    "2611.02432": {
+      "arxiv_id": "2611.02432",
+      "paper_title": "Diagnosing Model--Item Interactions in Language Model Benchmarks with LSIRM",
+      "abstract": "Language models with similar benchmark accuracy can succeed on different items. Overall scores do not show where their performance differs or which item properties might explain those differences. We demonstrate how the latent space item response model (LSIRM) can help evaluators investigate these patterns and their consequences for model comparison. We analyze 1,348 language models on 5,761 BBH items and compare ways of presenting and scoring answers across BBH, GPQA, MMLU-Pro, and MuSR. We examine LSIRM maps, which summarize differences in performance across models and items, alongside item properties and records of correct and incorrect responses. In BBH, nearby items on these maps often share the same correct answer, such as \"Yes\" or \"No.\" Across the four benchmarks, this pattern is stronger when answers are scored using option labels, such as A, B, C, and D, than when using the text of the options. We then estimate each model's tendency to perform better or worse on items with particular correct answers and quantify how this tendency contributes to its score. This separates an estimated contribution associated with correct answers from the remaining differences in item performance. Two models' total numbers of correct answers differed by only 14 out of 5,761 items. Excluding the estimated answer-category contribution from their scores moved their ranks hundreds of places in opposite directions, while keeping all other estimates unchanged. The approach helps evaluators identify differences hidden by overall accuracy and understand how the choice of what to include in a score affects model rankings.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "새 벤치마크보다 기존 벤치마크 분석 방법론이라 기여 불명확"
+        }
+      ]
+    },
+    "2611.02433": {
+      "arxiv_id": "2611.02433",
+      "paper_title": "Blueprint2CAD: Benchmarking Foundation Models on Engineering Drawing-to-CAD Render Correspondence",
+      "abstract": "Engineering drawings specify mechanical parts through orthographic projections. Recognizing which part a drawing depicts underlies part search, design reuse, and digitization, yet no public benchmark measures whether vision models can do it. We introduce Blueprint2CAD, a benchmark for drawing-to-render correspondence: given an orthographic line drawing and a shaded render, usually from another viewpoint, decide whether they show the same part. Its data layer, BlueCAD-30K, applies an open drafting pipeline to 29,925 Zero-to-CAD models, adding view-aligned renders, clean and dimensioned drawings from six viewpoints, and surface-type metadata. Frozen encoders retrieve the matching part from a 10,000-model gallery with up to 65% Recall@1 when viewpoints are known but 43% when they are not, and the four encoders we test lie within six points of each other: viewpoint, not backbone, is the bottleneck. Six zero-shot vision-language models reach only 0.52-0.67 verification accuracy, with model-specific Yes/No biases that chain-of-thought shifts but does not remove; a quick LoRA fine-tuning on in-domain pairs improves verification accuracy by a few points but sharpens these biases and leaves the viewpoint failure intact.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "도면-CAD 대응 벤치마크 Blueprint2CAD 및 데이터 제안"
+        }
+      ]
+    },
+    "2611.02484": {
+      "arxiv_id": "2611.02484",
+      "paper_title": "Benchmark of THReD: Evaluating an LLM Agent and Its Preprocessing Tools for Turning Electronic Health Records into AI-Ready Datasets",
+      "abstract": "LLM agents are increasingly built into data-analysis software, yet little evidence shows how reliably they preprocess clinical data or whether the tools they invoke give correct, reproducible output. We report a benchmark of THReD, a web-based system that turns electronic health record (EHR) extracts into AI-ready datasets through a chat agent whose proposed steps run only after user confirmation. The agent benchmark has 141 tasks (100 templates) in seven categories, including goal-level requests, failure recovery, requests calling for no action, schema variation and prompt injection through the data, on synthetic tables calibrated to a regional health information exchange; success is judged by checks on the produced data. Over 2,550 episodes with Claude Haiku 5.5 in four context configurations, the deployed agent completed 92.7% (95% CI 88.1-96.4) of tasks on its first answer, abstained on every advice request, recovered from every injected fault, and never proposed an action requested by planted text. Without the data profile, completion fell to 58.0%; goal-level requests were hardest (80.6%). Six experiments on real records of two chronic-disease cohorts and on synthetic data at scale validate the tools: 91-92% of inferred patient classes and 99.7-99.8% of inferred vital-sign labels were correct in masked reconstruction; a dictionary builder combining curated dictionaries with LLM suggestions mapped 99.0% of 2,208 raw variants correctly; all 2,176 replays of 128 saved pipelines gave byte-identical files under pinned dependencies; subgroup differences in inference accuracy vanished within facility and lookup key; and the same-day consolidation rule changed 90-day emergency revisit rates by up to 3.2 points without shifting cohort composition by more than one point. Processing time grew roughly linearly to 5.5 million records while the prompt stayed at about 13 thousand tokens.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "EHR 전처리 에이전트 평가용 141개 과제 벤치마크 포함"
+        }
+      ]
+    },
+    "2611.02530": {
+      "arxiv_id": "2611.02530",
+      "paper_title": "AMLBench: A Real-Incident Benchmark for Agentic Blockchain Anti-Money Laundering",
+      "abstract": "Tracing illicit funds on public blockchains remains largely manual. As funds move across accounts and undergo asset conversions, they become mixed with other inflows, requiring repeated queries and expert judgment to trace. Large language model (LLM) agents offer a way to automate this process, but their ability to reconstruct case-related transfer networks from limited clues remains unclear. To bridge this gap, we present AMLBench, an anti-money laundering (AML) benchmark built from 24 real-world cases and 5.05 million Ethereum transfer records. For each case, agents start from limited clues and explore these transfer records through composable transaction-query and fund-flow analysis tools, deciding which accounts and branches to pursue. The final tracing results are evaluated against case annotations, while tool interaction logs reveal how agents discover and select relevant transfers and at what resource cost. We also develop AMLAgent, which integrates fund-tracing guidance and query feedback to dynamically guide investigative decisions. With GPT-6 Astra, AMLAgent achieves macro averages of 80.82% transfer-level precision and 84.73% query coverage across 24 real-world cases. Further analysis of the large-scale Bybit case reveals substantial differences in transfer retention and token usage across models, even with similar submission precision. AMLBench establishes a reproducible benchmark for evaluating both tracing outcomes and investigative processes, laying the groundwork for more reliable and efficient autonomous AML investigations.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "블록체인 AML 에이전트 벤치마크 AMLBench 제안"
+        }
+      ]
+    },
+    "2611.02540": {
+      "arxiv_id": "2611.02540",
+      "paper_title": "PixelBench: Can LLMs Understand and Generate Images Pixel by Pixel?",
+      "abstract": "Large language models (LLMs) can generate visual assets through text-based formats such as SVG and CAD, but these symbolic representations describe images using high-level primitives rather than explicit raster values. We ask whether LLMs can instead generate pixel images directly through their existing vocabulary, without a learned image tokenizer or decoder. We introduce PixelBench, a benchmark for text-to-pixel (T2P) and image-to-pixel (I2P) generation across multiple resolutions, together with a complementary pixel-understanding evaluation. Models generate an RGB color palette followed by a grid of indices specifying the palette color of each output pixel. In T2P, the strongest models produce recognizable images directly from text. In I2P, the strongest models outperform palette-matched downsampling and specialized pixelization algorithms at low resolutions. Pixel-understanding performance correlates strongly with generation performance. A resolution-scaling study shows that pixel-generation performance often improves initially before declining at high resolutions. Finally, we introduce Pixel Reconstruction Tuning (PRT), which augments visual instruction tuning with caption-palette-grid trajectories. We post-train Molmo2-4B from its pretraining checkpoint by mixing general instruction data with our curated PRT data, improving performance across 16 visual-centric benchmarks, indicating that explicit pixel reconstruction can provide useful auxiliary supervision.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "픽셀 단위 이미지 생성/이해 벤치마크 PixelBench 제안"
+        }
+      ]
+    },
+    "2611.02566": {
+      "arxiv_id": "2611.02566",
+      "paper_title": "CR-Bench-v2: Evaluating the Real-World Utility of AI Code Review Agents",
+      "abstract": "The rapid growth of automated code generation has created a pressing need for automated code review. Yet code review resists full automation: it depends on context beyond the \\textit{diff}, on the author's intent, and on judgments about design and maintainability on which even expert reviewers disagree. Existing code review benchmarks lack standardization and rely largely on noisy human review comments scored with text-similarity metrics, which reward surface overlap and fail to measure precision. We introduce \\texttt{CR-Bench}, a defect-centric evaluation framework that recasts SWE-Bench issues as pull-request review tasks with full repository context. After filtering for review-detectable defects and grounding each to a single originating pull request, \\texttt{CR-Bench} contains 584 instances, with a 174-instance \\texttt{CR-Bench-Verified} subset derived from SWE-Bench Verified. Each instance pairs a pull request with a known defect, its ground-truth fix, and a taxonomy label for bug category, impact, and severity. We propose two complementary metrics: \\emph{Known-Defect Detection Rate} (KDDR), which measures whether an agent identifies the labeled defect, and \\emph{Usefulness Rate}, which measures the fraction of review comments that are actionable. We evaluate eight code review agents over four backbones, plus commercially available Gemini Code Assist, using three independent LLM judges. Even the strongest systems detect only about one-third of known defects (KDDR $\\approx$ 33\\%), and Gemini Code Assist detects 8.1\\%.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코드 리뷰 에이전트 평가 CR-Bench-v2 제안"
+        }
+      ]
+    },
+    "2611.02587": {
+      "arxiv_id": "2611.02587",
+      "paper_title": "They Know Where It Is, But Not What It Says: A Bilingual Hallucination Benchmark of Hadith Recall in Open LLMs",
+      "abstract": "Large language models are increasingly consulted for religious knowledge, including the recall of specific Hadith (recorded sayings and actions of the Prophet Muhammad, peace be upon him). Unlike open-ended generation, Hadith recall is a high-stakes, verifiable task: a reference (collection, chapter, and Hadith number) has exactly one correct text, and any deviation from it constitutes a fabrication that can be mistaken for authentic scripture. This study introduces a bilingual (English/Arabic) benchmark that probes five open-weight, locally-deployable language models (Mistral-7B, Gemma3-4B, Jais-7B, ALLaM-7B, and Phi4-mini-3.8B) across all six canonical Sunni Hadith collections (Sahih al-Bukhari, Sahih Muslim, Sunan Abi Da'ud, Jami' al-Tirmidhi, Sunan an-Nasa'i, Sunan Ibn Majah), sampling 500 Hadith per collection (3,000 per model per language, 30,000 responses total). Each model is given only the bibliographic reference and asked to reproduce the exact Hadith text, with no retrieval augmentation, and is scored on lexical fidelity (BLEU) and semantic fidelity (multilingual cosine similarity), with refusals flagged separately. Across all five models and both languages, 0% of 30,000 responses achieve both high lexical and high semantic fidelity, i.e., an exact, verifiable match to the source text. Arabic responses fare uniformly worse than English. These findings suggest that current open-weight LLMs, used without retrieval grounding, are unreliable and potentially dangerous sources for exact religious-text recall, and that deployment for Islamic scholarship should mandate retrieval-augmented generation over a verified corpus rather than parametric memory. The complete code, prompts, evaluation pipeline, and scored outputs are publicly available at https://github.com/dayam8696/Hadith-Hallucination-Benchmark.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "영어/아랍어 이중언어 벤치마크로 한국어 없음"
+        }
+      ]
+    },
+    "2611.02698": {
+      "arxiv_id": "2611.02698",
+      "paper_title": "GeoGuesser Bench: Benchmarking Vision-Language Agents on Interactive Geolocation",
+      "abstract": "Vision-language model (VLM) agents that act in the open world need two abilities: world knowledge to interpret what they see, and exploration to find what they cannot yet see. We study how agents combine the two through interactive visual geolocation. GeoGuesser Bench contains 282 tasks in an offline Street View environment where agents rotate, zoom, and move between real panoramas. Its three task types shift the balance from knowledge to exploration: agents (1) report the coordinates of their starting location, (2) name the enclosing street, city, state, or country, or (3) find, read, and count nearby objects. The coordinate tasks in (1) also include 42 real GeoGuessr World Championship rounds, whose expert guesses provide a human reference. We evaluate 23 VLMs: the best accuracy is 62.5% on place naming and 35.0% on object finding, and the best agent averages 4352.4 GeoGuessr points on the championship rounds, against 4770.3 for the better expert in each round. Beyond these headline numbers, world knowledge and exploration are only weakly correlated across models: agents that localize well do not necessarily explore well. To understand where agents fail, we categorize their errors into vision, navigation, and tool-use failures. Further ablations show that the strongest agents, such as Claude Opus 4.8, still perform well with limited views, while weaker agents degrade; customizing the environment thus adjusts task difficulty. The environment's verifiable rewards and restorable state also support training, and our Planner-Worker-Compressor harness cuts planner tokens by 57-61% by compacting the interaction history. We hope GeoGuesser Bench and its environment serve as a high-quality foundation for simulating real-world exploration at scale.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "인터랙티브 지오로케이션 벤치마크 GeoGuesser Bench 제안"
+        }
+      ]
+    },
+    "2611.02752": {
+      "arxiv_id": "2611.02752",
+      "paper_title": "HPC-Bench: A Comprehensive Benchmark for High Performance Computing Codes",
+      "abstract": "Large Language Models (LLMs) have shown strong capabilities in code generation and reasoning, motivating extensive benchmarks for evaluating functional correctness. However, performance optimization in High-Performance Computing (HPC) poses fundamentally different challenges that are not captured by existing evaluations: HPC performance depends on low-level code, intricate memory access patterns, and computational kernels embedded within sophisticated execution contexts. We introduce HPC-Bench, a performance-grounded benchmark for evaluating LLMs as optimizers of computational kernels in realistic HPC workloads, including 114 workloads across 16 HPC computational motifs. HPC-Bench provides a fully automated, end-to-end evaluation pipeline that combines program-level correctness verification with two correctness-gated metrics, Fast@k and Speedup@k, to characterize reliability and speedup under a fixed sampling budget. Our evaluation of three representative LLMs across serial CPU, OpenMP, and CUDA settings shows that stricter speedup requirements substantially reduce the probability of finding a correct and fast optimization. HPC-Bench is available at https://github.com/Deep-Learning-Profiling-Tools/HPC-Bench.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "HPC 코드 최적화 벤치마크 HPC-Bench 제안"
+        }
+      ]
+    },
+    "2611.02940": {
+      "arxiv_id": "2611.02940",
+      "paper_title": "PlagiaCorpus: A Bilingual, Adversarial, and Cross-Lingual Dataset for Forensic Plagiarism Detection",
+      "abstract": "PlagiaCorpus is a bilingual Arabic-English dataset for benchmarking plagiarism and text-reuse detection, including reuse produced by large language models (LLMs) and reuse across languages. It contains 198,643 text records: a source corpus of 34,885 passages drawn from English and Arabic Wikipedia and two openly licensed book collections, and 163,758 queries (147,381 for training and 16,377 for testing). The queries cover five reuse classes of increasing difficulty, namely verbatim copying, character-level obfuscation, same-language paraphrasing by two different LLMs, and English--Arabic translation with structural paraphrasing, together with a Safe class of non-reused passages. Every positive query is linked to its source passage, and the train/test split is grouped by source passage so that no passage contributes queries to both splits. The release was curated through language identification, removal of LLM generation artefacts, and exact and cross-lingual de-duplication. Technical validation reports per-class length statistics, automatic checks of the train/test split, and inter-annotator agreement on a manually rated sample. The dataset is distributed in JSON and Parquet formats under a CC BY-SA 4.0 license.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "아랍어-영어 데이터셋으로 한국어 과제 없음"
+        }
+      ]
+    },
+    "2611.02978": {
+      "arxiv_id": "2611.02978",
+      "paper_title": "CAREFUL-Bench: Effect-Aware, Judge-Free Evaluation of Multi-Turn LLM Function Calling",
+      "abstract": "The multi-turn checker of the Berkeley Function Calling Leaderboard (BFCL) evaluates final state correctness but ignores the effects of intermediate calls: extra calls are free, function documentation does not describe side effects, and the scripted user never responds to proposals. Consequently, models asking for confirmation before destructive actions are penalized; 260 of 734 reference turns in the base category perform destructive actions without confirmation. We make BFCL effect-aware without replacing it. We infer effect declarations for all 128 functions by executing them in BFCL simulators and comparing state changes, with destructive writes identified by three annotators. A judge-free replay scorer reproduces official results across all 800 reference trajectories while reporting unrequested destructive calls, duplicate writes, redundant reads, surplus steps, and their token costs. We also introduce a confirmation-aware protocol with a deterministic simulated user. Across 11 open models, effect-aware scoring preserves the official ranking but reveals substantial differences in execution quality: the leading model loses 14.0 points due to unrequested destructive calls, while surplus steps consume up to 28% of input tokens. Adding effect hints to function documentation has no impact on eight evaluated models. Allowing the simulated user to respond recovers up to four points for models that seek confirmation. However, the best model completes only six of 576 conversations requiring destructive actions with explicit confirmation. These results expose a key limitation of current function-calling benchmarks: they cannot distinguish between asking for clarification and obtaining permission before potentially destructive actions.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "BFCL 확장 효과 인지형 함수호출 평가 CAREFUL-Bench"
+        }
+      ]
+    },
+    "2611.03094": {
+      "arxiv_id": "2611.03094",
+      "paper_title": "A Fine-Grained Hierarchy and Benchmark for State Tracking in Language Models",
+      "abstract": "Theoretical limitations of transformers on state tracking---the ability to track information about entities or variables over long contexts---have motivated new recurrent language modeling (LM) architectures such as Gated DeltaNet (GDN). These architectures have, in particular, been benchmarked against the $S_5$ word problem, a theoretically hard state-tracking task that captures abilities such as code evaluation under arbitrary variable assignment. It, however, remains open whether other, simpler forms of state tracking might both be more relevant in practice and already explain observed differences between these architectures. We propose evaluating state tracking using a hierarchy of word problems with four increasing levels of difficulty: r-trivial, corresponding to immutable assignment to variables in programming; aperiodic, where assignments are mutable; soluble, where assignments are self-referential; and general finite state tracking. Theoretically, we show that the class of problems transformers are thought to length-generalize on does not even contain all aperiodic state tracking. On the other hand, we prove that GDN with positive eigenvalues expresses all aperiodic problems, and the regular languages recognized by certain transformers are precisely all soluble ones, thus providing a fine-grained picture of state tracking capabilities of various architectures. Taking these ideas to practice, we construct StateBench, a 4-tier long-horizon state-tracking benchmark. Our systematic direct training experiments across architectures largely align with theoretical expectation, albeit with interesting observations at very large scale length-generalization. Additionally, we also evaluate pretrained models---both open hybrid and closed frontier ones---on StateBench, finding that none of them robustly solves even soluble state tracking, suggesting a direction for future improvement.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "상태 추적 벤치마크 StateBench 제안"
+        }
+      ]
+    },
+    "2611.03223": {
+      "arxiv_id": "2611.03223",
+      "paper_title": "Do Agents Still Follow the Rules? Benchmarking Rule Compliance under Agent Context Compaction",
+      "abstract": "LLM agents compact long histories to fit their context windows, but the compacted context must still carry the operating rules that govern later actions. Prior work shows that violations rise after compaction, but measures compliance outside a complete agent harness and does not identify where each violation comes from. We introduce ARCBench(Agent Rule Compliance Benchmark), a configurable benchmark built on the open-source pi agent harness. Its tool-calling agent loop lets us measure rule compliance from actions taken during execution, bringing the evaluation closer to deployed agent workflows. Using ARCBench, we examine where violations after compaction come from, and how different compaction configurations and adversarial settings change their sources. We find that compaction rarely deletes the rule: most violations after compaction occur while the rule is still in the compacted history, with the agent treating a later request as permission, ignoring the rule, and proceeding anyway. Where violations come from depends on the configuration: how the rule is delivered decides whether the agent would break it even without compaction, while the compaction strategy and budget decide whether the rule survives. The strongest compactor-targeted attack more than doubles violations by corrupting the rule in the summary and changing how the agents behave, whereas the strongest defense restores the rule in most summary but still violates. Finally, retaining a rule does not guarantee compliance: compacted runs that retain the rule violate more than twice as often as runs with the full history.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:13Z",
+      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "컨텍스트 압축 규칙 준수 벤치마크 ARCBench 제안"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -67835,10 +68195,30 @@
         "2611.00802",
         "2611.00911",
         "2611.01125",
-        "2611.01484"
+        "2611.01484",
+        "2611.01635",
+        "2611.01728",
+        "2611.01878",
+        "2611.01927",
+        "2611.01934",
+        "2611.02026",
+        "2611.02353",
+        "2611.02432",
+        "2611.02433",
+        "2611.02484",
+        "2611.02530",
+        "2611.02540",
+        "2611.02566",
+        "2611.02587",
+        "2611.02698",
+        "2611.02752",
+        "2611.02940",
+        "2611.02978",
+        "2611.03094",
+        "2611.03223"
       ],
-      "calls": 4,
-      "cost_usd": 1.9659
+      "calls": 5,
+      "cost_usd": 2.0348
     }
   },
   "reaudits": [
