@@ -38650,6 +38650,163 @@
       },
       "issue_url": null,
       "proposal_sha256": "b4107deefc8d0543e5ddb65d6822dfef3461053fa5ae09853eb856bf182e33cf"
+    },
+    "2606.15867": {
+      "decision": "propose",
+      "reason": "CogCanvas는 다중 인물 신원, 객체·패션, 배경 참조를 함께 쓰는 이미지 생성 벤치마크를 새로 제안하며, 1,952장의 참조 이미지와 1,361개 프롬프트, 3개 과제, 6축 평가를 정의한다. 프롬프트는 영어 문장으로 인용되어 있어 en 트랙이고, 참조 이미지를 입력으로 쓰므로 vision이다. PDF가 밝힌 데이터셋 주소는 익명화된 URL이므로 이 주소를 링크로 쓰고, 라이선스와 lm-eval 지원은 확인하지 않아 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "cogcanvas",
+            "이름": "CogCanvas",
+            "평가 축": "이미지(다중 주체 참조 기반 이미지 생성)",
+            "언어": "en",
+            "정의": "다중 인물 신원, 인물별 객체·패션, 배경 장면 참조를 함께 보존하는 생성 능력을 평가하는 벤치마크. 큐레이션된 참조 이미지 1,952장(유명인 신원 100, 객체 80, 패션 35, 배경 29)과 2~5인 구성의 합성 프롬프트 1,361개로 이루어진다. 주 과제(참조 기반 다중 인물-객체 생성), 텍스트-이미지 구성 생성, 참조 검색의 3개 과제를 6축(ID-Sim, DINO-Sim, CLIP-T, BG-Sim, Aesth., Attr-VQA)으로 평가한다. 논문은 기존 방법 5종과 학습 없는 순차 인페인팅 기준 파이프라인을 비교했고 Attr-VQA와 사람 판단의 Spearman ρ는 0.645였다.",
+            "대표 과제": "참조 기반 다중 인물-객체 생성(주 과제). 신원, 객체·패션, 배경 참조를 받아 한 장면을 생성하고 6축으로 채점",
+            "대표 예시·설명": "영어 프롬프트가 장면, 인물, 객체, 위치, 상호작용을 지정하고(예: 'A stands to the left of B'), 모델은 신원 참조, 객체·패션 참조, 배경 참조를 모두 반영한 이미지 한 장을 생성하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 않았다. PDF가 밝힌 데이터셋과 코드 주소는 익명화된 URL이라 실제 접근 가능 여부를 확인해야 한다. 참조 이미지 중 유명인 얼굴은 CelebA-HQ에서 가져온 것이고 객체·패션·배경은 웹 출처이므로 구성 요소별 약관을 따로 점검해야 한다. Attr-VQA는 Gemma 4 판정에 의존하며, 평가에는 이미지 생성 모델 실행 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/org-anonymous/CogCanvas"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (multi-subject reference-based image generation)",
+            "definition": "A benchmark of how well a model jointly preserves multiple human identities, per-person objects and fashion items, and a background scene reference. It has 1,952 curated reference images (100 celebrity identities, 80 objects, 35 fashion items, 29 backgrounds) and 1,361 synthesized prompts with 2-5 people. It defines three tasks (reference-based multi-human-object generation, text-to-image compositional generation, reference retrieval) under a six-axis protocol (ID-Sim, DINO-Sim, CLIP-T, BG-Sim, Aesth., Attr-VQA). The paper compares five existing methods and a training-free sequential-inpainting reference pipeline, and reports a Spearman rho of 0.645 between Attr-VQA and human judgments.",
+            "task": "Reference-based multi-human-object generation (primary task): generate one scene from identity, object/fashion, and background references and score it on six axes.",
+            "example": "Task description: an English prompt specifies the scene, people, objects, positions, and interactions (for example, 'A stands to the left of B'), and the model generates one image that reflects all identity, object/fashion, and background references."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "1,952 curated reference"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "reference-based multi-human-object generation"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "A stands to"
+            },
+            "링크": {
+              "page": 13,
+              "quote": "huggingface.co/datasets/org-anonymous/ CogCanvas"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "A stands to"
+            },
+            "이름": {
+              "page": 2,
+              "quote": "we introduce CogCanvas,"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "1,952 curated reference"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "reference-based multi-human-object generation"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2606.15867",
+      "paper_title": "CogCanvas: A Benchmark for Evaluating Multi-Subject Reference-Based Image Generation",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.15867",
+        "sha256": "c191bce162bca91ac496c3fe371f1f359b718b774dacd5b1175f8c631a1f6236",
+        "accessed": "2026-11-04T03:46:26Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 17,
+          "elapsed_seconds": 100.95,
+          "pdf_sha256": "c191bce162bca91ac496c3fe371f1f359b718b774dacd5b1175f8c631a1f6236",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "d556769c4b947d0d3232044a4cbe60453cde0141616904b21528130600706d66",
+          "page_json_file": "2606.15867.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/org-anonymous/CogCanvas",
+            "fetched_url": "https://huggingface.co/datasets/org-anonymous/CogCanvas/raw/main/README.md",
+            "sha256": "3b86a4d7160a37159ff82afade46fab62626650a209bf254871bf26723ec7854",
+            "accessed": "2026-11-04T03:48:36Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-04T03:48:36Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2606.15867",
+        "paper_title": "CogCanvas: A Benchmark for Evaluating Multi-Subject Reference-Based Image Generation",
+        "abstract": "Multi-subject reference-based image generation requires jointly preserving multiple human identities, binding per-person objects and fashion items, and respecting a specified background scene, a regime where current diffusion models remain brittle. Existing benchmarks evaluate only one axis at a time and none jointly captures multi-identity composition with human-object interaction, background grounding, and spatial plausibility. We introduce CogCanvas, a benchmark of 1,952 curated reference images spanning 100 celebrity identities, 115 distinctive objects and fashion items, and 29 real-world background scenes including landmarks, from which we construct 1,361 compositional prompts covering 2-5 person group sizes. The curation pipeline combines DINOv2-based deduplication, two-stage aesthetic filtering, and automated derivation of structured interaction and position graphs that serve as ground-truth supervision. CogCanvas supports three tasks, reference-based multi-human-object generation (primary), text-to-image compositional generation, and reference retrieval, under a unified six-axis evaluation protocol. We introduce two metrics tailored to the multi-reference setting: BG-Sim, which scores background fidelity on SAM 3-masked regions via DINOv3 feature similarity, and Attr-VQA, which uses a multimodal LLM to verify per-subject attribute binding and inter-person interactions against the structured graphs. Benchmarking five SOTA methods reveals that every model degrades substantially as group size grows from 2 to 5, with near-complete failure on object/fashion binding beyond three subjects.",
+        "paper_updated": "2026-10-01T00:00:00Z",
+        "created_at": "2026-10-19T13:47:14Z",
+        "input_sha256": "4cf5d5954c4373c6e2b320f82c6311bcf3dc21f7b5ce9296bfe2803a944b8a0a",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "다중 주체 참조 이미지 생성 벤치마크로 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "다중 주체 이미지 생성 벤치마크 CogCanvas 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41761559623",
+        "context_sha256": "b2c33e766ebc773996c51cb0295cd3589db812d3f33209f15f2c4d6068beb343"
+      },
+      "proposal_sha256": "f30c3a0b69a2d0b8ce80d8eae09fc67a8129c5b926ea45d8b5fc3466a4cad9d6"
     }
   },
   "processed_comments": [],
@@ -69066,8 +69223,8 @@
         "2611.03523",
         "2611.03575"
       ],
-      "calls": 22,
-      "cost_usd": 13.4745
+      "calls": 23,
+      "cost_usd": 14.1282
     }
   },
   "reaudits": [
