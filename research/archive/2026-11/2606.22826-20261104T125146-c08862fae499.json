@@ -1,0 +1,73 @@
+{
+  "arxiv_id": "2606.22826",
+  "paper_title": "MINCE: Shrinking LLM Evaluation Datasets via Few-Model Monte Carlo Calibration",
+  "created_at": "2026-11-04T03:51:46Z",
+  "status": "exclude",
+  "reason": "MINCE는 평가 데이터셋을 줄이는 방법론(Monte Carlo 기반 부분집합 크기 결정)을 제안하는 논문이다. 새로운 재사용 가능 벤치마크를 만든 것이 아니라 기존 벤치마크(IFEval, MMLU, GSM8K, MMLU-Pro)에서 무작위로 고정 추출한 부분집합을 사용한다. 또한 논문이 명시한 공식 데이터셋 또는 코드 URL이 없으므로 링크 근거도 충족하지 못한다. 기존 벤치마크 자체를 실질적으로 갱신한 것도 아니어서 인벤토리 변경 대상이 아니다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2606.22826",
+    "sha256": "64946bf0bf2a253d33ff1389a1fe7ad4f168c1a5d7b8d562c659486b6c25cf55",
+    "accessed": "2026-11-04T03:50:08Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 11,
+      "elapsed_seconds": 89.99,
+      "pdf_sha256": "64946bf0bf2a253d33ff1389a1fe7ad4f168c1a5d7b8d562c659486b6c25cf55",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "40f3536f8c0a4ba8e3300eb2c7934444fe9fcb977909bab4fdffe7dcf5571674",
+      "page_json_file": "2606.22826.pages.json"
+    }
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "f11d1882ecb33d37e6d9e39e69f74a317e618a1671a2511dcef00ec675001608",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2606.22826",
+    "paper_title": "MINCE: Shrinking LLM Evaluation Datasets via Few-Model Monte Carlo Calibration",
+    "abstract": "Evaluating LLMs across many model variants---quantized, fine-tuned, or deployment-specific---requires running large benchmarks repeatedly, a process that can take tens of hours per model on edge hardware such as NPUs. Existing subset selection methods reduce this cost but depend on large calibration pools or learned prediction layers. We introduce MINCE (Monte Carlo Informed N-sizing for Compact Evaluation), which uses Monte Carlo simulation over per-item logs from a small set of calibration models to find the minimum subset size that bounds accuracy drift and then fixes a randomly sampled subset at that size, with no prediction layer needed. MINCE reduces IFEVAL by 54\\%, MMLU by 89\\%, GSM8K by 70\\%, and MMLU-Pro by 88\\% with maximum drift $\\leq$2.62\\,pp on BF16 calibration models. The frozen subsets generalize to held-out GPU models with mean drift $\\leq$1.40\\,pp and to INT4 NPU models with mean drift of 0.77--3.59\\,pp, while delivering evaluation speedups of up to 8.1$\\times$ on the GPU models and evaluation speedups of 1.7--3.4$\\times$ on the NPU models. The method is robust to calibration pool size and achieves lower drift than tinyBenchmarks (12$\\times$ lower on MMLU, 3.3$\\times$ on GSM8K) while using 42$\\times$ fewer calibration models.",
+    "paper_updated": "2026-10-02T00:00:00Z",
+    "created_at": "2026-10-19T13:47:14Z",
+    "input_sha256": "337a0e619bac0f0ac97633cc86b90811b98da8c34e9b5fbd9e944277c67eeff1",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "LLM 평가 데이터셋 축소 방법론으로 적합"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "평가 데이터셋 축소법 MINCE, 재사용 가능 평가 자원"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}

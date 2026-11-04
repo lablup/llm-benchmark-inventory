@@ -438,4 +438,28 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Predict cumulative abnormal return, volatility, and corporate bond return labels from the text, slides, and audio of an earnings call.",
     "example": "Task description (not an actual test item): an English prompt casts the model as a quantitative analyst and supplies the call transcript with slide images (or audio), and the model predicts the event's cumulative abnormal return as a decimal."
   },
+  "iatrobench": {
+    "axis": "Safety (clinical omission harm; commission and omission axes)",
+    "definition": "A pre-registered benchmark of 60 clinical scenarios in seven categories that scores both commission harm (CH, 0-3) and omission harm (OH, 0-4). 44 scenarios form 22 matched pairs, each framed as a patient question and as a physician consultation, and the OH difference between framings is the decoupling gap. Each scenario has a physician-written rubric and critical-action list. The paper evaluates six models with 10 repetitions per scenario (600 responses per model, 3,600 in total), scored by a structured evaluator (Claude Opus 4.6) and a primary judge (Gemini 3 Flash), with a 2,048-token output cap.",
+    "task": "Score model responses to clinical scenarios, framed as a patient or as a physician, on the OH and CH axes",
+    "example": "Task description: in the patient framing, someone whose psychiatrist retired and who has 10 days of medication left asks for an alprazolam taper schedule. In the physician framing, an attending psychiatrist consults on the same case. The benchmark scores whether the model provides or withholds the schedule."
+  },
+  "cogcanvas": {
+    "axis": "Images (multi-subject reference-based image generation)",
+    "definition": "A benchmark of how well a model jointly preserves multiple human identities, per-person objects and fashion items, and a background scene reference. It has 1,952 curated reference images (100 celebrity identities, 80 objects, 35 fashion items, 29 backgrounds) and 1,361 synthesized prompts with 2-5 people. It defines three tasks (reference-based multi-human-object generation, text-to-image compositional generation, reference retrieval) under a six-axis protocol (ID-Sim, DINO-Sim, CLIP-T, BG-Sim, Aesth., Attr-VQA). The paper compares five existing methods and a training-free sequential-inpainting reference pipeline, and reports a Spearman rho of 0.645 between Attr-VQA and human judgments.",
+    "task": "Reference-based multi-human-object generation (primary task): generate one scene from identity, object/fashion, and background references and score it on six axes.",
+    "example": "Task description: an English prompt specifies the scene, people, objects, positions, and interactions (for example, 'A stands to the left of B'), and the model generates one image that reflects all identity, object/fashion, and background references."
+  },
+  "drivingbench": {
+    "axis": "Agents (real-car closed-loop driving)",
+    "definition": "A benchmark in which a general-purpose vision-language model sees camera frames from a real Toyota Corolla and directly commands steering and speed through three MCP tools (observe, set_motion, stop_now) to drive a 127 m parking-lot cone course. The car keeps moving while the model thinks and each new command replaces the running one, so inference latency is part of the task. Each model gets up to three attempts in one conversation; the primary metric is progress along the course centerline (%), with finish time, tokens and cost also reported. The paper evaluates four model-harness pairs (Codex, Claude Code, Cursor) with only one independent trial per model.",
+    "task": "Drive through the cone-marked course without leaving it and park in the blue-cone finish zone",
+    "example": "Task description, not an actual test item: the model receives a forward camera frame from observe, then drives with set_motion(direction, steering %, speed, duration, reason), adapting to observed movement as it advances along the course."
+  },
+  "autodatabench-data-intelligence": {
+    "axis": "Agents (data intelligence: diagnosing, organizing, and constructing training data)",
+    "definition": "A controlled testbed for an agent's ability to understand and improve training data. Non-data factors (training framework, tools, source data) are fixed, and the agent iterates through three optimization tasks: data diagnosis and repair, data organization, and data construction. Task 1 uses a corrupted function-calling pool (about 40k examples, up to 16k selected, 2,000 in-distribution evaluation examples, macro AST accuracy, OOD on BFCL). Task 2 trains an embedding model (over 818k raw pairs, at most 600k pairs per round, mean nDCG@10 over 5 in-distribution sets, 5 OOD retrieval sets). Task 3 is knowledge injection (1,000 Novel items as in-distribution, Retention as OOD, likelihood-based multiple-choice accuracy). Seven LLMs were evaluated with three runs per task (63 runs). The results hold under the paper's conditions and are not a current global leaderboard.",
+    "task": "Repair a corrupted function-calling dataset, organize embedding training data (hard-negative mining), and construct training data for knowledge injection.",
+    "example": "Task description: the agent inspects the data, implements an intervention, submits the training set, and uses the fixed pipeline's evaluation feedback to decide the next intervention. In the function-calling task, for example, it filters or repairs a corrupted pool of user queries, tool schemas, and target calls."
+  },
 };
