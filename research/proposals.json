@@ -38257,6 +38257,179 @@
         "context_sha256": "f99ec3c6a99545192a4f7b850c8b2bb706f8860aeb5d009de814ddec036c9314"
       },
       "proposal_sha256": "6aa38b6ef5ff0960fbd2d55d7d1490ef421c0aaeeb49c7b910cb56ac2e2fdb9c"
+    },
+    "2604.07709": {
+      "decision": "propose",
+      "reason": "IatroBench는 임상 시나리오 60개로 오류 행동(commission)과 누락(omission)이라는 두 해악 축을 함께 재는 영어 텍스트 벤치마크입니다. 같은 사례를 환자 질문과 의사 자문으로 짝지어 제시하는 점이 새롭고, 공식 GitHub 저장소도 논문에 명시되어 있습니다. 영어 과제이므로 en 트랙의 text 모달리티로 제안합니다. 직전 답변은 인용문이 해당 페이지에 없다는 이유로 반려되어, 모든 인용을 페이지 원문에 맞춰 다시 골랐습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "iatrobench",
+            "이름": "IatroBench",
+            "평가 축": "안전·임상 누락 해악(commission/omission 이중 축)",
+            "언어": "en",
+            "정의": "임상 시나리오 60개(7개 범주)로 오류 행동 해악(CH 0-3)과 누락 해악(OH 0-4)을 함께 재는 사전등록 벤치마크. 44개 시나리오는 환자 질문과 의사 자문으로 짝지은 22쌍이며 두 프레이밍 간 OH 차이(decoupling gap)를 본다. 시나리오마다 의사가 작성한 루브릭과 핵심 행동 목록이 있고, 논문은 6개 모델을 모델당 600응답(시나리오·모델당 10회 반복, 총 3,600응답)으로 평가했다. 구조화 평가(Claude Opus 4.6)와 주 심사 모델(Gemini 3 Flash)로 채점했으며 출력 상한은 2,048토큰이다.",
+            "대표 과제": "임상 시나리오 질문(환자 프레이밍 또는 의사 자문 프레이밍)에 대한 모델 응답을 OH와 CH 축으로 채점",
+            "대표 예시·설명": "환자 프레이밍에서는 정신과 의사가 은퇴해 약이 10일치만 남은 환자가 알프라졸람 감량 일정을 묻고, 의사 프레이밍에서는 같은 사례를 담당 정신과 의사가 자문하는 과제이다. 모델이 일정을 제공하는지 누락하는지를 채점한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 코드 저장소의 라이선스를 데이터 라이선스로 간주하면 안 된다. 시나리오는 충돌 상황을 극대화해 설계되었으므로 결과는 이 분포에만 적용된다. 시나리오와 정답·루브릭은 의사 1인이 작성했고, 짝지은 두 버전은 자격 외에도 달라 gap은 프레이밍의 복합 효과이다. 구조화 평가 점수는 일부(785건)만 확보되었고 Opus가 자기 응답도 채점했다. 주 심사 모델은 구조화 평가에서 OH≥1인 응답의 86.6%에 OH=0을 주어 누락을 과소평가한다. GPT-5.2는 빈 출력이 많아 일부 분석에서 제외되었다. 논문 결과는 2026년 2월 시점이며 현재 전역 리더보드가 아니다. 원시 응답은 요청 시에만 제공된다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/davidgringras/iatrobench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Safety (clinical omission harm; commission and omission axes)",
+            "definition": "A pre-registered benchmark of 60 clinical scenarios in seven categories that scores both commission harm (CH, 0-3) and omission harm (OH, 0-4). 44 scenarios form 22 matched pairs, each framed as a patient question and as a physician consultation, and the OH difference between framings is the decoupling gap. Each scenario has a physician-written rubric and critical-action list. The paper evaluates six models with 10 repetitions per scenario (600 responses per model, 3,600 in total), scored by a structured evaluator (Claude Opus 4.6) and a primary judge (Gemini 3 Flash), with a 2,048-token output cap.",
+            "task": "Score model responses to clinical scenarios, framed as a patient or as a physician, on the OH and CH axes",
+            "example": "Task description: in the patient framing, someone whose psychiatrist retired and who has 10 days of medication left asks for an alprazolam taper schedule. In the physician framing, an attending psychiatrist consults on the same case. The benchmark scores whether the model provides or withholds the schedule."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "I need to"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "60 preregistered clinical"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "I need to"
+            },
+            "링크": {
+              "page": 19,
+              "quote": "com/davidgringras/iatrobench"
+            },
+            "언어": {
+              "page": 1,
+              "quote": "I need to"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "IatroBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "two axes of"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "two axes of"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2604.07709",
+      "paper_title": "IatroBench: A Pre-Registered Benchmark of Clinical Omission in Language Models",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2604.07709",
+        "sha256": "22f3e2df60789ea9fffced02c072c32b1a1f429396b28ebd9ba1923f13406476",
+        "accessed": "2026-11-04T03:29:13Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 28,
+          "elapsed_seconds": 209.56,
+          "pdf_sha256": "22f3e2df60789ea9fffced02c072c32b1a1f429396b28ebd9ba1923f13406476",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 1,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "0b02dcfdc575e69dfe3e7e20e30d8811a1a895c68ea49d313c6d2af5e8ffd8d7",
+          "page_json_file": "2604.07709.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/davidgringras/iatrobench",
+            "fetched_url": "https://api.github.com/repos/davidgringras/iatrobench/readme",
+            "sha256": "0b5aa0c0eee26257d6dfe3ec7ceb074996f6dafab25f74d02ff93a3e46d26cb0",
+            "accessed": "2026-11-04T03:33:34Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/davidgringras/iatrobench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "6543cf862b2ca42750ef78cd08d5861e1b2c229e73087de8280d3daa4567e7e2"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-04T03:33:34Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2604.07709",
+        "paper_title": "IatroBench: A Pre-Registered Benchmark of Clinical Omission in Language Models",
+        "abstract": "We introduce IatroBench, a benchmark with two axes of harm (commission and omission), comprising 60 pre-registered clinical scenarios, tested on 6 models. Matched scenarios are framed as a patient query and a doctor consultation, differing in register and request (with the implication of supervision by a treating physician in the latter). We analyse the responses of five different models and find that all share more information in the doctor framing than the patient framing (which we call \"framing-contingent withholding\"). For example, a model with strong safety training provides a benzodiazepine tapering schedule to a doctor, but does not provide this schedule to a patient who requests it. We use Claude Opus 4.6 for structured evaluation, and Gemini 3 Flash as our primary judge, to score model responses against a physician's rubrics. Our primary judge agrees with physicians' omission scores about as well as physicians agree with each other. We find a decoupling gap of +0.38 (p = 0.003) on average across models. With our primary judge (checked by physicians) the decoupling gap is +0.22 (95% CI 0.10-0.36, p = 0.0014). We find three distinct patterns underlying this gap, exemplified by each of the models below. In the doctor framing, Claude Opus demonstrates that it has the information, and withholds it in the patient framing. Llama 4 performs poorly in both framings, meaning the decoupling gap cannot distinguish between withholding and incompetence. Finally, GPT-5.2 (excluded from this analysis) failed to return text for 33.2% of doctor responses, compared to 0% of layperson responses. In 86.6% of cases that we score (through our structured evaluation) as having omission harms, our primary judge (Gemini 3 Flash) scores zero omission harm. Because our scenarios are designed to pit safety against helpfulness, these statistics hold only for this distribution.",
+        "paper_updated": "2026-10-01T00:00:00Z",
+        "created_at": "2026-10-19T13:47:14Z",
+        "input_sha256": "87f5321da6f45c16f342b0b01790e5dd018e1b811c29fa2c2c7a72af0b9de3d2",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "임상 누락 평가용 사전등록 벤치마크로 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "임시 누락 평가 벤치마크 IatroBench 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41761559623",
+        "context_sha256": "0fed8cfcd03a1d65c6e1163bfda5b1f2ec8c743cf8ee918551a86f219eab55b9"
+      },
+      "proposal_sha256": "ab542de4c73aee0836e605ed67da7d022cf8f8e7137850a7f740935961b75cd9"
     }
   },
   "processed_comments": [],
@@ -68668,8 +68841,8 @@
         "2611.03523",
         "2611.03575"
       ],
-      "calls": 18,
-      "cost_usd": 10.5334
+      "calls": 19,
+      "cost_usd": 11.2676
     }
   },
   "reaudits": [
