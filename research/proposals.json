@@ -39105,6 +39105,177 @@
       },
       "issue_url": null,
       "proposal_sha256": "0514726ee736d56adfaf6edf7dd848ccf4331927edc18fdce1f40469a99798ce"
+    },
+    "2609.38948": {
+      "decision": "propose",
+      "reason": "실제 Toyota Corolla를 범용 비전-언어 모델이 카메라 프레임만 보고 조향·속도 명령으로 직접 운전하게 하는 재사용 가능한 벤치마크이며 하니스를 공개한다. 과제 프롬프트가 영어라 en 트랙, 카메라 이미지가 입력이라 vision으로 분류했다. 데이터·트레이스의 라이선스는 PDF에서 확인되지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "drivingbench",
+            "이름": "DrivingBench",
+            "평가 축": "에이전트(실차 폐루프 주행)",
+            "언어": "en",
+            "정의": "범용 비전-언어 모델이 실제 Toyota Corolla의 카메라 프레임을 보고 observe, set_motion, stop_now 세 가지 MCP 도구로 조향과 속도를 직접 명령해 주차장 콘 코스(127 m)를 완주하는 벤치마크. 모델이 생각하는 동안에도 차가 움직이고 새 명령이 실행 중인 명령을 대체하므로 추론 지연이 과제에 포함된다. 한 대화 안에서 모델당 최대 3회 시도하며, 주 지표는 코스 중심선 기준 진행률(%)이고 보조로 완주 시간, 토큰, 비용을 보고한다. 논문은 4개 모델-하니스 조합(Codex, Claude Code, Cursor)을 평가했으며 모델당 독립 시행은 1회뿐이다.",
+            "대표 과제": "콘으로 표시된 코스를 벗어나지 않고 달려 파란 콘 구역에 주차",
+            "대표 예시·설명": "모델이 observe로 전방 카메라 프레임을 받은 뒤 set_motion(방향, 조향 %, 속도, 지속 시간, 이유)으로 주행하고, 관측 결과로 보정하며 코스를 나아가는 과제 설명(실제 시험 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 않았다. 하니스는 오픈소스로 공개되지만 코드 라이선스를 데이터 라이선스로 간주할 수 없다. 재현에는 openpilot 지원 차량, comma four, 비슷한 코스, 안전 운전자가 필요하다. 모델당 독립 시행이 1회라 통계적 검정력이 낮고, 결과는 모델-하니스 조합의 값이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/aditya-ramabadran/drivingbench_harness_v1"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Agents (real-car closed-loop driving)",
+            "definition": "A benchmark in which a general-purpose vision-language model sees camera frames from a real Toyota Corolla and directly commands steering and speed through three MCP tools (observe, set_motion, stop_now) to drive a 127 m parking-lot cone course. The car keeps moving while the model thinks and each new command replaces the running one, so inference latency is part of the task. Each model gets up to three attempts in one conversation; the primary metric is progress along the course centerline (%), with finish time, tokens and cost also reported. The paper evaluates four model-harness pairs (Codex, Claude Code, Cursor) with only one independent trial per model.",
+            "task": "Drive through the cone-marked course without leaving it and park in the blue-cone finish zone",
+            "example": "Task description, not an actual test item: the model receives a forward camera frame from observe, then drives with set_motion(direction, steering %, speed, duration, reason), adapting to observed movement as it advances along the course."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "see camera frames"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "steering and velocity"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "steering and velocity"
+            },
+            "링크": {
+              "page": 4,
+              "quote": "drivingbench_harness_v1"
+            },
+            "언어": {
+              "page": 16,
+              "quote": "Complete the stated"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce DrivingBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "steering and velocity"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "steering and velocity"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.38948",
+      "paper_title": "DrivingBench: Can Vision-Language Models Drive a Toyota Corolla?",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.38948",
+        "sha256": "28631267d4e375fb9513a191f464a803bd85c485ae09badd984350fd532eddd5",
+        "accessed": "2026-11-04T03:56:11Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 26,
+          "elapsed_seconds": 134.22,
+          "pdf_sha256": "28631267d4e375fb9513a191f464a803bd85c485ae09badd984350fd532eddd5",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "f199bc7fe72e5d704c9c68c2939c370464075b7ef1181164e6ca175a879ed931",
+          "page_json_file": "2609.38948.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/aditya-ramabadran/drivingbench_harness_v1",
+            "fetched_url": "https://api.github.com/repos/aditya-ramabadran/drivingbench_harness_v1/readme",
+            "sha256": "a3d825c19f74b382d584e6c29d34a219ea81df19efe0a4b79a78e5cf8022e609",
+            "accessed": "2026-11-04T03:58:50Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/aditya-ramabadran/drivingbench_harness_v1/license",
+              "name": "LICENSE",
+              "spdx_id": "NOASSERTION",
+              "sha256": "e6c7b2d05c2aae095642dfc22c7af4b39686729e087d13d9b80e6fc8535c81c6"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-04T03:58:50Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.38948",
+        "paper_title": "DrivingBench: Can Vision-Language Models Drive a Toyota Corolla?",
+        "abstract": "Frontier models excel at many digital benchmarks, yet their ability to drive a real car, an everyday human skill, remains largely untested. We present DrivingBench, to our knowledge the first benchmark where general-purpose vision-language models must drive a real car. Through three tools, the models see camera frames from a Toyota Corolla and directly command its steering and velocity around a parking lot cone course at low speeds. The car may continue moving while the model thinks and new commands replace the currently running one, so inference latency is part of the task, testing the models' abilities to observe, act, monitor, recover, and complete a long-horizon objective under such constraints. We benchmark GPT-6 Astra, Claude Fable 5.1, GPT-5.6 Sol, and Grok 4.6 in vendor-native harnesses (Codex, Claude Code, Cursor) with up to three attempts each in one conversation; Astra is the only model to finish the course, on its second attempt, with no other attempt passing 50% of the course. Two of the four models improved materially across attempts with retained context. We also detail the design principles behind our action interface, and show how the tool output format and the framing of the task combined to determine whether models would drive at all or refuse. We release our harness, prompts, course map, and traces with video and telemetry for reproducibility.",
+        "paper_updated": "2026-10-01T00:00:00Z",
+        "created_at": "2026-10-19T13:47:14Z",
+        "input_sha256": "ae74d912b9d2e15fcbd3da0f919729d67e54451c9397a3fa09b6f26363250a8c",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "실제 차량 주행 VLM 벤치마크로 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "실차 주행 VLM 벤치마크 DrivingBench 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41761559623",
+        "context_sha256": "b2fa2884ddb9c5143f576ebea386c57259c12fdef42c8c80cb33044d38ad158e"
+      },
+      "proposal_sha256": "2db820af9b80ef5e6bdcc0f98b8cc5d836f3014b459810378a7bef57cdef5479"
     }
   },
   "processed_comments": [],
@@ -69526,8 +69697,8 @@
         "2611.03523",
         "2611.03575"
       ],
-      "calls": 27,
-      "cost_usd": 16.8097
+      "calls": 28,
+      "cost_usd": 17.5118
     }
   },
   "reaudits": [
