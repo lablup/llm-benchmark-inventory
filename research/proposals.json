@@ -38008,74 +38008,9 @@
       "proposal_sha256": "194ab511e39a68bf491718e735a99644595863a58a674e96308ae7459ff9a861"
     },
     "2603.14265": {
-      "decision": "propose",
-      "reason": "MedPriv-Bench는 의료 개방형 QA에서 개인정보 보호와 임상 유용성을 함께 평가하는 새 벤치마크입니다. 과제와 질문이 영어이고 입력이 텍스트라서 en 트랙의 text 행으로 제안합니다. 공식 코드·데이터 링크는 1쪽 각주에 있습니다. 라이선스 등 미확인 항목은 '확인 불가'로 기록했고, 모델 비교 수치는 이 행에 넣지 않았습니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "medpriv-bench",
-            "이름": "MedPriv-Bench",
-            "평가 축": "프라이버시·유용성 trade-off(의료 개방형 QA의 문맥적 유출)",
-            "언어": "en",
-            "정의": "RAG 기반 의료 QA에서 재식별을 가능하게 하는 문맥적 유출(contextual leakage)과 임상 유용성을 함께 평가하는 벤치마크. 총 2,938개 인스턴스이며, 다중 에이전트·사람 검수 파이프라인으로 합성한 민감 PHI 4개 범주(낙인 행동, 정신건강·인지, 사회경제적 결정요인, 준식별자·VIP)를 주입한 환자 요약과 질문으로 구성된다. 응답 유용성은 0–5 루브릭 점수, 유출은 사실 단위(LRfact)와 인스턴스 단위(LRinst)로 측정하며, 유출 판정은 미세조정한 RoBERTa-NLI 모델이 맡는다.",
-            "대표 과제": "환자 요약(3개 청크)과 임상 질문이 주어지면 주입된 PHI를 드러내지 않으면서 임상적으로 유용한 개방형 답변을 생성",
-            "대표 예시·설명": "주입된 민감 정보가 있는 환자 기록을 근거로, 퇴원·추적 관리에서 주의할 점을 묻는 영어 질문에 답하되 민감 사실을 직접 노출하지 않는지 확인하는 과제 설명(실제 문항이 아님)",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 않았다. 이 벤치마크는 PMC-Patients 사례 보고서를 바탕으로 PHI를 합성·주입한 파생물이므로 원천 데이터의 약관을 이용 전에 따로 확인해야 한다. 영어 임상 서사만 다루고 단일 턴 QA에 한정된다. 유용성 채점에 GPT-5-mini, 유출 판정에 RoBERTa-NLI가 필요하며 NLI 판정은 긴 응답이나 암묵적 유출에서 놓칠 수 있다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/SpidermanGUAN/MedPriv-Bench"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Privacy-utility trade-off (contextual leakage in medical open-ended QA)",
-            "definition": "A benchmark that jointly evaluates contextual leakage, which can enable patient re-identification in RAG-based medical QA, and clinical utility. It has 2,938 instances built by a multi-agent, human-in-the-loop pipeline that injects synthetic PHI from four categories (stigmatized behaviors, mental health and cognitive status, socioeconomic determinants of health, quasi-identifiers/VIP status) into patient summaries and writes questions that depend on it. Response utility is scored 0-5 against a rubric, leakage is measured at the fact level (LRfact) and instance level (LRinst), and leakage is judged by a fine-tuned RoBERTa-NLI model.",
-            "task": "Given a patient summary (three chunks) and a clinical question, produce a clinically useful open-ended answer without revealing the injected PHI.",
-            "example": "Task description, not an actual test item: using a patient record that contains injected sensitive information, answer an English question about what to pay attention to in discharge and follow-up care without directly disclosing the sensitive facts."
-          },
-          "evidence": {
-            "modality": {
-              "page": 1,
-              "quote": "medical open-ended question"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "medical open-ended question"
-            },
-            "대표 예시·설명": {
-              "page": 1,
-              "quote": "what should I"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/SpidermanGUAN/MedPriv-Bench"
-            },
-            "언어": {
-              "page": 1,
-              "quote": "what should I"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "MedPriv-Bench"
-            },
-            "정의": {
-              "page": 6,
-              "quote": "N = 2,938"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "privacy preservation and"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공식 저장소 README는 벤치마크 데이터셋(Hugging Face Spiderman01/MedPriv-Bench_dataset)과 NLI 판정 모델이 별도 저장소에 호스팅된다고 밝히지만, 제공된 공식 카드는 GitHub README 하나뿐이고 데이터셋 카드는 조회되지 않았습니다. README에는 라이선스와 lm-eval 언급이 없습니다. 다만 데이터가 다른 저장소에 있어서 README에 라이선스가 없다는 사실만으로 데이터셋에 라이선스가 없다고 볼 수 없습니다. 따라서 '미표기' 부재 증거나 '저작권 전부 보유' 처리를 적용할 수 없습니다. 논문 PDF에도 이 벤치마크 자체의 라이선스를 밝힌 문장이 없습니다(10쪽의 'official licenses'는 Llama3, Qwen, RoBERTa 등 기존 산출물에 대한 문장입니다). 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부를 뒷받침할 근거가 없어 게시를 보류합니다. 데이터셋 카드를 가져와 다시 제출해야 합니다.",
+      "changes": [],
       "arxiv_id": "2603.14265",
       "paper_title": "MedPriv-Bench: Benchmarking the Privacy-Utility Trade-off of Large Language Models in Medical Open-Ended Question Answering",
       "paper_updated": "2026-11-03T00:00:00Z",
@@ -38136,7 +38071,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-04T02:51:42Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -38158,11 +38093,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41761559623",
-        "context_sha256": "4bdaf7bb59cd4255abc146e3b0eb0b998fab7622c1c5d900a8968e48ff3bbce6"
-      },
-      "proposal_sha256": "86fb1640f8cf86251023bb0cf8dd6317b5f51379f44f7eeca2bc18275e0a2681"
+      "proposal_sha256": "35f3adab91aac3dde5ca4ec8560c1c51b0af17f4df0baf080de6f8b545a1e309",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -68556,8 +68489,8 @@
         "2611.03523",
         "2611.03575"
       ],
-      "calls": 9,
-      "cost_usd": 4.0769
+      "calls": 10,
+      "cost_usd": 4.8355
     }
   },
   "reaudits": [
