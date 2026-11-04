@@ -36492,8 +36492,8 @@
       "approval_policy": "claude_only"
     },
     "2609.37053": {
-      "decision": "propose",
-      "reason": "MatToolBench는 전문 재료과학 소프트웨어를 다루는 새 재사용 가능 벤치마크다. 10개 도구에서 204개 과제를 Windows 11 VM에서 실행하며, 논문이 공식 저장소 URL을 밝힌다. 과제 지시문은 영어라 en 트랙에 해당한다. GUI·Origin 과제는 스크린샷을 입력으로 쓰므로 modality는 vision으로 분류했다. 공식 저장소 README와 LICENSE 파일이 MIT를 명시하므로 라이선스 항목은 그 문구를 근거로 기록했고, 이 MIT는 저장소 자체 저작물에 한정된다. 공식 README에 lm-eval 언급이 없어 해당 항목은 '미표기'로 두었다. 권장 결과는 논문 Table 2의 GUI 평균 SR 중 본문에 모델명과 점수가 함께 인용된 세 모델만 실었다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 권장 모델 목록이 선택한 실험의 비교 대상 전체를 포함하지 않아 반려합니다. 논문 Table 2의 GUI 평균 SR 비교에는 7개 모델이 있습니다. 제안 목록에는 Claude-sonnet-4.6(25.0), Doubao-seed-1-8(24.0), GPT-5.4(21.0) 세 개만 있습니다. Kimi-k2.5(20.0), Qwen3-VL-235B(8.0), Qwen3-VL-32B(7.0), Qwen3-VL-8B(8.0)는 같은 표에 점수가 있는데도 빠져 있습니다. 본문에 점수가 함께 인용된 모델만 실었다고 했지만, 표에서 확인되는 값을 제외할 이유가 되지 않습니다. 상위 3개가 실제로 그 세 모델인지는 일곱 모델을 모두 놓고 비교해야 정당화됩니다. 나머지 항목은 근거가 확인됩니다. 과제 수와 분할은 204개(GUI 100, Origin 16, 코드 80, 혼합 8)로 Table 1과 일치하고, 10개 도구, Windows 11 VM, 50단계 예산, 영어 지시문도 맞습니다. 스크린샷 입력에 따른 vision 분류도 타당합니다. 라이선스 MIT는 공식 README와 LICENSE 파일이 뒷받침하며, 상업적 이용·수정·재배포 표기도 MIT와 일관됩니다. 저장소 MIT가 MP, OQMD, OPTIMADE, Pymatgen, 상용 소프트웨어, 실험 데이터 같은 구성 요소의 고유 약관을 대신하지 않는다는 유의사항도 들어 있습니다. lm-eval '미표기'는 공식 카드에 해당 언급이 없어 수용 가능합니다. 권장 목록에 일곱 모델의 GUI 평균 SR을 모두 채우면 재검토할 수 있습니다.",
       "changes": [
         {
           "track": "en",
@@ -36686,7 +36686,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-04T02:41:03Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -36712,12 +36712,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41761559623",
-        "context_sha256": "b6b8f4080c0e1c99a4b97edae1f0fd45813809939b7af27d808df9090e178941"
-      },
       "proposal_sha256": "4f714741641c1aa3478f8de8edfe411afff00bfbb54e15b3d4f042d16ca36b8b",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "권장 모델 목록이 선택한 실험의 비교 대상 전체를 포함하지 않아 반려합니다. 논문 Table 2의 GUI 평균 SR 비교에는 7개 모델이 있습니다. 제안 목록에는 Claude-sonnet-4.6(25.0), Doubao-seed-1-8(24.0), GPT-5.4(21.0) 세 개만 있습니다. Kimi-k2.5(20.0), Qwen3-VL-235B(8.0), Qwen3-VL-32B(7.0), Qwen3-VL-8B(8.0)는 같은 표에 점수가 있는데도 빠져 있습니다. 본문에 점수가 함께 인용된 모델만 실었다고 했지만, 표에서 확인되는 값을 제외할 이유가 되지 않습니다. 상위 3개가 실제로 그 세 모델인지는 일곱 모델을 모두 놓고 비교해야 정당화됩니다. 나머지 항목은 근거가 확인됩니다. 과제 수와 분할은 204개(GUI 100, Origin 16, 코드 80, 혼합 8)로 Table 1과 일치하고, 10개 도구, Windows 11 VM, 50단계 예산, 영어 지시문도 맞습니다. 스크린샷 입력에 따른 vision 분류도 타당합니다. 라이선스 MIT는 공식 README와 LICENSE 파일이 뒷받침하며, 상업적 이용·수정·재배포 표기도 MIT와 일관됩니다. 저장소 MIT가 MP, OQMD, OPTIMADE, Pymatgen, 상용 소프트웨어, 실험 데이터 같은 구성 요소의 고유 약관을 대신하지 않는다는 유의사항도 들어 있습니다. lm-eval '미표기'는 공식 카드에 해당 언급이 없어 수용 가능합니다. 권장 목록에 일곱 모델의 GUI 평균 SR을 모두 채우면 재검토할 수 있습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 214309,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 1920,
+              "output_tokens_details": {
+                "thinking_tokens": 1184
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 214309,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 1920,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 214309,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 214309
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.8765049,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "4f714741641c1aa3478f8de8edfe411afff00bfbb54e15b3d4f042d16ca36b8b",
+        "publication_policy": "complete-evidence-v1"
+      }
     },
     "2609.37233": {
       "decision": "propose",
@@ -52138,23 +52184,19 @@
     },
     "2610.08162": {
       "arxiv_id": "2610.08162",
-      "paper_title": "The Failure Is in the Readout: Fine-Grained Emotion Recognition Benchmarks Measure Elicitation, Not Perception",
-      "abstract": "Fine-grained emotion recognition supports therapy tools and social robots, but it needs facial data, which raises privacy and data-protection concerns. EmoNet-Face-HQ answers that with generated portraits, expert-rated over a $40$-category taxonomy far finer than the usual six to eight basic emotions. Under the protocol it ships with, vision-language models (VLMs) score poorly on that taxonomy, and the benchmark concludes that a dedicated fine-tuned model is necessary: Empathic-Insight-Face (EIF; Small/Large). We show that off-the-shelf VLMs match or beat that fine-tuned model when the answer is not generated but read from the logits, as one binary query per category. We keep the benchmark's images, taxonomy and ratings, and change only how the answer is read. Experts agree at $κ_w = 0.468$ on the five categories they measure most reliably. Generatively, no interval among eleven open-weight VLMs lies entirely above that anchor ($κ_w=0.268$-$0.486$). Under verification all eleven clear it, each of them significantly better at $κ_w=0.507$-$0.586$. Three also significantly beat EIF sitting at $κ_w = 0.551$ (Small; $0.534$ Large). The gain comes from the graded probability and not from asking a yes/no question: as a control, thresholding those same probabilities to yes/no costs 142% of the average gains and drops binarization below generative elicitation to $κ_w=0.254$-$0.423$. A replication on real photographs (FACES) is weaker and mixed: of the ten models that pass a validity gate, six gain, three are neutral to positive and one is negative, so the effect is not confined to synthetic data.",
-      "paper_updated": "2026-10-07T00:00:00Z",
-      "created_at": "2026-10-19T13:49:05Z",
-      "input_sha256": "d54e19f459c33dff8260a9f2757415cf2759e93c413783c8dd697b0cd4e0a294",
-      "version": 4,
+      "paper_title": "Parsed Text Understates Vision-Language Models: From Below to Above Expert Agreement on Fine-Grained Facial Emotion",
+      "abstract": "EmoNet-Face-HQ is a benchmark of 2,500 generated portraits, each rated by four psychology experts on 40 emotion categories. It concludes that vision-language models (VLMs) on average offer no dependable improvement over random guessing and that a fine-tuned model is required. The benchmark reads each model's answer from generated text, and its zero-shot prompt demands a fixed number of emotions per face. Its own results already show that this protocol can decide the outcome: one VLM moves from chance to close to expert agreement when only the prompt changes. We keep the images, expert ratings and metric and change only how the answer is asked for and read: one yes/no question per category, scored by the probability of \"yes\". Scored from parsed text on the five categories experts agree on most, eleven open-weight VLMs average a quadratic-weighted $κ$ of 0.425 against individual experts, below the 0.468 at which two experts agree. Scored from yes-probabilities, the same models average 0.553, and all eleven agree with an individual expert better than a second expert does. The VLMs' mean is level with the benchmark's fine-tuned model (0.555), and three of them significantly exceed it without any training. Only one exceeds a stricter reference, the mean of three experts scored against the fourth (0.563). Verdicts that VLMs fail at graded facial affect ratings may therefore describe the readout more than the model. A fine-tuned model should have to beat a pretrained VLM read this way before it is called necessary, and the benchmark's own does not clearly do so.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "decision": "relevant",
-          "reason": "세분화 감정인식 벤치마크, 판독 방식 재평가"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "감정 인식 벤치마크 프로토콜 재평가 및 개선 제시"
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "기존 벤치마크 재평가 프로토콜, 신규 자료 여부 불명확"
         }
       ]
     },
@@ -65347,10 +65389,10 @@
     "2610.40131": {
       "arxiv_id": "2610.40131",
       "paper_title": "VideoMemBench: How Well Do MLLMs Remember in Video Conversations?",
-      "abstract": "Multimodal large language models (MLLMs) can now process hour-long videos, making extended multi-turn dialogue over a single video a natural mode of use. Sustaining such a dialogue requires more than answering each question in isolation: the model must retrieve and reuse information established earlier in the conversation, both what it has seen and what it has said, an ability we term in-context video memory. Existing video QA benchmarks leave this ability unmeasured: their questions are mutually independent, never reference one another, and each is answerable from the video alone, so nothing ever requires carrying information across turns. We introduce VideoMemBench, in which each sample pairs a single video with a long multi-turn dialogue, whose turns are connected by typed cross-turn dependencies: an Episodic Dependency refers back to a visual episode described in an earlier turn, probing memory of what the model has seen, while an Answer Dependency builds on the model's own earlier answer, probing memory of what the model has said. Every dependency is verified considering two properties: 1) necessity, meaning the question cannot be answered without its earlier turns, and 2) non-leakage, meaning the question does not restate the information from its earlier turns. To enforce these properties, we design a construction pipeline with three LLM roles: a planner, a generator, and a judger, with each dialogue reviewed by human experts. VideoMemBench comprises 326 videos with 2,476 turns, of which 1,387 depend on earlier turns, including multi-parent dependencies and long-range call-back. Among over 20 evaluated open- and closed-source MLLMs, Claude Opus 5 performs the best with an overall score of only 45.7\\%, highlighting the challenge of in-context video memory. Our dataset and evaluation are released.",
-      "paper_updated": null,
-      "created_at": "2026-10-31T02:42:48Z",
-      "input_sha256": "9ecc85a3c669a6de35a4652afdc96e2e6db36b6a9c298f9e75cb3620fa0b7089",
+      "abstract": "Multimodal large language models (MLLMs) can now process hour-long videos, making extended multi-turn dialogue over a single video a natural mode of use. Sustaining such a dialogue requires more than answering each question in isolation: the model must retrieve and reuse information established earlier in the conversation, both what it has seen and what it has said, an ability we term in-context video memory. Existing video QA benchmarks leave this ability unmeasured: their questions are mutually independent, never reference one another, and each is answerable from the video alone, so nothing ever requires carrying information across turns. We introduce VideoMemBench, in which each sample pairs a single video with a long multi-turn dialogue, whose turns are connected by typed cross-turn dependencies: an Episodic Dependency refers back to a visual episode described in an earlier turn, probing memory of what the model has seen, while an Answer Dependency builds on the model's own earlier answer, probing memory of what the model has said. Every dependency is verified considering two properties: 1) necessity, meaning the question cannot be answered without its earlier turns, and 2) non-leakage, meaning the question does not restate the information from its earlier turns. To enforce these properties, we design a construction pipeline with three LLM roles: a planner, a generator, and a judger, with each dialogue reviewed by human experts. VideoMemBench comprises 326 videos with 2,476 turns, of which 1,387 depend on earlier turns, including multi-parent dependencies and long-range call-back. Among over 20 evaluated open- and closed-source MLLMs, Claude Opus 5 performs the best with an overall score of only 45.7%, highlighting the challenge of in-context video memory. Our dataset and evaluation are released.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
@@ -65358,7 +65400,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "비디오 대화 기억 MLLM 벤치마크 신규 제안, 공개"
+          "reason": "비디오 대화 메모리 멀티모달 벤치마크 신규 도입"
         }
       ]
     },
@@ -65383,18 +65425,18 @@
     "2610.40293": {
       "arxiv_id": "2610.40293",
       "paper_title": "MAServeBench: Benchmarking Multi-Agent LLM Serving Systems with Hierarchical Collaboration Workloads",
-      "abstract": "Large language model (LLM)-based multi-agent systems (MAS) coordinate specialized agents to solve complex tasks, turning each user request into interdependent model and tool operations. Unlike independent requests, these operations become ready at different times and consume evolving context as agents coordinate and exchange results. This creates changing patterns of concurrency, computation, and memory demand that can expose different bottlenecks in LLM serving hardware. Yet benchmarking these effects requires capturing the collaboration rules that generate serving workloads, beyond the requests observed during execution. We present MAServeBench, a benchmark that treats multi-agent collaboration as a configurable dimension of serving workloads for LLM serving and hardware evaluation. Its composable stages capture how agents coordinate and exchange context in documented MAS workflows, enabling native executions to generate different workloads even when task inputs and tools remain unchanged. Hierarchical Semantic Traces preserve realized operations and dependencies for reproducible comparisons of legal release constraints at fixed work. Task-linked measurements connect these workloads to serving execution and GPU/NPU hardware behavior, revealing why serving efficiency does not always translate into timely task completion. The benchmark code is available at https://github.com/ShengxuanQiu/MAServeBench.",
-      "paper_updated": null,
-      "created_at": "2026-10-31T02:42:48Z",
-      "input_sha256": "9ecc85a3c669a6de35a4652afdc96e2e6db36b6a9c298f9e75cb3620fa0b7089",
+      "abstract": "Large language model (LLM)-based multi-agent systems (MAS) coordinate specialized agents to solve complex tasks, turning each user request into interdependent model and tool operations. Unlike independent requests, these operations become ready at different times and consume evolving context as agents coordinate and exchange results. This creates changing patterns of concurrency, computation, and memory demand that can expose different bottlenecks in LLM serving hardware. Yet benchmarking these effects requires capturing the collaboration rules that generate serving workloads, beyond the requests observed during execution. We present MAServeBench, a benchmark that treats multi-agent collaboration as a configurable dimension of serving workloads for LLM serving and hardware evaluation. Its composable stages capture how agents coordinate and exchange context in documented MAS workflows, enabling native executions to generate different workloads even when task inputs and tools remain unchanged. Hierarchical Semantic Traces preserve realized operations and dependencies for reproducible fixed-work replay and as inputs to architecture simulators. Task-linked measurements connect these workloads to serving execution and GPU/NPU hardware behavior, revealing why serving efficiency does not always translate into timely task completion. The benchmark code is available at https://github.com/ShengxuanQiu/MAServeBench.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "uncertain",
-          "reason": "LLM 서빙 시스템 벤치마크, 모델 평가 해당 여부 불명확"
+          "decision": "relevant",
+          "reason": "멀티에이전트 LLM 서빙 워크로드 벤치마크 도입"
         }
       ]
     },
@@ -66133,6 +66175,312 @@
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
           "reason": "다양한 페르소나 사용자 기반 챗 어시스턴트 평가 프레임워크 제안"
+        }
+      ]
+    },
+    "2306.01506": {
+      "arxiv_id": "2306.01506",
+      "paper_title": "BabySLM: language-acquisition-friendly benchmark of self-supervised spoken language models",
+      "abstract": "Self-supervised techniques for learning speech representations have been shown to develop linguistic competence from exposure to speech without the need for human labels. In order to fully realize the potential of these approaches and further our understanding of how infants learn language, simulations must closely emulate real-life situations by training on developmentally plausible corpora and benchmarking against appropriate test sets. To this end, we propose a language-acquisition-friendly benchmark to probe spoken language models at the lexical and syntactic levels, both of which are compatible with the vocabulary typical of children's language experiences. This paper introduces the benchmark and summarizes a range of experiments showing its usefulness. In addition, we highlight two exciting challenges that need to be addressed for further progress: bridging the gap between text and speech and between clean speech and in-the-wild speech.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "음성 언어모델 벤치마크이나 언어 불명확, LLM 범위 불확실"
+        }
+      ]
+    },
+    "2602.21044": {
+      "arxiv_id": "2602.21044",
+      "paper_title": "LogicGraph : Benchmarking Multi-Path Logical Reasoning via Neuro-Symbolic Generation and Verification",
+      "abstract": "Evaluations of large language models (LLMs) primarily emphasize convergent logical reasoning, where success is defined by producing a single correct proof. However, many real-world reasoning problems admit multiple valid derivations, requiring models to explore diverse logical paths rather than committing to one route. To address this limitation, we introduce LogicGraph, the first benchmark aimed to systematically evaluate multi-path logical reasoning, constructed via a neuro-symbolic framework that leverages backward logic generation and semantic instantiation. This pipeline yields solver-verified reasoning problems formalized by high-depth multi-path reasoning and inherent logical distractions, where each instance is associated with an exhaustive set of minimal proofs. We further propose a reference-free evaluation framework to rigorously assess model performance in both convergent and divergent regimes. Experiments on state-of-the-art language models reveal a common limitation: models tend to commit early to a single route and fail to explore alternatives, and the coverage gap grows substantially with reasoning depth. LogicGraph exposes this divergence gap and provides actionable insights to motivate future improvements. Our code and data will be released at https://github.com/kkkkarry/LogicGraph.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "다중 경로 논리추론 벤치마크 신규 도입, 언어 제한 없음"
+        }
+      ]
+    },
+    "2605.22487": {
+      "arxiv_id": "2605.22487",
+      "paper_title": "Polite on the Surface, Broken in Practice: A Curated Dataset for Fixing Generation and Register Failures in Low-Resource Bangla Text Generation",
+      "abstract": "Recent advances in Multilingual Large Language Models (MLLMs) have significantly enhanced cross-lingual conversational capabilities, yet modeling culturally nuanced and context-dependent communication remains a critical bottleneck. Specifically, existing state-of-the-art models exhibit a severe pragmatic gap when handling structural variations, regional idioms, and honorific consistencies in low-resource contexts like Bangla. To address this limitation, we introduce a novel, culturally aligned instruction-tuning dataset for \\textbf{BangLa Application and DialoguE generation - BLADE} and benchmarking framework comprising $4,196$ meticulously curated interaction pairs. We leverage this resource to systematically fine-tune and evaluate leading open-weight architectures, including DeepSeek-8B and LLaMA-3.2-3B, utilizing parameter-efficient fine-tuning via LoRA adapters in a 4-bit NormalFloat (NF4) quantization framework. Our empirical evaluations demonstrate that models fine-tuned on our dataset yield substantial improvements in structural fidelity and honorific alignment, providing a rigorous benchmark for bridging pragmatic disparities in low-resource multilingual text generation. Code and dataset: https://github.com/ashuvo25/Bangla_Application_LLM/tree/main",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "벵골어 한정 데이터셋, 한국어/영어 아님"
+        }
+      ]
+    },
+    "2607.17828": {
+      "arxiv_id": "2607.17828",
+      "paper_title": "When a Name Is Not a Name: A Benchmark Dataset and Distilled Reasoning for Culturally Entangled Bangla Homographs in Low-Resource LLMs",
+      "abstract": "Many Bangla words are at once personal names and culturally loaded common nouns, \"Maya\" is both a girl's name and a word for affectionate compassion. Choosing the right reading demands cultural knowledge that is scarce in the pretraining data of modern language models. We introduce Culturally Entangled Homograph (CEH) disambiguation and build a Bangla benchmark of 1,516 expert-verified sentences (3,032 labelled occurrences) in which one word appears twice with two distinct readings, each labelled with a culturally grounded category and an explanation of the reasoning behind it. Across open- and closed-source models, we find a systematic dominant-meaning bias: models default to the common-noun sense and overlook the name. A Bangla-specific model fails under every prompting regime we test, showing that language-specific pretraining alone does not confer cultural grounding. We further show that contrastive chain-of-thought prompting can sharply reduce this bias without training, and that distilling cultural explanations teaches small (1-3B) models to reason toward the correct reading rather than memorise labels, cutting dominant-meaning bias from as high as 100% to under 5% and turning the failed Bangla-specific model into our strongest system. Dataset and code are available at https://github.com/ashuvo25/BanglaCEH.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "벵골어 동음이의어 벤치마크, 한국어/영어 아님"
+        }
+      ]
+    },
+    "2603.14265": {
+      "arxiv_id": "2603.14265",
+      "paper_title": "MedPriv-Bench: Benchmarking the Privacy-Utility Trade-off of Large Language Models in Medical Open-Ended Question Answering",
+      "abstract": "Recent advances in Retrieval-Augmented Generation enable LLMs to ground outputs in clinical evidence, but connections to external databases create the risk of contextual leakage, where unique combinations of medical details enable patient re-identification without explicit identifiers. Existing healthcare benchmarks emphasize accuracy while overlooking this risk. To fill this gap, we present MedPriv-Bench, the first benchmark for jointly evaluating privacy preservation and clinical utility in medical open-ended question answering. Our framework utilizes a multi-agent, human-in-the-loop pipeline to synthesize sensitive medical contexts and clinically relevant queries that create realistic privacy pressure. We also establish an automated evaluation protocol using a fine-tuned RoBERTa-NLI model, which achieved an instance-level F1 score of 75.3%, sensitivity of 90.7%, and an average inference time of 0.056 s per sample against human annotations. Across nine LLMs and three privacy-preserving methods, we observed a pervasive privacy-utility trade-off. Relative to unprotected Med42-v2-8B (utility 3.87/5; leakage 72.8%), supervised fine-tuning improved utility to 4.25 and reduced leakage to 38.9%, whereas local differential privacy reduced leakage to 20.5% but lowered utility to 3.03. These results demonstrate the need for domain-specific benchmarks to validate medical AI systems in privacy-sensitive settings.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "의료 QA 프라이버시-유용성 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2606.17904": {
+      "arxiv_id": "2606.17904",
+      "paper_title": "DiagFlowBench: Evaluating How Language Models Handle Off-Procedure Inputs in Grounded Diagnostic Dialogue",
+      "abstract": "Language models increasingly serve as advisory systems in maintenance operations. To prevent hallucination, established approaches ground these models in procedural documentation, constraining them to prescribed sequences. In practice, however, operators may stray from these steps, requiring models to recognise unscripted, off-procedure utterances. Current benchmarks rarely prioritise this capability. We introduce DiagFlowBench, a dataset of 50 industrial diagnostic flowcharts from a consumer manufacturer converted into 1,676 multi-turn conversations that contrast compliant with off-procedure utterances. Evaluating a panel of ten commercial and open-weight models reveals high variability in abstention rates, with models often selecting a real but contextually inadequate step rather than fabricating facts. The inherent plausibility and authority of this mapped but wrong advice exposes a challenging vulnerability for grounding systems. Code and data are released at https://github.com/guille-gil/DiagFlowBench.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "진단 대화 절차 이탈 평가 데이터셋 공개"
+        }
+      ]
+    },
+    "2602.11674": {
+      "arxiv_id": "2602.11674",
+      "paper_title": "Benchmark Health Index: A Systematic Framework for Benchmarking the Benchmarks of LLMs",
+      "abstract": "Large Language Models (LLMs) are advancing rapidly, yet the benchmarks used to measure this progress are becoming increasingly unreliable. Score inflation and selective reporting have eroded the authority of standard benchmarks, leaving the community uncertain about which evaluation results remain trustworthy. We introduce the Benchmark Health Index (BHI), a pure data-driven framework for auditing evaluation sets along three orthogonal and complementary axes: (1) Capability Discrimination, measuring how sharply a benchmark separates model performance beyond noise; (2) Anti-Saturation, estimating remaining headroom before ceiling effects erode resolution and thus the benchmark's expected longevity; and (3) Impact, quantifying influence across academic and industrial ecosystems via adoption breadth and practice-shaping power. By distilling 106 validated benchmarks from the technical reports of 91 representative models in 2025, we systematically characterize the evaluation landscape. BHI is the first framework to quantify benchmark health at a macro level, providing a principled basis for benchmark selection and enabling dynamic lifecycle management for next-generation evaluation protocols.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "벤치마크 감사 프레임워크, 재사용 평가자료 여부 불명확"
+        }
+      ]
+    },
+    "2606.25530": {
+      "arxiv_id": "2606.25530",
+      "paper_title": "SWE-Opt: A Benchmark for Evaluating LLMs on Performance-Oriented Repository-Level Optimization",
+      "abstract": "Software performance optimization is a notoriously complex and manual task. Despite the growing use of Large Language Models (LLMs) for code refinement, we still lack benchmarks that capture how optimization actually happens in real-world codebases. Existing frameworks often oversimplify the problem by focusing on isolated functions or a single performance metric, missing the critical trade-offs between execution time and memory footprint, the inherent noise of the measurement environment, and the variability introduced by different input data and execution conditions. We address this by introducing SWE-Opt, a repository-level benchmark derived from 102 expert-written optimizations from open-source projects. Unlike previous benchmarks, SWE-Opt pairs each task with parameterized tests to evaluate runtime, peak memory, and Time-Weighted Memory Usage (TWMU) across varying input data and execution conditions under noise-aware measurement conditions. Our evaluation shows that current LLMs struggle significantly: runtime gains are sparse and inconsistent, and memory optimizations are nearly non-existent. An agentic setting with iterative repository exploration improves patch correctness substantially but does not translate into performance gains. This stands in sharp contrast to expert implementations, which achieve an aggregate speedup of 15.5x and peak memory reduction of 171.3x over benchmark tasks. Expert-written improvements are observed in 93.1% of tasks for runtime and 70.6% for peak memory. Our findings expose a substantial gap between current LLM capabilities and the demands of expert-level engineering.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "저장소 수준 성능 최적화 코딩 벤치마크 도입"
+        }
+      ]
+    },
+    "2609.03267": {
+      "arxiv_id": "2609.03267",
+      "paper_title": "Refusing the Impossible: A Taxonomy and Benchmark for Code Hallucination in Large Language Models",
+      "abstract": "This paper investigates whether large language models (LLMs) for code generation can recognize a programming request that cannot be satisfied. Coding assistants are widely deployed, yet they are evaluated almost exclusively on solvable tasks where a test suite can score the output. A request may instead name a package that does not exist or ask for an algorithm that is mathematically impossible, and the appropriate response is to refuse. Models nevertheless respond with plausible code, and such fabrications are also a security concern because attackers can register the package names that models invent. We define code hallucination as ungrounded code generation, distinguish it from ordinary programming errors, and introduce a taxonomy of these failures together with a benchmark of 270 adversarial requests and 91 matched solvable controls across six languages and 24 subcategories. We evaluate 17 open-weight models with 6.7B to 671B parameters, collecting 6,137 responses. Models hallucinate on 54% of the adversarial requests and correctly refuse 31%. Larger models do better on algorithmic impossibilities and conflicting requirements, where hallucination falls from 84% for models at or below 7B parameters to 32% for those at or above 80B. For plausible but nonexistent dependencies and features, the rates are 88% and 61%, and even the largest model hallucinates on all 22 requests for nonexistent JavaScript and Rust packages. Two-thirds of hallucinations are confident fabrications without caveats, and some reasoning models fail to return an answer on solvable tasks. Scale teaches models to recognize what is impossible but not what does not exist, so grounding code generation in the real software ecosystem, for example by checking package names against registries, remains necessary regardless of model size.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코드 환각 분류체계 및 벤치마크 도입"
+        }
+      ]
+    },
+    "2507.02976": {
+      "arxiv_id": "2507.02976",
+      "paper_title": "How Safe Are AI-Generated Patches? A Large-scale Study on Security Risks in LLM and Agentic Automated Program Repair on SWE-bench",
+      "abstract": "Large language models (LLMs) and agentic frameworks are increasingly used for development tasks such as automated program repair (APR). Prior work has identified security risks in LLM-generated code, but most studies focus on synthetic, simplified, or isolated tasks. We present a large-scale security analysis of LLM-generated patches using 20,000+ GitHub issues from SWE-bench. We evaluate developer-written patches, two standalone LLMs (Llama 3.3 Instruct-70B and GPT-5.4 nano), and four agentic frameworks (OpenHands, AutoCodeRover, HoneyComb, and SWE-agent). We also analyze code, issue, and project-level factors associated with insecure patches. Under our evaluated SWE-bench setup, Llama 3.3 introduced 135 manually confirmed vulnerabilities across the train and test sets, compared with 12 in developer-written patches for the same issues. On the SWE-bench test set, GPT-5.4 nano introduced 3 vulnerabilities compared with 2 in developer patches. All four evaluated agentic frameworks also introduced vulnerabilities. OpenHands had the highest retained count, with 44 vulnerabilities across 11 issue instances. Vulnerabilities are associated with broader code modifications and with issues missing specific information. These results suggest that APR systems require proactive risk assessment methods that consider both generated code and issue context.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "SWE-bench 기반 보안 분석 연구, 신규 평가자료 아님"
+        }
+      ]
+    },
+    "2604.13686": {
+      "arxiv_id": "2604.13686",
+      "paper_title": "IndicDBBench - Benchmarking Multilingual Text-to-SQL Capabilities in Indian Languages",
+      "abstract": "While Large Language Models (LLMs) have significantly advanced Text-to-SQL performance, existing benchmarks largely focus on Western contexts leaving a gap in real-world, non-Western applications. We introduce IndicDBBench, a comprehensive multilingual Text-to-SQL benchmark designed to evaluate cross-lingual semantic parsing across diverse Indic language families. The underlying schemas are derived from real-world open-data platforms (NDAP and IDP), ensuring realistic structural complexity. IndicDBBench comprises 20 databases spanning 237 tables. To construct complex relational structures from denormalized government data, we employ a three-agent pipeline (Architect, Auditor, Refiner), achieving high relational density (11.85 tables per database) and join depths of up to six. We generate 15,612 tasks spanning seven languages: English and six Indic languages, ensuring that queries are grounded in real database values and require multi-table reasoning. We evaluate state-of-the-art models, including DeepSeek V3.2, MiniMax M2.7, Llama 3.3, and Qwen3, across seven linguistic variants. Our results reveal a 9.0-point drop in execution accuracy from English to Indic languages, exposing an \"Indic Gap\" that, for the two models tested, persists even when gold tables and literal values are supplied, since this grounding raises accuracy in every language by similar amounts. The dataset and code are publicly available at https://anonymous.4open.science/r/multilingualText2Sql-Indic--DDCC/",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어 포함 다국어 Text-to-SQL 벤치마크 도입"
+        }
+      ]
+    },
+    "2605.02206": {
+      "arxiv_id": "2605.02206",
+      "paper_title": "Validity-Gated Evaluation of Multimodal Machine Unlearning",
+      "abstract": "Machine unlearning aims to remove the influence of training data without retraining a model from scratch. Evaluation of vision-language models relies on forget accuracy (FA), retain accuracy (RA), membership inference, and similarity to a retain-only reference, but evaluation pipelines are rarely tested. We propose a validity-gated unlearning audit (VGUA) with three checks: the forget set must be memorized without duplicate leakage into the retain set, the scorer must measure correctness, and the training code must implement the intended procedure. Applying these checks reveals that random MMBench splits leak duplicate questions, a lenient scorer hides memorization, and two coding errors remove the signal while training completes. After correcting these problems, we evaluate 234 unlearned models using six methods, three learning rates, and three backbones. Each model is compared with a retain-only reference trained using low-rank adaptation (LoRA). The results depend on update strength. Among models with RA at or above 0.70, lower FA generally indicates closer agreement with the retrained FA-RA operating point. Aggressive updates overshoot this point, collapse RA, and reverse method rankings. Relative to the original model, 78% of healthy models move closer to the retrained model's scores, whereas 94% move farther from it in activation space. Membership-inference advantage does not reliably track retraining alignment. Under option-shuffled training, unlearned models answer 25% of reordered forgotten ScienceQA questions, compared with 6% for the retain-only reference. These results show that multimodal unlearning conclusions depend on pipeline validity, update strength, and the comparison criterion.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "언러닝 평가 감사 방법론, 재사용 자료 여부 불명확"
+        }
+      ]
+    },
+    "2606.06388": {
+      "arxiv_id": "2606.06388",
+      "paper_title": "Humans' ALMANAC: A Human Collaboration Dataset of Action-Level Mental Model Annotations for Agent Collaboration",
+      "abstract": "Recent advances in LLM agents have enabled complex cognitive capabilities, such as multi-step reasoning, planning, and tool use, that increasingly position these agents as collaborative partners in human workflows. Effective collaboration, however, requires collaborators to continuously maintain and align mental models of their own reasoning, partners' intentions, and shared goals during the collaborative process. Today's agents rarely develop such capabilities since they are primarily optimized for task completion rather than for maintaining the underlying mental models required for collaborative processes. Moreover, the community lacks authentic human collaboration data with action-level mental model annotations that could guide agents toward collaborative competence. To bridge this gap, we present ALMANAC, a dataset of Action-Level Mental model ANnotations for Agent Collaboration built from the Map Task, a classic dyadic routing task from social science. ALMANAC contains 2,987 collaboration actions, each paired with theory-informed mental model annotations that record the participants' self-reasoning, perceived partner intent, and perceived team goal. We benchmark six LLMs on predicting humans' next-turn behavior and mental models. Our results demonstrate ALMANAC's utility in evaluating models' ability to simulate human collaborative behaviors and infer their underlying mental models. The project page is available at https://human-agent-collab.hailab.io/almanac.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "협업 심성모델 데이터셋, 언어 및 벤치마크 성격 불명확"
+        }
+      ]
+    },
+    "2606.24387": {
+      "arxiv_id": "2606.24387",
+      "paper_title": "AutoSpecNER: A Fine-Grained Named Entity Recognition Dataset for Vehicle Specification Extraction",
+      "abstract": "Vehicle advertisements contain rich specification information, but automotive NER resources remain limited. We introduce AutoSpecNER, an expert-annotated dataset for fine-grained entity recognition in vehicle listings. The dataset includes 659 advertisements from a popular car-selling website, with over 10,000 entities annotated across 15 categories, including MODEL, ENGINE_SPEC, and BATTERY_CAPACITY. Annotation quality was validated through inter-annotator agreement, achieving an average score of 91.5%. We benchmark rule-based extraction, fine-tuned transformer encoders, and large language models. DeBERTa achieves the best performance with a 90% micro-F1 score, outperforming the rule-based baseline (43%) and the strongest large language model (77.8%).",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "차량 사양 NER 데이터셋, 언어 불명확"
+        }
+      ]
+    },
+    "2608.02372": {
+      "arxiv_id": "2608.02372",
+      "paper_title": "PredActBench: Benchmarking Tool-Augmented Dialogue under Controlled Tool Noise",
+      "abstract": "Large language model (LLM) agents are increasingly used to support decisions by calling external tools. Existing work on LLM tool-calling assumes these tools are perfectly reliable. However, in many applications, the tools are statistical predictors with non-trivial errors. We introduce PredActBench, a benchmark for evaluating dialogue agents that work with imperfect predictive tools, using education as a testbed. First, we build a benchmark in which LLMs work with noisy predictors to guide users' decisions. Second, we extend two prior metrics for trust calibration, Relative AI-Reliance and Relative Self-Reliance, to multi-turn dialogue. Third, we evaluate 13 LLMs on OULAD and our released PredAct-CS dataset of 60 courses with real final grades and synthetic weekly scores, alongside a human study involving 13 instructors and teaching assistants. We find that when tools are noisy, SOTA models rarely make predictor uncertainty visible to users, with our strongest baseline GPT-5.5 achieving an F1 of 57.2. As a result, users over-rely on incorrect predictions and unsupported claims, showing that task accuracy alone is not enough for AI decision support and agents must communicate when their tools may be wrong. We release PredActBench to support the development of LLM agents that help users calibrate their reliance.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "노이즈 도구 활용 대화 에이전트 벤치마크 도입"
+        }
+      ]
+    },
+    "2509.14594": {
+      "arxiv_id": "2509.14594",
+      "paper_title": "SynBench: A Benchmark for Differentially Private Text Generation",
+      "abstract": "Synthetic text generation with Differential Privacy (DP) guarantees emerges as a principled approach that can enable the sharing of sensitive datasets across institutional and regulatory boundaries, while bounding the risks of re-identification and membership inference. LLM-based methods deliver promising results; however, comparisons are exacerbated by differing evaluation setups and \"private\" datasets, potential pre-training contamination is not considered and guarantees are not verified with DP audits. To advance this field, we introduce a unified evaluation framework with standardised utility and fidelity metrics and privacy audits, encompassing nine curated datasets that capture domain-specific complexities such as technical jargon, long-context dependencies, and specialised document structures. In a large-scale empirical study, we benchmark LLM-based state-of-the-art DP text generators of varying sizes (between 1--8B). Our results indicate that DP synthetic text generation remains an unsolved challenge, with quality deteriorating more as the private datasets deviate further from the generators' pre-training corpora. Our analyses suggest that synthetic data quality may be overestimated when LLMs have been pre-trained---without DP---on portions of the \"private\" data to be generated, and our membership inference (MIA) auditing setup for synthetic text reveals measurable membership signals even under tight privacy budgets. Finally, we note that under the \"public pre-training, private generation\" paradigm, the nominal $(\\varepsilon,δ)$ guarantee does not account for exposure during pre-training, motivating contamination-aware evaluation of DP synthetic text generation. Code and data splits: https://github.com/ImperialGlobalSingapore/synbench",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "차등프라이버시 텍스트 생성 통합 벤치마크 도입"
+        }
+      ]
+    },
+    "2512.14233": {
+      "arxiv_id": "2512.14233",
+      "paper_title": "PentestEval: Benchmarking LLM-based Penetration Testing with Modular and Stage-Level Design",
+      "abstract": "Penetration testing is essential for assessing and strengthening system security against real-world threats, yet traditional workflows remain highly manual, expertise-intensive, and difficult to scale. Although recent advances in Large Language Models (LLMs) offer promising opportunities for automation, existing applications rely on simplistic prompting without task decomposition or domain adaptation, resulting in unreliable black-box behavior and limited insight into model capabilities across penetration testing stages. To address this gap, we introduce PentestEval, the first comprehensive benchmark for evaluating LLMs across six decomposed penetration testing stages: Information Collection, Weakness Gathering and Filtering, Attack Decision-Making, Exploit Generation and Revision. PentestEval integrates expert-annotated ground truth with a fully automated evaluation pipeline across 346 tasks covering all stages in 12 realistic vulnerable scenarios. Our stage-level evaluation of 9 widely used LLMs reveals generally weak performance and distinct limitations across the stages of penetration-testing workflow. End-to-end pipelines reach only 31% success rate, and existing LLM-powered systems such as PentestGPT, PentestAgent, and VulnBot exhibit similar limitations, with the evaluated autonomous agents showing particularly low success rates under our benchmark settings. These findings highlight that reliable autonomous penetration testing requires stronger structured reasoning and fine-grained stage-level diagnosis. PentestEval provides the foundational benchmark needed for future research on fine-grained, stage-level evaluation, paving the way toward more reliable LLM-based automation.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:42:41Z",
+      "input_sha256": "2df353a7d8ec72dd3bbfaa351bdef3becb4b5c7903669081fe30d4a10a2bd291",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 침투테스트 단계별 벤치마크 도입"
         }
       ]
     }
@@ -67131,9 +67479,30 @@
     },
     "2026-11-04": {
       "attempted": [],
-      "abstract_attempted": [],
-      "calls": 1,
-      "cost_usd": 0.9441
+      "abstract_attempted": [
+        "2306.01506",
+        "2602.21044",
+        "2605.22487",
+        "2607.17828",
+        "2603.14265",
+        "2606.17904",
+        "2610.40131",
+        "2610.40293",
+        "2602.11674",
+        "2606.25530",
+        "2609.03267",
+        "2610.08162",
+        "2507.02976",
+        "2604.13686",
+        "2605.02206",
+        "2606.06388",
+        "2606.24387",
+        "2608.02372",
+        "2509.14594",
+        "2512.14233"
+      ],
+      "calls": 3,
+      "cost_usd": 1.8859
     }
   },
   "reaudits": [
