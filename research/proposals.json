@@ -38566,6 +38566,90 @@
         "reviewed_sha256": "38c76a7477f77f5e4b02bd33eb813017b945705d9358bd379accf2c27df21b66",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2604.12102": {
+      "decision": "exclude",
+      "reason": "이 논문은 compute-grounded reasoning 설계 패턴과 A2A 서버(Spatial Atlas)를 설명하는 시스템 논문이다. 새로운 재사용 가능 벤치마크를 도입하거나 기존 벤치마크를 실질적으로 갱신하지 않는다. FieldWorkArena와 MLE-bench는 기존 벤치마크이고 Q-Spatial Bench는 기존 문항을 참조할 뿐이다. 본문은 데이터 접근 불가로 FieldWorkArena 결과를 보고하지 않으며, 점수 없는 비공개 운영 점검 실행(V37)과 소프트웨어 테스트 결과만 제시한다. 따라서 인벤토리에 추가하거나 갱신할 벤치마크 행이 없다.",
+      "changes": [],
+      "arxiv_id": "2604.12102",
+      "paper_title": "Spatial Atlas: Compute-Grounded Reasoning for Spatial-Aware Research Agent Benchmarks",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2604.12102",
+        "sha256": "fae39d2060647c18504024e5285b8846949e07a9cf70247a6381d4bc5f0f4b87",
+        "accessed": "2026-11-04T03:35:06Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 21,
+          "elapsed_seconds": 104.62,
+          "pdf_sha256": "fae39d2060647c18504024e5285b8846949e07a9cf70247a6381d4bc5f0f4b87",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "3162fb5ec1a48f5ed8b75f78a8875e0dd179ce818c3985ba7fb198c0bde754bd",
+          "page_json_file": "2604.12102.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-04T03:37:00Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2604.12102",
+        "paper_title": "Spatial Atlas: Compute-Grounded Reasoning for Spatial-Aware Research Agent Benchmarks",
+        "abstract": "We describe compute-grounded reasoning (CGR), a design pattern in which code computes selected sub-problems from explicit intermediate representations before a language model answers. Spatial Atlas implements CGR as an Agent2Agent (A2A) server with a spatial question-answering handler and a machine-learning engineering handler. The spatial handler asks a language model to extract a scene graph, and code then fills in missing distances and checks the extracted safety rules. A separate benchmark driver can also run a strict metric bridge. It computes the gap for horizontal-gap questions from segmentation masks and a reconstructed point map, and it passes that gap to the answering model as a fact. The bridge returns a fixed unavailable answer when an evidence check fails, and it never falls back to model-estimated coordinates. The ML-engineering handler generates pipeline code, parses validation scores, and caps the number of repair and refinement passes. Its code execution is off by default. The repository also provides four run modes that can write label-free journals, a shuffled-image control mapping, and journal validators that reject label-bearing fields. We report one private label-free operational run in which four paths each wrote eight prediction rows with zero retries. Labels stayed sealed, and no score was computed, so this run establishes operational integrity only. We report no FieldWorkArena result because the benchmark data were not accessible. We also omit every performance, latency, and resource-use number that lacks a reproducible run artifact.",
+        "paper_updated": "2026-10-02T00:00:00Z",
+        "created_at": "2026-10-19T13:47:14Z",
+        "input_sha256": "fe1f4dcbea051d2d805bd65387e7dc42aae2b93a5f2a169407ca00a04691abb1",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "uncertain",
+            "reason": "공간 추론 에이전트 설계이나 벤치마크 결과 미제시"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "CGR 설계 패턴 제시, 벤치마크 드라이버 있으나 기여 불명확"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "b4107deefc8d0543e5ddb65d6822dfef3461053fa5ae09853eb856bf182e33cf"
     }
   },
   "processed_comments": [],
@@ -68978,8 +69062,8 @@
         "2611.03523",
         "2611.03575"
       ],
-      "calls": 21,
-      "cost_usd": 12.8148
+      "calls": 22,
+      "cost_usd": 13.4745
     }
   },
   "reaudits": [
