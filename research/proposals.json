@@ -39390,6 +39390,163 @@
         "reviewed_sha256": "b7e0569936533b41920dd496f6d147497c3977a8a98ea3b92c65b454ceaf68f0",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2609.40097": {
+      "decision": "propose",
+      "reason": "이 논문은 LLM 에이전트가 학습 데이터를 진단·구성·생성해 모델을 개선하는 능력(데이터 지능)을 평가하는 AutoDataBench를 새로 제안한다. 과제는 함수 호출, 임베딩 검색, 지식 주입의 3개이고, 입력은 모두 영어 텍스트이므로 en 트랙의 text로 분류한다. 기존 인벤토리의 id 'autodatabench'는 이름만 같은 다른 벤치마크(과제 합성 평가)이므로 중복이 아니며, 충돌을 피해 새 id를 쓴다. 라이선스와 lm-eval 지원은 논문에서 확인되지 않아 '확인 불가'로 둔다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "autodatabench-data-intelligence",
+            "이름": "AutoDataBench",
+            "평가 축": "에이전트(데이터 지능: 학습 데이터 진단·구성·생성)",
+            "언어": "en",
+            "정의": "에이전트가 학습 데이터를 이해하고 개선하는 능력(데이터 지능)을 평가하는 통제형 테스트베드. 학습 프레임워크, 도구, 원천 데이터 등 데이터 외 요소를 고정하고 데이터 진단·수리, 데이터 조직, 데이터 구성의 3개 최적화 과제를 반복 실험으로 수행한다. 과제 1은 오염된 함수 호출 데이터(약 4만 건 풀, 최대 16k 선택, ID 평가 2,000건, macro AST 정확도, OOD는 BFCL), 과제 2는 임베딩 검색 데이터(원본 818k 쌍 이상, 라운드당 최대 600k 쌍, ID 5개 평균 nDCG@10, OOD 5개 검색셋), 과제 3은 지식 주입(Novel 1,000문항 ID, Retention OOD, 가능도 기반 객관식 정확도)이다. 7개 LLM을 과제당 3회씩 총 63회 실행해 평가했고, 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "대표 과제": "오염된 함수 호출 데이터 수리, 임베딩 학습 데이터 조직(어려운 부정 예시 마이닝), 지식 주입용 학습 데이터 구성",
+            "대표 예시·설명": "에이전트가 데이터를 점검하고 개입을 구현해 학습 데이터를 제출하면 고정된 학습·평가 파이프라인이 점수를 돌려주고, 이를 바탕으로 다음 개입을 결정하는 과제(과제 설명). 예를 들어 함수 호출 과제에서는 사용자 질의, 도구 스키마, 정답 호출로 이루어진 오염 데이터를 걸러내거나 고친다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 아직 확인하지 않았다. 이름이 같은 다른 벤치마크(id autodatabench, 과제 합성 평가)가 이미 있으므로 혼동에 주의해야 한다. 과제 구성에 XLAM-Function-Calling-60K, RLHN, BEIR/MTEB 검색셋, BFCL, Talkie 모델, Wikipedia/Wikidata 등 외부 자료가 쓰이므로 각 구성 요소의 약관을 따로 확인해야 한다. 평가에는 A800급 GPU 1장, 24시간 제한, 외부 LLM API가 필요하다. 지식 주입 과제는 1931년 이전 영어 텍스트로 사전학습된 Talkie 모델에 한정된다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/AutoDataBench/AutoDataBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (data intelligence: diagnosing, organizing, and constructing training data)",
+            "definition": "A controlled testbed for an agent's ability to understand and improve training data. Non-data factors (training framework, tools, source data) are fixed, and the agent iterates through three optimization tasks: data diagnosis and repair, data organization, and data construction. Task 1 uses a corrupted function-calling pool (about 40k examples, up to 16k selected, 2,000 in-distribution evaluation examples, macro AST accuracy, OOD on BFCL). Task 2 trains an embedding model (over 818k raw pairs, at most 600k pairs per round, mean nDCG@10 over 5 in-distribution sets, 5 OOD retrieval sets). Task 3 is knowledge injection (1,000 Novel items as in-distribution, Retention as OOD, likelihood-based multiple-choice accuracy). Seven LLMs were evaluated with three runs per task (63 runs). The results hold under the paper's conditions and are not a current global leaderboard.",
+            "task": "Repair a corrupted function-calling dataset, organize embedding training data (hard-negative mining), and construct training data for knowledge injection.",
+            "example": "Task description: the agent inspects the data, implements an intervention, submits the training set, and uses the fixed pipeline's evaluation feedback to decide the next intervention. In the function-calling task, for example, it filters or repairs a corrupted pool of user queries, tool schemas, and target calls."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "user query, available"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "data diagnosis, data"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "user query, available"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/AutoDataBench/AutoDataBench"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "260B tokens of"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "AutoDataBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "data diagnosis, data"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "data diagnosis, data"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.40097",
+      "paper_title": "AutoDataBench: A Data-centric Testbed for Accelerating Auto Research",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.40097",
+        "sha256": "05031d9792dee6a472296ddcd1e86dc03f68f1949ea3c611616b01c5b0655267",
+        "accessed": "2026-11-04T04:00:11Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 17,
+          "elapsed_seconds": 121.64,
+          "pdf_sha256": "05031d9792dee6a472296ddcd1e86dc03f68f1949ea3c611616b01c5b0655267",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "4fd7fd0ea90eca7cf22dc061f1b1b2f86addcbd63020d4b94b2edfbff800fa42",
+          "page_json_file": "2609.40097.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/AutoDataBench/AutoDataBench",
+            "fetched_url": "https://api.github.com/repos/AutoDataBench/AutoDataBench/readme",
+            "sha256": "e686389d34fd8ebbaef6a667a8389b23c1baca1d1486bf8ae5bd3182c9c97875",
+            "accessed": "2026-11-04T04:02:42Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-04T04:02:42Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.40097",
+        "paper_title": "AutoDataBench: A Data-centric Testbed for Accelerating Auto Research",
+        "abstract": "Existing auto-research benchmarks often entangle multiple sources of improvement, including training frameworks, hyperparameters, compute budgets, and data, making it difficult to attribute why one frontier agent outperforms another to specific research capabilities. In this work, we isolate and systematically evaluate Data Intelligence: an agent's ability to understand, manipulate, and improve the data that shapes model capabilities. We introduce AutoDataBench, a controlled testbed built on a conceptual framework of data intelligence spanning data diagnosis, data organization, and data construction, instantiated through three highly curated optimization tasks while holding non-data factors fixed. Across tool use, retrieval, and knowledge injection, we evaluate frontier LLMs' ability to improve training data through iterative experimentation under task-specific resource budgets. Beyond optimization performance, we ask: do LLMs understand what their data interventions do? We compare predictions made before training with observed outcomes to seek evidence of data-effect reasoning beyond trial and error, and explore whether iterative feedback helps LLMs better understand how changes to training data affect model performance. Finally, we show that reusing AutoDataBench trajectories for mid-training improves downstream coding performance, highlighting its value in both evaluating data intelligence and generating high-quality training data. Code and resources are available at https://github.com/AutoDataBench/AutoDataBench.",
+        "paper_updated": "2026-10-01T00:00:00Z",
+        "created_at": "2026-10-19T13:47:14Z",
+        "input_sha256": "6d6ba98605824c825fa26799b9ab26bba780c96f84a33dc7658a51ccdbb82547",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "자동 연구 데이터 지능 평가 테스트베드로 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "데이터 지능 평가 테스트베드 AutoDataBench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41761559623",
+        "context_sha256": "7255deac4282c7437c2f5d1ce8839eb2bd3c6117e1e30f629b64a7421ecc8c92"
+      },
+      "proposal_sha256": "084582a88f5a93ca2efe51aba2b6ea11e7fcc8a6f34e8b4ebe9ca1478ba6821c"
     }
   },
   "processed_comments": [],
@@ -69812,8 +69969,8 @@
         "2611.03523",
         "2611.03575"
       ],
-      "calls": 30,
-      "cost_usd": 19.0108
+      "calls": 31,
+      "cost_usd": 19.7056
     }
   },
   "reaudits": [
