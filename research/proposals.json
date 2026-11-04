@@ -67159,6 +67159,114 @@
           "reason": "컨텍스트 압축 규칙 준수 벤치마크 ARCBench 제안"
         }
       ]
+    },
+    "2611.03319": {
+      "arxiv_id": "2611.03319",
+      "paper_title": "TrafficInstruct: A Multi-Task Network Traffic Dataset and Benchmark for Instruction Tuning",
+      "abstract": "Instruction tuning for multi-task network traffic analysis requires data with clearly defined sources, supervision targets, and evaluation conditions. We introduce TrafficInstruct, a newly collected dataset comprising raw packet captures and 55,000 structured supervised fine-tuning records across ten tasks: malware traffic detection, botnet detection, malicious DNS-over-HTTPS detection, Web attack detection, advanced persistent threat detection, encrypted VPN detection, Tor behavior detection, encrypted application/service classification, website fingerprinting, and application classification under concept drift. An automated workflow captures traffic from controlled software executions, attack experiments, and application activities. Labels are supported by task-specific collection evidence, including process or socket attribution, activity records, and execution outcomes. Filtering, sanitization, and task-specific transformations produce instructions, traffic observations, and structured answers. We verify sample sources and partition the dataset by complete collection sessions, keeping all samples from the same session within one partition. The benchmark defines allowed inputs, deterministic label mappings, fixed training/validation/test partitions, and task-wise scoring rules. We evaluate majority-class, random-forest, and ET-BERT baselines, an unadapted 27B language model, and independently trained task-specific LoRA adapters on a shared frozen base. Adapters are selected using validation data and evaluated on the corresponding test sets. Task-specific adaptation improves classification performance, supporting instruction tuning across diverse traffic-analysis tasks.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:21Z",
+      "input_sha256": "10beb743f8704b70805f0e0c2972e4280906fbaf022638118d25b6ce4c44259f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "네트워크 트래픽 지시튜닝 벤치마크이나 LLM 평가 재사용성과 언어 불명확"
+        }
+      ]
+    },
+    "2611.03377": {
+      "arxiv_id": "2611.03377",
+      "paper_title": "Same Outputs, Different Scores: Auditing the Unchecked Graders of Multimodal LLM Benchmarks",
+      "abstract": "Every multimodal-LLM multiple-choice benchmark ends with a scoring rule that converts a model's response, often free-form text rather than a clean option letter, into a right/wrong verdict, buried in its code. Unlike the dataset, this rule is chosen without justification and left unexamined, yet it sets the published number. We reproduce the official scorers of eight peer-reviewed benchmarks on five open vision-language models (VLMs) that fit a single 16 GB GPU, and introduce a blinded human-plus-LLM-judge adjudication (Cohen's kappa=0.956) that recovers what the model actually answered. The scoring rule alone moves accuracy by up to 22 points on identical outputs, yet exactly 0 wherever a model emits clean option letters, so it hides on strong-model leaderboards. It is the fallback and not the rambling that does the damage: the benchmark with the highest non-compliance we measure has an artifact of exactly zero, because its scorer abstains instead of guessing; a reasoning model with non-compliance 0.000 still swings 9.5 points with which regex match of its trace the parser keeps. No standard rule is reliable: snapping a non-answer to its closest option credits answers never given yet buries correct ones, abstention discards answers stated in words, and likelihood scoring follows answer-token priors, so a single grade conflates capability with luck rather than measuring either. We release all code, labels, and the protocol, and argue benchmarks should report a non-compliance rate and at least two rules, not one unexamined grade.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:21Z",
+      "input_sha256": "10beb743f8704b70805f0e0c2972e4280906fbaf022638118d25b6ce4c44259f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "MLLM 벤치마크 채점 감사, 프로토콜·라벨 공개하나 새 벤치마크 여부 불명확"
+        }
+      ]
+    },
+    "2611.03412": {
+      "arxiv_id": "2611.03412",
+      "paper_title": "DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects",
+      "abstract": "LLM agents are judged by what they deliver, and in professional work what gets delivered is a project, not a task. A project pays off only if the whole package holds, and one weak part can limit the value of the rest. Yet existing benchmarks mostly test agents on one task at a time, leaving a gap between the capability we measure and the outcome that makes agents useful. To address this gap, we introduce DeliverBench, which tests whether agents can carry a project from brief to final delivery. Its 11 projects, spanning financial due diligence, legal contract drafting, and drug safety reporting, are reconstructed with 13 domain experts from real materials and chain 150 subtasks through 2-15 rounds of new materials and client feedback. Because no reference outputs are injected, agents inherit their own errors from one task to the next. Expert rubrics then score every checkpoint as well as the final package. Across seven model-harness systems, even the best system scores only 65.0 out of 100 on final delivery and passes 50.0% of subtasks at a 90-point threshold. The failures are often failures of carrying work forward: in one audit project, all seven systems addressed the review findings, but only one preserved traceability. Together, these results suggest that task-level capability does not simply compose into delivery, which also depends on keeping the work coherent as it evolves.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:21Z",
+      "input_sha256": "10beb743f8704b70805f0e0c2972e4280906fbaf022638118d25b6ce4c44259f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "다단계 전문 프로젝트 에이전트 벤치마크 DeliverBench 신규 제안"
+        }
+      ]
+    },
+    "2611.03431": {
+      "arxiv_id": "2611.03431",
+      "paper_title": "IAMRAGBENCH: Benchmarking Authorization Expansions in LLM-Generated AWS IAM Policies under RAG Poisoning",
+      "abstract": "Large language models (LLMs) using retrieval-augmented generation (RAG) can synthesize Amazon Web Services (AWS) Identity and Access Management (IAM) policies from tasks and operational documents. Attacker-controlled context may induce provider-valid policies that exceed trusted authorization requirements. We present IAMRAGBENCH, a 60-case benchmark spanning scope, conditions, explicit denies, trust, permissions boundaries, and role delegation. It combines deterministic authorization-envelope scoring with case-specific validation, including request-level checks where supported. An attack requires a provider-valid clean policy that satisfies the task and a provider-valid treatment policy that violates the envelope, matches a predeclared goal, preserves an intended request, and newly authorizes a forbidden request. Across five endpoints, included-context exposure produces 49 exact authorization deltas, including 46 goal-matched attacks (46/292; 15.75\\%). End-to-end BM25 over 720 documents retrieves the designated poison for all 60 tasks at \\(k=5\\) but produces 7/294 goal-matched attacks (2.38\\%). Presenting the same weakening as a final security architecture exception produces 74/116 attacks in a frozen two-endpoint stress test (63.79\\%) and 115/294 in a post hoc all-five extension using the same frozen prompts (39.12\\%). In a replay of 194 provider-valid treatment policies that violate task requirements, AWS \\texttt{CheckNoNewAccess} reports no new access for four of 168 goal-matched exact attacks. The full pre-deployment rule rejects all 171 exact deltas and routes five unresolved cases to review. These findings support treating IAM copilots as untrusted proposal generators whose outputs require independent authorization checks before deployment.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:21Z",
+      "input_sha256": "10beb743f8704b70805f0e0c2972e4280906fbaf022638118d25b6ce4c44259f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "RAG 오염 하 IAM 정책 생성 벤치마크 신규 제안, 언어 제한 없음"
+        }
+      ]
+    },
+    "2611.03523": {
+      "arxiv_id": "2611.03523",
+      "paper_title": "DistDebug-Bench: Can LLM Agents Diagnose Bugs in Distributed Systems?",
+      "abstract": "LLM agents show strong potential in software engineering tasks such as competitive programming and code synthesis. Existing benchmarks, however, largely focus on small-scale settings such as self-contained Python modules, leaving distributed systems, an essential class of production software, under-examined. We introduce DistDebug-Bench, a benchmark for evaluating agents' ability to diagnose complex-system failures at the code level. It curates 120 high-quality real-world bugs from 11 widely used distributed systems, spanning 5 programming languages and 10 failure patterns. Through an extensive evaluation of state-of-the-art LLMs and agents, we identify substantial gaps between current agents and real-world debugging tasks. A recurring gap is tunnel vision due to a lack of explicit reasoning structure and nondeterminism from inconsistent tool-use scope. The benchmark and evaluator are available at https://github.com/OrderLab/distdebug-bench, with agent traces and a leaderboard at https://distdebug.com.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:21Z",
+      "input_sha256": "10beb743f8704b70805f0e0c2972e4280906fbaf022638118d25b6ce4c44259f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "분산 시스템 버그 진단 에이전트 벤치마크 공개"
+        }
+      ]
+    },
+    "2611.03575": {
+      "arxiv_id": "2611.03575",
+      "paper_title": "VeriHarm-Bench: Measuring Harmful Success in LLM Coding Agents Verifiably",
+      "abstract": "Large language model (LLM) coding agents increasingly operate with shell access, allowing them to write scripts, move files, alter permissions, and modify system configurations. However, an agent may achieve a user's goal while causing unintended harm, such as deleting unrelated files, weakening access controls, or corrupting data, in response to benign inputs without explicit jailbreaking. This failure mode is particularly important because apparent task success may reassure users that an agent behaved correctly, causing harmful side effects to go unnoticed. We call this harmful success: the agent successfully completes the intended benign task while simultaneously causing unintended harm. Despite its importance, harmful success is difficult to measure because conventional task-success metrics overlook harmful behaviors, while existing safety evaluations are often designed solely to assess harmful outcomes. We introduce VeriHarm, an automatic framework for constructing programmatically verifiable benchmarks that directly measure harmful success. VeriHarm minimally perturbs coding tasks to elicit unintended harmful behavior while maintaining the benignity of the task and preserving the original task objective. It then synthesizes executable harm tests that, together with the original task-correctness tests, evaluate both task accuracy and harmful outcomes. Frontier agents, including GPT-5.6-Sol and Claude-Opus-5, achieve an average task accuracy of 95% on our curated VeriHarm-Bench, yet still struggle to complete tasks safely: their safe success rate, the fraction of tasks completed successfully without triggering the designated harm, averages only 37%. These results suggest that successful task completion can frequently coexist with unintended harm, and that task-success metrics alone may substantially understate the potential safety risks of coding agents.",
+      "paper_updated": "2026-11-03T00:00:00Z",
+      "created_at": "2026-11-04T02:43:21Z",
+      "input_sha256": "10beb743f8704b70805f0e0c2972e4280906fbaf022638118d25b6ce4c44259f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코딩 에이전트 유해 성공 측정 벤치마크 VeriHarm-Bench 제안"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -68215,10 +68323,16 @@
         "2611.02940",
         "2611.02978",
         "2611.03094",
-        "2611.03223"
+        "2611.03223",
+        "2611.03319",
+        "2611.03377",
+        "2611.03412",
+        "2611.03431",
+        "2611.03523",
+        "2611.03575"
       ],
-      "calls": 5,
-      "cost_usd": 2.0348
+      "calls": 6,
+      "cost_usd": 2.0626
     }
   },
   "reaudits": [
