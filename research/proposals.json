@@ -40157,6 +40157,171 @@
       },
       "issue_url": null,
       "proposal_sha256": "ca5e05dcb4259a990cba676d33809dccf2e7b301b8270332c10f2d6ffcd8dd81"
+    },
+    "2609.39284": {
+      "decision": "propose",
+      "reason": "EngramBench는 에이전트의 스킬 진화를 평가하는 재사용 가능한 장기 소프트웨어 개발 벤치마크다. 학습 과제 30개와 전이 과제 13개로 구성되고, 코드 저장소를 공식 링크로 밝힌다. 과제 요구사항이 영어로 인용되어 있고 입력이 텍스트이므로 en 트랙 text 모달리티로 제안한다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "engrambench",
+            "이름": "EngramBench",
+            "평가 축": "에이전트(스킬 진화·장기 소프트웨어 개발의 교차 도메인 역량 전이)",
+            "언어": "en",
+            "정의": "에이전트의 스킬 진화를 평가하는 벤치마크. 6개 비즈니스 도메인의 학습 과제 30개와, 학습 과제와 비즈니스 로직·API를 공유하지 않는 전이 과제 13개로 구성된다. 전이 과제는 LLM이 흉내 낸 사용자와 25~30턴 안팎으로 상호작용하는 장기 개발 프로젝트이며, 학습 단계에서 만든 스킬 뱅크를 고정한 뒤 평가한다. 학습 단계 기록은 상호작용 583턴이다. 숨겨진 평가 케이스 통과 비율(CCPF, micro-average)을 주 지표로 쓰고 토큰과 개발 시간도 함께 보고한다. 논문의 모델 비교(GPT-5.5 Medium, 4개 전이 과제, 4개 스킬 구성, 총 48회 실행)는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "대표 과제": "요구사항 README와 API 스캐폴드가 주어지면 고정된 스킬 뱅크를 활용해 TypeScript/Node.js/PostgreSQL 기반 비즈니스 시스템을 구현하고, 숨겨진 평가기가 채점",
+            "대표 예시·설명": "전이 과제 예시(DockChain): Berth, Tug, Yard 자원을 하나의 묶음으로 할당하고 연결된 두 이동을 용량 초과 없이 원자적으로 커밋하는 시스템을 구현한다. 숨겨진 평가기는 동시성, 크래시 복구 등을 검사한다(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스는 PDF에서 확인하지 못했다. 코드 저장소 링크만 제시되어 있고 라이선스는 명시되지 않았으므로 이용 전에 저장소를 확인해야 한다. 논문은 학습 과제 30개 전체와 전이 과제 13개를 소개하지만, 모델 비교 실험은 전이 과제 4개에서 3회씩 48회 실행한 결과뿐이다. 실행에는 Docker 샌드박스, 사용자 시뮬레이터 LLM(논문은 DeepSeek V4 Pro 사용), 스킬 증류용 LLM이 필요하며, 한 번 실행에 수 시간과 수천만 토큰이 든다. 평가는 스킬 뱅크를 고정한 상태에서만 수행하며 동적 메모리 검색은 다루지 않는다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Virgil-Tan/EngramBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (skill evolution; cross-domain capability transfer in long-horizon software development)",
+            "definition": "A benchmark for evaluating skill evolution in agents. It has 30 learning tasks across 6 business domains and 13 transfer tasks that share no business logic or APIs with the learning tasks. Transfer tasks are long-horizon development projects of roughly 25 to 30 turns with an LLM-simulated user, evaluated after the skill bank produced in the learning phase is frozen. The learning phase archives 583 interactive turns. The primary metric is the micro-averaged fraction of hidden evaluation cases passed (CCPF), with token usage and development time also reported. The paper's model comparison (GPT-5.5 Medium, 4 transfer tasks, 4 skill configurations, 48 runs in total) reflects the paper's conditions and is not a current global leaderboard.",
+            "task": "Given a requirements README and an API scaffold, use a frozen skill bank to implement a TypeScript/Node.js/PostgreSQL business system, graded by hidden evaluators.",
+            "example": "Transfer task example (DockChain): implement a system that allocates Berth, Tug, and Yard resources as a complete bundle and commits two linked movements atomically without exceeding capacity. Hidden evaluators check concurrency, crash recovery, and related behavior (task description)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 15,
+              "quote": "Allocate Berth, Tug,"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "30 diverse learning"
+            },
+            "대표 예시·설명": {
+              "page": 15,
+              "quote": "Allocate Berth, Tug,"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/Virgil-Tan/EngramBench"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "Allocate Berth, Tug,"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "EngramBench: A Capability-Grounded"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "30 diverse learning"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "30 diverse learning"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.39284",
+      "paper_title": "EngramBench: A Capability-Grounded Benchmark for Skill-Evolution Harnesses",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.39284",
+        "sha256": "b16cfbc1099d35b900bbed2e06f5126f0e7c875ff7e79f06b49fb6df3686ce46",
+        "accessed": "2026-11-05T03:01:54Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 19,
+          "elapsed_seconds": 71.44,
+          "pdf_sha256": "b16cfbc1099d35b900bbed2e06f5126f0e7c875ff7e79f06b49fb6df3686ce46",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 3,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "710af844590fc51c665cf2330f5d5bf37931eaea0ddb9d2f8d8f760ff89e429a",
+          "page_json_file": "2609.39284.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Virgil-Tan/EngramBench",
+            "fetched_url": "https://api.github.com/repos/Virgil-Tan/EngramBench/readme",
+            "sha256": "62394f2e951dc77300914fc63f667c1d03b04dd3253c7fa250058749cefef2c7",
+            "accessed": "2026-11-05T03:03:35Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/Virgil-Tan/EngramBench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "ed308794771ec4b69d450960eebbb1c0ec1e65b47e7850c56c6f1015e905e0c8"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-05T03:03:35Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.39284",
+        "paper_title": "EngramBench: A Capability-Grounded Benchmark for Skill-Evolution Harnesses",
+        "abstract": "While large language models have achieved remarkable success in isolated code generation, authentic software engineering requires sustained reasoning, complex state management, and continuous cross-domain abstraction. However, current evaluations of skill evolution in autonomous agents suffer from a critical identifiability problem: they structurally confound genuine capability abstraction with rote solution leakage (i.e., copying highly similar code from historical training data). To resolve this, we introduce EngramBench, a rigorous, capability-grounded benchmark governed by the strict axiom of capability overlap without solution overlap. Comprising 30 diverse learning tasks and 13 unseen transfer tasks, EngramBench challenges agents to navigate interactive, multi-hour development cycles driven by LLM-simulated users. Our extensive evaluation across 48 multi-hour execution trajectories -- corroborated by human-expert validation -- reveals a profound insight into procedural memory. We demonstrate that static skill banks do not magically bypass the \"last mile\" of exact code implementation, which remains bottlenecked by the base model's inherent reasoning limits. However, they serve as an indispensable execution compass. By navigating agents away from catastrophic, token-heavy trial-and-error, genuine capability abstraction slashes redundant context bloat and reduces overall coding time by over 55%. Ultimately, EngramBench shifts the evaluation paradigm from trivial pattern matching to the verifiable measurement of deep, cross-domain capability transfer.",
+        "paper_updated": "2026-10-01T00:00:00Z",
+        "created_at": "2026-10-19T13:47:26Z",
+        "input_sha256": "58dae0b74852911a2443f28a841478925e1fdd128a023fabaf21abef8d5dc07a",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 스킬 진화 평가 벤치마크로 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+            "error": "parse: Screening IDs must match the request exactly"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41956006512",
+        "context_sha256": "af7a3933df3057f8c108b23e290beee01fc8aa27f4ad117e0c9a6960af609eda"
+      },
+      "proposal_sha256": "3e8796c76c6c68fe6e61a10627aad453ac69c52c348778e676a6e67a3205bd82"
     }
   },
   "processed_comments": [],
@@ -70985,8 +71150,8 @@
         "2611.05280",
         "2611.05340"
       ],
-      "calls": 9,
-      "cost_usd": 5.9651
+      "calls": 10,
+      "cost_usd": 6.6345
     }
   },
   "reaudits": [
