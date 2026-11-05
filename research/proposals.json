@@ -42334,6 +42334,101 @@
         "reviewed_sha256": "86c85e655d6edd79e015a298c1336527e923fd06004555eed4784a00db313e27",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2510.04302": {
+      "decision": "exclude",
+      "reason": "이 논문은 새로운 평가 지표인 DCS(Distributional Correctness Score)를 제안하는 논문이다. 실험에 쓴 12개 벤치마크(ARC, MMLU, GPQA 등)는 모두 기존 영어 벤치마크이며, 새 데이터셋이나 재사용 가능한 벤치마크를 만들지 않았다. 코드는 기존 eval-framework에 구현했고, 논문 스스로 새 자산이 없다고 밝힌다. 기존 벤치마크에 점수 방식만 바꿔 적용한 것이라 기존 행의 실질적 변경으로 보기도 어렵다. 따라서 인벤토리에 추가하거나 갱신할 항목이 없다.",
+      "changes": [],
+      "arxiv_id": "2510.04302",
+      "paper_title": "When Guessing is Rewarded: Rethinking Language Model Evaluation with Distributional Uncertainty Scoring",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2510.04302",
+        "sha256": "6b96d725d6c1ce284f19ad0cc536c185085ac6ee3248de0a7f0942a8cee625dc",
+        "accessed": "2026-11-05T03:37:43Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 32,
+          "elapsed_seconds": 93.89,
+          "pdf_sha256": "6b96d725d6c1ce284f19ad0cc536c185085ac6ee3248de0a7f0942a8cee625dc",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "2d3d1cf0bbb6a1f7fbda23b613c5e8fc8f5b8de0493eec8441a47152f8783229",
+          "page_json_file": "2510.04302.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-05T03:39:26Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2510.04302",
+        "paper_title": "When Guessing is Rewarded: Rethinking Language Model Evaluation with Distributional Uncertainty Scoring",
+        "abstract": "Standard language model evaluation assigns scores to single predicted answers, rewarding high-confidence responses regardless of how residual probability mass is distributed over alternative options. This creates a systematic pressure toward overconfident guessing: under accuracy-based schemes, a model maximises its expected score by always committing to an answer rather than abstaining, even when its uncertainty is high. While penalty-based approaches partially address this by raising the confidence threshold for strategic guessing, they still treat all sub-threshold responses identically, ignoring a fundamental distinction in how models can express uncertainty - for example between hedging toward incorrect answers versus hedging toward \"I don't know\" responses. This paper introduces a novel evaluation metric to solve this problem of not considering a model's entire probability distribution over answer choices. The metric naturally distinguishes between harmful overconfidence in wrong answers and uncertainty expressed through abstention, providing scores in an interpretable default range. Through theoretical analysis and illustrative examples, the metric is shown to offer a more nuanced and aligned evaluation paradigm that incentivises models to express genuine uncertainty rather than guessing. Adapting 12 existing evaluation benchmarks to the metric's variants and measuring performance on six language models shows that for half of the tested benchmarks scores are negative across all tested models, indicating significant tendencies towards hallucination.",
+        "paper_updated": "2026-10-02T00:00:00Z",
+        "created_at": "2026-10-19T13:47:38Z",
+        "input_sha256": "7791b14022b72e7d3f8b48c118da2228934bc4855aeea9815b7a64566c778e65",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 평가 지표 재고로 평가 방법론에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "분포 불확실성 평가 지표 신규 제안, 기존 벤치마크 재구성"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "73c9ce56828a664c734bb154b717757b1c5185fa86689c103fdd4f450bee7d05"
     }
   },
   "processed_comments": [],
@@ -73180,8 +73275,8 @@
         "2611.05280",
         "2611.05340"
       ],
-      "calls": 29,
-      "cost_usd": 20.4259
+      "calls": 30,
+      "cost_usd": 21.1252
     }
   },
   "reaudits": [
