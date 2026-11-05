@@ -41987,6 +41987,156 @@
       },
       "issue_url": null,
       "proposal_sha256": "2920dd724c858216716eff26f86e73d1ffbe4c396dc6ba13fc23fe1da3f96da5"
+    },
+    "2506.05766": {
+      "decision": "propose",
+      "reason": "BioMol-MQA는 다중 모달(지식그래프, 텍스트, SMILES) 폴리파마시 질의응답 벤치마크로, 공식 코드와 데이터셋 링크가 논문에 명시되어 있다. 질문과 배경 텍스트가 영어이므로 en 트랙에 추가한다. 모달리티는 이미지가 아니라 텍스트(SMILES 문자열 포함)다. 논문은 질문 1683개(학습 1346, 검증 169, 테스트 168)와 지표(Lexical EM, Lexical F1, BERTScore F1; 검색은 Hits@k, Recall@5, MRR)를 보고한다. 라이선스 등 미확인 항목은 '확인 불가'로 둔다.",
+      "changes": [
+        {
+          "track": "en",
+          "modality": "text",
+          "row": {
+            "id": "biomol-mqa",
+            "이름": "BioMol-MQA",
+            "평가 축": "도메인(생의학 멀티모달 RAG·추론)",
+            "언어": "en",
+            "정의": "폴리파마시(약물 병용)를 다루는 멀티모달 QA 데이터셋. 약물·단백질 지식그래프, 개체별 배경 텍스트, 약물의 SMILES 분자구조 문자열 세 가지 정보원을 결합해야 풀리는 질문으로 구성된다. 질문은 객관식이 아니며 정답은 그래프의 노드다. 질문은 1,683개로 학습 1,346, 검증 169, 테스트 168으로 나뉘며, 1-hop과 2·3-hop 질문을 포함한다. 지표는 Lexical EM, Lexical F1, BERTScore F1이고 검색 평가는 Hits@k, Recall@5, MRR을 쓴다. 논문은 7개 LLM을 RAG 없음(zero-shot)과 정답 문맥 제공(upper bound) 조건에서 비교했다.",
+            "대표 과제": "그래프, 텍스트, SMILES 중 최소 두 모달리티를 결합해 답이 되는 약물 또는 단백질 노드를 찾는 질의응답",
+            "대표 예시·설명": "두 NSAID 약물의 배경 설명과 둘 사이의 상호작용(위 염증) 관계가 주어지고, 개체 이름을 직접 언급하지 않은 질문으로 해당 약물을 답하게 하는 과제 설명(논문 그림 1 유형)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부는 확인하지 않았다. 논문은 이 데이터셋이 LLM 연구용이며 임상 진단에 쓰면 안 된다고 밝힌다. 지식그래프는 기존 폴리파마시 그래프를 기반으로 하고, 배경 텍스트는 위키백과 요약을 GPT-4o로 재작성했으며, 질문은 GPT-4.1로 생성했다. 따라서 각 구성 요소의 약관은 이용 전에 따로 확인해야 한다. 분자 상호작용 정보는 GPT-4o가 생성한 것이다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/BioMolMQA/BioMolMQA"
+          },
+          "english_copy": {
+            "axis": "Domain (biomedical multimodal RAG and reasoning)",
+            "definition": "A multimodal QA dataset on polypharmacy. Questions require combining three information sources: a drug and protein knowledge graph, background text for each entity, and drug molecular structures as SMILES strings. Questions are not multiple choice, and the answer is a node in the graph. It has 1,683 questions split into 1,346 training, 169 validation, and 168 test, including 1-hop and 2- and 3-hop questions. Metrics are Lexical EM, Lexical F1, and BERTScore F1, with Hits@k, Recall@5, and MRR for retrieval. The paper compares seven LLMs without RAG (zero-shot) and with gold context (upper bound).",
+            "task": "Question answering that combines at least two of graph, text, and SMILES to find the drug or protein node that answers the question",
+            "example": "Task description (the Figure 1 type): given background on two NSAID drugs and their gastric-inflammation interaction, a question that does not name the entities asks which drug is the answer."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "molecular structure data"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "at least two"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "Which medication, used"
+            },
+            "링크": {
+              "page": 9,
+              "quote": "huggingface.co/datasets/BioMolMQA/ BioMolMQA"
+            },
+            "언어": {
+              "page": 1,
+              "quote": "Which medication, used"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "BioMol-MQA"
+            },
+            "정의": {
+              "page": 5,
+              "quote": "1346, 169, and"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "multi-modal knowledge graph"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2506.05766",
+      "paper_title": "BioMol-MQA: A Multi-Modal Question Answering Dataset For LLM Reasoning Over Bio-Molecular Interactions",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2506.05766",
+        "sha256": "e55c4187130978a76f7adf497bc9d280ba3a195822f5fc1f57801111d33d3b21",
+        "accessed": "2026-11-05T03:35:08Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 10,
+          "elapsed_seconds": 48.2,
+          "pdf_sha256": "e55c4187130978a76f7adf497bc9d280ba3a195822f5fc1f57801111d33d3b21",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "ff980e7e21564cd142bc9420c9679276e451d030614f4df655facee849bb2711",
+          "page_json_file": "2506.05766.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/BioMolMQA/BioMolMQA",
+            "fetched_url": "https://huggingface.co/datasets/BioMolMQA/BioMolMQA/raw/main/README.md",
+            "sha256": "b2ea2c3c72a52a1b22faa64b2cf2c7c4050f41eb563a3b9226aeb6d52839b7f0",
+            "accessed": "2026-11-05T03:36:13Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-05T03:36:13Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2506.05766",
+        "paper_title": "BioMol-MQA: A Multi-Modal Question Answering Dataset For LLM Reasoning Over Bio-Molecular Interactions",
+        "abstract": "Retrieval augmented generation (RAG) has shown great power in improving Large Language Models (LLMs). However, most existing RAG-based LLMs are dedicated to retrieving single modality information, mainly text; while for many real-world problems, such as healthcare, information relevant to queries can manifest in various modalities such as knowledge graph, text (clinical notes), and complex molecular structure. Thus, being able to retrieve relevant multi-modality domain-specific information, and reason and synthesize diverse knowledge to generate an accurate response is important. To address the gap, we present BioMol-MQA, a new question-answering (QA) dataset on polypharmacy, which is composed of two parts (i) a multimodal knowledge graph (KG) with text and molecular structure for information retrieval; and (ii) challenging questions that designed to test LLM capabilities in retrieving and reasoning over multimodal KG to answer questions. Our benchmarks indicate that existing LLMs struggle to answer these questions and do well only when given the necessary background data, signaling the necessity for strong RAG frameworks.",
+        "paper_updated": "2026-10-05T00:00:00Z",
+        "created_at": "2026-10-19T13:47:38Z",
+        "input_sha256": "2965a15568ab9e559201ad81e4a35fd0ab267b8f141ff609e44f34639afcd42a",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "생분자 상호작용 LLM 추론용 멀티모달 QA 데이터셋"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "생체분자 다중모달 QA 데이터셋·벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41956006512",
+        "context_sha256": "b4512ac95368eb1c191d14d9b71950e9780e5aa33338da13cb55358465dc66c5"
+      },
+      "proposal_sha256": "b305563d09f53a33b56583cd3e73506ffe5f3736485fca986e0149adba2fcfd7"
     }
   },
   "processed_comments": [],
@@ -72832,8 +72982,8 @@
         "2611.05280",
         "2611.05340"
       ],
-      "calls": 26,
-      "cost_usd": 18.2837
+      "calls": 27,
+      "cost_usd": 18.9621
     }
   },
   "reaudits": [
