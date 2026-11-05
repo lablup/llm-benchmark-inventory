@@ -40435,6 +40435,172 @@
         "reviewed_sha256": "e6624aa8c54ca23c327de822c2350f567eb5c1e4ae5d5abbbfb742d07f28e41c",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2609.39437": {
+      "decision": "propose",
+      "reason": "이 논문은 공간 브리프(spatial brief)를 주고 모델의 주장을 출처와 정확성 기준으로 라벨링하며, 브리프와 모순되는 거짓 전제(trap)에 대한 저항을 재는 충실도 벤치마크를 제안한다. 과제 프롬프트와 질문이 영어이므로 en 트랙, 입력이 텍스트뿐이므로 text로 분류했다. 구현, 브리프, 모델 출력, 클레임 단위 라벨은 논문이 명시한 GitHub 저장소로 공개된다. 벤치마크에 별도 고유 이름이 없어 논문 제목의 표현을 이름으로 썼다. 라이선스와 하니스 지원 항목은 확인하지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "nscr-faithfulness",
+            "이름": "NSCR-LLM Faithfulness Benchmark",
+            "평가 축": "충실도(공간 브리프 기반 지리 추론, 거짓 전제 저항)",
+            "언어": "en",
+            "정의": "보행 가능한 도로망 접근권역(catchment)에서 계산한 공간 브리프를 모델에 주고, 답변을 원자적 주장으로 분해해 출처(브리프 근거 vs 학습 지식)와 정확성으로 4범주(brief-true, brief-false, recall, hallucination)에 라벨링하는 벤치마크. 사례마다 브리프가 반박하는 거짓 전제(trap)를 심어 저항을 0~10점(사례당)으로 채점한다. 3개 도시 사례(시카고, 파리, 하노이), 사례당 질문 3개, 오픈 가중치 모델 16개 구성, 10개 시드로 1,440개 응답을 만들었고 2건을 제외해 1,434건을 분석했다. 라벨은 LLM 판정이 붙이며 시드 1에서 사람 주석과 비교해 교정했다(Cohen's kappa 0.685).",
+            "대표 과제": "브리프를 근거로 한 3턴 대화(정보 검색, 추론, 브리프와 모순되는 거짓 전제가 담긴 trap 질문)에서 주장별 출처·정확성 라벨과 trap 저항 점수 산출",
+            "대표 예시·설명": "영어 페르소나 프롬프트가 모델에게 공간 브리프를 최우선 근거로 삼으라고 지시한 뒤 위치에 대해 질문하고, 마지막 질문에 브리프와 모순되는 사용자 주장을 심어 모델이 이를 반박하는지 따르는지 확인하는 과제 설명(실제 문항을 옮긴 것이 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않아 '확인 불가'로 기록했다. 이 벤치마크는 OpenStreetMap과 GHS-POP R2023A에서 만든 브리프를 동결해 사용하며(원천 데이터는 재배포하지 않음), 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 3개 도시 사례에 사례당 심은 전제가 하나뿐이라 일반화에 한계가 있고, 라벨은 LLM 판정이 붙이므로 trap 관련 라벨의 불확실성이 크다. 결과는 4비트 양자화와 모델별 단일 샘플링 설정 조건에서 얻은 것이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/perezjoan/NSCR-LLM"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Faithfulness (grounded geographic reasoning from a spatial brief; resistance to a planted false premise)",
+            "definition": "A benchmark in which a model receives a spatial brief computed over a pedestrian street-network catchment. Each answer is decomposed into atomic claims and labelled by source (grounded in the brief vs. drawn from training knowledge) and correctness, giving four categories: brief-true, brief-false, recall and hallucination. Each case also plants a false premise that the brief refutes, and trap resistance is scored 0-10 per case. It covers three city cases (Chicago, Paris, Hanoi), three questions per case, sixteen open-weight model configurations and ten seeds, producing 1,440 responses (1,434 analysed after excluding two). Labels come from an LLM judge calibrated against a human annotator on seed 1 (Cohen's kappa 0.685).",
+            "task": "A three-turn conversation grounded in the brief (retrieval, reasoning, then a trap question containing a premise that contradicts the brief), producing per-claim source and correctness labels and a trap-resistance score.",
+            "example": "Task description, not an actual test item: an English persona prompt tells the model to treat the spatial brief as its source of truth and asks questions about a location. The final question embeds a user claim that contradicts the brief, and the benchmark checks whether the model rejects or adopts it."
+          },
+          "evidence": {
+            "modality": {
+              "page": 9,
+              "quote": "Prioritise the spatial"
+            },
+            "대표 과제": {
+              "page": 9,
+              "quote": "Prioritise the spatial"
+            },
+            "대표 예시·설명": {
+              "page": 9,
+              "quote": "Prioritise the spatial"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/perezjoan/NSCR-LLM"
+            },
+            "언어": {
+              "page": 9,
+              "quote": "Prioritise the spatial"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Faithfulness Benchmark for"
+            },
+            "정의": {
+              "page": 7,
+              "quote": "decompose every answer"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Faithfulness Benchmark for"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.39437",
+      "paper_title": "Network-based Spatial Context Retrieval for Open-weight LLMs: A Faithfulness Benchmark for Grounded Geographic Reasoning",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.39437",
+        "sha256": "2f4854d823ed90f6f904d8d4d29180bf35998a99af4deb4339f8bbe373afb642",
+        "accessed": "2026-11-05T03:07:46Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 20,
+          "elapsed_seconds": 79.61,
+          "pdf_sha256": "2f4854d823ed90f6f904d8d4d29180bf35998a99af4deb4339f8bbe373afb642",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "fed4fbe37dba74175bc924ebc8f90a5e55b6dfa7d42bf18328ca5116d7ecd0f8",
+          "page_json_file": "2609.39437.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/perezjoan/NSCR-LLM",
+            "fetched_url": "https://api.github.com/repos/perezjoan/NSCR-LLM/readme",
+            "sha256": "cffe73c5c10752b3b0355d74e52ff3de7caab0a537fdf1fcfd7f435489f29c36",
+            "accessed": "2026-11-05T03:09:36Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/perezjoan/NSCR-LLM/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-05T03:09:36Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.39437",
+        "paper_title": "Network-based Spatial Context Retrieval for Open-weight LLMs: A Faithfulness Benchmark for Grounded Geographic Reasoning",
+        "abstract": "Large language models (LLMs) encode substantial latent geographic knowledge, yet they reason poorly over space and are unreliable when queried from coordinates alone. Useful behaviour emerges only when structured spatial context is supplied in the prompt. This raises a question geographic evaluation has left unexamined: once the right context is supplied, does the model reason from it, or override it with its own parametric recall? We take up this question with an open pipeline for network-based spatial context retriev-al. In it, the surroundings of a selected point are defined by the pedestrian street network, the area actually reachable on foot. Using only open data and open-weight models, the pipeline retrieves features from OpenStreetMap and the GHS-POP population grid, computes indicators over the network catchment in code, and injects them as a compact spatial brief. On this basis we build a faithfulness benchmark. It labels every claim a model makes by its source (grounded in the brief, or drawn from training knowledge) and its correctness, and it probes each case with a planted false premise that the brief refutes. We evaluate sixteen open-weight model configurations across three families (Qwen, Gemma and Llama, with Gemma in two generations), four size classes and, where available, both thinking and non-thinking modes, on three con-trasting cities, resampling every case over ten seeds. The results show that resistance to the planted premise varies more strongly by model family and generation than by scale, while brief-reading competence forms a partly separate dimension. These behaviours are not captured by conventional world-correctness scores or single-shot evaluation. We release the implementation, spatial briefs, model outputs, and claim-level labels as a reproducible workflow at github.com/perezjoan/NSCR-LLM.",
+        "paper_updated": "2026-10-01T00:00:00Z",
+        "created_at": "2026-10-19T13:47:26Z",
+        "input_sha256": "e0bf9b1a9b121a5659cb355e9bf7ba4b64c8368cacf4d3ff41a27d3f4be671e6",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 지리적 공간 추론 충실성 벤치마크로 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "초록 판정 응답 형식 오류로 본문 확인 필요",
+            "error": "parse: Screening IDs must match the request exactly"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41956006512",
+        "context_sha256": "5e16ecaf437cd96dda83a18fc7efbb7fa665477333573f53cb758b90ba559157"
+      },
+      "proposal_sha256": "1654c90a1b816835978cfe90db26c6f66577f90c0f9049ad5e0ae81eed24e0e2"
     }
   },
   "processed_comments": [],
@@ -71265,8 +71431,8 @@
         "2611.05280",
         "2611.05340"
       ],
-      "calls": 12,
-      "cost_usd": 8.0506
+      "calls": 13,
+      "cost_usd": 8.811
     }
   },
   "reaudits": [
