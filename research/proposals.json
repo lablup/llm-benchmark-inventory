@@ -42814,6 +42814,187 @@
       },
       "issue_url": null,
       "proposal_sha256": "9130cd88dfa289f672266913c216c56cb160539eb44a4baef84f81cf37a54831"
+    },
+    "2609.30030": {
+      "decision": "propose",
+      "reason": "이 논문은 합성 응답자(synthetic respondents)가 인간 응답을 얼마나 충실히 재현하는지 보는 재사용 가능한 벤치마크 Artificial Societies Benchmark를 제안한다. 내부·구성·외부 타당도에 걸친 11개 테스트와 20개 인간 데이터 소스로 이루어지고, 9개 모델을 비교한다. 과제는 설문 문항 응답이라 텍스트 전용이며, 인용한 영어 문항(\"Tell the truth\")을 근거로 en 트랙에 둔다. 공식 코드 저장소는 PDF 36쪽에 명시되어 있다. 라이선스와 lm-eval 지원은 확인하지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "artificial-societies-benchmark",
+            "이름": "Artificial Societies Benchmark",
+            "평가 축": "합성 설문·인구 타당도(내적·구성·외적 타당도 11개 테스트)",
+            "언어": "en",
+            "정의": "합성 응답자(synthetic population)가 연구 목적의 분석을 뒷받침하는지 점검하는 검증 프레임워크. 내적 타당도(IV-1~4), 구성 타당도(CV-1~3), 외적 타당도(EV-1~4)에 걸친 11개 테스트와 20개 인간 데이터 소스(전국 설문, 패널, 성격 검사, 실험)로 구성된다. 대부분의 과제는 최대 512명을 사용하며 소스별 예외가 있다. 논문은 9개 모델과 통계적 통제 집단(독립 주변분포, 가우시안 순위 코퓰라)을 비교하고, 응답자 정보 조건(인구통계, 이전 응답 이력, 서술형 자기소개 등)도 달리한다. 지표는 반복 일치도·Cohen's kappa, 총변동거리, 구간 정규화 Wasserstein 거리, 처치 효과 오차, 신뢰도(alpha·omega), 요인 적재량 등이며, 단일 통합 점수나 합격 기준 없이 테스트별 스코어카드로 보고한다.",
+            "대표 과제": "11개 테스트(IV-1 반복 질문, EV-1 응답 분포, EV-3 실험 효과 등)를 인간 기준 응답과 비교하는 스코어카드",
+            "대표 예시·설명": "인간 응답자가 답한 설문 문항(예: 성격 검사 문항 \"Tell the truth\")을 모델에 주고, 반복 응답 일치도, 응답 분포, 집단·개인 예측, 실험 처치 효과가 인간 기준과 얼마나 다른지 비교하는 과제(실제 시험 문항이 아닌 과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "벤치마크 자체의 데이터 라이선스는 확인하지 못했다. PDF는 벤치마크 코드, 과제 명세, 프롬프트 템플릿, 모델 설정, 결과를 공개 저장소로 제공한다고 밝힌다(36쪽). 원본 인간 데이터는 각 제공처에서 접근 조건에 따라 받아야 하며, 소스마다 이용 조건이 다르다. 저장소의 코드 라이선스를 데이터 라이선스로 간주하면 안 된다. 일부 소스(예: FSD3587)는 핀란드어 원문을 사용하므로(논문 부록 C.6), 영어 중심이라도 소스별 과제 언어를 확인해야 한다. 결과는 논문이 평가한 모델·설정·데이터에 한정되며 현재 전역 리더보드가 아니다. 인간 데이터가 공개되어 있어 모델의 학습 오염 여부를 확인할 수 없다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/artificial-societies/artificial-societies-benchmark"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Synthetic survey and population validity (11 tests across internal, construct, and external validity)",
+            "definition": "A validation framework for checking whether synthetic populations support a researcher's intended analysis. It has 11 tests across internal validity (IV-1 to IV-4), construct validity (CV-1 to CV-3), and external validity (EV-1 to EV-4), drawing on 20 human sources (national surveys, panels, personality inventories, experiments). Most tasks use up to 512 people, with source-specific exceptions. The paper compares nine models plus statistical controls (independent-marginal and Gaussian rank-copula) and varies the information supplied about respondents (demographics, survey history, written self-descriptions). Metrics include repeat agreement and Cohen's kappa, total variation distance, range-normalised Wasserstein distance, treatment-effect error, reliability (alpha, omega), and factor loadings. Results are reported as a per-test scorecard with no single aggregate score or pass threshold.",
+            "task": "Compare model answers with human reference responses on 11 tests (IV-1 repeated questions, EV-1 response distributions, EV-3 experimental effects, etc.) and report a scorecard.",
+            "example": "Task description (not an actual test item): give the model survey items that human respondents answered, such as the personality item \"Tell the truth\", and compare repeat agreement, response distributions, group and individual predictions, and experimental treatment effects against the human reference."
+          },
+          "evidence": {
+            "modality": {
+              "page": 7,
+              "quote": "Models receive the"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "eleven tests across"
+            },
+            "대표 예시·설명": {
+              "page": 13,
+              "quote": "Tell the truth"
+            },
+            "링크": {
+              "page": 36,
+              "quote": "artificial-societies-benchmark"
+            },
+            "언어": {
+              "page": 13,
+              "quote": "Tell the truth"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce the"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "eleven tests across"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "eleven tests across"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.30030",
+      "paper_title": "Artificial Societies Benchmark: A Validation Framework for Synthetic Research",
+      "paper_updated": "2026-10-02T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.30030",
+        "sha256": "ddab183d8c7cd873000df7fb02317ca12251496669b0d2ee0604cc1915b22fdf",
+        "accessed": "2026-11-05T03:53:06Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 36,
+          "elapsed_seconds": 113.16,
+          "pdf_sha256": "ddab183d8c7cd873000df7fb02317ca12251496669b0d2ee0604cc1915b22fdf",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "1287389ee9963a56ce1255218bc3254344a1e1408d5adcb4e6ef7d725356e5a8",
+          "page_json_file": "2609.30030.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/artificial-societies/artificial-societies-benchmark",
+            "fetched_url": "https://api.github.com/repos/artificial-societies/artificial-societies-benchmark/readme",
+            "sha256": "0f0a38e43a20cfc7b8c301af23e1367ddfed8ab01993aa858fb4ce495a94bfdb",
+            "accessed": "2026-11-05T03:55:28Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/artificial-societies/artificial-societies-benchmark/license",
+              "name": "LICENSE",
+              "spdx_id": "NOASSERTION",
+              "sha256": "0e4517ca00d121f3944cb140b3f544138b5ba11a7c5e076878a7e5291a50e001"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-05T03:55:28Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.30030",
+        "paper_title": "Artificial Societies Benchmark: A Validation Framework for Synthetic Research",
+        "abstract": "A synthetic survey can reproduce the average answer while misrepresenting how people differ, how their answers relate to one another, or how they respond to changes in conditions. We introduce the Artificial Societies Benchmark to help researchers assess whether synthetic populations support their intended analyses. The framework combines eleven tests across internal, construct, and external validity, drawing on twenty human sources and comparing nine language models. It connects each research use to the evidence it requires and tests how results change with the information we supply about respondents. Importantly, strong performance in one domain does not establish fidelity in the others. Models often answer too consistently, compress response scales, and alter relationships between traits whilst richer profiles improve prediction for some models and worsen it for others. The resulting scorecard helps researchers identify which aspects of a synthetic population can support their analysis and where researchers need further human evidence.",
+        "paper_updated": "2026-10-02T00:00:00Z",
+        "created_at": "2026-10-19T13:47:38Z",
+        "input_sha256": "55141dd48ad50bcee6814d2b2646e8fc8cea589e3af39e6084eb601fd31818f2",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "합성 인구 타당성 평가 프레임워크로 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "합성 조사 검증 벤치마크 프레임워크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "41956006512",
+        "context_sha256": "00fbb2a30384a0b277abd3c18fd16b517ab2a7b888871d442e4132a0149d79a8"
+      },
+      "proposal_sha256": "e628ac75b616d7f3047879991a850400e9e37246a6c53dde4786c287617a55b7"
     }
   },
   "processed_comments": [],
@@ -73672,8 +73853,8 @@
         "2611.05280",
         "2611.05340"
       ],
-      "calls": 33,
-      "cost_usd": 23.334
+      "calls": 34,
+      "cost_usd": 24.058
     }
   },
   "reaudits": [
