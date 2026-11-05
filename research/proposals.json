@@ -42816,8 +42816,8 @@
       "proposal_sha256": "9130cd88dfa289f672266913c216c56cb160539eb44a4baef84f81cf37a54831"
     },
     "2609.30030": {
-      "decision": "propose",
-      "reason": "이 논문은 합성 응답자가 인간 응답을 얼마나 충실히 재현하는지 보는 재사용 가능한 벤치마크 Artificial Societies Benchmark를 제안한다. 내부·구성·외부 타당도에 걸친 11개 테스트와 20개 인간 데이터 소스로 이루어지고, 9개 모델을 비교한다. 과제는 설문 문항 응답이라 텍스트 전용이며, 인용한 영어 문항(\"Tell the truth\")을 근거로 en 트랙에 둔다. 공식 저장소 카드는 코드 MIT, 결과·그림 CC BY 4.0을 명시하고 과제 명세의 문항 문구와 채점 키는 원천 라이선스를 유지한다고 적는다. 공식 카드에 lm-eval 언급이 없어 해당 항목은 미표기로 기록했다. 권고 모델 결과는 논문 부록 D의 FSD3587 메신저 효과 오차 단일 실험에서 가져왔다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 모달리티와 언어 표기가 근거와 맞지 않아 반려합니다. (1) 모달리티가 text로만 기록되어 있습니다. 하지만 논문 부록 C(30~31쪽 부근)에 따르면 ESS 과제는 응답 카드 이미지 15장을 쓰고, Mistral은 이미지 8장 제한 때문에 ESS 요청 하나가 실패했습니다(26쪽 Table 6, 34쪽). Misaligned Moderation 실험도 원본 게시물 이미지 9장을 손실 없이 인코딩해 입력합니다. 따라서 이 벤치마크에는 이미지 입력이 포함됩니다. 제안서는 이를 반영하지 않았고, 근거로 든 문장(7쪽)은 텍스트 전용임을 뒷받침하지 못합니다. (2) 언어가 en으로만 기록되어 있습니다. 그러나 권고 모델 결과의 실험인 FSD3587은 핀란드어 원문을 사용하며(30쪽), 이는 제안서의 유의사항에도 적혀 있습니다. GFS도 언어가 공개 기록에 없어 영어 중심 표본이라고만 밝히고 있습니다. 그런데 en 트랙에 두고 추천 표의 근거를 핀란드어 실험으로 삼은 것은 언어 지원 표기와 모순됩니다. 다국어 혼합(en/fi 등) 등 실제 구성에 맞게 정정해야 합니다. 참고로 다른 항목은 근거가 확인됩니다. 라이선스(코드 MIT, 결과·그림 CC BY 4.0, 과제 명세는 원천 약관 유지)와 권리 필드, 파생 데이터셋 명시와 별도 약관 확인 안내, lm-eval 미표기(공식 카드에 언급 없음)는 지원됩니다. 9개 모델의 FSD3587 점수와 단위, 낮을수록 좋다는 방향, 공개 가중치 표기도 34쪽·7쪽과 일치합니다.",
       "changes": [
         {
           "track": "en",
@@ -43096,7 +43096,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-05T03:55:28Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -43122,12 +43122,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41956006512",
-        "context_sha256": "00fbb2a30384a0b277abd3c18fd16b517ab2a7b888871d442e4132a0149d79a8"
-      },
       "proposal_sha256": "bdb0b7b3e11fd35a965f8b74850c99a2c3deb0886d3d0e3b4bd223587bec0bec",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "모달리티와 언어 표기가 근거와 맞지 않아 반려합니다. (1) 모달리티가 text로만 기록되어 있습니다. 하지만 논문 부록 C(30~31쪽 부근)에 따르면 ESS 과제는 응답 카드 이미지 15장을 쓰고, Mistral은 이미지 8장 제한 때문에 ESS 요청 하나가 실패했습니다(26쪽 Table 6, 34쪽). Misaligned Moderation 실험도 원본 게시물 이미지 9장을 손실 없이 인코딩해 입력합니다. 따라서 이 벤치마크에는 이미지 입력이 포함됩니다. 제안서는 이를 반영하지 않았고, 근거로 든 문장(7쪽)은 텍스트 전용임을 뒷받침하지 못합니다. (2) 언어가 en으로만 기록되어 있습니다. 그러나 권고 모델 결과의 실험인 FSD3587은 핀란드어 원문을 사용하며(30쪽), 이는 제안서의 유의사항에도 적혀 있습니다. GFS도 언어가 공개 기록에 없어 영어 중심 표본이라고만 밝히고 있습니다. 그런데 en 트랙에 두고 추천 표의 근거를 핀란드어 실험으로 삼은 것은 언어 지원 표기와 모순됩니다. 다국어 혼합(en/fi 등) 등 실제 구성에 맞게 정정해야 합니다. 참고로 다른 항목은 근거가 확인됩니다. 라이선스(코드 MIT, 결과·그림 CC BY 4.0, 과제 명세는 원천 약관 유지)와 권리 필드, 파생 데이터셋 명시와 별도 약관 확인 안내, lm-eval 미표기(공식 카드에 언급 없음)는 지원됩니다. 9개 모델의 FSD3587 점수와 단위, 낮을수록 좋다는 방향, 공개 가중치 표기도 34쪽·7쪽과 일치합니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 179432,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 1976,
+              "output_tokens_details": {
+                "thinking_tokens": 1227
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 179432,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 1976,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 179432,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 179432
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.7375569000000001,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "bdb0b7b3e11fd35a965f8b74850c99a2c3deb0886d3d0e3b4bd223587bec0bec",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -73986,8 +74032,8 @@
         "2611.05280",
         "2611.05340"
       ],
-      "calls": 35,
-      "cost_usd": 24.886
+      "calls": 36,
+      "cost_usd": 25.6236
     }
   },
   "reaudits": [
