@@ -38438,7 +38438,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-05T02:41:33Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -38464,12 +38464,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41956006512",
-        "context_sha256": "e3f58cba95a8ee9c574922b240b4f3b7e0e3ed7764ca7829b0d373554753d3e3"
-      },
       "proposal_sha256": "c220b4ef995dfb3dc2f6659d940e0f4277fc0d3a8fd590ef158a0f65c4568288",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안한 영어 행(MedRECT-en)의 사실 관계는 논문 전체 페이지와 공식 README로 뒷받침된다. 표본 수 458건, 세 하위 과제, 지표 구성, 영어 제로샷 프롬프트, 출처(MEDEC MS 테스트 부분집합, MedQA 기반)가 본문과 일치한다. 일본어 부분은 범위에서 제외했고, 두 부분의 출처가 달라 점수를 직접 비교할 수 없다는 점도 올바르게 적었다. 라이선스는 논문 부록 D.3과 README가 데이터를 CC BY 4.0, 코드를 MIT로 따로 명시하므로 코드 라이선스를 데이터 권리로 오인한 것이 아니다. 따라서 상업적 이용 가능, 수정·파생 가능(조건 준수), 재배포 조건부 가능이라는 조합은 일관된다. 이 벤치마크는 MEDEC과 MedQA에서 파생되었고, 유의사항에 이 출처들을 명시하면서 각자의 약관을 따로 확인하라고 안내했다. 한계(자동 선별만 거침, 단일 참조문 기반 유사도)도 3쪽과 9쪽 내용과 맞는다. lm-eval 지원은 공식 README가 lm-eval이나 lm-evaluation-harness를 언급하지 않고 pdf_mentions도 비어 있으므로, 미표기라는 해소된 값이 적절하다. 추천 모델 목록은 Table 2의 MedRECT-en 열(오류 문장 추출 정확도, 단위 %, 높을수록 좋음)에서 17개 구성 전부를 같은 실험 조건으로 담았다. 각 수치를 Poppler 원문과 대조한 결과 열과 행 정렬이 모두 일치하며 서로 다른 데이터셋이나 지표가 섞이지 않았다. 따라서 상위 세 구성(GPT-5 96.3, gpt-oss-120b high 92.6, Qwen3-32B+LoRA think 90.9) 선정이 정당하다. 공개 가중치는 gpt-oss(15쪽의 오픈 가중치 모델 언급)와 공개된 LoRA 모델(16쪽, Apache 2.0)에만 표시했고, 근거가 없는 모델은 값을 비워 폐쇄형으로 단정하지 않았다. 설정 설명에서 놓친 탐지를 오답으로 처리한다는 부분은 논문의 평가 정의에서 유추되는 수준이지만 수치 해석을 바꾸지는 않는다. 알 수 없음 상태의 필드나 발명된 허가·누락된 제한은 발견되지 않았다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 185078,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2413,
+              "output_tokens_details": {
+                "thinking_tokens": 1425
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 185078,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2413,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 185078,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 185078
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.7645109,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "c220b4ef995dfb3dc2f6659d940e0f4277fc0d3a8fd590ef158a0f65c4568288",
+        "publication_policy": "complete-evidence-v1"
+      }
     },
     "2604.07709": {
       "decision": "propose",
@@ -69335,6 +69381,366 @@
           "reason": "코딩 에이전트 유해 성공 측정 벤치마크 VeriHarm-Bench 제안"
         }
       ]
+    },
+    "2611.03767": {
+      "arxiv_id": "2611.03767",
+      "paper_title": "Quantifying out-of-distribution data severity with Wasserstein distances: benchmarking large language models for alloy property prediction",
+      "abstract": "As general-purpose Large Language Models (LLMs), such as Gemini and DeepSeek, exhibit increasingly advanced reasoning capabilities, a critical question arises: how do their property prediction abilities compare to those of domain-specific pretrained materials models? In this study, we evaluate predictions for Ti, steels, high-entropy alloy (HEA) and Al, demonstrating that general-purpose LLMs surprisingly outperform SteelBERT, MatSciBERT, and SciBERT. To further enhance performance, we introduce a hybrid approach that utilizes numerical priors from a prior model, such as CatBoost or SteelBERT, to guide the general LLMs (Deepseek V3.1, Gemini-2.5-Flash). By inputting these initial estimates from a prior model as prompts, the LLM acts as a reasoning corrector, achieving accuracy superior to the prior model and \"unguided mode\". Furthermore, we investigate the impact of data strategy using a similarity-based metric, revealing that data quality dominates quantity; using merely 5% of high-similarity reference data of training set as input yields performance similar to the results of using 100% of training set. Additionally, the LLMs demonstrate excellent uncertainty calibration, where self-reported \"high\" confidence strongly correlates with minimal deviation from ground truth. Our findings suggest that synergizing general-purpose LLMs with prior model numerical baselines and high-quality data curation creates a cost-effective and accurate paradigm for materials discovery, reducing the need for expensive domain-specific pretraining.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "합금 물성 예측 LLM 평가이나 재사용 벤치마크 기여 불분명"
+        }
+      ]
+    },
+    "2611.03806": {
+      "arxiv_id": "2611.03806",
+      "paper_title": "BEND 2.0: Benchmarking the Capabilities Needed to Design DNA",
+      "abstract": "Genomic foundation models are increasingly used to propose DNA sequences and edits. But successful design requires capabilities that current benchmarks do not measure. Here we introduce BEND 2.0 (BENchmark for DNA language models), which tests how well models predict the effects of DNA changes and whether these predictions can guide sequence design. Across eight tasks built on five experimental datasets, we find that model choice and how representations are accessed both affect performance. Linear readouts fitted to frozen representations can match or exceed models' native outputs, and functional post-training substantially improves the models' capabilities. Linear readouts transfer well across experimental assays and genes, suggesting that models capture functional patterns beyond the data used to fit individual predictors. At the same time, strong prediction of average effects can conceal weaker prediction of context-specific effects, and accurate prediction of combined mutation effects does not imply accurate prediction of their interactions. In design tasks, model predictions can reduce the number of candidates needed to find a desired response, but still leave substantial room for better design choices, particularly for context-specific and multi-cell objectives. Our benchmark reveals that genomic models now display signs of general utility but have yet to saturate on performance in even simple tasks.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "DNA 모델 벤치마크, LLM 대상 여부와 언어 적합성 불명확"
+        }
+      ]
+    },
+    "2611.03839": {
+      "arxiv_id": "2611.03839",
+      "paper_title": "PianoBench: Evaluating Musical Perception and Reasoning in Language Models",
+      "abstract": "Multimodal language models continue to improve on broad music understanding benchmarks, but which musical features can they perceive and reason about? We investigate this question by introducing PianoBench, a benchmark that tasks language models with reasoning about musical performances across congruent acoustic and symbolic input representations. PianoBench is derived from our new multimodal, training-scale dataset comprising more than 20,000 hours of interleaved transcripts of music and spoken musical commentary from instructional piano videos. Open-weight audio-language models achieve at most 52.8% accuracy on PianoBench, and at best only modestly outperform their accuracy on a no-audio control. In contrast, frontier models using chain of thought achieve up to 93.2% accuracy when provided transcripts of music as text, exposing a gap between perceiving musical features from audio and reasoning about musical events when they are given explicitly. We then test whether mid-training on interleaved musical instruction can improve question answering without chain of thought, raising Qwen 3.5 9B Base's zero-shot accuracy on PianoBench with music transcripts from 42.8% to 56.0% after instruction tuning. These experiments suggest that instructional videos may represent an overlooked source of multimodal supervision for music. Available: https://gclef-cmu.org/pianobench.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "음악 지각·추론 멀티모달 벤치마크 PianoBench 공개"
+        }
+      ]
+    },
+    "2611.03937": {
+      "arxiv_id": "2611.03937",
+      "paper_title": "FlowBench: Counterfactual Imagination Training for Spatial Intelligence",
+      "abstract": "Humans imagine scene changes under hypothetical motions, an ability central to spatial reasoning and robotic planning. However, this capability remains underexplored in vision-language models and world models. We formalize this capability as Counterfactual Spatial Imagination (CSI) and introduce FlowBench, a resource for training and evaluating both, with 428K training examples spanning simulated and real-world scenes, household environments and tabletop manipulation, and diverse question types. A scalable, fully automatic pipeline pairs each hypothetical motion with spatial questions and, in simulation, exact outcome frames and optical flow. For VLMs, proprietary models exhibit an imagination gap, performing worse when motion outcomes must be inferred than when observed, and open-source models perform near chance; fine-tuning Qwen3-VL-8B on FlowBench-Sim-Train raises its accuracy by 29.5 percentage points in simulation and 16.9 on real images, a strong sim-to-real transfer. For world models, training on FlowBench-Sim improves text-to-flow prediction for all four model families we test, raising the accuracy of Psi-0.6 from 52.1% to 61.7%. FlowBench thus serves as a training and evaluation resource for both. Code and datasets are released at https://github.com/liuyifan22/FlowBench.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "공간 상상 VLM 학습·평가용 FlowBench 리소스 공개"
+        }
+      ]
+    },
+    "2611.03982": {
+      "arxiv_id": "2611.03982",
+      "paper_title": "SLATE: A Large-Scale Benchmark for Long-Horizon API Selection in E-commerce Tool Use",
+      "abstract": "Enterprises increasingly want LLM agents to automate standard operating procedures over their software stacks -- mapping each step of a procedure to the right call among thousands of internal APIs, without hand-authored step-to-API mappings. The core difficulty is API selection at scale: choosing and composing the correct tools over a long horizon, judged only by whether the overall task succeeds. Current tool-use benchmarks do not test this regime -- they expose only a handful of tools, evaluate single-step invocation, or grade multi-step behavior with subjective LLM-as-a-judge scores that penalize valid alternative trajectories. We introduce SLATE (Synthetic Large-scale API Toolkit for E-commerce), a large-scale benchmark that tests large-toolset, long-horizon API selection in a realistic enterprise domain. SLATE couples (i) queries decomposed into hierarchical, tool-grounded procedures over a ~1,000-tool e-commerce library, (ii) a deterministic, context-aware simulator that returns recorded outputs for matching calls and default responses otherwise, and (iii) an end-to-end task-success metric -- a task succeeds when it reaches every reference outcome -- that credits diverse-but-valid trajectories while remaining fully automatic and reproducible. Experiments with six open decision models and the language models they are built on, from 3B to 12B parameters, show that even the best model completes only 5.0% of the tasks, establishing SLATE as a challenging testbed for reliable enterprise tool use. We release SLATE, its simulator, and the evaluation harness at https://geshijoker.github.io/slate/",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "대규모 API 선택 에이전트 벤치마크 SLATE 공개"
+        }
+      ]
+    },
+    "2611.04249": {
+      "arxiv_id": "2611.04249",
+      "paper_title": "COMPREHEND: Ultra-Fine-Grained Benchmark Understanding by Entailment Hierarchy",
+      "abstract": "Understanding what kind of prompts users typically ask and how well an LLM performs on these prompt categories is crucial for LLM practitioners. The existing methods satisfy the demand by hierarchically clustering the user prompts and synthesizing the cluster names using an LLM to build a taxonomy. However, the cluster names from these methods are usually too general for humans to understand the detailed prompt distributions and identify the exact strengths and weaknesses of LLMs. In this study, we propose COMPREHEND, which automatically constructs an ultra-fine-grained entailment hierarchy for the prompts. The entailment hierarchy replaces the cluster names in the taxonomy with sentences to provide more precise cluster descriptions for more fine-grained categorization. Compared with EvalTree, a state-of-the-art taxonomy construction method, COMPREHEND improves an entailment/faithfulness metric from 22.6 to 41.7 and an informative metric from 16.3 to 39.1 in WildBench. Our experiments also show that the weakness report generated based on our entailment hierarchy is much more informative than EvalTree in terms of predicting the response scores in the benchmark. All the code is released in https://github.com/JackNapier20/COMPREHEND_public.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "벤치마크 분석 방법론이며 새 평가셋 여부 불분명"
+        }
+      ]
+    },
+    "2611.04390": {
+      "arxiv_id": "2611.04390",
+      "paper_title": "Do Multi-Turn Conversational Capabilities Carry Over from Text to Speech? A Parallel Multilingual Benchmark",
+      "abstract": "Successful multi-turn voice interaction requires models to retain information from earlier turns, follow persistent instructions, and track revisions to conversational state. These abilities are usually evaluated from transcripts, leaving open whether successes demonstrated from text carry over when the same turns are spoken, and whether this transfer is consistent across languages. We introduce Omnilingua-AudioMC, a strictly parallel multilingual extension of Audio MultiChallenge, to study this question. The benchmark contains 354 conversations and 1,404 rubric items across ten languages, with content, turn structure, cross-turn dependencies, and evaluation criteria aligned across transcript and speech conditions. Across six speech-language models, the shift from reference transcripts to direct speech input is strongly model- and language-dependent: models with similar transcript performance can diverge substantially under speech, and their relative strengths across languages can change. Paired rubric-level analysis shows that aggregate transcript-speech gaps can obscure which conversational requirements are preserved, because losses of transcript-demonstrated successes can be offset by gains on other items. Replacing preceding user turns, the current turn, or both with model-generated transcripts localizes recoverable degradation: for the two models with the largest gaps, history substitution yields a larger macro-level improvement than current-turn substitution in all ten languages, while the strongest direct-speech model gains little from either. These results show that transcript performance is an unreliable proxy for multilingual spoken conversational ability and identify the representation of preceding spoken context as an important source of recoverable degradation. Our code is publicly available at https://github.com/QwenLM/Omnilingua-Bench/tree/main/Omnilingua-AudioMC.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "10개 언어 병렬 음성 멀티턴 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.04411": {
+      "arxiv_id": "2611.04411",
+      "paper_title": "TxBench: A Benchmark of Attack Transactions and Evidence-Backed Negatives on Seven EVM Chains",
+      "abstract": "Researchers evaluate detectors of malicious smart-contract transactions on datasets that each paper assembles anew. Their positives come from incident trackers, whose citations mix attacks with setup steps and transactions that never ran, or from a detector's own output, which makes the evaluation circular; their negatives are ordinary transactions. A shared benchmark needs positives whose own execution shows the attack and negatives that use the attacks' mechanisms, with no detector deciding either label. We present TxBench, a benchmark of attack transactions and evidence-backed negatives on seven EVM chains, with the five-step pipeline that builds it. The pipeline collects every transaction that BlockSec's incident library or the EVM Hack Registry cites, maps its weakness to OWASP's SCWE taxonomy, and rebuilds its execution from free data sources. A cited transaction qualifies as a valid TxBench attack only if it extracts value from others during execution, is consistent with all verified source claims, and is independently linked to the reported incident by corroborating evidence. Negative examples are sampled from each chain's traffic near the attacks and retained only when positive evidence confirms their legitimacy. Of 1,850 cited transactions, TxBench accepts 1,012 attacks from 602 incidents, worth USD 868.1 million: 846 contract exploits and 166 key compromises. A blind review under rules fixed in advance confirms 98 of 100 sampled attacks (97.7% weighted) and all 100 sampled negatives. As baselines, four zero-shot LLMs reading anonymized traces are precise but find at most 0.43 of the attacks and no key compromise, leaving ample room for better detectors.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "공격 트랜잭션 벤치마크, LLM 평가 용도와 언어 불명확"
+        }
+      ]
+    },
+    "2611.04421": {
+      "arxiv_id": "2611.04421",
+      "paper_title": "Typological Feature Induction as a Benchmark for Inductive Metalinguistic Reasoning",
+      "abstract": "Existing metalinguistic reasoning benchmarks require both inference of rules and their application, making failures hard to diagnose. We introduce typological feature induction (TFI) which targets the former step. Given sentences in an unnamed language paired with translations in a known pivot language, models must predict a typological feature of the unnamed language. From Grambank and multi-parallel corpora, we automatically build evaluation questions over 195 languages. We find that LLMs identify 59--80% of these languages from only 16 sentence pairs; and misaligning the translations barely affects their accuracy, suggesting reliance on prior knowledge of the language. Enciphering text to prevent recognition increases the corpus' utility, but mainly for features where target and pivot languages agree. On languages which models cannot identify, neither open model outperforms a majority-value baseline. Since induction from raw text aligns with field linguists' use-case, this work indicates the models tested are not yet ready for this role. TFI offers a scalable path to track progress in this direction.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "195개 언어 유형론 특성 귀납 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.04459": {
+      "arxiv_id": "2611.04459",
+      "paper_title": "$\\tau$-Rec-Books: A Disclosure-Controlled Benchmark for Requirement Elicitation in Agentic Recommender Systems",
+      "abstract": "While conversational recommendation systems provide a more natural user interface, they face the challenge of progressively discovering a user's needs before they can recommend an item that satisfies them. To evaluate the ability of AI agents at this elicitation process, we introduce $\\tau$-Rec-Books, a benchmark that holds each user request fixed while varying only when the user reveals their requirements: all at the start (volunteer), one at the start and the rest when asked (mixed), or some never (hidden). A hidden requirement can be found only by proposing books and inferring it from the user's accept or reject verdicts. We generate 450 tasks over a catalog of 20,000 books from Wikidata, develop a rule-based simulated user to answer the agent, and score recommendations against catalog metadata without an LLM judge. Across four agents and two search interfaces, success rates fall for every agent and interface, on average from 0.975 (volunteer) to 0.756 (mixed) and 0.283 (hidden). Mixed tasks fail mainly because agents do not ask, and when told to ask, every agent reaches at least 0.931. On hidden tasks, most failures come from agents recommending a book they never proposed to the user. When told to propose first, agents only match a simple baseline that proposes popular books, and stay well below one that uses rejection to rule out possible requirements. We release the catalog pipeline, task generator, simulated user, validators, reference agents, and all agent traces at https://github.com/nbharaths/tau-rec/tree/main/data/tracks/books-wikidata-v2.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "추천 에이전트 요구 도출 벤치마크 τ-Rec-Books 공개"
+        }
+      ]
+    },
+    "2611.04640": {
+      "arxiv_id": "2611.04640",
+      "paper_title": "TuneBench: Benchmarking AI Agents for Power System Dynamic Model Calibration",
+      "abstract": "Large Language Model (LLM)-based agents can automate complex engineering workflows by interacting with tools, interpreting feedback, and making iterative decisions. This paper introduces TuneBench, a benchmark for evaluating Agentic AI in power system dynamic model calibration, where controller parameters are adjusted to reproduce target dynamic responses. The benchmark reflects a common Transmission System Operator (TSO) practice, in which equivalent models used for Dynamic Security Assessment (DSA) are calibrated against measurements from grid-code compliance tests when proprietary models are unavailable. Two cases of increasing complexity are considered: the governor and Automatic Voltage Regulator (AVR) of a synchronous generator and the control system of a Battery Energy Storage System (BESS), both tuned against active-power and voltage step tests within a budget of 15 simulations. LLM-based agents are compared with random search and Genetic Algorithm (GA) baselines over 10 independent runs. Only the most advanced models, Opus 5.5 and GPT-6, accurately reproduce all target trajectories, with median R2 above 0.995 in every test and tracking errors up to two orders of magnitude lower than the baselines. The agent logs show that these agents autonomously extract dynamic performance indices, such as settling time and damping, and relate them to specific control parameters, decomposing the tuning problem into physically interpretable sub-problems. The benchmark is publicly available at https://github.com/Power-Agent/PowerAgentBench/tree/main/benchmarks/dynamic/level3.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "전력계통 모델 보정 에이전트 벤치마크 TuneBench 공개"
+        }
+      ]
+    },
+    "2611.04685": {
+      "arxiv_id": "2611.04685",
+      "paper_title": "MIMIC-Note-Extract: A Large-Scale Structured Dataset Extracted from MIMIC-IV-Note Discharge Summaries",
+      "abstract": "MIMIC is one of the most widely used public hospital datasets for machine learning on electronic health records, yet clinically important information, such as past medical history, allergies, and diagnostic findings, remains confined to free-text discharge summaries. Studies requiring this information must therefore build their own extraction pipelines, duplicating substantial effort across projects. We release MIMIC-Note-Extract (MNE), a large-scale dataset that uses a hybrid extraction pipeline combining deterministic parsing with schema-guided large language model generation to transform 16 sections from 300,720 discharge summaries into structured tables. MNE adds information that has no structured MIMIC counterpart and enriches related tables with broader coverage and greater clinical detail, including 10 times more patient-history entries and medication histories for more than twice as many admissions. Validation by medical doctors confirms extraction accuracy above 92% across sections. Using MNE, we construct a clinical decision-making benchmark for LLM agents, demonstrating how reusable structured representations of clinical narratives reduce data curation effort.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MIMIC 구조화 데이터셋 및 LLM 에이전트 벤치마크 구축"
+        }
+      ]
+    },
+    "2611.04785": {
+      "arxiv_id": "2611.04785",
+      "paper_title": "Kierston & KierstonBench: Simulation of Allentown, PA and Evaluation of Language Models in Crime Investigation and Surveillance Tasks",
+      "abstract": "Large language models are candidates for collecting and analyzing records in criminal investigations and mass surveillance. Their capability and accuracy in this work cannot currently be measured. Real deployments lack the ground truth needed to score a model's conclusions, and no benchmark evaluates these capabilities in a simulated environment. We present Kierston, a city-scale simulation engine, and KierstonBench, a benchmark that tests these capabilities against known simulated events. Kierston models approximately 125,000 residents of Allentown, Pennsylvania, generating their daily activities and the telecommunications, financial, administrative and license-plate records that surveillance and investigative systems collect about them. These records derive from a common behavioral timeline and are distributed across sources representing separate providers. Models investigate through a restricted records interface, linking observations across sources without access to the underlying simulation. The benchmark comprises 32 task families covering record linkage, routine reconstruction, incident investigation and assessment of deceptive accounts. In an evaluation of sixteen language models, most could not perform records investigation and submitted identifications the records did not support. A small number of frontier models solved most of the tasks and abstained when evidence was insufficient. In some cases these models still fell for common deceptions and assumptions, and none replaced an investigator.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "수사·감시 과제 LLM 벤치마크 KierstonBench 제안"
+        }
+      ]
+    },
+    "2611.04811": {
+      "arxiv_id": "2611.04811",
+      "paper_title": "NightIQA: A Comprehensive Dataset and Benchmark for MLLM-Based Nighttime Image Quality Assessment",
+      "abstract": "Nighttime images are inherently susceptible to complex, compound degradations, making accurate quality assessment exceptionally challenging. Score-based IQA methods condense quality into a single number, lacking the multi-dimensional, language-grounded reasoning required for nighttime evaluation. Multimodal Large Language Models (MLLMs) offer a more comprehensive alternative, yet remain constrained by a critical data gap: existing real-world IQA datasets are overwhelmingly daytime-centric and often built from outdated captures, while synthetic alternatives lack nighttime-specific degradation modeling, yielding artifacts far removed from authentic nighttime conditions. To bridge this gap, we present NightIQA, a dataset and benchmark suite purpose-built for MLLM-based nighttime IQA. It comprises three core components: NightIQA-Real, a real-world dataset of 1,769 high-resolution images that we captured ourselves with modern equipment, encompassing six canonical distortion types and structured multi-dimensional annotations; NightIQA-Bench, a benchmark of 1,078 visually grounded multiple-choice questions tailored to MLLM-based nighttime IQA, organized around a four-level evaluation hierarchy spanning Perception, Technical Assessment, Localization, and Reasoning; and NightIQA-Syn, an inherently scalable, scene-aware synthesis pipeline that jointly models global-level and instance-level degradations, with an initial release of 80k high-fidelity images alongside the full generation code. Fine-tuned on NightIQA with Supervised Fine-Tuning (SFT) and Group Relative Policy Optimization (GRPO), Qwen3-VL-8B outperforms open-source IQA methods and achieves higher overall accuracy than leading closed-source models, highlighting the value of domain-specific data and structured supervision.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MLLM 야간 화질평가 데이터셋·벤치마크 NightIQA 공개"
+        }
+      ]
+    },
+    "2611.04894": {
+      "arxiv_id": "2611.04894",
+      "paper_title": "VisSearch-Bench: Evaluating Long Horizon Visual Search in Multimodal Agents",
+      "abstract": "Multimodal agents use web and image tools to answer questions beyond their internal knowledge. Some search tasks use images mainly to identify an initial entity, then rely on text retrieval. These tasks offer limited insight into how agents connect information across images, objects, and search steps. We therefore focus on visual context management. This involves organizing and using visual information and linking it to other findings during search. Visually intensive tasks require agents to combine object appearance, local details, or spatial relations with external information. We introduce VisSearch-Bench, with 204 human-written tasks across 7 main domains and 25 subdomains. It covers Set-wise Visual Search, Sequential Visual Search, Hybrid Wide-Deep Search, Competitive Visual Disambiguation, and Visual-Structure-Guided Search. Each task provides a reference answer, traceable evidence, and scoring rules. Accuracy measures complete task success, while Process Score measures the correctness and completeness of individual results and subquestion answers. Across 16 multimodal models, the best system fully solves only 26.47% of tasks, even with search tools. These results highlight the challenge of linking visual evidence with search results to produce complete answers.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티모달 에이전트 시각 검색 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.05127": {
+      "arxiv_id": "2611.05127",
+      "paper_title": "Towards Multi-Method Evaluation of AI in Health: Integrating Benchmarks, Autoraters, and Expert Evaluation",
+      "abstract": "General-purpose generative AI (GenAI) models are being rapidly adopted in healthcare, but they are challenging to assess with traditional evaluation frameworks. These conceptual, methodological, and practical challenges parallel decades of work in evaluating clinician and health system quality and safety. We describe the adaptation of methods from several fields, combined with emerging technical approaches, into a structured, multi-method evaluation framework designed to give well-rounded assessments of GenAI in health at scale. The approach first anchors evaluation to Critical User Journeys (CUJs) to help prioritize out of a large choice space, and maps these to a phased AI system lifecycle (base model development, product development, and post-deployment monitoring), since evaluation at each stage requires different methodological approaches. In this context, the approach then integrates three distinct evaluation methods (closed-question benchmarks, LLM-as-a-judge autoraters, and expert human review) across three core domains: accuracy, safety, and usefulness. Taken together, this approach provides a strategic framework for bridging the gap between benchmarking results and performance in the real world with the goal of supporting decision-making and accountability across development, procurement, and deployment for product teams, health systems, and regulators.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "평가 프레임워크 논의일 뿐 재사용 벤치마크 제안 아님"
+        }
+      ]
+    },
+    "2611.05147": {
+      "arxiv_id": "2611.05147",
+      "paper_title": "GM League Arena: An Interactive Long-Horizon Task Benchmark Based on Professional Sports League Management",
+      "abstract": "Long-horizon decision-making under sustained competition requires large language models (LLMs) to balance immediate investment with future resource needs. However, local success in multi-step interactions can not adequately capture cumulative decision effects or demonstrate long-term goal achievement under resource constraints and sustained competition. To address this gap, we introduce GM Bench, a benchmark for managing professional sports teams across seasons under resource constraints and competition among teams. We build the environment simulators for four sports and add financial constraints, player demands, and market mechanisms to establish a unified task across sports. Diverse rosters of comparable strength are constructed from real-world player data, and each LLM is evaluated as a team general manager to assess its long-term management capabilities. We evaluate competitive performance, cash reserves, and cross-season improvement across four sports. Over five NBA seasons, Claude Opus 5.5 ranks first among 29 LLMs, while GPT-6 Astra and GPT-6.1 Sol combine strong performance with larger cash reserves.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "장기 의사결정 LLM 벤치마크 GM Bench 제안"
+        }
+      ]
+    },
+    "2611.05168": {
+      "arxiv_id": "2611.05168",
+      "paper_title": "DSL-Bench: Evaluating and Explaining LLM Code Generation Across Domain-Specific Languages",
+      "abstract": "Large language models (LLMs) are increasingly used in software-engineering workflows, but code-generation benchmarks largely focus on general-purpose languages. Domain-specific languages (DSLs) have distinct syntax, semantics, and validation requirements, making results from individual DSL benchmarks difficult to compare. We present DSL-Bench, an executable benchmark and analysis framework for cross-DSL code generation. Starting from 13,045 DSL-related papers, LLM-assisted open card sorting identifies 18 representative application domains. For each domain, we select an evaluable DSL and provide a syntax checker and task-level semantic oracle. Evaluating 7 LLMs on 18 DSLs, we observe mean syntax and semantic pass rates of 31.37% and 11.64%, respectively, revealing a substantial gap between syntax acceptance and semantic correctness. A variance decomposition attributes 76.99% of semantic pass-rate variation to differences among DSLs and 7.86% to differences among models. Among four DSL-level factors, Knowledge Demand has the strongest negative association with semantic correctness (r = -0.508). We evaluate prompt engineering across all 18 DSLs and study five improvement methods on five targeted DSLs. Prompt engineering yields uneven gains; RAG-Refinement, the strongest targeted method, improves semantic correctness by 16.29 percentage points on average over matched baselines. We further derive capability profiles and DSL-Profiler summaries for interpreting data-scarce DSLs. These results highlight toolchain-specific semantic bottlenecks and the need to evaluate DSL code generation beyond syntax acceptance.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "DSL 코드 생성 실행형 벤치마크 DSL-Bench 공개"
+        }
+      ]
+    },
+    "2611.05280": {
+      "arxiv_id": "2611.05280",
+      "paper_title": "YANAMI: A Large-Scale Multimodal Dataset and Benchmark for Multiturn Stateful Interaction",
+      "abstract": "Unified Multimodal Models (UMMs) integrate visual understanding, generation, and editing within a single unified framework. However, existing unified multimodal datasets and benchmarks remain dominated by single-turn tasks. Even in recent multi-turn datasets, many turns can be solved independently without tracking information across turns. Consequently, they provide limited supervision and evaluation for multimodal stateful interaction, which requires models to understand, maintain, update, and faithfully realize evolving dialogue states across turns. To address this gap, we introduce YANAMI, the first large-scale multimodal dialogue dataset and benchmark for stateful interaction, comprising YANAMI-400K and YANAMI-Bench. YANAMI-400K contains 400K multi-turn multimodal dialogues, with more than 2M images and 2.6M dialogue turns. The dialogues span four representative scenarios: Multi-Image Fusion, Image Editing, World Modeling, and Visual Reasoning, and require models to continuously track, preserve, and revise evolving multimodal dialogue states across turns. YANAMI-Bench comprises 400 multi-turn dialogues for systematically evaluating multimodal stateful interaction. It jointly evaluates Dialogue State Understanding and Visual Realization, characterizing the gap between models' ability to understand evolving dialogue states and their ability to faithfully realize them in visual outputs. Experiments show that fine-tuning BAGEL on YANAMI-400K improves image editing, generation, and multimodal stateful interaction by 10.3%, 2.0%, and 13.23%, respectively, while preserving its general visual understanding capabilities. Evaluations on YANAMI-Bench further reveal that existing UMMs still struggle to maintain, update, and visually realize evolving multimodal dialogue states.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티턴 멀티모달 상태 상호작용 데이터셋·벤치마크"
+        }
+      ]
+    },
+    "2611.05340": {
+      "arxiv_id": "2611.05340",
+      "paper_title": "MedPhysBench: A Benchmark for Evaluating Language Models on Medical Physics Calculations and Error Detection",
+      "abstract": "Medical physicists turn a prescription into a delivered dose and check one another's calculations, because one error in a beam calibration or a monitor-unit (MU) calculation can affect every patient treated with it. MedPhysBench has ten seeded generators of calculation items in radiation therapy, diagnostic imaging, nuclear medicine and radiation protection, up to clinical tasks such as a TG-51 calibration worksheet. Reference answers come from code implementing the governing protocols, and a grader converts units and applies tolerance bands. From the same inputs, separate checking items test error detection, showing a colleague's worksheet or only the colleague's result, half correct and half with one planted error. On a held-out test split of 1,200 items (half for two models), 12 models scored 33.3 to 100.0% on calculation. Of the nine answers graded incorrect for the four best (99.3-100.0%), five contained model errors and four followed NCRP Report 151 on points our items misstate or leave open. Below them, most models did worst on level-3 clinical tasks, and Claude Sonnet 5.5 omitted the inverse-square correction in 19 of 20 isocentric MU items. Five models detected at least 96.7% of mostly large planted errors with at most 4% false alarms; for four of the other seven, checking only the result raised false alarms significantly. In an exploratory targeted test with 20 public cases of an omitted inverse-square correction, the three best models tested caught it in every worksheet, and three weaker models accepted 16 to 18 of 20 planted worksheets, one of them while applying the correction in most of its own calculations. Claude Opus 5.5 accepted 6 of 20 wrong results, although it applied the correction in all 20 of its own. We report the effect of two problems in our shielding items, found after the runs, and release the code, per-item outcomes and targeted-test responses.",
+      "paper_updated": null,
+      "created_at": "2026-11-05T02:43:03Z",
+      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "의학물리 계산·오류탐지 벤치마크 MedPhysBench 공개"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -70442,9 +70848,30 @@
     },
     "2026-11-05": {
       "attempted": [],
-      "abstract_attempted": [],
-      "calls": 1,
-      "cost_usd": 0.8146
+      "abstract_attempted": [
+        "2611.03767",
+        "2611.03806",
+        "2611.03839",
+        "2611.03937",
+        "2611.03982",
+        "2611.04249",
+        "2611.04390",
+        "2611.04411",
+        "2611.04421",
+        "2611.04459",
+        "2611.04640",
+        "2611.04685",
+        "2611.04785",
+        "2611.04811",
+        "2611.04894",
+        "2611.05127",
+        "2611.05147",
+        "2611.05168",
+        "2611.05280",
+        "2611.05340"
+      ],
+      "calls": 3,
+      "cost_usd": 1.6452
     }
   },
   "reaudits": [
