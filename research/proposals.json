@@ -42256,7 +42256,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-05T03:36:13Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -42282,12 +42282,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41956006512",
-        "context_sha256": "b4512ac95368eb1c191d14d9b71950e9780e5aa33338da13cb55358465dc66c5"
-      },
       "proposal_sha256": "86c85e655d6edd79e015a298c1336527e923fd06004555eed4784a00db313e27",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 변경 사항은 제공된 PDF와 공식 카드로 모두 뒷받침된다. 질문 수는 표 III의 합계(284+700+699)가 1,683개이고 학습·검증·테스트 분할(1,346/169/168)의 합과 일치한다. 언어는 영어이고 모달리티는 텍스트(SMILES 문자열 포함)다. 지식그래프, 텍스트, SMILES 중 최소 두 모달리티를 결합한다는 과제 정의와 객관식이 아니라는 설명도 본문과 맞는다. 논문 표 VI의 제로샷 Lexical EM은 7개 모델 전부 열과 값이 정확히 정렬되어 있다. 값은 o4-mini 0.32, Claude 3.7 Sonnet 0.30, DeepSeek R1 0.33, Llama 3.3 0.27, Qwen 3 0.22, TxGemma 0.07, Mistral 0.02다. 비교 조건은 테스트 분할의 제로샷으로 하나로 통일되어 있고, 같은 표의 상한(정답 문맥) 행과 섞이지 않았다. 지표 방향은 높을수록 좋은 것으로 올바르다. 상위 세 모델(DeepSeek R1, o4-mini, Claude 3.7 Sonnet)은 비교 대상 7개 전체를 포함한 목록에서 선택되었으므로 타당하다. 공개 가중치 여부는 논문이 두 폐쇄형 모델과 다섯 오픈소스 모델로 구분한 근거와 일치한다. 공식 카드에는 라이선스 표기가 없고, 논문의 면허 관련 언급은 미국 의사 면허 시험을 가리킬 뿐 데이터 라이선스가 아니다. 따라서 라이선스를 미표기로 처리하고 상업적 이용, 수정·파생, 재배포를 모두 저작권 전부 보유로 둔 조합이 규칙에 맞다. 카드가 lm-eval을 언급하지 않으므로 lm-eval 지원을 미표기로 둔 것도 허용된 값이다. 유의사항에는 파생 구성 요소(Zitnik 외 지식그래프, STITCH, 위키백과, PubChem, GPT-4o와 GPT-4.1 생성물)를 명시하고 각 약관을 따로 확인하도록 안내했다. 연구용이며 임상 진단에 쓸 수 없다는 논문의 면책 문구도 반영했다. 부록이 Llama 3.3 항목을 Llama-3.1-8B-Instruct-Turbo로 적은 점은 논문 내부의 표기 불일치지만, 제안은 표의 모델명을 그대로 썼고 상위 세 추천에는 영향이 없다. 미확인이나 확인 불가 필드는 없다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 170826,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2615,
+              "output_tokens_details": {
+                "thinking_tokens": 1591
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 170826,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2615,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 170826,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 170826
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.7095229000000001,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "86c85e655d6edd79e015a298c1336527e923fd06004555eed4784a00db313e27",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -73133,8 +73179,8 @@
         "2611.05280",
         "2611.05340"
       ],
-      "calls": 28,
-      "cost_usd": 19.7164
+      "calls": 29,
+      "cost_usd": 20.4259
     }
   },
   "reaudits": [
