@@ -462,4 +462,40 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Repair a corrupted function-calling dataset, organize embedding training data (hard-negative mining), and construct training data for knowledge injection.",
     "example": "Task description: the agent inspects the data, implements an intervention, submits the training set, and uses the fixed pipeline's evaluation feedback to decide the next intervention. In the function-calling task, for example, it filters or repairs a corrupted pool of user queries, tool schemas, and target calls."
   },
+  "medrect": {
+    "axis": "Domain (medical error detection and correction)",
+    "definition": "The English subset of MedRECT, which evaluates three subtasks on clinical texts: detecting whether a medical error is present, extracting the erroneous sentence, and generating a correction. It contains 458 samples curated from MEDEC and is sourced separately from the Japanese subset. Metrics are error detection F1, sentence extraction accuracy, and reference-based correction similarity (ROUGE-1, BERTScore, BLEURT).",
+    "task": "Error detection, error sentence extraction, error correction",
+    "example": "Given numbered clinical-case sentences in an English prompt, output CORRECT if there is no medical error, or the sentence number with a corrected sentence if there is one (task description)."
+  },
+  "engrambench": {
+    "axis": "Agents (skill evolution; cross-domain capability transfer in long-horizon software development)",
+    "definition": "A benchmark for evaluating skill evolution in agents. It has 30 learning tasks across 6 business domains and 13 transfer tasks that share no business logic or APIs with the learning tasks. Transfer tasks are long-horizon development projects of roughly 25 to 30 turns with an LLM-simulated user, evaluated after the skill bank produced in the learning phase is frozen. The learning phase archives 583 interactive turns. The primary metric is the micro-averaged fraction of hidden evaluation cases passed (CCPF), with token usage and development time also reported. The paper's model comparison (GPT-5.5 Medium, 4 transfer tasks, 4 skill configurations, 48 runs in total) reflects the paper's conditions and is not a current global leaderboard.",
+    "task": "Given a requirements README and an API scaffold, use a frozen skill bank to implement a TypeScript/Node.js/PostgreSQL business system, graded by hidden evaluators.",
+    "example": "Transfer task example (DockChain): implement a system that allocates Berth, Tug, and Yard resources as a complete bundle and commits two linked movements atomically without exceeding capacity. Hidden evaluators check concurrency, crash recovery, and related behavior (task description)."
+  },
+  "legal-research-bench": {
+    "axis": "Agents (reliability of U.S. legal research)",
+    "definition": "A benchmark of 413 open-ended English legal research questions about U.S. law, written by practicing U.S. attorneys. It spans eight areas of law and ten question types, split into a 5-question public sample, a 200-question validation set, and a 208-question test set. Each question has a gold answer, a curated source list (6.2 sources on average), and a binary rubric (9.4 items on average). The primary metric is all-pass, under which a response is correct only if every rubric criterion is satisfied and its cited authorities verify; weighted pass is reported only as a secondary partial-credit measure. Thirteen frontier models were evaluated in a harness with web search, case-law search, page parsing, and retrieval tools under a three-hour limit.",
+    "task": "Answer a legal research question by locating controlling statutes and cases, checking that they remain valid, and submitting a grounded final answer.",
+    "example": "Task description: given an English fact pattern, such as a lessee that stopped paying rent on defective leased equipment and a question about whether the lessor is responsible, the agent researches statutes and cases with tools and answers with valid cited authorities."
+  },
+  "biomol-mqa": {
+    "axis": "Domain (biomedical multimodal RAG and reasoning)",
+    "definition": "A multimodal QA dataset on polypharmacy. Questions require combining three information sources: a drug and protein knowledge graph, background text for each entity, and drug molecular structures as SMILES strings. Questions are not multiple choice, and the answer is a node in the graph. It has 1,683 questions split into 1,346 training, 169 validation, and 168 test, including 1-hop and 2- and 3-hop questions. Metrics are Lexical EM, Lexical F1, and BERTScore F1, with Hits@k, Recall@5, and MRR for retrieval. The paper compares seven LLMs without RAG (zero-shot) and with gold context (upper bound).",
+    "task": "Question answering that combines at least two of graph, text, and SMILES to find the drug or protein node that answers the question",
+    "example": "Task description (the Figure 1 type): given background on two NSAID drugs and their gastric-inflammation interaction, a question that does not name the entities asks which drug is the answer."
+  },
+  "shad": {
+    "axis": "Time series anomaly detection, explanation and interpretation (end to end)",
+    "definition": "A benchmark of 215 multivariate, high-dimensional time series (171 dimensions, about 1021 points per series at 1-minute resolution, 83 nominal) collected from a real distributed cloud storage system (Scality RING). It provides per-dimension labels and XML semantic annotations covering three anomaly families: disk, server and storage-node failures. Detection is evaluated with 18 detectors using VUS-PR, explanation with per-dimension contribution scored by NDCG, and interpretation with five frozen LLMs answering a single-call questionnaire (presence, dimension, time, type, severity) scored by F1 and accuracy, averaged over 5 runs.",
+    "task": "Three stages: detection, explanation (dimension-level attribution), and interpretation (LLM questionnaire)",
+    "example": "Task description: an English prompt casts the model as a time series analysis expert and gives one representation of the series (statistical features, an image, or an image description). The model answers a questionnaire on anomaly presence, affected dimension, time range, type and severity."
+  },
+  "openmtb-audit": {
+    "axis": "Safety and clinical auditing (four-label support classification of molecular tumor board recommendations; over-refusal)",
+    "definition": "A benchmark of 500 synthetic non-small cell lung cancer (NSCLC) cases (200 clean, 300 adversarial). Five adversarial error categories contain 60 cases each. A system must classify a proposed treatment recommendation as Supported, Partially Supported, Unsupported, or Insufficient Information. Each case also has a binary abstention target, missing-information indicators, and a structured audit rationale. Metrics include a weighted Safety Score (0-100), accuracy, macro F1, and per-class precision and recall. Over-refusal is measured as 1 minus Partially Supported recall.",
+    "task": "Given a patient summary and a proposed therapy, assign one of four support labels and decide whether human review (abstention) is required.",
+    "example": "Task description: given a free-text NSCLC patient summary and a proposed targeted therapy, decide whether molecular and clinical evidence supports it, whether critical information such as ECOG performance status is missing, and whether an oncologist should review it before the label is assigned. This is not an actual test item."
+  },
 };
