@@ -40673,8 +40673,8 @@
       "proposal_sha256": "c6d0ccb73032978877354d35cde3d56e7211f17b6950921a5ddce83f159213f6"
     },
     "2609.40286": {
-      "decision": "propose",
-      "reason": "이 논문은 TOFU와 LUME의 영어 질문을 기반으로 174개 언어·문자 쌍, 25개 패러프레이즈 유형, 40개 언어의 번역 패러프레이즈를 갖춘 다국어 언러닝 벤치마크 Cross-Lingual Unlearning Tensor를 새로 만들었고, 잔여 접근도(residual access), 추출 강도, LLM judge 누출 분류를 지표로 쓴다. 과제는 텍스트 전용이며 영어 질문 예시가 PDF 6쪽에 인용되어 있어 en 트랙에 text로 제안한다. 한국어(kor_Hang)는 언어 목록에 포함되지만 한국어 과제 문장 예시와 한국어 전용 규모가 PDF에 없어 ko 행은 만들지 않았다. 공식 저장소 README에는 라이선스와 lm-eval 언급이 없고 LICENSE 파일도 없으며, PDF 34쪽 어디에도 라이선스 표기가 없다. 벤치마크가 TOFU, LUME, LORELEI를 바탕으로 하므로 라이선스는 미표기로, 상업적 이용·수정·파생·재배포는 저작권 전부 보유로 기록했다. 비교 결과는 논문 9쪽 Table 5의 COVER 정책 행(추출 강도 ES, 낮을수록 좋음)만 사용했다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 행 본문의 대부분은 근거가 확인되지만, 추천(recommendations) 항목에 두 가지 결함이 있어 승인하지 않는다.\n\n[확인된 부분]\n- 174개 언어·문자 쌍, 18개 문자, 27/46/101 자원 구분, 25개 패러프레이즈 유형이 PDF 1·3·17쪽과 일치한다.\n- 7개 유형을 40개 언어로 번역(언어당 1,690행)한 것, 체크포인트 103개와 287개, LORELEI 100문서·8개 언어도 일치한다.\n- 영어 질문 예시는 6쪽 Figure 3에 있다.\n- 라이선스 '미표기'는 PDF 34쪽 전체와 공식 README(라이선스 파일 없음)에 라이선스 언급이 없어 타당하다. pdf_mentions도 비어 있다.\n- 상업적 이용·수정·파생·재배포는 모두 '저작권 전부 보유'로 정확히 일치한다.\n- lm-eval '미표기'는 공식 카드에 언급이 없으므로 허용되는 해결값이다.\n- 이용 시 유의사항에 TOFU, LUME, LORELEI의 고유 약관을 따로 확인하라는 문구가 있다.\n\n[결함]\n1. 모델 정체가 모호하다. 추천 목록이 'Llama', 'Qwen', 'Aya'라는 계열명만 쓴다. 논문 20쪽은 실제 평가 대상을 Llama-3.2-3B-Instruct, Qwen3-4B-Instruct-2507, Tiny Aya Global로 특정한다. 정확한 모델 식별자로 고쳐야 한다.\n2. 지표 설명과 비교 조건이 부정확하다.\n  - setting이 추출 강도(ES)를 '정답 생성물(generations)에 대한' 값이라고 쓰지만, A.6은 ES를 teacher forcing 하의 정확한 접미사 복원 비율로 정의한다. 이 서술은 PDF와 맞지 않는다.\n  - 비교 대상이 서로 다른 기반 모델이다. 모델마다 선택된 소스 언어 집합도 다르다(Aya는 JA/ES/ZH, Qwen·Llama는 EN/AR/JA). ES는 오라클로 정규화되지 않은 값이라, 미세조정 전 암기 정도가 다른 모델 간 절대값 순위를 상위 3위로 내세우는 것은 정당화되지 않는다.\n  - Llama는 ES가 가장 낮지만 같은 표에서 gibberish 비율이 가장 높아, 낮은 ES가 곧 우수한 망각을 뜻하는지 불분명하다. 이 한계가 notes에 없다.\n\n추천 항목의 모델 식별자와 지표 서술을 바로잡고 비교 가능성의 한계를 명시한 뒤 다시 제출해야 한다.",
       "changes": [
         {
           "track": "en",
@@ -40876,7 +40876,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-05T03:18:08Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -40903,12 +40903,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "41956006512",
-        "context_sha256": "d52be8803977f13e3507a4deb93f87e2ca817c84418c16e5be00e305a35e0e69"
-      },
       "proposal_sha256": "3a0e0bccd0720bd6e6ae8a8bb69aa8cb5031366d31ff1a15824f8153592323ab",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "행 본문의 대부분은 근거가 확인되지만, 추천(recommendations) 항목에 두 가지 결함이 있어 승인하지 않는다.\n\n[확인된 부분]\n- 174개 언어·문자 쌍, 18개 문자, 27/46/101 자원 구분, 25개 패러프레이즈 유형이 PDF 1·3·17쪽과 일치한다.\n- 7개 유형을 40개 언어로 번역(언어당 1,690행)한 것, 체크포인트 103개와 287개, LORELEI 100문서·8개 언어도 일치한다.\n- 영어 질문 예시는 6쪽 Figure 3에 있다.\n- 라이선스 '미표기'는 PDF 34쪽 전체와 공식 README(라이선스 파일 없음)에 라이선스 언급이 없어 타당하다. pdf_mentions도 비어 있다.\n- 상업적 이용·수정·파생·재배포는 모두 '저작권 전부 보유'로 정확히 일치한다.\n- lm-eval '미표기'는 공식 카드에 언급이 없으므로 허용되는 해결값이다.\n- 이용 시 유의사항에 TOFU, LUME, LORELEI의 고유 약관을 따로 확인하라는 문구가 있다.\n\n[결함]\n1. 모델 정체가 모호하다. 추천 목록이 'Llama', 'Qwen', 'Aya'라는 계열명만 쓴다. 논문 20쪽은 실제 평가 대상을 Llama-3.2-3B-Instruct, Qwen3-4B-Instruct-2507, Tiny Aya Global로 특정한다. 정확한 모델 식별자로 고쳐야 한다.\n2. 지표 설명과 비교 조건이 부정확하다.\n  - setting이 추출 강도(ES)를 '정답 생성물(generations)에 대한' 값이라고 쓰지만, A.6은 ES를 teacher forcing 하의 정확한 접미사 복원 비율로 정의한다. 이 서술은 PDF와 맞지 않는다.\n  - 비교 대상이 서로 다른 기반 모델이다. 모델마다 선택된 소스 언어 집합도 다르다(Aya는 JA/ES/ZH, Qwen·Llama는 EN/AR/JA). ES는 오라클로 정규화되지 않은 값이라, 미세조정 전 암기 정도가 다른 모델 간 절대값 순위를 상위 3위로 내세우는 것은 정당화되지 않는다.\n  - Llama는 ES가 가장 낮지만 같은 표에서 gibberish 비율이 가장 높아, 낮은 ES가 곧 우수한 망각을 뜻하는지 불분명하다. 이 한계가 notes에 없다.\n\n추천 항목의 모델 식별자와 지표 서술을 바로잡고 비교 가능성의 한계를 명시한 뒤 다시 제출해야 한다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 195975,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 4077,
+              "output_tokens_details": {
+                "thinking_tokens": 3000
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 195975,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 4077,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 195975,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 195975
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.8247389,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "3a0e0bccd0720bd6e6ae8a8bb69aa8cb5031366d31ff1a15824f8153592323ab",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -71744,8 +71790,8 @@
         "2611.05280",
         "2611.05340"
       ],
-      "calls": 16,
-      "cost_usd": 11.0041
+      "calls": 17,
+      "cost_usd": 11.8288
     }
   },
   "reaudits": [
