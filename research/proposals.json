@@ -47789,6 +47789,174 @@
       },
       "issue_url": null,
       "proposal_sha256": "8b00df1faeb67401316553f52c3394564601b7b1d7efb19f993b0862eb579bfd"
+    },
+    "2610.04118": {
+      "decision": "propose",
+      "reason": "LongSocialBench는 영어 토론 스레드(Hacker News, Stack Exchange, Reddit r/ChangeMyView) 94개를 바탕으로 한, 검증된 4지선다 문항 1,462개의 재사용 가능한 장문맥 벤치마크입니다. 과제 언어는 영어이고 입력은 텍스트뿐이므로 en 트랙의 text로 분류합니다. 이전 응답은 근거 인용이 해당 페이지에 그대로 있지 않아 거부되었으므로, 인용을 페이지 본문에 실제로 나오는 짧은 문구로 교체했습니다. 논문이 데이터셋 라이선스를 밝히지 않았으므로 라이선스 관련 항목은 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "longsocialbench",
+            "이름": "LongSocialBench",
+            "평가 축": "장문 이해(온라인 토론 스레드의 구조 기반 사회적 추론)",
+            "언어": "en",
+            "정의": "Hacker News, Stack Exchange, Reddit r/ChangeMyView의 완전한 토론 94개(중앙값 약 73K 토큰)에서 만든 사람 작성·검증 4지선다 문항 1,462개. 부모-답글 관계, 전환점, 하위 트리, 분기 간 대비, 참여자 궤적을 추적해야 하는 6개 역량 표면(C1~C6)으로 구성된다. 문항 단위로 답 가능성, 선택지 유일성, 근거를 검증했다. 지표는 A-D 정확 일치 정확도이며 벤치마크 수준은 micro 정확도, 역량별 요약은 C1~C6 macro 평균이다.",
+            "대표 과제": "직렬화된 전체 토론 스레드와 답글 구조, 질문, 4개 선택지가 주어지면 근거를 찾아 정답 선택",
+            "대표 예시·설명": "과제 설명: 전체 토론 스레드를 입력으로 받아 가장 긴 답글 체인에서 주제가 처음 바뀌는 위치를 고르는 등, 스레드 구조 위의 사회적 해석 문항에 답하는 과제(실제 시험 문항이 아님).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부는 아직 확인하지 않았다. 이 벤치마크는 공개 토론 사이트(Hacker News, Reddit r/ChangeMyView, Stack Exchange)의 원문으로 구성되어 있으므로 각 출처의 약관을 이용 전에 따로 확인해야 한다. 논문은 영어 텍스트 토론에 한정된다고 밝힌다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/xinyiliu-research/LongSocialBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Long-context understanding (structure-aware social reasoning over online discussion threads)",
+            "definition": "1,462 human-authored, verified four-option multiple-choice items drawn from 94 complete Hacker News, Stack Exchange and Reddit r/ChangeMyView discussions (median about 73K tokens). Items test parent-reply relations, turning points, scoped subtrees, cross-branch contrasts and participant trajectories across six capability surfaces (C1-C6). Items are verified for answerability, option uniqueness and evidence grounding. Responses are parsed to A-D and scored by exact match; benchmark-level results use micro accuracy and capability summaries use the macro mean over C1-C6.",
+            "task": "Given a serialized full discussion thread with reply structure, a question and four options, locate the evidence and choose the answer.",
+            "example": "Task description: given a complete discussion thread, answer a structure-grounded social question, such as where the longest reply chain first shifts topic (not an actual test item)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "serialized thread"
+            },
+            "대표 과제": {
+              "page": 4,
+              "quote": "a question stem"
+            },
+            "대표 예시·설명": {
+              "page": 21,
+              "quote": "Count the starting"
+            },
+            "링크": {
+              "page": 23,
+              "quote": "huggingface.co/datasets/xinyiliu-resea"
+            },
+            "언어": {
+              "page": 21,
+              "quote": "Count the starting"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "LongSocialBench, a benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "LongSocialBench, a benchmark"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "LongSocialBench, a benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.04118",
+      "paper_title": "LongSocialBench: Do Long-Context LLMs Understand Online Discussion Threads?",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.04118",
+        "sha256": "4e7b70458e8fca84492f463425747567a3f2347ce776fea58730cdecc8d8dd2e",
+        "accessed": "2026-11-06T03:58:57Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 23,
+          "elapsed_seconds": 158.9,
+          "pdf_sha256": "4e7b70458e8fca84492f463425747567a3f2347ce776fea58730cdecc8d8dd2e",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "aec93dc97e7829aecbdb1cf5c3a1b9b065b717181d23b1317772a1f47a21607f",
+          "page_json_file": "2610.04118.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/xinyiliu-research/LongSocialBench",
+            "fetched_url": "https://huggingface.co/datasets/xinyiliu-research/LongSocialBench/raw/main/README.md",
+            "sha256": "c2dbf63fef781d9031d848a67068b74ded8b06b7a7afe352efafeec5d3cbd4e5",
+            "accessed": "2026-11-06T04:02:37Z",
+            "license_file": {
+              "fetched_url": "https://huggingface.co/datasets/xinyiliu-research/LongSocialBench/raw/main/LICENSE",
+              "name": "LICENSE",
+              "spdx_id": null,
+              "sha256": "98b24698d0b59702e85b27e05de2c83e7d69e0e21c22658b01dff5145e3f2293"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-06T04:02:37Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.04118",
+        "paper_title": "LongSocialBench: Do Long-Context LLMs Understand Online Discussion Threads?",
+        "abstract": "Long-context LLMs can now ingest entire online discussion threads, but understanding their social discourse requires more than reading a long document: models must track parent-reply relations, turning points, scoped subtrees, cross-branch contrasts, and participant trajectories. To test this structure-aware social reasoning, we introduce LongSocialBench, a benchmark of 1,462 verified human-authored multiple-choice items drawn from 94 complete Hacker News, Stack Exchange, and Reddit r/ChangeMyView episodes, with a median length of approximately 73K tokens. Each item pairs a complete serialized discussion and reply structure with a four-option question, requiring models to recover structured social evidence. Released items are verified for answerability, option uniqueness, and evidence grounding. Across 18 models and 29 evaluation settings, current long-context workflows remain far below human performance. The best individual result comes from Claude-Opus-4.7, which reaches 63.0% when prompted to eliminate incorrect options before answering, compared with 72.4% for independent human readers. Averaged across all 18 models, the full-context Baseline scores 43.9%. Supplying the gold evidence scope raises this to 55.0%, showing that substantial errors remain even after the relevant thread region is identified. LongSocialBench shows that the missing capability is not context access or prompting alone, but social understanding over structured reply trees.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:02Z",
+        "input_sha256": "d6dc17cd9350e7a2b50b96c9f5ad9db7fc938df7e8705b5d639bdd5f6428adbe",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "장문 맥락 온라인 토론 이해 벤치마크 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "장문 소셜 스레드 구조적 추론 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42151119634",
+        "context_sha256": "721cca3bda614bf4f741bf2b945f6b399189eebcee8790f916fada92e763db3b"
+      },
+      "proposal_sha256": "d953b41eaefe6aa9aad7da9e9fa0ebbe3fe901b9982ca7bce0808d03cfb08b79"
     }
   },
   "processed_comments": [],
@@ -79590,8 +79758,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 36,
-      "cost_usd": 26.6627
+      "calls": 37,
+      "cost_usd": 27.4989
     }
   },
   "reaudits": [
