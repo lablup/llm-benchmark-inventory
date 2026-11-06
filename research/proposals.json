@@ -44266,8 +44266,8 @@
       "approval_policy": "claude_only"
     },
     "2605.12413": {
-      "decision": "propose",
-      "reason": "PCSR-Bench는 360도 전방위 실내 이미지 2,600장에서 만든 QA 쌍 84,373개와 8개 과제로 구성된 새 진단 벤치마크입니다. 과제 프롬프트가 영어이므로 en 트랙으로 분류하고, 이미지 입력이 필요하므로 vision으로 지정합니다. 공식 저장소 README에는 라이선스 표기와 lm-eval 언급이 없고 LICENSE 파일 항목도 없습니다. PDF 10쪽 전체에도 라이선스 관련 표현이 나타나지 않습니다. 따라서 라이선스는 미표기로 처리하고 권리 항목은 저작권 전부 보유로 기록했습니다. 비교 결과는 논문 Table 1(5쪽)의 모델 14종 평균 정확도입니다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 라이선스 처리, 모델 점수, 순위는 근거와 일치하지만, 규모 수치가 공식 카드와 충돌하는데 제안에 이 충돌이 반영되지 않아 승인할 수 없습니다.\n\n통과한 항목: 논문 PDF와 공식 README 어디에도 라이선스 표기가 없고, pdf_mentions도 비어 있습니다. README의 학회 채택 안내는 논문 게재 고지일 뿐 데이터 라이선스가 아닙니다. 그래서 라이선스 미표기와 세 권리 항목의 저작권 전부 보유 조합이 맞습니다. README에 lm-eval 언급이 없어 lm-eval 지원 미표기도 허용되는 값입니다. 파생 관계는 ReplicaPano와 Replica를 명시하고 각 구성 요소의 약관을 따로 확인하라고 적었습니다. 논문 Table 1(5쪽)의 14개 모델 평균 점수는 Poppler 텍스트와 대조해 모두 일치합니다. 평균은 8개 과제의 산술 평균이며, 같은 테스트 분할과 프롬프트, 디코딩 설정에서 나온 결과이고, 상위 3개(InternVL2.5-78B, Qwen-VL-Max, Qwen2.5-VL-72B) 선정도 타당합니다. 가중치 공개 여부는 null로 남겨 폐쇄형으로 추정하지 않았습니다.\n\n문제점:\n1. 제안의 정의는 논문 기준으로 QA 쌍 84,373개, 이미지 2,600장, 환경 26곳이라고 적었습니다. 그런데 공식 README는 7,800장의 파노라마와 학습 58,568개, 테스트 7,689개 QA(합계 66,257개)를 제시합니다. 논문은 테스트 분할을 9,697문항, RL 학습 샘플을 7,499개로 적어 README 수치와도 맞지 않습니다. 공식 카드와 논문의 규모가 다른데 어느 쪽이 공개 릴리스에 해당하는지 확인하지 않았고, 이용 시 유의사항에도 이 불일치가 없습니다.\n2. README 초록은 실내와 실외를 아우른다고 쓰지만 논문은 실내 단일 이미지로 범위를 한정하고 실외는 향후 확장이라고 밝힙니다. 제안은 실내로 적어 논문과는 맞지만, 공식 카드와의 충돌이 이용 시 유의사항에 드러나 있지 않습니다.\n\n수정 방향: 정의의 규모 수치를 공개 릴리스와 대조해 확정하거나, 논문 보고 수치임을 명시하고 공식 카드와 다르다는 점을 유의사항에 추가해야 합니다.",
       "changes": [
         {
           "track": "en",
@@ -44544,7 +44544,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-06T03:06:25Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -44570,12 +44570,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "42151119634",
-        "context_sha256": "ad5db8ab223eaf11a7940ad7932c28bf338bee5289e77465485291ff7e63baa9"
-      },
       "proposal_sha256": "9ac7e0e66d174ca75d22265402bc663d034772e27e9bb2595509027a8ab66c18",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "라이선스 처리, 모델 점수, 순위는 근거와 일치하지만, 규모 수치가 공식 카드와 충돌하는데 제안에 이 충돌이 반영되지 않아 승인할 수 없습니다.\n\n통과한 항목: 논문 PDF와 공식 README 어디에도 라이선스 표기가 없고, pdf_mentions도 비어 있습니다. README의 학회 채택 안내는 논문 게재 고지일 뿐 데이터 라이선스가 아닙니다. 그래서 라이선스 미표기와 세 권리 항목의 저작권 전부 보유 조합이 맞습니다. README에 lm-eval 언급이 없어 lm-eval 지원 미표기도 허용되는 값입니다. 파생 관계는 ReplicaPano와 Replica를 명시하고 각 구성 요소의 약관을 따로 확인하라고 적었습니다. 논문 Table 1(5쪽)의 14개 모델 평균 점수는 Poppler 텍스트와 대조해 모두 일치합니다. 평균은 8개 과제의 산술 평균이며, 같은 테스트 분할과 프롬프트, 디코딩 설정에서 나온 결과이고, 상위 3개(InternVL2.5-78B, Qwen-VL-Max, Qwen2.5-VL-72B) 선정도 타당합니다. 가중치 공개 여부는 null로 남겨 폐쇄형으로 추정하지 않았습니다.\n\n문제점:\n1. 제안의 정의는 논문 기준으로 QA 쌍 84,373개, 이미지 2,600장, 환경 26곳이라고 적었습니다. 그런데 공식 README는 7,800장의 파노라마와 학습 58,568개, 테스트 7,689개 QA(합계 66,257개)를 제시합니다. 논문은 테스트 분할을 9,697문항, RL 학습 샘플을 7,499개로 적어 README 수치와도 맞지 않습니다. 공식 카드와 논문의 규모가 다른데 어느 쪽이 공개 릴리스에 해당하는지 확인하지 않았고, 이용 시 유의사항에도 이 불일치가 없습니다.\n2. README 초록은 실내와 실외를 아우른다고 쓰지만 논문은 실내 단일 이미지로 범위를 한정하고 실외는 향후 확장이라고 밝힙니다. 제안은 실내로 적어 논문과는 맞지만, 공식 카드와의 충돌이 이용 시 유의사항에 드러나 있지 않습니다.\n\n수정 방향: 정의의 규모 수치를 공개 릴리스와 대조해 확정하거나, 논문 보고 수치임을 명시하고 공식 카드와 다르다는 점을 유의사항에 추가해야 합니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 191470,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 3141,
+              "output_tokens_details": {
+                "thinking_tokens": 2119
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 191470,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 3141,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 191470,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 191470
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.7973589,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "9ac7e0e66d174ca75d22265402bc663d034772e27e9bb2595509027a8ab66c18",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -76361,8 +76407,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 9,
-      "cost_usd": 5.1133
+      "calls": 10,
+      "cost_usd": 5.9107
     }
   },
   "reaudits": [
