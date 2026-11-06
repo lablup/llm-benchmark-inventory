@@ -45067,7 +45067,7 @@
     },
     "2610.02206": {
       "decision": "propose",
-      "reason": "KaliBench는 영어 자연어 질의를 Kali Linux CLI 명령으로 바꾸는 능력을 평가하는 새 벤치마크입니다. 8,504개 질의-명령 쌍(평가 5,000, 학습 3,504), 1,642개 도구, 23개 능력 차원, 5개 보안 단계로 구성됩니다. 결정적 정규화와 별칭 인식 채점을 쓰고, 논문이 공식 GitHub 저장소를 밝혔으며, 기존 인벤토리에는 같은 항목이 없습니다. 질의가 영어이고 입력이 텍스트뿐이라 en/text 트랙으로 분류했습니다. 라이선스 등 미확인 항목은 '확인 불가'로 두었습니다.",
+      "reason": "KaliBench는 영어 자연어 질의를 Kali Linux CLI 명령으로 바꾸는 능력을 평가하는 새 벤치마크입니다. 8,504개 질의-명령 쌍(평가 5,000, 학습 3,504), 1,642개 도구, 23개 능력 차원, 5개 보안 단계로 구성되며, 논문이 공식 GitHub 저장소를 밝혔고 기존 인벤토리에는 같은 항목이 없습니다. 질의가 영어이고 입력이 텍스트뿐이라 en/text 트랙으로 분류했습니다. 라이선스는 논문 23쪽이 CC BY-NC 4.0으로 명시했고, 공식 README에는 lm-eval 언급이 없어 '미표기'로 두었습니다. 권고 결과는 논문 Table 1의 Unrestricted 모드 Exact Correct입니다.",
       "changes": [
         {
           "track": "en",
@@ -45080,12 +45080,12 @@
             "대표 과제": "자연어 질의를 받아 도구 이름, 옵션 인자(별칭 허용), 위치 인자를 갖춘 단일 Kali 명령 생성",
             "대표 예시·설명": "영어 질의로 특정 사용자의 sudo 권한을 비대화형 모드로 보여 달라고 요청하면, 모델이 도구 이름과 옵션, 위치 인자를 포함한 하나의 명령을 내고 별칭이 달라도 동등하면 정답으로 인정하는 과제 설명",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스는 이 제안 단계에서 확인하지 못했다. 논문은 Kali Linux 공식 문서에서 파생되었다고 밝히므로 원천 문서의 약관도 별도로 확인해야 한다. 단일 턴 명령 생성만 다루며, 데이터는 LLM으로 생성한 뒤 LLM 검증, 샌드박스 실행, 사람 검토를 거쳤다. 사이버보안 이중 용도 도구가 포함되어 이용 범위를 점검해야 한다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-NC-4.0",
+            "상업적 이용": "불가",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "논문 23쪽은 KaliBench를 연구 목적 전용으로 CC BY-NC 4.0에 따라 공개한다고 밝히므로 출처 표기(BY)가 필요하고 비상업 연구 목적에 한한다. 이 벤치마크는 다른 출처로 구성되어 있다: 질의-명령 쌍은 Kali Linux 공식 도구 문서(kali-tools 저장소)를 바탕으로 Qwen3-Max가 생성했다(논문 4쪽). 논문 23쪽은 이 원천 저장소가 GPL-3.0이라고 밝힌다. 따라서 CC BY-NC 4.0 표기가 각 구성 요소(Kali 도구 문서, 생성 모델)의 고유 약관을 대신하지 않으므로, 이용 전에 구성 요소별 약관을 따로 점검해야 한다. 단일 턴 명령 생성만 다루며, 데이터는 LLM 검증, 샌드박스 실행, 저자 검토를 거쳤다. 사이버보안 이중 용도 도구가 포함되어 이용 범위를 점검해야 한다. 공식 README에 lm-eval 언급이 없고 자체 평가 가이드로 실행한다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/RISys-Lab/KaliBench"
           },
           "modality": "text",
@@ -45129,9 +45129,351 @@
               "quote": "NL–to–CLI cybersecurity tool"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "page": 23,
+              "quote": "released under the CC BY-NC 4.0 license"
+            },
+            "상업적 이용": {
+              "page": 23,
+              "quote": "intended for research purposes only"
+            },
+            "수정·파생": {
+              "page": 23,
+              "quote": "released under the CC BY-NC 4.0 license"
+            },
+            "재배포": {
+              "page": 23,
+              "quote": "released under the CC BY-NC 4.0 license"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/RISys-Lab/KaliBench",
+              "absent": true
+            }
+          },
+          "recommendations": {
+            "metric": "Exact Correct (%) in the Unrestricted mode: percentage of the 5,000 evaluation queries whose generated command matches the ground truth in tool and all arguments",
+            "setting": "Results reported in this paper (Table 1, Unrestricted column), not a current global leaderboard. Same KaliBench 5,000-query evaluation set, natural-language query only with no candidate tools or documentation, temperature 0.2, 16,384-token maximum context (8,192 input / 8,192 output) as described in Appendix G.1; models of 72B or more were run through the OpenRouter API and the others locally with vLLM in BF16.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Foundation-Sec-Ins⋆",
+                "score": "14.7",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Foundation-Sec-Ins⋆ 8 14.7"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Llama3.1-Ins",
+                "score": "12.5",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Llama3.1-Ins 8 12.5"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Llama-Primus-Base⋆",
+                "score": "15.8",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Llama-Primus-Base⋆ 8 15.8"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Foundation-Sec-Rsn⋆†",
+                "score": "13.3",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Foundation-Sec-Rsn⋆† 8 13.3"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Llama-Primus-Merged⋆",
+                "score": "16.3",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Llama-Primus-Merged⋆ 8 16.3"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "RedSage-DPO⋆",
+                "score": "18.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "RedSage-DPO⋆ 8 18.2"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Qwen3 (Qwen/Qwen3-8B)",
+                "score": "18.3",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3 8 18.3"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Qwen3† (Qwen/Qwen3-8B)",
+                "score": "20.9",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3† 8 20.9"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "RedSage-Ins⋆",
+                "score": "19.7",
+                "evidence": {
+                  "page": 7,
+                  "quote": "RedSage-Ins⋆ 8 19.7"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "RedSage-K (GRPO)⋆†",
+                "score": "28.1",
+                "evidence": {
+                  "page": 7,
+                  "quote": "RedSage-K (GRPO)⋆† 8 28.1"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "RedSage-K (SFT)⋆",
+                "score": "30.6",
+                "evidence": {
+                  "page": 7,
+                  "quote": "RedSage-K (SFT)⋆ 8 30.6"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "RedSage-K (SFT+GRPO)⋆†",
+                "score": "32.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "RedSage-K (SFT+GRPO)⋆† 8 32.2"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Gemma-3-it",
+                "score": "18.9",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemma-3-it 27 18.9"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "GPT-OSS† (openai/gpt-oss-20b)",
+                "score": "19.6",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-OSS† 20/3.6 19.6"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Mistral-Small-3.2",
+                "score": "20.7",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Mistral-Small-3.2 24 20.7"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Qwen3 (Qwen/Qwen3-32B)",
+                "score": "20.6",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3 32 20.6"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Qwen3† (Qwen/Qwen3-32B)",
+                "score": "24.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3† 32 24.0"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Llama-Primus-Ins⋆",
+                "score": "18.8",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Llama-Primus-Ins⋆ 70 18.8"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Llama-3.3-Ins",
+                "score": "22.6",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Llama-3.3-Ins 70 22.6"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "GPT-OSS† (openai/gpt-oss-120b)",
+                "score": "24.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-OSS† 120/5.1 24.0"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Qwen3-Coder-Next†",
+                "score": "26.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3-Coder-Next† 80/3 26.2"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "Qwen2.5-Ins",
+                "score": "25.4",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen2.5-Ins 72 25.4"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "DeepSeek-V3.2†",
+                "score": "33.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "DeepSeek-V3.2† 685/37 33.0"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              },
+              {
+                "model": "GLM-5.2†",
+                "score": "41.3",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GLM-5.2† 753 41.3"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight model query-to-command performance"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.02206",
@@ -45239,7 +45581,8 @@
         "source_run": "42151119634",
         "context_sha256": "06100c70d33a0e948f54b18e977e5c07debe56d10ebca5c7ba64a0a682e4985f"
       },
-      "proposal_sha256": "970de0960cd250470c9c1f89e0e994d6ae6ed05a0dc15ff577767738a0889c01"
+      "proposal_sha256": "d389786ae6ff17a57c9bb1ce9e4e9e7596799d767f47b2abc8291c4d645d4bf7",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -77028,8 +77371,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 15,
-      "cost_usd": 10.0186
+      "calls": 16,
+      "cost_usd": 10.9133
     }
   },
   "reaudits": [
