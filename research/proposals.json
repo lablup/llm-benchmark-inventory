@@ -74503,6 +74503,204 @@
           "reason": "MLLM 포함 지오로케이션 편향 벤치마크 도입"
         }
       ]
+    },
+    "2611.06259": {
+      "arxiv_id": "2611.06259",
+      "paper_title": "A Systematic Benchmark for Evaluating Multimodal Personalized Reasoning of Vision-Language Models",
+      "abstract": "People often make decisions by holistically reasoning over heterogeneous forms of personal information. In this paper, we study the relatively underexplored capability of multimodal personalized reasoning in multimodal large language models (MLLMs). To this end, we introduce \\texttt{MPRBench}, a novel and comprehensive benchmark specifically designed to evaluate personalized reasoning across a wide range of tasks and real-world challenges. \\texttt{MPRBench} consists of 12 sub-tasks and additionally supports interpretable analysis of representative error cases. Through extensive experiments, we find that current personalized MLLMs still struggle with personalized reasoning due to several key challenges, including inaccurate recognition of personalized concepts and sensitivity to irrelevant personal information. We hope that MPRBench will stimulate further research on personalized reasoning in MLLMs. Code and data are available at https://github.com/kkdh15/MPRBench",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MLLM 개인화 추론 벤치마크 MPRBench 신규 제안, 코드·데이터 공개"
+        }
+      ]
+    },
+    "2611.06373": {
+      "arxiv_id": "2611.06373",
+      "paper_title": "Reassessing Dataset Quality and Fine-Tuning Practices for Vulnerability Detection on PrimeVul dataset",
+      "abstract": "Recent studies report promising results from supervised fine-tuning of pre-trained code language models for automated vulnerability detection on benchmarks such as PrimeVul. In this paper, we present a large-scale empirical evaluation of both model performance and dataset quality in this setting. We systematically fine-tune three widely used encoder models (CodeBERT, GraphCodeBERT, and UniXCoder) across five imbalance mitigation strategies, extensive hyperparameter sweeps, and multiple random seeds, resulting in 770 independent training runs. Our results reveal a consistent pattern. While standard metrics such as F1 and ROC-AUC occasionally suggest improvements, security-critical and calibration-aware measures tell a different story. Matthews Correlation Coefficient remains near zero, predicted probabilities are poorly calibrated, and evaluation under strict false-positive constraints reveals high false-negative rates. Neither imbalance handling, threshold optimization, nor post-hoc calibration recovers a meaningful discriminative signal. We also conduct a data quality assessment of the PrimeVul benchmark and identify structural issues such as minimal semantic differences between vulnerable and fixed functions, and annotation noise introduced by commit-level labeling. These findings suggests that the PrimeVul dataset, in its current form, presents significant challenges for reliable AI-based vulnerability detection in software engineering with the methodologies we used. Our study highlights the need for more robust dataset design, improved evaluation protocols, and rethinking of fine-tuning practices for security-critical tasks.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "기존 PrimeVul 재평가 실증 연구, 새 평가 자원 제안 없음"
+        }
+      ]
+    },
+    "2611.06449": {
+      "arxiv_id": "2611.06449",
+      "paper_title": "AmbiHTMLBench: A Benchmark for HTML-based Visually Rich Document parsing",
+      "abstract": "Traditional document parsing systems use Markdown as their output representation, which is effective for linear text but does not fully preserve fine-grained spatial structure, table geometry, visual hierarchy, or rendering semantics. We show that HTML is advantageous for heterogeneous and layout-sensitive documents whose representations must remain editable, inspectable, and reusable, and introduce AmbiHTMLBench to systematically study this setting. In this benchmark, given a real-world document, a model must recover executable HTML that preserves its content, organization, and visual appearance. The benchmark contains 1,115 diverse pages with structured annotations and evaluates predictions in two different ways: The objective protocol aligns ground-truth and predicted rendered blocks and measures table fidelity, page-level text error, and a two-dimensional layout consistency; a complementary reference-anchored protocol measures perceived fidelity by aligning LLM judges with human preferences. Across ten primary multimodal systems, the best objective score is 0.8092, while the subjective winner is different, demonstrating that automatic decomposition and human-perceived fidelity capture complementary properties. We further fine-tune a small-parameter expert model and find that task-specific adaptation yields good performance on document-to-HTML reconstruction task. These results position AmbiHTMLBench as a diagnostic testbed for building smarter and more logical document parsing systems.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "HTML 기반 문서 파싱 벤치마크 AmbiHTMLBench 신규 제안"
+        }
+      ]
+    },
+    "2611.06496": {
+      "arxiv_id": "2611.06496",
+      "paper_title": "LibriSpeech-Real-QA: A Benchmark for Streaming Question Answering",
+      "abstract": "Most speech large language models (SLMs) still process speech in an offline manner. They only start responding after they receive the complete speech segment. However, many real-world applications require streaming speech interaction, for which the audio continuously flows in and the machine is required to answer questions based on the so far received audio chunks. For example, a user may ask the system to continuously count how many times a person's name has been mentioned while they are speaking. We observe a lack of benchmarks and evaluation protocols for real-time speech interaction. Motivated by this, we propose LibriSpeech-Real-QA, a dataset and a benchmark for real-time speech interaction. We construct different types of real-time question-answer pairs from LibriSpeech to evaluate whether speech LLMs can identify target words in streaming audio. We evaluate several popular real-time commercial models and find that they still tend to respond only after the speech turn has finished. We demonstrate that we can enable a pretrained SLM to perform this task, where we explore several modeling designs and establish a solid baseline for future research.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "스트리밍 음성 QA 벤치마크·데이터셋 제안, LibriSpeech 기반 영어"
+        }
+      ]
+    },
+    "2611.06770": {
+      "arxiv_id": "2611.06770",
+      "paper_title": "Benchmarking Fine-Grained Visual Reasoning for Remote Sensing in Urban Management",
+      "abstract": "Fine-grained visual reasoning is essential for remote sensing in urban management, yet remains underexplored in the evaluation of multimodal large language models (MLLMs). We introduce UMBench, a fine-grained urban remote sensing benchmark built from unmanned aerial vehicle (UAV) images for multiple urban management tasks such as traffic monitoring, urban construction, environmental quality, and disaster warning. Evaluations on UMBench reveal that current MLLMs often rely on scene-level priors and overlook fine-grained visual evidence. To address this issue, we further propose a novel evidence-first chain-of-thought method that directs models to inspect fine-grained visual evidence in a training-free manner. Experiments show that our method can improve the performance of both open-source and commercial MLLMs on UMBench.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "도시 원격탐사 MLLM 벤치마크 UMBench 신규 제안"
+        }
+      ]
+    },
+    "2611.06803": {
+      "arxiv_id": "2611.06803",
+      "paper_title": "Task-Efficient Agent Evaluation Using Cached Traces",
+      "abstract": "Efficient benchmarking estimates a system's full benchmark performance from a small number of task executions. Standard approaches rely solely on the binary correctness of executions from a collection of already-evaluated reference systems. An agentic system, however, produces a rich trace for each execution that can reveal substantially more about its capabilities. Leveraging this information requires useful trace representations. We propose representing a trace by extracting a structured summary of it with an LLM and embedding the summary with a standard text encoder. These representations preserve correctness- and task-related signal while minimizing the presence of system identity-, model family- and harness-related signals that dominate raw trace embeddings. Given this representation for each task execution from all reference systems, we construct low-dimensional representations of the systems and predict a new system's score from its position among the reference systems. On SWE-bench Verified and Terminal-Bench 2.0, augmenting an item-response model with this geometry-based prediction reduces mean absolute error from 0.13 to 0.08 (Wilcoxon $p < 10^{-4}$) and from 0.14 to 0.12 (Wilcoxon $p < 10^{-3}$), respectively, when provided a single random executed task. Further, given access to the full set of reference systems, our approach dominates baselines for any given number of executed tasks on both benchmarks.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "효율적 에이전트 평가 방법론, 재사용 가능한 벤치마크 여부 불명확"
+        }
+      ]
+    },
+    "2611.06808": {
+      "arxiv_id": "2611.06808",
+      "paper_title": "LLMs Don't Know What They Know: Benchmarking Temporal Self-Knowledge for Financial Backtesting",
+      "abstract": "Financial backtests of large language models (LLMs) are meaningful only if the model did not already know the outcomes it is asked to predict. Practitioners guard against this by trusting a vendor's stated knowledge cutoff, by asking the model what it knows, or by instructing it to answer as of a past date. To verify whether any of these safeguards can be trusted, we introduce FinDendro, a benchmark of 2,226 dated U.S. facts from 1999 to 2026, covering monthly macroeconomic series, month-end stock prices and Federal Reserve decisions. Each fact yields four prompts: a value question, Recall and Predict questions that pair each candidate value with a claim of knowing or guessing without a declared date, and a Predict question with a historical declared date. Controls for persistence and dominant outcomes keep chance accuracy near 0.27. Results show that for most frontier models, self-reports understate knowledge. GPT-5 answers 76% of controlled facts correctly but claims to know 38%, and answers 61% of the facts it says it does not know. Knowledge claims can persist beyond the measured knowledge boundary, by up to seven quarters, and a declared date removes most of the claims of prior knowledge while leaving accuracy unchanged. Backtests inside a model's training window therefore cannot be certified leak-free by self-report, instruction or stated cutoff. These findings motivate behavioral measurement of temporal knowledge boundaries, and FinDendro provides a benchmark and procedure for selecting backtest periods based on demonstrated factual knowledge.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 시간적 자기지식 벤치마크 FinDendro, 미국 금융 사실"
+        }
+      ]
+    },
+    "2611.06841": {
+      "arxiv_id": "2611.06841",
+      "paper_title": "ServerBench: How can your coding agents design specialized LLM serving systems?",
+      "abstract": "Large language model (LLM) coding agents develop software through experimentation, offering an opportunity to design the serving systems supporting their own operation. Effective serving requires coordinating implementation and operating decisions under session dependencies, latency constraints, and correctness requirements. We introduce ServerBench, a benchmark for agentic design of complete, specialized LLM serving systems. Agents experiment against a common objective, dollars per dollar: latency-qualified token value per dollar of GPU cost. Stateful replay preserves session dependencies, and independent verification checks the submitted system. Across 11 coding-agent models and three deployments, Claude Sonnet 5.5 achieves 2.97 dollars per dollar on Gemma E4B, $4.87\\times$ the vLLM reference; 22 of 33 runs yield verified systems, and 13 exceed the strongest baseline. Our analysis identifies three findings: high-value designs coordinate capacity improvements with load selection; agents interpret performance feedback through workload-relevant experiments; and reliable delivery requires verification of the execution paths introduced by optimization. Overall, ServerBench supports systematic study of how agents translate service objectives and feedback into effective, verified serving systems for given task specifications.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코딩 에이전트 LLM 서빙 설계 벤치마크 ServerBench 제안"
+        }
+      ]
+    },
+    "2611.06858": {
+      "arxiv_id": "2611.06858",
+      "paper_title": "CompressionBench: How can your coding agents compress LLMs?",
+      "abstract": "Recursive self-improvement requires AI systems to improve the models and infrastructure used by subsequent systems. LLM compression offers a concrete efficiency objective: retain a pretrained model's behavior within a smaller model storage budget. We study whether coding agents can carry out this step autonomously. We formulate compression as a terminal task in which an agent receives a source checkpoint, storage limit, inference environment, and time budget, then constructs compressed weights and executable inference code. The agent controls its algorithm and experiments; perplexity feedback guides search, and independent verification checks the final model. Across six agents and six model--size settings, 29 of 36 submissions pass verification. Selecting the lowest-perplexity agent design per task yields an average 3.4% perplexity increase over BF16 and 77.33% downstream accuracy, compared with 79.56% for BF16. Recorded experiments reveal how agents achieve these outcomes and where improvement breaks down. Agents lower PPL in 21 of 24 revisions at nearly fixed storage; complete-model feedback reverses 17 of 79 prior local rankings; and generation and inference tests expose failures that likelihood alone misses. The results identify representation design, experimental judgment, and capability validation as central to agent-driven model compression, a measurable component of efficiency-oriented self-improvement.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코딩 에이전트 LLM 압축 벤치마크 CompressionBench 제안"
+        }
+      ]
+    },
+    "2611.06881": {
+      "arxiv_id": "2611.06881",
+      "paper_title": "VABAR: A Variational Automation Benchmark for Agentic Robotics",
+      "abstract": "For robots to operate reliably in commercial and industrial applications, they must persistently perform specific tasks with known variations in object shape and pose. We call this Variational Automation (VA) to differentiate these settings from fixed automation. Inspired by recent papers on Agentic Robotics, where pretrained LLM and VLM coding agents combine interpretable robot programming with the open-world adaptability of model free policies, we propose a general set of agentic robotics benchmark design criteria that includes accessibility, repeatability, diversity, relevance to agentic robotics and practical applications, physical realizability, resistance to benchmark saturation, and computational efficiency. We instantiate these principles in six manipulation task classes spanning industrial, medical, and infrastructure applications: tool sorting, tool hanging, gear meshing, syringe packing, cable insertion, and cable routing. We introduce the Variational Automation Benchmark for Agentic Robotics (VABAR), an open, easily replicable, simulation-based manipulation benchmark to systematically evaluating agentic robotics systems. Built fully on open-source tools, VABAR features detailed implementations using the Newton physics engine, standardized task variations, difficulty tiers, success metrics, and a library of 33 generalizable skills with human-authored programmatic reference solutions. We provide initial baseline evaluations using an open agentic manipulation harness, Graph-as-Policy (GaP), and Isaac Lab Arena.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "에이전트 로보틱스 시뮬레이션 벤치마크, 언어 모델 평가 범위 불명확"
+        }
+      ]
+    },
+    "2611.06911": {
+      "arxiv_id": "2611.06911",
+      "paper_title": "BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories",
+      "abstract": "Self-Driving Chemical Laboratories (SDCLs) are moving chemical experimentation toward embodied automation, where machines must perceive laboratory scenes, reason about experimental states, and act under physical, procedural, and safety constraints. Although Multimodal Large Language Models (MLLMs) are increasingly considered as embodied brains for such systems, existing laboratory benchmarks mainly focus on safety, anomaly detection, or general scientific understanding, leaving their execution-oriented embodied capabilities underexplored. To fill this gap, we introduce BEAKER, a Benchmark for evaluating Embodied Actionability, Knowledge, Experimentation, and Reasoning in SDCLs. BEAKER contains 1,000 expert-curated question-answer samples across 11 image and video task types, covering key judgments required for chemical laboratory execution, including affordance grounding, trajectory planning, equipment, state, and safety recognition, apparatus setup, operation and step reasoning, and temporal procedure reasoning. All questions and annotations are manually created and reviewed by chemistry and embodied Artificial Intelligence (AI) experts, without AI-assisted generation or annotation. We evaluate 28 general-purpose, science-oriented, chemistry-specialized, and embodied MLLMs in an offline, single-turn setting. Results show that current models can follow coarse experimental procedures in videos, but still struggle to ground actions into operable regions and feasible trajectories, to recognize fine-grained laboratory apparatus, states, and safety norms, and to order steps in mid-length procedures. BEAKER thus reveals a clear gap between coarse procedural understanding and the precise, action-grounded perception required for laboratory execution, providing a diagnostic benchmark for future MLLMs in SDCLs.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:45:09Z",
+      "input_sha256": "f2b244f330dc4b9d06eaefd9a70063c1e4de836e587e774f3fb471b4daf30ea1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "화학 실험실 MLLM 전문가 구축 벤치마크 BEAKER 제안"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -75730,10 +75928,21 @@
         "2611.05862",
         "2611.05991",
         "2611.06007",
-        "2611.06085"
+        "2611.06085",
+        "2611.06259",
+        "2611.06373",
+        "2611.06449",
+        "2611.06496",
+        "2611.06770",
+        "2611.06803",
+        "2611.06808",
+        "2611.06841",
+        "2611.06858",
+        "2611.06881",
+        "2611.06911"
       ],
-      "calls": 4,
-      "cost_usd": 2.0438
+      "calls": 5,
+      "cost_usd": 2.0835
     }
   },
   "reaudits": [
