@@ -48271,7 +48271,7 @@
     },
     "2610.02617": {
       "decision": "propose",
-      "reason": "WebUIProof는 구조화된 명세와 약 3천 개의 실행형 상호작용 테스트를 갖춘 WebUI 코드 생성 벤치마크로, 고정된 UI 에이전트 하니스로 채점하는 재사용 가능한 새 벤치마크다. 과제 명세와 프롬프트가 영어이고 입력은 텍스트 명세이므로 en 트랙의 text로 분류했다. 스크린샷은 평가 과정에서만 쓰인다. 공식 코드 링크는 논문 1쪽에 명시되어 있다. 라이선스 등은 확인하지 않아 '확인 불가'로 기록했다.",
+      "reason": "WebUIProof는 구조화된 명세와 약 3천 개의 실행형 상호작용 테스트를 갖춘 WebUI 코드 생성 벤치마크로, 고정된 UI 에이전트 하니스로 채점하는 재사용 가능한 새 벤치마크다. 과제 명세와 프롬프트가 영어이고 입력은 텍스트 명세이므로 en 트랙의 text로 분류했다. 공식 저장소 README에는 라이선스와 lm-eval 언급이 없고 논문 PDF에도 라이선스 문구가 없어, 미표기로 기록하고 공개 저장소는 저작권 전부 보유로 취급했다.",
       "changes": [
         {
           "track": "en",
@@ -48284,12 +48284,12 @@
             "대표 과제": "구조화된 명세로부터 WebUI 코드(일반 WebUI는 React/Next.js, 3D는 Three.js HTML)를 생성하고 상호작용 테스트로 채점",
             "대표 예시·설명": "웹사이트 요약과 필수 UI 요소 목록이 주어지면 모델이 이를 구현하고, UI 에이전트가 요소를 찾아 클릭·입력·드래그 등을 수행한 뒤 단언을 검사하는 과제 설명(실제 시험 문항이 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 이 벤치마크는 WebGen-Bench와 WebDev-Arena의 시드 프롬프트, Three.js 예제 페이지를 바탕으로 구성되어 있으므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 채점에 Playwright 실행 환경과 평가용 VLM이 필요하다. 논문 보고 기준 사람-에이전트 일치율은 약 80% 이상이다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 다른 출처로 구성되어 있다: WebGen-Bench와 WebDev-Arena의 시드 프롬프트, 그리고 Three.js 예제 페이지와 유사한 공개 데모 장면(논문 4쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 채점에 Playwright 실행 환경과 평가용 VLM이 필요하다. 논문 보고 기준 사람-에이전트 일치율은 약 80% 이상이다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/yunyuntsai/webuiproof-benchmark"
           },
           "modality": "text",
@@ -48333,9 +48333,120 @@
               "quote": "WebUIProof contains 219"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/yunyuntsai/webuiproof-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/yunyuntsai/webuiproof-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/yunyuntsai/webuiproof-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/yunyuntsai/webuiproof-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/yunyuntsai/webuiproof-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "General WebUI Overall Accuracy (%) = (#Full + 0.5·#Partial)/N × 100, build failures counted as No completion",
+            "setting": "Table 2 (page 6) of this paper: General WebUI split of WebUIProof (149 tasks), structured specifications as prompts, fixed UI-agent harness (Playwright, Qwen2.5-VL-72B evaluator, 1280×800 headless browser, per-task step budget of 15). These are results reported in this paper, not a current global leaderboard.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Claude Sonnet 4",
+                "score": "46.10",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Claude Sonnet 4 [3] 30.37 12.59 22.10 35.05 46.10"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini 2.5 Pro",
+                "score": "42.86",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Gemini 2.5 Pro [4] 32.21 15.02 20.38 32.67 42.86"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen 3 Coder 480B",
+                "score": "41.99",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Qwen 3 Coder 480B [2] 33.05 13.92 20.76 31.62 41.99"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DeepSeek R1",
+                "score": "41.90",
+                "evidence": {
+                  "page": 6,
+                  "quote": "DeepSeek R1 [5] 32.89 14.91 20.51 31.65 41.90"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "is an open-weight model emphasizing"
+                }
+              },
+              {
+                "model": "GPT 4.1",
+                "score": "41.40",
+                "evidence": {
+                  "page": 6,
+                  "quote": "GPT 4.1 [17] 36.58 11.67 20.30 31.25 41.40"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama 4 Maverick",
+                "score": "40.77",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Llama 4 Maverick [15] 46.64 2.53 18.72 31.41 40.77"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Kimi K2",
+                "score": "39.30",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Kimi K2 [16] 46.31 8.70 11.94 33.33 39.30"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama 3 405B",
+                "score": "36.19",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Llama 3 405B [14] 47.32 10.13 14.18 29.10 36.19"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.02617",
@@ -48450,7 +48561,8 @@
         "source_run": "42151119634",
         "context_sha256": "ee9cb6a8c2fa8ceafcf20bfb4bb40077ab9b34f66e673c532d9a5fa16711a975"
       },
-      "proposal_sha256": "c9779e6d0af923676587d2e9b46cd031baa4e4aa9acb3aea0227c06fc707de05"
+      "proposal_sha256": "e693f3a7a0041c7880c830e019ff8d8befed983892885911096ba06b9b1221a3",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -80253,8 +80365,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 40,
-      "cost_usd": 30.1528
+      "calls": 41,
+      "cost_usd": 31.0506
     }
   },
   "reaudits": [
