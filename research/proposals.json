@@ -45629,6 +45629,191 @@
         "reviewed_sha256": "d389786ae6ff17a57c9bb1ce9e4e9e7596799d767f47b2abc8291c4d645d4bf7",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.02425": {
+      "decision": "propose",
+      "reason": "XiangqiBench는 재사용 가능한 새 실행형 벤치마크로, 119개 전술 종반 국면에서 LLM 에이전트가 엔진 수비자를 상대로 체크메이트까지 이끄는 폐루프 적대적 평가를 제공한다. 과제 프롬프트와 명령 형식이 영어이므로 en 트랙으로 분류했다. 보드는 ASCII와 FEN 텍스트로 제공되어 text 모달리티다. 논문이 공식 코드 URL을 명시했으므로 링크로 사용했다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 논문에서 확인되지 않아 모두 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "xiangqibench",
+            "이름": "XiangqiBench",
+            "평가 축": "에이전트(폐루프 적대적 종반 전환)",
+            "언어": "en",
+            "정의": "중국 장기(샹치) 전술 종반 119개 국면(강제 메이트가 엔진 또는 checks-only 탐색으로 뒷받침됨)에서 LLM 에이전트가 레드 측으로 엔진 수비자를 상대해 체크메이트를 달성해야 하는 실행형 벤치마크. 참조 수와의 일치는 점수에 반영되지 않고 종료 상태의 승리만 채점한다. 최대 40수(ply) 제한이며, 별도 평가 설정으로 Sighted와 Restricted observation을 둔다. 논문은 12개 LLM의 8,568개 궤적을 기록했고 pass@k와 pass^k를 함께 보고한다. 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "대표 과제": "REPL 명령(move, view_board, get_legal_moves, simulate, think, resign)으로 엔진 수비자를 상대해 체크메이트 달성",
+            "대표 예시·설명": "과제 설명(실제 시험 문항이 아님): 영어 시스템 프롬프트로 종반 국면의 레드 측을 맡고, ICCS 좌표 형식의 move 명령(예: move h2h9)으로 수를 두며 수비자의 응답을 받아 체크메이트까지 진행한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "논문이 데이터와 코드의 라이선스를 명시하지 않아 이용 전 공식 저장소에서 확인해야 한다. 이 벤치마크는 고전 장기 서적(Shi Qing Ya Qu 116개, Jianghu 3개)의 국면과 Pikafish 엔진 및 cchess 규칙 라이브러리를 사용하므로, 각 구성 요소의 고유 약관을 따로 점검해야 한다. 평가에는 Pikafish 엔진이 필요하다. 논문의 부록 A.5는 수집 시 check 필드가 항상 No였던 결함을 밝히며, 반복 판정은 단순화된 long-check 규칙으로 재판정했다. 한 모델이 어느 단계에서나 3회 시행만으로 평가되었다. 실험 결과는 논문 조건의 값이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/floatai/xiangqibench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (closed-loop adversarial endgame conversion)",
+            "definition": "An executable benchmark of 119 tactical Chinese chess (Xiangqi) endgames with forced mates supported by engine or checks-only search. An LLM agent plays Red against an engine defender and must deliver checkmate. Agreement with a reference move earns no score; only the terminal win is scored. Games are capped at 40 plies, and two evaluation settings are defined, Sighted and Restricted observation. The paper records 8,568 trajectories from 12 LLMs and reports pass@k together with pass^k. Results hold under the paper's conditions and are not a current global leaderboard.",
+            "task": "Deliver checkmate against an engine defender through REPL commands (move, view_board, get_legal_moves, simulate, think, resign)",
+            "example": "Task description, not an actual test item: with an English system prompt, the agent plays Red in an endgame position, commits moves in ICCS coordinates (for example, move h2h9), receives the defender's reply, and continues until checkmate."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "Render ASCII board,"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "starting from 119"
+            },
+            "대표 예시·설명": {
+              "page": 16,
+              "quote": "You are solving"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/floatai/xiangqibench"
+            },
+            "언어": {
+              "page": 16,
+              "quote": "You are solving"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce XiangqiBench,"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "starting from 119"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "We introduce XiangqiBench,"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.02425",
+      "paper_title": "Finding the Move Is Not Winning the Game: XiangqiBench for Closed-Loop Evaluation of LLM Agents",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.02425",
+        "sha256": "95eb08b813815491d626aa0ec1f33e058bc3d15845ecbaabc3ed180bc8c69985",
+        "accessed": "2026-11-06T03:20:53Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 40,
+          "elapsed_seconds": 180.86,
+          "pdf_sha256": "95eb08b813815491d626aa0ec1f33e058bc3d15845ecbaabc3ed180bc8c69985",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "0324360e51c8c7e49cd2cf5a10084c57f8af405b114acd9ebfa4802e786a7005",
+          "page_json_file": "2610.02425.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/floatai/xiangqibench",
+            "fetched_url": "https://api.github.com/repos/floatai/xiangqibench/readme",
+            "sha256": "6ff7d8aaebdee942ec874a4409afeb0a02241fd76973042d838a6cc7413f99dc",
+            "accessed": "2026-11-06T03:24:17Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/floatai/xiangqibench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "29eb739546f0a5bc7c19496f5d6e725ef9ce00a3d308392deaa38ee7dda603e1"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-06T03:24:17Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.02425",
+        "paper_title": "Finding the Move Is Not Winning the Game: XiangqiBench for Closed-Loop Evaluation of LLM Agents",
+        "abstract": "Static evaluations credit a language model for naming the right move, but an agent must carry a plan through to a verified outcome while an opponent responds. We introduce XiangqiBench, an executable benchmark that measures this difference in Chinese chess: starting from 119 tactical endgames with forced mates supported by engine or checks-only search, an LLM agent must deliver checkmate against an engine defender. An interactive REPL interface separates real moves, state queries, and forward simulation, and we record 8,568 multi-turn trajectories from 12 frontier LLMs under two observation protocols. Three signals that look like competence each overstate closed-loop success. (i) The Conversion Gap: models play the stored reference first move in 26.1\\% of Sighted trials, yet only 13.9\\% of these trials end in a win. (ii) The Consistency Gap: the leading model reaches 38.7\\% pass@3 but only 5.9\\% pass^3, winning all three trials on 7 of the 46 positions it ever wins. (iii) The Simulation Gap: 32.3\\% of accepted simulation calls stop on an illegal move, and in 49.3\\% of comparable cases the real defender replies differently from the line the agent simulated; self-authored rollouts check legality but cannot anticipate the opponent. Finding the move is not winning the game: agent evaluations should score closed-loop outcomes and report reliability alongside coverage.",
+        "paper_updated": "2026-10-05T00:00:00Z",
+        "created_at": "2026-10-19T13:47:50Z",
+        "input_sha256": "82cb97ee8b9dd44b979b8581be29a88a79ee516047ba015f8e1bf84e0f7dcd44",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "중국 장기 LLM 에이전트 폐루프 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "장기 에이전트 평가용 XiangqiBench 실행 벤치마크 제시"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42151119634",
+        "context_sha256": "dd84bc9d6e3214a52546dec5279a594ce06f4e5f3f36e8a7196988d13332a369"
+      },
+      "proposal_sha256": "b3a2544d7c2d60ffdc05b786ce2df1e81974d1f64d17e1f69f7da3d179ddc473"
     }
   },
   "processed_comments": [],
@@ -77418,8 +77603,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 17,
-      "cost_usd": 11.7578
+      "calls": 18,
+      "cost_usd": 12.5096
     }
   },
   "reaudits": [
