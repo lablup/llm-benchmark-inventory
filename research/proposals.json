@@ -42845,8 +42845,8 @@
       "proposal_sha256": "1943d274c9c96a43451cbc64d752e7325a60ca59f2dca4c0c21ca0a4236f5aba"
     },
     "2603.29112": {
-      "decision": "propose",
-      "reason": "GISTBench는 상호작용 이력에서 사용자 관심사를 추출하는 LLM의 능력을 평가하는 재사용 가능한 새 벤치마크이다. 합성 데이터셋과 공개 코드가 있고, IG(정밀도·재현율)와 IS 지표를 제안한다. 논문은 평가가 영어로 이루어졌다고 밝히고 영어 예시도 보여 주므로 en 트랙에 둔다. 입력은 텍스트뿐이라 text로 분류한다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "decision": "needs_evidence",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: Score quote must contain the exact model and numeric value",
       "changes": [
         {
           "track": "en",
@@ -42991,7 +42991,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-06T02:43:34Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -43017,11 +43017,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "42151119634",
-        "context_sha256": "38ef7cee1666366c419b021afc0f2ef50ddc9085528627aab11a21f44f5bddfb"
-      },
-      "proposal_sha256": "6668bd8dbe05f4660858bb3efc0d56fa71ccd3abb3120caeb4fe8bf4e2b6fd0d"
+      "proposal_sha256": "6668bd8dbe05f4660858bb3efc0d56fa71ccd3abb3120caeb4fe8bf4e2b6fd0d",
+      "approval_policy": "claude_only",
+      "resume_error": "Score quote must contain the exact model and numeric value"
     },
     "2608.11469": {
       "decision": "needs_evidence",
@@ -56390,23 +56388,19 @@
     },
     "2606.18950": {
       "arxiv_id": "2606.18950",
-      "paper_title": "RTSGameBench: An RTS Benchmark for Strategic Reasoning by Vision-Language Models",
-      "abstract": "Modern Vision-Language Models (VLMs) often struggle with strategic reasoning, i.e., anticipating and influencing other agents' actions, under uncertainty in competitive and cooperative settings. Real-time strategy (RTS) games can be a natural testbed for diagnosing this limitation, as they demand coordination with allies, adaptation to opponents' strategy, and long-horizon planning under partial observability. However, existing RTS benchmarks offer limited evaluation scope, lack systematic competency diagnosis, and remain fixed in the pre-designed scenario coverage. To address these limitations, we present RTSGameBench, which is built on Beyond All Reason, a large-scale RTS game with an expanded battlefield that demands broader strategy diversity than the existing testbeds. The proposed benchmark provides evaluations through diverse gameplay across various matchup structures, diagnostic assessment via mini-games, each targeting an individual strategic competency, and extensible coverage via a self-evolving generation framework that converts free-form queries into new mini-games, improving over successive cycles. Additionally, for VLMs to operate in large-scale RTS games, we provide RTSGameAgent that manages units by an FSM with agentic memory. We empirically validate that multiple state-of-the-art VLMs do not perform well when matchups demand tighter coordination, multiagent coordination and when task scale increases.",
-      "paper_updated": "2026-10-06T00:00:00Z",
-      "created_at": "2026-10-19T13:48:14Z",
-      "input_sha256": "c4804cbbfe70f984987c042b10a8cda885421a0fffff96783d472d9b6a097170",
-      "version": 4,
+      "paper_title": "RTSGameBench: Evaluating VLMs for Strategic Reasoning in Game Environments",
+      "abstract": "Vision-Language Models (VLMs) often struggle with strategic reasoning in a multi-agent setting, i.e., deciding under uncertainty while coordinating with and adapting to other agents. Real-time strategy (RTS) games can be a natural testbed for this capability, requiring long-horizon planning, coordination with allies, and adaptation to opponents under partial observability. But existing RTS benchmarks cover limited agent configurations, lack controlled evaluation across distinct strategic demands, and remain confined to fixed scenarios. To address these gaps, we propose RTSGAMEBENCH, built on Beyond All Reason, an RTS game whose larger scale broadens the strategic space beyond prior testbeds. In RTSGAMEBENCH, we offer holistic evaluation across diverse full-game matchups, diagnostic mini-games each emphasizing a focal strategic demand, and extensible coverage via a self-evolving framework that turns free-form queries into new mini-games, improving with accumulated experience. We further propose RTSGAMEAGENT, an agent harness that combines scalable group-level trajectory planning with short- and long-term memory and outperforms existing agents. We find that state-of-the-art VLMs struggle where humans succeed, particularly when they must coordinate with allies or contend with multiple opponents.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "VLM 전략적 추론 평가 RTS 게임 벤치마크"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "RTS 게임 전략 추론 VLM 벤치마크 RTSGameBench 제안"
+          "reason": "VLM 전략 추론 RTS 게임 벤치마크 제안"
         }
       ]
     },
@@ -68177,18 +68171,18 @@
     "2605.14381": {
       "arxiv_id": "2605.14381",
       "paper_title": "NodeSyn: Socially Aligned Synthetic Data for AI Evaluation",
-      "abstract": "Recent advancements in generative AI facilitate large-scale synthetic data generation for model evaluation. However, without targeted approaches, these datasets often lack the sociotechnical nuance required for sensitive domains. We introduce NodeSyn, a methodology that pairs a fine-tuned taxonomy generator (TaG) with credible published sources and extracted sensitive attributes to generate queries reflecting authentic societal contexts and nuanced harms. Evaluated across ten open-weight and proprietary LLMs in Medical Advice and Self-Harm using human-validated autoraters, NodeSyn ranked first on 8 of 10 models in each domain. NodeSyn datasets induced average failure rates 3.1 times higher than generic synthetic baselines, 2.4 times higher than structured synthetic benchmarks, and 1.6 times higher than authentic human-authored queries. Ablation studies confirm that, controlling for structural confounds, our granular Level 3 taxonomic expansion significantly drives these failure rates over Level 2 across 9 of 10 models (+29.2% relative lift in Medical Advice and +24.0% in Self-Harm). Variance attribution analysis reveals that failures are driven not only by what topics are queried (taxonomic nodes and lexical specificity), but also by their sociotechnical grounding (affected demographics, occupations, geographies, and querying personas). We embed this method into a research prototype, and open-source (https://github.com/google-research/nodesynth) the code and datasets to enable scalable, high-stakes model evaluation.",
-      "paper_updated": "2026-10-26T00:00:00Z",
-      "created_at": "2026-10-27T02:52:01Z",
-      "input_sha256": "275c70fd7d2fd7f6ce5adb80b923b3e401e4533278019d579d0ee7cd4abfca28",
+      "abstract": "Recent advancements in generative AI facilitate large-scale synthetic data genera- tion for model evaluation. However, without targeted approaches, these datasets often lack the sociotechnical nuance required for sensitive domains. We introduce NodeSyn, an evidence-grounded methodology that generates socially relevant syn- thetic queries by leveraging a fine-tuned taxonomy generator (TaG) anchored in real-world evidence. Evaluated against four mainstream LLMs, NodeSyn elicited failure rates up to five times higher than human-authored benchmarks. Ablation studies confirm that our granular taxonomic expansion significantly drives these failure rates, while independent validation reveals critical deficiencies in prominent guard models.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "relevant",
-          "reason": "안전성 평가용 합성 데이터셋/방법론 공개, 영어 의료·자해 도메인 가능성"
+          "decision": "uncertain",
+          "reason": "합성 평가 데이터 생성 방법론, 재사용 자원과 언어 불명확"
         }
       ]
     },
@@ -73343,10 +73337,10 @@
     "2611.02978": {
       "arxiv_id": "2611.02978",
       "paper_title": "CAREFUL-Bench: Effect-Aware, Judge-Free Evaluation of Multi-Turn LLM Function Calling",
-      "abstract": "The multi-turn checker of the Berkeley Function Calling Leaderboard (BFCL) evaluates final state correctness but ignores the effects of intermediate calls: extra calls are free, function documentation does not describe side effects, and the scripted user never responds to proposals. Consequently, models asking for confirmation before destructive actions are penalized; 260 of 734 reference turns in the base category perform destructive actions without confirmation. We make BFCL effect-aware without replacing it. We infer effect declarations for all 128 functions by executing them in BFCL simulators and comparing state changes, with destructive writes identified by three annotators. A judge-free replay scorer reproduces official results across all 800 reference trajectories while reporting unrequested destructive calls, duplicate writes, redundant reads, surplus steps, and their token costs. We also introduce a confirmation-aware protocol with a deterministic simulated user. Across 11 open models, effect-aware scoring preserves the official ranking but reveals substantial differences in execution quality: the leading model loses 14.0 points due to unrequested destructive calls, while surplus steps consume up to 28% of input tokens. Adding effect hints to function documentation has no impact on eight evaluated models. Allowing the simulated user to respond recovers up to four points for models that seek confirmation. However, the best model completes only six of 576 conversations requiring destructive actions with explicit confirmation. These results expose a key limitation of current function-calling benchmarks: they cannot distinguish between asking for clarification and obtaining permission before potentially destructive actions.",
-      "paper_updated": "2026-11-03T00:00:00Z",
-      "created_at": "2026-11-04T02:43:13Z",
-      "input_sha256": "83119bf3a565a4e5f23cf87167de9caaf378b89cc1d93a31582cbad2ea4a2b64",
+      "abstract": "The multi-turn checker of the Berkeley Function Calling Leaderboard (BFCL) checks only the final state of a simulated service, never the calls that produced it. Extra calls cost nothing, no function doc says what a function does, and the scripted user never answers a proposal, so a model that asks before deleting or paying fails the turn; 322 of the 734 reference turns in the base category act destructively without confirmation. We add effect information to BFCL without replacing it. Effect declarations for all 128 functions are inferred by executing each function in BFCL's own simulators and diffing the state; the remaining judgment, which writes are destructive, is made by four annotators, two humans and two language models (Fleiss' kappa = 0.75), and adjudicated. A judge-free replay scorer re-scores any logged BFCL run, reproduces BFCL's results on all 800 reference trajectories, and reports, alongside the official score, unrequested destructive calls, duplicate writes, redundant reads, surplus steps and their token cost. A confirmation-aware protocol adds a deterministic user that answers proposals. On 11 open models the effect-aware score preserves the official ranking (rho = 0.99) but changes the gaps: the leader loses 14.0 points to unrequested destructive calls, and surplus steps account for 2-28% of all input tokens. Effect hints in the function docs produce no measurable change for any of eight models, consistent with their advisory status in the Model Context Protocol. A user that answers recovers up to four points for the models that ask and none for the rest, with every comparison paired on the same conversations. The gains come from clarifying questions rather than requests for permission: of the 712 conversations that require a destructive call, no model completes more than 6 with every such call confirmed, a difference the official score does not record.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
@@ -73354,7 +73348,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "BFCL 확장 효과 인지형 함수호출 평가 CAREFUL-Bench"
+          "reason": "BFCL 확장 다중턴 함수호출 평가 벤치마크 제안"
         }
       ]
     },
@@ -73859,6 +73853,312 @@
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
           "reason": "의학물리 계산·오류탐지 벤치마크 MedPhysBench 공개"
+        }
+      ]
+    },
+    "2411.09492": {
+      "arxiv_id": "2411.09492",
+      "paper_title": "MM-Eval: A Hierarchical Benchmark for Modern Mongolian Evaluation in LLMs",
+      "abstract": "Large language models (LLMs) excel in high-resource languages but face notable challenges in low-resource languages like Mongolian. This paper addresses these challenges by categorizing capabilities into language abilities (syntax and semantics) and cognitive abilities (knowledge and reasoning). To systematically evaluate these areas, we developed MM-Eval, a specialized dataset based on Modern Mongolian Language Textbook I and enriched with WebQSP and MGSM datasets. Preliminary experiments on models including Qwen2-7B-Instruct, GLM4-9b-chat, Llama3.1-8B-Instruct, GPT-4, and DeepseekV2.5 revealed that: 1) all models performed better on syntactic tasks than semantic tasks, highlighting a gap in deeper language understanding; and 2) knowledge tasks showed a moderate decline, suggesting that models can transfer general knowledge from high-resource to low-resource contexts. The release of MM-Eval, comprising 569 syntax, 677 semantics, 344 knowledge, and 250 reasoning tasks, offers valuable insights for advancing NLP and LLMs in low-resource languages like Mongolian. The dataset is available at https://github.com/joenahm/MM-Eval.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "몽골어 전용 벤치마크로 한국어/영어 과제 아님"
+        }
+      ]
+    },
+    "2506.00765": {
+      "arxiv_id": "2506.00765",
+      "paper_title": "HouseTS: A Large-Scale, Multimodal Spatiotemporal U.S. Housing Dataset and Benchmark",
+      "abstract": "Accurate long-horizon house-price forecasting requires benchmarks that capture temporal dynamics together with time-varying local context. However, existing public resources remain fragmented: many datasets have limited spatial coverage, temporal depth, or multimodal alignment; the robustness of modern deep forecasters and time-series foundation models on housing data is not well characterized; and aerial imagery is rarely leveraged in a time-aware and interpretable manner at scale. To bridge these gaps, we present HouseTS (House Time Series), a multimodal spatiotemporal dataset for ZIP-code-level housing-market analysis, covering monthly signals from March 2012 to December 2023 across over 6,000 ZIP codes in 30 major U.S. metropolitan areas. HouseTS aligns monthly housing-market indicators, monthly POI dynamics, and annual census-based socioeconomic variables under a unified schema, and includes time-stamped annual aerial imagery. Building on HouseTS, we define standardized long-horizon forecasting tasks for univariate and multivariate prediction and benchmark 16 model families spanning statistical methods, classical machine learning, deep neural networks, and time-series foundation models in both zero-shot and fine-tuned modes. We also provide image-derived textual change annotations from multi-year aerial image sequences via a vision--language pipeline with LLM-as-judge and human verification to support scalable interpretability analyses. HouseTS is available on Kaggle, with code and documentation on GitHub.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "주택 시계열 데이터셋으로 언어모델 평가 아님"
+        }
+      ]
+    },
+    "2605.02964": {
+      "arxiv_id": "2605.02964",
+      "paper_title": "Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use",
+      "abstract": "Reinforcement learning (RL) trained language model agents with tool access are increasingly deployed in coding assistants, research tools, and autonomous systems. We introduce the Reward Hacking Benchmark (RHB), a suite of multi-step tasks requiring sequential tool operations with naturalistic shortcut opportunities such as skipping verification steps, inferring answers from task-adjacent metadata, or tampering with evaluation-relevant functions. RHB supports independent and chained task regimes, where chain length acts as a proxy for longer-horizon agent behavior. We evaluate 13 frontier models from OpenAI, Anthropic, Google, and DeepSeek. Exploit rates range from 0% (Claude Sonnet 4.5) to 13.9% (DeepSeek-R1-Zero), varying sharply by post-training style. A controlled sibling comparison (DeepSeek-V3 vs. DeepSeek-R1-Zero) shows RL post-training is associated with substantially higher reward hacking (0.6% vs. 13.9%), with consistent gaps across all four task families. We identify six exploit categories and find that 72% of reward hacking episodes include explicit chain-of-thought rationale, suggesting models often frame exploits as legitimate problem-solving. Simple environmental hardening reduces exploit rates by 5.7 percentage points (87.7% relative) without degrading task success. Models with near-zero exploit rates on standard tasks show elevated rates on harder variants, suggesting that production-aligned post-training appears to suppress reward hacking only below a complexity threshold where honest solutions remain tractable.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "도구 사용 LLM 에이전트의 보상 해킹 벤치마크 제안"
+        }
+      ]
+    },
+    "2606.17698": {
+      "arxiv_id": "2606.17698",
+      "paper_title": "EComAgentBench: Benchmarking Shopping Agents on Long-Horizon Tasks with Distributed Hidden Intent",
+      "abstract": "As LLM-based shopping agents enter production, existing benchmarks fail to capture how a shopper's requirements arrive: stated implicitly in the query, recorded in a profile, or revealed only when the right question is asked. Benchmarks that expose full intent upfront and grade only the final choice can neither pose this long-horizon challenge nor explain which requirement an agent missed. To address this gap, we introduce EComAgentBench, a benchmark of 662 tasks grounded in real Amazon products and reviews. Each task scatters these requirements across a visible query, a tool-gated profile, and scripted clarification; an agent must uncover hidden intent, verify candidates against attributes and review evidence, and commit to a single product within 100 tool calls. Moreover, typed, source-tagged rubrics grade every task, attributing each failure to a requirement and its source. Construction is automated yet reliable, with every answer fixed in code before any text is generated and every sample validated. Our evaluation of seven models reveals that even the strongest attains only 57.1% overall accuracy, and rubric satisfaction degrades from visible to hidden sources. Overall, we believe EComAgentBench will serve as a reproducible foundation for moving shopping agents from single-query search toward dependable assistance over long horizons.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "쇼핑 에이전트 장기 과제 벤치마크 EComAgentBench 제안"
+        }
+      ]
+    },
+    "2606.15123": {
+      "arxiv_id": "2606.15123",
+      "paper_title": "CVE-Conditioned Exploit Generation with LLMs: A Data-Centric Study of Benchmarking and Fine-Tuning",
+      "abstract": "We study the task of CVE-conditioned exploit generation, where a model drafts proof-of-concept (PoC) exploits given software vulnerability context. We adopt a data-centric approach, constructing a high-quality dataset via multi-stage preprocessing and introducing a scalable evaluation framework with LLM-as-judge and fine-grained rubrics. Under this unified setup, we benchmark 17 large language models across 8 evaluation criteria, providing systematic insights into their zero-shot capabilities. We further show that a compact 8B open-weight model, when fine-tuned on curated data, achieves over 42.5% improvement in exploit quality and rivals some proprietary models when combined with simple test-time rejection strategies. Our results highlight the importance of data quality, structured supervision, and evaluation design for reliable exploit generation, suggesting that these factors can be as critical as model scale in adapting LLMs to cybersecurity tasks.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "CVE 기반 익스플로잇 생성 데이터셋과 평가 프레임워크"
+        }
+      ]
+    },
+    "2505.07139": {
+      "arxiv_id": "2505.07139",
+      "paper_title": "Molecular notation can act as a shortcut in AI benchmark evaluation",
+      "abstract": "High predictive accuracy does not necessarily mean that an AI model relies on information relevant to its scientific task. Molecular prediction illustrates this concern: the same molecule can be represented by different SMILES strings, potentially altering model behavior. We combined a systematic PubMed literature survey with experiments on chemical language models. SMILES preparation could not be identified from articles or Supplementary Information in 71 of 174 studies (40.8%). Across six benchmarks, 58.7% of identity-preserving input pairs used different SMILES strings. Notation differences changed reconstruction and latent representations, while separately trained classifiers often achieved similar scores. In two datasets, notation was associated with labels and changed predictions of a fixed model, showing how benchmark scores can reward notational shortcuts. Balancing notation during classifier training reduced prediction differences but sometimes lowered performance on original inputs. These findings support evaluating predictive performance alongside consistency under identity-preserving changes in input representation.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "분자 표기 편향 분석이며 LLM 벤치마크 신규 제안 아님"
+        }
+      ]
+    },
+    "2507.16271": {
+      "arxiv_id": "2507.16271",
+      "paper_title": "Beyond Isolated Dots: Benchmarking Structured Table Construction as Deep Knowledge Extraction",
+      "abstract": "Large language models (LLMs) are increasingly expected to extract and synthesize structured information from complex real-world documents, yet they typically produce unstructured, hard-to-verify paragraph-style outputs. We introduce AOE (Arranged and Organized Extraction), a bilingual benchmark that evaluates LLMs' ability to distill long-form, multi-document inputs (64k to 1.8M tokens) into structured tables. AOE comprises 12 tasks across four domains (academic, financial, legal, and medical), each grounded in genuine analytical needs, with schema guidance provided to isolate extraction quality from formatting variance. We evaluate 12 frontier LLMs (both open-weight and proprietary) under four generation settings of increasing autonomy: direct full-document input, RAG-based retrieval, offline document-browsing agent, and online web-search agent. Even the best-performing model achieves only 42.7% Cell F1, and retrieval-augmented approaches often degrade rather than improve performance, revealing that structured extraction from long contexts remains a fundamental challenge - an \"Area of Effect\" (AOE) that impacts all tested systems.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "이중언어 장문 구조화 표 추출 벤치마크 AOE 제안"
+        }
+      ]
+    },
+    "2512.04308": {
+      "arxiv_id": "2512.04308",
+      "paper_title": "ResponsibleRobotBench: Benchmarking Risk-Aware Task-Level Decision Making for Robotic Manipulation with Large Multimodal Models",
+      "abstract": "Safe task-level manipulation requires a planner to recognize hazards, select appropriate mitigation actions, and satisfy their execution prerequisites without abandoning the original goal. We introduce ResponsibleRobotBench, a benchmark of 23 manipulation task configurations with separately specified goals and safety conditions. It connects hazard-category predictions, planned actions, execution feedback, and terminal outcomes at the episode level. Across evaluations of five large multimodal models, terminal safety and safe task completion can diverge: defense prompts increase terminal safety for three tested models but affect safe success in different directions. Correct hazard-category predictions also fail to ensure executable mitigation. In a cutting task under the default configuration, GPT-4o mini identifies the human hazard in all 100 episodes but never requests assistance, and every episode ends unsafe. Offering a help action and actually requesting it lead to different comparisons: outcomes differ between action menus even for a model that never requests help, and repeated requests can leave execution failures unresolved. Imitation-learning evaluations and physical robot sequences illustrate the need to coordinate mitigation with goal actions. Together, these results motivate evaluating mitigation selection, action prerequisites, and recovery alongside hazard recognition and terminal outcomes. The appendix provides task definitions, checker conditions, and prompts. Project website: https://responsible-robot-benchmark.github.io/.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티모달 모델 로봇 안전 의사결정 벤치마크 제안"
+        }
+      ]
+    },
+    "2603.01865": {
+      "arxiv_id": "2603.01865",
+      "paper_title": "CyclicJudge: Mitigating Judge Bias Efficiently in LLM-based Evaluation",
+      "abstract": "LLM-as-judge evaluation has become standard practice for open-ended model assessment; however, judges exhibit systematic biases that cannot be averaged out by increasing the number of scenarios or generations. These biases are often similar in magnitude to the model differences that benchmarks are designed to detect, resulting in unreliable rankings when single-judge evaluations are used. We introduce a variance decomposition that partitions benchmark score variance into scenario, generation, judge, and residual components. Based on this analysis, CyclicJudge, a round-robin assignment of judges to scenarios, is demonstrated to be the optimal strategy for a fixed judge panel and judge-call budget: it cancels the average additive judge offsets while matching the cost of single-judge evaluation. Empirical results on MT-Bench and MindEval validate the effectiveness of CyclicJudge as predicted, across both general-purpose and domain-specific evaluation settings, reducing benchmark score variance and stabilizing the resulting model ranking.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "심사 편향 완화 방법론이며 신규 벤치마크 아님"
+        }
+      ]
+    },
+    "2604.10784": {
+      "arxiv_id": "2604.10784",
+      "paper_title": "TorchUMM: A Unified Multimodal Model Codebase for Evaluation, Analysis, and Post-training",
+      "abstract": "Recent advances in unified multimodal models (UMMs) have led to a proliferation of architectures capable of understanding, generating, and editing across visual and textual modalities. However, developing a unified framework for UMMs remains challenging due to the diversity of model architectures and the heterogeneity of training paradigms and implementation details. In this paper, we present TorchUMM, the first unified codebase for comprehensive evaluation, analysis, and post-training across diverse UMM backbones, tasks, and datasets. TorchUMM supports a broad spectrum of models covering a wide range of scales and design paradigms. Our benchmark encompasses three core task dimensions: multimodal understanding, generation, and editing, and integrates both established and novel datasets to evaluate perception, reasoning, compositionality, and instruction-following abilities. By providing a unified interface and standardized evaluation protocols, TorchUMM enables fair and reproducible comparisons across heterogeneous models and fosters deeper insights into their strengths and limitations, facilitating the development of more capable unified multimodal systems. Code is available at: https://github.com/AIFrontierLab/TorchUMM.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "통합 멀티모달 모델 평가 코드베이스와 벤치마크 제공"
+        }
+      ]
+    },
+    "2605.07147": {
+      "arxiv_id": "2605.07147",
+      "paper_title": "MathlibPR: Pull Request Merge-Outcome Benchmark for Formal Mathematical Libraries",
+      "abstract": "The ecosystem of Lean and Mathlib has become the de facto standard for large language model (LLM) assisted formal reasoning with remarkable successes in recent years. Those successes, however, only consume Mathlib as an essential dependency but do not directly contribute to it. In the meantime, the growth of Mathlib has recently been bottlenecked by the review process, which requires human reviewers to judge whether proposed pull requests (PRs) follow the Mathlib's conventions and are worth integrating as part of a shared mathematical infrastructure. This leads to our central question: can LLMs help review Mathlib PRs? To this end, we introduce MathlibPR, a benchmark built from real Mathlib4 PR histories. We further propose a staged evaluation protocol and use it to evaluate both LLM models (e.g., DeepSeek, Qwen, Goedel, and Kimina) and LLM agents (e.g., Codex and Claude Code). Surprisingly, both LLM models and LLM agents struggle to distinguish merge-ready PRs from build-passing PRs that were revised or never merged. By turning Mathlib PR histories into a supervised signal, MathlibPR provides a step toward reviewer assistants and reward models that could help evaluate PRs and steer LLMs toward producing merge-ready Mathlib contributions.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "Mathlib PR 병합 결과 예측 벤치마크 제안"
+        }
+      ]
+    },
+    "2605.12154": {
+      "arxiv_id": "2605.12154",
+      "paper_title": "MM-OptBench: A Solver-Grounded Benchmark for Multimodal Optimization Modeling",
+      "abstract": "Optimization modeling translates real decision-making problems into mathematical optimization models and solver-executable implementations. Although language models are increasingly used to generate optimization formulations and solver code, existing benchmarks for this capability are almost entirely text-only. This omits many optimization-modeling tasks that arise in operational practice, where requirements are described in text but essential instance information is often conveyed through visual artifacts such as tables, graphs, maps, schedules, and planning dashboards. We introduce multimodal optimization modeling, a benchmark setting where models must construct both a mathematical formulation and executable solver code from a text-and-visual problem specification. To evaluate this setting, we develop a solver-grounded framework that generates structured optimization instances, verifies each instance with an exact solver, and builds both model-facing inputs and hidden reference files from the same verified source. We instantiate it as MM-OptBench, a benchmark of 780 solver-verified instances spanning 6 optimization families, 26 subcategories, and 3 structural difficulty levels. We evaluate 9 multimodal large language models (MLLMs), including 6 frontier general-purpose and 3 math-specialized models, with aggregate, family-level, difficulty-level, and failure-mode analyses. The task remains far from solved: the best two models reach 52.1% and 51.3% pass@1, while on average across the six general-purpose MLLMs, pass@1 is 43.4% on easy and 15.9% on hard instances. All three math-specialized MLLMs solve 0/780 instances. Post-hoc extraction diagnostics and oracle-reading evaluation reveal difficulties in both multimodal grounding and downstream solver-artifact generation. MM-OptBench provides a concrete testbed for solver-grounded, decision-oriented multimodal intelligence.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티모달 최적화 모델링 벤치마크 MM-OptBench 제안"
+        }
+      ]
+    },
+    "2605.18805": {
+      "arxiv_id": "2605.18805",
+      "paper_title": "RecoAtlas: A Benchmark and RL Environment for LLM Recommendation Agents Optimizing Set-Level Utility",
+      "abstract": "LLM recommender agents increasingly produce structured reports: sets of items accompanied by natural-language justifications. Yet existing benchmarks often focus on reranking small candidate sets or judging reports primarily by semantic plausibility, providing limited support for evaluating and training agents based on set-level utility. We introduce Recommender Atlas (Agentic Tasks for Learning and Assessment in Shopping), or RecoAtlas, a benchmark and reinforcement learning environment grounded in user behavior. RecoAtlas provides a shopping toolkit for product retrieval, complementarity, and diversity. Given a shopping query, an agent uses these tools to generate a structured recommendation report. Behavioral reference sets support exact-recovery evaluation and the training of a learned bundle-level reward that supplies feedback for policy optimization with RL. Its controlled tool environment exposes agents to semantic and behavior-aligned tools, enabling systematic analysis of how LLM reasoning, tool signals, and tool-use policies contribute to performance. Across controlled experiments, performance scales with model capacity and test-time compute, and improves with stronger tools, while semantic plausibility does not necessarily translate into behavior-grounded utility. RecoAtlas provides a foundation for training and evaluating shopping assistants to move beyond semantic plausibility toward coherent, behaviorally grounded recommendation sets.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "추천 에이전트 벤치마크 및 RL 환경 제안"
+        }
+      ]
+    },
+    "2605.22068": {
+      "arxiv_id": "2605.22068",
+      "paper_title": "COCOTree: A Dataset and Benchmark for Open Tree-Structured Visual Decomposition",
+      "abstract": "We formalize and enable the task of open tree decomposition, which segments an image into hierarchical trees of visual components with unconstrained granularity and flexibility. Specifically, we provide the foundation benchmark for this new paradigm with the following three key contributions. First, we overcome the prohibitively high cognitive and physical bottlenecks of manual annotation by developing a fully automated generation pipeline that synergizes the semantic reasoning of Large Vision-Language Models (LVLMs) with the precise geometric grounding of SAM 3. Second, leveraging this pipeline, we construct COCOTree, a massive-scale benchmark featuring over 21K images and 1.8M structural nodes. By embracing an open-vocabulary space of over 3.5K unique labels, it successfully captures the long-tail distribution of complex physical assemblies. Notably, rigorous human evaluation confirms our generated annotations demonstrate strong alignment with human structural judgment. Third, we establish a standardized evaluation protocol by proposing the Open Tree Quality (OTQ) metric, which jointly assesses mask precision, label accuracy, and structural consistency. We release our dataset and benchmark code at https://github.com/melonkick3090/COCOTree.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "시각 분해 벤치마크로 언어모델 평가 해당 여부 불명확"
+        }
+      ]
+    },
+    "2606.19544": {
+      "arxiv_id": "2606.19544",
+      "paper_title": "Reliability without Validity: A Systematic, Large-Scale Evaluation of LLM-as-a-Judge Models Across Agreement, Consistency, and Bias",
+      "abstract": "LLM-as-a-Judge has become the dominant evaluation paradigm for language models, but judge validation in practice relies on exact-match agreement, a metric that does not correct for chance and systematically overstates discriminative ability. We present the largest systematic evaluation of LLM-as-a-Judge to date: 21 judges from nine providers across MT-Bench, JudgeBench, and RewardBench, evaluated under three protocols (agreement, consistency, bias audit) over 118 runs and approximately 541,000 individual judgments. Four findings emerge, consistent across the full cohort, including the April 2026 frontier: kappa deflation between exact match and Cohen's kappa is universal (33--41 pp on MT-Bench), judge rankings shift by up to 14 positions across benchmarks, high test--retest reliability (>0.95) coexists with severe position bias (>0.10) in two production-deployed judges (instantiating a consistency--bias paradox), and verbosity bias is small (<0.011) across our cohort under a single pairwise rubric. We distill these into a Minimum Viable Validation Protocol.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "LLM 심사자 대규모 평가 연구, 재사용 자원 불명확"
+        }
+      ]
+    },
+    "2611.02253": {
+      "arxiv_id": "2611.02253",
+      "paper_title": "Calibration-Constrained Diagnostics for Evaluating LLM Self-Evaluation",
+      "abstract": "We introduce a reusable evaluation artifact for diagnosing whether LLM self-reported confidence can support confidence-gated act-or-defer decisions. The artifact is designed for evaluation rather than safety certification: it provides a black-box protocol, prompts, judge-reference labels, model outputs, reproduction scripts, and calibration-constrained diagnostic metrics for auditing LLM self-evaluation across math, factual, and commonsense reasoning tasks. Our central finding is that aggregate uncertainty summaries can produce deployment-misleading rankings: a model that appears strongest under standard aggregate calibration metrics can fail under category-level calibration constraints, while a model with worse aggregate calibration can exhibit stronger calibration-constrained behavior in the positive-margin region where high self-selection accuracy and tight calibration coexist. To expose this failure mode, we define PVC and C-PVC as category-level diagnostics over an accuracy-by-calibration surface: PVC counts categories whose self-evaluation accuracy exceeds a threshold, while C-PVC additionally requires category-level calibration error below a tolerance. We aggregate these diagnostics using Volume Under Surface (VUS) and a positive-margin restriction; they are VC/fat-shattering motivated but are empirical evaluation proxies, not literal VC-dimension estimates. Across 13 models and four benchmarks, the artifact shows weak confidence-correctness separation, stable diagnostic rankings under alternative categorizations and judge-label perturbations, and persistent positive-margin failures not captured by ECE or Brier score. Confidence-gated self-evaluation therefore requires calibration-constrained, category-level diagnostics, and we provide a reusable artifact for applying them under black-box access.",
+      "paper_updated": "2026-11-04T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 자기평가 보정 진단용 재사용 평가 아티팩트 제공"
+        }
+      ]
+    },
+    "2512.10485": {
+      "arxiv_id": "2512.10485",
+      "paper_title": "From Lab to Reality: A Practical Evaluation of Deep Learning Models and LLMs for Vulnerability Detection",
+      "abstract": "Vulnerability detection methods based on deep learning (DL) have shown strong performance on benchmark datasets, yet their real-world effectiveness remains underexplored. Recent work suggests that graph neural network-based and transformer-based models, including large language models (LLMs), yield promising results when evaluated on curated benchmark datasets. These datasets are typically characterized by similar data distributions and may contain synthetic samples, heuristic labels, or labeling noise. In this study, we systematically evaluate four representative DL models---Devign, ReVeal, LineVul, and VulBERTa---across four representative datasets: Juliet, Devign, BigVul, and ICVul. Each model is trained independently on each dataset, and the graph-based and CodeBERT representations adopted by these models are analyzed using t-SNE and centroid distance to examine vulnerability-related patterns. To assess realistic applicability, we further evaluate trained ReVeal and LineVul models, along with four open-weight LLMs, on VentiVul, our newly constructed temporally separated out-of-distribution (OOD) dataset comprising 200 recent vulnerabilities from Linux and Chromium. Our experiments reveal that current representation methods struggle to distinguish vulnerable from non-vulnerable code and that trained models generalize poorly across datasets with differing distributions and characteristics. When evaluated on VentiVul, performance drops sharply, with most models failing to detect vulnerabilities reliably or distinguish vulnerable functions from their patched counterparts. These results expose a persistent gap between academic benchmarks and real-world deployment, emphasizing the value of our deployment-oriented evaluation framework and the need for more robust code representations, higher-quality datasets, and evaluation methods that account for vulnerability-fixing changes.",
+      "paper_updated": "2026-11-05T00:00:00Z",
+      "created_at": "2026-11-06T02:44:46Z",
+      "input_sha256": "fdf65d343d3217f43bb87a09de21767d0605f8d0d90eea666e2ab320c3d62e9f",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "취약점 탐지용 신규 OOD 데이터셋 VentiVul 구축"
         }
       ]
     }
@@ -75048,9 +75348,30 @@
     },
     "2026-11-06": {
       "attempted": [],
-      "abstract_attempted": [],
-      "calls": 2,
-      "cost_usd": 1.9113
+      "abstract_attempted": [
+        "2411.09492",
+        "2506.00765",
+        "2605.02964",
+        "2606.17698",
+        "2606.15123",
+        "2505.07139",
+        "2507.16271",
+        "2512.04308",
+        "2603.01865",
+        "2604.10784",
+        "2605.07147",
+        "2605.12154",
+        "2605.14381",
+        "2605.18805",
+        "2605.22068",
+        "2606.18950",
+        "2606.19544",
+        "2611.02253",
+        "2611.02978",
+        "2512.10485"
+      ],
+      "calls": 3,
+      "cost_usd": 1.9756
     }
   },
   "reaudits": [
