@@ -46536,6 +46536,169 @@
         "reviewed_sha256": "178f97ff19c74fb45d3588ca23c03bd7092db95873195653e614534e486bb1fd",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.02588": {
+      "decision": "propose",
+      "reason": "OEB(Open-Endedness Bench)는 에이전트의 실행 기록만 읽어 연구 과정의 인식론적 건전성(증거, 실험, 수정, 보상 해킹 회피)을 채점하는 재사용 가능한 평가 방법론이자 공개 코드입니다. 평가 대상 기록은 영어 로그(영어 추론 문장과 명령)여서 en 트랙의 text로 분류했습니다. 논문은 새 에이전트를 돌리지 않고 기존 PostTrainBench, Chip-Bench, nanoGPT speedrun의 기록을 재채점했습니다. 공식 코드 저장소 링크는 PDF 1쪽에 있습니다. 라이선스 등 미확인 항목은 '확인 불가'로 두었고 유의사항에 적었습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "oeb",
+            "이름": "Open-Endedness Bench (OEB)",
+            "평가 축": "에이전트(연구 과정의 인식론적 건전성 평가)",
+            "언어": "en",
+            "정의": "정답이나 결과 점수 없이 에이전트의 실행 기록만 읽고 연구 과정을 채점하는 벤치마크 비종속 방법론. 기록을 명제와 실행된 행동을 잇는 인식론적 사건 그래프로 변환한 뒤 증거, 실험, 수정, 보상 해킹 회피의 네 가지 역량 축을 점수화하고 연구 습관을 나타내는 성향 특성도 프로파일링한다. 서술된 명제는 실행된 행동이 돌려준 증거로만 뒷받침되거나 반박된다는 원칙을 따른다.",
+            "대표 과제": "에이전트 실행 기록에서 주장과 실제 실행된 행동의 대응을 확인해 증거·실험·수정·보상 해킹 회피 점수 산출",
+            "대표 예시·설명": "에이전트가 원인을 진단하고 예측을 적은 뒤 평가를 다시 실행하고, 그 결과가 예측과 어긋났을 때 가설을 고치는지 그래프의 행동 노드와 명제 노드 연결로 확인하는 과제 설명 (실제 시험 문항이 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부는 확인하지 못했다. 코드 저장소의 라이선스가 데이터 라이선스를 뜻하지 않으므로 이용 전에 따로 확인해야 한다. 이 벤치마크는 새 과제 모음이 아니라 기존 벤치마크에서 이미 기록된 에이전트 실행 기록을 재채점하는 방법론이어서, 입력 기록의 원 출처 약관도 각각 점검해야 한다. 채점에 LLM judge가 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/ARA-Labs/oeb"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (soundness of epistemic research process)",
+            "definition": "A benchmark-agnostic methodology that scores an agent's research process from its execution record alone, without a reference answer or outcome score. It compiles the record into an epistemic event graph linking stated propositions to executed actions, scores four competence axes (evidence, experiment, revision, no reward hacking), and profiles persona traits describing research habits. Under its principle, a stated proposition can only be supported or refuted by evidence returned by an executed action.",
+            "task": "Check an agent's execution record for whether its claims match what it actually ran, and produce evidence, experiment, revision and no-reward-hacking scores",
+            "example": "Task description (not an actual test item): an agent states a diagnosis and a prediction, reruns an evaluation, and the graph checks whether it revises its hypothesis when the result contradicts the prediction."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "agent’s execution record"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "evidence, experiment, revision,"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "greedy decoding causes"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/ARA-Labs/oeb"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "greedy decoding causes"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Open-Endedness Bench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "evidence, experiment, revision,"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "evidence, experiment, revision,"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.02588",
+      "paper_title": "Open-Endedness Bench: Measuring Epistemic Process from Agent Records",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.02588",
+        "sha256": "3c056ab8155abea56f51cfc726f9d3172b2848d71aee7d860b59a0921b25d1c5",
+        "accessed": "2026-11-06T03:34:21Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 18,
+          "elapsed_seconds": 84.23,
+          "pdf_sha256": "3c056ab8155abea56f51cfc726f9d3172b2848d71aee7d860b59a0921b25d1c5",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "4788b9312b8a9585000465a507842af397d617c7c3267b5ac9ae99557e5cfeb7",
+          "page_json_file": "2610.02588.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/ARA-Labs/oeb",
+            "fetched_url": "https://api.github.com/repos/ARA-Labs/oeb/readme",
+            "sha256": "5c323b3ee85263b41edc3243e019d7c367d0ae35cd33f9359a530e57e54af233",
+            "accessed": "2026-11-06T03:36:14Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/ARA-Labs/oeb/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "429817dbd0d9d893d8c1a02e0560b312d4907e81b810e5f87dd3f3b4f0579478"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-06T03:36:14Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.02588",
+        "paper_title": "Open-Endedness Bench: Measuring Epistemic Process from Agent Records",
+        "abstract": "Agents are increasingly given open-ended research tasks: discovering an empirical law from self-designed experiments, improving a heuristic whose optimum nobody knows, or beating a standing record. Their execution logs record every step of this research, yet the runs are still judged by their outcome score. That score alone does not establish whether an agent's claims follow from executed experiments, and a reference answer may be unavailable. We evaluate the agent's epistemic process: how it forms hypotheses, tests them, and revises them in response to evidence. We introduce OEB (Open-Endedness Bench), a benchmark-agnostic methodology that reads only the agent's execution record and never a reference answer or an outcome score. OEB compiles the record into a unified epistemic event graph whose edges connect the propositions the agent states to the executed actions that test them; each node carries an exact excerpt that code verifies against the record. One principle governs scoring: prose can state a proposition, but only evidence returned by an executed action can support or refute it, so OEB checks what the agent writes against what it actually ran. From the graph, OEB scores four competence axes (evidence, experiment, revision, and no reward hacking), mostly as the share of opportunities for sound research that the agent took, and profiles six subjective persona traits that describe the agent's research habits. We score 119 existing runs over 12 tasks from three benchmarks: LLM post-training, chip design, and a training-speed record. Against logged results, only 16-29% of the improvements agents claim are real. On 9 of 10 tasks, the best run tries more new ideas in its second half than the worst run. The persona readings follow the model: for every trait, the model that ran explains more of its variance across runs than the task (a median of 43% against 7%).",
+        "paper_updated": "2026-10-05T00:00:00Z",
+        "created_at": "2026-10-19T13:47:50Z",
+        "input_sha256": "112602c36f16b5d55c3a1142368bc14bdac45b487f8990684aab02c84dbdae98",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 실행 기록 기반 인식론적 과정 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 인식 과정 평가 벤치마크 OEB 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42151119634",
+        "context_sha256": "ae96b037d27d5672ad45f515e2ec3e3a88c6839d8347dca5641979228ca1a141"
+      },
+      "proposal_sha256": "57949813b33a412e5a605990cb5b39343204f09a833f3967b1e430b65bb8cdc3"
     }
   },
   "processed_comments": [],
@@ -78328,8 +78491,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 24,
-      "cost_usd": 17.304
+      "calls": 25,
+      "cost_usd": 18.0008
     }
   },
   "reaudits": [
