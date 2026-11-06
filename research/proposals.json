@@ -46159,6 +46159,177 @@
       },
       "issue_url": null,
       "proposal_sha256": "3fad7c7d9b4ef8c99a266588f7f20a7c8a9fc200a2f1ba1448b38cd73f78aa80"
+    },
+    "2610.02563": {
+      "decision": "propose",
+      "reason": "OpenGameEval은 Roblox Studio 안에서 LLM 에이전트를 평가하는 새 벤치마크다. 핵심 과제 84개와 디버깅 과제 29개를 두고 과제마다 16회 시도하며, 장면 상태와 플레이 세션을 실행 가능한 검사로 채점한다. 과제 프롬프트가 영어이므로 en 트랙에 둔다. 에이전트는 텍스트 도구 출력만 관찰하므로 text로 분류한다. 논문이 공식 저장소 주소를 밝히고 있어 링크 근거가 있다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "opengameeval",
+            "이름": "OpenGameEval",
+            "평가 축": "에이전트(게임 엔진 내 프로그래밍·탐색)",
+            "언어": "en",
+            "정의": "Roblox Studio 안에서 LLM 에이전트를 재현 가능한 상태 유지 세션으로 실행하고, 편집된 장면과 시뮬레이션된 플레이 세션을 실행 가능한 검사로 채점하는 벤치마크. 채점 대상은 113개 과제로 핵심(core) 84개와 디버깅 29개를 따로 점수화한다. 관찰 도구와 편집 도구를 구분한 8개 도구 행동 공간을 쓰며, 논문은 13개 모델을 핵심 84개 과제에서 과제당 16회 시도로 평가했다. 지표는 pass@1, pass@5, cons@5, all@5와 도구 사용·오류·시간 초과 비율이다. 공개 저장소에는 113개 중 67개 참조 해답만 포함된다.",
+            "대표 과제": "핵심 과제: 기능 요청에 맞게 장면을 바꾸거나 스크립트를 작성. 디버깅 과제: 심어 둔 결함을 찾아 수리",
+            "대표 예시·설명": "영어 한 문장 요청(예: 학교의 모든 조명을 켜진 상태로 시작하게 하라)을 받은 에이전트가 장면 계층과 스크립트를 탐색한 뒤 편집하고, 편집 후 장면 검사와 플레이 세션 검사로 채점하는 과제 설명(실제 시험 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스·상업적 이용·수정·재배포·lm-eval 지원은 자동 제안 단계에서 확인하지 않았다. 논문은 과제와 장면 파일, 주석, 플러그인, 리더보드를 MIT로 공개한다고 밝히지만 데이터 라이선스는 별도로 검증해야 한다. 실행에는 Roblox Studio와 플러그인이 필요하다. 공개 저장소에는 참조 해답 113개 중 67개만 있고, 시스템 프롬프트와 모델 세션 구동 서비스는 공개되지 않는다. 논문 결과는 단일 엔진, 텍스트 전용 관찰, 고정된 스캐폴드, 2026년 5~7월 수집 조건에 한정되며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Roblox/open-game-eval"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (programming and exploration inside a game engine)",
+            "definition": "A benchmark that runs LLM agents in reproducible, stateful Roblox Studio sessions and scores each run with executable checks on the edited scene and in a simulated play session. The 113 scored tasks are split into 84 core tasks and 29 debugging tasks, scored separately. It uses an eight-tool action space that separates observation tools from editing tools. The paper evaluates 13 models on the 84 core tasks with 16 attempts per task. Metrics are pass@1, pass@5, cons@5, all@5, plus tool-use, error, and timeout rates. The public repository includes only 67 of the 113 reference solutions.",
+            "task": "Core tasks: change the scene or write scripts to satisfy a feature request. Debugging tasks: locate and repair a planted defect.",
+            "example": "Task description, not an actual test item: given a one-sentence English request such as making every light in a school start in the on state, the agent explores the scene hierarchy and scripts, edits them, and is graded by a scene check and a play-session check."
+          },
+          "evidence": {
+            "modality": {
+              "page": 9,
+              "quote": "observe the world"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "84 human-curated core"
+            },
+            "대표 예시·설명": {
+              "page": 23,
+              "quote": "Make the moving"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/Roblox/open-game-eval"
+            },
+            "언어": {
+              "page": 23,
+              "quote": "Make the moving"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "OpenGameEval: Benchmarking Agentic"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "84 human-curated core"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "OpenGameEval: Benchmarking Agentic"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.02563",
+      "paper_title": "OpenGameEval: Benchmarking Agentic Programming and Exploration in a Stateful Game Engine",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.02563",
+        "sha256": "8066745d3fd456c97b441fe19e0658c57004bd479a29e595c7c16f4b85a481ae",
+        "accessed": "2026-11-06T03:29:59Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 26,
+          "elapsed_seconds": 157.68,
+          "pdf_sha256": "8066745d3fd456c97b441fe19e0658c57004bd479a29e595c7c16f4b85a481ae",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "74434949c4027fea798060903e60c6efad615f099cc8eb46e7998a815115519e",
+          "page_json_file": "2610.02563.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Roblox/open-game-eval",
+            "fetched_url": "https://api.github.com/repos/Roblox/open-game-eval/readme",
+            "sha256": "62393cd5531166ff8e8ac3659d8242df0f1e3f5c9a45995dab7ce0523ab0198b",
+            "accessed": "2026-11-06T03:33:01Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/Roblox/open-game-eval/license",
+              "name": "LICENSE.txt",
+              "spdx_id": "MIT",
+              "sha256": "d2867c1533a6bb5f23b65213515cb42a788564e95d4a7bf085220309fbf10d76"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-06T03:33:01Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.02563",
+        "paper_title": "OpenGameEval: Benchmarking Agentic Programming and Exploration in a Stateful Game Engine",
+        "abstract": "We present OpenGameEval, a benchmark and evaluation framework for agentic game development inside Roblox Studio. It runs language models as agents in reproducible, stateful game-engine sessions and scores each run with executable checks, both on the edited scene and in a simulated play session. Most agentic coding benchmarks require exploration but score only final task success. OpenGameEval separates observation tools from editing tools in its eight-tool action space, so exploration can be measured directly. We measure the pass rates and exploration behavior of 13 frontier models on 84 human-curated core tasks, with 16 attempts per task. The tasks are hard for current models. The best model solves 51.7% of tasks on a single attempt and 39.4% five times out of five, and no tested model solves six of the tasks. Models at the frontier reach similar pass rates by solving different tasks: splitting tasks by the kind of work they require spreads the top five by 5.0pp on script-authoring tasks and 12.5pp on scene-change tasks. Exploration behavior predicts whether a run succeeds. Holding task and model fixed, a run that inspects every object a reference solution touches before acting on it passes 13.4pp more often than a run that inspects none of them on scene-only tasks, and 9.8pp more often on script-only tasks. We release the task suite, its place files, the per-task annotations, a plugin that runs the tasks inside Roblox Studio, and an updated leaderboard under the MIT license at https://github.com/Roblox/open-game-eval.",
+        "paper_updated": "2026-10-05T00:00:00Z",
+        "created_at": "2026-10-19T13:47:50Z",
+        "input_sha256": "ec23cdfa98a861a7a87b0ec8e4df86d20aa15df5721e66b3873c58cfae499fce",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "게임 엔진 내 에이전트 프로그래밍·탐색 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "게임 엔진 에이전틱 코딩 벤치마크·태스크 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42151119634",
+        "context_sha256": "a8102c07fafa107acc27e090e357b8eac0b279f627f8b83e5067f367dc86a5c1"
+      },
+      "proposal_sha256": "b959473109b6a51bf975fe5849c09be940f79cb5611a1afbbb246f09bac68e92"
     }
   },
   "processed_comments": [],
@@ -77950,8 +78121,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 21,
-      "cost_usd": 14.96
+      "calls": 22,
+      "cost_usd": 15.705
     }
   },
   "reaudits": [
