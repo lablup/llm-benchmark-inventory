@@ -46539,7 +46539,7 @@
     },
     "2610.02588": {
       "decision": "propose",
-      "reason": "OEB(Open-Endedness Bench)는 에이전트의 실행 기록만 읽어 연구 과정의 인식론적 건전성(증거, 실험, 수정, 보상 해킹 회피)을 채점하는 재사용 가능한 평가 방법론이자 공개 코드입니다. 평가 대상 기록은 영어 로그(영어 추론 문장과 명령)여서 en 트랙의 text로 분류했습니다. 논문은 새 에이전트를 돌리지 않고 기존 PostTrainBench, Chip-Bench, nanoGPT speedrun의 기록을 재채점했습니다. 공식 코드 저장소 링크는 PDF 1쪽에 있습니다. 라이선스 등 미확인 항목은 '확인 불가'로 두었고 유의사항에 적었습니다.",
+      "reason": "OEB(Open-Endedness Bench)는 에이전트의 실행 기록만 읽어 연구 과정의 인식론적 건전성(증거, 실험, 수정, 보상 해킹 회피)을 채점하는 방법론이자 공개 코드입니다. 평가 대상 기록은 영어 로그여서 en 트랙의 text로 분류했습니다. 라이선스는 공식 저장소 README와 LICENSE 파일의 MIT를 근거로 기록하되 코드·평가 파이프라인·변환기에 한정했고, 별도 배포처인 점수 기록 데이터셋과 재채점 대상 기존 벤치마크 기록은 각자의 약관을 따로 점검하도록 유의사항에 적었습니다. 공식 README에 lm-eval 언급이 없어 해당 항목은 '미표기'로 두었습니다. 권장 모델 결과는 논문 Table 2(PostTrainBench, E4 점수)의 단일 표에서만 가져왔습니다.",
       "changes": [
         {
           "track": "en",
@@ -46552,12 +46552,12 @@
             "대표 과제": "에이전트 실행 기록에서 주장과 실제 실행된 행동의 대응을 확인해 증거·실험·수정·보상 해킹 회피 점수 산출",
             "대표 예시·설명": "에이전트가 원인을 진단하고 예측을 적은 뒤 평가를 다시 실행하고, 그 결과가 예측과 어긋났을 때 가설을 고치는지 그래프의 행동 노드와 명제 노드 연결로 확인하는 과제 설명 (실제 시험 문항이 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부는 확인하지 못했다. 코드 저장소의 라이선스가 데이터 라이선스를 뜻하지 않으므로 이용 전에 따로 확인해야 한다. 이 벤치마크는 새 과제 모음이 아니라 기존 벤치마크에서 이미 기록된 에이전트 실행 기록을 재채점하는 방법론이어서, 입력 기록의 원 출처 약관도 각각 점검해야 한다. 채점에 LLM judge가 필요하다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(저장소 코드·평가 스크립트·변환기 한정)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "MIT는 공식 저장소의 코드·평가 파이프라인·변환기에 대한 표기이며 데이터 라이선스가 아니다. MIT 조건에 따라 저작권 고지와 라이선스 전문을 사본에 포함해야 한다. 논문이 안내한 점수 기록 데이터셋(Hugging Face AgentNativeResearchLab/oeb-scored-runs, 논문 13쪽)은 이 저장소와 별개의 배포처이므로 저장소의 MIT를 그 데이터의 라이선스로 간주하면 안 된다. 이 벤치마크는 다른 출처로 구성되어 있다: PostTrainBench, Chip-Bench, nanoGPT speedrun이 이미 기록한 에이전트 실행 기록을 재채점한다(논문 8쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 채점에 LLM judge(논문은 GLM-5.3 또는 Grok-4.6 사용)가 필요하다. 공식 README에 lm-eval 언급이 없고 자체 명령(python -m oeb.chain)으로 실행한다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/ARA-Labs/oeb"
           },
           "modality": "text",
@@ -46601,9 +46601,93 @@
               "quote": "evidence, experiment, revision,"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/ARA-Labs/oeb",
+              "quote": "MIT License"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/ARA-Labs/oeb",
+              "quote": "and/or sell"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/ARA-Labs/oeb",
+              "quote": "use, copy, modify, merge, publish"
+            },
+            "재배포": {
+              "source_url": "https://github.com/ARA-Labs/oeb",
+              "quote": "publish, distribute, sublicense"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/ARA-Labs/oeb",
+              "absent": true
+            }
+          },
+          "recommendations": {
+            "metric": "E4 No reward hacking 점수(무차원, 0~1 범위, 1/(1+k), k=보상 해킹 인스턴스 수). 각 에이전트 모델의 모든 런 평균",
+            "setting": "논문 Table 2: PostTrainBench 6개 과제(에이전트가 H100 1장으로 10시간 동안 gemma-3-4b를 후속 학습), 동일 기록 형식과 동일 judge(GLM-5.3)로 채점한 모델별 평균. 대상은 에이전트로 쓰인 모델이며 이 논문에서 보고된 결과일 뿐 현재 전역 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Claude Opus 5",
+                "score": "0.83",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude Opus 5 6 0.78 10 0.08 12 – 0.83 12"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Claude Fable 5",
+                "score": "0.88",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude Fable 5 5 0.67 10 0.29 10 0.60 1 0.88 10"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.6",
+                "score": "0.88",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5.6 6 0.65 12 0.42 12 0.43 12 0.88 12"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.5",
+                "score": "0.96",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5.5 6 0.66 12 0.51 12 0.56 5 0.96 12"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Kimi K3",
+                "score": "0.83",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Kimi K3 6 0.71 12 0.48 12 0.62 8 0.83 12"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM-5.2",
+                "score": "0.77",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GLM-5.2 6 0.65 12 0.51 12 0.67 6 0.77 12"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.02588",
@@ -46698,7 +46782,8 @@
         "source_run": "42151119634",
         "context_sha256": "ae96b037d27d5672ad45f515e2ec3e3a88c6839d8347dca5641979228ca1a141"
       },
-      "proposal_sha256": "57949813b33a412e5a605990cb5b39343204f09a833f3967b1e430b65bb8cdc3"
+      "proposal_sha256": "1f66ccdaae73d383ce071fe0f6a692e0bee94ebbb5d128bc40ef2d3e2ef64b34",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -78491,8 +78576,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 25,
-      "cost_usd": 18.0008
+      "calls": 26,
+      "cost_usd": 18.7722
     }
   },
   "reaudits": [
