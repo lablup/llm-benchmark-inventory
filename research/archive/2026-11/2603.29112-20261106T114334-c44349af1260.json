@@ -1,0 +1,175 @@
+{
+  "arxiv_id": "2603.29112",
+  "paper_title": "GISTBench: Evaluating LLM User Understanding via Evidence-Based Interest Verification",
+  "created_at": "2026-11-06T02:43:34Z",
+  "status": "needs_evidence",
+  "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: Score quote must contain the exact model and numeric value",
+  "source": {
+    "url": "https://arxiv.org/pdf/2603.29112",
+    "sha256": "562ea28a7979f3bbf418f2e029fab1ca01a0d5e059967c0308d1d6a9400eedd6",
+    "accessed": "2026-11-05T03:44:06Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 34,
+      "elapsed_seconds": 108.6,
+      "pdf_sha256": "562ea28a7979f3bbf418f2e029fab1ca01a0d5e059967c0308d1d6a9400eedd6",
+      "visual_pdf_audit": false,
+      "original_text_reduced": true,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "1c19f7f3b4d47627f77fe2917743778c0a2fffce024a7d452c7d161384cfdc2d",
+      "page_json_file": "2603.29112.pages.json"
+    },
+    "official_resources": [
+      {
+        "url": "https://github.com/facebookresearch/GISTBench",
+        "fetched_url": "https://api.github.com/repos/facebookresearch/GISTBench/readme",
+        "sha256": "d6bbbd65b4bcb93a72d47ca6312ed66b46071ac8bda3cf22db604dadeac44225",
+        "accessed": "2026-11-05T03:46:24Z",
+        "license_file": {
+          "fetched_url": "https://api.github.com/repos/facebookresearch/GISTBench/license",
+          "name": "LICENSE",
+          "spdx_id": "NOASSERTION",
+          "sha256": "3b3d0c28eddd3c5de60b35ccf45eb05b5e400e6d00278ba7acb6c7bbafac233c"
+        }
+      }
+    ]
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "6668bd8dbe05f4660858bb3efc0d56fa71ccd3abb3120caeb4fe8bf4e2b6fd0d",
+  "changes": [
+    {
+      "track": "en",
+      "row": {
+        "id": "gistbench",
+        "이름": "GISTBench",
+        "평가 축": "에이전트·개인화(상호작용 이력 기반 사용자 이해, 관심사 근거 검증)",
+        "언어": "en",
+        "정의": "LLM이 추천 시스템의 사용자 상호작용 이력에서 사용자 관심사를 추출하고 근거를 인용하는 능력을 평가하는 벤치마크. 정답 라벨 없이 관심사가 이력 속 참여 신호로 뒷받침되는지 검증한다. Interest Groundedness(IG, 정밀도·재현율·F1)와 Interest Specificity(IS) 두 지표군을 쓰며, 점수는 사용자별 중앙값으로 보고한다. 합성 숏폼 영상 데이터셋(1,000개 코호트 기반)과 공개 데이터셋 KuaiRec, Amazon Music, Goodreads로 구성된다(MIND는 주요 결과에서 제외). 논문은 데이터셋당 최대 1,000명을 표본으로 쓰고 프롬프트당 최대 100개 참여 기록을 입력했으며, 오픈 웨이트 LLM 8종과 상용 모델 3종을 평가했다.",
+        "대표 과제": "사용자 상호작용 이력에서 관심사(2~5단어)를 예측하고 근거 객체를 인용한 뒤, IG(근거 충족 여부)와 IS(근거 객체 복원 검색)로 채점",
+        "대표 예시·설명": "사용자의 시청·좋아요·공유·건너뛰기 기록이 영상 설명 텍스트와 함께 주어지면, 모델이 'NBA Basketball Highlights' 같은 관심사를 예측하고 근거 영상을 인용하는 과제. 인용된 근거가 명시적·암묵적 긍정 신호 임계값을 충족하면 검증된 관심사로 판정한다(과제 설명).",
+        "예시 표기": "과제 설명",
+        "라이선스": "확인 불가",
+        "상업적 이용": "확인 불가",
+        "수정·파생": "확인 불가",
+        "재배포": "확인 불가",
+        "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. 코드 저장소의 라이선스가 데이터 라이선스를 대신하지 않는다. 벤치마크는 외부 공개 데이터셋(KuaiRec, Amazon Music, Goodreads, MIND)을 포함하므로 각 구성 요소의 약관을 별도로 확인해야 한다. 합성 데이터셋의 영상 설명은 독점 VLM이 생성했다. 판정에 Llama-3.3-70B-Instruct가 필요하고 IG 재현율의 오라클은 평가한 모델 집합에 의존해 실행 간 직접 비교가 어렵다. 저자는 영어 위주 콘텐츠만 평가했다고 밝혔다.",
+        "lm-eval 지원": "확인 불가",
+        "링크": "https://github.com/facebookresearch/GISTBench"
+      },
+      "modality": "text",
+      "english_copy": {
+        "axis": "Agents and personalization (user understanding from interaction histories, evidence-based interest verification)",
+        "definition": "A benchmark of whether LLMs can extract user interests from recommendation-system interaction histories and cite supporting evidence. It verifies predicted interests against engagement signals in the history without ground-truth labels. It uses two metric families, Interest Groundedness (IG, with precision, recall and F1) and Interest Specificity (IS), reported as medians across users. Data comprises a synthetic short-video dataset (built from 1,000 cohorts) and public datasets KuaiRec, Amazon Music and Goodreads (MIND is excluded from the main results). The paper samples up to 1,000 users per dataset, feeds up to 100 engagements per prompt, and evaluates eight open-weight and three proprietary LLMs.",
+        "task": "Predict user interests (2-5 words) from an interaction history, cite evidence objects, and score with IG (evidence sufficiency) and IS (retrieval of the cited evidence).",
+        "example": "Task description: given a user's watch, like, share and skip records with video description text, the model predicts interests such as 'NBA Basketball Highlights' and cites supporting videos. An interest is verified when the cited evidence meets the explicit and implicit positive signal thresholds."
+      },
+      "evidence": {
+        "modality": {
+          "page": 16,
+          "quote": "text-only interaction histories"
+        },
+        "대표 과제": {
+          "page": 1,
+          "quote": "We introduce GISTBench"
+        },
+        "대표 예시·설명": {
+          "page": 26,
+          "quote": "NBA Basketball Highlights"
+        },
+        "링크": {
+          "page": 1,
+          "quote": "https://github.com/facebookresearch/GISTBench"
+        },
+        "언어": {
+          "page": 17,
+          "quote": "All evaluation is"
+        },
+        "이름": {
+          "page": 1,
+          "quote": "We introduce GISTBench"
+        },
+        "정의": {
+          "page": 1,
+          "quote": "Interest Groundedness (IG)"
+        },
+        "평가 축": {
+          "page": 1,
+          "quote": "Interest Groundedness (IG)"
+        }
+      },
+      "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "before": null,
+      "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    }
+  ],
+  "screening": {
+    "arxiv_id": "2603.29112",
+    "paper_title": "GISTBench: Evaluating LLM User Understanding via Evidence-Based Interest Verification",
+    "abstract": "We introduce GISTBench, a benchmark for evaluating Large Language Models' (LLMs) ability to understand users from their interaction histories in recommendation systems. Unlike traditional RecSys benchmarks that focus on item prediction accuracy, our benchmark evaluates how well LLMs can extract and verify user interests from engagement data. We propose two novel metric families: Interest Groundedness (IG), decomposed into precision and recall components to separately penalize hallucinated interest categories and reward coverage, and Interest Specificity (IS), which assesses the distinctiveness of verified LLM-predicted user profiles. We release a synthetic dataset constructed on real user interactions on a global short-form video platform. Our dataset contains both implicit and explicit engagement signals and rich textual descriptions. We validate our dataset fidelity against user surveys, and evaluate eight open-weight LLMs spanning 7B to 235B parameters, together with three proprietary frontier models (GPT-5, Claude 4.6, and Gemini 3.5 Flash). Our findings reveal performance bottlenecks in current LLMs, particularly their limited ability to accurately count and attribute engagement signals across heterogeneous interaction types.",
+    "paper_updated": "2026-10-05T00:00:00Z",
+    "created_at": "2026-10-19T13:47:38Z",
+    "input_sha256": "25c5e7bdcad5eca1542595fb2ba48b5fc0335817fcd195e5137571a922dd29f3",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "LLM 사용자 이해 평가 벤치마크로 평가에 부합"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "LLM 사용자 이해 평가 벤치마크·데이터셋 신규 제안"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}

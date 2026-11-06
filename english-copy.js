@@ -498,4 +498,34 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Given a patient summary and a proposed therapy, assign one of four support labels and decide whether human review (abstention) is required.",
     "example": "Task description: given a free-text NSCLC patient summary and a proposed targeted therapy, decide whether molecular and clinical evidence supports it, whether critical information such as ECOG performance status is missing, and whether an oncologist should review it before the label is assigned. This is not an actual test item."
   },
+  "nscr-faithfulness": {
+    "axis": "Faithfulness (grounded geographic reasoning from a spatial brief; resistance to a planted false premise)",
+    "definition": "A benchmark in which a model receives a spatial brief computed over a pedestrian street-network catchment. Each answer is decomposed into atomic claims and labelled by source (grounded in the brief vs. drawn from training knowledge) and correctness, giving four categories: brief-true, brief-false, recall and hallucination. Each case also plants a false premise that the brief refutes, and trap resistance is scored 0-10 per case. It covers three city cases (Chicago, Paris, Hanoi), three questions per case, sixteen open-weight model configurations and ten seeds, producing 1,440 responses (1,434 analysed after excluding two). Labels come from an LLM judge calibrated against a human annotator on seed 1 (Cohen's kappa 0.685).",
+    "task": "A three-turn conversation grounded in the brief (retrieval, reasoning, then a trap question containing a premise that contradicts the brief), producing per-claim source and correctness labels and a trap-resistance score.",
+    "example": "Task description, not an actual test item: an English persona prompt tells the model to treat the spatial brief as its source of truth and asks questions about a location. The final question embeds a user claim that contradicts the brief, and the benchmark checks whether the model rejects or adopts it."
+  },
+  "kalibench": {
+    "axis": "Agents (cybersecurity tool use: natural-language-to-CLI command generation)",
+    "definition": "A benchmark of translating natural-language requests into executable CLI commands for Kali Linux security tools. It has 8,504 query-command pairs over 1,642 tools, 23 capability dimensions, and 5 security phases, split into 5,000 evaluation examples (covering all tools) and 3,504 training examples. It is evaluated in three modes: Unrestricted, Restricted (20 candidate tool names), and Hinted (tool documentation provided). Metrics are Tool Accuracy, Optional-Argument F1, Positional-Argument F1, Total Score, and Exact Correct, scored deterministically without executing commands.",
+    "task": "Given a natural-language query, generate a single Kali command with the tool name, optional arguments (aliases allowed), and positional arguments.",
+    "example": "Task description: for an English query asking to display a user's sudo privileges in non-interactive mode, the model outputs one command with tool name, options, and positional arguments, and alias-equivalent forms are accepted."
+  },
+  "opengameeval": {
+    "axis": "Agents (programming and exploration inside a game engine)",
+    "definition": "A benchmark that runs LLM agents in reproducible, stateful Roblox Studio sessions and scores each run with executable checks on the edited scene and in a simulated play session. The 113 scored tasks are split into 84 core tasks and 29 debugging tasks, scored separately. It uses an eight-tool action space that separates observation tools from editing tools. The paper evaluates 13 models on the 84 core tasks with 16 attempts per task. Metrics are pass@1, pass@5, cons@5, all@5, plus tool-use, error, and timeout rates. The public repository includes only 67 of the 113 reference solutions.",
+    "task": "Core tasks: change the scene or write scripts to satisfy a feature request. Debugging tasks: locate and repair a planted defect.",
+    "example": "Task description, not an actual test item: given a one-sentence English request such as making every light in a school start in the on state, the agent explores the scene hierarchy and scripts, edits them, and is graded by a scene check and a play-session check."
+  },
+  "astroagentbench": {
+    "axis": "Agents (space mission planning)",
+    "definition": "A benchmark of seven executable space mission-planning task families across scheduling, observation planning, constellation design, and relay support. An agent submits a planning artifact, and an external verifier checks schema, timing, geometry, and resources and scores mission value. The suite has 116 cases in total (60 train, 35 test, plus others); the main evaluation compares five agent systems on 35 held-out cases (five per family). Metrics are validity and normalized score, compared with task-specific solver references.",
+    "task": "Seven families: AEOSSP, SatNet, SPOT-5, Stereo Imaging, Regional Coverage, Revisit Constellation, and Relay Constellation",
+    "example": "Task description, not an actual test item: an agent receives case files and an English task prompt, writes and runs code, submits a solution.json planning artifact, and a verifier scores its validity and mission value."
+  },
+  "lps-bench": {
+    "axis": "Agent safety (long-horizon planning, benign and adversarial scenarios)",
+    "definition": "A benchmark of long-horizon planning safety in MCP-style tool workflows under benign requests and adversarial steering. It has 570 cases derived from 65 scenarios across 7 task domains and 9 planning-risk types, plus a skill-augmented extension of representative cases (four subsets of 10 cases each, 40 in total). An LLM evaluator applies case-specific criteria to the complete interaction record (tool choices, arguments, environment feedback); the primary metric is success-conditioned Safe Rate (SRsuccess). The paper evaluates 13 LLM agents.",
+    "task": "Perform long multi-step tool-calling workflows in a sandboxed mock-tool environment while handling risks such as ambiguous instructions, goal decomposition, and environment-triggered injection safely.",
+    "example": "Task description: an English user instruction asks the agent to complete a multi-step job such as booking tickets with several tool calls, and the full trajectory is judged on whether the agent assumes unconfirmed details such as the payment method or attendee group."
+  },
 };
