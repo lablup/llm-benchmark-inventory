@@ -45551,7 +45551,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-06T03:18:57Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -45577,12 +45577,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "42151119634",
-        "context_sha256": "06100c70d33a0e948f54b18e977e5c07debe56d10ebca5c7ba64a0a682e4985f"
-      },
       "proposal_sha256": "d389786ae6ff17a57c9bb1ce9e4e9e7596799d767f47b2abc8291c4d645d4bf7",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안의 변경 사실이 논문 본문과 공식 README로 뒷받침됩니다. 벤치마크 규모(8,504개 질의-명령 쌍, 1,642개 도구, 23개 능력 차원, 5개 보안 단계)와 분할(평가 5,000개로 전체 도구 포함, 학습 3,504개)이 1~5쪽과 일치하고, 세 평가 모드와 지표 설명도 5~6쪽과 맞습니다. 질의가 영어 텍스트이므로 en/text 분류가 타당합니다. 라이선스는 논문 23쪽이 CC BY-NC 4.0으로 명시하여 '미표기' 규칙에 해당하지 않으며, 상업적 이용 불가, 수정·파생 가능(조건 준수), 재배포 조건부 가능과 일관됩니다. 다른 데이터에서 파생된 구성 요소(Kali Linux 공식 도구 문서가 원천, 질의-명령 쌍은 Qwen3-Max가 생성)를 이용 시 유의사항에 명시하고 각 구성 요소의 고유 약관을 따로 확인하라고 안내했으며, 원천 저장소의 GPL-3.0 표기도 23쪽과 맞습니다. 공식 README에는 lm-eval 또는 lm-evaluation-harness 언급이 없어, 미지원이 아니라 문서화되지 않았다는 의미의 '미표기'가 증거와 맞고 미확인 필드도 없습니다. 권고 결과는 논문 Table 1의 Unrestricted Exact Correct 열이며 24개 구성이 모두 포함되어 있습니다. 각 수치를 Poppler 텍스트와 대조한 결과 모두 일치했고, 행·열 정렬도 Table 5의 차이값(GLM-5.2의 Tool Δ1 7.9 등)과 교차 확인으로 일관됩니다. 지표는 높을수록 좋고 조건은 같은 5,000개 평가셋, 질의만 제공하는 비제한 모드, 같은 추론 설정입니다. 상위 3개는 GLM-5.2 41.3, DeepSeek-V3.2 33.0, RedSage-K(SFT+GRPO) 32.2이며 선정이 타당합니다. 공개 가중치 주장은 Table 4의 Hugging Face 저장소 목록과 README의 모델 목록으로 뒷받침되고, 논문 보고 결과이며 실시간 리더보드가 아니라는 점도 명시되어 있습니다. MinerU 표는 일부 깨졌지만 Poppler 표와 충돌하지 않고 후자가 깨끗해 정렬 근거로 충분합니다. 거절할 사유는 발견되지 않았습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 201444,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 3865,
+              "output_tokens_details": {
+                "thinking_tokens": 2869
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 201444,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 3865,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 201444,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 201444
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.8444949,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "d389786ae6ff17a57c9bb1ce9e4e9e7596799d767f47b2abc8291c4d645d4bf7",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -77371,8 +77417,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 16,
-      "cost_usd": 10.9133
+      "calls": 17,
+      "cost_usd": 11.7578
     }
   },
   "reaudits": [
