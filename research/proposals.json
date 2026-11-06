@@ -44267,7 +44267,7 @@
     },
     "2605.12413": {
       "decision": "propose",
-      "reason": "PCSR-Bench는 360도 전방위 실내 이미지 2,600장에서 만든 84,373개 QA 쌍과 8개 과제로 구성된 새 진단 벤치마크입니다. 과제 프롬프트가 영어이므로 en 트랙으로 분류하고, 이미지 입력이 필요하므로 vision으로 지정합니다. 논문은 공식 GitHub 저장소를 명시합니다. 라이선스 등 미확인 항목은 '확인 불가'로 기록했습니다.",
+      "reason": "PCSR-Bench는 360도 전방위 실내 이미지 2,600장에서 만든 QA 쌍 84,373개와 8개 과제로 구성된 새 진단 벤치마크입니다. 과제 프롬프트가 영어이므로 en 트랙으로 분류하고, 이미지 입력이 필요하므로 vision으로 지정합니다. 공식 저장소 README에는 라이선스 표기와 lm-eval 언급이 없고 LICENSE 파일 항목도 없습니다. PDF 10쪽 전체에도 라이선스 관련 표현이 나타나지 않습니다. 따라서 라이선스는 미표기로 처리하고 권리 항목은 저작권 전부 보유로 기록했습니다. 비교 결과는 논문 Table 1(5쪽)의 모델 14종 평균 정확도입니다.",
       "changes": [
         {
           "track": "en",
@@ -44280,12 +44280,12 @@
             "대표 과제": "객체 세기, 상대 거리, 상대 방향, 조합적 방향 연쇄, 자기중심 회전, 관점 재고정 등 8개 과제",
             "대표 예시·설명": "360도 파노라마 이미지와 영어 질문을 주고, 관찰자 위치나 방향이 바뀐 상황에서 공간 관계를 다시 계산해 단어나 숫자 하나로 답하게 하는 과제 설명(실제 문항 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포는 아직 확인하지 않았다. 이 벤치마크는 다른 출처로 구성되어 있다: ReplicaPano(Replica 기반 실내 파노라마)와 3D 장면 주석을 바탕으로 한다. 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 논문은 추론 백엔드, 시각 전처리, 생성 예산, 답변 파싱에 따라 점수가 크게 달라지므로 프로토콜 문서화가 필요하다고 밝힌다. 범위는 실내 단일 이미지 추론으로 제한된다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 다른 출처로 구성되어 있다: ReplicaPano(Replica에서 파생된 실내 360도 파노라마 데이터셋)와 그 3D 장면 주석 위에 만들어졌다(논문 3쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 논문은 추론 백엔드, 시각 전처리, 생성 예산, 답변 파싱 규칙에 따라 점수가 크게 달라지므로 프로토콜 문서화가 필요하다고 밝힌다. 범위는 실내 단일 이미지 추론으로 제한된다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/Caleb-ychen/PCSR-Benchmark"
           },
           "modality": "vision",
@@ -44329,9 +44329,170 @@
               "quote": "Perspective-Conditioned Spatial Reasoning"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/Caleb-ychen/PCSR-Benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/Caleb-ychen/PCSR-Benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/Caleb-ychen/PCSR-Benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/Caleb-ychen/PCSR-Benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/Caleb-ychen/PCSR-Benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Zero-shot top-1 relaxed accuracy (%), Avg column = arithmetic mean of the 8 task-level accuracies (T0-T7)",
+            "setting": "Results reported in this paper (Table 1, zero-shot, 14 MLLMs), not a current global leaderboard. Same PCSR-Bench test split for all models, unified zero-shot prompt with <think>/<answer> tags, hard-greedy top-1 decoding, visual budget MAX_PIXELS=602,112 (native) or 652,680 (fallback), generation budget 512 tokens for MCQ and 1024 for open-ended, relaxed scoring. Models marked † are proprietary API models and ‡ were evaluated with CoT prompting.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "InternVL2.5-78B",
+                "score": "35.59",
+                "evidence": {
+                  "page": 5,
+                  "quote": "InternVL2.5-78B 44.06 29.45 83.74 26.45 15.49 54.15 9.42 21.99 35.59"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen-VL-Max†",
+                "score": "35.20",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Qwen-VL-Max† 39.91 38.94 65.85 29.05 17.03 54.74 15.07 21.03 35.20"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen2.5-VL-72B-Instruct",
+                "score": "34.10",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Qwen2.5-VL-72B-Instruct 36.45 34.11 61.34 26.21 17.36 56.96 17.50 22.88 34.10"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-VL-8B-Instruct",
+                "score": "30.83",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Qwen3-VL-8B-Instruct 38.29 40.93 46.52 30.47 16.46 51.58 4.44 17.95 30.83"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-VL-32B-Instruct‡",
+                "score": "30.73",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Qwen3-VL-32B-Instruct‡ 34.72 38.44 58.45 28.93 15.82 31.93 17.09 20.49 30.73"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "MiniCPM-Llama3-V-2.5",
+                "score": "29.35",
+                "evidence": {
+                  "page": 5,
+                  "quote": "MiniCPM-Llama3-V-2.5 62.05 32.45 36.86 20.18 6.24 42.22 12.79 22.03 29.35"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "InternVL2.5-8B",
+                "score": "29.26",
+                "evidence": {
+                  "page": 5,
+                  "quote": "InternVL2.5-8B 33.68 25.96 75.70 15.98 13.30 45.26 4.04 20.18 29.26"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "InternVL3.5-38B",
+                "score": "28.49",
+                "evidence": {
+                  "page": 5,
+                  "quote": "InternVL3.5-38B 34.37 26.12 63.50 28.64 15.09 35.20 2.42 22.53 28.49"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen2.5-VL-7B-Instruct",
+                "score": "28.12",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Qwen2.5-VL-7B-Instruct 37.02 23.29 63.78 19.23 13.38 44.44 3.77 20.07 28.12"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-3.2-11B-Vision-Instruct",
+                "score": "26.99",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Llama-3.2-11B-Vision-Instruct 32.64 34.11 59.17 16.98 13.63 35.20 3.90 20.26 26.99"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "deepseek-ai/Janus-Pro-7B",
+                "score": "26.65",
+                "evidence": {
+                  "page": 5,
+                  "quote": "deepseek-ai/Janus-Pro-7B 27.22 31.11 63.32 23.79 12.81 28.42 3.23 23.30 26.65"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "InternVL3.5-8B",
+                "score": "24.63",
+                "evidence": {
+                  "page": 5,
+                  "quote": "InternVL3.5-8B 25.72 16.64 54.20 20.77 13.06 49.01 2.02 15.65 24.63"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "llava-v1.6-vicuna-7b-hf‡",
+                "score": "23.34",
+                "evidence": {
+                  "page": 5,
+                  "quote": "llava-v1.6-vicuna-7b-hf‡ 26.99 23.79 64.95 18.76 5.76 26.32 1.08 19.11 23.34"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "llava-onevision-qwen2-7b-ov-hf",
+                "score": "21.03",
+                "evidence": {
+                  "page": 5,
+                  "quote": "llava-onevision-qwen2-7b-ov-hf 20.76 29.12 8.85 20.53 13.38 46.20 3.10 26.34 21.03"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2605.12413",
@@ -44413,7 +44574,8 @@
         "source_run": "42151119634",
         "context_sha256": "ad5db8ab223eaf11a7940ad7932c28bf338bee5289e77465485291ff7e63baa9"
       },
-      "proposal_sha256": "708681e699445e91b60e8bfec8be3c3ca1c85fe011030ddf275546c382d8d00e"
+      "proposal_sha256": "9ac7e0e66d174ca75d22265402bc663d034772e27e9bb2595509027a8ab66c18",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -76199,8 +76361,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 8,
-      "cost_usd": 4.288
+      "calls": 9,
+      "cost_usd": 5.1133
     }
   },
   "reaudits": [
