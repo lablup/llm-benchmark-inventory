@@ -47212,6 +47212,201 @@
         "reviewed_sha256": "2e55411df6f808d2d8a5405378d6e3104e750b43b110f78b98805e4a6a444997",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2602.03255": {
+      "decision": "propose",
+      "reason": "LPS-Bench는 MCP 방식 도구 워크플로에서 컴퓨터 사용 에이전트의 장기 계획 안전성을 평가하는 새 벤치마크입니다. 570개 케이스, 65개 시나리오, 7개 도메인, 9개 위험 유형으로 구성됩니다. 과제 지시문은 영어이고 입력은 텍스트라서 en 트랙의 text로 분류했습니다. 논문이 공식 저장소(GitHub)를 명시했고, 기존 인벤토리에 같은 벤치마크는 없습니다. 라이선스와 lm-eval 지원은 확인하지 않아 '확인 불가'로 두었고 논문이 밝힌 MIT 표기는 유의사항에만 적었습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "lps-bench",
+            "이름": "LPS-Bench",
+            "평가 축": "에이전트 안전(장기 계획, 정상·적대 시나리오)",
+            "언어": "en",
+            "정의": "MCP 방식 도구 워크플로에서 정상 요청과 적대적 유도 상황의 장기 계획 안전성을 평가하는 벤치마크. 9개 계획 위험 유형·65개 시나리오·7개 도메인에서 만든 570개 케이스로 구성되며, 일부 대표 케이스는 재사용 가능한 스킬 형태로 변환한 확장판이 있음(10개씩 4개 하위셋, 총 40개). LLM 평가자가 케이스별 기준으로 전체 상호작용 기록(도구 선택, 인자, 환경 피드백)을 판정하며, 주 지표는 성공 조건부 안전율(SRsuccess). 논문은 LLM 에이전트 13종을 평가함",
+            "대표 과제": "샌드박스 모의 도구 환경에서 장기 다단계 도구 호출을 수행하며 위험(모호한 지시, 목표 분해, 환경 주입 등)에 안전하게 대응",
+            "대표 예시·설명": "영어 사용자 지시문으로 티켓 예약처럼 여러 단계 도구 호출이 필요한 업무를 맡기고, 에이전트가 모호한 결제 수단·대상을 확인 없이 가정하는지 전체 궤적으로 판정하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "논문 부록은 저장소 코드와 새로 만든 벤치마크 자산에 MIT를 표기하지만, 자동 제안 단계에서는 라이선스·상업 이용·수정·재배포를 검증하지 않았으므로 이용 전에 저장소를 직접 확인해야 함. 모의 도구 샌드박스 기반이라 실제 MCP 서버·배포 환경의 위험은 다루지 못함. 케이스와 기준을 LLM으로 생성한 뒤 사람이 검토했으며, 채점은 LLM 평가자(DeepSeek-R1)에 의존함. 공개 릴리스는 실험 당시 버전과 달라질 수 있으니 저장소 커밋을 기록해야 함. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아님",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/tychenn/LPS-Bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agent safety (long-horizon planning, benign and adversarial scenarios)",
+            "definition": "A benchmark of long-horizon planning safety in MCP-style tool workflows under benign requests and adversarial steering. It has 570 cases derived from 65 scenarios across 7 task domains and 9 planning-risk types, plus a skill-augmented extension of representative cases (four subsets of 10 cases each, 40 in total). An LLM evaluator applies case-specific criteria to the complete interaction record (tool choices, arguments, environment feedback); the primary metric is success-conditioned Safe Rate (SRsuccess). The paper evaluates 13 LLM agents.",
+            "task": "Perform long multi-step tool-calling workflows in a sandboxed mock-tool environment while handling risks such as ambiguous instructions, goal decomposition, and environment-triggered injection safely.",
+            "example": "Task description: an English user instruction asks the agent to complete a multi-step job such as booking tickets with several tool calls, and the full trajectory is judged on whether the agent assumes unconfirmed details such as the payment method or attendee group."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "LPS-BENCH comprises 570"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "LPS-BENCH comprises 570"
+            },
+            "대표 예시·설명": {
+              "page": 16,
+              "quote": "book the whole"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/tychenn/LPS-Bench"
+            },
+            "언어": {
+              "page": 16,
+              "quote": "book the whole"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "LPS-BENCH comprises 570"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "LPS-BENCH comprises 570"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "LPS-BENCH comprises 570"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2602.03255",
+      "paper_title": "LPS-Bench: Benchmarking Safety Awareness of Computer-Use Agents in Long-Horizon Planning under Benign and Adversarial Scenarios",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2602.03255",
+        "sha256": "bb814f8f117186001f287026af0087e2bd4116a27e948471e66dcc74a3526c62",
+        "accessed": "2026-11-06T03:44:22Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 50,
+          "elapsed_seconds": 202.44,
+          "pdf_sha256": "bb814f8f117186001f287026af0087e2bd4116a27e948471e66dcc74a3526c62",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7ebb16f2c196a79cf4964adbb948abaa907d0297328fc08d2a8636afdf67f1d0",
+          "page_json_file": "2602.03255.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/tychenn/LPS-Bench",
+            "fetched_url": "https://api.github.com/repos/tychenn/LPS-Bench/readme",
+            "sha256": "a3b3072715773798e4d3a723fa77e45dc757de27e8873ea30697f25607161118",
+            "accessed": "2026-11-06T03:48:13Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/tychenn/LPS-Bench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "407c33cea7a36c5beab41115f8267011bd4bee60fb87909af4c10b8bd3ca1b63"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-06T03:48:13Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2602.03255",
+        "paper_title": "LPS-Bench: Benchmarking Safety Awareness of Computer-Use Agents in Long-Horizon Planning under Benign and Adversarial Scenarios",
+        "abstract": "Computer-use agents (CUAs) execute multi-stage tasks through tools, where an early unsafe decision can propagate to consequential actions. Evaluating only final outcomes can miss such decisions, while constructing executable environments for new tasks can make benchmark expansion costly. We present LPS-Bench, a benchmark of long-horizon planning safety in MCP-style tool workflows under benign requests and adversarial steering. A template-guided multi-agent pipeline generates user instructions, simulated toolkits, and case-specific safety criteria, followed by human review. This design supports scalable case expansion without building a separate application environment for every test case. LPS-Bench comprises 570 cases derived from 65 scenarios across 7 task domains and 9 planning-risk types, with representative cases additionally adapted to reusable skills. An LLM-based evaluator applies case-specific criteria to complete interaction records, examining tool choices, arguments, and responses to environmental feedback throughout execution. Evaluations of 13 LLM agents reveal persistent failures in both benign and adversarial settings. Prompt-based interventions yield model-dependent gains, but substantial safety failures remain.",
+        "paper_updated": "2026-10-05T00:00:00Z",
+        "created_at": "2026-10-19T13:47:50Z",
+        "input_sha256": "454ba7f81d8e972e3527fa1fdd933737389b18eda9b2aa5983ff3c05eba50821",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "컴퓨터 사용 에이전트 장기 계획 안전성 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "컴퓨터 사용 에이전트 안전 벤치마크 LPS-Bench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42151119634",
+        "context_sha256": "907e1b7cf4882fbf1de4d645715baa49c623a409d420aa7110628994cd7e90bb"
+      },
+      "proposal_sha256": "64630c4e5ba9c6f1570a8ff6a954bd8cc9b566fa74a548a067e18cda2e0b2471"
     }
   },
   "processed_comments": [],
@@ -79007,8 +79202,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 31,
-      "cost_usd": 22.6378
+      "calls": 32,
+      "cost_usd": 23.4456
     }
   },
   "reaudits": [
