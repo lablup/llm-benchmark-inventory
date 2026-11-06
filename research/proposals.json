@@ -48609,6 +48609,81 @@
         "reviewed_sha256": "e693f3a7a0041c7880c830e019ff8d8befed983892885911096ba06b9b1221a3",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.02732": {
+      "decision": "exclude",
+      "reason": "이 논문은 vLLM 호환 분산 LLM 서빙 시뮬레이터(ServeTwin)와 iSTAGE 분석 트레이스 생성기를 제안하는 시스템 논문이다. 새 평가 데이터셋이나 과제 집합을 만들지 않았고, 기존 공개 벤치마크인 InferenceX와 LMBenchmark를 수정하지 않고 실행해 시뮬레이터의 정확도를 검증할 뿐이다. 이 벤치마크들은 서빙 성능(처리량, TTFT, ITL)을 측정하며 한국어·영어 과제 지식, 추론, 코딩, 에이전트 능력을 평가하는 벤치마크가 아니다. 따라서 재사용 가능한 벤치마크의 신규 도입이나 실질적 갱신으로 볼 수 없어 제외한다.",
+      "changes": [],
+      "arxiv_id": "2610.02732",
+      "paper_title": "ServeTwin: A Benchmark-Validated Simulator for Distributed LLM Architecture Exploration",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.02732",
+        "sha256": "d4c373e90ceb78e79c0769cb79c1c8661af8fa76ecf0410b1945d9d566ee90c7",
+        "accessed": "2026-11-06T04:09:29Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 12,
+          "elapsed_seconds": 69.18,
+          "pdf_sha256": "d4c373e90ceb78e79c0769cb79c1c8661af8fa76ecf0410b1945d9d566ee90c7",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "97c7f1a8c6964dec151558a6fb0e3976be2c556be39748bc94496a3fc5422400",
+          "page_json_file": "2610.02732.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-06T04:10:49Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.02732",
+        "paper_title": "ServeTwin: A Benchmark-Validated Simulator for Distributed LLM Architecture Exploration",
+        "abstract": "Evaluating distributed LLM serving designs on physical clusters is costly. Yet existing simulators provide only subsets of the capabilities needed for realistic design exploration: stateful closed-loop execution, timing prediction without profiling target hardware, and direct execution of unmodified serving benchmarks. We present ServeTwin, a closed-loop simulator that couples specification-driven analytical timing with a stateful serving loop. This coupling captures feedback among request completion, scheduling, queue state, and KV-cache evolution, including prefill-decode disaggregation and multi-turn agent workloads. ServeTwin avoids target-hardware operator profiling through iSTAGE, an analytical trace generator that derives per-iteration traces from model and engine specifications while representing ragged batches and discrete engine mechanisms such as CUDA-graph batch padding. It further decomposes execution time into component-owned throughput, scheduler, and runtime costs. This ownership lets unaffected parameters transfer across platforms and confines recalibration to changed hardware or software components. ServeTwin implements a vLLM-compatible interface and runs unmodified serving benchmarks. Against real deployments, it reproduces InferenceX's steady-state throughput-interactivity frontier with a 3.6% mean error and predicts LMBenchmark's multi-turn performance with a 9.9% error while tracking KV-cache evolution. Pre-silicon sweeps reveal that the preferred HBM bandwidth-capacity tradeoff reverses across workload states and that increasing concurrency shifts the bottleneck from memory bandwidth to scheduler and runtime overheads. Together, these capabilities enable practical exploration of distributed LLM serving systems before target hardware is available.",
+        "paper_updated": "2026-10-05T00:00:00Z",
+        "created_at": "2026-10-19T13:48:02Z",
+        "input_sha256": "bbdacc09bcaac3ef49de037d862dab0feab02ea2719833ece266ade604fe6340",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "분산 LLM 서빙 시뮬레이터 벤치마크 검증 연구"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "서빙 시뮬레이터로 벤치마크 실행 지원, 평가 자료 기여 불명확"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "751f81ccb638769e08c02eb7a2839bd406a5772f99863ef245a3e4ee1194dfa4"
     }
   },
   "processed_comments": [],
@@ -80412,8 +80487,8 @@
         "2611.06881",
         "2611.06911"
       ],
-      "calls": 42,
-      "cost_usd": 31.9154
+      "calls": 43,
+      "cost_usd": 32.5805
     }
   },
   "reaudits": [
