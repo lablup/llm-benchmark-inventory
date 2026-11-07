@@ -49838,6 +49838,79 @@
       },
       "issue_url": null,
       "proposal_sha256": "2135d74b11658c1d21c93eee44cc3e9f63deeb780d26814648277e480b128a99"
+    },
+    "2610.04053": {
+      "decision": "exclude",
+      "reason": "이 논문은 에이전트 통신 프로토콜인 NLIP와 A2A의 지연 시간을 측정하는 시스템 성능 비교 연구입니다. LLM의 능력(지식, 추론, 코딩, 에이전트 수행 등)을 평가하는 재사용 가능한 벤치마크를 새로 제안하거나 갱신하지 않습니다. 질의 19개와 200개 세트는 프로토콜 전송 지연을 재기 위한 입력일 뿐 정답이나 채점 기준이 있는 평가 과제가 아닙니다. 벤치마크 저장소도 논문 채택 후 공개하겠다고만 하여 현재 이용할 수 있는 공식 자원으로 확인되지 않습니다. 따라서 인벤토리에 추가할 대상이 아니라고 판단합니다.",
+      "changes": [],
+      "arxiv_id": "2610.04053",
+      "paper_title": "The Cost of a Hop: Benchmarking NLIP and A2A",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.04053",
+        "sha256": "b52200ddbc95769f079e1df1ab3713e86e5c3cdfa9b3beafbb2b215161c4c777",
+        "accessed": "2026-11-07T03:52:27Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 10,
+          "elapsed_seconds": 85.56,
+          "pdf_sha256": "b52200ddbc95769f079e1df1ab3713e86e5c3cdfa9b3beafbb2b215161c4c777",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "318634072782ed909a4d7461edeec500444cf781777402c9ced7a9a498842664",
+          "page_json_file": "2610.04053.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-07T03:54:03Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.04053",
+        "paper_title": "The Cost of a Hop: Benchmarking NLIP and A2A",
+        "abstract": "Autonomous agents built on Large Language Models (LLMs) need standardized protocols to interoperate across systems. Several now exist (A2A, MCP, ACP, ANP, NLIP), but the Natural Language Interaction Protocol (NLIP) has not appeared in any controlled performance study, and no work has measured where an agent protocol's latency is spent. We compare NLIP and the Agent-to-Agent (A2A) protocol empirically, decomposing latency into message creation, connection, and send phases across three independent hardware environments. For lightweight coordination, NLIP is 8.4-9.6x faster than the baseline A2A SDK implementation on two environments and about 4x on a third; the direction of the advantage is consistent, its magnitude depends on the hardware. The advantage is stage-specific: for the end-to-end pipeline, where LLM inference dominates, the protocols are near parity. The difference comes almost entirely from connection setup. To test A2A at its best, we also ran A2A SDK with connection caching enabled; caching narrows its gap with NLIP by a hardware-dependent amount, from 2.75x on one machine to near-parity on faster hardware, where at scale a cache-optimized A2A-SDK matches NLIP. We report these as measured conditions without a single causal account of the residual send-phase cost. Against the more optimized Python-A2A, NLIP leads by about 4x on the same stage. We close with a protocol-selection guide keyed to workload characteristics.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:14Z",
+        "input_sha256": "7c1c2425f2961a09185a76c993a47b44a1c191221f21c29551c8ab32096d9c02",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 프로토콜 NLIP/A2A 지연 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "irrelevant",
+            "reason": "에이전트 프로토콜 지연시간 성능 측정, 벤치마크 아님"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "c28dd1eb4df17cd9a96db80a1fbf2956e86f27d038cbbd7286c7afa95b56d3de"
     }
   },
   "processed_comments": [],
@@ -82076,8 +82149,8 @@
         "2611.08369",
         "2611.08417"
       ],
-      "calls": 17,
-      "cost_usd": 11.7199
+      "calls": 18,
+      "cost_usd": 12.428
     }
   },
   "reaudits": [
