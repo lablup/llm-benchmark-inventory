@@ -49457,6 +49457,176 @@
       },
       "issue_url": null,
       "proposal_sha256": "2755de63f85e3b7672956ace1f39a64070fc1119b610819df0f440a791b29d1a"
+    },
+    "2610.03226": {
+      "decision": "propose",
+      "reason": "D2K-Bench는 전문가 설계 가이드(L1 알고리즘, L2 데이터플로, L3 저수준 최적화)를 GPU 커널로 구현하는 LLM 에이전트의 능력을 진단하는 재사용 가능한 벤치마크입니다. 26개 과제와 85개 워크로드로 구성되고, 가이드 유무를 짝지어 비교하며, 설계 제안과 생성 코드를 LLM 판정으로 따로 평가합니다. 과제 설명과 요구사항이 영어이고 입력이 텍스트와 코드이므로 en 트랙의 text로 분류했습니다. 논문이 공식 코드 저장소 URL을 밝혔습니다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했고, 수치는 논문이 보고한 조건에만 한정했습니다. 이전 응답에서 검증기가 거부한 인용을 PDF 해당 쪽에 실제로 있는 짧은 문구로 교체했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "d2k-bench",
+            "이름": "D2K-Bench",
+            "평가 축": "에이전트·코딩(전문가 설계 가이드의 GPU 커널 구현 진단)",
+            "언어": "en",
+            "정의": "전문가 설계 가이드(L1 알고리즘 통찰, L2 데이터플로 설계, L3 저수준 최적화, 단계 간 의존성 포함)를 LLM 에이전트가 효율적인 GPU 커널로 옮기는 정도를 재는 진단 벤치마크. 26개 과제와 85개 워크로드로 구성된다. 가이드 유무를 짝지은 실행은 과제 설명, 워크로드, 도구, 하드웨어, 350턴 예산을 공유한다. 독립 설계 제안과 생성 코드는 LLM 판정으로 L1~L3 점수(0~100)를 매기고, 성능은 Performance Score와 기하평균 속도 향상으로 보고한다. 논문은 NVIDIA B200 GPU에서 5개 모델을 평가했다.",
+            "대표 과제": "과제 설명과 PyTorch 참조, 워크로드가 주어지면 Triton 커널을 구현해 solution.py의 run(...)을 완성하고 정확성과 지연 시간으로 채점(예: Muon 직교화 커널)",
+            "대표 예시·설명": "Muon 직교화 커널 과제: 그래디언트 행렬을 다섯 단계 다항식 반복으로 직교화하는 커널을 구현한다. 가이드 실행에서는 큰 직사각 행렬 갱신 대신 작은 정방 행렬에서 단계를 합성하는 설계를 설명으로 받는다(과제 설명이며 실제 시험 문항이 아님).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원은 확인하지 못했다. 코드 저장소 라이선스는 데이터 라이선스를 대신하지 않는다. 과제는 vLLM, SGLang, FlashAttention 등 전문가 구현에서 선별해 만들었으므로(논문 3쪽) 구성 요소별 약관을 이용 전에 따로 확인해야 한다. 평가에는 NVIDIA B200 GPU와 에이전트 실행 환경, 코드 판정용 LLM이 필요하다. 논문 수치는 5개 모델, 350턴 예산 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/QwenLM/D2K-Bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents and coding (turning expert design guidance into GPU kernels, diagnostic)",
+            "definition": "A diagnostic benchmark of how effectively LLM agents translate expert design guidance (L1 algorithmic insights, L2 dataflow design, L3 low-level optimization tricks, with dependencies among levels) into efficient GPU kernels. It has 26 tasks and 85 workloads. Paired runs with and without guidance share task descriptions, workloads, tools, hardware, and a 350-turn budget. Independently proposed designs and generated code are scored by an LLM judge at L1-L3 (0-100), and performance is reported as a Performance Score and geometric mean speedup. The paper evaluates five models on NVIDIA B200 GPUs.",
+            "task": "Given a task description, a PyTorch reference, and workloads, implement a Triton kernel by completing run(...) in solution.py, scored on correctness and latency (for example the Muon orthogonalization kernel).",
+            "example": "Muon orthogonalization kernel task: implement a kernel that orthogonalizes a gradient matrix with a five-step polynomial iteration. In the guided run, the agent is told in prose to compose steps on smaller square matrices instead of updating the large rectangular matrix each step (task description, not an actual test item)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "solution.py template"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "expert design guidance"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "Muon orthogonalization kernel"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/QwenLM/D2K-Bench"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "returned tensor has"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "D2K-BENCH"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "26 tasks and"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "expert design guidance"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.03226",
+      "paper_title": "D2K-Bench: Can LLM Agents Turn Expert Designs into Efficient GPU Kernels?",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.03226",
+        "sha256": "33ddb245c543543cac50a6c506bd1364bafa7d8eb9577a6b8b683117d0a68014",
+        "accessed": "2026-11-07T03:33:59Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 30,
+          "elapsed_seconds": 167.0,
+          "pdf_sha256": "33ddb245c543543cac50a6c506bd1364bafa7d8eb9577a6b8b683117d0a68014",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7e12fe1476ae7be834b0872c3e42aa66341591835bd8edddf2fce082e4e94f27",
+          "page_json_file": "2610.03226.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/QwenLM/D2K-Bench",
+            "fetched_url": "https://api.github.com/repos/QwenLM/D2K-Bench/readme",
+            "sha256": "502b5b6f609ee0e7825e53d831f75a1172d29213f2784d741025afef804717d2",
+            "accessed": "2026-11-07T03:37:38Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-07T03:37:38Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.03226",
+        "paper_title": "D2K-Bench: Can LLM Agents Turn Expert Designs into Efficient GPU Kernels?",
+        "abstract": "GPU kernels generated by large language model (LLM) agents can remain less efficient than expert implementations, but runtime alone does not reveal how the gap relates to design discovery and implementation. We introduce D2K-Bench, a diagnostic benchmark of 26 tasks and 85 workloads that measures how effectively agents translate expert design guidance into efficient GPU kernels. The guidance covers L1: high-level algorithmic insights, L2: dataflow design, and L3: low-level optimization tricks, including dependencies among these levels. Pairwise runs with and without guidance share task descriptions, workloads, tools, hardware, and a 350-turn budget. Complementary assessments examine independently proposed designs and the design properties implemented in generated code. Across five models on NVIDIA B200 GPUs, guidance raises correctness over 130 model-task pairs from 93.1% to 98.5% and increases the Performance Score over all 26 tasks from 1.46 to 1.95. For the three frontier models with correct submissions on all 26 tasks in both runs (GPT-6-Astra, Claude-Opus-4.8, and GPT-5.6-Sol), geometric mean speedup increases from $1.69\\times$ to $2.49\\times$. Across all five models, the mean combined implementation score increases from 57 to 70 out of 100. These results show the value of expert design guidance while identifying design properties that remain unimplemented.",
+        "paper_updated": "2026-10-05T00:00:00Z",
+        "created_at": "2026-10-19T13:48:02Z",
+        "input_sha256": "6f1a4e6a79c1daf6f371431d958f5a90de33c7a046ce58c176c4fcc4f0257f10",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 GPU 커널 생성 진단 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "GPU 커널 생성 에이전트 진단 벤치마크 D2K-Bench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42329845673",
+        "context_sha256": "d7f19c6a009c1895390802810d147aebb1e694c67af094d693491f26f08eb23a"
+      },
+      "proposal_sha256": "04398e5c879259c78bb8d2c223dbd7f9adef54dbfa2ce1ffa9dd9584bc6a1e0c"
     }
   },
   "processed_comments": [],
@@ -81688,8 +81858,8 @@
         "2611.08369",
         "2611.08417"
       ],
-      "calls": 13,
-      "cost_usd": 8.6245
+      "calls": 14,
+      "cost_usd": 9.3786
     }
   },
   "reaudits": [
