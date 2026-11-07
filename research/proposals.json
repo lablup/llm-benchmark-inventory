@@ -49911,6 +49911,170 @@
       },
       "issue_url": null,
       "proposal_sha256": "c28dd1eb4df17cd9a96db80a1fbf2956e86f27d038cbbd7286c7afa95b56d3de"
+    },
+    "2510.04852": {
+      "decision": "propose",
+      "reason": "FreshBrew는 Java 8 프로젝트를 JDK 17/21로 옮기는 프로젝트 단위 마이그레이션에서 AI 에이전트를 평가하는, 재사용 가능한 새 벤치마크입니다. 빌드 가능, 원본 테스트 통과, 테스트 커버리지 유지(5%p 이내)의 세 관문으로 채점하며, 보상 해킹 방지가 핵심 설계입니다. 에이전트 프롬프트가 영어라 en 트랙으로 보았고, 입력이 소스 코드 저장소여서 text로 분류했습니다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "freshbrew",
+            "이름": "FreshBrew",
+            "평가 축": "에이전트(Java 프로젝트 마이그레이션)",
+            "언어": "en",
+            "정의": "JDK 8에서는 빌드되지만 JDK 17에서는 실패하는 공개 Maven 저장소 228개로 구성된 프로젝트 단위 Java 마이그레이션 벤치마크. 테스트 커버리지 50% 이상이고 허용적 라이선스인 저장소만 골랐다. 성공 기준은 세 단계로, 컴파일, 원본 테스트 무수정 통과, 라인 커버리지 하락 5%p 이내이며 테스트·코드 삭제 같은 보상 해킹을 막는다. JDK 17과 JDK 21 두 목표를 평가하고 효율 지표로 에이전트 단계 수와 비용도 기록한다.",
+            "대표 과제": "JDK 8 Maven 프로젝트를 JDK 17 또는 JDK 21에서 빌드와 전체 테스트가 통과하도록 마이그레이션",
+            "대표 예시·설명": "에이전트가 파일 읽기·쓰기, maven_verify, 웹 검색 도구로 Maven 프로젝트를 목표 JDK로 올리되 테스트를 삭제하거나 주석 처리하지 않고 빌드와 테스트를 통과시키는 과제 설명(실제 시험 문항이 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "논문은 벤치마크가 허용적 오픈소스 라이선스로 공개된다고 밝히지만 데이터 라이선스는 확인하지 못했다. 코드 저장소 라이선스를 데이터 라이선스로 간주하면 안 된다. 포함된 GitHub 저장소 228개는 각자의 라이선스를 따르므로 이용 전에 따로 확인해야 한다. 평가에는 Maven 기반 JDK 빌드·테스트 환경과 JaCoCo 커버리지 측정이 필요하다. 논문 결과는 모델당 1회 실행과 고정 프롬프트 조건이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/mrcabbage972/freshbrew"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (Java project migration)",
+            "definition": "A project-level Java migration benchmark of 228 public Maven repositories that build on JDK 8 but fail on JDK 17, with at least 50% test coverage and permissive licenses. A migration succeeds only if it compiles, passes all original tests unmodified, and keeps line coverage within 5 percentage points of the baseline, which guards against reward hacking such as deleting tests or code. It evaluates JDK 17 and JDK 21 targets and also records agent steps and cost as efficiency metrics.",
+            "task": "Migrate a JDK 8 Maven project so that it builds and passes all tests on JDK 17 or JDK 21",
+            "example": "Task description (not an actual test item): an agent uses file read/write tools, maven_verify and web search to upgrade a Maven project to a target JDK so the build and tests pass, without deleting or commenting out tests."
+          },
+          "evidence": {
+            "modality": {
+              "page": 18,
+              "quote": "Upgrade the Maven"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "project-level Java migrations"
+            },
+            "대표 예시·설명": {
+              "page": 18,
+              "quote": "Upgrade the Maven"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/mrcabbage972/freshbrew"
+            },
+            "언어": {
+              "page": 18,
+              "quote": "Upgrade the Maven"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "we introduce FreshBrew"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "228 public Maven"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "project-level Java migrations"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2510.04852",
+      "paper_title": "FreshBrew: A Benchmark for Evaluating AI Agents on Java Code Migration",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2510.04852",
+        "sha256": "c738481cb11bca3180d5c49aa3f9482d138f6b73a742a3c6ad96d1ee900625a8",
+        "accessed": "2026-11-07T03:54:17Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 19,
+          "elapsed_seconds": 96.61,
+          "pdf_sha256": "c738481cb11bca3180d5c49aa3f9482d138f6b73a742a3c6ad96d1ee900625a8",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "634274e688bbd4ef3634012ccf6ce39de2c8eeb591deb3a59695dd20a4ccc799",
+          "page_json_file": "2510.04852.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/mrcabbage972/freshbrew",
+            "fetched_url": "https://api.github.com/repos/mrcabbage972/freshbrew/readme",
+            "sha256": "bbdbf8f7eb058e0a4ac32baf9688875e940376072be78736a38ab4fd8f0d0335",
+            "accessed": "2026-11-07T03:56:17Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/mrcabbage972/freshbrew/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-07T03:56:17Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2510.04852",
+        "paper_title": "FreshBrew: A Benchmark for Evaluating AI Agents on Java Code Migration",
+        "abstract": "AI coding assistants are rapidly becoming integral to modern software development. A key challenge in this space is the continual need to migrate and modernize codebases in response to evolving software ecosystems. Traditionally, such migrations have relied on rule-based systems and human intervention. With the advent of powerful large language models (LLMs), AI-driven agentic frameworks offer a promising alternative-but their effectiveness has not been systematically evaluated. In this paper, we introduce \\FreshBrew{}\\footnote{\\url{https://github.com/mrcabbage972/freshbrew}}, a novel benchmark for evaluating AI agents on project-level Java migrations, with a specific focus on measuring an agent's ability to preserve program semantics and avoid reward hacking, which we argue requires projects with high test coverage for a rigorous and reliable evaluation. We benchmark several state-of-the-art LLMs, and compare their performance against established rule-based tools. Our evaluation on a challenging subset of 228 public Maven repositories that build on JDK 8, fail on JDK 17, and have high test coverage shows that the top-performing model, Gemini 2.5 Flash, can successfully migrate 52.3\\% of projects to JDK 17. Our empirical analysis reveals novel insights into the critical strengths and limitations of current agentic approaches, offering actionable insights into their real-world applicability. Our empirical study reveals failure modes of current AI agents in realistic Java modernization tasks, providing a foundation for evaluating trustworthy code-migration systems. By releasing \\FreshBrew{}, we aim to facilitate rigorous, reproducible evaluation and catalyze progress in AI-driven codebase modernization.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:14Z",
+        "input_sha256": "d2f013c3e7b1a560303857f73fb7200d5946688136c0ed01afb21837cc230c88",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "AI 에이전트의 Java 코드 마이그레이션 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "Java 코드 마이그레이션 에이전트 벤치마크 FreshBrew 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42329845673",
+        "context_sha256": "210205eb0f95d4108a3634775239fc73db87fbd0c3b8ee59e7e01c62c8ddadfa"
+      },
+      "proposal_sha256": "d304aa9107f53774561373cc7196321b86cb18fd69a75753f26f55c21dabde87"
     }
   },
   "processed_comments": [],
@@ -82150,8 +82314,8 @@
         "2611.08369",
         "2611.08417"
       ],
-      "calls": 18,
-      "cost_usd": 12.428
+      "calls": 19,
+      "cost_usd": 13.1723
     }
   },
   "reaudits": [
