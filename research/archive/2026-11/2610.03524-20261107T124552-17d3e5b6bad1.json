@@ -1,0 +1,83 @@
+{
+  "arxiv_id": "2610.03524",
+  "paper_title": "From Benchmarks to Production: A Text-to-SQL System for Complex Financial Data",
+  "created_at": "2026-11-07T03:45:52Z",
+  "status": "exclude",
+  "reason": "이 논문의 핵심 기여는 FLINT라는 Text-to-SQL 시스템입니다. 평가에 쓴 Financials(221문항)와 Transactions(138문항) 데이터셋은 논문 스스로 '독점(proprietary) 데이터셋'이라 부르는 운영 금융 DB 기반이라 재사용 가능한 공개 벤치마크로 보기 어렵습니다. PDF가 밝힌 공식 링크(github.com/kensho-technologies/flint)는 시스템 코드이며, 이 평가 데이터셋을 공개한다는 근거는 본문에서 확인되지 않았습니다. 3단계 평가 파이프라인과 외부 벤치마크(SM3, ScienceBenchmark) 결과는 기존 자료를 활용한 시스템 평가입니다. 따라서 일반 시스템 논문으로 보아 인벤토리에 추가하지 않습니다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2610.03524",
+    "sha256": "8af0bb8728f0bccbb0b737a9e5d50e37e6e56a65df6049b687dbf447c8c6cab0",
+    "accessed": "2026-11-07T03:43:30Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 21,
+      "elapsed_seconds": 131.43,
+      "pdf_sha256": "8af0bb8728f0bccbb0b737a9e5d50e37e6e56a65df6049b687dbf447c8c6cab0",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "bcc259d79b4dddff71a3388a56dc8992c62051f713f61258070216c32cb58fa5",
+      "page_json_file": "2610.03524.pages.json"
+    }
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "2135d74b11658c1d21c93eee44cc3e9f63deeb780d26814648277e480b128a99",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2610.03524",
+    "paper_title": "From Benchmarks to Production: A Text-to-SQL System for Complex Financial Data",
+    "abstract": "General-purpose Text-to-SQL systems achieve strong performance on academic benchmarks like Spider and BIRD, where schemas are relatively shallow and column values are often human readable. In production financial databases, where concepts are stored as opaque integer keys rather than human-readable strings, these methods fall below 50%, as even simple queries require multiple joins and filter predicates reference opaque IDs. We present Financial LINking Text-to-SQL (FLINT), a domain-specialized Text-to-SQL system that closes this gap through three key components: (1) a lookup agent that dynamically resolves natural-language concepts to question-specific reference table constraints, (2) embedding-based retrieval of structurally similar query templates from a compact, expert-authored bank, and (3) schema linking that prunes a large table schema to the relevant subset by traversing foreign-key chains, rather than relying on name similarity alone. We evaluate on two datasets totaling 359 questions over production financial schemas. FLINT outperforms various state-of-the-art baselines using the same LLM. The system is deployed in production as part of a financial data retrieval service.",
+    "paper_updated": "2026-10-05T00:00:00Z",
+    "created_at": "2026-10-19T13:48:14Z",
+    "input_sha256": "119d769e5565826a8810449a1339d3da36e6803a51dc9f4d915594778ecec9ac",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "금융 Text-to-SQL 시스템 벤치마크로 LLM 평가 포함"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "uncertain",
+        "reason": "금융 Text-to-SQL 시스템 제안, 벤치마크 자체 재사용성 불명확"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}

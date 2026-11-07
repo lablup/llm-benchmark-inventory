@@ -1,0 +1,97 @@
+{
+  "arxiv_id": "2605.09635",
+  "paper_title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
+  "created_at": "2026-11-07T04:01:59Z",
+  "status": "exclude",
+  "reason": "K12-Bench는 중국 인민교육출版社(PEP) K-12 교과서에서 뽑은 지식그래프를 바탕으로 만든 중국 교육과정 벤치마크이다. 개념·스킬·그림 이름 같은 그래프 노드 텍스트가 중국어로 추출되고(논문 20쪽의 다중모달 추출 프롬프트가 '짧은 중국어 의미 이름'과 중국어 설명을 요구함), 함께 쓰인 평가 기준(GaokaoBench, EduEval, Gaokao-MM 등)도 중국어 중심이다. 영어로 인용된 것은 정답 형식을 지정하는 시스템 프롬프트(27쪽)뿐이며, 실제 문항과 선택지가 영어나 한국어라는 근거는 PDF에 없다. 따라서 과제 언어를 ko 또는 en으로 판단할 수 없고, 한국어·영어 범위 밖의 벤치마크로 보아 제외한다. 학습 데이터 K12-Train도 같은 중국어 교과서 기반이며 모델 학습 자료라서 별도 행으로 올릴 근거가 부족하다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2605.09635",
+    "sha256": "25b8c9cfc60f3f70ae0fcc0eb49b54cc1ae45f40bd218ff00142104b3a761591",
+    "accessed": "2026-11-07T03:57:26Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "poppler_failed"
+      ],
+      "page_count": 35,
+      "elapsed_seconds": 257.95,
+      "pdf_sha256": "25b8c9cfc60f3f70ae0fcc0eb49b54cc1ae45f40bd218ff00142104b3a761591",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "c0ee6e4f2993f373c06ec7c8da7e8fbd4a7adac93b7af21d4db4512d7fdff5d0",
+      "page_json_file": "2605.09635.pages.json"
+    }
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "0ac033a1e52ef95cdef74ca494812c30fafbb543926a3c6eb9d270162a1b56e8",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2605.09635",
+    "paper_title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
+    "abstract": "Large language models are increasingly used in K-12 education, but existing benchmarks mainly test exam question answering rather than understanding how curriculum knowledge is structured and visually presented. We call this capability curriculum cognition. It covers prerequisite chains, concept taxonomies, experiment-concept links, pedagogical sequencing, and visual grounding. We introduce K12-KGraph, a curriculum-aligned knowledge graph extracted from official People's Education Press textbooks in mathematics, physics, chemistry, and biology across primary, middle, and high school. It contains nine node types and fourteen relation types covering curriculum structure and visual grounding. From this graph, we derive K12-Bench, a 23,640-question multi-select benchmark with five task families: Ground, Prereq, Neighbor, Evidence, and Locate. We also build K12-Train, a graph-guided supervised fine-tuning corpus of 7,335 samples, including 2,267 text-only QA pairs and 5,068 multimodal VQA pairs. On K12-Bench, Gemini-3-Flash achieves only 57 percent exact match and Gemma-4-31B-IT reaches 46 percent, with Prereq and Neighbor being the hardest tasks. Our training experiments show that domain-specific supervision can reduce this gap. Under a matched 2,300-sample budget, K12-Train-Text consistently outperforms equally sized subsets of eight mainstream instruction-tuning corpora on GaokaoBench and EduEval. For vision-language models, K12-Train-Full achieves the best overall results on Gaokao-MM, MDK12-medium, and K12Vista among all compared training configurations, despite using fewer samples than the full DataFlow and WizardLM baselines. It also surpasses both text-only and multimodal-only variants, showing that textual and visual supervision are complementary. We release the graph, benchmark, training data, and complete construction pipeline.",
+    "paper_updated": "2026-10-06T00:00:00Z",
+    "created_at": "2026-10-19T13:48:14Z",
+    "input_sha256": "66e2e972c7a5138da8492e8886a2c8b59aebe91488affd5d38cdbe769ff8e345",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "교육용 LLM을 위한 K-12 지식그래프 벤치마크"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "K12 교육 지식그래프 기반 벤치마크·학습데이터 공개"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}

@@ -528,4 +528,16 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Perform long multi-step tool-calling workflows in a sandboxed mock-tool environment while handling risks such as ambiguous instructions, goal decomposition, and environment-triggered injection safely.",
     "example": "Task description: an English user instruction asks the agent to complete a multi-step job such as booking tickets with several tool calls, and the full trajectory is judged on whether the agent assumes unconfirmed details such as the payment method or attendee group."
   },
+  "minteval": {
+    "axis": "Coding (natural-language instruction to trading-strategy code, behavioural equivalence)",
+    "definition": "A benchmark in which reference strategies are generated programmatically from composable building blocks and back-translated into colloquial trader instructions. The model re-implements each strategy, and its code is executed bar by bar on the same market data and frictions as the reference program and compared on actions. MintEval v0 has 800 tasks on BTCUSDT 15-minute data, stratified by state span tau. The primary metric is ActionMatch on active bars, with TradeF1, |ES|, delta Sharpe, delta MaxDD and CompileOK also reported. It has an open setting (instruction plus interface) and a closed diagnostic setting (with a building-block menu), and the paper also evaluates a frontier model on a stratified 200-task subset.",
+    "task": "Given a colloquial trader instruction and an interface document, implement strategy(hist, state, pos, ind) and compare its behaviour with the reference program.",
+    "example": "Task description, not an actual test item: from an English instruction and an interface document with desk conventions (for example, the entry price is the close of the signal bar), write strategy code that returns a target position and optional stop and take-profit levels at every bar close."
+  },
+  "d2k-bench": {
+    "axis": "Agents and coding (turning expert design guidance into GPU kernels, diagnostic)",
+    "definition": "A diagnostic benchmark of how effectively LLM agents translate expert design guidance (L1 algorithmic insights, L2 dataflow design, L3 low-level optimization tricks, with dependencies among levels) into efficient GPU kernels. It has 26 tasks and 85 workloads. Paired runs with and without guidance share task descriptions, workloads, tools, hardware, and a 350-turn budget. Independently proposed designs and generated code are scored by an LLM judge at L1-L3 (0-100), and performance is reported as a Performance Score and geometric mean speedup. The paper evaluates five models on NVIDIA B200 GPUs.",
+    "task": "Given a task description, a PyTorch reference, and workloads, implement a Triton kernel by completing run(...) in solution.py, scored on correctness and latency (for example the Muon orthogonalization kernel).",
+    "example": "Muon orthogonalization kernel task: implement a kernel that orthogonalizes a gradient matrix with a five-step polynomial iteration. In the guided run, the agent is told in prose to compose steps on smaller square matrices instead of updating the large rectangular matrix each step (task description, not an actual test item)."
+  },
 };
