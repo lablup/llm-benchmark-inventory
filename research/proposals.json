@@ -50429,6 +50429,89 @@
       },
       "issue_url": null,
       "proposal_sha256": "5525211894d32d0621be0c4d4ae322c250a390971fdc7ce49bda545a11e2bb96"
+    },
+    "2609.14762": {
+      "decision": "needs_evidence",
+      "reason": "TriCalRAG는 BGL, HDFS, Thunderbird, OpenStack 로그 4종으로 이상 탐지와 근본 원인 출력을 평가하는 재사용 가능한 벤치마크로 보인다. 입력은 텍스트이고, 공식 코드 링크(https://github.com/SPriTLab-CSE-IITJ/TriCalRAG)도 PDF 18쪽에 있다. 그러나 PDF에는 실제 로그 줄, 프롬프트 템플릿, 지시문 원문이 인용되어 있지 않다. 확인되는 것은 is_anomaly, root_cause 같은 JSON 필드명과 논문 서술뿐이라, 과제 언어가 영어라는 근거를 직접 인용할 수 없다. 논문 서술 언어만으로 언어를 추정하지 않는 원칙에 따라 en 트랙 행을 제안하지 않고, 프롬프트나 로그 예시 원문(부록 또는 저장소)을 확인한 뒤 다시 판단하는 것이 적절하다.",
+      "changes": [],
+      "arxiv_id": "2609.14762",
+      "paper_title": "TriCalRAG: A Three-Strategy, Retrieval-Augmented Benchmark for On-Premise LLM-Based Root Cause Analysis in AIOps",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.14762",
+        "sha256": "ea7f2b22924b367385dc84d200c2c36bcdd14c24ca35cb6078f44ba08ac5c9a3",
+        "accessed": "2026-11-07T04:10:15Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 20,
+          "elapsed_seconds": 107.42,
+          "pdf_sha256": "ea7f2b22924b367385dc84d200c2c36bcdd14c24ca35cb6078f44ba08ac5c9a3",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "60597c215451d7df41cb543bba375d871eb6b6c769f6d05aca4fa6d43f4f9c37",
+          "page_json_file": "2609.14762.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-07T04:12:17Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.14762",
+        "paper_title": "TriCalRAG: A Three-Strategy, Retrieval-Augmented Benchmark for On-Premise LLM-Based Root Cause Analysis in AIOps",
+        "abstract": "Operational logs create a need for private, resource-efficient incident analysis, but aggregate detection scores can conceal severe prediction bias. We present TriCalRAG, a reproducible benchmark for log-anomaly detection with generated root-cause and remediation outputs across BGL, HDFS, Thunderbird, and OpenStack. The primary evaluation compares Qwen2.5-14B and Mistral-Small-22B, served through vLLM on one NVIDIA RTX PRO 6000 GPU (96 GB), under zero-shot, few-shot, and retrieval-augmented generation (RAG) prompting across three data-sampling seeds. We report F1, bootstrap confidence intervals, predicted-positive rates, throughput, and memory use, with DeepLog as a held-out classical baseline. Mistral-Small attains a higher macro-averaged F1 than Qwen2.5-14B (0.644 versus 0.560), whereas Qwen provides approximately twice the throughput. A separate log-probability evaluation compares raw decisions with Contextual Calibration (CC) and Batch Calibration (BC): neither correction consistently improves prediction-balance diagnostics across prompting strategies. Supplementary single-run comparisons extend evaluation to 4-bit Llama-3.1-70B via local Ollama and Claude Haiku 4.5 via Anthropic's cloud API; RAG improves F1 on all four datasets for both models. Claude's reported aggregate F1 increases from 0.566 to 0.695, while the estimated API cost rises from \\$0.94 to \\$2.15 per 1,000 incidents. Local deployment ablations show approximately 41-fold throughput scaling with batching and 20% lower latency with 4-bit quantization on the tested workload. These findings support retrieval as useful context for anomaly decisions, while the supplementary protocols, unvalidated explanation quality, and prediction-balance diagnostics limit broader claims about RCA accuracy and probabilistic calibration.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:14Z",
+        "input_sha256": "9b8d980ea47d2314b65d448fbde6f7b6b285e2c4d72656657281693856b70ef3",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "AIOps 로그 이상 탐지 RAG 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "로그 이상탐지·원인분석 재현 가능 RAG 벤치마크 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "70ee517f5ac991be806d6ee0898a679a34a76d26351259fcc6dc57574fb195ec"
     }
   },
   "processed_comments": [],
@@ -82672,8 +82755,8 @@
         "2611.08369",
         "2611.08417"
       ],
-      "calls": 22,
-      "cost_usd": 15.5947
+      "calls": 23,
+      "cost_usd": 16.3502
     }
   },
   "reaudits": [
