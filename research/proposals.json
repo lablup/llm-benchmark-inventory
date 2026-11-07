@@ -49460,7 +49460,7 @@
     },
     "2610.03226": {
       "decision": "propose",
-      "reason": "D2K-Bench는 전문가 설계 가이드(L1 알고리즘, L2 데이터플로, L3 저수준 최적화)를 GPU 커널로 구현하는 LLM 에이전트의 능력을 진단하는 재사용 가능한 벤치마크입니다. 26개 과제와 85개 워크로드로 구성되고, 가이드 유무를 짝지어 비교하며, 설계 제안과 생성 코드를 LLM 판정으로 따로 평가합니다. 과제 설명과 요구사항이 영어이고 입력이 텍스트와 코드이므로 en 트랙의 text로 분류했습니다. 논문이 공식 코드 저장소 URL을 밝혔습니다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했고, 수치는 논문이 보고한 조건에만 한정했습니다. 이전 응답에서 검증기가 거부한 인용을 PDF 해당 쪽에 실제로 있는 짧은 문구로 교체했습니다.",
+      "reason": "D2K-Bench는 전문가 설계 가이드(L1 알고리즘, L2 데이터플로, L3 저수준 최적화)를 GPU 커널로 구현하는 LLM 에이전트의 능력을 진단하는 재사용 가능한 벤치마크입니다. 26개 과제와 85개 워크로드로 구성되고, 가이드 유무를 짝지어 비교하며, 설계 제안과 생성 코드를 LLM 판정으로 따로 평가합니다. 과제 설명과 요구사항이 영어이고 입력이 텍스트와 코드이므로 en 트랙의 text로 분류했습니다. 공식 저장소 README와 논문 PDF 어디에도 라이선스와 lm-eval 언급이 없어 라이선스는 미표기로 기록하고 권리 항목은 저작권 전부 보유로 처리했으며, lm-eval 지원은 미표기로 기록했습니다. 과제는 vLLM, SGLang, FlashAttention 등에서 선별해 만들어졌으므로 구성 요소별 약관 확인을 유의사항에 명시했습니다. 성능 수치는 논문 표 1의 가이드 적용 실행 결과에 한정했으며 현재 전역 리더보드가 아닙니다.",
       "changes": [
         {
           "track": "en",
@@ -49473,12 +49473,12 @@
             "대표 과제": "과제 설명과 PyTorch 참조, 워크로드가 주어지면 Triton 커널을 구현해 solution.py의 run(...)을 완성하고 정확성과 지연 시간으로 채점(예: Muon 직교화 커널)",
             "대표 예시·설명": "Muon 직교화 커널 과제: 그래디언트 행렬을 다섯 단계 다항식 반복으로 직교화하는 커널을 구현한다. 가이드 실행에서는 큰 직사각 행렬 갱신 대신 작은 정방 행렬에서 단계를 합성하는 설계를 설명으로 받는다(과제 설명이며 실제 시험 문항이 아님).",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원은 확인하지 못했다. 코드 저장소 라이선스는 데이터 라이선스를 대신하지 않는다. 과제는 vLLM, SGLang, FlashAttention 등 전문가 구현에서 선별해 만들었으므로(논문 3쪽) 구성 요소별 약관을 이용 전에 따로 확인해야 한다. 평가에는 NVIDIA B200 GPU와 에이전트 실행 환경, 코드 판정용 LLM이 필요하다. 논문 수치는 5개 모델, 350턴 예산 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 다른 출처로 구성되어 있다: 과제와 워크로드는 vLLM, SGLang, FlashAttention 등 시스템과 전문 구현에서 전문가가 선별했다(논문 3쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 코드 저장소의 라이선스가 있더라도 데이터 라이선스를 대신하지 않는다. 평가에는 NVIDIA B200 GPU와 에이전트 실행 환경, 코드 판정용 LLM이 필요하다. 논문 수치는 5개 모델, 350턴 예산 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/QwenLM/D2K-Bench"
           },
           "modality": "text",
@@ -49522,9 +49522,89 @@
               "quote": "expert design guidance"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/QwenLM/D2K-Bench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/QwenLM/D2K-Bench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/QwenLM/D2K-Bench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/QwenLM/D2K-Bench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/QwenLM/D2K-Bench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Performance Score Sperf (무차원 값: Fable-5의 첫 정답 제출 대비 속도 향상의 기하평균, 정답 또는 유효 지연 시간이 없는 과제는 0.5 적용, 26개 과제 전체)",
+            "setting": "논문 표 1의 가이드 적용(w/ Design Guidance, L1+L2+L3) 실행 결과. NVIDIA B200 GPU, Triton 구현, 350턴 예산, 26개 과제 전체 기준이며 기준선은 가이드 없이 Claude Code에서 얻은 Fable-5의 첫 정답 제출이다. 이 수치는 이 논문에서 보고된 결과이며 현재 전역 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "GPT-6-Astra",
+                "score": "3.33",
+                "evidence": {
+                  "page": 9,
+                  "quote": "GPT-6-Astra 0.056 1.00 26 2.68 26 3.33 2.33"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Claude-Opus-4.8",
+                "score": "2.31",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Claude-Opus-4.8 0.056 1.00 26 1.38 26 2.31 2.33"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.6-Sol",
+                "score": "2.01",
+                "evidence": {
+                  "page": 9,
+                  "quote": "GPT-5.6-Sol 0.056 1.00 26 1.31 26 2.01 2.33"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM-5.3",
+                "score": "1.34",
+                "evidence": {
+                  "page": 9,
+                  "quote": "GLM-5.3 0.056 1.00 21 1.18 25 1.34 2.33"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Kimi-K3",
+                "score": "1.38",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Kimi-K3 0.056 1.00 22 1.16 25 1.38 2.33"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.03226",
@@ -49626,7 +49706,8 @@
         "source_run": "42329845673",
         "context_sha256": "d7f19c6a009c1895390802810d147aebb1e694c67af094d693491f26f08eb23a"
       },
-      "proposal_sha256": "04398e5c879259c78bb8d2c223dbd7f9adef54dbfa2ce1ffa9dd9584bc6a1e0c"
+      "proposal_sha256": "a3b02f26e9c4a398089534a24f24cb563b2833eb44763de72647fe4457722f80",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -81858,8 +81939,8 @@
         "2611.08369",
         "2611.08417"
       ],
-      "calls": 14,
-      "cost_usd": 9.3786
+      "calls": 15,
+      "cost_usd": 10.1693
     }
   },
   "reaudits": [
