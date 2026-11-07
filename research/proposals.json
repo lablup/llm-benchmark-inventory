@@ -49300,7 +49300,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-07T03:28:17Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -49326,12 +49326,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "42329845673",
-        "context_sha256": "402ff6f204dab77a4285f50bf17214141029531730390a7ec484e5584ac92d47"
-      },
       "proposal_sha256": "8a7cefc10045814633ae72c1c7653fcfd15fd3551f41cf65304f4f4fe50c5fad",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안의 변경 사항은 논문 PDF 1~4쪽과 공식 README로 뒷받침되며, 추출본 간 충돌도 없다. (1) 분류: 과제 지시문, 블록 템플릿, 데스크 메시지가 모두 영어이고 입력이 텍스트이므로 en 트랙과 텍스트 모달리티가 맞다. 800개 과제, BTCUSDT 15분봉, τ 층화, 열린·닫힌 설정, 200개 부분집합 평가, 지표 구성(ActionMatch, TradeF1, |ES|, ΔSharpe, ΔMaxDD, CompileOK)도 논문과 일치한다. (2) 권리 필드: 라이선스 '미표기'는 논문 5쪽 전체와 공식 README 어디에도 라이선스를 명시하거나 언급한 곳이 없고, 저장소 공개 안내 문장과 arXiv 표기만 있어 데이터셋 라이선스와 충돌하지 않는다. 따라서 상업적 이용, 수정·파생, 재배포는 모두 '저작권 전부 보유'로 규칙에 맞게 기록되었다. lm-eval 지원 '미표기'도 README가 lm-eval을 언급하지 않아 허용되는 해결값이다. 미확인이나 확인 불가 필드는 없다. (3) 파생 출처: 시장 데이터가 data.binance.vision의 공개 데이터라는 점(논문 윤리 성명)을 유의사항에 명시했고 구성 요소별 약관을 따로 확인하라고 안내했다. LLM 작성 지시문, 단일 종목·단일 구간·1회 샘플, 손실 참조 전략, 실행 샌드박스 필요 같은 한계 서술도 논문 근거와 일치한다. (4) 추천 성능: Table 2의 동일 조건(같은 200개 과제, 열린 설정, 컴파일된 실행 대상 ActionMatch, 높을수록 좋음)에서 5개 모델이 모두 포함되어 상위 3개 선정이 정당하다. 점수 0.889, 0.575, 0.420, 0.181, 0.076은 행과 열 정렬이 맞고 모델명과 순서도 일치하며, 800개 과제 대상 Table 1과 혼합되지 않았다. 공개 가중치는 Qwen 두 모델만 논문 근거로 true이고 나머지는 null로 두어 폐쇄로 단정하지 않았다. 논문 보고 결과이며 전역 리더보드가 아니라는 점도 명시되어 있다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 154233,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2425,
+              "output_tokens_details": {
+                "thinking_tokens": 1490
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 154233,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2425,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 154233,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 154233
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.6412509000000001,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "8a7cefc10045814633ae72c1c7653fcfd15fd3551f41cf65304f4f4fe50c5fad",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -81560,8 +81606,8 @@
         "2611.08369",
         "2611.08417"
       ],
-      "calls": 11,
-      "cost_usd": 7.272
+      "calls": 12,
+      "cost_usd": 7.9133
     }
   },
   "reaudits": [
