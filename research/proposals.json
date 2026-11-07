@@ -49098,6 +49098,151 @@
       },
       "issue_url": null,
       "proposal_sha256": "0823ed2d324d2270b9feeb7d7583f8f5ab26fa509545eb7095373a35e0148c13"
+    },
+    "2610.03080": {
+      "decision": "propose",
+      "reason": "MintEval은 재사용 가능한 새 벤치마크다. 조합형 구성 블록으로 참조 전략을 생성하고, 이를 트레이더 지시문으로 역번역한 뒤 모델이 재구현한 코드를 참조 프로그램과 막대(bar) 단위 행동 동등성으로 비교한다. 과제 지시문과 인터페이스 문서가 영어이므로 en 트랙의 텍스트 벤치마크로 분류했다. PDF가 공식 저장소(github.com/spearmintai/minteval)를 명시했다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "minteval",
+            "이름": "MintEval",
+            "평가 축": "코딩(자연어 지시 → 트레이딩 전략 코드의 행동 동등성)",
+            "언어": "en",
+            "정의": "조합형 구성 블록 라이브러리로 참조 전략을 프로그램으로 생성하고 이를 트레이더 지시문으로 역번역한 뒤, 모델이 재구현한 코드를 참조 프로그램과 같은 시장 데이터·거래 비용에서 막대 단위로 실행해 행동이 같은지 비교하는 벤치마크. v0은 BTCUSDT 15분봉 기반 800개 과제이며, 상태 지속 구간 τ로 층화했다. 주 지표는 활성 막대에서의 ActionMatch이고 TradeF1, |ES|, ΔSharpe, ΔMaxDD, CompileOK를 함께 보고한다. 열린 설정(지시문+인터페이스)과 닫힌 진단 설정(블록 메뉴 제공)이 있고, 논문은 200개 층화 부분집합에서 프런티어 모델도 평가했다.",
+            "대표 과제": "colloquial 트레이더 지시문과 인터페이스 문서를 받아 strategy(hist, state, pos, ind) 함수를 구현하고 참조 프로그램과 행동 동등성을 비교",
+            "대표 예시·설명": "영어 지시문과 인터페이스 문서(예: 진입가는 신호 막대의 종가라는 데스크 규약)를 받아 매 막대 종가마다 목표 포지션과 선택적 손절·익절 수준을 내는 전략 코드를 작성하는 과제 설명이며, 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했다. 시장 데이터는 data.binance.vision의 공개 데이터이며(논문 윤리 성명), 지시문은 LLM이 작성해 실제 트레이더 메시지보다 LLM에 우호적일 수 있다. v0은 단일 종목(BTCUSDT), 단일 데이터 구간, 모델당 1회 샘플이다. 참조 전략 대부분이 거래 비용 후 손실이므로 수익성이 아니라 구현 충실도를 평가한다. 평가에는 코드 실행 샌드박스가 필요하다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/spearmintai/minteval"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (natural-language instruction to trading-strategy code, behavioural equivalence)",
+            "definition": "A benchmark in which reference strategies are generated programmatically from composable building blocks and back-translated into colloquial trader instructions. The model re-implements each strategy, and its code is executed bar by bar on the same market data and frictions as the reference program and compared on actions. MintEval v0 has 800 tasks on BTCUSDT 15-minute data, stratified by state span tau. The primary metric is ActionMatch on active bars, with TradeF1, |ES|, delta Sharpe, delta MaxDD and CompileOK also reported. It has an open setting (instruction plus interface) and a closed diagnostic setting (with a building-block menu), and the paper also evaluates a frontier model on a stratified 200-task subset.",
+            "task": "Given a colloquial trader instruction and an interface document, implement strategy(hist, state, pos, ind) and compare its behaviour with the reference program.",
+            "example": "Task description, not an actual test item: from an English instruction and an interface document with desk conventions (for example, the entry price is the close of the signal bar), write strategy code that returns a target position and optional stop and take-profit levels at every bar close."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "MintEval v0 contains"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "bar-level behavioural equivalence"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "entry price is"
+            },
+            "링크": {
+              "page": 4,
+              "quote": "github.com/spearmintai/minteval"
+            },
+            "언어": {
+              "page": 1,
+              "quote": "entry price is"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "MintEval v0 contains"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "MintEval v0 contains"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "bar-level behavioural equivalence"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.03080",
+      "paper_title": "MintEval: Do LLMs Implement the Trading Strategy You Asked For? A Behavioural-Equivalence Benchmark for Natural-Language-to-Strategy Code",
+      "paper_updated": "2026-10-05T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.03080",
+        "sha256": "eccf2199b3dade84e5bbaa11820e3f239160ab8f6774388e49f17cd5b0a95a2f",
+        "accessed": "2026-11-07T03:27:06Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 5,
+          "elapsed_seconds": 45.97,
+          "pdf_sha256": "eccf2199b3dade84e5bbaa11820e3f239160ab8f6774388e49f17cd5b0a95a2f",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "a1399c6d92d101f6a6b9ff0c4986b05961a88b235c1ca20b15572cace9ce8f57",
+          "page_json_file": "2610.03080.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/spearmintai/minteval",
+            "fetched_url": "https://api.github.com/repos/spearmintai/minteval/readme",
+            "sha256": "8fbf52d463d4dccae05d3384c28921d39edda29eaff3c9a6623bed77f4106b37",
+            "accessed": "2026-11-07T03:28:17Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-07T03:28:17Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.03080",
+        "paper_title": "MintEval: Do LLMs Implement the Trading Strategy You Asked For? A Behavioural-Equivalence Benchmark for Natural-Language-to-Strategy Code",
+        "abstract": "Large language models are moving from producing trading signals to writing the code that executes them. The failure mode of the second role is silent: generated code runs, a backtest plots, yet the risk logic that the trader described is not the logic being executed. Existing code benchmarks test functional correctness on unit tests and finance benchmarks test forecasting; neither measures whether an implementation behaves like the strategy that was asked for. We introduce MintEval, a benchmark in which reference strategies are generated programmatically from a library of composable building blocks, back-translated into colloquial trader instructions, and re-implemented by the model under test. Generated and reference programs are executed bar by bar on identical market data and frictions, and compared on their actions rather than on code similarity or profit: alpha is differenced away. MintEval v0 contains 800 tasks on BTCUSDT 15-minute data, stratified by an execution-measured state-span complexity tau that is decoupled from description length. Low-cost models reach a mean ActionMatch of at most 0.544 and reproduce at most 0.087 of tasks exactly; on a stratified subset of 200 tasks a frontier model (Claude Opus 5.5) reaches 0.889 and reproduces 0.575 exactly, yet still fails silently on 0.275 of tasks. Given a menu of building blocks, models identify the strategy almost perfectly, yet 79.2% of the implementations whose specification was read correctly diverge on more than 10% of active bars. The LLM judge of a recent strategy-generation benchmark, applied verbatim, accepts every one of these silent failures.",
+        "paper_updated": "2026-10-05T00:00:00Z",
+        "created_at": "2026-10-19T13:48:02Z",
+        "input_sha256": "cf8aac8353bac06fc5f985ea5d97c09ae55d7836707ae8097ecd99f7daf35a45",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "자연어 거래 전략 코드 행동 동등성 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "전략 코드 행동 동등성 벤치마크 MintEval 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42329845673",
+        "context_sha256": "402ff6f204dab77a4285f50bf17214141029531730390a7ec484e5584ac92d47"
+      },
+      "proposal_sha256": "2ae2d531f023018cef5d72ca6eae584e31cf06b49089bbb7b950d3bb62ee964c"
     }
   },
   "processed_comments": [],
@@ -81326,8 +81471,8 @@
         "2611.08369",
         "2611.08417"
       ],
-      "calls": 9,
-      "cost_usd": 5.9624
+      "calls": 10,
+      "cost_usd": 6.5955
     }
   },
   "reaudits": [
