@@ -48697,7 +48697,7 @@
     },
     "2610.02775": {
       "decision": "propose",
-      "reason": "영어 뉴스(NOW)와 Reddit 게시글에 정신건강 낙인(stigma) 여부와 세부 유형을 주석한 재사용 가능한 새 벤치마크를 소개하는 논문입니다. 과제 프롬프트가 영어이고 텍스트 입력만 쓰므로 en 트랙 text로 분류했습니다. 공식 저장소 URL은 PDF에 명시되어 있습니다. 라이선스 등은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "reason": "영어 뉴스(NOW)와 Reddit 게시글에 정신건강 낙인(stigma) 여부와 세부 유형을 주석한 재사용 가능한 새 벤치마크를 소개하는 논문입니다. 과제 프롬프트가 영어이고 텍스트 입력만 쓰므로 en 트랙 text로 분류했습니다. 공식 저장소 README에는 라이선스와 lm-eval 언급이 없고 PDF 43쪽 어디에도 라이선스 문구가 없어, 권리 항목은 미표기와 저작권 전부 보유로 기록했습니다. 추천 모델 점수는 논문 표 2의 baseline 프롬프트 이진 F1 값입니다.",
       "changes": [
         {
           "track": "en",
@@ -48710,12 +48710,12 @@
             "대표 과제": "낙인 존재 이진 분류, 낙인 모드·영역·공적 낙인 유형·구성요소 분류",
             "대표 예시·설명": "질환명과 함께 영어 뉴스·Reddit 텍스트를 주고 낙인이 있는지 묻고, 있으면 모드, 영역, 세부 낙인 구성요소를 분류하는 과제 설명(실제 문항이 아님).",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "논문(11쪽)에 따르면 주석과 메타데이터, 뉴스 발췌문은 공개되고 Reddit 발췌문은 저자에게 신청해야 제공된다. 뉴스는 NOW 코퍼스, 게시글은 Reddit(Pushshift)에서 가져온 것이므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했다. 임상·모더레이션 도구가 아닌 연구·평가용이며, 주석자 일치도는 낙인 존재 판단에서 중간 수준(AC1=.40)이다. 세부 범주 다수는 표본이 매우 적다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 다른 출처로 구성되어 있다: 뉴스는 News on the Web(NOW) 코퍼스, 게시글은 Reddit에서 가져왔다(논문 3쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 논문(11쪽)과 공식 README에 따르면 주석과 메타데이터, 뉴스 발췌문은 공개되고 Reddit 발췌문은 저자에게 신청해야 제공된다. 임상·모더레이션 도구가 아닌 연구·평가용이며, 주석자 일치도는 낙인 존재 판단에서 중간 수준(AC1=.40)이다. 세부 범주 다수는 표본이 매우 적다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/jemimakang/mh_stigma"
           },
           "modality": "text",
@@ -48759,9 +48759,80 @@
               "quote": "theory-grounded benchmark for"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/jemimakang/mh_stigma",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/jemimakang/mh_stigma",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/jemimakang/mh_stigma",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/jemimakang/mh_stigma",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/jemimakang/mh_stigma",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Binary F1 of the positive class ('stigma present'), unitless value on a 0-1 scale",
+            "setting": "Results reported in this paper (Table 2), not a current global leaderboard. Binary stigma-presence detection on all 470 annotated benchmark texts, baseline prompt only (task and classes specified, no definition, examples or rules), model runs conducted in May 2026 with provider-default settings as listed in the paper's Table 15. Only the baseline rows of Table 2 are used so that prompting conditions are not mixed.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Claude Sonnet 4.6",
+                "score": "0.421",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Claude Sonnet 4.6 0.666 0.310 0.655 0.421"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Deepseek v4 Flash",
+                "score": "0.302",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Deepseek v4 Flash 0.704 0.268 0.345 0.302"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini 3 Flash",
+                "score": "0.506",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Gemini 3 Flash 0.734 0.386 0.736 0.506"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.5",
+                "score": "0.424",
+                "evidence": {
+                  "page": 6,
+                  "quote": "GPT-5.5 0.566 0.281 0.862 0.424"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.02775",
@@ -48877,7 +48948,8 @@
         "source_run": "42329845673",
         "context_sha256": "00753df7377a0c30df0cae46acf873ec42b211443e7f35fe57b0aeb9becca2e8"
       },
-      "proposal_sha256": "ddf4e2678d220f2f3c2def13917d9bb2bea1a0916ef8691aa0cc9b1431b03341"
+      "proposal_sha256": "e7f9751f0cd00acf0e351e2db6a0ee9512eb5304de2ef79607c4c48efd829ed4",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -81101,8 +81173,8 @@
         "2611.08369",
         "2611.08417"
       ],
-      "calls": 5,
-      "cost_usd": 2.589
+      "calls": 6,
+      "cost_usd": 3.5191
     }
   },
   "reaudits": [
