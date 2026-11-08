@@ -53531,6 +53531,75 @@
         "reviewed_sha256": "ff420c821c84fbdbe79843039582cc39c0cb1c3a27c74722d8c0ffab454ca97e",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.05077": {
+      "decision": "exclude",
+      "reason": "이 논문은 실행 가정(체결 방식, 지연, 스프레드 등)이 LLM 트레이딩 에이전트 순위에 미치는 영향을 분석하는 실증 연구다. 새 벤치마크를 소개하거나 기존 벤치마크를 실질적으로 갱신하지 않는다. 실험은 기존 TradeArena 테스트베드(인용 [22])를 쓰고, 논문도 LLM 트레이딩 능력을 비교하지 않는다고 밝힌다. 공개물은 코드와 실행 단위 결과이며, 재사용 가능한 평가 데이터셋으로 제시되지 않는다. 합성 가격 경로를 쓰는 점도 재사용 벤치마크로 보기 어렵게 한다. 따라서 인벤토리에 추가하거나 갱신할 대상이 아니다.",
+      "changes": [],
+      "arxiv_id": "2610.05077",
+      "paper_title": "How Execution Assumptions Change Short-Horizon Sharpe Rankings: Evidence from a Synthetic Trading Benchmark",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.05077",
+        "sha256": "729afb30549c3a2a25601db924b23e1320d44aac42fab3ac43acaee7b304c734",
+        "accessed": "2026-11-08T03:55:43Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 6,
+          "elapsed_seconds": 48.42,
+          "pdf_sha256": "729afb30549c3a2a25601db924b23e1320d44aac42fab3ac43acaee7b304c734",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "2832f0793baa376a328f628b748e864c7215e6592fb707fd364c835e178648d1",
+          "page_json_file": "2610.05077.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-08T03:56:41Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.05077",
+        "paper_title": "How Execution Assumptions Change Short-Horizon Sharpe Rankings: Evidence from a Synthetic Trading Benchmark",
+        "abstract": "Backtests of LLM trading agents often assume that every order fills at the closing price. We ask whether this choice changes only reported returns or also the order of the agents. Five prompted LLM signal policies and seven classical baselines trade the same synthetic price paths under six execution settings, from near-ideal fills to latency, spread, participation, and impact stresses. The main experiment contains $2{,}462$ runs with matched decision frequencies and paired market paths. On the compressed two-asset board, agreement between the near-ideal and default-stress rankings falls to Kendall $τ_b=0.21$ in the high-volatility regime, compared with $0.82$ in the calm regime. The seed-bootstrap intervals, $[0.00,0.52]$ and $[0.48,0.94]$, are wide and overlap. On a fixed 11-policy board, agreement rises from 0.24 with two assets to 0.85 with ten; the two-asset point estimate differs substantially from the wider settings we tested. Rank changes are related to turnover, and comparisons with buy-and-hold also depend on how that anchor is initialized. The experiment does not compare LLM trading skill. It shows that, on a short horizon, an execution convention can become part of the benchmark's headline. Execution assumptions and rank stability should be reported alongside returns.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:27Z",
+        "input_sha256": "54d0d0c0a314145c11cafc6d1a51c696b8a385400ed40e8259ebd85098aadbb3",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 거래 에이전트 실행 가정 벤치마크로 순위 안정성 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "합성 트레이딩 실험으로 실행 가정 영향 분석, 벤치마크 자체 제안 불명확"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "16c88da3e944473c32bd98d8435cc87edc0fcb366c4194d62762013f1ab3cfb8"
     }
   },
   "processed_comments": [],
@@ -85809,8 +85878,8 @@
         "2610.05077"
       ],
       "abstract_attempted": [],
-      "calls": 29,
-      "cost_usd": 24.0547
+      "calls": 30,
+      "cost_usd": 24.7037
     }
   },
   "reaudits": [
