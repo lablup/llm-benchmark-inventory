@@ -51971,6 +51971,180 @@
         "reviewed_sha256": "24dc8980ef61a013ab0ea695d75fe38ffda4f2497e2e47e0e586bbed9f0e4224",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.04379": {
+      "decision": "propose",
+      "reason": "AgentPersonaBench(APB)는 페르소나에 암묵적으로 담긴 특성이 에이전트의 실제 행동을 좌우하는지 평가하는 재사용 가능한 새 벤치마크다. survey, chat, web, app의 4개 표면에서 2,460개 과제와 867개 특성을 다루고, 공식 코드·데이터 저장소 링크가 논문 1쪽에 명시되어 있다. 과제 예시(채식 메뉴 선택 등)가 영어라서 en 트랙으로 분류했다. web과 app 표면은 브라우저와 데스크톱 GUI를 시각적으로 조작하므로 modality는 vision이다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 아직 확인하지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "agentpersonabench",
+            "이름": "AgentPersonaBench (APB)",
+            "평가 축": "에이전트(페르소나 기반 사용자 시뮬레이션의 잠재 행동 충실도)",
+            "언어": "en",
+            "정의": "페르소나 조건화가 하위 에이전트 행동을 실제로 이끄는지 평가하는 벤치마크. 목표 특성 하나를 이름이나 평가 사실을 드러내지 않고 완전한 합성 프로필에 심고, 관찰 가능한 행동만으로 준수 여부를 검증한다. survey, chat, web, app의 4개 상호작용 표면에서 2,460개 과제(survey 502, chat 565, web 707, app 686)와 867개 특성을 다룬다. 전체 검사의 78.5%(3,865개 중 3,033개)는 코드 기반 결정적 판정이고 나머지는 LLM 판정이다. 논문은 20개 모델 구성을 평가했으며 주 지표는 전체 통과율(full-pass)이다.",
+            "대표 과제": "단일 특성 또는 다중 특성(동시 3개)이 드러나는 일상 과제를 4개 표면에서 수행하고, 선택·장바구니·파일 등 행동 산출물로 특성 준수 여부를 판정",
+            "대표 예시·설명": "과제 설명: 채식(vegan) 특성이 암묵적으로 주어진 페르소나가 식사 선택을 하되 특성은 한 번도 언급되지 않는다. survey는 식물성/육류 메뉴 선택지, chat은 동물성 식품을 권하는 대화, web은 식당 주문 장바구니, app은 데스크톱 주문 앱으로 구성되며 선택한 항목이 특성에 부합하는지 검증한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스와 이용 조건은 아직 확인하지 않았다. 논문 부록에 과제·스키마와 실행 코드의 라이선스 언급이 있으나 공식 저장소에서 대조하지 않았으므로 이용 전에 저장소와 구성 요소(페르소나 코퍼스, 웹·데스크톱 환경)별 약관을 따로 확인해야 한다. 일부 텍스트 전용 모델은 app 표면을 평가하지 못한다(N/A). web·app은 대화형 환경 실행이 필요하고, chat 등 자유 서술 판정에는 LLM judge가 쓰인다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/MatrAIx-ai/AgentPersonaBench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Agents (latent behavioral fidelity of persona-driven user simulation)",
+            "definition": "A benchmark of whether persona conditioning actually steers downstream agent behavior. One target trait at a time is embedded in a complete synthetic profile without naming the trait or disclosing the test, and adherence is verified only from observable actions. It has 2,460 tasks (502 survey, 565 chat, 707 web, 686 app) spanning 867 traits across four interaction surfaces: survey, chat, web, and app. About 78.5% of checks (3,033 of 3,865) are deterministic code predicates and the rest use an LLM judge. The paper evaluates 20 model arms and reports full-pass rate as the main metric.",
+            "task": "Perform everyday errands that expose a single trait or three co-occurring traits on four surfaces, with adherence judged from behavioral artifacts such as selected options, carts, and files.",
+            "example": "Task description: a persona carrying an implicit vegan trait makes a meal decision without the trait ever being mentioned. The survey offers plant-based and meat dishes, the chat tempts with animal products, the web task is a restaurant order cart, and the app task is a desktop ordering application. The selections are checked for consistency with the trait."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "visual interaction and"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "four interaction surfaces"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "chickpea curry vs."
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/MatrAIx-ai/ AgentPersonaBench"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "chickpea curry vs."
+            },
+            "이름": {
+              "page": 1,
+              "quote": "AgentPersonaBench (APB)"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "2,460 tasks spanning"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "latent persona adherence"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.04379",
+      "paper_title": "AgentPersonaBench: Benchmarking Persona-Driven User Simulation",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.04379",
+        "sha256": "0c02745dc998a78c69f494c2b78367ec9f63a4beb921c881b59618c1f5109fce",
+        "accessed": "2026-11-08T03:24:10Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 29,
+          "elapsed_seconds": 280.13,
+          "pdf_sha256": "0c02745dc998a78c69f494c2b78367ec9f63a4beb921c881b59618c1f5109fce",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "0a9a5b45f5e3affcf119d1da7a97a9f7d94527ddb0e00a016276bd0403303da1",
+          "page_json_file": "2610.04379.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/MatrAIx-ai/AgentPersonaBench",
+            "fetched_url": "https://api.github.com/repos/MatrAIx-ai/AgentPersonaBench/readme",
+            "sha256": "5fb2c5403a73564e2170f2dd8b6fac221655d62316df70bc24b620c527b02eae",
+            "accessed": "2026-11-08T03:29:17Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/MatrAIx-ai/AgentPersonaBench/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-08T03:29:17Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.04379",
+        "paper_title": "AgentPersonaBench: Benchmarking Persona-Driven User Simulation",
+        "abstract": "We introduce AgentPersonaBench (APB), a benchmark evaluating whether persona conditioning faithfully steers downstream agent behavior. While language models are increasingly deployed for persona-driven user simulation, existing benchmarks primarily evaluate conversational styling or self-reports rather than authentic behavioral fidelity. APB evaluates latent persona adherence one trait at a time, embedding each target trait within a complete synthetic profile without explicitly naming the trait or disclosing the test. Ground-truth adherence is verified strictly from observable actions across four interaction surfaces of increasing realism: survey, chat, web (interactive web environments), and app (desktop software environments). APB comprises 2,460 tasks spanning 867 traits, verified through automated audits and expert review. Our evaluation of 20 frontier model arms demonstrates that high-fidelity user simulation is already attainable: leading models achieve up to 84.7% full-pass adherence under unprompted conditions. At the same time, APB identifies clear behavioral boundaries: adherence drops across interaction modalities (only 37.9-64.3% pass all four surfaces), multi-attribute demands degrade retention, and competing model families exhibit pronounced behavioral divergence.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:14Z",
+        "input_sha256": "643838db567279b655502cb390fbb3986ecbdc7a2b52221c616132a51f267139",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "페르소나 기반 사용자 시뮬레이션 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "페르소나 기반 사용자 시뮬레이션 벤치마크 APB 구축"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42439057183",
+        "context_sha256": "4772a7151783311f967e90abec17d61fa92b40dd8bda27d485c4be57c9241b1b"
+      },
+      "proposal_sha256": "7e224856f751b68168228bb298d0c3ef7c9567d988fa37d4fba898223b5c641f"
     }
   },
   "processed_comments": [],
@@ -84239,8 +84413,8 @@
         "2610.04379"
       ],
       "abstract_attempted": [],
-      "calls": 15,
-      "cost_usd": 12.5978
+      "calls": 16,
+      "cost_usd": 13.4386
     }
   },
   "reaudits": [
