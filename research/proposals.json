@@ -53600,6 +53600,157 @@
       },
       "issue_url": null,
       "proposal_sha256": "16c88da3e944473c32bd98d8435cc87edc0fcb366c4194d62762013f1ab3cfb8"
+    },
+    "2610.05124": {
+      "decision": "propose",
+      "reason": "이 논문은 영어 메모리 객체를 대상으로 모델 간 의미·감정 드리프트를 재는 CMSC-E 벤치마크를 새로 정의하고 파일럿(합성 176개)을 보고한다. 공식 코드 저장소 URL이 PDF에 명시되어 있어 en/text 트랙에 신규 행으로 제안한다. 다만 결과는 탐색적이며 다중비교 보정 후 유의하지 않다. 데이터 라이선스와 lm-eval 지원은 확인하지 않아 '확인 불가'로 둔다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "cmsc-e",
+            "이름": "CMSC-E",
+            "평가 축": "에이전트 메모리(모델 간 의미·감정 일관성 드리프트)",
+            "언어": "en",
+            "정의": "영속 LLM 메모리에서 같은 메모리 객체를 서로 다른 모델이 읽을 때 생기는 사실적 드리프트(CMSD)와 감정 일관성(ECS)을 함께 재는 벤치마크. 원문(raw), 명확화만 적용, 완전 정규화의 3개 조건을 같은 객체에 대해 쌍대 비교한다. 파일럿은 합성 메모리 객체 176개(유효 CMSD 172개, ECS 대상 86개)와 모델 계열 3종으로 수행했고, 이 결과는 탐색적이며 다중비교 보정 후 유의하지 않았다.",
+            "대표 과제": "메모리 객체를 평문으로 렌더링해 하위 질의에 답하게 하고, 모델 간 응답의 주장 함의 일치(CMSD)와 감정 처리 일치(ECS)를 측정",
+            "대표 예시·설명": "조건부 의미가 담긴 영어 메모리 문장(예: 일정 변경이 고객 승인에 달린 경우)을 원문, 명확화본, 정규화본으로 각각 모델 3종에 주고 응답이 서로 일치하는 정도를 비교하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 데이터는 템플릿 기반 합성이며 어휘가 제한적이다. 판정 모델이 정규화기와 같은 모델 계열이고 렌더링 문구 은행은 사람 검증을 거치지 않았다. 사전등록도 없다. 논문 스스로 결과를 탐색적이라 밝히며, 업스트림 supersede/conflict 보조 세트 30쌍은 채점하지 않았다. 논문 수치는 해당 파일럿 조건의 결과이며 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/aishwaryalonarkar/cross-model-memory-canonicalization"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agent memory (cross-model semantic and emotional consistency drift)",
+            "definition": "A benchmark that measures cross-model factual drift (CMSD) and emotional consistency (ECS) when different LLMs read the same stored memory object. The same objects are compared in a paired design across three arms: raw, disambiguated-only, and fully canonicalized. The pilot used 176 synthetic memory objects (172 valid for CMSD, 86 eligible for ECS) and three model families. The results are exploratory and do not survive multiple-comparison correction.",
+            "task": "Render each memory object as flat prose, have models answer downstream prompts, and measure cross-model agreement of response claims (CMSD) and of emotional handling (ECS).",
+            "example": "Task description: an English memory statement with conditional meaning (for example a deadline change contingent on client sign-off) is given to three models in raw, disambiguated, and canonicalized form, and their responses are compared for agreement."
+          },
+          "evidence": {
+            "modality": {
+              "page": 6,
+              "quote": "flat natural-language prose"
+            },
+            "대표 과제": {
+              "page": 6,
+              "quote": "176 synthetic memory"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "The deadline was"
+            },
+            "링크": {
+              "page": 10,
+              "quote": "https://github.com/aishwaryalonarkar/"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "The deadline was"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Emotional Consistency Score"
+            },
+            "정의": {
+              "page": 6,
+              "quote": "176 synthetic memory"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Emotional Consistency Score"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.05124",
+      "paper_title": "Memory Canonicalization: A Framework and Benchmark for Cross-Model Drift in Persistent LLM Memory",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.05124",
+        "sha256": "59a6b44817bb0706b104e347e4d4addb2e459440f6968955ae89078fedf401d5",
+        "accessed": "2026-11-08T03:56:54Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 11,
+          "elapsed_seconds": 61.22,
+          "pdf_sha256": "59a6b44817bb0706b104e347e4d4addb2e459440f6968955ae89078fedf401d5",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "99d2fed6baeef8d9d4a2dac51a084084973a4c29c8fbe17d796c0c2dd1258ad6",
+          "page_json_file": "2610.05124.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/aishwaryalonarkar/cross-model-memory-canonicalization",
+            "fetched_url": "https://api.github.com/repos/aishwaryalonarkar/cross-model-memory-canonicalization/readme",
+            "sha256": "ca6bac5b31e26ac7642ff3cd4988f41e4792de82f017fa0a5c01d8b06ab007b1",
+            "accessed": "2026-11-08T03:58:22Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-08T03:58:22Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.05124",
+        "paper_title": "Memory Canonicalization: A Framework and Benchmark for Cross-Model Drift in Persistent LLM Memory",
+        "abstract": "Persistent memory for Large Language Models (LLMs) has matured rapidly: systems such as MemGPT/Letta, Mem0, and Zep now provide agents with tiered, temporally-aware, model-agnostic external storage, while the Model Context Protocol (MCP) standardizes access to memory servers. A less addressed problem is that an identical stored memory object, retrieved by two different LLMs under otherwise identical conditions, may not be interpreted the same way, factually or emotionally. This paper proposes memory canonicalization: a write-time pipeline that detects ambiguity, conditional structure, and emotional loading in a raw memory object and rewrites it into an explicit, structurally disambiguated canonical form, with emotional valence represented as a separate field rather than inferred from tone. We formalize the pipeline, define a companion Cross-Model Semantic Drift / Emotional Consistency Score benchmark (CMSC-E), and report results from a three-arm pilot using 176 synthetic memory objects and three downstream model families. We find an uncorrected improvement in cross-model emotional consistency for fully canonicalized memory relative to raw memory (+0.050, 95% bootstrap CI [0.013, 0.086], paired t-test p = 0.010), but this result does not survive Bonferroni, Holm, or Benjamini-Hochberg correction across the six comparisons tested. None of the factual-drift (CMSD) comparisons reach significance at any correction level. We report these results as exploratory rather than confirmatory and outline needed follow-up work, including larger samples, independent judge models, human-validated rendering, and preregistration.",
+        "paper_updated": "2026-10-08T00:00:00Z",
+        "created_at": "2026-10-19T13:48:27Z",
+        "input_sha256": "7c888f405467da0e6c009c430860509ab2fe7f42503594654131486a9e74da76",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 지속 메모리 정규화 프레임워크와 교차 모델 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "메모리 정준화 프레임워크와 CMSC-E 벤치마크 정의"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42439057183",
+        "context_sha256": "4ee1f2da15809c506b0ed13834fade8aee7e299295d9fba7b733ce01c836de91"
+      },
+      "proposal_sha256": "4cc0e2583f292d024899018596038af2ea8a517c765e7cb13ee045b66fe6b8f4"
     }
   },
   "processed_comments": [],
@@ -85879,8 +86030,8 @@
         "2610.05124"
       ],
       "abstract_attempted": [],
-      "calls": 30,
-      "cost_usd": 24.7037
+      "calls": 31,
+      "cost_usd": 25.4322
     }
   },
   "reaudits": [
