@@ -50662,6 +50662,175 @@
       },
       "issue_url": null,
       "proposal_sha256": "70ee517f5ac991be806d6ee0898a679a34a76d26351259fcc6dc57574fb195ec"
+    },
+    "2609.37658": {
+      "decision": "propose",
+      "reason": "EnterpriseBench는 기업·금융 QA를 재구성한 기초 스위트에 Consulting, Beer Game, Enterprise Digital Twin이라는 세 가지 상호작용형 의사결정 과제를 더한 재사용 가능한 에이전트 벤치마크입니다. 논문이 직접 구축했고 공식 저장소(FirmBench)를 PDF 1쪽 각주에 밝혔습니다. 과제 언어는 인터뷰어 프롬프트가 영어라는 점이 근거이며, 입력은 텍스트만 쓰므로 en 트랙의 text로 분류합니다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 두었습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "enterprisebench",
+            "이름": "EnterpriseBench",
+            "평가 축": "에이전트(기업 전략 추론·의사결정)",
+            "언어": "en",
+            "정의": "기업·금융 QA 데이터셋을 정보 추출, 수치 계산, 도메인 지식, 복합 추론으로 재구성하고 능력·난이도(0–10)를 붙인 기초 스위트와, 상호작용형 과제 3종(Consulting, Beer Game, Enterprise Digital Twin)으로 구성된 2계층 벤치마크. Consulting은 423개 케이스를 LLM 인터뷰어와의 멀티턴 대화로 진행하고 LLM 판정이 구조·정량 추론·비즈니스 감각·소통 4개 차원(0–10)을 평균해 채점한다. Beer Game은 25스텝 보충 주문 결정을 누적 비용으로(낮을수록 좋음), EDT는 시나리오 단위 전략을 누적 수익으로(높을수록 좋음) 평가한다. 논문은 에이전트 방법 9종을 백본 4종에서 비교했다.",
+            "대표 과제": "Consulting 케이스 인터뷰(숨은 정보를 질문으로 파악), Beer Game 재고 주문, EDT 프로젝트·인력 계획",
+            "대표 예시·설명": "에이전트는 초기 비즈니스 문제만 받고, LLM 인터뷰어에게 질문해 숨은 사례 정보를 얻은 뒤 구조화된 분석과 최종 권고를 제시하는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 못했다. 이 벤치마크는 기존 기업·금융 QA 데이터셋을 재구성했고 MBA 컨설팅 케이스북, Beer Distribution Game, transentis의 Enterprise Digital Twin 프로젝트를 바탕으로 하므로 구성 요소별 약관을 이용 전에 확인해야 한다. Consulting 채점에는 LLM 판정이 필요하고 Beer Game·EDT는 MCP 기반 시뮬레이터 실행 환경이 필요하다. 논문은 텍스트 기반 시나리오에 한정된다고 밝힌다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/sduyangmin/FirmBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (enterprise strategic reasoning and decision-making)",
+            "definition": "A two-layer benchmark. The foundational layer reorganizes enterprise and financial QA datasets into information extraction, numerical calculation, domain knowledge and complex reasoning, annotated with capability and a 0-10 difficulty score. The interactive layer has three tasks: Consulting, Beer Game and Enterprise Digital Twin. Consulting uses 423 cases run as multi-turn interviews with an LLM interviewer, and an LLM judge averages four dimensions (structure, quantitative reasoning, business sense, communication) on a 0-10 scale. Beer Game evaluates 25-step replenishment decisions by accumulated cost (lower is better). EDT evaluates scenario-level strategies by accumulated earnings (higher is better). The paper compares nine agent methods under four backbone models.",
+            "task": "Consulting case interviews (acquiring hidden information through questions), Beer Game inventory ordering, and EDT project and workforce planning",
+            "example": "Task description, not an actual test item: the agent receives only the initial business problem, asks the LLM interviewer questions to uncover hidden case facts, then gives a structured analysis and a final recommendation."
+          },
+          "evidence": {
+            "modality": {
+              "page": 9,
+              "quote": "focuses on text-based"
+            },
+            "대표 과제": {
+              "page": 4,
+              "quote": "We curate 423"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "We curate 423"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/sduyangmin/FirmBench"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "You are the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "EnterpriseBench: Benchmarking LLM"
+            },
+            "정의": {
+              "page": 4,
+              "quote": "We curate 423"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "EnterpriseBench: Benchmarking LLM"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.37658",
+      "paper_title": "EnterpriseBench: Benchmarking LLM Agents on Enterprise-Level Strategic Reasoning and Decision-Making",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.37658",
+        "sha256": "1e8b91aff93ff80cd863664e5636561ee908117db8aa3a5395b65630521e235b",
+        "accessed": "2026-11-08T03:09:27Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 24,
+          "elapsed_seconds": 144.59,
+          "pdf_sha256": "1e8b91aff93ff80cd863664e5636561ee908117db8aa3a5395b65630521e235b",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "97f337d3c9cc215bbca0b186eba5ef18cd3a2cba3959aa885a75c5548cc11433",
+          "page_json_file": "2609.37658.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/sduyangmin/FirmBench",
+            "fetched_url": "https://api.github.com/repos/sduyangmin/FirmBench/readme",
+            "sha256": "918cc1b2e5a76a8e6d5ef9ad5c22befdbc9cb494ff75a1fd7c327b58933ae234",
+            "accessed": "2026-11-08T03:12:18Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/sduyangmin/FirmBench/license",
+              "name": "LICENSE.txt",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-08T03:12:18Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.37658",
+        "paper_title": "EnterpriseBench: Benchmarking LLM Agents on Enterprise-Level Strategic Reasoning and Decision-Making",
+        "abstract": "LLM agents are increasingly expected to support enterprise workflows, where tasks often involve missing information, uncertainty, feedback, and long-term trade-offs. However, existing enterprise and financial benchmarks mainly test static capabilities such as information extraction, numerical calculation, domain knowledge, and financial QA, leaving interactive and long-horizon decision-making underexplored. To bridge this gap, we introduce EnterpriseBench, a benchmark that evaluates LLM agents across this spectrum, from static question answering to dynamic decision-making. Specifically, EnterpriseBench reorganizes existing enterprise and financial QA datasets into a unified foundational suite annotated by capability and difficulty, and introduces three professional interactive settings: Consulting, based on management-consulting-style business cases for client problem diagnosis through multi-turn information seeking; the Beer Game, adapted from a classic supply-chain management simulation for inventory control under delayed feedback; and Enterprise Digital Twin, a project-based business simulator for workforce, risk, and project planning. Experiments with nine agent methods under four backbone models show that current agents have not yet achieved stable, comprehensive, and cross-task reliability in enterprise scenarios. These results show that EnterpriseBench provides a practical benchmark for evaluating LLM agents in realistic enterprise strategic reasoning and decision-making.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:14Z",
+        "input_sha256": "6ece50b94bfecfe6ca4855837452558b2adfdcb9624710b567fcf6f8617e55e9",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 기업 전략 의사결정 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "기업 전략 추론·의사결정 에이전트 벤치마크 EnterpriseBench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42439057183",
+        "context_sha256": "4f20d36be9228c2544939f72158947b3c4bef34d4d6fc2423fd3149b139656c6"
+      },
+      "proposal_sha256": "d3426abf096163827894dd476dffff44622c1e511fa1f38042dcd82db0327827"
     }
   },
   "processed_comments": [],
@@ -82925,8 +83094,8 @@
         "2609.37658"
       ],
       "abstract_attempted": [],
-      "calls": 5,
-      "cost_usd": 4.0601
+      "calls": 6,
+      "cost_usd": 4.9368
     }
   },
   "reaudits": [
