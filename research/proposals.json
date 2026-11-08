@@ -50990,6 +50990,164 @@
         "reviewed_sha256": "3e08bb4e54322e55cc6ac5c2bdf87d7d71c5715d1d355ac74105fdf7b8d25e65",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.04506": {
+      "decision": "propose",
+      "reason": "EgoExo-Next는 2,503개의 4지선다 문항으로 구성된 재사용 가능한 새 벤치마크입니다. 에고센트릭과 엑소센트릭 영상의 다음 시각 상태 예측, 시점 간 대응, 그리고 두 능력을 결합한 과제를 평가합니다. 과제 프롬프트가 영어이므로 en 트랙으로 보냈고, 후보 이미지를 시각 입력으로 받는 과제여서 vision으로 분류했습니다. 공식 데이터셋 링크는 Hugging Face 주소가 PDF에 있습니다. 라이선스와 lm-eval 지원 등은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "egoexo-next",
+            "이름": "EgoExo-Next",
+            "평가 축": "이미지(에고·엑소 영상의 다음 시각 상태 추론과 시점 간 대응)",
+            "언어": "en",
+            "정의": "관찰된 행동 궤적 다음의 시각 상태를 네 개의 후보 이미지에서 고르는 visual-option 벤치마크. 공개 에고센트릭·에고-엑소 영상 6개 출처에서 사람이 선별한 4지선다 2,503문항(과제 1~4: 607, 604, 665, 627문항)이며 실내 1,265, 실외 1,238문항이다. 네 하위 과제는 에고 다음 상태, 에고-엑소 양방향 매칭, 엑소 다음 상태, 에고에서 엑소로의 다음 상태(조합 과제)다. 제로샷 4지선다 정확도로 평가하며 무작위 기준은 25%, 모델은 3회 실행 평균을 보고한다. 논문 보고 최고 평균 정확도는 43.81%, 사람은 98.55%이다(논문 조건의 결과이며 현재 전역 리더보드가 아님).",
+            "대표 과제": "에고 다음 상태, 에고-엑소 매칭, 엑소 다음 상태, 에고-to-엑소 다음 상태",
+            "대표 예시·설명": "영어 질문으로 연속 4개 관찰 프레임(또는 키프레임 1개)을 주고, 후보 이미지 네 장 가운데 가장 가능성 높은 다음 순간이나 같은 시점의 반대 시점 이미지를 고르게 하는 과제 설명이다. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부를 확인하지 못했다. 이 벤치마크는 EPIC-KITCHENS-100, Ego4D, WEAR, Ego-Exo4D, EgoExoLearn, EgoHumans 등 6개 공개 영상 출처를 바탕으로 하므로(논문 5쪽), 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 평가는 제로샷 4지선다이며 후보 이미지를 별도 시각 입력으로 제공한다. 논문 Table 1의 GPT-6 결과는 비용 때문에 과제 4에만 보고되었다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/yutongli2024/EgoExo-Next"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (egocentric and exocentric next visual-state reasoning and cross-view correspondence)",
+            "definition": "EgoExo-Next is a visual-option benchmark in which a model selects the subsequent visual state from four candidate images. It contains 2,503 human-curated four-choice questions from six public egocentric and ego-exo video sources (607, 604, 665 and 627 questions for subtasks 1-4), with 1,265 indoor and 1,238 outdoor questions. The four subtasks are Ego Next-State, bidirectional Ego-Exo Matching, Exo Next-State, and the composed Ego-to-Exo Next-State. Evaluation is zero-shot four-way accuracy with a 25% random baseline and the mean of three runs. The paper reports a best average accuracy of 43.81% and human accuracy of 98.55% under its own conditions, which is not a current global leaderboard.",
+            "task": "Ego Next-State, Ego-Exo Matching, Exo Next-State, Ego-to-Exo Next-State",
+            "example": "Task description, not an actual test item: an English question gives four consecutive observation frames (or one keyframe) and asks which of four candidate images shows the most likely next moment, or the same-time view from the other perspective."
+          },
+          "evidence": {
+            "modality": {
+              "page": 7,
+              "quote": "separate visual inputs"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "EgoExo-Next, a visual-option"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "which image shows"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/yutongli2024/EgoExo-Next"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "which image shows"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "EgoExo-Next, a visual-option"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "2,503 human-curated four-choice"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "EgoExo-Next, a visual-option"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.04506",
+      "paper_title": "EgoExo-Next:Benchmarking Vision-Language Models on Visual-Option Next-State and Cross-View Reasoning",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.04506",
+        "sha256": "2d2dbb0c88dc1101ab4f174613b674e7dc25e376c361e178d0058a3feed8774c",
+        "accessed": "2026-11-08T03:14:21Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 18,
+          "elapsed_seconds": 89.64,
+          "pdf_sha256": "2d2dbb0c88dc1101ab4f174613b674e7dc25e376c361e178d0058a3feed8774c",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "4811edb84236afb25a7b637b453f78666cc585bdbf092f9dc61eda036bf8abce",
+          "page_json_file": "2610.04506.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/yutongli2024/EgoExo-Next",
+            "fetched_url": "https://huggingface.co/datasets/yutongli2024/EgoExo-Next/raw/main/README.md",
+            "sha256": "788bd27dad0c1f5d2f5668c97a119ac8990e3eb4a7c00abc1dd799ff68a5c192",
+            "accessed": "2026-11-08T03:16:17Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-08T03:16:17Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.04506",
+        "paper_title": "EgoExo-Next:Benchmarking Vision-Language Models on Visual-Option Next-State and Cross-View Reasoning",
+        "abstract": "Vision-language models (VLMs) are increasingly evaluated for egocentric and cross-view video reasoning, yet existing benchmarks largely focus on semantic event understanding, temporal relations, or correspondence between already observed views, leaving their ability to reason directly about future visual states underexplored. We introduce EgoExo-Next, a visual-option benchmark for dynamic visual-state reasoning, where models must identify how an observed action trajectory subsequently appears rather than predict only an action label or textual description. EgoExo-Next contains 2,503 human-curated four-choice questions from six public egocentric and ego--exo video sources and comprises four interconnected subtasks that evaluate egocentric next-state prediction, bidirectional ego--exo state correspondence, exocentric next-state prediction, and their composition in Ego-to-Exo Next-State. Extensive evaluation of proprietary, open-source, and spatial reasoning VLMs reveals a substantial human--model gap, with the best model achieving 43.81\\% average accuracy compared with 98.55\\% for humans, and the largest degradation occurring on the composed Ego-to-Exo task. These results suggest that current VLMs remain substantially limited in dynamic visual-state reasoning, particularly when temporal progression and cross-view reasoning must be composed. The benchmark is publicly available at \\url{https://huggingface.co/datasets/yutongli2024/EgoExo-Next}.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:14Z",
+        "input_sha256": "f6d2cea8e7597bba5c2e9ac5d9bdaa98ec429dff78e98a6b71da77477aa8439d",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "VLM의 자아·타자 시점 미래 상태 추론 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에고·엑소 차세대 상태 추론 VLM 벤치마크 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42439057183",
+        "context_sha256": "70c6445e55ec552b2c63eada3745b79b65bf16bf429828c76e1f0bdbb5f5308e"
+      },
+      "proposal_sha256": "e38aa5998925b33cdbcd9d0bcb1cb3bda69b09365ed7460b5a2587e9f18c741d"
     }
   },
   "processed_comments": [],
@@ -83254,8 +83412,8 @@
         "2610.04506"
       ],
       "abstract_attempted": [],
-      "calls": 8,
-      "cost_usd": 6.8399
+      "calls": 9,
+      "cost_usd": 7.6228
     }
   },
   "reaudits": [
