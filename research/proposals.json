@@ -49918,7 +49918,7 @@
     },
     "2510.04852": {
       "decision": "propose",
-      "reason": "FreshBrew는 Java 8 프로젝트를 JDK 17/21로 옮기는 프로젝트 단위 마이그레이션에서 AI 에이전트를 평가하는, 재사용 가능한 새 벤치마크입니다. 빌드 가능, 원본 테스트 통과, 테스트 커버리지 유지(5%p 이내)의 세 관문으로 채점하며, 보상 해킹 방지가 핵심 설계입니다. 에이전트 프롬프트가 영어라 en 트랙으로 보았고, 입력이 소스 코드 저장소여서 text로 분류했습니다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "reason": "FreshBrew는 Java 8 프로젝트를 JDK 17/21로 옮기는 프로젝트 단위 마이그레이션에서 AI 에이전트를 평가하는 새 벤치마크입니다. 컴파일, 원본 테스트 통과, 커버리지 유지(5%p 이내)의 세 관문으로 채점하며 보상 해킹 방지가 핵심입니다. 공식 저장소 카드의 LICENSE 파일은 Apache-2.0이고, 논문 13쪽은 데이터셋을 해당 저장소에서 허용적 라이선스로 공개한다고 밝힙니다. 이에 따라 라이선스를 문서화된 값으로 기록했고, 포함된 GitHub 저장소 228개의 개별 약관은 유의사항에 명시했습니다. 공식 카드와 논문에 lm-eval 언급이 없어 '미표기'로 두었습니다. 권고 모델 결과는 논문 Table 1의 JDK 17 전체 성공률 중 CodeAct(smolagents) 실험만 사용했고, ADK 행은 다른 에이전트 구성이라 제외했습니다.",
       "changes": [
         {
           "track": "en",
@@ -49931,12 +49931,12 @@
             "대표 과제": "JDK 8 Maven 프로젝트를 JDK 17 또는 JDK 21에서 빌드와 전체 테스트가 통과하도록 마이그레이션",
             "대표 예시·설명": "에이전트가 파일 읽기·쓰기, maven_verify, 웹 검색 도구로 Maven 프로젝트를 목표 JDK로 올리되 테스트를 삭제하거나 주석 처리하지 않고 빌드와 테스트를 통과시키는 과제 설명(실제 시험 문항이 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "논문은 벤치마크가 허용적 오픈소스 라이선스로 공개된다고 밝히지만 데이터 라이선스는 확인하지 못했다. 코드 저장소 라이선스를 데이터 라이선스로 간주하면 안 된다. 포함된 GitHub 저장소 228개는 각자의 라이선스를 따르므로 이용 전에 따로 확인해야 한다. 평가에는 Maven 기반 JDK 빌드·테스트 환경과 JaCoCo 커버리지 측정이 필요하다. 논문 결과는 모델당 1회 실행과 고정 프롬프트 조건이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "Apache-2.0(저장소 자체 저작물 한정. 수집된 GitHub 저장소 228개는 각자 라이선스)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "공식 저장소 LICENSE 파일의 Apache-2.0은 저장소 자체 저작물(큐레이션된 저장소 목록, 평가 스크립트, 에이전트 프롬프트; 논문 13쪽)에 대한 것이다. 라이선스 사본 첨부, 저작권·고지 유지, 변경 고지 등 Apache-2.0 조건을 지켜야 한다. 이 벤치마크는 다른 출처로 구성되어 있다: 공개 GitHub Maven 저장소 228개(논문 4쪽). 각 구성 요소(수집된 GitHub 저장소 각각)의 고유 약관을 이용 전에 따로 확인해야 한다. 평가에는 Maven 기반 JDK 빌드·테스트 환경과 JaCoCo 커버리지 측정이 필요하다. 논문 결과는 모델당 1회 실행과 고정 프롬프트 조건이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/mrcabbage972/freshbrew"
           },
           "modality": "text",
@@ -49980,9 +49980,110 @@
               "quote": "project-level Java migrations"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/mrcabbage972/freshbrew",
+              "quote": "LICENSE (SPDX Apache-2.0)"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/mrcabbage972/freshbrew",
+              "quote": "non-exclusive, no-charge, royalty-free, irrevocable"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/mrcabbage972/freshbrew",
+              "quote": "prepare Derivative Works of,"
+            },
+            "재배포": {
+              "source_url": "https://github.com/mrcabbage972/freshbrew",
+              "quote": "You may reproduce and distribute copies of the"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/mrcabbage972/freshbrew",
+              "absent": true
+            }
+          },
+          "recommendations": {
+            "metric": "Overall Success Rate (%) on the JDK 17 migration task: share of the 228 repositories that compile, pass all original tests, and keep line coverage within 5 percentage points of the Java 8 baseline",
+            "setting": "Results reported in this paper (Table 1, JDK 17 columns, Overall Success Rate), not a current global leaderboard. Same dataset of 228 FreshBrew repositories, direct JDK 8 to JDK 17 migration, CodeAct agent via the smolagents framework with up to 100 steps, temperature 0.2, a single fixed prompt template (Figure 11), single generation pass (n=1). The ADK-based rows and the OpenRewrite rule-based baseline are excluded because they use a different agent or method.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Gemini 2.5 Flash",
+                "score": "52.3",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Gemini 2.5 Flash 79.8% 63.2% 52.3%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-4.1",
+                "score": "47.1",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-4.1 OpenAI [2025a] 76.8% 55.7% 47.1%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-4o",
+                "score": "30.9",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-4o OpenAI [2024] 64.0% 34.2% 30.9%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "o3-mini",
+                "score": "27.8",
+                "evidence": {
+                  "page": 8,
+                  "quote": "o3-mini OpenAI [2025b] 52.2% 36.9% 27.8%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Arcee AI Coder-Large",
+                "score": "21.1",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Arcee AI Coder-Large Arcee 51.3% 22.8% 21.1%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3",
+                "score": "15.9",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Qwen3 Yang et al. [2025] 59.2% 18.0% 15.9%"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "Open-Weights Models"
+                }
+              },
+              {
+                "model": "DeepSeek-V3",
+                "score": "10.7",
+                "evidence": {
+                  "page": 8,
+                  "quote": "DeepSeek-V3 DeepSeek-AI et al. [2025] 55.9% 13.7% 10.7%"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "DeepSeek-V3 as a top-performing open-weight model"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2510.04852",
@@ -50078,7 +50179,8 @@
         "source_run": "42439057183",
         "context_sha256": "8716fcf0e96f29b5c8cf53f1ba2e1afcfacd1529a35b83aa26f84abdb86ab963"
       },
-      "proposal_sha256": "d304aa9107f53774561373cc7196321b86cb18fd69a75753f26f55c21dabde87"
+      "proposal_sha256": "b1f3a94cd385680fa9d484cf701d25b9a376a3ed58596acc28b79b21d4766af9",
+      "publication_policy": "complete-evidence-v1"
     },
     "2605.09635": {
       "decision": "exclude",
@@ -82764,7 +82866,9 @@
     },
     "2026-11-08": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [],
+      "calls": 1,
+      "cost_usd": 0.832
     }
   },
   "reaudits": [
