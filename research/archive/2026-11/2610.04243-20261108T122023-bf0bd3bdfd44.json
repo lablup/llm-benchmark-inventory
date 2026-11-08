@@ -1,0 +1,82 @@
+{
+  "arxiv_id": "2610.04243",
+  "paper_title": "Autonomous Active Directory Exploitation via Multi-Model Harness Orchestration: A Benchmark Study with NeuroSploit on GOAD",
+  "created_at": "2026-11-08T03:20:23Z",
+  "status": "exclude",
+  "reason": "이 논문은 NeuroSploit 하니스를 기존 GOAD 취약 AD 랩에서 평가한 시스템·하니스 평가 연구입니다. 14개 기법 범주와 7개 체인은 GOAD에 이미 있는 취약점을 정리한 평가 구성이고, 별도로 배포되는 문항 세트나 데이터셋은 없습니다. 논문이 가리키는 공식 링크는 기존 랩(GOAD)과 평가 대상 도구(NeuroSploit) 저장소뿐이어서, 재사용 가능한 벤치마크의 공식 리소스로 보기 어렵습니다. 언어 근거도 직접 호출 기준선의 영어 지시문 한 줄뿐입니다. 이는 사이버보안 실습 환경 위의 에이전트 도구 비교이므로 새 벤치마크나 기존 벤치마크의 실질적 갱신으로 보지 않고 제외합니다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2610.04243",
+    "sha256": "d925d9d1c4fbe406fe5b983b30c957b76feefc48afa333e5665817aa5742e594",
+    "accessed": "2026-11-08T03:18:02Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 20,
+      "elapsed_seconds": 126.14,
+      "pdf_sha256": "d925d9d1c4fbe406fe5b983b30c957b76feefc48afa333e5665817aa5742e594",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "2e97b6c83978f28fd786be571309d397ba345445374afc07c8d00b99a53d26c6",
+      "page_json_file": "2610.04243.pages.json"
+    }
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "6da79a023d4c3542722c4bcbd8d586fbf092b6105f5e1b95a78a2ed6cc4266c6",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2610.04243",
+    "paper_title": "Autonomous Active Directory Exploitation via Multi-Model Harness Orchestration: A Benchmark Study with NeuroSploit on GOAD",
+    "abstract": "Active Directory (AD) remains the predominant identity and access management infrastructure in enterprise environments, and its compromise represents the highest-impact outcome in internal penetration tests. Recent work has shown that large language models (LLMs) can autonomously conduct assumed-breach penetration testing against AD, but these studies employ standalone agents lacking structured guardrails, deterministic validation, and multi-stage chain orchestration. We present a benchmark evaluation of NeuroSploit v4.2.0, an open-source Rust-based autonomous pentest harness, against the Game of Active Directory (GOAD), a deliberately vulnerable multi-forest AD lab maintained by Orange Cyberdefense comprising five virtual machines, two forests, and three domains. The harness orchestrates 22 AD-specific agents and 7 multi-stage attack-chain playbooks covering the full AD kill chain: enumeration, Kerberoasting, AS-REP roasting, NTLM relay and coercion, Kerberos delegation abuse, AD CS exploitation (ESC1-ESC8), MSSQL linked-server pivoting, DCSync, cross-forest trust abuse, and persistence detection. We benchmark nine frontier LLMs (Claude Opus 4.6/4.7/4.8, GPT-6 Astra, GPT-5.6 Sol, Grok 4.6, Qwen 3.8, GLM 5.3, Kimi k3) within the harness, comparing against direct invocation across 14 technique categories and 7 chains. The harness achieves 96-100% technique coverage with 90-97% precision, while direct invocation covers only 21-54% and produces 3.2x more false positives. Time to full three-domain compromise with Opus 4.8 was 134 minutes with guardrail activations preventing lockout-triggering sprays, unauthorized DCSync dumps, and out-of-scope reconnaissance. Results demonstrate that structured harness orchestration with domain-specialized agents, POMDP belief tracking, and cross-model voting substantially outperforms unstructured LLM usage for AD penetration testing.",
+    "paper_updated": "2026-10-06T00:00:00Z",
+    "created_at": "2026-10-19T13:48:14Z",
+    "input_sha256": "3f0f84b880cebf1895f333230a9e4350c89c9bfc988b7d69c0a0a7751bc1224d",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "LLM 기반 Active Directory 공격 벤치마크"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "uncertain",
+        "reason": "AD 침투 테스트 하네스 평가 연구, 재사용 벤치마크 기여 불명확"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}

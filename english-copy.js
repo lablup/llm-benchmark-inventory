@@ -540,4 +540,28 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Given a task description, a PyTorch reference, and workloads, implement a Triton kernel by completing run(...) in solution.py, scored on correctness and latency (for example the Muon orthogonalization kernel).",
     "example": "Muon orthogonalization kernel task: implement a kernel that orthogonalizes a gradient matrix with a five-step polynomial iteration. In the guided run, the agent is told in prose to compose steps on smaller square matrices instead of updating the large rectangular matrix each step (task description, not an actual test item)."
   },
+  "egoexo-next": {
+    "axis": "Images (egocentric and exocentric next visual-state reasoning and cross-view correspondence)",
+    "definition": "EgoExo-Next is a visual-option benchmark in which a model selects the subsequent visual state from four candidate images. It contains 2,503 human-curated four-choice questions from six public egocentric and ego-exo video sources (607, 604, 665 and 627 questions for subtasks 1-4), with 1,265 indoor and 1,238 outdoor questions. The four subtasks are Ego Next-State, bidirectional Ego-Exo Matching, Exo Next-State, and the composed Ego-to-Exo Next-State. Evaluation is zero-shot four-way accuracy with a 25% random baseline and the mean of three runs. The paper reports a best average accuracy of 43.81% and human accuracy of 98.55% under its own conditions, which is not a current global leaderboard.",
+    "task": "Ego Next-State, Ego-Exo Matching, Exo Next-State, Ego-to-Exo Next-State",
+    "example": "Task description, not an actual test item: an English question gives four consecutive observation frames (or one keyframe) and asks which of four candidate images shows the most likely next moment, or the same-time view from the other perspective."
+  },
+  "synthetic-user-survey-bench": {
+    "axis": "Survey simulation (individual, aggregate, and subgroup fidelity of synthetic users)",
+    "definition": "A cross-domain benchmark and validation framework for whether LLMs prompted with demographics can stand in for survey respondents. Ground truth is real responses from the U.S. General Social Survey (2016–2024 waves) and World Values Survey Wave 7 (63 countries). Individual accuracy is compared with non-LLM baselines (question marginal, demographic lookup, logistic regression, random forest). The framework also measures aggregate fidelity (JS divergence), subgroup over-determination (stereotyping index), and decision impact.",
+    "task": "Predict a simulated respondent's survey answer from a demographic profile (single-answer and probability-distribution prompts)",
+    "example": "Task description: an English prompt gives a demographic profile, a survey question, and answer options, and asks the model to predict how that person would answer. The reference is the real survey response distribution or individual answer."
+  },
+  "mmposttrainbench": {
+    "axis": "Agents (autonomous research for multimodal post-training)",
+    "definition": "A multimodal benchmark in which agents post-train a common base model within fixed budgets. It has eight tasks covering image, audio, video and joint audio-video understanding plus image-grounded software repair, and evaluates target and non-target outcomes, iterative improvement and candidate selection, and research integrity.",
+    "task": "Given a target capability such as audio reasoning on MMAR, post-train the model using development feedback and submit a final model",
+    "example": "A task query names a target capability and benchmark (for example audio reasoning on MMAR); the agent chooses data and training strategy, trains the model, and is evaluated independently (task description)."
+  },
+  "bird-clean-xs": {
+    "axis": "Data quality (annotation error detection in NL-to-SQL benchmarks)",
+    "definition": "A benchmark of 298 tasks drawn from the BIRD development set, each with a human-verified label on whether the gold SQL is correct (166 erroneous, 132 correct). It combines a 200-task random sample with 109 errors confirmed from version differences, and errors are classified into five categories (Incorrect SQL 134, Query Ambiguity 14, Data Inconsistency 7, Misinterpreting Domain Semantics 8, Incorrect Evidence 3). Error-detection methods are evaluated with precision, recall, and F1.",
+    "task": "Given a natural-language question, gold SQL, and database, detect whether the gold SQL annotation is erroneous.",
+    "example": "Task description (not an actual test item): given an English question and gold SQL pair, judge whether the SQL answers the question, for example flagging SQL that returns one row when several items tie."
+  },
 };
