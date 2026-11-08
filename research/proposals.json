@@ -52402,6 +52402,83 @@
         "reviewed_sha256": "e93058b02ceeb229cb8d2a234e0102f2dca66236ef53a1dbe9cb59084b0f4e88",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.04392": {
+      "decision": "exclude",
+      "reason": "이 논문은 시각 이상 탐지(MVTec AD 2, Kaputt 2)를 다루는 VAND 4.0 챌린지 결과 보고서다. 두 데이터셋은 이미지 기반이며 과제 언어가 한국어나 영어 지시문이 아니다. 업무 질의나 프롬프트 같은 언어 증거로 제시할 만한 인용도 없다. 해석 가능한 증거는 OTS VLM 설정에서 프롬프트로 모델을 쓴다는 서술뿐이고, 영어 또는 한국어 과제 지시문 원문은 PDF에 나오지 않는다. 따라서 언어 증거를 확보할 수 없어 en/ko 트랙 어디에도 배정할 수 없다. Kaputt-Rare는 기존 Kaputt 데이터를 재분할한 시각 이상 탐지 변형이고, 공식 링크는 챌린지 사이트(sites.google.com)만 PDF에 이름이 나온다. 이 항목은 LLM 벤치마크 인벤토리의 범위(한국어/영어 과제 기반 평가)에 해당하지 않는다고 판단해 제외한다.",
+      "changes": [],
+      "arxiv_id": "2610.04392",
+      "paper_title": "Detecting Defects that Matter: An Application-Driven Benchmark for Anomaly Detection in Manufacturing and Retail Logistics (VAND 4.0 Challenge)",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.04392",
+        "sha256": "8cca384bf2b5e1b50feef449407b465486fb1c52f6e164acbdd7989af35ef70f",
+        "accessed": "2026-11-08T03:30:52Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 14,
+          "elapsed_seconds": 79.19,
+          "pdf_sha256": "8cca384bf2b5e1b50feef449407b465486fb1c52f6e164acbdd7989af35ef70f",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "dd6c1aee25b3382d5c2fce0567a39456beb94081b0976393bdb80bab17dddc17",
+          "page_json_file": "2610.04392.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-08T03:32:21Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.04392",
+        "paper_title": "Detecting Defects that Matter: An Application-Driven Benchmark for Anomaly Detection in Manufacturing and Retail Logistics (VAND 4.0 Challenge)",
+        "abstract": "Existing Anomaly Detection benchmarks are saturated and often unrealistic. As part of the VAND 4.0 Challenge, we introduce a hidden-test, application-driven benchmark across two deployment-critical domains: industrial manufacturing and retail logistics. In the Industrial Track (MVTec AD 2), the results reveal that unsupervised anomaly segmentation remains challenging: the best regular-setting method achieves only ~57\\% pixel-level $SegF_1$, indicating substantial room for improvement. Zero-shot approaches trail by ~15 $SegF_1$ points, confirming that task-specific training on normal data remains essential for precise defect localization. Robustness to distribution shifts remains a key open challenge and DINOv3-backbones clearly dominate this track. In the Retail Track (Kaputt 2), the results reveal that (1) supervised defect detection is approaching saturation for common defect types; (2) the best off-the-shelf VLM approach trails specialized models by ~28 AP, confirming that currently VLMs cannot replace fine-tuned detectors, (3) reference images did not prove helpful for top-performing approaches. Performance collapses on rare defects (spillage ~53 AP, missing units ~27 AP), where the supervised ceiling is bounded by data availability. To drive future progress in this domain, we provide a new low-prevalence retail AD dataset (Kaputt-Rare). Across both tracks, computational efficiency is assessed as a first-class metric combining performance, throughput, memory, and power consumption. We introduce a novel metric for measuring efficiency and reveal that that top-performing methods rely on heavy architectures while efficiency is largely neglected. Overall, we conclude that the community needs (a) more efficiency-aware method development, and (b) true anomaly detection approaches for rare defects and shifting conditions. https://sites.google.com/view/vand4-cvpr2026/challenge",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:27Z",
+        "input_sha256": "d1f3555eeaf43c081688f7fdd27bce0a7c571ffe07f0c5afbf4aa2254dd3d6d7",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "제조·물류 이상탐지 응용 벤치마크로 실제 배포 도메인 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "산업·리테일 이상탐지 벤치마크와 신규 데이터셋(Kaputt-Rare) 제공"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "6e93135ac7b8fd2070d5ee45c81a7e91e0acb3be54e712320ce8b335428d59f5"
     }
   },
   "processed_comments": [],
@@ -84671,8 +84748,8 @@
         "2610.04392"
       ],
       "abstract_attempted": [],
-      "calls": 18,
-      "cost_usd": 15.2767
+      "calls": 19,
+      "cost_usd": 16.0141
     }
   },
   "reaudits": [
