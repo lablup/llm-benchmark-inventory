@@ -53602,74 +53602,9 @@
       "proposal_sha256": "16c88da3e944473c32bd98d8435cc87edc0fcb366c4194d62762013f1ab3cfb8"
     },
     "2610.05124": {
-      "decision": "propose",
-      "reason": "이 논문은 영어 메모리 객체를 대상으로 모델 간 의미·감정 드리프트를 재는 CMSC-E 벤치마크를 새로 정의하고 파일럿(합성 176개)을 보고한다. 공식 코드 저장소 URL이 PDF에 명시되어 있어 en/text 트랙에 신규 행으로 제안한다. 다만 결과는 탐색적이며 다중비교 보정 후 유의하지 않다. 데이터 라이선스와 lm-eval 지원은 확인하지 않아 '확인 불가'로 둔다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "cmsc-e",
-            "이름": "CMSC-E",
-            "평가 축": "에이전트 메모리(모델 간 의미·감정 일관성 드리프트)",
-            "언어": "en",
-            "정의": "영속 LLM 메모리에서 같은 메모리 객체를 서로 다른 모델이 읽을 때 생기는 사실적 드리프트(CMSD)와 감정 일관성(ECS)을 함께 재는 벤치마크. 원문(raw), 명확화만 적용, 완전 정규화의 3개 조건을 같은 객체에 대해 쌍대 비교한다. 파일럿은 합성 메모리 객체 176개(유효 CMSD 172개, ECS 대상 86개)와 모델 계열 3종으로 수행했고, 이 결과는 탐색적이며 다중비교 보정 후 유의하지 않았다.",
-            "대표 과제": "메모리 객체를 평문으로 렌더링해 하위 질의에 답하게 하고, 모델 간 응답의 주장 함의 일치(CMSD)와 감정 처리 일치(ECS)를 측정",
-            "대표 예시·설명": "조건부 의미가 담긴 영어 메모리 문장(예: 일정 변경이 고객 승인에 달린 경우)을 원문, 명확화본, 정규화본으로 각각 모델 3종에 주고 응답이 서로 일치하는 정도를 비교하는 과제 설명",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 데이터는 템플릿 기반 합성이며 어휘가 제한적이다. 판정 모델이 정규화기와 같은 모델 계열이고 렌더링 문구 은행은 사람 검증을 거치지 않았다. 사전등록도 없다. 논문 스스로 결과를 탐색적이라 밝히며, 업스트림 supersede/conflict 보조 세트 30쌍은 채점하지 않았다. 논문 수치는 해당 파일럿 조건의 결과이며 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/aishwaryalonarkar/cross-model-memory-canonicalization"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agent memory (cross-model semantic and emotional consistency drift)",
-            "definition": "A benchmark that measures cross-model factual drift (CMSD) and emotional consistency (ECS) when different LLMs read the same stored memory object. The same objects are compared in a paired design across three arms: raw, disambiguated-only, and fully canonicalized. The pilot used 176 synthetic memory objects (172 valid for CMSD, 86 eligible for ECS) and three model families. The results are exploratory and do not survive multiple-comparison correction.",
-            "task": "Render each memory object as flat prose, have models answer downstream prompts, and measure cross-model agreement of response claims (CMSD) and of emotional handling (ECS).",
-            "example": "Task description: an English memory statement with conditional meaning (for example a deadline change contingent on client sign-off) is given to three models in raw, disambiguated, and canonicalized form, and their responses are compared for agreement."
-          },
-          "evidence": {
-            "modality": {
-              "page": 6,
-              "quote": "flat natural-language prose"
-            },
-            "대표 과제": {
-              "page": 6,
-              "quote": "176 synthetic memory"
-            },
-            "대표 예시·설명": {
-              "page": 4,
-              "quote": "The deadline was"
-            },
-            "링크": {
-              "page": 10,
-              "quote": "https://github.com/aishwaryalonarkar/"
-            },
-            "언어": {
-              "page": 4,
-              "quote": "The deadline was"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "Emotional Consistency Score"
-            },
-            "정의": {
-              "page": 6,
-              "quote": "176 synthetic memory"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "Emotional Consistency Score"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "권고(recommendations)에 넣을 모델별 수치가 PDF에 없다. 논문의 표 II(8쪽)는 조건 간 평균(Arm 1, 2, 3)과 그 차이만 싣는다. 파일럿에서 평가한 세 모델은 '폐쇄형 최상위 모델 1종, 폐쇄형 소형 모델 1종, 오픈 가중치 모델 1종'(6쪽)으로만 설명되고, 표 어디에도 모델 이름과 점수가 짝지어 있지 않다. 조건별 평균을 모델 점수로 바꾸거나 모델 이름을 추정해 채우는 것은 허용되지 않는다. 따라서 모델 이름과 점수가 함께 인용되는 결과를 만들 수 없어 공개 가능한 변경을 만들지 않는다. 라이선스 쪽은 공식 저장소 README에 라이선스와 lm-eval 언급이 없고(LICENSE 파일 항목도 없음), PDF 11쪽 전체에 라이선스 관련 표기가 없어 미표기 증거 자체는 갖춰져 있다. 모델별 결과를 직접 제시한 표나 본문이 확보되면 다시 제안할 수 있다.",
+      "changes": [],
       "arxiv_id": "2610.05124",
       "paper_title": "Memory Canonicalization: A Framework and Benchmark for Cross-Model Drift in Persistent LLM Memory",
       "paper_updated": "2026-10-08T00:00:00Z",
@@ -53720,7 +53655,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-08T03:58:22Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -53746,11 +53681,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "42439057183",
-        "context_sha256": "4ee1f2da15809c506b0ed13834fade8aee7e299295d9fba7b733ce01c836de91"
-      },
-      "proposal_sha256": "4cc0e2583f292d024899018596038af2ea8a517c765e7cb13ee045b66fe6b8f4"
+      "proposal_sha256": "e0fb031099293afe678fb0e0dcf0d13b98ffee2098f87e58fe44bc4b5edbac9b",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -86030,8 +85963,8 @@
         "2610.05124"
       ],
       "abstract_attempted": [],
-      "calls": 31,
-      "cost_usd": 25.4322
+      "calls": 32,
+      "cost_usd": 26.1666
     }
   },
   "reaudits": [
