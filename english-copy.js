@@ -564,4 +564,10 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Given a natural-language question, gold SQL, and database, detect whether the gold SQL annotation is erroneous.",
     "example": "Task description (not an actual test item): given an English question and gold SQL pair, judge whether the SQL answers the question, for example flagging SQL that returns one row when several items tie."
   },
+  "medicalharnessbench": {
+    "axis": "Agents (controlled comparison of model-harness pairs on medical tasks)",
+    "definition": "A benchmark of 107 executable medical tasks in four domains: clinical calculation (MedTool, 32), long-context retrieval (MedMemory, 23), clinical data workflows (MedPlanning, 28), and browser interaction (MedWeb, 24). Five open-weight models are run under five agent harnesses with three seeds (8,025 episodes). Scores are in [0, 1]; MedTool multiplies calculator-selection F1 by the fraction of correct outputs and the other environments use binary outcomes. The paper also proposes MH-Lab for isolating individual harness mechanisms.",
+    "task": "Clinical calculation, long patient-history retrieval, clinical data workflows (trial eligibility, EHR processing, tumor localization), and browser-based insurance and referral handling",
+    "example": "Given an admission note and a directory of trial documents, list every trial whose inclusion criteria the patient meets and none of whose exclusion criteria apply (task description, not an actual test item)."
+  },
 };

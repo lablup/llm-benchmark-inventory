@@ -1,0 +1,100 @@
+{
+  "arxiv_id": "2610.06413",
+  "paper_title": "SpatialChain: A Benchmark for Auditing Spatial Reasoning Faithfulness in VLMs",
+  "created_at": "2026-11-10T04:11:06Z",
+  "status": "needs_evidence",
+  "reason": "공식 저장소 README의 License 절은 \"The code in this repository is released under the **MIT License**.\"라고 코드에만 MIT를 부여하고, GQA 이미지와 주석은 GQA 이용약관을, 추론 체인은 Anthropic 이용 정책을 따른다고 적습니다. 이는 코드 라이선스이며 SpatialChain 데이터셋 자체의 라이선스, 상업적 이용, 수정·파생, 재배포 조건을 밝힌 문장이 아닙니다. 논문 PDF 29쪽 전체에도 데이터 라이선스 문장이 없습니다. 이 데이터셋은 GQA(논문 2쪽 3.1절)와 Claude Haiku 4.5가 생성한 체인(논문 3쪽 3.3절)으로 구성되므로 모든 구성 요소에 적용되는 단일 데이터 라이선스를 확정할 수 없습니다. 카드에 라이선스 문장이 있어 '카드에 라이선스 없음'을 근거로 한 부재 증거(absent)도 쓸 수 없고, '저작권 전부 보유'로 기록하는 것도 허용되지 않습니다. 데이터 라이선스가 적혀 있을 가능성이 큰 Hugging Face 데이터 카드(spatialchain/SpatialChain-Benchmark)는 이번에 제공되거나 조회되지 않았습니다. lm-eval은 README와 PDF 어디에도 언급되지 않아 '미표기'와 부재 증거로 처리할 수 있으나, 라이선스 관련 네 항목이 증거 없이 남으므로 게시할 수 없습니다. 기존 초안의 '확인 불가' 값은 게시 정책에 위배되어 폐기합니다. Hugging Face 데이터 카드를 확인해 데이터 라이선스와 이용 조건이 명시되는지 본 뒤 다시 제출해 주세요.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2610.06413",
+    "sha256": "5211f4cbec1a6d4083c9819ec0809e966b193909b2b6d1ceed4d94d5a0498ed3",
+    "accessed": "2026-11-10T04:09:03Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 29,
+      "elapsed_seconds": 100.05,
+      "pdf_sha256": "5211f4cbec1a6d4083c9819ec0809e966b193909b2b6d1ceed4d94d5a0498ed3",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "b7f8f7a987341586e00c7c3c189c5009694b5b5af99558c71554c55f26afa171",
+      "page_json_file": "2610.06413.pages.json"
+    },
+    "official_resources": [
+      {
+        "url": "https://github.com/spatialchain/SpatialChainBenchmark",
+        "fetched_url": "https://api.github.com/repos/spatialchain/SpatialChainBenchmark/readme",
+        "sha256": "af73c6e7dd442a57660668532501e8d8ad6de8f2a67c7a9ccfb95aa2c78f3dab",
+        "accessed": "2026-11-10T04:11:06Z",
+        "license_file": null
+      }
+    ]
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "250465b2263888ab0fd713bc385f16ce657249e7cd9aaa856887f6bb9b134529",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2610.06413",
+    "paper_title": "SpatialChain: A Benchmark for Auditing Spatial Reasoning Faithfulness in VLMs",
+    "abstract": "Thinking-enabled vision-language models (VLMs) report ever-higher accuracy on spatial benchmarks, yet final-answer scores cannot reveal whether a correct prediction reflects faithful spatial reasoning or a linguistic shortcut. We introduce SpatialChain, a dataset of 28,350 training and 899 test examples pairing spatially-oriented GQA questions with scene-graph-grounded reasoning chains, retained only when the generated answer matches the symbolic ground truth, and a two-axis evaluation combining objective chain-overlap metrics with a scene-graph-aware LLM judge that scores faithfulness and completeness independently of the final answer. Applied to nine thinking-enabled VLMs, the protocol surfaces three findings invisible to standard accuracy: (i) four of nine models achieve $\\geq$79% VQA accuracy while exhibiting shortcut rates above 39%, i.e., correct answers whose reasoning the judge marks as unfaithful; (ii) chain quality significantly predicts answer correctness for seven of nine models, but the two exceptions (Claude Sonnet 4.6, InternVL3.5-8B) reveal qualitatively distinct failure modes, terse output vs. verbose-decorative reasoning, that benchmark accuracy alone conflates; (iii) SFT on SpatialChain improves Qwen3-VL-8B by +6.2 pp in-domain and reduces its shortcut rate to 22%, while a stylistic specialization effect on external benchmarks motivates replay-augmented training as mitigation. The faithfulness judge is validated against 198 human-annotated items, where judge-human agreement matches human-human agreement, and against a second judge from a different provider, which preserves the model ranking ($ρ$ = 0.88). Data, generation scripts, and evaluation code are released at https://github.com/spatialchain/SpatialChainBenchmark.",
+    "paper_updated": "2026-10-06T00:00:00Z",
+    "created_at": "2026-10-19T13:48:52Z",
+    "input_sha256": "554edb1604df4c0e9b4eaeedc661bf24a897ff4cea399b69b1c3db45fd3f0335",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "시각언어모델 공간 추론 충실성 평가 벤치마크"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "VLM 공간 추론 충실성 평가 데이터셋·프로토콜 공개"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}
