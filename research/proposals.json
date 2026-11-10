@@ -55710,8 +55710,8 @@
       "proposal_sha256": "3bcadebd64ba60d251ffdee49573c16c04114e808817ffa314cb008718e3c960"
     },
     "2609.37713": {
-      "decision": "propose",
-      "reason": "이 논문은 독일어·영어 이중언어 상품 엔티티 매칭 벤치마크 Billiger.de Products를 새로 소개한다. 독일어 원본은 한국어·영어 범위 밖이라 제외하고, 모든 쌍·분할·라벨을 고정한 영어 번역판만 en 트랙(text)에 한 행으로 제안한다. 입력은 텍스트뿐이며 영어 프롬프트 인용이 언어 근거다. 공식 저장소 링크는 PDF 3쪽 각주에 있다. 공식 저장소 README와 PDF 어디에도 라이선스와 lm-eval 언급이 없어, 라이선스 관련 항목은 미표기 규칙에 따라 기록했다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 행 본문과 사용 조건 항목은 대체로 근거가 충분하지만, 추천 모델 항목에 결정적 문제가 있습니다. (1) 영어 번역판 행(언어 en)에 붙은 추천 점수가 모두 독일어 원본(DE-DE) 점수입니다. 출처는 논문 18쪽 표 7이고, 해당 실험은 독일어 80% 코너 케이스 Half-Seen 테스트 셋(4,427쌍)입니다. 지도학습 모델은 독일어 학습 셋으로만 학습했고 GPT-5.2는 독일어 프롬프트로 평가했습니다. 따라서 이 점수는 영어판 성능이 아닙니다. 설정 문구에 독일어 기준이라고 적혀 있어도, 영어판 행의 상위 3개 추천(GPT-5.2 Rule-Guided, GPT-5.2 Simple, XLM-R)이 영어판에서 정당화된다고 볼 수 없습니다. (2) 영어판의 동일 조건 점수는 어느 표에도 모델 전체에 대해 단일 실험으로 제시되지 않습니다. 표 3과 표 4를 합산하면 XLM-R이 빠지고, 표 5의 XLM-R 영어 점수는 별도 설정의 결과여서 같은 조건으로 묶을 수 없습니다. (3) 표 7의 DE-DE 점수는 본 평가(표 3)와 별도로 다시 학습한 실행의 결과라고 논문이 밝힙니다. 영어판 행에 이를 쓰면 데이터셋 버전·언어를 혼합하는 것입니다. 다른 항목은 문제가 없습니다. 오퍼 13,568개, 상품 2,168개, 13개 카테고리, 27개 변형, 번역 모델, 0.68% 오류 추정치는 논문과 일치합니다. 공식 README와 논문 어디에도 데이터 라이선스와 lm-eval 언급이 없고, 미표기 규칙에 따라 세 권리 항목이 모두 저작권 전부 보유로 기록되어 있습니다. 파생 출처(solute 제공 데이터, GPT-5-mini 번역)와 별도 약관 확인 문구도 있습니다. 영어판 행의 추천 항목을 제거하거나, 영어판 동일 조건에서 모든 비교 모델의 점수가 확보된 실험으로 교체한 뒤 다시 제안해야 합니다.",
       "changes": [
         {
           "track": "en",
@@ -55951,7 +55951,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-10T03:54:03Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -55977,12 +55977,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "42743584529",
-        "context_sha256": "a3a8249ba347c134ea913fa1aef0e0360120c9e30ec287bbdc17ef3cc3f17297"
-      },
       "proposal_sha256": "0084be0781873b96a89c4097e034eda01f393417002b00e9f8928a5dceba63ff",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "행 본문과 사용 조건 항목은 대체로 근거가 충분하지만, 추천 모델 항목에 결정적 문제가 있습니다. (1) 영어 번역판 행(언어 en)에 붙은 추천 점수가 모두 독일어 원본(DE-DE) 점수입니다. 출처는 논문 18쪽 표 7이고, 해당 실험은 독일어 80% 코너 케이스 Half-Seen 테스트 셋(4,427쌍)입니다. 지도학습 모델은 독일어 학습 셋으로만 학습했고 GPT-5.2는 독일어 프롬프트로 평가했습니다. 따라서 이 점수는 영어판 성능이 아닙니다. 설정 문구에 독일어 기준이라고 적혀 있어도, 영어판 행의 상위 3개 추천(GPT-5.2 Rule-Guided, GPT-5.2 Simple, XLM-R)이 영어판에서 정당화된다고 볼 수 없습니다. (2) 영어판의 동일 조건 점수는 어느 표에도 모델 전체에 대해 단일 실험으로 제시되지 않습니다. 표 3과 표 4를 합산하면 XLM-R이 빠지고, 표 5의 XLM-R 영어 점수는 별도 설정의 결과여서 같은 조건으로 묶을 수 없습니다. (3) 표 7의 DE-DE 점수는 본 평가(표 3)와 별도로 다시 학습한 실행의 결과라고 논문이 밝힙니다. 영어판 행에 이를 쓰면 데이터셋 버전·언어를 혼합하는 것입니다. 다른 항목은 문제가 없습니다. 오퍼 13,568개, 상품 2,168개, 13개 카테고리, 27개 변형, 번역 모델, 0.68% 오류 추정치는 논문과 일치합니다. 공식 README와 논문 어디에도 데이터 라이선스와 lm-eval 언급이 없고, 미표기 규칙에 따라 세 권리 항목이 모두 저작권 전부 보유로 기록되어 있습니다. 파생 출처(solute 제공 데이터, GPT-5-mini 번역)와 별도 약관 확인 문구도 있습니다. 영어판 행의 추천 항목을 제거하거나, 영어판 동일 조건에서 모든 비교 모델의 점수가 확보된 실험으로 교체한 뒤 다시 제안해야 합니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 200235,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2367,
+              "output_tokens_details": {
+                "thinking_tokens": 1469
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 200235,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2367,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 200235,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 200235
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.8246789,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "0084be0781873b96a89c4097e034eda01f393417002b00e9f8928a5dceba63ff",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -88611,8 +88657,8 @@
         "2611.09769",
         "2611.09794"
       ],
-      "calls": 25,
-      "cost_usd": 20.418
+      "calls": 26,
+      "cost_usd": 21.2427
     }
   },
   "reaudits": [
