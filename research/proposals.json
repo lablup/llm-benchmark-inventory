@@ -55708,6 +55708,169 @@
       },
       "issue_url": null,
       "proposal_sha256": "3bcadebd64ba60d251ffdee49573c16c04114e808817ffa314cb008718e3c960"
+    },
+    "2609.37713": {
+      "decision": "propose",
+      "reason": "이 논문은 독일어·영어 이중언어 상품 엔티티 매칭 벤치마크 Billiger.de Products를 새로 소개한다. 독일어 원본은 한국어·영어 범위 밖이라 제외하고, 모든 쌍·분할·라벨을 고정한 영어 번역판만 en 트랙(text)에 한 행으로 제안한다. 입력은 텍스트뿐이며 영어 프롬프트 인용이 언어 근거다. 공식 저장소 링크는 PDF 3쪽 각주에 있다. 라이선스 등 다섯 항목은 확인하지 않았으므로 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "billiger-de-products",
+            "이름": "Billiger.de Products (영어 번역판)",
+            "평가 축": "엔티티 매칭(상품 오퍼 동일성 판별)",
+            "언어": "en",
+            "정의": "독일 가격 비교 플랫폼 billiger.de의 상품 오퍼로 만든 이중언어 엔티티 매칭 벤치마크 중 영어 번역판. 13개 소비재 카테고리, 오퍼 13,568개, 상품 2,168개로 구성된다. 코너 케이스 비율(20/50/80%), 미학습 상품 비율(0/50/100%), 개발 셋 크기(small/medium/large)를 조합한 27개 변형이 있다. 영어판은 독일어 원본의 이름·설명을 GPT-5-mini로 번역하며 모든 쌍·분할·라벨을 고정한다. 지표는 매치 클래스의 정밀도·재현율·F1이고 지도학습 매처의 결과는 3개 시드 평균이다. 독일어 원본과 교차 언어 테스트 셋도 있으나 독일어 부분은 이 인벤토리 범위 밖이다.",
+            "대표 과제": "상품 오퍼 쌍이 같은 실제 상품을 가리키는지 이진 판별(brand·name·description·price 입력)",
+            "대표 예시·설명": "두 상품 오퍼의 브랜드, 이름, 설명, 가격을 보고 같은 상품인지 Yes/No 또는 매치/비매치로 판정하는 과제. 이름만 비슷한 변형 상품은 비매치로 구분해야 한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 논문에서 확인하지 못했다. PDF는 solute GmbH의 허가로 공개했다고만 밝힌다. 원본 오퍼는 독일어이고 영어판은 GPT-5-mini 번역본이며, 저자 추정 번역 오류율은 0.68%다. 독일어 원본과 교차 언어 부분은 이 인벤토리 범위 밖이다. 논문의 모델 비교는 논문 조건의 결과이며 현재 전역 리더보드가 아니다. 이 항목은 벤치마크 v1.1 기준이다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/wbsg-uni-mannheim/billiger-de-products"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Entity matching (product offer identity)",
+            "definition": "The English translated version of a bilingual entity matching benchmark built from product offers on the German price comparison platform billiger.de. It has 13 consumer product categories, 13,568 offers, and 2,168 products. Variants combine corner-case ratios (20/50/80%), unseen-product ratios (0/50/100%), and development set sizes (small/medium/large), giving 27 variants. The English version translates the name and description of each German offer with GPT-5-mini while keeping all pairs, splits, and labels fixed. Metrics are precision, recall, and F1 for the match class, with supervised matcher results averaged over three seeds. The German original and cross-language test sets also exist, but the German part is outside this inventory's scope.",
+            "task": "Binary decision on whether a pair of product offers refers to the same real-world product (input: brand, name, description, price)",
+            "example": "Task description: given the brand, name, description, and price of two product offers, decide whether they are the same product (Yes/No or match/non-match). Variant products with similar names must be labeled non-matches."
+          },
+          "evidence": {
+            "modality": {
+              "page": 10,
+              "quote": "Do these two"
+            },
+            "대표 과제": {
+              "page": 10,
+              "quote": "Do these two"
+            },
+            "대표 예시·설명": {
+              "page": 10,
+              "quote": "Do these two"
+            },
+            "링크": {
+              "page": 3,
+              "quote": "https://github.com/wbsg-uni-mannheim/billiger-de-products"
+            },
+            "언어": {
+              "page": 10,
+              "quote": "Do these two"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Billiger.de Products: A"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "Billiger.de Products: A"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Billiger.de Products: A"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.37713",
+      "paper_title": "Billiger.de Products: A Bilingual Entity Matching Benchmark",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.37713",
+        "sha256": "f9225e721538ac6f2ca2b10b9547f14b8100cd14bfaf8fd27b66401fcf00e841",
+        "accessed": "2026-11-10T03:52:18Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 23,
+          "elapsed_seconds": 82.95,
+          "pdf_sha256": "f9225e721538ac6f2ca2b10b9547f14b8100cd14bfaf8fd27b66401fcf00e841",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "a58aa14065e48ded12574e031a7fbdc13b65ff98f571986e85d3f332aa6c1103",
+          "page_json_file": "2609.37713.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/wbsg-uni-mannheim/billiger-de-products",
+            "fetched_url": "https://api.github.com/repos/wbsg-uni-mannheim/billiger-de-products/readme",
+            "sha256": "4261ab9c9126f230dad70d4c518d56d6077461ce233365a6d8e9e5b5c07c265c",
+            "accessed": "2026-11-10T03:54:03Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-10T03:54:03Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.37713",
+        "paper_title": "Billiger.de Products: A Bilingual Entity Matching Benchmark",
+        "abstract": "Existing product matching benchmarks primarily contain English-language product data and are often dominated by a single product category, such as electronics. This paper introduces Billiger.de Products, a bilingual German and English entity matching benchmark covering thirteen consumer product categories, including difficult-to-handle categories such as clothing and furniture. The benchmark data originates from the German price comparison platform billiger.de. Following the design of WDC Products, the benchmark offers multiple variants that differ in the fraction of corner cases, the size of the development set, and the fraction of entities unseen during training. An aligned English translation of every offer keeps all pairs, splits, and labels fixed, while cross-language test sets combine German and English records within individual pairs. We validate the benchmark using six supervised matchers and zero-shot GPT-5.2 on both language versions and the cross-language test sets. The validation shows the difficulty of the benchmark. The comparison of the results on the English version of the benchmark to the results on the German version shows that most matchers score on average higher on the English version. The difference is largest for RoBERTa and HierGAT, while the zero-shot LLM runs are largely insensitive to the language. Comparing the F1 scores achieved by PLM-based matchers on the English version of Billiger.de Products with their performance on existing English-language benchmarks, such as WDC Products and Abt-Buy, shows that Billiger.de Products is more difficult than these benchmarks.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:40Z",
+        "input_sha256": "8769499a3577b88c574ed09e80912e5a483c9862eed61a616d457d8ca2a1c7e3",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "이중언어 개체 매칭 벤치마크로 LLM 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "독일어·영어 이중언어 엔티티 매칭 벤치마크 신규 구축"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42743584529",
+        "context_sha256": "a3a8249ba347c134ea913fa1aef0e0360120c9e30ec287bbdc17ef3cc3f17297"
+      },
+      "proposal_sha256": "1d8f6909a4999784c19424c67b24476f7c1f773ff0346acdc889e0ca64b43081"
     }
   },
   "processed_comments": [],
@@ -88336,8 +88499,8 @@
         "2611.09769",
         "2611.09794"
       ],
-      "calls": 23,
-      "cost_usd": 18.7452
+      "calls": 24,
+      "cost_usd": 19.5558
     }
   },
   "reaudits": [
