@@ -54831,6 +54831,164 @@
         "context_sha256": "a483786e5e9ff6e20c242c91cfbc852ecb36288132f2eed89cfe05220d2acd01"
       },
       "proposal_sha256": "e9572ed1392f65185db1e458707ccdeab267bf9a255916dbcfdfe89b17461ea1"
+    },
+    "2605.02035": {
+      "decision": "propose",
+      "reason": "VIDA는 영어 캡션과 이미지를 입력으로 받아 중국어 번역을 생성하게 하는 멀티모달 기계번역 벤치마크로, 시각 정보가 있어야 해소되는 모호성 2,500건을 담았습니다. 과제 프롬프트가 영어이므로 en 트랙이며, 이미지가 필수 입력이라 vision으로 분류했습니다. 목표 언어가 중국어라는 점은 이용 시 유의사항에 적었습니다. 데이터셋 링크는 PDF 첫 쪽에 명시되어 있습니다. 라이선스 등 다섯 항목은 확인하지 않아 '확인 불가'로 두었습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "vida",
+            "이름": "VIDA (Visually-Dependent Ambiguity)",
+            "평가 축": "이미지(멀티모달 기계번역의 시각 의존 모호성 해소)",
+            "언어": "en",
+            "정의": "모호한 원문 구간을 해소하려면 이미지 근거가 필요한 영어 캡션 2,500건으로 이뤄진 멀티모달 기계번역 데이터셋. VIDA-Base 1,932건, VIDA-Sent 312건, VIDA-CollN 256건의 세 부분집합으로 구성된다. VIDA-Base는 7:3으로 나뉘어 학습 1,352건과 테스트 580건이며, Sent와 CollN은 분포 밖(OOD) 테스트로 쓴다. 논문은 BLEU, chrF, COMET 같은 일반 번역 지표와 함께 LLM 판정 분류기 기반의 Disambi-Term(용어 단위)·Disambi-Inst.(문장 단위) 정확도를 제안한다.",
+            "대표 과제": "영어 캡션과 이미지를 받아 모호한 구간을 이미지에 맞게 해소한 중국어 번역을 자유 생성(VIDA-Base, VIDA-Sent, VIDA-CollN)",
+            "대표 예시·설명": "과제 설명: 'got a green thumb' 같은 관용 표현이나 'object' 같은 모호한 집합 명사가 포함된 영어 캡션과 이미지가 주어지면, 이미지 근거로 의도된 의미를 반영해 중국어로 번역하는 과제.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 이 데이터셋은 3AM(VIDA-Base, VIDA-CollN)과 MMA(VIDA-Sent)를 바탕으로 만들어졌으므로 원천 데이터의 약관을 이용 전에 따로 확인해야 한다. 윤리 성명은 원천 자료의 연구용 라이선스를 상속한다고 밝힌다. 입력은 영어, 정답 번역은 중국어이며 인간 검수는 중국어 원어민 2인이 맡았다. 채점은 Qwen3-8B를 VIDA로 미세조정한 판정 모델에 의존한다. 논문은 영어-중국어 쌍에 한정된다고 한계를 밝혔다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/p1k0/visually-dependent-ambiguity"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (resolving visually dependent ambiguity in multimodal machine translation)",
+            "definition": "A multimodal machine translation dataset of 2,500 English captions in which resolving an annotated source span requires visual evidence. It has three subsets: VIDA-Base (1,932), VIDA-Sent (312), and VIDA-CollN (256). VIDA-Base is split 7:3 into 1,352 training and 580 test samples, while Sent and CollN serve as out-of-distribution test sets. The paper reports standard MT metrics such as BLEU, chrF, and COMET plus proposed Disambi-Term (term-level) and Disambi-Inst. (instance-level) accuracy from an LLM-judge classifier.",
+            "task": "Freely generate a Chinese translation of an English caption and its image, resolving the ambiguous span according to the image (VIDA-Base, VIDA-Sent, VIDA-CollN).",
+            "example": "Task description: given an English caption with an ambiguous idiom such as 'got a green thumb' or an abstract collective noun such as 'object', plus an image, translate it into Chinese so that the image-supported meaning is expressed."
+          },
+          "evidence": {
+            "modality": {
+              "page": 17,
+              "quote": "You are an"
+            },
+            "대표 과제": {
+              "page": 8,
+              "quote": "open-ended MMT generation"
+            },
+            "대표 예시·설명": {
+              "page": 14,
+              "quote": "got a green"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://huggingface.co/datasets/p1k0/visually-dependent-ambiguity"
+            },
+            "언어": {
+              "page": 17,
+              "quote": "You are an"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "VIDA (Visually-Dependent Ambiguity),"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "VIDA (Visually-Dependent Ambiguity),"
+            },
+            "평가 축": {
+              "page": 8,
+              "quote": "open-ended MMT generation"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2605.02035",
+      "paper_title": "VIDA: A Dataset for Visually Dependent Ambiguity in Multimodal Machine Translation",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2605.02035",
+        "sha256": "2946544ef677809c1ef46b682b46dd8b8bbbc2479aad184cad7079120db8b394",
+        "accessed": "2026-11-10T03:34:28Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 18,
+          "elapsed_seconds": 70.82,
+          "pdf_sha256": "2946544ef677809c1ef46b682b46dd8b8bbbc2479aad184cad7079120db8b394",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "f04500f08bb7f0901721f080417bfbe1066e854293f116097902663473448b60",
+          "page_json_file": "2605.02035.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/p1k0/visually-dependent-ambiguity",
+            "fetched_url": "https://huggingface.co/datasets/p1k0/visually-dependent-ambiguity/raw/main/README.md",
+            "sha256": "832e625227217b371f7713d313c6baf6b5d2643bb71bce3c7a257ac903250e7c",
+            "accessed": "2026-11-10T03:36:02Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-10T03:36:02Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2605.02035",
+        "paper_title": "VIDA: A Dataset for Visually Dependent Ambiguity in Multimodal Machine Translation",
+        "abstract": "Ambiguity resolution is a key challenge in multimodal machine translation (MMT), where models must genuinely leverage visual input to map an ambiguous expression to its intended meaning. Although prior work has proposed disambiguation-oriented benchmarks probing the role of vision, we observe that existing benchmarks remain limited by task-format mismatch, narrow ambiguity coverage, or insufficient visual-dependency validation. Moreover, existing ambiguity evaluations are not well suited to diverse ambiguity types in open-ended translation. To address these limitations, we present VIDA (Visually-Dependent Ambiguity), a dataset of 2,500 carefully curated instances in which resolving an annotated source span requires visual evidence. We further propose Disambiguation-Centric Metrics that use an LLM-as-a-judge classifier to verify whether annotated ambiguous expressions are resolved correctly at the span level. Evaluations with stronger recent LVLMs show that visual disambiguation remains challenging. Using chain-of-thought supervised fine-tuning as a diagnostic setting, we observe stronger out-of-distribution disambiguation than with SFT, with robust gains on collective-noun ambiguities and model-dependent gains on sentence-level ambiguities.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:40Z",
+        "input_sha256": "b78c967dcea8176e05b1f222d614c19c55114359ee04584eb589ccf829a75e49",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "멀티모달 기계번역 시각적 의존성 데이터셋 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "시각 의존 모호성 번역 데이터셋 VIDA 신규 구축"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42743584529",
+        "context_sha256": "f636d0dc96acb91c6a98148578b3c56be7fb6c530a16d55a33f25ed8faff1396"
+      },
+      "proposal_sha256": "a548da855df2c1ecdc15b25acd818e9480ad150db875dc893e14172d9bd08632"
     }
   },
   "processed_comments": [],
@@ -87450,8 +87608,8 @@
         "2611.09769",
         "2611.09794"
       ],
-      "calls": 15,
-      "cost_usd": 11.988
+      "calls": 16,
+      "cost_usd": 12.8139
     }
   },
   "reaudits": [
