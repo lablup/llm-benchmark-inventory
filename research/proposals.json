@@ -54834,7 +54834,7 @@
     },
     "2605.02035": {
       "decision": "propose",
-      "reason": "VIDA는 영어 캡션과 이미지를 입력으로 받아 중국어 번역을 생성하게 하는 멀티모달 기계번역 벤치마크로, 시각 정보가 있어야 해소되는 모호성 2,500건을 담았습니다. 과제 프롬프트가 영어이므로 en 트랙이며, 이미지가 필수 입력이라 vision으로 분류했습니다. 목표 언어가 중국어라는 점은 이용 시 유의사항에 적었습니다. 데이터셋 링크는 PDF 첫 쪽에 명시되어 있습니다. 라이선스 등 다섯 항목은 확인하지 않아 '확인 불가'로 두었습니다.",
+      "reason": "VIDA는 영어 캡션과 이미지를 입력으로 받아 중국어 번역을 생성하게 하는 멀티모달 기계번역 벤치마크로, 시각 정보가 있어야 해소되는 모호성 2,500건을 담았습니다. 과제 프롬프트가 영어이므로 en 트랙이며, 이미지가 필수 입력이라 vision으로 분류했습니다. 공식 데이터 카드는 license: apache-2.0을 표기하고 연구용 공개와 원천 이미지 약관 준수를 함께 안내하므로, 이를 그대로 인용하고 원천 약관은 별도 확인 대상으로 적었습니다. lm-eval은 카드와 논문 어디에도 언급이 없어 미표기로 두었습니다. 비교 결과는 논문 Table 3의 All-Test Disambi-Inst. 바닐라 추론 결과만 사용했으며, 공개 가중치 근거가 없는 모델은 open_weight를 null로 두었습니다.",
       "changes": [
         {
           "track": "en",
@@ -54847,12 +54847,12 @@
             "대표 과제": "영어 캡션과 이미지를 받아 모호한 구간을 이미지에 맞게 해소한 중국어 번역을 자유 생성(VIDA-Base, VIDA-Sent, VIDA-CollN)",
             "대표 예시·설명": "과제 설명: 'got a green thumb' 같은 관용 표현이나 'object' 같은 모호한 집합 명사가 포함된 영어 캡션과 이미지가 주어지면, 이미지 근거로 의도된 의미를 반영해 중국어로 번역하는 과제.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 이 데이터셋은 3AM(VIDA-Base, VIDA-CollN)과 MMA(VIDA-Sent)를 바탕으로 만들어졌으므로 원천 데이터의 약관을 이용 전에 따로 확인해야 한다. 윤리 성명은 원천 자료의 연구용 라이선스를 상속한다고 밝힌다. 입력은 영어, 정답 번역은 중국어이며 인간 검수는 중국어 원어민 2인이 맡았다. 채점은 Qwen3-8B를 VIDA로 미세조정한 판정 모델에 의존한다. 논문은 영어-중국어 쌍에 한정된다고 한계를 밝혔다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "Apache-2.0(데이터 카드 표기, 원천 이미지 약관은 별도)",
+            "상업적 이용": "연구용 공개로 명시(상업적 이용 시 원천 이미지 약관 준수 필요)",
+            "수정·파생": "가능(Apache-2.0 조건 준수)",
+            "재배포": "조건부 가능(Apache-2.0, 재배포 시 원천 이미지 약관 준수)",
+            "이용 시 유의사항": "이 데이터셋은 3AM(VIDA-Base, VIDA-CollN)과 MMA(VIDA-Sent)를 바탕으로 만들어졌으므로(논문 3쪽) 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 공식 카드는 데이터가 연구용으로 공개되며 원천 이미지의 라이선스가 출처별로 다를 수 있다고 밝히고, 논문 윤리 성명(6쪽)도 원천 자료의 연구용 라이선스를 상속한다고 적는다. 따라서 카드의 Apache-2.0 표기가 원천 이미지 약관을 대신하지는 않는다. 입력은 영어, 정답 번역은 중국어이며 인간 검수는 중국어 원어민 2인이 맡았다. 채점은 Qwen3-8B를 VIDA로 미세조정한 판정 모델에 의존한다. 논문은 영어-중국어 쌍에 한정된다고 한계를 밝혔다. 공식 카드에는 lm-eval 언급이 없다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://huggingface.co/datasets/p1k0/visually-dependent-ambiguity"
           },
           "modality": "vision",
@@ -54896,9 +54896,64 @@
               "quote": "open-ended MMT generation"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://huggingface.co/datasets/p1k0/visually-dependent-ambiguity",
+              "quote": "license: apache-2.0"
+            },
+            "상업적 이용": {
+              "source_url": "https://huggingface.co/datasets/p1k0/visually-dependent-ambiguity",
+              "quote": "Check and follow the license/terms of original image sources when redistributing or using data commercially."
+            },
+            "수정·파생": {
+              "source_url": "https://huggingface.co/datasets/p1k0/visually-dependent-ambiguity",
+              "quote": "license: apache-2.0"
+            },
+            "재배포": {
+              "source_url": "https://huggingface.co/datasets/p1k0/visually-dependent-ambiguity",
+              "quote": "Check and follow the license/terms of original image sources when redistributing or using data commercially."
+            },
+            "lm-eval 지원": {
+              "source_url": "https://huggingface.co/datasets/p1k0/visually-dependent-ambiguity",
+              "absent": true,
+              "pdf_mentions": [
+                {
+                  "page": 6,
+                  "quote": "research-use license",
+                  "about": "논문 윤리 성명: VIDA가 공개 원천 데이터에서 상속하는 연구용 라이선스를 가리키며, lm-eval과는 무관함"
+                }
+              ]
+            }
+          },
+          "recommendations": {
+            "metric": "Disambi-Inst. (%, instance-level disambiguation accuracy: share of All-Test instances in which all annotated ambiguous expressions are resolved, judged by the paper's fine-tuned Qwen3-8B classifier)",
+            "setting": "Results reported in this paper (arXiv 2605.02035, Table 3, All-Test split of VIDA, vanilla inference without VIDA fine-tuning), not a current global leaderboard. All-Test pools VIDA-Base-Test, VIDA-Sent and VIDA-CollN into one evaluation. Only the two vanilla rows of Table 3 are listed so that all entries share the same setting.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Qwen3.5-27B",
+                "score": "46.47",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Qwen3.5-27B Vanilla 48.14 86.38 57.25 46.47"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemma-4-26B-A4B",
+                "score": "44.46",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Gemma-4-26B-A4B Vanilla 45.82 85.53 54.86 44.46"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2605.02035",
@@ -54988,7 +55043,8 @@
         "source_run": "42743584529",
         "context_sha256": "f636d0dc96acb91c6a98148578b3c56be7fb6c530a16d55a33f25ed8faff1396"
       },
-      "proposal_sha256": "a548da855df2c1ecdc15b25acd818e9480ad150db875dc893e14172d9bd08632"
+      "proposal_sha256": "2407c0758f70c8fde5ea08fae8ab7476ec740b08a6b4b175202a7aadb7448901",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -87608,8 +87664,8 @@
         "2611.09769",
         "2611.09794"
       ],
-      "calls": 16,
-      "cost_usd": 12.8139
+      "calls": 17,
+      "cost_usd": 13.7205
     }
   },
   "reaudits": [
