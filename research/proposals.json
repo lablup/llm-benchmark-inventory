@@ -85275,6 +85275,276 @@
           "reason": "Terminal-Bench 2.1 수정판 공개, 코딩 에이전트 벤치마크 갱신 및 지속 검증 워크플로 제안"
         }
       ]
+    },
+    "2611.08522": {
+      "arxiv_id": "2611.08522",
+      "paper_title": "What Are LLM Agents Actually Learning on Low-Budget Molecular Optimization Benchmarks?",
+      "abstract": "Recent work reports large gains for LLM agents on low-budget molecular optimization. We measure the contributions of online optimization, retrievable task information, and permissive oracle landscapes. On PMO at 50 oracle calls, a GPT-4o mini agent's sum AUC falls from 14.44 to 4.85 after task names and curated reference compounds are hidden. An identity-blinded condition that states only the oracle form (e.g., similarity to a hidden reference) scores 5.39, while a deterministic retrieval-only baseline with no LLM reaches 12.16 (84% of the full agent). A full 23-task 2x2 ablation and a three-seed replication on eight tasks support this interpretation. On a protein-targeted benchmark with an AutoDock Vina composite oracle, a single-edit random walk is a strong lower bound; across three seeds it obtains composite 0.636 +/- 0.008 and docking improvement -1.11 +/- 0.04 kcal/mol. As a positive control, a retrieval-free population agent exceeds REINVENT at a matched 50-call AUC budget, with its strongest result at 100 calls. These results motivate two inexpensive sanity checks: retrieval-safe PMO prompts and a random-walk floor for docking-based optimization.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "기존 PMO 벤치마크 분석·점검 위주이며 새 재사용 평가 자료 없음"
+        }
+      ]
+    },
+    "2611.08755": {
+      "arxiv_id": "2611.08755",
+      "paper_title": "AtariBench: Evaluating Spatiotemporal Reasoning of Vision-Language Models in Atari Gameplay",
+      "abstract": "Vision-Language Models (VLMs) have achieved strong performance on static visual understanding benchmarks, yet their ability to act in dynamic environments remains less well understood. We introduce AtariBench, a controlled benchmark that evaluates VLMs across 20 Atari 2600 games, requiring models to make sequential decisions from high-temporal-resolution gameplay streams. By decoupling fast in-game dynamics from wall-clock inference speed, AtariBench focuses on whether models can perceive rapid visual state changes, reason over spatiotemporal dynamics, and ground actions in the current observation. Our experiments reveal substantial limitations in state-of-the-art VLMs: models often fail to infer object motion and direction, exhibit brittle sequential decision-making, and over-rely on textual interaction history despite newly appended visual feedback. We further introduce a separability analysis to identify which in-game scores provide reliable signals of model competence, and use the benchmark to study how memory design and prompting strategies affect performance. Overall, AtariBench exposes a persistent gap between passive visual perception and active decision-making, providing a lightweight and rigorous testbed for developing VLMs that can reason and act in dynamic environments.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "Atari 기반 VLM 시공간 추론 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.08914": {
+      "arxiv_id": "2611.08914",
+      "paper_title": "HomeLoop: A Simulation Framework and Benchmark for Robot-IoT Coordination in Everyday Domestic Assistance and Safety",
+      "abstract": "Recent progress in embodied robotics is bringing robots closer to deployment in homes, as vision-language models (VLMs) are demonstrating significant advances in reasoning, making VLM-driven robots promising home assistant agents. These agents will often be introduced into homes that already have cameras, Internet of Things (IoT) devices, and residents with wearables. To fulfill their potential, they need to integrate with existing smart infrastructure and reason through ambiguous scenarios: a smoke alarm may come from a pan about to ignite, a pan already on fire, a resident cooking or a faulty sensor, and each calls for a different response. To that end, we introduce HomeLoop, a simulation framework and benchmark built on Isaac Sim that combines robot bodies, networked devices and wearables, simulated residents and visitors, faulty sensors, and hazards that evolve over time. Our benchmark is composed of 20 tasks across five families grounded in real-world household hazards and needs, and designed so that the same alert can have different causes. A runtime monitor scores each episode with temporal-logic checks on the final outcome and the actions along the way, and every action carries a predefined cost. We evaluate six open-weight and proprietary VLMs. The best achieves a family-balanced score of 61.9%, and across models we see a pattern of over-reaction: failed episodes involving prohibited interventions outnumber those involving missed required interventions by more than two to one, with models often shutting off the stove before investigating the alarm's cause. HomeLoop is an extensible foundation intended for use in research on robot-IoT coordination, long-term memory, proactive assistance, and privacy-safety trade-offs. HomeLoop will be released with 2,100 home layouts that can be automatically furnished in diverse configurations, five robot bodies and 20 networked device types.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "로봇-IoT VLM 에이전트 시뮬레이션 프레임워크 및 벤치마크 공개"
+        }
+      ]
+    },
+    "2611.08921": {
+      "arxiv_id": "2611.08921",
+      "paper_title": "Frame: Form-Restricted Authoring with Model-Based Evaluation",
+      "abstract": "Many professional reports reuse the structure of prior editions while updating the content. We formalize this setting as form-restricted report generation: given a sample report and new grounding documents, generate a report that preserves the sample's form while accurately reflecting the new evidence. We introduce FRAME, a benchmark of 120 EDGAR- and arXiv-derived instances across Financial Quarterly, Financial Annual, Academic Simple, and Academic Complex categories, built with a temporal three-snapshot pipeline. We evaluate outputs with three human-validated metrics: structural similarity via semantic tree-edit distance, coverage via information unit recall, and faithfulness via claim-level grounding verification. Across five LLMs, open-source models nearly match proprietary models on structure but lag on coverage and faithfulness; all models perform better on financial than academic reports, and performance declines with longer outputs and more complex grounding.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "형식 제한 보고서 생성 벤치마크 FRAME (영문 EDGAR/arXiv 기반)"
+        }
+      ]
+    },
+    "2611.08946": {
+      "arxiv_id": "2611.08946",
+      "paper_title": "Flex-RSI: Benchmarking Recursive Self-Improvement of Frontier Agents",
+      "abstract": "Frontier language models are increasingly deployed as agents, and how well an agent performs depends not only on its model but also on its harness: the prompts, tools, memory, and control loop through which the model acts. When an agent is applied to a new problem, a natural question is whether it can use the feedback of the task to improve the way it works, and not merely its answer. Most existing benchmarks keep the agent's harness fixed and score the solution it produces, or target large-scale model training. We introduce Flex-RSI, a benchmark for the recursive self-improvement of agents on vision and robotics tasks under a fixed budget. In each round, an executor improves the task solution, which is kept only if it scores higher on held-out validation data, and an improver then revises the harness, including the executor and itself. Every run starts from the same general-purpose harness, and the final solution is scored on hidden test data. Evaluating closed-source and open-weight models on tasks spanning perception, reasoning, robot action, 3D reconstruction, visual creation, and infrastructure, we find that self-improvement helps most when the agent builds its own solution, that feedback recording only success or failure holds back open-weight models, and that open-weight models fall furthest behind where outputs must pass strict checks of physical stability or exact correctness. Paired runs further show that editing the harness itself contributes to the gains.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트 재귀적 자기개선 평가 벤치마크 Flex-RSI"
+        }
+      ]
+    },
+    "2611.08976": {
+      "arxiv_id": "2611.08976",
+      "paper_title": "Refer-CityFlow and M3Track: A Benchmark Dataset and Reference Framework for Language-Driven Multi-Target Multi-Camera Tracking",
+      "abstract": "Referring multi-object tracking enables users to specify targets through natural language, but existing Refer-MOT benchmarks primarily focus on single-camera settings. We formalize Referring Multi-Target Multi-Camera Tracking (Refer-MTMCT), where free-form queries specify identity-consistent trajectories to be recovered across a network of sequential, sparse-overlap cameras. We introduce Refer-CityFlow, a benchmark built on CityFlow's global cross-camera identity annotations and augmented with language queries requiring joint language grounding, cross-camera association, and spatio-temporal reasoning. Refer-CityFlow covers 96 videos from 40 roadside cameras with 660+ identity-consistent cross-camera trajectories, 4,362 trajectory-level descriptions, and 7,699 queries, including 1,699 real-user queries collected from 50 participants. Reference experiments on the four-camera Scenario 02 show that single-camera referring trackers reach 14.95-18.28 HOTA on real-user queries, while the evaluated cross-view method achieves about 0.05 HOTA in direct transfer. To establish reference performance, we provide M3Track, a modular multimodal reference framework in which a large language model (LLM)-based agent orchestrates interchangeable detection, tracking, and cross-camera association modules. M3Track reaches 44.10 HOTA and 65.40 IDF1 on the same real-user query set. The project repository is available at https://github.com/phuongnguyen194/Refer-CityFlow-and--M3Track.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "추적 벤치마크이며 질의 언어와 LLM 평가 범위가 불명확"
+        }
+      ]
+    },
+    "2611.09065": {
+      "arxiv_id": "2611.09065",
+      "paper_title": "MongoBench: Do LLMs Know What a MongoDB Query Will Do?",
+      "abstract": "LLM agents increasingly operate databases on their own: they generate queries and run them against live data. Two checks are commonly used to judge such an agent - whether it produces a valid query, and whether it reaches the right final answer - but neither tells us whether the agent knows what its query will actually do before it runs. We argue that this consequence prediction ability must be evaluated in its own right, and we build MongoBench to measure it: given a collection of documents and a MongoDB find() filter, a model must return the exact set of matching _ids, with ground truth from a real mongod server. The 300 items each compose three or four documented matching pitfalls and are proposed symmetrically by three vendors' models, so results stratify by item source. Evaluating four models - frontier systems from three vendors and one open-weight reasoner - accuracy ranges from 70.1% to 92.1%, a 22-point spread. Each proposer mispredicts 10-31% of the items it wrote itself, so producing a query does not imply predicting its effect. A failure-mode analysis shows errors are better predicted by which semantic pitfall a query exercises - range comparisons and null - than by surface measures such as document count or the number of composed rules. Prepending a verified rule sheet helps unevenly; executing the original filter against the engine yields reliable match sets, but delegation must be checked: on 28% of items (averaged over three runs) one model's executed filters never passed a canonical check against the intended query, and it answered about 22 of them wrong, while the other three passed on every item. We release the benchmark, the mongod oracle, and the evaluation code with all prompts at https://github.com/research-repo-bai/MongoBench.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MongoDB 쿼리 결과 예측 벤치마크 및 평가 코드 공개"
+        }
+      ]
+    },
+    "2611.09094": {
+      "arxiv_id": "2611.09094",
+      "paper_title": "AlienBench: A Benchmark of Structural Novelty in Language Model Outputs",
+      "abstract": "Large language models (LLMs) are increasingly used for creative tasks such as writing, design, and idea generation. For these uses, it matters whether a model's ideas depart from familiar examples or stay close to them. Novelty is one standard measure of creativity, and current creativity evaluations ask human experts or LLM judges to rate how novel an output is. However, these ratings have no fixed reference for what counts as novel (or, in other terms, departure from the familiar). Measuring this departure requires a task with known familiar defaults. The structured imagination task from cognitive psychology is such a task. In this creativity test, people imagine a creature from another planet. The departure from features of Earth animals, such as bilateral symmetry and legs as mode of locomotion, is used as measure of creativity. We introduce AlienBench, a benchmark that adapts the structured imagination task to language models. Models describe alien creatures, and a panel of three LLM judges extracts ten biological features from the description and labels them as either Earth-typical or a departure. The sum of feature departures is the score of a description, from 0 to 10. Each model describes alien creatures under six prompt conditions that vary the framing of the task and the planetary environment. Each model generates 30 descriptions per condition (180 in total), and its overall score is the mean across these descriptions. We evaluate 10 language models, from frontier to open-weight models. Overall scores range from 3.28 (GPT-6 Luna) to 6.55 (Ministral 3 14B). Interestingly, open-weight models score higher than proprietary models in this task (5.40 vs. 4.58). Under the baseline prompt, the models depart from Earth defaults more often on average than 100 human participants on every feature. We release all prompts, generations, judge outputs, and scores.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "창의성 벤치마크이나 과제 언어가 초록에 명시되지 않음"
+        }
+      ]
+    },
+    "2611.09222": {
+      "arxiv_id": "2611.09222",
+      "paper_title": "Khmer PFGen-Bench: Building a Judge-Free Benchmark for Open-Ended Generation in a Low-Resource Language",
+      "abstract": "Benchmarks for open-ended generation often rely on large language model (LLM) judges, whose reliability in low-resource languages is uncertain. We introduce Khmer PFGen-Bench, to our knowledge the first judge-free benchmark for multi-sentence answers to questions composed directly in Khmer, a low-resource language. Khmer PFGen-Bench adapts the scorer of PFGen-Bench, a benchmark for Japanese that scores responses with keyword rules and n-gram statistics from LLM-generated references. This scoring requires references that are both valid and varied, which LLMs may not produce in Khmer, so we examine how to build such references. We find that post-trained models can give more valid but less varied references than their base variants, and that mixing model families increases variety for the same number of references. Using references from post-trained models in nine families, the benchmark yields model rankings that are stable across reference sets and consistent with a native speaker's ratings. These findings offer guidance for building judge-free benchmarks in other low-resource languages.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "크메르어 전용 벤치마크로 한국어/영어 과제 아님"
+        }
+      ]
+    },
+    "2611.09223": {
+      "arxiv_id": "2611.09223",
+      "paper_title": "KLEAR: Knowledge-Matched LLM Evaluation in Korean across Application Requirements via Controlled Benchmark Transformation",
+      "abstract": "Existing Korean benchmarks for Large Language Models (LLMs) evaluate performance across diverse knowledge domains, but their accuracy scores cannot distinguish whether incorrect responses arise from a lack of required knowledge or a failure to apply that knowledge correctly. Our analysis of existing Korean benchmarks reveals that most questions can be answered through factual recall alone, while those demanding greater application also differ in required knowledge, making it difficult to isolate application ability. To address this, we introduce KLEAR, a framework that constructs knowledge-matched contrasts by varying application demand while preserving the required knowledge. During construction, KLEAR identifies the knowledge underlying each source question as an explicit anchor bundle to guide generation of questions requiring more complex application. Generated candidates then undergo automated and human validation, with iterative revision based on evaluation feedback. Experiments demonstrate that the resulting knowledge-matched sets largely satisfy the intended constraints, enabling controlled evaluation across diverse LLMs. These evaluations reveal that increasing application demand exposes failures that persist even when the required knowledge is provided.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "한국어 LLM 지식 매칭 평가 벤치마크 KLEAR"
+        }
+      ]
+    },
+    "2611.09274": {
+      "arxiv_id": "2611.09274",
+      "paper_title": "FondueQA: A Benchmark for Evaluating Parametric Compensation in Multi-Hop QA",
+      "abstract": "Large Language Models (LLMs) show remarkable performance based on parametric knowledge, i.e., their ability to recall facts and associations internalized in a model's weights. However, studying this capability on established multi-hop benchmarks may be complicated by benchmark contamination, as many of these benchmarks have been publicly available long enough to plausibly appear in modern pretraining corpora. As a result, correct answers under missing evidence may reflect either general parametric knowledge or memorization of benchmark-specific instances. To study how models use internal knowledge when retrieval evidence is incomplete, we introduce FondueQA, in which every required multi-hop fact is uniquely localized to a designated evidence document. This enables controlled document-level evidence ablations to study parametric compensation under incomplete retrieval. Our empirical evaluation reveals that parametric compensation strongly depends on both entity popularity and the structural role of missing evidence. Generally, models compensate more successfully for facts involving popular entities. On FondueQA, we show that bridging evidence can be more useful than the answer-bearing document itself. Moreover, models may recall a missing fact in isolation but fail to use it under partial evidence, particularly when the context contains plausible competing entities, which can reduce Exact Match by up to 15 percentage points.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "멀티홉 QA 벤치마크이나 과제 언어가 불명확"
+        }
+      ]
+    },
+    "2611.09721": {
+      "arxiv_id": "2611.09721",
+      "paper_title": "MemoryDojo: Benchmarking Poisoning Through LLM Agent Memory",
+      "abstract": "LLM agents benefit from using memory systems to improve performance on long-horizon, multi-session tasks. However, memory introduces a critical attack surface. Malicious instructions encountered in one session may be stored and propagated through memory before being retrieved and acted upon in later sessions. Because memory systems differ in how they process and retrieve information, the downstream effects of poisoning can vary significantly across systems. To quantify the effects of poisoning across different memory architectures, we introduce MemoryDojo, a benchmark for tracing the lifecycle of poisoned information through agent memory and measuring its influence on subsequent agent behavior. MemoryDojo is easily extensible, consists of 155 multi-session long-horizon trajectories covering four domains, and supports five different memory systems. Through our evaluation, we find that all memory systems are susceptible to memory poisoning, with substantial variation in downstream effects. We further propose a memory-aware poison optimization process that increases the poisoning efficacy, highlighting differences between memory architectures. We hope that MemoryDojo will support research on understanding and mitigating agentic memory risks.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트 메모리 오염 평가 벤치마크 MemoryDojo"
+        }
+      ]
+    },
+    "2611.09740": {
+      "arxiv_id": "2611.09740",
+      "paper_title": "Zero-Shot Benchmarking of Unified Multimodal Models for Shallow-Water UAV Image Distortion Assessment and Restoration",
+      "abstract": "Shallow-water UAV imagery provides centimeter-scale observations of benthic environments, but water-induced distortions complicate interpretation. To our knowledge, we present the first systematic zero-shot benchmark of unified multimodal large language models (MLLMs) for both assessing water-induced distortions and restoring shallow-water imagery within the same model framework. We evaluate five open-weight unified MLLMs with frozen pretrained weights and without access to paired reference images or descriptions of the true seabed. The benchmark contains 1,000 image pairs: 600 semi-synthetic UAV scenes created by applying synthetic water distortions to real shallow-water imagery and 400 fully synthetic through-water scenes. Three independent human annotations cover five distortion types. We evaluate four assessment prompts (P0-P3), from direct instruction to structured task decomposition, on all 1,000 images and four diagnosis-guided restoration prompts (R0-R3) on a common 100-image subset. Assessment varies substantially by model and prompt, with systematic prediction biases and a best pooled balanced accuracy of 0.654 for distortion presence. The best pooled PSNR gain is +0.255 dB, no unified MLLM improves pooled LPIPS, and some outputs alter scene structure or hallucinate content. Two restoration-only baselines also show limited transfer: InstructIR achieves a pooled PSNR gain of +0.040 dB, while PromptFix degrades all four pooled metrics under every prompt. These results show that recognizing shallow-water degradation does not imply reliable physical restoration and provide a reproducible baseline for future work.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "통합 MLLM 대상 UAV 왜곡 평가·복원 벤치마크 1,000쌍"
+        }
+      ]
+    },
+    "2611.09769": {
+      "arxiv_id": "2611.09769",
+      "paper_title": "AnimWeb-Bench: Benchmarking Animated Webpage Code Generation from Videos",
+      "abstract": "Animation is pervasive on the Web, the CSS animation property alone appears on over three-quarters of webpages. Yet existing webpage code generation benchmarks target static screenshots, user-triggered interactions, or isolated motion graphics, leaving the ability of multimodal large language models (MLLMs) and coding agents to reconstruct complete animated webpages largely unexplored. To fill this gap, we introduce AnimWeb-Bench, the first benchmark for animated webpage code generation from videos. It comprises 124 real-world webpages spanning 7 application domains and 33 animation types, with 91.9% of pages combining multiple types, each paired with a reference video and the static assets of the original webpage. We further propose a human-aligned, two-dimensional evaluation protocol: Static Appearance Fidelity measures structure, text, color, and visual similarity on aligned keyframes, while Animation Fidelity tracks UI components across frames and compares their position, size, velocity, and appearance with those in the reference video. Evaluating 14 MLLMs and three coding agents reveals: (1) reproducing webpage animations is substantially more difficult than reproducing static appearance; (2) explicit frame inspection and render feedback improve the reconstruction quality of coding agents; and (3) rapid, continuous changes are harder to reproduce than discrete state transitions. Our code and dataset are available at https://starry1001.github.io/AnimWeb-Bench-website/ .",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영상 기반 애니메이션 웹페이지 코드 생성 벤치마크"
+        }
+      ]
+    },
+    "2611.09794": {
+      "arxiv_id": "2611.09794",
+      "paper_title": "Seeing What Matters: Benchmarking Task-Conditioned Actionable Spatial Belief for Manipulation",
+      "abstract": "When should a robot look at the cup, and when at the portafilter? Spatial-reasoning benchmarks evaluate whether a model can describe a scene, but manipulation needs something more specific: the ability to acquire the particular evidence that makes the current command executable. A view that is informative for one task can be useless for another, even at the same workstation. We introduce Seeing What Matters, a benchmark for task-conditioned actionable spatial belief in simulated tabletop manipulation. Across three domains--coffee workstation, drawer/cabinet, and microwave/appliance--the benchmark provides 860 frozen evaluation cases; expanding across methods, budgets, and inference repeats yields more than 115,000 evaluator episodes under two protocols: closed-loop actionability and same-object functional out-of-distribution generalization. Each case pairs a set of candidate RGB views with a manipulation command, shared scripted skills, and hidden postconditions, so the benchmark directly measures whether a view-selection policy acquires the observations its command actually needs. We also provide a diagnostic reference pipeline that maintains a spatial-functional belief state and ranks views by missing evidence. At primary budget settings, this pipeline reaches 98.8% closed-loop and 98.9% functional-OOD success; ablating the functional or command-binding components collapses performance to near zero. Seven vision-language models, evaluated on the same cases, reach only 26-43%. Replacing the reference pipeline's coverage metadata with frozen RGB-derived scores preserves 98.5%/98.9% success; shuffling the visual scores collapses it to 15%/11%, confirming that the result depends on image content. These gaps suggest that spatial belief for manipulation should be evaluated not by scene-level completeness, but by whether it acquires the evidence the current command requires.",
+      "paper_updated": null,
+      "created_at": "2026-11-10T02:41:45Z",
+      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "조작용 과제 조건부 공간 신념 VLM 벤치마크 제안"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -86664,6 +86934,28 @@
         "2605.25200"
       ],
       "abstract_attempted": []
+    },
+    "2026-11-10": {
+      "attempted": [],
+      "abstract_attempted": [
+        "2611.08522",
+        "2611.08755",
+        "2611.08914",
+        "2611.08921",
+        "2611.08946",
+        "2611.08976",
+        "2611.09065",
+        "2611.09094",
+        "2611.09222",
+        "2611.09223",
+        "2611.09274",
+        "2611.09721",
+        "2611.09740",
+        "2611.09769",
+        "2611.09794"
+      ],
+      "calls": 1,
+      "cost_usd": 0.0612
     }
   },
   "reaudits": [
