@@ -56326,74 +56326,9 @@
       }
     },
     "2610.06193": {
-      "decision": "propose",
-      "reason": "SWE-CC는 12개 오픈소스 저장소의 기여 문서에서 뽑은 823개 기계 검증 가능 정책과 SWE-bench Verified 기반 500개 기여 과제로 구성된 재사용 가능한 벤치마크이다. 과제 지시와 정책 문구가 영어이고 텍스트 입력만 쓰므로 en/text 행 하나를 제안한다. 논문이 명시한 공식 코드·데이터 주소는 GitHub 저장소이다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "swe-cc",
-            "이름": "SWE-CC",
-            "평가 축": "에이전트(저장소 정책 준수·코딩 워크플로 감사)",
-            "언어": "en",
-            "정의": "12개 오픈소스 저장소의 기여 문서에서 1,759개 원자 정책을 추출하고 이 중 823개를 기계 검증 가능한 결정적 체커 함수로 만든 벤치마크. SWE-bench Verified에서 확장한 500개 엔드투엔드 소프트웨어 기여 과제에서 최종 산출물과 실행 궤적을 함께 감사한다. 지표는 Triggering Rate, Compliance Rate, Resolve Rate이며 Native와 Consolidated 두 정책 제공 설정을 비교한다.",
-            "대표 과제": "저장소 이슈를 해결하면서 커밋과 PR 설명 작성, 테스트·문서 유지 등 기여 정책을 지켜야 하는 소프트웨어 기여 과제",
-            "대표 예시·설명": "예를 들어 커밋 요약 첫 줄이 71자 이하여야 한다는 정책에 대해, 체커가 에이전트가 만든 모든 커밋의 요약 길이를 검사하는 과제 설명",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부는 아직 확인하지 않았다. 이 벤치마크는 SWE-bench Verified의 과제와 12개 저장소의 공개 기여 문서에서 파생된 것이므로 각 구성 요소의 약관을 이용 전에 따로 확인해야 한다. 체커 중 529개는 근사 방식이며 정확한 체커는 294개이다. 일부 정책은 전체 테스트 실행 같은 증거가 없으면 판정을 보류한다. 논문 수치는 4개 모델과 2개 스캐폴드 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/dangtruong01/swe-cc-arxiv"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agents (repository policy compliance and coding-workflow auditing)",
-            "definition": "A benchmark that extracts 1,759 atomic policies from the contribution documentation of 12 open-source repositories and compiles 823 of them into deterministic checker functions. It audits both final deliverables and execution trajectories on 500 end-to-end software contribution tasks extended from SWE-bench Verified. Metrics are Triggering Rate, Compliance Rate and Resolve Rate, comparing Native and Consolidated policy-provision settings.",
-            "task": "Software contribution tasks in which an agent resolves a repository issue while following contribution policies such as commit structure, pull request description, and test and documentation maintenance",
-            "example": "For example, for a policy that the first line of a commit summary must be 71 characters or less, a checker measures the summary line of every commit the agent made (task description)."
-          },
-          "evidence": {
-            "modality": {
-              "page": 5,
-              "quote": "Keep the first"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "500 end-to-end software"
-            },
-            "대표 예시·설명": {
-              "page": 5,
-              "quote": "Keep the first"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/dangtruong01/swe-cc-arxiv"
-            },
-            "언어": {
-              "page": 5,
-              "quote": "Keep the first"
-            },
-            "이름": {
-              "page": 2,
-              "quote": "SWE-CC (CodeCompliance)"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "823 machine-checkable atomic"
-            },
-            "평가 축": {
-              "page": 2,
-              "quote": "repository-level policy compliance"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "SWE-CC 공식 저장소 카드(https://github.com/dangtruong01/swe-cc-arxiv)에는 '## LICENSE file' 절이 있고 MIT가 표기되어 있다. 그러나 README는 'Code is released under the MIT License'라며 MIT를 코드에만 부여하고, 'Policy text and raw sources under `rules/` ... remain under that project's license. Tasks derive from SWE-bench Verified.'라고 밝힌다. 따라서 벤치마크 데이터(823개 정책 원문, 12개 저장소의 기여 문서 발췌, SWE-bench Verified 파생 500개 과제) 전체에 적용되는 데이터 라이선스는 제공된 자료에서 확인되지 않는다. 코드 라이선스를 데이터 라이선스로 간주할 수 없고, LICENSE 절이 있는 카드는 '미표기' 근거(absence)로도 쓸 수 없다. 데이터의 상업적 이용·수정·파생·재배포 허용 여부는 근거가 없으므로 추측해 채우지 않았다. 구성 요소인 SWE-bench Verified와 12개 프로젝트(astropy, django, matplotlib, scikit-learn, sympy, pylint, xarray, flask, sphinx, pytest, requests, seaborn)의 개별 라이선스 문서는 이번 입력에 없다(PDF 1쪽, 3쪽 등 구성 요소 언급). 이들 약관 또는 저자의 데이터 라이선스 명시를 확보한 뒤 라이선스·상업적 이용·수정·파생·재배포를 다시 판정해야 한다. 공식 카드에 lm-eval 언급이 없는 점은 확인했으나, 위 권리 필드가 채워지지 않아 행 전체를 게시하지 않는다. 논문 3쪽 Table 3(Native 설정 Compliance rate, mini-SWE-agent)에서 비교용 점수는 확보되나 권리 증거가 부족해 게시하지 않는다.",
+      "changes": [],
       "arxiv_id": "2610.06193",
       "paper_title": "Correct Code, Broken Contributions? SWE-CC: Benchmarking Repository Policy Compliance for Coding Agents",
       "paper_updated": "2026-10-06T00:00:00Z",
@@ -56477,7 +56412,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-10T04:08:12Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -56503,11 +56438,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "42743584529",
-        "context_sha256": "0e84c401d3fe26f7a90845b03c9a1eaed28e2c07f5f92a0088f92c0e87018faa"
-      },
-      "proposal_sha256": "3362240319163499b596c52cc2b80083a3c1525a105f8e93f88383aca9bd98d8"
+      "proposal_sha256": "14af8d69314b4a8433c5b78858a522ad72267045e09139d00ac86b4340ea06ee",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -89142,8 +89075,8 @@
         "2611.09769",
         "2611.09794"
       ],
-      "calls": 31,
-      "cost_usd": 25.7825
+      "calls": 32,
+      "cost_usd": 26.6911
     }
   },
   "reaudits": [
