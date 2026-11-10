@@ -55260,6 +55260,159 @@
         "context_sha256": "1b5c65ded8687305b726f1aaf1091109fcdeff9270f4c69376d64fa4ecfa0244"
       },
       "proposal_sha256": "3c2964e3659a191d6842912b3af6f72072a14add91610dfa59854f7ff854c5e6"
+    },
+    "2606.30371": {
+      "decision": "propose",
+      "reason": "MaDI-Bench는 스키마 매칭, 값 정규화, 블로킹, 엔티티 매칭, 데이터 퓨전까지 관계형 표의 엔드투엔드 데이터 통합 전 과정을 평가하는 새 재사용 벤치마크입니다. 기본 과제 5개 도메인에 20개 고유 과제가 있고 난이도 변형도 제공됩니다. LLM 워크플로와 코딩 에이전트로 검증했습니다. 속성명이 영어(예: title, launch_yr, studio)이므로 en 트랙의 text로 분류했습니다. PDF가 밝힌 공식 저장소 링크가 있습니다. 라이선스 등은 확인하지 못해 '확인 불가'로 기록했고, 기존 인벤토리에 동일 벤치마크는 없습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "madi-bench",
+            "이름": "MaDI-Bench",
+            "평가 축": "에이전트·데이터 통합(관계형 표 엔드투엔드 통합: 스키마 매칭·값 정규화·블로킹·엔티티 매칭·데이터 퓨전)",
+            "언어": "en",
+            "정의": "여러 이질적 소스 표를 하나의 일관된 목표 표로 통합하는 엔드투엔드 벤치마크. 게임, 기업, 음악, 제품, 논문 5개 도메인에서 20개 고유 과제를 제공하며, 난이도 변형(easy/medium/hard) 생성 방법을 포함한다. 단계별 지표(스키마 매칭 F1, 정규화 정확도, 블로킹 pair completeness·reduction ratio, 엔티티 매칭 F1, 퓨전 정확도)와 엔드투엔드 지표(커버리지·일관성·정확성; 참조 없음·silver·ground-truth 기준)를 함께 쓴다.",
+            "대표 과제": "소스 표, 메타데이터, 목표 스키마를 받아 목표 스키마에 맞는 단일 통합 표를 출력하고 중간 결과(스키마 매핑, 정규화 표, 후보 쌍, 매칭 쌍)도 보고(예: Games, Products)",
+            "대표 예시·설명": "과제 설명: 시스템이 Metacritic, 판매 데이터, DBpedia 같은 게임 소스 표를 받아 컬럼을 목표 스키마에 맞추고 값을 정규화해 같은 게임 레코드를 묶은 뒤 충돌 값을 해소해 엔티티당 한 행의 표를 만든다. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스·상업적 이용·수정·재배포·lm-eval 지원은 확인하지 못했다. 이 벤치마크는 DBpedia, Metacritic, Forbes, Discogs, Last.fm, MusicBrainz, DBLP, Crossref, OpenAlex, WDC Products 등 기존 공개 자료에서 구성되므로(논문 2~4쪽) 각 소스의 고유 약관을 이용 전에 따로 확인해야 한다. 논문에 따르면 소스 일부가 공개 데이터라 LLM 사전학습 노출 가능성이 있고, silver 기준은 사람이 설계한 PyDI 파이프라인에 유리할 수 있으며, ground-truth 평가는 출력의 일부(테스트 세트가 덮는 부분)만 다룬다. 논문 수치는 해당 논문의 파이프라인 조건에서 얻은 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/wbsg-uni-mannheim/MaDI-Bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents and data integration (end-to-end integration of relational tables: schema matching, value normalization, blocking, entity matching, data fusion)",
+            "definition": "An end-to-end benchmark that integrates several heterogeneous source tables into one consistent target table. It offers 20 unique integration tasks across five domains (games, companies, music, products, scientific papers) and a method for deriving easy, medium and hard variants. Step-level metrics (schema matching F1, normalization accuracy, blocking pair completeness and reduction ratio, entity matching F1, fusion accuracy) are combined with end-to-end metrics for coverage, consistency and correctness under reference-free, silver and ground-truth references.",
+            "task": "Given source tables, metadata and a target schema, output one fused table that conforms to the target schema and also report intermediate results (schema mapping, normalized tables, blocker candidate pairs, matched pairs), for example the Games and Products tasks.",
+            "example": "Task description, not an actual test item: a system receives video-game source tables such as Metacritic, a sales dataset and DBpedia, aligns their columns to the target schema, normalizes values, clusters records of the same game, resolves conflicting values, and outputs one row per entity."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "end-to-end integration of"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "end-to-end integration of"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "title, launch_yr, studio,"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "github.com/wbsg-uni-mannheim/MaDI-Bench"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "title, launch_yr, studio,"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Mannheim Data Integration"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "20 unique integration"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "end-to-end integration of"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2606.30371",
+      "paper_title": "MaDI-Bench: An End-to-End Data Integration Benchmark",
+      "paper_updated": "2026-10-06T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.30371",
+        "sha256": "9b91cc43b1a446c48db1b7090e104ce150087b911a1db0010d8e29d51bc9e27a",
+        "accessed": "2026-11-10T03:42:52Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 13,
+          "elapsed_seconds": 86.85,
+          "pdf_sha256": "9b91cc43b1a446c48db1b7090e104ce150087b911a1db0010d8e29d51bc9e27a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "fcd0245ce453357eda19ed384afb9987a6e3477f5e6111603e53a9760fe4cf21",
+          "page_json_file": "2606.30371.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/wbsg-uni-mannheim/MaDI-Bench",
+            "fetched_url": "https://api.github.com/repos/wbsg-uni-mannheim/MaDI-Bench/readme",
+            "sha256": "0ac7435a6a5c140dadb26a8972819183b364f56f20fb42217128aa23df98b0df",
+            "accessed": "2026-11-10T03:44:43Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-10T03:44:43Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2606.30371",
+        "paper_title": "MaDI-Bench: An End-to-End Data Integration Benchmark",
+        "abstract": "Data integration is the process of combining data from multiple, heterogeneous sources into a consistent, unified representation. Data integration involves a sequence of interdependent tasks including schema matching, value normalization, blocking, entity matching, and data fusion. Existing table-based benchmarks either evaluate these steps in isolation or cover only incomplete versions of the data integration pipeline, omitting specific steps. The lack of public end-to-end data integration benchmarks hinders research on data integration methods that address the integration process as a whole and account for the interdependencies among the different tasks. This paper fills this gap by introducing the Mannheim Data Integration Benchmark (MaDI-Bench), the first benchmark for the end-to-end integration of relational tables covering all steps of the integration process. MaDI-Bench contributes (i) a set of end-to-end data integration tasks spanning several application domains, each requiring the full schema matching, value normalization, entity matching, and data fusion pipeline, and (ii) a generic method for deriving task variants that mitigates rapid benchmark saturation as data integration systems advance. We validate the benchmark using human-engineered pipelines, a best-of-breed pipeline, an LLM workflow, and a pipeline written by a coding agent. The validation demonstrates the utility of the benchmark for measuring the step-wise as well as the end-to-end performance of data integration pipelines. All benchmark artifacts are available for public download.",
+        "paper_updated": "2026-10-06T00:00:00Z",
+        "created_at": "2026-10-19T13:48:40Z",
+        "input_sha256": "b6c4296fe457b562d35f5917386e142dc4fa1d5abf490a02ddb65fc7d5ba95c5",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "데이터 통합 평가 벤치마크로 LLM 파이프라인 검증"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "종단간 데이터 통합 벤치마크 MaDI-Bench 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42743584529",
+        "context_sha256": "4c38c41075b552cc79536d4cac6ea091311f872d2dbe68acd5f065757043114c"
+      },
+      "proposal_sha256": "e62071a2a6e28c53e7dd96a399c7bf8074a9b0cf0d90bbe70f3216009336a807"
     }
   },
   "processed_comments": [],
@@ -87883,8 +88036,8 @@
         "2611.09769",
         "2611.09794"
       ],
-      "calls": 19,
-      "cost_usd": 15.3367
+      "calls": 20,
+      "cost_usd": 16.2185
     }
   },
   "reaudits": [
