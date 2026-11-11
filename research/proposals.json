@@ -88231,6 +88231,366 @@
           "reason": "3D 환경 상황 추천 VLM 벤치마크 SituRecBench"
         }
       ]
+    },
+    "2611.10412": {
+      "arxiv_id": "2611.10412",
+      "paper_title": "TurnFlow: Benchmarking User-State Reasoning in Multi-Turn LLM Agents via Scene-Guided User Simulation",
+      "abstract": "Large Language Models (LLMs) are increasingly deployed through conversational interfaces, yet strong single-turn performance does not imply reliability in multi-turn settings. Multi-turn assistance requires a model to maintain an evolving representation of user requirements and to reason over it before complying with later requests. Failures can therefore be subtle: models may fail to recognize a changed constraint or hidden conflict, or recognize it without enforcing it in the final response. Existing benchmarks primarily test fully specified prompts, long-context recall, or controlled domain environments, leaving open-domain requirement reconciliation undermeasured. We introduce TurnFlow, an interactive benchmark for evaluating whether models preserve, revise, and act on user requirements across turns. TurnFlow combines adaptive user simulation with verifiable judging, allowing conversations to unfold naturally while keeping hidden requirements and pass/fail criteria controlled. In our evaluation, nine LLMs achieve overall pass rates from 42.86% to 59.59% on 490 scenarios. Performance varies substantially across challenge types: models perform well on Stateful Multi-Constraint Following but remain considerably less reliable on Scope Creep and Goal Shift. These results reveal persistent limitations in reasoning over evolving user requirements across turns.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "멀티턴 벤치마크 신규 제안이나 과제 언어가 불명확함"
+        }
+      ]
+    },
+    "2611.10425": {
+      "arxiv_id": "2611.10425",
+      "paper_title": "Governed Self-Improvement for a Local-First Security Analyzer: Baseline Measurements and a Preregistered Evaluation Protocol for Tantular Cyber",
+      "abstract": "Local-first security tools let organizations analyze code without sending it to third-party services, but the small language models they can run locally are weaker than hosted ones and are hard to improve without breaching the privacy guarantee that motivates them. We present Tantular Cyber, an open-source, read-only repository security analyzer that keeps deterministic scanner findings authoritative and confines a locally served language model to advisory explanations in Bahasa Indonesia. We report its measured v0.3.0 baseline on a synthetic, ground-truth benchmark: combining Semgrep with an interprocedural call-graph scanner yields precision 0.843 and recall 0.915 (Semgrep alone: 0.818 and 0.766). The advisory layer is the weak point: 57% of explanations met an evidence-grounding check, against 95% for a different 8B model under identical prompts. A forensic re-scoring of retained outputs shows that every grounding failure cites a code identifier absent from the evidence shown, and that a prompt change which appeared to raise grounding from 0.56 to 0.72 did so partly by citing nothing. We document two evaluation-validity hazards we encountered: silent model-file migration during a run and non-reproducible published figures. Building on these lessons and on constraint-aware evaluation from security operations research, we propose a governed self-improvement loop (code-free feedback, curated data, a cheapest-first intervention ladder from prompts to LoRA and weight-space edits, hard gates, and human release approval) and preregister the protocol by which its first cycle will be judged. We report no results for the loop itself.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "분석 도구와 평가 프로토콜 중심이며 재사용 벤치마크 아님, 설명은 인도네시아어"
+        }
+      ]
+    },
+    "2611.10541": {
+      "arxiv_id": "2611.10541",
+      "paper_title": "AFVE-Bench: Measuring Abandoned-Frame Verbalization Errors in Multi-Turn LLM Revision",
+      "abstract": "Multi-turn revision often asks a model to replace an earlier organizing frame while preserving still-valid facts and artifact requirements. Existing instruction-following evaluations mainly assess the latest target and may therefore score an artifact as successful even when it adopts the new frame but exposes the superseded one. We call this failure an abandoned-frame verbalization error (AFVE). AFVE-Bench evaluates silent frame replacement in English and Chinese using 192 matched four-turn dialogues across eight writing domains. Each seed has zero, one, or two pre-target user requests to generate under the source frame. AFVE eligibility depends on the user-request history and applies to the one- and two-request conditions; the zero-request condition serves as a frame-bearing baseline. Eleven model configurations yielded 4,224 expected post-target response units. Two annotators independently scored 4,204 scorable responses for target adoption, source-frame verbalization, and direct usability; model and condition metadata were hidden, and disagreements were adjudicated. AFVE occurs in 25.54% (715/2,799) of history-conditioned responses. Of 2,388 target-passing history-conditioned responses, 472 (19.77%) still expose the abandoned source frame, most often through contrastive framing (423/472). For these standalone revision tasks, target adoption does not ensure source-frame silence.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어·중국어 멀티턴 수정 평가 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.10555": {
+      "arxiv_id": "2611.10555",
+      "paper_title": "YRC-Bench: Benchmarking Culturally Aware Machine Translation for Historical Heritage via Tri-Level Semantic Bridging",
+      "abstract": "Translating historical cultural heritage poses profound challenges for machine translation systems due to the acute semantic asymmetry across eras and cultures, where terse classical syntax frequently obscures domain-specific cultural knowledge. While Large Language Models have demonstrated remarkable prowess in generic translation benchmarks, they struggle to negotiate Culturally-Specific Items and diachronic shifts in domain-rich historical texts, such as Yellow River cultural records. To bridge this critical gap, we introduce YRC-Bench, the first human-curated, multi-parallel benchmark dedicated to historical heritage translation across Classical Chinese, Modern Chinese, and nine target foreign languages. YRC-Bench establishes a tri-level parallel corpus incorporating modern explanatory glosses as explicit semantic bridges and operationalizes translation strategies through paired conserved versus substituted CSI variants categorized by cultural translatability. Systematic evaluations of nine leading LLMs across bidirectional translation directions reveal that leveraging modern Chinese glosses - especially human-curated ones - dramatically elevates both lexical fidelity and semantic adequacy. Furthermore, multidimensional human preference audits by native experts unveil distinct cross-cultural preferences between Sinographic-tradition and non-Sinographic language groups.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "번역 벤치마크이나 9개 대상 언어에 영어 포함 여부 불명확"
+        }
+      ]
+    },
+    "2611.10592": {
+      "arxiv_id": "2611.10592",
+      "paper_title": "MotionGraphicsBench: Evaluating Motion Graphics Generation with Programmatic Verification",
+      "abstract": "Large language models can generate motion graphics from static images and natural language requests, but it remains difficult to evaluate how well models can follow requests that combine spatial, appearance, and temporal requirements. We introduce MotionGraphicsBench, an expert-curated benchmark of 100 instances for animating an input static SVG with a motion edit prompt. By supplying all required visual elements, our editing task reflects a designer-like workflow and isolates motion generation from graphic generation. Derived from real-world Lottie motion designs, our benchmark contains diverse combinations of spatio-temporal animation behaviors. Each benchmark instance pairs its model input with a deterministic, human-readable verification program that accepts different valid implementations and reports which prompt requirements pass or fail, rather than comparing against a reference animation or using a VLM judge. We construct these programs with a multi-agent pipeline using human-labeled animations and synthesized test cases. On a balanced test set of 180 animations, our programs achieve 93.3% raw agreement with human judgments, compared with 83.3% for a GPT-6 Astra VLM baseline, and outperform the baseline in both approval and rejection recall. Across 47 configurations from 32 LLMs and 12 providers, pass@1 ranges from 6.0% to 67.7%. Across 15 models evaluated at their highest available reasoning effort with 32 attempts per instance, additional attempts improve every model, but pass@32 still ranges from 38.0% to 95.0%. Our analysis of verification programs reveals that generated animations often fail to match reference poses, follow requested motion trajectories, or coordinate related events. We release our benchmark at https://huggingface.co/datasets/figma-ai/motion-graphics-bench.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "벤치마크 공개, 프롬프트 언어가 abstract에 명시되지 않음"
+        }
+      ]
+    },
+    "2611.10626": {
+      "arxiv_id": "2611.10626",
+      "paper_title": "EndoSCOP-V: A Multi-Turn Video Understanding Evaluation Framework for Multimodal Models in Endoscopy Reporting and Clinical Reasoning",
+      "abstract": "Endoscopic diagnosis unfolds over native video, where a single positive finding during traversal of the gastrointestinal tract sets off a multi-minute chain of reasoning over location, morphology, severity and intervention. Existing endoscopy multimodal benchmarks test only static images or single-disease videos, which miss the temporal and clinical reasoning that real-world reporting demands. We introduce EndoSCOP-V, a video-grounded multi-turn evaluation framework for structured endoscopy reporting and clinical reasoning. It contains 1,307 real-world endoscopy and colonoscopy videos (63.2 h; 97% 1080p) averaging about 174 s. Its 20,274 question-answer turns are instantiated deterministically from clinician-filled structured endoscopy-reporting EHRs, so no per-case annotation is synthetic or LLM-rephrased. They come from 1,033 clinician-reviewed templates, about 18 per disease, that span a clinically aligned 9-task x 30-sub-task reporting taxonomy over 54 World Endoscopy Organization (WEO) MST 3.0 diseases. 22% of procedures carry co-existing pathologies, up to six per case. A Markovian context-pruned oracle-forcing protocol evaluates the dialogue turn by turn, injecting the gold answer before each subsequent turn so that per-turn reasoning is isolated from cascading dialogue errors. A panel of 15 board-certified endoscopists sets a 78% strict-accuracy baseline on 1,500 questions. Across 14 open-weight LMMs, the best 27B-class model reaches 59.8% strict accuracy, falling to 53.4% once format-trivial disease-rejection items are excluded. On a between-subjects spot-check, the best of 3 frontier proprietary models trails the clinician panel by 23 pp on strict NDR accuracy. Sub-task analysis reveals consistent gaps in quantitative measurement, multi-variable grading and intervention reasoning on long-horizon video. Data: Hugging Face (EndoSCOP-V). Code: GitHub (abhi25t/EndoSCOP-V).",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "내시경 멀티모달 벤치마크이나 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.10629": {
+      "arxiv_id": "2611.10629",
+      "paper_title": "DFT-Agent Bench: Scaffold Effects and Execution Provenance in Autonomous DFT",
+      "abstract": "Large language models are increasingly deployed as autonomous agents for first-principles materials simulation. We report empirical findings from DFT-Agent Bench, a benchmark of 200+ Quantum ESPRESSO tasks spanning relaxation, electronic structure, equation-of-state, and elastic-tensor pipelines over multiple material tiers. Each task carries a QE-derived ground truth with public-reference cross-checks where available, and a provenance audit checks whether the required QE execution contract was met. Under one execution harness, we compare a near-bare ReAct baseline with a bundled v5.1 scaffold on two models. The complete scaffold improves bands+DOS by +0.08/+0.11 and d-electron vc-relax by +0.17 on both models, while high-scoring relaxation and equation-of-state cells leave little room for improvement. The elastic result is model-dependent (0.18 to 0.40 for deepseek-v4-pro and 0.62 to 0.59 for claude-opus-4-8). A fixed 100-task analysis with retrieval disabled supports the aggregate pattern: the fully frozen DeepSeek comparison gains +0.17, while the Opus comparison gains +0.10 against a historical pool baseline (p < 0.001). The provenance gate catches incomplete or unmarked executions that can receive high rubric scores; it is an execution-contract check, not a test for intentional fraud. These results characterize the evaluated DFT workflows. The anonymous review artifact contains the frozen diagnostic slice, prompts, scorer, and solver revisions: https://anonymous.4open.science/r/231e31re91287h/README.md.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "DFT 에이전트 벤치마크이나 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.10679": {
+      "arxiv_id": "2611.10679",
+      "paper_title": "RankShift: Evaluating Ranking Instability Across Benchmark Dimensions in Document Parsing",
+      "abstract": "Document parsing benchmarks are often treated as stable measures of model quality, yet rankings may depend substantially on benchmark design choices. In this work, we present RankShift, a systematic study comparing OCR and vision-language models (VLMs) under controlled variation in dataset composition, matching strategy, and scoring methodology. Using OmniDocBench as a case study, we evaluate the ranking stability of 16 models across 3 dataset configurations, 6 matching strategies, and 3 scoring metrics. We quantify rank stability using pairwise rank correlation, top-k churn, and pairwise reversal rate. Our results show that the interaction between matching strategy and ground truth format is a substantial but understudied driver of instability: scoring against OmniDocBench's JSON annotations versus its Markdown rendering yields a mean Kendall's tau of approximately 0.33 under region-level matching strategies, with individual pairs as low as tau = 0.23, compared with tau = 0.77 when each page is scored as a single concatenated string. Dataset composition produces comparable instability across page-type strata (mean tau = 0.48) and layout-type strata (mean tau = 0.49), while the cross-dataset shift from OmniDocBench to Real5's Scanning reconstruction of the same pages is more stable (tau = 0.80). Metric choice is the most stable dimension, with mean tau of approximately 0.78 across NED, BLEU, and METEOR. These findings indicate that leaderboard position is not solely a property of model capability, motivating leaderboards that report not only headline scores but also the robustness of rankings across reasonable design choices.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "기존 벤치마크 순위 안정성 분석이며 신규 평가 자원 없음"
+        }
+      ]
+    },
+    "2611.10705": {
+      "arxiv_id": "2611.10705",
+      "paper_title": "AbductionBench: Benchmarking Abductive Reasoning in Large Language Models",
+      "abstract": "Abductive reasoning is the inference of plausible explanations for observed evidence. Evaluating this capability requires more than a single task: a system may need to generate an explanation, discriminate among competing hypotheses, revise its hypotheses as evidence arrives, or decide what evidence to seek next. Yet these capabilities are typically evaluated through isolated benchmarks with different task formulations and scoring procedures, so claims that a model is ``good at abduction'' may reflect only a narrow aspect of this capability. We introduce AbductionBench, a unified framework whose taxonomy characterizes abductive tasks. We instantiate this framework on 27 datasets spanning ten domains and evaluate eight LLMs from four model families evaluated on single-choice selection tasks. Beyond harmonizing heterogeneous tasks, AbductionBench separates final-answer evaluation from analysis of the observable reasoning traces and interaction histories produced alongside those answers. We analyze written traces as observable model outputs rather than faithful representations of internal computation, characterizing evidence use, hypothesis comparison, uncertainty, contradiction handling, and answer commitment. Jev matches or exceeds small LLMs when selecting among explanations over compact evidence but falls substantially behind on longer cases, suggesting that candidate discrimination and extended evidence integration place different demands on a system. In interactive tasks, the proportion of actions judged relevant declines at later steps, and a relevant first question is associated with a correct final answer; in the passive task, models rarely revise their initial hypothesis as new evidence arrives. Together, these findings highlight the value of evaluating abductive reasoning through both final answers and observable evidence use, hypothesis revision, and information gathering.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "추론 벤치마크 프레임워크이나 데이터셋 언어 불명확"
+        }
+      ]
+    },
+    "2611.10776": {
+      "arxiv_id": "2611.10776",
+      "paper_title": "SIExBench: A Benchmark for Automated Repair of Sensitive Information Exposure",
+      "abstract": "Modern software systems routinely process credentials, personal records, and other sensitive information. A sensitive information exposure (SIEx) defect makes such information accessible to an unauthorized actor and can cause serious and often irreversible disclosure. However, prior research has focused largely on detecting such exposures rather than repairing the underlying defects, and existing repository-level issue-resolution benchmarks do not specifically target this defect class. We present SIExBench, to our knowledge the first benchmark dedicated to automated repair of SIEx defects. SIExBench contains 161 execution-verified instances from 64 widely used Python and Java repositories, each with an issue report, buggy repository snapshot, developer patch, executable exposure and regression tests, and defect characterization. We evaluate six repair systems with three LLMs, yielding 18 configurations, and systematically analyze their overall effectiveness, performance across defect characteristics, and failure mechanisms. The strongest configuration resolves only 39.1% of the instances, while 40.4% remain unresolved by all 18 configurations. More importantly, 62.1% of unsuccessful attempts produce a valid patch that still leaves sensitive information exposed, making incomplete exposure removal a central challenge. Systems often generate plausible patches and modify relevant code without fully eliminating the exposure, indicating that effective repair must ensure that all relevant paths to sensitive-information exposure are closed. Overall, SIExBench provides a foundation for systematically evaluating and advancing automated repair of sensitive information exposure defects.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "코드 수정 벤치마크이나 이슈 보고서 언어 불명확"
+        }
+      ]
+    },
+    "2611.11104": {
+      "arxiv_id": "2611.11104",
+      "paper_title": "Tracing MCP Security Vulnerabilities: Constructing and Analyzing an MCP Security Vulnerability Dataset",
+      "abstract": "As a core protocol for integrating large language models (LLMs) with external data sources and tools, the Model Context Protocol (MCP) has quickly become a key interface in emerging AI agent systems. As the MCP ecosystem expands, reported vulnerabilities have also increased, creating a growing software-security attack surface. However, MCP vulnerability information remains scattered, noisy, and difficult to study systematically. This paper addresses that gap by constructing a curated MCP vulnerability dataset from CVE disclosures. Starting from 119 MCP-related records retrieved through February 2026, we filter unrelated cases out and obtain a validated snapshot of 24 MCP vulnerabilities. Our filtering methodology explicitly addresses acronym ambiguity and achieves 96.7% inter-rater agreement on a sampled exclusion audit while retaining all known high-severity MCP cases identified in public advisories. Using this initial dataset snapshot, we find that 87.5% of validated vulnerabilities are Critical or High severity, and that injection and path traversal vulnerabilities account for 66.7% of cases. We further identify recurring issues involving insufficient input validation, inadequate access control, and protocol-level security gaps. Through six representative case studies, we illustrate common exploitation patterns and map them to practical defenses. We release the dataset, reproducibility tooling, and a sustainable maintenance workflow as a foundation for future MCP security measurement, benchmarking, and defense research.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "MCP 취약점 데이터셋이나 LLM 평가용 여부 불명확"
+        }
+      ]
+    },
+    "2611.11266": {
+      "arxiv_id": "2611.11266",
+      "paper_title": "ErosionBench: Probing Alignment Decay in Enterprise Multi-Agent Systems",
+      "abstract": "As enterprises delegate consequential work to multi-agent LLM systems, benign-looking requests can escalate into unsafe actions as they propagate across sessions through poisoned shared state, long-context documents, and trusted peer messages: no single message is malicious, yet the assembled tool action is. Prior benchmarks isolate a single agent under prompt injection or score multi-agent attacks by their final output, leaving cross-session erosion of shared state out of scope. We introduce ErosionBench, an environment-grounded benchmark that executes such attacks and verifies alignment decay at the process level, scoring the realized tool call against authorized intent and provenance with deterministic contracts, not output text. Each scenario is authored as a deterministic state graph before any prose is rendered, so every state change traces to a known cause. It spans four enterprise domains and four decay mechanisms across 1,728 scenarios with matched benign controls, labeled against the OWASP Top-10 for LLM Applications, plus 198 image-based attacks, each paired with a text equivalent, so a defense must survive the same attack in either channel. Perimeter defenses suppress attacks only by over-refusing 54-92% of legitimate work, so a low attack-success rate can conceal severe over-refusal. As a reference defense, we propose a calibrated Meta-Auditor pairing synchronous state checks with asynchronous trajectory monitoring; on a family-disjoint 906-scenario held-out split it reaches 98.5% recall at a 2.9% false-positive rate. Since it monitors trajectory, not surface content, its detection is channel-invariant: the strongest auditor flags image-delivered attacks about as reliably as their text equivalents (recall gap $\\leq$2 points per model). Across GPT, Gemini, and Claude auditors, calibration keeps false positives low while recall tracks model capability, strongest for Claude.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "멀티에이전트 안전 벤치마크이나 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.11284": {
+      "arxiv_id": "2611.11284",
+      "paper_title": "WarBias: A Bilingual LLM Benchmark of Stereotypes About Internally Displaced People and Veterans",
+      "abstract": "This paper contains examples of stereotypes about veterans and displaced people that may be offensive or distressing. Social bias benchmarks for language models commonly examine categories such as gender, race, and religion, often drawn from lists of legally protected characteristics. Veterans and internally displaced people (IDPs) fall outside these lists, and stereotypes about them, which can undermine access to employment, housing, and social participation, remain largely absent from language model evaluation. We introduce WarBias, a Ukrainian--English benchmark of stereotypes about these two groups. Built from a taxonomy of 120 stereotype claims grounded in research and monitoring reports, WarBias contains 1,007 stereotype--counter-stereotype--unrelated sentence triplets and 240 multiple-choice questions per language. A Ukrainian language model selected in a blinded human pilot generated the Ukrainian triplets. At least two independent annotators reviewed each triplet in the annotation cohort. The authors revised items in response to the reviews, and the final release was machine-translated into English. Each claim carries a human severity rating. In a baseline evaluation of six models, four prefer stereotypical Ukrainian sentences about at least one group, most strongly about IDPs, while English scores are mostly balanced. WarBias supports complementary evaluations of stereotypical preferences and context-sensitive judgments, and provides paired forget/retain material for unlearning-based bias mitigation. We document the benchmark's construction, intended uses, and limitations, and offer its construction method as a template for analogous benchmarks in other conflict-affected societies.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "우크라이나어-영어 편향 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.11437": {
+      "arxiv_id": "2611.11437",
+      "paper_title": "How to \"train\" a surgeon? Benchmarking generalist agents in surgical scene understanding",
+      "abstract": "Evaluating general-purpose multimodal large language models (MLLMs) for surgical scene understanding remains limited due to scarce surgical data and fragmented evaluation protocols. We address these challenges through a two-stage evaluation framework for surgical scene understanding. In Stage I, we introduce SurgKnowBench, a diagnostic benchmark that harmonizes public surgical datasets across procedures and tasks and evaluates proprietary and open-source MLLMs to map the boundary of pretrained surgical competence. SurgKnowBench reveals that current models retain partial visual priors but remain weak on relational and procedural understanding and workflow assessment. Building on this failure frontier and motivated by the scaffolded nature of surgical training, we introduce SurgAgentGym, an agentic environment where general-purpose MLLM agents can use bounded knowledge search over SurgWiki and general-purpose visual grounding for surgical tasks. SurgAgentGym evaluates whether generalist agents can improve surgical understanding at inference time through tool-mediated evidence use, without additional surgical training. Our results show that agentic inference narrows the gap mainly for perception-heavy tasks, while fine-grained localization and expert-style assessment remain persistent bottlenecks. This opens a path toward future studies of agentic surgical understanding.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "수술 장면 벤치마크이나 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.11469": {
+      "arxiv_id": "2611.11469",
+      "paper_title": "RealEmbedBench: Benchmarking LLMs on Real-World Application-Layer Embedded Software Tasks",
+      "abstract": "Large language models (LLMs) perform well on general coding tasks, but their capabilities in application-layer embedded software development remain underexplored. Existing embedded benchmarks primarily focus on hardware-in-the-loop validation in simulated environments. We introduce RealEmbedBench, a benchmark of 5,142 samples covering three application-layer tasks: code generation and completion, state machine modeling and implementation, and cross-OS code translation. We evaluate six representative LLMs and find substantial performance differences across tasks and models. Project context, especially the local code window, significantly affects code generation and completion. Models perform reasonably well at state machine modeling but struggle to translate these models into executable code. Cross-OS translation performance varies substantially by direction. Translation from Harmony to RT-Thread is particularly challenging, with an average pass rate of 0.1667. These findings suggest that developers should consider local code context when using LLMs for code generation and completion and select models according to the translation direction. They also motivate the use of more real-world state machine implementation data in LLM training to narrow the gap between modeling and executable code.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "임베디드 코드 벤치마크이나 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.11487": {
+      "arxiv_id": "2611.11487",
+      "paper_title": "THEATRON: A Benchmark for Evaluating Persona Persistence in Long-Horizon LLM Decision-Making",
+      "abstract": "Existing evaluations often test persona expression rather than whether persona information persists in extended decision-making. We introduce THEATRON, a controlled benchmark that uses financial replay to evaluate persona persistence in long-horizon sequential decision-making. In these environments, models conditioned on fixed behavioral-finance personas observe shared daily market evidence and trajectory-specific account-state feedback and make sequential decisions over multi-month trajectories. We evaluate Zero-Shot, One-Shot, and Chain-of-Thought persona injection across four LLMs, using cumulative-return and action trajectories to diagnose within-persona stability, cross-persona separability, and action collapse. Persona conditioning produces systematic behavioral shifts beyond a no-persona baseline, and persona-level separation generally exceeds the variation induced by semantically equivalent descriptions. Nevertheless, these shifts do not reliably form coherent persona-specific policies: apparently stable separation can arise from stereotyped action collapse, while diverse policies can exhibit noisy trajectory switching. These findings expose a gap between observable persona-induced behavior and persistent, context-sensitive persona-conditioned decision policies. Code and benchmark data are publicly available at: https://github.com/yuyan12138/theatron",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "페르소나 지속성 벤치마크이나 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.11588": {
+      "arxiv_id": "2611.11588",
+      "paper_title": "FinCutBench: A Continually Updated Benchmark for Measuring the Temporal Boundaries of LLM Financial Knowledge",
+      "abstract": "In financial backtesting and other point-in-time tasks, external inputs can be restricted by date, but model parameters may retain financial facts disclosed later, introducing parametric look-ahead bias. We introduce FinCutBench, a continually updated monthly financial knowledge benchmark for measuring how far a fixed model's financial knowledge extends over calendar time. The current dataset contains 9,000 Chinese and English four-option multiple-choice questions from January 2023 to September 2026, covering Chinese and U.S. markets and four categories of financial information. We construct monthly knowledge profiles using the approximate months in which the tested facts became public. After a profile passes the decline test and knot checks, we define the FinCut Boundary as the first month when the fitted profile reaches its lower level, and report the stability of the estimated date under resampling. Boundary dates and localization precision vary across models. Using the independently measured Transition Start and Boundary as fixed references for downstream sample grouping, we find clear relative declines after the Boundary in U.S. asset ranking and earnings recall for some models, while Chinese-market ranking estimates vary across models and all eight disclosure-period-paired forecast-error comparisons have unadjusted $p$ values above 0.10. The FinCut Boundary thus provides an empirical reference for the temporal scope of parametric knowledge in point-in-time financial evaluation, supporting evaluation-window selection and result interpretation.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "중국어·영어 금융 지식 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.11720": {
+      "arxiv_id": "2611.11720",
+      "paper_title": "ShadowBench-MCP: Measuring Shadow Invocations in MCP-Style Tool Routing",
+      "abstract": "LLM agents increasingly act as routers for tools, APIs, and software-supply-chain workflows, making an execution path - rather than generated text alone - a security-relevant model output. We study shadow invocation: a task-preserving request variant that causes an LLM router to select a riskier execution path, potentially skipping validation, provenance, staging, redaction, or audit controls even though the request does not ask for a malicious action. We introduce ShadowBench-MCP, a benchmark and metric suite that separates task preservation (TPSS), operational pressure (OPSS), and route-geometric drift (RGAS), and combines them in the pre-execution SODS score. In a focused policy-ablation study using a Groq-hosted qwen/qwen3-32b router, 120 routing decisions yield 96 original-versus-variant comparisons across six security-sensitive workflows. Efficiency-first routing produces a 29.2% shadow-invocation rate and 26.7% safety-tool skip rate. Policy-aware routing reduces these to 4.2% and 1.7%, respectively, corresponding to an 85.7% relative reduction in shadow invocations. Pre-execution signals distinguish shadow routes with ROC AUC up to 0.94. These results are early, single-router evidence of a policy-dependent routing-layer security effect, not a claim of universal vulnerability.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "도구 라우팅 벤치마크이나 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.11794": {
+      "arxiv_id": "2611.11794",
+      "paper_title": "ChemInsight: A Comprehensive Benchmark for Evaluating and Diagnosing Chemistry Understanding and Reasoning in Large Language Models",
+      "abstract": "We introduce ChemInsight, a benchmark designed to evaluate large language models (LLMs) on chemistry tasks that require multi-step reasoning and structured chemical understanding. We propose a two-dimensional scoring system (scope and depth) to assess both task coverage and reasoning completeness. ChemInsight consists of 203 challenging chemistry questions organized into 50 bundles, which support the two-dimensional scoring evaluation scheme. We evaluate ten representative LLMs using ChemInsight and observe consistently low performance across models, with scope scores below 30% and depth scores below 11%, substantially lower than human expert performance. We then proceed to ask (1) What factor limits the advancement of current LLMs in chemistry? (2) To what extent are statistically driven language-model training methods effective at modeling chemistry symbolic language such as SMILES? And (3) Can LLM performance in chemistry be improved through intensive training on large, domain-specific corpora?",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "화학 추론 벤치마크이나 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.11802": {
+      "arxiv_id": "2611.11802",
+      "paper_title": "HiddenPathQA: A Benchmark for Knowledge Graph Question Answering When Questions Hide Their Paths",
+      "abstract": "Knowledge graph question answering (KGQA) systems are typically evaluated on questions whose surface tokens lexically expose the gold KG path. Users, however, may ask questions without knowing the underlying schema: \"Which condition could Andrew have due to family history?\" compresses a 4-hop chain \"Andrew --[father]--> parent --[father]--> grandparent --[medical condition]--> disease --[subclass of]--> hereditary disorder\" into a single phrase (family history) that names none of those relations. We identify this collapse of path-question alignment as a blind spot in existing KGQA evaluation. Three major LLM-KG paradigms, hop-by-hop exploration, plan-then-retrieve, and similarity-based retrieval, implicitly rely on such lexical cues, an assumption rarely tested in practice. We make three contributions. (i) We introduce HiddenPathQA, a manually verified benchmark of 1,055 questions spanning 2-6 hops and multiple domains, constructed so that question wording does not reveal the gold path's relations. (ii) We propose Holistic Path Selection, which compares questions against candidate relation chains in the local subgraph as complete units, replacing irreversible per-hop relation scoring with globally informed chain-level reasoning. We develop two implementations, TieredHolistic and FlatHolistic. (iii) We conduct a pseudoword stress test that replaces entity names with meaningless placeholders to distinguish KG-grounded reasoning from entity-level memorization. Holistic Path Selection outperforms six strong KGQA baselines (ToG, PoG, FiDeLiS, R2-KG, KAPING, and KARPA) by 8.8-17.9 accuracy points across two LLM backbones and both original and pseudoword settings. Its advantage under pseudoword replacement shows that the gains cannot be explained by entity-level memorization alone.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:46Z",
+      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "KGQA 벤치마크 신규 제안이나 질문 언어 불명확"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -89738,10 +90098,30 @@
         "2611.10044",
         "2611.10156",
         "2611.10288",
-        "2611.10349"
+        "2611.10349",
+        "2611.10412",
+        "2611.10425",
+        "2611.10541",
+        "2611.10555",
+        "2611.10592",
+        "2611.10626",
+        "2611.10629",
+        "2611.10679",
+        "2611.10705",
+        "2611.10776",
+        "2611.11104",
+        "2611.11266",
+        "2611.11284",
+        "2611.11437",
+        "2611.11469",
+        "2611.11487",
+        "2611.11588",
+        "2611.11720",
+        "2611.11794",
+        "2611.11802"
       ],
-      "calls": 3,
-      "cost_usd": 0.9396
+      "calls": 4,
+      "cost_usd": 1.0177
     }
   },
   "reaudits": [
