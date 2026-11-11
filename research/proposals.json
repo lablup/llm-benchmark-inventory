@@ -57273,6 +57273,167 @@
       },
       "issue_url": null,
       "proposal_sha256": "2d5e95c0d5619e9b8fd7c2f3c6d0c07a40be6dc5474351b3c1602f4198172f0d"
+    },
+    "2508.16821": {
+      "decision": "propose",
+      "reason": "PuzzleJAX는 PuzzleScript 퍼즐 게임을 JAX/C++로 재구현한 재사용 가능한 벤치마크 프레임워크로, 탐색·강화학습·LLM 에이전트를 비교 평가한다. LLM에게는 ASCII 상태, 규칙, 행동 공간이 텍스트로 주어지고 영어 단어 철자 게임 같은 영어 과제가 있어 en 트랙, 텍스트 모달리티로 분류했다. 인벤토리에 같은 벤치마크가 없어 새 행으로 제안한다. 논문이 명시한 공식 코드 링크(GitHub)가 있다. 라이선스·재사용 조건과 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "puzzlejax",
+            "이름": "PuzzleJAX",
+            "평가 축": "추론·계획(퍼즐 게임 플레이: 탐색·강화학습·LLM 에이전트)",
+            "언어": "en",
+            "정의": "PuzzleScript DSL로 기술된 2D 타일 기반 퍼즐 게임을 GPU 가속(JAX)·C++·JavaScript 백엔드에서 실행하는 벤치마크 프레임워크. 논문은 2,500개 이상의 게임 환경을 말하고, 대표 실험에는 15개 Select 게임을 사용한다. LLM 에이전트에는 ASCII 상태·규칙·행동 공간을 주고 레벨당 10회, 최대 100스텝으로 승률을 측정한다. 탐색(BFS, A*, MCTS)·PPO 강화학습과 비교한다.",
+            "대표 과제": "ASCII 상태, 규칙, 행동 목록을 받아 퍼즐 레벨을 푸는 LLM 플레이어 에이전트 과제(Sokoban, Slidings, Kettle 등)",
+            "대표 예시·설명": "Multi-Word Dictionary Game처럼 글자를 밀고 당겨 영어 단어를 만드는 퍼즐을 푸는 과제 설명(실제 시험 문항이 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋·코드 라이선스를 확인하지 못했다. PuzzleScript 엔진은 MIT이고 저장소에 같은 라이선스를 포함한다고 논문 부록에 적혀 있으나, 이것이 수집된 사용자 게임 파일의 라이선스를 뜻하지는 않는다. 게임은 GitHub gist 등에서 수집한 사용자 제작물이므로 구성 요소별 약관을 이용 전에 확인해야 한다. LLM 결과는 논문이 예비 결과로 밝혔으며 최신 모델 결과는 갱신이 필요하다. 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/smearle/script-doctor"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Reasoning and planning (puzzle-game play: tree search, reinforcement learning, LLM agents)",
+            "definition": "A benchmark framework that runs 2D tile-based puzzle games written in the PuzzleScript DSL on GPU-accelerated JAX, multi-threaded C++, and JavaScript backends. The paper describes over 2,500 game environments and uses 15 Select games for its main experiments. LLM agents receive an ASCII state, the rules, and the action space, with 10 runs per level and at most 100 steps, and win rates are compared with tree search (BFS, A*, MCTS) and PPO reinforcement learning.",
+            "task": "LLM player agents that receive an ASCII state, rules, and action list and solve puzzle levels (Sokoban, Slidings, Kettle, and others)",
+            "example": "Task description, not an actual test item: solve a puzzle such as the Multi-Word Dictionary Game, in which letters are pushed and pulled to spell an English word."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "provide LLM player"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "provide LLM player"
+            },
+            "대표 예시·설명": {
+              "page": 6,
+              "quote": "spell an English"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/smearle/script-doctor"
+            },
+            "언어": {
+              "page": 6,
+              "quote": "spell an English"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "PuzzleJAX: A Benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "over 2,500 distinct"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "PuzzleJAX: A Benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2508.16821",
+      "paper_title": "PuzzleJAX: A Benchmark for Reasoning and Learning",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2508.16821",
+        "sha256": "dbe845642f27c6871dba191a47585f8f40b8c02d52875e149b5e490ca9f3894f",
+        "accessed": "2026-11-11T03:22:21Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 16,
+          "elapsed_seconds": 106.21,
+          "pdf_sha256": "dbe845642f27c6871dba191a47585f8f40b8c02d52875e149b5e490ca9f3894f",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "0e64e76778219ac0d231413b5f361f3a4e6c1a5b8e48a71471b909a9f2326709",
+          "page_json_file": "2508.16821.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/smearle/script-doctor",
+            "fetched_url": "https://api.github.com/repos/smearle/script-doctor/readme",
+            "sha256": "03adc15551819e18089bbe55e06132ab564778e19d9f7c776cd80d33b25240be",
+            "accessed": "2026-11-11T03:24:28Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/smearle/script-doctor/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "b04a493287dcc652c0018dd06f6b44b1f832ee51b2be747ed277c4ce7d1733c2"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-11T03:24:28Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2508.16821",
+        "paper_title": "PuzzleJAX: A Benchmark for Reasoning and Learning",
+        "abstract": "We introduce PuzzleJAX, a GPU-accelerated puzzle game engine and description language designed to support rapid benchmarking of tree search, reinforcement learning, and LLM reasoning abilities. Unlike existing GPU-accelerated learning environments that provide hard-coded implementations of fixed sets of games, PuzzleJAX allows dynamic compilation of any game expressible in its domain-specific language (DSL). This DSL follows PuzzleScript, which is a popular and accessible online game engine for designing puzzle games. In this paper, we validate in PuzzleJAX several hundred of the thousands of games designed in PuzzleScript by both professional designers and casual creators since its release in 2013, thereby demonstrating PuzzleJAX's coverage of an expansive, expressive, and human-relevant space of tasks. By analyzing the performance of search, learning, and language models on these games, we show that PuzzleJAX can naturally express tasks that are both simple and intuitive to understand, yet often deeply challenging to master, requiring a combination of control, planning, and high-level insight.",
+        "paper_updated": "2026-10-07T00:00:00Z",
+        "created_at": "2026-10-19T13:48:52Z",
+        "input_sha256": "ba0eebf307a90c3f80727e2122942efb5781df3d30683fc55d69ecb47114dcc7",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "추론 및 학습 평가용 퍼즐 게임 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "퍼즐 게임 기반 추론·강화학습 벤치마크 엔진 PuzzleJAX 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42946878305",
+        "context_sha256": "1a0fe0a2e4780fdd5de2785f685225c76ff2d4f9fdc2865eef10d5d6f5e6d603"
+      },
+      "proposal_sha256": "c17321c7d77636bf3ff609051a5771fdd2fafbe2a092f50f14de1a67f84fc8d8"
     }
   },
   "processed_comments": [],
@@ -91152,8 +91313,8 @@
         "2611.12640",
         "2611.12856"
       ],
-      "calls": 17,
-      "cost_usd": 10.7847
+      "calls": 18,
+      "cost_usd": 11.5749
     }
   },
   "reaudits": [
