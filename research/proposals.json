@@ -64131,22 +64131,18 @@
     "2509.23219": {
       "arxiv_id": "2509.23219",
       "paper_title": "WirelessMathBench-XL: An Auditable Benchmark for Wireless Mathematical Reasoning",
-      "abstract": "Technical-domain benchmarks constructed from arXiv papers can overlap the same public text used in LLM pretraining. Auditing this risk at training-corpus scale requires searching billions of corpus n-grams while retaining per-item evidence that users can inspect and recompute. We contribute a reverse-probe audit at a fixed 13-gram threshold: it indexes benchmark prompts, streams public pretraining corpora, and emits per-problem prompt-surface lexical-overlap metadata with memory that scales with the benchmark. We instantiate the protocol in WirelessMathBench-XL, a 4,027-problem wireless mathematical-reasoning benchmark built from 836 retained arXiv papers across 20 subfields. Against 12.9B streamed 13-grams from RedPajama-arXiv, the audit identifies a strict zero-hit view S0 covering 3,853 problems (95.7%). Filtering to S0 changes accuracy by less than 1 pp for every evaluated model; frontier calibration rows form one high-accuracy cluster between 86.5% and 91.3%, not a resolved rank order. Only 30/800 test items carry detected overlap. Under an all-flagged-correct counterfactual, their largest possible positive score inflation is 0.31-0.51 pp for the frontier rows, so full-versus-S0 is a bounded, structurally underpowered stability summary rather than a contamination-effect test or cleanliness claim. The audit channel does not cover paraphrase, target-answer, post-training, or closed-corpus exposure. The release includes source-paper identifiers, verifier-facing ground truths, audit and threshold metadata, filtered views, a paper-disjoint sensitivity view, evaluation traces, paired-bootstrap scripts, training recipes, Croissant metadata, and a Datasheet for Datasets.",
-      "paper_updated": "2026-09-29T00:00:00Z",
-      "created_at": "2026-10-19T13:46:12Z",
-      "input_sha256": "42eaab9966968b7b3f102862a1d2c47cd0b3cca408977d105733761b7bd2b19c",
-      "version": 4,
+      "abstract": "Benchmarks built from arXiv papers can overlap the arXiv text used in LLM pretraining, yet technical-domain releases rarely ship the per-item evidence needed to check this. We introduce a reverse-probe n-gram audit that indexes the benchmark side and streams the corpus past it, so memory scales with the benchmark rather than the corpus and flags on the distributed problems can be inspected and recomputed. We instantiate it in WirelessMathBench-XL, a 4,027-problem benchmark for wireless mathematical reasoning built from 836 arXiv papers across 20 subfields, with multiple-choice, progressive fill-in, and full-equation-completion formats. Streaming 12.9 B RedPajama-arXiv 13-grams yields a strict zero-hit view $\\mathcal{S}_0$ covering 95.7% of the problems, and shows that the Dolma and ProofPile-2 arXiv slices repackage the same RedPajama dump. Filtering to $\\mathcal{S}_0$ moves every evaluated model by less than 1 pp. With 30/800 flagged test items, this comparison bounds detected-overlap inflation at 0.31-0.51 pp for frontier models rather than testing for contamination, and it does not cover paraphrase, target-answer, alternate-version, post-training, or closed-corpus exposure. Frontier models reach 86.5-91.3%, and GRPO on the released training split lifts a 7B model 25.1 pp above a size-matched general-math control. We release source-paper identifiers, per-problem audit and threshold metadata, license-aware data files, audit and bootstrap scripts, Croissant metadata, and a Datasheet.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "무선 수학 추론 벤치마크로 LLM 평가에 적합"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "무선 수학 추론 벤치마크와 오염 감사 프로토콜 재사용 가능 자원 제공"
+          "reason": "무선 수학 추론 벤치마크 WirelessMathBench-XL 공개"
         }
       ]
     },
@@ -73227,22 +73223,18 @@
     "2610.14381": {
       "arxiv_id": "2610.14381",
       "paper_title": "ACED-Bench: Evaluating How LLM Agents Acquire and Act on Causal Evidence",
-      "abstract": "Large language models are increasingly used as scientific assistants, yet we still lack reliable ways to evaluate whether they can investigate a system rather than merely answer a prompt. A useful evaluation must let agents choose experiments, interpret finite evidence, and make causal decisions, while keeping the environment coherent across repeated observations and interventions and preserving objective ground truth. We introduce ACED-BENCH (Active Causal Evidence and Decision Benchmark), a neuro-symbolic benchmark built around this requirement. The key idea is to separate the readable scientific surface from the formal causal world: LLMs generate natural-language scenarios and task text, while hidden probabilistic graphical models define the causal graph, data-generating process, intervention semantics, validation checks, and oracle answers. This yields scientific worlds that are natural for agents to investigate but exact enough for scalable, programmatic evaluation. The main leaderboard ACED-CORE contains 180 tasks: 60 set-valued causal ancestry/descendancy questions and 120 constrained causal-decision tasks. We also report ACED-QUAL, a 150-question yes/no qualification check using the same hidden-PGM interface. We evaluate seven contemporary LLMs and two earlier-generation models across three active agent designs. ACED-QUAL checks whether agents can use the interface to draw conclusions from evidence, while ACED-CORE tests whether they can decide what evidence to collect and when to commit to an answer. Evidence-ledger analysis localizes failures within the investigation: agents test the wrong intervention, lose relevant evidence, or continue after sufficient evidence has appeared. These results suggest that reliable AI co-scientists need explicit support for experiment design, evidence retention, answer commitment, and stopping.",
-      "paper_updated": "2026-10-14T00:00:00Z",
-      "created_at": "2026-10-19T13:50:19Z",
-      "input_sha256": "8eed9bd61dd9171f6702a28e6d2422a4c58f0c02c9399b00a534e77b91465c47",
-      "version": 4,
+      "abstract": "Large language models are increasingly used as scientific assistants, yet we still lack reliable ways to evaluate whether they can investigate a system rather than merely answer a prompt. A useful evaluation must let agents choose experiments, interpret finite evidence, and make causal decisions, while preserving objective ground truth. We introduce ACED (Active Causal Evidence and Decision Benchmark), a neuro-symbolic benchmark that separates the readable scientific surface from the formal causal world: natural-language scenarios describe the system, while a hidden causal model defines the data, the effect of every intervention, and the oracle answers. In ACED-Repair, agents diagnose a failing production system: within 15 experiments they must decide which controls to test, read confounded and filtered data, and recommend a fix, which we re-simulate on a hidden true objective. In ACED-Query, agents answer causal questions and make constrained causal decisions in worlds backed by categorical probabilistic graphical models. Acceptance on ACED-Repair ranges from 43% to 0% across 12 LLMs, while strong agents approach ceiling on ACED-Query's qualification questions. Tracing every experiment shows where investigations stop: most open-weight models test a true lever on its own in fewer than half of the worlds, the strongest models test the right levers but often miss the working dose or combination, and agents that do run a working fix almost always recommend it. No model reliably repairs systems with two independent causes or systems that need a subgroup-specific policy. These results suggest that reliable AI co-scientists need explicit support for choosing experiments, keeping track of evidence, and composing interventions. Code and data are available at https://github.com/Rose-STL-Lab/ACED-Bench.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "인과 증거 습득 및 행동 평가 벤치마크"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "인과 증거 수집·의사결정 평가 벤치마크 ACED-BENCH 제안"
+          "reason": "LLM 에이전트 인과 증거 획득 벤치마크 ACED 공개"
         }
       ]
     },
@@ -74393,22 +74385,18 @@
     "2609.04241": {
       "arxiv_id": "2609.04241",
       "paper_title": "VocalCoachBench: Benchmarking Audio-Language Models on Expert Feedback for Singing",
-      "abstract": "Recent audio-language models are increasingly evaluated on recognizing, describing, and reasoning about audio, but expert-facing applications require a different capability: producing feedback that identifies problems and suggests corrective actions grounded in the input. We introduce VocalCoachBench, a benchmark for evaluating audio-language models on expert vocal coaching feedback for singing. VocalCoachBench contains 515 recordings annotated by 18 professional vocal trainers, yielding 1,056 expert submissions and 12,051 atomic coaching claims. It comprises a same-song subset for controlled comparison and a diverse-song subset for segment-grounded feedback across varied songs and recording conditions. To accommodate the open-ended nature of expert feedback, VocalCoachBench sep- arates deterministic structured targets from claim-based assessment of free-form diagnosis and corrective guidance. Human annotation analysis shows that expert agreement varies strongly with label granularity, motivating hierarchical structured metrics and claim-based evaluation of open-ended feedback. Experiments with 12 recent audio-language models reveal a consistent gap: while models can compare performances and identify broad issue domains in free-form feedback, Top-3 fine-grained issue-label identification remains below label-prior baselines and strict diagnosis alignment stays below 7%. To our knowledge, VocalCoachBench pro- vides the first public testbed for evaluating audio-grounded expert feedback for singing, moving audio-language evaluation beyond description toward analytic feedback.",
-      "paper_updated": "2026-10-14T00:00:00Z",
-      "created_at": "2026-10-19T13:50:58Z",
-      "input_sha256": "6d0570c342057dabb31841196faa8fbfde72e2b1a4c17cb548aa727cf98d5b23",
-      "version": 4,
+      "abstract": "Recent audio-language models are increasingly evaluated on recognizing, describing, and reasoning about audio, but expert-facing applications require a different capability: producing feedback that identifies problems and suggests corrective actions grounded in the input. We introduce VocalCoachBench, a benchmark for evaluating audio-language models on expert vocal coaching feedback for singing. VocalCoachBench contains 515 recordings annotated by 18 professional vocal trainers, yielding 1,064 expert audio-level reviews and 12,216 atomic coaching claims. It comprises a same-song subset for controlled comparison and a diverse-song subset for segment-grounded feedback across varied songs and recording conditions. To accommodate the open-ended nature of expert feedback, VocalCoachBench separates deterministic structured targets from claim-based assessment of free-form diagnosis and corrective guidance. Human annotation analysis shows that expert agreement varies strongly with label granularity, motivating hierarchical structured metrics and claim-based evaluation of open-ended feedback. Experiments with 12 recent audio-language models reveal a persistent gap: while the strongest models can compare performances and identify broad issue domains in free-form feedback, the best Top-3 macro-F1 only slightly exceeds a label-prior baseline, and strict diagnosis hit rates remain below 8%. To our knowledge, VocalCoachBench provides the first public testbed for evaluating audio-grounded expert feedback for singing, moving audio-language evaluation beyond description toward analytic feedback. Data, code, and audio examples are available at https://hayeonbang.github.io/VocalCoachBench.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "노래 코칭 오디오-언어 모델 벤치마크로 평가에 부합"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "오디오-언어 모델 성악 코칭 피드백 벤치마크 신규 제안"
+          "reason": "노래 코칭 피드백 오디오-언어 벤치마크 신규 공개"
         }
       ]
     },
@@ -78203,18 +78191,18 @@
     "2608.28212": {
       "arxiv_id": "2608.28212",
       "paper_title": "MuSP-Bench: Advanced Multimodal Benchmarking of Music Understanding across Score and Performance",
-      "abstract": "Musicians commonly communicate musical intent through scores and performances. To investigate whether models can reason across both modalities, we introduce MuSP-Bench, a human-authored benchmark of 490 questions assessing understanding across Musical Scores and Performances, both individually and in combination. The benchmark spans interpretive and long-horizon reasoning across classical piano and orchestral works, represented through ABC notation, score images, MIDI, and audio. Our evaluation of frontier multimodal large language models reveals substantial difficulties in understanding musical scores and even greater challenges in reasoning about audio. The benchmark is available at https://musp.vaclis.net/.",
-      "paper_updated": "2026-10-20T00:00:00Z",
-      "created_at": "2026-10-21T02:48:21Z",
-      "input_sha256": "ff81966db733928959aff97c678882b2f7795d00ae4ac27489c5513a63a227cd",
+      "abstract": "Musicians commonly communicate musical intent through scores and performances. To investigate whether models can reason across both modalities, we introduce MuSP-Bench, a human-authored benchmark of 490 questions assessing understanding across Musical Scores and Performances, both individually and in combination. The benchmark spans interpretive and long-horizon reasoning across classical piano and orchestral works, represented through ABC notation, score images, MIDI, and audio. Our evaluation of frontier multimodal large language models reveals substantial difficulties in understanding musical scores and even greater challenges in reasoning about audio.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "uncertain",
-          "reason": "음악 악보·연주 멀티모달 벤치마크, 질문 언어 불명확"
+          "decision": "relevant",
+          "reason": "악보·연주 멀티모달 음악 이해 벤치마크 MuSP-Bench"
         }
       ]
     },
@@ -87955,6 +87943,294 @@
           "reason": "스프레드시트 워크플로 에이전트 벤치마크 제안"
         }
       ]
+    },
+    "2607.14499": {
+      "arxiv_id": "2607.14499",
+      "paper_title": "Contextualized Evaluation of Vision Language Models through Dynamic, Multi-turn Interactions",
+      "abstract": "Multi-modal Large Language Models (MLLMs) have made substantial advances on benchmarks, yet their real-world effectiveness remains uncertain. This gap stems from the fundamental misalignment between benchmarks in controlled, static settings and the dynamic, interactive, and contextualized nature of real-world applications. To bridge this gap, we propose CEDI (Contextualized Evaluation of MLLMs through Dynamic, multi-round Interactions), a framework that recasts evaluation as a three-party interaction between an evaluatee model, an automated examiner, and a grader. The examiner conducts multi-turn, semi-structured conversations guided by a graph-based representation of the task. By navigating state-space transitions, CEDI deploys diverse strategies, from clarification requests to adversarial probes, to elicit performance evidence. We apply CEDI to visual hallucinations. Empirical results across multiple models, diverse settings, datasets, and domains show that contextualized, interactive evaluations reveal not only significantly more hallucinations than conventional static evaluation but also ones that more closely resemble those arising in practical use cases. We further show that hallucinations often accumulate over long contexts, through self-reinforcing dialogue history, and models are particularly vulnerable to questions requiring premise rejection or refusal. Together, these findings highlight CEDI as a step toward realistic, systematic, and ecologically valid assessments of MLLMs' capabilities. Code is available at github.com/williamium3000/cedi.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "CEDI 평가 프레임워크 제안, 재사용 자원 및 과제 언어 불명확"
+        }
+      ]
+    },
+    "2608.14863": {
+      "arxiv_id": "2608.14863",
+      "paper_title": "DDBench: A Benchmark for Agentic Debugging on Distributed Systems",
+      "abstract": "LLM-based coding agents have advanced rapidly on single-process SWE tasks, with frontier models now clustering in the high-70s on SWE-bench Verified. Distributed-system debugging, however, remains an under-explored regime: bugs span processes, nodes, and protocol interactions, with root causes rarely recoverable from source alone and brute-force exploration intractable across non-deterministic interleavings. This leaves two gaps in LLM and agent evaluation: no code-repair benchmark targets distributed-system bugs, and no controlled study isolates how much externally provided debugging context changes agent success on them. We introduce DDBench, a code-repair benchmark of 60 historical bugs mined from 13 open-source distributed systems, partitioned into three reasoning-scope tiers. DDBench evaluates every case under two matched conditions: a symptom-only condition where the agent receives only the bug symptom and repository, and a context-augmented condition where it additionally receives bounded debugging context (logs, traces, runtime state, and targeted code-investigation notes), isolating the effect of debugging context from model capability. The evaluation of 10 LLMs on DDBench reveals several findings. First, distributed debugging exercises a reasoning dimension that single-process benchmarks do not surface: models' pass rates span 45 pp, and pairwise bootstrap separates 6 of 15 top-tier model pairs at p < 0.05 on DDBench's hardest case-set. Second, bounded debugging context lifts aggregate pass rate by +19.0 pp, and the lift is asymmetric: weaker models gain more in pass rate, while stronger models gain more in efficiency. Third, debugging context requires careful curation, as even faithful debugging context can anchor a strong model on the wrong layer of the system when its observation sits far from the fault.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "분산 시스템 디버깅 코드 수리 벤치마크 DDBench 신규 도입"
+        }
+      ]
+    },
+    "2608.25005": {
+      "arxiv_id": "2608.25005",
+      "paper_title": "The Imperfective Paradox Is Not Necessarily in Large Language Models: A Benchmark Failure Before a Model Failure",
+      "abstract": "Recent work uses an NLI benchmark of the imperfective paradox to argue that large language models exhibit a Teleological Bias and Calibration Crisis. We identify three validity concerns in benchmark construction, including aspectual reduction, semantic bias, and relation bias. Under a strict NLI standard, 76% of the Group A instances do not explicitly rule out culmination; in native-speaker annotation, 38% of Group A and 29% of Group C examples permit an alternative interpretation. To better isolate the semantic contrast, we construct Lexically Matched Minimal Pairs. Moreover, by formulating event-semantic NLI as a multi-step reasoning problem, we evaluate intermediate semantic judgments and use oracle-guided settings. We find that incorrect NLI entailment does not fully support teleological bias. Prompting often changes final NLI decisions without reliably improving the underlying semantic judgments, offering a possible explanation for the Calibration Crisis.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "기존 NLI 벤치마크 비판 및 최소쌍 구축, 언어 불명확"
+        }
+      ]
+    },
+    "2604.08884": {
+      "arxiv_id": "2604.08884",
+      "paper_title": "Beyond RGB: Benchmarking and Enhancing MLLMs for Hyperspectral Image Understanding via Training-Free Reasoning Framework",
+      "abstract": "Multimodal Large Language Models (MLLMs) have achieved strong performance on RGB image understanding, yet their ability to use spectral evidence beyond the visible range remains largely unexplored. Hyperspectral imagery (HSI) provides dense spectral measurements that reveal material and environmental cues unavailable in RGB, but current MLLMs cannot directly ingest high-dimensional HSI. To study this gap, we introduce HM-Bench, an evidence-grounded benchmark for hyperspectral image understanding with MLLMs. HM-Bench contains 19,337 question--answer pairs from 2,178 hyperspectral samples across 13 task categories, covering general perception, spectral reasoning, and spatial--spectral reasoning. To make HSI accessible to the native image--text interfaces of existing MLLMs, we further propose VSR$^{2}$, a training-free Visual--Spectral--Report Reasoning framework. VSR$^{2}$ represents each HSI sample with three aligned views: an RGB image for visual semantics and spatial context, a PCA-based image for dominant spectral variation, and a structured report for quantitative spectral--spatial evidence. Under a controlled RGB-only versus VSR$^{2}$ evaluation protocol, experiments on 17 representative MLLMs show that HSI information improves average accuracy from 38.90% to 40.95%, with gains varying substantially across models and task categories. These results indicate that HSI information (beyond RGB) is useful for current MLLMs, while robust hyperspectral reasoning remains an open challenge.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "초분광 영상 이해 MLLM 벤치마크 HM-Bench 도입"
+        }
+      ]
+    },
+    "2602.00249": {
+      "arxiv_id": "2602.00249",
+      "paper_title": "SANEval: Open-Vocabulary Compositional Benchmarks with Failure-mode Diagnosis",
+      "abstract": "Text-to-image (T2I) models struggle with compositional prompts requiring multiple objects, bound attributes, accurate counts, or spatial relations. Existing benchmarks face limits from fixed detector vocabularies, aggregated scores, and varying human-validation protocols. We introduce SANEval (Spatial, Attribute, and Numeracy Evaluation), an open-vocabulary compositional benchmark with two key contributions: (i) a public dataset of ~5,250 prompts paired with images from six state-of-the-art T2I models, split into algorithmically generated Simple and fully human-written Hard partitions across five compositional tasks, and (ii) a modular evaluation pipeline combining an LLM prompt parser, an open-vocabulary detector with LLM synonym expansion, and scorers for attribute binding, spatial relations, and numeracy. Each scorer emits numerical scores and diagnostic feedback for missing, extra, or mis-bound elements. Validated against human ratings (n = 500), SANEval achieves positive Pearson correlations across all categories (overall r = 0.222), outperforming CompBench++ (-0.016) and GenEval (-0.030). A manual audit of 24,012 detections shows 96.58% precision, with ablation confirming that synonym expansion is critical to pipeline performance. Dataset: [https://huggingface.co/datasets/saneval/saneval-release](https://huggingface.co/datasets/saneval/saneval-release). Pipeline: [https://github.com/nielseni6/saneval](https://github.com/nielseni6/saneval).",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "텍스트-이미지 구성성 평가 벤치마크 및 데이터셋 공개"
+        }
+      ]
+    },
+    "2604.01925": {
+      "arxiv_id": "2604.01925",
+      "paper_title": "ImplicitBBQ: Benchmarking Implicit Bias in Large Language Models through Characteristic Based Cues",
+      "abstract": "Large Language Models increasingly suppress biased outputs when demographic identity is stated explicitly, yet may still exhibit implicit biases when identity is conveyed indirectly. Existing benchmarks use name based proxies to detect implicit biases, which carry weak associations with many social demographics and cannot extend to dimensions like age or socioeconomic status. We introduce ImplicitBBQ, a QA benchmark that evaluates implicit bias through characteristic based cues, demographically associated attributes that signal implicitly, across age, gender, region, religion, caste, and socioeconomic status. Evaluating 11 models, we find that implicit bias in ambiguous contexts is over six times higher than explicit bias in open weight models. Notably, this bias is distributed unevenly across demographics: caste emerges as the most severe while gender is the least affected. Safety prompting and chain-of-thought reasoning fail to substantially close this gap; even few-shot prompting, which reduces implicit bias by 79%, leaves caste bias at four times the level of any other dimension. These findings indicate that current alignment and prompting strategies address the surface of bias evaluation while leaving demographically associated stereotypic associations largely unresolved. We publicly release our code and dataset for model providers and researchers to benchmark potential mitigation techniques.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "암묵적 편향 QA 벤치마크 ImplicitBBQ 공개"
+        }
+      ]
+    },
+    "2608.06931": {
+      "arxiv_id": "2608.06931",
+      "paper_title": "Science Edge Evaluation: SEE the Missing Step Toward Real Scientific Discovery",
+      "abstract": "Large language models (LLMs) are increasingly involved in scientific discovery, yet it remains unclear whether they can support complex real laboratory science. Here we introduce Science Edge Evaluation (SEE), a multimodal benchmark of expert-curated questions grounded in peer-reviewed literature and experimental practice in chemistry, biology, and materials science. Evaluation of 28 multimodal large language models (MLLMs) shows that even the best-performing model reaches only 54.9% accuracy. Moreover, general-purpose models outperform science-specialized models on average. In the visual-agent evaluation, the use of tools increases the best accuracy to 56.1%. Tool use can expand the information available to models, but more information does not necessarily lead to reliable scientific reasoning. The key challenge is whether models can manage tool-derived information within the boundaries of the original experimental evidence. Together, these findings reveal that current MLLMs still cannot reliably make justified and evidence-bounded inferences from experimental results, which is an essential capability in real scientific discovery. Bridging this gap requires MLLMs to transition from explaining established scientific concepts to deriving novel and evidence-based insights from experimental data.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "과학 실험 멀티모달 벤치마크 SEE 도입"
+        }
+      ]
+    },
+    "2611.09933": {
+      "arxiv_id": "2611.09933",
+      "paper_title": "BIBIMBAP: A Benchmark for Instructional BIM-Based Automated Programming",
+      "abstract": "Large Language Models (LLMs) are emerging as natural-language interfaces for Building Information Modeling (BIM), successfully achieving information retrieval, but no benchmark exists to evaluate their ability to edit Industry Foundation Classes (IFC). We introduce BIBIMBAP, a Text-to-BIM benchmark with 100 curated tasks covering Create-Read-Update-Delete (CRUD) operations across spatial, geometric, topological, numeric, and conceptual categories. Each task includes a natural-language prompt, an IFC model, expected structured outputs, and test scripts for automated evaluation. Baseline results show limited performance (best: 50.2%) and frequent failures in constraint preservation and spatial reasoning, with some correct outputs achieved despite flawed reasoning.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "Text-to-BIM 편집 벤치마크 BIBIMBAP 도입"
+        }
+      ]
+    },
+    "2611.09934": {
+      "arxiv_id": "2611.09934",
+      "paper_title": "Causal Discovery Bench: Can LLMs Autonomously Conduct Effective Experiments?",
+      "abstract": "As large language model (LLM) agents get actively adopted for autonomous research, they must not only reason over existing evidence, but also design informative experiments, allocate resources, analyze sequential observations, and decide when to stop and make conclusions. Yet these capabilities remain poorly measured. We introduce Causal-Discovery-Bench (https://github.com/mshen1019/causal-discovery-bench), a verifiable sandbox with configurable structural equation models and resource constraints to evaluate sequential experimental design and causal discovery without domain-semantic cues. Across 3,802 episodes with 13 models from 5 vendors, we analyze agent behavior along 40 metrics in seven families. Agents' performance exhibits a four-level difficulty hierarchy spanning single-experiment design, sequential exploration of causal relationships, resource-aware experimentation balancing cost and statistical power, and autonomous resolution of conflicting evidence. We identify a substantial performance gap between causal inference from correctly curated evidence and navigating causal discovery through autonomous experimentation: Analyzing agents' action trajectories attributes 94.5% of their mistakes to experimental design rather than to inference, which is further consolidated with ablation studies. Relaxing resource constraints alone does not reliably resolve failures in sequential discovery. In contrast, basic statistical tools substantially improve performance across multiple model families, while advanced tools provide little additional benefit when models lack prerequisite lower-level capabilities.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "인과 발견 실험 설계 에이전트 벤치마크 공개"
+        }
+      ]
+    },
+    "2611.09938": {
+      "arxiv_id": "2611.09938",
+      "paper_title": "DramaGrow: A Regime-Aware Benchmark for Auditing LLM Judges of Multi-Episode Drama",
+      "abstract": "LLMs can now draft complete multi-episode dramas, and LLM judges are increasingly used to evaluate them. Assessing the reliability of these judges is difficult because drama quality encompasses specification-backed errors, reproducible preferences, and legitimate disagreement among human raters. Most existing evaluations reduce these cases to a single score from one judge call and leave tie calibration, call-to-call variation, and the vote margin underlying the human reference unreported. We introduce DramaGrow, a regime-aware benchmark and audit protocol for AI-generated Chinese five-episode drama. The benchmark assigns verifiable constraint violations, four-of-five preferences, and within-panel disagreements to separate denominators and evidence rules. It contains 800 episodes, 120 byte-preserving interventions, and 1,155 blinded five-rater records, including a frozen extension with 114 supermajority pairs and 21 disagreement pairs. On the frozen sets of 114 preference pairs and 35 constraint interventions, the repeated absolute-score rubrics yield overlapping performance, with mean accuracies of 53.8-55.8% and three-call agreement of 29.8-32.5%, and their accuracy falls from 71.6-71.9% to 34.8-37.1% as the tie band widens. DirectPair-GLM reaches 85.1% preference accuracy, 89.5% constraint F1, and 81.9% Detect+Locate on the same items, and exact subpanel enumeration identifies four-of-five as the smallest stable human vote margin. Evaluation protocol, tie calibration, judge-call variation, and panel margin therefore affect performance as much as rubric design. We will release the specification packages, scripts, interventions, anonymized human votes and rationales, frozen judge runs, and analysis code.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "중국어 드라마 벤치마크, 모든 과제가 중국어인지 불명확"
+        }
+      ]
+    },
+    "2611.09945": {
+      "arxiv_id": "2611.09945",
+      "paper_title": "A Model Organism for Studying Unverbalized Evaluation Awareness",
+      "abstract": "Large language models can recognize when they are being evaluated and change their behavior accordingly, undermining the reliability of safety benchmarks. Evaluation awareness (EA) is usually measured by having an LLM judge scan reasoning traces for explicit statements of recognition, but this signal is increasingly unreliable. Recent frontier-model system cards report a drop in verbalized rates between releases, which is indistinguishable from awareness that has gone unverbalized. Interpretability methods could detect such unverbalized evaluation awareness (UEA) in individual interactions, but lack instance-level ground truth. Asking the model alters the input, and dataset labels do not reveal whether it recognized a particular prompt as an evaluation. We address this gap with a model organism. Using synthetic document fine-tuning, SFT, and DPO, we train Qwen3.5-27B to emit a marker (a designated token) in its final response when it recognizes an evaluation, while suppressing the marker and verbalized awareness in its reasoning. The marker largely tracks the evaluation concept as it can be strongly modulated by evaluation framing in the system prompt. When not told whether it is being evaluated, the organism recognizes evaluations from test-question cues, mirroring what its base model often verbalizes. Using the marker as a label, we benchmark linear probes, the Jacobian Lens, and Activation Oracles, built on the base model and blind to the marker. None recovers the label reliably. These results suggest that current interpretability methods are not yet reliable UEA detectors, even when recognition relies on simple cues. Our model organism offers a testbed for improving them.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "평가 인식 모델 오가니즘 테스트베드, 벤치마크 성격 불명확"
+        }
+      ]
+    },
+    "2611.10026": {
+      "arxiv_id": "2611.10026",
+      "paper_title": "MetaPI: Constructing Prompt Injection Benchmarks from LLM Agent Benchmark",
+      "abstract": "Large language model (LLM) agents increasingly perform complex tasks using high-privilege tools, making indirect prompt injection (IPI) a critical security risk. However, IPI benchmarks lag behind their rapidly evolving utility counterparts, only offering limited task and environment coverage and relying on narrow, static attack scenarios. In this paper, we propose meta-benchmarking for IPI: transforming existing utility benchmarks into end-to-end IPI evaluation suites that reuse their realistic tasks, environments, and infrastructure. We present MetaPI, an extensible toolkit that automatically identifies plausible injection points, generates realistic attack objectives, optimizes adaptive payloads, and validates attacks in the real environment. Its modular interfaces support heterogeneous environments, agents, defenses, and attack algorithms, allowing new components to be integrated without redesigning the evaluation pipeline. We apply MetaPI to AppWorld, VitaBench, and Terminal-Bench and evaluate representative agents and defenses across multiple backbone LLMs. Our results show that no evaluated defense simultaneously achieves strong utility and strong security in realistic, adaptive agentic IPI settings. MetaPI thus enables scalable and consistent security evaluation across diverse and evolving agent ecosystems",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트 프롬프트 인젝션 벤치마크 구축 툴킷 MetaPI"
+        }
+      ]
+    },
+    "2611.10044": {
+      "arxiv_id": "2611.10044",
+      "paper_title": "CulturalCrosswords: A Multilingual Benchmark comprised of Answer Constraints and Grid Completion",
+      "abstract": "When several answers fit a riddle, exact-match scoring can penalise a valid response. CulturalCrosswords tests how answer constraints affect large language models (LLMs) solving cultural riddles, whose solutions draw on knowledge specific to a community. We constructed 53 crosswords from crowdsourced riddles in 42 languages and evaluated 11 LLM configurations on five versions of each clue set: plain batches, batches with lengths, batches with lengths and partial-answer hints, and crosswords requesting an answer list or a completed grid. On 962 clues with alternative answers, lengths improve agreement with the reference by 22.8 percentage points, compared with 8.4 points when accepted alternatives also receive credit. Part of the gain therefore appears to come from selecting a required answer form. Crossword input increases the share of all crossings with compatible answers by 9.7 points; requiring a completed grid reveals large differences between models. The benchmark distinguishes agreement with a reference from the ability to produce answers that fit together and occupy the correct cells.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "42개 언어 문화 퀴즈 크로스워드 벤치마크, 영어 포함 가능"
+        }
+      ]
+    },
+    "2611.10156": {
+      "arxiv_id": "2611.10156",
+      "paper_title": "DeepResearch RewardBench: Evaluating Reward Models for Deep Research Report",
+      "abstract": "Empowered by Large Language Models (LLMs), deep research systems integrate online information into research reports through multi-step web searching and information synthesis. Evaluating these reports presents a significant challenge due to their long context, high information density, and domain specificity, necessitating the use of AI evaluation as a substitute for prohibitively expensive human assessment. However, few studies have examined the effectiveness of existing reward models or LLMs in understanding and evaluating such research reports. To bridge this gap, we introduce DeepResearch RewardBench, the first benchmark dedicated to evaluating reward modeling for research reports. We collect diverse report candidates from multiple agents or tool-augmented LLMs. These candidates are scored using query-specific golden rubrics, and we ensure data quality and difficulty through a combination of multi-round filtering and human verification. Our benchmark comprises preference datasets formatted as pairs, triplets, and quadruplets to test ranking capabilities across varying levels of difficulty. Extensive experiments demonstrate that while current reward models handle general coherence effectively, their performance significantly degrades when evaluating research reports. Generative LLMs acting as judges demonstrate comprehensive superiority in this domain, with comparative evaluation proving more effective than direct scoring methods. We anticipate that this benchmark will serve as a vital testbed for the evaluation and advancement of research agents.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "딥리서치 보고서 보상모델 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2611.10288": {
+      "arxiv_id": "2611.10288",
+      "paper_title": "A Clinical Evaluation of Conformal Prediction for Chest Radiograph Report Generation",
+      "abstract": "While multimodal large language models (MLLMs) have improved automated radiology report generation, they remain prone to hallucinations, necessitating clinically meaningful risk-control methods. Conformal prediction (CP) provides statistical guarantees, yet existing CP approaches rely on uncalibrated automated extractors and fail to account for the clinical relevance of errors. We introduce clinical admissibility criteria (CLARITY), a framework for evaluating radiology reports that explicitly distinguishes clinically consequential errors from minor deviations. To eliminate reliance on automatic judges, we collected radiologist annotations of MLLM-generated reports using CLARITY. By benchmarking CP strategies and automatic evaluation metrics against these expert annotations, we demonstrate that commonly used admissibility proxies systematically fail to detect clinically relevant errors. Our findings reveal that automated admissibility judgments are largely decoupled from true clinical admissibility.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "CLARITY 기준과 전문가 주석 제공, 재사용 자원 불명확"
+        }
+      ]
+    },
+    "2611.10349": {
+      "arxiv_id": "2611.10349",
+      "paper_title": "SituRecBench: Evaluating Frontier Models as Situated Recommendation Assistants in 3D Environments",
+      "abstract": "Recommender systems are transitioning from static retrieval engines into interactive assistants grounded in physical environments. However, current studies largely neglect the combined complexities of spatial navigation, visual grounding, and multi-turn social interaction. To bridge this gap, we introduce SituRecBench, an interactive benchmark for evaluating frontier vision-language models (VLMs) as situated recommendation assistants within high-fidelity 3D environments. We reformulate recommendation as a situated assistance process in which an assistant interacts with a user while sharing the user's egocentric view. Our benchmark simulates real-world shopping environments (e.g., supermarkets and home furnishings stores), requiring assistants to elicit preferences, ground recommendations in the environment, and guide the user to relevant locations through dialogue. The benchmark evaluates dialogue quality, recommendation utility, and navigation effectiveness through a unified interactive protocol. Extensive experiments reveal persistent challenges in spatial grounding and preference elicitation, highlighting limitations in their ability to integrate global contextual information with local observations. SituRecBench provides a rigorous foundation for advancing the development of situated assistants in the real world.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:30Z",
+      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "3D 환경 상황 추천 VLM 벤치마크 SituRecBench"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -89442,10 +89718,30 @@
         "2605.08553",
         "2605.26176",
         "2606.25402",
-        "2606.29955"
+        "2606.29955",
+        "2607.14499",
+        "2608.14863",
+        "2608.25005",
+        "2608.28212",
+        "2509.23219",
+        "2604.08884",
+        "2609.04241",
+        "2610.14381",
+        "2602.00249",
+        "2604.01925",
+        "2608.06931",
+        "2611.09933",
+        "2611.09934",
+        "2611.09938",
+        "2611.09945",
+        "2611.10026",
+        "2611.10044",
+        "2611.10156",
+        "2611.10288",
+        "2611.10349"
       ],
-      "calls": 2,
-      "cost_usd": 0.8744
+      "calls": 3,
+      "cost_usd": 0.9396
     }
   },
   "reaudits": [
