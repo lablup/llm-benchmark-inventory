@@ -57794,74 +57794,9 @@
       "proposal_sha256": "75514d574136854e1fc1ef69250bcd92b348b6a65bcc6538b779fa6dc978635a"
     },
     "2606.10142": {
-      "decision": "propose",
-      "reason": "이 논문은 재사용 가능한 3D 메시 평가 벤치마크 DB-3DME를 새로 제안한다. 합성 3D 메시 2,619개에 Geometry와 Prompt Adherence 사람 평점(1~3)이 붙어 있고, 데이터셋은 GitHub와 Hugging Face에 공개됐다. 메시를 24프레임 GIF로 렌더링한 이미지 격자로 VLM에 입력하므로 modality는 vision이다. 과제 지시문(예: 'Rate the Geometry from 1 to 3')이 영어여서 en 트랙으로 분류했다. 논문이 데이터셋 라이선스, 상업적 이용 가능 여부, lm-eval 지원 여부를 명확히 밝히지 않아 해당 항목은 '확인 불가'로 기록했다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "db-3dme",
-            "이름": "DB-3DME",
-            "평가 축": "이미지(3D 메시 자동 평가: 기하 품질·프롬프트 일치)",
-            "언어": "en",
-            "정의": "합성 3D 메시 2,619개에 사람 평점(Geometry, Prompt Adherence 각 {1,2,3})을 붙인 3D 메시 평가 데이터셋 겸 벤치마크. 메시는 24프레임 GIF로 렌더링해 공개하며, VLM이 이미지 격자를 보고 두 차원을 평가해 사람 평점과의 일치도(Exact-Match, Within-One, Pearson)를 잰다. 논문은 8:2 무작위 분할(seed 42)의 테스트 셋에서 VLM 여러 종과 미세조정한 Qwen-2.5-VL-7B를 비교했다.",
-            "대표 과제": "렌더링된 3D 메시 이미지(와 Prompt Adherence에서는 텍스트 프롬프트)를 보고 Geometry와 Prompt Adherence를 1~3점으로 평가",
-            "대표 예시·설명": "과제 설명: 프롬프트 'SUV'로 생성한 메시를 렌더링한 프레임 격자를 보여 주고 Geometry와 Prompt Adherence를 1~3점으로 채점해 사람 평점과 비교한다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부는 아직 확인하지 못했다(논문은 오용을 금지하고 출처 표기를 요구하는 라이선스로 공개한다고만 서술). 데이터는 단일 생성 파이프라인에서 나온 메시이고 평점이 3점 척도로 거칠다는 점을 논문이 한계로 밝힌다. 공개물은 렌더링된 GIF이며 원본 GLB는 포함되지 않는다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/nsjia/DB-3DME"
-          },
-          "modality": "vision",
-          "english_copy": {
-            "axis": "Images (automatic 3D mesh evaluation: geometry quality and prompt adherence)",
-            "definition": "A dataset and benchmark of 2,619 synthetic 3D meshes with human ratings on Geometry and Prompt Adherence (each in {1,2,3}). Meshes are released as 24-frame rendered GIFs. A VLM evaluates both dimensions from the rendered image grid, and agreement with human ratings is measured with Exact-Match, Within-One, and Pearson. The paper compares several VLMs and a fine-tuned Qwen-2.5-VL-7B on the test split of an 8:2 random split (seed 42).",
-            "task": "Given a rendered 3D mesh image (plus the text prompt for Prompt Adherence), rate Geometry and Prompt Adherence from 1 to 3.",
-            "example": "Task description: show the frame grid of a mesh generated from the prompt 'SUV', have the model rate Geometry and Prompt Adherence from 1 to 3, and compare with the human ratings."
-          },
-          "evidence": {
-            "modality": {
-              "page": 4,
-              "quote": "grid image"
-            },
-            "대표 과제": {
-              "page": 2,
-              "quote": "Geometry and Prompt"
-            },
-            "대표 예시·설명": {
-              "page": 2,
-              "quote": "Geometry and Prompt"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/nsjia/DB-3DME"
-            },
-            "언어": {
-              "page": 6,
-              "quote": "Rate the Geometry"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "DB-3DME, the Dataset"
-            },
-            "정의": {
-              "page": 2,
-              "quote": "2,619 samples"
-            },
-            "평가 축": {
-              "page": 2,
-              "quote": "Geometry and Prompt"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "데이터셋 라이선스를 확정할 근거가 부족해 게시하지 않습니다. 논문 9쪽은 \"We release the dataset under a license that prohibits misuse and requires appropriate attribution.\"라고 적어, 데이터셋 자체에 라이선스가 있다고 밝힙니다. 이 문장은 데이터셋 자체를 대상으로 하므로 '미표기' 근거로 쓸 수 없습니다. 그런데 라이선스 이름이나 상업적 이용·수정·파생·재배포 허용 범위가 어디에도 적혀 있지 않습니다. 제공된 공식 자료는 GitHub README 하나이며 LICENSE 파일 항목이 없고, README에도 라이선스 표기가 없습니다. 논문이 공개처로 밝힌 Hugging Face 데이터셋 카드(https://huggingface.co/datasets/nsjia/DB-3DME)는 제공되지 않아 확인하지 못했습니다. 라이선스가 있다고 한 이상 '저작권 전부 보유'로 처리할 수 없고, 허용 범위를 가정해서도 안 되므로 라이선스, 상업적 이용, 수정·파생, 재배포를 근거 있는 값으로 채울 수 없습니다. 이 네 항목은 Hugging Face 카드 또는 저자의 라이선스 명시가 확인되면 채울 수 있습니다. lm-eval 지원은 README와 PDF 어디에도 언급이 없어 '미표기'로 쓸 수 있지만, 위 네 항목이 비어 있어 행 전체를 게시할 수 없습니다.",
+      "changes": [],
       "arxiv_id": "2606.10142",
       "paper_title": "DB-3DME: From Dataset to Benchmark for Human-aligned Automatic 3D Mesh Evaluation",
       "paper_updated": "2026-10-07T00:00:00Z",
@@ -57912,7 +57847,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-11T03:47:44Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -57938,11 +57873,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "42946878305",
-        "context_sha256": "40e4a38ffb1d0d84c0df47a1fac64a8e53d489ffe0d4732122dbd160f7674c9c"
-      },
-      "proposal_sha256": "401e4dfe65343986fe4ecfc41397e49c5fdfe808d8bb4b827adf58a2e77e5b8e"
+      "proposal_sha256": "057885d0647b6e90a4a7054b391a544f2dc7a10b25a559a3a369687140ad3f75",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -91827,8 +91760,8 @@
         "2611.12640",
         "2611.12856"
       ],
-      "calls": 23,
-      "cost_usd": 15.6469
+      "calls": 24,
+      "cost_usd": 16.4087
     }
   },
   "reaudits": [
