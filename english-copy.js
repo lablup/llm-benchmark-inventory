@@ -570,4 +570,22 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Clinical calculation, long patient-history retrieval, clinical data workflows (trial eligibility, EHR processing, tumor localization), and browser-based insurance and referral handling",
     "example": "Given an admission note and a directory of trial documents, list every trial whose inclusion criteria the patient meets and none of whose exclusion criteria apply (task description, not an actual test item)."
   },
+  "np-bench": {
+    "axis": "Agents (coordination and integration verification for parallel coding agents)",
+    "definition": "A three-arm benchmark (no coordination C0, reactive detection C1-DETECT, proactive planning C1-PLAN) that verifies integration outcomes of several coding agents working in parallel on one codebase from a real git merge. Tier A is a deterministic simulation over nine scripted scenarios; Tier B uses live agents with K=3-15 seeds per cell. Metrics are CTSR (merges cleanly and passes a post-integration acceptance check), merge conflicts and wasted LOC, scope leakage, consumer adaptation rate, repeated-mistake rate, and merge-order correctness. The author presents it as a focused study, not a comprehensive benchmark.",
+    "task": "Give several agents declared work scopes, let them edit in parallel, merge, and check the merged tree for conflicts and contract adaptation (for example, a contract migration renaming an invoice amount field from dollars to cents).",
+    "example": "Task description: while one agent renames a field and changes its unit, another codes against the old contract; the files merge cleanly but the result is semantically broken. Under C1-DETECT the agent gets only a vague English warning such as \"a teammate may be editing X\", while under C1-PLAN it receives allowed and forbidden scope and the contract migration up front."
+  },
+  "semaadb": {
+    "axis": "Coding and agents (semantic repair and cross-diagram update over multi-diagram SysML sets)",
+    "definition": "A dataset of 3,000 contexts and 15,000 diagrams, where each context links five SysML views (Requirement, Block Definition, Activity, State Machine, Sequence) of one system. A human-verified set of 100 contexts (25 per domain) forms the benchmark test set. Evaluation uses 1,157 diagram-repair instances (557 syntax, 600 semantic) and 300 cross-diagram update instances, with exact repair and update F1 as the primary metrics.",
+    "task": "Diagram repair (restore one damaged view) and cross-diagram update (propagate a rename, remove, or add edit to related views)",
+    "example": "Task description, not an actual test item: given a system description and five PlantUML sources, restore a damaged view or apply one edit consistently across the related views."
+  },
+  "sdr-bench": {
+    "axis": "Agents (two-party generative personalization: recovering winning sales outreach arguments)",
+    "definition": "A public corpus of 50,000 customer success stories (3,500 enterprises, 22 industries) with an evaluation framework. An agent receives the seller, customer, product and timestamp, plus only the web available up to that time, and generates pitch points. An LLM judge grades each ground-truth nugget 0-5, and grades are aggregated into a weighted nugget recall (WCS). The paper evaluates six LLMs and two deep-research agents on a stratified sample; these are results under the paper's conditions, not a current global leaderboard.",
+    "task": "Recover the pitch points (product -> customer pain point -> value proposition) that won the deal, given seller, customer, product and time.",
+    "example": "Task description (not an actual test item): an English prompt asks how to pitch a seller's products to a customer, the agent generates three pitch points, and the benchmark scores how much of the ground-truth pitch-point content they cover."
+  },
 };
