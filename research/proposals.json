@@ -58561,6 +58561,159 @@
         "reviewed_sha256": "11d3309f0ca3721e73c843664ba44fb4a1082544046abbc22a48d7b1b8d768aa",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2608.04265": {
+      "decision": "propose",
+      "reason": "이 논문은 스마트그리드 수요반응 시뮬레이션에서 LLM 에이전트의 계획 전략(predefined, sequential, hierarchical, search)을 통제 조건으로 비교하는 벤치마크를 새로 제안하고, 공식 GitHub 저장소를 밝힙니다. 과제의 정책 선언 형식은 영어 토큰의 typed 정책이고 입력은 직렬화된 텍스트 상태이므로 en 트랙의 text 모달리티로 분류했습니다. 다만 영어 지시문 원문이 PDF에 인용되어 있지 않아 언어 근거는 정책 형식 인용에 의존합니다. 라이선스와 lm-eval 지원은 확인하지 않았으므로 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "planning-cps-bench",
+            "이름": "Strategic Evaluation of Planning Strategies for LLM Agents in CPS",
+            "평가 축": "에이전트(사이버물리 시스템에서의 계획 전략 평가)",
+            "언어": "en",
+            "정의": "LLM 에이전트의 계획 아키텍처가 전략적 반응과 물리적 결과에 미치는 영향을 재는 통제형 시뮬레이션 벤치마크. 방사형 피더의 프로슈머 40명에 대한 수요반응을 predefined, sequential, hierarchical, search의 네 코드 실행기가 제어한다. LLM은 typed 정책 선언 또는 모드 조언과 메시지 작성만 맡고, 스케줄·프로슈머 동역학·조류계산은 코드가 처리한다. 강제 모드 반사실 비교로 계획 전략 이질성, 실행 충실도, 적응적 선택(regret)의 세 차원을 분리한다. E7 팩토리얼 뱅크는 144개 시나리오와 576개 강제 에피소드(3개 시드)이며, 논문의 주 실험은 단일 피더에서 Llama-3.3-70B로 수행했다. 5개 모델 300개 선언의 인터페이스 확장도 있으나 물리 순위 비교는 아니다.",
+            "대표 과제": "피더 수입 상한과 전압 하한 위반이 예측될 때 실행 아키텍처, 대상 노드, 강도, 메시지 프레이밍을 정하는 curtailment 캠페인 계획(물리 목적함수 J와 쌍별 regret로 평가)",
+            "대표 예시·설명": "상태 요약을 받은 계획자가 type-valid 정책(예: 모드 SEARCH, 대상 HIGH_LOAD, 분기 4)을 내놓으면 실행기가 스케줄을 만들고 DistFlow가 물리 결과를 독립적으로 계산하는 과제 설명이다(실제 시험 문항이 아님).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 아직 확인하지 않았다. 코드 저장소의 라이선스가 데이터 라이선스를 대신하지 않으므로 이용 전에 저장소를 확인해야 한다. 논문의 물리 실험은 단일 Llama 백본, 단일 방사형 피더, 합성 프로슈머 행동, 선형화 조류계산, 가정된 실행기 비용에 한정되며 보정되지 않았다. 결과는 시뮬레이션 내부의 기술적 비교이며 전역 리더보드가 아니다. 5개 모델 확장은 인터페이스 행동만 검증한다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/drdezarza/LLMstrategicplanning"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (evaluating planning strategies in cyber-physical systems)",
+            "definition": "A controlled simulation benchmark of how an LLM agent's planning architecture affects strategic response and physical outcomes. Four coded executors (predefined, sequential, hierarchical, search) control demand response for 40 prosumers on a radial feeder. The LLM only declares or advises typed policies and writes messages, while schedules, prosumer dynamics, and power flow remain code. Paired forced-mode counterfactuals separate planning-strategy heterogeneity, execution fidelity, and adaptive selection (regret). The E7 factorial bank has 144 scenarios and 576 forced episodes (three seeds). The main experiments use Llama-3.3-70B on a single feeder. A five-model, 300-declaration extension tests interface behaviour, not physical rankings.",
+            "task": "When forecast feeder import or voltage constraints are violated, plan a curtailment campaign by choosing the execution architecture, target nodes, intensity, and message framing, evaluated by the physical objective J and paired regret.",
+            "example": "Task description, not an actual test item: given a state summary, the planner emits a type-valid policy such as mode SEARCH, target HIGH_LOAD, branching 4. The executor builds schedules and DistFlow independently computes the physical outcome."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "compact, serialised state"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "mode=SEARCH, target=HIGH_LOAD, branching=4,"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "mode=SEARCH, target=HIGH_LOAD, branching=4,"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "https://github.com/drdezarza/LLMstrategicplanning"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "mode=SEARCH, target=HIGH_LOAD, branching=4,"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce a"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "We introduce a"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "We introduce a"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2608.04265",
+      "paper_title": "Strategic Evaluation of Planning Strategies for LLM Agents in Cyber-Physical Systems",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2608.04265",
+        "sha256": "9be36635a4835279af6f0354c7cb1bfccea7e6873fa34f9c39642eafa754fb6c",
+        "accessed": "2026-11-11T04:06:39Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 8,
+          "elapsed_seconds": 64.43,
+          "pdf_sha256": "9be36635a4835279af6f0354c7cb1bfccea7e6873fa34f9c39642eafa754fb6c",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "2252116bf1a6b02715fdadb6f6f90fd78d5aacc50078deb4fca46ef786cca966",
+          "page_json_file": "2608.04265.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/drdezarza/LLMstrategicplanning",
+            "fetched_url": "https://api.github.com/repos/drdezarza/LLMstrategicplanning/readme",
+            "sha256": "50eb25473d5107187e58ebf71347805abc16fb026cb57f7df49325af4b3a662e",
+            "accessed": "2026-11-11T04:08:10Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/drdezarza/LLMstrategicplanning/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "14adcaeed610fd39d124d3d783581edbfdafe97ebca55b97552f808cc227f1c7"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-11T04:08:10Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2608.04265",
+        "paper_title": "Strategic Evaluation of Planning Strategies for LLM Agents in Cyber-Physical Systems",
+        "abstract": "LLM-agent evaluations commonly measure task success or agreement with a declared plan. In strategic cyber-physical systems, an architecture must also remain appropriate after autonomous participants respond and physics constrains outcomes. We introduce a controlled benchmark of planning-induced control trajectories: ordered planning operations and directives linking execution architecture to strategic response and physical consequences. Four coded executors (predefined, sequential, hierarchical, and search) control demand response for 40 prosumers on a radial feeder. The LLM declares or advises typed policies and mediates communication; schedules, base prosumer dynamics, stochastic actions, and power flow remain explicit code. Paired forced-mode counterfactuals, exact-prompt caching, common response draws with separate randomness streams, critic isolation, and event-level feasibility isolate comparisons. The Llama-3.3-70B experiments on this feeder distinguish three properties. First, forced search is the oracle in all five baseline seeds under the specified objective. Second, injected objective substitution preserves mode agreement at 1.0 while increasing cumulative voltage shortfall by 2.68x. Third, the 144-scenario, 576-episode factorial bank, using three repeated seeds, contains feasible oracles from predefined, sequential, and search. The prespecified stress-held-out ridge has mean regret 90.7 and no observed value over fixed sequential. A post-hoc constraint-aware analysis reduces regret to 29.0; a simple deadline rule attains 28.7, so this gain does not establish a learning advantage. An all-feasible ablation does not improve over fixed search. These are simulation-internal, descriptive comparisons. A five-model, 300-declaration extension tests interface behaviour, not cross-backbone physical rankings; shared-endpoint latency tails motivate probabilistic live feasibility.",
+        "paper_updated": "2026-10-07T00:00:00Z",
+        "created_at": "2026-10-19T13:49:05Z",
+        "input_sha256": "6bf3c5895cfb26837f4502db69464deb618eb92ce2d56c53fa11bafb46c481c2",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "사이버물리 시스템 LLM 에이전트 계획 전략 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 계획 전략 평가용 제어 벤치마크 도입"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42946878305",
+        "context_sha256": "ab72d832675c8438bad8df29c4fe7c1d60093a66f220560fc7301c4f197b95c3"
+      },
+      "proposal_sha256": "bd70c45c41a41d4a8a6ccfbd3d132c04cc172a81cdb26e018d4eb657f2b02f9f"
     }
   },
   "processed_comments": [],
@@ -92451,8 +92604,8 @@
         "2611.12640",
         "2611.12856"
       ],
-      "calls": 31,
-      "cost_usd": 22.5571
+      "calls": 32,
+      "cost_usd": 23.2939
     }
   },
   "reaudits": [
