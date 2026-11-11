@@ -55193,8 +55193,8 @@
       "approval_policy": "claude_only"
     },
     "2606.30371": {
-      "decision": "propose",
-      "reason": "MaDI-Bench는 스키마 매칭, 값 정규화, 블로킹, 엔티티 매칭, 데이터 퓨전까지 관계형 표의 엔드투엔드 데이터 통합 전 과정을 평가하는 새 재사용 벤치마크입니다. 기본 과제 5개 도메인에 20개 고유 과제가 있고 난이도 변형도 제공됩니다. LLM 워크플로와 코딩 에이전트로 검증했습니다. 속성명이 영어(예: title, launch_yr, studio)이므로 en 트랙의 text로 분류했습니다. PDF가 밝힌 공식 저장소 링크가 있습니다. 라이선스 등은 확인하지 못해 '확인 불가'로 기록했고, 기존 인벤토리에 동일 벤치마크는 없습니다.",
+      "decision": "needs_evidence",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: Score quote must contain the exact model and numeric value",
       "changes": [
         {
           "track": "en",
@@ -55313,7 +55313,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-11T02:41:18Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -55339,11 +55339,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "42946878305",
-        "context_sha256": "46d9a98c44b9b4e005da6cb85dff38249b37d720e0a2e140f5874802755609c3"
-      },
-      "proposal_sha256": "e62071a2a6e28c53e7dd96a399c7bf8074a9b0cf0d90bbe70f3216009336a807"
+      "proposal_sha256": "e62071a2a6e28c53e7dd96a399c7bf8074a9b0cf0d90bbe70f3216009336a807",
+      "approval_policy": "claude_only",
+      "resume_error": "Score quote must contain the exact model and numeric value"
     },
     "2607.02269": {
       "decision": "needs_evidence",
@@ -78439,18 +78437,18 @@
     "2610.23908": {
       "arxiv_id": "2610.23908",
       "paper_title": "ContraSafe-VL: A Contrastive Safety Preference Dataset for Vision-Language Models",
-      "abstract": "Vision-Language Models (VLMs) are increasingly deployed as general-purpose multimodal assistants, making multimodal safety alignment an important challenge. Safety depends on the interplay between textual and visual content, with visual context often playing a critical role. However, VLMs may fail to use visual information appropriately, either overlooking safety-relevant visual content or over-interpreting sensitive visual content, leading to unsafe responses or over-refusal. Existing multimodal safety alignment datasets largely follow the response-preference paradigm, which teaches models how to respond but provides limited supervision on how visual context should inform the safety judgment, making it difficult to balance safety and over-refusal. To address this limitation, we introduce ContraSafe-VL, a Contrastive Safety preference dataset for Vision-Language Models. For each fixed textual query, ContraSafe-VL constructs paired visual contexts that result in multimodal queries with different safety labels, providing direct supervision for how visual context should inform multimodal safety judgments. It further provides response preference pairs based on harmlessness and helpfulness to encourage models to generate responses that are both safe and helpful. Experiments across three VLM architectures and multiple benchmarks demonstrate that training with ContraSafe-VL improves cross-modal safety recognition and achieves a better safety--over-refusal trade-off while preserving general multimodal capabilities. The dataset will be publicly released.",
-      "paper_updated": "2026-10-20T00:00:00Z",
-      "created_at": "2026-10-21T02:48:32Z",
-      "input_sha256": "68425c787fca5a0b4d9635b42141b92123474c26d31d3911d91a93e15eceb10c",
+      "abstract": "Vision-Language Models (VLMs) are increasingly deployed as general-purpose multimodal assistants, making multimodal safety alignment an important challenge. Safety depends on the interplay between textual and visual content, with visual context often playing a critical role. However, VLMs may fail to use visual information appropriately, either overlooking safety-relevant visual content or over-interpreting sensitive visual content, leading to unsafe responses or over-refusal. Existing multimodal safety alignment datasets largely follow the response-preference paradigm, which teaches models how to respond but provides limited supervision on how visual context should inform the safety judgment, making it difficult to balance safety and over-refusal. To address this limitation, we introduce \\textbf{ContraSafe-VL}, a \\textbf{Contra}stive \\textbf{Safe}ty preference dataset for \\textbf{V}ision-\\textbf{L}anguage Models. For each fixed textual query, ContraSafe-VL constructs paired visual contexts that result in multimodal queries with different safety labels, providing direct supervision for how visual context should inform multimodal safety judgments. It further provides response preference pairs based on harmlessness and helpfulness to encourage models to generate responses that are both safe and helpful. Experiments across three VLM architectures and multiple benchmarks demonstrate that training with ContraSafe-VL improves cross-modal safety recognition and achieves a better safety--over-refusal trade-off while preserving general multimodal capabilities. The dataset is available at https://github.com/pikepokenew/ContraSafe-VL",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "relevant",
-          "reason": "VLM 안전성 선호 데이터셋 공개, 재사용 가능한 평가·학습 자원"
+          "decision": "uncertain",
+          "reason": "VLM 안전 선호 학습 데이터셋, 평가용 여부와 언어 불명확"
         }
       ]
     },
@@ -79231,10 +79229,10 @@
     "2610.26787": {
       "arxiv_id": "2610.26787",
       "paper_title": "LG-Bench: A Graph-Structured Evaluation Benchmark for Life Sciences",
-      "abstract": "Traditional evaluation benchmarks reduce inherently interconnected scientific knowledge in life sciences into flat lists of questions, disregarding the underlying topological structure of the knowledge. We introduce, the first graph-structured benchmark for life sciences, featuring over 10,000 high-quality multiple-choice questions across medicine, biology, and chemistry. Our approach constructs a weighted evaluation graph using bidirectional matching and semantic similarity algorithms, where nodes represent questions and edge weights capture their semantic relationships. Leveraging this graph topology, we design two novel evaluation metrics. The Global Coherence Score (GCS) measures a model's consistency within semantically related neighborhoods, while Knowledge Balance Score (KBS) analyzes how model errors are distributed across the graph to reveal conceptual blind spots. LG-Bench facilitates fine-grained comparison of LLMs by surfacing differences in conceptual coherence and patterns of knowledge organization across models. Our framework shifts the evaluation paradigm from flat accuracy metrics to structure-aware analysis, offering a new lens for diagnosing and improving LLM performance in the life sciences domain.",
-      "paper_updated": "2026-10-20T00:00:00Z",
-      "created_at": "2026-10-21T02:48:53Z",
-      "input_sha256": "64b93cfcf0661b29a85bdda115bbc3bdb2b8fcbad6d9346dab414f397c9674ac",
+      "abstract": "Traditional evaluation benchmarks reduce inherently interconnected scientific knowledge in life sciences into flat lists of questions, disregarding the underlying topological structure of the knowledge. We introduce LG-Bench, the first graph-structured benchmark for life sciences, featuring over 10,000 high-quality multiple-choice questions across medicine, biology, and chemistry. Our approach constructs a weighted evaluation graph using bidirectional matching and semantic similarity algorithms, where nodes represent questions and edge weights capture their semantic relationships. Leveraging this graph topology, we design two novel evaluation metrics. The Global Coherence Score (GCS) measures a model's consistency within semantically related neighborhoods, while Knowledge Balance Score (KBS) analyzes how model errors are distributed across the graph to reveal conceptual blind spots. LG-Bench facilitates fine-grained comparison of LLMs by surfacing differences in conceptual coherence and patterns of knowledge organization across models. Our framework shifts the evaluation paradigm from flat accuracy metrics to structure-aware analysis, offering a new lens for diagnosing and improving LLM performance in the life sciences domain.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
@@ -79242,7 +79240,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "생명과학 그래프 구조 객관식 벤치마크, 새 평가 지표 제안"
+          "reason": "생명과학 그래프 구조 객관식 벤치마크 신규 제안"
         }
       ]
     },
@@ -85729,10 +85727,10 @@
     "2611.03412": {
       "arxiv_id": "2611.03412",
       "paper_title": "DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects",
-      "abstract": "LLM agents are judged by what they deliver, and in professional work what gets delivered is a project, not a task. A project pays off only if the whole package holds, and one weak part can limit the value of the rest. Yet existing benchmarks mostly test agents on one task at a time, leaving a gap between the capability we measure and the outcome that makes agents useful. To address this gap, we introduce DeliverBench, which tests whether agents can carry a project from brief to final delivery. Its 11 projects, spanning financial due diligence, legal contract drafting, and drug safety reporting, are reconstructed with 13 domain experts from real materials and chain 150 subtasks through 2-15 rounds of new materials and client feedback. Because no reference outputs are injected, agents inherit their own errors from one task to the next. Expert rubrics then score every checkpoint as well as the final package. Across seven model-harness systems, even the best system scores only 65.0 out of 100 on final delivery and passes 50.0% of subtasks at a 90-point threshold. The failures are often failures of carrying work forward: in one audit project, all seven systems addressed the review findings, but only one preserved traceability. Together, these results suggest that task-level capability does not simply compose into delivery, which also depends on keeping the work coherent as it evolves.",
-      "paper_updated": "2026-11-03T00:00:00Z",
-      "created_at": "2026-11-04T02:43:21Z",
-      "input_sha256": "10beb743f8704b70805f0e0c2972e4280906fbaf022638118d25b6ce4c44259f",
+      "abstract": "LLM agents are judged by what they deliver, and in professional work what gets delivered is a project, not a task. A project pays off only if the whole package holds together, and one weak part can limit the value of the rest. Yet existing benchmarks mostly test agents on one task at a time, leaving a gap between the capability we measure and the outcome that makes agents useful. To address this gap, we introduce DeliverBench, which tests whether agents can carry a project from brief to final delivery. Reconstructed from real materials with 13 domain experts, its 11 projects span settings such as financial due diligence, legal contract drafting, and drug safety reporting. They comprise 150 subtasks, with 2-15 subsequent releases of new materials and client feedback per project. Later subtasks build on the agent's own earlier deliverables, so unresolved errors can carry into downstream work. Expert rubrics assess each subtask submission and the final delivery package. Across seven model-harness systems, the best scores 65.0/100 on final delivery and passes 50.0% of subtasks at a 90-point threshold. Together, these results suggest that task-level capability does not simply compose into delivery; delivery also depends on keeping the work coherent as it evolves.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
@@ -85740,7 +85738,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "다단계 전문 프로젝트 에이전트 벤치마크 DeliverBench 신규 제안"
+          "reason": "전문 프로젝트 단위 에이전트 벤치마크 신규 제안"
         }
       ]
     },
@@ -87651,6 +87649,312 @@
           "reason": "조작용 과제 조건부 공간 신념 VLM 벤치마크 제안"
         }
       ]
+    },
+    "2512.11192": {
+      "arxiv_id": "2512.11192",
+      "paper_title": "SciLaD: A Large-Scale, Transparent, Reproducible Dataset for Natural Scientific Language Processing",
+      "abstract": "SciLaD is a novel, large-scale dataset of scientific language constructed entirely using open-source frameworks and publicly available data sources. It comprises a curated English split containing over 10 million scientific publications and a multilingual, unfiltered TEI XML split including more than 35 million publications. We also publish the extensible pipeline for generating SciLaD. The dataset construction and processing workflow demonstrates how open-source tools can enable large-scale, scientific data curation while maintaining high data quality. Finally, we pre-train a RoBERTa model on our dataset and evaluate it across a comprehensive set of benchmarks, achieving performance comparable to other scientific language models of similar size, validating the quality and utility of SciLaD. We publish the dataset and evaluation pipeline to promote reproducibility, transparency, and further research in natural scientific language processing and understanding, including scholarly document processing.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "과학 문헌 코퍼스 데이터셋이며 평가 스위트 여부와 언어 범위가 불분명"
+        }
+      ]
+    },
+    "2604.10508": {
+      "arxiv_id": "2604.10508",
+      "paper_title": "How Many Tries Does It Take? Iterative Self-Repair in LLM Code Generation Across Model Scales and Benchmarks",
+      "abstract": "Large language models frequently fail to produce correct code on their first attempt, yet most benchmarks evaluate them in a single-shot setting. We investigate iterative self-repair (feeding execution errors back to the model for correction) across seven models spanning three families and both open-weight and proprietary providers: Llama 3.1 8B, Llama 3.3 70B, Llama 4 Scout (MoE, 16 experts), Llama 4 Maverick (MoE, 128 experts), Qwen3 32B, Gemini 2.5 Flash, and Gemini 2.5 Pro. On HumanEval (164 problems) and MBPP Sanitized (257 problems) with up to five attempts, self-repair universally improves pass rates: +4.9 to +17.1 pp on HumanEval and +16.0 to +30.0 pp on MBPP. Gemini 2.5 Flash achieves the highest final pass rates (96.3% HumanEval, 93.8% MBPP). Most gains concentrate in the first two rounds.Error-type analysis shows assertion errors (logical mistakes) are the hardest to repair at ~45%, while syntax and name errors are repaired at substantially higher rates, connecting to broader findings on the limits of LLM self-correction. Prior work found that weaker models fail at self-repair or require fine-tuning; we show that modern instruction-tuned models succeed with prompting alone, even at 8B scale. We also provide the first comparison of dense and MoE architectures for self-repair, and extend the repair-vs-resampling tradeoff analysis to modern models. A prompt ablation reveals chain-of-thought repair yields up to +5.5 pp additional self-repair gain (measured as improvement in repair delta) over minimal prompting for capable models.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "기존 벤치마크로 자가수정 분석, 새 평가자료 없음"
+        }
+      ]
+    },
+    "2605.27911": {
+      "arxiv_id": "2605.27911",
+      "paper_title": "SuiChat-CN: Benchmarking Contextual Suicide Risk Assessment in Chinese Group Chats",
+      "abstract": "Suicide is a critical global public health challenge, causing approximately 720,000 deaths each year and calling for timely, effective prevention strategies. Existing computational studies primarily focus on post-based social media platforms such as Twitter and Weibo, leaving instant messaging environments such as Telegram underexplored. Yet group chats pose distinct challenges: messages are short, fragmented, multi-party, and often rely on implicit or culturally specific expressions, making isolated post-level analysis insufficient. We introduce SuiChat-CN, a Chinese group-chat benchmark for contextual suicide risk assessment. We collect public Telegram group-chat data, construct coherent conversational segments through signal-word extraction and bidirectional context expansion, and annotate user risk levels with an expert-validated, LLM-assisted paradigm. SuiChat-CN contains 13,312 contextual segments from 1,406 users, covering 258,228 raw chat messages. Extensive experiments with PLMs and more than 40 LLMs demonstrate that contextual information is essential for reliable risk assessment, while fine-tuning and partial-context evaluation further reveal the challenges of early detection in multi-party conversations. Due to ethical and sensitivity concerns, the dataset is not publicly released but will be shared with accredited mental health and suicide-prevention research institutions upon reasonable request.",
+      "paper_updated": "2026-11-09T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "중국어 그룹채팅 한정 벤치마크, 비공개 데이터"
+        }
+      ]
+    },
+    "2605.29059": {
+      "arxiv_id": "2605.29059",
+      "paper_title": "SCDBench: A Benchmark for LLM-Based Smart Contract Decompilers",
+      "abstract": "Smart contract decompilation aims to recover high-level source code from bytecode, but evaluating decompilers remains difficult because existing studies use narrow datasets, inconsistent metrics, and limited semantic consistency checks. This gap is increasingly important as large language models (LLMs) begin to generate source-like Solidity that may compile and appear plausible, even when its semantics diverge from the original contract. We introduce SCDBench, a dataset and benchmark methodology for LLM-based smart contract decompilation. The dataset contains 600 real-world Solidity contracts with paired bytecode inputs, ground-truth source code, and replayable semantic checkpoints. SCDBench evaluates decompiler outputs through four cumulative stages: format completeness, compilability, Application Binary Interface (ABI) recovery, and semantic consistency via differential replay. We evaluate Claude Opus 4.7, GPT-5.3-Codex, and GLM-5 in a zero-shot decompilation setting, including GLM-5 variants with and without extended reasoning and a zero-shot compilation-repair setting. The results show that frontier LLMs can often produce structured and compilable Solidity, but achieving semantic consistency remains far from solved: the best-performing frontier model perfectly decompiles only 42/600 contracts. We further show that introducing same-model compilation repair substantially improves performance at modest additional cost. SCDBench establishes a common ground for rigorous, reproducible evaluation and aims to accelerate the development of reliable smart contract decompilers for blockchain security and transparency.",
+      "paper_updated": "2026-11-09T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "스마트 컨트랙트 디컴파일 LLM 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2505.20726": {
+      "arxiv_id": "2505.20726",
+      "paper_title": "ManiTaskGen: A Comprehensive Task Generator for Benchmarking and Improving Vision-Language Agents on Embodied Decision-Making",
+      "abstract": "Building embodied agents capable of accomplishing arbitrary tasks is a core objective towards achieving embodied artificial general intelligence (E-AGI). While recent work has advanced such general robot policies, their training and evaluation are often limited to tasks within specific scenes, involving restricted instructions and scenarios. Existing benchmarks also typically rely on manual annotation of limited tasks in a few scenes. We argue that exploring the full spectrum of feasible tasks within any given scene is crucial, as they provide both extensive benchmarks for evaluation and valuable resources for agent improvement. Towards this end, we introduce ManiTaskGen, a novel system that automatically generates comprehensive, diverse, feasible mobile manipulation tasks for any given scene. The generated tasks encompass both process-based, specific instructions (e.g., \"move object from X to Y\") and outcome-based, abstract instructions (e.g., \"clear the table\"). We apply ManiTaskGen to both simulated and real-world scenes, demonstrating the validity and diversity of the generated tasks. We then leverage these tasks to automatically construct benchmarks, evaluating high-level embodied decision-making through a grounded skill interface for agents built upon existing vision-language models (VLMs). Furthermore, we propose a simple yet effective method that utilizes ManiTaskGen tasks to enhance embodied decision-making. Overall, this work presents a cross-scene task generation framework facilitating both benchmarking and improvement of embodied decision-making agents. Our code is available at https://manitaskgen.github.io.",
+      "paper_updated": "2026-11-09T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "임베디드 에이전트 과제 생성기 및 벤치마크 구축"
+        }
+      ]
+    },
+    "2507.08038": {
+      "arxiv_id": "2507.08038",
+      "paper_title": "AblationBench: Evaluating Automated Planning of Ablations in Empirical AI Research",
+      "abstract": "Language model agents are increasingly used to automate scientific research, yet evaluating their scientific contributions remains a challenge. A key mechanism to obtain such insights is through ablation experiments. To this end, we introduce AblationBench, a benchmark suite for evaluating agents on ablation planning tasks in empirical AI research. It includes two tasks: AuthorAblation, which helps authors propose ablation experiments based on a method section and contains 83 instances, and ReviewerAblation, which helps reviewers find missing ablations in a full paper and contains 350 instances. For both tasks, we develop LM-based judges that serve as an automatic evaluation framework. Our experiments with frontier LMs show that these tasks remain challenging, with the best-performing LM system identifying only 45% of the original ablations on average, below human-level performance. We observe an inverse performance trend between the author and reviewer tasks, which we attribute to differences in model grounding. Lastly, we analyze the limitations of current LMs on these tasks, and find that chain-of-thought prompting outperforms an agent-based approach. Our data is available on https://huggingface.co/collections/ai-coscientist/ablationbench, and our code is available on https://github.com/ai-scientist-bench/ablation-bench .",
+      "paper_updated": "2026-11-09T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "어블레이션 계획 평가용 벤치마크 스위트 제안"
+        }
+      ]
+    },
+    "2603.00468": {
+      "arxiv_id": "2603.00468",
+      "paper_title": "Cloud-OpsBench: A Reproducible Benchmark for Agentic Root Cause Analysis in Cloud Systems",
+      "abstract": "LLM agents are explored for automating root cause analysis (RCA) in cloud-native systems, creating a need to evaluate both diagnostic correctness and the quality of the supporting investigation. Existing static benchmarks offer repeatable inputs but limited system-facing interaction, while live testbeds expose tools but hinder controlled comparison because incident evidence varies across runs; both paradigms focus primarily on final answers. To address these limitations, we present Cloud-OpsBench, an evaluation infrastructure for interactive and evidence-grounded cloud RCA. It comprises 754 runtime-verified cases across 57 fault types on two microservice workloads spanning application services and Kubernetes platform layers. Each fault is captured as a state snapshot and replayed through standard diagnostic interfaces, with outcome labels and diagnostic evidence graphs that enable matched comparisons and process-level analysis. Evaluating eleven LLMs on Cloud-OpsBench reveals that strong outcome accuracy often masks incomplete investigations: while Joint RCA Accuracy (JRA) reaches up to 0.78 on OnlineBoutique and 0.68 on TrainTicket, models identify the correct root cause without achieving evidence closure (e.g., in 33.1% and 29.4% of evaluated cases for GPT-5). These results demonstrate that final-answer accuracy alone cannot establish whether an agent has traced the failure and collected the evidence needed to confirm its root cause.",
+      "paper_updated": "2026-11-09T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "클라우드 RCA 에이전트 재현 가능 벤치마크 제안"
+        }
+      ]
+    },
+    "2606.01869": {
+      "arxiv_id": "2606.01869",
+      "paper_title": "WorldCoder-Bench: Benchmarking Physically Grounded 3D World Synthesis",
+      "abstract": "Large language models (LLMs) are increasingly asked not only to write static interfaces, but to construct executable interactive worlds from natural language. Browser-native 3D, commonly built with Three.js, is a natural next frontier: generated programs must integrate assets, obey spatial and physical constraints, and keep user-facing controls synchronized with hidden runtime state. Existing web-generation benchmarks and evaluators, however, largely observe only pixels or DOM nodes, while the mechanics of a Three.js world unfold inside an opaque <canvas>. We introduce WorldCoder-Bench, a benchmark for autonomous, physically grounded 3D world synthesis. WorldCoder-Bench contains 2,026 expert-curated tasks across Simulation, Rendering, and Application scenarios, with optional .glb assets and hidden behavioral contracts. We further propose StateProbe, an execution-based protocol that probes generated programs in a controlled browser and verifies hidden, mutation-hardened contracts over runtime states and transitions. Beyond verification coverage, we report Return on Automation and Time Efficiency Multiplier to estimate quality-adjusted cost and time utility. The best verification coverage is 27.8% across nine models on WorldCoder-Benchcore and 19.9% across five on WorldCoder-Benchrob, with failures dominated by state-schema drift and broken interaction chains rather than missing scene elements. Utility metrics further show that cheap or fast models can still provide substantial value on easier domains. WorldCoder-Bench is available at https://github.com/shuolucs/WorldCoder-Bench.",
+      "paper_updated": "2026-11-09T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "3D 월드 생성 코드 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2608.01684": {
+      "arxiv_id": "2608.01684",
+      "paper_title": "GABench: A Comprehensive Benchmark for Evaluating LLM Agents on Graph Analysis Tasks",
+      "abstract": "Large language model (LLM) agents are increasingly capable of planning, using tools, and interacting with external environments. They are typically supported by harnesses, which manage state and coordinate multi-step execution. Graph analysis provides a promising setting for evaluating their agentic capabilities, because it requires agents to access data and execute operations in a graph environment. However, existing graph benchmarks for LLMs provide limited coverage of graph tasks and graph types, making it difficult to comprehensively evaluate LLM agents. Moreover, they typically formulate graph analysis as text-based question answering, where graph information is directly provided in the prompt, limiting the evaluation of end-to-end agentic capabilities. To address these limitations, we introduce GABench, a comprehensive benchmark for agentic graph analysis. GABench spans three graph types and covers four graph analysis task categories: graph retrieval, graph theory, graph machine learning, and graph open-ended question answering. GABench also provides 84 executable tools for accessing graph data and performing diverse graph operations. Building on these tools, we develop an agentic graph analysis task generation pipeline and construct 10,400 tasks with verifiable ground truth.Using GABench, we evaluate a range of frontier LLMs and agent harnesses. Our experiments reveal three key findings: (1) Existing LLM agents still struggle with complex graph analysis tasks. (2) Harness choice significantly affects performance, yet existing harnesses remain limited on complex graph tasks. (3) Graph analysis depends more on tool-call quality than quantity. Our findings provide practical insights into the development and evaluation of LLM agents for graph analysis.",
+      "paper_updated": "2026-11-09T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "그래프 분석 LLM 에이전트 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2608.10875": {
+      "arxiv_id": "2608.10875",
+      "paper_title": "VibeLifeBench: Can Your Life Agent Be Proactive and Persistent in a Living World?",
+      "abstract": "Large language model (LLM) agents are increasingly deployed as personal assistants. Existing evaluations, however, mostly use short, self-contained requests in static environments. Everyday life assistance is different. A task runs for weeks rather than minutes. The world keeps changing while the agent is not being prompted. Many constraints are never stated outright. An agent that merely answers the request in front of it will fail at such a task. What is needed instead is an agent that stays proactive and consistent. It decides on its own when to act, when to ask, and when to stay silent. It notices changes that nobody announced. It keeps one plan coherent from the first day to the last. No current benchmark measures this. We introduce VibeLifeBench, a benchmark of 200 long-horizon tasks across ten everyday-life domains. Each task is a scripted multi-week timeline in a simulated world of 22 mock services. The world advances on its own clock, and many of its changes are silent, so only an agent that re-inspects the world discovers them. Every task is graded by fine-grained, weighted checks that read only what the agent actually left behind, covering the end state, the timeliness of its actions, and whether it upheld the implicit constraints. We evaluate seven frontier models. All of them score low, which shows how far current agents are from assisting with real life. We will open-source all tasks, environments, and the evaluation framework.",
+      "paper_updated": "2026-11-09T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "장기 생활 에이전트 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2609.00313": {
+      "arxiv_id": "2609.00313",
+      "paper_title": "MUSES: A Benchmark for Prospective Intellectual-Roots Retrieval",
+      "abstract": "Scientific discovery depends on finding prior literature that shapes what comes next. Existing retrieval systems optimize for relevance and popularity, often favoring central papers over less familiar works that later prove generative. We introduce \\textbf{MUSES}, a million-instance benchmark for prospective intellectual-roots retrieval over a fixed 2.33M-paper corpus, with roughly 140K test instances per familiarity tier. To our knowledge, it is the first prospective benchmark at this scale with a shared retrieval task and author-confirmed paper-level root labels. Alongside it, \\textbf{CiteRoots} pairs a scalable rhetorical layer over local citation text (LLM judge $κ= 0.896$ versus human gold) with a paper-level author-endorsed layer ($n = 1{,}518$ generative-inspiration pairs from 753 focal papers). MUSES organizes difficulty along two axes: a \\emph{familiarity} axis spanning CiteNext, CiteNew, and CiteNew-Isolated, and a \\emph{functional} axis spanning broad citations, rhetorical roots, and author-endorsed roots. Across 9 method classes, a lean multi-centroid retriever built on SPECTER2 is strongest. Hit@100 falls from 0.534 on CiteNext to 0.424 on CiteNew, 0.205 on rhetorical CiteNew, and 0.171 on author-endorsed CiteNew, a $3.1\\times$ decline. In a registered eight-lens full-test audit, roughly half of broad-tier test instances remain unsolved at K=1{,}000. Rhetorical role and author endorsement are distinct: the same judge agrees with endorsement at $κ= 0.037$. We release MUSES, both CiteRoots layers, and a distilled open companion judge for future work on prospective retrieval and intellectual roots.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "논문 검색 벤치마크이며 LLM 평가 해당 여부 불명확"
+        }
+      ]
+    },
+    "2502.11371": {
+      "arxiv_id": "2502.11371",
+      "paper_title": "RAG vs. GraphRAG: A Systematic Evaluation and Key Insights",
+      "abstract": "Retrieval-Augmented Generation (RAG) improves large language models (LLMs) by retrieving relevant information from external sources and has been widely adopted for text-based tasks. For structured data, such as knowledge graphs, Graph Retrieval-Augmented Generation (GraphRAG) retrieves and aggregates information along graph structures. More recently, GraphRAG has been extended to general text settings by organizing unstructured text into graph representations, showing promise for reasoning and grounding. Despite these advances, existing GraphRAG systems for text data are often tailored to specific tasks, datasets, and system designs, resulting in heterogeneous evaluation protocols. Consequently, a systematic understanding of the relative strengths, limitations, and trade-offs between RAG and GraphRAG on widely used text benchmarks remains limited. In this paper, we present a comprehensive benchmark study comparing RAG and GraphRAG on established text-based tasks, including question answering and query-based summarization. We introduce a unified evaluation protocol that standardizes data preprocessing, retrieval configurations, and generation settings, enabling fair and reproducible comparisons. Our results highlight the distinct strengths of RAG and GraphRAG across different tasks and evaluation perspectives. Building on these findings, we explore selection and integration strategies that combine the strengths of both paradigms, leading to consistent performance improvements. We further analyze failure modes, efficiency trade-offs, and evaluation biases, and highlight key considerations for designing and evaluating retrieval-augmented generation systems.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "RAG/GraphRAG 통합 평가 프로토콜, 재사용 자료 불명확"
+        }
+      ]
+    },
+    "2605.05973": {
+      "arxiv_id": "2605.05973",
+      "paper_title": "Towards Reliable LLM Evaluation: Correcting the Winner's Curse in Adaptive Benchmarking",
+      "abstract": "Adaptive prompt and program search makes LLM evaluation selection-sensitive. Once benchmark items are reused inside tuning, the observed winner's score need not estimate the fresh-data performance of the full tune-then-deploy procedure. We study inference for this procedure-level target under explicit tuning budgets. We propose SIREN, a selection-aware repeated-split reporting protocol that freezes the post-search shortlist, separates splitwise selection from held-out evaluation, and uses an item-level Gaussian multiplier bootstrap for uncertainty quantification. In a fixed-shortlist regime with smooth stabilized selection, the estimator admits a first-order item-level representation, and the bootstrap yields valid simultaneous inference on a finite budget grid. This supports confidence intervals for procedure-performance curves and pre-specified equal-budget and cross-budget comparisons. Controlled simulations and MMLU-Pro tuning experiments show that winner-based reporting can be optimistic and can change deployment conclusions, while SIREN remains close to the finite-sample reporting target.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "평가 통계 방법론이며 새 벤치마크 자료 없음"
+        }
+      ]
+    },
+    "2605.08553": {
+      "arxiv_id": "2605.08553",
+      "paper_title": "VeriContest: A Competitive-Programming Benchmark for Verifiable Code Generation",
+      "abstract": "Large language models can generate useful code from natural language, but their outputs come without correctness guarantees. Verifiable code generation offers a path beyond testing by requiring models to produce not only executable code, but also formal specifications and machine-checkable proofs. Progress in this direction, however, is difficult to measure: existing benchmarks are often small, cover only part of the pipeline, lack ground-truth proofs or rigorous specification validation, or target verification settings far from mainstream software development. We present VeriContest, a benchmark of 1,006 competitive-programming problems from LeetCode and Codeforces for verifiable code generation in Rust with Verus. Each problem includes a natural language description, expert-validated formal specifications, judge-accepted Rust code, Verus-checked proofs, and positive and negative test suites. VeriContest is constructed through a three-phase pipeline that scales from manually verified seed problems to semi-automated expansion with human-in-the-loop review. To strengthen benchmark quality, we also use testing to validate postcondition completeness. VeriContest supports both isolated and compositional evaluation of specification, code, and proof generation, and end-to-end verified program synthesis. Evaluating ten state-of-the-art models reveals a sharp gap between ordinary coding and verifiable code generation: the strongest model reaches 97.51% on natural-language-to-code generation, but only 57.16% on specification generation, 13.82% on proof generation, and 6.76% end-to-end. These results identify proof and specification generation as the central bottlenecks for current models and establish VeriContest as a rigorous platform for evaluating and training future systems that generate code with machine-checkable correctness.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "검증 가능 코드 생성 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2605.26176": {
+      "arxiv_id": "2605.26176",
+      "paper_title": "PitchBench: Measuring Pitch Hearing in Audio-Language Models",
+      "abstract": "Audio-language models (ALMs) are increasingly used in real-world applications that require music understanding, including tutoring, captioning, recommendation, and production. Yet existing benchmarks rarely evaluate a fundamental component of this understanding: pitch hearing. Pitch underpins the identification of notes, chords, and melodies and the grounding of captions in musical events, but it remains unclear how reliably ALMs perceive fine-grained pitch across sound sources, acoustic conditions, and response formats. We introduce PitchBench, an evaluation suite comprising 28 tasks that assess absolute and relative pitch perception under variations in loudness, note duration, sound source, time stretching, background noise, and other acoustic conditions. Tasks range from identifying isolated pitches to tracking voices in four-part musical textures. Evaluating frontier ALMs, we find that pitch hearing remains highly unreliable. Models perform poorly across settings, with accuracy varying sharply depending on the notation or prompt format, indicating instruction drift. Specialized DSP and neural pitch baselines achieve mean scores of approximately 73.2% and 75.2%, respectively, compared with approximately 53.9% for the strongest ALM. We release PitchBench as an evaluation benchmark, a training dataset, and a Python package with data generation tools to support future research on pitch-aware audio-language modeling.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "오디오-언어 모델 음높이 평가 스위트 제안"
+        }
+      ]
+    },
+    "2606.25402": {
+      "arxiv_id": "2606.25402",
+      "paper_title": "LibEvoBench: Probing Temporal Knowledge Stratification in Code Generation Models",
+      "abstract": "Large software projects often depend on older versions of libraries, even as APIs continue to evolve across releases. This creates a challenge for LLMs: they must maintain knowledge of multiple API versions, not merely the latest or most common one. However, current LLMs are trained on temporally mixed corpora and lack explicit mechanisms for such version-specific reasoning, leading to anachronistic errors - calling APIs as they exist in a different library version. To systematically evaluate this phenomenon, we introduce LibEvoBench, a multi-task benchmark spanning multiple versions of widely used Python libraries, along with a new metric, the Software Evolution Understanding Score (SEUS), to measure models' consistency when working with evolving APIs. Our results show that state-of-the-art models are largely version-oblivious: performance degrades for evolving APIs, while for stable APIs it remains the same across versions. Moreover, simply specifying the target version provides no benefit, while relevant documentation significantly boosts models' accuracy. These findings highlight a systematic limitation of current training paradigms and motivate new approaches for temporally grounded knowledge in code generation.",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "라이브러리 버전별 코드 생성 벤치마크 제안"
+        }
+      ]
+    },
+    "2606.29955": {
+      "arxiv_id": "2606.29955",
+      "paper_title": "SpreadsheetBench 2: Evaluating Agents on End-to-End Business Spreadsheet Workflows",
+      "abstract": "Spreadsheets are widely used for business analysis, financial modeling, reporting, and decision-making. However, most existing spreadsheet benchmarks evaluate isolated operations such as single-formula generation or local cell edits, and therefore fail to capture end-to-end workflows in realistic business settings. We introduce \\textsc{SpreadsheetBench 2}, a workflow-level benchmark for spreadsheet agents that covers three task categories: generation, debugging, and visualization. The benchmark is constructed from authentic business data, including financial reports and corporate filings, and is annotated and validated by domain experts. The benchmark contains 321 tasks; each instance averages 11.8 worksheets and requires 593.5 cell modifications, reflecting large multi-sheet workbooks with cross-sheet dependencies. We evaluate eight frontier large language models under a unified multi-turn agent scaffold, and additionally include several LLM-based spreadsheet products as complementary baselines. Results show that current systems remain far from reliable on real-world workflows: the best model achieves 34.89\\% overall task accuracy, and debugging accuracy is as low as 12.00\\%. Trajectory analysis and a failure taxonomy further indicate that insufficient spreadsheet inspection and incorrect target-cell selection are the dominant bottlenecks. Together, these findings position \\textsc{SpreadsheetBench 2} as a challenging testbed for advancing reliable spreadsheet automation. Project page: https://spreadsheetbench.github.io/",
+      "paper_updated": "2026-11-10T00:00:00Z",
+      "created_at": "2026-11-11T02:42:17Z",
+      "input_sha256": "782c97bff8f032da740a9d3d71358ddcf06ec2cf0396d07a9e262b79d6829ba5",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "스프레드시트 워크플로 에이전트 벤치마크 제안"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -89118,9 +89422,30 @@
     },
     "2026-11-11": {
       "attempted": [],
-      "abstract_attempted": [],
-      "calls": 1,
-      "cost_usd": 0.8079
+      "abstract_attempted": [
+        "2512.11192",
+        "2604.10508",
+        "2610.23908",
+        "2610.26787",
+        "2605.27911",
+        "2611.03412",
+        "2605.29059",
+        "2505.20726",
+        "2507.08038",
+        "2603.00468",
+        "2606.01869",
+        "2608.01684",
+        "2608.10875",
+        "2609.00313",
+        "2502.11371",
+        "2605.05973",
+        "2605.08553",
+        "2605.26176",
+        "2606.25402",
+        "2606.29955"
+      ],
+      "calls": 2,
+      "cost_usd": 0.8744
     }
   },
   "reaudits": [
