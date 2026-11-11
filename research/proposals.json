@@ -56633,6 +56633,161 @@
       },
       "issue_url": null,
       "proposal_sha256": "5f6cd13dadcaa23dee2324e71b215e7f80a610030639e69d42206d421cfb54a2"
+    },
+    "2610.07261": {
+      "decision": "propose",
+      "reason": "이 논문은 병렬 코딩 에이전트의 통합 결과를 실제 git 병합으로 검증하는 NP-Bench를 제안하고, 공식 코드 저장소 URL(github.com/sumanyumuku98/Nerveplane)을 본문에서 밝힌다. 에이전트가 병합 후 깨지는 협업 실패를 측정하는 새 평가 축이며 영어 프롬프트(경고 문구)를 쓰는 텍스트 코딩 과제다. 논문은 이를 포괄적 벤치마크가 아닌 집중 연구라고 밝히지만 재사용 가능한 하니스를 공개하므로 en 트랙에 추가한다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "np-bench",
+            "이름": "NP-Bench",
+            "평가 축": "에이전트(병렬 코딩 에이전트의 협업·통합 검증)",
+            "언어": "en",
+            "정의": "여러 코딩 에이전트가 한 코드베이스에서 병렬로 작업할 때 실제 git 병합 결과로 통합 성공 여부를 검증하는 3팔(무조정 C0, 반응형 탐지 C1-DETECT, 사전 계획 C1-PLAN) 벤치마크. Tier A는 결정적 시뮬레이션(스크립트 시나리오 9개), Tier B는 실제 에이전트 실행(시드 K=3~15)이다. 지표는 CTSR(충돌 없이 병합되고 통합 후 수용 검사를 통과한 비율), 병합 충돌 수와 낭비 LOC, 범위 이탈률, 소비자 적응률, 반복 실수율, 병합 순서 정확도다. 저자는 이를 포괄적 벤치마크가 아닌 집중 연구로 규정한다.",
+            "대표 과제": "여러 에이전트에 선언된 작업 범위를 주고 병렬 편집한 뒤 병합해, 충돌 여부와 계약 변경 적응 여부를 병합된 트리에서 검사(예: 청구서 금액 필드를 달러에서 센트로 바꾸는 계약 이전)",
+            "대표 예시·설명": "과제 설명: 한 에이전트가 필드 이름·단위를 바꾸는 동안 다른 에이전트가 기존 계약대로 코드를 작성하면 파일은 깔끔히 병합되지만 의미상 깨진다. C1-DETECT 팔에서는 \"a teammate may be editing X\" 같은 모호한 영어 경고만 받고, C1-PLAN 팔은 허용·금지 범위와 계약 이전 정보를 사전에 받는다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터·하니스 라이선스는 확인하지 못했으므로 저장소에서 별도 확인이 필요하다. 논문은 시나리오가 직접 구성한 것이고 범위가 하니스에 직접 입력된 값이며 자동 추론이 아니라고 밝힌다. Tier B는 비결정적이고 비용이 들며 일부 셀은 K=5 파일럿이다. 실행에는 git 워크트리와 코딩 에이전트 환경이 필요하다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/sumanyumuku98/Nerveplane"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (coordination and integration verification for parallel coding agents)",
+            "definition": "A three-arm benchmark (no coordination C0, reactive detection C1-DETECT, proactive planning C1-PLAN) that verifies integration outcomes of several coding agents working in parallel on one codebase from a real git merge. Tier A is a deterministic simulation over nine scripted scenarios; Tier B uses live agents with K=3-15 seeds per cell. Metrics are CTSR (merges cleanly and passes a post-integration acceptance check), merge conflicts and wasted LOC, scope leakage, consumer adaptation rate, repeated-mistake rate, and merge-order correctness. The author presents it as a focused study, not a comprehensive benchmark.",
+            "task": "Give several agents declared work scopes, let them edit in parallel, merge, and check the merged tree for conflicts and contract adaptation (for example, a contract migration renaming an invoice amount field from dollars to cents).",
+            "example": "Task description: while one agent renames a field and changes its unit, another codes against the old contract; the files merge cleanly but the result is semantically broken. Under C1-DETECT the agent gets only a vague English warning such as \"a teammate may be editing X\", while under C1-PLAN it receives allowed and forbidden scope and the contract migration up front."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "real coding agents"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "real coding agents"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "a teammate may"
+            },
+            "링크": {
+              "page": 9,
+              "quote": "https://github.com/sumanyumuku98/Nerveplane"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "a teammate may"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "NP-Bench, an environment-grounded,"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "NP-Bench, an environment-grounded,"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "NP-Bench, an environment-grounded,"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.07261",
+      "paper_title": "Verifying Coordination in Parallel Coding Agents: NP-Bench and a Scheduling Planner",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.07261",
+        "sha256": "7b36a70e989d96879e41c89f4cdf84f44aaa59ad56c7e0f16b2b38c47dc421bc",
+        "accessed": "2026-11-11T03:12:25Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 10,
+          "elapsed_seconds": 62.37,
+          "pdf_sha256": "7b36a70e989d96879e41c89f4cdf84f44aaa59ad56c7e0f16b2b38c47dc421bc",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "8a20744261a892a340d2932debfaca6b19326a8670594df09847f4eddfd1f972",
+          "page_json_file": "2610.07261.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/sumanyumuku98/Nerveplane",
+            "fetched_url": "https://api.github.com/repos/sumanyumuku98/Nerveplane/readme",
+            "sha256": "a4bc40e4f958ffa5cdf4ca7f7f76adbcfc84b65663a41b26fa84e304a12b8d9e",
+            "accessed": "2026-11-11T03:13:51Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/sumanyumuku98/Nerveplane/license",
+              "name": "LICENSE",
+              "spdx_id": "NOASSERTION",
+              "sha256": "48b77bd553270e18a04f8bffa1735799aa528e85be6df71947db6fefd218e07a"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-11T03:13:51Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.07261",
+        "paper_title": "Verifying Coordination in Parallel Coding Agents: NP-Bench and a Scheduling Planner",
+        "abstract": "A team of coding agents can look fine agent by agent yet fail as a team: each passes its own tests while the merged result is broken, and single-agent evaluation never catches it. As teams run several LLM coding agents in parallel on one codebase, the agents collide: two rewrite the same function, one codes against a contract a teammate just changed, and integration fails after the work is done. Most coordination tools react (watch for a conflict, then warn), but at agent speed the warning arrives after the wasted edit. We recast the problem as scheduling: take each work item's declared scope, partition the work into disjoint scopes, and order merges along the producer->consumer graph, all up front. We build this planner into Nerveplane and evaluate it with NP-Bench, an environment-grounded three-arm benchmark (no coordination; reactive detection; proactive planning) that verifies integration off a real git merge, both in a deterministic simulation and with live agents. The planner lifts clean-integration from 1/9 to 9/9 scenarios and cuts merge conflicts from 13 to 0, with a gap that grows in the number of agents. On a live breaking contract change it rescues an outcome both baselines miss on every seed: the clean-integration rate rises from 0 (no coordination and reactive detection) to 1.0 on a frontier model and 0.6 on a small one, while agents respect assigned scopes (0/5 leakage). A cross-session memory drops the repeated-mistake rate from 1.00 to 0.00 on strong and weak models alike. We also report a negative result: routing facts to agents does not rescue long-context accuracy at window-fitting scales; its value is cost and capacity, not attention. Across two capability tiers and two vendors, the benefit did not shrink as models got stronger, because it comes from how work is allocated, not model reasoning.",
+        "paper_updated": "2026-10-07T00:00:00Z",
+        "created_at": "2026-10-19T13:48:52Z",
+        "input_sha256": "b8e698acd00582e7abe3a47c853700885b4f535d1835d2ba7ba2e4a4bcd19b3b",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "병렬 코딩 에이전트 조정 검증 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "병렬 코딩 에이전트 조율 검증 벤치마크 NP-Bench 도입"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42946878305",
+        "context_sha256": "ef48b82277b061f3d4cd47e83568267209fa0c5d7c2c17bc8c24c323c78a29fa"
+      },
+      "proposal_sha256": "1db944d5c42a065d4320cbbf12427093250971902a4208e166407e0ecfd566ff"
     }
   },
   "processed_comments": [],
@@ -90509,8 +90664,8 @@
         "2611.12640",
         "2611.12856"
       ],
-      "calls": 10,
-      "cost_usd": 5.2976
+      "calls": 11,
+      "cost_usd": 6.0001
     }
   },
   "reaudits": [
