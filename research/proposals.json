@@ -57876,6 +57876,198 @@
       "proposal_sha256": "057885d0647b6e90a4a7054b391a544f2dc7a10b25a559a3a369687140ad3f75",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2607.10826": {
+      "decision": "propose",
+      "reason": "3D-DefectBench는 텍스트 프롬프트와 생성된 텍스처 3D 메시에 대해 9개 이진 결함(기하 5, 텍스처 4)을 판정하는 재사용 가능한 벤치마크입니다. 실버 1,006개, 전문가 129개 자산과 84개 추론 설계, 12개 VLM 비교를 제공하고, HuggingFace 데이터셋 링크가 PDF에 명시되어 있습니다. 과제 프롬프트가 영어이므로 en 트랙이며, VLM이 렌더링된 다중 뷰 이미지를 입력받으므로 vision으로 분류했습니다. 기존 인벤토리에 없는 새 항목이고, 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "3d-defectbench",
+            "이름": "3D-DefectBench",
+            "평가 축": "이미지(3D 생성 결함 판정: VLM judge 평가 파이프라인)",
+            "언어": "en",
+            "정의": "텍스트 프롬프트와 생성된 텍스처 GLB 메시에 대해 9차원 이진 결함 벡터(기하 5: 형태·표면 품질, 융합·불완전 부품, 자세·배치, 누락 부품, 추가 형상 / 텍스처 4: 노이즈·블러, 위치 오류·중첩, 구운 조명·그림자, 시각-텍스트 불일치)를 판정하는 벤치마크. 결함별 선택적 심각도(Major) 주석을 제공한다. 실버 세트 1,006개 자산(5표 다수결)과 전문가 세트 129개 자산(2인 라벨)으로 구성되며, 카메라 프로토콜·시각 입력·프롬프트 스키마를 교차한 84개 추론 설계와 12개 VLM을 비교한다. 주 지표는 macro MCC이고 macro F1도 보고한다.",
+            "대표 과제": "프롬프트와 렌더링된 다중 뷰 이미지를 받아 9개 결함의 존재 여부를 판정(예: 6뷰 oblique RGB + 루브릭 체크리스트 프롬프트 설정 c004)",
+            "대표 예시·설명": "영어 평가 프롬프트와 다중 뷰 격자 이미지 한 장을 VLM에 주고, 각 결함이 있으면 1, 없으면 0으로 JSON 체크리스트를 출력하게 한 뒤 사람 라벨과의 일치도를 측정하는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스는 이번 단계에서 확인하지 못했다. 자산은 Roblox Cube 계열 text-to-3D 생성기 두 변형의 출력이며 방어 분포는 재표집되어 생성기의 실제 성능을 대표하지 않는다. 논문은 라벨, 프롬프트, 예측, Croissant 메타데이터를 HuggingFace에 공개한다고 밝힌다. 사람 라벨은 실버(훈련된 외주 라벨러)와 전문가(3D 아티스트) 두 체계이며 텍스처 라벨은 노이즈가 크다. 디지털 렌더링 평가이므로 GLB 렌더링 환경이 필요하다. 결과는 논문 조건의 값이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/zzhao0500/3D-DefectBench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (3D generation defect judging: evaluation pipelines for VLM judges)",
+            "definition": "A benchmark in which a judge predicts a nine-dimensional binary defect vector for a text prompt and a generated textured GLB mesh: five geometry defects (form/surface quality, fused or incomplete parts, pose/placement, missing parts, extra geometry) and four texture defects (noise/blur, misplaced or overlapping texture, baked lighting/shadow, visual-textual mismatch). Each defect carries an optional human severity (Major) annotation. It has a silver set of 1,006 assets (five-vote labels) and an expert set of 129 assets (two labels each), and compares 12 VLMs across 84 inference designs crossing camera protocol, visual input, and prompt schema. The primary metric is macro MCC, with macro F1 also reported.",
+            "task": "Given the prompt and rendered multi-view images, decide whether each of the nine defects is present (for example the six-view oblique RGB design with a rubric-guided checklist prompt, c004).",
+            "example": "Task description, not an actual test item: an English evaluation prompt and one multi-view grid image are given to a VLM, which outputs a JSON checklist with 1 or 0 per defect, and agreement with human labels is then measured."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "VLM judges receive"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "VLM judges receive"
+            },
+            "대표 예시·설명": {
+              "page": 37,
+              "quote": "You are a"
+            },
+            "링크": {
+              "page": 32,
+              "quote": "https://huggingface.co/datasets/zzhao0500/3D-DefectBench"
+            },
+            "언어": {
+              "page": 37,
+              "quote": "You are a"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "3D-DefectBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "nine fine-grained binary"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "nine fine-grained binary"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2607.10826",
+      "paper_title": "3D-DefectBench: A Controlled Factorial Study of Vision-Language Model Evaluation Pipelines for Fine-Grained 3D Generation Defects",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2607.10826",
+        "sha256": "31edb500384817d8c18cf6b3859314093114512ae08f146508311447de9d8d63",
+        "accessed": "2026-11-11T03:56:27Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 47,
+          "elapsed_seconds": 283.13,
+          "pdf_sha256": "31edb500384817d8c18cf6b3859314093114512ae08f146508311447de9d8d63",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "632cfb2fdce5f10da85a40c8b7abde2ecb27d3ef3a1e61dccb7481912e01254d",
+          "page_json_file": "2607.10826.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/zzhao0500/3D-DefectBench",
+            "fetched_url": "https://huggingface.co/datasets/zzhao0500/3D-DefectBench/raw/main/README.md",
+            "sha256": "ad7f776fdc1ba86684dbc54a03a0fa890dc158b9c1b98f68d75a1dcbafa40c63",
+            "accessed": "2026-11-11T04:01:34Z",
+            "license_file": {
+              "fetched_url": "https://huggingface.co/datasets/zzhao0500/3D-DefectBench/raw/main/LICENSE",
+              "name": "LICENSE",
+              "spdx_id": null,
+              "sha256": "631a70ed7888a09bb8bb180e624d6bcfb7cc169d91c11b73659e82918da7983c"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-11T04:01:34Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2607.10826",
+        "paper_title": "3D-DefectBench: A Controlled Factorial Study of Vision-Language Model Evaluation Pipelines for Fine-Grained 3D Generation Defects",
+        "abstract": "Automated evaluation is essential for scaling generative 3D systems, where exhaustive human review is costly and slow. Yet the reliability of an automated judge depends on the full evaluation pipeline, including the vision-language model (VLM), asset rendering, visual evidence, task specification, and human reference labels. We introduce 3D-DefectBench, a large-scale benchmark for rigorous evaluation-pipeline analysis. It complements holistic ratings and pairwise preferences with nine fine-grained binary defects spanning geometry, texture, and prompt adherence, with optional human severity annotations. Using a balanced factorial design, we vary the VLM, camera protocol, visual input, and prompt schema across 84 inference designs, and validate the resulting conclusions on a broader set of frontier models. Model choice is the dominant source of variation in agreement with human labels, while other pipeline factors also influence agreement, interact with the model, and can alter the best configuration. A compact six-view RGB protocol performs comparably to denser view sets and configurations augmented with depth or normal channels, making it a strong cost-effective default. Under this fixed design, the best of 12 VLMs still trail trained human labelers, and texture agreement drops sharply from expert-agreement to noisier silver labels. Severity annotations further show that binary judges recover most defects humans flag as severe. These results highlight the importance of evaluating automated judges as complete pipelines and calibrating them across human reference regimes.",
+        "paper_updated": "2026-10-07T00:00:00Z",
+        "created_at": "2026-10-19T13:49:05Z",
+        "input_sha256": "bf3c921fbe49dba7b15cec927cdb3a24c75693cc0f456b049d94459fbeedf7fe",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "3D 생성 결함 평가 파이프라인 벤치마크, VLM 판정 분석"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "3D 생성 결함 평가용 VLM 파이프라인 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42946878305",
+        "context_sha256": "b295fbe78b2ca9cd814dc866a8d3348166e353fd68e8f837801fef2633c78a5d"
+      },
+      "proposal_sha256": "c8c8f59817a4c355dda8af324de33a30a79a3a2cfcad09cdfada1e6ae1e17d7e"
     }
   },
   "processed_comments": [],
@@ -91764,8 +91956,8 @@
         "2611.12640",
         "2611.12856"
       ],
-      "calls": 25,
-      "cost_usd": 17.2564
+      "calls": 26,
+      "cost_usd": 18.1717
     }
   },
   "reaudits": [
