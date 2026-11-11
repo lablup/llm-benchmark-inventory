@@ -55091,74 +55091,9 @@
       }
     },
     "2605.07247": {
-      "decision": "propose",
-      "reason": "EnvSimBench는 LLM 환경 시뮬레이터의 충실도를 재는 재사용 가능한 새 벤치마크다. 도구 상호작용 환경 167개에서 뽑은 400개 샘플로 구성되고, 정답은 결정적 실행기가 만든다. 과제는 영어 도구 피드백과 설정 상태를 다루는 텍스트 입력이라 en 트랙의 text로 분류했다. 기존 인벤토리에 없는 항목이고, 논문이 공식 코드·데이터 주소를 제시한다. 라이선스와 lm-eval 지원은 확인되지 않아 '확인 불가'로 기록했다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "envsimbench",
-            "이름": "EnvSimBench",
-            "평가 축": "에이전트(LLM 기반 환경 시뮬레이션 충실도)",
-            "언어": "en",
-            "정의": "도구 상호작용 환경 167개에서 뽑은 400개 샘플로 LLM이 에이전트 행동의 결과(피드백 문자열과 상태 변화)를 정확히 예측하는지 평가하는 벤치마크. 행동 결과(실패 20, 상태 변화 없음 80), 상태 변화 개수(Simple 50, Medium 200, Difficult 50), 인자 개수의 3개 축으로 층화했다. 정답은 결정적 실행기가 만들며, Feedback Match(FM)와 Config Match(CM)로 채점한다. 논문은 7개 모델을 non-thinking 모드에서 평가했고 추론 모드 보충 결과도 별도로 보고한다.",
-            "대표 과제": "설정 상태, 도구 호출, 구현 코드가 주어지면 피드백 문자열과 상태 변경 목록을 예측",
-            "대표 예시·설명": "도구 호출(예: 작업을 완료 처리)과 호출 전 설정, 도구 구현 코드를 주고, 모델이 영어 피드백 문자열과 상태 변경 연산을 내면 실행기 결과와 대조하는 과제 설명",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터·코드 라이선스는 아직 확인하지 않았다(논문에 명시 없음). 샘플은 EnvScaler 환경에서 GPT-4o-mini 에이전트가 수집한 궤적을 바탕으로 만들었으므로 원천별 약관을 이용 전에 따로 확인해야 한다. 논문은 소규모 층(Failure 20개, Difficult 층 일부 n=4–6)의 통계적 신뢰도 한계를 밝힌다. FM은 출력 형식에 민감해 논문도 CM을 주 지표로 쓴다. 논문 수치는 해당 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/cookieApril/EnvSimBench"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agents (fidelity of LLM-based environment simulation)",
-            "definition": "A benchmark of 400 samples from 167 tool-interactive environments that tests whether an LLM can accurately predict the outcome of an agent action, namely the feedback string and the state changes. Samples are stratified along three axes: action outcome (20 failure, 80 no-change), state-change count (50 Simple, 200 Medium, 50 Difficult), and argument cardinality. Ground truth comes from a deterministic executor, and scoring uses Feedback Match (FM) and Config Match (CM). The paper evaluates seven models in non-thinking mode and reports supplementary reasoning-mode results separately.",
-            "task": "Given the pre-execution configuration, a tool call, and its implementation code, predict the feedback string and the list of state-change operations.",
-            "example": "Task description: given a tool call (for example, marking a task as completed), the configuration before execution, and the tool's implementation code, the model outputs an English feedback string and state-change operations, which are compared with the executor's results."
-          },
-          "evidence": {
-            "modality": {
-              "page": 4,
-              "quote": "predicts a feedback"
-            },
-            "대표 과제": {
-              "page": 4,
-              "quote": "predicts a feedback"
-            },
-            "대표 예시·설명": {
-              "page": 19,
-              "quote": "Security not found"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/cookieApril/EnvSimBench"
-            },
-            "언어": {
-              "page": 19,
-              "quote": "Security not found"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "We construct EnvSimBench"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "400 samples across"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "Environment Simulation Ability"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공식 저장소 README(https://github.com/cookieApril/EnvSimBench)에는 'License-MIT' 배지가 있고 LICENSE 파일 링크만 걸려 있으며, 수집된 카드에는 '## LICENSE file' 절이 없다(license_file: null). 따라서 '미표기' 근거(absence)로는 쓸 수 없고, 이 MIT 표기는 저장소 코드에 대한 표기일 뿐 400개 벤치마크 데이터에 대한 데이터 라이선스로 확인되지 않는다. 데이터는 EnvScaler 환경 191개에서 GPT-4o-mini 에이전트가 수집한 궤적으로 만들어졌고(논문 3쪽 Figure 1, 17쪽 Figure 4), 배지 한 줄만으로는 이 구성 요소 전체에 MIT가 적용되는지 입증되지 않는다. 데이터셋이 실제로 배포되는 Hugging Face 카드(Louie-CookieApril/EnvSimBench)와 LICENSE 파일 본문, EnvScaler 환경의 라이선스는 이번에 제공된 공식 자료에 없어 확인하지 못했다. 또한 상업적 이용·수정·파생·재배포 허용 여부를 직접 밝힌 문장이 없고, 공식 카드에 lm-eval 또는 lm-evaluation-harness 언급이 없으나 라이선스 문구가 있어 absence 증거를 쓸 수 없다. 이 사실들이 확인되기 전에는 공개하지 않는다. Hugging Face 데이터 카드와 저장소 LICENSE 파일을 가져오면 다시 진행할 수 있다. 성능 결과는 논문 4쪽 Table 4(7개 모델의 Overall CM)로 제시할 수 있다.",
+      "changes": [],
       "arxiv_id": "2605.07247",
       "paper_title": "EnvSimBench: A Benchmark for Evaluating and Improving LLM-Based Environment Simulation",
       "paper_updated": "2026-10-06T00:00:00Z",
@@ -55227,7 +55162,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-11T02:40:59Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -55253,11 +55188,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "42946878305",
-        "context_sha256": "442ca2faf9835b0ca0335e24b352f176fb243e8c99ce124933ea3f26e2f81a7c"
-      },
-      "proposal_sha256": "3c2964e3659a191d6842912b3af6f72072a14add91610dfa59854f7ff854c5e6"
+      "proposal_sha256": "884964c9f9148db0288c03a2bd31d808a303297643bfcd1f78792f945f1d3d18",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     },
     "2606.30371": {
       "decision": "propose",
@@ -89185,7 +89118,9 @@
     },
     "2026-11-11": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [],
+      "calls": 1,
+      "cost_usd": 0.8079
     }
   },
   "reaudits": [
