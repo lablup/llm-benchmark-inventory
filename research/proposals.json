@@ -58254,6 +58254,163 @@
         "reviewed_sha256": "c302b75fa0abf04732dd05e28fdb9ad6914c14594838ec76f66d77d30249ffdd",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2607.20471": {
+      "decision": "propose",
+      "reason": "이 논문은 영어 영업 아웃리치를 소재로 한 재사용 가능한 벤치마크 SDR-Arena와 공개 코퍼스 SDR-Bench(고객 성공 사례 50,000건, 22개 산업, 3,500개 기업)를 새로 제안한다. 에이전트가 사건 이전 정보만으로 거래를 성사시킨 핵심 논거를 복원하고, 가중 nugget 재현율(WCS)로 채점한다. 과제는 영어 텍스트이므로 en 트랙의 text로 분류한다. 비공개 기업 이메일 데이터는 공개되지 않는다. 공식 데이터 링크는 PDF 1쪽의 Hugging Face 주소다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "sdr-bench",
+            "이름": "SDR-Bench (SDR-Arena)",
+            "평가 축": "에이전트(양자 간 생성형 개인화: 영업 아웃리치 핵심 논거 복원)",
+            "언어": "en",
+            "정의": "성공 사례 기사 50,000건(3,500개 기업, 22개 산업)으로 구성된 공개 코퍼스와 평가 프레임워크. 에이전트는 판매자, 고객, 제품, 시점 정보와 해당 시점까지의 웹만 사용해 피치 포인트를 생성하고, LLM 판정이 정답 nugget별로 0~5점을 매긴 뒤 가중 nugget 재현율(WCS)로 집계한다. 논문은 평가용 층화 표본에서 LLM 6종과 딥리서치 에이전트 2종을 평가했다. 이 결과는 논문 조건의 값이며 현재 전역 리더보드가 아니다.",
+            "대표 과제": "판매자·고객·제품·시점 정보로 해당 거래를 성사시킨 피치 포인트(제품→고객 고충→가치 제안)를 복원",
+            "대표 예시·설명": "판매자가 특정 고객에게 제품을 어떻게 제안할지 영어 프롬프트로 묻고 에이전트가 피치 포인트 3개를 생성하면, 성공 사례에서 추출한 정답 피치 포인트를 얼마나 덮는지 채점하는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스를 확인하지 못했다. 논문은 이용 정책(Acceptable Use Policy)이 스팸, AI 작성 사실을 숨긴 서신, 피싱을 금지할 예정이라고 밝힌다. 이 벤치마크는 기업이 공개한 성공 사례 기사로 구성되므로 각 출처의 약관은 이용 전에 따로 확인해야 한다. 비공개 기업 이메일·통화 데이터는 공개되지 않는다. 정답 피치 포인트는 GPT-4o 추출, 채점은 LLM 판정에 의존한다. 검색에는 Bright Data SERP API가 쓰인다. 영어 영업 맥락에 한정된다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/behavior-in-the-wild/SDR-Bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (two-party generative personalization: recovering winning sales outreach arguments)",
+            "definition": "A public corpus of 50,000 customer success stories (3,500 enterprises, 22 industries) with an evaluation framework. An agent receives the seller, customer, product and timestamp, plus only the web available up to that time, and generates pitch points. An LLM judge grades each ground-truth nugget 0-5, and grades are aggregated into a weighted nugget recall (WCS). The paper evaluates six LLMs and two deep-research agents on a stratified sample; these are results under the paper's conditions, not a current global leaderboard.",
+            "task": "Recover the pitch points (product -> customer pain point -> value proposition) that won the deal, given seller, customer, product and time.",
+            "example": "Task description (not an actual test item): an English prompt asks how to pitch a seller's products to a customer, the agent generates three pitch points, and the benchmark scores how much of the ground-truth pitch-point content they cover."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "50,000 customer success"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "reconstruct the arguments"
+            },
+            "대표 예시·설명": {
+              "page": 15,
+              "quote": "I am a"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/behavior-in-the-wild/SDR-Bench"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "I am a"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "SDR-Bench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "50,000 customer success"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "two-party generative personalization"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2607.20471",
+      "paper_title": "Benchmarking the Personalization Capabilities of Large Language Models",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2607.20471",
+        "sha256": "c21434c5e7e49bd6a8aa81742c71eb1bac06d50cffdd73868b0d443b0ec256be",
+        "accessed": "2026-11-11T04:02:50Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 17,
+          "elapsed_seconds": 118.68,
+          "pdf_sha256": "c21434c5e7e49bd6a8aa81742c71eb1bac06d50cffdd73868b0d443b0ec256be",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "be739ecef7fb285b46d69b502c3f3d2247598e3dc2745c67a1b501721b5f7b4c",
+          "page_json_file": "2607.20471.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/behavior-in-the-wild/SDR-Bench",
+            "fetched_url": "https://huggingface.co/datasets/behavior-in-the-wild/SDR-Bench/raw/main/README.md",
+            "sha256": "a74b6cdd96f98ae095bbf1c78a8e1a51fe24d231a8208534022eb79483b62df9",
+            "accessed": "2026-11-11T04:05:11Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-11T04:05:11Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2607.20471",
+        "paper_title": "Benchmarking the Personalization Capabilities of Large Language Models",
+        "abstract": "Personalization is classically a two-party problem: a sender chooses what to say, and a receiver with independent objectives decides whether to act. A salesperson pitching the same analytics product leads with HIPAA compliance for a hospital and real-time reporting for a retailer, expecting a different argument to work on each. Existing LLM personalization benchmarks measure a narrower, one-party property: whether output matches the preferences of the same user it serves-sender and receiver being the same, as when RLHF aligns an assistant to its own user. The two-party case is harder to study automatically, since it needs ground truth linking specific content to an observed receiver action. Sales outreach provides this: a message written for one prospect, recorded against whether it produced a reply, a call, or a closed deal. We introduce SDR-Arena, a framework for benchmarking two-party generative personalization at scale, and SDR-Bench, a public corpus of 50,000 customer success stories across 22 industries and 3500 enterprises. Given only pre-outcome information, an agent must reconstruct the arguments that won the deal, scored by a weighted nugget-recall metric (WCS). The best model, Claude Sonnet 4.6, reaches 55.8% WCS indicating it recovers only half the winning content-a plateau we observe across model families that costly deep-research pipelines do not close. An ablation shows the cause is retrieval, not reasoning: models improve substantially given the facts a human researcher would gather, but rarely find them through web search alone. Two studies with professional SDRs support the metric: only 48% of generated pitches were rated usable without editing, and WCS yields model rankings consistent with evaluation against expert strategies authored independently of any model output.",
+        "paper_updated": "2026-10-07T00:00:00Z",
+        "created_at": "2026-10-19T13:49:05Z",
+        "input_sha256": "a5332db4ead46f3620761a497c5e0484c18716e03ccaf61cf4ce26c034891950",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 개인화 벤치마크, 판매 아웃리치 평가 프레임워크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "SDR-Arena/Bench 개인화 벤치마크와 공개 코퍼스 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "42946878305",
+        "context_sha256": "f9bd67b6325c243d8b4341b4ac8653c7107224455470a3eca13385d419ba8c67"
+      },
+      "proposal_sha256": "905ad114be8c1a4e2ddc1194b684bdfc2e805d3d76ad7c51a342f760c617bb86"
     }
   },
   "processed_comments": [],
@@ -92143,8 +92300,8 @@
         "2611.12640",
         "2611.12856"
       ],
-      "calls": 28,
-      "cost_usd": 20.0768
+      "calls": 29,
+      "cost_usd": 20.8812
     }
   },
   "reaudits": [
