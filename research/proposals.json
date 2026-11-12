@@ -59649,6 +59649,161 @@
         "context_sha256": "ec679b5be169da0904b5bdc87340e80b85fc70c0a73c1f857d222e054ac43f27"
       },
       "proposal_sha256": "a0bfcaca4ce142c8427d224faa1008e8a6a75676cc19dd9af22ebc999d09f444"
+    },
+    "2610.09112": {
+      "decision": "propose",
+      "reason": "GeoNatureAgent(GNA)는 재사용 가능한 도구 호출 에이전트 평가 벤치마크이다. MCP 서버로 제공되는 16개 도구 인터페이스, 103개 과제(주 스위트 93개와 확장 10개), 결정적 8종 점수 검사를 갖추고 있다. 과제 질의는 영어로 제시되므로 en 트랙의 텍스트 입력 벤치마크로 분류한다. PDF가 밝힌 공식 저장소 URL을 링크로 썼다. 라이선스와 lm-eval 지원 여부는 확인되지 않아 '확인 불가'로 기록했다. 논문의 모델별 점수는 근거 단계 몫이라 넣지 않았다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "geonatureagent",
+            "이름": "GeoNatureAgent (GNA)",
+            "평가 축": "에이전트(지리공간·환경 도구 호출, 배포 전 평가)",
+            "언어": "en",
+            "정의": "고정된 16개 도구(주요 12개와 보조 4개) 지리공간 인터페이스를 MCP 서버로 공개하고, 에이전트만 변수가 되도록 같은 도구·과제·결정적 채점기로 평가하는 프레임워크 겸 벤치마크. 103개 과제(18개 범주의 주 스위트 93개와 비교 확장 10개)로 구성되며 스페인·포르투갈의 환경 지표 3종을 다룬다. 8종 검사로 채점하며 LLM judge는 쓰지 않는다. 엄격 이진 통과 외에 검사별 부분 점수와 과제당 비용을 보고한다. 논문은 9개 LLM을 모델당 temperature 1.0 시드 3개로 평가했다.",
+            "대표 과제": "자연어 질의를 받아 올바른 지리공간 도구와 인자를 골라 호출하고 답변하는 과제(도구 선택, 다중 턴, 공간 추론, 교차 지표 종합, 오류 처리, 과제 거부 등)",
+            "대표 예시·설명": "과제 설명: 영어로 두 지방의 CO2 지질 저장 적합도를 비교하고 어느 쪽이 더 적합한지 묻는 질의를 받으면, 에이전트가 compare_areas 도구를 호출해 답해야 한다. 실제 평가 문항을 그대로 옮긴 것이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스는 확인하지 못했다. 논문 1쪽의 CC BY 4.0 표기는 논문 본문에 대한 것이고, Apache-2.0은 자체 호스팅 API 서비스(코드)에 대한 것이므로 데이터셋 라이선스를 증명하지 않는다. 이 벤치마크는 MITECO 기준, LUCAS 2022 침식 조사, BigEarthNet V2 같은 외부 자료를 바탕으로 하므로 구성 요소별 약관을 이용 전에 따로 확인해야 한다. 논문은 데이터셋과 소프트웨어가 Zenodo에도 보관되어 있다고 밝힌다. 일부 과제는 갈리시아어·바스크어 입력을 포함한다. 범주별 과제 수가 적어 범주별 결과는 참고용이며, 논문 수치는 논문 조건의 결과이고 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/gabrielireland/GeoNatureAgent_Benchmark"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (geospatial and environmental tool use, pre-production evaluation)",
+            "definition": "A framework and benchmark that publishes a fixed sixteen-tool geospatial interface (twelve principal and four auxiliary tools) as an MCP server, so the agent under test is the only variable against an identical tool layer, task suite, and deterministic scorer. It has 103 tasks (a 93-task main suite across 18 categories plus a ten-task comparison expansion) over three environmental indicators in Spain and Portugal. Scoring uses eight check types and no LLM judge. Besides strict binary pass, it reports per-check partial credit and per-case cost. The paper evaluates nine LLMs under three temperature-1.0 seeds per model.",
+            "task": "Given a natural-language query, choose and call the right geospatial tools with correct arguments and answer (tool selection, multi-turn, spatial reasoning, cross-indicator synthesis, error handling, task rejection, and more).",
+            "example": "Task description: given an English query comparing CO2 geological storage suitability between two provinces and asking which is better suited, the agent should call the compare_areas tool and answer. This is not a verbatim test item."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "natural language query"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "pre-production evaluation of"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "Which province is"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/gabrielireland/GeoNatureAgent_Benchmark"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "Which province is"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "GeoNatureAgent (GNA)"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "93-task main suite"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "pre-production evaluation of"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.09112",
+      "paper_title": "GeoNatureAgent (GNA): A Framework and Benchmark for Pre-Production Evaluation of Tool-Using Agents on Geospatial and Environmental Tasks",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.09112",
+        "sha256": "f8c97bf9d8c37ad7f9722616b3fd0084d5c14ea98935fda7cf1b2e99cee5c71b",
+        "accessed": "2026-11-12T04:03:21Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 10,
+          "elapsed_seconds": 91.63,
+          "pdf_sha256": "f8c97bf9d8c37ad7f9722616b3fd0084d5c14ea98935fda7cf1b2e99cee5c71b",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "08d038be867b785e0417f066ff6663a8e332a90240764c9e474908f7c74be2e0",
+          "page_json_file": "2610.09112.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/gabrielireland/GeoNatureAgent_Benchmark",
+            "fetched_url": "https://api.github.com/repos/gabrielireland/GeoNatureAgent_Benchmark/readme",
+            "sha256": "7ac6dba3550198a2442ebfb182002ccef529ec3857e58f1add059fc54ee5d515",
+            "accessed": "2026-11-12T04:05:18Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/gabrielireland/GeoNatureAgent_Benchmark/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "a55007d91c2e3a135e53f2247f6266d673be5d6df463fc9041abe4a98b6231e6"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-12T04:05:18Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.09112",
+        "paper_title": "GeoNatureAgent (GNA): A Framework and Benchmark for Pre-Production Evaluation of Tool-Using Agents on Geospatial and Environmental Tasks",
+        "abstract": "Before tool-using LLM agents are deployed in environmental and geospatial workflows, teams need evidence that an agent reliably selects the right operations against real APIs. We introduce GeoNatureAgent (GNA), a framework for pre-production evaluation of tool-using agents: a fixed sixteen-tool geospatial interface published as a Model Context Protocol (MCP) server, so the agent under test is the only variable, scored against an identical tool layer, task suite, and deterministic scorer. Its flagship instance is a 103-task benchmark (a 93-task main suite across 18 categories plus a ten-task comparison expansion) evaluated against an open, self-hostable geospatial API serving three environmental indicators across Spain and Portugal. We evaluate nine LLMs under three temperature-1.0 seeds, reporting capability and per-case cost as orthogonal axes. (1) Claude Sonnet 4 achieves the highest capability (61.7% +/- 0.7% on all 103 tasks; 60.8% on the main suite), followed closely by DeepSeek V3.2 (57.9%), while no other model exceeds 53%; (2) the cost-accuracy Pareto frontier is mostly open-weight, with DeepSeek V3.2 offering 93% of Claude's capability at 11.3x lower list-price cost; (3) under strict all-checks scoring the best model sits 24-36 points below the 85-97% reported on general-purpose GIS benchmarks, whereas per-check partial credit for the top four models (86-90%) is comparable, so much of that gap reflects scoring strictness rather than task difficulty alone. The MCP server, evaluation harness, benchmark, and API are publicly available; swapping the tool executors and task suite instantiates an equivalent benchmark for any geospatial domain.",
+        "paper_updated": "2026-10-08T00:00:00Z",
+        "created_at": "2026-10-19T13:49:19Z",
+        "input_sha256": "33fa67dd7760ccc7448a32cdf28eed52c885c7f160bcbda1c965599145fba6f5",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "지리공간 도구 사용 LLM 에이전트의 사전 배포 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "지리·환경 도구사용 에이전트 사전배포 평가 벤치마크·프레임워크"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43142251388",
+        "context_sha256": "9e6700e745fafce781a03da575145697e2584b44dcfadef08f4418eaabcb1b8f"
+      },
+      "proposal_sha256": "38cfb02924e729d222130fe20bed55b970a21149d7ec154ca619011f79fc91f6"
     }
   },
   "processed_comments": [],
@@ -94204,8 +94359,8 @@
         "2611.14477",
         "2611.14511"
       ],
-      "calls": 20,
-      "cost_usd": 15.4206
+      "calls": 21,
+      "cost_usd": 16.2336
     }
   },
   "reaudits": [
