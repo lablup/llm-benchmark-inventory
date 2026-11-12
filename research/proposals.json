@@ -58654,7 +58654,7 @@
     },
     "2609.38781": {
       "decision": "propose",
-      "reason": "ChartDensity-Bench는 복합 차트 이미지에서 표 형태의 수치 데이터를 복원하는 능력을 평가하는 새 재사용 벤치마크다. 하나의 이미지에 담기는 차트 수 k를 1, 3, 6, 9로 통제하고, 구조 신뢰도·완결성·파싱 가능성·수치 충실도를 따로 측정한다. 과제가 이미지 입력을 요구하므로 vision이다. 추출 프롬프트의 영어 표 형식(| Series Name | X Value | Y Value |)이 과제 언어 근거이므로 en 트랙에 둔다. 논문이 공식 코드 저장소 URL을 밝히고 있지만 공개 시점은 논문 게재 후로 예정되어 있다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "reason": "ChartDensity-Bench는 복합 차트 이미지에서 표 형태의 수치 데이터를 복원하는 능력을 평가하는 새 재사용 벤치마크다. 하나의 이미지에 담기는 차트 수 k를 1, 3, 6, 9로 통제하고, 구조 신뢰도·완결성·파싱 가능성·수치 충실도를 따로 측정한다. 과제가 이미지 입력을 요구하므로 vision이다. 추출 프롬프트의 영어 표 형식(| Series Name | X Value | Y Value |)이 과제 언어 근거이므로 en 트랙에 둔다. 공식 저장소 README와 LICENSE 파일(MIT)이 수집되었고, 데이터의 원천인 CHART-Infographics는 재라이선스되지 않는다고 README가 밝힌다. lm-eval 언급은 README와 논문 어디에도 없어 '미표기'로 기록한다.",
       "changes": [
         {
           "track": "en",
@@ -58667,12 +58667,12 @@
             "대표 과제": "복합 차트 이미지(k=1, 3, 6, 9)에서 차트별 데이터 표(Series Name, X Value, Y Value) 복원",
             "대표 예시·설명": "여러 차트가 격자로 합쳐진 이미지를 주고, 통일된 영어 추출 프롬프트로 각 차트를 구분해 '| Series Name | X Value | Y Value |' 형식의 표를 출력하게 하는 과제. 정답은 원천 데이터 표와 대조한다(과제 설명, 실제 문항 아님).",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스는 확인하지 못했다. 논문은 코드를 게재 후 공개할 예정이라고 밝혔으므로 저장소 공개 여부를 먼저 확인해야 한다. 이 벤치마크는 ICPR CHART-Infographics 데이터셋(Davila et al., 2022)의 차트와 정답 표를 원천으로 하므로(논문 3쪽), 원천 데이터의 약관을 이용 전에 따로 확인해야 한다. 선·막대 차트만 다루고 시각 밀도를 차트 수로만 정의한다는 한계를 논문이 밝힌다. 논문 수치는 API 접근 MLLM 5종 기준이다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(저장소 코드 한정. 원천 CHART-Infographics 데이터는 원 약관 유지)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "저장소 LICENSE 파일의 MIT는 저장소 코드에 대한 표기이며, MIT 조건에 따라 저작권 고지와 라이선스 전문을 사본에 포함해야 한다. 이 벤치마크는 ICPR CHART-Infographics 데이터셋(Davila et al., 2022)의 차트와 정답 표를 바탕으로 만들어졌다(논문 3쪽). 공식 README는 이 원천 데이터와 차트 이미지를 저자들이 재라이선스하지 않고 원 약관을 유지한다고 밝히므로, 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 벤치마크 데이터는 GitHub Releases로 배포된다. 선·막대 차트만 다루고 시각 밀도를 차트 수로만 정의한다는 한계를 논문이 밝힌다. 논문 수치는 API로 접근한 MLLM 5종의 결과이며 현재 전역 리더보드가 아니다. 공식 README는 평가를 자체 스크립트로 실행하도록 안내한다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/ISSAIR/ChartDensity-Bench"
           },
           "modality": "vision",
@@ -58716,9 +58716,85 @@
               "quote": "structured numerical data"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/ISSAIR/ChartDensity-Bench",
+              "quote": "(SPDX MIT)"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/ISSAIR/ChartDensity-Bench",
+              "quote": "sublicense, and/or sell"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/ISSAIR/ChartDensity-Bench",
+              "quote": "copy, modify, merge"
+            },
+            "재배포": {
+              "source_url": "https://github.com/ISSAIR/ChartDensity-Bench",
+              "quote": "publish, distribute"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/ISSAIR/ChartDensity-Bench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "ΔMAE: 단일 차트(k=1) 대비 9개 차트(k=9)에서 정규화 MAE(0–100 정규화 척도)의 절대 증가량, 점수 포인트 단위",
+            "setting": "이 논문의 Table 1(ChartDensity-Bench, ICPR CHART-Infographics 기반 선·막대 차트, 밀도 k=1 대 k=9 비교, 통일된 추출 프롬프트, API 접근 MLLM 5종)에서 보고된 결과이며, 현재 전역 리더보드가 아니다. 값이 낮을수록 밀도에 따른 오차 증가가 작다.",
+            "higher_is_better": false,
+            "results": [
+              {
+                "model": "Doubao",
+                "score": "4.4009",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Doubao 4.4009"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini",
+                "score": "3.0017",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemini 3.0017"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM",
+                "score": "7.3937",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GLM 7.3937"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Kimi",
+                "score": "1.5191",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Kimi 1.5191"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen",
+                "score": "5.7183",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen 5.7183"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.38781",
@@ -58815,7 +58891,8 @@
         "source_run": "43142251388",
         "context_sha256": "9d43a4d8b38ff8273ba1c669d59f30bd5484152a0cce7ec67ccf864604cb9734"
       },
-      "proposal_sha256": "2a5e1fbc81719f9a5aaa0c996fbe8a2bd5a46b4e772ef2d1d1a68c1b45d3f9e9"
+      "proposal_sha256": "cdade2c783e91056f235392fd0e117afee0ef38111c31d7b45652e007d5e9548",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -93337,8 +93414,8 @@
         "2611.14477",
         "2611.14511"
       ],
-      "calls": 7,
-      "cost_usd": 4.3631
+      "calls": 8,
+      "cost_usd": 5.184
     }
   },
   "reaudits": [
