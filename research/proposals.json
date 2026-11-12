@@ -57544,8 +57544,8 @@
       }
     },
     "2605.15229": {
-      "decision": "propose",
-      "reason": "PBT-Bench는 Python 라이브러리 40개에서 가져온 속성 기반 테스트(PBT) 문제 100개로 구성된 재사용 가능한 코딩·에이전트 벤치마크이고, 인벤토리에 같은 항목이 없어 새 행으로 제안한다. 프롬프트와 문서가 영어이고 입력이 모두 텍스트와 코드이므로 en 트랙, text 모달리티로 분류했다. 논문이 공식 저장소 URL을 밝히고 있어 링크로 사용했다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았으므로 '확인 불가'로 기록했고, 모델별 비교 수치는 이 단계에서 다루지 않는다.",
+      "decision": "needs_evidence",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: The official card mentions the evaluation harness; cite it instead of claiming absence",
       "changes": [
         {
           "track": "en",
@@ -57683,7 +57683,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-12T02:38:26Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -57709,11 +57709,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43142251388",
-        "context_sha256": "76df7af6510108648a0240a1610df4f4bd0281e3dc0b4f89eade4221639fb7bd"
-      },
-      "proposal_sha256": "4316be1c7367bf6e486c4f59a67a0b3f57ccdfd9bd1d63bbc57a30d696acdf0f"
+      "proposal_sha256": "4316be1c7367bf6e486c4f59a67a0b3f57ccdfd9bd1d63bbc57a30d696acdf0f",
+      "approval_policy": "claude_only",
+      "resume_error": "The official card mentions the evaluation harness; cite it instead of claiming absence"
     },
     "2605.29257": {
       "decision": "exclude",
@@ -89801,19 +89799,19 @@
     },
     "2611.09794": {
       "arxiv_id": "2611.09794",
-      "paper_title": "Seeing What Matters: Benchmarking Task-Conditioned Actionable Spatial Belief for Manipulation",
-      "abstract": "When should a robot look at the cup, and when at the portafilter? Spatial-reasoning benchmarks evaluate whether a model can describe a scene, but manipulation needs something more specific: the ability to acquire the particular evidence that makes the current command executable. A view that is informative for one task can be useless for another, even at the same workstation. We introduce Seeing What Matters, a benchmark for task-conditioned actionable spatial belief in simulated tabletop manipulation. Across three domains--coffee workstation, drawer/cabinet, and microwave/appliance--the benchmark provides 860 frozen evaluation cases; expanding across methods, budgets, and inference repeats yields more than 115,000 evaluator episodes under two protocols: closed-loop actionability and same-object functional out-of-distribution generalization. Each case pairs a set of candidate RGB views with a manipulation command, shared scripted skills, and hidden postconditions, so the benchmark directly measures whether a view-selection policy acquires the observations its command actually needs. We also provide a diagnostic reference pipeline that maintains a spatial-functional belief state and ranks views by missing evidence. At primary budget settings, this pipeline reaches 98.8% closed-loop and 98.9% functional-OOD success; ablating the functional or command-binding components collapses performance to near zero. Seven vision-language models, evaluated on the same cases, reach only 26-43%. Replacing the reference pipeline's coverage metadata with frozen RGB-derived scores preserves 98.5%/98.9% success; shuffling the visual scores collapses it to 15%/11%, confirming that the result depends on image content. These gaps suggest that spatial belief for manipulation should be evaluated not by scene-level completeness, but by whether it acquires the evidence the current command requires.",
-      "paper_updated": null,
-      "created_at": "2026-11-10T02:41:45Z",
-      "input_sha256": "f911294c52a1d4b188791475edbce7a8ce32104b3c8909e8e932fa7feddef34d",
+      "paper_title": "Seeing What Execution Needs: Benchmarking Task-Conditioned Actionable Spatial Belief for Manipulation",
+      "abstract": "When should a robot look at the cup, and when at the portafilter? A view that is informative for one task can be useless for another, even at the same workstation. We introduce Seeing What Execution Needs, a benchmark for task-conditioned actionable spatial belief in simulated tabletop manipulation. Its aligned three-domain track contains 1,080 frozen cases (360 each for coffee workstation, drawer/cabinet, and microwave/appliance). The primary coffee protocols -- closed-loop actionability and same-object functional out-of-distribution generalization -- produce over 115,000 evaluator episodes across evaluated methods, budgets, and inference repeats. Each case pairs candidate RGB views with a manipulation command, shared scripted skills, and hidden postconditions, directly measuring whether selected observations support execution. A metadata-assisted diagnostic reference pipeline maintains spatial-functional beliefs and ranks views by missing evidence. At primary budget settings, it reaches 98.8% closed-loop and 98.9% functional-OOD success; removing functional fields or command binding reduces functional-OOD success to 0.0% and 19.7%, respectively. Under a separate full-preview contract, seven vision-language models reach 26-43%. Replacing coverage metadata with frozen RGB-derived scores retains 98.5%/98.9% success; shuffling these scores reduces success to 15%/11%, supporting dependence on image content. Separately, the aligned three-domain evaluation at H=3 supports portability of the benchmark interface under frozen domain-specific schemas. These results suggest that spatial belief for manipulation should be evaluated by whether acquired evidence meets the current command's execution requirements.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "relevant",
-          "reason": "조작용 과제 조건부 공간 신념 VLM 벤치마크 제안"
+          "decision": "uncertain",
+          "reason": "로봇 조작 벤치마크, 과제 언어가 불명확함"
         }
       ]
     },
@@ -90341,19 +90339,19 @@
     },
     "2611.10044": {
       "arxiv_id": "2611.10044",
-      "paper_title": "CulturalCrosswords: A Multilingual Benchmark comprised of Answer Constraints and Grid Completion",
+      "paper_title": "CulturalCrosswords: A Multilingual Benchmark of Answer Constraints and Grid Completion",
       "abstract": "When several answers fit a riddle, exact-match scoring can penalise a valid response. CulturalCrosswords tests how answer constraints affect large language models (LLMs) solving cultural riddles, whose solutions draw on knowledge specific to a community. We constructed 53 crosswords from crowdsourced riddles in 42 languages and evaluated 11 LLM configurations on five versions of each clue set: plain batches, batches with lengths, batches with lengths and partial-answer hints, and crosswords requesting an answer list or a completed grid. On 962 clues with alternative answers, lengths improve agreement with the reference by 22.8 percentage points, compared with 8.4 points when accepted alternatives also receive credit. Part of the gain therefore appears to come from selecting a required answer form. Crossword input increases the share of all crossings with compatible answers by 9.7 points; requiring a completed grid reveals large differences between models. The benchmark distinguishes agreement with a reference from the ability to produce answers that fit together and occupy the correct cells.",
-      "paper_updated": "2026-11-10T00:00:00Z",
-      "created_at": "2026-11-11T02:42:30Z",
-      "input_sha256": "c56915c2debb296d1b4884a1e3c9f13b52e1cff74e8fc0ffb3b2c5fc96d1fa74",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "relevant",
-          "reason": "42개 언어 문화 퀴즈 크로스워드 벤치마크, 영어 포함 가능"
+          "decision": "uncertain",
+          "reason": "42개 언어 다국어 벤치마크, 한국어/영어 포함 불명확"
         }
       ]
     },
@@ -90630,10 +90628,10 @@
     "2611.11284": {
       "arxiv_id": "2611.11284",
       "paper_title": "WarBias: A Bilingual LLM Benchmark of Stereotypes About Internally Displaced People and Veterans",
-      "abstract": "This paper contains examples of stereotypes about veterans and displaced people that may be offensive or distressing. Social bias benchmarks for language models commonly examine categories such as gender, race, and religion, often drawn from lists of legally protected characteristics. Veterans and internally displaced people (IDPs) fall outside these lists, and stereotypes about them, which can undermine access to employment, housing, and social participation, remain largely absent from language model evaluation. We introduce WarBias, a Ukrainian--English benchmark of stereotypes about these two groups. Built from a taxonomy of 120 stereotype claims grounded in research and monitoring reports, WarBias contains 1,007 stereotype--counter-stereotype--unrelated sentence triplets and 240 multiple-choice questions per language. A Ukrainian language model selected in a blinded human pilot generated the Ukrainian triplets. At least two independent annotators reviewed each triplet in the annotation cohort. The authors revised items in response to the reviews, and the final release was machine-translated into English. Each claim carries a human severity rating. In a baseline evaluation of six models, four prefer stereotypical Ukrainian sentences about at least one group, most strongly about IDPs, while English scores are mostly balanced. WarBias supports complementary evaluations of stereotypical preferences and context-sensitive judgments, and provides paired forget/retain material for unlearning-based bias mitigation. We document the benchmark's construction, intended uses, and limitations, and offer its construction method as a template for analogous benchmarks in other conflict-affected societies.",
-      "paper_updated": "2026-11-10T00:00:00Z",
-      "created_at": "2026-11-11T02:42:46Z",
-      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "abstract": "This paper contains examples of stereotypes about veterans and displaced people that may be offensive or distressing. Social bias benchmarks for language models commonly examine categories such as gender, race, and religion, often drawn from lists of legally protected characteristics. Veterans and internally displaced people (IDPs) fall outside these lists, and stereotypes about them, which can undermine access to employment, housing, and social participation, remain largely absent from language model evaluation. We introduce WarBias, a Ukrainian-English benchmark of stereotypes about these two groups. Built from a taxonomy of 120 stereotype claims grounded in research and monitoring reports, WarBias contains 1,007 stereotype-counter-stereotype-unrelated sentence triplets and 240 multiple-choice questions per language. A Ukrainian language model selected in a blinded human pilot generated the Ukrainian triplets. At least two independent annotators reviewed each triplet in the annotation cohort. The authors revised items in response to the reviews, and the final release was machine-translated into English. Each claim carries a human severity rating. In a baseline evaluation of six models, four prefer stereotypical Ukrainian sentences about at least one group, most strongly about IDPs, while English scores are mostly balanced. WarBias supports complementary evaluations of stereotypical preferences and context-sensitive judgments, and provides paired forget/retain material for unlearning-based bias mitigation. We document the benchmark's construction, intended uses, and limitations, and offer its construction method as a template for analogous benchmarks in other conflict-affected societies.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
@@ -90641,7 +90639,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "우크라이나어-영어 편향 벤치마크 신규 제안"
+          "reason": "우크라이나어-영어 편향 벤치마크, 영어 포함"
         }
       ]
     },
@@ -90702,10 +90700,10 @@
     "2611.11588": {
       "arxiv_id": "2611.11588",
       "paper_title": "FinCutBench: A Continually Updated Benchmark for Measuring the Temporal Boundaries of LLM Financial Knowledge",
-      "abstract": "In financial backtesting and other point-in-time tasks, external inputs can be restricted by date, but model parameters may retain financial facts disclosed later, introducing parametric look-ahead bias. We introduce FinCutBench, a continually updated monthly financial knowledge benchmark for measuring how far a fixed model's financial knowledge extends over calendar time. The current dataset contains 9,000 Chinese and English four-option multiple-choice questions from January 2023 to September 2026, covering Chinese and U.S. markets and four categories of financial information. We construct monthly knowledge profiles using the approximate months in which the tested facts became public. After a profile passes the decline test and knot checks, we define the FinCut Boundary as the first month when the fitted profile reaches its lower level, and report the stability of the estimated date under resampling. Boundary dates and localization precision vary across models. Using the independently measured Transition Start and Boundary as fixed references for downstream sample grouping, we find clear relative declines after the Boundary in U.S. asset ranking and earnings recall for some models, while Chinese-market ranking estimates vary across models and all eight disclosure-period-paired forecast-error comparisons have unadjusted $p$ values above 0.10. The FinCut Boundary thus provides an empirical reference for the temporal scope of parametric knowledge in point-in-time financial evaluation, supporting evaluation-window selection and result interpretation.",
-      "paper_updated": "2026-11-10T00:00:00Z",
-      "created_at": "2026-11-11T02:42:46Z",
-      "input_sha256": "bc5016ea9397481b55b4b515f6a7f9e32fc18aa0b65bb40c154e783ec514d372",
+      "abstract": "In financial backtesting and other point-in-time tasks, external inputs can be restricted by date, but model parameters may retain financial facts disclosed later, introducing parametric look-ahead bias. We introduce FinCutBench, a continually updated monthly financial knowledge benchmark for measuring how far a fixed model's financial knowledge extends over calendar time. The current dataset contains 9,000 Chinese and English four-option multiple-choice questions from January 2023 to September 2026, covering Chinese and U.S. markets and four categories of financial information. We construct monthly knowledge profiles using the approximate months in which the tested facts became public. After a profile passes the decline test and knot checks, we define the FinCut Boundary as the first month when the fitted profile reaches its lower level, and report the stability of the estimated date under resampling. Boundary dates and localization precision vary across models. Using the independently measured Transition Start and Boundary as fixed references for downstream sample grouping, we find significant relative declines in U.S. asset-ranking performance and in earnings recall for Sol and Luna. Downstream effects vary across markets and tasks. The FinCut Boundary thus provides an empirical reference for the temporal scope of parametric knowledge in point-in-time financial evaluation, supporting evaluation-window selection and result interpretation.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
@@ -90713,7 +90711,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "중국어·영어 금융 지식 벤치마크 신규 제안"
+          "reason": "중국어/영어 금융 지식 벤치마크, 영어 포함"
         }
       ]
     },
@@ -90966,6 +90964,294 @@
           "model": "claude-sonnet-5-5",
           "decision": "uncertain",
           "reason": "멀티에이전트 워크플로 벤치마크; 과제 언어 불명확"
+        }
+      ]
+    },
+    "2603.26316": {
+      "arxiv_id": "2603.26316",
+      "paper_title": "SALMUBench: A Benchmark for Sensitive Association-Level Multimodal Unlearning",
+      "abstract": "As multimodal models like CLIP become integral to downstream systems, the need to remove sensitive information is critical. However, machine unlearning for contrastively-trained encoders remains underexplored, and existing evaluations fail to diagnose fine-grained, association-level forgetting. We introduce SALMUBench (Sensitive Association-Level Multimodal Unlearning), a benchmark built upon a synthetic dataset of 60K persona-attribute associations and two foundational models: a Compromised model polluted with this data, and a Clean model without it. To isolate unlearning effects, both are trained from scratch on the same 400M-pair retain base, with the Compromised model additionally trained on the sensitive set. We propose a novel evaluation protocol with structured holdout sets (holdout identity, holdout association) to precisely measure unlearning efficacy and collateral damage. Our benchmark reveals that while utility-efficient deletion is feasible, current methods exhibit distinct failure modes: they either fail to forget effectively or over-generalize by erasing more than intended. SALMUBench sets a new standard for comprehensive unlearning evaluation, and we publicly release our dataset, models, evaluation scripts, and leaderboards to foster future research.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "멀티모달 unlearning 벤치마크이나 과제 언어가 불명확함"
+        }
+      ]
+    },
+    "2506.12617": {
+      "arxiv_id": "2506.12617",
+      "paper_title": "Evaluating AI Alignment in LLMs: Output Analysis of Value Priorities Across 75 Models with Human Benchmarking",
+      "abstract": "Large language models (LLMs) are increasingly used in human-AI interaction research and practice, yet existing capability and safety benchmarks reveal little about the value priorities these systems express or how those priorities correspond to human judgements. Across three studies, we introduce an output-based approach to evaluating one facet of AI alignment by treating LLM-generated text as behavioural data and comparing expressed value-priority profiles with a human reference. Study 1 used inductive qualitative analysis to derive six themes of optimal AI functioning, namely Performance, Adaptive Capacity, Social Good, Ethics and Responsibility, Relational Integration, and Agency. Study 2 showed that LLM outputs were highly stable within models and converged on a common value-priority structure across models, indicating reliable and comparable value profiles. Study 3 benchmarked 75 contemporary LLMs against 376 human respondents using a profile-fidelity metric capturing both the relative ordering of priorities and the calibration of between-priority differences. Although most models reproduced the human ordering of values, some systematically exaggerated the differences between them, showing that models can appear aligned on conventional benchmarks while still diverging from human value calibration. Profile fidelity varied substantially across models and did not consistently scale with size, recency, or capability tier. Both LLMs and humans converged on a deprioritisation of Agency, raising important questions about the development of increasingly agentic AI systems. For research and applied use, the six themes and profile-based metric provide a scalable method for auditing LLM value profiles before deployment in contexts where alignment with human priorities is critical.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "가치 정렬 평가 지표 제안, 재사용 자원과 언어가 불명확함"
+        }
+      ]
+    },
+    "2604.11581": {
+      "arxiv_id": "2604.11581",
+      "paper_title": "Hidden Measurement Error in LLM Pipelines Distorts Annotation, Evaluation, and Benchmarking",
+      "abstract": "LLM evaluations drive model deployment, safety standards, research conclusions, and future projections, for example, about AI's impact on the labor market. Yet the way we often estimate noise from autoraters (LLM-as-judge) ignores variability from factors like judge model choice and prompt phrasing, which means we're underestimating error in a way that worsens with more data. This unmeasured variance can affect results enough to reverse conclusions. And judge-pipelines that fail to average this variation are more vulnerable to \"benchmark hacking\". This paper introduces a framework we call \"total evaluation error (TEE),\" which decomposes LLM pipeline uncertainty and uses design-study projections to reduce total error. In our safety and ideology applications, naive standard errors are 53-70% smaller than the corrected SE under our TEE framework. Using Chatbot Arena data, we show naive 95% CI coverage drops as n grows, while TEE-corrected coverage holds at 95%, and TEE-guided pipelines restrict the potential range of benchmark gaming by roughly 43%. We show further that a small pilot allows for the estimation of proper CIs, with the added benefit of projecting which design changes most improve precision. Using those projections to allocate API calls cut MMLU estimation error roughly in half against the answer key at the same budget, and increased per-match agreement with human voters on Chatbot Arena by 7.9 percentage points.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "평가 오차 통계 프레임워크이며 새 벤치마크가 아님"
+        }
+      ]
+    },
+    "2506.15253": {
+      "arxiv_id": "2506.15253",
+      "paper_title": "Specification-based Security Evaluation of Real-World Agents Tool-Calling under Long-Horizon Context Tasks",
+      "abstract": "As large language model (LLM) agents are increasingly deployed in long-horizon unattended scenarios, security evaluation of them before deployment becomes increasingly essential and challenging. Existing evaluation methods mainly follow the paradigms of LLM-as-a-Judge or Agent-as-a-Judge. However, such judges are themselves often vulnerable to hallucination and can even be affected by perturbations. Furthermore, because capturing full environment states at every step is often prohibitively expensive in open-ended environments, existing evaluations typically rely on textual logs and the final environment state. As a result, they may miss transient violations that are overwritten before the trajectory ends or never reflected in textual logs. We present RAS-Eval, a specification-based security evaluation framework for LLM agents. RAS-Eval uniformly expresses utility and security objectives as Linear Temporal Logic (LTL) specifications over tool-call trajectories and dynamic environment observations, and verifies them with an off-the-shelf model checker. This design addresses both limitations above. First, unlike LLM-as-a-Judge and Agent-as-a-Judge, RAS-Eval derives deterministic verdicts from formally defined properties, eliminating evaluator-side uncertainty and remaining reliable even for long-horizon trajectories. Second, RAS-Eval observes exactly the states on which the verdict depends, making it affordable to monitor the environment throughout execution and detect transient violations that leave little trace in the logs or final environment state. Moreover, we design a multi-agent-based dataset construction pipeline. Using it, we construct a benchmark (https://github.com/lanzer-tree/RAS-Eval) of 200 normal tasks and 800 attack tasks spanning four attack surfaces: indirect prompt injection, tool poisoning, skill code injection, and tool code injection.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "에이전트 보안 벤치마크이나 과제 언어가 불명확함"
+        }
+      ]
+    },
+    "2602.08866": {
+      "arxiv_id": "2602.08866",
+      "paper_title": "ArkEval: Benchmarking and Evaluating Automated CodeRepair for ArkTS",
+      "abstract": "Large language models have transformed code generation, enabling unprecedented automation in software development. As mobile ecosystems evolve, HarmonyOS has emerged as a critical platform requiring robust development tools. Software development for the HarmonyOS ecosystem relies heavily on ArkTS, a statically typed extension of TypeScript. Despite its growing importance, the ecosystem lacks robust tools for automated code repair, primarily due to the absence of a high-quality benchmark for evaluation. To address this gap, we present ArkEval, a unified framework for ArkTS automated repair workflow evaluation and benchmark construction. It provides the first comprehensive benchmark specifically designed for ArkTS automated program repair. We constructed this benchmark by mining issues from a large-scale official Huawei repository containing over 400 independent ArkTS applications. Through a rigorous multi-stage filtering process, we curated 502 reproducible issues. To ensure testability, we employed a novel LLM-based test generation and voting mechanism involving Claude and other models. Furthermore, we standardized problem statements to facilitate fair evaluation. Finally, we evaluated four state-of-the-art Large Language Models (LLMs) on our benchmark using a retrieval-augmented repair workflow. Our results highlight the current capabilities and limitations of LLMs in repairing ArkTS code, paving the way for future research in this low-resource language domain.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "ArkTS 코드 수리 벤치마크, 과제 언어가 불명확함"
+        }
+      ]
+    },
+    "2602.08896": {
+      "arxiv_id": "2602.08896",
+      "paper_title": "OmniReview: A Large-scale Benchmark and LLM-enhanced Framework for Realistic Reviewer Recommendation",
+      "abstract": "Academic peer review remains the cornerstone of scholarly validation, yet the field faces some challenges in data and methods. From the data perspective, existing research is hindered by the scarcity of large-scale, verified benchmarks and oversimplified evaluation metrics that fail to reflect real-world editorial workflows. To bridge this gap, we present OmniReview, a comprehensive dataset constructed by integrating multi-source academic platforms encompassing comprehensive scholarly profiles through the disambiguation pipeline, yielding 202, 756 verified review records. Based on this data, we introduce a three-tier hierarchical evaluaion framework to assess recommendations from recall to precise expert identification. From the method perspective, existing embedding-based approaches suffer from the information bottleneck of semantic compression and limited interpretability. To resolve these method limitations, we propose Profiling Scholars with Multi-gate Mixture-of-Experts (Pro-MMoE), a novel framework that synergizes Large Language Models (LLMs) with Multi-task Learning. Specifically, it utilizes LLM-generated semantic profiles to preserve fine-grained expertise nuances and interpretability, while employing a Task-Adaptive MMoE architecture to dynamically balance conflicting evaluation goals. Comprehensive experiments demonstrate that Pro-MMoE achieves state-of-the-art performance across six of seven metrics, establishing a new benchmark for realistic reviewer recommendation.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "심사자 추천 데이터셋, LLM 평가 해당 여부와 언어 불명확"
+        }
+      ]
+    },
+    "2603.29630": {
+      "arxiv_id": "2603.29630",
+      "paper_title": "BigEarthNet.txt: A Large-Scale Multi-Sensor Image-Text Dataset and Benchmark for Earth Observation",
+      "abstract": "Vision-langugage models (VLMs) have shown strong performance in computer vision (CV), yet their performance on remote sensing (RS) data remains limited due to the lack of large-scale, multi-sensor RS image-text datasets with diverse textual annotations. Existing datasets predominantly include aerial Red-Green-Blue imagery, with short or weakly grounded captions, and provide limited diversity in annotation types. To address this limitation, we introduce BigEarthNet$.$txt, a large-scale, multi-sensor image-text dataset designed to advance instruction-driven image-text learning in Earth observation across multiple tasks. It contains 464044 co-registered Sentinel-1 synthetic aperture radar and Sentinel-2 multispectral images with 9.6M text annotations, including: i) geographically anchored captions describing land-use/land-cover (LULC) classes, their spatial relations, and environmental context; ii) visual question answering pairs relevant for different tasks; and iii) referring expression detection instructions for bounding box prediction. A comparative statistical analysis shows that BigEarthNet$.$txt surpasses existing RS image-text datasets in textual richness and annotation type variety. We further establish a manually-verified benchmark split and extensively evaluate existing VLMs in RS and CV. The results show the limitations of these models on tasks that involve complex LULC classes, whereas fine-tuning using BigEarthNet$.$txt results in consistent performance gains across all considered tasks. Our code and data are publicly available at https://txt.bigearth.net.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "원격탐사 이미지-텍스트 벤치마크, 텍스트 언어 불명확"
+        }
+      ]
+    },
+    "2605.26074": {
+      "arxiv_id": "2605.26074",
+      "paper_title": "StakeBench: Evaluating Language Understanding Grounded in Market Commitment",
+      "abstract": "Existing financial NLP benchmarks often rely on labels supplied by outside observers, measuring how language is perceived rather than what speakers have committed to in the market. We introduce StakeBench, an evaluation framework for language understanding grounded in market commitment. StakeBench links 560,876 comments from 2,261 resolved markets to verified position, action, and market-odds records across Polymarket and Manifold. Supervision is derived from observable market behavior. Position sides, post-comment trading actions, and market-odds trajectories replace human annotation. Four diagnostic tasks test whether models detect market commitment, identify the revealed side, anticipate future action, and perform collective odds projection. Three commitment-aware metrics measure alignment with revealed preferences rather than perceived sentiment. Validity audits and explicit interpretation boundaries help distinguish observable commitment signals from latent belief and causal market-odds impact. Across 15 LLMs and 18 topics and platform settings, models partially recover position-side signals, with Directed Accuracy from 0.506 to 0.599, but show structural failures on later tasks. Ten of the fifteen models collapse to one or two action labels in future action anticipation, and no model consistently improves on the naive odds-direction baseline in collective odds projection. Model scale is not correlated with performance, finance-domain tuning does not improve revealed-side identification, and platform incentives strongly shape higher-order results. StakeBench is packaged with evaluation code and dataset under CC-BY 4.0.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "재사용 가능한 벤치마크이나 과제 언어가 명시되지 않음"
+        }
+      ]
+    },
+    "2606.24548": {
+      "arxiv_id": "2606.24548",
+      "paper_title": "Are Text-to-Image Models Inductivist Turkeys? A Counterfactual Benchmark for Causal Reasoning",
+      "abstract": "Text-to-image (T2I) generation models have achieved remarkable progress in producing visually realistic images from natural language prompts. Yet it remains unclear whether their success reflects genuine causal understanding or sophisticated pattern matching over visual-textual correlations. Inspired by Russell's inductivist turkey, we introduce Counterfactual-World (CF-World), a counterfactual benchmark designed to investigate whether text-to-image models can generate images under rules that systematically contradict real-world priors. CF-World organizes each scenario into three progressive levels: factual generation under ordinary world knowledge, explicit counterfactual generation with direct visual instructions, and implicit counterfactual generation requiring causal deduction from altered rules. We evaluate open-source and closed-source text-to-image models using CF-Eval, a scoring pipeline based on vision-language models. We report the scores at each prompt level as the primary results and use Prior Resistance Rate (PRR) and Reasoning Retention Rate (RRR) as auxiliary descriptive indicators. All evaluated models score lower on counterfactual prompts than on factual prompts. Diagnostic experiments reveal difficulties in following altered rules and recombining rarely co-occurring visual attributes. The gains from rephrasing object and attribute names are consistent with a role for learned visual priors in counterfactual generation. Our benchmark and evaluation code are publicly available at https://jylei16.github.io/CF-World.github.io/.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "T2I 반사실 벤치마크, 프롬프트 언어가 불명확함"
+        }
+      ]
+    },
+    "2611.12966": {
+      "arxiv_id": "2611.12966",
+      "paper_title": "BuySideFlow: A Point-in-Time Benchmark for LLM Agents in Investment Research",
+      "abstract": "Large language models (LLMs) can generate SQL and SQL--Python workflows for investment research, but ensuring point-in-time (PIT) validity remains challenging. Agents must enforce disclosure cutoffs and select the appropriate historical states and record versions throughout data retrieval and financial analysis. We introduce \\textsc{BuySideFlow}, a benchmark of 408 practitioner-derived Chinese-language tasks spanning equities, funds, fixed income, and macroeconomics over a fixed snapshot from a licensed production financial database. We provide executable references and a taxonomy of temporal errors, pairing result checks with expert audits of executed workflows. We evaluate nine agent configurations on all tasks, with result accuracy ranging from 16.2\\% to 36.8\\%. An audit of 900 runs on 100 shared tasks confirms PIT violations in 193 of the 380 runs that pass result checks (50.8\\%), showing that output agreement alone does not establish temporal validity.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "모든 과제가 중국어로 한정됨"
+        }
+      ]
+    },
+    "2611.12970": {
+      "arxiv_id": "2611.12970",
+      "paper_title": "TrustMod-SM: A Multi-Axis Benchmark for Evaluating Trustworthiness of LLMs in Social Media Content Moderation",
+      "abstract": "Large Language Models (LLMs) show strong potential for social media content moderation, but their trustworthiness beyond overall accuracy remains underexplored. We introduce TrustMod-SM, a benchmark of roughly 29,000 instances across eight datasets, to evaluate LLM moderators on five dimensions: trustfulness, fairness, safety, robustness, and context integrity. Evaluating 16 open-weight models (0.5B-284B parameters, spanning text-only and vision-language architectures) and one closed frontier model, we find persistent trustworthiness gaps. Higher detection accuracy often coincides with greater demographic disparity, and models frequently comply with concealment or exaggeration prompts, assign high confidence to wrong predictions, rarely escalate ambiguous cases, and struggle to separate hate speech from counter-speech or reclaimed language (especially below 8B parameters). Scaling does not uniformly resolve these issues, and no single model excels across all five dimensions.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "콘텐츠 검열 신뢰성 벤치마크, 언어가 불명확함"
+        }
+      ]
+    },
+    "2611.12982": {
+      "arxiv_id": "2611.12982",
+      "paper_title": "ICLayout-Bench: Benchmarking LLM Agents for Custom Circuit Layout Design",
+      "abstract": "Large language model (LLM) agents are being explored for circuit design, but their ability to produce high-quality custom layouts has not been extensively evaluated. ICLayout-Bench is a benchmark in which agents use electronic design automation (EDA) tools to construct and optimize GDSII layouts from transistor-level circuit netlists. These layouts are evaluated using physical verification, parasitic extraction, and post-layout simulation. Layouts that pass the physical and functional checks are scored on electrical performance and area. The benchmark includes 165 tasks across 13 process design kits (PDKs), covering technology nodes from 3 nm to 180 nm. The tasks span analog, mixed-signal, and digital circuits in open-source and commercial EDA flows. The experiments evaluate 22 configurations spanning seven models on 21 public and 19 private tasks. Mean layout scores range from 4.22 to 80.26 on public tasks and from 1.43 to 67.01 on private tasks, on a 100-point scale. Higher reasoning effort does not consistently improve mean scores, and configurations with comparable scores can incur substantially different model costs.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "회로 레이아웃 에이전트 벤치마크, 언어 불명확"
+        }
+      ]
+    },
+    "2611.12990": {
+      "arxiv_id": "2611.12990",
+      "paper_title": "Multimodal Graph Learning: A Survey of Models, Benchmarks, and Frontiers",
+      "abstract": "Multimodal attributed graphs (MAGs), in which nodes carry text, images, and other modalities while edges encode relations among entities, underlie e-commerce, social media, content platforms, and creative applications. Learning on MAGs has developed along two complementary lines: graph-centric methods redesign how modalities are fused, propagated, and connected within message passing, while foundation-model-centric methods pretrain transferable multimodal graph encoders or bring graph context into multimodal large language models for prediction and generation. In parallel, several benchmarks have appeared with different datasets and evaluation protocols. This survey takes an algorithm-centric and evaluation-grounded view of the field and makes three contributions. Modeling: we introduce a unified message-passing formulation and organize methods into five integration levels (feature, propagation, topology, learning, and foundation model), covering discriminative and graph-conditioned generative models; within this formulation we derive representative methods as special cases, compare their assumptions, expressiveness, and cost, and identify cross-modal sensitivity as a property that separates otherwise similar architectures. Datasets and evaluation: we review recent benchmarks, summarize their datasets and metrics, define model-independent descriptors (label homophily, average degree, clustering, and edge provenance), and map each evaluation protocol to the baselines it uses. Frontiers: we connect multimodal graph learning to AI agents, covering the multimodal graphs that agents perceive and remember and graph engineering, the practice of organizing agent workflows as explicit graphs; we then discuss open problems, concrete efforts for the community, and research directions, including when graph structure helps in the presence of strong multimodal foundation models.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "서베이 논문이며 새 벤치마크 제시가 아님"
+        }
+      ]
+    },
+    "2611.13015": {
+      "arxiv_id": "2611.13015",
+      "paper_title": "From Questions to Decisions: Benchmarking How LLM Agents Acquire Decision-Relevant Information from Human Beings",
+      "abstract": "LLM agents are increasingly asked to make plans for people, such as scheduling drivers or assigning nurses. However, people's requests are often incomplete, and the supporting information for decision-making may be outdated, requiring agents to ask for clarification. Existing benchmarks typically provide fully specified problems or rely on uncalibrated LLM-simulated users, leaving this ability insufficiently tested. We introduce Ask2Decide, a benchmark of 43 planning tasks that evaluates whether agents ask for missing information that matters for their decisions. An operator holds facts absent from the agent's request and records, and optimization solvers determine which facts change the optimal plan. We also include similarly worded facts that leave the optimal plan unchanged to test whether agents distinguish useful information from irrelevant details. We collect 79 interaction sessions from 19 participants and find that, after an incorrect plan, human replies omit the correcting fact far more often than replies from an uncalibrated simulated user (43% versus 7%). Using these interactions, we calibrate a simulated operator that more closely matches human reply patterns. Evaluating four frontier LLMs, we find that their initial plans are infeasible on 58-98% of tasks when information is missing, compared with 5-28% when all facts are provided upfront. Agents uncover facts that change the optimal plan only slightly more often than facts that leave it unchanged (39-52% versus 32-41%). These results show that obtaining decision-relevant information through interaction remains a major bottleneck for LLM planning. This is ongoing work and will be updated. The date of this version is shown on the first page.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "에이전트 정보 획득 벤치마크, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.13028": {
+      "arxiv_id": "2611.13028",
+      "paper_title": "GTAGym: Real AAA Game Tasks Environment for Evaluation and Reinforcement Learning",
+      "abstract": "AAA games offer a rich testbed for evaluating agent perception, reasoning, and control. However, evaluating whether agents can complete tasks in AAA games is challenging and often human-annotated because task outcomes are often difficult to verify automatically, let alone applying it for Reinforcement Learning (RL). We introduce GTAGym, an environment and framework for evaluation and RL on GTA V tasks. Its evaluation benchmark, GTAVBench, derived from GTA V main-story missions, contains 103 online tasks reconstructed across nine task families, alongside 47 image-based shooting and sniping tasks using GTA V imagery. A web server provides access to the online environment and evaluation interface, supporting parallel testing through screenshots and keyboard-mouse actions with automatic engine-state outcome checks. We evaluate six frontier LLMs on GTAVBench with textual task instructions and on its GTAVBench-AGI branch, where instructions appear only in the first screenshot and a harness automatically compresses interaction history. The best configuration achieves 70.9% overall accuracy in GTAVBench-AGI, yet aerial navigation, evasion and interception remain difficult. GTAGym also provides a scalable generator that samples task parameters within user-specified ranges and option sets under fixed templates, creating batches of 3D and image-based shooting environments for RL with automatic reward and termination signals. LoRA RL of Qwen3.8-27B on generated on-foot navigation tasks improves the in-domain performance and transfers to out-of-domain task categories, and native GTA V tasks from 15% to 23%.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "게임 에이전트 벤치마크, 지시문 언어가 불명확함"
+        }
+      ]
+    },
+    "2611.13150": {
+      "arxiv_id": "2611.13150",
+      "paper_title": "VIGOR: Benchmarking Visual Rationale Correctness in Multimodal Large Language Models",
+      "abstract": "Multimodal large language models (MLLMs) are typically evaluated by whether they produce correct answers, but correctness alone does not reveal whether their outputs are supported by the right visual evidence. We introduce VIGOR, a benchmark for evaluating VIsually GrOunded Rationales in MLLMs. VIGOR represents visual rationales as explicit concepts paired with pixel-level groundings, covering multiple abstraction levels including low-level visual properties, intermediate structures, objects, parts and high-level motion, relations. To construct VIGOR at scale, we develop an automatic annotation framework that reuses existing dense supervision when available and generates missing concept groundings through proposal-based annotation followed by conservative multimodal verification. Using VIGOR, we evaluate whether MLLMs \"look at what they say\" by comparing model-derived visual evidence for each expressed concept against annotated ground-truth rationales. Our results show that current MLLMs exhibit limited visual rationale correctness and reveal distinct grounding failures across concept levels. VIGOR provides a benchmark and scalable data construction pipeline for studying whether MLLM outputs are supported by appropriate visual evidence. Code is available at https://github.com/deep-real/VIGOR",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:38Z",
+      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "MLLM 시각 근거 벤치마크, 과제 언어 불명확"
         }
       ]
     }
@@ -92549,7 +92835,30 @@
     },
     "2026-11-12": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [
+        "2603.26316",
+        "2506.12617",
+        "2604.11581",
+        "2611.09794",
+        "2506.15253",
+        "2602.08866",
+        "2602.08896",
+        "2603.29630",
+        "2605.26074",
+        "2606.24548",
+        "2611.10044",
+        "2611.11284",
+        "2611.11588",
+        "2611.12966",
+        "2611.12970",
+        "2611.12982",
+        "2611.12990",
+        "2611.13015",
+        "2611.13028",
+        "2611.13150"
+      ],
+      "calls": 1,
+      "cost_usd": 0.078
     }
   },
   "reaudits": [
