@@ -58651,6 +58651,171 @@
       "proposal_sha256": "c6bc49c81e7248eeda875573888f970c410b4b86617ad76f6599d7369483a749",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2609.38781": {
+      "decision": "propose",
+      "reason": "ChartDensity-Bench는 복합 차트 이미지에서 표 형태의 수치 데이터를 복원하는 능력을 평가하는 새 재사용 벤치마크다. 하나의 이미지에 담기는 차트 수 k를 1, 3, 6, 9로 통제하고, 구조 신뢰도·완결성·파싱 가능성·수치 충실도를 따로 측정한다. 과제가 이미지 입력을 요구하므로 vision이다. 추출 프롬프트의 영어 표 형식(| Series Name | X Value | Y Value |)이 과제 언어 근거이므로 en 트랙에 둔다. 논문이 공식 코드 저장소 URL을 밝히고 있지만 공개 시점은 논문 게재 후로 예정되어 있다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "chartdensity-bench",
+            "이름": "ChartDensity-Bench",
+            "평가 축": "이미지(과학 차트 수치 데이터 복원·시각 밀도)",
+            "언어": "en",
+            "정의": "복합 차트 이미지에서 각 차트를 구분하고 데이터 시리즈 이름, x축 항목, 수치를 표로 복원하게 하는 벤치마크. ICPR CHART-Infographics 데이터셋의 선·막대 차트를 원천 정답 표와 짝지어 쓰며, 한 이미지에 합성하는 차트 수 k를 1, 3, 6, 9로 통제한다(k=3, 6, 9는 각각 1×3, 2×3, 3×3 격자). 구조 신뢰도(RFV, CAR), 파싱 가능성(PR), 완결성(ACR, Point Coverage, EC), 수치 충실도(정규화 MAE, RMSE)를 k별로 보고한다. 논문은 최근 MLLM 5종을 평가했으며, 이는 논문 조건의 결과이고 현재 전역 리더보드가 아니다.",
+            "대표 과제": "복합 차트 이미지(k=1, 3, 6, 9)에서 차트별 데이터 표(Series Name, X Value, Y Value) 복원",
+            "대표 예시·설명": "여러 차트가 격자로 합쳐진 이미지를 주고, 통일된 영어 추출 프롬프트로 각 차트를 구분해 '| Series Name | X Value | Y Value |' 형식의 표를 출력하게 하는 과제. 정답은 원천 데이터 표와 대조한다(과제 설명, 실제 문항 아님).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스는 확인하지 못했다. 논문은 코드를 게재 후 공개할 예정이라고 밝혔으므로 저장소 공개 여부를 먼저 확인해야 한다. 이 벤치마크는 ICPR CHART-Infographics 데이터셋(Davila et al., 2022)의 차트와 정답 표를 원천으로 하므로(논문 3쪽), 원천 데이터의 약관을 이용 전에 따로 확인해야 한다. 선·막대 차트만 다루고 시각 밀도를 차트 수로만 정의한다는 한계를 논문이 밝힌다. 논문 수치는 API 접근 MLLM 5종 기준이다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/ISSAIR/ChartDensity-Bench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (numerical data reconstruction from scientific charts under visual density)",
+            "definition": "A benchmark in which a model must separate the charts in a compound figure and reconstruct each chart's data table (series identifiers, x-axis entries, and numerical values). It uses line and bar charts from the ICPR CHART-Infographics dataset paired with source ground-truth tables, and controls visual density by composing k = 1, 3, 6, or 9 charts into one image (1x3, 2x3, and 3x3 grids for k = 3, 6, 9). Metrics cover structural reliability (RFV, CAR), parseability (PR), completeness (ACR, Point Coverage, EC), and numerical fidelity (normalized MAE and RMSE), reported per k. The paper evaluates five recent MLLMs; these are results under the paper's conditions, not a current global leaderboard.",
+            "task": "Reconstruct per-chart data tables (Series Name, X Value, Y Value) from compound chart images with k = 1, 3, 6, 9",
+            "example": "Task description, not an actual test item: given an image with several charts arranged in a grid, a unified English extraction prompt asks the model to identify each chart and output a '| Series Name | X Value | Y Value |' table, which is compared with the source data."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "structured numerical data"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "structured numerical data"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "| Series Name"
+            },
+            "링크": {
+              "page": 12,
+              "quote": "github.com/ISSAIR/ChartDensity-Bench"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "| Series Name"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "ChartDensity-Bench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "structured numerical data"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "structured numerical data"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.38781",
+      "paper_title": "ChartDensity-Bench: Benchmarking MLLMs for Numerical Data Reconstruction under Visual Density",
+      "paper_updated": "2026-10-01T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.38781",
+        "sha256": "b7ba3647bcb59b15511bcfd73c7cd054977f546814d433ffdc04baa73cebdf6f",
+        "accessed": "2026-11-12T02:56:45Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 20,
+          "elapsed_seconds": 118.72,
+          "pdf_sha256": "b7ba3647bcb59b15511bcfd73c7cd054977f546814d433ffdc04baa73cebdf6f",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "c613cbe3cab49ace0e6b84828340c1ec8e5f758878fe66cb7729aa334c99f19f",
+          "page_json_file": "2609.38781.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/ISSAIR/ChartDensity-Bench",
+            "fetched_url": "https://api.github.com/repos/ISSAIR/ChartDensity-Bench/readme",
+            "sha256": "bad2a0d8dcfd5ce66e2a8cc2c41073ddab80ddb42d8bc9e4d9cddfb673857a2c",
+            "accessed": "2026-11-12T02:59:06Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/ISSAIR/ChartDensity-Bench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "43c8240825f06c7ad04b146e0eb6426b91f94d6b8df06761191c77c443fe1d0a"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-12T02:59:06Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.38781",
+        "paper_title": "ChartDensity-Bench: Benchmarking MLLMs for Numerical Data Reconstruction under Visual Density",
+        "abstract": "Multimodal large language models (MLLMs) offer a promising approach for recovering numerical data from scientific charts, but their ability to reconstruct chart data from visually dense figures remains poorly understood. Existing chart understanding benchmarks primarily evaluate question answering or chart-level reasoning and provide limited support for evaluating structured numerical reconstruction from scientific figures. We introduce \\textbf{ChartDensity-Bench}, a benchmark for evaluating MLLMs on structured numerical data reconstruction from compound chart figures under controlled visual density. Built from charts paired with source-level ground-truth data, ChartDensity-Bench systematically varies the number of simultaneously presented charts ($k\\in{1,3,6,9}$), enabling controlled evaluation of density-induced degradation. We further propose a multi-dimensional evaluation framework covering structural reliability, reconstruction completeness, parseability, and numerical fidelity. Experiments on five recent MLLMs show that numerical reconstruction generally degrades as visual density increases, while the magnitude of degradation varies substantially across models. Chart-level paired comparisons further show that the same source chart can incur higher reconstruction error when embedded in denser visual contexts. These findings highlight visual density as an important and previously underexplored factor in MLLM chart data reconstruction and provide a systematic benchmark for evaluating model robustness in this setting.",
+        "paper_updated": "2026-10-01T00:00:00Z",
+        "created_at": "2026-10-19T13:47:14Z",
+        "input_sha256": "6a9153e1af20f5ae6f8c309b188cfba86368bcb9b23c4b7d0805ca984726ed5b",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "시각 밀도 기반 차트 수치 재구성 벤치마크로 적합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "밀도별 차트 수치 재구성 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43142251388",
+        "context_sha256": "9d43a4d8b38ff8273ba1c669d59f30bd5484152a0cce7ec67ccf864604cb9734"
+      },
+      "proposal_sha256": "2a5e1fbc81719f9a5aaa0c996fbe8a2bd5a46b4e772ef2d1d1a68c1b45d3f9e9"
     }
   },
   "processed_comments": [],
@@ -93172,8 +93337,8 @@
         "2611.14477",
         "2611.14511"
       ],
-      "calls": 6,
-      "cost_usd": 3.6151
+      "calls": 7,
+      "cost_usd": 4.3631
     }
   },
   "reaudits": [
