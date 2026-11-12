@@ -58939,6 +58939,179 @@
         "reviewed_sha256": "cdade2c783e91056f235392fd0e117afee0ef38111c31d7b45652e007d5e9548",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.07792": {
+      "decision": "propose",
+      "reason": "ServeLearnBench는 숨겨진 정책이 시간에 따라 바뀌는 스트리밍 환경(EESD)에서, 서빙 경험을 통해 에이전트가 지식을 추론하고 수정하는 능력을 재는 새 벤치마크다. 리테일, 은행, 영업 피치 3개 도메인에 53개 환경 윈도우와 7,718개 과제가 있다. 과제는 영어이고 텍스트 입력이므로 en 트랙의 text로 분류했다. 공식 GitHub 링크가 1쪽에 명시되어 있다. 라이선스와 하니스 지원은 확인하지 않아 '확인 불가'로 두었다. 이전 응답에서 검증기가 거부한 인용을 PDF에 실제로 있는 짧은 문구로 교체했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "servelearnbench",
+            "이름": "ServeLearnBench",
+            "평가 축": "에이전트(서빙 경험 기반 지속 학습, 진화하는 숨은 정책)",
+            "언어": "en",
+            "정의": "숨겨진 환경 정책이 시간에 따라 바뀌는 스트리밍 데이터셋(EESD) 형식의 벤치마크. 에이전트는 상호작용과 결과 피드백만으로 잠재 지식을 추론하고 적용하며 수정해야 한다. 리테일, 은행, 영업 피치 3개 도메인 9개 시나리오(난이도 L1~L3), 53개 환경 윈도우, 서빙 과제 4,508개와 보류 테스트 과제 3,210개(총 7,718개)로 구성된다. 윈도우마다 피드백이 제공되는 서빙 과제 뒤에 피드백 없는 테스트 과제가 온다. 리테일과 은행은 결정적 검증기로 이진 보상, 피치는 구조화 루브릭 점수(LLM 판정)로 채점한다. Hidden-Dependent와 Fully Specified 과제를 구분하며, 학습 없는 기준선 Blind와 숨은 정책을 알려주는 Oracle을 포함한다. 논문 결과는 논문 조건의 값이며 현재 전역 리더보드가 아니다.",
+            "대표 과제": "리테일 고객지원(주문 취소·변경, 반품·교환), 은행 사례 심사(카드 승인, 한도 증액, 이체 심사), 영업 피치 생성(제품 시트 기반 40~80단어 피치)",
+            "대표 예시·설명": "과제 설명: 에이전트가 사실 기반 제품 시트를 받아 짧은 영업 피치를 쓰고, 점수 피드백만으로 숨은 고객 선호 프로필을 추론해 이후 과제에 반영한다. 정책이 바뀌면 이전 지식을 수정해야 한다. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 않았다. 코드 저장소의 라이선스를 데이터 라이선스로 간주하면 안 된다. 피치 도메인 채점에 LLM 판정 모델(논문은 GLM-5.3 Flash 사용)이 필요하다. 논문은 각 셀이 1회 실행 결과이며 표준오차를 제시하지 않고, Pitch L1은 효과적 속성 조합이 적어 문항 수를 독립 반복으로 해석하면 안 된다고 밝힌다. 하니스마다 실행 조건과 학습 계산량이 달라 하니스 효과만 분리한 비교가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Infini-AI-Lab/ServeLearnBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (continual learning from serving experience in evolving hidden environments)",
+            "definition": "A benchmark built as evolving-environment streaming datasets (EESD) in which the governing policy is hidden and changes over time. An agent must infer, apply and revise latent knowledge from interaction and outcome feedback alone. It has nine scenarios (difficulty tiers L1-L3) across retail support, banking and sales-pitch generation, with 53 environment windows, 4,508 serving tasks and 3,210 held-out test tasks (7,718 in total). Each window has feedback-provided serving tasks followed by feedback-hidden test tasks. Retail and banking use deterministic verifiers with binary rewards; pitch uses a structured rubric score from an LLM judge. Tasks are split into Hidden-Dependent and Fully Specified, and non-learning Blind and Oracle baselines are included. Paper results hold under the paper's conditions and are not a current global leaderboard.",
+            "task": "Retail support (cancel or modify orders, return or exchange items), banking case review (card authorization, credit-limit increases, transfer screening), and sales-pitch generation (a 40-80 word pitch from a product sheet).",
+            "example": "Task description, not an actual test item: the agent receives a factual product sheet and writes a short sales pitch, then infers the hidden customer preference profile from score feedback alone and applies it to later tasks, revising it when the policy changes."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "factual product sheet"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "factual product sheet"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "factual product sheet"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/Infini-AI-Lab/ServeLearnBench"
+            },
+            "언어": {
+              "page": 6,
+              "quote": "before word spreads"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "ServeLearnBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "53 environment windows"
+            },
+            "평가 축": {
+              "page": 10,
+              "quote": "continual learning from"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.07792",
+      "paper_title": "ServeLearnBench: How Well Can Agents Self-Improve from Serving Experience?",
+      "paper_updated": "2026-10-07T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.07792",
+        "sha256": "866e820487560e29d169500f4e9040804421d8f983a6e1050d7f6dde03aaa177",
+        "accessed": "2026-11-12T03:14:54Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 28,
+          "elapsed_seconds": 230.62,
+          "pdf_sha256": "866e820487560e29d169500f4e9040804421d8f983a6e1050d7f6dde03aaa177",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 1,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "f758b39d1148f6e47ee1dc8614b427079641bef020e9c08be84f18d936ba6b5c",
+          "page_json_file": "2610.07792.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Infini-AI-Lab/ServeLearnBench",
+            "fetched_url": "https://api.github.com/repos/Infini-AI-Lab/ServeLearnBench/readme",
+            "sha256": "666a24d3318e95aafb006d0700f7640f5eeaed485298c49b18707ecff4d0fc3a",
+            "accessed": "2026-11-12T03:19:33Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/Infini-AI-Lab/ServeLearnBench/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-12T03:19:33Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.07792",
+        "paper_title": "ServeLearnBench: How Well Can Agents Self-Improve from Serving Experience?",
+        "abstract": "Large language model agents are increasingly deployed to perform complex tasks in real-world environments. However, the knowledge required for correct behavior in these environments is often implicit, undisclosed, and subject to change over time. Recent continual-learning harnesses seek to address this challenge by enabling agents to improve from serving experience. Yet the effectiveness and limitations of these methods are not yet well characterized. Existing benchmarks provide only partial coverage: some explicitly provide the target knowledge, others assume a static environment, and those that support continual adaptation remain limited in scale and knowledge diversity. To enable systematic evaluation, we formalize an evolving-environment streaming dataset (EESD), in which agents must infer, apply, and revise latent environment knowledge from interaction and outcome feedback as hidden policies evolve, and introduce ServeLearnBench, spanning retail support, banking, and sales-pitch generation with 53 environment windows and 7,718 tasks. We evaluate five learning harnesses (RAG, Mem0, SkillOpt, Continual Harness, and Prime) across six models (GPT-5.6 Terra, Opus 5, Kimi K3, GLM-5.3, DeepSeek V4.1 Flash, and GLM-5.3 Flash), covering 28 model-harness pairs and 252 learning runs. Our evaluation reveals three main findings: a substantial gap remains between task capability and learning from experience; continual adaptation is costly and can degrade already-correct behavior; and insufficient exploration emerges as a key bottleneck to effective adaptation. Overall, ServeLearnBench provides a controlled testbed for diagnosing these limitations and tracking progress toward agents that continually and reliably improve through serving experience.",
+        "paper_updated": "2026-10-07T00:00:00Z",
+        "created_at": "2026-10-19T13:49:05Z",
+        "input_sha256": "146eb2c083baf846c27ff90658eaa133737f2e4bfdec2d7ade60c524d4a85bda",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "서빙 경험 자기개선 평가 벤치마크, 지속학습 하네스 분석"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 자기개선 평가용 ServeLearnBench와 EESD 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43142251388",
+        "context_sha256": "ad24d8763e60d43d7c64fc344b0e81397f1842fdbf221c413f581c91cd4f6071"
+      },
+      "proposal_sha256": "2b83c966cdfa8f84c4f4d6a1a470e4bb64a470432fa49e24fd5be0437fcd7b35"
     }
   },
   "processed_comments": [],
@@ -93474,8 +93647,8 @@
         "2611.14477",
         "2611.14511"
       ],
-      "calls": 11,
-      "cost_usd": 7.6905
+      "calls": 12,
+      "cost_usd": 8.5583
     }
   },
   "reaudits": [
