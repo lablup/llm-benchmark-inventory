@@ -91254,6 +91254,294 @@
           "reason": "MLLM 시각 근거 벤치마크, 과제 언어 불명확"
         }
       ]
+    },
+    "2611.13183": {
+      "arxiv_id": "2611.13183",
+      "paper_title": "AgentScript-Eval: Benchmarking LLMs and Agents for Code Generation in an Enterprise DSL",
+      "abstract": "Domain-specific languages (DSLs) are widely used in enterprise software, giving a compact interface to complex tasks, from data access to infrastructure automation. Platforms increasingly extend them to agents, where a developer declares the topics, permitted actions, and guardrails of an agent rather than writing general-purpose code. Large language models (LLMs) write general-purpose code well, but that ability has been measured almost entirely on languages abundant in public pretraining data, and enterprise DSLs are neither abundant nor public. We introduce AgentScript-Eval, an execution-graded benchmark of 100 real tasks for AgentScript, the declarative DSL that Salesforce uses in Agentforce to build conversational agents. Tasks span authoring an agent from a specification, debugging a broken definition, and optimizing a working one. Evaluating five models zero-shot, we find that the regime is hard: the best model reaches only 25.0% pass@3, and every model scores 0% on authoring from scratch. We further find that model scale and price are weak predictors of success -- a 31B open-weight model attains the highest compilation rate of any model tested (48.0%) and matches the strongest frontier model on partial-credit accuracy at the lowest token cost. Adding an agentic compile-and-edit loop is the single largest lever, roughly doubling partial-credit accuracy. Beyond that gain, the wording of domain guidance matters more than its packaging. The same skill pack scores 28% as plain documentation but only 14% as a live plugin. Rewriting one skill inside that plugin then raises it to 37%, our best result, with catalog and tooling untouched. Larger models did not reliably outperform smaller ones; what mattered was the harness surrounding the model and the guidance supplied to it.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "엔터프라이즈 DSL 코드 생성 에이전트 벤치마크 신규 도입"
+        }
+      ]
+    },
+    "2611.13355": {
+      "arxiv_id": "2611.13355",
+      "paper_title": "DEPUTYBENCH: Evaluating Contextual Safety in Enterprise Agents",
+      "abstract": "Enterprise agents must determine whether ordinary requests are permitted by organizational records and policies while continuing legitimate work. We introduce DEPUTYBENCH, an executable benchmark with 79 base items, 375 instances, paired permission contexts, and graded evidence requirements. Across 12 models, revised audits give 88.0% pooled safety and 79.1% paired success. A controlled study of 28 derived tasks and six models tests authorization-fact flips, evidence masking, and irrelevant rewrites. Outcomes track backend permissions, yet restricted execution is more frequent with missing evidence than explicit non-permission: 10.3% versus 3.5% on 27 matched tasks, a 6.8-percentage-point difference (95% interval: 1.9-13.0; secondary analysis). A post-hoc analysis locates 61 of 100 masked-condition executions in four privacy tasks requiring complete cumulative counts or person-specific consent. The difference persists when the most error-prone model or the largest contributing task is excluded, but is much smaller outside those four tasks. Thus high safety with available evidence does not establish reliable stopping when permission cannot be verified. Mean paired success is equivalent within a prespecified five-point margin under irrelevant rewrites, while strong-model safety remains near ceiling. Scorer validation improves from 178 to 266 correctly scored cases out of 284 held-out counterexamples. Two security experts manually verified task ground truth over a two-week period; stage labels remain LLM-generated. The concentration analysis describes task structure and audited outcomes, not an identified internal mechanism.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "엔터프라이즈 에이전트 문맥적 안전성 실행형 벤치마크 도입"
+        }
+      ]
+    },
+    "2611.13562": {
+      "arxiv_id": "2611.13562",
+      "paper_title": "An evidence-traceable benchmark of clinical reasoning in large language models",
+      "abstract": "Benchmark scores for medical large language models (LLMs) are difficult to interpret when scoring criteria cannot be traced to clinical evidence. Here we developed Med Evidence Bench (MEB; https://www.medevidencebench.org.cn/), comprising 1,536 physician-constructed items across three levels: guideline knowledge, standardized clinical scenarios and real-world laboratory scenarios. Each criterion stating a medical claim is linked to a versioned source-text span. Across ten LLMs, the Evidence Trace Score (ETS) was 0.975-0.997 for guideline knowledge, 0.292-0.658 for standardized scenarios and 0.182-0.447 for real-world scenarios, and rankings varied across levels. For real-world scenarios, scores for identifying clinical information (mean, 0.770) exceeded those for matching evidence (0.165) or formulating recommendations (0.160). On 1,296 criterion-level judgments, automated grading agreed with the majority vote of three physicians (macro-F1, 0.930; 95% confidence interval, 0.915-0.945), although agreement was lower for evidence application. These findings from Chinese-language materials indicate that guideline recall does not ensure patient-specific evidence use and do not establish clinical effectiveness.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "모든 과제가 중국어 자료로 명시되어 한/영 아님"
+        }
+      ]
+    },
+    "2611.13595": {
+      "arxiv_id": "2611.13595",
+      "paper_title": "IFRS Compliance Verification: An Open Multi-LLM Benchmark and Content-Conditioned Ensemble Classifier",
+      "abstract": "Verifying corporate financial disclosures against the International Financial Reporting Standards (IFRS) is a core auditing task in which experts cross-reference disclosures with hundreds of fine-grained regulatory paragraphs: a laborious, costly, and error-prone process that motivates growing interest in large language models (LLMs) as compliance assistants. Yet single-model accuracy remains insufficient for high-stakes use, and naive ensembling is vulnerable to systematic per-model biases that can drag aggregate accuracy below that of the strongest individual annotator. This gap is addressed with a multi-stage framework, supported by a new benchmark of 19,998 IFRS regulation-disclosure pairs comprising 11,161 unanimous multi-LLM labels and 8,837 human annotations on items where the LLMs disagreed. The framework couples a three-stage domain-adapted sentence embedding pipeline (BERT masked language modeling on SEC EDGAR filings, unsupervised TSDAE and SimCSE adaptation, and supervised contrastive alignment) with a learned ensemble classifier that fuses frozen embeddings and LLM probability features from GPT-4.1, Claude Sonnet 4, and Gemini 2.5 Pro via Tree-structured Parzen Estimator (TPE) optimized gradient-boosted trees. On the disagreement set, the ensemble achieves 81.7% weighted F1, exceeding the strongest single LLM by 10.4 points and majority voting by 14.6 points, and outperforms eleven unsupervised aggregation baselines; the retrieval pipeline attains Recall@15 of 45.3% on unseen regulations. The dataset, model checkpoints, annotation platform, and classifier implementation will be publicly released.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "IFRS 규정-공시 준수 검증 벤치마크 공개, 언어 불명확하나 영어 가능"
+        }
+      ]
+    },
+    "2611.13652": {
+      "arxiv_id": "2611.13652",
+      "paper_title": "How Well Do Benchmarks Evaluate LLMs' Use for Personal Health Informatics?",
+      "abstract": "Benchmarking is a valuable technique for advancing the capabilities of Large Language Models (LLMs), including in personal health informatics. There are growing efforts on benchmark creation for personal health data activities. However, it is unclear whether and how well these efforts align with needs and considerations of personal health informatics process. Addressing this need, we first analyzed 53,587 tasks across eight benchmarks related to personal health informatics and characterized the space of benchmark design. We then contrasted our observations of design choices with personal informatics theories and empirical knowledge. We find significant mismatches between existing benchmark design and domain guidelines and understanding. This lack of alignment limits the utility of the evidence current benchmarks offer about LLM capabilities. We use domain knowledge to highlight capabilities benchmarks should include and discuss opportunities our work enables for taking a human-centered and domain-driven approach to benchmark design.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "기존 벤치마크 분석 중심, 신규 평가자료 기여 불명확"
+        }
+      ]
+    },
+    "2611.13667": {
+      "arxiv_id": "2611.13667",
+      "paper_title": "Benchmarking LLM Next-Step Recommendations with Knowledge Space Theory",
+      "abstract": "Selecting an LLM for next-step recommendation requires benchmarks that reflect the intended educational task and domain. We present a benchmarking method that uses Knowledge Space Theory (KST) as a formal evaluation reference. Given a task catalogue and an existing prerequisite relation, the method derives admissible knowledge states and the complete set of immediate next steps for each state. Recommendations generated by a model under a specified prompt are compared with these reference sets. A sample evaluation study uses 2,400 responses from six models across four mathematics domains, four prompt conditions, and two catalogue orders. Exact-set accuracy was 61.3% with descriptions only, 62.8% when models were asked to reconstruct prerequisites, 96.3% with supplied prerequisite relations, and 98.2% with the complete knowledge space. Performance varied across models and domains, and recommendation sets agreed across the two presentations in 85.25% of pairs. The benchmark supports comparisons of model-prompt combinations against a context-specific reference. Its scores describe structural recommendation accuracy under the evaluated conditions; they do not establish learning benefit or the necessity of using an LLM for selection.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "KST 기반 다음 단계 추천 LLM 벤치마크 방법 제안"
+        }
+      ]
+    },
+    "2611.13684": {
+      "arxiv_id": "2611.13684",
+      "paper_title": "BypassGym: A Benchmark for Evaluating AI Agents' Endpoint Defense Evasion Capabilities",
+      "abstract": "Artificial intelligence agents increasingly automate cybersecurity tasks, including offensive operations. Frequent attacks across the web make endpoint detection and response (EDR) a critical defense, but whether AI agents can evade it remains unclear. Benchmarks evaluate the offensive capabilities of large language model (LLM) agents in areas such as penetration testing and vulnerability discovery. One important capability that these benchmarks do not address is defense evasion, specifically whether an agent can develop a program that executes a payload without being blocked or terminated by a deployed EDR. We introduce BypassGym, to our knowledge the first benchmark to systematically evaluate this capability on real endpoints. Given command-and-control (C2) shellcode, an agent must generate and compile a loader that executes the payload without being blocked or terminated. A supplementary evasion knowledge skill provides domain knowledge and supports comparisons with and without this input. BypassGym is built on Proxmox VE(PVE), so the evaluation environment runs real Windows systems and EDR products inside virtual machines and returns structured detection feedback to the agent. We evaluate 5 lightweight model backends against 6 EDR products and 3 payloads, and find that even these simple models generate successful submissions, with DeepSeek-V4.1 Flash reaching 17/18 successful runs and Bitdefender allowing only 5 of 15 runs to pass. These results provide a systematic measurement of current AI agents' endpoint defense evasion capabilities and identify areas for defenders to investigate.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "AI 에이전트 EDR 회피 능력 평가 벤치마크 BypassGym 도입"
+        }
+      ]
+    },
+    "2611.13713": {
+      "arxiv_id": "2611.13713",
+      "paper_title": "Toward Autonomous RTL and Synthesis Optimization: Benchmarking and Self-Improving Agents",
+      "abstract": "Recent advances in large language models (LLMs) and autonomous agents are creating new opportunities for hardware design optimization. This paper examines three connected directions toward autonomous RTL and synthesis optimization: (1) Realistic benchmarking. We discuss reference-based and open-ended RTL optimization benchmarks that evaluate optimization opportunities under realistic EDA workflows. (2) Tool-grounded RTL optimization. We present Dr. RTL, a multi-agent framework that automates critical-path analysis, RTL rewriting, and implementation-level evaluation, while continuously improving through reusable optimization skills. Evaluated on 20 real-world RTL designs, Dr.~RTL achieves average WNS/TNS improvements of 21\\%/17\\% with a 6\\% area reduction over commercial synthesis. (3) Design-specific synthesis optimization. We explore agent-driven synthesis script tuning and the discovery of executable synthesis algorithms across intermediate representations, technology-independent optimization, and technology mapping. Finally, we envision AI-native design automation that jointly explores architectural, RTL, and EDA algorithm design spaces, guided by verification constraints and implementation feedback.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "RTL 최적화 벤치마크 논의 포함하나 개요·프레임워크 중심"
+        }
+      ]
+    },
+    "2611.13788": {
+      "arxiv_id": "2611.13788",
+      "paper_title": "LLM Validation Makes Minimal-Pair Benchmarks Easier for Language Models",
+      "abstract": "Minimal-pair benchmarks are only as good as their labels, and LLMs are an obvious substitute for costly human validation. We test it on BLiMP (English) and QFrBLiMP (Quebec French), the two public minimal-pair datasets releasing every forced-choice human judgment. Three LLMs validate by forced choice, by rating, and as a panel, scored against human panels of one, three and five judges in two pre-registered phases. On BLiMP, forced-choice validators agree with held-out human majorities more often than five-judge panels, yet catch far fewer pairs whose label humans reject than one judge does. By point estimate, no validator is worth more than one judge. The errors are not random. On both datasets, across 10 open LMs, human-supported pairs that the pre-registered LLM filter flags are 18.9 points harder than those it accepts, in all 70 LM-validator combinations, and harder than pairs a single human judge flags. Filtering thus removes items on which LMs fail but humans do not, raising accuracy more than random removal. A protocol frozen before any output replicates the gap and the lift on Dutch BLiMP-NL. LLM validation makes minimal-pair benchmarks easier for the models they are meant to test; we release code, validator outputs and item-level scores.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "BLiMP 등 최소쌍 벤치마크 검증 연구, 영어 포함, 자료 공개"
+        }
+      ]
+    },
+    "2611.13843": {
+      "arxiv_id": "2611.13843",
+      "paper_title": "PolyRoute: A Twelve-Language and Code-Mixed Benchmark for Typed-Decision Routing, with Baselines and a Leaderboard",
+      "abstract": "Typed-decision encoders answer a question about a text in one forward pass, but their behaviour outside English is rarely measured on a fixed yardstick. We release PolyRoute: 322 native-language support messages in 12 languages and 9 writing systems, 156 code-mixed or romanised messages (Hinglish, Spanglish, Arabizi), 967 optional native training rows, and a protocol for a three-way department-routing decision. Labels come from Qwen3.8-27B with a blind second pass (91% of candidates kept); an independent model, gemma4-31b, agrees on 97.2% of test items, and the largest character 5-gram similarity between any test text and any training text is 0.33. A leaderboard of 13 systems gives 61.2% for the English-root checkpoint, 77.3% for the shipped multilingual one and 96.6% for the best fine-tune; TF-IDF with logistic regression reaches 91.9%. On four withheld languages the three multilingual systems score 77%, 90% and 93%. On code-mixed text the English root (85%) is nominally ahead of the shipped multilingual checkpoint (79%; p=0.134). The split resolves differences only above about 4 points. All texts and labels are LLM-generated.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "12개 언어(영어 포함) 라우팅 벤치마크 PolyRoute 공개"
+        }
+      ]
+    },
+    "2611.13925": {
+      "arxiv_id": "2611.13925",
+      "paper_title": "OpenRE-Bench: A Benchmark Harness for Multi-Agent Requirements Engineering with Mined GitHub Issues",
+      "abstract": "OpenRE-Bench is an open-source benchmarking infrastructure for large language model (LLM) based multi-agent requirements-engineering (RE) frameworks. Such frameworks are increasingly common, but they use different agent roles, negotiation policies, and output shapes, and are typically evaluated on their own runtimes, metrics, and small sets of curated system descriptions, which makes fair, reproducible comparison difficult. OpenRE-Bench addresses this with four reusable pieces: a shared run harness with one input, phase-artifact, and metric contract; an adapter mechanism through which a framework joins by implementing a single adapter, leaving cases, metrics, and other adapters untouched; a reproducible GitHub issue-mining pipeline that grows the corpus from real feature requests; and a versioned case suite. As a demonstration, we mine 3,000 fetched issues across five projects (three languages, five domains) into five cases, package them with five hand-built cases as the compact v1.0 suite, and run three heterogeneous frameworks (MARE and iReDev as paper-faithful reimplementations, plus QUARE) under one protocol. OpenRE-Bench originated as the evaluation back-end of our QUARE study and has since been reused by two further studies of our group. It is released with a pinned environment, a Docker image, frozen API snapshots, a 651-test suite, and the full pool of 1,396 filtered issues behind the mined cases.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "다중 에이전트 요구공학 벤치마크 하네스 및 케이스 스위트"
+        }
+      ]
+    },
+    "2611.13945": {
+      "arxiv_id": "2611.13945",
+      "paper_title": "Chem World: A Large-Scale Benchmark and Physics-Aware Framework for Trustworthy Molecular Property Prediction",
+      "abstract": "Molecular property prediction is fundamental to computational chemistry and drug formulation research, yet existing benchmarks remain fragmented across datasets, properties, and evaluation protocols, limiting systematic evaluation of model generalization. We introduce Chem World, a large-scale benchmark integrating 17 public datasets with over 800,000 molecular and chemical-system instances across 10 property tracks, covering single-molecule and multi-component systems, including drug solubility. Chem World provides a unified testbed for evaluating molecular representations and compositional modeling across diverse chemical properties. Building on the benchmark, we propose PACM (Physics-Aware Compositional Modeling), which combines molecular representations with composition-aware modeling and domain-specific physical constraints. Extensive experiments show that molecular language models provide strong and transferable representations, while PACM consistently improves prediction across diverse chemical systems. Chem World and our PACM-powered drug-property prediction Agent support generalizable chemical modeling and offer a foundation for AI-assisted biomedical research and drug formulation development.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "분자 속성 예측 벤치마크, LLM 평가 해당 여부 불명확"
+        }
+      ]
+    },
+    "2611.14184": {
+      "arxiv_id": "2611.14184",
+      "paper_title": "Benchmarking large language models for parameter-level structural identifiability classification in epidemic ODE models",
+      "abstract": "Structural identifiability determines whether unknown parameters can be uniquely recovered from ideal model outputs, making it a prerequisite for interpreting parameter estimates. We evaluated whether large language models (LLMs) can reliably provide preliminary structural identifiability classifications for epidemic models. We constructed a retrospective benchmark of 88 scenarios from 14 of the 27 studies considered, encompassing 696 parameter-level formal reference classifications from published results or Julia-based symbolic analysis. Scenarios were evaluated using Domain-Aware and canonically relabeled (\"Domain-Anonymized\") prompts, with ten runs per configuration and prompt condition. Six configurations completed all scheduled responses, yielding 83,520 parameter-level decisions for the primary comparison. GPT-5.5 Instant and GPT-5.5 Thinking Medium had the highest accuracies among complete configurations (88.71% and 88.07%). Canonical relabeling improved both configurations and attenuated their performance decline in scenarios with many unknown parameters or state variables, although effects differed across model families. Locally identifiable parameters were the most difficult class (highest strict recall among complete configurations: 42.00%), although the local reference set was small. In multivariable analysis, each additional unknown parameter reduced the odds of correct classification (OR 0.881; 95% CI 0.852-0.910), whereas additional observed outputs increased them (OR 1.666; 95% CI 1.503-1.846). Exploratory evaluations indicated strong performance for GPT-5.5 Thinking High and Claude Opus 5, despite incomplete coverage. LLMs may generate preliminary hypotheses or flag cases for formal review, provided outputs are checked against published results or formal symbolic methods. They should not be used to certify the structural identifiability of a complete model.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 구조적 식별가능성 분류 벤치마크 구축"
+        }
+      ]
+    },
+    "2611.14285": {
+      "arxiv_id": "2611.14285",
+      "paper_title": "LM-SimBench: A Unified Framework, Dataset, and Benchmark for Large Language Model Training Simulation",
+      "abstract": "Evaluating candidate parallelization strategies through distributed training runs makes strategy selection prohibitively expensive at scale. Performance simulation offers a lower cost alternative, yet controlled comparisons among existing simulators remain difficult because they differ in the training stages they model and the workloads on which they are evaluated. We introduce LM-SimBench, a unified framework, profiling dataset, and benchmark for evaluating LLM training simulators. The framework decomposes simulation into functional stages from model compilation to schedule level aggregation, connecting execution representations and cost estimators to measurable evaluation targets. Following this framework, we profile 23 model settings from 10 dense and Mixture-of-Experts (MoE) LLM families on an Ascend Neural Processing Unit (NPU) cluster. The resulting dataset contains 348 feasible configurations that jointly vary five parallelism dimensions and activation recomputation, with six views spanning configuration, rank, operator, event, and kernel granularity. Evaluations of representative training simulators demonstrate how LM-SimBench supports comparisons of prediction accuracy, assessment of configuration selection, and diagnosis of prediction errors. Matched GPU-NPU experiments validate the cross-platform applicability of the collection and evaluation protocol and demonstrate NPU-guided GPU configuration selection.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "LLM 학습 시뮬레이터 벤치마크, 언어모델 평가 아님 가능성"
+        }
+      ]
+    },
+    "2611.14477": {
+      "arxiv_id": "2611.14477",
+      "paper_title": "FERN: Cross-Benchmark Table Retrieval for Text-to-SQL with Frozen Retrievers and Learned Ranking",
+      "abstract": "Text-to-SQL systems over large pooled catalogs must first retrieve the tables a question needs. We compare against the published table recall of RASL, which uses Claude 3.5 models to extract keywords and select tables, on pooled BIRD, Spider, and Fiben catalogs. FERN (Feature-Engineered Ranking with No generative LLM) instead fuses three frozen retrievers into 100 candidates, describes each with up to 120 features, and reorders them with LightGBM rankers fitted once on BIRD's training questions. On Spider, where it was not fitted, its candidate pool alone reaches RASL's published recall at fifteen tables (98.0), and the ranker raises the share of questions with every gold table in the top five (complete@5) from 83.9% to 95.6%. At five tables, FERN's recall is within one point of RASL's on Spider (96.7 vs 97.0) and on BIRD with its evidence hints (96.6 vs 97.5), and 8.2 points below on BIRD without them (89.3). On 121 real BEAVER questions, without BEAVER fitting, its recall at fifteen (82.1) falls between two BEAVER-trained retrievers (80.8, 84.5), but its complete@15 is below both (49.6 vs 54.5 and 62.0). On Fiben, it falls far short at fifteen tables (54.2 vs 69.2, different question sets), although its recall at fifty is numerically close to RASL's question-only retrieval result (80.7 vs 79.4). On BIRD dev with evidence, non-retrieval features raise complete@5 by 7.7 points over retrieval signals alone. On BIRD dev, median latency is 208 ms per question on one A100, without hosted model calls.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "테이블 검색 방법 논문, 신규 평가자료 기여 불명확"
+        }
+      ]
+    },
+    "2611.14511": {
+      "arxiv_id": "2611.14511",
+      "paper_title": "Pyrite: Building and Benchmarking Protein-Ligand Pose Ranking Agents",
+      "abstract": "Predicting how a ligand binds to its target is central to small-molecule drug discovery. Modern cofolding models can generate diverse candidate poses, but reliably ranking these candidates remains challenging. We introduce Pyrite, a pairwise pose-ranking benchmark comprising 1,500 pose pairs across diverse protein-ligand complexes. Expert chemists equipped with 3D visualization tools and physics-based scores perform near chance, highlighting the difficulty of interpreting available chemical signals. To investigate automated ranking, we introduce PyriteRep, a structured representation of molecular geometry, protein-ligand interactions, and physicochemical scores, and develop two LLM-based agents: PyriteReasoner, which directly compares poses through text-based reasoning, and PyriteFeaturizer, which generates executable code to construct features for logistic regression, optionally incorporating features derived from LLM subcalls. These agents achieve up to 67% and 74% accuracy, respectively, exceeding observed expert performance. LLM-guided feature discovery generally outperforms direct reasoning, while Group Relative Policy Optimization (GRPO) improves open-weight models, enabling them to match or surpass closed-source frontier models in our evaluations. These results establish Pyrite as a challenging test of pose-ranking ability and highlight LLM-guided feature discovery as a promising approach to interpret and combine the outputs of computational chemistry tools.",
+      "paper_updated": "2026-11-11T00:00:00Z",
+      "created_at": "2026-11-12T02:39:50Z",
+      "input_sha256": "131256127ea2ec693f4ca9c595c73271483931d9046e828fed98661464aad73c",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "단백질-리간드 포즈 랭킹 벤치마크 Pyrite 도입 및 LLM 에이전트 평가"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -92855,10 +93143,26 @@
         "2611.12990",
         "2611.13015",
         "2611.13028",
-        "2611.13150"
+        "2611.13150",
+        "2611.13183",
+        "2611.13355",
+        "2611.13562",
+        "2611.13595",
+        "2611.13652",
+        "2611.13667",
+        "2611.13684",
+        "2611.13713",
+        "2611.13788",
+        "2611.13843",
+        "2611.13925",
+        "2611.13945",
+        "2611.14184",
+        "2611.14285",
+        "2611.14477",
+        "2611.14511"
       ],
-      "calls": 1,
-      "cost_usd": 0.078
+      "calls": 2,
+      "cost_usd": 0.1339
     }
   },
   "reaudits": [
