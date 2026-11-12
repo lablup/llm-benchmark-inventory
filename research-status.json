@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "last_checked_at": "2026-11-11T02:34:27Z",
-  "last_run_at": "2026-11-11T02:42:08Z",
+  "last_checked_at": "2026-11-12T02:34:05Z",
+  "last_run_at": "2026-11-12T02:39:22Z",
   "run_status": "paused_time_budget",
   "stages": {
     "published": "표에 반영",
@@ -17,17 +17,17 @@
     "unscreened": "초록 선별 대기"
   },
   "totals": {
-    "papers": 1535,
+    "papers": 1567,
     "published": 68,
     "awaiting": 1,
-    "held": 163,
-    "excluded": 114,
+    "held": 169,
+    "excluded": 115,
     "draft_rejected": 1,
-    "card_failed": 32,
-    "link_missing": 122,
-    "pdf_failed": 83,
-    "screened_out": 69,
-    "queued": 882,
+    "card_failed": 34,
+    "link_missing": 131,
+    "pdf_failed": 91,
+    "screened_out": 73,
+    "queued": 884,
     "unscreened": 0
   },
   "days": [
@@ -379,13 +379,13 @@
         "held": 2,
         "excluded": 4,
         "draft_rejected": 1,
-        "card_failed": 9,
+        "card_failed": 8,
         "link_missing": 5,
         "pdf_failed": 11,
         "screened_out": 0,
         "queued": 0,
         "unscreened": 0,
-        "carried": 1
+        "carried": 2
       }
     },
     {
@@ -400,13 +400,13 @@
         "held": 8,
         "excluded": 4,
         "draft_rejected": 1,
-        "card_failed": 5,
+        "card_failed": 4,
         "link_missing": 13,
         "pdf_failed": 13,
         "screened_out": 0,
         "queued": 0,
         "unscreened": 0,
-        "carried": 3
+        "carried": 4
       }
     },
     {
@@ -522,7 +522,7 @@
       "cost_usd": 24.92,
       "counts": {
         "published": 3,
-        "awaiting": 1,
+        "awaiting": 0,
         "held": 4,
         "excluded": 4,
         "draft_rejected": 1,
@@ -532,11 +532,800 @@
         "screened_out": 0,
         "queued": 0,
         "unscreened": 0,
+        "carried": 1
+      }
+    },
+    {
+      "day": "2026-11-12",
+      "abstracts": 36,
+      "attempted": 46,
+      "calls": 23,
+      "cost_usd": 17.99,
+      "counts": {
+        "published": 0,
+        "awaiting": 1,
+        "held": 5,
+        "excluded": 1,
+        "draft_rejected": 1,
+        "card_failed": 8,
+        "link_missing": 9,
+        "pdf_failed": 21,
+        "screened_out": 0,
+        "queued": 0,
+        "unscreened": 0,
         "carried": 0
       }
     }
   ],
   "papers": [
+    {
+      "arxiv_id": "2508.08833",
+      "title": "An Investigation of Robustness of LLMs in Mathematical Reasoning: Benchmarking with Mathematically-Equivalent Transformation of Advanced Mathematical Problems",
+      "first_seen": "2026-10-19",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T04:11:35Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2610.09152",
+      "title": "sk-bench: A Native-First Benchmark for Evaluating Large Language Models in Slovak",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T04:06:58Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2610.09112",
+      "title": "GeoNatureAgent (GNA): A Framework and Benchmark for Pre-Production Evaluation of Tool-Using Agents on Geospatial and Environmental Tasks",
+      "first_seen": "2026-10-18",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 언어 필드와 시드 서술에 근거 문제가 있어 승인하지 않는다. (1) 언어가 'en' 하나로만 기록되어 있다. 논문은 다국어 이해를 평가 범주로 명시하고(초록), 3쪽 Table 3에서 언어 범주 6개 과제가 갈리시아어·바스크어 입력을 쓴다고 밝힌다. 증거로 제시된 구절은 영어 질의 예시뿐이라 영어 단독 표기를 뒷받침하지만, 갈리시아어·바스크어 지원이 누락된 점은 해소하지 못한다. 사용 시 유의사항에 갈리시아어·바스크어 언급이 있어도 언어 필드와 일관되지 않다. (2) 정의가 9개 모델 전부를 모델당 시드 3개로 평가했다고 쓰지만, 6쪽 Table 6 각주와 5쪽 집계 절은 Claude Sonnet 4가 시드 없이 독립 샘플 2개로만 평가되었다고 밝힌다. 이 예외가 정의와 유의사항에서 빠져 있어 부정확하다. 나머지 항목은 근거가 확인되었다. 라이선스 Apache-2.0은 공식 카드와 LICENSE 파일에 있고 적용 범위를 저장소 자체 저작물로 한정했다. 상업적 이용·수정·재배포 표기는 Apache-2.0 조건과 일치한다. 파생 출처(MITECO, LUCAS 2022, BigEarthNet V2, GeoB",
+      "updated_at": "2026-11-12T04:05:18Z"
+    },
+    {
+      "arxiv_id": "2610.09021",
+      "title": "Not Every Call Needs a Frontier Model: Per-Call-Site Evaluation of Small Language Models in a Deployed Agentic Home-Automation System",
+      "first_seen": "2026-10-18",
+      "stage": "awaiting",
+      "stage_label": "Claude 검증 대기",
+      "reason": "이 논문은 배포된 홈 오토메이션 에이전트(Wactorz)의 다섯 LLM 호출 지점(intent, HA action, actuator, planner, codegen)을 평가하는 280문항 벤치마크를 만들고, 하니스와 기록을 GitHub에 공개한다. 영어 프롬프트와 요청문(\"turn off the tv\")을 쓰는 텍스트 전용 에이전트 과제이므로 en 트랙, text로 분류한다. 라이선스와 lm-eval 지원 여부는 PDF에서 확인되지 않아 '확인 불가'로 기록한다.",
+      "updated_at": "2026-11-12T04:02:18Z"
+    },
+    {
+      "arxiv_id": "2610.08733",
+      "title": "Towards an Extensible Benchmark for Spoken Dialogue with Social Robots",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T03:59:23Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2610.08691",
+      "title": "ScienceClaw: Benchmarking Continual Self-Evolution of AI-for-Science Agents Across the Natural and Social Sciences",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:59:10Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2610.08649",
+      "title": "Stable Scores, Unstable Answers: Frame Phase and Option Order in Video Multiple-Choice Evaluation",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T03:58:55Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2610.08642",
+      "title": "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T03:56:46Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2610.08513",
+      "title": "Wiki-Talkie: Multilingual Benchmarking of Persona-Based Agents on Real-World Discussions",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:55:11Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2610.08303",
+      "title": "Language Unalignability: Why Some Concepts Resist Cross-Cultural Benchmark Evaluation",
+      "first_seen": "2026-10-18",
+      "stage": "excluded",
+      "stage_label": "본문 조사 후 제외",
+      "reason": "이 논문은 번역 동형성 가정(TIA)과 α-unalignability를 다루는 이론·입장 논문이다. 제안한 진단 프로필(CC, PLD, MCM, RIG)은 지표 제안일 뿐 재사용 가능한 벤치마크 데이터셋이 아니다. BETEL은 개발 중인 예시로만 소개되고 체계적 평가는 예정 단계이다. FLORES-200과 LOBSTER는 기존 벤치마크의 재분석에 해당한다. Yami 사례 연구의 말뭉치는 제3자 소유로 공개되지 않으며(코드와 데이터 비공개), 논문이 밝힌 공식 데이터·코드 URL도 없다. 벤치마크의 과제 언어가 한국어·영어인 근거도 부족하다(Yami–중국어 번역이고 영어는 GPT 피벗 번역 보조 자료일 뿐이다). 따라서 신규 또는 실질적 갱신 벤치마크로 보기 어렵다.",
+      "updated_at": "2026-11-12T03:48:25Z"
+    },
+    {
+      "arxiv_id": "2610.08300",
+      "title": "Memory Depth and Reconstructed Context Width: A Controlled Evaluation of Hierarchical Retrieval",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T03:44:27Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2610.08161",
+      "title": "Symphony for Text Generation: Benchmarking Clinical Note Generation",
+      "first_seen": "2026-10-18",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(HTTP Error 401: Unauthorized), 2026-11-13부터 재시도",
+      "updated_at": "2026-11-12T03:43:36Z",
+      "retry_after": "2026-11-13"
+    },
+    {
+      "arxiv_id": "2610.08106",
+      "title": "ChartBmkAgent: Harness-Governed Multi-Agent Construction of Chart QA Benchmarks from Sparse Error-Taxonomy Specifications",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T03:40:27Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2610.08026",
+      "title": "The Labeling Problem in Hallucination Detection Benchmarks: An Empirical Evaluation",
+      "first_seen": "2026-10-18",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-13부터 재시도",
+      "updated_at": "2026-11-12T03:39:01Z",
+      "retry_after": "2026-11-13"
+    },
+    {
+      "arxiv_id": "2610.07967",
+      "title": "DecepEval: A Benchmark for Evaluating Deception in LLM Agents",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:34:32Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2610.08871",
+      "title": "CredLeakBench: Evaluating Credential Leakage and Recovery in LLM Agents",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T03:34:19Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2610.07763",
+      "title": "ST-Bench: A Spatial-Temporal Benchmark for Multi-Agent System Generation on Scientific Research Tasks",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T03:31:37Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2610.07751",
+      "title": "How Well Do LLMs Reason with Noisy Evidence? An Active Visual Reasoning Benchmark",
+      "first_seen": "2026-10-18",
+      "stage": "link_missing",
+      "stage_label": "공식 링크 없음",
+      "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T03:29:29Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2610.07722",
+      "title": "Does Steering Break Your Model? A Multi-Dimensional Evaluation Suite for LLM Steering Methods",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:26:00Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2610.07580",
+      "title": "LOGIC: An LLM Benchmark for Intent-Grounded Change Impact in Aerospace Electrical Systems",
+      "first_seen": "2026-10-18",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "LOGIC은 재사용 가능한 영어 과제 벤치마크(168개 시나리오)로 en 트랙과 text 모달리티 대상이다. 그러나 PDF 어디에도 공식 데이터셋이나 코드 URL이 명시되어 있지 않다. 논문은 벤치마크 아티팩트를 보관한다고만 언급할 뿐 링크는 제시하지 않는다. 규칙상 공식 리소스가 PDF에 없으면 propose할 수 없으므로 needs_evidence로 판단한다.",
+      "updated_at": "2026-11-12T03:25:41Z"
+    },
+    {
+      "arxiv_id": "2610.07563",
+      "title": "HouseholdBench: Evaluating Large Language Models as Predictors of Household Economic Behavior",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:23:39Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2610.08076",
+      "title": "SpeedrunBench: Challenging LLM Agents with Video Game Speedrunning",
+      "first_seen": "2026-10-19",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "SpeedrunBench(9개 게임, ONLINE·OFFLINE-SEED·OFFLINE-SCRATCH 3개 설정, 세계 기록 대비 프레임 수로 채점)는 재사용 가능한 에이전트 벤치마크로 보이고, 공식 코드 링크(github.com/patronus-ai/speedrun_bench)도 1쪽 각주에 있습니다. 그러나 두 가지가 PDF만으로 확정되지 않아 제안하지 않습니다. 첫째, 에이전트에게 주는 프롬프트, 지시문, 과제 예시가 본문에 인용되어 있지 않아 과제 언어(en/ko)를 입증할 인용이 없습니다. 게임 이름이나 레벨 이름만으로는 과제 언어의 근거가 되지 않습니다. 둘째, ONLINE 설정은 스크린샷 입력이 필요해 vision이지만, OFFLINE 설정은 시각 입력 없이 동작하는 text라서(3.2절) modality를 하나로 정하기 어렵습니다. 저장소 README 등에서 프롬프트 언어와 modality 구분을 확인한 뒤 다시 판단해야 합니다. 라이선스 등 미확인 항목은 '확인 불가'로 기록하면 되므로 제외 사유는 아닙니다.",
+      "updated_at": "2026-11-12T03:23:25Z"
+    },
+    {
+      "arxiv_id": "2610.07792",
+      "title": "ServeLearnBench: How Well Can Agents Self-Improve from Serving Experience?",
+      "first_seen": "2026-10-19",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 거부합니다. 첫째, 추천 목록이 비교 대상 모델을 다 다루지 않습니다. 논문의 주 실험은 6개 모델(GPT-5.6 Terra, Opus 5, Kimi K3, GLM-5.3, DeepSeek V4.1 Flash, GLM-5.3 Flash)을 비교합니다. 제안 목록은 Table 3의 오픈 가중치 4개 모델만 담았고, Opus 5와 GPT-5.6 Terra가 빠진 이유를 설정 설명에 밝히지 않았습니다. Table 2에서 이 두 모델은 Prime 하니스가 없는 4쌍만 평가되어 Table 3의 완전한 45개 lane 집계에 들어가지 않습니다. 그래서 4개 중 상위 3개를 고르는 것이 6개 모델 비교의 상위 3개처럼 읽힐 수 있고, 선정 근거가 충분하지 않습니다. 이 제외 사실과 사유가 설정에 명시되어야 합니다. 4개 모델의 수치(44.6, 44.9, 52.5, 50.7), 지표 방향, 단위, 행·열 정렬은 Table 3 원문과 일치합니다. 둘째, 이용 시 유의사항이 저장소 전체에 부여된 Apache-2.0을 dataset/ 폴더의 데이터 권리 근거로 삼고 있습니다. 제공된 카드는 저장소 수준의 라이선스만 밝히고",
+      "updated_at": "2026-11-12T03:19:33Z"
+    },
+    {
+      "arxiv_id": "2610.00346",
+      "title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:14:42Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2609.38480",
+      "title": "KlinikeBench: Evaluating Language Models Beyond Diagnostic Accuracy",
+      "first_seen": "2026-10-18",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:14:28Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2606.13994",
+      "title": "Hidden in Plain Sight: Benchmarking Agent Safety Against Decomposition Attacks with DECOMPBENCH",
+      "first_seen": "2026-10-19",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(HTTP Error 401: Unauthorized), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:11:02Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2610.02303",
+      "title": "PowerBench: Measuring Language Model Bias in Power-shifting Requests",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:07:35Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2609.30205",
+      "title": "A Living Benchmark for Information Retrieval from Electronic Health Records",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:07:21Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2605.23215",
+      "title": "FastKernels: Benchmarking GPU Kernel Generation in Production",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:07:07Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2605.16358",
+      "title": "LEAF: A Living Benchmark for Event-Augmented Forecasting",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:06:54Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2602.02898",
+      "title": "Aligning Language Model Benchmarks with Pairwise Preferences",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:06:42Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2602.00443",
+      "title": "RVCBench: Benchmarking the Robustness of Voice Cloning Across Modern Audio Generation Models",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:06:28Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2601.21666",
+      "title": "SONIC-O1: A Real-World Benchmark for Evaluating Multimodal Large Language Models on Audio-Video Understanding",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:06:15Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2610.00651",
+      "title": "Agent Evaluation Reliability: More Tasks Won't (Always) Fix An Agent Leaderboard",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:06:01Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2609.39903",
+      "title": "OSWorld-Science: A Benchmark of Computer Use Agents for Learning and Using Scientific Software",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:05:49Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2609.39371",
+      "title": "EHR-RobustGym: Benchmarking and Training Agents for Robust Clinical Reasoning",
+      "first_seen": "2026-10-18",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T03:05:36Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2609.38781",
+      "title": "ChartDensity-Bench: Benchmarking MLLMs for Numerical Data Reconstruction under Visual Density",
+      "first_seen": "2026-10-18",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 권리 필드 세 개(상업적 이용·수정·파생·재배포)가 데이터 권리를 확인하지 못한 채 채워져 있어 반려합니다. 공식 README와 LICENSE 파일의 MIT는 저장소의 자체 코드에만 부여된 것입니다. README는 저장소에 포함된 데이터와 벤치마크 자료가 ICPR CHART-Infographics에서 파생됐고, 원천 데이터와 차트 이미지는 저자가 재라이선스하지 않으며 원 약관을 유지한다고 밝힙니다. 저자 고유 기여분(합성 매핑, 메타데이터, 평가 스크립트)에 대해서도 README는 이 기여분의 권리를 저자가 보유한다고만 쓰고, 별도로 부여한 데이터 라이선스는 제시하지 않습니다. 따라서 제시된 근거(MIT 전문 인용)는 코드 권리만 입증하고 벤치마크 데이터의 상업적 이용, 수정·파생, 재배포 권리는 입증하지 않습니다. 그런데도 상업적 이용을 가능, 수정·파생을 가능(조건 준수), 재배포를 조건부 가능으로 적은 것은 코드 라이선스에서 데이터 권리를 유추한 근거 없는 허용입니다. 구성 요소별 약관을 따로 확인하라는 유의사항이 있어도 이 필드 값 자체의 오류는 해소되지 않습니다. 같은 인벤토리의 다른 항목도 ",
+      "updated_at": "2026-11-12T02:59:06Z",
+      "retry_after": "2026-11-12"
+    },
+    {
+      "arxiv_id": "2609.38652",
+      "title": "AgBench: Agentic AI Benchmarks for Personal AI Devices",
+      "first_seen": "2026-10-18",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T02:56:31Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2609.30298",
+      "title": "A Benchmark Framework for Screening Automation in Systematic Reviews",
+      "first_seen": "2026-10-19",
+      "stage": "draft_rejected",
+      "stage_label": "초안 형식 검사 거부",
+      "reason": "Claude 응답 처리 실패, 다음 실행에서 재시도: Quote does not occur on the cited PDF page",
+      "updated_at": "2026-11-12T02:53:13Z"
+    },
+    {
+      "arxiv_id": "2605.23176",
+      "title": "DRIVESPATIAL: A Benchmark for Spatiotemporal Intelligence in VLMs for Autonomous Driving",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(Invalid or oversized PDF), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T02:51:04Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2605.10978",
+      "title": "VibeProteinBench: An Evaluation Benchmark for Language-interfaced Vibe Protein Design",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T02:50:49Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2505.17482",
+      "title": "From Reasoning to Generalization: Knowledge-Augmented LLMs for ARC Benchmark",
+      "first_seen": "2026-10-19",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T02:50:37Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2606.17904",
+      "title": "DiagFlowBench: Evaluating How Language Models Handle Off-Procedure Inputs in Grounded Diagnostic Dialogue",
+      "first_seen": "2026-11-04",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(Unexpected PDF redirect; retry or investigate the source), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T02:50:21Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2506.12617",
+      "title": "Evaluating AI Alignment in LLMs: Output Analysis of Value Priorities Across 75 Models with Human Benchmarking",
+      "first_seen": "2026-11-12",
+      "stage": "pdf_failed",
+      "stage_label": "PDF 추출 실패",
+      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "updated_at": "2026-11-12T02:46:58Z",
+      "retry_after": "2026-11-19"
+    },
+    {
+      "arxiv_id": "2603.26316",
+      "title": "SALMUBench: A Benchmark for Sensitive Association-Level Multimodal Unlearning",
+      "first_seen": "2026-11-12",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-13부터 재시도",
+      "updated_at": "2026-11-12T02:46:41Z",
+      "retry_after": "2026-11-13"
+    },
+    {
+      "arxiv_id": "2602.21044",
+      "title": "LogicGraph : Benchmarking Multi-Path Logical Reasoning via Neuro-Symbolic Generation and Verification",
+      "first_seen": "2026-11-04",
+      "stage": "card_failed",
+      "stage_label": "공식 자료 확인 실패",
+      "reason": "공식 자료 확인 실패(HTTP Error 404: Not Found), 2026-12-12부터 재시도",
+      "updated_at": "2026-11-12T02:43:21Z",
+      "retry_after": "2026-12-12"
+    },
+    {
+      "arxiv_id": "2611.14511",
+      "title": "Pyrite: Building and Benchmarking Protein-Ligand Pose Ranking Agents",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.14477",
+      "title": "FERN: Cross-Benchmark Table Retrieval for Text-to-SQL with Frozen Retrievers and Learned Ranking",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.14285",
+      "title": "LM-SimBench: A Unified Framework, Dataset, and Benchmark for Large Language Model Training Simulation",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.14184",
+      "title": "Benchmarking large language models for parameter-level structural identifiability classification in epidemic ODE models",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13945",
+      "title": "Chem World: A Large-Scale Benchmark and Physics-Aware Framework for Trustworthy Molecular Property Prediction",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13925",
+      "title": "OpenRE-Bench: A Benchmark Harness for Multi-Agent Requirements Engineering with Mined GitHub Issues",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13843",
+      "title": "PolyRoute: A Twelve-Language and Code-Mixed Benchmark for Typed-Decision Routing, with Baselines and a Leaderboard",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13788",
+      "title": "LLM Validation Makes Minimal-Pair Benchmarks Easier for Language Models",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13713",
+      "title": "Toward Autonomous RTL and Synthesis Optimization: Benchmarking and Self-Improving Agents",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13684",
+      "title": "BypassGym: A Benchmark for Evaluating AI Agents' Endpoint Defense Evasion Capabilities",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13667",
+      "title": "Benchmarking LLM Next-Step Recommendations with Knowledge Space Theory",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13652",
+      "title": "How Well Do Benchmarks Evaluate LLMs' Use for Personal Health Informatics?",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13595",
+      "title": "IFRS Compliance Verification: An Open Multi-LLM Benchmark and Content-Conditioned Ensemble Classifier",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13562",
+      "title": "An evidence-traceable benchmark of clinical reasoning in large language models",
+      "first_seen": "2026-11-12",
+      "stage": "screened_out",
+      "stage_label": "초록 선별에서 제외",
+      "reason": "Claude 초록 선별에서 제외",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13355",
+      "title": "DEPUTYBENCH: Evaluating Contextual Safety in Enterprise Agents",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13183",
+      "title": "AgentScript-Eval: Benchmarking LLMs and Agents for Code Generation in an Enterprise DSL",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:50Z"
+    },
+    {
+      "arxiv_id": "2611.13150",
+      "title": "VIGOR: Benchmarking Visual Rationale Correctness in Multimodal Large Language Models",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2611.13028",
+      "title": "GTAGym: Real AAA Game Tasks Environment for Evaluation and Reinforcement Learning",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2611.13015",
+      "title": "From Questions to Decisions: Benchmarking How LLM Agents Acquire Decision-Relevant Information from Human Beings",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2611.12990",
+      "title": "Multimodal Graph Learning: A Survey of Models, Benchmarks, and Frontiers",
+      "first_seen": "2026-11-12",
+      "stage": "screened_out",
+      "stage_label": "초록 선별에서 제외",
+      "reason": "Claude 초록 선별에서 제외",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2611.12982",
+      "title": "ICLayout-Bench: Benchmarking LLM Agents for Custom Circuit Layout Design",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2611.12970",
+      "title": "TrustMod-SM: A Multi-Axis Benchmark for Evaluating Trustworthiness of LLMs in Social Media Content Moderation",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2611.12966",
+      "title": "BuySideFlow: A Point-in-Time Benchmark for LLM Agents in Investment Research",
+      "first_seen": "2026-11-12",
+      "stage": "screened_out",
+      "stage_label": "초록 선별에서 제외",
+      "reason": "Claude 초록 선별에서 제외",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2606.24548",
+      "title": "Are Text-to-Image Models Inductivist Turkeys? A Counterfactual Benchmark for Causal Reasoning",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2605.26074",
+      "title": "StakeBench: Evaluating Language Understanding Grounded in Market Commitment",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2604.11581",
+      "title": "Hidden Measurement Error in LLM Pipelines Distorts Annotation, Evaluation, and Benchmarking",
+      "first_seen": "2026-11-12",
+      "stage": "screened_out",
+      "stage_label": "초록 선별에서 제외",
+      "reason": "Claude 초록 선별에서 제외",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2603.29630",
+      "title": "BigEarthNet.txt: A Large-Scale Multi-Sensor Image-Text Dataset and Benchmark for Earth Observation",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2602.08896",
+      "title": "OmniReview: A Large-scale Benchmark and LLM-enhanced Framework for Realistic Reviewer Recommendation",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2602.08866",
+      "title": "ArkEval: Benchmarking and Evaluating Automated CodeRepair for ArkTS",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2506.15253",
+      "title": "Specification-based Security Evaluation of Real-World Agents Tool-Calling under Long-Horizon Context Tasks",
+      "first_seen": "2026-11-12",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2611.11588",
+      "title": "FinCutBench: A Continually Updated Benchmark for Measuring the Temporal Boundaries of LLM Financial Knowledge",
+      "first_seen": "2026-11-11",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2611.11284",
+      "title": "WarBias: A Bilingual LLM Benchmark of Stereotypes About Internally Displaced People and Veterans",
+      "first_seen": "2026-11-11",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2611.10044",
+      "title": "CulturalCrosswords: A Multilingual Benchmark of Answer Constraints and Grid Completion",
+      "first_seen": "2026-11-11",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2611.09794",
+      "title": "Seeing What Execution Needs: Benchmarking Task-Conditioned Actionable Spatial Belief for Manipulation",
+      "first_seen": "2026-11-10",
+      "stage": "queued",
+      "stage_label": "본문 조사 대기",
+      "reason": "초록 선별 후 본문 조사 대기",
+      "updated_at": "2026-11-12T02:39:38Z"
+    },
+    {
+      "arxiv_id": "2605.15229",
+      "title": "PBT-Bench: Benchmarking AI Agents on Property-Based Testing",
+      "first_seen": "2026-10-19",
+      "stage": "held",
+      "stage_label": "근거 부족 보류",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: The official card mentions the evaluation harness; cite it instead of claiming absence",
+      "updated_at": "2026-11-12T02:38:26Z"
+    },
     {
       "arxiv_id": "2607.20471",
       "title": "Benchmarking the Personalization Capabilities of Large Language Models",
@@ -577,16 +1366,6 @@
       "inventory_url": "./english.html#inventory"
     },
     {
-      "arxiv_id": "2609.38480",
-      "title": "KlinikeBench: Evaluating Language Models Beyond Diagnostic Accuracy",
-      "first_seen": "2026-10-18",
-      "stage": "card_failed",
-      "stage_label": "공식 자료 확인 실패",
-      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-11T04:11:50Z",
-      "retry_after": "2026-11-12"
-    },
-    {
       "arxiv_id": "2608.04265",
       "title": "Strategic Evaluation of Planning Strategies for LLM Agents in Cyber-Physical Systems",
       "first_seen": "2026-10-19",
@@ -625,16 +1404,6 @@
       "retry_after": "2026-12-11"
     },
     {
-      "arxiv_id": "2606.13994",
-      "title": "Hidden in Plain Sight: Benchmarking Agent Safety Against Decomposition Attacks with DECOMPBENCH",
-      "first_seen": "2026-10-19",
-      "stage": "card_failed",
-      "stage_label": "공식 자료 확인 실패",
-      "reason": "공식 자료 확인 실패(HTTP Error 401: Unauthorized), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-11T03:51:11Z",
-      "retry_after": "2026-11-12"
-    },
-    {
       "arxiv_id": "2606.10142",
       "title": "DB-3DME: From Dataset to Benchmark for Human-aligned Automatic 3D Mesh Evaluation",
       "first_seen": "2026-10-19",
@@ -661,15 +1430,6 @@
       "stage_label": "본문 조사 후 제외",
       "reason": "ChildVox는 아동의 생리음, 발성, 음절, 음성을 다루는 오디오·음성 벤치마크다. 입력이 전부 오디오라서 이 인벤토리의 modality 구분(text 또는 vision)에 들어가지 않는다. 대부분 분류, ASR, 화자 분리 과제이며, 평가 대상은 주로 음성·오디오 인코더이고 대형 오디오-언어 모델은 일부다. 언어 증거로는 영어 프롬프트와 영어 ASR 하위셋이 확인되지만, 오디오 전용 벤치마크라는 점이 결정적이어서 en 트랙의 text 행으로도 vision 행으로도 제안하지 않는다. 오디오 modality를 인벤토리에 새로 허용하기로 한다면 그때 다시 검토할 수 있다.",
       "updated_at": "2026-11-11T03:36:38Z"
-    },
-    {
-      "arxiv_id": "2605.15229",
-      "title": "PBT-Bench: Benchmarking AI Agents on Property-Based Testing",
-      "first_seen": "2026-10-19",
-      "stage": "awaiting",
-      "stage_label": "Claude 검증 대기",
-      "reason": "PBT-Bench는 Python 라이브러리 40개에서 가져온 속성 기반 테스트(PBT) 문제 100개로 구성된 재사용 가능한 코딩·에이전트 벤치마크이고, 인벤토리에 같은 항목이 없어 새 행으로 제안한다. 프롬프트와 문서가 영어이고 입력이 모두 텍스트와 코드이므로 en 트랙, text 모달리티로 분류했다. 논문이 공식 저장소 URL을 밝히고 있어 링크로 사용했다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았으므로 '확인 불가'로 기록했고, 모델별 비교 수치는 이 단계에서 다루지 않는다.",
-      "updated_at": "2026-11-11T03:32:50Z"
     },
     {
       "arxiv_id": "2605.01238",
@@ -817,15 +1577,6 @@
       "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-12-11부터 재시도",
       "updated_at": "2026-11-11T02:52:39Z",
       "retry_after": "2026-12-11"
-    },
-    {
-      "arxiv_id": "2609.30298",
-      "title": "A Benchmark Framework for Screening Automation in Systematic Reviews",
-      "first_seen": "2026-10-19",
-      "stage": "draft_rejected",
-      "stage_label": "초안 형식 검사 거부",
-      "reason": "Claude 응답 처리 실패, 다음 실행에서 재시도: Official resource link does not occur in PDF text",
-      "updated_at": "2026-11-11T02:48:05Z"
     },
     {
       "arxiv_id": "2609.31507",
@@ -1013,15 +1764,6 @@
       "updated_at": "2026-11-11T02:42:46Z"
     },
     {
-      "arxiv_id": "2611.11588",
-      "title": "FinCutBench: A Continually Updated Benchmark for Measuring the Temporal Boundaries of LLM Financial Knowledge",
-      "first_seen": "2026-11-11",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": "2026-11-11T02:42:46Z"
-    },
-    {
       "arxiv_id": "2611.11487",
       "title": "THEATRON: A Benchmark for Evaluating Persona Persistence in Long-Horizon LLM Decision-Making",
       "first_seen": "2026-11-11",
@@ -1042,15 +1784,6 @@
     {
       "arxiv_id": "2611.11437",
       "title": "How to \"train\" a surgeon? Benchmarking generalist agents in surgical scene understanding",
-      "first_seen": "2026-11-11",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": "2026-11-11T02:42:46Z"
-    },
-    {
-      "arxiv_id": "2611.11284",
-      "title": "WarBias: A Bilingual LLM Benchmark of Stereotypes About Internally Displaced People and Veterans",
       "first_seen": "2026-11-11",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -1186,15 +1919,6 @@
     {
       "arxiv_id": "2611.10156",
       "title": "DeepResearch RewardBench: Evaluating Reward Models for Deep Research Report",
-      "first_seen": "2026-11-11",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": "2026-11-11T02:42:30Z"
-    },
-    {
-      "arxiv_id": "2611.10044",
-      "title": "CulturalCrosswords: A Multilingual Benchmark comprised of Answer Constraints and Grid Completion",
       "first_seen": "2026-11-11",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -2006,15 +2730,6 @@
       "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-12-10부터 재시도",
       "updated_at": "2026-11-10T02:41:59Z",
       "retry_after": "2026-12-10"
-    },
-    {
-      "arxiv_id": "2611.09794",
-      "title": "Seeing What Matters: Benchmarking Task-Conditioned Actionable Spatial Belief for Manipulation",
-      "first_seen": "2026-11-10",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": "2026-11-10T02:41:45Z"
     },
     {
       "arxiv_id": "2611.09769",
@@ -3877,26 +4592,6 @@
       "retry_after": "2026-12-05"
     },
     {
-      "arxiv_id": "2610.02303",
-      "title": "PowerBench: Measuring Language Model Bias in Power-shifting Requests",
-      "first_seen": "2026-10-19",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T03:57:32Z",
-      "retry_after": "2026-11-12"
-    },
-    {
-      "arxiv_id": "2609.30205",
-      "title": "A Living Benchmark for Information Retrieval from Electronic Health Records",
-      "first_seen": "2026-10-18",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T03:57:20Z",
-      "retry_after": "2026-11-12"
-    },
-    {
       "arxiv_id": "2609.30030",
       "title": "Artificial Societies Benchmark: A Validation Framework for Synthetic Research",
       "first_seen": "2026-10-18",
@@ -3925,26 +4620,6 @@
       "updated_at": "2026-11-05T03:51:30Z"
     },
     {
-      "arxiv_id": "2605.23215",
-      "title": "FastKernels: Benchmarking GPU Kernel Generation in Production",
-      "first_seen": "2026-10-19",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T03:49:45Z",
-      "retry_after": "2026-11-12"
-    },
-    {
-      "arxiv_id": "2605.16358",
-      "title": "LEAF: A Living Benchmark for Event-Augmented Forecasting",
-      "first_seen": "2026-10-19",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T03:49:33Z",
-      "retry_after": "2026-11-12"
-    },
-    {
       "arxiv_id": "2602.22755",
       "title": "AuditBench: Evaluating Alignment Auditing Techniques on Models with Hidden Behaviors",
       "first_seen": "2026-10-19",
@@ -3952,36 +4627,6 @@
       "stage_label": "근거 부족 보류",
       "reason": "AuditBench는 영어 프롬프트로 숨은 행동이 심어진 모델 56개를 감사 에이전트로 평가하는 재사용 가능한 벤치마크로 보이며, 등록 대상 후보입니다. 다만 제공된 PDF 텍스트에는 이 벤치마크의 공식 데이터셋이나 코드 URL이 없습니다. 첫 페이지에는 'Models & Data'와 'Code'라는 아이콘 라벨만 있고 주소가 인쇄되어 있지 않습니다. 본문이 명시한 URL은 Petri 저장소(github.com/safety-research/petri)와 false-facts 저장소뿐이며, 둘 다 AuditBench 자체의 공식 자원이 아닙니다. 공식 링크를 확인할 수 없어 새 행을 제안하지 않고 needs_evidence로 처리합니다.",
       "updated_at": "2026-11-05T03:43:52Z"
-    },
-    {
-      "arxiv_id": "2602.02898",
-      "title": "Aligning Language Model Benchmarks with Pairwise Preferences",
-      "first_seen": "2026-10-19",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T03:41:16Z",
-      "retry_after": "2026-11-12"
-    },
-    {
-      "arxiv_id": "2602.00443",
-      "title": "RVCBench: Benchmarking the Robustness of Voice Cloning Across Modern Audio Generation Models",
-      "first_seen": "2026-10-19",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T03:41:04Z",
-      "retry_after": "2026-11-12"
-    },
-    {
-      "arxiv_id": "2601.21666",
-      "title": "SONIC-O1: A Real-World Benchmark for Evaluating Multimodal Large Language Models on Audio-Video Understanding",
-      "first_seen": "2026-10-19",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T03:40:52Z",
-      "retry_after": "2026-11-12"
     },
     {
       "arxiv_id": "2601.18493",
@@ -4059,16 +4704,6 @@
       "updated_at": "2026-11-05T03:25:29Z"
     },
     {
-      "arxiv_id": "2610.00651",
-      "title": "Agent Evaluation Reliability: More Tasks Won't (Always) Fix An Agent Leaderboard",
-      "first_seen": "2026-10-18",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T03:24:31Z",
-      "retry_after": "2026-11-12"
-    },
-    {
       "arxiv_id": "2610.00531",
       "title": "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Papers",
       "first_seen": "2026-10-18",
@@ -4098,16 +4733,6 @@
       "retry_after": "2026-12-05"
     },
     {
-      "arxiv_id": "2609.39903",
-      "title": "OSWorld-Science: A Benchmark of Computer Use Agents for Learning and Using Scientific Software",
-      "first_seen": "2026-10-18",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T03:14:02Z",
-      "retry_after": "2026-11-12"
-    },
-    {
       "arxiv_id": "2609.39847",
       "title": "SEAR: Spoofing Evidence-Grounded Audio Reasoning Benchmark for Audio Language Models",
       "first_seen": "2026-10-18",
@@ -4125,16 +4750,6 @@
       "reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-05부터 재시도",
       "updated_at": "2026-11-05T03:12:51Z",
       "retry_after": "2026-12-05"
-    },
-    {
-      "arxiv_id": "2609.39371",
-      "title": "EHR-RobustGym: Benchmarking and Training Agents for Robust Clinical Reasoning",
-      "first_seen": "2026-10-18",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T03:07:34Z",
-      "retry_after": "2026-11-12"
     },
     {
       "arxiv_id": "2609.39189",
@@ -4166,66 +4781,6 @@
       "updated_at": "2026-11-05T02:59:10Z"
     },
     {
-      "arxiv_id": "2609.38781",
-      "title": "ChartDensity-Bench: Benchmarking MLLMs for Numerical Data Reconstruction under Visual Density",
-      "first_seen": "2026-10-18",
-      "stage": "card_failed",
-      "stage_label": "공식 자료 확인 실패",
-      "reason": "공식 자료 확인 실패(HTTP Error 404: Not Found), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T02:56:50Z",
-      "retry_after": "2026-11-12"
-    },
-    {
-      "arxiv_id": "2609.38652",
-      "title": "AgBench: Agentic AI Benchmarks for Personal AI Devices",
-      "first_seen": "2026-10-18",
-      "stage": "card_failed",
-      "stage_label": "공식 자료 확인 실패",
-      "reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T02:54:46Z",
-      "retry_after": "2026-11-12"
-    },
-    {
-      "arxiv_id": "2605.23176",
-      "title": "DRIVESPATIAL: A Benchmark for Spatiotemporal Intelligence in VLMs for Autonomous Driving",
-      "first_seen": "2026-10-19",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(Invalid or oversized PDF), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T02:50:34Z",
-      "retry_after": "2026-11-12"
-    },
-    {
-      "arxiv_id": "2605.10978",
-      "title": "VibeProteinBench: An Evaluation Benchmark for Language-interfaced Vibe Protein Design",
-      "first_seen": "2026-10-19",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T02:50:20Z",
-      "retry_after": "2026-11-12"
-    },
-    {
-      "arxiv_id": "2505.17482",
-      "title": "From Reasoning to Generalization: Knowledge-Augmented LLMs for ARC Benchmark",
-      "first_seen": "2026-10-19",
-      "stage": "pdf_failed",
-      "stage_label": "PDF 추출 실패",
-      "reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T02:50:08Z",
-      "retry_after": "2026-11-12"
-    },
-    {
-      "arxiv_id": "2606.17904",
-      "title": "DiagFlowBench: Evaluating How Language Models Handle Off-Procedure Inputs in Grounded Diagnostic Dialogue",
-      "first_seen": "2026-11-04",
-      "stage": "card_failed",
-      "stage_label": "공식 자료 확인 실패",
-      "reason": "공식 자료 확인 실패(Unexpected PDF redirect; retry or investigate the source), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T02:49:54Z",
-      "retry_after": "2026-11-12"
-    },
-    {
       "arxiv_id": "2606.01317",
       "title": "SABER: Benchmarking Operational Safety of LLM Coding Agents in Stateful Project Workspaces",
       "first_seen": "2026-10-28",
@@ -4234,16 +4789,6 @@
       "reason": "공식 자료 확인 실패(HTTP Error 404: Not Found), 2026-12-05부터 재시도",
       "updated_at": "2026-11-05T02:47:24Z",
       "retry_after": "2026-12-05"
-    },
-    {
-      "arxiv_id": "2602.21044",
-      "title": "LogicGraph : Benchmarking Multi-Path Logical Reasoning via Neuro-Symbolic Generation and Verification",
-      "first_seen": "2026-11-04",
-      "stage": "card_failed",
-      "stage_label": "공식 자료 확인 실패",
-      "reason": "공식 자료 확인 실패(HTTP Error 404: Not Found), 2026-11-12부터 재시도",
-      "updated_at": "2026-11-05T02:44:52Z",
-      "retry_after": "2026-11-12"
     },
     {
       "arxiv_id": "2611.05340",
@@ -12168,24 +12713,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2610.08076",
-      "title": "SpeedrunBench: Challenging LLM Agents with Video Game Speedrunning",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.07792",
-      "title": "ServeLearnBench: How Well Can Agents Self-Improve from Serving Experience?",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2609.03874",
       "title": "STAIR (STructure Aware Information Retriever): A novel dataset and LLM based retriever for document structure augmentation",
       "first_seen": "2026-10-19",
@@ -12674,15 +13201,6 @@
     {
       "arxiv_id": "2511.04655",
       "title": "Benchmark Designers Should \"Train on the Test Set\" to Expose Exploitable Non-Visual Shortcuts",
-      "first_seen": "2026-10-19",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2508.08833",
-      "title": "An Investigation of Robustness of LLMs in Mathematical Reasoning: Benchmarking with Mathematically-Equivalent Transformation of Advanced Mathematical Problems",
       "first_seen": "2026-10-19",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -14337,107 +14855,8 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2610.09152",
-      "title": "sk-bench: A Native-First Benchmark for Evaluating Large Language Models in Slovak",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.09112",
-      "title": "GeoNatureAgent (GNA): A Framework and Benchmark for Pre-Production Evaluation of Tool-Using Agents on Geospatial and Environmental Tasks",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.09021",
-      "title": "Not Every Call Needs a Frontier Model: Per-Call-Site Evaluation of Small Language Models in a Deployed Agentic Home-Automation System",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2610.08966",
       "title": "Humanity's Sixth Sense: Benchmarking Intuitive Visual Reasoning in Multimodal Models",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08871",
-      "title": "CredLeakBench: Evaluating Credential Leakage and Recovery in LLM Agents",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08733",
-      "title": "Towards an Extensible Benchmark for Spoken Dialogue with Social Robots",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08691",
-      "title": "ScienceClaw: Benchmarking Continual Self-Evolution of AI-for-Science Agents Across the Natural and Social Sciences",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08649",
-      "title": "Stable Scores, Unstable Answers: Frame Phase and Option Order in Video Multiple-Choice Evaluation",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08642",
-      "title": "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08513",
-      "title": "Wiki-Talkie: Multilingual Benchmarking of Persona-Based Agents on Real-World Discussions",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08303",
-      "title": "Language Unalignability: Why Some Concepts Resist Cross-Cultural Benchmark Evaluation",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08300",
-      "title": "Memory Depth and Reconstructed Context Width: A Controlled Evaluation of Hierarchical Retrieval",
       "first_seen": "2026-10-18",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -14454,42 +14873,6 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2610.08161",
-      "title": "Symphony for Text Generation: Benchmarking Clinical Note Generation",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08106",
-      "title": "ChartBmkAgent: Harness-Governed Multi-Agent Construction of Chart QA Benchmarks from Sparse Error-Taxonomy Specifications",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.08026",
-      "title": "The Labeling Problem in Hallucination Detection Benchmarks: An Empirical Evaluation",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.07967",
-      "title": "DecepEval: A Benchmark for Evaluating Deception in LLM Agents",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2610.07766",
       "title": "OTel: Open Telco AI Datasets, Benchmarks, and Models",
       "first_seen": "2026-10-18",
@@ -14499,53 +14882,8 @@
       "updated_at": null
     },
     {
-      "arxiv_id": "2610.07763",
-      "title": "ST-Bench: A Spatial-Temporal Benchmark for Multi-Agent System Generation on Scientific Research Tasks",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.07751",
-      "title": "How Well Do LLMs Reason with Noisy Evidence? An Active Visual Reasoning Benchmark",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.07722",
-      "title": "Does Steering Break Your Model? A Multi-Dimensional Evaluation Suite for LLM Steering Methods",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
       "arxiv_id": "2610.07639",
       "title": "HarnessSecurity-Bench: Do Security Mechanisms Really Protect Coding Agent Harnesses?",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.07580",
-      "title": "LOGIC: An LLM Benchmark for Intent-Grounded Change Impact in Aerospace Electrical Systems",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.07563",
-      "title": "HouseholdBench: Evaluating Large Language Models as Predictors of Household Economic Behavior",
       "first_seen": "2026-10-18",
       "stage": "queued",
       "stage_label": "본문 조사 대기",
@@ -14690,15 +15028,6 @@
     {
       "arxiv_id": "2610.00416",
       "title": "Benchmarking Prompt Optimization of Large Language Models With Chess",
-      "first_seen": "2026-10-18",
-      "stage": "queued",
-      "stage_label": "본문 조사 대기",
-      "reason": "초록 선별 후 본문 조사 대기",
-      "updated_at": null
-    },
-    {
-      "arxiv_id": "2610.00346",
-      "title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
       "first_seen": "2026-10-18",
       "stage": "queued",
       "stage_label": "본문 조사 대기",

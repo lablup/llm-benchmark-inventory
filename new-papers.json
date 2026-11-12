@@ -1,7 +1,679 @@
 {
   "schema_version": 1,
-  "last_checked_at": "2026-11-11T02:34:27Z",
+  "last_checked_at": "2026-11-12T02:34:05Z",
   "papers": [
+    {
+      "arxiv_id": "2611.14511",
+      "url": "https://arxiv.org/abs/2611.14511",
+      "title": "Pyrite: Building and Benchmarking Protein-Ligand Pose Ranking Agents",
+      "summary": "Predicting how a ligand binds to its target is central to small-molecule drug discovery. Modern cofolding models can generate diverse candidate poses, but reliably ranking these candidates remains challenging. We introduce Pyrite, a pairwise pose-ranking benchmark comprising 1,500 pose pairs across diverse protein-ligand complexes. Expert chemists equipped with 3D visualization tools and physics-based scores perform near chance, highlighting the difficulty of interpreting available chemical signals. To investigate automated ranking, we introduce PyriteRep, a structured representation of molecular geometry, protein-ligand interactions, and physicochemical scores, and develop two LLM-based agents: PyriteReasoner, which directly compares poses through text-based reasoning, and PyriteFeaturizer, which generates executable code to construct features for logistic regression, optionally incorporating features derived from LLM subcalls. These agents achieve up to 67% and 74% accuracy, respectively, exceeding observed expert performance. LLM-guided feature discovery generally outperforms direct reasoning, while Group Relative Policy Optimization (GRPO) improves open-weight models, enabling them to match or surpass closed-source frontier models in our evaluations. These results establish Pyrite as a challenging test of pose-ranking ability and highlight LLM-guided feature discovery as a promising approach to interpret and combine the outputs of computational chemistry tools.",
+      "authors": [
+        "Megha Srivastava",
+        "Michael H. Lim",
+        "Allison M. Keys",
+        "Pranav Murugan",
+        "Nate Gruver"
+      ],
+      "categories": [
+        "cs.LG",
+        "q-bio.QM"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.14477",
+      "url": "https://arxiv.org/abs/2611.14477",
+      "title": "FERN: Cross-Benchmark Table Retrieval for Text-to-SQL with Frozen Retrievers and Learned Ranking",
+      "summary": "Text-to-SQL systems over large pooled catalogs must first retrieve the tables a question needs. We compare against the published table recall of RASL, which uses Claude 3.5 models to extract keywords and select tables, on pooled BIRD, Spider, and Fiben catalogs. FERN (Feature-Engineered Ranking with No generative LLM) instead fuses three frozen retrievers into 100 candidates, describes each with up to 120 features, and reorders them with LightGBM rankers fitted once on BIRD's training questions. On Spider, where it was not fitted, its candidate pool alone reaches RASL's published recall at fifteen tables (98.0), and the ranker raises the share of questions with every gold table in the top five (complete@5) from 83.9% to 95.6%. At five tables, FERN's recall is within one point of RASL's on Spider (96.7 vs 97.0) and on BIRD with its evidence hints (96.6 vs 97.5), and 8.2 points below on BIRD without them (89.3). On 121 real BEAVER questions, without BEAVER fitting, its recall at fifteen (82.1) falls between two BEAVER-trained retrievers (80.8, 84.5), but its complete@15 is below both (49.6 vs 54.5 and 62.0). On Fiben, it falls far short at fifteen tables (54.2 vs 69.2, different question sets), although its recall at fifty is numerically close to RASL's question-only retrieval result (80.7 vs 79.4). On BIRD dev with evidence, non-retrieval features raise complete@5 by 7.7 points over retrieval signals alone. On BIRD dev, median latency is 208 ms per question on one A100, without hosted model calls.",
+      "authors": [
+        "Arjun Rao",
+        "Nishant Gopinath"
+      ],
+      "categories": [
+        "cs.IR",
+        "cs.CL"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.14285",
+      "url": "https://arxiv.org/abs/2611.14285",
+      "title": "LM-SimBench: A Unified Framework, Dataset, and Benchmark for Large Language Model Training Simulation",
+      "summary": "Evaluating candidate parallelization strategies through distributed training runs makes strategy selection prohibitively expensive at scale. Performance simulation offers a lower cost alternative, yet controlled comparisons among existing simulators remain difficult because they differ in the training stages they model and the workloads on which they are evaluated. We introduce LM-SimBench, a unified framework, profiling dataset, and benchmark for evaluating LLM training simulators. The framework decomposes simulation into functional stages from model compilation to schedule level aggregation, connecting execution representations and cost estimators to measurable evaluation targets. Following this framework, we profile 23 model settings from 10 dense and Mixture-of-Experts (MoE) LLM families on an Ascend Neural Processing Unit (NPU) cluster. The resulting dataset contains 348 feasible configurations that jointly vary five parallelism dimensions and activation recomputation, with six views spanning configuration, rank, operator, event, and kernel granularity. Evaluations of representative training simulators demonstrate how LM-SimBench supports comparisons of prediction accuracy, assessment of configuration selection, and diagnosis of prediction errors. Matched GPU-NPU experiments validate the cross-platform applicability of the collection and evaluation protocol and demonstrate NPU-guided GPU configuration selection.",
+      "authors": [
+        "Yu Dong",
+        "Hong Li",
+        "Qiang Sun",
+        "Xu Zhou",
+        "Jinbiao Huo",
+        "Qixiu Cheng",
+        "Zhiyuan Liu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.14184",
+      "url": "https://arxiv.org/abs/2611.14184",
+      "title": "Benchmarking large language models for parameter-level structural identifiability classification in epidemic ODE models",
+      "summary": "Structural identifiability determines whether unknown parameters can be uniquely recovered from ideal model outputs, making it a prerequisite for interpreting parameter estimates. We evaluated whether large language models (LLMs) can reliably provide preliminary structural identifiability classifications for epidemic models. We constructed a retrospective benchmark of 88 scenarios from 14 of the 27 studies considered, encompassing 696 parameter-level formal reference classifications from published results or Julia-based symbolic analysis. Scenarios were evaluated using Domain-Aware and canonically relabeled (\"Domain-Anonymized\") prompts, with ten runs per configuration and prompt condition. Six configurations completed all scheduled responses, yielding 83,520 parameter-level decisions for the primary comparison. GPT-5.5 Instant and GPT-5.5 Thinking Medium had the highest accuracies among complete configurations (88.71% and 88.07%). Canonical relabeling improved both configurations and attenuated their performance decline in scenarios with many unknown parameters or state variables, although effects differed across model families. Locally identifiable parameters were the most difficult class (highest strict recall among complete configurations: 42.00%), although the local reference set was small. In multivariable analysis, each additional unknown parameter reduced the odds of correct classification (OR 0.881; 95% CI 0.852-0.910), whereas additional observed outputs increased them (OR 1.666; 95% CI 1.503-1.846). Exploratory evaluations indicated strong performance for GPT-5.5 Thinking High and Claude Opus 5, despite incomplete coverage. LLMs may generate preliminary hypotheses or flag cases for formal review, provided outputs are checked against published results or formal symbolic methods. They should not be used to certify the structural identifiability of a complete model.",
+      "authors": [
+        "Geunsoo Jang",
+        "K. Selçuk Candan",
+        "Gerardo Chowell"
+      ],
+      "categories": [
+        "q-bio.QM"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13945",
+      "url": "https://arxiv.org/abs/2611.13945",
+      "title": "Chem World: A Large-Scale Benchmark and Physics-Aware Framework for Trustworthy Molecular Property Prediction",
+      "summary": "Molecular property prediction is fundamental to computational chemistry and drug formulation research, yet existing benchmarks remain fragmented across datasets, properties, and evaluation protocols, limiting systematic evaluation of model generalization. We introduce Chem World, a large-scale benchmark integrating 17 public datasets with over 800,000 molecular and chemical-system instances across 10 property tracks, covering single-molecule and multi-component systems, including drug solubility. Chem World provides a unified testbed for evaluating molecular representations and compositional modeling across diverse chemical properties. Building on the benchmark, we propose PACM (Physics-Aware Compositional Modeling), which combines molecular representations with composition-aware modeling and domain-specific physical constraints. Extensive experiments show that molecular language models provide strong and transferable representations, while PACM consistently improves prediction across diverse chemical systems. Chem World and our PACM-powered drug-property prediction Agent support generalizable chemical modeling and offer a foundation for AI-assisted biomedical research and drug formulation development.",
+      "authors": [
+        "Tianyou Bai",
+        "Huan Wang",
+        "Mingchen Gao",
+        "Tongrui Yang",
+        "Fangyue Lin",
+        "Pinze Ren",
+        "Zhenlin Zhao",
+        "Siming Dong"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13925",
+      "url": "https://arxiv.org/abs/2611.13925",
+      "title": "OpenRE-Bench: A Benchmark Harness for Multi-Agent Requirements Engineering with Mined GitHub Issues",
+      "summary": "OpenRE-Bench is an open-source benchmarking infrastructure for large language model (LLM) based multi-agent requirements-engineering (RE) frameworks. Such frameworks are increasingly common, but they use different agent roles, negotiation policies, and output shapes, and are typically evaluated on their own runtimes, metrics, and small sets of curated system descriptions, which makes fair, reproducible comparison difficult. OpenRE-Bench addresses this with four reusable pieces: a shared run harness with one input, phase-artifact, and metric contract; an adapter mechanism through which a framework joins by implementing a single adapter, leaving cases, metrics, and other adapters untouched; a reproducible GitHub issue-mining pipeline that grows the corpus from real feature requests; and a versioned case suite. As a demonstration, we mine 3,000 fetched issues across five projects (three languages, five domains) into five cases, package them with five hand-built cases as the compact v1.0 suite, and run three heterogeneous frameworks (MARE and iReDev as paper-faithful reimplementations, plus QUARE) under one protocol. OpenRE-Bench originated as the evaluation back-end of our QUARE study and has since been reused by two further studies of our group. It is released with a pinned environment, a Docker image, frozen API snapshots, a 651-test suite, and the full pool of 1,396 filtered issues behind the mined cases.",
+      "authors": [
+        "Haowei Cheng",
+        "Milhan Kim",
+        "Bowen Jiang",
+        "Weixing Zhang",
+        "Yuhong Fu",
+        "Zhixu Liu",
+        "Naoyasu Ubayashi",
+        "Hironori Washizaki"
+      ],
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13843",
+      "url": "https://arxiv.org/abs/2611.13843",
+      "title": "PolyRoute: A Twelve-Language and Code-Mixed Benchmark for Typed-Decision Routing, with Baselines and a Leaderboard",
+      "summary": "Typed-decision encoders answer a question about a text in one forward pass, but their behaviour outside English is rarely measured on a fixed yardstick. We release PolyRoute: 322 native-language support messages in 12 languages and 9 writing systems, 156 code-mixed or romanised messages (Hinglish, Spanglish, Arabizi), 967 optional native training rows, and a protocol for a three-way department-routing decision. Labels come from Qwen3.8-27B with a blind second pass (91% of candidates kept); an independent model, gemma4-31b, agrees on 97.2% of test items, and the largest character 5-gram similarity between any test text and any training text is 0.33. A leaderboard of 13 systems gives 61.2% for the English-root checkpoint, 77.3% for the shipped multilingual one and 96.6% for the best fine-tune; TF-IDF with logistic regression reaches 91.9%. On four withheld languages the three multilingual systems score 77%, 90% and 93%. On code-mixed text the English root (85%) is nominally ahead of the shipped multilingual checkpoint (79%; p=0.134). The split resolves differences only above about 4 points. All texts and labels are LLM-generated.",
+      "authors": [
+        "Mohammed Nayeem Khan",
+        "Sarun Kumar K S"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13788",
+      "url": "https://arxiv.org/abs/2611.13788",
+      "title": "LLM Validation Makes Minimal-Pair Benchmarks Easier for Language Models",
+      "summary": "Minimal-pair benchmarks are only as good as their labels, and LLMs are an obvious substitute for costly human validation. We test it on BLiMP (English) and QFrBLiMP (Quebec French), the two public minimal-pair datasets releasing every forced-choice human judgment. Three LLMs validate by forced choice, by rating, and as a panel, scored against human panels of one, three and five judges in two pre-registered phases. On BLiMP, forced-choice validators agree with held-out human majorities more often than five-judge panels, yet catch far fewer pairs whose label humans reject than one judge does. By point estimate, no validator is worth more than one judge. The errors are not random. On both datasets, across 10 open LMs, human-supported pairs that the pre-registered LLM filter flags are 18.9 points harder than those it accepts, in all 70 LM-validator combinations, and harder than pairs a single human judge flags. Filtering thus removes items on which LMs fail but humans do not, raising accuracy more than random removal. A protocol frozen before any output replicates the gap and the lift on Dutch BLiMP-NL. LLM validation makes minimal-pair benchmarks easier for the models they are meant to test; we release code, validator outputs and item-level scores.",
+      "authors": [
+        "Guofang Tang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13713",
+      "url": "https://arxiv.org/abs/2611.13713",
+      "title": "Toward Autonomous RTL and Synthesis Optimization: Benchmarking and Self-Improving Agents",
+      "summary": "Recent advances in large language models (LLMs) and autonomous agents are creating new opportunities for hardware design optimization. This paper examines three connected directions toward autonomous RTL and synthesis optimization: (1) Realistic benchmarking. We discuss reference-based and open-ended RTL optimization benchmarks that evaluate optimization opportunities under realistic EDA workflows. (2) Tool-grounded RTL optimization. We present Dr. RTL, a multi-agent framework that automates critical-path analysis, RTL rewriting, and implementation-level evaluation, while continuously improving through reusable optimization skills. Evaluated on 20 real-world RTL designs, Dr.~RTL achieves average WNS/TNS improvements of 21\\%/17\\% with a 6\\% area reduction over commercial synthesis. (3) Design-specific synthesis optimization. We explore agent-driven synthesis script tuning and the discovery of executable synthesis algorithms across intermediate representations, technology-independent optimization, and technology mapping. Finally, we envision AI-native design automation that jointly explores architectural, RTL, and EDA algorithm design spaces, guided by verification constraints and implementation feedback.",
+      "authors": [
+        "Wenji Fang",
+        "Yao Lu",
+        "Jinghua Wang",
+        "Zhiyao Xie"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.AR"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13684",
+      "url": "https://arxiv.org/abs/2611.13684",
+      "title": "BypassGym: A Benchmark for Evaluating AI Agents' Endpoint Defense Evasion Capabilities",
+      "summary": "Artificial intelligence agents increasingly automate cybersecurity tasks, including offensive operations. Frequent attacks across the web make endpoint detection and response (EDR) a critical defense, but whether AI agents can evade it remains unclear. Benchmarks evaluate the offensive capabilities of large language model (LLM) agents in areas such as penetration testing and vulnerability discovery. One important capability that these benchmarks do not address is defense evasion, specifically whether an agent can develop a program that executes a payload without being blocked or terminated by a deployed EDR. We introduce BypassGym, to our knowledge the first benchmark to systematically evaluate this capability on real endpoints. Given command-and-control (C2) shellcode, an agent must generate and compile a loader that executes the payload without being blocked or terminated. A supplementary evasion knowledge skill provides domain knowledge and supports comparisons with and without this input. BypassGym is built on Proxmox VE(PVE), so the evaluation environment runs real Windows systems and EDR products inside virtual machines and returns structured detection feedback to the agent. We evaluate 5 lightweight model backends against 6 EDR products and 3 payloads, and find that even these simple models generate successful submissions, with DeepSeek-V4.1 Flash reaching 17/18 successful runs and Bitdefender allowing only 5 of 15 runs to pass. These results provide a systematic measurement of current AI agents' endpoint defense evasion capabilities and identify areas for defenders to investigate.",
+      "authors": [
+        "Weifeng Yuan",
+        "Zifan Chen",
+        "Yucheng Zhang",
+        "Feng Dong",
+        "Peng Gao",
+        "Haoyu Wang"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13667",
+      "url": "https://arxiv.org/abs/2611.13667",
+      "title": "Benchmarking LLM Next-Step Recommendations with Knowledge Space Theory",
+      "summary": "Selecting an LLM for next-step recommendation requires benchmarks that reflect the intended educational task and domain. We present a benchmarking method that uses Knowledge Space Theory (KST) as a formal evaluation reference. Given a task catalogue and an existing prerequisite relation, the method derives admissible knowledge states and the complete set of immediate next steps for each state. Recommendations generated by a model under a specified prompt are compared with these reference sets. A sample evaluation study uses 2,400 responses from six models across four mathematics domains, four prompt conditions, and two catalogue orders. Exact-set accuracy was 61.3% with descriptions only, 62.8% when models were asked to reconstruct prerequisites, 96.3% with supplied prerequisite relations, and 98.2% with the complete knowledge space. Performance varied across models and domains, and recommendation sets agreed across the two presentations in 85.25% of pairs. The benchmark supports comparisons of model-prompt combinations against a context-specific reference. Its scores describe structural recommendation accuracy under the evaluated conditions; they do not establish learning benefit or the necessity of using an LLM for selection.",
+      "authors": [
+        "Peter Steiner",
+        "Jan Hochweber"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13652",
+      "url": "https://arxiv.org/abs/2611.13652",
+      "title": "How Well Do Benchmarks Evaluate LLMs' Use for Personal Health Informatics?",
+      "summary": "Benchmarking is a valuable technique for advancing the capabilities of Large Language Models (LLMs), including in personal health informatics. There are growing efforts on benchmark creation for personal health data activities. However, it is unclear whether and how well these efforts align with needs and considerations of personal health informatics process. Addressing this need, we first analyzed 53,587 tasks across eight benchmarks related to personal health informatics and characterized the space of benchmark design. We then contrasted our observations of design choices with personal informatics theories and empirical knowledge. We find significant mismatches between existing benchmark design and domain guidelines and understanding. This lack of alignment limits the utility of the evidence current benchmarks offer about LLM capabilities. We use domain knowledge to highlight capabilities benchmarks should include and discuss opportunities our work enables for taking a human-centered and domain-driven approach to benchmark design.",
+      "authors": [
+        "Fatemeh Mirhosseini",
+        "Yasaman S. Sefidgar"
+      ],
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13595",
+      "url": "https://arxiv.org/abs/2611.13595",
+      "title": "IFRS Compliance Verification: An Open Multi-LLM Benchmark and Content-Conditioned Ensemble Classifier",
+      "summary": "Verifying corporate financial disclosures against the International Financial Reporting Standards (IFRS) is a core auditing task in which experts cross-reference disclosures with hundreds of fine-grained regulatory paragraphs: a laborious, costly, and error-prone process that motivates growing interest in large language models (LLMs) as compliance assistants. Yet single-model accuracy remains insufficient for high-stakes use, and naive ensembling is vulnerable to systematic per-model biases that can drag aggregate accuracy below that of the strongest individual annotator. This gap is addressed with a multi-stage framework, supported by a new benchmark of 19,998 IFRS regulation-disclosure pairs comprising 11,161 unanimous multi-LLM labels and 8,837 human annotations on items where the LLMs disagreed. The framework couples a three-stage domain-adapted sentence embedding pipeline (BERT masked language modeling on SEC EDGAR filings, unsupervised TSDAE and SimCSE adaptation, and supervised contrastive alignment) with a learned ensemble classifier that fuses frozen embeddings and LLM probability features from GPT-4.1, Claude Sonnet 4, and Gemini 2.5 Pro via Tree-structured Parzen Estimator (TPE) optimized gradient-boosted trees. On the disagreement set, the ensemble achieves 81.7% weighted F1, exceeding the strongest single LLM by 10.4 points and majority voting by 14.6 points, and outperforms eleven unsupervised aggregation baselines; the retrieval pipeline attains Recall@15 of 45.3% on unseen regulations. The dataset, model checkpoints, annotation platform, and classifier implementation will be publicly released.",
+      "authors": [
+        "Aghoghomena Akasukpe",
+        "Li Yang",
+        "Xinyao Zhou",
+        "Chen Shen",
+        "Miguel Vargas Martin"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.IR"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13562",
+      "url": "https://arxiv.org/abs/2611.13562",
+      "title": "An evidence-traceable benchmark of clinical reasoning in large language models",
+      "summary": "Benchmark scores for medical large language models (LLMs) are difficult to interpret when scoring criteria cannot be traced to clinical evidence. Here we developed Med Evidence Bench (MEB; https://www.medevidencebench.org.cn/), comprising 1,536 physician-constructed items across three levels: guideline knowledge, standardized clinical scenarios and real-world laboratory scenarios. Each criterion stating a medical claim is linked to a versioned source-text span. Across ten LLMs, the Evidence Trace Score (ETS) was 0.975-0.997 for guideline knowledge, 0.292-0.658 for standardized scenarios and 0.182-0.447 for real-world scenarios, and rankings varied across levels. For real-world scenarios, scores for identifying clinical information (mean, 0.770) exceeded those for matching evidence (0.165) or formulating recommendations (0.160). On 1,296 criterion-level judgments, automated grading agreed with the majority vote of three physicians (macro-F1, 0.930; 95% confidence interval, 0.915-0.945), although agreement was lower for evidence application. These findings from Chinese-language materials indicate that guideline recall does not ensure patient-specific evidence use and do not establish clinical effectiveness.",
+      "authors": [
+        "Zhiqun Zhao",
+        "Xiaodong Yang",
+        "Bruce Gu",
+        "Ming Li",
+        "Yi Fu",
+        "Song Li",
+        "Qi Mei",
+        "Zhi Liu",
+        "Kai Zhang",
+        "Kexue Fu",
+        "Jing Wu",
+        "Xiaofei Lu",
+        "Yule Li",
+        "Zheng Wang",
+        "Haiquan Lu",
+        "Xiaoming Wu"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "exclude",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "Claude 초록 선별에서 제외"
+    },
+    {
+      "arxiv_id": "2611.13355",
+      "url": "https://arxiv.org/abs/2611.13355",
+      "title": "DEPUTYBENCH: Evaluating Contextual Safety in Enterprise Agents",
+      "summary": "Enterprise agents must determine whether ordinary requests are permitted by organizational records and policies while continuing legitimate work. We introduce DEPUTYBENCH, an executable benchmark with 79 base items, 375 instances, paired permission contexts, and graded evidence requirements. Across 12 models, revised audits give 88.0% pooled safety and 79.1% paired success. A controlled study of 28 derived tasks and six models tests authorization-fact flips, evidence masking, and irrelevant rewrites. Outcomes track backend permissions, yet restricted execution is more frequent with missing evidence than explicit non-permission: 10.3% versus 3.5% on 27 matched tasks, a 6.8-percentage-point difference (95% interval: 1.9-13.0; secondary analysis). A post-hoc analysis locates 61 of 100 masked-condition executions in four privacy tasks requiring complete cumulative counts or person-specific consent. The difference persists when the most error-prone model or the largest contributing task is excluded, but is much smaller outside those four tasks. Thus high safety with available evidence does not establish reliable stopping when permission cannot be verified. Mean paired success is equivalent within a prespecified five-point margin under irrelevant rewrites, while strong-model safety remains near ceiling. Scorer validation improves from 178 to 266 correctly scored cases out of 284 held-out counterexamples. Two security experts manually verified task ground truth over a two-week period; stage labels remain LLM-generated. The concentration analysis describes task structure and audited outcomes, not an identified internal mechanism.",
+      "authors": [
+        "Hao Zhao",
+        "Minghao Lin"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.LG"
+      ],
+      "published": "2026-11-09T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13183",
+      "url": "https://arxiv.org/abs/2611.13183",
+      "title": "AgentScript-Eval: Benchmarking LLMs and Agents for Code Generation in an Enterprise DSL",
+      "summary": "Domain-specific languages (DSLs) are widely used in enterprise software, giving a compact interface to complex tasks, from data access to infrastructure automation. Platforms increasingly extend them to agents, where a developer declares the topics, permitted actions, and guardrails of an agent rather than writing general-purpose code. Large language models (LLMs) write general-purpose code well, but that ability has been measured almost entirely on languages abundant in public pretraining data, and enterprise DSLs are neither abundant nor public. We introduce AgentScript-Eval, an execution-graded benchmark of 100 real tasks for AgentScript, the declarative DSL that Salesforce uses in Agentforce to build conversational agents. Tasks span authoring an agent from a specification, debugging a broken definition, and optimizing a working one. Evaluating five models zero-shot, we find that the regime is hard: the best model reaches only 25.0% pass@3, and every model scores 0% on authoring from scratch. We further find that model scale and price are weak predictors of success -- a 31B open-weight model attains the highest compilation rate of any model tested (48.0%) and matches the strongest frontier model on partial-credit accuracy at the lowest token cost. Adding an agentic compile-and-edit loop is the single largest lever, roughly doubling partial-credit accuracy. Beyond that gain, the wording of domain guidance matters more than its packaging. The same skill pack scores 28% as plain documentation but only 14% as a live plugin. Rewriting one skill inside that plugin then raises it to 37%, our best result, with catalog and tooling untouched. Larger models did not reliably outperform smaller ones; what mattered was the harness surrounding the model and the guidance supplied to it.",
+      "authors": [
+        "Dipin Khati",
+        "Shubham Mehrotra",
+        "Bin Bi",
+        "Zhou Yu",
+        "Denys Poshyvanyk",
+        "James Zhu",
+        "Sitaram Asur",
+        "Phil L. Mui"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-11-09T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:50Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13150",
+      "url": "https://arxiv.org/abs/2611.13150",
+      "title": "VIGOR: Benchmarking Visual Rationale Correctness in Multimodal Large Language Models",
+      "summary": "Multimodal large language models (MLLMs) are typically evaluated by whether they produce correct answers, but correctness alone does not reveal whether their outputs are supported by the right visual evidence. We introduce VIGOR, a benchmark for evaluating VIsually GrOunded Rationales in MLLMs. VIGOR represents visual rationales as explicit concepts paired with pixel-level groundings, covering multiple abstraction levels including low-level visual properties, intermediate structures, objects, parts and high-level motion, relations. To construct VIGOR at scale, we develop an automatic annotation framework that reuses existing dense supervision when available and generates missing concept groundings through proposal-based annotation followed by conservative multimodal verification. Using VIGOR, we evaluate whether MLLMs \"look at what they say\" by comparing model-derived visual evidence for each expressed concept against annotated ground-truth rationales. Our results show that current MLLMs exhibit limited visual rationale correctness and reveal distinct grounding failures across concept levels. VIGOR provides a benchmark and scalable data construction pipeline for studying whether MLLM outputs are supported by appropriate visual evidence. Code is available at https://github.com/deep-real/VIGOR",
+      "authors": [
+        "Yanlin Chen",
+        "Tang Li",
+        "Xi Peng"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-11-09T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13028",
+      "url": "https://arxiv.org/abs/2611.13028",
+      "title": "GTAGym: Real AAA Game Tasks Environment for Evaluation and Reinforcement Learning",
+      "summary": "AAA games offer a rich testbed for evaluating agent perception, reasoning, and control. However, evaluating whether agents can complete tasks in AAA games is challenging and often human-annotated because task outcomes are often difficult to verify automatically, let alone applying it for Reinforcement Learning (RL). We introduce GTAGym, an environment and framework for evaluation and RL on GTA V tasks. Its evaluation benchmark, GTAVBench, derived from GTA V main-story missions, contains 103 online tasks reconstructed across nine task families, alongside 47 image-based shooting and sniping tasks using GTA V imagery. A web server provides access to the online environment and evaluation interface, supporting parallel testing through screenshots and keyboard-mouse actions with automatic engine-state outcome checks. We evaluate six frontier LLMs on GTAVBench with textual task instructions and on its GTAVBench-AGI branch, where instructions appear only in the first screenshot and a harness automatically compresses interaction history. The best configuration achieves 70.9% overall accuracy in GTAVBench-AGI, yet aerial navigation, evasion and interception remain difficult. GTAGym also provides a scalable generator that samples task parameters within user-specified ranges and option sets under fixed templates, creating batches of 3D and image-based shooting environments for RL with automatic reward and termination signals. LoRA RL of Qwen3.8-27B on generated on-foot navigation tasks improves the in-domain performance and transfers to out-of-domain task categories, and native GTA V tasks from 15% to 23%.",
+      "authors": [
+        "Jiajun Chen",
+        "Shicheng Fang",
+        "Jiahao Lu",
+        "Yuxin Wang",
+        "Xipeng Qiu"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-11-09T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.13015",
+      "url": "https://arxiv.org/abs/2611.13015",
+      "title": "From Questions to Decisions: Benchmarking How LLM Agents Acquire Decision-Relevant Information from Human Beings",
+      "summary": "LLM agents are increasingly asked to make plans for people, such as scheduling drivers or assigning nurses. However, people's requests are often incomplete, and the supporting information for decision-making may be outdated, requiring agents to ask for clarification. Existing benchmarks typically provide fully specified problems or rely on uncalibrated LLM-simulated users, leaving this ability insufficiently tested. We introduce Ask2Decide, a benchmark of 43 planning tasks that evaluates whether agents ask for missing information that matters for their decisions. An operator holds facts absent from the agent's request and records, and optimization solvers determine which facts change the optimal plan. We also include similarly worded facts that leave the optimal plan unchanged to test whether agents distinguish useful information from irrelevant details. We collect 79 interaction sessions from 19 participants and find that, after an incorrect plan, human replies omit the correcting fact far more often than replies from an uncalibrated simulated user (43% versus 7%). Using these interactions, we calibrate a simulated operator that more closely matches human reply patterns. Evaluating four frontier LLMs, we find that their initial plans are infeasible on 58-98% of tasks when information is missing, compared with 5-28% when all facts are provided upfront. Agents uncover facts that change the optimal plan only slightly more often than facts that leave it unchanged (39-52% versus 32-41%). These results show that obtaining decision-relevant information through interaction remains a major bottleneck for LLM planning. This is ongoing work and will be updated. The date of this version is shown on the first page.",
+      "authors": [
+        "Yuhan Tang",
+        "Ke Fan",
+        "Xinkai Zou",
+        "Baichuan Mo",
+        "Kangxin Cui",
+        "Ao Qu",
+        "Ou Zheng",
+        "Jiangbo Yu",
+        "Haris N. Koutsopoulos",
+        "Jinhua Zhao",
+        "Yuan Zhou"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-09T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.12990",
+      "url": "https://arxiv.org/abs/2611.12990",
+      "title": "Multimodal Graph Learning: A Survey of Models, Benchmarks, and Frontiers",
+      "summary": "Multimodal attributed graphs (MAGs), in which nodes carry text, images, and other modalities while edges encode relations among entities, underlie e-commerce, social media, content platforms, and creative applications. Learning on MAGs has developed along two complementary lines: graph-centric methods redesign how modalities are fused, propagated, and connected within message passing, while foundation-model-centric methods pretrain transferable multimodal graph encoders or bring graph context into multimodal large language models for prediction and generation. In parallel, several benchmarks have appeared with different datasets and evaluation protocols. This survey takes an algorithm-centric and evaluation-grounded view of the field and makes three contributions. Modeling: we introduce a unified message-passing formulation and organize methods into five integration levels (feature, propagation, topology, learning, and foundation model), covering discriminative and graph-conditioned generative models; within this formulation we derive representative methods as special cases, compare their assumptions, expressiveness, and cost, and identify cross-modal sensitivity as a property that separates otherwise similar architectures. Datasets and evaluation: we review recent benchmarks, summarize their datasets and metrics, define model-independent descriptors (label homophily, average degree, clustering, and edge provenance), and map each evaluation protocol to the baselines it uses. Frontiers: we connect multimodal graph learning to AI agents, covering the multimodal graphs that agents perceive and remember and graph engineering, the practice of organizing agent workflows as explicit graphs; we then discuss open problems, concrete efforts for the community, and research directions, including when graph structure helps in the presence of strong multimodal foundation models.",
+      "authors": [
+        "Rui Xue",
+        "Tianfu Wu"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-11-08T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "exclude",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "Claude 초록 선별에서 제외"
+    },
+    {
+      "arxiv_id": "2611.12982",
+      "url": "https://arxiv.org/abs/2611.12982",
+      "title": "ICLayout-Bench: Benchmarking LLM Agents for Custom Circuit Layout Design",
+      "summary": "Large language model (LLM) agents are being explored for circuit design, but their ability to produce high-quality custom layouts has not been extensively evaluated. ICLayout-Bench is a benchmark in which agents use electronic design automation (EDA) tools to construct and optimize GDSII layouts from transistor-level circuit netlists. These layouts are evaluated using physical verification, parasitic extraction, and post-layout simulation. Layouts that pass the physical and functional checks are scored on electrical performance and area. The benchmark includes 165 tasks across 13 process design kits (PDKs), covering technology nodes from 3 nm to 180 nm. The tasks span analog, mixed-signal, and digital circuits in open-source and commercial EDA flows. The experiments evaluate 22 configurations spanning seven models on 21 public and 19 private tasks. Mean layout scores range from 4.22 to 80.26 on public tasks and from 1.43 to 67.01 on private tasks, on a 100-point scale. Higher reasoning effort does not consistently improve mean scores, and configurations with comparable scores can incur substantially different model costs.",
+      "authors": [
+        "Zhangmai Li",
+        "Tianrui Ma",
+        "Zheng Weng",
+        "Mo Zou",
+        "Zidong Du",
+        "Yifan Hao",
+        "Yongwei Zhao",
+        "Wei Li",
+        "Jing Li",
+        "Qi Guo",
+        "Yunji Chen"
+      ],
+      "categories": [
+        "cs.AR",
+        "cs.AI",
+        "cs.SE"
+      ],
+      "published": "2026-11-08T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.12970",
+      "url": "https://arxiv.org/abs/2611.12970",
+      "title": "TrustMod-SM: A Multi-Axis Benchmark for Evaluating Trustworthiness of LLMs in Social Media Content Moderation",
+      "summary": "Large Language Models (LLMs) show strong potential for social media content moderation, but their trustworthiness beyond overall accuracy remains underexplored. We introduce TrustMod-SM, a benchmark of roughly 29,000 instances across eight datasets, to evaluate LLM moderators on five dimensions: trustfulness, fairness, safety, robustness, and context integrity. Evaluating 16 open-weight models (0.5B-284B parameters, spanning text-only and vision-language architectures) and one closed frontier model, we find persistent trustworthiness gaps. Higher detection accuracy often coincides with greater demographic disparity, and models frequently comply with concealment or exaggeration prompts, assign high confidence to wrong predictions, rarely escalate ambiguous cases, and struggle to separate hate speech from counter-speech or reclaimed language (especially below 8B parameters). Scaling does not uniformly resolve these issues, and no single model excels across all five dimensions.",
+      "authors": [
+        "Aizan Zafar",
+        "Sreekantam Sai Venkata",
+        "Gathik Jindal",
+        "Ritu Raj Sharma",
+        "Zishan Ahmad",
+        "Tulika Saha",
+        "Srinath Srinivasa"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-07T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2611.12966",
+      "url": "https://arxiv.org/abs/2611.12966",
+      "title": "BuySideFlow: A Point-in-Time Benchmark for LLM Agents in Investment Research",
+      "summary": "Large language models (LLMs) can generate SQL and SQL--Python workflows for investment research, but ensuring point-in-time (PIT) validity remains challenging. Agents must enforce disclosure cutoffs and select the appropriate historical states and record versions throughout data retrieval and financial analysis. We introduce \\textsc{BuySideFlow}, a benchmark of 408 practitioner-derived Chinese-language tasks spanning equities, funds, fixed income, and macroeconomics over a fixed snapshot from a licensed production financial database. We provide executable references and a taxonomy of temporal errors, pairing result checks with expert audits of executed workflows. We evaluate nine agent configurations on all tasks, with result accuracy ranging from 16.2\\% to 36.8\\%. An audit of 900 runs on 100 shared tasks confirms PIT violations in 193 of the 380 runs that pass result checks (50.8\\%), showing that output agreement alone does not establish temporal validity.",
+      "authors": [
+        "Dong Bo",
+        "Fanjin Zhang",
+        "Ke Cheng",
+        "Xinxin Zhao",
+        "Xiaowei Su",
+        "Yang Wang",
+        "Jinghang Xu",
+        "Cuiping Li",
+        "Hong Chen",
+        "Jing Zhang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-07T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "announced_at": "2026-11-11T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "analysis_status": "exclude",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "Claude 초록 선별에서 제외"
+    },
     {
       "arxiv_id": "2611.12856",
       "url": "https://arxiv.org/abs/2611.12856",
@@ -443,7 +1115,7 @@
       "arxiv_id": "2611.11588",
       "url": "https://arxiv.org/abs/2611.11588",
       "title": "FinCutBench: A Continually Updated Benchmark for Measuring the Temporal Boundaries of LLM Financial Knowledge",
-      "summary": "In financial backtesting and other point-in-time tasks, external inputs can be restricted by date, but model parameters may retain financial facts disclosed later, introducing parametric look-ahead bias. We introduce FinCutBench, a continually updated monthly financial knowledge benchmark for measuring how far a fixed model's financial knowledge extends over calendar time. The current dataset contains 9,000 Chinese and English four-option multiple-choice questions from January 2023 to September 2026, covering Chinese and U.S. markets and four categories of financial information. We construct monthly knowledge profiles using the approximate months in which the tested facts became public. After a profile passes the decline test and knot checks, we define the FinCut Boundary as the first month when the fitted profile reaches its lower level, and report the stability of the estimated date under resampling. Boundary dates and localization precision vary across models. Using the independently measured Transition Start and Boundary as fixed references for downstream sample grouping, we find clear relative declines after the Boundary in U.S. asset ranking and earnings recall for some models, while Chinese-market ranking estimates vary across models and all eight disclosure-period-paired forecast-error comparisons have unadjusted $p$ values above 0.10. The FinCut Boundary thus provides an empirical reference for the temporal scope of parametric knowledge in point-in-time financial evaluation, supporting evaluation-window selection and result interpretation.",
+      "summary": "In financial backtesting and other point-in-time tasks, external inputs can be restricted by date, but model parameters may retain financial facts disclosed later, introducing parametric look-ahead bias. We introduce FinCutBench, a continually updated monthly financial knowledge benchmark for measuring how far a fixed model's financial knowledge extends over calendar time. The current dataset contains 9,000 Chinese and English four-option multiple-choice questions from January 2023 to September 2026, covering Chinese and U.S. markets and four categories of financial information. We construct monthly knowledge profiles using the approximate months in which the tested facts became public. After a profile passes the decline test and knot checks, we define the FinCut Boundary as the first month when the fitted profile reaches its lower level, and report the stability of the estimated date under resampling. Boundary dates and localization precision vary across models. Using the independently measured Transition Start and Boundary as fixed references for downstream sample grouping, we find significant relative declines in U.S. asset-ranking performance and in earnings recall for Sol and Luna. Downstream effects vary across markets and tasks. The FinCut Boundary thus provides an empirical reference for the temporal scope of parametric knowledge in point-in-time financial evaluation, supporting evaluation-window selection and result interpretation.",
       "authors": [
         "Siyuan Li",
         "Ke Wan",
@@ -455,17 +1127,17 @@
         "cs.AI",
         "cs.CL"
       ],
-      "published": "2026-11-08T00:00:00Z",
-      "updated": "2026-11-10T00:00:00Z",
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
       "announced_at": "2026-11-10T05:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-11-11T02:34:27Z",
       "review_status": "pending",
       "review_issue_url": null,
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-11-10T00:00:00Z",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
       "analysis_status": "queued",
-      "analysis_at": "2026-11-11T02:42:46Z",
+      "analysis_at": "2026-11-12T02:39:38Z",
       "analysis_reason": "초록 선별 후 본문 조사 대기"
     },
     {
@@ -564,7 +1236,7 @@
       "arxiv_id": "2611.11284",
       "url": "https://arxiv.org/abs/2611.11284",
       "title": "WarBias: A Bilingual LLM Benchmark of Stereotypes About Internally Displaced People and Veterans",
-      "summary": "This paper contains examples of stereotypes about veterans and displaced people that may be offensive or distressing. Social bias benchmarks for language models commonly examine categories such as gender, race, and religion, often drawn from lists of legally protected characteristics. Veterans and internally displaced people (IDPs) fall outside these lists, and stereotypes about them, which can undermine access to employment, housing, and social participation, remain largely absent from language model evaluation. We introduce WarBias, a Ukrainian--English benchmark of stereotypes about these two groups. Built from a taxonomy of 120 stereotype claims grounded in research and monitoring reports, WarBias contains 1,007 stereotype--counter-stereotype--unrelated sentence triplets and 240 multiple-choice questions per language. A Ukrainian language model selected in a blinded human pilot generated the Ukrainian triplets. At least two independent annotators reviewed each triplet in the annotation cohort. The authors revised items in response to the reviews, and the final release was machine-translated into English. Each claim carries a human severity rating. In a baseline evaluation of six models, four prefer stereotypical Ukrainian sentences about at least one group, most strongly about IDPs, while English scores are mostly balanced. WarBias supports complementary evaluations of stereotypical preferences and context-sensitive judgments, and provides paired forget/retain material for unlearning-based bias mitigation. We document the benchmark's construction, intended uses, and limitations, and offer its construction method as a template for analogous benchmarks in other conflict-affected societies.",
+      "summary": "This paper contains examples of stereotypes about veterans and displaced people that may be offensive or distressing. Social bias benchmarks for language models commonly examine categories such as gender, race, and religion, often drawn from lists of legally protected characteristics. Veterans and internally displaced people (IDPs) fall outside these lists, and stereotypes about them, which can undermine access to employment, housing, and social participation, remain largely absent from language model evaluation. We introduce WarBias, a Ukrainian-English benchmark of stereotypes about these two groups. Built from a taxonomy of 120 stereotype claims grounded in research and monitoring reports, WarBias contains 1,007 stereotype-counter-stereotype-unrelated sentence triplets and 240 multiple-choice questions per language. A Ukrainian language model selected in a blinded human pilot generated the Ukrainian triplets. At least two independent annotators reviewed each triplet in the annotation cohort. The authors revised items in response to the reviews, and the final release was machine-translated into English. Each claim carries a human severity rating. In a baseline evaluation of six models, four prefer stereotypical Ukrainian sentences about at least one group, most strongly about IDPs, while English scores are mostly balanced. WarBias supports complementary evaluations of stereotypical preferences and context-sensitive judgments, and provides paired forget/retain material for unlearning-based bias mitigation. We document the benchmark's construction, intended uses, and limitations, and offer its construction method as a template for analogous benchmarks in other conflict-affected societies.",
       "authors": [
         "Viktoriia Makovska",
         "Tetiana Zakharchenko",
@@ -573,17 +1245,17 @@
       "categories": [
         "cs.CL"
       ],
-      "published": "2026-11-08T00:00:00Z",
-      "updated": "2026-11-10T00:00:00Z",
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
       "announced_at": "2026-11-10T05:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-11-11T02:34:27Z",
       "review_status": "pending",
       "review_issue_url": null,
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-11-10T00:00:00Z",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
       "analysis_status": "queued",
-      "analysis_at": "2026-11-11T02:42:46Z",
+      "analysis_at": "2026-11-12T02:39:38Z",
       "analysis_reason": "초록 선별 후 본문 조사 대기"
     },
     {
@@ -1036,7 +1708,7 @@
     {
       "arxiv_id": "2611.10044",
       "url": "https://arxiv.org/abs/2611.10044",
-      "title": "CulturalCrosswords: A Multilingual Benchmark comprised of Answer Constraints and Grid Completion",
+      "title": "CulturalCrosswords: A Multilingual Benchmark of Answer Constraints and Grid Completion",
       "summary": "When several answers fit a riddle, exact-match scoring can penalise a valid response. CulturalCrosswords tests how answer constraints affect large language models (LLMs) solving cultural riddles, whose solutions draw on knowledge specific to a community. We constructed 53 crosswords from crowdsourced riddles in 42 languages and evaluated 11 LLM configurations on five versions of each clue set: plain batches, batches with lengths, batches with lengths and partial-answer hints, and crosswords requesting an answer list or a completed grid. On 962 clues with alternative answers, lengths improve agreement with the reference by 22.8 percentage points, compared with 8.4 points when accepted alternatives also receive credit. Part of the gain therefore appears to come from selecting a required answer form. Crossword input increases the share of all crossings with compatible answers by 9.7 points; requiring a completed grid reveals large differences between models. The benchmark distinguishes agreement with a reference from the ability to produce answers that fit together and occupy the correct cells.",
       "authors": [
         "Isaac Saxton-Knight",
@@ -1050,17 +1722,17 @@
         "cs.CL",
         "cs.AI"
       ],
-      "published": "2026-11-05T00:00:00Z",
-      "updated": "2026-11-10T00:00:00Z",
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
       "announced_at": "2026-11-10T05:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-11-11T02:34:27Z",
       "review_status": "pending",
       "review_issue_url": null,
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-11-10T00:00:00Z",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
       "analysis_status": "queued",
-      "analysis_at": "2026-11-11T02:42:30Z",
+      "analysis_at": "2026-11-12T02:39:38Z",
       "analysis_reason": "초록 선별 후 본문 조사 대기"
     },
     {
@@ -1206,10 +1878,190 @@
       "analysis_reason": "초록 선별 후 본문 조사 대기"
     },
     {
+      "arxiv_id": "2606.24548",
+      "url": "https://arxiv.org/abs/2606.24548",
+      "title": "Are Text-to-Image Models Inductivist Turkeys? A Counterfactual Benchmark for Causal Reasoning",
+      "summary": "Text-to-image (T2I) generation models have achieved remarkable progress in producing visually realistic images from natural language prompts. Yet it remains unclear whether their success reflects genuine causal understanding or sophisticated pattern matching over visual-textual correlations. Inspired by Russell's inductivist turkey, we introduce Counterfactual-World (CF-World), a counterfactual benchmark designed to investigate whether text-to-image models can generate images under rules that systematically contradict real-world priors. CF-World organizes each scenario into three progressive levels: factual generation under ordinary world knowledge, explicit counterfactual generation with direct visual instructions, and implicit counterfactual generation requiring causal deduction from altered rules. We evaluate open-source and closed-source text-to-image models using CF-Eval, a scoring pipeline based on vision-language models. We report the scores at each prompt level as the primary results and use Prior Resistance Rate (PRR) and Reasoning Retention Rate (RRR) as auxiliary descriptive indicators. All evaluated models score lower on counterfactual prompts than on factual prompts. Diagnostic experiments reveal difficulties in following altered rules and recombining rarely co-occurring visual attributes. The gains from rephrasing object and attribute names are consistent with a role for learned visual priors in counterfactual generation. Our benchmark and evaluation code are publicly available at https://jylei16.github.io/CF-World.github.io/.",
+      "authors": [
+        "Jiayi Lei",
+        "Yuandong Pu",
+        "Xingyu Han",
+        "Rongpeng Zhu",
+        "Jing Xu",
+        "Jinyao Wang",
+        "Zijian Zhou",
+        "Bin Fu",
+        "Yuewen Cao",
+        "Yihao Liu",
+        "Hongsheng Li"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2605.26074",
+      "url": "https://arxiv.org/abs/2605.26074",
+      "title": "StakeBench: Evaluating Language Understanding Grounded in Market Commitment",
+      "summary": "Existing financial NLP benchmarks often rely on labels supplied by outside observers, measuring how language is perceived rather than what speakers have committed to in the market. We introduce StakeBench, an evaluation framework for language understanding grounded in market commitment. StakeBench links 560,876 comments from 2,261 resolved markets to verified position, action, and market-odds records across Polymarket and Manifold. Supervision is derived from observable market behavior. Position sides, post-comment trading actions, and market-odds trajectories replace human annotation. Four diagnostic tasks test whether models detect market commitment, identify the revealed side, anticipate future action, and perform collective odds projection. Three commitment-aware metrics measure alignment with revealed preferences rather than perceived sentiment. Validity audits and explicit interpretation boundaries help distinguish observable commitment signals from latent belief and causal market-odds impact. Across 15 LLMs and 18 topics and platform settings, models partially recover position-side signals, with Directed Accuracy from 0.506 to 0.599, but show structural failures on later tasks. Ten of the fifteen models collapse to one or two action labels in future action anticipation, and no model consistently improves on the naive odds-direction baseline in collective odds projection. Model scale is not correlated with performance, finance-domain tuning does not improve revealed-side identification, and platform incentives strongly shape higher-order results. StakeBench is packaged with evaluation code and dataset under CC-BY 4.0.",
+      "authors": [
+        "Yunhua Pei",
+        "Jingyu Hu",
+        "Yiwei Shi",
+        "Hongnan Ma",
+        "Weiru Liu",
+        "John Cartlidge"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "q-fin.GN"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2603.29630",
+      "url": "https://arxiv.org/abs/2603.29630",
+      "title": "BigEarthNet.txt: A Large-Scale Multi-Sensor Image-Text Dataset and Benchmark for Earth Observation",
+      "summary": "Vision-langugage models (VLMs) have shown strong performance in computer vision (CV), yet their performance on remote sensing (RS) data remains limited due to the lack of large-scale, multi-sensor RS image-text datasets with diverse textual annotations. Existing datasets predominantly include aerial Red-Green-Blue imagery, with short or weakly grounded captions, and provide limited diversity in annotation types. To address this limitation, we introduce BigEarthNet$.$txt, a large-scale, multi-sensor image-text dataset designed to advance instruction-driven image-text learning in Earth observation across multiple tasks. It contains 464044 co-registered Sentinel-1 synthetic aperture radar and Sentinel-2 multispectral images with 9.6M text annotations, including: i) geographically anchored captions describing land-use/land-cover (LULC) classes, their spatial relations, and environmental context; ii) visual question answering pairs relevant for different tasks; and iii) referring expression detection instructions for bounding box prediction. A comparative statistical analysis shows that BigEarthNet$.$txt surpasses existing RS image-text datasets in textual richness and annotation type variety. We further establish a manually-verified benchmark split and extensively evaluate existing VLMs in RS and CV. The results show the limitations of these models on tasks that involve complex LULC classes, whereas fine-tuning using BigEarthNet$.$txt results in consistent performance gains across all considered tasks. Our code and data are publicly available at https://txt.bigearth.net.",
+      "authors": [
+        "Johann-Ludwig Herzog",
+        "Mathis Jürgen Adler",
+        "Leonard Hackel",
+        "Yan Shu",
+        "Angelos Zavras",
+        "Ioannis Papoutsis",
+        "Paolo Rota",
+        "Begüm Demir"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2602.08896",
+      "url": "https://arxiv.org/abs/2602.08896",
+      "title": "OmniReview: A Large-scale Benchmark and LLM-enhanced Framework for Realistic Reviewer Recommendation",
+      "summary": "Academic peer review remains the cornerstone of scholarly validation, yet the field faces some challenges in data and methods. From the data perspective, existing research is hindered by the scarcity of large-scale, verified benchmarks and oversimplified evaluation metrics that fail to reflect real-world editorial workflows. To bridge this gap, we present OmniReview, a comprehensive dataset constructed by integrating multi-source academic platforms encompassing comprehensive scholarly profiles through the disambiguation pipeline, yielding 202, 756 verified review records. Based on this data, we introduce a three-tier hierarchical evaluaion framework to assess recommendations from recall to precise expert identification. From the method perspective, existing embedding-based approaches suffer from the information bottleneck of semantic compression and limited interpretability. To resolve these method limitations, we propose Profiling Scholars with Multi-gate Mixture-of-Experts (Pro-MMoE), a novel framework that synergizes Large Language Models (LLMs) with Multi-task Learning. Specifically, it utilizes LLM-generated semantic profiles to preserve fine-grained expertise nuances and interpretability, while employing a Task-Adaptive MMoE architecture to dynamically balance conflicting evaluation goals. Comprehensive experiments demonstrate that Pro-MMoE achieves state-of-the-art performance across six of seven metrics, establishing a new benchmark for realistic reviewer recommendation.",
+      "authors": [
+        "Yehua Huang",
+        "Penglei Sun",
+        "Zebin Chen",
+        "Zhenheng Tang",
+        "Xiaowen Chu"
+      ],
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2602.08866",
+      "url": "https://arxiv.org/abs/2602.08866",
+      "title": "ArkEval: Benchmarking and Evaluating Automated CodeRepair for ArkTS",
+      "summary": "Large language models have transformed code generation, enabling unprecedented automation in software development. As mobile ecosystems evolve, HarmonyOS has emerged as a critical platform requiring robust development tools. Software development for the HarmonyOS ecosystem relies heavily on ArkTS, a statically typed extension of TypeScript. Despite its growing importance, the ecosystem lacks robust tools for automated code repair, primarily due to the absence of a high-quality benchmark for evaluation. To address this gap, we present ArkEval, a unified framework for ArkTS automated repair workflow evaluation and benchmark construction. It provides the first comprehensive benchmark specifically designed for ArkTS automated program repair. We constructed this benchmark by mining issues from a large-scale official Huawei repository containing over 400 independent ArkTS applications. Through a rigorous multi-stage filtering process, we curated 502 reproducible issues. To ensure testability, we employed a novel LLM-based test generation and voting mechanism involving Claude and other models. Furthermore, we standardized problem statements to facilitate fair evaluation. Finally, we evaluated four state-of-the-art Large Language Models (LLMs) on our benchmark using a retrieval-augmented repair workflow. Our results highlight the current capabilities and limitations of LLMs in repairing ArkTS code, paving the way for future research in this low-resource language domain.",
+      "authors": [
+        "Bang Xie",
+        "Senjian Zhang",
+        "Zhiyuan Peng",
+        "Wei Chen",
+        "Xin Yin",
+        "Chenhao Ying",
+        "Yuan Luo"
+      ],
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2506.15253",
+      "url": "https://arxiv.org/abs/2506.15253",
+      "title": "Specification-based Security Evaluation of Real-World Agents Tool-Calling under Long-Horizon Context Tasks",
+      "summary": "As large language model (LLM) agents are increasingly deployed in long-horizon unattended scenarios, security evaluation of them before deployment becomes increasingly essential and challenging. Existing evaluation methods mainly follow the paradigms of LLM-as-a-Judge or Agent-as-a-Judge. However, such judges are themselves often vulnerable to hallucination and can even be affected by perturbations. Furthermore, because capturing full environment states at every step is often prohibitively expensive in open-ended environments, existing evaluations typically rely on textual logs and the final environment state. As a result, they may miss transient violations that are overwritten before the trajectory ends or never reflected in textual logs. We present RAS-Eval, a specification-based security evaluation framework for LLM agents. RAS-Eval uniformly expresses utility and security objectives as Linear Temporal Logic (LTL) specifications over tool-call trajectories and dynamic environment observations, and verifies them with an off-the-shelf model checker. This design addresses both limitations above. First, unlike LLM-as-a-Judge and Agent-as-a-Judge, RAS-Eval derives deterministic verdicts from formally defined properties, eliminating evaluator-side uncertainty and remaining reliable even for long-horizon trajectories. Second, RAS-Eval observes exactly the states on which the verdict depends, making it affordable to monitor the environment throughout execution and detect transient violations that leave little trace in the logs or final environment state. Moreover, we design a multi-agent-based dataset construction pipeline. Using it, we construct a benchmark (https://github.com/lanzer-tree/RAS-Eval) of 200 normal tasks and 800 attack tasks spanning four attack surfaces: indirect prompt injection, tool poisoning, skill code injection, and tool code injection.",
+      "authors": [
+        "Yuchuan Fu",
+        "Minghe Wang",
+        "Xiaohan Yuan",
+        "Chenlin Zou",
+        "Kaitong Jia",
+        "Jinfeng Li",
+        "Dongxia Wang"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "queued",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
       "arxiv_id": "2611.09794",
       "url": "https://arxiv.org/abs/2611.09794",
-      "title": "Seeing What Matters: Benchmarking Task-Conditioned Actionable Spatial Belief for Manipulation",
-      "summary": "When should a robot look at the cup, and when at the portafilter? Spatial-reasoning benchmarks evaluate whether a model can describe a scene, but manipulation needs something more specific: the ability to acquire the particular evidence that makes the current command executable. A view that is informative for one task can be useless for another, even at the same workstation. We introduce Seeing What Matters, a benchmark for task-conditioned actionable spatial belief in simulated tabletop manipulation. Across three domains--coffee workstation, drawer/cabinet, and microwave/appliance--the benchmark provides 860 frozen evaluation cases; expanding across methods, budgets, and inference repeats yields more than 115,000 evaluator episodes under two protocols: closed-loop actionability and same-object functional out-of-distribution generalization. Each case pairs a set of candidate RGB views with a manipulation command, shared scripted skills, and hidden postconditions, so the benchmark directly measures whether a view-selection policy acquires the observations its command actually needs. We also provide a diagnostic reference pipeline that maintains a spatial-functional belief state and ranks views by missing evidence. At primary budget settings, this pipeline reaches 98.8% closed-loop and 98.9% functional-OOD success; ablating the functional or command-binding components collapses performance to near zero. Seven vision-language models, evaluated on the same cases, reach only 26-43%. Replacing the reference pipeline's coverage metadata with frozen RGB-derived scores preserves 98.5%/98.9% success; shuffling the visual scores collapses it to 15%/11%, confirming that the result depends on image content. These gaps suggest that spatial belief for manipulation should be evaluated not by scene-level completeness, but by whether it acquires the evidence the current command requires.",
+      "title": "Seeing What Execution Needs: Benchmarking Task-Conditioned Actionable Spatial Belief for Manipulation",
+      "summary": "When should a robot look at the cup, and when at the portafilter? A view that is informative for one task can be useless for another, even at the same workstation. We introduce Seeing What Execution Needs, a benchmark for task-conditioned actionable spatial belief in simulated tabletop manipulation. Its aligned three-domain track contains 1,080 frozen cases (360 each for coffee workstation, drawer/cabinet, and microwave/appliance). The primary coffee protocols -- closed-loop actionability and same-object functional out-of-distribution generalization -- produce over 115,000 evaluator episodes across evaluated methods, budgets, and inference repeats. Each case pairs candidate RGB views with a manipulation command, shared scripted skills, and hidden postconditions, directly measuring whether selected observations support execution. A metadata-assisted diagnostic reference pipeline maintains spatial-functional beliefs and ranks views by missing evidence. At primary budget settings, it reaches 98.8% closed-loop and 98.9% functional-OOD success; removing functional fields or command binding reduces functional-OOD success to 0.0% and 19.7%, respectively. Under a separate full-preview contract, seven vision-language models reach 26-43%. Replacing coverage metadata with frozen RGB-derived scores retains 98.5%/98.9% success; shuffling these scores reduces success to 15%/11%, supporting dependence on image content. Separately, the aligned three-domain evaluation at H=3 supports portability of the benchmark interface under frozen domain-specific schemas. These results suggest that spatial belief for manipulation should be evaluated by whether acquired evidence meets the current command's execution requirements.",
       "authors": [
         "Yina Jian",
         "Mingkun Xu"
@@ -1218,18 +2070,18 @@
         "cs.RO",
         "cs.CV"
       ],
-      "published": "2026-11-06T00:00:00Z",
-      "updated": "2026-11-09T00:00:00Z",
+      "published": "2026-11-09T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
       "announced_at": "2026-11-09T05:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-11-10T02:34:00Z",
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "queued",
-      "analysis_at": "2026-11-10T02:41:45Z",
+      "analysis_at": "2026-11-12T02:39:38Z",
       "analysis_reason": "초록 선별 후 본문 조사 대기",
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-11-09T00:00:00Z"
+      "metadata_changed_at": "2026-11-11T00:00:00Z"
     },
     {
       "arxiv_id": "2611.09769",
@@ -1774,6 +2626,29 @@
       "analysis_status": "queued",
       "analysis_at": "2026-11-11T02:42:30Z",
       "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2604.11581",
+      "url": "https://arxiv.org/abs/2604.11581",
+      "title": "Hidden Measurement Error in LLM Pipelines Distorts Annotation, Evaluation, and Benchmarking",
+      "summary": "LLM evaluations drive model deployment, safety standards, research conclusions, and future projections, for example, about AI's impact on the labor market. Yet the way we often estimate noise from autoraters (LLM-as-judge) ignores variability from factors like judge model choice and prompt phrasing, which means we're underestimating error in a way that worsens with more data. This unmeasured variance can affect results enough to reverse conclusions. And judge-pipelines that fail to average this variation are more vulnerable to \"benchmark hacking\". This paper introduces a framework we call \"total evaluation error (TEE),\" which decomposes LLM pipeline uncertainty and uses design-study projections to reduce total error. In our safety and ideology applications, naive standard errors are 53-70% smaller than the corrected SE under our TEE framework. Using Chatbot Arena data, we show naive 95% CI coverage drops as n grows, while TEE-corrected coverage holds at 95%, and TEE-guided pipelines restrict the potential range of benchmark gaming by roughly 43%. We show further that a small pilot allows for the estimation of proper CIs, with the added benefit of projecting which design changes most improve precision. Using those projections to allocate API calls cut MMLU estimation error roughly in half against the answer key at the same budget, and increased per-match agreement with human voters on Chatbot Arena by 7.9 percentage points.",
+      "authors": [
+        "Solomon Messing"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-09T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "exclude",
+      "analysis_at": "2026-11-12T02:39:38Z",
+      "analysis_reason": "Claude 초록 선별에서 제외"
     },
     {
       "arxiv_id": "2604.01925",
@@ -2532,15 +3407,15 @@
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-05T00:00:00Z",
-      "updated": "2026-11-06T00:00:00Z",
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
       "announced_at": "2026-11-06T05:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-11-07T02:34:03Z",
       "review_status": "pending",
       "review_issue_url": null,
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-11-06T00:00:00Z",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
       "analysis_status": "exclude",
       "analysis_at": "2026-11-07T02:41:14Z",
       "analysis_reason": "Claude 초록 선별에서 제외"
@@ -3090,6 +3965,7 @@
         "Xinrui Zhong",
         "Zhifeng Li",
         "Zhiming Wang",
+        "Xinze Feng",
         "Yongqi Liu",
         "Shanglin Yang",
         "Yang Zhou",
@@ -3100,15 +3976,15 @@
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-04T00:00:00Z",
-      "updated": "2026-11-05T00:00:00Z",
+      "published": "2026-11-09T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
       "announced_at": "2026-11-05T05:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-11-06T02:34:47Z",
       "review_status": "pending",
       "review_issue_url": null,
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-11-05T00:00:00Z",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
       "analysis_status": "queued",
       "analysis_at": "2026-11-06T02:45:09Z",
       "analysis_reason": "초록 선별 후 본문 조사 대기"
@@ -4130,8 +5006,8 @@
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-03T00:00:00Z",
-      "updated": "2026-11-04T00:00:00Z",
+      "published": "2026-11-10T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
       "announced_at": "2026-11-04T05:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-11-05T02:34:06Z",
@@ -4141,7 +5017,7 @@
       "analysis_at": "2026-11-05T02:43:03Z",
       "analysis_reason": "초록 선별 후 본문 조사 대기",
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-11-04T00:00:00Z"
+      "metadata_changed_at": "2026-11-11T00:00:00Z"
     },
     {
       "arxiv_id": "2611.04685",
@@ -16729,20 +17605,38 @@
         "Jiang Bian",
         "Jingling Wang",
         "Pan Ding",
-        "Chengying Gu"
+        "Chengying Gu",
+        "Xing Huang",
+        "Hana Song",
+        "Dong Zhang",
+        "Hao Wu",
+        "Yupeng Cui",
+        "Longfeng Zhou",
+        "Chao Wang",
+        "Hua Liu",
+        "Zheng Yi",
+        "Peng Wang",
+        "Haiyang Li",
+        "Nan Sun",
+        "Fan Yang",
+        "Tao Yang",
+        "Heng Wang",
+        "Yin Liu",
+        "Yingpeng Chen",
+        "Zouqi Chen"
       ],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-10-26T00:00:00Z",
-      "updated": "2026-10-27T00:00:00Z",
+      "published": "2026-11-09T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
       "announced_at": "2026-10-20T04:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-10-21T02:44:26Z",
       "review_status": "pending",
       "review_issue_url": null,
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-10-27T00:00:00Z",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
       "analysis_status": "queued",
       "analysis_reason": "초록 선별 후 본문 조사 대기"
     },
@@ -28066,8 +28960,10 @@
       "first_seen_at": "2026-10-19T13:33:59Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_status": "needs_evidence",
+      "analysis_reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T04:11:35Z"
     },
     {
       "arxiv_id": "2610.09152",
@@ -28097,11 +28993,14 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-08T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 1,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T04:06:58Z"
     },
     {
       "arxiv_id": "2610.09112",
@@ -28124,11 +29023,11 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-08T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 언어 필드와 시드 서술에 근거 문제가 있어 승인하지 않는다. (1) 언어가 'en' 하나로만 기록되어 있다. 논문은 다국어 이해를 평가 범주로 명시하고(초록), 3쪽 Table 3에서 언어 범주 6개 과제가 갈리시아어·바스크어 입력을 쓴다고 밝힌다. 증거로 제시된 구절은 영어 질의 예시뿐이라 영어 단독 표기를 뒷받침하지만, 갈리시아어·바스크어 지원이 누락된 점은 해소하지 못한다. 사용 시 유의사항에 갈리시아어·바스크어 언급이 있어도 언어 필드와 일관되지 않다. (2) 정의가 9개 모델 전부를 모델당 시드 3개로 평가했다고 쓰지만, 6쪽 Table 6 각주와 5쪽 집계 절은 Claude Sonnet 4가 시드 없이 독립 샘플 2개로만 평가되었다고 밝힌다. 이 예외가 정의와 유의사항에서 빠져 있어 부정확하다. 나머지 항목은 근거가 확인되었다. 라이선스 Apache-2.0은 공식 카드와 LICENSE 파일에 있고 적용 범위를 저장소 자체 저작물로 한정했다. 상업적 이용·수정·재배포 표기는 Apache-2.0 조건과 일치한다. 파생 출처(MITECO, LUCAS 2022, BigEarthNet V2, GeoBenchX 도구 4종)는 명시되었고 각 구성 요소 약관을 따로 확인하라는 안내도 있다. lm-eval 미표기는 공식 카드에 언급이 없어 정당하다. 추천 점수 9개는 Table 6의 103개 과제 열 값과 일치하고 같은 조건·같은 지표이며 높을수록 좋다. 공개 가중치 표기도 논문이 명시한 모델에만 되어 있고 Claude는 null로 남겼다. 언어 필드를 다국어(영어, 갈리시아어, 바스크어)로 수정하고 Claude의 시드 예외를 반영하면 승인할 수 있다."
     },
     {
       "arxiv_id": "2610.09021",
@@ -28149,11 +29048,12 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "awaiting_claude",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-08T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "이 논문은 배포된 홈 오토메이션 에이전트(Wactorz)의 다섯 LLM 호출 지점(intent, HA action, actuator, planner, codegen)을 평가하는 280문항 벤치마크를 만들고, 하니스와 기록을 GitHub에 공개한다. 영어 프롬프트와 요청문(\"turn off the tv\")을 쓰는 텍스트 전용 에이전트 과제이므로 en 트랙, text로 분류한다. 라이선스와 lm-eval 지원 여부는 PDF에서 확인되지 않아 '확인 불가'로 기록한다.",
+      "analysis_at": "2026-11-12T04:03:08Z"
     },
     {
       "arxiv_id": "2610.08733",
@@ -28174,11 +29074,13 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T03:59:23Z"
     },
     {
       "arxiv_id": "2610.08691",
@@ -28204,11 +29106,14 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 1,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:59:10Z"
     },
     {
       "arxiv_id": "2610.08649",
@@ -28230,11 +29135,13 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T03:58:55Z"
     },
     {
       "arxiv_id": "2610.08642",
@@ -28259,11 +29166,13 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T03:56:46Z"
     },
     {
       "arxiv_id": "2610.08513",
@@ -28286,11 +29195,14 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 1,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:55:11Z"
     },
     {
       "arxiv_id": "2610.08303",
@@ -28309,11 +29221,11 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "exclude",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "이 논문은 번역 동형성 가정(TIA)과 α-unalignability를 다루는 이론·입장 논문이다. 제안한 진단 프로필(CC, PLD, MCM, RIG)은 지표 제안일 뿐 재사용 가능한 벤치마크 데이터셋이 아니다. BETEL은 개발 중인 예시로만 소개되고 체계적 평가는 예정 단계이다. FLORES-200과 LOBSTER는 기존 벤치마크의 재분석에 해당한다. Yami 사례 연구의 말뭉치는 제3자 소유로 공개되지 않으며(코드와 데이터 비공개), 논문이 밝힌 공식 데이터·코드 URL도 없다. 벤치마크의 과제 언어가 한국어·영어인 근거도 부족하다(Yami–중국어 번역이고 영어는 GPT 피벗 번역 보조 자료일 뿐이다). 따라서 신규 또는 실질적 갱신 벤치마크로 보기 어렵다."
     },
     {
       "arxiv_id": "2610.08300",
@@ -28331,11 +29243,13 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T03:44:27Z"
     },
     {
       "arxiv_id": "2610.08161",
@@ -28365,11 +29279,14 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "공식 자료 확인 실패(HTTP Error 401: Unauthorized), 2026-11-13부터 재시도",
+      "card_failures": 1,
+      "analysis_retry_after": "2026-11-13",
+      "analysis_at": "2026-11-12T03:43:36Z"
     },
     {
       "arxiv_id": "2610.08106",
@@ -28393,11 +29310,13 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T03:40:27Z"
     },
     {
       "arxiv_id": "2610.08026",
@@ -28418,11 +29337,14 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-13부터 재시도",
+      "card_failures": 1,
+      "analysis_retry_after": "2026-11-13",
+      "analysis_at": "2026-11-12T03:39:01Z"
     },
     {
       "arxiv_id": "2610.07967",
@@ -28450,11 +29372,14 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "analysis_failures": 1,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:34:32Z"
     },
     {
       "arxiv_id": "2610.08871",
@@ -28476,11 +29401,13 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-08T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T03:34:19Z"
     },
     {
       "arxiv_id": "2610.07763",
@@ -28508,11 +29435,13 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T03:31:37Z"
     },
     {
       "arxiv_id": "2610.07751",
@@ -28537,11 +29466,13 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "공식 저장소 링크 없음(PDF에 GitHub·Hugging Face 주소가 없어 Claude 호출 생략), 2026-12-12부터 재시도",
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T03:29:29Z"
     },
     {
       "arxiv_id": "2610.07722",
@@ -28565,11 +29496,14 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 1,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:26:00Z"
     },
     {
       "arxiv_id": "2610.07580",
@@ -28593,11 +29527,11 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "LOGIC은 재사용 가능한 영어 과제 벤치마크(168개 시나리오)로 en 트랙과 text 모달리티 대상이다. 그러나 PDF 어디에도 공식 데이터셋이나 코드 URL이 명시되어 있지 않다. 논문은 벤치마크 아티팩트를 보관한다고만 언급할 뿐 링크는 제시하지 않는다. 규칙상 공식 리소스가 PDF에 없으면 propose할 수 없으므로 needs_evidence로 판단한다."
     },
     {
       "arxiv_id": "2610.07563",
@@ -28621,11 +29555,14 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "analysis_failures": 1,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:23:39Z"
     },
     {
       "arxiv_id": "2610.08076",
@@ -28656,8 +29593,8 @@
       "first_seen_at": "2026-10-19T13:33:59Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_status": "needs_evidence",
+      "analysis_reason": "SpeedrunBench(9개 게임, ONLINE·OFFLINE-SEED·OFFLINE-SCRATCH 3개 설정, 세계 기록 대비 프레임 수로 채점)는 재사용 가능한 에이전트 벤치마크로 보이고, 공식 코드 링크(github.com/patronus-ai/speedrun_bench)도 1쪽 각주에 있습니다. 그러나 두 가지가 PDF만으로 확정되지 않아 제안하지 않습니다. 첫째, 에이전트에게 주는 프롬프트, 지시문, 과제 예시가 본문에 인용되어 있지 않아 과제 언어(en/ko)를 입증할 인용이 없습니다. 게임 이름이나 레벨 이름만으로는 과제 언어의 근거가 되지 않습니다. 둘째, ONLINE 설정은 스크린샷 입력이 필요해 vision이지만, OFFLINE 설정은 시각 입력 없이 동작하는 text라서(3.2절) modality를 하나로 정하기 어렵습니다. 저장소 README 등에서 프롬프트 언어와 modality 구분을 확인한 뒤 다시 판단해야 합니다. 라이선스 등 미확인 항목은 '확인 불가'로 기록하면 되므로 제외 사유는 아닙니다."
     },
     {
       "arxiv_id": "2610.07792",
@@ -28683,8 +29620,8 @@
       "first_seen_at": "2026-10-19T13:33:59Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_status": "needs_evidence",
+      "analysis_reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 거부합니다. 첫째, 추천 목록이 비교 대상 모델을 다 다루지 않습니다. 논문의 주 실험은 6개 모델(GPT-5.6 Terra, Opus 5, Kimi K3, GLM-5.3, DeepSeek V4.1 Flash, GLM-5.3 Flash)을 비교합니다. 제안 목록은 Table 3의 오픈 가중치 4개 모델만 담았고, Opus 5와 GPT-5.6 Terra가 빠진 이유를 설정 설명에 밝히지 않았습니다. Table 2에서 이 두 모델은 Prime 하니스가 없는 4쌍만 평가되어 Table 3의 완전한 45개 lane 집계에 들어가지 않습니다. 그래서 4개 중 상위 3개를 고르는 것이 6개 모델 비교의 상위 3개처럼 읽힐 수 있고, 선정 근거가 충분하지 않습니다. 이 제외 사실과 사유가 설정에 명시되어야 합니다. 4개 모델의 수치(44.6, 44.9, 52.5, 50.7), 지표 방향, 단위, 행·열 정렬은 Table 3 원문과 일치합니다. 둘째, 이용 시 유의사항이 저장소 전체에 부여된 Apache-2.0을 dataset/ 폴더의 데이터 권리 근거로 삼고 있습니다. 제공된 카드는 저장소 수준의 라이선스만 밝히고 데이터에 대한 별도 라이선스 표기는 없습니다. 코드 라이선스가 곧 데이터셋 권리를 뜻하지는 않으므로, 데이터 권리를 확인하는 근거(예: data 문서)가 더 필요하거나 이 한계를 유의사항에 적어야 합니다. 셋째, 리테일 도메인이 기존 데이터셋에서 파생됐는지에 대한 근거가 제공된 자료에서 확인되지 않아, 파생 여부와 그 데이터의 별도 약관 확인 필요성에 대한 판단이 비어 있습니다. 모델과 하니스 명칭, 윈도우·과제 수(53개, 4,508개, 3,210개, 합계 7,718개), 영어·텍스트 분류, lm-eval 미표기 처리, 논문 수치는 근거와 일치합니다."
     },
     {
       "arxiv_id": "2610.00346",
@@ -28703,11 +29640,14 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "queued",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-08T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 1,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:14:42Z"
     },
     {
       "arxiv_id": "2609.38480",
@@ -28737,10 +29677,10 @@
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-12부터 재시도",
-      "card_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-11T04:11:50Z"
+      "analysis_reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-19부터 재시도",
+      "card_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:14:28Z"
     },
     {
       "arxiv_id": "2608.04265",
@@ -28792,7 +29732,7 @@
       "metadata_source": "oai",
       "first_seen_at": "2026-10-19T13:33:59Z",
       "review_status": "reviewed",
-      "review_issue_url": null,
+      "review_issue_url": "https://github.com/lablup/llm-benchmark-inventory/issues/62",
       "analysis_status": "accepted",
       "analysis_reason": "이 논문은 영어 영업 아웃리치를 소재로 한 재사용 가능한 벤치마크 SDR-Arena와 공개 코퍼스 SDR-Bench(고객 성공 사례 50,000건, 22개 산업, 3,500개 기업)를 새로 제안한다. 에이전트가 사건 이전 정보만으로 거래를 성사시킨 핵심 논거를 복원하고, 가중 nugget 재현율(WCS)로 채점한다. 과제는 영어 텍스트이므로 en 트랙의 text로 분류한다. 공식 Hugging Face 데이터셋 카드는 license: mit를 표기한다. 카드에 lm-eval 언급이 없어 해당 항목은 '미표기'로 기록한다. 권장 결과는 Table 1의 웹 검색 구성(Agg. 열) 하나에서 가져왔다."
     },
@@ -28919,10 +29859,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "공식 자료 확인 실패(HTTP Error 401: Unauthorized), 2026-11-12부터 재시도",
-      "card_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-11T03:51:11Z"
+      "analysis_reason": "공식 자료 확인 실패(HTTP Error 401: Unauthorized), 2026-11-19부터 재시도",
+      "card_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:11:02Z"
     },
     {
       "arxiv_id": "2606.10142",
@@ -29038,8 +29978,8 @@
       "first_seen_at": "2026-10-19T13:33:59Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "awaiting_claude",
-      "analysis_reason": "PBT-Bench는 Python 라이브러리 40개에서 가져온 속성 기반 테스트(PBT) 문제 100개로 구성된 재사용 가능한 코딩·에이전트 벤치마크이고, 인벤토리에 같은 항목이 없어 새 행으로 제안한다. 프롬프트와 문서가 영어이고 입력이 모두 텍스트와 코드이므로 en 트랙, text 모달리티로 분류했다. 논문이 공식 저장소 URL을 밝히고 있어 링크로 사용했다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았으므로 '확인 불가'로 기록했고, 모델별 비교 수치는 이 단계에서 다루지 않는다.",
+      "analysis_status": "needs_evidence",
+      "analysis_reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: The official card mentions the evaluation harness; cite it instead of claiming absence",
       "analysis_at": "2026-11-11T03:34:03Z"
     },
     {
@@ -29143,7 +30083,7 @@
       "url": "https://arxiv.org/abs/2610.07356",
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "reviewed",
-      "review_issue_url": null,
+      "review_issue_url": "https://github.com/lablup/llm-benchmark-inventory/issues/62",
       "analysis_status": "accepted",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
@@ -29165,7 +30105,7 @@
       "url": "https://arxiv.org/abs/2610.07261",
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "reviewed",
-      "review_issue_url": null,
+      "review_issue_url": "https://github.com/lablup/llm-benchmark-inventory/issues/62",
       "analysis_status": "accepted",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-07T00:00:00Z",
@@ -32209,10 +33149,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "analysis_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T03:57:32Z"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:07:35Z"
     },
     {
       "arxiv_id": "2609.30205",
@@ -32259,10 +33199,10 @@
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-02T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-12부터 재시도",
-      "analysis_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T03:57:20Z"
+      "analysis_reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "analysis_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:07:21Z"
     },
     {
       "arxiv_id": "2609.30030",
@@ -32388,10 +33328,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "analysis_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T03:49:45Z"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:07:07Z"
     },
     {
       "arxiv_id": "2605.16358",
@@ -32421,10 +33361,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "analysis_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T03:49:33Z"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:06:54Z"
     },
     {
       "arxiv_id": "2605.12413",
@@ -32545,10 +33485,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "analysis_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T03:41:16Z"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:06:42Z"
     },
     {
       "arxiv_id": "2602.00443",
@@ -32576,10 +33516,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-12부터 재시도",
-      "analysis_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T03:41:04Z"
+      "analysis_reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "analysis_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:06:28Z"
     },
     {
       "arxiv_id": "2601.21666",
@@ -32606,10 +33546,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "analysis_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T03:40:52Z"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:06:15Z"
     },
     {
       "arxiv_id": "2601.18493",
@@ -32860,10 +33800,10 @@
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-02T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "analysis_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T03:24:31Z"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:06:01Z"
     },
     {
       "arxiv_id": "2610.00609",
@@ -33023,10 +33963,10 @@
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-01T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-12부터 재시도",
-      "analysis_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T03:14:02Z"
+      "analysis_reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "analysis_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:05:49Z"
     },
     {
       "arxiv_id": "2609.39847",
@@ -33136,10 +34076,10 @@
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-01T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "analysis_failures": 1,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T03:07:34Z"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-19부터 재시도",
+      "analysis_failures": 2,
+      "analysis_retry_after": "2026-11-19",
+      "analysis_at": "2026-11-12T03:05:36Z"
     },
     {
       "arxiv_id": "2609.39284",
@@ -33370,7 +34310,7 @@
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-01T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "공식 자료 확인 실패(HTTP Error 404: Not Found), 2026-11-12부터 재시도",
+      "analysis_reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 권리 필드 세 개(상업적 이용·수정·파생·재배포)가 데이터 권리를 확인하지 못한 채 채워져 있어 반려합니다. 공식 README와 LICENSE 파일의 MIT는 저장소의 자체 코드에만 부여된 것입니다. README는 저장소에 포함된 데이터와 벤치마크 자료가 ICPR CHART-Infographics에서 파생됐고, 원천 데이터와 차트 이미지는 저자가 재라이선스하지 않으며 원 약관을 유지한다고 밝힙니다. 저자 고유 기여분(합성 매핑, 메타데이터, 평가 스크립트)에 대해서도 README는 이 기여분의 권리를 저자가 보유한다고만 쓰고, 별도로 부여한 데이터 라이선스는 제시하지 않습니다. 따라서 제시된 근거(MIT 전문 인용)는 코드 권리만 입증하고 벤치마크 데이터의 상업적 이용, 수정·파생, 재배포 권리는 입증하지 않습니다. 그런데도 상업적 이용을 가능, 수정·파생을 가능(조건 준수), 재배포를 조건부 가능으로 적은 것은 코드 라이선스에서 데이터 권리를 유추한 근거 없는 허용입니다. 구성 요소별 약관을 따로 확인하라는 유의사항이 있어도 이 필드 값 자체의 오류는 해소되지 않습니다. 같은 인벤토리의 다른 항목도 코드만 MIT이고 데이터 약관이 미해결이면 이 필드들을 조건 확인 필요로 처리하므로, 라이선스·권리 필드는 데이터 권리가 확정된 형태로 정정해야 합니다. 다만 조건 확인 필요도 미확정 값이라 데이터 권리를 명시적 근거로 확인하기 전에는 게시할 수 없습니다. 그 밖의 항목은 지지됩니다. 이미지 입력 과제이므로 vision이 맞고, 영어 표 형식 프롬프트가 있어 en 트랙이 맞으며, k 값과 격자 구성, 지표 정의, 파생 원천(CHART-Infographics) 명시도 문서와 일치합니다. 추천 표의 ΔMAE 값 5개는 Table 1과 부록 Table S1의 k=9 값에서 k=1 값을 뺀 결과와 일치하며, 모델·조건·지표 방향(낮을수록 밀도 강건)도 일관됩니다. 모델 가중치 공개 여부는 null로 처리해 폐쇄 가중치로 오인하지 않았고, lm-eval 미표기는 README와 PDF 어디에도 언급이 없어 허용되는 값입니다.",
       "card_failures": 2,
       "analysis_retry_after": "2026-11-12",
       "analysis_at": "2026-11-05T02:56:50Z"
@@ -33866,10 +34806,10 @@
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-01T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-12부터 재시도",
-      "card_failures": 2,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T02:54:46Z"
+      "analysis_reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-12-12부터 재시도",
+      "card_failures": 3,
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T02:56:31Z"
     },
     {
       "arxiv_id": "2609.38604",
@@ -36104,8 +37044,8 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "Claude 응답 처리 실패, 다음 실행에서 재시도: Official resource link does not occur in PDF text",
-      "analysis_at": "2026-11-11T02:48:05Z"
+      "analysis_reason": "Claude 응답 처리 실패, 다음 실행에서 재시도: Quote does not occur on the cited PDF page",
+      "analysis_at": "2026-11-12T02:53:13Z"
     },
     {
       "arxiv_id": "2609.24928",
@@ -38146,10 +39086,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "PDF 추출 실패(Invalid or oversized PDF), 2026-11-12부터 재시도",
-      "analysis_failures": 2,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T02:50:34Z"
+      "analysis_reason": "PDF 추출 실패(Invalid or oversized PDF), 2026-12-12부터 재시도",
+      "analysis_failures": 3,
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T02:51:04Z"
     },
     {
       "arxiv_id": "2605.10978",
@@ -38189,10 +39129,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "analysis_failures": 2,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T02:50:20Z"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-12-12부터 재시도",
+      "analysis_failures": 3,
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T02:50:49Z"
     },
     {
       "arxiv_id": "2602.09007",
@@ -38315,10 +39255,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-11-12부터 재시도",
-      "analysis_failures": 2,
-      "analysis_retry_after": "2026-11-12",
-      "analysis_at": "2026-11-05T02:50:08Z"
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-12-12부터 재시도",
+      "analysis_failures": 3,
+      "analysis_retry_after": "2026-12-12",
+      "analysis_at": "2026-11-12T02:50:37Z"
     },
     {
       "arxiv_id": "2609.32082",
@@ -44182,10 +45122,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_at": "2026-11-05T02:49:54Z",
-      "analysis_reason": "공식 자료 확인 실패(Unexpected PDF redirect; retry or investigate the source), 2026-11-12부터 재시도",
-      "card_failures": 2,
-      "analysis_retry_after": "2026-11-12"
+      "analysis_at": "2026-11-12T02:50:21Z",
+      "analysis_reason": "공식 자료 확인 실패(Unexpected PDF redirect; retry or investigate the source), 2026-12-12부터 재시도",
+      "card_failures": 3,
+      "analysis_retry_after": "2026-12-12"
     },
     {
       "arxiv_id": "2609.29607",
@@ -45222,6 +46162,36 @@
       "analysis_at": "2026-10-22T08:07:09Z"
     },
     {
+      "arxiv_id": "2506.12617",
+      "url": "https://arxiv.org/abs/2506.12617",
+      "title": "Evaluating AI Alignment in LLMs: Output Analysis of Value Priorities Across 75 Models with Human Benchmarking",
+      "summary": "Large language models (LLMs) are increasingly used in human-AI interaction research and practice, yet existing capability and safety benchmarks reveal little about the value priorities these systems express or how those priorities correspond to human judgements. Across three studies, we introduce an output-based approach to evaluating one facet of AI alignment by treating LLM-generated text as behavioural data and comparing expressed value-priority profiles with a human reference. Study 1 used inductive qualitative analysis to derive six themes of optimal AI functioning, namely Performance, Adaptive Capacity, Social Good, Ethics and Responsibility, Relational Integration, and Agency. Study 2 showed that LLM outputs were highly stable within models and converged on a common value-priority structure across models, indicating reliable and comparable value profiles. Study 3 benchmarked 75 contemporary LLMs against 376 human respondents using a profile-fidelity metric capturing both the relative ordering of priorities and the calibration of between-priority differences. Although most models reproduced the human ordering of values, some systematically exaggerated the differences between them, showing that models can appear aligned on conventional benchmarks while still diverging from human value calibration. Profile fidelity varied substantially across models and did not consistently scale with size, recency, or capability tier. Both LLMs and humans converged on a deprioritisation of Agency, raising important questions about the development of increasingly agentic AI systems. For research and applied use, the six themes and profile-based metric provide a scalable method for auditing LLM value profiles before deployment in contexts where alignment with human priorities is critical.",
+      "authors": [
+        "Gabriel Rongyang Lau",
+        "Wei Yan Low",
+        "Seow Min Koh",
+        "Fiona Fui-Hoon Nah",
+        "Andree Hartanto"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ],
+      "published": "2026-05-16T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "needs_evidence",
+      "analysis_at": "2026-11-12T02:46:58Z",
+      "analysis_reason": "PDF 추출 실패(PDF exceeds the physical page limit), 2026-11-19부터 재시도",
+      "analysis_failures": 1,
+      "analysis_retry_after": "2026-11-19"
+    },
+    {
       "arxiv_id": "2605.10002",
       "url": "https://arxiv.org/abs/2605.10002",
       "title": "Med-StepBench: A Hierarchical Reasoning Framework for Evaluating Hallucinations in Medical Vision-Language Models",
@@ -45380,6 +46350,34 @@
       "analysis_reason": "Claude 초록 선별에서 제외"
     },
     {
+      "arxiv_id": "2603.26316",
+      "url": "https://arxiv.org/abs/2603.26316",
+      "title": "SALMUBench: A Benchmark for Sensitive Association-Level Multimodal Unlearning",
+      "summary": "As multimodal models like CLIP become integral to downstream systems, the need to remove sensitive information is critical. However, machine unlearning for contrastively-trained encoders remains underexplored, and existing evaluations fail to diagnose fine-grained, association-level forgetting. We introduce SALMUBench (Sensitive Association-Level Multimodal Unlearning), a benchmark built upon a synthetic dataset of 60K persona-attribute associations and two foundational models: a Compromised model polluted with this data, and a Clean model without it. To isolate unlearning effects, both are trained from scratch on the same 400M-pair retain base, with the Compromised model additionally trained on the sensitive set. We propose a novel evaluation protocol with structured holdout sets (holdout identity, holdout association) to precisely measure unlearning efficacy and collateral damage. Our benchmark reveals that while utility-efficient deletion is feasible, current methods exhibit distinct failure modes: they either fail to forget effectively or over-generalize by erasing more than intended. SALMUBench sets a new standard for comprehensive unlearning evaluation, and we publicly release our dataset, models, evaluation scripts, and leaderboards to foster future research.",
+      "authors": [
+        "Cai Selvas-Sala",
+        "Lei Kang",
+        "Lluis Gomez"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-03-27T00:00:00Z",
+      "updated": "2026-11-11T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-11T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-12T02:34:05Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "needs_evidence",
+      "analysis_at": "2026-11-12T02:46:41Z",
+      "analysis_reason": "공식 자료 확인 실패(Official source needs a supported dataset-card adapter), 2026-11-13부터 재시도",
+      "card_failures": 1,
+      "analysis_retry_after": "2026-11-13"
+    },
+    {
       "arxiv_id": "2610.08794",
       "url": "https://arxiv.org/abs/2610.08794",
       "title": "Tokka-Bench: Evaluating Tokenizers Across 100 Natural and 20 Programming Languages",
@@ -45460,10 +46458,10 @@
       "review_status": "pending",
       "review_issue_url": null,
       "analysis_status": "needs_evidence",
-      "analysis_at": "2026-11-05T02:44:52Z",
-      "analysis_reason": "공식 자료 확인 실패(HTTP Error 404: Not Found), 2026-11-12부터 재시도",
-      "card_failures": 2,
-      "analysis_retry_after": "2026-11-12"
+      "analysis_at": "2026-11-12T02:43:21Z",
+      "analysis_reason": "공식 자료 확인 실패(HTTP Error 404: Not Found), 2026-12-12부터 재시도",
+      "card_failures": 3,
+      "analysis_retry_after": "2026-12-12"
     },
     {
       "arxiv_id": "2506.00765",
@@ -45864,72 +46862,72 @@
   ],
   "research": {
     "status": "paused_time_budget",
-    "last_run_at": "2026-11-11T02:42:08Z",
+    "last_run_at": "2026-11-12T02:39:22Z",
     "models": [
       "claude-sonnet-5-5"
     ],
     "policy": "claude_only",
-    "abstract_screened_total": 1531,
-    "full_text_completed_total": 346
+    "abstract_screened_total": 1563,
+    "full_text_completed_total": 353
   },
   "discovery": {
     "rss": {
       "cs": {
-        "pub_date": "2026-11-10T05:00:00Z",
-        "checked_at": "2026-11-11T02:34:27Z",
-        "items": 2000,
-        "possibly_truncated": true
+        "pub_date": "2026-11-11T05:00:00Z",
+        "checked_at": "2026-11-12T02:34:05Z",
+        "items": 1300,
+        "possibly_truncated": false
       },
       "econ": {
-        "pub_date": "2026-11-10T05:00:00Z",
-        "checked_at": "2026-11-11T02:34:27Z",
-        "items": 79,
+        "pub_date": "2026-11-11T05:00:00Z",
+        "checked_at": "2026-11-12T02:34:05Z",
+        "items": 38,
         "possibly_truncated": false
       },
       "eess": {
-        "pub_date": "2026-11-10T05:00:00Z",
-        "checked_at": "2026-11-11T02:34:27Z",
-        "items": 249,
+        "pub_date": "2026-11-11T05:00:00Z",
+        "checked_at": "2026-11-12T02:34:05Z",
+        "items": 148,
         "possibly_truncated": false
       },
       "math": {
-        "pub_date": "2026-11-10T05:00:00Z",
-        "checked_at": "2026-11-11T02:34:27Z",
-        "items": 1385,
+        "pub_date": "2026-11-11T05:00:00Z",
+        "checked_at": "2026-11-12T02:34:05Z",
+        "items": 706,
         "possibly_truncated": false
       },
       "physics": {
-        "pub_date": "2026-11-10T05:00:00Z",
-        "checked_at": "2026-11-11T02:34:27Z",
-        "items": 336,
+        "pub_date": "2026-11-11T05:00:00Z",
+        "checked_at": "2026-11-12T02:34:05Z",
+        "items": 206,
         "possibly_truncated": false
       },
       "q-bio": {
-        "pub_date": "2026-11-10T05:00:00Z",
-        "checked_at": "2026-11-11T02:34:27Z",
-        "items": 82,
+        "pub_date": "2026-11-11T05:00:00Z",
+        "checked_at": "2026-11-12T02:34:05Z",
+        "items": 57,
         "possibly_truncated": false
       },
       "q-fin": {
-        "pub_date": "2026-11-10T05:00:00Z",
-        "checked_at": "2026-11-11T02:34:27Z",
-        "items": 55,
+        "pub_date": "2026-11-11T05:00:00Z",
+        "checked_at": "2026-11-12T02:34:05Z",
+        "items": 26,
         "possibly_truncated": false
       },
       "stat": {
-        "pub_date": "2026-11-10T05:00:00Z",
-        "checked_at": "2026-11-11T02:34:27Z",
-        "items": 309,
+        "pub_date": "2026-11-11T05:00:00Z",
+        "checked_at": "2026-11-12T02:34:05Z",
+        "items": 123,
         "possibly_truncated": false
       }
     },
     "oai": {
-      "next_day": "2026-11-11",
-      "completed_through": "2026-11-10",
-      "last_response_at": "2026-11-11T00:02:57Z"
+      "next_day": "2026-11-12",
+      "completed_through": "2026-11-11",
+      "last_response_at": "2026-11-12T00:02:54Z"
     },
     "errors": {},
     "recovery_pending": false,
-    "last_attempt_at": "2026-11-11T02:34:27Z"
+    "last_attempt_at": "2026-11-12T02:34:05Z"
   }
 }
