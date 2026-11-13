@@ -62975,6 +62975,83 @@
         "reviewed_sha256": "3575107a65ac2921154d138c12bf93b8615a5b3157133206ba776cf40f40d224",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.09793": {
+      "decision": "exclude",
+      "reason": "이 논문은 새 벤치마크를 만들거나 기존 벤치마크를 실질적으로 갱신하지 않는다. AgentDojo, STAC, R-Judge, τ-bench가 이미 공개한 기록 궤적을 MonPoly로 오프라인 재생해 MFOTL 런타임 검증을 평가한 방법론 연구다. 제안한 12개 필드 trace 스키마는 설계 제안일 뿐 평가 가능한 데이터셋이 아니다. 논문이 직접 만든 AgentTrace-T(합성 1,400개 trace)와 CPS/IoT 로그는 구현 검증용으로, 재사용 가능한 벤치마크로 제시되지 않았고 공개 링크도 별도로 지정되지 않았다. 따라서 인벤토리에 추가하거나 갱신할 항목이 없다.",
+      "changes": [],
+      "arxiv_id": "2610.09793",
+      "paper_title": "Formal Runtime Verification for Tool-Using LLM Agents: An Offline Same-Benchmark Study on AgentDojo and STAC",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.09793",
+        "sha256": "d046c3cb499c940a7f4c6b87349d32bab1f3b654d8188b1aa8afad59b30d03ad",
+        "accessed": "2026-11-13T03:39:29Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 14,
+          "elapsed_seconds": 60.61,
+          "pdf_sha256": "d046c3cb499c940a7f4c6b87349d32bab1f3b654d8188b1aa8afad59b30d03ad",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "6282dc1e901af878f0bb2b34cfdce09eee0a6dbf43594d6e2bb4a29971fccef1",
+          "page_json_file": "2610.09793.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-13T03:40:36Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.09793",
+        "paper_title": "Formal Runtime Verification for Tool-Using LLM Agents: An Offline Same-Benchmark Study on AgentDojo and STAC",
+        "abstract": "Guardrails for tool-using LLM agents are usually application-specific rules, which makes multi-step, data-dependent safety policies hard to specify, audit and reuse. As a declarative alternative, we evaluate metric first-order temporal logic (MFOTL), replaying the recorded trajectories that AgentDojo, STAC and R-Judge already ship through the unmodified MonPoly monitor, offline and without running an agent. On these corpora, five generic obligations flag 71.8% of STAC attack chains and 70.1% of successful AgentDojo attacks, but also fire on 29.3% of benign runs. This imprecision stems from the corpora rather than the logic: they rarely record approvals and never record timestamps, so history-dependent obligations reduce to detecting risky action types. Where the trace does carry relational context, provenance-aware policies discriminate better; that context, however, is itself attackable, and one planted line defeats a naive provenance check on 94-99% of the runs it would otherwise flag. Binding provenance to the lookup that produced it closes this evasion at no cost in detection or benign firing. Taken together, these results show that formal temporal monitoring adds value exactly when the trace exposes trustworthy history. We therefore quantify how far current benchmarks are from that point and propose a twelve-field enforcement-ready trace schema.",
+        "paper_updated": "2026-10-08T00:00:00Z",
+        "created_at": "2026-10-19T13:49:31Z",
+        "input_sha256": "41dab5d2a2ab9d35db4ef6412b9a2623f02395c18422ef09a0fa9a6a5e6ac040",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "도구 사용 LLM 에이전트 런타임 검증"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 트레이스 검증 연구, 스키마 제안 포함"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "edf05045ec3ccff013159645488996857c2fcba9ee4d72d9ea3e801ddc84e55f"
     }
   },
   "processed_comments": [],
@@ -97574,8 +97651,8 @@
         "2610.09793"
       ],
       "abstract_attempted": [],
-      "calls": 36,
-      "cost_usd": 31.3422
+      "calls": 37,
+      "cost_usd": 32.1954
     }
   },
   "reaudits": [
