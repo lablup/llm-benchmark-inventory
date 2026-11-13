@@ -61761,6 +61761,175 @@
         "reviewed_sha256": "893e95d3008090f1ef98824c4c82459b9ed0ead2f2d540092f3f836b98926bb1",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.00839": {
+      "decision": "propose",
+      "reason": "이 논문은 블랙박스 LLM 모델 추출 공격 6종, 방어 10종, 적응형 공격 2종을 같은 조건에서 비교하는 재사용 가능한 벤치마크(MEA-Bench)를 새로 제안한다. 질의 풀과 held-out 평가가 ARC-Challenge, MMLU, GSM8K 등 영어 과제이고 텍스트만 입력으로 쓰므로 en/text 트랙에 한 행으로 추가한다. 공식 코드·산출물 URL이 초록에 명시되어 있다. 데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "mea-bench",
+            "이름": "MEA-Bench",
+            "평가 축": "보안(LLM 블랙박스 모델 추출 공격·방어)",
+            "언어": "en",
+            "정의": "텍스트 전용 API 조건에서 모델 추출 공격 6종, 방어 10종, 적응형 공격 2종(DIPPER 패러프레이즈, 영-불-영 역번역)을 같은 모델 구성·질의 데이터·예산·held-out 평가로 비교하는 수명주기 벤치마크. 기본 질의 예산은 B=1000이고 예산 민감도 분석은 B∈{100, 1000, 10000}을 쓴다. 질의 풀은 100,000건이다. 능력은 held-out 6개 과제(ARC-Challenge, HellaSwag, MMLU, TruthfulQA MC1, WinoGrande, GSM8K) 정확도의 macro 평균으로 재고, 충실도는 3,000개 개방형 프롬프트의 baseline-rescaled BERTScore F1, 출력 품질은 Rep-4로 잰다. 방어는 질의 탐지, 안티 증류, 출처 탐지, 계보 검증 등 각자의 보안 지표를 대리 모델 능력·충실도와 따로 보고하며 하나의 종합 점수로 합치지 않는다. 논문 실험은 Llama-3.3-70B-Instruct→Llama-3.1-8B-Instruct(공격·적응형 공격)와 Qwen2.5-72B-Instruct→Qwen2.5-7B(방어) 구성에서 수행했다.",
+            "대표 과제": "공격 6종(SeqKD, Model Leeching, LoRD, SODA, GAD, QEDKS) 비교, 방어 10종 평가(질의 탐지 MMD/PRADA/SEAT, 안티 증류 ADS/DOGe/Trace Rewriting, 출처 ADFP/GINSEW/Radioactivity, 계보 DuFFin), 적응형 공격 평가, 질의 예산 민감도 분석",
+            "대표 예시·설명": "과제 설명: 피해자 모델의 응답을 수집해 소형 대리 모델을 학습시키는 추출 공격 파이프라인을 실행하고, 방어 유무와 응답 재작성(패러프레이즈·역번역) 조건에서 대리 모델의 능력, 충실도, 출처 탐지 점수를 측정한다. 실제 시험 문항을 옮긴 것이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 못했다. 질의 풀은 LMSYS-Chat-1M, NuminaMath-CoT, TriviaQA, MMLU, GSM8K 등 기존 공개 데이터에서 입력만 가져와 구성하고, 평가 과제도 기존 벤치마크를 쓴다(논문 6쪽, 19~20쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 논문 윤리 성명은 이 벤치마크가 모델 추출·모방의 권한을 주지 않으며 모델·데이터 라이선스와 서비스 약관을 지켜야 한다고 밝힌다. 공격 구현이 포함된 이중 용도 자료이므로 이용 범위를 점검해야 한다. 결과는 논문의 두 모델 쌍과 조건에 한정되며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/sliu11-byte/MEA-Bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Security (black-box LLM model extraction attacks and defenses)",
+            "definition": "A lifecycle benchmark that compares six model extraction attacks, ten defenses, and two adaptive attacks (DIPPER paraphrasing and English-French-English back-translation) under text-only API access, matching model configurations, query data, budgets, and held-out evaluation within each comparison. The default query budget is B=1000, and the budget-sensitivity analysis uses B in {100, 1000, 10000}. The master query pool has 100,000 queries. Capability is the macro-average accuracy over six held-out tasks (ARC-Challenge, HellaSwag, MMLU, TruthfulQA MC1, WinoGrande, GSM8K); fidelity is baseline-rescaled BERTScore F1 over 3,000 open-ended prompts; output quality is Rep-4. Defenses (query detection, anti-distillation, provenance, lineage verification) report their own security metrics separately from surrogate capability and fidelity, with no combined score. The paper's experiments use Llama-3.3-70B-Instruct to Llama-3.1-8B-Instruct (attacks and adaptive attacks) and Qwen2.5-72B-Instruct to Qwen2.5-7B (defenses).",
+            "task": "Compare six attacks (SeqKD, Model Leeching, LoRD, SODA, GAD, QEDKS); evaluate ten defenses (query detection MMD/PRADA/SEAT, anti-distillation ADS/DOGe/Trace Rewriting, provenance ADFP/GINSEW/Radioactivity, lineage DuFFin); evaluate adaptive attacks; analyze query-budget sensitivity.",
+            "example": "Task description, not an actual test item: run an extraction pipeline that collects a victim model's responses and trains a small surrogate, then measure surrogate capability, fidelity, and provenance-detector scores with and without defenses and with paraphrased or back-translated responses."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "text-only APIs"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "six extraction attacks,"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "six extraction attacks,"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/sliu11-byte/MEA-Bench"
+            },
+            "언어": {
+              "page": 21,
+              "quote": "English baseline rescaling"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "MEA-Bench"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "we introduce a"
+            },
+            "평가 축": {
+              "page": 2,
+              "quote": "we introduce a"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.00839",
+      "paper_title": "Do Defenses Against LLM Extraction Work Across Attacks? A Lifecycle Benchmark of Black-Box Model Extraction",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.00839",
+        "sha256": "7b806eb4110f019773bfb2ad25f16c5f74e155513a95781b745d0aba248c5723",
+        "accessed": "2026-11-13T03:18:58Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "poppler_failed"
+          ],
+          "page_count": 24,
+          "elapsed_seconds": 86.58,
+          "pdf_sha256": "7b806eb4110f019773bfb2ad25f16c5f74e155513a95781b745d0aba248c5723",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "490d34959c8bc3e2df91e3f5b9d9c1a2a2cd8fca9a23353b64ec99c335c5bcbd",
+          "page_json_file": "2610.00839.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/sliu11-byte/MEA-Bench",
+            "fetched_url": "https://api.github.com/repos/sliu11-byte/MEA-Bench/readme",
+            "sha256": "b7c449c494d1997a80bbb0e19be6de07555adfb5e55226d9d982f92f37753d05",
+            "accessed": "2026-11-13T03:20:51Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/sliu11-byte/MEA-Bench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "d8df44085e2672579444ca5ff6b983f00d58309a2324bbfde5109b253401e0a5"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-13T03:20:51Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.00839",
+        "paper_title": "Do Defenses Against LLM Extraction Work Across Attacks? A Lifecycle Benchmark of Black-Box Model Extraction",
+        "abstract": "Large language models (LLMs) deployed through text-only APIs face model extraction risks, as adversaries can collect their responses to train surrogates that reproduce their capabilities. While prior work has developed diverse attacks and defenses, evaluations remain fragmented across access assumptions, model configurations, query budgets, and security objectives, limiting comparability across methods. To address this gap, we introduce a unified benchmark covering six extraction attacks, ten defenses, and two adaptive attacks that paraphrase or back-translate protected responses before surrogate training. The benchmark controls model configurations, query data, budgets, and held-out evaluation conditions within each comparison while preserving attack-specific querying and training procedures. We measure surrogate capability, fidelity to the victim, output quality using Rep-4, and query-budget sensitivity; defenses use their own security metrics paired with surrogate performance. For the adaptive attacks, we jointly measure provenance-detector scores and the capability and fidelity of surrogates trained on rewritten responses. The benchmark thus provides a reproducible basis for comparing extraction methods and their interactions with defenses under text-only access. Code and artifacts are available at https://github.com/sliu11-byte/MEA-Bench.",
+        "paper_updated": "2026-10-08T00:00:00Z",
+        "created_at": "2026-10-19T13:49:31Z",
+        "input_sha256": "18b174293f57e8008f7b581f9a434bc06de8dcc73ea8b485f71bef38ce74cb50",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 추출 공격·방어 통합 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "모델 추출 공격·방어 통합 벤치마크 제시"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43353033985",
+        "context_sha256": "5b90682be065d44994432b7c044f03271f6311319de6b6e131c25ae5fa70a2f9"
+      },
+      "proposal_sha256": "04efb7b21c0adb70a3b4012300e190c0d63464147cc33936f052087a144ba135"
     }
   },
   "processed_comments": [],
@@ -96349,8 +96518,8 @@
         "2610.00839"
       ],
       "abstract_attempted": [],
-      "calls": 22,
-      "cost_usd": 20.0401
+      "calls": 23,
+      "cost_usd": 20.8018
     }
   },
   "reaudits": [
