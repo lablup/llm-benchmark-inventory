@@ -59992,6 +59992,171 @@
         "reviewed_sha256": "d7f3abf4ca750d8742cc7c7039fcb54403096e3820583b1f4e7cc52c8a608da9",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2511.04655": {
+      "decision": "propose",
+      "reason": "이 논문은 VSI-Bench에서 질문 2,762개를 덜어낸 파생 평가 세트 VSI-Bench-Debiased(2,362문항)를 별도 평가 산출물로 공개하며, 이는 기존 벤치마크의 실질적 개정에 해당합니다. 과제 템플릿이 영어이므로 en 트랙, 영상·이미지 입력이 필수이므로 vision으로 분류했습니다. 코드는 논문이 명시한 GitHub 저장소를 링크로 썼고 데이터는 프로젝트 페이지로 공개된다고 되어 있습니다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "vsi-bench-debiased",
+            "이름": "VSI-Bench-Debiased",
+            "평가 축": "이미지(비디오 공간 추론·비시각 지름길 완화)",
+            "언어": "en",
+            "정의": "VSI-Bench 5,130문항 중 사람이 작성한 유형별 필터로 2,768문항(54.0%)을 제거하고 2,362문항을 남긴 파생 평가 세트(designer-in-the-loop 파일럿이며 자동 IBP 알고리즘의 산출물이 아님). 객관식 정확도와 수치형 MRA를 문항 평균으로 보고한다. 논문 보고: VSI-Train-10k로 미세조정한 LLaVA-Video-7B의 블라인드 점수 44.7→32.0, 비전 점수 57.1→48.7. 10개 유형이 모두 남지만 유형 구성비가 바뀌므로 VSI-Bench의 대체물이 아닌 별도 평가 산출물로 공개된다.",
+            "대표 과제": "객관식과 수치형 공간 추론 문항(예: 물체 크기 추정)에서 비전 입력 유무에 따른 점수 격차(vision-blind gap) 측정",
+            "대표 예시·설명": "물체 크기 추정 템플릿 'What is the length of the longest dimension ...'처럼 영어로 쓰인 공간 질문에 영상을 보고 답하게 하고, 영상 없이 답한 점수와의 차이를 비교하는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "VSI-Bench에서 문항을 제거해 만든 파생 세트이므로 원본 VSI-Bench와 구성 요소의 이용 약관을 따로 확인해야 한다. 데이터는 프로젝트 페이지로 공개된다고 논문이 밝히며, 이 행의 링크는 논문이 명시한 코드 저장소다. 논문은 제거 후 TsT를 다시 돌리지 않아 일부 지름길이 남아 있을 수 있고 새 답변 편향이 생길 수 있다고 밝힌다. 유형별 제거율이 2.3%~85.7%로 달라 유형 구성이 바뀐다. 모델 비교 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/vision-x-nyu/test-set-training"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images/video (spatial reasoning, mitigation of non-visual shortcuts)",
+            "definition": "A derived evaluation set that removes 2,768 of VSI-Bench's 5,130 questions (54.0%) using hand-written per-type filters, keeping 2,362 questions. It is a designer-in-the-loop pilot, not the output of the automated IBP algorithm. Scores are MC accuracy and NUM MRA averaged over questions. Paper-reported: for LLaVA-Video-7B fine-tuned on VSI-Train-10k, the blind score falls from 44.7 to 32.0 and the vision score from 57.1 to 48.7. All ten question types remain, but the type mix shifts, so it is released as a separate evaluation artifact rather than a drop-in replacement for VSI-Bench.",
+            "task": "Multiple-choice and numerical spatial-reasoning questions (for example object size estimation), measuring the vision-blind gap between answering with and without visual input.",
+            "example": "Task description, not an actual test item: an English spatial question such as the object-size template 'What is the length of the longest dimension ...' is answered from video, and the score is compared with answering without vision."
+          },
+          "evidence": {
+            "modality": {
+              "page": 7,
+              "quote": "vision-blind gap"
+            },
+            "대표 과제": {
+              "page": 19,
+              "quote": "What is the"
+            },
+            "대표 예시·설명": {
+              "page": 19,
+              "quote": "What is the"
+            },
+            "링크": {
+              "page": 9,
+              "quote": "github.com/vision-x-nyu/test-set-training"
+            },
+            "언어": {
+              "page": 19,
+              "quote": "What is the"
+            },
+            "이름": {
+              "page": 8,
+              "quote": "VSI-Bench-Debiased keeps only"
+            },
+            "정의": {
+              "page": 8,
+              "quote": "VSI-Bench-Debiased keeps only"
+            },
+            "평가 축": {
+              "page": 8,
+              "quote": "VSI-Bench-Debiased keeps only"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2511.04655",
+      "paper_title": "Benchmark Designers Should \"Train on the Test Set\" to Expose Exploitable Non-Visual Shortcuts",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2511.04655",
+        "sha256": "3a692f606e9af9e1166302e81b53b588dd017e755f088d5a291c68932bddbcbc",
+        "accessed": "2026-11-13T02:52:32Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 20,
+          "elapsed_seconds": 68.25,
+          "pdf_sha256": "3a692f606e9af9e1166302e81b53b588dd017e755f088d5a291c68932bddbcbc",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "eef9daeabfd6a994aafca266a00938302003f8e6a3dccff4776bcc9bb17361aa",
+          "page_json_file": "2511.04655.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/vision-x-nyu/test-set-training",
+            "fetched_url": "https://api.github.com/repos/vision-x-nyu/test-set-training/readme",
+            "sha256": "d0f2f0fe38bed620c10cd6c652c6dbc7ae5c2e0ebe3d98ac88eaec73302a0c60",
+            "accessed": "2026-11-13T02:54:09Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/vision-x-nyu/test-set-training/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-13T02:54:09Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2511.04655",
+        "paper_title": "Benchmark Designers Should \"Train on the Test Set\" to Expose Exploitable Non-Visual Shortcuts",
+        "abstract": "Multimodal LLMs can answer many questions in vision-centric benchmarks without looking at the image, using linguistic priors and skewed answer distributions. Blind evaluation shows what a model already answers this way, but not what it could learn from the test set's own regularities. Extending partial-input auditing (e.g., hypothesis-only baselines in natural language inference), we argue that benchmark designers should \"train on the test set\": probe the artifact they release for exploitable patterns. Our Test-set Stress-Test (TsT) cross-validates a text-only Qwen2-7B on the test set's questions and answer options, yielding a benchmark-level score and a per-question bias score s(x); a random forest on hand-crafted features adds a fast, interpretable audit. On the template-based VSI-Bench and CV-Bench, the held-out score is 17.9 and 13.1 points above the model's own zero-shot score. On MMMU it learns little, even though GPT-4o correctly answers 52.3% of its multiple-choice questions without the image, so blind success there reflects pretrained knowledge rather than learnable test-set patterns. Iterative Bias Pruning (IBP) removes the questions with the highest s(x) and re-diagnoses; on VSI-Bench it widens a fine-tuned model's vision-blind gap more than random removal at the same rate. We also release VSI-Bench-Debiased, which lowers a fine-tuned model's blind score from 44.7 to 32.0 while its vision score falls only from 57.1 to 48.7.",
+        "paper_updated": "2026-10-09T00:00:00Z",
+        "created_at": "2026-10-19T13:49:19Z",
+        "input_sha256": "5ed9fec860917c4b98fbd352a6241220eaa786d66bf2e1678b3823a7af32549c",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "멀티모달 LLM 벤치마크의 비시각적 지름길 진단과 편향 제거"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "비시각 단축키 감사법 제안, VSI-Bench-Debiased 재사용 자료 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43353033985",
+        "context_sha256": "0cdd771c94b4a59e3c744a011af3ff9f5c5a80e2c63941a0ce21edfb2b8e5ce7"
+      },
+      "proposal_sha256": "12c3ba45471305a44ba914994fbf3d8db3bbd6faf67331019657026f07387a23"
     }
   },
   "processed_comments": [],
@@ -94570,8 +94735,8 @@
         "2511.04655"
       ],
       "abstract_attempted": [],
-      "calls": 3,
-      "cost_usd": 2.566
+      "calls": 4,
+      "cost_usd": 3.4004
     }
   },
   "reaudits": [
