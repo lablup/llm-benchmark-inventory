@@ -63723,6 +63723,162 @@
       },
       "issue_url": null,
       "proposal_sha256": "521fdc9bec4e8d5fc182972b5bfa54249fc7bec4632f4f6dda81becd40ceaa5a"
+    },
+    "2602.00811": {
+      "decision": "propose",
+      "reason": "MissMAC-Bench는 멀티모달 감성 컴퓨팅(감성 분석·감정 인식)에서 결측 모달리티에 대한 강건성을 평가하는 재사용 가능한 벤치마크이다. 고정·무작위(데이터셋·인스턴스 수준) 결측 프로토콜, 두 가지 평가 원칙, C&R 지표를 정의하고 CMU-MOSI, CMU-MOSEI, IEMOCAP, MELD 4개 데이터셋에서 27개 방법을 비교한다. 1쪽 그림의 영어 발화 예시가 과제 언어의 근거이므로 en 트랙에 둔다. 텍스트, 음성, 영상(시각) 입력이 함께 필요하므로 modality는 vision으로 분류한다. 공식 코드 링크는 PDF가 직접 밝힌 GitHub 주소이며, 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "missmac-bench",
+            "이름": "MissMAC-Bench",
+            "평가 축": "멀티모달 감성 컴퓨팅(결측 모달리티 강건성)",
+            "언어": "en",
+            "정의": "텍스트·음성·영상 중 일부 모달리티가 빠진 입력에서 멀티모달 감성 컴퓨팅 모델의 강건성을 평가하는 벤치마크. 학습 시 결측 사전 정보를 쓰지 않고, 하나의 모델로 완전·불완전 입력을 모두 처리하는 두 원칙을 따른다. 고정 결측 프로토콜과 무작위 결측 프로토콜(데이터셋 수준 결측률 MR 0.1~0.7, 인스턴스 수준 결측 확률 MP)을 제공한다. 2개 하위 과제(감성 분석 MSA, 감정 인식 MER), 4개 데이터셋(CMU-MOSI, CMU-MOSEI, IEMOCAP, MELD)으로 구성된다. 지표는 MSA의 Acc7, F1, MAE, Corr와 MER의 Acc, wF1이며, 무작위 결측에서는 평균 성능(Competence)과 변동(Resilience)을 함께 본다. 논문은 27개 방법을 BERT-base/sBERT-base와 DeBERTaV3-large 텍스트 인코더로 10개 시드 평균 기준 평가했다.",
+            "대표 과제": "결측 모달리티 조건에서 멀티모달 감성 분석(연속 감성 점수 회귀)과 감정 인식(감정 범주 분류)",
+            "대표 예시·설명": "영어 발화 영상에서 텍스트·음성·영상 중 일부 모달리티를 가린 채 감성 점수나 감정 범주를 예측하는 과제 설명이다. 실제 문항을 옮긴 것이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건을 아직 확인하지 못했다. 이 벤치마크는 기존 공개 데이터셋 CMU-MOSI, CMU-MOSEI, IEMOCAP, MELD를 재사용하므로 각 데이터셋의 고유 약관을 이용 전에 따로 확인해야 한다. 코드 저장소의 라이선스는 데이터 라이선스를 대신하지 않는다. 음성·영상 특징은 ImageBind로 추출한다. 논문의 한계 절은 현재 범위가 인코더 기반 모델에 한정되고 디코더 기반 멀티모달 LLM은 포함하지 않는다고 밝힌다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/RH-Lin/MissMAC-Bench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Multimodal affective computing (robustness to missing modalities)",
+            "definition": "A benchmark of how robust multimodal affective computing models are when some of the text, audio, and visual modalities are missing. It follows two principles: no missing prior during training, and one single model that handles both complete and incomplete inputs. It provides a fixed missing protocol and a random missing protocol (dataset-level missing rate MR from 0.1 to 0.7, and instance-level missing probability MP). It covers 2 subtasks (multimodal sentiment analysis, MSA, and emotion recognition, MER) over 4 datasets (CMU-MOSI, CMU-MOSEI, IEMOCAP, MELD). Metrics are Acc7, F1, MAE, and Corr for MSA and Acc and wF1 for MER; under random missingness, mean performance (Competence) and variation (Resilience) are also reported. The paper evaluates 27 methods with BERT-base/sBERT-base and DeBERTaV3-large text encoders, averaged over 10 seeds.",
+            "task": "Multimodal sentiment analysis (continuous sentiment score regression) and emotion recognition (emotion category classification) under missing-modality conditions",
+            "example": "Task description, not an actual test item: from an English speaking video, predict a sentiment score or emotion class while some of the text, audio, or visual modalities are masked."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "text, audio and"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "emotion category classification"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "Wow! That was"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/RH-Lin/MissMAC-Bench"
+            },
+            "언어": {
+              "page": 1,
+              "quote": "Wow! That was"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "MissMAC-Bench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "fixed and random"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Multimodal Affective Computing"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2602.00811",
+      "paper_title": "MissMAC-Bench: Building Solid Benchmark for Missing Modality Issue in Robust Multimodal Affective Computing",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2602.00811",
+        "sha256": "0e09d7de220ef051d8f4d98aa70d0ea68f28c2c6b3499ddbcc079668054b1cb8",
+        "accessed": "2026-11-13T03:56:20Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 16,
+          "elapsed_seconds": 129.89,
+          "pdf_sha256": "0e09d7de220ef051d8f4d98aa70d0ea68f28c2c6b3499ddbcc079668054b1cb8",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "49486a6bef18d505a4535c6d3cac1556ede58562ce18b04c5252f32dcd710cff",
+          "page_json_file": "2602.00811.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/RH-Lin/MissMAC-Bench",
+            "fetched_url": "https://api.github.com/repos/RH-Lin/MissMAC-Bench/readme",
+            "sha256": "5b9b4c26ef3bb0651400684c542bf5a64c72b6fc9b40960ad371f4eeca552d38",
+            "accessed": "2026-11-13T03:58:57Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-13T03:58:57Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2602.00811",
+        "paper_title": "MissMAC-Bench: Building Solid Benchmark for Missing Modality Issue in Robust Multimodal Affective Computing",
+        "abstract": "Current Multimodal Affective Computing (MAC) systems heavily rely on the completeness of multiple modalities to accurately understand human's affective state. However, in real-world scenarios, the availability of modality data is often dynamic and uncertain, leading to substantial performance fluctuations due to the distribution shifts and semantic deficiencies of the incomplete multimodal inputs. Known as the missing modality issue, this challenge poses a critical barrier to the robustness and practical deployment of MAC models. To systematically quantify this issue, we introduce \\textbf{MissMAC-Bench}, a comprehensive benchmark designed to establish fair and unified evaluation standards from the perspective of cross-modal synergy. Two guiding principles are proposed, including no missing prior during training, and one single model capable of handling both complete and incomplete modality scenarios, thereby ensuring better generalization. Moreover, to bridge the gap between academic research and real-world applications, our benchmark integrates evaluation protocols with both fixed and random missing patterns at the dataset and instance levels. Extensive experiments conducted on 3 widely-used language models across 4 datasets validate the effectiveness of diverse MAC approaches in tackling the missing modality issue. Our benchmark provides a solid foundation for advancing robust MAC and promotes the development of multimedia data mining. Our code is released in https://github.com/RH-Lin/MissMAC-Bench.",
+        "paper_updated": "2026-10-09T00:00:00Z",
+        "created_at": "2026-10-19T13:49:43Z",
+        "input_sha256": "d7cc208363b1080286fab35680e892ad9003efbf5cb733dddee3a5a728265dca",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "결측 양상 견고한 감정 컴퓨팅 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "결측 모달리티 감성컴퓨팅 통합 평가 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43353033985",
+        "context_sha256": "c9be26a9d988404f1a35917c0c539fc19803e1d89b84b12778dde3288bd403f0"
+      },
+      "proposal_sha256": "f6786550cce0fcb9a454e165390fd56392831d62a80ca57e24d461b72a06285e"
     }
   },
   "processed_comments": [],
@@ -98332,8 +98488,8 @@
         "2602.00811"
       ],
       "abstract_attempted": [],
-      "calls": 47,
-      "cost_usd": 40.5899
+      "calls": 48,
+      "cost_usd": 41.5786
     }
   },
   "reaudits": [
