@@ -62043,6 +62043,81 @@
       },
       "issue_url": null,
       "proposal_sha256": "2dc9a7e097691d6eccd40143b1373a8f7bffbe6540bf0e8f1e16f49add55c9ee"
+    },
+    "2610.09382": {
+      "decision": "needs_evidence",
+      "reason": "ScribbleEdit은 재사용 가능한 벤치마크로 보이며(학습 23,772쌍, 수동 평가 250쌍, 이동·삭제·크기·뒤집기 편집) 이미지 입력이 필요하므로 vision 트랙 후보입니다. 그러나 PDF 어디에서도 공식 데이터셋이나 코드 URL을 명시하지 않습니다. 본문, 각주, 부록에는 OmniGen2의 학습 설정 저장소(github.com/VectorSpaceLab/OmniGen2)만 나오는데, 이는 ScribbleEdit 자체의 공식 자원이 아닙니다. 링크를 지어내서는 안 되므로 propose할 수 없습니다. 또한 과제 언어도 문제입니다. 부록의 시스템 프롬프트가 영어(\"Please edit the image according to the annotations and red scribbles...\")라 en 트랙으로 볼 여지는 있지만, 벤치마크 자체는 스크리블 이미지로 의도를 전달하므로 언어 의존성이 약합니다. 공식 링크가 확인되면 en 트랙의 vision 행으로 다시 검토할 수 있습니다.",
+      "changes": [],
+      "arxiv_id": "2610.09382",
+      "paper_title": "ScribbleEdit: A Benchmark for Scribble-Only Image Editing",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.09382",
+        "sha256": "773b16a7b6e19683b83de7c652d42df73bcf1164bcd2ffbf2a24643cc9919815",
+        "accessed": "2026-11-13T03:27:02Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 12,
+          "elapsed_seconds": 45.69,
+          "pdf_sha256": "773b16a7b6e19683b83de7c652d42df73bcf1164bcd2ffbf2a24643cc9919815",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "943639f1cf05d86c1a30c7d3da523f368bb23f120820b61bb87c6a8c94f69fe5",
+          "page_json_file": "2610.09382.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-13T03:27:55Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.09382",
+        "paper_title": "ScribbleEdit: A Benchmark for Scribble-Only Image Editing",
+        "abstract": "Scribble-based interaction provides a lightweight and intuitive way for users to specify image editing intents in interactive editing tools. However, current image editing models based on VLMs or LLMs struggle to understand and execute edits based solely on scribble inputs. To systematically study this problem, we construct a new benchmark, ScribbleEdit, that evaluates the ability of image editing models to perform image editing conditioned on scribbles. This task requires both a deep understanding of the intention of the scribble and an accurate interpretation of its spatial information. In ScribbleEdit, we design an automated data construction pipeline and introduce a dedicated evaluation protocol that explicitly measures intention alignment. Our analysis reveals that existing VLM/LLM-based editing models fail to accurately capture scribble intentions. To guide future progress on scribble-only image editing, we propose a simple yet effective soft-token baseline, which enhances the model's understanding of scribble semantics and outperforms standard image editing models on our benchmark. Our evaluation and baseline together provide a concrete foundation for assessing and improving the scribble-driven image editing.",
+        "paper_updated": "2026-10-08T00:00:00Z",
+        "created_at": "2026-10-19T13:49:31Z",
+        "input_sha256": "5d35cf44c5694ed4fd3115e3e18d1874d6d5a57dda22196d940e5bc04d06ae9c",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "VLM/LLM 기반 이미지 편집 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "스크리블 기반 이미지 편집 벤치마크 ScribbleEdit 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "1b6fa577d772c655ee1f514f3e3db3842619ad4fff5bf76f635a199f2af2986f"
     }
   },
   "processed_comments": [],
@@ -96635,8 +96710,8 @@
         "2610.09382"
       ],
       "abstract_attempted": [],
-      "calls": 26,
-      "cost_usd": 23.266
+      "calls": 27,
+      "cost_usd": 24.0033
     }
   },
   "reaudits": [
