@@ -60365,7 +60365,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-13T02:56:16Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -60391,12 +60391,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43353033985",
-        "context_sha256": "16002a4e8bc15ab1001fba3b993a6d027721c0e9d5244d26291c41541d4a9e7e"
-      },
       "proposal_sha256": "7ce29d04aaf82cc9dba52c863c69cb7ea2bd37274a09f52602bfd9004387b8fe",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "변경된 사실이 논문 본문·표와 공식 README로 뒷받침되어 승인합니다. 과제 규모(Next-State-Generation 250개 전이, Next-State-QA 4,000개 후보에서 VLM 필터 2,458개를 거쳐 사람 검증 후 1,787문항), 앱 22개, MobileWorld 1.4M 샘플, GPT-4o judge의 0~15점 합산 방식, AndroidControl 테스트 분할과 Android in the Wild 출처가 모두 본문에 확인됩니다. 행동 문구가 영어이고 스크린샷 입력이 필요하므로 en 트랙과 vision 분류가 타당합니다. 라이선스와 lm-eval 항목은 공식 README에 언급이 없고 LICENSE 파일도 없습니다. 논문에서 라이선스 단어가 나오는 곳은 부록 표 7뿐이며, 이는 평가에 쓴 상용 모델 API의 약관이지 벤치마크 라이선스가 아니므로 미표기와 충돌하지 않습니다. 라이선스가 미표기이므로 상업적 이용, 수정·파생, 재배포가 모두 저작권 전부 보유로 일관되게 적혔고, lm-eval 지원 미표기는 허용된 해결값입니다. 유의사항에는 원천 궤적 데이터셋(AndroidControl, Android in the Wild)의 약관을 따로 확인해야 한다는 안내와 Android 한정, 학습 데이터의 사람 필터링 부재, GPT-4o judge 필요성이 적혀 있어 구성 요소 제약이 빠짐없이 반영되었습니다. 추천 모델 점수는 표 1의 정답 다음 상태 이미지를 주지 않는 동일 조건 행의 Overall 값과 모두 일치합니다. 비교 대상이 모두 같은 과제, 같은 judge, 같은 지표(높을수록 좋음)이고 Annotator 행은 제외되어 상위 3개 선정이 정당합니다. 상위는 +SFT 12.39, Qwen3-VL-235B-A22B 12.16, Claude-Sonnet-4.5 12.11입니다. 공개 가중치는 공식 README가 미세조정 모델 공개를 밝힌 +SFT만 true이고 나머지는 근거가 없어 null로 남겨 폐쇄형으로 단정하지 않았습니다. 참고로 부록의 judge 프롬프트는 항목 점수를 1~5로 적어 본문의 0~5와 어긋나지만, 제안은 본문의 과제 정의를 따랐고 표 값과 최대 합계 15점에는 영향이 없습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 212994,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2380,
+              "output_tokens_details": {
+                "thinking_tokens": 1406
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 212994,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2380,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 212994,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 212994
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.8758448999999999,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "7ce29d04aaf82cc9dba52c863c69cb7ea2bd37274a09f52602bfd9004387b8fe",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -94976,8 +95022,8 @@
         "2512.14014"
       ],
       "abstract_attempted": [],
-      "calls": 7,
-      "cost_usd": 6.0303
+      "calls": 8,
+      "cost_usd": 6.9061
     }
   },
   "reaudits": [
