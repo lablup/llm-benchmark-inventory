@@ -61306,74 +61306,9 @@
       "proposal_sha256": "da384bb979dde0b92336433337d12e7005c1707e010cc59d50ec94faabb46e04"
     },
     "2609.00940": {
-      "decision": "propose",
-      "reason": "CodeInsight는 3,286명의 학부생이 낸 C++ 제출 300만 건 이상에 테스트 케이스 단위 결과, 타임스탬프, 소스 코드를 붙인 데이터셋이다. 논문은 이 데이터로 다음 시도 예측 벤치마크를 만들어 파라메트릭, 순차, 생성형 모델을 같은 보정·채점 프로토콜로 비교한다. 프롬프트 템플릿이 영어이므로 en 트랙의 text 모달리티로 분류했다. 이전 응답에서 검증기가 거부한 인용문은 PDF 페이지에서 확인되는 짧은 인용으로 모두 교체했다. 링크는 PDF가 1쪽 각주에서 밝힌 코드 저장소다. 데이터셋은 요청 시에만 제공되는 학과 라이선스라서, 라이선스 관련 필드는 '확인 불가'로 두고 유의사항에 그 사실을 적었다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "codeinsight",
-            "이름": "CodeInsight",
-            "평가 축": "코딩·에이전트(반복 문제 풀이 궤적의 다음 시도 예측)",
-            "언어": "en",
-            "정의": "C++ 입문 과정 2개 과목, 2개 학년도의 학부생 3,286명이 낸 제출 300만 건 이상(문제 394개, 테스트 케이스 3,888개)에 테스트 케이스 단위 통과 여부, 타임스탬프, 소스 코드를 붙인 데이터셋. 이 데이터로 파라메트릭(IRT, CIRT), 순차(BKT, DKT, Code-DKT, TIKTOC), 생성형(LLM 예측기) 모델을 같은 보정·채점 프로토콜로 비교하는 다음 시도 예측 벤치마크를 구성한다. 지표는 균형 정확도와 AUC, 로그 손실, Brier 점수다. 평가는 4개 과목에서 하며 학생 단위 train 55%, validation 15%, test 30%로 나누고 학생당 문제당 시도는 최대 10회로 제한한다.",
-            "대표 과제": "앞선 시도의 제출 이력을 바탕으로 다음 시도의 테스트 케이스별 통과/실패를 예측 (LLM 예측기는 다음 제출 코드를 생성)",
-            "대표 예시·설명": "영어 프롬프트로 학생의 이전 시도 궤적과 행동 요약을 주고 다음에 제출할 코드를 예측하게 한 뒤, 생성 코드를 컴파일·채점해 테스트 케이스별 통과 여부를 실제 결과와 비교하는 과제 설명 (실제 문항 아님)",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "논문은 데이터셋을 학과 저작권물로 두고, 교육 목적에 한정한 학과 라이선스로 요청 시 제공한다고 밝힌다(논문 5쪽). 따라서 코드 저장소 라이선스와 별개로 데이터 이용 조건은 요청·승인 과정에서 확인해야 한다. 데이터는 베트남 대학 1곳의 C++ 과목과 단일 채점 플랫폼에서 수집됐고, 평가는 문제 통과율 10~90% 필터를 거친다. 필터 후 문제 수는 과목마다 다르다(DSA HK231 87개, DSA HK221 78개, PF HK232 38개, PF HK222 37개). 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 아직 확인하지 않아 '확인 불가'로 기록했다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/aims-foundations/dynamic-irt"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Coding and agents (next-attempt prediction over iterative problem-solving trajectories)",
-            "definition": "A dataset of over 3 million C++ submissions (394 problems, 3,888 test cases) from 3,286 undergraduates across 2 introductory courses in 2 academic years, with test-case-level pass/fail outcomes, timestamps, and source code. On it the paper builds a next-attempt prediction benchmark that compares parametric (IRT, CIRT), sequential (BKT, DKT, Code-DKT, TIKTOC), and generative (LLM predictor) models under one shared calibration-and-scoring protocol. Metrics are balanced accuracy, AUC, log loss, and Brier score. Evaluation covers four courses with a student-level 55%/15%/30% train/validation/test split and at most 10 attempts per student-problem pair.",
-            "task": "Given the earlier submission history, predict per-test-case pass/fail on the next attempt (the LLM predictor generates the next submitted code).",
-            "example": "Task description, not an actual test item: an English prompt gives a student's prior attempt trajectory and behavioral summaries and asks the model to predict the next submitted code. The generated code is compiled and graded, and its per-test-case outcomes are compared with the real results."
-          },
-          "evidence": {
-            "modality": {
-              "page": 5,
-              "quote": "raw source code"
-            },
-            "대표 과제": {
-              "page": 2,
-              "quote": "next-attempt prediction"
-            },
-            "대표 예시·설명": {
-              "page": 29,
-              "quote": "Now predict what"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/aims-foundations/dynamic-irt"
-            },
-            "언어": {
-              "page": 29,
-              "quote": "Now predict what"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "curate CodeInsight"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "over 3 million"
-            },
-            "평가 축": {
-              "page": 2,
-              "quote": "next-attempt prediction"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "게시 정책이 요구하는 다섯 필드(라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원)를 공급된 근거만으로 모두 채울 수 없어 아무것도 게시하지 않습니다. (1) 공급된 공식 카드는 코드 저장소 dynamic-irt의 README 하나뿐이며, 이 카드의 LICENSE 파일은 CONTRIBUTOR_LICENSE_AGREEMENT.md(SPDX NOASSERTION)로 기여자 계약서일 뿐 데이터셋 라이선스가 아닙니다. 데이터셋 카드(huggingface.co/datasets/CodeInsightTeam/code_insights_csv)는 가져오지 못했습니다. (2) 논문 5쪽은 데이터셋이 'copyrighted intellectual property of the Department'이며 'a specific departmental license intended strictly for educational purposes upon request'로 제공된다고 밝힙니다(2쪽, 10쪽도 같은 취지). 따라서 라이선스가 존재하고 교육 목적에 한정된다는 점은 인용할 수 있지만, 학과 라이선스 본문이 공급되지 않았습니다. 그래서 수정·파생과 재배포를 허용하는지 금지하는지, 상업적 이용의 정확한 조건은 어느 근거에도 적혀 있지 않습니다. 라이선스가 명시된 데이터에는 '저작권 전부 보유' 규칙을 적용할 수 없고, 문서화되지 않은 허용·금지 여부를 추정해서도 안 됩니다. 이 때문에 검증된 부재 근거 형식도 쓸 수 없습니다. (3) 보완하려면 학과 라이선스 전문 또는 CodeInsightTeam 데이터셋 카드를 확보해 공급하거나, 저자에게 수정·파생, 재배포, 상업적 이용 조건을 확인해야 합니다. lm-eval 지원은 README와 논문 어디에도 언급이 없어 '미표기'로 기록할 수 있고, 논문 수치(Table 7의 균형 정확도 등)로 recommendations도 구성할 수 있으나, 위 권리 필드가 확정되기 전에는 게시하지 않습니다.",
+      "changes": [],
       "arxiv_id": "2609.00940",
       "paper_title": "A Dataset for Modeling Iterative Problem-Solving",
       "paper_updated": "2026-10-08T00:00:00Z",
@@ -61449,7 +61384,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-13T03:11:42Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -61475,11 +61410,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43353033985",
-        "context_sha256": "f65469a429c7b37111e6f02b30525846682876ac32ca616f96dac3d27a29df67"
-      },
-      "proposal_sha256": "43acb91386694c6d9dd649bf59cba9788ea036a1d9fa83bce4b22a1f28841d8c"
+      "proposal_sha256": "4c5912bdf54b1690f80d8079086c9f465409a5071118ec0e48dc41ad44fca246",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -96064,8 +95997,8 @@
         "2609.00940"
       ],
       "abstract_attempted": [],
-      "calls": 18,
-      "cost_usd": 16.062
+      "calls": 19,
+      "cost_usd": 17.0486
     }
   },
   "reaudits": [
