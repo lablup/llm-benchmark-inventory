@@ -62118,6 +62118,159 @@
       },
       "issue_url": null,
       "proposal_sha256": "1b6fa577d772c655ee1f514f3e3db3842619ad4fff5bf76f635a199f2af2986f"
+    },
+    "2610.09446": {
+      "decision": "propose",
+      "reason": "이 논문은 북극 과학 연구 논문에서 만든 객관식 데이터셋 ArcticQA와, 정답 포함·정답 제거 조건을 짝지어 abstention을 측정하는 벤치마크 ArcticAbstain을 새로 제안한다. 과제의 선택지와 abstention 옵션이 영어로 인용되고 텍스트 입력만 쓰므로 en 트랙, text 모달리티로 분류했다. 공식 저장소 URL은 PDF 초록에 명시되어 있다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "arcticabstain",
+            "이름": "ArcticAbstain (ArcticQA)",
+            "평가 축": "abstention(정답 유무에 따른 답변 보류 민감도, 북극 과학 MCQ)",
+            "언어": "en",
+            "정의": "북극 1차 연구에서 만든 객관식 194문항(ArcticQA)으로 구성된 짝지은 벤치마크. 정답 포함 조건(정답 1개, 오답 3개, 보류 옵션)과 정답을 오답으로 바꾼 정답 제거 조건(보류 옵션 유지)을 비교해 false abstention, false commitment, 보류율 변화를 잰다. 문항당 선택지는 5개이고 순서는 무작위화한다. 논문은 모델 8종을 높은 추론 강도로 조건당 3회 평가해 9,312개 응답을 기록했다. 지표는 ACC, abstention precision/recall/F1, abstention rate, R-Acc이다.",
+            "대표 과제": "북극 연구 결과를 묻는 객관식 문항에서 정답이 선택지에 있으면 답하고, 유효한 정답이 없으면 보류 옵션을 선택",
+            "대표 예시·설명": "영어 객관식 문항에 보류 옵션 'I abstain from answering'이 함께 제시된다. 정답 포함 조건에서는 정답을 골라야 하고, 정답을 오답으로 바꾼 조건에서는 보류가 유일한 정답이다(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋·벤치마크 라이선스를 확인하지 못했다(논문에는 저장소 URL만 명시). 이용 전 저장소에서 확인해야 한다. 논문 한계 절에 따르면 문항은 모델 생성과 자동 검증으로 만들어졌고 전문가 검수는 없어 정답이 검증된 gold가 아니다. 단일 프롬프트, 단일 보류 옵션, 고추론 강도 조건의 결과이며 북극 연구 전반을 대표하지 않는다. 논문 수치는 해당 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/BenWilcox8/arctic-qa"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Abstention (sensitivity of answer withholding to answer availability, Arctic science multiple choice)",
+            "definition": "A paired benchmark built on ArcticQA, 194 multiple-choice questions derived from primary Arctic research. The answer-present condition has one correct answer, three distractors and an abstention option; the matched answer-absent condition replaces the correct answer with a fourth distractor and keeps the abstention option. Comparing the two measures false abstention, false commitment and the change in abstention rate. Each item has five options in randomized order. The paper evaluates eight models at high reasoning effort with three trials per condition, recording 9,312 responses. Metrics are ACC, abstention precision/recall/F1, abstention rate and R-Acc.",
+            "task": "Answer Arctic science multiple-choice questions when a valid option is present, and select the abstention option when no valid option exists",
+            "example": "Task description: each English multiple-choice item includes the abstention option 'I abstain from answering'. In the answer-present condition the model should pick the correct answer; in the answer-absent condition abstention is the only correct response."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "self-contained multiple-choice item"
+            },
+            "대표 과제": {
+              "page": 4,
+              "quote": "LLM abstention on"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "I abstain from"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/BenWilcox8/arctic-qa"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "I abstain from"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "ArcticAbstain, a paired"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "194 questions derived"
+            },
+            "평가 축": {
+              "page": 4,
+              "quote": "LLM abstention on"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.09446",
+      "paper_title": "Arctic Questions, Missing Answers: A Dataset and Benchmark for LLM Abstention in Arctic Science",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.09446",
+        "sha256": "5ae798137cf9ebff0914bc2f583a1d73380c8ac77890112897e1fa4321f2f911",
+        "accessed": "2026-11-13T03:28:09Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 8,
+          "elapsed_seconds": 33.15,
+          "pdf_sha256": "5ae798137cf9ebff0914bc2f583a1d73380c8ac77890112897e1fa4321f2f911",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "4c72716fbcc49f1f7963e51cd75c5d1d1bec74966c7c44518a1cd7eb733cda82",
+          "page_json_file": "2610.09446.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/BenWilcox8/arctic-qa",
+            "fetched_url": "https://api.github.com/repos/BenWilcox8/arctic-qa/readme",
+            "sha256": "b1d894f04b6f71cdc0ba3b5eea31a462dd1f0c26e36d0b75bdc3ec96efb99bb9",
+            "accessed": "2026-11-13T03:29:02Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/BenWilcox8/arctic-qa/license",
+              "name": "LICENSE",
+              "spdx_id": "NOASSERTION",
+              "sha256": "50ca4d5b9eb5b2a5bf61579974d37441936bcf1419ae4982e255507992447826"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-13T03:29:02Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.09446",
+        "paper_title": "Arctic Questions, Missing Answers: A Dataset and Benchmark for LLM Abstention in Arctic Science",
+        "abstract": "Large language models (LLMs) should abstain from scientific multiple-choice questions when no option is valid, but frequent abstention alone does not demonstrate sensitivity to answer availability. We introduce ArcticQA, a dataset of 194 questions derived from primary Arctic research, with automated checks of answer support and distractor contradiction against source evidence. We further develop ArcticAbstain, a paired benchmark comparing answer-present and answer-absent conditions, with the correct answer replaced by a distractor in the latter and an explicit abstention option in both. We evaluate eight models from the Gemini, Claude, and ChatGPT families at high reasoning effort, with three trials per condition, yielding 9,312 recorded responses. Answer-present abstention rates range from 0.0% to 63.0%, whereas replacing the correct answer increases abstention by 5.05 percentage points on average. These findings highlight substantial baseline differences and the need to evaluate abstention frequency and responsiveness jointly. The dataset and benchmark are available at https://github.com/BenWilcox8/arctic-qa.",
+        "paper_updated": "2026-10-08T00:00:00Z",
+        "created_at": "2026-10-19T13:49:31Z",
+        "input_sha256": "a486f5a5a24358b1ff188e28a817318920c41c001d05ab45bb259d7f17fefb1c",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 회피 판단 벤치마크로 관련성 높음"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "북극과학 LLM 기권 벤치마크 ArcticQA 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43353033985",
+        "context_sha256": "c622fcf59514dd94212345ce0ba133b6969e0cd3f4a4f7759c93e84580e6db77"
+      },
+      "proposal_sha256": "c755dee3aef3e0c5ca471c0973eb98fad236e76b8ba0d3a6e1e50674a7ccbec4"
     }
   },
   "processed_comments": [],
@@ -96711,8 +96864,8 @@
         "2610.09446"
       ],
       "abstract_attempted": [],
-      "calls": 27,
-      "cost_usd": 24.0033
+      "calls": 28,
+      "cost_usd": 24.7094
     }
   },
   "reaudits": [
