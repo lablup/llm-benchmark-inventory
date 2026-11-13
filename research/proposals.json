@@ -61683,7 +61683,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-13T03:15:31Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -61709,12 +61709,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43353033985",
-        "context_sha256": "7fe8c81233ba85dc0967ab9bbb593156f63d74711eb4aaff1c2662e465fd3e77"
-      },
       "proposal_sha256": "893e95d3008090f1ef98824c4c82459b9ed0ead2f2d540092f3f836b98926bb1",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 내용은 논문 전문과 공식 README로 모두 뒷받침되어 승인합니다. 첫째, 규모와 과제 구성은 원문과 일치합니다. 12K 논문과 38K 리뷰(부록 12,000편, 38,063건), 탐지·9개 상위 유형 분류·위치 지정 3개 과제, 영어 텍스트 모달리티, OpenReview의 ICLR 2019–2024와 NeurIPS 2021–2024 출처가 맞습니다. 환각이 LLM으로 주입된 합성 데이터이고 컴퓨터과학 학회로 범위가 한정된다는 점도 본문과 부합합니다. 둘째, 권리 항목은 README가 코드에 Apache-2.0, 데이터셋에 CC BY-NC 4.0(비상업 전용)을 별도로 부여한다고 밝힌 내용과 일치합니다. 코드 라이선스를 데이터 권리로 오인하지 않았고, 상업적 이용 '불가'와 수정·파생·재배포 값도 해당 조건과 모순이 없습니다. 논문과 README 어디에도 이 벤치마크에 대한 별도 라이선스 문구 충돌은 없습니다. 셋째, lm-eval 지원 '미표기'는 README와 논문 모두 언급이 없고 pdf_mentions도 비어 있어 허용된 해결값입니다. 넷째, 다른 데이터에서 파생된 구성(OpenReview 논문·리뷰, 제3자 텍스트)을 이용 시 유의사항에서 명시했고 각 구성 요소의 약관을 따로 확인해야 한다고 적었습니다. 다섯째, 성능 추천은 표 3(NeurIPS 2024, 위치 지정 Token-F1, 값이 클수록 우수)의 제로샷 프롬프팅 모델 7종 전부를 같은 조건에서 비교했고, 모델명과 수치 7개가 MinerU 표와 Poppler 텍스트에서 일치합니다. 상위 3개는 GPT-5.2 0.58, GPT-OSS-120B 0.55, GPT-OSS-20B 0.51로 정당하며, 미세조정 모델은 조건이 달라 제외했고 논문 보고 결과라는 점도 명시했습니다. 여섯째, 오픈 가중치 표기는 표 7의 Hugging Face 체크포인트 주소로 뒷받침되고, GPT-5.2는 근거가 없어 null로 두어 비공개로 단정하지 않았습니다. 미확인·확인 불가 필드는 없습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 243108,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2169,
+              "output_tokens_details": {
+                "thinking_tokens": 1224
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 243108,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2169,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 243108,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 243108
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.9941909,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "893e95d3008090f1ef98824c4c82459b9ed0ead2f2d540092f3f836b98926bb1",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -96300,8 +96346,8 @@
         "2609.03580"
       ],
       "abstract_attempted": [],
-      "calls": 21,
-      "cost_usd": 19.0459
+      "calls": 22,
+      "cost_usd": 20.0401
     }
   },
   "reaudits": [
