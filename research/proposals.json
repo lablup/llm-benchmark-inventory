@@ -62604,6 +62604,86 @@
       },
       "issue_url": null,
       "proposal_sha256": "6e59a7afa118d8166ff53828bdbc1dd3f0c1eb48a0eff53badde4f4229aeeff2"
+    },
+    "2610.09671": {
+      "decision": "needs_evidence",
+      "reason": "InsClaimBench는 재사용 가능한 영어 텍스트 벤치마크로 보이며(3,780 케이스, 375 케이스 패밀리, 86,656 원자 규칙 판단, 6개 LLM 평가), 새 평가 범주(보험 청구 판정)로 인벤토리에 추가할 가치가 있다. 그러나 PDF 본문(부록 포함)에서 공식 데이터셋이나 코드 URL을 찾지 못했다. 부록 D는 전체 독점 규칙 목록을 공개하지 않는다고 밝힐 뿐 공개 저장소 주소는 제시하지 않는다. 링크는 PDF가 직접 명시한 공식 자료여야 하고 임의로 대체할 수 없으므로 제안하지 않는다. 또한 과제 언어를 뒷받침할 영어 프롬프트나 예시 원문 인용도 본문에서 확인되지 않는다. 그림 1의 영어 텍스트는 개략도이며 '모든 입력은 텍스트'라는 문장만 모달리티 근거가 된다. 공식 링크와 언어 근거가 확보되면 en 트랙, text 모달리티로 새 행을 제안할 수 있다.",
+      "changes": [],
+      "arxiv_id": "2610.09671",
+      "paper_title": "InsClaimBench: Benchmarking Insurance Claim Adjudication Across the Decision Chain",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.09671",
+        "sha256": "46d9e909792b5b9e77c91acd033b4e68857c10373b655d8b324afefaeb6a0c99",
+        "accessed": "2026-11-13T03:34:24Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 17,
+          "elapsed_seconds": 55.2,
+          "pdf_sha256": "46d9e909792b5b9e77c91acd033b4e68857c10373b655d8b324afefaeb6a0c99",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "8ff51a2d1384014562adbdb84b30740a574145dea05322fea7250b2917164e93",
+          "page_json_file": "2610.09671.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-13T03:35:26Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.09671",
+        "paper_title": "InsClaimBench: Benchmarking Insurance Claim Adjudication Across the Decision Chain",
+        "abstract": "Recent advances in reasoning-oriented large language models (LLMs) have motivated increasing evaluation of their ability to perform professional decision tasks. Insurance claim adjudication is one such task, requiring models to connect case evidence, insurance rules, intermediate judgments, and payout calculations across a structured decision process. We introduce InsClaimBench, an end-to-end benchmark for evaluating insurance claim adjudication across the decision chain. Grounded in real claim materials and structured insurance rules, InsClaimBench contains 3,780 cases in 375 case families across auto, property, and health insurance, comprising 86,656 atomic rule judgments. It evaluates each claim from atomic rules through adjudication modules to payout decisions and amounts, with controlled factual variants testing whether required changes are correctly propagated across levels. Evaluation of six LLMs reveals a progressive loss of reliability along the decision chain. Payout-decision accuracy ranges from 74.23--80.19%, while joint decision--amount accuracy drops to 47.54--73.15%. Strong local performance also fails to ensure case-level correctness: atomic-rule accuracy reaches 95.48%, whereas rule-vector exact match peaks at only 36.90%, and the most frequent module errors are not necessarily those most associated with final-decision failure. Under factual changes, these inconsistencies further become propagation failures: module updates are less reliable than rule updates, correct local judgments can still yield incorrect payouts, and correct payouts can conceal intermediate errors. These results show that reliable claim adjudication requires consistent composition and propagation across the decision chain.",
+        "paper_updated": "2026-10-08T00:00:00Z",
+        "created_at": "2026-10-19T13:49:31Z",
+        "input_sha256": "8b19eb465a112eb7cb05f023d5216ce800ea30d0a95014084e8992d05f740f43",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 보험 청구 판정 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "보험 청구 심사 종단 벤치마크 InsClaimBench 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "acf894690316f6ff6215b059913d33df0528db2af80168c4344564326f7934db"
     }
   },
   "processed_comments": [],
@@ -97200,8 +97280,8 @@
         "2610.09671"
       ],
       "abstract_attempted": [],
-      "calls": 32,
-      "cost_usd": 27.9905
+      "calls": 33,
+      "cost_usd": 28.7391
     }
   },
   "reaudits": [
