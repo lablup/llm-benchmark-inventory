@@ -588,4 +588,34 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Recover the pitch points (product -> customer pain point -> value proposition) that won the deal, given seller, customer, product and time.",
     "example": "Task description (not an actual test item): an English prompt asks how to pitch a seller's products to a customer, the agent generates three pitch points, and the benchmark scores how much of the ground-truth pitch-point content they cover."
   },
+  "mobileworldbench": {
+    "axis": "Images (semantic world modeling for mobile GUI agents: next-state prediction)",
+    "definition": "A benchmark of whether VLMs can act as world models for mobile GUI agents. Given the current screenshot and a user action, the model predicts the next state in natural language. Next-State-Generation uses 250 (Xt, at, Xt+1) transitions, with free-form descriptions scored by a GPT-4o judge on accuracy, relevance and completeness (0-5 each, 0-15 total). Next-State-QA uses 1,787 human-verified yes/no questions (4,000 candidates, 2,458 after VLM filtering, 1,787 after human verification), scored by accuracy. Source trajectories come from the AndroidControl test split and Android in the Wild, covering 22 apps. The accompanying MobileWorld training dataset has 1.4M samples.",
+    "task": "Next-State-Generation, Next-State-QA",
+    "example": "Task description: given the current app screen and an English action phrase such as \"Click on the OK option\", describe the changes expected on the next screen or answer yes/no questions about it."
+  },
+  "ami-me": {
+    "axis": "Agents and dialogue analysis (temporal fine-grained meeting effectiveness evaluation, LLM-as-a-judge meta-evaluation)",
+    "definition": "A meta-evaluation dataset built from 130 AMI Corpus meetings (126 scenario, 2 film-selection, 2 office-relocation). It has 2,459 topical segments, each with three independent effectiveness scores on a 5-point scale and multi-label annotations of the meeting objectives addressed. Effectiveness is defined as objective achievement divided by time cost. Inter-annotator agreement is ICC(2,k) 0.8769 and 0.8202. The automatic framework has objective classification, topic segmentation and segment scoring. Scores are evaluated with Spearman and Kendall after segment alignment, segmentation with Pk and WindowDiff, and objective classification with Hamming Loss and Micro-F1.",
+    "task": "Segment a meeting transcript by topic and predict each segment's effectiveness, measuring correlation with human scores (scenario and non-scenario meetings analyzed separately, plus an end-to-end experiment from raw speech)",
+    "example": "Task description (not an actual test item): given a meeting transcript and the meeting objectives, rate each topical segment from 1 to 5 on how efficiently it contributed to the objectives."
+  },
+  "posteda-bench": {
+    "axis": "Agents (post-EDA closure: DRC fixing and PPA convergence)",
+    "definition": "A hierarchical benchmark for the last mile after EDA tool runs. It has 145 tasks across DRC-Essential, DRC-Reasoning, PPA-Mono, and PPA-Multi, supports open-source (OpenROAD) and commercial (DC+Innovus) toolchains, and uses machine-checkable evaluation. Metrics are SR and VRR for DRC and SR and NIS for PPA, averaged over 5 runs per task. The paper compares nine models under several agent scaffolds.",
+    "task": "DRC-Bench (repair sign-off DRC violations in a GDS layout) and PPA-Bench (drive an OpenROAD project to target PPA values)",
+    "example": "Task description: for a design that has completed the flow but misses its effective-period target, the agent analyzes the provided files and edits the configuration or timing constraints to meet the target (prompt format from Figure 3b). This is not an actual test item."
+  },
+  "hallupeer": {
+    "axis": "Hallucination detection (paper-grounded verification of scientific peer reviews)",
+    "definition": "A benchmark of aligned triples of paper content, human-written reviews, and hallucination-injected reviews for peer-review hallucination detection. It provides three tasks: detection (review and sentence level), type classification (nine coarse categories), and span localization. The abstract reports 12K papers and 38K reviews, and metrics include Accuracy, Precision, Recall, F1, MCC, Macro/Micro-F1, Token-F1, and Span-F1.",
+    "task": "Detect whether a review or sentence is hallucinated, classify the hallucination type, and localize hallucinated spans.",
+    "example": "Task description (not an actual test item): given paper evidence and an English prompt, judge whether a review sentence is a hallucination that is unsupported by or incorrect relative to the paper."
+  },
+  "worldbench": {
+    "axis": "Coding (dual evaluation of LLM-generated Three.js voxel worlds by code and running behavior)",
+    "definition": "A benchmark and judge in which one fixed English prompt (about 2,000 words) asks a model to write a single self-contained HTML Three.js world: a floating voxel island with ten biomes, physical water, lava and weather, and day/night and seasonal cycles. Five tests (WC001 voxel island 40, WC002 placement 20, WC003 per-biome contents 100, WC004 physics and motion 100, WC005 day/night and seasons 20) total 280 points. The judge controls the world's clock, explores the running world with orbits and a navigator agent, and also reads the source code. A code quote counts only if it is text the source contains, and visual claims are checked against measured pixels where measurable. The paper evaluates one world from each of five models.",
+    "task": "Generate a single self-contained HTML Three.js world from the fixed prompt and score it item by item across WC001-WC005.",
+    "example": "Task description, not an actual test item: write code for the floating voxel island described in the prompt, with ten biomes (snow mountains, jungle, desert, volcano and others) placed in stated relations, water, lava and weather particles, day/night and seasonal cycles, and a clickable legend."
+  },
 };

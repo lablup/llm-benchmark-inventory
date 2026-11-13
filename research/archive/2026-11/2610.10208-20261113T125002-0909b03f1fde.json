@@ -1,0 +1,67 @@
+{
+  "arxiv_id": "2610.10208",
+  "paper_title": "CARES: A Controlled Synthetic Benchmark of Speaker Reactions to Sound",
+  "created_at": "2026-11-13T03:50:02Z",
+  "status": "needs_evidence",
+  "reason": "CARES는 재사용 가능한 새 벤치마크로 보인다. 2인 대화 장면 10,000개를 만들고 테스트 1,000개 장면에서 반응 분류, 음향 장면 분류, 오디오 태깅, 요약 과제로 오디오-언어 모델 6종을 평가한다. 과제 언어는 영어이고(논문 3.3절의 '스포큰 영어' 제약, 한계 절의 '합성 영어 대화'), 공식 코드는 논문 2쪽 각주의 github.com/marcelgibier/CARES다. 그러나 입력이 음성과 환경음이 섞인 오디오 신호라서 허용된 modality 값인 text(텍스트 전용 입력)와 vision(이미지·스크린샷·문서) 어디에도 맞지 않는다. text로 두면 오디오 입력을 숨기게 되고 vision으로 두면 사실과 다르다. 이 모달리티를 어느 값으로 분류할지, 또는 오디오를 별도 모달리티로 허용할지에 대한 인벤토리 정책 결정이 필요하므로 지금은 행을 제안하지 않는다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인되지 않았다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2610.10208",
+    "sha256": "3f2d2211315c35dd75e27576921291bfa7096cf7003f389a8457bc2c9fc6cff2",
+    "accessed": "2026-11-13T03:49:22Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 5,
+      "elapsed_seconds": 29.44,
+      "pdf_sha256": "3f2d2211315c35dd75e27576921291bfa7096cf7003f389a8457bc2c9fc6cff2",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "c22b1513cc6ae504d3968556a1ce0c18e2bc729b05f4f39c6b8a18d8b8f34e15",
+      "page_json_file": "2610.10208.pages.json"
+    }
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "427b619e31a6e71d42bc1261db708df99e670fe3bb0b3693ea6e215a9a5f07f9",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2610.10208",
+    "paper_title": "CARES: A Controlled Synthetic Benchmark of Speaker Reactions to Sound",
+    "abstract": "Automatic audio scene description turns a recording into a text account of a situation. One difficulty is deciding which elements of the audio should be kept, since a description cannot include them all. Annotators disagree about this, making a ground truth hard to obtain. In this work, we first define the ground truth, then generate the data. We focus on audio events and define sound salience with a simple rule: a sound is salient when a speaker audibly reacts to it. For scale and variety, a controlled set of scenarios fixes the ground truth, and a language model writes the dialogues. The resulting corpus, CARES, contains 10,000 two-speaker scenes. We then benchmark six audio-language models on three tasks: identifying the scene, tagging the sounds present, and classifying reactions. We show that these models hear the sounds but miss how the speakers react to them.",
+    "paper_updated": "2026-10-08T00:00:00Z",
+    "created_at": "2026-10-19T13:49:43Z",
+    "input_sha256": "426d719593a10dd626d090c30eaf4c8a48189ca96f5724081ef5a1d7a000f90d",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "오디오 장면 설명 및 반응 분류 벤치마크"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "오디오 장면 이해용 통제 합성 벤치마크 CARES 신규 구축"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}
