@@ -60090,6 +60090,168 @@
       "proposal_sha256": "0f750d7007eebe4c34144ce2d015ba75beee65d0738465d18e12b8fabb9b9753",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2512.14014": {
+      "decision": "propose",
+      "reason": "MobileWorldBench는 모바일 GUI 스크린샷과 사용자 행동을 입력으로 받아 다음 화면 상태를 예측하게 하는 재사용 가능한 벤치마크입니다. Next-State-Generation(250개 전이, GPT-4o judge 0~15점)과 Next-State-QA(사람 검증을 거친 1,787문항, 정확도) 두 과제로 구성됩니다. 과제 행동 문구가 영어이므로 en 트랙으로, 스크린샷이 필요하므로 vision으로 분류했습니다. 논문이 지목한 공식 코드·데이터 주소(GitHub)가 있어 링크로 사용했습니다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "mobileworldbench",
+            "이름": "MobileWorldBench",
+            "평가 축": "이미지(모바일 GUI 시맨틱 월드 모델링: 다음 상태 예측)",
+            "언어": "en",
+            "정의": "VLM이 모바일 GUI 에이전트의 월드 모델로 쓰일 수 있는지 평가하는 벤치마크. 현재 화면 스크린샷과 사용자 행동을 받아 다음 상태를 자연어로 예측하게 한다. Next-State-Generation은 250개 (Xt, at, Xt+1) 전이에서 자유 서술을 GPT-4o judge가 정확성·관련성·완결성 각 0~5점, 합계 0~15점으로 채점한다. Next-State-QA는 사람 검증을 거친 1,787개 예/아니오 질문(후보 4,000개 중 VLM 필터 2,458개, 사람 검증 후 1,787개)의 정확도로 평가한다. 소스 궤적은 AndroidControl 테스트 분할과 Android in the Wild이며 앱 22개를 다룬다. 학습용 데이터셋 MobileWorld(1.4M 샘플)도 함께 공개되었다.",
+            "대표 과제": "Next-State-Generation, Next-State-QA",
+            "대표 예시·설명": "과제 설명: 현재 앱 화면과 영어 행동 문구(예: \"Click on the OK option\")가 주어지면 다음 화면에서 일어날 변화를 서술하거나 그에 대한 예/아니오 질문에 답한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 못했다. 이 벤치마크는 AndroidControl과 Android in the Wild 궤적, 그리고 GPT-4o와 Qwen3-VL 기반 주석 파이프라인으로 구성되므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. Android 인간 시연에만 한정되며 iOS는 포함되지 않는다. Next-State-Generation 채점에는 GPT-4o judge가 필요하고 점수는 논문 조건의 결과이다. 학습 데이터 MobileWorld는 사람이 필터링하지 않았다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/jacklishufan/MobileWorld"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (semantic world modeling for mobile GUI agents: next-state prediction)",
+            "definition": "A benchmark of whether VLMs can act as world models for mobile GUI agents. Given the current screenshot and a user action, the model predicts the next state in natural language. Next-State-Generation uses 250 (Xt, at, Xt+1) transitions, with free-form descriptions scored by a GPT-4o judge on accuracy, relevance and completeness (0-5 each, 0-15 total). Next-State-QA uses 1,787 human-verified yes/no questions (4,000 candidates, 2,458 after VLM filtering, 1,787 after human verification), scored by accuracy. Source trajectories come from the AndroidControl test split and Android in the Wild, covering 22 apps. The accompanying MobileWorld training dataset has 1.4M samples.",
+            "task": "Next-State-Generation, Next-State-QA",
+            "example": "Task description: given the current app screen and an English action phrase such as \"Click on the OK option\", describe the changes expected on the next screen or answer yes/no questions about it."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "MobileWorldBench, a benchmark"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "Next-State-Generation and Next-State-QA"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "Click on the"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/jacklishufan/MobileWorld"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "Click on the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "MobileWorldBench, a benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "MobileWorldBench, a benchmark"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "MobileWorldBench, a benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2512.14014",
+      "paper_title": "MobileWorldBench: Towards Semantic World Modeling For Mobile Agents",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2512.14014",
+        "sha256": "57e400c60183f74a3cba372d48d71b5da92816b3551beb19f5a289aca633784f",
+        "accessed": "2026-11-13T02:54:40Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 22,
+          "elapsed_seconds": 75.12,
+          "pdf_sha256": "57e400c60183f74a3cba372d48d71b5da92816b3551beb19f5a289aca633784f",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "c9e403ff2796ae8e76d9ede46512290822ef448f165b06c1f62963ce9914810c",
+          "page_json_file": "2512.14014.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/jacklishufan/MobileWorld",
+            "fetched_url": "https://api.github.com/repos/jacklishufan/MobileWorld/readme",
+            "sha256": "a2c721c63986c967b52b704161c8362c43421af9df5c84e6cec3aac89b5e7b9c",
+            "accessed": "2026-11-13T02:56:16Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-13T02:56:16Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2512.14014",
+        "paper_title": "MobileWorldBench: Towards Semantic World Modeling For Mobile Agents",
+        "abstract": "World models have shown great utility in improving the task performance of embodied agents. While prior work largely focuses on pixel-space world models, these approaches face practical limitations in GUI settings, where predicting complex visual elements in future states is often difficult. In this work, we explore an alternative formulation of world modeling for GUI agents, where state transitions are described in natural language rather than predicting raw pixels. First, we introduce MobileWorldBench, a benchmark that evaluates the ability of vision-language models (VLMs) to function as world models for mobile GUI agents. Second, we release MobileWorld, a large-scale dataset consisting of 1.4M samples, that significantly improves the world modeling capabilities of VLMs. Finally, we propose a novel framework that integrates VLM world models into the planning framework of mobile agents, demonstrating that semantic world models can directly benefit mobile agents by improving task success rates. The code and dataset is available at https://github.com/jacklishufan/MobileWorld",
+        "paper_updated": "2026-10-09T00:00:00Z",
+        "created_at": "2026-10-19T13:49:19Z",
+        "input_sha256": "7b63b9f86a68aa99f7dafdeab5d2a9ef7363cf19d60dd49eb55c3430dea7fb3f",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "모바일 GUI 에이전트를 위한 시맨틱 월드 모델링 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "모바일 에이전트 의미적 월드모델 벤치마크·140만 샘플 데이터셋"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43353033985",
+        "context_sha256": "16002a4e8bc15ab1001fba3b993a6d027721c0e9d5244d26291c41541d4a9e7e"
+      },
+      "proposal_sha256": "22192449b56c4fc6438584b3a2504fda377d3a594d15a6d09fcdec35c8eb9278"
     }
   },
   "processed_comments": [],
@@ -94669,8 +94831,8 @@
         "2512.14014"
       ],
       "abstract_attempted": [],
-      "calls": 5,
-      "cost_usd": 4.2526
+      "calls": 6,
+      "cost_usd": 5.1157
     }
   },
   "reaudits": [
