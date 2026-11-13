@@ -63644,6 +63644,85 @@
       },
       "issue_url": null,
       "proposal_sha256": "427b619e31a6e71d42bc1261db708df99e670fe3bb0b3693ea6e215a9a5f07f9"
+    },
+    "2610.10947": {
+      "decision": "needs_evidence",
+      "reason": "RH-Detect은 11개 공개 데이터셋에서 92,761행을 모아 공통 스키마로 통합한 영어 텍스트 벤치마크(reward hacking 탐지)이며, 새 벤치마크로 볼 만한 실질적 기여가 있습니다. 그러나 PDF는 RH-Detect 자체의 공식 데이터셋·코드 URL을 밝히지 않습니다. 부록 F에는 '데이터와 코드는 게재 시점에 공개될 예정'이라고만 적혀 있습니다. PDF에 나오는 유일한 Hugging Face 주소(matonski/reward-hacking-prompts)는 통합 대상인 원천 데이터셋이라 RH-Detect의 링크로 쓸 수 없습니다. 링크 근거가 없어서 행을 제안하지 않고 needs_evidence로 둡니다. 공식 저장소나 데이터셋 주소가 공개되면 en 트랙의 text 행으로 다시 검토하면 됩니다.",
+      "changes": [],
+      "arxiv_id": "2610.10947",
+      "paper_title": "RH-Detect: A Unified Benchmark for Reward Hacking Detection",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.10947",
+        "sha256": "d7d9d32dbc3a866097bb4c6a17dd762261ba22bef799d99c058f9b571e8611aa",
+        "accessed": "2026-11-13T03:52:27Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 16,
+          "elapsed_seconds": 104.11,
+          "pdf_sha256": "d7d9d32dbc3a866097bb4c6a17dd762261ba22bef799d99c058f9b571e8611aa",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "4ccdfeae40783fc8fc9c74f545780482c2f19d90a5f694b0417243d94a34f624",
+          "page_json_file": "2610.10947.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-13T03:54:19Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.10947",
+        "paper_title": "RH-Detect: A Unified Benchmark for Reward Hacking Detection",
+        "abstract": "Reward hacking, where a model exploits an evaluation signal without completing the intended task, threatens the reliability of deployed language model systems. Existing datasets use different labels, response formats, and metadata conventions, making detector results difficult to compare. We present RH-Detect, a benchmark that combines reward-hacking-relevant subsets from eleven public datasets, comprising 92,761 rows and six behavior categories, into a common schema. On 5,021 open-ended evaluation units, each comprising a task prompt and a free-form model continuation, including multi-turn tool-use trajectories, we evaluate six off-the-shelf language models from five families as reward hacking detectors without additional training. The best model achieves a pooled AUROC of 0.962, with accuracy above 93%. For the four strongest models, however, accuracy on the two multi-turn tool-use datasets, MALT and TRACE, is 10.7-15.9 percentage points lower than on the other sources at a common decision threshold, highlighting a key gap for deployment-time monitoring. We find that different input formats have different effects across models. Removing thinking raises Qwen3.5-4B AUROC from 0.779 to 0.849, but lowers Qwen Flash from 0.977 to 0.950. We also evaluate the benchmark as a training dataset for detectors. Holding out each source in turn, single-token SFT improves average AUROC on five of six held-out sources. A GRPO follow-up on that failure case yields a slight improvement in detection performance. Our results show that a single pooled score can conceal variation across data sources, detector inputs, and training procedures.",
+        "paper_updated": "2026-10-09T00:00:00Z",
+        "created_at": "2026-10-19T13:49:43Z",
+        "input_sha256": "94d3fb78be38c39b488da8395bd9ce4f768385797a79f9975376b9e9708b4c83",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "보상 해킹 탐지 통합 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "보상 해킹 탐지 통합 벤치마크 신규 구축 및 평가"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "521fdc9bec4e8d5fc182972b5bfa54249fc7bec4632f4f6dda81becd40ceaa5a"
     }
   },
   "processed_comments": [],
@@ -98251,8 +98330,8 @@
         "2610.10947"
       ],
       "abstract_attempted": [],
-      "calls": 45,
-      "cost_usd": 38.9858
+      "calls": 46,
+      "cost_usd": 39.8339
     }
   },
   "reaudits": [
