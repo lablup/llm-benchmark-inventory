@@ -63153,6 +63153,89 @@
       "proposal_sha256": "30d4461bf3b380579ab31c32c35e8be1a9630b5a0d886b46a47f713c8d4924f9",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2610.10150": {
+      "decision": "needs_evidence",
+      "reason": "이 논문은 C/C++, Go, Rust 버그 112건(84개 프로젝트)에 PoC 테스트, 회귀 테스트, 개발자 테스트를 붙인 영어 과제 데이터셋과 Docker 하니스를 만들었습니다. 따라서 재사용 가능한 코딩·에이전트 평가 자원으로 볼 여지는 있습니다. 다만 저자들은 이 데이터셋이 모델 순위용 벤치마크가 아니라 평가 함정을 보이기 위한 통제용이라고 밝혔습니다(1~2쪽 Scope). 더 큰 문제는 PDF가 데이터셋이나 코드의 공식 URL을 명시하지 않는다는 점입니다. 본문에서 '아티팩트(artifact)'가 공개된다고만 언급하며, 참고문헌의 GitHub 링크는 OpenCode, LiteLLM 등 외부 도구와 대상 프로젝트의 커밋뿐입니다. 필수 항목인 '링크'를 PDF 근거로 채울 수 없으므로 propose할 수 없고, 공식 아티팩트 저장소 URL이 확인되면 다시 검토해야 합니다.",
+      "changes": [],
+      "arxiv_id": "2610.10150",
+      "paper_title": "On the Reliability of LLM-Based Vulnerability Patching Benchmarks",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.10150",
+        "sha256": "0ee3e9dc485769edb8fa5ad82f8ad239129a9b19112a1a10fed43257a3887d72",
+        "accessed": "2026-11-13T03:43:35Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 20,
+          "elapsed_seconds": 90.61,
+          "pdf_sha256": "0ee3e9dc485769edb8fa5ad82f8ad239129a9b19112a1a10fed43257a3887d72",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 2,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "521e581ee6e1781fdd3c450b077abac78fc6da8fcaa932cacc9185d3c84b98ee",
+          "page_json_file": "2610.10150.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-13T03:45:14Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.10150",
+        "paper_title": "On the Reliability of LLM-Based Vulnerability Patching Benchmarks",
+        "abstract": "Large language models (LLMs) have shown strong potential for automated vulnerability patching, but current benchmarks can substantially distort reported performance. Drawing on extensive experience developing, running, and stress-testing such frameworks, we identify under-examined pitfalls across three dimensions: (1) agent-level factors, where prompting, tool availability, and detailed instructions can raise success rates without improving developer-aligned patch quality; (2) framework-level factors, where permission errors, infrastructure bugs, and timeout handling can silently suppress or inflate performance; and (3) dataset-level factors, where bug reports and single proof-of-concept (PoC) tests fail to capture whether patches address root causes or follow developer intent. We curate 112 historical bugs from 84 open-source C/C++, Go, and Rust projects, each with PoC tests, regression tests, and additional developer tests that assess alignment with the original developers' design principles. Through controlled experiments and case studies, we show that LLMs can achieve high PoC passing rates under ideal conditions, yet benchmark execution choices can materially change measured success. More importantly, developer-test passing rates remain low and improve only marginally with newer models, suggesting that models increasingly suppress symptoms without consistently producing upstream-quality fixes. These results show that benchmark scores are highly sensitive to evaluation design, and we provide practical guidelines for more rigorous, reliable, and reproducible evaluation.",
+        "paper_updated": "2026-10-08T00:00:00Z",
+        "created_at": "2026-10-19T13:49:31Z",
+        "input_sha256": "45fbd58d738a80ba2edc76ff8215324764648b4952a89d788e0f3bc05245b791",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 취약점 패치 벤치마크 신뢰성 연구"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "취약점 패칭 벤치마크 신뢰성 분석 및 테스트셋 큐레이션"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "7c40dab5e3f8fd120351e21ad50039b9216f351165a3016cbd2415441a4eee57"
     }
   },
   "processed_comments": [],
@@ -97756,8 +97839,8 @@
         "2610.10150"
       ],
       "abstract_attempted": [],
-      "calls": 39,
-      "cost_usd": 33.9168
+      "calls": 40,
+      "cost_usd": 34.7275
     }
   },
   "reaudits": [
