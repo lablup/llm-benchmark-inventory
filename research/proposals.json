@@ -63236,6 +63236,179 @@
       },
       "issue_url": null,
       "proposal_sha256": "7c40dab5e3f8fd120351e21ad50039b9216f351165a3016cbd2415441a4eee57"
+    },
+    "2610.10156": {
+      "decision": "propose",
+      "reason": "HeiCo-FOCUS는 수술 영상 기반의 장기 컨텍스트 영상 VQA 벤치마크로, 새로 제안된 재사용 가능한 평가 자료입니다. 과제 프롬프트가 영어이므로 en 트랙, 영상이 필요하므로 vision으로 분류했습니다. 이전 응답에서 검증기가 거부한 인용을 PDF 쪽수에 실제로 있는 짧은 문구로 교체했습니다. 논문이 공식 코드 저장소 URL을 밝혀 링크로 사용했으며, 라이선스와 lm-eval 지원 등은 확인하지 않아 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "heico-focus",
+            "이름": "HeiCo-FOCUS",
+            "평가 축": "장기 컨텍스트 영상 이해(수술 영상 이물질 추적 VQA)",
+            "언어": "en",
+            "정의": "하이델베르크 대장 수술 영상(HeiCo) 30건을 기반으로, 수술 중 삽입·조작·가림·제거되는 이물질을 시간에 걸쳐 추적하게 하는 영상 VQA 벤치마크. VQA 30,000쌍이며 FRAME 12,000, SEGMENT 12,000, PROCEDURE 6,000쌍으로 나뉜다. 객체 인식, 시간 접지, 집계, 사건·절차 이해, 복합 추론의 5개 핵심 능력을 다루고 지표는 정확도이다.",
+            "대표 과제": "FRAME(단일 프레임), SEGMENT(최대 5분 영상 구간), PROCEDURE(수술 시작부터 특정 시점까지의 영상)의 3개 트랙에서 이물질 관련 질문에 답하기",
+            "대표 예시·설명": "영어 프롬프트로 복강경 수술 영상(프레임, 구간 또는 시작부터 특정 시점까지)을 주고 이물질에 관한 질문에 답하게 하는 과제 설명. 예를 들어 영상에서 거즈가 몇 개 보였는지, 특정 이물질이 언제 마지막으로 보였는지를 묻는다. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "논문 1쪽에 따르면 데이터는 Hugging Face에 공개될 예정이며 그때까지는 교신저자에게 접근을 요청해야 한다. 코드 저장소는 이미 공개되어 있다. 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 이 제안 단계에서 확인하지 않았다. 코드 저장소의 라이선스가 데이터 라이선스를 대신하지 않으므로 공개 후 데이터 카드를 따로 확인해야 한다. 논문 결과는 논문 조건의 모델 비교이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/IMSY-DKFZ/orena-focus"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Long-context video understanding (VQA on foreign-object tracking in surgical video)",
+            "definition": "A video VQA benchmark built on 30 Heidelberg colorectal surgeries (HeiCo) in which models must track foreign objects that are inserted, manipulated, occluded and removed over procedures lasting up to hours. It has 30,000 VQA pairs split into FRAME 12,000, SEGMENT 12,000 and PROCEDURE 6,000. It covers five core capabilities (object recognition, temporal grounding, aggregation, event and procedural understanding, complex reasoning) and uses accuracy as the metric.",
+            "task": "Answer questions about foreign objects in three tracks: FRAME (single frame), SEGMENT (video segment of up to 5 minutes), and PROCEDURE (video from the start of surgery up to a time point).",
+            "example": "Task description, not an actual test item: an English prompt gives a laparoscopic surgery video (a frame, a segment, or the procedure from its start up to a time point) and asks a question about foreign objects, such as how many sponges appeared or when an object was last visible."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "evaluating long-context video"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "multi-track evaluation framework"
+            },
+            "대표 예시·설명": {
+              "page": 18,
+              "quote": "You are assisting"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/IMSY-DKFZ/orena-focus"
+            },
+            "언어": {
+              "page": 18,
+              "quote": "You are assisting"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "we introduce HeiCo-FOCUS"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "30,000 visual question"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "evaluating long-context video"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.10156",
+      "paper_title": "HeiCo-FOCUS: A Clinically Grounded Dataset for Long-Context Video Understanding",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.10156",
+        "sha256": "0043080a404b3f70dbfb9cd05b2a68c3d95e80c3e5df2a01b0ae3c78a1a3f070",
+        "accessed": "2026-11-13T03:45:34Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 28,
+          "elapsed_seconds": 83.32,
+          "pdf_sha256": "0043080a404b3f70dbfb9cd05b2a68c3d95e80c3e5df2a01b0ae3c78a1a3f070",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 1,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "58d25cf92cfc20e2bdea94b4e49b176f834807ddc59d0bb02c3f2977f163ce5e",
+          "page_json_file": "2610.10156.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/IMSY-DKFZ/orena-focus",
+            "fetched_url": "https://api.github.com/repos/IMSY-DKFZ/orena-focus/readme",
+            "sha256": "1c87235e28e2295d4b14bac3208b776a17df019357faad8f7ccf1be3e1df3769",
+            "accessed": "2026-11-13T03:47:52Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/IMSY-DKFZ/orena-focus/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "7dc64223a78f8639025f88821076d1ce93b6e9ece54155a3036f5978a9200f3e"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-13T03:47:52Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.10156",
+        "paper_title": "HeiCo-FOCUS: A Clinically Grounded Dataset for Long-Context Video Understanding",
+        "abstract": "Recent advances in Vision-Language Models (VLMs) have led to rapid progress in video understanding across a wide range of benchmark tasks. However, existing evaluations largely focus on short-term reasoning, failing to assess a critical capability: maintaining cumulative temporal consistency over extended time horizons. To close this evaluation gap, we introduce HeiCo-FOCUS, a clinically grounded dataset for evaluating long-context video understanding through the task of Foreign Object Contextual Understanding in Surgery. Built on a dataset of Heidelberg Colorectal surgeries, this task requires models to continuously track multiple objects as they are inserted, manipulated, occluded, and removed over procedures lasting up to hours. HeiCo-FOCUS comprises 30,000 visual question answering (VQA) pairs covering five core capabilities: object recognition, temporal grounding, aggregation, event and procedural understanding, and complex reasoning. The dataset was constructed through a rigorous multi-stage annotation pipeline involving large-scale crowd annotation and 39 surgical domain experts to ensure high quality and clinical relevance. To systematically probe model behavior, we introduce a multi-track evaluation framework that progressively increases temporal and contextual demands from single frames to full procedures. Experiments with ten frontier VLMs show that HeiCo-FOCUS tasks are far from solved: only around half of the models clearly outperform a text-only baseline. Across the video tracks, models perform best on event and procedural understanding (mean Accuracy: 56.5% across all models), while temporal grounding remains particularly challenging for all evaluated models (mean Accuracy: 19.7%). We therefore expect HeiCo-FOCUS to serve as a catalyst for the development of models capable of reliable, temporally consistent reasoning over hours-long videos.",
+        "paper_updated": "2026-10-08T00:00:00Z",
+        "created_at": "2026-10-19T13:49:43Z",
+        "input_sha256": "0c043660e898dfc02b676f9d72cd305cd272537adc5782a287b06df719f2e8db",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "수술 장기 영상 이해 벤치마크로 VLM 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "수술 영상 장문 이해용 VQA 벤치마크·평가 프레임워크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43353033985",
+        "context_sha256": "e3869b454e909e65568f63fdbd61216d8c0cd158edeafc3f9dfa31035732d17f"
+      },
+      "proposal_sha256": "83ebea7430583fc2c8db25e80db7cc3988167bbccbd26a224b25c000f698cffc"
     }
   },
   "processed_comments": [],
@@ -97840,8 +98013,8 @@
         "2610.10156"
       ],
       "abstract_attempted": [],
-      "calls": 40,
-      "cost_usd": 34.7275
+      "calls": 41,
+      "cost_usd": 35.6059
     }
   },
   "reaudits": [
