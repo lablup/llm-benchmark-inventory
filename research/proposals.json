@@ -62420,6 +62420,105 @@
         "reviewed_sha256": "60bf77aac5727843404a349c26b4b360aeb8fadbddef9e96b2195e88ebf76316",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.10619": {
+      "decision": "exclude",
+      "reason": "이 논문은 기존 에이전트 코딩 벤치마크(DeepSWE, SkillsBench, SWE-Marathon, SWE-bench Verified, SWE-bench Pro)의 통과 판정을 감사하는 방법론(TestJack)을 제안합니다. 새로운 과제 집합이나 데이터셋을 만들거나 기존 벤치마크 문항을 실질적으로 갱신하지는 않습니다. 감사에 쓴 시도(trial) 기록은 논문 내부 분석용 코퍼스이고, 재사용 가능한 벤치마크로 공개된 자료가 아닙니다. 결과로 보고된 수치(refutation 34.4%, 해결률 50.6%에서 33.2%로 하락)는 대상 벤치마크의 점수 해석에 관한 것입니다. 따라서 인벤토리에 새 행을 추가하거나 기존 행을 갱신할 근거가 부족하여 제외합니다.",
+      "changes": [],
+      "arxiv_id": "2610.10619",
+      "paper_title": "TestJack: Should you trust the results in coding benchmarks? Agentic Coding Benchmarks Auditing via Evaluator Evolution",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.10619",
+        "sha256": "d9c858663c27e229f4b77abbc55109c75782d59235fa882af7612aa0705da242",
+        "accessed": "2026-11-13T03:30:17Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 36,
+          "elapsed_seconds": 103.23,
+          "pdf_sha256": "d9c858663c27e229f4b77abbc55109c75782d59235fa882af7612aa0705da242",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "4977c2885ccfddc03783e600f5f8eb1aae7b9df06bf39bf9e43a3dec07f6d816",
+          "page_json_file": "2610.10619.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-13T03:32:08Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.10619",
+        "paper_title": "TestJack: Should you trust the results in coding benchmarks? Agentic Coding Benchmarks Auditing via Evaluator Evolution",
+        "abstract": "Large language model (LLM) agents are rapidly reshaping software engineering, accompanied by an explosion of new code benchmarks. Yet nearly all existing benchmarks still rely on the same decades-old criterion: a solution is correct if it passes a fixed set of unit tests. Such tests are often insufficient: they check only part of what the task requires, so agents can reward hack them or silently miss required behavior while still passing every test. As a result, higher benchmark scores may partly reflect better adaptation to the evaluator rather than better problem solving. Existing works focus on static test augmentation: they strengthen each task's tests once, before any trial is seen, and thus overlook how real trials actually fail. We introduce TestJack, a scalable framework for evaluating patches beyond fixed tests. For each trial, TestJack generates tests targeting prompt requirements the patch may violate, retains only tests passed by the ground-truth patch, and re-examines any trial failures. Each confirmed failure is thus supported by a replayable test. To reduce evaluation cost, we also introduce a lightweight variant which audits a random sample of trials in depth and reuses the resulting tests across all trials for the same task. Across 6 frontier model backends and 5 benchmarks such as DeepSWE and SWE Marathon, we find that about 34.4% of the model trials currently judged correct violate the task requirements, lowering the overall resolution rate from 50.6% to 33.2%. Our results reveal a fundamental limitation of current coding-agent evaluation: as LLMs become better at optimizing against fixed evaluators, those evaluators themselves must become more adaptive.",
+        "paper_updated": "2026-10-09T00:00:00Z",
+        "created_at": "2026-10-19T13:49:31Z",
+        "input_sha256": "489b17104a1a1b9aa68ca8b58cff43b61e8faa5ba03301977d7fddcfe79adb92",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 코딩 에이전트 벤치마크 감사 프레임워크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "코딩 벤치마크 감사 프레임워크 TestJack 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "273030cc67920b0b4104a76f464b84955a0e9fda1fd932931e7b69cfd5772039"
     }
   },
   "processed_comments": [],
@@ -97014,8 +97113,8 @@
         "2610.10619"
       ],
       "abstract_attempted": [],
-      "calls": 30,
-      "cost_usd": 26.2373
+      "calls": 31,
+      "cost_usd": 27.101
     }
   },
   "reaudits": [
