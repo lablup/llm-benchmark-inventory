@@ -60543,6 +60543,169 @@
       "proposal_sha256": "1528d3d08320fda9cc1a58381dedbce27ce5d3f3b24e275479aa9b82d5e65a32",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2604.17260": {
+      "decision": "propose",
+      "reason": "AMI-ME는 AMI Corpus의 영어 회의 전사문 130개 회의, 2,459개 구간에 사람이 구간별 효과성 점수를 매긴 재사용 가능한 메타평가 데이터셋이다. 자동 평가 프레임워크와 여러 LLM 벤치마크 실험도 함께 제시한다. 과제 언어는 영어이고 입력은 텍스트 전사문이므로 en 트랙의 text로 분류한다. 음성 입력 end-to-end 실험은 부가 평가이며 주 과제는 전사문 기반이다. 논문이 공식 저장소 github.com/ku-nlp/AMI-ME를 명시하므로 링크 요건을 충족한다. 라이선스 등 5개 항목은 자동 제안 규칙에 따라 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "ami-me",
+            "이름": "AMI-ME (AMI Meeting Effectiveness)",
+            "평가 축": "에이전트·대화 분석(회의 효과성의 시간적 세분화 평가, LLM-as-a-judge 메타평가)",
+            "언어": "en",
+            "정의": "AMI Corpus 회의 130개(시나리오 126, 영화 선택 2, 사무실 이전 2)에서 만든 메타평가 데이터셋. 주제 구간 2,459개에 구간당 독립 효과성 점수 3개(5점 척도)와 구간이 다루는 회의 목표 다중 라벨이 있다. 효과성은 목표 달성도를 시간 비용으로 나눈 값으로 정의한다. 평가자 간 일치도는 ICC(2,k) 0.8769와 0.8202. 자동 프레임워크는 목표 분류, 주제 분할, 구간 점수화로 구성되고, 점수는 구간 정렬 후 Spearman과 Kendall로, 분할은 Pk와 WindowDiff로, 목표 분류는 Hamming Loss와 Micro-F1로 평가한다.",
+            "대표 과제": "회의 전사문에서 주제 구간을 나누고 각 구간의 효과성 점수를 예측해 사람 점수와의 상관을 측정(시나리오·비시나리오 회의 분리 평가, 음성 입력 end-to-end 실험 포함)",
+            "대표 예시·설명": "회의 전사문과 회의 목표가 주어지면 각 주제 구간이 목표 달성에 얼마나 효율적으로 기여했는지 1~5점으로 평가하는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못해 '확인 불가'로 둔다. 논문 윤리 항목은 CC BY 4.0 공개 예정이라고 쓰지만 공개된 저장소 상태는 이용 전에 직접 확인해야 한다. 원천 AMI Corpus의 약관도 별도로 점검해야 한다. 데이터는 주로 시뮬레이션된 비즈니스 회의이고 실제 조직 회의를 대표하지 못한다는 한계를 논문이 밝힌다. 효과성 점수 예측에는 LLM 호출 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/ku-nlp/AMI-ME"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents and dialogue analysis (temporal fine-grained meeting effectiveness evaluation, LLM-as-a-judge meta-evaluation)",
+            "definition": "A meta-evaluation dataset built from 130 AMI Corpus meetings (126 scenario, 2 film-selection, 2 office-relocation). It has 2,459 topical segments, each with three independent effectiveness scores on a 5-point scale and multi-label annotations of the meeting objectives addressed. Effectiveness is defined as objective achievement divided by time cost. Inter-annotator agreement is ICC(2,k) 0.8769 and 0.8202. The automatic framework has objective classification, topic segmentation and segment scoring. Scores are evaluated with Spearman and Kendall after segment alignment, segmentation with Pk and WindowDiff, and objective classification with Hamming Loss and Micro-F1.",
+            "task": "Segment a meeting transcript by topic and predict each segment's effectiveness, measuring correlation with human scores (scenario and non-scenario meetings analyzed separately, plus an end-to-end experiment from raw speech)",
+            "example": "Task description (not an actual test item): given a meeting transcript and the meeting objectives, rate each topical segment from 1 to 5 on how efficiently it contributed to the objectives."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "meeting transcript"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "AMI Meeting Effectiveness"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "AMI Meeting Effectiveness"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/ku-nlp/AMI-ME"
+            },
+            "언어": {
+              "page": 13,
+              "quote": "Hi, I'm David"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "AMI Meeting Effectiveness"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "AMI Meeting Effectiveness"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "AMI Meeting Effectiveness"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2604.17260",
+      "paper_title": "Rethinking Meeting Effectiveness: A Benchmark and Framework for Temporal Fine-grained Automatic Meeting Effectiveness Evaluation",
+      "paper_updated": "2026-10-08T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2604.17260",
+        "sha256": "9a9733f791f1d02e40d544437b42e997e7b1573dc730eb9080dd262b36fd21ac",
+        "accessed": "2026-11-13T03:00:42Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 18,
+          "elapsed_seconds": 60.56,
+          "pdf_sha256": "9a9733f791f1d02e40d544437b42e997e7b1573dc730eb9080dd262b36fd21ac",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "04f27ad6ff27755700503822d0d065e74fce6107a4d680c9e81e045340be6856",
+          "page_json_file": "2604.17260.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/ku-nlp/AMI-ME",
+            "fetched_url": "https://api.github.com/repos/ku-nlp/AMI-ME/readme",
+            "sha256": "03d58f417864a70cca5f3adaff58b927fce0d1aa675afb743e02b4abc34d6e85",
+            "accessed": "2026-11-13T03:02:06Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/ku-nlp/AMI-ME/license",
+              "name": "LICENSE",
+              "spdx_id": "CC-BY-4.0",
+              "sha256": "fe7b4ce83b8381cc5b216bbb4af73c570688d1b819c73bbaed8ca401f4677cd6"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-13T03:02:06Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2604.17260",
+        "paper_title": "Rethinking Meeting Effectiveness: A Benchmark and Framework for Temporal Fine-grained Automatic Meeting Effectiveness Evaluation",
+        "abstract": "Evaluating meeting effectiveness is crucial for improving organizational productivity. Current approaches rely on post-hoc surveys that yield a single coarse-grained score for an entire meeting. The reliance on manual assessment is inherently limited in scalability, cost, and reproducibility. Moreover, a single score fails to capture the dynamic nature of collaborative discussions. We propose a new paradigm for evaluating meeting effectiveness centered on novel criteria and temporal fine-grained approach. We define effectiveness as the rate of objective achievement over time and assess it for individual topical segments within a meeting. To support this task, we introduce the AMI Meeting Effectiveness (AMI-ME) dataset, a new meta-evaluation dataset containing 2,459 human-annotated segments from 130 AMI Corpus meetings. We also develop an automatic effectiveness evaluation framework that uses a Large Language Model (LLM) as a judge to score each segment's effectiveness relative to the overall meeting objectives. Through substantial experiments, we establish a comprehensive benchmark for this new task and evaluate the framework's generalizability across distinct meeting types, ranging from business scenarios to unstructured discussions. Furthermore, we benchmark end-to-end performance starting from raw speech to measure the capabilities of a complete system. Our results validate the framework's effectiveness and provide strong baselines to facilitate future research in meeting analysis and multi-party dialogue. Our dataset and code will be publicly available. The AMI-ME dataset and the Automatic Evaluation Framework are available at https://github.com/ku-nlp/AMI-ME.",
+        "paper_updated": "2026-10-08T00:00:00Z",
+        "created_at": "2026-10-19T13:49:19Z",
+        "input_sha256": "bffa362612711f8c61e50f4f4316a92d64cb922f51f692ec614464a567c83f5b",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "회의 효과성의 시간적 세분화 자동 평가 벤치마크와 LLM 심판"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "회의 효과성 시간 세분 평가용 AMI-ME 데이터셋·프레임워크 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43353033985",
+        "context_sha256": "76dd0b8356a53d1d4318001d7c4b7306482e4d333da912788d54aa5190a6977b"
+      },
+      "proposal_sha256": "84d6ff401535957e7ca1757e89fc177355cadf7e7ee47d632cddc728178b6e64"
     }
   },
   "processed_comments": [],
@@ -95124,8 +95287,8 @@
         "2604.17260"
       ],
       "abstract_attempted": [],
-      "calls": 10,
-      "cost_usd": 8.7628
+      "calls": 11,
+      "cost_usd": 9.6092
     }
   },
   "reaudits": [
