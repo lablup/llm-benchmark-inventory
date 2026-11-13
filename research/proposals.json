@@ -60445,74 +60445,9 @@
       }
     },
     "2603.20576": {
-      "decision": "propose",
-      "reason": "이 논문은 데이터 에이전트를 평가하는 새 벤치마크 DAB를 제안하고 공개 저장소를 PDF에서 직접 밝힌다. 질의 104개, 데이터셋 17개, DBMS 4종으로 구성된 영어 텍스트 과제이므로 en 트랙의 text 행 하나로 제안한다. 기존 인벤토리에는 같은 벤치마크가 없다. 라이선스와 lm-eval 지원 여부는 확인하지 않아 '확인 불가'로 기록했다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "dab",
-            "이름": "Data Agent Benchmark (DAB)",
-            "평가 축": "에이전트(다중 데이터베이스 데이터 질의응답)",
-            "언어": "en",
-            "정의": "실제 기업 데이터 에이전트의 특성을 반영한 벤치마크. 질의 104개, 데이터셋 17개, 데이터베이스 시스템 4종으로 구성되며, 에이전트가 여러 이기종 데이터베이스에 걸쳐 도구로 질의하고 비정형 텍스트에서 값을 추출해 답을 낸다.",
-            "대표 과제": "여러 데이터베이스(PostgreSQL, MongoDB, SQLite, DuckDB)에 분산된 데이터를 조인·정제·추출해 자연어 질의에 답하기",
-            "대표 예시·설명": "과제 설명: 영어 자연어 질의(예: 특정 조건을 만족하는 도서 목록 찾기)를 받은 에이전트가 두 데이터베이스에 나뉜 표를 서로 다른 형식의 식별자로 연결하고, 자유 텍스트 열에서 값을 추출해 최종 답을 낸다. 실제 시험 문항이 아니다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 아직 확인하지 않았다. 코드 라이선스는 데이터 라이선스를 입증하지 못하므로 이용 전에 공식 저장소에서 구성 요소별 약관을 따로 확인해야 한다. 실행에는 여러 데이터베이스 환경과 에이전트 하니스가 필요하다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/ucbepic/DataAgentBench"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agents (question answering over multiple databases)",
-            "definition": "A benchmark that reflects properties of real enterprise data agents. It has 104 queries over 17 datasets and 4 database systems. An agent queries several heterogeneous databases through tools and extracts values from unstructured text to produce an answer.",
-            "task": "Answer natural-language queries by joining, cleaning and extracting data spread across multiple databases (PostgreSQL, MongoDB, SQLite, DuckDB)",
-            "example": "Task description, not an actual test item: given an English natural-language query (for example, finding books that meet certain conditions), the agent links tables split across two databases using differently formatted identifiers, extracts values from a free-text column, and returns the final answer."
-          },
-          "evidence": {
-            "modality": {
-              "page": 1,
-              "quote": "104 queries across"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "104 queries across"
-            },
-            "대표 예시·설명": {
-              "page": 4,
-              "quote": "Which English-language books"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/ucbepic/DataAgentBench"
-            },
-            "언어": {
-              "page": 4,
-              "quote": "Which English-language books"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "Data Agent Benchmark"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "104 queries across"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "Data Agent Benchmark"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "DAB 행을 공개하려면 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목에 명시적 근거가 있어야 하는데, 수정·파생과 재배포는 PDF와 공식 저장소 카드 어디에도 해당 조건을 직접 밝힌 문구가 없고, 상업적 이용도 문구가 간접적이라 게시할 수 없습니다. (1) PDF 10쪽 윤리 절에 \"We release DAB's transformation scripts, validation scripts, and evaluation code under the MIT license; the transformed datasets are released for research use only, consistent with the licenses of their underlying sources.\"라는 문장이 있습니다. 이 문장은 코드에는 MIT를 부여하지만 코드 라이선스는 데이터 라이선스가 아닙니다. 데이터에 대해서는 연구용 한정이라는 제한만 밝힐 뿐 수정·파생이나 재배포 허용 여부를 말하지 않으며, 상업적 이용 불가라고도 명시하지 않았습니다. 이 문장이 데이터셋 자체의 이용 범위를 언급하므로 '미표기(논문·공식 저장소 확인)'와 '저작권 전부 보유' 방식의 부재 증거로 처리할 수 없고, 수정·파생과 재배포를 직접 인용할 구절도 없습니다. (2) 이 벤치마크는 다른 데이터에서 만들어졌습니다. PDF 4쪽에 따르면 17개 데이터셋 중 agnews, crmarenapro, imdb, krama는 기존 벤치마크에서 가져왔고 나머지 14개는 공개 데이터 저장소에서 가져왔는데, 14개 각각의 출처와 약관은 PDF에 열거되어 있지 않아 구성 요소별 이용 조건을 증명할 수 없습니다. (3) 공식 저장소 README 카드(https://github.com/ucbepic/DataAgentBench)에는 라이선스 문구나 LICENSE 파일 절이 없어 데이터 라이선스를 직접 인용할 곳이 없습니다. 저자가 데이터셋의 라이선스(수정·파생, 재배포, 상업적 이용 조건과 구성 요소별 적용 범위)를 저장소나 논문에 명시하면 그 문구를 인용해 다시 제안할 수 있습니다. 성능 비교(논문 표 3)는 근거가 있으나, 권리 항목이 비어 있어 이번에는 아무것도 게시하지 않습니다.",
+      "changes": [],
       "arxiv_id": "2603.20576",
       "paper_title": "Can AI Agents Answer Your Data Questions? A Benchmark for Data Agents",
       "paper_updated": "2026-10-09T00:00:00Z",
@@ -60579,7 +60514,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-13T03:00:01Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -60605,11 +60540,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43353033985",
-        "context_sha256": "d0e16db19088f9d3cbfece5c9093ff334d4c0707a4ebbd177cfb77bd01247a3e"
-      },
-      "proposal_sha256": "1685e98e86a9128c540ed74b7fecd4195b62259249b8bd6ba9367fbd9863a68b"
+      "proposal_sha256": "1528d3d08320fda9cc1a58381dedbce27ce5d3f3b24e275479aa9b82d5e65a32",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -95190,8 +95123,8 @@
         "2603.20576"
       ],
       "abstract_attempted": [],
-      "calls": 9,
-      "cost_usd": 7.7957
+      "calls": 10,
+      "cost_usd": 8.7628
     }
   },
   "reaudits": [
