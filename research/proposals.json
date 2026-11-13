@@ -62897,7 +62897,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-13T03:37:20Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -62923,12 +62923,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43353033985",
-        "context_sha256": "3b044ac6e4fce6866f2126ce8b4cdfbdce74357d43d393cd1af62691b0f96219"
-      },
       "proposal_sha256": "3575107a65ac2921154d138c12bf93b8615a5b3157133206ba776cf40f40d224",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안 내용은 논문 PDF와 공식 README·LICENSE로 뒷받침되어 승인합니다. 1) 추천 점수는 논문 Table 6의 총점(만점 280점)과 일치합니다: claude-fable-5-1 210.79, gpt-6-astra 199.73, kimi-k-3 191.36, grok-4-7 187.78, gemini-3-1-pro 149.00. 각 행의 WC001~WC005 합계도 총점과 맞습니다. 모든 모델이 같은 고정 프롬프트, 같은 judge 설정, 모델당 월드 1개 조건에서 비교된 것이고, 비교 대상 5개 모델이 전부 목록에 있어 상위 3개 선택에 문제가 없습니다. 점수가 높을수록 좋은 방향이며, 논문 보고값이고 현재 전역 리더보드가 아니라는 단서도 적혀 있습니다. 공개 가중치 여부는 null이며 비공개로 해석하지 않았습니다. 2) 정의의 세부 내용(약 2,000단어 프롬프트, 280점 구성, WC001~WC005 배점, 코드 인용 검증과 픽셀 측정, 모델 5종, 월드 1개씩)은 논문 3~5쪽, 9쪽, 12쪽과 일치합니다. 3) 라이선스는 README가 코드에 MIT, outputs/ 데이터에 CC BY 4.0을 별도로 부여한다고 밝힌 내용과 LICENSE 파일의 MIT 조항으로 확인됩니다. 코드 라이선스만으로 데이터 권리를 추정하지 않고 데이터 라이선스를 따로 근거로 삼았고, 이용·수정·재배포 항목은 MIT 허가 문구에 부합합니다. 4) 이 벤치마크는 외부 데이터셋에서 파생되지 않고 하나의 고정 프롬프트로 구성되므로 파생 출처 고지가 필요하지 않습니다. 이용 시 유의사항에는 judge 계열 편향 미측정, 이웃 모델 간 점수 차이가 judge 잡음 범위라는 점, 실행 환경 요건이 반영되어 있습니다. 5) lm-eval 지원 '미표기'는 공식 README와 논문 어디에도 lm-eval이나 lm-evaluation-harness 언급이 없어 허용되는 확정값입니다. 6) 미확인 또는 확인 불가 값은 없습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 210431,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2487,
+              "output_tokens_details": {
+                "thinking_tokens": 1586
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 210431,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2487,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 210431,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 210431
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.8666629,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "3575107a65ac2921154d138c12bf93b8615a5b3157133206ba776cf40f40d224",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -97526,8 +97572,8 @@
         "2610.10622"
       ],
       "abstract_attempted": [],
-      "calls": 35,
-      "cost_usd": 30.4755
+      "calls": 36,
+      "cost_usd": 31.3422
     }
   },
   "reaudits": [
