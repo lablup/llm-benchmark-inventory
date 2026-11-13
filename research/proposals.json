@@ -60784,7 +60784,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-13T03:02:06Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -60810,12 +60810,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43353033985",
-        "context_sha256": "76dd0b8356a53d1d4318001d7c4b7306482e4d333da912788d54aa5190a6977b"
-      },
       "proposal_sha256": "9e981254eaa7a1f4c30c491e71e6e877370b367fc508d436fdba96169daec945",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 사실을 논문 본문과 공식 카드(README, LICENSE)에서 대조한 결과 모두 뒷받침된다. 데이터 규모는 회의 130개(시나리오 126, 영화 선택 2, 사무실 이전 2)와 구간 2,459개이며, 구간당 독립 점수 3개(5점 척도)와 목표 다중 라벨, ICC 0.8769와 0.8202, 효과성 정의, 평가 지표(Spearman, Kendall, Pk, WindowDiff, Hamming Loss, Micro-F1)도 일치한다. 언어는 영어, 모달리티는 텍스트 전사문으로 적절하다. 라이선스는 README와 LICENSE 파일에 데이터 CC BY 4.0, 코드 Apache-2.0으로 명시되어 있고 논문 윤리 항목과도 충돌이 없다. 상업적 이용, 수정·파생, 재배포는 CC BY 4.0 조항에서 도출된 값이고 발명된 권한이나 누락된 제한은 없다. 파생 데이터셋인 점도 이용 유의사항에 AMI Corpus 원본과 LLM 생성 구간을 각각 따로 확인하라고 명시했다. lm-eval 지원은 공식 카드에 언급이 없고 논문 pdf_mentions도 비어 있으므로 미표기가 올바른 확정값이다. 권장 모델 점수는 Table 1의 All Meetings Spearman 열과 모두 일치하고(Llama3.3 0.6072, DeepSeek-R1-70B 0.6132, Qwen3 reasoning 0.6113, Qwen3 non-reasoning 0.6445, GPT-4o 0.6341, Gemini-2.5-Flash 0.5624), 동일한 데이터셋, 정답 분할과 목표 입력, 문맥 창 1이라는 같은 조건의 단일 실험에서 가져왔다. 비교 대상 6개 모델이 모두 포함되어 상위 3개 선정이 정당하고, 지표 방향(높을수록 좋음)도 맞다. 가중치 공개 여부는 부록 D에서 오픈소스 모델 3종과 상용 모델 2종으로 명시되어 있어 근거가 있다. MinerU와 Poppler 추출 간 수치 충돌은 없으며 각주 기호 표기 차이만 있다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 216523,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2106,
+              "output_tokens_details": {
+                "thinking_tokens": 1241
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 216523,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2106,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 216523,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 216523
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.8872209,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "9e981254eaa7a1f4c30c491e71e6e877370b367fc508d436fdba96169daec945",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -95397,8 +95443,8 @@
         "2604.17260"
       ],
       "abstract_attempted": [],
-      "calls": 12,
-      "cost_usd": 10.5508
+      "calls": 13,
+      "cost_usd": 11.438
     }
   },
   "reaudits": [
