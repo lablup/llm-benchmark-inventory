@@ -61416,7 +61416,7 @@
     },
     "2609.03580": {
       "decision": "propose",
-      "reason": "HalluPeer는 학술 피어리뷰의 환각을 탐지·분류·위치 지정하는 재사용 가능한 벤치마크입니다. 논문 원문과 영어 리뷰 문장을 다루므로 en 트랙의 text 모달리티로 분류했습니다. 공식 GitHub 링크는 PDF 1쪽에 있습니다. 라이선스 등 5개 필드는 확인하지 못해 '확인 불가'로 기록했습니다. 이전 응답에서 검증기가 거부한 인용문은 PDF 원문에 실제로 있는 짧은 문장으로 교체했습니다.",
+      "reason": "HalluPeer는 학술 피어리뷰의 환각을 탐지·분류·위치 지정하는 벤치마크입니다. 논문 원문과 영어 리뷰 문장을 다루므로 en 트랙의 text 모달리티로 분류했습니다. 공식 README는 데이터셋에 CC BY-NC 4.0을, 코드에 Apache License 2.0을 부여한다고 밝혀 라이선스 항목은 해당 문구로 채웠습니다. lm-eval 지원은 공식 README와 논문 어디에도 언급이 없어 '미표기'로 두었습니다. 성능 비교는 논문 Table 3(NeurIPS 2024, 위치 지정 Token-F1)의 제로샷 프롬프팅 모델 7종입니다.",
       "changes": [
         {
           "track": "en",
@@ -61429,12 +61429,12 @@
             "대표 과제": "리뷰 또는 문장의 환각 여부 탐지, 환각 유형 분류, 환각 span 위치 지정",
             "대표 예시·설명": "논문 근거를 주고 리뷰 문장이 논문과 어긋나는 환각인지 판정하게 하는 영어 프롬프트 기반 과제 설명(실제 문항 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했다. 데이터는 OpenReview의 ICLR(2019–2024)과 NeurIPS(2021–2024) 논문·리뷰에서 만들어졌고 환각은 LLM으로 주입한 합성 데이터이므로, 각 원천의 약관을 이용 전에 따로 확인해야 한다. 컴퓨터과학 학회에 한정되며, 논문의 결과는 해당 논문 조건의 값이다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-NC-4.0(데이터), 코드는 Apache-2.0",
+            "상업적 이용": "불가",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "출처 표기(BY)가 필요하고 비상업 목적에 한한다. 공식 README는 코드에 Apache License 2.0을, 데이터셋에 CC BY-NC 4.0을 별도로 부여하며, 데이터셋에 포함된 제3자 논문·리뷰 텍스트는 데이터셋 카드를 보라고 안내한다. 이 벤치마크는 다른 출처로 구성되어 있다: OpenReview의 ICLR(2019–2024)과 NeurIPS(2021–2024) 논문·리뷰이며(논문 4쪽), 환각은 LLM으로 주입한 합성 데이터이다. 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 코드의 Apache-2.0은 데이터 라이선스가 아니다. 컴퓨터과학 학회에 한정되며(논문 10쪽), 공식 README에 lm-eval 언급이 없고 자체 평가 스크립트로 실행한다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/Lin-TzuLing/HalluPeer"
           },
           "modality": "text",
@@ -61478,9 +61478,127 @@
               "quote": "a benchmark for"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/Lin-TzuLing/HalluPeer",
+              "quote": "dataset is released under"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/Lin-TzuLing/HalluPeer",
+              "quote": "non-commercial use only"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/Lin-TzuLing/HalluPeer",
+              "quote": "CC BY-NC 4.0"
+            },
+            "재배포": {
+              "source_url": "https://github.com/Lin-TzuLing/HalluPeer",
+              "quote": "CC BY-NC 4.0"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/Lin-TzuLing/HalluPeer",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Token-F1 (hallucination span localization, token-level F1 on a 0–1 scale)",
+            "setting": "Results reported in this paper (Table 3), HalluPeer NeurIPS 2024 split, Task 3 review-level span localization, zero-shot prompting group only, under the default evidence retrieval and prompting settings of Sec. 5.2. The fine-tuned models in the same table are trained on HalluPeer and are not included. These are results reported in this paper, not a current global leaderboard.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Qwen3-32B",
+                "score": "0.46",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Qwen3-32B 0.46"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 16,
+                  "quote": "https://huggingface.co/Qwen/Qwen3-32B"
+                }
+              },
+              {
+                "model": "Llama-3.3-70B",
+                "score": "0.49",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Llama-3.3-70B 0.49"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 16,
+                  "quote": "huggingface.co/meta-llama/Llama-3.3-70B-Instruct"
+                }
+              },
+              {
+                "model": "Mistral-Small-3.1",
+                "score": "0.40",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Mistral-Small-3.1 0.40"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 16,
+                  "quote": "huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503"
+                }
+              },
+              {
+                "model": "GPT-OSS-20B",
+                "score": "0.51",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-OSS-20B 0.51"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 16,
+                  "quote": "huggingface.co/openai/gpt-oss-20b"
+                }
+              },
+              {
+                "model": "GPT-OSS-120B",
+                "score": "0.55",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-OSS-120B 0.55"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 16,
+                  "quote": "huggingface.co/openai/gpt-oss-120b"
+                }
+              },
+              {
+                "model": "Judge-Llama-70B",
+                "score": "0.50",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Judge-Llama-70B 0.50"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 16,
+                  "quote": "huggingface.co/root-signals/RootSignals-Judge-Llama-70B"
+                }
+              },
+              {
+                "model": "GPT-5.2 (gpt-5.2-2025-12-11)",
+                "score": "0.58",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.2 0.58"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.03580",
@@ -61595,7 +61713,8 @@
         "source_run": "43353033985",
         "context_sha256": "7fe8c81233ba85dc0967ab9bbb593156f63d74711eb4aaff1c2662e465fd3e77"
       },
-      "proposal_sha256": "58832d070b08f5d444f880d5b9760b728a9f87d59a6bf4f150e64025064b68da"
+      "proposal_sha256": "893e95d3008090f1ef98824c4c82459b9ed0ead2f2d540092f3f836b98926bb1",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -96181,8 +96300,8 @@
         "2609.03580"
       ],
       "abstract_attempted": [],
-      "calls": 20,
-      "cost_usd": 18.0104
+      "calls": 21,
+      "cost_usd": 19.0459
     }
   },
   "reaudits": [
