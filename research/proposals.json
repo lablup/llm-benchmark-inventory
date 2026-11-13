@@ -61763,74 +61763,9 @@
       }
     },
     "2610.00839": {
-      "decision": "propose",
-      "reason": "이 논문은 블랙박스 LLM 모델 추출 공격 6종, 방어 10종, 적응형 공격 2종을 같은 조건에서 비교하는 재사용 가능한 벤치마크(MEA-Bench)를 새로 제안한다. 질의 풀과 held-out 평가가 ARC-Challenge, MMLU, GSM8K 등 영어 과제이고 텍스트만 입력으로 쓰므로 en/text 트랙에 한 행으로 추가한다. 공식 코드·산출물 URL이 초록에 명시되어 있다. 데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "mea-bench",
-            "이름": "MEA-Bench",
-            "평가 축": "보안(LLM 블랙박스 모델 추출 공격·방어)",
-            "언어": "en",
-            "정의": "텍스트 전용 API 조건에서 모델 추출 공격 6종, 방어 10종, 적응형 공격 2종(DIPPER 패러프레이즈, 영-불-영 역번역)을 같은 모델 구성·질의 데이터·예산·held-out 평가로 비교하는 수명주기 벤치마크. 기본 질의 예산은 B=1000이고 예산 민감도 분석은 B∈{100, 1000, 10000}을 쓴다. 질의 풀은 100,000건이다. 능력은 held-out 6개 과제(ARC-Challenge, HellaSwag, MMLU, TruthfulQA MC1, WinoGrande, GSM8K) 정확도의 macro 평균으로 재고, 충실도는 3,000개 개방형 프롬프트의 baseline-rescaled BERTScore F1, 출력 품질은 Rep-4로 잰다. 방어는 질의 탐지, 안티 증류, 출처 탐지, 계보 검증 등 각자의 보안 지표를 대리 모델 능력·충실도와 따로 보고하며 하나의 종합 점수로 합치지 않는다. 논문 실험은 Llama-3.3-70B-Instruct→Llama-3.1-8B-Instruct(공격·적응형 공격)와 Qwen2.5-72B-Instruct→Qwen2.5-7B(방어) 구성에서 수행했다.",
-            "대표 과제": "공격 6종(SeqKD, Model Leeching, LoRD, SODA, GAD, QEDKS) 비교, 방어 10종 평가(질의 탐지 MMD/PRADA/SEAT, 안티 증류 ADS/DOGe/Trace Rewriting, 출처 ADFP/GINSEW/Radioactivity, 계보 DuFFin), 적응형 공격 평가, 질의 예산 민감도 분석",
-            "대표 예시·설명": "과제 설명: 피해자 모델의 응답을 수집해 소형 대리 모델을 학습시키는 추출 공격 파이프라인을 실행하고, 방어 유무와 응답 재작성(패러프레이즈·역번역) 조건에서 대리 모델의 능력, 충실도, 출처 탐지 점수를 측정한다. 실제 시험 문항을 옮긴 것이 아니다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 못했다. 질의 풀은 LMSYS-Chat-1M, NuminaMath-CoT, TriviaQA, MMLU, GSM8K 등 기존 공개 데이터에서 입력만 가져와 구성하고, 평가 과제도 기존 벤치마크를 쓴다(논문 6쪽, 19~20쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 논문 윤리 성명은 이 벤치마크가 모델 추출·모방의 권한을 주지 않으며 모델·데이터 라이선스와 서비스 약관을 지켜야 한다고 밝힌다. 공격 구현이 포함된 이중 용도 자료이므로 이용 범위를 점검해야 한다. 결과는 논문의 두 모델 쌍과 조건에 한정되며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/sliu11-byte/MEA-Bench"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Security (black-box LLM model extraction attacks and defenses)",
-            "definition": "A lifecycle benchmark that compares six model extraction attacks, ten defenses, and two adaptive attacks (DIPPER paraphrasing and English-French-English back-translation) under text-only API access, matching model configurations, query data, budgets, and held-out evaluation within each comparison. The default query budget is B=1000, and the budget-sensitivity analysis uses B in {100, 1000, 10000}. The master query pool has 100,000 queries. Capability is the macro-average accuracy over six held-out tasks (ARC-Challenge, HellaSwag, MMLU, TruthfulQA MC1, WinoGrande, GSM8K); fidelity is baseline-rescaled BERTScore F1 over 3,000 open-ended prompts; output quality is Rep-4. Defenses (query detection, anti-distillation, provenance, lineage verification) report their own security metrics separately from surrogate capability and fidelity, with no combined score. The paper's experiments use Llama-3.3-70B-Instruct to Llama-3.1-8B-Instruct (attacks and adaptive attacks) and Qwen2.5-72B-Instruct to Qwen2.5-7B (defenses).",
-            "task": "Compare six attacks (SeqKD, Model Leeching, LoRD, SODA, GAD, QEDKS); evaluate ten defenses (query detection MMD/PRADA/SEAT, anti-distillation ADS/DOGe/Trace Rewriting, provenance ADFP/GINSEW/Radioactivity, lineage DuFFin); evaluate adaptive attacks; analyze query-budget sensitivity.",
-            "example": "Task description, not an actual test item: run an extraction pipeline that collects a victim model's responses and trains a small surrogate, then measure surrogate capability, fidelity, and provenance-detector scores with and without defenses and with paraphrased or back-translated responses."
-          },
-          "evidence": {
-            "modality": {
-              "page": 1,
-              "quote": "text-only APIs"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "six extraction attacks,"
-            },
-            "대표 예시·설명": {
-              "page": 1,
-              "quote": "six extraction attacks,"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "https://github.com/sliu11-byte/MEA-Bench"
-            },
-            "언어": {
-              "page": 21,
-              "quote": "English baseline rescaling"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "MEA-Bench"
-            },
-            "정의": {
-              "page": 2,
-              "quote": "we introduce a"
-            },
-            "평가 축": {
-              "page": 2,
-              "quote": "we introduce a"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "데이터셋 라이선스에 대한 근거 문서가 공급되지 않아 게시할 수 없다. 공식 GitHub 카드의 MIT는 README 'Original MEA-Bench code and documentation are licensed under the MIT License'와 LICENSE 파일이 밝히듯 원 코드와 문서에만 적용된다. 같은 카드는 제3자 코드, 데이터셋, 모델 가중치가 각자의 상위 라이선스와 약관을 유지하며 MIT가 이를 재라이선스하지 않는다고 밝힌다. 이 벤치마크의 질의 풀은 별도 Hugging Face 데이터셋(watermarkproject/lord-mea-benchmark)으로 배포되는데 그 데이터 카드는 공급되지 않았다. 질의 풀은 LMSYS-Chat-1M, NuminaMath-CoT, TriviaQA, MMLU, GSM8K 등 기존 데이터에서 입력만 가져와 구성했고(논문 6쪽, 20쪽), 평가 과제도 기존 벤치마크다(논문 20쪽). 코드 라이선스를 데이터셋 라이선스로 간주할 수 없다. 카드에는 LICENSE 파일 항목이 있어 라이선스 미표기를 근거로 한 '저작권 전부 보유' 처리도 쓸 수 없다. 따라서 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목 모두 정책이 요구하는 명시적 근거를 제시할 수 없다. 기존 초안의 해당 칸 값은 게시 정책에 맞지 않으므로 사용하지 않는다. 질의 풀 데이터셋 카드를 공식 자료로 추가로 가져온 뒤 다시 제안해야 한다.",
+      "changes": [],
       "arxiv_id": "2610.00839",
       "paper_title": "Do Defenses Against LLM Extraction Work Across Attacks? A Lifecycle Benchmark of Black-Box Model Extraction",
       "paper_updated": "2026-10-08T00:00:00Z",
@@ -61899,7 +61834,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-13T03:20:51Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -61925,11 +61860,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43353033985",
-        "context_sha256": "5b90682be065d44994432b7c044f03271f6311319de6b6e131c25ae5fa70a2f9"
-      },
-      "proposal_sha256": "04efb7b21c0adb70a3b4012300e190c0d63464147cc33936f052087a144ba135"
+      "proposal_sha256": "81056ea0951ab6090279ab970ff2d65ece55f97725b305cccf57bddaf6d4fce9",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -96518,8 +96451,8 @@
         "2610.00839"
       ],
       "abstract_attempted": [],
-      "calls": 23,
-      "cost_usd": 20.8018
+      "calls": 24,
+      "cost_usd": 21.5987
     }
   },
   "reaudits": [
