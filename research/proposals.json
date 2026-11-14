@@ -66709,6 +66709,171 @@
       },
       "issue_url": null,
       "proposal_sha256": "b6618fa89066ee84ebb3bf0b93fd3dd28c4175ce474d5e089c2428cda685b08b"
+    },
+    "2405.01930": {
+      "decision": "propose",
+      "reason": "이 논문은 학술 논문의 related work 섹션 전체를 생성하는 대규모 데이터셋 OARelatedWork를 새로 제안한다. 입력은 대상 논문과 인용 논문의 전문(full text)이다. 과제 프롬프트가 영어이고 텍스트 전용이므로 en 트랙의 text 행으로 제안한다. 데이터셋 주소는 1쪽 각주에 있다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "oarelatedwork",
+            "이름": "OARelatedWork",
+            "평가 축": "장문 요약·생성(related work 섹션 전체 생성, 전문 기반)",
+            "언어": "en",
+            "정의": "오픈액세스 논문에서 related work 섹션 전체를 생성하는 대규모 다문서 요약 데이터셋. 대상 논문과 인용 논문의 초록 또는 전문을 입력으로 쓰며 논문 94,450편을 포함한다. 학습 91k, 검증 1.1k, 시험 1.9k 샘플이고, 검증·시험 분할은 모든 출처 논문의 전문이 있도록 구성했다. 평가는 ROUGE-1/2/L, BERTScore, 인용 F1과 문장 단위 LLM 판정(True, Wrong Cit., Unverifiable, False)을 쓴다.",
+            "대표 과제": "대상 논문(related work 제외)과 인용 논문의 초록·전문, 목표 길이, 구조화 여부를 받아 related work 섹션 전체 생성",
+            "대표 예시·설명": "대상 논문과 인용 논문 내용을 입력으로 받아 지정된 길이의 related work 섹션 전체를 쓰는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했다. 논문 부록 O는 CORE와 Semantic Scholar 말뭉치의 제3자 콘텐츠 라이선스가 별도로 적용될 수 있다고 밝히고 연구 목적으로만 제공한다고 적었으므로 이용 전에 구성 요소별 약관을 확인해야 한다. 컴퓨터과학 편중이 크고 텍스트 전용이며, PDF 파싱 오류와 사전학습 오염 가능성이 있다. 문장 단위 판정은 LLM 판정(논문은 Gemma 4 사용)에 의존한다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/BUT-FIT/OARelatedWork"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Long-form summarization and generation (whole related work section generation from full texts)",
+            "definition": "A large-scale multi-document summarization dataset for generating entire related work sections from open-access papers. Inputs are abstracts or full texts of the target paper and its cited papers. It includes 94,450 papers, with 91k training, 1.1k validation and 1.9k test samples; validation and test splits are built so every source paper is available in full text. Evaluation uses ROUGE-1/2/L, BERTScore, citation F1 and a statement-level LLM judge (True, Wrong Cit., Unverifiable, False).",
+            "task": "Given the target paper (without its related work section), abstracts or full texts of cited papers, a target length and a structure flag, generate the whole related work section.",
+            "example": "Task description (not an actual test item): read the target paper and its cited papers and write a whole related work section of the requested length."
+          },
+          "evidence": {
+            "modality": {
+              "page": 9,
+              "quote": "The dataset is"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "the task is"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "the task is"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "BUT-FIT/OARelatedWork"
+            },
+            "언어": {
+              "page": 24,
+              "quote": "Write the related"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "A Large-Scale Dataset"
+            },
+            "정의": {
+              "page": 3,
+              "quote": "the task is"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "A Large-Scale Dataset"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2405.01930",
+      "paper_title": "OARelatedWork: A Large-Scale Dataset of Related Work Sections with Full-texts from Open Access Sources",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2405.01930",
+        "sha256": "db6748523a07b629dbb4bc40877d887acae489659a3c858598dca814b8589637",
+        "accessed": "2026-11-14T03:56:13Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 25,
+          "elapsed_seconds": 136.45,
+          "pdf_sha256": "db6748523a07b629dbb4bc40877d887acae489659a3c858598dca814b8589637",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "ad1d3752331954e05c753e6a25e07cd4bf0f6cfebe8f78aaeb85401b70b85a81",
+          "page_json_file": "2405.01930.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/BUT-FIT/OARelatedWork",
+            "fetched_url": "https://huggingface.co/datasets/BUT-FIT/OARelatedWork/raw/main/README.md",
+            "sha256": "861f7315f3ef3e080439ffb0d72be35de157537ec3b3a88cf958c5478c7edc7c",
+            "accessed": "2026-11-14T03:59:11Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-14T03:59:11Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2405.01930",
+        "paper_title": "OARelatedWork: A Large-Scale Dataset of Related Work Sections with Full-texts from Open Access Sources",
+        "abstract": "This paper introduces OARelatedWork: a dataset for related work generation from open-access sources. It is the first large-scale multi-document summarization dataset for related work generation, containing whole related work sections and full texts of cited papers. Its validation and test splits are constructed so that every source paper is available in full text, enabling controlled evaluation of full-text related work generation. The dataset includes 94 450 papers from multiple domains. With OARelatedWork, we aim to shift the field from generating parts of related work sections from abstracts only to generating entire related work sections from all available content. We (i) benchmark a wide spectrum of models, highlighting that synthesizing massive full-text contexts remains challenge for tested cost-effective Large Language Models (LLMs): under our statement-level judge, GPT-4o-mini's evidence-grounded True rate drops from 92.9% with abstracts to 83.8% with full texts. We (ii) empirically analyze human writing behavior through a human evaluation over 40 papers and 408 factual statements, revealing that authors frequently introduce abstractive claims ungrounded in localized source texts; consequently, tested LLMs actually surpass human baselines in strict, evidence-grounded factuality. Finally, we (iii) conduct a fine-grained meta-evaluation, revealing that standard reference-based metrics are inadequate for evaluating such long-form structured outputs, and introduce a robust statement-level evaluation framework to address this gap.",
+        "paper_updated": "2026-10-12T00:00:00Z",
+        "created_at": "2026-10-19T13:50:08Z",
+        "input_sha256": "aeac2d0a0a04740f8c522af94d6550d2e2ceb481b1753119819d0bef628e84c0",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "다중문서 요약 데이터셋으로 LLM 관련 작업 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "관련주제 생성용 대규모 데이터셋과 평가 프레임워크 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43546947441",
+        "context_sha256": "262fa971c7a6f4969564bf92115bf3ffe2dd31d0940fa94572f4438746fa3dc0"
+      },
+      "proposal_sha256": "5c25942961da25b7724bee32a98b2fbef0d15726ca4977a99c63bb35c0a02f9b"
     }
   },
   "processed_comments": [],
@@ -102242,8 +102407,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 29,
-      "cost_usd": 23.4911
+      "calls": 30,
+      "cost_usd": 24.3268
     }
   },
   "reaudits": [
