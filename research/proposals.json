@@ -66543,6 +66543,94 @@
       },
       "issue_url": null,
       "proposal_sha256": "ccaef4777ed9eff10139cfb94d4f45ae58b3ce36c39ac3d457eefc3fd13c8876"
+    },
+    "2610.12190": {
+      "decision": "needs_evidence",
+      "reason": "DataSense-Bench는 에이전트가 후보 학습 데이터를 골라 순위를 매기고 영어 과제(TBLite, BFCL)로 사후 평가하는, 재사용 가능한 영어 벤치마크로 보입니다. 다만 제공된 PDF 텍스트에는 공식 데이터셋이나 코드 URL이 없습니다. 1쪽 각주 1에 'Code and Project page.'라는 문구만 있고 주소는 출력되지 않았습니다. 링크는 PDF가 직접 밝힌 공식 자원이어야 하므로 URL을 추측하거나 다른 주소로 대체할 수 없습니다. 링크 증거가 확보되면 en 트랙, text 모달리티 후보로 다시 검토할 수 있습니다.",
+      "changes": [],
+      "arxiv_id": "2610.12190",
+      "paper_title": "DataSense-Bench: The First Step Toward an AI Scientist",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.12190",
+        "sha256": "8023530641947ecaf4855981b1dfed34f7e53fc95b1fa792dc4ed9ea7a74d66e",
+        "accessed": "2026-11-14T03:45:44Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 25,
+          "elapsed_seconds": 142.9,
+          "pdf_sha256": "8023530641947ecaf4855981b1dfed34f7e53fc95b1fa792dc4ed9ea7a74d66e",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "2760ea581005b6919327cb333113d16714f1cf06e2df6f0e4441b44f36ca84b2",
+          "page_json_file": "2610.12190.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-14T03:48:13Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.12190",
+        "paper_title": "DataSense-Bench: The First Step Toward an AI Scientist",
+        "abstract": "As claims about recursive self-improvement (RSI) and artificial general intelligence (AGI) proliferate, we ask a simple question: do frontier AI models have a sense of data, i.e., can they reliably select the right data for training? We introduce DataSense-Bench to study this capability through the fundamental problem of data selection and performance forecasting in machine learning. We ask AI agents to select and rank candidate training subsets that can be used to fine-tune a small LLM model. Agents are allowed to inspect the data, write and execute analysis code, and run model forward passes, but can not train the model or access the actual evaluation tasks. We then fine-tune the base model on each selected subset and evaluate its post-training performance under a standardized protocol. We instantiate the benchmark in terminal problem solving and tool use, selecting trajectories from OpenThoughts-Agent and EnvScaler and evaluating on TBLite and BFCL, respectively. We then evaluate the agents along two complementary dimensions: the post-training performance of the top-ranked subset, reflecting the ability to identify high-value training data, and ranking accuracy, reflecting the ability to predict the relative performance of the selected subsets. In our experiments, selection gains over random selection are limited; agents do not reliably rank their selected groups, and ranking ability does not hold consistently across tasks: Astra identifies the best group in all three tool-use runs but in only one of three terminal runs. Analysis of execution traces on both tasks shows that agents often use similar data signals while interpreting their training value differently.",
+        "paper_updated": "2026-10-09T00:00:00Z",
+        "created_at": "2026-10-19T13:49:55Z",
+        "input_sha256": "b66aa2df0aef3d6144c89ee6dff69eb757fab7619ceb947574c2f21587d8de08",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "AI 과학자를 위한 데이터 선택 벤치마크를 제안함"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "데이터 선택 능력 평가 벤치마크 DataSense-Bench 신규 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "3e407d5533a8721d6906c0b4c26c7ebf7728dbab5a46a1da6afe3a6df2d5548a"
     }
   },
   "processed_comments": [],
@@ -102068,8 +102156,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 27,
-      "cost_usd": 21.7356
+      "calls": 28,
+      "cost_usd": 22.6659
     }
   },
   "reaudits": [
