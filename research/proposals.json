@@ -64529,74 +64529,9 @@
       }
     },
     "2609.24259": {
-      "decision": "propose",
-      "reason": "MemCalib는 에이전트 메모리 사용의 과다·과소 정도를 평가하는 재사용 가능한 새 벤치마크로, 코드와 데이터 링크를 논문이 직접 밝힌다. 과제 예시 질의가 영어이고 입력이 텍스트뿐이므로 en 트랙의 text 행으로 제안한다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않아 '확인 불가'로 기록했다. 모델 비교 점수는 별도 증거 단계의 대상이라 행에 넣지 않았다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "memcalib",
-            "이름": "MemCalib",
-            "평가 축": "에이전트(메모리 활용 보정: 과다·과소 사용)",
-            "언어": "en",
-            "정의": "에이전트 메모리 블록 속 원자 명제마다 응답에 미치는 영향 수준(Ignore/Bound/Control)을 목표에 맞게 쓰는지 평가하는 벤치마크. 건강, 일반 어시스턴트, 코딩 3개 영역 15,000개 예시로 구성되며 학습 13,500개와 서로 겹치지 않는 테스트 1,500개로 나뉜다. 루브릭 기반 LLM judge가 원자별 실제 사용 수준을 판정하고, SCS, Exact, sMOS, sMUS, AOR, AUR 6개 지표를 0~100으로 보고한다. 논문의 모델 비교는 DeepSeek-V4-Pro judge, 비사고(non-thinking) 모드, 3개 시드 조건이다.",
-            "대표 과제": "질의와 여러 메모리 블록이 주어졌을 때, 각 원자 명제의 영향을 목표 수준에 맞춰 응답에 반영(과다 사용·과소 사용 측정)",
-            "대표 예시·설명": "과제 설명: 영어 질의(예: 불임 부부에게 권장되는 의학적 평가)와 나이·병력·무관한 사실이 섞인 메모리 블록이 주어지면, 응답이 핵심 사실은 반영하고 무관한 사실은 무시하는지 원자별 루브릭으로 판정한다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 아직 확인하지 않았다. 논문에 따르면 공개 QA 데이터셋 8종(MedDialog, UltraChat, OASST 등)에서 LLM 파이프라인으로 합성한 데이터이므로 원천별 약관을 이용 전에 따로 확인해야 한다. 채점에는 LLM judge가 필요하며, 점수는 논문 조건의 결과로 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/Quark-Medical/memcalib"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agents (calibrated memory use: over-use and under-use)",
-            "definition": "A benchmark of whether a model gives each atomic proposition in supplied memory blocks the target level of influence on its response (Ignore, Bound, or Control). It has 15,000 examples across health, general assistance, and coding, split into 13,500 training examples and a disjoint 1,500-example test set. A rubric-guided LLM judge classifies each atom's actual use, and six metrics (SCS, Exact, sMOS, sMUS, AOR, AUR) are reported on a 0-100 scale. The paper's model comparison uses a DeepSeek-V4-Pro judge, non-thinking mode, and three seeds.",
-            "task": "Given a query and several memory blocks, use each atomic proposition at its target level of influence in the response (measuring over-use and under-use).",
-            "example": "Task description: given an English query (for example, what medical evaluations are recommended for a couple who cannot conceive) and memory blocks mixing relevant history with irrelevant facts, atom-specific rubrics judge whether the response uses key facts and ignores irrelevant ones."
-          },
-          "evidence": {
-            "modality": {
-              "page": 16,
-              "quote": "What medical evaluations"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "MemCalib, a benchmark"
-            },
-            "대표 예시·설명": {
-              "page": 16,
-              "quote": "What medical evaluations"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/Quark-Medical/memcalib"
-            },
-            "언어": {
-              "page": 16,
-              "quote": "What medical evaluations"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "MemCalib, a benchmark"
-            },
-            "정의": {
-              "page": 2,
-              "quote": "comprising 15,000 examples"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "MemCalib, a benchmark"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "데이터셋 자체의 라이선스를 뒷받침할 근거가 공급된 자료에 없어 게시할 수 없습니다. 공식 저장소 카드(https://github.com/Quark-Medical/memcalib)에는 '## LICENSE file' 항목에 Apache-2.0이 있지만, README가 'The upstream license and attribution are retained in LICENSE and the source files'라고 적은 대로 verl에서 가져온 코드의 라이선스이며 MemCalib 데이터의 라이선스가 아닙니다. 데이터는 README가 안내한 Hugging Face 페이지(https://huggingface.co/datasets/ZiLaotou/MemCalib)에 있지만 공식 카드로 공급되지 않아 확인하지 못했습니다. 카드에 LICENSE 항목이 있으므로 '미표기' 부재 증거도 쓸 수 없습니다. 논문 3쪽과 14쪽(Table 5)은 MemCalib가 공개 QA 데이터셋 8종(MedDialog, ChatDoctor-HealthCareMagic, UltraChat 200K, OASST1/OASST2, Stack Exchange Preferences, APPS, Magicoder OSS-Instruct)에서 구성됐다고 밝히므로, 코드 라이선스를 모든 구성 요소에 적용할 수 없습니다. 이 때문에 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목에 인용할 근거가 없습니다. 데이터셋 카드(Hugging Face)를 공식 자료로 추가하거나 저자가 데이터 라이선스를 밝힌 뒤 다시 제출해야 합니다. 논문 4쪽 Table 1의 모델 점수는 있으나 위 항목이 비어 있어 changes는 비웠습니다.",
+      "changes": [],
       "arxiv_id": "2609.24259",
       "paper_title": "MemCalib: Benchmarking and Optimizing Memory Use in LLM Agents",
       "paper_updated": "2026-10-09T00:00:00Z",
@@ -64673,7 +64608,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-14T03:00:51Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -64699,11 +64634,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43546947441",
-        "context_sha256": "2f3e0495b5a6fbaa14960fcf195fcd14a1ac661d1f70200aea105037f8f50ec8"
-      },
-      "proposal_sha256": "f47d99cb633bcb659cb58bff050c4bd6da604257a43962d9a50c3955e472b77f"
+      "proposal_sha256": "b8e62d3c85f18e2da3e2f1d8a6fa2f32af065ef55cc2244c7b9d1c04d3951fd6",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -100209,8 +100142,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 9,
-      "cost_usd": 5.6661
+      "calls": 10,
+      "cost_usd": 6.5785
     }
   },
   "reaudits": [
