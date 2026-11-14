@@ -63889,8 +63889,8 @@
       "resume_error": "PDF pages [2] mention a license; list them in pdf_mentions or cite the license"
     },
     "2605.07675": {
-      "decision": "propose",
-      "reason": "FactoryBench는 산업용 로봇 텔레메트리를 텍스트로 인코딩해 영어 질문으로 묻는 새로운 재사용 가능 벤치마크다. Pearl의 인과 사다리를 확장한 4단계(상태, 개입, 반사실, 의사결정)로 구성된다. 69,691개 Q&A와 3,000개 규모의 Lite 부분집합, 21개 템플릿을 제공하고 구조화 형식은 결정적으로, 자유 서술은 LLM judge로 채점한다. 질문 템플릿이 영어이므로 en 트랙으로 분류하고, 시계열은 프롬프트에 텍스트로 담기므로 text로 분류했다. 논문이 공식 링크로 GitHub와 Hugging Face를 명시한다. 라이선스와 하니스 지원은 확인하지 않았으므로 '확인 불가'로 기록했다.",
+      "decision": "needs_evidence",
+      "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: Score quote must contain the exact model and numeric value",
       "changes": [
         {
           "track": "en",
@@ -64050,7 +64050,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-14T02:38:45Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -64076,11 +64076,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43546947441",
-        "context_sha256": "74ca74009ec92d16b2947a251838d8f7f1af6c7c42e8127c78cd7443f9e733cd"
-      },
-      "proposal_sha256": "d1552b5552be2bdce178c01d79b153798dd49b127cb1f97f0a354edc9918638c"
+      "proposal_sha256": "d1552b5552be2bdce178c01d79b153798dd49b127cb1f97f0a354edc9918638c",
+      "approval_policy": "claude_only",
+      "resume_error": "Score quote must contain the exact model and numeric value"
     }
   },
   "processed_comments": [],
@@ -71822,22 +71820,18 @@
     "2603.28590": {
       "arxiv_id": "2603.28590",
       "paper_title": "MonitorBench: A Comprehensive Benchmark for Chain-of-Thought Monitorability in Large Language Models",
-      "abstract": "Large language models (LLMs) can generate chains of thought (CoTs) that are not always causally responsible for their final outputs. When such a mismatch occurs, the CoT no longer faithfully reflects the actual reasons (i.e., decision-critical factors) driving the model's behavior, leading to the reduced CoT monitorability problem. This limits the use of CoTs for reliable oversight. However, a comprehensive and fully open-source benchmark for thoroughly evaluating CoT monitorability remains lacking. To address this gap, we propose MonitorBench, a systematic benchmark for evaluating CoT monitorability in LLMs. MonitorBench provides: (1) a diverse set of 1,514 test instances with carefully designed decision-critical factors across 19 tasks spanning 7 categories to characterize when CoTs can be used to monitor the factors driving LLM behavior; and (2) two prompting stress-test settings to quantify the extent to which CoT monitorability can be degraded. Extensive experiments show that CoT monitorability is a conditional property affected by the evaluated LLM, monitor LLM, and task characteristics. Across these factors, monitorability is higher when decision-critical factors shape the intermediate reasoning process, rather than merely influencing the final answer. Under stress-test prompting, most evaluated LLMs can intentionally reduce monitorability, mainly on tasks where decision-critical factors are not structurally required by the reasoning process. Overall, MonitorBench provides a basis for further research on AI control, reasoning faithfulness, stress-test monitorability, and monitoring scaffords. The code is available at https://github.com/ASTRAL-Group/MonitorBench.",
-      "paper_updated": "2026-09-29T00:00:00Z",
-      "created_at": "2026-10-19T13:46:12Z",
-      "input_sha256": "85354dd8e71372bb5ef42d9219dac26b18f839224391cc8bcfd56bcdf9132fea",
-      "version": 4,
+      "abstract": "Large language models (LLMs) can generate chains of thought (CoTs) that are not always causally responsible for their final outputs. When such a mismatch occurs, the CoT no longer faithfully reflects the actual reasons (i.e., decision-critical factors) driving the model's behavior, leading to the reduced CoT monitorability problem. This limits the use of CoTs for reliable oversight. However, a comprehensive and fully open-source benchmark for thoroughly evaluating CoT monitorability remains lacking. To address this gap, we propose MonitorBench, a systematic benchmark for evaluating CoT monitorability in LLMs. MonitorBench provides: (1) a diverse set of 1,540 test instances with carefully designed decision-critical factors across 19 tasks spanning 7 categories to characterize when CoTs can be used to monitor the factors driving LLM behavior; and (2) two prompting stress-test settings to quantify the extent to which CoT monitorability can be degraded. Extensive experiments show that CoT monitorability is a conditional property affected by the evaluated LLM, monitor LLM, and task characteristics. Across these factors, monitorability is higher when decision-critical factors shape the intermediate reasoning process, rather than merely influencing the final answer. Under stress-test prompting, most evaluated LLMs can intentionally reduce monitorability, mainly on tasks where decision-critical factors are not structurally required by the reasoning process. Overall, MonitorBench provides a basis for further research on AI control, reasoning faithfulness, stress-test monitorability, and monitoring scaffords. The code is available at https://github.com/ASTRAL-Group/MonitorBench.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "LLM 사고 사슬 모니터링 벤치마크"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "CoT 모니터링 가능성 평가용 오픈 벤치마크 MonitorBench 제안"
+          "reason": "CoT 모니터링 가능성 평가 벤치마크 공개"
         }
       ]
     },
@@ -89776,18 +89770,18 @@
     "2610.33097": {
       "arxiv_id": "2610.33097",
       "paper_title": "IRON-Meme: A Benchmark for Structured Understanding of Identities and Roles in Online Meme Narratives",
-      "abstract": "As polarization grows on social media, understanding how political memes shape online narratives has become increasingly important. Previous research has relied on either qualitative frameworks that are hard to scale or computational methods that lack theoretical grounding. Both approaches treat narrative categories in isolation and focus exclusively on moral portrayals of identity. To address these limitations, we introduce a framework grounded in social science theories, encompassing three categories: social identities (such as gender, politics, and ethnicity), viewpoints (ingroup and outgroup perspectives), and narrative roles (moral character, intelligence, status, and power). Building on this framework, we present IRON-Meme, a human-annotated benchmark comprising 1,110 political memes across substantially more templates than existing benchmarks. Our analysis of IRON-Meme shows that most memes assign derogatory roles and that identities, roles, and templates are systematically interconnected. Evaluation of nine vision-language models indicates that frontier-scale and reasoning models achieve the highest performance, while accuracy on social identities and narrative roles decreases for less frequent labels. Incorporating template background knowledge does not enhance narrative role classification, suggesting that meme interpretation relies on how memes are adapted for specific communicative purposes. We make IRON-Meme and our code publicly available.",
-      "paper_updated": "2026-10-27T00:00:00Z",
-      "created_at": "2026-10-28T02:45:08Z",
-      "input_sha256": "559af36e38f4def5f84a1cbdfb77c5d6dedcc096f3d47da3f0f1ced49ff8b0b9",
+      "abstract": "As polarization grows on social media, understanding how political memes shape online narratives has become increasingly important. Previous research has relied on either qualitative frameworks that are hard to scale or computational methods that lack theoretical grounding. Both approaches treat narrative categories in isolation and focus exclusively on moral portrayals of identity. To address these limitations, we introduce a framework grounded in social science theories, encompassing three categories: social identities (such as gender, politics, and ethnicity), viewpoints (ingroup and outgroup perspectives), and narrative roles (moral character, intelligence, appearance, and power). Building on this framework, we present IRON-Meme, a human-annotated benchmark comprising 1,110 political memes across substantially more templates than existing benchmarks. Our analysis of IRON-Meme shows that most memes assign derogatory roles and that identities, roles, and templates are systematically interconnected. Evaluation of nine vision-language models indicates that frontier-scale and reasoning models achieve the highest performance, while accuracy on social identities and narrative roles decreases for less frequent labels. Incorporating template background knowledge does not enhance narrative role classification, suggesting that meme interpretation relies on how memes are adapted for specific communicative purposes. We make IRON-Meme and our code publicly available.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "uncertain",
-          "reason": "밈 서사 벤치마크, 과제 언어가 명시되지 않음"
+          "decision": "relevant",
+          "reason": "VLM용 정치 밈 서사 벤치마크 공개, 영어 과제 가능성 높으나 언어 불명확"
         }
       ]
     },
@@ -90424,10 +90418,10 @@
     "2610.35847": {
       "arxiv_id": "2610.35847",
       "paper_title": "Patient-specific rubric-based evaluation of large language models across longitudinal cancer care",
-      "abstract": "Large language models (LLMs) show promise in specialty medicine, yet existing evaluations largely focus on isolated clinical encounters rather than tracking how clinical responsibilities evolve across a longitudinal care pathway. Here we introduce NPC-RubricBench, a phase-aware benchmark for evaluating multistage clinical reasoning across the cancer care continuum, using nasopharyngeal carcinoma as a defined disease context. Curated from longitudinal records of 405 patients across two cancer centers, the benchmark comprises 941 patient-phase units across six sequential care phases and 17,688 patient-specific atomic criteria spanning five evaluation dimensions, with each assessment strictly restricted to decision-time clinical evidence. Evaluating 30 general-purpose and medical LLMs revealed that strong diagnostic performance does not carry over to downstream care. We evaluated 30 general-purpose and medical LLMs, showing that high diagnostic performance did not translate into improved downstream care. Instead, the dominant failure modes reversed across phases. Explicit decision errors dominated anatomical staging at 48.2%, whereas decision omissions dominated initial work-up and post-treatment follow-up at 33.4% and 30.4%, respectively. In the evaluated model set, medically adapted models showed higher omission rates than general-purpose models. Moreover, varying query granularity exposes a critical specification trade-off: broad open-ended requests degrade Decision Quality across all 30 models, while more detailed, checklist-like prompts raise Decision Quality but reduce Evidence Faithfulness and Safety Adherence. Furthermore, NPC-RubricBench demonstrates that static diagnostic benchmarks are insufficient to ensure consistent clinical reliability over time, highlighting the importance of phase-adaptive safeguards in multistage medical AI.",
-      "paper_updated": "2026-10-27T00:00:00Z",
-      "created_at": "2026-10-28T02:45:27Z",
-      "input_sha256": "678a8497cd3c72897aa23509a7a2f9a0ec2a4b25aa56b4bcdfe64bea267d68aa",
+      "abstract": "Large language models (LLMs) show growing promise in specialty medicine, yet existing evaluations largely focus on isolated clinical encounters rather than assessing the distinct clinical responsibilities along longitudinal care pathways. We introduce NPC-RubricBench, a phase-aware benchmark for evaluating multistage clinical reasoning across the cancer care continuum, using nasopharyngeal carcinoma as a defined disease context. Curated from real-world records of 405 patients at two cancer centers, it comprises 941 evaluation units across six sequential care stages, from work-up through follow-up, and 17,688 patient-specific criteria across five dimensions. Each assessment is restricted to clinical evidence available at the corresponding decision point. Across 30 general-purpose and medical LLMs, we find strong diagnostic scores did not ensure reliable downstream care. Decision Quality ranged from 56.8 to 94.7 in diagnosis on a 0-100 scale, but dropped to 8.9-56.0 in staging and spanned 32.4-94.2 in treatment. Crucially, failure modes differed across phases: explicit decision errors predominated in anatomical staging (48.2%), whereas decision omissions were more frequent during initial work-up (33.4%) and post-treatment follow-up (30.4%). Varying query granularity revealed a trade-off between decision quality and other clinical requirements. Broad open-ended requests reduced decision quality across all 30 models, whereas more detailed, checklist-like prompts improved decision quality but were accompanied by lower evidence faithfulness and safety adherence. These findings highlight the need to assess clinical reliability against the distinct clinical requirements of each phase along the longitudinal care pathway. Finally, NPC-RubricBench informs the design of stage-aware clinical guardrails and offers a reusable blueprint for evaluating LLMs across other cancers and chronic diseases.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
@@ -90435,7 +90429,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "uncertain",
-          "reason": "재사용 가능한 의료 벤치마크이나 과제 언어(한/영)가 불명확함"
+          "reason": "의료 벤치마크이나 과제 언어(중국 병원 기록 가능)가 불명확"
         }
       ]
     },
@@ -93394,18 +93388,18 @@
     "2611.03767": {
       "arxiv_id": "2611.03767",
       "paper_title": "Quantifying out-of-distribution data severity with Wasserstein distances: benchmarking large language models for alloy property prediction",
-      "abstract": "As general-purpose Large Language Models (LLMs), such as Gemini and DeepSeek, exhibit increasingly advanced reasoning capabilities, a critical question arises: how do their property prediction abilities compare to those of domain-specific pretrained materials models? In this study, we evaluate predictions for Ti, steels, high-entropy alloy (HEA) and Al, demonstrating that general-purpose LLMs surprisingly outperform SteelBERT, MatSciBERT, and SciBERT. To further enhance performance, we introduce a hybrid approach that utilizes numerical priors from a prior model, such as CatBoost or SteelBERT, to guide the general LLMs (Deepseek V3.1, Gemini-2.5-Flash). By inputting these initial estimates from a prior model as prompts, the LLM acts as a reasoning corrector, achieving accuracy superior to the prior model and \"unguided mode\". Furthermore, we investigate the impact of data strategy using a similarity-based metric, revealing that data quality dominates quantity; using merely 5% of high-similarity reference data of training set as input yields performance similar to the results of using 100% of training set. Additionally, the LLMs demonstrate excellent uncertainty calibration, where self-reported \"high\" confidence strongly correlates with minimal deviation from ground truth. Our findings suggest that synergizing general-purpose LLMs with prior model numerical baselines and high-quality data curation creates a cost-effective and accurate paradigm for materials discovery, reducing the need for expensive domain-specific pretraining.",
-      "paper_updated": null,
-      "created_at": "2026-11-05T02:43:03Z",
-      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "abstract": "General-purpose Large Language Models (LLMs) increasingly rival domain-specific pipelines on scientific prediction, but their performance under distribution shift is untested. Across six alloy and crystal-structure datasets, we benchmark LLMs against traditional, BERT-based, TabPFN, and text-regression baselines under random cross-validation and six out-of-distribution (OOD) protocols shifting input and target distributions, with severity quantified via a standardized Wasserstein distance. We isolate the LLM's advantage over k-nearest-neighbor (k-NN) retrieval: it beats k-NN on all eight tasks at a fixed 5% reference budget, on seven of eight when independently optimized, and in 72.5% of 120 OOD task--protocol configurations against an optimized baseline. No model family is uniformly best; the LLM is often strongest under severe shift, and error increases with target-space but not representation-space severity. Self-reported LLM confidence tracks both shift and error, more consistently than a density-only control from the same retrieved samples, and a matched-cohort check finds no substantial evidence of memorization.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
       "version": "claude-v1",
       "policy": "claude_only",
-      "status": "passed",
+      "status": "excluded",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "uncertain",
-          "reason": "합금 물성 예측 LLM 평가이나 재사용 벤치마크 기여 불분명"
+          "decision": "irrelevant",
+          "reason": "합금 물성 예측 OOD 분석 위주, 재사용 벤치마크 불명확"
         }
       ]
     },
@@ -93519,19 +93513,19 @@
     },
     "2611.04411": {
       "arxiv_id": "2611.04411",
-      "paper_title": "TxBench: A Benchmark of Attack Transactions and Evidence-Backed Negatives on Seven EVM Chains",
-      "abstract": "Researchers evaluate detectors of malicious smart-contract transactions on datasets that each paper assembles anew. Their positives come from incident trackers, whose citations mix attacks with setup steps and transactions that never ran, or from a detector's own output, which makes the evaluation circular; their negatives are ordinary transactions. A shared benchmark needs positives whose own execution shows the attack and negatives that use the attacks' mechanisms, with no detector deciding either label. We present TxBench, a benchmark of attack transactions and evidence-backed negatives on seven EVM chains, with the five-step pipeline that builds it. The pipeline collects every transaction that BlockSec's incident library or the EVM Hack Registry cites, maps its weakness to OWASP's SCWE taxonomy, and rebuilds its execution from free data sources. A cited transaction qualifies as a valid TxBench attack only if it extracts value from others during execution, is consistent with all verified source claims, and is independently linked to the reported incident by corroborating evidence. Negative examples are sampled from each chain's traffic near the attacks and retained only when positive evidence confirms their legitimacy. Of 1,850 cited transactions, TxBench accepts 1,012 attacks from 602 incidents, worth USD 868.1 million: 846 contract exploits and 166 key compromises. A blind review under rules fixed in advance confirms 98 of 100 sampled attacks (97.7% weighted) and all 100 sampled negatives. As baselines, four zero-shot LLMs reading anonymized traces are precise but find at most 0.43 of the attacks and no key compromise, leaving ample room for better detectors.",
-      "paper_updated": null,
-      "created_at": "2026-11-05T02:43:03Z",
-      "input_sha256": "ca160620648b2e87e095ffe21c8564c06dc4ac7076c1c6c84764205a70aae2c8",
+      "paper_title": "TxBench: Verifying Public Incident Data to Benchmark Smart-Contract Attack Detectors",
+      "abstract": "Malicious transactions on smart contracts cause billions of dollars in losses. To evaluate their detectors, most datasets copy the attack transactions that public incident databases cite and pair them with random transactions. However, these databases never check their citations against execution, and random transactions rarely resemble attacks. We present TXBENCH, a benchmark that verifies both attacks and legitimate transactions against their execution. TXBENCH labels a cited transaction as an attack only when its execution takes value from others and independent evidence ties it to its incident. Its legitimate transactions perform the same operations as attacks and carry positive evidence of legitimacy. Applying these checks to two public databases, we find that they share only 10.6% of their 1,850 cited transactions and that only 1,012 are verifiable attacks, worth $868.2 million. A blind manual review confirms 98/100 sampled attacks and 100/100 legitimate transactions.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
       "version": "claude-v1",
       "policy": "claude_only",
-      "status": "passed",
+      "status": "excluded",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "uncertain",
-          "reason": "공격 트랜잭션 벤치마크, LLM 평가 용도와 언어 불명확"
+          "decision": "irrelevant",
+          "reason": "스마트컨트랙트 공격 탐지기 벤치마크, 언어모델 평가 아님"
         }
       ]
     },
@@ -96651,19 +96645,19 @@
     },
     "2611.13028": {
       "arxiv_id": "2611.13028",
-      "paper_title": "GTAGym: Real AAA Game Tasks Environment for Evaluation and Reinforcement Learning",
+      "paper_title": "GTAGym: AAA Game Tasks Environment for Evaluation and Reinforcement Learning",
       "abstract": "AAA games offer a rich testbed for evaluating agent perception, reasoning, and control. However, evaluating whether agents can complete tasks in AAA games is challenging and often human-annotated because task outcomes are often difficult to verify automatically, let alone applying it for Reinforcement Learning (RL). We introduce GTAGym, an environment and framework for evaluation and RL on GTA V tasks. Its evaluation benchmark, GTAVBench, derived from GTA V main-story missions, contains 103 online tasks reconstructed across nine task families, alongside 47 image-based shooting and sniping tasks using GTA V imagery. A web server provides access to the online environment and evaluation interface, supporting parallel testing through screenshots and keyboard-mouse actions with automatic engine-state outcome checks. We evaluate six frontier LLMs on GTAVBench with textual task instructions and on its GTAVBench-AGI branch, where instructions appear only in the first screenshot and a harness automatically compresses interaction history. The best configuration achieves 70.9% overall accuracy in GTAVBench-AGI, yet aerial navigation, evasion and interception remain difficult. GTAGym also provides a scalable generator that samples task parameters within user-specified ranges and option sets under fixed templates, creating batches of 3D and image-based shooting environments for RL with automatic reward and termination signals. LoRA RL of Qwen3.8-27B on generated on-foot navigation tasks improves the in-domain performance and transfers to out-of-domain task categories, and native GTA V tasks from 15% to 23%.",
-      "paper_updated": "2026-11-11T00:00:00Z",
-      "created_at": "2026-11-12T02:39:38Z",
-      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
           "model": "claude-sonnet-5-5",
-          "decision": "uncertain",
-          "reason": "게임 에이전트 벤치마크, 지시문 언어가 불명확함"
+          "decision": "relevant",
+          "reason": "GTA V 에이전트 평가 벤치마크와 환경 공개"
         }
       ]
     },
@@ -96970,6 +96964,258 @@
           "model": "claude-sonnet-5-5",
           "decision": "relevant",
           "reason": "단백질-리간드 포즈 랭킹 벤치마크 Pyrite 도입 및 LLM 에이전트 평가"
+        }
+      ]
+    },
+    "2609.08029": {
+      "arxiv_id": "2609.08029",
+      "paper_title": "BanglaMemeX: Advancing Cultural Metaphoric Image Interpretation in Bangla with a Multimodal Explainable Dataset",
+      "abstract": "Vision Language Models have achieved strong performance on multimodal benchmarks, yet their ability to reason about culturally grounded and metaphor-rich content remains insufficiently studied. Internet memes present a challenging setting where meaning emerges from implicit interactions between image, overlaid text, sarcasm, and shared socio-cultural knowledge rather than literal visual recognition. This challenge is amplified in low-resource languages such as Bangla, where code-mixing, stylized scripts, and culturally specific symbolism introduce substantial distribution shift. In this work, we introduce BanglaMemeX, a culturally grounded multimodal benchmark comprising 3,000 Bangla memes annotated with multi-dimensional labels (humor, sarcasm, offensiveness, motivational intent, and overall sentiment) and human-written explanations that explicitly describe textual and visual metaphors. We systematically evaluate modern VLMs on both classification and explanation generation, revealing that current models struggle to interpret implicit cultural cues despite reasonable surface-level accuracy. Our results highlight the need for culturally-aware multimodal systems capable of grounded reasoning under linguistic and cultural distribution shift.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "모든 과제가 벵골어 밈으로 한정되어 한국어/영어 아님"
+        }
+      ]
+    },
+    "2601.12716": {
+      "arxiv_id": "2601.12716",
+      "paper_title": "CellularS2-Bench: A Staged, Evidence-Grounded Benchmark for Cellular Network Security Reasoning",
+      "abstract": "Cellular networks are critical infrastructure supporting billions of worldwide users and safety- and mission-critical services. Vulnerabilities in cellular networks can therefore cause service disruption, privacy breaches, and broad societal harm, motivating growing efforts to analyze 3GPP specifications that define required device and operator behavior. However, existing benchmarks for this domain share three systematic deficiencies: they rely on LLM-generated entries without expert verification, they do not require faithful interpretation of normative language, reasoning across cross-referenced clauses, and verifiable conclusions grounded in multimodal evidence such as tables and figures, and they do not evaluate security reasoning over end-to-end protocol behavior. To address these gaps, we present CellularS2-Bench, a staged benchmark. CellularS2-Bench covers core control-plane specifications, processing over 1,866 paragraphs, 22,033 sentences, 424 figures, and 248 tables. It comprises 13,851 questions and instances across three progressive stages, of which 10,269 (74.14%) are newly constructed from 3GPP specifications and 43 real-world vulnerabilities. Beyond newly constructed tasks, CellularS2-Bench integrates and corrects 3,582 (25.86%) instances from 7 prior datasets to broaden task coverage. To establish a reproducible baseline on CellularS2-Bench, we introduce CellularS2-ARI, a unified Adapt-Retrieve-Integrate framework for systematic understanding and specification-driven security analysis of 3GPP specifications. Together, they establish an accessible and reproducible foundation for quantifying progress in specification understanding and security reasoning in cellular network security.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "3GPP 보안 추론 벤치마크 신규 구축, 영어 명세 기반"
+        }
+      ]
+    },
+    "2406.04428": {
+      "arxiv_id": "2406.04428",
+      "paper_title": "MoralBench: Moral Evaluation of LLMs",
+      "abstract": "In the rapidly evolving field of artificial intelligence, large language models (LLMs) have emerged as powerful tools for a myriad of applications, from natural language processing to decision-making support systems. However, as these models become increasingly integrated into societal frameworks, the imperative to ensure they operate within ethical and moral boundaries has never been more critical. This paper introduces a novel benchmark designed to measure and compare the moral reasoning capabilities of LLMs. We present the first comprehensive dataset specifically curated to probe the moral dimensions of LLM outputs, addressing a wide range of ethical dilemmas and scenarios reflective of real-world complexities. The main contribution of this work lies in the development of benchmark datasets and metrics for assessing the moral identity of LLMs, which accounts for nuance, contextual sensitivity, and alignment with human ethical standards. Our methodology involves a multi-faceted approach, combining quantitative analysis with qualitative insights from ethics scholars to ensure a thorough evaluation of model performance. By applying our benchmark across several leading LLMs, we uncover significant variations in moral reasoning capabilities of different models. These findings highlight the importance of considering moral reasoning in the development and evaluation of LLMs, as well as the need for ongoing research to address the biases and limitations uncovered in our study. We publicly release the benchmark at https://drive.google.com/drive/u/0/folders/1k93YZJserYc2CkqP8d4B3M3sgd3kA8W7 and also open-source the code of the project at https://github.com/agiresearch/MoralBench.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 도덕 추론 벤치마크 및 데이터셋 공개"
+        }
+      ]
+    },
+    "2508.19363": {
+      "arxiv_id": "2508.19363",
+      "paper_title": "LongReasonArena: A Long Reasoning Benchmark for Large Language Models",
+      "abstract": "Existing long-context benchmarks for Large Language Models (LLMs) focus on evaluating comprehension of long inputs, while overlooking the evaluation of long reasoning abilities. To address this gap, we introduce LongReasonArena, a benchmark specifically designed to assess the long reasoning capabilities of LLMs. Our tasks require models to solve problems by executing multi-step algorithms that reflect key aspects of long reasoning, such as retrieval and backtracking. By controlling the inputs, the required reasoning length can be arbitrarily scaled, reaching up to 1 million tokens of reasoning for the most challenging tasks. Extensive evaluation results demonstrate that LongReasonArena presents a significant challenge for both open-source and proprietary LLMs. For instance, even GPT-5 achieves only 27.8% accuracy on Level 3. Further analysis also reveals that the accuracy exhibits a linear decline with respect to the logarithm of the expected number of reasoning steps. Our code and data are available at https://github.com/LongReasonArena/LongReasonArena.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "장문 추론 능력 평가용 새 벤치마크 공개"
+        }
+      ]
+    },
+    "2602.06285": {
+      "arxiv_id": "2602.06285",
+      "paper_title": "MMEarth-Bench: Global Model Adaptation via Multimodal Test-Time Training",
+      "abstract": "Recent research in geospatial machine learning demonstrates that models pretrained with self-supervised learning on Earth observation data can perform well on downstream tasks with limited labeled data. However, most benchmark datasets have few data modalities and poor global representation, limiting the ability to evaluate multimodal pretrained models at global scales. In order to fill this gap, we introduce MMEarth-Bench, a collection of five new environmental tasks with 12 modalities, globally distributed data, and both random and geographic test splits. We benchmark a diverse set of pretrained models and find that while (multimodal) pretraining tends to improve model robustness in limited data settings, geographic generalization abilities remain poor. Moreover, a simple randomly initialized multimodal model is competitive given enough labeled data. Although data is abundant, models can currently only make use of the modalities on which they were pretrained. To solve this problem, we propose using all the modalities available at test time as auxiliary tasks for test-time adaptation. Our model-agnostic method for test-time training with multimodal reconstruction (TTT-MMR) can improve performance across all models and tasks on both test splits. Furthermore, geographic batching leads to a good trade-off between regularization and specialization during TTT, which can be beneficial for long-tail distributions. Our dataset, code, and visualization tool are linked on the project page.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "지구관측 모델용 데이터셋, 언어모델 평가 아님"
+        }
+      ]
+    },
+    "2602.13961": {
+      "arxiv_id": "2602.13961",
+      "paper_title": "MarsRetrieval: Benchmarking Vision-Language Models for Planetary-Scale Geospatial Retrieval on Mars",
+      "abstract": "Data-driven approaches like deep learning are rapidly advancing planetary science, particularly in Mars exploration. Despite recent progress, most existing benchmarks remain confined to closed-set supervised visual tasks and do not support text-guided retrieval for geospatial discovery. We introduce MarsRetrieval, a retrieval benchmark for evaluating vision-language models for Martian geospatial discovery. MarsRetrieval includes three tasks: (1) paired image-text retrieval, (2) landform retrieval, and (3) global geo-localization, covering multiple spatial scales and diverse geomorphic origins. We propose a unified retrieval-centric protocol to benchmark multimodal embedding architectures, including contrastive dual-tower encoders and generative vision-language models. Our evaluation shows MarsRetrieval is challenging: even strong foundation models often fail to capture domain-specific geomorphic distinctions. We further show that domain-specific fine-tuning is critical for generalizable geospatial discovery in planetary settings. Our code is available at https://github.com/ml-stat-Sustech/MarsRetrieval",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "화성 VLM 검색 벤치마크, 텍스트 언어 불명확"
+        }
+      ]
+    },
+    "2605.25246": {
+      "arxiv_id": "2605.25246",
+      "paper_title": "FrontierOR: Benchmarking LLMs' Capacity for Efficient Algorithm Design in Large-Scale Optimization",
+      "abstract": "Large language models (LLMs) are increasingly used for optimization modeling and solver-code generation, yet practical operations research and optimization problems often require a harder capability: designing scalable algorithms that exploit problem structure and outperform direct formulation-and-solve baselines. Existing benchmarks are limited to small or simplified examples far below real-world scale and complexity. We introduce FrontierOR, the first literature-grounded benchmark targeting LLM-generated algorithm efficiency on realistic large-scale optimization problems. FrontierOR includes 180 diverse tasks, each derived from a paper published in a top-tier operations research venue, with standardized instances and a hidden, expert-verified evaluation suite. We evaluate recent LLMs' one-shot algorithm generation and improvements achieved through several self-evolving frameworks. The results show that current models still struggle to move from executable formulations to efficient optimization algorithms. Even the strongest LLM succeeds on only 39% of Full-set task instances, where success is defined as returning a feasible solution with an objective gap of at most 1% relative to Gurobi within its runtime. On the Hard subset, test-time evolution raises this proportion from 51% for the strongest one-shot model to 78%. FrontierOR provides a continuously maintained testbed for evaluating LLM-designed optimization algorithms under a shared protocol and controlled computational settings. Code and data are publicly released at https://github.com/Minw913/FrontierOR.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 최적화 알고리즘 설계 벤치마크 공개"
+        }
+      ]
+    },
+    "2607.18777": {
+      "arxiv_id": "2607.18777",
+      "paper_title": "PertReason: A Knowledge-Grounded Benchmark and Framework for Cell-State-Conditioned Mechanistic Reasoning of Perturbation Effects",
+      "abstract": "Evaluating machine learning in scientific domains requires separating correct predictions from correct reasons under realistic distribution shifts. We introduce PertReason, a knowledge-grounded approach to evaluating and improving cell-state-conditioned reasoning about perturbation effects. Our framework comprises PertReasonQA, a benchmark that provides evaluation and supervision, and PertReasonLM, a reference large language model that demonstrates how such supervision supports reasoning-centric training. PertReasonQA tests whether models can generate mechanistically faithful explanations while remaining robust to complex shifts, such as new cells, unseen perturbations, cross-modal or combinatorial extrapolations. PertReasonQA combines single-cell genetic and chemical perturbation data across multiple cellular contexts with knowledge graphs, and dynamically conditions pathways on cell-specific basal states to avoid generic memorization. Evaluations of state-of-the-art models reveal systematic gaps between outcome prediction and mechanistic reasoning. As a reference probe of the benchmark, PertReasonLM is trained through supervised fine-tuning and reinforcement learning using mechanistic supervision from PertReasonQA. PertReasonLM improves predictive accuracy and reduces answer-reason disagreement by grounding rationales in context-specific pathways. Together, we provide a diagnostic framework for exposing and mitigating failures in faithful reasoning in data-rich scientific systems. We release our datasets to support further research at https://dongkwan-kim.github.io/PertReason/.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "섭동 효과 추론 QA 벤치마크 및 데이터 공개"
+        }
+      ]
+    },
+    "2611.05556": {
+      "arxiv_id": "2611.05556",
+      "paper_title": "AGORA: Reliability-Aware Aggregation of LLM Judges on Small Evaluation Sets",
+      "abstract": "LLM-as-a-judge is a common substitute for costly human evaluation, and aggregating several judges is the standard remedy for any single judge's bias. Judge pools mix judges of very different reliability, while the human-labeled sets that validate them hold a few hundred items or fewer. In this regime the per-item mean weights weak judges as heavily as strong ones, and confusion-table models such as Dawid-Skene must estimate a per-judge error table from too few items. We propose AGORA (Aggregation Of Reliability-weighted Assessments), an item-response-theory aggregator that places every item on one latent quality scale and describes each judge by a sensitivity parameter and ordered rating thresholds, so judge reliability is learned from all items jointly and without human labels. Across three benchmarks, AGORA matches or exceeds Dawid-Skene on large evaluation sets, and its advantage widens as the set shrinks toward a few hundred items. It remains accurate as pools grow more uneven, a label-free dispersion statistic indicates in advance when trust weighting helps, and its learned trust weights track per-judge human validity. Code is available at https://github.com/JunhyungAhn/llm-as-judge-irt.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "LLM 심사 집계 방법론, 새 벤치마크 아님"
+        }
+      ]
+    },
+    "2510.20279": {
+      "arxiv_id": "2510.20279",
+      "paper_title": "CS-54k: A Paper-Grounded Corpus and Benchmark for AI Research QA",
+      "abstract": "Large language models (LLMs) are increasingly being used to support computer science research. To contribute reliably, these systems must be able to work with information distributed across research papers and across different aspects of the research process. However, large-scale resources that systematically organize such information into structured supervision for both model evaluation and post-training remain limited. To address this gap, we propose a systematic paper-to-QA construction pipeline that organizes information from AI research papers into structured QA pairs supported by source evidence. Using this pipeline, we construct CS-54k, a 54k-pair corpus derived from 14,474 openly licensed AI research papers. The corpus covers eight recurring paper components, including research domain, prior work, existing challenges, motivation, findings and assumptions, methods, experimental settings, and experimental results. We further derive two complementary subsets: CS-4k, a benchmark for evaluating LLMs on paper-derived research QA, and CS-50k, a companion corpus for post-training. Extensive evaluations on CS-4k reveal substantial performance differences across existing LLMs and paper components, with experimental settings and results remaining particularly challenging. Moreover, post-training on CS-50k substantially improves Qwen2.5-7B-Instruct on CS-4k, demonstrating the practical utility of structured, paper-derived supervision. Together, CS-4k and CS-50k provide a unified and scalable resource for benchmarking and improving LLMs on research paper question answering.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "AI 논문 QA 코퍼스 및 벤치마크 CS-4k 공개"
+        }
+      ]
+    },
+    "2603.14342": {
+      "arxiv_id": "2603.14342",
+      "paper_title": "AgroOmni: A Large-Scale Multi-view Agricultural Dataset for Cross-Scale Multimodal Reasoning",
+      "abstract": "Modern agricultural data is sourced from diverse platforms and spans multiple spatial scales, ranging from ground-level close-up photography to Unmanned Aerial Vehicle (UAV) aerial observation and satellite remote sensing imagery. Accordingly, agricultural multimodal reasoning demands robust cross-scale spatial understanding. However, due to the lack of multi-view agricultural benchmark datasets, existing multimodal large language models (MLLMs) exhibit severe ground-level bias, which leads to scale confusion then semantic collapse in agricultural perception tasks, such as misinterpreting farmland imagery as walls or floors. To address this, we introduce AgroOmni, a large-scale multi-view training corpus with 268,119 Visual Question Answering pairs covering 56 specialized task categories across 14 task types, designed to capture diverse scales in modern precision agriculture.Built on this dataset, we propose AgroNVILA, which achieves a new state-of-the-art of 59.86% on the AgroMind benchmark (+12.57 over GPT-5.2), effectively mitigating the multi-view cross-scale gap for holistic agricultural understanding. Diagnostic evaluations on AgMMU further reveal an inherent heterogeneity between macro-priors and micro-diagnostics through constrained zero-shot performance. Meanwhile, even minimal fine-tuning leads to a dramatic performance gain of AgroNVILA on AgMMU, strongly demonstrating its generalization capability empowered by AgroOmni. Full training scripts are publicly available at https://github.com/Jrookie2005/AgroOmni, and the AgroOmni dataset is released at https://huggingface.co/datasets/AgroOmni/AgroOmni.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "농업 VQA 학습 코퍼스 중심, 평가 자료 여부와 언어 불명확"
+        }
+      ]
+    },
+    "2604.07338": {
+      "arxiv_id": "2604.07338",
+      "paper_title": "Appear2Meaning: A Cross-Cultural Benchmark for Structured Cultural Metadata Inference from Images",
+      "abstract": "Museum records express how people understand heritage objects through cultural and historical relations. Recovering these human attributions from images is a technical challenge for vision-language models (VLMs). We introduce Appear2Meaning, a cross-cultural benchmark of 750 museum objects for image-only recovery of title, culture, period, origin, and creator. Its evaluation framework distinguishes field-level from complete-record compatibility and uses human validation for semantic judgement. Across nine VLMs, mean field accuracy is 36.16--49.82%; 7.20--17.02% of records have all four contextual fields compatible, and 2.13--7.87% have all five, including title. For the two tested models, image-only input yields 12.6--32.2 percentage points higher reference compatibility for culture, period, and origin than a museum-and-title-only control.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "박물관 메타데이터 추론 VLM 벤치마크, 영어 가능성"
+        }
+      ]
+    },
+    "2605.02209": {
+      "arxiv_id": "2605.02209",
+      "paper_title": "Submodular Benchmark Selection",
+      "abstract": "Evaluating a new language model means running it on a large, growing collection of benchmarks, at considerable cost. Much of this cost is redundant: arranged as a matrix of models by benchmarks, scores are strongly correlated and concentrate in a few dimensions, so a few well-chosen benchmarks largely determine the rest. This allows us to run a new model on a few benchmarks and predict the rest with a simple Gaussian model that copes with missing scores. The key question is \\emph{which few to run}. An answer comes from sensor placement, which chooses the observations that carry the most information, measured by entropy or mutual information. We argue that the objective should instead reward a selection for how well it predicts every benchmark. This leads to two coverage objectives: explained variance, the predictions' accuracy if the estimated correlations were exact, and facility location, which credits each benchmark with its best proxy among the selected ones. On eleven score matrices built from public evaluation results, the coverage objectives predict the scores of held-out models best wherever the correlations can be estimated. The information objectives fall behind because they favor benchmarks that the selection predicts poorly (entropy) or that the others predict well (mutual information), not benchmarks that predict the others. By contrast, facility location predicts practically as well as explained variance, holds up on the addition of newer models and under real costs, has classical guarantees (even under a budget), and gives readable selections.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "벤치마크 선택 방법론, 새 평가 자료 없음"
+        }
+      ]
+    },
+    "2605.23628": {
+      "arxiv_id": "2605.23628",
+      "paper_title": "How Hard Is It to Rig a Benchmark? A Social Choice Analysis of Leaderboard Robustness",
+      "abstract": "Multi-task benchmarks have become a central pillar of machine learning research, yet their growing influence has incentivised benchmark gaming -- strategic actions taken to improve the leaderboard rank of a specific model. Treating datasets as voters and models as candidates, we consider benchmark-specific training -- the inclusion of benchmark data in training -- as a form of election manipulation. For any ordinal benchmark, the problem of choosing datasets to train on so that a target model becomes top-ranked corresponds to shift bribery, a class of manipulation problems from computational social choice. Leveraging this identification, we show that the benchmark-specific training problem is NP-hard under Borda count and mean win rate. Complementing this worst-case perspective, we introduce the instance-level robustness, the minimum number of datasets a model developer must include in training to top a given leaderboard, and derive expressions for it under arithmetic mean, median, mean win rate and pairwise majority. We evaluate these expressions on MMLU under HELM and on BIG-Bench Hard (BBH) under the Open LLM Leaderboard. Across both suites, mean win rate is hardest to manipulate: this gap is clear on BBH (24 tasks, 4507 models), where its median robustness is 22 tasks (92%), compared with 13 (54%) under arithmetic mean and 12 (50%) under median and pairwise majority.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:10Z",
+      "input_sha256": "61b02c18b17dfcdfd0a85f7fdbc2b706ee011b4c03765aeec397e450a80dc02b",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "리더보드 조작 이론 분석, 새 벤치마크 없음"
         }
       ]
     }
@@ -98698,7 +98944,30 @@
     },
     "2026-11-14": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [
+        "2609.08029",
+        "2610.33097",
+        "2610.35847",
+        "2611.03767",
+        "2611.04411",
+        "2601.12716",
+        "2406.04428",
+        "2508.19363",
+        "2602.06285",
+        "2602.13961",
+        "2603.28590",
+        "2605.25246",
+        "2607.18777",
+        "2611.05556",
+        "2611.13028",
+        "2510.20279",
+        "2603.14342",
+        "2604.07338",
+        "2605.02209",
+        "2605.23628"
+      ],
+      "calls": 1,
+      "cost_usd": 0.0657
     }
   },
   "reaudits": [
