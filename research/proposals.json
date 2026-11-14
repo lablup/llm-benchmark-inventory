@@ -66874,6 +66874,187 @@
         "context_sha256": "262fa971c7a6f4969564bf92115bf3ffe2dd31d0940fa94572f4438746fa3dc0"
       },
       "proposal_sha256": "5c25942961da25b7724bee32a98b2fbef0d15726ca4977a99c63bb35c0a02f9b"
+    },
+    "2506.09956": {
+      "decision": "propose",
+      "reason": "LLMail-Inject는 영어 이메일 어시스턴트 환경에서 사람이 작성한 간접 프롬프트 인젝션 공격 208,095건을 모은 재사용 가능한 공개 벤치마크이며, 텍스트 전용 영어 과제이므로 en 트랙의 text 행으로 제안합니다. 이전 응답은 인용문이 해당 PDF 쪽에 그대로 나타나지 않아 거부되었고, 이번에는 해당 쪽에 실제로 있는 짧은 구절만 인용했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "llmail-inject",
+            "이름": "LLMail-Inject",
+            "평가 축": "에이전트 보안(간접 프롬프트 인젝션)",
+            "언어": "en",
+            "정의": "공개 레드팀 챌린지(참가자 839명, 제출 461,640건)에서 수집한 고유 공격 프롬프트 208,095건. 공격 이메일이 검색되고, 방어를 회피하고, 올바른 인자로 도구를 호출해야 성공하는 전 과정(end-to-end)을 평가한다. 하위 집합으로 LLMail-Attack(약 29K), LLMail-Evasive(약 3K), LLMail-Phase2(약 3.7K), LLMail-Annotated(약 130K)가 있다.",
+            "대표 과제": "이메일 어시스턴트 환경에서 공격 이메일을 검색시키고 방어를 회피해 send_email 도구를 올바른 인자로 호출하게 하는 공격(4개 난이도 레벨, 공격 성공률 ASR 및 팀 성공률 TSR로 측정)",
+            "대표 예시·설명": "사용자가 이메일 요약을 요청했을 때, 공격자의 이메일이 검색되어 어시스턴트가 지시받지 않은 send_email 호출을 하는지 확인하는 과제 설명(실제 테스트 항목이 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건은 아직 확인하지 않았으므로 이용 전에 데이터셋 카드와 저장소에서 확인해야 한다. 참가자 제출물로 구성되어 있어 각 구성 요소의 약관도 따로 점검해야 한다. 공격 데이터라 이중 용도 위험이 있다. 일부 방어(상용 텍스트 분류기)는 공개되지 않고 출력값만 제공된다. 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/microsoft/llmail-inject-challenge"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agent security (indirect prompt injection)",
+            "definition": "208,095 unique attack prompts collected in a public red-teaming challenge (839 participants, 461,640 submissions). It evaluates the complete attack chain: the attack email must be retrieved, evade defenses, and trigger a tool call with correct arguments. Released subsets include LLMail-Attack (about 29K), LLMail-Evasive (about 3K), LLMail-Phase2 (about 3.7K) and LLMail-Annotated (about 130K).",
+            "task": "Craft emails for an email assistant that get retrieved, evade defenses, and cause a correct send_email tool call (four difficulty levels; measured by attack success rate (ASR) and team success rate (TSR)).",
+            "example": "Task description, not an actual test item: when the user asks for an email summary, check whether the attacker's retrieved email makes the assistant issue an unrequested send_email call."
+          },
+          "evidence": {
+            "modality": {
+              "page": 16,
+              "quote": "text-only dataset"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "unauthorized tool calls"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "Subject of the"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/microsoft/llmail-inject-challenge"
+            },
+            "언어": {
+              "page": 1,
+              "quote": "Subject of the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "LLMail-Inject"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "208,095 distinct"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "indirect prompt injection"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2506.09956",
+      "paper_title": "LLMail-Inject: A Dataset from a Realistic Adaptive Prompt Injection Challenge",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2506.09956",
+        "sha256": "bc1df4c9d32a525b6d4cdd5ba7c46b8993bc569e725c219d8bbd1f4016009757",
+        "accessed": "2026-11-14T04:00:12Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 41,
+          "elapsed_seconds": 159.02,
+          "pdf_sha256": "bc1df4c9d32a525b6d4cdd5ba7c46b8993bc569e725c219d8bbd1f4016009757",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "d3d6fa2a261ccc7fe694ced8f3fff3c3fd47b2e76ae018f85a4a995f4d84efe8",
+          "page_json_file": "2506.09956.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/microsoft/llmail-inject-challenge",
+            "fetched_url": "https://huggingface.co/datasets/microsoft/llmail-inject-challenge/raw/main/README.md",
+            "sha256": "d85767e349ab1abbaf43db9390c4e906e34954e5df3a1335c8f1516efa64e812",
+            "accessed": "2026-11-14T04:03:38Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-14T04:03:38Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2506.09956",
+        "paper_title": "LLMail-Inject: A Dataset from a Realistic Adaptive Prompt Injection Challenge",
+        "abstract": "Indirect prompt injection attacks exploit a fundamental weakness of LLMs: executing unauthorized tasks from untrusted sources. Despite the practical significance of this attack vector, existing benchmarks rely on small sets of template-based attacks (100-1,000 examples) that fail to capture the diversity and adaptiveness of real-world adversaries. Consequently, benchmarks are saturated and overfit to static attacks. We introduce LLMail-Inject, a large-scale benchmark of 208,095 distinct human-written attack prompts collected through a public red-teaming challenge with 839 participants. LLMail-Inject evaluates the attack's complete chain of execution: prompts must be retrieved from an email database, evade production-level defenses, and trigger unauthorized tool calls with correct arguments. Evaluation reveals that models that achieve 5% attack success rate (ASR) on existing benchmarks fail more on LLMail-Inject: Meta SecAlign--specifically trained against prompt injection--still yields 32% ASR, GPT-4o exhibits 58% ASR, and GPT-5 mini 47% ASR. We further demonstrate that attacks transfer across domains, achieving 37% ASR on proof-of-concept coding tasks and 28-45% ASR on file management tasks. We release our challenge platform and curated evaluation subsets at multiple difficulty tiers and the full dataset with rich annotations.",
+        "paper_updated": "2026-10-12T00:00:00Z",
+        "created_at": "2026-10-19T13:50:08Z",
+        "input_sha256": "3e5eb7afc69af1f1c3b8309f88aef68dd0aeb439f41d03332abd78d0160fe52b",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "프롬프트 주입 공격 데이터셋으로 LLM 보안 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "프롬프트 인젝션 대규모 벤치마크 데이터셋 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43546947441",
+        "context_sha256": "d78a315730ab160c778e347d8ac9e6deea17e80e19bf077d8ac4db04666b456c"
+      },
+      "proposal_sha256": "bd18c0b687afc069a90e2b16ddfd0b00ed204bf27fef58c59a5b2df535794ea0"
     }
   },
   "processed_comments": [],
@@ -102408,8 +102589,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 30,
-      "cost_usd": 24.3268
+      "calls": 31,
+      "cost_usd": 25.2067
     }
   },
   "reaudits": [
