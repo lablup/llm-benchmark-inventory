@@ -97218,6 +97218,366 @@
           "reason": "리더보드 조작 이론 분석, 새 벤치마크 없음"
         }
       ]
+    },
+    "2608.10932": {
+      "arxiv_id": "2608.10932",
+      "paper_title": "CamChoreo: Benchmarking Temporally Grounded Compositional Camera Motion Understanding for Vision Language Models",
+      "abstract": "Understanding camera motion is fundamental to video perception, with applications in spatial intelligence and controllable video generation. Existing camera motion evaluations typically assign labels to entire clips, overlooking within-shot changes and simultaneous movements. We therefore formulate camera motion understanding as temporally grounded, compositional recognition, requiring models to localize motion-consistent intervals and identify all active movements. We introduce CamChoreo, the first benchmark for this task, comprising 4,229 diverse single-shot clips with expert temporal annotations using 20 direction-aware labels. Nearly half of its segments contain compound camera motion. We also construct a separate training corpus of approximately 43K clips with the same annotation format. On CamChoreo, supervised fine-tuning (SFT) on this corpus achieves 62.1/64.1 micro F1 with 4B/8B backbones, outperforming advanced closed-source vision language models (VLMs). To complement the primarily semantic representations of VLM visual encoders with cross-frame geometry, we introduce CamInject, which injects features from a frozen 3D foundation model into the VLM. CamInject improves over SFT but requires running the costly 3D model at inference. We instead propose CamDistill, which distills the same geometric knowledge into lightweight camera tokens during training and removes the 3D model at inference. CamDistill improves micro F1 over same-data SFT by 5.4/3.7 points on 4B/8B backbones, closely approaching CamInject. CamDistill-8B also demonstrates strong zero-shot transfer on the external camera motion understanding benchmarks CameraBench and CameraMotionVQA. Together, these resources and CamDistill enable benchmarking and improving temporally grounded, compositional camera motion understanding.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "VLM용 카메라 모션 이해 벤치마크와 학습 코퍼스 신규 제안"
+        }
+      ]
+    },
+    "2611.14581": {
+      "arxiv_id": "2611.14581",
+      "paper_title": "When Evaluators of AI Agents Disagree: An Empirical Study of Native Scoring, LLM Judges, and Commit-Boundary Checks on tau2-bench",
+      "abstract": "Agentic workflows, in which a large language model (LLM) calls tools to read and write data, are evaluated in two ways. Benchmarks compare the final state against a gold answer. Deployed services have none; an LLM judge reads the transcript and decides. Practice treats the two as interchangeable. This paper measures whether they are. We ran 2,160 episodes in tau2-bench's airline and retail domains and recorded every database write. We scored each episode four ways: native scoring against gold state, an LLM judge, that judge given the policy document, and the boundary evaluator, a minimal rule-based check of whether a write was expected against whether one occurred in the trace. Two annotators independently labeled 120 episodes for task correctness, policy compliance, and commitment correctness. The judge repeated its verdict 98.2% of the time but agreed with native scoring on 56.2%. In 11 episodes the agent executed a forbidden write. The judge passed 10 to 11, with or without the policy or transcript. A stronger judge still passed 6. The boundary evaluator, with no model call, caught all 11; no judge significantly exceeded it on human labels. Forbidden writes occurred in 11.1% of episodes without gates. Verification, correction, and safe-termination gates did not reduce them significantly. The traces show a candidate cause: the gates' evidence digest dropped the order status and customer authentication, so valid requests were rejected. The choice of evaluator decides the conclusion; the minimal check exposes failures the judges miss. Traces, code, prompts, and labels are released.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "tau2-bench 평가자 비교 연구, 재사용 평가자·라벨 공개 여부 불명확"
+        }
+      ]
+    },
+    "2611.14604": {
+      "arxiv_id": "2611.14604",
+      "paper_title": "KernelMosaic: An Open Dataset and Agentic Framework for CUDA Kernel Generation",
+      "abstract": "Training large language models to generate efficient CUDA kernels requires supervision spanning diverse computational requirements and iterative code optimization. Constructing this supervision is challenging because of heterogeneous specifications, and useful implementations emerge through iterative complicated testing and refinement. We introduce KernelMosaic, an open dataset pairing diverse CUDA tasks with verified solutions and trajectories. Human-guided review and diversity-aware selection curate tasks expressed as natural-language descriptions, reference programs, mathematical specifications, and their intersections. To build the solutions and trajectories, our agentic framework guides a strong LLM through implementation, correctness repair, and performance optimization with reusable CUDA guidance and execution feedback. Supervised fine-tuning of a small open-source model on KernelMosaic raises correctness from 4%, 0%, and 0% to 88%, 82%, and 16% on KernelBench L1, L2, and L3, respectively, while increasing the fraction of tasks with kernels faster than PyTorch eager at every level. Further training experiments show that supervision from the curated trajectories substantially outperforms direct responses and promotes sustained testing and revision. These results demonstrate that KernelMosaic enables a general-purpose model to achieve substantial gains in CUDA kernel generation.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "CUDA 학습용 데이터셋 중심, 평가 자원 여부 불명확"
+        }
+      ]
+    },
+    "2611.14758": {
+      "arxiv_id": "2611.14758",
+      "paper_title": "Benchmarking Multilingual Document Understanding in Vision-Language Models",
+      "abstract": "Recent Vision-Language Models (VLMs) perform strongly on multimodal tasks, Document Understanding (DU) among them, but the benchmarks that measure them mostly cover English documents and narrow problems. How well current VLMs generalize across languages, tasks, styles and layouts therefore remains unclear. We introduce MDU, a multilingual DU benchmark of 23146 examples spanning 13 tasks and five languages: English, French, German, Italian, and Spanish. The tasks isolate complementary capabilities, from surface-level text and Markdown extraction through summarization, classification and named-entity recognition to layout-sensitive passage and layout extraction. We evaluate 45 state-of-the-art open-weight VLMs from 1.7B to 235B parameters, plus one commercial system under the same protocol. The benchmark is far from saturated: the best average is 69.0, only eight of the 45 evaluated systems reach 65, and the two best results come from 27B models rather than from the largest systems we evaluate. Performance is uneven in ways that scale does not fix. The gap between the strongest and weakest language does not close as models grow, and it survives controlling for the domain composition of each language. Capabilities also do not improve together: once we partial out overall model quality, per-task scores are largely uncorrelated, and transcription ability in particular trades off against semantic extraction.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어 포함 다국어 문서 이해 벤치마크 MDU 제안"
+        }
+      ]
+    },
+    "2611.14765": {
+      "arxiv_id": "2611.14765",
+      "paper_title": "SynthCorp: A Platform for Creating Benchmarks for Data Agents",
+      "abstract": "Current benchmarks for LLM-driven data agents saturate quickly and cannot target specific capabilities. We present SynthCorp, a platform that creates customizable data estates and benchmarks by simulating how business events produce and modify corporate data over time. Each data estate combines relational databases, a document store, and a data catalog, paired with evaluation tasks and executable gold programs. First, given a scenario and target complexity dimensions, SynthCorp synthesizes reusable event types and compiles each into a program over predefined simulation primitives. Second, SynthCorp schedules event instances on a virtual calendar, interleaving routine and disruption events so that tables, documents, and catalog entries remain consistent. Third, SynthCorp executes the calendar to materialize the data estate and records every operation in a simulation log. Fourth, SynthCorp generates analytical tasks and derives verified gold programs from the log. We use SynthCorp to generate initial evaluation benchmarks comprising seven data estates (up to 1K operational tables) and 256 tasks across five domains. The data estates pass deterministic pipeline checks (such as foreign-key violations, undeclared writes, recurrence violations, and database execution failures) with a near-zero error rate, introduce cross-asset complexities, and cover all requested dimensions. Evaluating three models across four data-context settings shows that the benchmarks separate data contexts and model tiers. Auditing candidate queries against causal provenance in the simulation log verifies gold programs without manual annotation, including on multi-event composite tasks that expose reasoning failures in state-of-the-art agents. We hope the community uses SynthCorp to generate more challenging and useful data estates and benchmarks that foster the development of enterprise data agents.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "데이터 에이전트용 벤치마크 생성 플랫폼 및 벤치마크 제공"
+        }
+      ]
+    },
+    "2611.14881": {
+      "arxiv_id": "2611.14881",
+      "paper_title": "MLIRBench - A Benchmark and Dataset for Compiler and Hardware-Aware Reasoning",
+      "abstract": "In recent years, large language models (LLMs) have become increasingly popular in software engineering and have performed well on different programming tasks. However, it is still difficult to know whether these models truly understand program behavior or whether they mainly rely on patterns learned from their training data. This distinction is particularly important for intermediate representations (IRs), where operations, dataflow, and execution semantics are explicitly represented. In this paper, we introduce MLIRBench, a benchmark for evaluating how LLMs reason about MLIR programs. MLIRBench uses a multi-agent pipeline to generate program mutations, validate their behavior through execution, and construct reasoning tasks from torch and linalg program pairs. The dataset contains 1,768 validated pairs, including 888 linalg pairs and 880 torch pairs, labeled as EQUIV, DIVERGE, or ERROR. We evaluated nine models, including five open-weight and four proprietary models. Gemini 3.1 Pro achieved the highest hard-label accuracy of 92.65% across all 1,768 pairs, counting unsuccessful predictions as incorrect. Across its 1,768 scored predictions, it achieved an aggregate score of 74.18 and a judge-assigned result-behavior score of 5.04/10. These results show that strong semantic classification does not necessarily imply accurate prediction of detailed execution behavior, highlighting a gap in current LLM reasoning over compiler IRs. By exposing this gap through execution-validated program pairs, MLIRBench provides a reproducible foundation for studying semantic reasoning over compiler IRs and related tasks such as program repair and semantic classification.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MLIR 프로그램 추론 평가 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.14925": {
+      "arxiv_id": "2611.14925",
+      "paper_title": "ToolTurns: Benchmarking LLM Agents in Multi-Turn Dialogue",
+      "abstract": "Tool-using language models are increasingly deployed in conversational settings, yet most large-scale tool-use benchmarks focus on isolated requests. We introduce ToolTurns, a benchmark of 2,620 problems spanning 1,827 tools and 11,004 API endpoints across 47 categories. Each dialogue begins with an intentionally underspecified request and continues through two context-dependent follow-ups, testing clarification, tool use, and retention of conversational context. We also introduce an open-source user simulator that reveals withheld context through dialogue and generates follow-up requests, with a checker--fixer pipeline for improving its turns. Across nine language models, the best agent resolves 69.6% of individual requests but completes only 39.8% of full dialogues. Under this evaluation protocol, every evaluated model receives lower success scores on follow-up requests than on the initial request, and dialogue-quality rubric scores and task success can rank models very differently. Paired turn-level evaluation shows that the checker--fixer reduces detected dialogue defects, and blind human evaluation favors the revised turns. ToolTurns provides a testbed for evaluating whether agents sustain task success across multi-turn dialogue with tools.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티턴 도구 사용 에이전트 벤치마크 ToolTurns 제안"
+        }
+      ]
+    },
+    "2611.14949": {
+      "arxiv_id": "2611.14949",
+      "paper_title": "RSI-PDEbench: A Benchmark for Self-Improving Agents in PDE Solving",
+      "abstract": "Identifying and solving partial differential equations (PDEs) from sampled solution data often requires substantial expert effort in equation discovery, coefficient estimation, and numerical solver configuration, especially under noise and distribution shifts. Can large language model (LLM) agents automate this workflow accurately and efficiently? To investigate this question, we introduce \\bench{}, a benchmark of 1,001 cases spanning 42 equation templates, including both classical and fractional PDEs. It provides three evaluation settings: Full evaluates performance on noise-free solution data; Noisy tests robustness to Gaussian noise with an RMS equal to 50\\% of the clean-signal RMS; and Hard-OOD tests challenging out-of-distribution generalization to unseen equation templates and shifted coefficient ranges. We further introduce RSI-PDE, a recursively self-improving agent harness that shortlists candidate equations by residual loss, uses relative $L^2$ feedback to refine coefficients and numerical solvers, and applies a validation gate to policy and memory updates. We compare RSI-PDE with single-run baselines and native agent harnesses (Claude Code or Codex) across four frontier models. Across the three settings, RSI-PDE improves the pass rate averaged across the four models by 106.5--181.9\\% relative to single-run baselines and by 3.0--19.6\\% relative to native harnesses, while reducing total recorded model calls by 46.9\\% across the 12 model--setting pairs. These results highlight the potential of validated recursive self-improvement in LLM agents to advance scientific computing.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "PDE 풀이 에이전트 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.15154": {
+      "arxiv_id": "2611.15154",
+      "paper_title": "SciSelect-Gym: An Environment and Benchmark for Active Learning and Bayesian Optimization Configuration Selection",
+      "abstract": "In many scientific tasks, scientists repeatedly choose a small set of candidates to test, learn from the results, and use the observations to guide the next selection. Methods based on active learning~(AL) or Bayesian optimization~(BO) have been proposed for these iterative screening campaigns with a surrogate model. Yet, selecting the surrogate model and acquisition function for a new dataset remains challenging due to limited empirical evidence, while the effectiveness of large language models (LLMs) in making such decisions remains unclear. To address these gaps, we introduce SciSelect-Gym, an environment for simulating AL/BO data selection campaigns and evaluating configuration choices. We conducted simulations of AL/BO data selection campaigns across several settings and more than 100 molecular datasets. Using completed simulation campaigns as context improves LLM recommendation shortlists on held-out datasets more consistently than it improves the quality of their first choice. SciSelect-Gym provides a simulation platform and recommendation protocols for learning how to choose configurations before an acquisition campaign. An implemented agent use case connects these campaign records and simulation tools to LLM-generated configuration-selection policies. The code is provided as supplementary material.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "AL/BO 설정 선택 평가용 환경 및 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.15225": {
+      "arxiv_id": "2611.15225",
+      "paper_title": "Can MLLMs Reason over Surround-View Driving Videos? A Multi-View Autonomous Driving QA Benchmark",
+      "abstract": "Surround-view video understanding in autonomous driving is a crucial capability for Multimodal Large Language Models (MLLMs) to achieve reliable driving reasoning. Real-world driving often requires information beyond the front-view camera. Existing MLLMs primarily focus on front-view information, while their spatio-temporal understanding and reasoning abilities remain unknown. To address this gap, we propose MVDriveBench, a high-information-density video QA benchmark for autonomous driving, characterized by synchronized surround-view inputs, spatio-temporal understanding, and reasoning-chain-oriented evaluation. We design 12 categories of QA tasks that cover the complete reasoning pipeline from low-level visual perception to high-level driving decision-making, enabling a systematic evaluation of MLLMs surround-view spatio-temporal understanding and reasoning capabilities in complex driving environments. We conduct a comprehensive evaluation of 23 open-source, closed-source, and expert MLLMs on MVDriveBench. The results show that current MLLMs still exhibit insufficient surround-view spatio-temporal reasoning ability. Meanwhile, closed-loop evaluations of specialist models in AlpaSim reveal a correlation between surround-view spatio-temporal reasoning capabilities and closed-loop driving performance, highlighting the importance of comprehensive multi-view understanding for reliable vehicle control.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "서라운드뷰 주행 영상 QA 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.15306": {
+      "arxiv_id": "2611.15306",
+      "paper_title": "Beyond the Explicit: Benchmarking and Detecting Implicit Harm in Short Videos",
+      "abstract": "Short videos have become a dominant online medium, where harmful content is increasingly conveyed in implicit and fragmented forms. Prior work largely focuses on explicit categories, such as violence and hate speech, and often fails to detect videos that subtly promote misleading values through narrative context, emotional framing, or cross-modal cues, partly due to the lack of dedicated benchmarks for implicit harm. To bridge this gap, we construct DeepHarm-7K, a large-scale harmful short-video dataset comprising 7,110 samples annotated according to a fine-grained harmful-content taxonomy. The dataset systematically covers implicitly harmful videos across diverse real-world scenarios and is constructed through a rigorous multi-stage quality-control process. Building on this dataset, we propose DeepHarm-VL, a multimodal detection framework that integrates visual, audio, and cross-modal reasoning. The framework employs a two-round reasoning strategy to progressively identify surface-level evidence and infer latent harmful implications. Experimental results show consistent improvements over strong baselines and state-of-the-art methods across multiple open-source video-language models, demonstrating its effectiveness in detecting both explicit and implicit harmful short videos.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "암묵적 유해 영상 데이터셋, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.15314": {
+      "arxiv_id": "2611.15314",
+      "paper_title": "AcrossPlace: Do Vision--Language Models Recognize Places Beyond Their Source Views? A Comprehensive Benchmark",
+      "abstract": "Language-guided place recognition requires recovering geographic identity across visual observations beyond the image from which a description originates. However, aggregate retrieval scores often entangle observation transfer, gallery competition, and linguistic evidence, obscuring the underlying recognition capability. We introduce AcrossPlace, a provenance-aware benchmark establishing a systematic evaluation standard for bidirectional language--vision place recognition. Built upon GSV-Cities, AcrossPlace comprises 56,726 places across 23 cities, 156,800 automatically generated, rule-filtered descriptions, and 113,404 target images. Each description retains its source-image provenance, while retrieval operates on disjoint target observations. Text-to-image (T2I) and image-to-text (I2T) retrieval share a unified place-identity relevance criterion supporting multiple valid matches. Two geographic protocols evaluate unseen places within represented cities (P0) and generalization to held-out cities (P1). Paired observation comparisons, gallery-controlled evaluations, fixed-query scaling, and blinded annotation auditing systematically characterize retrieval performance. Across three training seeds, place-supervised SigLIP2 T2I Recall@1 decreases from 19.69% on source images to 12.31% on independent targets under P0. For fixed P1 queries, expanding the gallery from 500 to 8,425 places reduces Recall@1 from 14.67% to 2.87%. A 240-description audit further reveals discrepancies between automated acceptance and factual evidence. These findings establish AcrossPlace as a reproducible evaluation standard for assessing transferable place identity across visual observations and geographic environments.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "언어-비전 장소 인식 벤치마크 AcrossPlace 신규 제안"
+        }
+      ]
+    },
+    "2611.15325": {
+      "arxiv_id": "2611.15325",
+      "paper_title": "CaseScope: A Multi-Field Benchmark for Case-Level Pathology Diagnosis with Multimodal LLMs",
+      "abstract": "Pathologists rarely diagnose from a single image: they scan a section at low power for architecture, zoom into selected fields for cytology, and integrate the evidence across views and scales. Pathology benchmarks for multimodal large language models (MLLMs), however, mostly ask about one image or require whole-slide pipelines, and the few that show several fields draw nested regions from cancer slides of one public cohort. We introduce CaseScope, a benchmark of diagnosis from several curated fields of one lesion: CaseScope-Teaching, 436 cases from a residency-training image library, reconstructed, de-identified, harmonised against a WHO-based ontology and re-examined by a pathologist wherever an automated pre-review raised a doubt, and CaseScope-Atlas, 800 cases from 88 published atlases (387 of them figure series of one disease), labelled from the captions by two LLMs that must agree. They cover 843 entities across 18 organ systems and pose 4,679 items in six tasks, from open-ended and ten-way diagnosis with ontology-guided hard negatives under circular evaluation to the verification and location of morphological findings. Across twenty-eight open and four proprietary MLLMs, diagnoses are unstable -- the best open and proprietary models are correct under all ten option rotations on 17.9% and 61.7% of the teaching cases -- and wrong answers favour the classic look-alike; open models make little use of the additional fields on teaching cases, where the one-line specimen site matters more, although on atlas cases with three or more fields the fields count about as much as the site; and most open models verify findings barely above chance (median 62.0% vs. 50%, best 81.5%), gaining a median +3.4 points from images; proprietary models reach 83.2-93.2%. Rankings broadly replicate between the sources. The evaluation code is available at https://github.com/Wenchuan-Zhang/CaseScope.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "병리 진단용 멀티모달 LLM 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.15342": {
+      "arxiv_id": "2611.15342",
+      "paper_title": "MechBench: A Domain-Specific LLM Benchmark for Parallel Mechanisms",
+      "abstract": "Parallel mechanisms pose distinctive challenges to large language models (LLMs), as valid reasoning depends jointly on mechanism topology, loop closure, geometry, joint types, and modeling assumptions. Yet existing LLM benchmarks provide little systematic coverage of such domain-specific knowledge, constraint-sensitive analysis, and constructive design. To fill this gap, we introduce MECHBENCH, a 2,541-question benchmark for evaluating LLMs in parallel mechanisms across professional knowledge, mechanism analysis, and design. MECHBENCH contains standard and challenge tiers spanning six capability categories and nine executable analysis and design tasks. It is constructed through MECHFORGE, a domain-grounded framework that combines expert-organized knowledge, LLM-assisted question generation, programmatic instance generation, two-stage expert review, and task-aware scoring with exact matching, rubric-based evaluation, and program verification. We further develop MECHGPT as a diagnostic domain-adapted model. Experiments show that strong knowledge performance does not directly translate into executable mechanism reasoning: leading closed-service models achieve over 95 on the standard tier but only 47-60 on the challenge tier, while domain adaptation substantially improves MechGPT over its Qwen3-8B baselines but leaves a large gap in constrained analysis and design. These results establish MECHBENCH as a systematic testbed for measuring domain-specific LLM capabilities in mechanism science.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "병렬 메커니즘 도메인 LLM 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.15639": {
+      "arxiv_id": "2611.15639",
+      "paper_title": "ChJGBench: A Comprehensive Benchmark for Chinese Legal Judgment Generation with Diagnostic Evaluation",
+      "abstract": "With the rapid development of LLMs, increasing attention has been paid to whether they can reliably generate complete and legally valid judicial documents. This calls for a benchmark capable of evaluating whether models can accurately apply statutes and resolve outcome-critical issues, including claims, charges, penalties, and monetary obligations. However, existing benchmarks typically focus on isolated legal tasks or coarse-grained evaluation. We introduce ChJGBench, a benchmark for generating the reasoning and dispositive sections of Chinese judgments across civil, criminal, and administrative cases. Built from 3,462 real-world judgments, ChJGBench provides a case-type-aware diagnostic evaluation framework comprising 13 metric types and adopts a hybrid paradigm. Experiments reveal no uniform advantage for legal-domain models over general-purpose models, with model strengths varying across diagnostic dimensions. Performance is generally stronger on criminal cases, while civil and administrative cases continue to present substantial challenges.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "중국어 판결문 생성 벤치마크로 과제가 중국어에 한정"
+        }
+      ]
+    },
+    "2611.15718": {
+      "arxiv_id": "2611.15718",
+      "paper_title": "Orbit: An Evidence-Grounded Benchmark for Evaluating LLMs on IT Operations Reasoning",
+      "abstract": "LLMs now support IT operations (ITOps), but benchmarks rarely show why a model fails. We present ORBIT, a benchmark of ITOps questions in three formats, namely multiple-choice, open-ended, and troubleshooting, with each question accompanied by a reference answer and a recorded source. An audit found template defects in about a tenth of the generated items, so we drop them and rebuild the troubleshooting format from real practitioner threads with accepted answers. Under one independent judge, five LLMs answer most multiple-choice items correctly, between a third and just over half of the open-ended items, and a minority of the troubleshooting items, even under a more lenient root-cause rubric. When models judged their own answers, they accepted many answers to defective items, so we use one independent judge for every model. Word overlap with the question finds the correct option for more than half of the multiple-choice items. ORBIT is a diagnostic aid for selecting and supervising assistants rather than a deployment test.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "IT 운영 추론 평가 벤치마크 ORBIT 제안"
+        }
+      ]
+    },
+    "2611.15756": {
+      "arxiv_id": "2611.15756",
+      "paper_title": "How Far Can Frozen Vision-Language Models Go on Event Data? A Training-Free Study on EventBench",
+      "abstract": "We present a training-free system for the EBMV @ ECCV 2026 challenge \"Event Stream Understanding with EventBench\" (General Understanding track), which evaluates vision-language models on five event-camera understanding tasks. We use none of the challenge's training data: our goal is to measure how far off-the-shelf, RGB-pretrained models can go on event data through representation and prompting alone. For four of the five categories (gesture recognition, detailed understanding, causal reasoning, and event OCR) we render event bins as red/ON, blue/OFF frames, select a category-specific subset of bins, stitch them into a single grid image, and query the same frozen Qwen3.5 9B vision-language model with a category-specific prompt for all four tasks. The fifth category, action recognition, feeds every bin directly into the organizers' EventGPT-Plus-2B. The system reaches 62.28% overall accuracy across 2,084 test questions (rank 9/27), led by action recognition and causal reasoning (80.27%, 77.22%) and limited most by gesture recognition and event OCR (54.70%, 34.57%). We visualize test samples from every category together with the exact images the model receives, score six alternative representations against the evaluation server, and analyze the full test set post hoc. That analysis shows that our bounding-box crop almost never tightened around content, so event OCR text reached the model at roughly one fifth of its horizontal resolution, and that detailed-understanding predictions are skewed toward the first two answer options.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "기존 EventBench 챌린지 참가 시스템 보고"
+        }
+      ]
+    },
+    "2611.15789": {
+      "arxiv_id": "2611.15789",
+      "paper_title": "VibePrevisBench: Evaluating Agentic Coding for 4D Scene Generation in Blender",
+      "abstract": "Controllable real-world video generation models can condition on a rendered graybox proxy video, which fixes layout, motion and camera. Coding agents can build such videos by reconstructing a 4D scene in Blender, yet no benchmark checks both these videos and the long, multi-shot scenes behind them. We introduce VibePrevisBench, a benchmark for 4D scene reconstruction: an agent turns a brief into an executable 4D scene and renders its proxy video. Its 242 tasks span four input kinds, including scripts, photos, continuations, and reference videos. Each delivery is scored along two evaluation dimensions. Rule-based Scene Check re-runs the code and compares the exported 4D scene with hidden ground truth facts in nine dimensions. VLM-based Screen Check asks a VLM judge whether the facts that pass can be recognized in the proxy video. We analyze the evaluation results and trajectories of 11 frontier coding agents and identify three key observations. First, multimodal understanding separates the agents, especially in understanding space and camera motion. Second, all agents seem to already master basic camera work and staging, and fail at challenging requests. Third, agents inspect their own renders but fail to correct their errors. Agents thus need better visual understanding of space and camera, explicit checks for challenging requests, and item-by-item verification of renders against the brief.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "4D 장면 생성 코딩 에이전트 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.15831": {
+      "arxiv_id": "2611.15831",
+      "paper_title": "NIBench: benchmarking autonomous AI agents for execution, skill evolution and scientific judgment in neuroimaging",
+      "abstract": "Autonomous AI agents are increasingly used to automate biomedical research, creating a growing need to benchmark their capabilities on real scientific data and workflows. Their reliability in neuroimaging remains insufficiently characterized, where plausible analytical outputs can conceal errors that affect scientific conclusions. Existing studies have advanced scientific question answering and tool-based automation, but provide limited evidence on workflow reconstruction, acquisition of procedural expertise and evidence-based scientific judgment. Here we present NIBench, a neuroimaging benchmark comprising three complementary evaluations of autonomous agents. First, we benchmark execution and workflow reconstruction using 56 tasks across seven tool ecosystems, covering structural, diffusion and functional magnetic resonance imaging, positron emission tomography and multimodal analyses. Second, we examine whether agents can evolve their procedural skills through distillation of execution trajectories, evaluating the resulting skills on previously encountered tasks, unseen tasks and other models. Third, we assess scientific judgment using 36 claims from published Alzheimer's disease studies, requiring agents to analyse raw cohort data and provide reproducible evidence. We evaluate 19 language models within a shared agent framework, with selected models undergoing skill distillation and claim evaluation. Leading agents execute supplied analysis protocols nearly perfectly, whereas withholding procedural guidance widens performance differences. Distilled skills improve performance on acquisition tasks and transfer between models, but benefits on unseen tasks are inconsistent. Agents reproduce their reported results yet sometimes reach conclusions inconsistent with expert-derived answers, and access to data does not always improve judgment.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "신경영상 에이전트 평가 벤치마크 NIBench 제안"
+        }
+      ]
+    },
+    "2611.15925": {
+      "arxiv_id": "2611.15925",
+      "paper_title": "ShadowBench: Exposing Lexical Anchoring and the Illusion of Forgetting in Large Language Models",
+      "abstract": "Large Language Models (LLMs) have emerged as primary interfaces for factual retrieval, yet current evaluation paradigms rely almost exclusively on explicit entity names. In this work, we demonstrate that LLM knowledge is fundamentally lexically anchored: models possess extensive factual information but find it significantly difficult to retrieve without explicit name tokens. To quantify this limitation, we introduce ShadowBench, a rigorously hardened, shortcut-resistant benchmark designed to evaluate Latent Entity Association via a novel Dual-Trait Association (DTA) task. Our evaluation reveals a pervasive \"Shadow Gap\" across all model scales$\\unicode{x2013}$up to the frontier models GPT-5.4 and Claude-Sonnet-4.6$\\unicode{x2013}$where removing lexical anchors causes performance drops of over 20%. Furthermore, we demonstrate that this lexical dependency exposes a critical vulnerability in AI safety. Applying ShadowBench to Machine Unlearning, we find that state-of-the-art algorithms (e.g., Gradient Difference, NPO) achieve only superficial lexical erasure. While unlearned models fail on direct queries, our novel Latent Entity Leakage Rate (LELR) metric reveals that for popular entities, models explicitly reconstruct the \"forgotten\" entity in their internal reasoning traces in over 74% of cases, utilizing residual shadow knowledge to solve associative tasks. Conversely, for niche entities, models retain high shadow accuracy (60-90%) via implicit attribute correlation despite 0% LELR. Ultimately, ShadowBench indicates that current unlearning paradigms create an \"Illusion of Forgetting,\" demonstrating that existing methods act as superficial output filters and are not yet reliable for achieving true parametric erasure.",
+      "paper_updated": "2026-11-13T00:00:00Z",
+      "created_at": "2026-11-14T02:40:28Z",
+      "input_sha256": "46baee714263db640bd4268031398b6b741061683634638f5a33e4dbb724b4e6",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "잠재 엔티티 연상 평가 벤치마크 ShadowBench 제안"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -98964,10 +99324,30 @@
         "2603.14342",
         "2604.07338",
         "2605.02209",
-        "2605.23628"
+        "2605.23628",
+        "2608.10932",
+        "2611.14581",
+        "2611.14604",
+        "2611.14758",
+        "2611.14765",
+        "2611.14881",
+        "2611.14925",
+        "2611.14949",
+        "2611.15154",
+        "2611.15225",
+        "2611.15306",
+        "2611.15314",
+        "2611.15325",
+        "2611.15342",
+        "2611.15639",
+        "2611.15718",
+        "2611.15756",
+        "2611.15789",
+        "2611.15831",
+        "2611.15925"
       ],
-      "calls": 1,
-      "cost_usd": 0.0657
+      "calls": 2,
+      "cost_usd": 0.145
     }
   },
   "reaudits": [
