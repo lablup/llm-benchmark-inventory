@@ -64967,7 +64967,7 @@
     },
     "2609.30979": {
       "decision": "propose",
-      "reason": "CCRV-Bench는 단일 이미지 물리 장면에서 시각 인과 추론을 평가하는 새 벤치마크로, 재사용 가능한 코드 저장소를 PDF에서 밝히고 있다. 인과 과제 4종과 제약 4종을 교차한 16개 평가 설정, 기준 문항 800개, 제약 변형 3,200개로 구성된다. 과제 예시와 질문 문장이 영어이므로 en 트랙으로 분류했고, 이미지 입력이 필수라 vision으로 분류했다. 라이선스와 lm-eval 지원 여부는 확인되지 않아 '확인 불가'로 기록했다.",
+      "reason": "CCRV-Bench는 단일 이미지 물리 장면에서 시각 인과 추론을 평가하는 새 벤치마크로, 재사용 가능한 코드 저장소를 PDF에서 밝히고 있다. 인과 과제 4종과 제약 4종을 교차한 16개 평가 설정, 기준 문항 800개, 제약 변형 3,200개로 구성된다. 과제 예시와 질문 문장이 영어이므로 en 트랙으로 분류했고, 이미지 입력이 필수라 vision으로 분류했다. 공식 저장소 README와 PDF 어디에도 라이선스 표기가 없어 라이선스는 미표기로 기록했고, 권리 항목은 저작권 전부 보유로 처리했다. README에 lm-eval 언급이 없어 lm-eval 지원은 미표기로 기록했다. 논문 Table 2의 14개 모델 eDCR을 추천 결과로 제시한다.",
       "changes": [
         {
           "track": "en",
@@ -64980,12 +64980,12 @@
             "대표 과제": "인과 관계 발견(X1), 상태 예측(X2), 인과 진단(X3), 개입 결과 예측(X4)을 네 가지 제약 아래에서 수행",
             "대표 예시·설명": "이미지와 영어 질문을 보고(예: 인물이 프리스비에 어떤 작용을 하는지) 인과 관계를 답하는 과제이며, 제약 조건에서는 개체 이름 대신 기호를 쓰거나 좌표를 함께 제시하거나 거짓 전제를 반박하거나 단어 수를 제한하는 과제 설명이다. 실제 시험 문항이 아니다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부는 이번 검토에서 확인하지 못했다. 이 벤치마크는 Visual Genome 이미지를 바탕으로 하므로 해당 구성 요소의 이용 약관을 이용 전에 따로 확인해야 한다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 Visual Genome 이미지를 바탕으로 만들어졌으므로(논문 4쪽) Visual Genome 등 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/0815linyuan/CCRVBench"
           },
           "modality": "vision",
@@ -65029,9 +65029,178 @@
               "quote": "visual causal reasoning"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/0815linyuan/CCRVBench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/0815linyuan/CCRVBench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/0815linyuan/CCRVBench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/0815linyuan/CCRVBench",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/0815linyuan/CCRVBench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "eDCR (constraint-gated effective Deep Causal Reasoning score), percent (%)",
+            "setting": "Results reported in this paper (Table 2), not a current global leaderboard. Constrained main set of CCRV-Bench: 3,200 constrained variants per model (4 causal tasks x 4 constraints, 800 baseline items each with 4 constrained variants), eDCR averages DCR gated by constraint compliance. Responses judged by GPT-5.1. Temperature 0.0 where supported; no explicit output-token limit was passed (output length governed by each API or deployment default).",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "GPT-5.5",
+                "score": "76.9",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5.5 92.6 89.3 86.1 89.3 86.9 79.2 70.8 79.0 95.0 76.9 10.4 12.4"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "6 closed-source models (GPT-5.5"
+                }
+              },
+              {
+                "model": "Claude-Opus-4.7",
+                "score": "74.5",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude-Opus-4.7 95.8 91.0 85.3 90.7 84.7 76.8 70.2 77.2 93.0 74.5 13.5 16.1"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Doubao-Seed-2-Pro",
+                "score": "60.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Doubao-Seed-2-Pro 95.4 91.9 82.3 89.8 70.2 61.6 55.8 62.6 91.9 60.0 27.3 29.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini-3.1-Pro-Preview",
+                "score": "58.6",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemini-3.1-Pro-Preview 93.9 88.3 79.6 87.3 71.9 59.6 48.5 60.0 92.4 58.6 27.3 28.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini-3.5-Flash",
+                "score": "56.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemini-3.5-Flash 94.9 90.5 84.0 89.8 69.2 59.8 51.3 60.1 86.3 56.2 29.7 33.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM-5V-Turbo",
+                "score": "60.4",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GLM-5V-Turbo 86.3 78.6 67.6 77.5 71.3 61.8 53.6 62.2 92.9 60.4 15.3 17.1"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Pixtral-12B",
+                "score": "43.7",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Pixtral-12B 86.8 78.5 66.0 77.1 64.2 51.5 41.8 52.5 71.6 43.7 24.6 33.4"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen2.5-VL-7B",
+                "score": "45.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen2.5-VL-7B 73.4 62.1 48.8 61.4 69.3 49.9 37.7 52.3 77.9 45.2 9.1 16.3"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.6-35B-A3B",
+                "score": "50.7",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.6-35B-A3B 80.5 72.6 64.5 72.5 64.5 50.3 40.5 51.8 92.8 50.7 20.8 21.8"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 6,
+                  "quote": "8 openweight models (Qwen3.6-35B-A3B"
+                }
+              },
+              {
+                "model": "InternVL3-38B",
+                "score": "52.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "InternVL3-38B 79.4 68.3 56.8 68.1 68.0 53.4 45.0 55.5 86.7 52.0 12.7 16.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemma-3-27B-IT",
+                "score": "44.9",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemma-3-27B-IT 77.5 65.8 53.1 65.5 63.3 48.3 40.8 50.8 79.5 44.9 14.7 20.6"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Llama-3.2-11B-Vision",
+                "score": "32.8",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Llama-3.2-11B-Vision 62.0 48.0 35.6 48.5 61.4 43.6 34.7 46.6 52.8 32.8 2.0 15.7"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Mistral-Small-3.2-24B",
+                "score": "52.4",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Mistral-Small-3.2-24B 87.9 77.0 64.4 76.4 72.5 57.1 47.1 58.9 82.3 52.4 17.5 24.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "MiniMax-M3",
+                "score": "34.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "MiniMax-M3 93.8 89.3 81.5 88.2 80.9 73.7 67.4 74.0 38.2 34.2 14.2 54.0"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2609.30979",
@@ -65125,7 +65294,8 @@
         "source_run": "43546947441",
         "context_sha256": "bd7777f789a81355219f3bb53d41cfe4bad141faa96a414b84d26dcec8fbd871"
       },
-      "proposal_sha256": "5e08d7fc677bdb78fad725e22d35585c68f830096a5999706edec4bf81c91e20"
+      "proposal_sha256": "9ff775fa76682d16ed3d7a995a404051b25b97a0a554fe14c2e60a99c2514f41",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -100633,8 +100803,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 14,
-      "cost_usd": 9.9492
+      "calls": 15,
+      "cost_usd": 10.952
     }
   },
   "reaudits": [
