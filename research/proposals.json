@@ -66877,7 +66877,7 @@
     },
     "2506.09956": {
       "decision": "propose",
-      "reason": "LLMail-Inject는 영어 이메일 어시스턴트 환경에서 사람이 작성한 간접 프롬프트 인젝션 공격 208,095건을 모은 재사용 가능한 공개 벤치마크이며, 텍스트 전용 영어 과제이므로 en 트랙의 text 행으로 제안합니다. 이전 응답은 인용문이 해당 PDF 쪽에 그대로 나타나지 않아 거부되었고, 이번에는 해당 쪽에 실제로 있는 짧은 구절만 인용했습니다.",
+      "reason": "LLMail-Inject는 영어 이메일 어시스턴트 환경에서 사람이 작성한 간접 프롬프트 인젝션 공격 208,095건을 모은 재사용 가능한 공개 벤치마크이며, 텍스트 전용 영어 과제이므로 en 트랙의 text 행으로 제안합니다. 공식 카드와 논문 부록 C.3이 데이터셋의 MIT 라이선스를 명시하여 권리 필드를 문서화된 값으로 채웠고, Table 5의 ASR 결과를 비교 결과로 제시합니다.",
       "changes": [
         {
           "track": "en",
@@ -66890,15 +66890,81 @@
             "대표 과제": "이메일 어시스턴트 환경에서 공격 이메일을 검색시키고 방어를 회피해 send_email 도구를 올바른 인자로 호출하게 하는 공격(4개 난이도 레벨, 공격 성공률 ASR 및 팀 성공률 TSR로 측정)",
             "대표 예시·설명": "사용자가 이메일 요약을 요청했을 때, 공격자의 이메일이 검색되어 어시스턴트가 지시받지 않은 send_email 호출을 하는지 확인하는 과제 설명(실제 테스트 항목이 아님)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건은 아직 확인하지 않았으므로 이용 전에 데이터셋 카드와 저장소에서 확인해야 한다. 참가자 제출물로 구성되어 있어 각 구성 요소의 약관도 따로 점검해야 한다. 공격 데이터라 이중 용도 위험이 있다. 일부 방어(상용 텍스트 분류기)는 공개되지 않고 출력값만 제공된다. 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "MIT 라이선스에 따라 저작권 고지와 라이선스 전문을 사본에 포함해야 한다. 공식 카드의 license: mit 표기와 논문 부록 C.3 데이터 카드(16쪽)가 데이터셋에 MIT를 부여한다. 데이터는 참가자 제출물로 구성되며, 참가자는 대회 규칙에 따라 제출물을 공개 데이터셋에 포함하는 것을 허락했다(논문 15쪽, 21쪽). 일부 방어(상용 텍스트 분류기)는 공개되지 않고 출력값만 제공된다(논문 10쪽). 공격 데이터라 이중 용도 위험이 있으므로 이용 범위를 점검해야 한다. 공식 카드에 lm-eval 언급이 없다. 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://huggingface.co/datasets/microsoft/llmail-inject-challenge"
           },
           "modality": "text",
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://huggingface.co/datasets/microsoft/llmail-inject-challenge",
+              "quote": "license: mit"
+            },
+            "상업적 이용": {
+              "page": 16,
+              "quote": "We publish the dataset under the MIT license."
+            },
+            "수정·파생": {
+              "page": 16,
+              "quote": "We publish the dataset under the MIT license."
+            },
+            "재배포": {
+              "page": 16,
+              "quote": "We publish the dataset under the MIT license."
+            },
+            "lm-eval 지원": {
+              "source_url": "https://huggingface.co/datasets/microsoft/llmail-inject-challenge",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "공격 성공률(ASR), 단위 %. 낮을수록 방어가 강함",
+            "setting": "LLMail-Inject 공격 데이터셋을 대회에 사용되지 않은 모델에 공격 최적화 없이 재생(replay)한 논문 Table 5의 결과이다. GPT-5와 GPT-5 mini는 이메일을 tool message로 입력하며, GPT-5는 high reasoning 설정이다. 토큰 예산 등 그 밖의 조건은 논문 해당 표에 명시되어 있지 않다. 이 수치는 이 논문에서 보고된 결과이며 현재 전역 리더보드가 아니다.",
+            "higher_is_better": false,
+            "results": [
+              {
+                "model": "GPT-4o",
+                "score": "58.0",
+                "evidence": {
+                  "page": 9,
+                  "quote": "GPT-4o 58.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5 mini",
+                "score": "47.0",
+                "evidence": {
+                  "page": 9,
+                  "quote": "GPT-5 mini 47.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5",
+                "score": "22.8",
+                "evidence": {
+                  "page": 9,
+                  "quote": "GPT-5 22.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Meta SecAlign 70B",
+                "score": "32.0",
+                "evidence": {
+                  "page": 9,
+                  "quote": "Meta SecAlign 70B 32.0"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_copy": {
             "axis": "Agent security (indirect prompt injection)",
             "definition": "208,095 unique attack prompts collected in a public red-teaming challenge (839 participants, 461,640 submissions). It evaluates the complete attack chain: the attack email must be retrieved, evade defenses, and trigger a tool call with correct arguments. Released subsets include LLMail-Attack (about 29K), LLMail-Evasive (about 3K), LLMail-Phase2 (about 3.7K) and LLMail-Annotated (about 130K).",
@@ -66941,7 +67007,8 @@
           },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2506.09956",
@@ -67054,7 +67121,8 @@
         "source_run": "43546947441",
         "context_sha256": "d78a315730ab160c778e347d8ac9e6deea17e80e19bf077d8ac4db04666b456c"
       },
-      "proposal_sha256": "bd18c0b687afc069a90e2b16ddfd0b00ed204bf27fef58c59a5b2df535794ea0"
+      "proposal_sha256": "94aa97076e2f80816f982bb97494c84d2b8d00a2e5cceb360cb873bdb4149972",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -102589,8 +102657,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 31,
-      "cost_usd": 25.2067
+      "calls": 32,
+      "cost_usd": 26.1511
     }
   },
   "reaudits": [
