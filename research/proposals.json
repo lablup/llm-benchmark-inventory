@@ -65264,7 +65264,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-14T03:08:04Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -65290,12 +65290,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43546947441",
-        "context_sha256": "bd7777f789a81355219f3bb53d41cfe4bad141faa96a414b84d26dcec8fbd871"
-      },
       "proposal_sha256": "9ff775fa76682d16ed3d7a995a404051b25b97a0a554fe14c2e60a99c2514f41",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "변경된 사실은 논문 페이지와 공식 README로 모두 뒷받침됩니다. 이미지 100장, 기준 QA 800개, 제약 변형 3,200개, 16개 평가 설정, 평가 모델 14개, 과제 4종과 제약 4종, 지표(DCR, CSR, eDCR, CDI, eCDI)가 원문과 일치합니다. 예시와 질문이 영어이므로 en 트랙이 적절하고, 이미지 입력이 필수라 vision 분류도 타당합니다. 라이선스는 README에 표기가 없고 PDF에도 벤치마크나 데이터의 라이선스를 밝힌 문장이 없습니다(pdf_mentions가 비어 있고 확인한 페이지에서도 찾지 못했습니다). 따라서 미표기가 맞고, 상업적 이용·수정·파생·재배포가 모두 저작권 전부 보유로 일관되게 기재되어 있습니다. lm-eval은 README와 PDF 어디에도 언급이 없어 미표기와 부재 증거가 정당합니다. 이 벤치마크는 Visual Genome 이미지에서 파생되었고(논문 4쪽 확인), 이용 시 유의사항이 Visual Genome을 명시하며 구성 요소 약관을 별도로 확인하라고 안내하므로 필수 요건을 충족합니다. 추천 결과는 논문 Table 2의 eDCR(단위 %, 높을수록 좋음)이며, 14개 모델의 점수가 표와 열·행 정렬까지 모두 일치합니다(Table 10과도 같습니다). 동일한 제약 조건 본 세트(3,200개 변형)를 쓰므로 데이터셋·분할·지표 혼합이 없습니다. 상위 3개(GPT-5.5 76.9, Claude-Opus-4.7 74.5, GLM-5V-Turbo 60.4)는 전체 모델을 포괄한 목록에서 정당하게 선택됩니다. 가중치 공개 여부는 GPT-5.5(비공개)와 Qwen3.6-35B-A3B(공개)만 논문 문장으로 근거가 확인되었고 나머지는 null로 남겨 비공개로 취급하지 않았습니다. 알 수 없음·확인 불가로 남은 필수 필드는 없습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 236194,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2610,
+              "output_tokens_details": {
+                "thinking_tokens": 1760
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 236194,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2610,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 236194,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 236194
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.9709449,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "9ff775fa76682d16ed3d7a995a404051b25b97a0a554fe14c2e60a99c2514f41",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -100803,8 +100849,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 15,
-      "cost_usd": 10.952
+      "calls": 16,
+      "cost_usd": 11.9229
     }
   },
   "reaudits": [
