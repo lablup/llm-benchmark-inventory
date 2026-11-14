@@ -64079,6 +64079,186 @@
       "proposal_sha256": "d1552b5552be2bdce178c01d79b153798dd49b127cb1f97f0a354edc9918638c",
       "approval_policy": "claude_only",
       "resume_error": "Score quote must contain the exact model and numeric value"
+    },
+    "2605.12882": {
+      "decision": "propose",
+      "reason": "CiteVQA는 Doc-VQA에서 답변과 요소 단위 bounding-box 인용을 함께 채점하는 재사용 가능한 새 벤치마크입니다. 711개 PDF(영어 451, 중국어 260)에 질문 1,897개로 구성되며, 지표는 SAA, Rec., Rel., Ans.입니다. 영어 질문 예시가 PDF에 있고 모델이 페이지 스크린샷을 입력받으므로 en 트랙의 vision 행으로 제안합니다. 중국어 문서는 범위 밖이어서 행을 만들지 않았고, 영어 부분만의 질문 수는 논문에 없어 적지 않았습니다. 라이선스 등 다섯 항목은 '확인 불가'로 두었습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "citevqa",
+            "이름": "CiteVQA",
+            "평가 축": "이미지(문서 VQA의 근거 인용·증거 귀속)",
+            "언어": "en(영어 문서 부분. 논문 전체는 영어·중국어)",
+            "정의": "답변과 함께 요소 단위 bounding-box 인용을 요구하고 둘을 함께 채점하는 문서 VQA 벤치마크. 전체 711개 PDF(영어 451, 중국어 260, 평균 40.6쪽)와 질문 1,897개, 7개 도메인으로 구성된다. 지표는 답변과 인용이 모두 맞아야 점수를 주는 SAA와 Rec.(IoU 0.5), Rel., Ans.이며 Rel.과 Ans.는 LLM judge가 0~5점으로 채점한다. 논문은 MLLM 20종을 평가했다. 수치는 영어와 중국어를 합친 전체 기준이며 영어 부분만의 질문 수는 논문에 없다.",
+            "대표 과제": "여러 쪽의 PDF 페이지 이미지를 받아 질문에 답하고 근거 요소의 bounding box를 함께 제시(단일 문서, 다중 문서 1-Gold, 다중 문서 N-Gold)",
+            "대표 예시·설명": "영어 질문(예: 특정 약품 제형의 National Drug Code를 묻는 질문)에 답하면서 근거가 된 문서 요소의 bbox를 함께 인용하는 과제. 답이 맞아도 인용 영역이 틀리면 SAA는 0이다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했다. 논문에 따르면 PDF는 Common Crawl에서 가져온 공개 다운로드 링크로만 배포되고 질문, 정답, bbox 주석은 저장소로 공개되므로, 원본 문서의 권리는 따로 확인해야 한다. 문서 중 일부는 중국어이며 이 행은 영어 부분을 대상으로 한다. 채점에는 LLM judge(논문은 Qwen3-VL-235B-A22B 사용)가 필요하다. 논문은 모델별 입력 해상도 차이와 사전학습 중 문서 노출 가능성을 한계로 밝혔다. 결과는 논문 조건의 값이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/opendatalab/CiteVQA"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (document VQA with evidence attribution and citation)",
+            "definition": "A document VQA benchmark that requires an answer together with element-level bounding-box citations and scores both jointly. The full benchmark has 711 PDFs (451 English, 260 Chinese; 40.6 pages on average), 1,897 questions, and seven domains. Metrics are Strict Attributed Accuracy (SAA, credited only when answer and citation are both correct), Rec. (IoU 0.5), Rel., and Ans., where Rel. and Ans. are 0-5 LLM-judge scores. The paper evaluates 20 MLLMs. Figures cover English and Chinese combined, and the paper does not report a question count for the English portion alone.",
+            "task": "Given page images of multi-page PDFs, answer a question and cite the supporting elements with bounding boxes (single-doc, multi-doc 1-Gold, multi-doc N-Gold).",
+            "example": "Task description: answer an English question, such as one asking for the National Drug Codes of specific drug formulations, and cite the supporting document elements with bounding boxes. A correct answer with a wrong cited region receives SAA = 0."
+          },
+          "evidence": {
+            "modality": {
+              "page": 8,
+              "quote": "page screenshots"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "CiteVQA comprises 1,897"
+            },
+            "대표 예시·설명": {
+              "page": 9,
+              "quote": "What are the"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/opendatalab/CiteVQA"
+            },
+            "언어": {
+              "page": 9,
+              "quote": "What are the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "CiteVQA comprises 1,897"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "CiteVQA comprises 1,897"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "CiteVQA comprises 1,897"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2605.12882",
+      "paper_title": "CiteVQA: Benchmarking Evidence Attribution for Trustworthy Document Intelligence",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2605.12882",
+        "sha256": "8126ad032bc127230c6617a4b590e4897d93c29bb2380e1ccacede1a356ad138",
+        "accessed": "2026-11-14T02:50:39Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "sparse_or_broken_text",
+            "table_layout"
+          ],
+          "page_count": 34,
+          "elapsed_seconds": 172.92,
+          "pdf_sha256": "8126ad032bc127230c6617a4b590e4897d93c29bb2380e1ccacede1a356ad138",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "korean",
+          "page_json_sha256": "35240d37bfe8c0e57c0757f5808be6d16a3b8fa05f6727473620a11f794c2d34",
+          "page_json_file": "2605.12882.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/opendatalab/CiteVQA",
+            "fetched_url": "https://api.github.com/repos/opendatalab/CiteVQA/readme",
+            "sha256": "6c7390ea1154ca99834b0a1b296650ef991a2301e434d0bcfc8a9266a97d476e",
+            "accessed": "2026-11-14T02:53:56Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/opendatalab/CiteVQA/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "8c6f920ebf92998dce8b4d2c444535746d820571011630cf57002ecb0bd4dcbb"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-14T02:53:56Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2605.12882",
+        "paper_title": "CiteVQA: Benchmarking Evidence Attribution for Trustworthy Document Intelligence",
+        "abstract": "Multimodal Large Language Models (MLLMs) have significantly advanced document understanding, yet current Doc-VQA evaluations score only the final answer and leave the supporting evidence unchecked. This answer-only approach masks a critical failure mode: a model can land on the correct answer while grounding it in the wrong passage---a critical risk in high-stakes domains like law, finance, and medicine, where every conclusion must be traceable to a specific source region. To address this, we introduce CiteVQA, a benchmark that requires models to return \\textit{element-level} bounding-box citations alongside each answer, evaluating both jointly. CiteVQA comprises 1,897 questions across 711 PDFs spanning seven domains and two languages, averaging 40.6 pages per document. To ensure fidelity and scalability, the ground-truth citations are generated by an automated pipeline---which identifies crucial evidence via masking ablation and enforces multi-stage quality control. At the core of our evaluation is Strict Attributed Accuracy (SAA), which credits a prediction only when the answer and the cited region are both correct. Auditing 20 MLLMs reveals a pervasive Attribution Hallucination: models frequently produce the right answer while citing the wrong region. The strongest system (Gemini-3.1-Pro-Preview) achieves an SAA of only 76.0, and the strongest open-source MLLM reaches just 22.5. Ultimately, towards trustworthy document intelligence, CiteVQA exposes a reliability gap that answer-only evaluations overlook, providing the instrumentation needed to close it. Our repository is available at https://github.com/opendatalab/CiteVQA.",
+        "paper_updated": "2026-10-09T00:00:00Z",
+        "created_at": "2026-10-19T13:49:43Z",
+        "input_sha256": "41a7ad836cb07363f6d966b90f8d0c48a30fb299d63b3f80669ad05277e72271",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "문서 인용 근거 귀속 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "문서 이해 근거 인용 평가 벤치마크 CiteVQA 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43546947441",
+        "context_sha256": "820667d4e89cbceb511291fae12fe3cd242664b1a352820837ab364faff81970"
+      },
+      "proposal_sha256": "44ea3f542d072ff54f0c66dc080776ec184663a7fa9f4c45b7a1876b59f69c69"
     }
   },
   "processed_comments": [],
@@ -99582,8 +99762,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 5,
-      "cost_usd": 1.8779
+      "calls": 6,
+      "cost_usd": 2.7714
     }
   },
   "reaudits": [
