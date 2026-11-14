@@ -67169,6 +67169,165 @@
         "reviewed_sha256": "94aa97076e2f80816f982bb97494c84d2b8d00a2e5cceb360cb873bdb4149972",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2603.18048": {
+      "decision": "propose",
+      "reason": "DEAF는 감정 운율, 배경음, 화자 정체성의 세 음향 차원에서 음향-의미 충돌 자극 2,700여 개를 만들고, 3단계 텍스트 간섭 설계와 진단 지표(ARS, EDI)를 제시한 재사용 가능한 오디오 벤치마크다. 영어 질문 템플릿이 PDF에 인용되어 있어 en 트랙으로 분류했다. 공식 코드·벤치마크 URL도 PDF에 있다. 이전 답변은 인용문이 해당 페이지와 일치하지 않아 거부되었으므로, 모든 인용을 각 페이지에서 그대로 확인되는 짧은 문구로 교체했다. 입력이 오디오라서 modality는 text와 vision 중 비텍스트 멀티모달에 가까운 vision으로 기록했고, 이 분류는 검토가 필요하다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 PDF에서 확인되지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "deaf",
+            "이름": "DEAF (Diagnostic Evaluation of Acoustic Faithfulness)",
+            "평가 축": "오디오 멀티모달(음향 충실도: 음향-의미 충돌 진단)",
+            "언어": "en",
+            "정의": "감정 운율(ESC), 배경음(BSC), 화자 정체성(SIC)의 세 음향 차원에서 음향과 텍스트 의미가 충돌하는 자극 2,756개(Table 1 합계)로 구성된 진단 벤치마크. 3단계 텍스트 간섭(L1 의미 충돌, L2 오도 프롬프트, L3 결합)과 LLM judge(C/T/O 분류) 기반으로 Acc, TDS, OR, ASS, ARS, EDI 지표를 산출함. 논문은 7개 오디오 언어 모델을 제로샷으로 평가함",
+            "대표 과제": "음향 지각 질문(ESC 감정 어조, BSC 배경 환경, SIC 화자 성별·연령)에 대한 개방형 응답을 정답/함정/기타로 판정",
+            "대표 예시·설명": "충돌 오디오(예: 행복한 문장을 우울한 어조로 낭독)를 듣고 \"What environment do the background sounds suggest?\" 같은 영어 질문에 답하는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스를 PDF에서 확인하지 못했다. 코드 저장소 표기를 데이터 라이선스로 간주하면 안 된다. 이 벤치마크는 다른 출처로 구성되어 있다: ESC는 EMIS 데이터셋 기반, BSC는 DEMAND 소음 DB와 Microsoft Neural TTS 음성, SIC는 ElevenLabs TTS 음성이므로(논문 3쪽, 11쪽), 각 구성 요소의 약관을 이용 전에 따로 확인해야 한다. 대부분 TTS 합성 음성이며, 채점에 LLM judge(논문은 DeepSeek-R1 사용)가 필요하다. 입력이 오디오라 텍스트 전용 하니스로는 실행할 수 없다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/kikixiong/DEAF"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Audio multimodal (acoustic faithfulness: diagnosing acoustic-semantic conflicts)",
+            "definition": "A diagnostic benchmark of 2,756 stimuli (Table 1 total) in which acoustic cues conflict with the textual semantics, across three acoustic dimensions: emotional prosody (ESC), background sounds (BSC), and speaker identity (SIC). It uses three levels of textual interference (L1 semantic conflict, L2 misleading prompt, L3 combined) and an LLM judge (C/T/O labels) to compute Acc, TDS, OR, ASS, ARS, and EDI. The paper evaluates seven audio language models zero-shot.",
+            "task": "Answer acoustic perception questions (ESC emotional tone, BSC background environment, SIC speaker gender and age) in open-ended form; responses are judged as correct, trap, or other.",
+            "example": "Task description (not an actual test item): the model listens to conflicting audio, such as a happy sentence spoken in a depressed tone, and answers an English question such as \"What environment do the background sounds suggest?\""
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "Large Audio Language"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "What environment do"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "What environment do"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/kikixiong/DEAF"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "What environment do"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "DEAF (Diagnostic Evaluation"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "over 2,700 stimuli"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "DEAF (Diagnostic Evaluation"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2603.18048",
+      "paper_title": "DEAF: A Benchmark for Diagnostic Evaluation of Acoustic Faithfulness in Audio Language Models",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2603.18048",
+        "sha256": "9c9f6dd22666a3af3323e9c7ef3375313e5f3661d353c2b48c398d5901f7ab41",
+        "accessed": "2026-11-14T04:05:31Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 14,
+          "elapsed_seconds": 87.17,
+          "pdf_sha256": "9c9f6dd22666a3af3323e9c7ef3375313e5f3661d353c2b48c398d5901f7ab41",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "b9c0edf39bf4a2e4ccd8b6d1dab4bc406b4ed55453976870d86c3effc42decea",
+          "page_json_file": "2603.18048.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/kikixiong/DEAF",
+            "fetched_url": "https://api.github.com/repos/kikixiong/DEAF/readme",
+            "sha256": "b457efafc802e9981758a8f91149b3a9e545c07016c0df2a1829d5210ebc7176",
+            "accessed": "2026-11-14T04:07:45Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/kikixiong/DEAF/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "0092868a63e897805598101c8a77d91b91a89e16bbc415671157efde32770a23"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-14T04:07:45Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2603.18048",
+        "paper_title": "DEAF: A Benchmark for Diagnostic Evaluation of Acoustic Faithfulness in Audio Language Models",
+        "abstract": "Recent Audio Multimodal Large Language Models (Audio MLLMs) demonstrate impressive performance on speech benchmarks, yet it remains unclear whether these models genuinely process acoustic signals or rely on text-based semantic inference. To systematically study this question, we introduce DEAF (Diagnostic Evaluation of Acoustic Faithfulness), a benchmark of over 2,700 conflict stimuli spanning three acoustic dimensions: emotional prosody, background sounds, and speaker identity. Then, we design a controlled multi-level evaluation framework that progressively increases textual influence, ranging from semantic conflicts in the content to misleading prompts and their combination, allowing us to disentangle content-driven bias from prompt-induced sycophancy. We further introduce diagnostic metrics to quantify model reliance on textual cues over acoustic signals. Our evaluation of seven Audio MLLMs reveals a consistent pattern of text dominance: models are sensitive to acoustic variations, yet predictions are predominantly driven by textual inputs, revealing a gap between high performance on standard speech benchmarks and genuine acoustic understanding.",
+        "paper_updated": "2026-10-12T00:00:00Z",
+        "created_at": "2026-10-19T13:50:08Z",
+        "input_sha256": "99b5f54b2b121a527342719b2b2758043a70302ec4eafde9847730cbe8a06354",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "오디오 LLM의 음향 충실성 진단 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "오디오 모델 음향 충실성 진단 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43546947441",
+        "context_sha256": "17cabcac6683b008a17d4f46f6a271b038b4a3183691f4ec07f94bdc411630b1"
+      },
+      "proposal_sha256": "2118261771729ecd53e9cdb590b1e3cd938b828653ae93974c1d773d7e307331"
     }
   },
   "processed_comments": [],
@@ -102705,8 +102864,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 33,
-      "cost_usd": 27.0956
+      "calls": 34,
+      "cost_usd": 27.9169
     }
   },
   "reaudits": [
