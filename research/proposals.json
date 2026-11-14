@@ -66036,6 +66036,169 @@
       },
       "issue_url": null,
       "proposal_sha256": "1c5cf327e311213a97cb3aa8eea3246dfab5d4e320e9cb26073f2bbdde4e10fd"
+    },
+    "2610.11447": {
+      "decision": "propose",
+      "reason": "이 논문은 임베딩 펌웨어 코딩 에이전트를 폐루프로 평가하는 재사용 가능한 벤치마크를 새로 제시한다. 작업 5개와 피드백 시나리오 4개로 구성되고 코드와 데이터는 공개 저장소에 있다. 과제 명세는 영어 평문이고 입력은 텍스트뿐이라 en 트랙의 text로 분류한다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록하며, 논문의 CC BY 4.0 표기는 논문 본문에 대한 것으로 보고 데이터 라이선스로 쓰지 않았다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "closed-loop-embedded-bench",
+            "이름": "Closed-Loop Embedded Agent Benchmark",
+            "평가 축": "에이전트(임베디드 펌웨어 폐루프 코딩)",
+            "언어": "en",
+            "정의": "평문 공학 명세에서 출발해 구현, 자체 검증, 반복 수정을 거쳐 요구된 장치 동작을 달성하는지 보는 임베디드 코딩 에이전트 벤치마크. 임베디드 제어 과제 5개와 피드백 시나리오 4개(one-shot, 현실적 자체 검증, CI식 red/green, 상세 oracle 피드백)로 구성되며, 시뮬레이션된 ESP32 펌웨어(QEMU)와 결정적 플랜트 모델에서 숨겨진 평가기가 채점한다. 논문은 GPT 계열과 Qwen 계열 7개 구성을 과제·시나리오별 3회 반복해 총 420회 실행으로 평가했다. 주 조건은 realistic_self_verify이며 지표는 통과율 등이다.",
+            "대표 과제": "tank_fill_drain, thermal_chamber_hysteresis, pressure_vessel_interlock, mixing_tank_fill_heat, filter_tank_sequence의 난이도 단계별 5개 제어 과제",
+            "대표 예시·설명": "과제 설명: 가장 쉬운 tank_fill_drain에서 에이전트는 수위가 낮으면 펌프를 켜고 높으면 끄며 중간 구간에서는 이전 안전 출력을 유지하고, 잘못된 입력이나 타임아웃에서는 펌프를 끄는 펌웨어를 구현한다. 직접 테스트를 작성하고 빌드와 QEMU 실행으로 검증한 뒤 제출한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터와 코드의 라이선스는 확인하지 못했다. 논문 1쪽의 CC BY 4.0 표기는 논문 본문에 대한 것이며 데이터 라이선스가 아니다. 숨겨진 평가기와 과제 패킷은 저장소에서 제공하며 시뮬레이터, ESP-IDF, QEMU, pi 하니스 등 구성 요소의 약관은 별도로 확인해야 한다. 단일 ESP32/QEMU 참조 스택과 5개 과제의 소규모 구성이며, 논문은 모델 순위를 평가한 구성으로 한정하고 시나리오를 단일 리더보드로 읽지 말라고 밝힌다. 실행에는 Docker, QEMU, 모델 서버 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/jgcarrasco/closed_loop_evaluation_agents_embedded"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (closed-loop embedded firmware coding)",
+            "definition": "A benchmark of whether embedded coding agents can start from a plain-text engineering brief, implement firmware, build their own verification, and iterate until the required device behavior is met. It has five embedded-control tasks and four feedback scenarios (one-shot, realistic self-verification, CI-style red/green, oracle-style detailed feedback), run on simulated ESP32 firmware under QEMU with deterministic plant models and graded by a hidden evaluator. The paper evaluates seven GPT-family and Qwen-family configurations over five tasks and four scenarios with three repetitions each (420 runs). The primary condition is realistic_self_verify, and pass rate is the main metric.",
+            "task": "Five control tasks in a difficulty ladder: tank_fill_drain, thermal_chamber_hysteresis, pressure_vessel_interlock, mixing_tank_fill_heat, filter_tank_sequence",
+            "example": "Task description: in the easiest task, tank_fill_drain, the agent writes firmware that turns the pump on at low level, off at high level, holds the previous safe output in the middle band, and fails safe to pump-off on malformed input or timeout. It writes its own tests, builds, probes the firmware in QEMU, and then submits."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "closed-loop benchmark for"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "five embedded-control tasks"
+            },
+            "대표 예시·설명": {
+              "page": 11,
+              "quote": "turn the pump"
+            },
+            "링크": {
+              "page": 10,
+              "quote": "github.com/jgcarrasco/closed_loop_evaluation_agents_embedded"
+            },
+            "언어": {
+              "page": 11,
+              "quote": "turn the pump"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "closed-loop benchmark for"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "five embedded-control tasks"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "closed-loop benchmark for"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.11447",
+      "paper_title": "Closed-loop evaluation of LLM agents for embedded software development",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.11447",
+        "sha256": "78378a9a4a88237015335ec124929bd024fb21fed0003b3988a64b07f105f68c",
+        "accessed": "2026-11-14T03:27:37Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 23,
+          "elapsed_seconds": 89.31,
+          "pdf_sha256": "78378a9a4a88237015335ec124929bd024fb21fed0003b3988a64b07f105f68c",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "ca6efd815739152b18da1ce10513ef17cecaebb78ab636a0d68ed728a67c16c1",
+          "page_json_file": "2610.11447.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/jgcarrasco/closed_loop_evaluation_agents_embedded",
+            "fetched_url": "https://api.github.com/repos/jgcarrasco/closed_loop_evaluation_agents_embedded/readme",
+            "sha256": "f9c561074c7cfc1bc7f79b0a46fe6d9ff79806253745b9c98e6997bed468da93",
+            "accessed": "2026-11-14T03:29:29Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-14T03:29:29Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.11447",
+        "paper_title": "Closed-loop evaluation of LLM agents for embedded software development",
+        "abstract": "Large language models (LLMs) are increasingly deployed as coding agents that edit files, run builds and tests, inspect execution results, and repair software iteratively. Embedded firmware is a demanding target because correctness depends on closed-loop behavior under sensing, timing, and safety constraints, not only on static source quality. Yet embedded-agent evaluation remains limited and often emphasizes one-shot synthesis or offline correctness. We present a benchmark for closed-loop evaluation of embedded coding agents. Each task provides a plain-text engineering description, constrained workspace, and visible build-and-runtime surface. The agent must translate requirements into implementation and self-verification steps, then iterate until the required device behavior is achieved. The suite contains five embedded-control tasks and four feedback scenarios: one-shot generation, realistic self-verification, CI-style red/green feedback, and oracle-style detailed feedback. The implementation targets simulated ESP32 firmware for reproducibility. We evaluate seven GPT-family and Qwen-family configurations across five tasks and four scenarios, with three repetitions per condition for 420 runs. gpt-5.4 has the highest pass rate among evaluated configurations but does not saturate the benchmark; qwen3.5-27B is the strongest observed local model; and smaller local models degrade sharply in pass rate and search efficiency. These results suggest that capable local embedded coding agents are emerging.",
+        "paper_updated": "2026-10-09T00:00:00Z",
+        "created_at": "2026-10-19T13:49:55Z",
+        "input_sha256": "7205a28a15b50dff36b2b6cee8dca70f669ddd039424b2e2e8bda00d313536da",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "임베디드 코딩 에이전트의 폐루프 평가 벤치마크를 제안함"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "임베디드 코딩 에이전트 폐루프 평가 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43546947441",
+        "context_sha256": "84a0fbf95b30928783e10ffed62fece80521e320611f964f6b4d0e561fc98230"
+      },
+      "proposal_sha256": "12c681a10628d2ab8d005125f3cf0c813dd4c7d80c077a54f73d789d7c18208d"
     }
   },
   "processed_comments": [],
@@ -101552,8 +101715,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 22,
-      "cost_usd": 17.4373
+      "calls": 23,
+      "cost_usd": 18.3151
     }
   },
   "reaudits": [
