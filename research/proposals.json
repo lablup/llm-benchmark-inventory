@@ -65833,6 +65833,169 @@
         "reviewed_sha256": "5793ceabd50a9f3267ae3792058b91eec90b2b47207a68bf6226e9cd5e3c5eda",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.12427": {
+      "decision": "propose",
+      "reason": "FastBench는 고프레임률 실세계 스트리밍 영상에 대한 질의응답 벤치마크로, 306개 QA를 8개 도메인, 6개 능력 차원, forward/instant/backward 시간 범위로 구성한다. 논문 본문에 실린 질문이 영어이므로 en 트랙으로 라우팅한다. 영상을 입력으로 쓰는 과제여서 modality는 vision이다. 기존 인벤토리에 없는 새 벤치마크이고 공식 코드·데이터 URL이 PDF에 명시되어 있다. 라이선스, 상업적 이용, 수정, 재배포, lm-eval 지원은 확인하지 않아 '확인 불가'로 두었다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "fastbench",
+            "이름": "FastBench",
+            "평가 축": "이미지(고동적 스트리밍 영상 인식·시간 추론)",
+            "언어": "en",
+            "정의": "고동적(high-dynamic) 실세계 영상 스트림에서 스트리밍 VLM을 평가하는 벤치마크. 306개 QA 쌍이 8개 도메인(스포츠, 비디오 게임, 공연, 동물, 생활·레크리에이션, 교통, 과학기술, 음식·요리), 6개 능력 차원, forward·instant·backward 시간 범위에 걸쳐 있고, 문항마다 사람이 표기한 증거 구간이 있다. 300개 영상 클립(누적 3.77시간)으로 구성된다. 영상은 1초 단위 청크로 스트리밍하고, 개방형 답변은 LLM-as-a-Judge로 채점한다. 이르거나 늦은 응답은 0점이며 늦은 응답 허용 경계는 이벤트 종료 후 4초로 완화했다. 컨텍스트 예산은 1080p 120프레임 상당이다. 데이터 구축은 높은 FPS 클립에서 QA를 생성하고, 2 FPS로 풀리는 문항을 걸러낸 뒤 SAM3·CoTracker3 궤적으로 답을 검증하고 세 차례 사람 검수를 거친다. 함께 제안된 ProactiveFrame은 학습이 필요 없는 베이스라인이다.",
+            "대표 과제": "스트리밍 영상 질의응답(질의 시점 이전·중·이후의 증거 구간을 보고 답하는 forward/instant/backward 질의)",
+            "대표 예시·설명": "고속 영상 스트림이 주어지고 질의 시점에 영어 질문이 제시되면(예: 불꽃이 튄 원인을 묻는 질문) 모델이 짧은 사건을 놓치지 않고 개방형으로 답하는 과제. 계속 관찰할지 답할지를 모델이 정해야 한다(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다. 원본 영상은 YouTube와 Bilibili 같은 영상 공유 플랫폼에서 수집했으므로(논문 5쪽) 영상 자산과 주석 각각의 약관을 이용 전에 따로 확인해야 한다. 306문항 규모이고 채점에 LLM judge가 필요하다. 논문 수치(예: Gemini-3.5-Flash 50.7%)는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Ashone3/FastBench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images/video (high-dynamic streaming video perception and temporal reasoning)",
+            "definition": "A benchmark that evaluates streaming VLMs on high-dynamic real-world video streams. It has 306 QA pairs spanning 8 domains (sports, video games, performing arts, animals, lifestyle and recreation, transportation, science and technology, food and cooking), 6 capability dimensions, and forward, instant, and backward temporal scopes, each with human-annotated evidence intervals. It uses 300 video clips (3.77 hours in total). Videos are streamed in 1-second chunks, and open-ended answers are scored by an LLM-as-a-Judge. Early and late responses score 0, with a relaxed late-response boundary of 4 seconds after the event ends. The context budget equals 120 frames at 1080p. The data pipeline generates QA from high-FPS clips, filters questions answerable at 2 FPS, verifies answers with SAM3 and CoTracker3 trajectories, and applies three rounds of human inspection. The paper also presents ProactiveFrame, a training-free baseline.",
+            "task": "Streaming video question answering (forward, instant, and backward queries relative to an evidence interval)",
+            "example": "A fast video stream is played, and at the query time an English question is posed (for example, asking why sparks just appeared). The model must answer open-endedly without missing a brief event, and must decide whether to keep observing or answer now (task description)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "Streaming Video Question"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "Streaming Video Question"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "Why were there"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/Ashone3/FastBench"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "Why were there"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "FastBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "306 QA pairs"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "high-dynamic real-world video"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.12427",
+      "paper_title": "FastBench: Can Streaming VLMs Perceive High-Dynamic Real-World Streams?",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.12427",
+        "sha256": "91b8169cc3e8f449f0c42ab47ff51078d9dcb79ef989360a82abb3c554898313",
+        "accessed": "2026-11-14T03:17:21Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 18,
+          "elapsed_seconds": 96.13,
+          "pdf_sha256": "91b8169cc3e8f449f0c42ab47ff51078d9dcb79ef989360a82abb3c554898313",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "bd9db47abab5bcb7f240f5f6651cd82840627cb5bcdee71d0276a33fab1a47d3",
+          "page_json_file": "2610.12427.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Ashone3/FastBench",
+            "fetched_url": "https://api.github.com/repos/Ashone3/FastBench/readme",
+            "sha256": "ea86213f50a0262a35d0e3e093cbe1cdade2468d147ae2b56b9b3b93dd17bf24",
+            "accessed": "2026-11-14T03:19:20Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/Ashone3/FastBench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "2953de8a9d80ff394dfdde6dd3217c59f429a0ceb7e8a3c3c3f9507f4f993014"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-14T03:19:20Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.12427",
+        "paper_title": "FastBench: Can Streaming VLMs Perceive High-Dynamic Real-World Streams?",
+        "abstract": "Streaming Video Large Language Models (VLMs) enable continuous video understanding, yet existing benchmarks focus on low-dynamic scenarios. Under bounded context budgets, models must balance temporal history, spatial resolution, and temporal granularity; sparse sampling at 1--2 FPS misses fast events. We introduce FastBench to evaluate high-dynamic perception in real-world video streams. Its trajectory-grounded pipeline combines QA generation from high-FPS clips, filtering of questions answerable at 2 FPS, answer verification using SAM3 and CoTracker3 trajectories, and three rounds of human inspection. FastBench contains 306 QA pairs across eight domains, six capabilities, and forward, instant, and backward temporal scopes, with human-annotated evidence intervals. We also present ProactiveFrame, a training-free baseline that adjusts incoming frame rates through text tokens. A dual-tier sliding window retains recent high-FPS observations while downsampling older ones into sparse history. Experiments reveal substantial limitations: the strongest model, Gemini-3.5-Flash, scores only 50.7%. Denser sampling improves Qwen3-VL-8B from 32.9% at 2 FPS to 44.6% at 24 FPS, but gains saturate as history is compressed. ProactiveFrame outperforms sparse uniform sampling by 5.4 and 1.5 percentage points, yet remains well below oracle-guided focusing, showing that current VLMs struggle to determine from the stream alone when finer temporal perception is needed. FastBench provides a testbed for high-dynamic streaming video understanding. Code and data: https://github.com/Ashone3/FastBench.",
+        "paper_updated": "2026-10-09T00:00:00Z",
+        "created_at": "2026-10-19T13:49:43Z",
+        "input_sha256": "d99406be39efe6f6df4a4b4067fce907db3eb9f0a07ed322e3c907e12a6a1044",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "고동적 스트리밍 VLM 인식 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "고동적 스트리밍 비디오 이해 벤치마크 신규 구축"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43546947441",
+        "context_sha256": "724404acec4508f471ec2d0783f02a495f0f589855295e43586f85635f03713b"
+      },
+      "proposal_sha256": "77566240635f11ce20defd3a32aef5e763ab3e807fa48cf6c631db4c2ecd8445"
     }
   },
   "processed_comments": [],
@@ -101344,8 +101507,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 19,
-      "cost_usd": 14.694
+      "calls": 20,
+      "cost_usd": 15.5523
     }
   },
   "reaudits": [
