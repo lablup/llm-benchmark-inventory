@@ -66199,6 +66199,163 @@
         "context_sha256": "84a0fbf95b30928783e10ffed62fece80521e320611f964f6b4d0e561fc98230"
       },
       "proposal_sha256": "12c681a10628d2ab8d005125f3cf0c813dd4c7d80c077a54f73d789d7c18208d"
+    },
+    "2610.11678": {
+      "decision": "propose",
+      "reason": "TRACE는 에이전트 평가에서 검증기(verifier) 점수 변화의 원인을 귀속시키는 진단 프로토콜입니다. 논문은 이 프로토콜의 재사용 가능한 평가 자원으로 합성 연구 운영 과제 25개(ResearchOpsEnv)를 만들었고, 코드와 과제를 GitHub에 공개했습니다. 따라서 일반 모델 논문이 아니라 영어 텍스트 에이전트 벤치마크로 보고 en/text 행 하나를 제안합니다. τ²-bench는 기존 벤치마크이므로 별도 행으로 만들지 않았고, 이 논문의 변형 실험은 정의에만 요약했습니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 PDF에서 확인되지 않아 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "trace-researchops",
+            "이름": "TRACE (ResearchOpsEnv)",
+            "평가 축": "에이전트(검증기 취약성 진단: 점수 변화의 원인 귀속)",
+            "언어": "en",
+            "정의": "에이전트 평가에서 점수 변화가 에이전트 행동 때문인지 검증기 때문인지 가려내는 진단 프로토콜과 통제 스위트. 대상 평가에 변형(mutation) 하나를 적용해 짝지은 실행을 비교하고, 궤적을 점검하며, 같은 궤적을 보정한 채점 규칙으로 다시 채점한다. 통제 스위트 ResearchOpsEnv는 합성 연구 운영 과제 25개, 조건 7개, 스크립트 정책 3개, 기록 1,575건으로 구성된다. 지표는 VRG, MSR(τ=0.65), MTR, PTD(프록시 채널이 있는 12개 과제에 한함)이다. 논문은 τ²-bench 항공·리테일에서 LLM 에이전트 4종으로 도구 이름 변경과 관찰 형식 변경을 평가했으며, 처음 보는 과제 88개에서 과제·조건당 반복 실행을 했다.",
+            "대표 과제": "합성 연구 운영 과제에서 문서 검색, 설정 수정, 시뮬레이션 실험, 로그 점검, 보고서 제출을 수행하고, 변형 전후의 점수 차이를 VRG, MSR, MTR, PTD로 진단",
+            "대표 예시·설명": "학습률을 고치거나 데이터 누수를 막는 연구 운영 과제에서 에이전트가 도구 이름만 바뀐 환경에서도 같은 작업을 수행하는 상황을 만들고, 점수 하락이 검증기의 도구 이름 매칭 때문인지 에이전트의 실제 행동 변화 때문인지 같은 궤적의 재채점으로 가린다(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "PDF는 TRACE 코드와 합성 ResearchOps 과제의 공개 주소를 밝히지만 데이터 라이선스는 밝히지 않으므로 코드 저장소의 라이선스를 데이터 라이선스로 간주하면 안 되며, 이용 전 저장소에서 확인해야 한다. 이 행은 프로토콜과 합성 통제 스위트를 가리키며 새로운 일반 능력 벤치마크가 아니다. 통제 스위트는 과제 25개 규모이고 정책이 스크립트라서 배포 환경의 실패율이나 학습된 에이전트의 악용을 추정하지 못한다. τ²-bench 연구는 기존 벤치마크에 변형을 적용한 것이며 에이전트 4종과 도구 이름·관찰 형식 변경 두 가지에 한정된다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/RGaonkar/trace-verifier-stress-tests"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (diagnosing verifier brittleness: attributing score changes to agent, task, or evaluator)",
+            "definition": "A diagnostic protocol and controlled suite for deciding whether a score change in agent evaluation comes from agent behavior or from the verifier. A targeted mutation is applied to the evaluation, paired runs are compared, trajectories are inspected, and the same trajectory is rescored under a corrected scoring rule. The controlled suite, ResearchOpsEnv, has 25 synthetic research-operations tasks, 7 conditions, 3 scripted policies, and 1,575 records. Metrics are VRG, MSR (tau=0.65), MTR, and PTD (only for the 12 tasks with proxy channels). The paper also evaluates four LLM agents on τ²-bench airline and retail under tool renaming and observation reformatting, using 88 previously unseen tasks with repeated runs per condition.",
+            "task": "In synthetic research-operations tasks, retrieve documents, edit configurations, run simulated experiments, inspect logs, and submit reports, then diagnose score changes under mutation with VRG, MSR, MTR, and PTD.",
+            "example": "Task description: in research-operations tasks such as correcting a learning rate or preventing data leakage, the tool names are changed while the operations stay the same, and rescoring the same trajectory shows whether a score drop comes from the verifier's tool-name matching or from a real behavior change."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "ResearchOpsEnv contains 25"
+            },
+            "대표 과제": {
+              "page": 4,
+              "quote": "ResearchOpsEnv contains 25"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "correcting a learning"
+            },
+            "링크": {
+              "page": 9,
+              "quote": "https://github.com/RGaonkar/ trace-verifier-stress-tests"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "correcting a learning"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce TRACE,"
+            },
+            "정의": {
+              "page": 4,
+              "quote": "ResearchOpsEnv contains 25"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "We introduce TRACE,"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.11678",
+      "paper_title": "TRACE: Diagnosing Verifier Brittleness in Agentic Evaluation",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.11678",
+        "sha256": "07687201eae8f310c181bbba54186b95f59848c84adbf1a15a138f5e69879c22",
+        "accessed": "2026-11-14T03:35:54Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 17,
+          "elapsed_seconds": 89.71,
+          "pdf_sha256": "07687201eae8f310c181bbba54186b95f59848c84adbf1a15a138f5e69879c22",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "877fa098f8e6e47ee94f3e9c9866314d122334e154e5792ff30ced3bb3629a83",
+          "page_json_file": "2610.11678.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/RGaonkar/trace-verifier-stress-tests",
+            "fetched_url": "https://api.github.com/repos/RGaonkar/trace-verifier-stress-tests/readme",
+            "sha256": "699fa76e539b1f1bf6639227c0b75d06db15f772381559f81d4802efaa81cefb",
+            "accessed": "2026-11-14T03:37:51Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-14T03:37:51Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.11678",
+        "paper_title": "TRACE: Diagnosing Verifier Brittleness in Agentic Evaluation",
+        "abstract": "Verifier scores now serve as both benchmark metrics and training rewards for large language model (LLM) agents, and a change in score is routinely read as a change in capability. It may instead reflect a change in the evaluation. We introduce TRACE, a protocol that turns a score change from a verdict into a testable diagnosis: it applies a targeted change to one part of an evaluation, compares paired runs, checks whether the agent's behavior changed, and rescores unchanged trajectories to test whether the scoring rule is responsible. In a controlled suite of 25 synthetic tasks, renaming tools lowers a scripted agent's score by 0.250 even though it performs exactly the same operations; restoring the original names at scoring time closes the entire gap, while the same mutation exposes a genuine behavioral failure in a second agent. On public $τ^2$-bench tasks with four LLM agents, an initial 30-task study finds mixed reward changes whose one clear effect does not replicate. In a larger follow-up on 88 new tasks with repeated runs per condition, renaming tools or reformatting tool outputs leaves reward unchanged to within $\\pm$0.10 for seven of eight agent-change pairs, whereas tool names that deliberately mislead lower every agent's reward by 0.20-0.44, showing that the setup can detect real effects. Identical reruns flip 15-36% of task outcomes, so single-run comparisons cannot separate presentation effects from run-to-run variation. Two frontier LLM judges give consistent verdicts when a fixed trajectory is presented differently, yet disagree with each other on 57% of the same records, largely because one grades procedure rather than outcome. TRACE thus separates what a score change says about the agent from what it says about the measurement.",
+        "paper_updated": "2026-10-09T00:00:00Z",
+        "created_at": "2026-10-19T13:49:55Z",
+        "input_sha256": "83e2919e75eb0e2933aa3b4ffa20ddc3c2f3d35ee82a5fa72ebd7aaae487b2f4",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 평가의 검증자 취약성을 진단하는 프로토콜임"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 평가 검증기 취약성 진단 프로토콜 TRACE 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43546947441",
+        "context_sha256": "70daaeb9be41efc2b81c16173b8681fe4b3bcb704e8b3b5e1b6284d369637b6d"
+      },
+      "proposal_sha256": "5b27f06e382d54e1e3b7f6ab3929c5b701f87a15fef6e5f28534f98effea5f80"
     }
   },
   "processed_comments": [],
@@ -101720,8 +101877,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 23,
-      "cost_usd": 18.3151
+      "calls": 24,
+      "cost_usd": 19.1853
     }
   },
   "reaudits": [
