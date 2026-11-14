@@ -66631,6 +66631,84 @@
       },
       "issue_url": null,
       "proposal_sha256": "3e407d5533a8721d6906c0b4c26c7ebf7728dbab5a46a1da6afe3a6df2d5548a"
+    },
+    "2610.12617": {
+      "decision": "needs_evidence",
+      "reason": "GeopoliticalQA은 재사용 가능한 영어 텍스트 벤치마크로 보이며, 415개 보고서와 5,525개 질문-답변 쌍, 검색 평가 15종, RAG 리더 평가 6종을 갖췄다. 다만 PDF는 공식 데이터셋이나 코드 URL을 하나도 밝히지 않는다. 부록 A는 파생 산출물을 CC-BY-4.0으로 공개한다고만 쓸 뿐 주소가 없고, 유일한 Hugging Face 링크(각주 2)는 생성에 쓴 Gemma 모델이어서 벤치마크 자원이 아니다. 필수 근거인 '링크'를 채울 수 없으므로 제안하지 않고 근거 보강이 필요하다고 판단한다.",
+      "changes": [],
+      "arxiv_id": "2610.12617",
+      "paper_title": "GeopoliticalQA: Benchmarking Retrieval and Generation over Intelligence Reports",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.12617",
+        "sha256": "1f159a5296d9203b722d7a94142d836ddc0c3ef9fbfb0dc9f8bb5f79d878ea5a",
+        "accessed": "2026-11-14T03:49:10Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 15,
+          "elapsed_seconds": 85.61,
+          "pdf_sha256": "1f159a5296d9203b722d7a94142d836ddc0c3ef9fbfb0dc9f8bb5f79d878ea5a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "12cf213a71558adcca24ce621d07903eac12463f63fcd5d9cbf4c13527cefd2a",
+          "page_json_file": "2610.12617.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-14T03:50:42Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.12617",
+        "paper_title": "GeopoliticalQA: Benchmarking Retrieval and Generation over Intelligence Reports",
+        "abstract": "Geopolitical and strategic intelligence reports constitute a rich source of expert knowledge and have increasing value in the current political climate, but their heterogeneity and analytical complexity pose challenges for retrieval-augmented question answering. We introduce a benchmark for grounded question answering over 415 open-source geopolitical and strategic intelligence reports, comprising 5,525 document-grounded question-answer pairs spanning factual, inferential, comparative, and risk-oriented questions. We propose a document-aware generation pipeline that profiles reports before generating questions and validate dataset quality through expert annotation and an LLM-as-judge protocol. Using the benchmark, we evaluate 15 retrieval systems and six open-weight LLMs for RAG. We find that models perform similarly on document-level retrieval, while at the harder chunk level retrieval quality is not driven by embedding-model scale: bge-m3, a mid-size open encoder matches an order of magnitude larger ones and outperforms commercial embedding APIs. In contrast, answer generation remains challenging even given the gold evidence, particularly for inferential and risk-oriented questions.",
+        "paper_updated": "2026-10-12T00:00:00Z",
+        "created_at": "2026-10-19T13:49:55Z",
+        "input_sha256": "7c4da784a858d7ea960ae92608777e790c98f44dab42b52d7ad706abd56adca8",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "지정학 정보 보고서 기반 QA 벤치마크를 제안함"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "정보보고서 기반 QA 벤치마크 GeopoliticalQA 신규 구축"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "b6618fa89066ee84ebb3bf0b93fd3dd28c4175ce474d5e089c2428cda685b08b"
     }
   },
   "processed_comments": [],
@@ -102160,8 +102238,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 28,
-      "cost_usd": 22.6659
+      "calls": 29,
+      "cost_usd": 23.4911
     }
   },
   "reaudits": [
