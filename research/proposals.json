@@ -66358,74 +66358,9 @@
       "proposal_sha256": "5b27f06e382d54e1e3b7f6ab3929c5b701f87a15fef6e5f28534f98effea5f80"
     },
     "2610.12183": {
-      "decision": "propose",
-      "reason": "AgenticBBO-Bench는 LLM 에이전트의 블랙박스 최적화를 평가하기 위해 새로 만든 재사용 가능한 벤치마크로, 통일된 유한 예산 프로토콜을 제공한다. 합성 함수, 하이퍼파라미터 최적화, 데이터베이스 튜닝, 칩 배치, 분자 설계의 5개 계열을 다룬다. 에이전트가 받는 task card와 프롬프트는 영어이고 입력은 텍스트뿐이므로 en 트랙의 text로 분류했다. 분자 설계는 SMILES 문자열이지만 이미지 입력이 필요하지 않다. 논문 부록 B.2는 77개 과제(BBOB 24, HPO 25, DBTune 6, BBOPlace 12, GuacaMol 10)와 과제당 독립 2회 실행을 밝히고, 점수는 궤적 평균 70%와 최종 해 30%를 합산한다. 공식 코드 링크는 논문 1쪽이 명시한다. 데이터 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인되지 않아 '확인 불가'로 기록했다. 이 벤치마크는 BBOB, Bayesmark, DBTune, BBOPlace-Bench, GuacaMol 같은 기존 벤치마크를 재구성한 것이므로 구성 요소별 약관은 따로 확인해야 한다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "agenticbbo-bench",
-            "이름": "AgenticBBO-Bench",
-            "평가 축": "에이전트(블랙박스 최적화)",
-            "언어": "en",
-            "정의": "LLM 에이전트의 유한 예산 블랙박스 최적화(BBO)를 평가하는 교차 도메인 벤치마크. 합성 함수(BBOB), 하이퍼파라미터 최적화(Bayesmark), 데이터베이스 튜닝, 칩 배치(BBOPlace), 분자 설계(GuacaMol)의 5개 계열을 같은 프로토콜로 비교한다. 논문 부록 B.2 기준 광범위 벤치마크는 77개 과제(BBOB 24, HPO 25, DBTune 6, BBOPlace 12, GuacaMol 10)이며, 과제당 독립 2회 실행으로 보고한다. 점수는 최적해 궤적의 정규화 평균 품질 70%와 최종 해 품질 30%를 합산한다. 계열마다 5개 과제로 구성한 프런티어 챌린지에서 7개 LLM을 Codex 하니스로 평가했다(논문 조건의 결과이며 현재 전역 리더보드가 아님).",
-            "대표 과제": "계열별 대표 과제를 한정된 평가 예산 안에서 순차 최적화(예: 프런티어 챌린지의 HPO, DBTune, GuacaMol Median1, BBOB f15, BBOPlace Bigblue1)",
-            "대표 예시·설명": "과제 설명: 에이전트는 영어 task card(예: 익명화된 BBOB 과제는 '알 수 없는 스칼라 목적함수를 경계가 있는 10개 수치 파라미터에 대해 최적화하라')를 읽고, 도구로 탐색 이력과 검색 공간을 조회한 뒤 한 번에 후보 하나를 제출하고 관측값을 받는 과정을 예산이 소진될 때까지 반복한다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 및 코드 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 이 단계에서 확인하지 못해 '확인 불가'로 기록했다. 이 벤치마크는 BBOB, Bayesmark, DBTune, BBOPlace-Bench, GuacaMol 같은 기존 벤치마크를 바탕으로 구성되므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 평가에는 컨테이너 작업공간, 에이전트 하니스(논문은 Codex 사용), LLM API 환경이 필요하다. 논문의 프런티어 챌린지는 과제·모델 구성당 1회 실행한 스냅샷이다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/lamda-bbo/agentic-bbo"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agents (black-box optimization)",
-            "definition": "A cross-domain benchmark for LLM agents performing finite-budget black-box optimization (BBO). It compares five task families under one protocol: synthetic functions (BBOB), hyperparameter optimization (Bayesmark), database tuning, chip macro placement (BBOPlace), and molecular design (GuacaMol). According to appendix B.2, the broad benchmark has 77 tasks (BBOB 24, HPO 25, DBTune 6, BBOPlace 12, GuacaMol 10), reported with two independent runs per task. The score combines 70% normalized average best-so-far quality over the trajectory with 30% final-solution quality. A five-task frontier challenge with one task per family evaluates seven LLMs under the Codex harness (results under the paper's conditions, not a current global leaderboard).",
-            "task": "Sequential optimization of one representative task per family under a finite evaluation budget (frontier challenge: HPO, DBTune, GuacaMol Median1, BBOB f15, BBOPlace Bigblue1)",
-            "example": "Task description: the agent reads an English task card (for example, the anonymous BBOB card asks it to optimize an unknown scalar objective over 10 bounded numerical parameters), queries search-space and trial-history tools, submits one candidate per round, and receives the observed value, repeating until the budget is exhausted."
-          },
-          "evidence": {
-            "modality": {
-              "page": 25,
-              "quote": "Optimize an unknown"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "AgenticBBO-Bench, a cross-domain"
-            },
-            "대표 예시·설명": {
-              "page": 25,
-              "quote": "Optimize an unknown"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "https://github.com/lamda-bbo/agentic-bbo"
-            },
-            "언어": {
-              "page": 25,
-              "quote": "Optimize an unknown"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "AgenticBBO-Bench, a cross-domain"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "AgenticBBO-Bench, a cross-domain"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "AgenticBBO-Bench, a cross-domain"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "데이터셋 라이선스가 모든 구성 요소에 적용되는지 입증할 수 없어 게시하지 않습니다. 공식 카드(https://github.com/lamda-bbo/agentic-bbo)의 README에는 'The project source is MIT-licensed; see LICENSE.'라는 문장이 있고, '## LICENSE file' 항목에도 MIT 전문이 있습니다. 이는 프로젝트 소스 코드에 대한 라이선스이며, 데이터셋 라이선스로 볼 수 없습니다. README는 같은 문단에서 'Bundled adaptations and benchmark assets are described in THIRD_PARTY_NOTICES.md'라고 하여 번들된 벤치마크 자산의 약관을 별도 문서에 맡깁니다. 이 문서는 제공된 자료에 없습니다. 논문 5쪽(4.1절)은 이 벤치마크가 BBOB, Bayesmark, DBTune, BBOPlace-Bench, GuacaMol 다섯 기존 벤치마크로 구성된다고 밝히고, 이들 각각의 약관은 제공된 자료에 없습니다. 카드에 LICENSE 항목이 있으므로 라이선스 '미표기' 처리와 absence 증거는 쓸 수 없습니다. 반대로 MIT를 데이터셋 전체의 라이선스로 인용하면 구성 요소별 약관을 무시하게 됩니다. 따라서 라이선스, 상업적 이용, 수정·파생, 재배포 네 항목을 증거로 확정할 수 없습니다. THIRD_PARTY_NOTICES.md와 다섯 구성 요소의 약관을 확보해 다시 요청하면 처리할 수 있습니다. lm-eval 지원 여부는 README에 해당 언급이 없습니다. 다만 위 네 항목이 확정되지 않아 이 행 전체를 게시하지 않습니다.",
+      "changes": [],
       "arxiv_id": "2610.12183",
       "paper_title": "A Closer Look at Agentic BBO: Benchmarking LLM Agents for Black-Box Optimization",
       "paper_updated": "2026-10-09T00:00:00Z",
@@ -66503,7 +66438,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-14T03:42:59Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -66529,11 +66464,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43546947441",
-        "context_sha256": "b7a5b1e44fef2e3aadda4e4f2faf28a5764dee166d73983cc7f7a4ad89cc4430"
-      },
-      "proposal_sha256": "524f44dba366a57cef350b7d13bba8821c0523e2407d5135528798e1b78eea8a"
+      "proposal_sha256": "d4e7e06723daa35ad88b5392487fdba416d7ba5c5e8f9efc08b32ff2bae3048a",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -102057,8 +101990,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 25,
-      "cost_usd": 20.0236
+      "calls": 26,
+      "cost_usd": 20.8796
     }
   },
   "reaudits": [
