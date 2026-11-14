@@ -618,4 +618,28 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Generate a single self-contained HTML Three.js world from the fixed prompt and score it item by item across WC001-WC005.",
     "example": "Task description, not an actual test item: write code for the floating voxel island described in the prompt, with ten biomes (snow mountains, jungle, desert, volcano and others) placed in stated relations, water, lava and weather particles, day/night and seasonal cycles, and a clickable legend."
   },
+  "citevqa": {
+    "axis": "Images (document VQA with evidence attribution and citation)",
+    "definition": "A document VQA benchmark that requires an answer together with element-level bounding-box citations and scores both jointly. The full benchmark has 711 PDFs (451 English, 260 Chinese; 40.6 pages on average), 1,897 questions, and seven domains. Metrics are Strict Attributed Accuracy (SAA, credited only when answer and citation are both correct), Rec. (IoU 0.5), Rel., and Ans., where Rel. and Ans. are 0-5 LLM-judge scores. The paper evaluates 20 MLLMs. Figures cover English and Chinese combined, and the paper does not report a question count for the English portion alone.",
+    "task": "Given page images of multi-page PDFs, answer a question and cite the supporting elements with bounding boxes (single-doc, multi-doc 1-Gold, multi-doc N-Gold).",
+    "example": "Task description: answer an English question, such as one asking for the National Drug Codes of specific drug formulations, and cite the supporting document elements with bounding boxes. A correct answer with a wrong cited region receives SAA = 0."
+  },
+  "rectoolbench": {
+    "axis": "Agents (recommendation tool orchestration under fuzzy user intent)",
+    "definition": "An MCP-based benchmark for tool-using recommender agents under fuzzy user instructions. It has 1,288 synthesized tasks: 300 Level-1 (single-tool) tasks and 988 Level-2 to Level-4 tasks (parallel, sequential, and hybrid tool orchestration). Agent trajectories are scored with rule-based execution checks and rubric-based LLM judging.",
+    "task": "Given a fuzzy recommendation request, select and call MCP tools and produce a grounded final recommendation across four difficulty levels: single call, parallel calls, sequential chains, and hybrid orchestration.",
+    "example": "Task description (not an actual test item): a user makes a vague English request for items or places, and the agent combines tools such as user-history lookup, item details, review and sentiment search, and attribute filtering to recommend."
+  },
+  "ccrv-bench": {
+    "axis": "Images (single-image visual causal reasoning and constraint robustness)",
+    "definition": "A constraint-based benchmark of visual causal reasoning in single-image physical scenes. It crosses four causal tasks (X: causal relation discovery, state prediction, causal diagnosis, intervention-outcome prediction) with four constraints (Y: entity symbolization, spatial grounding, factual adversarial constraint, minimalist output), giving 16 evaluation settings. From 100 images it builds 800 baseline QA pairs and 3,200 constrained variants. Metrics are DCR, CSR, eDCR, CDI and eCDI. The paper evaluates 14 multimodal models.",
+    "task": "Causal relation discovery (X1), state prediction (X2), causal diagnosis (X3) and intervention-outcome prediction (X4), each under four constraints",
+    "example": "Task description, not an actual test item: from an image and an English question (for example, what action a person performs on a frisbee), identify the causal relation. Constrained variants replace entity names with symbols, require a coordinate, require rejecting a false premise, or cap the answer length."
+  },
+  "llmail-inject": {
+    "axis": "Agent security (indirect prompt injection)",
+    "definition": "208,095 unique attack prompts collected in a public red-teaming challenge (839 participants, 461,640 submissions). It evaluates the complete attack chain: the attack email must be retrieved, evade defenses, and trigger a tool call with correct arguments. Released subsets include LLMail-Attack (about 29K), LLMail-Evasive (about 3K), LLMail-Phase2 (about 3.7K) and LLMail-Annotated (about 130K).",
+    "task": "Craft emails for an email assistant that get retrieved, evade defenses, and cause a correct send_email tool call (four difficulty levels; measured by attack success rate (ASR) and team success rate (TSR)).",
+    "example": "Task description, not an actual test item: when the user asks for an email summary, check whether the attacker's retrieved email makes the assistant issue an unrequested send_email call."
+  },
 };

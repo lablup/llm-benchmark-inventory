@@ -1,0 +1,94 @@
+{
+  "arxiv_id": "2610.12427",
+  "paper_title": "FastBench: Can Streaming VLMs Perceive High-Dynamic Real-World Streams?",
+  "created_at": "2026-11-14T03:19:20Z",
+  "status": "needs_evidence",
+  "reason": "데이터셋의 라이선스를 근거 자료만으로 정할 수 없어 게시하지 않습니다. 공식 저장소 카드의 '## LICENSE file'(MIT, 저작권자 Xudong Lu)는 저장소의 평가 코드에 대한 것이고, README는 PhoStream에서 가져온 코드의 MIT 고지를 유지한다고만 설명합니다. 데이터는 Hugging Face 데이터셋(Ashenone3/FastBench)과 dataset/README.md의 데이터 카드에 따로 있다고 안내되지만, 그 데이터 카드는 제공되지 않았습니다. 따라서 코드 라이선스를 데이터 라이선스로 간주할 수 없습니다. 또 이 벤치마크의 영상은 YouTube와 Bilibili에서 수집한 것이므로(PDF 5쪽) 영상 자산에는 각 출처의 약관이 따로 적용됩니다. 카드에 LICENSE 파일 항목이 있어 '라이선스 미표기'를 뜻하는 부재 증거(absent)도 쓸 수 없습니다. 데이터 카드 또는 저자의 데이터 라이선스 명시가 확보되면 다시 제출해야 합니다. 이 경우 Table 1(PDF 7쪽)의 Overall 점수로 recommendations를 만들 수 있고, lm-eval 지원은 PDF와 카드 어디에도 언급이 없어 '미표기'로 부재 증거를 낼 수 있습니다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2610.12427",
+    "sha256": "91b8169cc3e8f449f0c42ab47ff51078d9dcb79ef989360a82abb3c554898313",
+    "accessed": "2026-11-14T03:17:21Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 18,
+      "elapsed_seconds": 96.13,
+      "pdf_sha256": "91b8169cc3e8f449f0c42ab47ff51078d9dcb79ef989360a82abb3c554898313",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "bd9db47abab5bcb7f240f5f6651cd82840627cb5bcdee71d0276a33fab1a47d3",
+      "page_json_file": "2610.12427.pages.json"
+    },
+    "official_resources": [
+      {
+        "url": "https://github.com/Ashone3/FastBench",
+        "fetched_url": "https://api.github.com/repos/Ashone3/FastBench/readme",
+        "sha256": "ea86213f50a0262a35d0e3e093cbe1cdade2468d147ae2b56b9b3b93dd17bf24",
+        "accessed": "2026-11-14T03:19:20Z",
+        "license_file": {
+          "fetched_url": "https://api.github.com/repos/Ashone3/FastBench/license",
+          "name": "LICENSE",
+          "spdx_id": "MIT",
+          "sha256": "2953de8a9d80ff394dfdde6dd3217c59f429a0ceb7e8a3c3c3f9507f4f993014"
+        }
+      }
+    ]
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "70acbb59f579a3e07edcc0239837c523f0a51e18b955ebb078267b3af0e8899c",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2610.12427",
+    "paper_title": "FastBench: Can Streaming VLMs Perceive High-Dynamic Real-World Streams?",
+    "abstract": "Streaming Video Large Language Models (VLMs) enable continuous video understanding, yet existing benchmarks focus on low-dynamic scenarios. Under bounded context budgets, models must balance temporal history, spatial resolution, and temporal granularity; sparse sampling at 1--2 FPS misses fast events. We introduce FastBench to evaluate high-dynamic perception in real-world video streams. Its trajectory-grounded pipeline combines QA generation from high-FPS clips, filtering of questions answerable at 2 FPS, answer verification using SAM3 and CoTracker3 trajectories, and three rounds of human inspection. FastBench contains 306 QA pairs across eight domains, six capabilities, and forward, instant, and backward temporal scopes, with human-annotated evidence intervals. We also present ProactiveFrame, a training-free baseline that adjusts incoming frame rates through text tokens. A dual-tier sliding window retains recent high-FPS observations while downsampling older ones into sparse history. Experiments reveal substantial limitations: the strongest model, Gemini-3.5-Flash, scores only 50.7%. Denser sampling improves Qwen3-VL-8B from 32.9% at 2 FPS to 44.6% at 24 FPS, but gains saturate as history is compressed. ProactiveFrame outperforms sparse uniform sampling by 5.4 and 1.5 percentage points, yet remains well below oracle-guided focusing, showing that current VLMs struggle to determine from the stream alone when finer temporal perception is needed. FastBench provides a testbed for high-dynamic streaming video understanding. Code and data: https://github.com/Ashone3/FastBench.",
+    "paper_updated": "2026-10-09T00:00:00Z",
+    "created_at": "2026-10-19T13:49:43Z",
+    "input_sha256": "d99406be39efe6f6df4a4b4067fce907db3eb9f0a07ed322e3c907e12a6a1044",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "고동적 스트리밍 VLM 인식 벤치마크"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "고동적 스트리밍 비디오 이해 벤치마크 신규 구축"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}
