@@ -64527,6 +64527,183 @@
         "reviewed_sha256": "401e8b54cf08df2aa4683dde93cb62a8f2e40f6b4d1ab2b6e14a4c70e6cbd0b0",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2609.24259": {
+      "decision": "propose",
+      "reason": "MemCalib는 에이전트 메모리 사용의 과다·과소 정도를 평가하는 재사용 가능한 새 벤치마크로, 코드와 데이터 링크를 논문이 직접 밝힌다. 과제 예시 질의가 영어이고 입력이 텍스트뿐이므로 en 트랙의 text 행으로 제안한다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않아 '확인 불가'로 기록했다. 모델 비교 점수는 별도 증거 단계의 대상이라 행에 넣지 않았다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "memcalib",
+            "이름": "MemCalib",
+            "평가 축": "에이전트(메모리 활용 보정: 과다·과소 사용)",
+            "언어": "en",
+            "정의": "에이전트 메모리 블록 속 원자 명제마다 응답에 미치는 영향 수준(Ignore/Bound/Control)을 목표에 맞게 쓰는지 평가하는 벤치마크. 건강, 일반 어시스턴트, 코딩 3개 영역 15,000개 예시로 구성되며 학습 13,500개와 서로 겹치지 않는 테스트 1,500개로 나뉜다. 루브릭 기반 LLM judge가 원자별 실제 사용 수준을 판정하고, SCS, Exact, sMOS, sMUS, AOR, AUR 6개 지표를 0~100으로 보고한다. 논문의 모델 비교는 DeepSeek-V4-Pro judge, 비사고(non-thinking) 모드, 3개 시드 조건이다.",
+            "대표 과제": "질의와 여러 메모리 블록이 주어졌을 때, 각 원자 명제의 영향을 목표 수준에 맞춰 응답에 반영(과다 사용·과소 사용 측정)",
+            "대표 예시·설명": "과제 설명: 영어 질의(예: 불임 부부에게 권장되는 의학적 평가)와 나이·병력·무관한 사실이 섞인 메모리 블록이 주어지면, 응답이 핵심 사실은 반영하고 무관한 사실은 무시하는지 원자별 루브릭으로 판정한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 아직 확인하지 않았다. 논문에 따르면 공개 QA 데이터셋 8종(MedDialog, UltraChat, OASST 등)에서 LLM 파이프라인으로 합성한 데이터이므로 원천별 약관을 이용 전에 따로 확인해야 한다. 채점에는 LLM judge가 필요하며, 점수는 논문 조건의 결과로 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Quark-Medical/memcalib"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (calibrated memory use: over-use and under-use)",
+            "definition": "A benchmark of whether a model gives each atomic proposition in supplied memory blocks the target level of influence on its response (Ignore, Bound, or Control). It has 15,000 examples across health, general assistance, and coding, split into 13,500 training examples and a disjoint 1,500-example test set. A rubric-guided LLM judge classifies each atom's actual use, and six metrics (SCS, Exact, sMOS, sMUS, AOR, AUR) are reported on a 0-100 scale. The paper's model comparison uses a DeepSeek-V4-Pro judge, non-thinking mode, and three seeds.",
+            "task": "Given a query and several memory blocks, use each atomic proposition at its target level of influence in the response (measuring over-use and under-use).",
+            "example": "Task description: given an English query (for example, what medical evaluations are recommended for a couple who cannot conceive) and memory blocks mixing relevant history with irrelevant facts, atom-specific rubrics judge whether the response uses key facts and ignores irrelevant ones."
+          },
+          "evidence": {
+            "modality": {
+              "page": 16,
+              "quote": "What medical evaluations"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "MemCalib, a benchmark"
+            },
+            "대표 예시·설명": {
+              "page": 16,
+              "quote": "What medical evaluations"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/Quark-Medical/memcalib"
+            },
+            "언어": {
+              "page": 16,
+              "quote": "What medical evaluations"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "MemCalib, a benchmark"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "comprising 15,000 examples"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "MemCalib, a benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2609.24259",
+      "paper_title": "MemCalib: Benchmarking and Optimizing Memory Use in LLM Agents",
+      "paper_updated": "2026-10-09T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.24259",
+        "sha256": "96a41ced8a78f697cb8fca1582bc40a965401cab2fd6ebce0ec0d44b1649b7ff",
+        "accessed": "2026-11-14T02:58:16Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 32,
+          "elapsed_seconds": 134.35,
+          "pdf_sha256": "96a41ced8a78f697cb8fca1582bc40a965401cab2fd6ebce0ec0d44b1649b7ff",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "35a2957ff9652a6a7f86d8670b1067f301e70718765eb852a69a9b4d9ae03ed6",
+          "page_json_file": "2609.24259.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Quark-Medical/memcalib",
+            "fetched_url": "https://api.github.com/repos/Quark-Medical/memcalib/readme",
+            "sha256": "50b21b94d7a29b5e471a1e03176edd71609ab52bb9ae5bbf94b58c59ddaacbf7",
+            "accessed": "2026-11-14T03:00:51Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/Quark-Medical/memcalib/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-14T03:00:51Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2609.24259",
+        "paper_title": "MemCalib: Benchmarking and Optimizing Memory Use in LLM Agents",
+        "abstract": "The effectiveness of agent memory ultimately depends on whether the underlying LLM gives each memory in context an appropriate degree of influence over its response. Yet this capability has remained largely overlooked. To assess this capability, we introduce MemCalib, a benchmark grounded in realistic memory-system scenarios for evaluating memory use and advancing optimization algorithms. Results on the MemCalib test set reveal that frontier open- and closed-source models struggle to use memory appropriately. They frequently over-use or under-use memory rather than matching each proposition's actual use to its target level, leading to biased, low-quality responses. Experiments with common post-training algorithms, including group relative policy optimization and on-policy self-distillation, further reveal a clear directional skew: trained models improve in one direction while deteriorating in the other. We therefore propose MemCalib-RL, an ordered bidirectional counterfactual credit-assignment algorithm that separates over- and under-use signals and localizes their credit to response tokens through exact atom ablation. Results across model families and scales (Qwen3-8B, Ministral-3-8B-Instruct, and Qwen3.5-35B-A3B) show that MemCalib-RL achieves the best overall performance while better balancing over-use and under-use, with gains generalizing beyond MemCalib in external benchmark evaluation. Further experiments support its design choices and robustness and provide insight into its training dynamics.",
+        "paper_updated": "2026-10-08T09:09:43Z",
+        "created_at": "2026-10-19T05:38:25Z",
+        "input_sha256": "b9a7f2b340e7e856b9edb35800a02108c1884435808d5c1ecc2438d0a8c4b7a0",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 메모리 활용 평가 벤치마크와 최적화 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 메모리 사용 평가 벤치마크 및 최적화 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43546947441",
+        "context_sha256": "2f3e0495b5a6fbaa14960fcf195fcd14a1ac661d1f70200aea105037f8f50ec8"
+      },
+      "proposal_sha256": "f47d99cb633bcb659cb58bff050c4bd6da604257a43962d9a50c3955e472b77f"
     }
   },
   "processed_comments": [],
@@ -100032,8 +100209,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 8,
-      "cost_usd": 4.7832
+      "calls": 9,
+      "cost_usd": 5.6661
     }
   },
   "reaudits": [
