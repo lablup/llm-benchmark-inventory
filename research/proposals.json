@@ -64082,7 +64082,7 @@
     },
     "2605.12882": {
       "decision": "propose",
-      "reason": "CiteVQA는 Doc-VQA에서 답변과 요소 단위 bounding-box 인용을 함께 채점하는 재사용 가능한 새 벤치마크입니다. 711개 PDF(영어 451, 중국어 260)에 질문 1,897개로 구성되며, 지표는 SAA, Rec., Rel., Ans.입니다. 영어 질문 예시가 PDF에 있고 모델이 페이지 스크린샷을 입력받으므로 en 트랙의 vision 행으로 제안합니다. 중국어 문서는 범위 밖이어서 행을 만들지 않았고, 영어 부분만의 질문 수는 논문에 없어 적지 않았습니다. 라이선스 등 다섯 항목은 '확인 불가'로 두었습니다.",
+      "reason": "CiteVQA는 Doc-VQA에서 답변과 요소 단위 bounding-box 인용을 함께 채점하는 재사용 가능한 새 벤치마크입니다. 711개 PDF(영어 451, 중국어 260)에 질문 1,897개로 구성되며, 지표는 SAA, Rec., Rel., Ans.입니다. 영어 질문 예시가 PDF에 있고 모델이 페이지 스크린샷을 입력받으므로 en 트랙의 vision 행으로 제안합니다. 중국어 문서는 범위 밖이어서 행을 만들지 않았고, 영어 부분만의 질문 수는 논문에 없어 적지 않았습니다. 공식 저장소 README는 MIT와 비상업 연구용 고지를 함께 적고 원본 PDF의 직접 공개를 제한하므로 각각 인용 근거와 함께 기록했고, lm-eval은 README에 언급이 없어 '미표기'로 두었습니다. 권고 수치는 논문 Table 2의 Overall SAA 20개 모델입니다.",
       "changes": [
         {
           "track": "en",
@@ -64095,12 +64095,12 @@
             "대표 과제": "여러 쪽의 PDF 페이지 이미지를 받아 질문에 답하고 근거 요소의 bounding box를 함께 제시(단일 문서, 다중 문서 1-Gold, 다중 문서 N-Gold)",
             "대표 예시·설명": "영어 질문(예: 특정 약품 제형의 National Drug Code를 묻는 질문)에 답하면서 근거가 된 문서 요소의 bbox를 함께 인용하는 과제. 답이 맞아도 인용 영역이 틀리면 SAA는 0이다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했다. 논문에 따르면 PDF는 Common Crawl에서 가져온 공개 다운로드 링크로만 배포되고 질문, 정답, bbox 주석은 저장소로 공개되므로, 원본 문서의 권리는 따로 확인해야 한다. 문서 중 일부는 중국어이며 이 행은 영어 부분을 대상으로 한다. 채점에는 LLM judge(논문은 Qwen3-VL-235B-A22B 사용)가 필요하다. 논문은 모델별 입력 해상도 차이와 사전학습 중 문서 노출 가능성을 한계로 밝혔다. 결과는 논문 조건의 값이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(저장소 README·LICENSE 표기). 원본 PDF·구성 데이터셋의 권리는 별도",
+            "상업적 이용": "불가(README 고지: 학술 연구·비상업 용도로만 제공)",
+            "수정·파생": "가능(MIT 조건 준수, 비상업 고지 범위 내)",
+            "재배포": "MIT 조건부 가능. 원본 PDF는 직접 링크 공개 불가",
+            "이용 시 유의사항": "저장소 README의 MIT 표기와 LICENSE 파일은 저장소 저작물(Software)에 대한 것이고, README 하단의 저작권 고지는 학술 연구·비상업 용도로만 제공한다고 따로 밝히므로 두 표기를 함께 따라야 한다. MIT 저작권 고지와 허가 고지를 사본에 포함해야 한다. 이 벤치마크는 다른 출처로 구성되어 있다: 문서 711개는 Common Crawl에서 가져온 공개 PDF이고(논문 4쪽, 10쪽), 질문 템플릿은 CK-12 TQA, SPIQA, MedQA, PubMedQA, ViDoRe V3, MaintNorm, PolicyBench 같은 공개 데이터셋의 질문에서 만들었다(논문 17쪽 Table 5). 저장소의 MIT 표기가 이들 구성 요소 각각의 고유 약관을 대신하지 않으므로, 각 구성 요소의 약관은 이용 전에 따로 점검해야 한다. 논문 17쪽 Table 5는 그중 CK-12 TQA가 CC BY-NC 3.0이라고 적는다. README에 따르면 저작권 때문에 PDF는 직접 링크로 공개되지 않고 ModelScope에서 신청·승인 후 받아야 한다. 문서 일부는 중국어이며 이 행은 영어 부분을 대상으로 한다. 채점에는 LLM judge(논문은 Qwen3-VL-235B-A22B 사용)가 필요하다. 논문은 모델별 입력 해상도 차이와 사전학습 중 문서 노출 가능성을 한계로 밝혔다. 결과는 논문 조건의 값이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/opendatalab/CiteVQA"
           },
           "modality": "vision",
@@ -64146,7 +64146,228 @@
           },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/opendatalab/CiteVQA",
+              "quote": "This project is licensed under the MIT License."
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/opendatalab/CiteVQA",
+              "quote": "CiteVQA is provided for academic research and non-commercial use only."
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/opendatalab/CiteVQA",
+              "quote": "to use, copy, modify, merge, publish, distribute, sublicense, and/or sell"
+            },
+            "재배포": {
+              "source_url": "https://github.com/opendatalab/CiteVQA",
+              "quote": "cannot be made publicly accessible through direct links"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/opendatalab/CiteVQA",
+              "absent": true,
+              "pdf_mentions": [
+                {
+                  "page": 17,
+                  "quote": "CC BY-NC 3.0",
+                  "about": "논문 Table 5가 질문 템플릿의 출처가 된 공개 데이터셋(CK-12 TQA 등)에 붙은 각자의 라이선스를 나열한 것이며, CiteVQA 벤치마크 자체의 라이선스가 아니다."
+                }
+              ]
+            }
+          },
+          "recommendations": {
+            "metric": "Strict Attributed Accuracy (SAA), Overall column of Table 2, score on a 0-100 scale (percent of samples where the answer and the cited evidence are both correct)",
+            "setting": "Results reported in this paper (Table 2), not a current global leaderboard. Same benchmark (1,897 questions over 711 PDFs), Overall across Single-Doc, Multi (1-Gold) and Multi (N-Gold). Unified prompt template, sampling temperature 1.0, maximum output 4,096 tokens, Qwen3-VL-235B-A22B as the automated judge. Gemini models used the native File API; other models received 150 DPI page screenshots, downscaled to at most 1024x1024 (256k-context models) or 768x768 (GLM-5V-Turbo). GPT models used xhigh reasoning effort, Gemini models maximum thinking, Qwen3.5 Thinking mode, Qwen3-VL Instruct versions.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Gemini-3.1-Pro-Preview",
+                "score": "76.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemini-3.1-Pro-Preview 68.9 82.6 86.7 76.0 69.4 84.3 88.0 79.7 55.3 85.3 82.8 71.6 66.0 83.6 86.1 76.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini-3-Flash-Preview",
+                "score": "65.4",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemini-3-Flash-Preview 49.5 76.8 85.3 69.3 42.1 72.3 86.0 61.8 39.5 77.0 81.0 60.5 45.4 75.7 84.5 65.4"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.4",
+                "score": "59.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5.4 35.9 69.8 87.6 61.7 25.7 62.1 88.3 56.9 25.7 68.2 84.3 55.1 31.0 67.5 87.1 59.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini-2.5-Pro",
+                "score": "47.0",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemini-2.5-Pro 31.5 61.7 83.0 49.4 25.4 58.3 84.1 48.9 20.0 57.3 78.0 39.2 27.4 59.8 82.2 47.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Seed2.0-Pro",
+                "score": "44.1",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Seed2.0-Pro 35.8 60.8 82.9 51.9 18.1 44.9 82.6 33.5 21.5 51.2 76.0 36.2 28.5 54.9 81.3 44.1"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.2",
+                "score": "33.7",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5.2 20.9 54.9 71.4 32.6 16.5 63.2 72.4 38.8 13.9 53.0 70.5 30.5 18.2 56.6 71.5 33.7"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-VL-235B-A22B",
+                "score": "22.5",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3-VL-235B-A22B 15.2 37.8 75.0 25.0 6.2 33.8 68.2 21.6 8.1 31.4 70.9 17.8 11.3 35.3 72.3 22.5"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "where the strongest (Qwen3-VL-235B) achieves an SAA of only 22.5"
+                }
+              },
+              {
+                "model": "Gemma-4-31B",
+                "score": "20.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemma-4-31B 10.9 31.0 65.7 16.4 14.0 41.0 80.6 29.8 10.4 37.7 67.2 17.8 11.6 35.0 69.8 20.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Kimi-K2.5",
+                "score": "19.1",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Kimi-K2.5 8.2 27.7 74.6 21.3 3.5 25.2 74.7 18.9 4.8 26.6 72.9 14.2 6.2 26.8 74.3 19.1"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.5-397B-A17B",
+                "score": "18.3",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.5-397B-A17B 6.8 23.6 80.0 17.7 4.0 27.3 71.9 22.2 3.8 23.8 73.5 15.2 5.4 24.6 76.5 18.3"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.6-Plus",
+                "score": "17.5",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.6-Plus 9.8 26.7 87.1 20.2 5.9 24.6 87.3 18.5 4.6 21.3 81.2 9.8 7.7 25.0 85.9 17.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.5-27B",
+                "score": "17.3",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.5-27B 7.0 25.0 79.3 17.1 3.1 28.3 73.1 22.6 3.9 22.6 69.9 11.6 5.3 25.3 75.6 17.3"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-VL-32B",
+                "score": "17.3",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3-VL-32B 8.0 31.3 75.3 19.3 2.8 29.5 67.6 16.2 7.9 29.8 70.7 14.0 6.6 30.5 72.3 17.3"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.5-122B-A10B",
+                "score": "14.8",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.5-122B-A10B 5.9 19.4 78.3 16.0 1.7 20.9 69.0 17.0 1.9 15.6 68.1 9.2 3.9 19.0 73.6 14.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM-5V-Turbo",
+                "score": "12.8",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GLM-5V-Turbo 18.3 31.2 50.0 14.1 11.7 25.2 44.4 9.8 10.2 28.8 54.3 13.0 14.9 29.2 49.6 12.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.5-9B",
+                "score": "11.1",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.5-9B 2.5 11.7 73.2 8.1 0.3 20.7 58.4 17.7 0.8 14.6 53.5 10.7 1.6 14.7 65.0 11.1"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.5-35B-A3B",
+                "score": "10.7",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.5-35B-A3B 2.7 12.6 82.3 9.2 0.5 17.3 73.9 15.6 0.6 12.1 65.5 8.3 1.7 13.7 76.4 10.7"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-VL-30B-A3B",
+                "score": "8.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3-VL-30B-A3B 5.6 15.4 65.4 8.9 0.9 15.9 54.4 8.2 1.7 11.0 63.5 6.4 3.5 14.6 62.2 8.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-VL-8B",
+                "score": "7.5",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3-VL-8B 1.8 17.6 67.0 8.8 0.0 13.6 53.3 6.8 0.3 9.3 56.4 5.2 1.0 14.7 61.2 7.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemma-4-26B-A4B",
+                "score": "6.2",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemma-4-26B-A4B 2.2 15.4 45.6 4.8 4.2 21.4 53.7 9.7 3.5 19.8 48.9 5.5 3.0 17.9 48.4 6.2"
+                },
+                "open_weight": null
+              }
+            ]
+          },
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2605.12882",
@@ -64258,7 +64479,8 @@
         "source_run": "43546947441",
         "context_sha256": "820667d4e89cbceb511291fae12fe3cd242664b1a352820837ab364faff81970"
       },
-      "proposal_sha256": "44ea3f542d072ff54f0c66dc080776ec184663a7fa9f4c45b7a1876b59f69c69"
+      "proposal_sha256": "401e8b54cf08df2aa4683dde93cb62a8f2e40f6b4d1ab2b6e14a4c70e6cbd0b0",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -99762,8 +99984,8 @@
         "2611.17052",
         "2611.17267"
       ],
-      "calls": 6,
-      "cost_usd": 2.7714
+      "calls": 7,
+      "cost_usd": 3.8205
     }
   },
   "reaudits": [
