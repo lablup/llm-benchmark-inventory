@@ -68786,7 +68786,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-15T03:20:38Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -68812,12 +68812,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43668338964",
-        "context_sha256": "b98046b16f814fa7b37c9086432a5ea60b741e5974eef21c10d0d707cf107483"
-      },
       "proposal_sha256": "eb7814d0f57ca91132c790107b8669813650dad4e97f6e0b7f8ecbdd2810d5fd",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 변경 사실은 모두 논문 PDF와 공식 README로 뒷받침됩니다. 과제 수(8+29=37), 인스턴스 수(8,000+36,000+10,000+8,000+10,000=72,000), 뷰 범위(2–8개), 제로샷 평가, 정확도·노드/엣지 F1 지표가 논문 본문 및 Table 1과 일치합니다. 과제 질문과 프롬프트가 영어이고 입력이 그래프 이미지이므로 en 트랙과 vision 분류도 타당합니다. 권장 모델 결과는 Table 2(사고 모드, 8개 과제 평균 정확도, 높을수록 좋음)의 값과 일치합니다. 일곱 모델의 Avg. 값(13.5, 20.5, 7.4, 7.8, 50.4, 52.4, 17.4)을 행별 과제 점수로 재계산해도 맞고, Table 14의 사고 모드 행과도 같습니다. 목록은 같은 실험 조건(사고 모드, 제로샷, 동일 과제 집합)에서 비교된 일곱 모델 전체를 포함하므로 상위 세 모델 선정이 정당화됩니다. 가중치 공개 여부는 null로 두었고 비공개로 간주하지 않았습니다. 라이선스는 공식 README와 PDF 어디에도 명시나 언급이 없고, PDF의 ICLR 심사 표기와 arXiv 표기는 출판 고지일 뿐 데이터 라이선스가 아니므로 '미표기'가 맞습니다. 이에 따라 상업적 이용·수정·파생·재배포가 모두 정확히 '저작권 전부 보유'로 일관됩니다. lm-eval 지원도 공식 카드에 lm-eval 언급이 없고 PDF는 vLLM만 언급하므로 '미표기'가 허용된 해결값입니다. 알 수 없음·확인 불가 필드는 없습니다. 파생 데이터 요건도 충족합니다. SmallPedia(TGB 2.0의 TKGL-SmallPedia)에서 위상을 가져온다는 점(논문 4쪽, 16쪽)을 사용 시 유의사항에 명시했고, 그 구성 요소의 고유 약관을 따로 확인하라고 안내했습니다. 참고로 공식 README는 저장소가 370개 샘플 인스턴스만 담은 예시 릴리스라고 밝히므로, 유의사항에 이 점을 덧붙이면 더 좋지만 이는 변경 사실의 오류가 아니라 보완 사항이어서 승인에 지장이 없습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 236840,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2734,
+              "output_tokens_details": {
+                "thinking_tokens": 1776
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 236840,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2734,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 236840,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 236840
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.9747688999999999,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "eb7814d0f57ca91132c790107b8669813650dad4e97f6e0b7f8ecbdd2810d5fd",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -104385,8 +104431,8 @@
         "2610.12961"
       ],
       "abstract_attempted": [],
-      "calls": 17,
-      "cost_usd": 15.9448
+      "calls": 18,
+      "cost_usd": 16.9196
     }
   },
   "reaudits": [
