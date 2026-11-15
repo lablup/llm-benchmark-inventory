@@ -70954,6 +70954,88 @@
       },
       "issue_url": null,
       "proposal_sha256": "c82ed65ece06a27b96ab0fff017b55e91ab924aff4a56e02d6744b7cf7d1d9a1"
+    },
+    "2609.34024": {
+      "decision": "exclude",
+      "reason": "이 논문은 Jev라는 비생성(System One) 모델을 기존 의료 벤치마크(MetaMedQA, PubMedQA, DiagnosisArena-MCQ, NEJM Case Challenges)로 평가한 모델 평가 논문이다. 새 벤치마크를 만들거나 기존 벤치마크를 실질적으로 갱신하지 않았다. 사용한 데이터셋은 모두 기존 자료이고, NEJM 사례 34건의 전처리(그림을 캡션으로 대체, 표를 텍스트로 변환)도 이 평가를 위한 준비 작업일 뿐 재사용 가능한 새 벤치마크 버전으로 제시되지 않았다. 논문은 코드와 모델 출력이 담긴 Zenodo 보충 자료를 안내하지만 이는 재현용 자료이며 새 벤치마크 릴리스가 아니다. 또한 기존 인벤토리 행에 해당 벤치마크가 없어 모델 비교 증거 단계로 넘길 행도 없다. 따라서 변경 제안 없이 제외한다.",
+      "changes": [],
+      "arxiv_id": "2609.34024",
+      "paper_title": "Jev in Medicine: A Benchmark Evaluation",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.34024",
+        "sha256": "c29b4491f9b4c1eabb6a72df9a9e2782277fc575da199f4d70a545603a421b82",
+        "accessed": "2026-11-15T04:00:31Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 19,
+          "elapsed_seconds": 65.73,
+          "pdf_sha256": "c29b4491f9b4c1eabb6a72df9a9e2782277fc575da199f4d70a545603a421b82",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "2581ac1a4dac4f852544bc543e2b4f1a57afde22ca9f3b7d319775ae9f784527",
+          "page_json_file": "2609.34024.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-15T04:01:43Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.34024",
+        "paper_title": "Jev in Medicine: A Benchmark Evaluation",
+        "abstract": "Jev is a non-generative System One model that assigns probabilities to predefined answer options and cannot answer outside them. Its accuracy and calibration on medical question-answering and case-based diagnostic-reasoning tasks are unknown. We evaluated Jev 1.13 on four medical benchmarks: MetaMedQA, PubMedQA, DiagnosisArena-MCQ and the NEJM Case Challenges. GPT-6 Sol, with (medium) and without reasoning, was the reference. The primary outcome was top-1 accuracy; key secondary outcomes were calibration, selective prediction and recognition of unanswerable questions. All 8,469 requests returned a valid answer. Jev's accuracy was similar to that of GPT-6 Sol with medium reasoning on PubMedQA (78.4% vs 78.2%;), lower on MetaMedQA (74.8% vs 82.7%) and much lower on DiagnosisArena-MCQ (59.8% vs 82.4%;) and the NEJM cases (61.8% vs 82.4%). On MetaMedQA, Jev's probabilities were the best calibrated (expected calibration error 0.063 vs 0.146), and its answers with a probability of at least 0.9 (52.9% of questions) were 93.4% accurate, but GPT-6 Sol was as accurate when it accepted a similar proportion of questions. On DiagnosisArena-MCQ, Jev's probabilities discriminated poorly (AUROC 0.645 vs 0.768). Of the 162 questions whose correct answer was \"I don't know or cannot answer\", Jev chose that option for 10.5% (GPT-6 Sol, 8.6%). Median latency was 0.27-0.31 s; all 2,823 items cost USD 0.08. Jev was fast and inexpensive, and its accuracy was similar to that of a frontier LLM on research abstracts but lower on examination questions and much lower on complex diagnostic cases. Task-specific validation is required before clinical use.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:32Z",
+        "input_sha256": "c321e8cce269a5164a365cdd8d6b2eb143d78a27d61e8e1d990d256ac54fec05",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "의료 질의응답 벤치마크로 LLM 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "irrelevant",
+            "reason": "기존 의료 벤치마크 점수 보고만, 신규 평가자료 없음"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "cc6ef794108a6d144886d8a72e3bd4c991c2700171685ee8515f007e3062a0d0"
     }
   },
   "processed_comments": [],
@@ -106540,8 +106622,8 @@
         "2609.34024"
       ],
       "abstract_attempted": [],
-      "calls": 39,
-      "cost_usd": 36.1322
+      "calls": 40,
+      "cost_usd": 37.0225
     }
   },
   "reaudits": [
