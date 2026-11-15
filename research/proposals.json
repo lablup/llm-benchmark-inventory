@@ -68260,6 +68260,162 @@
       },
       "issue_url": null,
       "proposal_sha256": "be50d8d714ab8a3ae872ec6f14ae978a30935b8a4780b37be8e676f235956798"
+    },
+    "2610.12920": {
+      "decision": "propose",
+      "reason": "SCCGBench는 실제 GitHub 저장소의 RapidAPI 호출 함수 3,135개로 만든 재사용 가능한 영어 텍스트 코드 생성 벤치마크입니다. 가상 실행으로 host·endpoint·method 일치(Mock)와 Robust, ParamF1을 측정하며, 논문이 공식 데이터·코드 저장소를 명시합니다. 과제 지시문이 영어이므로 en 트랙의 text로 분류했습니다. 라이선스, 상업적 이용 등은 확인하지 않아 '확인 불가'로 기록했습니다. 이전 응답에서 PDF 해당 쪽에 없던 인용문을 해당 쪽에 실제로 있는 짧은 인용문으로 교체했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "sccgbench",
+            "이름": "SCCGBench",
+            "평가 축": "코딩(실행 기반 웹 서비스 호출 코드 생성)",
+            "언어": "en",
+            "정의": "실제 GitHub 저장소에서 추출한 RapidAPI 호출 함수 3,135개(API 850개, 저장소 2,082개)로 구성된 벤치마크. 학습/검증/테스트는 2,257/266/612로 API 단위로 분할된다. 가상 실행 환경에서 생성 코드가 요청한 host, endpoint, HTTP method가 모두 정답과 일치하는지(Mock), 상태 확인과 예외 처리까지 갖췄는지(Robust), 매개변수 정렬(ParamF1)을 측정한다. 논문은 코드 LLM 6종과 비신경망 검색 기준선 1종을 intent-only, 검색 증강(RAG), 정답 문서 Oracle 설정에서 평가했다.",
+            "대표 과제": "자연어 의도(intent)만 또는 문서 문맥과 함께 주어지면 requests로 웹 서비스를 호출하는 완전한 Python 함수를 생성하고 Mock/Robust/ParamF1로 채점",
+            "대표 예시·설명": "개발자 의도 '도시의 현재 날씨를 가져와라'가 주어지면 모델이 올바른 서비스 host, endpoint, HTTP method, 쿼리 매개변수를 갖춘 요청 코드를 생성하는 과제 설명(실제 문항이 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 아직 확인하지 않았다. 이 벤치마크는 GitHub 공개 저장소의 코드와 RapidAPI 문서를 바탕으로 구성되므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 하며, 코드 저장소의 라이선스가 데이터 라이선스를 대신하지 않는다. 데이터는 Python과 RapidAPI 생태계에 한정되고, 실행 평가는 실제 네트워크가 아닌 가상 실행(mock)이다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/SCCGBench/SCCGBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (execution-grounded Web service-call code generation)",
+            "definition": "A benchmark of 3,135 RapidAPI call functions mined from real GitHub repositories (850 APIs, 2,082 repositories), split by API into 2,257 train, 266 validation and 612 test samples. A virtual execution environment checks whether generated code hits the gold host, endpoint and HTTP method together (Mock), also includes status checking and exception handling (Robust), and aligns parameters (ParamF1). The paper evaluates six code LLMs and one non-neural retrieval baseline under intent-only, retrieval-augmented and gold-documentation Oracle settings.",
+            "task": "Given a natural-language intent, alone or with documentation context, generate a complete Python function that calls a Web service with requests, scored with Mock, Robust and ParamF1.",
+            "example": "Task description (not an actual test item): given the developer intent 'get the current weather for a city', the model writes request code with the correct service host, endpoint, HTTP method and query parameters."
+          },
+          "evidence": {
+            "modality": {
+              "page": 6,
+              "quote": "complete Python function"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "Mock, Robust, ParamF1"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "get the current"
+            },
+            "링크": {
+              "page": 10,
+              "quote": "com/SCCGBench/SCCGBench"
+            },
+            "언어": {
+              "page": 1,
+              "quote": "get the current"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "SCCGBench: Executability-Oriented"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "850 APIs, and"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "execution-grounded"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.12920",
+      "paper_title": "SCCGBench: Executability-Oriented Evaluation for Real-World Web Service-Call Code Generation",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.12920",
+        "sha256": "46b49fd8037895bea9e0ca34c2f90fdbbe17225faec4018a5e3e730a46ff452e",
+        "accessed": "2026-11-15T03:14:13Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 11,
+          "elapsed_seconds": 50.08,
+          "pdf_sha256": "46b49fd8037895bea9e0ca34c2f90fdbbe17225faec4018a5e3e730a46ff452e",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "95fa2da47d46bb0ec30207529ebb1951b36e9950c318c07a93bab0c70a7ae61e",
+          "page_json_file": "2610.12920.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/SCCGBench/SCCGBench",
+            "fetched_url": "https://api.github.com/repos/SCCGBench/SCCGBench/readme",
+            "sha256": "e800af28614ae760333cb57b9f29208ead7993b58d839c52bc0d3b42937f4969",
+            "accessed": "2026-11-15T03:15:49Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/SCCGBench/SCCGBench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "a82e36c5530f77168001b37543178b9b75e90956e4376c26c4587378100cf977"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-15T03:15:49Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.12920",
+        "paper_title": "SCCGBench: Executability-Oriented Evaluation for Real-World Web Service-Call Code Generation",
+        "abstract": "LLM-generated service-call code is increasingly important for service computing, where developers rely on large language models (LLMs) to compose services and invoke third-party services. However, current approaches have not yet evaluated the invocation and execution of services in the actual code environment. To support execution-grounded evaluation, we present the Service-Call Code Generation Benchmark (SCCGBench), a benchmark of 3,135 traceable and decontamination-filtered RapidAPI call functions from real GitHub repositories. SCCGBench uses redacted-intent generation to reduce circular leakage and introduces Mock, Robust, ParamF1, and host-, endpoint-, method-, and parameter-level diagnostics. Mock denotes a virtual-execution hit that simultaneously matches the gold host, endpoint, and HTTP method, while Robust further requires status checking and exception handling. We evaluate six code LLMs and one non-neural retrieval baseline under intent-only, retrieval-augmented, and gold-documentation Oracle settings. Results show that models often generate syntactically correct or superficially similar HTTP-request code but achieve low Mock success in the intent-only setting; the strongest evaluated model obtains only 3.76% Mock. Under the gold-documentation Oracle settings (C3 and C5), Mock reaches 88.73%--90.52% for the open-source models evaluated in RQ2 and 76.47%--81.86% for DeepSeek-V4-Pro, whereas sparse and dense retrieval remain far below this oracle level. The findings indicate that service/API grounding is the main bottleneck: Mock is dominated by host, endpoint, and method alignment, while ParamF1 separately reveals parameter-alignment errors. SCCGBench provides an execution-grounded benchmark for Web service invocation, API recommendation, service-interface retrieval, endpoint grounding, and reliable service-call automation.",
+        "paper_updated": "2026-10-12T00:00:00Z",
+        "created_at": "2026-10-19T13:50:19Z",
+        "input_sha256": "8236727dde3e2183d2d91edc113dfad14cafcd54518848f7819fb63ade75b04e",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "웹 서비스 호출 코드 생성 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "서비스 호출 코드 생성 실행 기반 벤치마크 SCCGBench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43668338964",
+        "context_sha256": "5b4e9c337204eb27b4bc1be181e7801e28549e1a3ee517994029d7d238091816"
+      },
+      "proposal_sha256": "b314a24a85bc42a5c45b0cc590833b53368a20a78889d05f1ec8df75b634f131"
     }
   },
   "processed_comments": [],
@@ -103825,8 +103981,8 @@
         "2610.12920"
       ],
       "abstract_attempted": [],
-      "calls": 12,
-      "cost_usd": 11.302
+      "calls": 13,
+      "cost_usd": 12.1645
     }
   },
   "reaudits": [
