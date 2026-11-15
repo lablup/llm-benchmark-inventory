@@ -68559,7 +68559,7 @@
     },
     "2610.12961": {
       "decision": "propose",
-      "reason": "MVGraph는 여러 시각 그래프 뷰에 흩어진 증거를 정렬·조합해야 풀리는 새로운 재사용 가능 벤치마크다. 그래프-이론 과제 8개(인스턴스 8,000개)와 진단 과제 29개를 합쳐 총 37개 과제, 72,000 인스턴스로 구성된다. 과제 질문과 프롬프트가 영어이므로 en 트랙이고, 입력이 그래프 이미지라 vision으로 분류했다. 공식 코드·데이터 링크는 PDF 초록에 명시되어 있다. 라이선스, 상업적 이용, 수정·재배포, lm-eval 지원은 논문에서 확인하지 못해 '확인 불가'로 기록했다.",
+      "reason": "MVGraph는 여러 시각 그래프 뷰에 흩어진 증거를 정렬·조합해야 풀리는 새로운 재사용 가능 벤치마크다. 그래프-이론 과제 8개(8,000 인스턴스)와 진단 과제 29개를 합쳐 총 37개 과제, 72,000 인스턴스로 구성된다. 과제 질문과 프롬프트가 영어이므로 en 트랙이고, 입력이 그래프 이미지라 vision으로 분류했다. 공식 카드(README)와 PDF 어디에도 라이선스와 lm-eval 언급이 없어 미표기 근거로 기록했고, 라이선스 미표기 공개물은 저작권 전부 보유로 취급했다. 이 벤치마크는 SmallPedia에서 파생한 위상을 일부 사용하므로 구성 요소별 약관을 따로 확인하도록 안내했다. 권장 모델 결과는 논문 Table 2(사고 모드, 8개 과제 평균 정확도)에서 가져왔다.",
       "changes": [
         {
           "track": "en",
@@ -68572,12 +68572,12 @@
             "대표 과제": "위상 정렬, 최대 유량, 이분 매칭, 해밀턴 경로의 부분 뷰·시간 뷰 변형 8개 과제와 지각·정렬·조합·추론 진단 과제",
             "대표 예시·설명": "여러 그래프 이미지를 주고 '모든 뷰를 하나의 방향 비순환 그래프로 병합해 유효한 위상 정렬을 반환하라'와 같은 영어 질문에 JSON으로 답하게 하는 과제 설명. 실제 시험 문항이 아니다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "논문에서 데이터 라이선스를 확인하지 못했다. 이용 전에 공식 저장소에서 데이터와 코드의 라이선스, 구성 요소별 약관을 따로 확인해야 한다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 절차적으로 생성한 그래프와 SmallPedia(TGB 2.0의 TKGL-SmallPedia)에서 파생한 그래프 위상을 바탕으로 구성되므로(논문 4쪽, 16쪽), 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/AAAndy-Zhu/MVGraph"
           },
           "modality": "vision",
@@ -68621,9 +68621,107 @@
               "quote": "MVGRAPH, a benchmark"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/AAAndy-Zhu/MVGraph",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/AAAndy-Zhu/MVGraph",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/AAAndy-Zhu/MVGraph",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/AAAndy-Zhu/MVGraph",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/AAAndy-Zhu/MVGraph",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Accuracy (%) averaged over the 8 end-to-end graph-theoretic tasks (Avg. column of Table 2), exact-match based, no partial credit",
+            "setting": "Results reported in this paper (Table 2, page 6), not a current global leaderboard. End-to-end graph-theoretic tasks of MVGraph (partial graph views: TS, MF, BM, HP; temporal graph views: STS, MFC, SBM, THP), thinking mode, zero-shot, models receive multiple graph images followed by the task question and output-format instruction. The paper does not state a token budget in the main text. Local models run with vLLM; models marked † are accessed via API.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Qwen3.5-9B",
+                "score": "13.5",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Qwen3.5-9B 0.1 0.3 36.9 40.0 0.0 30.2 0.2 0.4 13.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemma-4-12B-it",
+                "score": "20.5",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Gemma-4-12B-it 0.0 5.5 60.6 43.1 0.1 45.3 0.4 8.7 20.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM-4.6V-Flash",
+                "score": "7.4",
+                "evidence": {
+                  "page": 6,
+                  "quote": "GLM-4.6V-Flash 0.0 0.7 7.2 4.7 0.0 46.5 0.0 0.0 7.4"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Ovis2.5-9B",
+                "score": "7.8",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Ovis2.5-9B 0.0 0.2 18.5 2.3 0.0 41.3 0.0 0.2 7.8"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.8-Flash†",
+                "score": "50.4",
+                "evidence": {
+                  "page": 6,
+                  "quote": "Qwen3.8-Flash† 35.0 54.0 97.0 77.0 8.0 59.0 8.0 65.0 50.4"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM-5.3-Flash†",
+                "score": "52.4",
+                "evidence": {
+                  "page": 6,
+                  "quote": "GLM-5.3-Flash† 33.0 41.0 95.0 84.0 12.0 59.0 16.0 79.0 52.4"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DeepSeek-Flash†",
+                "score": "17.4",
+                "evidence": {
+                  "page": 6,
+                  "quote": "DeepSeek-Flash† 0.0 15.0 62.0 50.0 0.0 5.0 0.0 7.0 17.4"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.12961",
@@ -68718,7 +68816,8 @@
         "source_run": "43668338964",
         "context_sha256": "b98046b16f814fa7b37c9086432a5ea60b741e5974eef21c10d0d707cf107483"
       },
-      "proposal_sha256": "437195517ffac6a5918fec6ea240a19583aee019adf5b3b069a716c8250633f9"
+      "proposal_sha256": "eb7814d0f57ca91132c790107b8669813650dad4e97f6e0b7f8ecbdd2810d5fd",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -104286,8 +104385,8 @@
         "2610.12961"
       ],
       "abstract_attempted": [],
-      "calls": 16,
-      "cost_usd": 14.9384
+      "calls": 17,
+      "cost_usd": 15.9448
     }
   },
   "reaudits": [
