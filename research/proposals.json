@@ -67747,6 +67747,180 @@
       },
       "issue_url": null,
       "proposal_sha256": "0e7742e5045a3c68042f8d53d9d146a9b114766b34d0145bba11cdf989ffab9d"
+    },
+    "2608.06769": {
+      "decision": "propose",
+      "reason": "GraphVerse는 재사용 가능한 시각 그래프 추론 벤치마크를 새로 제안한다. 총 11,000개 샘플이며 단일 이미지 과제 9개와 쌍 이미지 과제 2개로 구성된다. 그래프 중심 이미지 편집(GIE) 4종과 과정 민감 지표 VGR-Score를 함께 제공한다. 질문 프롬프트가 영어로 인용돼 있어 en 트랙에 두고, 그래프 이미지를 입력으로 쓰므로 vision으로 분류했다. 공식 코드 링크(GitHub)는 PDF 1쪽에 명시돼 있다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "graphverse",
+            "이름": "GraphVerse",
+            "평가 축": "이미지(시각 그래프 추론)",
+            "언어": "en",
+            "정의": "MLLM의 시각 그래프 추론(VGR)에서 인식, 시각 추론, 텍스트 기반 그래프 추론을 함께 평가하는 벤치마크. 전체 11,000개 샘플이고 평가 효율을 위한 testmini는 1,060개 샘플이다. 단일 이미지 과제 9개와 쌍 이미지 과제 2개(GED, MCS)를 다룬다. 그래프 중심 이미지 편집(GIE) 4종(패치 교란, 그래프 합성, 주의 집중, 공간 조건 재색칠)을 적용한다. 정답은 규칙 기반 솔버로 만들고, 정답 정확도(Acc)와 함께 과정 점수를 포함한 VGR-Score(λ=0.7, GPT-5.1 채점 에이전트)로 평가한다. 별도로 학습용 3,500개 샘플을 구성했다.",
+            "대표 과제": "단일 이미지: Shortest Distance, Diameter, Common Neighbors, TSP, MCP, MVC, MIS, Cycle, Graph Coloring. 쌍 이미지: Graph Edit Distance, Maximum Common Subgraph",
+            "대표 예시·설명": "그래프 이미지와 영어 질문(예: 항공 노선망에서 가장 긴 단순 사이클 찾기)이 주어지고, 재색칠 같은 이미지 편집 지시를 반영해 답을 내는 과제 설명이다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. 공식 코드 저장소만 PDF에 명시돼 있으며 코드 라이선스를 데이터 라이선스로 간주하면 안 된다. 그래프는 DBLP, DBpedia, OpenFlights, PubChemQC 등 여러 공개 그래프 출처에서 추출한 것이므로 각 출처의 약관을 이용 전에 따로 확인해야 한다. 채점에 LLM 채점 에이전트가 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/sunyuanfu/GraphVerse"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (visual graph reasoning)",
+            "definition": "A benchmark that jointly evaluates perception, visual reasoning and text-based graph reasoning of MLLMs on visual graph reasoning (VGR). It has 11,000 samples in total and a 1,060-sample testmini subset for efficient evaluation. It covers 9 single-image tasks and 2 paired-image tasks (GED, MCS). Four graph-centric image editing (GIE) strategies are applied: patch perturbation, cross-graph composition, attentional focusing and spatially-conditioned recoloring. Ground truth comes from rule-based solvers, and models are scored with accuracy and VGR-Score (lambda=0.7, GPT-5.1 scoring agent), which also credits the reasoning process. A separate 3,500-sample training set was built.",
+            "task": "Single-image: Shortest Distance, Diameter, Common Neighbors, TSP, MCP, MVC, MIS, Cycle, Graph Coloring. Paired-image: Graph Edit Distance, Maximum Common Subgraph",
+            "example": "Task description: given a graph image and an English question, for example finding the longest simple cycle in an airline network, the model applies an image-editing instruction such as recoloring and produces the answer."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "I = Render(G)"
+            },
+            "대표 과제": {
+              "page": 4,
+              "quote": "Single-image VGR Tasks"
+            },
+            "대표 예시·설명": {
+              "page": 26,
+              "quote": "Analyze the undirected"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/sunyuanfu/GraphVerse"
+            },
+            "언어": {
+              "page": 26,
+              "quote": "Analyze the undirected"
+            },
+            "이름": {
+              "page": 6,
+              "quote": "GraphVerse contains 11,000"
+            },
+            "정의": {
+              "page": 6,
+              "quote": "GraphVerse contains 11,000"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Visual Graph Reasoning"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2608.06769",
+      "paper_title": "GraphVerse: A Comprehensive Visual Graph Reasoning Benchmark for Multimodal Large Language Models",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2608.06769",
+        "sha256": "7cdb75d901112598aae27048dfc9fd95f9090b520652ff413f3524e5a7862abf",
+        "accessed": "2026-11-15T02:54:09Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 34,
+          "elapsed_seconds": 115.05,
+          "pdf_sha256": "7cdb75d901112598aae27048dfc9fd95f9090b520652ff413f3524e5a7862abf",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7e97e40c0b8cbd8dfd6eabec3e27e2d5aba3a4ce1f133a83c5d27aa567e2353b",
+          "page_json_file": "2608.06769.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/sunyuanfu/GraphVerse",
+            "fetched_url": "https://api.github.com/repos/sunyuanfu/GraphVerse/readme",
+            "sha256": "f59d8fd6ae9d8e525ecc0725aacfd67b7d091ca2ad50d007e9a7a3bd07c16b52",
+            "accessed": "2026-11-15T02:56:27Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-15T02:56:27Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2608.06769",
+        "paper_title": "GraphVerse: A Comprehensive Visual Graph Reasoning Benchmark for Multimodal Large Language Models",
+        "abstract": "Recent Multimodal Large Language Models (MLLMs) have achieved remarkable progress across diverse vision-language tasks, creating an urgent need for more challenging benchmarks. Yet existing evaluations still provide limited insight into whether these models can truly reason over structured visual information. Visual Graph Reasoning (VGR) offers a compelling testbed for this challenge, requiring models to integrate perception, structural understanding, and multi-step reasoning over graph-based visual inputs. However, prior VGR benchmarks often reduce the task to visual perception followed by text-based reasoning, restrict evaluation to single-image settings, rely on answer-only metrics, and underrepresent realistic graph-centric scenarios. To bridge the gap, we introduce GraphVerse, a unified benchmark that jointly evaluates perception, visual reasoning, and text-based graph reasoning in MLLMs under both single-image and paired-image settings. At its core is a suite of Graph-centric Image Editing (GIE) strategies that modify graph images while preserving their semantics, turning them into active tests of visual reasoning. We further propose VGR-Score, a process-sensitive metric that evaluates reasoning quality beyond final-answer accuracy. Extensive experiments reveal several key limitations of current MLLMs in VGR, while also validating the effectiveness of GIE strategies and the transferability of GraphVerse to broader multimodal reasoning capabilities. The code is available at https://github.com/sunyuanfu/GraphVerse.",
+        "paper_updated": "2026-10-12T00:00:00Z",
+        "created_at": "2026-10-19T13:50:08Z",
+        "input_sha256": "95bd946355a52ef0452b966811c895842f6aafaf8b56f0c2f0ade3415bb278d1",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "시각적 그래프 추론 평가 벤치마크로 MLLM 관련"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "시각 그래프 추론 통합 벤치마크와 지표 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43668338964",
+        "context_sha256": "315bd0806032ea540d82ccd2ce2eec3c64895983de7ec4c4b4229acb12239735"
+      },
+      "proposal_sha256": "8c2ae6557cca67dfd3df5b91d4cf48f5b304815b36824b1f405f65dfcb679adb"
     }
   },
   "processed_comments": [],
@@ -103301,8 +103475,8 @@
         "2608.06769"
       ],
       "abstract_attempted": [],
-      "calls": 5,
-      "cost_usd": 4.7011
+      "calls": 6,
+      "cost_usd": 5.6381
     }
   },
   "reaudits": [
