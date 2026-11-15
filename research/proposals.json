@@ -69673,6 +69673,151 @@
         "reviewed_sha256": "6e30c357fec8c8d1ba9df4cb9e62ab52f9c23dfa6f2394ce05e7e51e8bb7d0e9",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.13636": {
+      "decision": "propose",
+      "reason": "이 논문은 접지(grounded) 원격탐사 VQA에서 답변과 근거 영역의 일관성을 재는 AESP 프로토콜과, 이를 위한 G-RSVQA 벤치마크(15,027문항)를 새로 제안한다. 재사용 가능한 이미지 기반 평가 자료이고 기존 인벤토리에 없는 항목이라 en 트랙의 vision 행으로 제안한다. 과제 언어는 PDF가 인용한 영어 Yes/No 답변 형식을 근거로 en으로 판단했다. 질문 문장 원문은 PDF에서 확인하지 못했으므로 이용 시 유의사항에 적었다. 공식 자료로는 PDF 1쪽이 밝힌 코드 저장소만 있고, 데이터셋 URL과 라이선스는 PDF에 없어 모두 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "g-rsvqa",
+            "이름": "G-RSVQA",
+            "평가 축": "이미지(원격탐사 VQA의 답변-근거 일관성)",
+            "언어": "en",
+            "정의": "접지 원격탐사 VQA에서 모델 자신의 답변을 그 근거 영역이 뒷받침하는지를 평가하는 벤치마크. 15,027개 질문-정답 샘플(존재 8,592, 계수 4,275, 비교 2,160)로 구성되며, 질문마다 정답과 관련된 모든 객체 단위 주석이 붙는다. 이미지와 주석은 DIOR, NWPU VHR-10, SODA-A에서 가져왔다. 지표는 답변 정확도(전체 15,027개), 위치 정밀도·재현율·F1(IoU 0.5), 증거 지지도(Evidence Support)와 Joint Success이며, 위치·증거 평가는 정답이 No인 존재 질문 5,328개를 제외한 9,699개에서 수행한다. 논문은 접지 VLM 7종을 추가 학습 없이 평가했다.",
+            "대표 과제": "존재·계수·비교 질문에 대한 Yes/No 또는 정수 답변과 접지 영역 생성, AESP 규칙에 따른 증거 지지 판정",
+            "대표 예시·설명": "과제 설명: 원격탐사 이미지와 질문이 주어지면 모델이 답변과 근거 객체 영역을 함께 내고, 영역이 덮은 대상 객체 수가 자신의 답변(존재 여부, 정확한 개수, 두 클래스의 수 비교)과 맞는지 판정한다. 실제 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "PDF가 밝힌 공식 자원은 평가 코드 저장소(AESP-Evaluation)뿐이며 데이터셋 배포처와 라이선스는 PDF에서 확인하지 못했다. 코드 저장소의 라이선스가 데이터 라이선스를 대신하지 않는다. 이 벤치마크는 DIOR, NWPU VHR-10, SODA-A의 이미지와 주석으로 만들어졌으므로(논문 2쪽) 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 질문은 주석에서 규칙으로 자동 생성한 것이고 질문 문장 원문은 PDF에서 확인하지 못했으며, 영어 판정은 Yes/No 답변 형식에 근거한다. 답변 추출에 Qwen3-14B가 쓰인다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다. lm-eval 지원 여부는 확인하지 않았다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/pingggg516/AESP-Evaluation"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (answer-grounding consistency in remote sensing VQA)",
+            "definition": "A benchmark for grounded remote sensing VQA that tests whether the grounding evidence supports the model's own answer. It has 15,027 question-answer samples (8,592 existence, 4,275 counting, 2,160 comparison), each paired with all related object-level annotations. Images and annotations come from DIOR, NWPU VHR-10 and SODA-A. Metrics are answer accuracy (all 15,027 samples), localization precision, recall and F1 at IoU 0.5, Evidence Support, and Joint Success. Localization and evidence are evaluated on 9,699 samples after excluding 5,328 existence questions with a No reference answer. The paper evaluates seven grounded VLMs without additional training.",
+            "task": "Answer existence, counting and comparison questions (Yes/No or an integer) with grounding regions, then judge evidence support under the AESP rules.",
+            "example": "Task description, not an actual test item: given a remote sensing image and a question, the model returns an answer and grounding regions, and the benchmark checks whether the number of target objects covered matches the answer (existence, exact count, or comparison between two classes)."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "objects in the"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "existence, counting, and"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "existence, counting, and"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/pingggg516/AESP-Evaluation"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "Yes/No answers"
+            },
+            "이름": {
+              "page": 2,
+              "quote": "(G-RSVQA) benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "15,027 samples"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "answer-grounding consistency"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.13636",
+      "paper_title": "Benchmarking Answer-Grounding Consistency in Remote Sensing Visual Question Answering",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.13636",
+        "sha256": "65d55d1a752eed0ca226ed507462f6cd3b77e1d7060e773da2e39e2a04277f27",
+        "accessed": "2026-11-15T03:36:11Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 5,
+          "elapsed_seconds": 26.3,
+          "pdf_sha256": "65d55d1a752eed0ca226ed507462f6cd3b77e1d7060e773da2e39e2a04277f27",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "67f9e25c78e77902d89d4dc2744ba08e0139802b6d2d835180e6e0160346826e",
+          "page_json_file": "2610.13636.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/pingggg516/AESP-Evaluation",
+            "fetched_url": "https://api.github.com/repos/pingggg516/AESP-Evaluation/readme",
+            "sha256": "b82e431731643f33be24800b4c36a08f0ef0b09103bfa2034ab9f18734eec673",
+            "accessed": "2026-11-15T03:37:04Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-15T03:37:04Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.13636",
+        "paper_title": "Benchmarking Answer-Grounding Consistency in Remote Sensing Visual Question Answering",
+        "abstract": "In grounded remote sensing visual question answering, a model produces a textual answer and identifies relevant objects in the image as grounding evidence. Existing evaluations measure answer correctness and localization quality, but do not directly assess answer-grounding consistency. We propose the Answer-Evidence Support Protocol (AESP) to assess this consistency through evidence support: whether the grounding evidence supports the model's own answer. AESP applies task-specific rules to existence, counting, and comparison questions. We further construct the Grounded Remote Sensing Visual Question Answering (G-RSVQA) benchmark, containing 15,027 samples with questions, reference answers, and all related object-level annotations. Experiments on seven grounded vision--language models reveal failures of evidence support across all three question types. Up to 50.82% of correct answers in the evidence evaluation subset are not supported by the provided grounding evidence.",
+        "paper_updated": "2026-10-12T00:00:00Z",
+        "created_at": "2026-10-19T13:50:19Z",
+        "input_sha256": "db82fc6d46d9bee5c2af72a908324c22d8d52e8592704540e967e0307580d3de",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "원격 탐사 VQA 답변 근거 일관성 평가"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "원격감지 VQA 근거 일관성 벤치마크 G-RSVQA 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43668338964",
+        "context_sha256": "aa0fcdf499ff840c4daad872ee46758a77cb76e139d081822b195dd5da0bb29c"
+      },
+      "proposal_sha256": "b93fc6c7b2ede1b66c19576f5849f0569bd205a7648f335382de2bf0810b814b"
     }
   },
   "processed_comments": [],
@@ -105248,8 +105393,8 @@
         "2610.13636"
       ],
       "abstract_attempted": [],
-      "calls": 26,
-      "cost_usd": 24.5216
+      "calls": 27,
+      "cost_usd": 25.2515
     }
   },
   "reaudits": [
