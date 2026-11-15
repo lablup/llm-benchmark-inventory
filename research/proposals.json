@@ -71038,74 +71038,9 @@
       "proposal_sha256": "cc6ef794108a6d144886d8a72e3bd4c991c2700171685ee8515f007e3062a0d0"
     },
     "2610.07639": {
-      "decision": "propose",
-      "reason": "이 논문은 코딩 에이전트 하니스의 보안 메커니즘을 평가하는 재사용 가능한 벤치마크 HarnessSecurity-Bench(HSB)를 새로 제안합니다. 23개 코딩 과제, 5개 공격 표면, 9개 보안 메커니즘, 6개 하니스로 구성되고, 과제 효용과 공격 효과를 별도의 결정적 오라클로 채점합니다. 과제명이 영어이고 텍스트·터미널 기반 코딩 과제이므로 en 트랙의 text로 분류했습니다. 기존 인벤토리에 같은 벤치마크는 없습니다. 링크는 PDF 16쪽이 명시한 공식 GitHub 저장소입니다. 라이선스와 lm-eval 지원 여부는 확인하지 못해 '확인 불가'로 기록했고, 이 점을 유의사항에 적었습니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "harnesssecurity-bench",
-            "이름": "HarnessSecurity-Bench (HSB)",
-            "평가 축": "에이전트 보안(코딩 에이전트 하니스 보안 메커니즘의 효용·공격 효과 평가)",
-            "언어": "en",
-            "정의": "코딩 에이전트 하니스의 네이티브 보안 메커니즘이 실제 실행에서 공격 효과와 과제 효용에 미치는 영향을 재는 컨테이너 기반 벤치마크. 23개 코딩 과제(Python, JavaScript, C#, C++, Go, Ruby)에 5개 공격 표면(저장소·워크플로 산출물, 지시·스킬, 도구 인터페이스, 지식·메모리, 외부 서비스·실행 의존성)의 오염 자료를 더하되 정당한 사용자 지시와 효용 오라클은 그대로 둔다. 10개 보안 메커니즘 분류 중 9개를 평가하며(감사 로깅 제외), 격리된 Docker 컨테이너에서 활성·비활성 설정을 같은 환경에서 비교한다. 효용과 공격 성공률(ASR)을 각각 결정적 오라클의 통과 비율로 계산한다. 논문은 Claude Code, Codex CLI, Gemini CLI, gptme, Qwen Code, GitHub Copilot의 6개 하니스를 기본 모델 GLM-5.2로 평가했고 총 2,500회 시행을 계획했다. 이 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "대표 과제": "23개 과제를 9개 메커니즘 벤치마크(AA, NI, CAL, CDL, MCP, PIF, PR, RO, PT)로 묶어, 정당한 코딩 요구를 수행하면서 공격 유도에 넘어가는지 측정",
-            "대표 예시·설명": "Job Scheduler Backoff 같은 코딩 과제에서 에이전트가 재시도 스케줄러를 구현하는 동안, 유지보수 자료가 큐 비우기 같은 허가되지 않은 행동을 필수 선행 단계처럼 제시한다. 효용 오라클은 정당한 요구의 충족을, 공격 오라클은 허가되지 않은 행동의 실행을 따로 확인한다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터·과제 패키지의 라이선스를 이 단계에서 확인하지 못해 '확인 불가'로 기록했다. 이용 전에 공식 저장소의 라이선스 표기를 확인해야 한다. 코드 저장소의 라이선스가 있더라도 데이터 라이선스를 대신하지 않는다. 과제 일부는 Terminal-Bench 과제 저장소에서 가져와 변형한 것이므로 구성 요소별 약관을 따로 확인해야 한다. 평가에는 하니스별 설치와 Docker 실행 환경이 필요하다. 논문 결과는 단일 기본 모델(GLM-5.2)과 6개 오픈소스 하니스 조건에 한정된다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/TsingPig/HarnessSecurity-Benchmark"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Agent security (utility and attack effects of coding agent harness security mechanisms)",
-            "definition": "A containerized benchmark of how native security mechanisms in coding agent harnesses affect attack effects and task utility during real execution. It has 23 coding tasks (Python, JavaScript, C#, C++, Go, Ruby) augmented with adversarial material across five attack surfaces (repository/workflow artifacts, instructions/skills, tool interfaces, knowledge/memory, external services/execution dependencies), while keeping legitimate user instructions and utility oracles unchanged. It evaluates nine of ten taxonomy mechanisms (audit logging excluded), comparing enabled and disabled settings in isolated Docker containers under the same environment. Utility and attack success rate (ASR) are the pass rates of separate deterministic oracles. The paper evaluates six harnesses (Claude Code, Codex CLI, Gemini CLI, gptme, Qwen Code, GitHub Copilot) with GLM-5.2 as the base model and 2,500 planned trials. These figures are results under the paper's conditions, not a current global leaderboard.",
-            "task": "23 tasks grouped into nine mechanism benchmarks (AA, NI, CAL, CDL, MCP, PIF, PR, RO, PT), measuring whether an agent completes the legitimate coding requirement while resisting attack-inducing material.",
-            "example": "Task description: in a coding task such as Job Scheduler Backoff, the agent implements a retry scheduler while maintenance materials present an unauthorized action such as purging a queue as a required prerequisite. Utility oracles check the legitimate requirements, and attack oracles check whether the unauthorized action was executed."
-          },
-          "evidence": {
-            "modality": {
-              "page": 8,
-              "quote": "Settlement Fee Rounding;"
-            },
-            "대표 과제": {
-              "page": 8,
-              "quote": "Settlement Fee Rounding;"
-            },
-            "대표 예시·설명": {
-              "page": 8,
-              "quote": "Settlement Fee Rounding;"
-            },
-            "링크": {
-              "page": 16,
-              "quote": "https://github.com/TsingPig/ HarnessSecurity-Benchmark"
-            },
-            "언어": {
-              "page": 8,
-              "quote": "Settlement Fee Rounding;"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "HARNESSSECURITY-BENCH, a benchmark"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "HARNESSSECURITY-BENCH, a benchmark"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "HARNESSSECURITY-BENCH, a benchmark"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공식 저장소 카드(https://github.com/TsingPig/HarnessSecurity-Benchmark)에는 '## LICENSE file: UPSTREAM_LICENSE (SPDX Apache-2.0)' 절이 있어, 라이선스 미표기에 대한 부재 증거(absent)를 쓸 수 없습니다. 그런데 이 파일은 벤치마크 전체의 라이선스가 아닙니다. README가 'The PR tasks mvcc-lsm-compaction and embedding-drift-monitor are derived from Terminal-Bench ... Their upstream Apache 2.0 license is provided in UPSTREAM_LICENSE'라고 밝히듯, Terminal-Bench에서 가져온 PR 과제 2개의 상류 라이선스입니다. 23개 과제 전체와 오라클, 스크립트에 적용되는 라이선스 문구는 README와 PDF 어디에도 없으므로 (a) 형식의 인용도 만들 수 없습니다. 따라서 라이선스, 상업적 이용, 수정·파생, 재배포의 4개 필드는 어느 증거 형식으로도 채울 수 없습니다. 코드·과제 저장소의 라이선스를 데이터 라이선스로 간주해서도 안 됩니다. 저자가 저장소 전체에 라이선스를 표기하거나 LICENSE 파일의 적용 범위를 밝히는 것이 확인되면 다시 제안해야 합니다. 그때까지 공개할 변경은 없습니다.",
+      "changes": [],
       "arxiv_id": "2610.07639",
       "paper_title": "HarnessSecurity-Bench: Do Security Mechanisms Really Protect Coding Agent Harnesses?",
       "paper_updated": "2026-10-14T00:00:00Z",
@@ -71173,7 +71108,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-15T04:05:25Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -71199,11 +71134,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43668338964",
-        "context_sha256": "61e199c56d09e655fc168ad2340f4a7b41cec476848aca78150485dc267d3ccc"
-      },
-      "proposal_sha256": "62ba69b819621db9a1344503d9a7132ead18f11910a3a741cd74187da1f94468"
+      "proposal_sha256": "18d6843b8a473f193c25e2cb829fb0fc954781a9158be6e525502039d91489ce",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -106792,8 +106725,8 @@
         "2610.07639"
       ],
       "abstract_attempted": [],
-      "calls": 41,
-      "cost_usd": 38.0685
+      "calls": 42,
+      "cost_usd": 39.117
     }
   },
   "reaudits": [
