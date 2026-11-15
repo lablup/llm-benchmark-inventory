@@ -70263,6 +70263,96 @@
         "reviewed_sha256": "5df72c631f3cba5afd647355f4cdf2a16b169ae3a8a15856d5581f07ff1ea39a",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.14389": {
+      "decision": "exclude",
+      "reason": "이 논문은 오픈 가중치 LLM 86개의 추론 에너지 효율을 측정한 실증 연구다. 평가에는 IFEval, MMLU-Pro, GPQA Diamond, MATH-500, AIME, LiveCodeBench, BFCL v3 같은 기존 벤치마크를 그대로 쓴다. 새로 제안하는 재사용 가능한 벤치마크나 기존 벤치마크의 실질적 갱신이 없다. 평가 코드와 결과 데이터는 채택 후 공개 예정이라고만 하며, PDF가 밝힌 공식 데이터셋이나 코드 URL도 없다. 이 논문이 직접 구축한 점수-에너지 측정 체계는 재사용 가능한 벤치마크 자원으로 아직 공개되지 않았다. 그래서 기존 인벤토리 행을 바꾸거나 새 행을 추가할 근거가 없다.",
+      "changes": [],
+      "arxiv_id": "2610.14389",
+      "paper_title": "Measuring the Inference Energy Efficiency of Open-Weight LLMs across Benchmarks, Reasoning Modes, and Hardware",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.14389",
+        "sha256": "4b3db6ae9c03c062220ead7a33bfda29b1812cf31cb8387889af4c28b92cf49c",
+        "accessed": "2026-11-15T03:42:46Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 27,
+          "elapsed_seconds": 81.94,
+          "pdf_sha256": "4b3db6ae9c03c062220ead7a33bfda29b1812cf31cb8387889af4c28b92cf49c",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7bb354556cfe28b39cdc2678768f08e4c5420e93c80e8659a6b4a3b511ec1ab1",
+          "page_json_file": "2610.14389.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-15T03:44:14Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.14389",
+        "paper_title": "Measuring the Inference Energy Efficiency of Open-Weight LLMs across Benchmarks, Reasoning Modes, and Hardware",
+        "abstract": "Benchmark scores tell us what an LLM can do, but not how much energy is required to deliver that capability. We directly measure this trade-off for 86 open-weight model checkpoints, evaluated on seven benchmarks and six hardware platforms ranging from a consumer GPU to an eight-GPU server. We find large differences in energy efficiency even among models with similar capability. Most configurations lie away from the score--energy Pareto frontier: they use a median of 2.6--4.8$\\times$ more energy than another configuration that scores at least as well, with differences reaching 27$\\times$. Reasoning can improve capability, but enabling thinking increases energy by about 3.7$\\times$ on average, and the benefit depends strongly on the model family and output budget. Generated-token count is also an imperfect proxy for energy, misordering 18--24\\% of model pairs. In contrast, FP8 reduces energy by roughly a quarter with little change in score, while changing hardware largely rescales energy without changing the relative ranking of models. These results show that capability alone gives an incomplete picture of efficiency. We argue that benchmark scores should be reported together with measured energy consumption under a specified serving regime and output budget.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:19Z",
+        "input_sha256": "4c57a9952a22d9edcb7e790b3537e3f090eadafd65ac13a6f76b8244b8629763",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 추론 에너지 효율 측정 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "irrelevant",
+            "reason": "기존 벤치마크 점수와 에너지 측정만 수행, 평가자료 신규 아님"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "20eaf873c6143b10e304e2ca8cf6100bbffa653f089fc5ae0d6d39744b0e903a"
     }
   },
   "processed_comments": [],
@@ -105841,8 +105931,8 @@
         "2610.14389"
       ],
       "abstract_attempted": [],
-      "calls": 32,
-      "cost_usd": 29.4757
+      "calls": 33,
+      "cost_usd": 30.4162
     }
   },
   "reaudits": [
