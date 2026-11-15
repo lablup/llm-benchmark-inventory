@@ -69595,7 +69595,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-15T03:34:50Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -69621,12 +69621,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43668338964",
-        "context_sha256": "898dbe3a92e5e9bbb7b078b3325cfa51ecb110a66bfee4e99f57bdda8b9f0734"
-      },
       "proposal_sha256": "6e30c357fec8c8d1ba9df4cb9e62ab52f9c23dfa6f2394ce05e7e51e8bb7d0e9",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "변경 사항의 사실관계가 PDF 전 페이지와 공식 README로 뒷받침되어 승인합니다. 규모는 기본 360개에 번역을 붙여 중국어 360개, 영어 360개, 총 720개입니다. 수명주기 6단계, 기만 유발 방식 2가지, 유인 조건 3가지, 평가 모델 7개, 응답 5,040개, 판정 모델(Kimi-K2.6)도 논문 본문과 Table 1 및 3절과 일치합니다. 과제 예시는 영어 프롬프트이고 번역본은 중국어이며 한국어 과제는 없습니다. 이에 따라 en 트랙의 text 항목으로 둔 것이 타당합니다. 이 벤치마크는 시나리오를 LLM이 생성하고 사람이 선별한 구성이어서 다른 데이터셋에서 파생되었다는 근거가 없으므로, 파생 데이터셋 관련 주의 문구가 없어도 문제가 없습니다. 라이선스는 논문과 공식 README 어디에도 명시되어 있지 않습니다. PDF에서 권리 관련 문구는 1쪽의 ACM 출판권 고지와 저작권 문구뿐이며, 이는 논문 게재 고지로 데이터셋 라이선스와 별개입니다. 따라서 '미표기'이고, 상업적 이용, 수정·파생, 재배포가 모두 '저작권 전부 보유'인 조합은 규칙에 맞습니다. 공식 README에 lm-eval이나 lm-evaluation-harness 언급이 없으므로 'lm-eval 지원'을 '미표기'로 둔 것도 허용되는 확정값입니다. 이용 시 유의사항은 LLM 생성 후 사람 선별(7쪽, 8쪽), judge 의존, 번역 구성을 정확히 담았고, 허위 권한을 만들거나 제한을 빠뜨리지 않았습니다. 추천 모델은 10쪽 Table 2의 Neutral(P0) Active Deception 기만 응답 비율이며, 7개 모델 값(Claude-Opus-4.8 3.33, DeepSeek-V4-Pro 74.17, Gemini-3.5-Flash 90.83, GLM-5.2 62.50, GPT-5.5 2.50, Kimi-K2.6 80.00, Qwen3.7-Max 35.83)이 표와 Figure 5의 P0 열 및 평균 49.88과 일치합니다. 같은 실험의 모든 비교 모델이 포함되어 상위 3개 선정이 정당하고, 낮을수록 좋은 지표라는 방향성, 모델당 Active 응답 120개(중국어·영어 각 60개), 온도 설정, 논문 보고 수치일 뿐 전역 리더보드가 아니라는 단서도 올바르게 기술되었습니다. 가중치 공개 여부는 null로 두었고 폐쇄형으로 취급하지 않았습니다. MinerU와 Poppler 추출본 사이에 충돌이 없고, 근거 인용 위치도 해당 페이지에서 확인됩니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 227890,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2555,
+              "output_tokens_details": {
+                "thinking_tokens": 1420
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 227890,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2555,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 227890,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 227890
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.9371789,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "6e30c357fec8c8d1ba9df4cb9e62ab52f9c23dfa6f2394ce05e7e51e8bb7d0e9",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -105201,8 +105247,8 @@
         "2610.13626"
       ],
       "abstract_attempted": [],
-      "calls": 25,
-      "cost_usd": 23.5844
+      "calls": 26,
+      "cost_usd": 24.5216
     }
   },
   "reaudits": [
