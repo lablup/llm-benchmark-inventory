@@ -69990,7 +69990,7 @@
     },
     "2610.13811": {
       "decision": "propose",
-      "reason": "QTestBench는 LLM이 생성한 양자 프로그램 테스트 스위트를 벤치마크 공식 checker(오라클)와 대조해 평가하는 재사용 가능한 프레임워크다. 기존 양자 벤치마크가 솔루션 정확도만 보는 것과 달리 테스트의 변별력을 재는 점이 새롭다. 텍스트 입력 코딩 과제이고 PennyLane QHack 8개 챌린지와 Qiskit HumanEval 10개 과제를 쓴다. 논문이 공식 코드 저장소를 밝혔다. 다만 PDF에 영어 과제 문구를 직접 인용한 부분이 없어, 과제 설명과 스텁이 영어라는 판단은 Qiskit HumanEval 과제 형식과 프롬프트 서술에 근거한 것이다. 라이선스와 하니스 지원은 확인하지 않아 '확인 불가'로 기록했다.",
+      "reason": "QTestBench는 LLM이 생성한 양자 프로그램 테스트 스위트를 벤치마크 공식 checker(오라클)와 대조해 평가하는 재사용 가능한 프레임워크다. 기존 양자 벤치마크가 솔루션 정확도만 보는 것과 달리 테스트의 변별력을 재는 점이 새롭다. 텍스트 입력 코딩 과제이고 PennyLane QHack 8개 챌린지와 Qiskit HumanEval 10개 과제를 쓴다. 논문이 공식 코드 저장소를 밝혔다. 공식 README가 MIT 라이선스를 명시하고 LICENSE 파일도 MIT 조항을 담고 있어 이를 근거로 기록했다. 이 MIT는 저장소 자체 저작물에 대한 것이므로, QHack·Qiskit HumanEval 구성 요소의 약관은 별도 확인 대상으로 표기했다. 공식 README에 lm-eval 언급이 없어 '미표기'로 기록했다. 추천 모델 순위는 논문 Table V(QHack, Configuration C)의 TQS를 근거로 했다. PDF에 영어 과제 문구를 직접 인용한 부분이 없어, 과제 설명과 스텁이 영어라는 판단은 Qiskit HumanEval 과제 형식과 프롬프트 서술에 근거한 것이다.",
       "changes": [
         {
           "track": "en",
@@ -70003,12 +70003,12 @@
             "대표 과제": "과제 설명과 공식 입출력 사례를 받아 구문·의미·행동 pytest 모듈을 생성하고, 주입된 후보 해답에 대한 통과 여부를 checker 라벨과 비교",
             "대표 예시·설명": "문제 설명과 진입점 스텁, 공식 테스트 케이스를 주고 LLM이 pytest 모듈을 작성하게 한 뒤, 올바른 후보는 통과시키고 틀린 후보는 실패시키는지 checker 라벨과 대조하는 과제 설명",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원은 확인하지 않았다. 이 벤치마크는 QHack(PennyLane)과 Qiskit HumanEval의 과제, 참조 해답, checker를 재사용하므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 논문의 한계로 온도 0.8 고정, 재시도 없는 1회 생성, Qiskit 10개 과제만 사용, 벤치마크별 checker 의존이 있다. Qiskit 구성 B는 과제 3개에 오답 해답이 없어 BDS/TQS가 n/a다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다. 평가에는 pytest와 양자 SDK 실행 환경이 필요하다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(저장소 자체 저작물 한정. QHack·Qiskit HumanEval 구성 요소는 각자 약관)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "MIT 라이선스에 따라 저작권 고지와 허가 고지를 사본에 포함해야 한다. 공식 README와 LICENSE 파일의 MIT는 저장소 자체 저작물에 대한 표기다. 이 벤치마크는 다른 출처로 구성되어 있다: QHack(PennyLane) 챌린지 8개와 Qiskit HumanEval 과제 10개의 과제, 참조 해답, checker를 재사용한다(논문 3쪽). 공식 README도 QHack 챌린지 자료(Xanadu)와 Qiskit HumanEval 과제를 사용한다고 밝힌다. 저장소의 MIT 표기가 이들 구성 요소 각각의 고유 약관을 대신하지 않으므로, 각 구성 요소의 약관은 이용 전에 따로 확인해야 한다. 공식 README에 lm-eval 언급이 없고 자체 스크립트(generate_tests.py, evaluate_solutions.py 등)로 실행한다. 논문의 한계로 온도 0.8 고정, 재시도 없는 1회 생성, Qiskit 10개 과제만 사용, 벤치마크별 checker 의존이 있다. Qiskit 구성 B는 과제 3개에 오답 해답이 없어 BDS/TQS가 n/a다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다. 평가에는 pytest와 양자 SDK 실행 환경이 필요하다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/eBrain4Everyone/QTestBench"
           },
           "modality": "text",
@@ -70052,9 +70052,85 @@
               "quote": "QTestBench: A Test"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/eBrain4Everyone/QTestBench",
+              "quote": "MIT License. See [LICENSE](LICENSE)."
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/eBrain4Everyone/QTestBench",
+              "quote": "u\u0000s\u0000e\u0000,\u0000 \u0000c\u0000o\u0000p\u0000y\u0000,\u0000 \u0000m\u0000o\u0000d\u0000i\u0000f\u0000y\u0000,\u0000 \u0000m\u0000e\u0000r\u0000g\u0000e\u0000,\u0000 \u0000p\u0000u\u0000b\u0000l\u0000i\u0000s\u0000h\u0000,\u0000 \u0000d\u0000i\u0000s\u0000t\u0000r\u0000i\u0000b\u0000u\u0000t\u0000e\u0000,\u0000 \u0000s\u0000u\u0000b\u0000l\u0000i\u0000c\u0000e\u0000n\u0000s\u0000e\u0000,\u0000 \u0000a\u0000n\u0000d\u0000/\u0000o\u0000r\u0000 \u0000s\u0000e\u0000l\u0000l\u0000"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/eBrain4Everyone/QTestBench",
+              "quote": "u\u0000s\u0000e\u0000,\u0000 \u0000c\u0000o\u0000p\u0000y\u0000,\u0000 \u0000m\u0000o\u0000d\u0000i\u0000f\u0000y\u0000,\u0000 \u0000m\u0000e\u0000r\u0000g\u0000e\u0000,\u0000 \u0000p\u0000u\u0000b\u0000l\u0000i\u0000s\u0000h\u0000,\u0000 \u0000d\u0000i\u0000s\u0000t\u0000r\u0000i\u0000b\u0000u\u0000t\u0000e\u0000,\u0000 \u0000s\u0000u\u0000b\u0000l\u0000i\u0000c\u0000e\u0000n\u0000s\u0000e\u0000,\u0000 \u0000a\u0000n\u0000d\u0000/\u0000o\u0000r\u0000 \u0000s\u0000e\u0000l\u0000l\u0000"
+            },
+            "재배포": {
+              "source_url": "https://github.com/eBrain4Everyone/QTestBench",
+              "quote": "u\u0000s\u0000e\u0000,\u0000 \u0000c\u0000o\u0000p\u0000y\u0000,\u0000 \u0000m\u0000o\u0000d\u0000i\u0000f\u0000y\u0000,\u0000 \u0000m\u0000e\u0000r\u0000g\u0000e\u0000,\u0000 \u0000p\u0000u\u0000b\u0000l\u0000i\u0000s\u0000h\u0000,\u0000 \u0000d\u0000i\u0000s\u0000t\u0000r\u0000i\u0000b\u0000u\u0000t\u0000e\u0000,\u0000 \u0000s\u0000u\u0000b\u0000l\u0000i\u0000c\u0000e\u0000n\u0000s\u0000e\u0000,\u0000 \u0000a\u0000n\u0000d\u0000/\u0000o\u0000r\u0000 \u0000s\u0000e\u0000l\u0000l\u0000"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/eBrain4Everyone/QTestBench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Test quality score (TQS = ES × CS × BDS), unitless score in [0, 1]",
+            "setting": "Results reported in this paper (Table V, QHack benchmark, Configuration C: reference plus oracle-verified synthetic mutants), mean over eight QHack challenges and the three generated test types (syntactic, semantic, behavioral), single-pass test generation at temperature 0.8 without repair, official benchmark checkers as oracle. These are results reported in this paper, not a current global leaderboard.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Claude Opus 4.6",
+                "score": "0.71",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude Opus 4.6 1.00 0.88 0.88 0.69 0.57 1.00 0.88 0.80 0.69 0.69 0.55 1.00 0.88 0.83 0.71 0.69 0.53"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DeepSeek V3.2",
+                "score": "0.25",
+                "evidence": {
+                  "page": 7,
+                  "quote": "DeepSeek V3.2 0.96 0.42 0.42 0.35 0.28 0.96 0.47 0.75 0.26 0.35 0.27 0.96 0.42 0.75 0.25 0.35 0.25"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini 3 Pro",
+                "score": "0.63",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemini 3 Pro 1.00 0.96 0.96 0.71 0.67 1.00 0.96 0.67 0.63 0.71 0.63 1.00 0.96 0.67 0.63 0.71 0.63"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT-5.4",
+                "score": "0.54",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5.4 1.00 0.83 0.83 0.71 0.58 1.00 0.84 0.71 0.55 0.71 0.56 1.00 0.83 0.71 0.54 0.71 0.54"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-Coder",
+                "score": "0.08",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3-Coder 0.79 0.37 0.37 0.44 0.12 0.79 0.37 0.50 0.08 0.44 0.08 0.79 0.37 0.50 0.08 0.44 0.08"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.13811",
@@ -70139,7 +70215,8 @@
         "source_run": "43668338964",
         "context_sha256": "2857d62659c3c199b88e2463763c629a0dd207b4f76e174981484fd9ec4a4831"
       },
-      "proposal_sha256": "e7f78a79aa887c5d9e736696bd458c8ff6f5ffca8aff1f1aa4dfd88bdb795a1d"
+      "proposal_sha256": "5df72c631f3cba5afd647355f4cdf2a16b169ae3a8a15856d5581f07ff1ea39a",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -105716,8 +105793,8 @@
         "2610.13811"
       ],
       "abstract_attempted": [],
-      "calls": 30,
-      "cost_usd": 27.6717
+      "calls": 31,
+      "cost_usd": 28.6102
     }
   },
   "reaudits": [
