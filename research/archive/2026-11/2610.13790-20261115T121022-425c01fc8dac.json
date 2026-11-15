@@ -1,0 +1,85 @@
+{
+  "arxiv_id": "2610.13790",
+  "paper_title": "OccludeBench: Can VLMs Find What's Missing?",
+  "created_at": "2026-11-15T03:10:22Z",
+  "status": "needs_evidence",
+  "reason": "OccludeBench는 재사용 가능한 영어 비전 벤치마크로 보입니다. 직접 단서(그림자·반사)와 추론 단서 사례를 합쳐 이미지 378장(직접 197, 추론 181)으로 구성되고, 과제 프롬프트도 영어입니다. 그러나 PDF에서 추출한 텍스트 어디에도 공식 데이터셋이나 코드의 URL이 없습니다. 1쪽에 'Data'와 'Code' 라벨만 있고 주소는 나오지 않아, 링크 근거가 없으므로 제안을 보류합니다. 확인 가능한 URL이나 하이퍼링크 주소가 확보되면 en 트랙의 vision 행으로 다시 제안할 수 있습니다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2610.13790",
+    "sha256": "2a8e8d922825824433820108e8946a7bc42f8dda2bf07ebff771e5da872d8f68",
+    "accessed": "2026-11-15T03:09:13Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 23,
+      "elapsed_seconds": 61.69,
+      "pdf_sha256": "2a8e8d922825824433820108e8946a7bc42f8dda2bf07ebff771e5da872d8f68",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "884103cf01eed33cb7695a232256236a04c1656426f2fccea5938fda7f2277b0",
+      "page_json_file": "2610.13790.pages.json"
+    }
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "be50d8d714ab8a3ae872ec6f14ae978a30935b8a4780b37be8e676f235956798",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2610.13790",
+    "paper_title": "OccludeBench: Can VLMs Find What's Missing?",
+    "abstract": "How well can vision-language models (VLMs) reason about what is missing from an image? We study this question with OccludeBench, a manually curated benchmark for recovering fully occluded objects from the visual evidence that remains. OccludeBench distinguishes direct cases, where the hidden object must be recovered from a specific physical cue such as a shadow or reflection, from inferential cases, where it can be inferred from broader scene context. Across five VLMs, accuracy averages 42.7% on direct cases versus 62.7% on inferential cases, exhibiting a 20.0-point gap. Humans attain higher accuracies of 63.4% versus 68.5% for direct and inferential images, respectively, with no significant gap. To locate this failure, we introduce OccludeTrace, a four-stage diagnostic that isolates where the visual reasoning process breaks down. The bottleneck emerges when models must recover the relevant object from the projection within the full image: they succeed on only 50% of failed examples, compared with 91% of examples they answer correctly. Extended reasoning, tool use, and few-shot prompting yield inconsistent improvements and do not reliably eliminate the gap. In contrast, an inpaint-then-confront intervention, which prompts models to first generate a candidate hidden object and then evaluate that hypothesis against the visible physical cue, reduces the gap to a statistically non-significant difference for both models with image-generation capabilities. Together, our results establish a tractable, controlled diagnostic for isolating how VLMs reason about visual content that is missing from an image.",
+    "paper_updated": "2026-10-12T00:00:00Z",
+    "created_at": "2026-10-19T13:50:08Z",
+    "input_sha256": "98b3ca3bcc52939938b3663cc16cfc533d970898937f1d450d0fc852973f063c",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "가려진 객체 추론 평가 벤치마크로 VLM 관련"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "가려진 객체 추론 진단 벤치마크·진단법 신규 제안"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}

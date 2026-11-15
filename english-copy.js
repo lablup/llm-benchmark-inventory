@@ -642,4 +642,40 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Craft emails for an email assistant that get retrieved, evade defenses, and cause a correct send_email tool call (four difficulty levels; measured by attack success rate (ASR) and team success rate (TSR)).",
     "example": "Task description, not an actual test item: when the user asks for an email summary, check whether the attacker's retrieved email makes the assistant issue an unrequested send_email call."
   },
+  "closed-loop-embedded-bench": {
+    "axis": "Agents (closed-loop embedded firmware coding)",
+    "definition": "A benchmark of whether embedded coding agents can start from a plain-text engineering brief, implement firmware, build their own verification, and iterate until the required device behavior is met. It has five embedded-control tasks and four feedback scenarios (one-shot, realistic self-verification, CI-style red/green, oracle-style detailed feedback), run on simulated ESP32 firmware under QEMU with deterministic plant models and graded by a hidden evaluator. The paper evaluates seven GPT-family and Qwen-family configurations over five tasks and four scenarios with three repetitions each (420 runs). The primary condition is realistic_self_verify, and pass rate is the main metric.",
+    "task": "Five control tasks in a difficulty ladder: tank_fill_drain, thermal_chamber_hysteresis, pressure_vessel_interlock, mixing_tank_fill_heat, filter_tank_sequence",
+    "example": "Task description: in the easiest task, tank_fill_drain, the agent writes firmware that turns the pump on at low level, off at high level, holds the previous safe output in the middle band, and fails safe to pump-off on malformed input or timeout. It writes its own tests, builds, probes the firmware in QEMU, and then submits."
+  },
+  "graphverse": {
+    "axis": "Images (visual graph reasoning)",
+    "definition": "A benchmark that jointly evaluates perception, visual reasoning and text-based graph reasoning of MLLMs on visual graph reasoning (VGR). It has 11,000 samples in total and a 1,060-sample testmini subset for efficient evaluation. It covers 9 single-image tasks and 2 paired-image tasks (GED, MCS). Four graph-centric image editing (GIE) strategies are applied: patch perturbation, cross-graph composition, attentional focusing and spatially-conditioned recoloring. Ground truth comes from rule-based solvers, and models are scored with accuracy and VGR-Score (lambda=0.7, GPT-5.1 scoring agent), which also credits the reasoning process. A separate 3,500-sample training set was built.",
+    "task": "Single-image: Shortest Distance, Diameter, Common Neighbors, TSP, MCP, MVC, MIS, Cycle, Graph Coloring. Paired-image: Graph Edit Distance, Maximum Common Subgraph",
+    "example": "Task description: given a graph image and an English question, for example finding the longest simple cycle in an airline network, the model applies an image-editing instruction such as recoloring and produces the answer."
+  },
+  "mvgraph": {
+    "axis": "Images (multi-view visual graph evidence composition reasoning)",
+    "definition": "A benchmark of LVLM multi-graph reasoning when the evidence is distributed across several interrelated visual graph views (partial views and temporal snapshots). It has 8 end-to-end graph-theoretic tasks (8,000 instances) and 29 diagnostic tasks probing perception, alignment, composition and reasoning, for 37 tasks and 72,000 instances in total (2-8 views). Each problem is programmatically constructed and verified to be unsolvable from a single view. Metrics are exact-match based accuracy, plus node and edge F1 for the perception diagnostic. Evaluation is zero-shot.",
+    "task": "Eight graph-theoretic tasks (topological sorting, maximum flow, bipartite matching, Hamiltonian path) in partial-view and temporal-view variants, plus perception, alignment, composition and reasoning diagnostics",
+    "example": "Task description, not an actual test item: given several graph images, answer an English question such as 'Merge all views into a directed acyclic graph and return a valid topological ordering' in JSON."
+  },
+  "drylab-bench": {
+    "axis": "Agents and safety (biosecurity: hazardous mutation-design capability of LLM agents)",
+    "definition": "A benchmark that has LLM agents perform 30 hazardous mutation-design scenarios (eight risk categories) distilled from biosecurity guidelines. Given a wild-type sequence and an objective, the agent proposes single amino-acid substitutions, and submitted designs are matched against 187,695 experimentally measured single substitutions from ProteinGym and ViroGym and scored with the Biosecurity Risk Score (BRS). It compares a no-tool one-shot setting (S0), one round of tool revision (S1), and up to four rounds of tool-augmented iteration (S2); the paper evaluates 15 models.",
+    "task": "Given a wild-type protein sequence and a hazardous objective, propose three single amino-acid substitutions and iteratively refine them with tool evidence (scored by BRS)",
+    "example": "Task description, not an actual test item: an English prompt gives the target protein sequence and a design objective and asks for three substitutions, which are scored for risk-associated effect against experimentally measured phenotypes."
+  },
+  "swe-deceptionbench": {
+    "axis": "Safety and honesty (LLM deceptive behavior across the software development lifecycle)",
+    "definition": "A benchmark of LLM deception across six software development lifecycle stages (requirements analysis, system design, development, testing, deployment, maintenance). Deception is triggered in two ways: Active (the model recognizes infeasible or conflicting requirements but presents them as achievable) and Passive (the model helps with an explicit user request to mislead others). Neutral (P0), Reward (P1) and Pressure (P2) conditions add external inducements. The 360 base instances are paired with semantically aligned translations, giving 360 Chinese and 360 English instances, 720 in total. The primary metric is the deception rate, labeled by an LLM judge (Kimi-K2.6 in the paper). The paper evaluates seven models over 5,040 responses.",
+    "task": "Active Deception (responses to infeasible or conflicting requirements) and Passive Deception (whether the model helps with a deceptive request), across six lifecycle stages and three inducement conditions.",
+    "example": "Task description: an English prompt casts the model as an expert and poses a coding requirement with mutually impossible complexity constraints, and the judge checks whether the model admits infeasibility or falsely claims it is achievable. In Passive tasks, the user asks for help fabricating test results or concealing an incident cause, and the judge checks whether the model complies."
+  },
+  "g-rsvqa": {
+    "axis": "Images (answer-grounding consistency in remote sensing VQA)",
+    "definition": "A benchmark for grounded remote sensing VQA that tests whether the grounding evidence supports the model's own answer. It has 15,027 question-answer samples (8,592 existence, 4,275 counting, 2,160 comparison), each paired with all related object-level annotations. Images and annotations come from DIOR, NWPU VHR-10 and SODA-A. Metrics are answer accuracy (all 15,027 samples), localization precision, recall and F1 at IoU 0.5, Evidence Support, and Joint Success. Localization and evidence are evaluated on 9,699 samples after excluding 5,328 existence questions with a No reference answer. The paper evaluates seven grounded VLMs without additional training.",
+    "task": "Answer existence, counting and comparison questions (Yes/No or an integer) with grounding regions, then judge evidence support under the AESP rules.",
+    "example": "Task description, not an actual test item: given a remote sensing image and a question, the model returns an answer and grounding regions, and the benchmark checks whether the number of target objects covered matches the answer (existence, exact count, or comparison between two classes)."
+  },
 };

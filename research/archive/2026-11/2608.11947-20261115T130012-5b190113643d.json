@@ -1,0 +1,83 @@
+{
+  "arxiv_id": "2608.11947",
+  "paper_title": "A, B, C, or Stable? Accuracy and Order Sensitivity Diverge in LLM Multiple-Choice Evaluation",
+  "created_at": "2026-11-15T04:00:12Z",
+  "status": "exclude",
+  "reason": "이 논문은 MMLU와 ARC-Challenge라는 기존 영어 객관식 벤치마크 위에서 답변 전략(직접 답변, 순환 순열, 2단계 프롬프트 등)이 정확도와 선택지 순서 민감도(flip rate, RStd)에 미치는 영향을 분석한 평가 방법론 연구입니다. 새 데이터셋이나 재사용 가능한 벤치마크를 내놓지 않고, 기존 벤치마크의 내용을 실질적으로 갱신하지도 않습니다. 논문이 이름을 밝힌 공식 데이터셋·코드 링크도 없습니다. MMLU는 인벤토리에 이미 있는 행이므로 중복이며, 순서 민감도 지표를 함께 보고하자는 권고만으로는 행을 바꿀 근거가 되지 않습니다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2608.11947",
+    "sha256": "e4cc8f7835d35e1a4d68f9898f9b5fdd4494b10bdd788847a40172b8864d1105",
+    "accessed": "2026-11-15T03:58:30Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 21,
+      "elapsed_seconds": 95.88,
+      "pdf_sha256": "e4cc8f7835d35e1a4d68f9898f9b5fdd4494b10bdd788847a40172b8864d1105",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "a6d4fdea439a69f98bc7ff46724e3d64e6de3fa271518c42e8ad7b1118df45f5",
+      "page_json_file": "2608.11947.pages.json"
+    }
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "c82ed65ece06a27b96ab0fff017b55e91ab924aff4a56e02d6744b7cf7d1d9a1",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2608.11947",
+    "paper_title": "A, B, C, or Stable? Accuracy and Order Sensitivity Diverge in LLM Multiple-Choice Evaluation",
+    "abstract": "Multiple-choice question (MCQ) benchmarks are widely used to evaluate large language models, yet a single reported accuracy number is not enough to distinguish a model's latent ability from order sensitivity. Debiasing methods tend to be judged on one axis, which implicitly assumes that fixing order sensitivity and improving accuracy go together. We test this assumption with two proprietary models and two open-weight models on MMLU and ARC-Challenge, across four families of strategies. We measure order sensitivity with flip rate, capturing per-question instability, and recall standard deviation (RStd), capturing aggregate positional imbalance. We find accuracy and order sensitivity do not move together consistently: two-stage prompting reduces both flip rate and RStd for GPT on MMLU without a significant change in accuracy. The two sensitivity metrics also diverge from each other. Adding reasoning to direct answering leaves Llama's MMLU flip rate statistically indistinguishable while RStd falls sharply. A $2\\times2$ ablation across generation-then-matching, crossing option visibility with matcher type, shows that withholding options mainly harms semantic matching, which achieves zero flip rate by construction, yet loses significantly in accuracy; the effect is smaller when using an LLM matcher. We recommend reporting flip rate and RStd along with accuracy when evaluating MCQ strategies.",
+    "paper_updated": "2026-10-14T00:00:00Z",
+    "created_at": "2026-10-19T13:50:32Z",
+    "input_sha256": "b1eae7e5bd1508e7e83beaca50315ef6880dcbaa72c48fefdca280e202ec2927",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "LLM 다지선다 평가의 순서 민감도 분석으로 평가 방법론에 부합"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "uncertain",
+        "reason": "기존 MCQ 벤치마크 분석·지표 제안, 재사용 평가자료 불명확"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}
