@@ -69987,6 +69987,159 @@
         "reviewed_sha256": "fa4ab8cb2c6b23cf211dbe60bc48d0b166970f45881fe87e3685795d3976e8af",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.13811": {
+      "decision": "propose",
+      "reason": "QTestBench는 LLM이 생성한 양자 프로그램 테스트 스위트를 벤치마크 공식 checker(오라클)와 대조해 평가하는 재사용 가능한 프레임워크다. 기존 양자 벤치마크가 솔루션 정확도만 보는 것과 달리 테스트의 변별력을 재는 점이 새롭다. 텍스트 입력 코딩 과제이고 PennyLane QHack 8개 챌린지와 Qiskit HumanEval 10개 과제를 쓴다. 논문이 공식 코드 저장소를 밝혔다. 다만 PDF에 영어 과제 문구를 직접 인용한 부분이 없어, 과제 설명과 스텁이 영어라는 판단은 Qiskit HumanEval 과제 형식과 프롬프트 서술에 근거한 것이다. 라이선스와 하니스 지원은 확인하지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "qtestbench",
+            "이름": "QTestBench",
+            "평가 축": "코딩(LLM 생성 양자 테스트 스위트의 변별력)",
+            "언어": "en",
+            "정의": "LLM이 생성한 양자 코드용 pytest 스위트(구문, 의미, 행동 3종)를 벤치마크 공식 checker와 대조해 평가하는 프레임워크. PennyLane QHack 8개 챌린지와 Qiskit HumanEval 10개 과제를 쓰며, 3가지 검증 코호트(A: 신뢰 참조 해답만, B: checker가 라벨링한 LLM 해답, C: 오라클 검증 합성 변이체)에서 측정한다. 지표는 ES, CS, BDS, TQS, Cin, CQ이며 논문은 5개 LLM을 온도 0.8, 1회 생성(재시도 없음)으로 평가했다.",
+            "대표 과제": "과제 설명과 공식 입출력 사례를 받아 구문·의미·행동 pytest 모듈을 생성하고, 주입된 후보 해답에 대한 통과 여부를 checker 라벨과 비교",
+            "대표 예시·설명": "문제 설명과 진입점 스텁, 공식 테스트 케이스를 주고 LLM이 pytest 모듈을 작성하게 한 뒤, 올바른 후보는 통과시키고 틀린 후보는 실패시키는지 checker 라벨과 대조하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원은 확인하지 않았다. 이 벤치마크는 QHack(PennyLane)과 Qiskit HumanEval의 과제, 참조 해답, checker를 재사용하므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 논문의 한계로 온도 0.8 고정, 재시도 없는 1회 생성, Qiskit 10개 과제만 사용, 벤치마크별 checker 의존이 있다. Qiskit 구성 B는 과제 3개에 오답 해답이 없어 BDS/TQS가 n/a다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다. 평가에는 pytest와 양자 SDK 실행 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/eBrain4Everyone/QTestBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (discriminative quality of LLM-generated quantum test suites)",
+            "definition": "A framework that scores LLM-generated pytest suites (syntactic, semantic, behavioral) for quantum code against independent benchmark checkers. It uses eight PennyLane QHack challenges and ten Qiskit HumanEval tasks and measures under three validation cohorts (A: trusted reference only, B: checker-labeled LLM solutions, C: oracle-verified synthetic mutants). Metrics are ES, CS, BDS, TQS, Cin and CQ. The paper evaluates five LLMs at temperature 0.8 with a single generation pass and no repair.",
+            "task": "Given a task description and official input/output cases, generate syntactic, semantic and behavioral pytest modules, then compare their verdicts on injected candidate solutions with checker labels.",
+            "example": "Task description: the LLM receives a problem statement, an entry-point stub and official test cases and writes a pytest module, which is then checked on whether it accepts oracle-correct candidates and rejects oracle-wrong ones."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "problem statement and"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "problem statement and"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "problem statement and"
+            },
+            "링크": {
+              "page": 8,
+              "quote": "https://github.com/eBrain4Everyone/QTestBench"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "problem statement and"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "QTestBench: A Test"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "eight PennyLane QHack"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "QTestBench: A Test"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.13811",
+      "paper_title": "QTestBench: A Test Framework for Evaluating LLM-Generated Quantum Code",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.13811",
+        "sha256": "cce9218dc678a2fb20557d2cdbc4b8a40b7ba07979278e8d0757269e376765af",
+        "accessed": "2026-11-15T03:38:45Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 8,
+          "elapsed_seconds": 48.73,
+          "pdf_sha256": "cce9218dc678a2fb20557d2cdbc4b8a40b7ba07979278e8d0757269e376765af",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "5c1d90ad8eb9f34874cf0cf321fd3cfd74d561f068e40d3c39e5dcc612becc03",
+          "page_json_file": "2610.13811.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/eBrain4Everyone/QTestBench",
+            "fetched_url": "https://api.github.com/repos/eBrain4Everyone/QTestBench/readme",
+            "sha256": "0544ac60714a88c15dff4596886c41e691262f1488d2df53459f863d4332181a",
+            "accessed": "2026-11-15T03:40:00Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/eBrain4Everyone/QTestBench/license",
+              "name": "LICENSE",
+              "spdx_id": "NOASSERTION",
+              "sha256": "0a64e8a262d3b84a21bf423a948b89820f42b7754d00e6b51948a5241785e29a"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-15T03:40:00Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.13811",
+        "paper_title": "QTestBench: A Test Framework for Evaluating LLM-Generated Quantum Code",
+        "abstract": "Large language models (LLMs) have shown strong results in classical code generation and are increasingly used to write the unit tests that safeguard that code. Whether they can do the same for quantum software is less clear, because quantum programs are probabilistic, depend on numerical tolerances, and are judged by domain-specific checkers, so a well-formed test can still disagree with the benchmark's verdict. Existing quantum benchmarks measure whether a model produces a correct solution, but not whether its tests can distinguish correct implementations from faulty ones. We introduce QTestBench, a framework that evaluates LLM-generated quantum test suites against independent benchmark checkers, never treating the tests themselves as ground truth. For each task, QTestBench prompts models to produce syntactic, semantic, and behavioral tests, injects candidate solutions at runtime, and compares each test verdict with the checker's label under three validation cohorts, each answering a distinct diagnostic question. We benchmark five LLMs on eight PennyLane QHack challenges and ten Qiskit HumanEval tasks. Generated suites almost always execute, but discrimination lags behind: the best generator reaches a test quality of 0.71 on QHack and 0.34 on Qiskit HumanEval, so executability alone overstates test quality. Oracle-verified synthetic mutants stabilize bug-detection estimates when natural faulty solutions are scarce, as on three of ten Qiskit tasks that yield none. QTestBench offers a reproducible, cross-framework benchmark for the trustworthiness of LLM-generated quantum tests.",
+        "paper_updated": "2026-10-12T00:00:00Z",
+        "created_at": "2026-10-19T13:50:19Z",
+        "input_sha256": "baab7e6a177ae81c58152874d54ffdc2e3522575f4c0352c7764310de5178460",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "양자 코드 생성 테스트 평가 프레임워크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "양자 코드 테스트 품질 평가 프레임워크 QTestBench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43668338964",
+        "context_sha256": "2857d62659c3c199b88e2463763c629a0dd207b4f76e174981484fd9ec4a4831"
+      },
+      "proposal_sha256": "e7f78a79aa887c5d9e736696bd458c8ff6f5ffca8aff1f1aa4dfd88bdb795a1d"
     }
   },
   "processed_comments": [],
@@ -105563,8 +105716,8 @@
         "2610.13811"
       ],
       "abstract_attempted": [],
-      "calls": 29,
-      "cost_usd": 26.8468
+      "calls": 30,
+      "cost_usd": 27.6717
     }
   },
   "reaudits": [
