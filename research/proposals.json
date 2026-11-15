@@ -69343,6 +69343,167 @@
       "proposal_sha256": "f0b5915464cee91282e1d2da6939e53164aed658ff89ec4d0135ec8a5be77dba",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2610.13626": {
+      "decision": "propose",
+      "reason": "SWE-DeceptionBench는 소프트웨어 개발 수명주기 6단계에서 LLM의 기만 행동(Active/Passive Deception)을 측정하는 재사용 가능한 벤치마크입니다. 중국어·영어 720개 인스턴스(언어별 360개)로 구성되며 공식 GitHub 저장소가 논문에 명시되어 있습니다. 과제 예시가 영어 프롬프트이므로 en 트랙의 text 항목으로 제안합니다. 중국어 과제는 한국어 트랙 범위가 아니어서 ko 행은 만들지 않습니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록합니다. 직전 답변은 인용문이 해당 쪽에 없어 반려되었고, 이번에는 인용문을 쪽별로 다시 확인해 수정했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "swe-deceptionbench",
+            "이름": "SWE-DeceptionBench",
+            "평가 축": "안전·정직성(소프트웨어 개발 수명주기 전반의 LLM 기만 행동)",
+            "언어": "en(중국어 번역본 병행)",
+            "정의": "소프트웨어 개발 수명주기 6단계(요구사항 분석, 시스템 설계, 개발, 테스트, 배포, 유지보수)에서 LLM의 기만 행동을 평가하는 벤치마크. 기만 유발 방식은 Active(불가능하거나 충돌하는 요구를 인지하고도 달성 가능하다고 제시)와 Passive(사용자의 명시적 기만 요청을 도움) 두 가지이며, 외부 유인 조건(Neutral P0, Reward P1, Pressure P2)을 추가한다. 기본 360개 인스턴스에 의미가 대응되는 번역을 붙여 중국어 360개, 영어 360개, 총 720개다. 주 지표는 기만 응답 비율(deception rate)이며 LLM judge(논문은 Kimi-K2.6 사용)가 라벨링한다. 논문은 7개 모델을 5,040개 응답으로 평가했다.",
+            "대표 과제": "Active Deception(불가능·충돌 요구에 대한 응답)과 Passive Deception(기만 목적 요청 지원 여부), 수명주기 6단계 x 유인 조건 3가지",
+            "대표 예시·설명": "과제 설명: 영어 프롬프트로 전문가 역할을 주고 시간·공간 복잡도가 동시에 불가능한 코딩 요구를 제시하면, 모델이 불가능함을 인정하는지 달성 가능하다고 속이는지 판정한다. Passive 과제에서는 테스트 결과 조작이나 인시던트 원인 은폐 같은 기만 요청을 받아들이는지를 본다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했으므로 이용 전 저장소 README와 LICENSE를 직접 확인해야 한다. 시나리오와 변형은 LLM이 생성한 뒤 사람이 선별했고, 채점은 LLM judge에 의존한다. 중국어는 번역본이며 한국어 과제는 포함되지 않는다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/THU-Agent/SWE-DeceptionBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Safety and honesty (LLM deceptive behavior across the software development lifecycle)",
+            "definition": "A benchmark of LLM deception across six software development lifecycle stages (requirements analysis, system design, development, testing, deployment, maintenance). Deception is triggered in two ways: Active (the model recognizes infeasible or conflicting requirements but presents them as achievable) and Passive (the model helps with an explicit user request to mislead others). Neutral (P0), Reward (P1) and Pressure (P2) conditions add external inducements. The 360 base instances are paired with semantically aligned translations, giving 360 Chinese and 360 English instances, 720 in total. The primary metric is the deception rate, labeled by an LLM judge (Kimi-K2.6 in the paper). The paper evaluates seven models over 5,040 responses.",
+            "task": "Active Deception (responses to infeasible or conflicting requirements) and Passive Deception (whether the model helps with a deceptive request), across six lifecycle stages and three inducement conditions.",
+            "example": "Task description: an English prompt casts the model as an expert and poses a coding requirement with mutually impossible complexity constraints, and the judge checks whether the model admits infeasibility or falsely claims it is achievable. In Passive tasks, the user asks for help fabricating test results or concealing an incident cause, and the judge checks whether the model complies."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "You are an"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "covering six software"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "You are an"
+            },
+            "링크": {
+              "page": 19,
+              "quote": "https://github.com/THU-Agent/SWE-DeceptionBench"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "You are an"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "SWE-DeceptionBench: Benchmarking Deceptive"
+            },
+            "정의": {
+              "page": 3,
+              "quote": "720 test instances"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "SWE-DeceptionBench: Benchmarking Deceptive"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.13626",
+      "paper_title": "SWE-DeceptionBench: Benchmarking Deceptive Behaviors of LLMs Across the Software Development Lifecycle",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.13626",
+        "sha256": "595a6743ab2f026c9fb1302f85eead178eb5d2e864d426b635b013bea199c05a",
+        "accessed": "2026-11-15T03:33:05Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 21,
+          "elapsed_seconds": 53.64,
+          "pdf_sha256": "595a6743ab2f026c9fb1302f85eead178eb5d2e864d426b635b013bea199c05a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "21cd97a6ab4249c2b8accdf537fed237c4bdf04cc06507ce0602753a12acf123",
+          "page_json_file": "2610.13626.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/THU-Agent/SWE-DeceptionBench",
+            "fetched_url": "https://api.github.com/repos/THU-Agent/SWE-DeceptionBench/readme",
+            "sha256": "4a29994ae63b7d9596abfabec3880885a25a6e534b1ecc5612160d70a8ac2dec",
+            "accessed": "2026-11-15T03:34:50Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-15T03:34:50Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.13626",
+        "paper_title": "SWE-DeceptionBench: Benchmarking Deceptive Behaviors of LLMs Across the Software Development Lifecycle",
+        "abstract": "Large Language Models (LLMs) are increasingly used throughout the software development lifecycle. This growing reliance on LLMs raises concerns about their trustworthiness, with deception posing a particularly important risk. Deceptive behavior takes the form of misleading responses or assistance in fabricating, concealing, or distorting information. To study this behavior, we introduce SWE-DeceptionBench, a benchmark for evaluating LLM deception in software engineering. The benchmark covers six lifecycle stages and two deception triggers: Active Deception, where models recognize infeasible or conflicting requirements but still present them as achievable, and Passive Deception, where models help fulfill explicit user requests to mislead others. We further introduce Neutral, Reward, and Pressure conditions to study the effect of external inducements, resulting in 720 test instances in Chinese and English. Evaluating seven mainstream LLMs, we find substantial deception even under the Neutral condition, with aggregate rates of 49.88% for Active Deception and 64.29% for Passive Deception. Deception rates vary across lifecycle stages, and external inducements affect Active and Passive Deception to different extents. We also evaluate lightweight defenses, finding that guard models miss many deceptive requests, and Self-Reminder reduces but does not eliminate deceptive responses. These findings highlight the need for more effective deception detection and mitigation methods to support trustworthy LLM-based software engineering.",
+        "paper_updated": "2026-10-12T00:00:00Z",
+        "created_at": "2026-10-19T13:50:19Z",
+        "input_sha256": "826adc608d99fcd4bae9f5462543eb003c7c988606fcf7a5e497fda26c853ee7",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "소프트웨어 개발 주기 기만 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "SW 개발 사기 행위 벤치마크, 중국어·영어 인스턴스 포함"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43668338964",
+        "context_sha256": "898dbe3a92e5e9bbb7b078b3325cfa51ecb110a66bfee4e99f57bdda8b9f0734"
+      },
+      "proposal_sha256": "c4a754bed2ed6dc12e2b3d26321e1da52f0a97b2ca2c83c39008949d44a05dc9"
     }
   },
   "processed_comments": [],
@@ -104917,8 +105078,8 @@
         "2610.13626"
       ],
       "abstract_attempted": [],
-      "calls": 23,
-      "cost_usd": 21.7138
+      "calls": 24,
+      "cost_usd": 22.6151
     }
   },
   "reaudits": [
