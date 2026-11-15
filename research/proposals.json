@@ -68864,6 +68864,180 @@
         "reviewed_sha256": "eb7814d0f57ca91132c790107b8669813650dad4e97f6e0b7f8ecbdd2810d5fd",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.13116": {
+      "decision": "propose",
+      "reason": "DRYLAB-Bench는 LLM 에이전트의 위험 생물학적 변이 설계 능력을 평가하는 재사용 가능한 새 벤치마크다. 위험 시나리오 30개, 8개 위험 범주, 단일 아미노산 치환 실험 측정값 187,695개를 정답으로 쓰고, BDT 6종을 쓰는 S0/S1/S2 설정과 BRS 지표를 제공한다. 과제 프롬프트가 영어(PDF 20쪽 인용)이고 입력이 텍스트와 단백질 서열이므로 en 트랙의 text로 분류했다. PDF가 공식 코드 주소를 밝히고 있다. 라이선스 등은 확인하지 않아 '확인 불가'로 기록했다. 모델 비교 결과는 별도 증거 단계에서 다룬다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "drylab-bench",
+            "이름": "DRYLAB-Bench",
+            "평가 축": "에이전트·안전(생물보안: LLM 에이전트의 위험 변이 설계 능력)",
+            "언어": "en",
+            "정의": "LLM 에이전트가 생물보안 지침에서 도출한 위험한 변이 설계 시나리오 30개(8개 위험 범주)를 수행하게 하는 벤치마크. 야생형 서열과 목표를 받아 단일 아미노산 치환 후보를 제안하며, 제출한 설계를 ProteinGym과 ViroGym의 단일 치환 실험 측정값 187,695개와 대조해 Biosecurity Risk Score(BRS)로 채점한다. 도구 없는 단발 설정(S0), 도구 1회 수정(S1), 도구 최대 4라운드 반복(S2)을 비교하며 논문은 15개 모델을 평가했다.",
+            "대표 과제": "야생형 단백질 서열과 위험 목표가 주어지면 단일 아미노산 치환 3개를 제안하고 도구 증거로 반복 수정(BRS로 채점)",
+            "대표 예시·설명": "과제 설명: 영어 프롬프트로 대상 단백질 서열과 설계 목표를 주고 치환 3개를 제안하게 한 뒤, 실험 측정 표현형을 기준으로 위험 효과를 채점한다. 실제 시험 문항을 옮긴 것이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 논문은 가장 위험한 병원체 시나리오(BSL-4 등)의 적대적 프롬프트와 정답 매핑을 검증된 연구자에게만 요청 시 공유(제한 공개)한다고 밝히므로 전체 재현에는 제한이 있다. 이 벤치마크는 ProteinGym과 ViroGym의 공개 측정값을 정답으로 재사용하므로 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 이중 용도 위험이 있는 내용이라 이용 범위를 점검해야 한다. 점수는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/drylab-bio/DRYLAB-Bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents and safety (biosecurity: hazardous mutation-design capability of LLM agents)",
+            "definition": "A benchmark that has LLM agents perform 30 hazardous mutation-design scenarios (eight risk categories) distilled from biosecurity guidelines. Given a wild-type sequence and an objective, the agent proposes single amino-acid substitutions, and submitted designs are matched against 187,695 experimentally measured single substitutions from ProteinGym and ViroGym and scored with the Biosecurity Risk Score (BRS). It compares a no-tool one-shot setting (S0), one round of tool revision (S1), and up to four rounds of tool-augmented iteration (S2); the paper evaluates 15 models.",
+            "task": "Given a wild-type protein sequence and a hazardous objective, propose three single amino-acid substitutions and iteratively refine them with tool evidence (scored by BRS)",
+            "example": "Task description, not an actual test item: an English prompt gives the target protein sequence and a design objective and asks for three substitutions, which are scored for risk-associated effect against experimentally measured phenotypes."
+          },
+          "evidence": {
+            "modality": {
+              "page": 20,
+              "quote": "Propose 3 amino"
+            },
+            "대표 과제": {
+              "page": 20,
+              "quote": "Propose 3 amino"
+            },
+            "대표 예시·설명": {
+              "page": 20,
+              "quote": "Propose 3 amino"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/drylab-bio/DRYLAB-Bench"
+            },
+            "언어": {
+              "page": 20,
+              "quote": "Propose 3 amino"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "DRYLAB-Bench tasks agents"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "DRYLAB-Bench tasks agents"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "DRYLAB-Bench tasks agents"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.13116",
+      "paper_title": "DRYLAB-Bench: Benchmarking the Biosecurity Risk of Agentic LLM Mutation Design",
+      "paper_updated": "2026-10-12T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.13116",
+        "sha256": "535be9226b383a579cd4c4af509f9cc3359b8220e8d1d3eedc7beca1a43675f9",
+        "accessed": "2026-11-15T03:23:00Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 29,
+          "elapsed_seconds": 88.09,
+          "pdf_sha256": "535be9226b383a579cd4c4af509f9cc3359b8220e8d1d3eedc7beca1a43675f9",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "ec7226b627c98d51932fda5d8cb96beef58a8c3e06fe1dae7571f62140afb077",
+          "page_json_file": "2610.13116.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/drylab-bio/DRYLAB-Bench",
+            "fetched_url": "https://api.github.com/repos/drylab-bio/DRYLAB-Bench/readme",
+            "sha256": "aadea1ba56fe9392fec8cbeaf503fc6529107e839295616af0af051a7f79bf98",
+            "accessed": "2026-11-15T03:24:51Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/drylab-bio/DRYLAB-Bench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "3d37405180c15d978032700ea399760ce59f5fff2612ece9f5203f062ce996d3"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-15T03:24:51Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.13116",
+        "paper_title": "DRYLAB-Bench: Benchmarking the Biosecurity Risk of Agentic LLM Mutation Design",
+        "abstract": "As large language models (LLMs) acquire advanced biological design capabilities, they offer substantial research benefits but simultaneously introduce severe dual-use risks, such as engineering enhanced pathogens or drug-resistant bacteria. While biosecurity frameworks recognize these threats, the actual risk of LLMs executing dangerous biological modifications remains unquantified, particularly when augmented with specialized biological design tools (BDTs). Existing evaluations primarily assess hazardous knowledge possession rather than practical application, overlook risk amplification from BDTs, and rely on unreliable, expensive, or hazardous validation methods. To address these gaps, we introduce DRYLAB-Bench (Design Risk Yielded by LLM Agent in Biodesign), the first comprehensive benchmark evaluating the high-risk biological mutation design capabilities of LLM agents. Moving beyond basic question-answering, DRYLAB-Bench tasks agents with 30 genuinely hazardous mutation-design scenarios distilled from biosecurity guidelines. It evaluates models in a multi-round, tool-augmented environment where LLMs orchestrate BDTs to iteratively refine candidates. Crucially, it scores designs directly against 187,695 empirical wet-lab measurements from ProteinGym and ViroGym using our proposed Biosecurity Risk Score (BRS), quantifying risk-associated effects while enabling scalable and safe ground-truth verification. Evaluations of 15 frontier models reveal substantial baseline threats: without tools, 67.6% of one-shot designs exceed the average measured variant, and 21.4% reach the highest-risk decile. Equipping models with BDTs significantly amplifies this risk, raising the pooled risk by \\(ΔBRS=+0.116\\) and the top-decile share to 23.5%. Code: https://github.com/drylab-bio/DRYLAB-Bench",
+        "paper_updated": "2026-10-12T00:00:00Z",
+        "created_at": "2026-10-19T13:50:19Z",
+        "input_sha256": "6dafe7cd699e2c66d5f95caecc23046e089624484dcc7edd85a602d84969a17c",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "생물보안 위험 평가 벤치마크로 관련성 높음"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "생물보안 위험 에이전트 평가 벤치마크 DRYLAB-Bench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43668338964",
+        "context_sha256": "eb7d02bb6cf7531628b05ebea0eec7cea5e24ab5de41842c46f6dd9279811c38"
+      },
+      "proposal_sha256": "dfbbe4c7fa04e734683b9e4da2477afc467814e88ba70e0910c101c883a31165"
     }
   },
   "processed_comments": [],
@@ -104433,8 +104607,8 @@
         "2610.13116"
       ],
       "abstract_attempted": [],
-      "calls": 18,
-      "cost_usd": 16.9196
+      "calls": 19,
+      "cost_usd": 17.9118
     }
   },
   "reaudits": [
