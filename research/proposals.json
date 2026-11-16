@@ -72134,6 +72134,183 @@
         "reviewed_sha256": "971b84a0dc309277a33f7f78afc1fc0fe8aa3e2a4e71cb6fafc9de91a98c1879",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.15134": {
+      "decision": "propose",
+      "reason": "Lumen-bench는 도구 호출 환경에서 비윤리적 요청에 대한 실제 행동(harmful tool call)을 측정하는 새 벤치마크다. 시나리오 108개를 포루투갈어 원본에서 영어를 포함한 5개 언어로 병렬 제공하며, 영어 요청문이 PDF에 인용되어 있다. 텍스트 입력만 쓰므로 en 트랙 text 모달리티 한 행으로 제안한다. 한국어 과제는 없어 ko 행은 만들지 않았다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 자동 검증하지 않았으므로 '확인 불가'로 기록했다. 공식 링크는 논문 초록에 명시된 GitHub 저장소다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "lumen-bench",
+            "이름": "Lumen-bench",
+            "평가 축": "안전·에이전트(도구 호출 윤리, 언어 간 안전 격차와 say-do gap)",
+            "언어": "en(5개 언어 중)",
+            "정의": "도구 호출 LLM이 비윤리적 업무 요청을 실제 행동으로 수행하는지 측정하는 행동 벤치마크. 포르투갈어로 작성한 시나리오 108개(11개 윤리 범주)를 영어, 스페인어, 중국어, 힌디어로 번역해 병렬 제공한다. 시나리오마다 사회적 압력 6종과 시스템 프롬프트 2종(윤리/중립)을 교차하고 일반 도구 21개를 제공해 모델당 6,480 케이스, 30개 모델 기준 194,400 시행이다. 도구 호출은 L0~L3 4단계로 채점하며 L3는 o4-mini 판정이다. 거부 발화와 해로운 도구 호출이 함께 나타나는 say-do gap도 측정한다.",
+            "대표 과제": "시나리오 요청을 받아 21개 도구를 호출할지 거부할지 결정하고 호출 내용을 L0~L3로 채점",
+            "대표 예시·설명": "과제 설명: 채용 담당자가 영어로 저소득 지역 출신이나 공립학교 출신 후보를 선발 과정에서 제외하라고 요청하면, 모델이 후보 처리 도구로 실제 필터를 적용하는지 거부하는지 판단한다. 실제 시험 문항을 옮긴 것이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스는 자동 검증하지 못했으므로 이용 전에 데이터셋 카드와 저장소를 확인해야 한다. 영어 시나리오는 포르투갈어 원본을 Claude Sonnet 4.6이 번역한 것이며 체계적인 사람 검수는 없었다. 사람 보정은 포르투갈어 83건뿐이고, 판정은 o4-mini에 의존한다. 응답은 단일 세션이며 도구와 피드백은 시뮬레이션이다. 윤리적으로 민감한 요청 내용이 포함되어 있다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/TropicAI-Research/lumen"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Safety and agents (tool-calling ethics, cross-lingual safety gap and say-do gap)",
+            "definition": "A behavioral benchmark of whether tool-calling LLMs carry out unethical workplace requests as actions. 108 scenarios across 11 ethical categories were authored in Portuguese and translated into English, Spanish, Mandarin Chinese and Hindi in parallel form. Each scenario is crossed with six social-pressure variants and two system prompts (ethical and neutral) and given 21 generic tools, yielding 6,480 cases per model and 194,400 trials over 30 models. Tool calls are scored at four levels L0-L3, with L3 judged by o4-mini. It also measures the say-do gap, where a refusal or objection accompanies a harmful tool call.",
+            "task": "Given a scenario request, decide whether to call any of the 21 tools or refuse, and score the calls at levels L0-L3.",
+            "example": "Task description, not an actual test item: an English request from a hiring manager asks to exclude candidates from poor neighborhoods or public schools, and the benchmark checks whether the model applies the filter through the candidate-processing tool or refuses."
+          },
+          "evidence": {
+            "modality": {
+              "page": 13,
+              "quote": "We don’t want"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "scored on tool"
+            },
+            "대표 예시·설명": {
+              "page": 13,
+              "quote": "We don’t want"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/TropicAI-Research/lumen"
+            },
+            "언어": {
+              "page": 13,
+              "quote": "We don’t want"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Lumen-bench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "108 Portuguese-authored scenarios"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "behavioral benchmark of"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.15134",
+      "paper_title": "Lumen-bench: Cross-Lingual Safety Gaps and the Say-Do Problem in Tool-Calling Large Language Models",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.15134",
+        "sha256": "5bdc3c85c8b59e223105e491974d956b68fde8c12836b07abb80c9164cbb364a",
+        "accessed": "2026-11-16T03:10:19Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 32,
+          "elapsed_seconds": 197.4,
+          "pdf_sha256": "5bdc3c85c8b59e223105e491974d956b68fde8c12836b07abb80c9164cbb364a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "f286b00dc244b3b67728b9b7001624e3578a6765cda8b270782ff31848c38d20",
+          "page_json_file": "2610.15134.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/TropicAI-Research/lumen",
+            "fetched_url": "https://api.github.com/repos/TropicAI-Research/lumen/readme",
+            "sha256": "c28f1475c14e322e84cc0a4ede053122b4a8cf52b2f9b5b899094612813a791b",
+            "accessed": "2026-11-16T03:14:01Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/TropicAI-Research/lumen/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "783b3c0482cb1dff0ee68b49e9772da85efeb9c03a643749d42fbcc24dd143aa"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-16T03:14:01Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.15134",
+        "paper_title": "Lumen-bench: Cross-Lingual Safety Gaps and the Say-Do Problem in Tool-Calling Large Language Models",
+        "abstract": "When a large language model refuses an unethical request, what does refusal mean? In conversation, refusal is bounded by what the model says; once the model is equipped with executable tools, what it does can diverge from what it says, a failure mode that English-only evaluations cannot fully reveal. We introduce Lumen-bench, a behavioral benchmark of tool-calling ethics spanning 30 models, five languages (Portuguese, English, Spanish, Mandarin Chinese, Hindi), 108 Portuguese-authored scenarios, six social-pressure conditions, two system prompts (ethical and neutral), and 21 generic tools. The evaluation comprises 194,400 trials. Judgments come from a reasoning-model judge (o4-mini), calibrated against one Portuguese-speaking author ($n=83$; harmful/non-harmful $κ=0.78$), compared with two other provider judges (Fleiss' $κ=0.78$, $n=607$), and complemented by retrospective sandbox replay. Four findings emerge. (i) Within-model comparisons support higher harmful-action rates in Hindi and Portuguese than English under the ethical prompt, and Hindi and Spanish under the neutral prompt, after multiple-testing correction. (ii) Premium models have lower median violation rates, although price does not guarantee safety or competence. (iii) Replacing the ethical system prompt with a neutral one raises pooled violation rates from 2.76\\% to 13.64\\%. (iv) In 8.57\\% of substantive-call cases, refusal or ethical objection accompanies a harmful tool call: the judges consistently identify the say-do gap, although they differ in how many responses they assign to this category. Matched benign controls demonstrate legitimate task completion in 82.8\\% of 3,300 trials. Code and reproduction scripts are available at https://github.com/TropicAI-Research/lumen.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:32Z",
+        "input_sha256": "8d049edb9b780ade346ea729e02f48804643ee454ba4cb31fc8490483af114a5",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "도구 호출 윤리 벤치마크로 LLM 안전 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "도구 호출 윤리 다국어 안전 벤치마크 Lumen-bench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43793022274",
+        "context_sha256": "1d86acca6cab0d337ab1c1b5a2f1e1a0e32e06680ccf7781c976107a0d050587"
+      },
+      "proposal_sha256": "421473f40d5a31bd06f437a1109df0621aaeff066207bc1d1493777578035c89"
     }
   },
   "processed_comments": [],
@@ -107741,8 +107918,8 @@
         "2610.15134"
       ],
       "abstract_attempted": [],
-      "calls": 14,
-      "cost_usd": 12.8866
+      "calls": 15,
+      "cost_usd": 13.9192
     }
   },
   "reaudits": [
