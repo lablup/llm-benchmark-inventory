@@ -71152,7 +71152,7 @@
     },
     "2610.14635": {
       "decision": "propose",
-      "reason": "PVFH-Bench는 MSCOCO 이미지 258장으로 만든 재사용 가능한 시각 환각 진단 벤치마크이고, 과제 문장이 영어(\"Is the {false object} in the image?\")라 en 트랙의 vision 항목으로 제안합니다. 4개 하위셋 각 258건, 총 1,032건이며 지표는 정확도(%)이고 채점은 LLM judge(Qwen3.5-Flash)가 맡습니다. 공식 코드·데이터 주소는 PDF 초록에 있습니다. 라이선스 등은 확인하지 않아 '확인 불가'로 두고 유의사항에 적었습니다.",
+      "reason": "PVFH-Bench는 MSCOCO 이미지 258장으로 만든 재사용 가능한 시각 환각 진단 벤치마크이고, 과제 문장이 영어(\"Is the {false object} in the image?\")라 en 트랙의 vision 항목으로 제안합니다. 4개 하위셋 각 258건, 총 1,032건이며 지표는 정확도(%)이고 채점은 LLM judge(Qwen3.5-Flash)가 맡습니다. 공식 저장소 README와 LICENSE 파일이 MIT를 표기하고 논문 부록 A.11이 CC BY 4.0을 밝혀 권리 항목은 이 문구를 근거로 채웠으며, 구성 요소(MSCOCO 이미지)의 약관은 별도라고 유의사항에 적었습니다. lm-eval은 PDF와 공식 카드 모두 언급하지 않아 미표기로 둡니다.",
       "changes": [
         {
           "track": "en",
@@ -71165,12 +71165,12 @@
             "대표 과제": "존재 확인(실제 객체, 혼동 객체)과 거짓 전제 공간 관계 질의(없는 객체의 위치 묻기)에 대해 전제를 거부하는지 평가",
             "대표 예시·설명": "과제 설명: 이미지에 신문은 있고 잡지는 없을 때, 'Is the {false object} in the image?'처럼 없는 객체의 존재를 묻거나 그 객체의 위치(위쪽/아래쪽 등)를 물어 모델이 전제를 거부하는지 확인한다. 실제 문항이 아니다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스·상업적 이용·수정·재배포·lm-eval 지원은 직접 확인하지 않았다. 논문 부록은 이미지가 MSCOCO 2014(CC BY 4.0)에서 왔고 생성 질문·주석도 같은 라이선스로 공개할 예정이라고 적었으나, 이 인벤토리에서는 검증하지 않았으므로 공식 저장소에서 확인해야 한다. 객체 쌍 생성에 Qwen3.5-Plus, 채점에 Qwen3.5-Flash 등 외부 모델 API가 쓰였고, 구성 요소별 약관은 별도로 확인해야 한다. 규모가 작은 진단용 벤치마크(COCO 이미지 한정)이며 논문 수치는 해당 논문 조건의 결과로 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "MIT(공식 저장소 README·LICENSE 파일). 논문 부록은 생성 질문·주석을 CC-BY-4.0으로 공개한다고 밝히며, MSCOCO 이미지는 저장소가 재배포하지 않고 MSCOCO 약관을 따른다",
+            "상업적 이용": "가능(MIT 조건 준수. MSCOCO 이미지는 MSCOCO 약관 별도 적용)",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능(MIT 고지 포함. MSCOCO 이미지는 저장소가 재배포하지 않음)",
+            "이용 시 유의사항": "이 벤치마크는 MSCOCO 2014 검증 세트 이미지 258장을 바탕으로 만들어졌고(논문 4쪽), 객체 쌍 생성에 Qwen3.5-Plus, 채점에 Qwen3.5-Flash가 쓰였다(논문 3쪽, 4쪽). 구성 요소(MSCOCO 이미지와 주석, 사용 모델)의 고유 약관은 이용 전에 각각 따로 확인해야 한다. 공식 README는 COCO 이미지를 저장소가 재배포하지 않으며 원 이미지는 MSCOCO 약관을 따른다고 밝히므로, 저장소의 MIT 표기가 이미지에는 적용되지 않는다. 논문 부록 A.11(13쪽)은 이미지가 CC BY 4.0이고 생성 질문·주석도 같은 라이선스로 공개할 예정이라고 적어 저장소의 MIT 표기와 문구가 다르므로, 이용 시 두 표기를 함께 인용하는 것이 안전하다. 규모가 작은 진단용 벤치마크(COCO 이미지 한정)이며 채점에 LLM judge가 필요하다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/NEUIR/PVFH-Bench"
           },
           "modality": "vision",
@@ -71214,9 +71214,176 @@
               "quote": "Premise-Induced Visual Fixation"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/NEUIR/PVFH-Bench",
+              "quote": "This project is released under the [MIT License](LICENSE)."
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/NEUIR/PVFH-Bench",
+              "quote": "to use, copy, modify, merge, publish, distribute, sublicense, and/or sell"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/NEUIR/PVFH-Bench",
+              "quote": "to use, copy, modify, merge, publish, distribute, sublicense, and/or sell"
+            },
+            "재배포": {
+              "source_url": "https://github.com/NEUIR/PVFH-Bench",
+              "quote": "The above copyright notice and this permission notice shall be included in all"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/NEUIR/PVFH-Bench",
+              "absent": true,
+              "pdf_mentions": [
+                {
+                  "page": 13,
+                  "quote": "Creative Commons Attribution 4.0 License (CC BY 4.0)",
+                  "about": "벤치마크의 원천인 MSCOCO 2014 이미지의 라이선스이자 생성 질문·주석의 공개 예정 라이선스를 밝히는 문장이며 lm-eval과는 무관하다"
+                }
+              ]
+            }
+          },
+          "recommendations": {
+            "metric": "Premise-Induced Visual Fixation(핵심 설정) 정확도, 단위 %(백분율 포인트)",
+            "setting": "이 논문 Table 1의 PVFH-Bench 핵심 설정(258문항) 결과. 모델별 기본 비추론 모드 10종, 디코딩 temperature 0.1, 채점은 LLM judge(Qwen3.5-Flash). 이 논문이 보고한 결과이며 현재 전역 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Qwen3.5-Plus",
+                "score": "74.81",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Qwen3.5-Plus 98.84 79.84 93.80 74.81"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "The closed-source group includes Qwen-VL with Qwen3.5-Plus"
+                }
+              },
+              {
+                "model": "Seed-2.0-Lite",
+                "score": "68.60",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Seed-2.0-Lite 97.29 82.56 82.95 68.60"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "The closed-source group includes Qwen-VL with Qwen3.5-Plus (Yang et al., 2025) and Seed with Seed-2.0-Lite and Seed-2.0-Mini"
+                }
+              },
+              {
+                "model": "Seed-2.0-Mini",
+                "score": "44.96",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Seed-2.0-Mini 97.67 79.46 76.74 44.96"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "The closed-source group includes Qwen-VL with Qwen3.5-Plus (Yang et al., 2025) and Seed with Seed-2.0-Lite and Seed-2.0-Mini"
+                }
+              },
+              {
+                "model": "Qwen3-VL-32B",
+                "score": "58.14",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Qwen3-VL-32B 97.67 74.03 88.37 58.14"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "The open-source group includes Qwen-VL models, with Qwen3-VL-8B-Instruct and Qwen3-VL-32B-Instruct"
+                }
+              },
+              {
+                "model": "Qwen3-VL-8B",
+                "score": "58.14",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Qwen3-VL-8B 98.45 80.62 81.40 58.14"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "The open-source group includes Qwen-VL models, with Qwen3-VL-8B-Instruct and Qwen3-VL-32B-Instruct"
+                }
+              },
+              {
+                "model": "Gemma-3-27B-IT",
+                "score": "28.29",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Gemma-3-27B-IT 98.84 67.05 60.08 28.29"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "It also includes Gemma models, namely Gemma-3-4B-IT, Gemma-3-12B-IT, and Gemma-3-27B-IT"
+                }
+              },
+              {
+                "model": "Gemma-3-12B-IT",
+                "score": "18.99",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Gemma-3-12B-IT 94.96 75.58 44.19 18.99"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "It also includes Gemma models, namely Gemma-3-4B-IT, Gemma-3-12B-IT, and Gemma-3-27B-IT"
+                }
+              },
+              {
+                "model": "Gemma-3-4B-IT",
+                "score": "1.94",
+                "evidence": {
+                  "page": 5,
+                  "quote": "Gemma-3-4B-IT 96.51 62.79 19.38 1.94"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "It also includes Gemma models, namely Gemma-3-4B-IT, Gemma-3-12B-IT, and Gemma-3-27B-IT"
+                }
+              },
+              {
+                "model": "LLaMA-4-Scout",
+                "score": "51.16",
+                "evidence": {
+                  "page": 5,
+                  "quote": "LLaMA-4-Scout 93.80 82.17 86.05 51.16"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "as well as LLaMA models, namely LLaMA-3.2-11B-Vision"
+                }
+              },
+              {
+                "model": "LLaMA-3.2-11B",
+                "score": "46.90",
+                "evidence": {
+                  "page": 5,
+                  "quote": "LLaMA-3.2-11B 98.06 76.36 86.43 46.90"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 5,
+                  "quote": "as well as LLaMA models, namely LLaMA-3.2-11B-Vision"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.14635",
@@ -71311,7 +71478,8 @@
         "source_run": "43793022274",
         "context_sha256": "d716cdda09bf4402ccfb8d83ab975c56ef5cd1a2c3b80be10816dc7e2c9f5445"
       },
-      "proposal_sha256": "6a7e03057552b48749153261bb1923dc237f599077b3f3df6fbc3c2ef734c366"
+      "proposal_sha256": "e44e6de04ea84030198a3844a9a78c2c867018078075b77d16b42d771aeff026",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -106915,8 +107083,8 @@
         "2610.14635"
       ],
       "abstract_attempted": [],
-      "calls": 6,
-      "cost_usd": 5.8539
+      "calls": 7,
+      "cost_usd": 6.85
     }
   },
   "reaudits": [
