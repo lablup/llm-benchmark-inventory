@@ -71839,6 +71839,169 @@
         "reviewed_sha256": "59167600a7a88dc5847406eddbc668051d817155a2e81bf76b25b4d664f6bb4b",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.15103": {
+      "decision": "propose",
+      "reason": "RegExtract는 미국 주 PFAS 규제 문서(영어)에서 값과 출처 구간(provenance)을 함께 추출하는 재사용 가능한 벤치마크이며, 사람이 주석한 488개 필드 인스턴스와 provenance 반영 평가 지표를 제공한다. 입력이 텍스트뿐이라 en 트랙의 text로 분류했다. 논문이 공식 코드·데이터 링크(GitHub)를 명시했고, 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "regextract",
+            "이름": "RegExtract",
+            "평가 축": "추출(규제 문서 구조화 정보 추출·출처 근거)",
+            "언어": "en",
+            "정의": "미국 16개 주의 PFAS 규제 문서 20건(규제 46건)에서 타입이 지정된 14개 필드 스키마(문서 메타데이터 6개, 규제 8개)를 채우는 구조화 정보 추출 벤치마크. 사람이 주석한 필드 인스턴스 488개에 값과 출처 구간(provenance)이 붙어 총 976개 항목이다. 지표는 범주형 정확 일치, 리스트 F1, 불리언 일치, 텍스트 ROUGE-Lsum F1, provenance ROUGE-Lsum F1, 규제 단위 매칭 P/R/F1이다. 논문은 모델 6종을 프롬프트 전략, 문서 압축, 스키마 분할 조건에서 비교했다.",
+            "대표 과제": "문서 메타데이터(title, location, date, reference, status, pfas definition)와 규제 필드(type, date, who, action, products, exceptions, currently unavoidable, intentionally added)를 값과 provenance가 담긴 JSON으로 추출",
+            "대표 예시·설명": "긴 규제 문서를 읽고 각 필드의 값과 근거 문장을 JSON으로 내는 과제(예: 'Who'가 제조업자이면 'Action'은 제조하다로 정리). 실제 시험 문항이 아닌 과제 설명이다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·재배포 조건과 lm-eval 지원은 확인하지 못했다. 영어 문서이고 미국 주 문서 20건뿐이며 규모가 작다. 논문은 이 한계를 인정한다. 엄격한 일치 지표라서 의미가 같은 답도 감점될 수 있다. 논문 점수는 논문 조건의 결과이며 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/IBM/PFAS-regulations"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Extraction (structured regulatory information extraction with provenance)",
+            "definition": "A structured information extraction benchmark over 20 PFAS regulatory documents from 16 US states (46 regulations), filling a typed 14-field schema (6 document-level metadata fields, 8 regulation-level fields). 488 human-annotated field instances each carry a value and a provenance span, giving 976 entries. Metrics are exact match for categorical fields, list F1, boolean equality, ROUGE-Lsum F1 for text fields and provenance, and regulation-level matching precision/recall/F1. The paper compares six models across prompting strategies, document condensing, and schema partitioning.",
+            "task": "Extract document metadata (title, location, date, reference, status, pfas definition) and regulation fields (type, date, who, action, products, exceptions, currently unavoidable, intentionally added) as JSON with a value and provenance for each field.",
+            "example": "Task description, not an actual test item: read a long regulatory document and output each field's value with its supporting source text as JSON; for example, if Who is Manufacturer, Action is manufacture."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "RegExtract: A Benchmark"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "488 human-annotated field"
+            },
+            "대표 예시·설명": {
+              "page": 15,
+              "quote": "Who: Manufacturer →"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/IBM/PFAS-regulations"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "Who: Manufacturer →"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "RegExtract: A Benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "488 human-annotated field"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "RegExtract: A Benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.15103",
+      "paper_title": "RegExtract: A Benchmark for PFAS Regulatory Information Extraction with LLMs",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.15103",
+        "sha256": "3262fdd123a1883a4097fcb79dea1b9e869d5f46c96f894f808b10746f121fcf",
+        "accessed": "2026-11-16T03:07:14Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 18,
+          "elapsed_seconds": 90.06,
+          "pdf_sha256": "3262fdd123a1883a4097fcb79dea1b9e869d5f46c96f894f808b10746f121fcf",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "5aad3f98f6054875ae607737aa6d10108d9cbf82ed723bcac52d4b2f43a1d695",
+          "page_json_file": "2610.15103.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/IBM/PFAS-regulations",
+            "fetched_url": "https://api.github.com/repos/IBM/PFAS-regulations/readme",
+            "sha256": "f137ac5a0794e1c64f08f23719b37dd5504db801d4ec1410efb8e526fef697c5",
+            "accessed": "2026-11-16T03:09:08Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/IBM/PFAS-regulations/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-16T03:09:08Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.15103",
+        "paper_title": "RegExtract: A Benchmark for PFAS Regulatory Information Extraction with LLMs",
+        "abstract": "Extracting structured information from regulatory documents is a critical but challenging task. Relevant facts are scattered across long, legally dense texts, and traceability of extracted facts to their source is essential for verification. With increasing awareness of the environmental and health impacts of per- and polyfluoroalkyl substances (PFAS), regulatory documents have expanded significantly, varying in scope and product relevance, making interpretation challenging for manufacturers and policymakers. We introduce RegExtract, a benchmark for structured information extraction from PFAS regulatory documents, comprising 488 human-annotated field instances across 20 US state documents and 46 regulations. Each field instance includes a value and a provenance entry, yielding 976 entries in total. We define a typed, multi-field schema targeting key elements such as material definitions, permitted uses, and product exemptions, and propose provenance-aware evaluation metrics tailored to regulatory text. Through experiments with open- and closed-source LLMs across prompting strategies, document condensing methods, and schema partitioning approaches, we find that document identification fields remain challenging, and that field-specific few-shot examples improve extraction. This work lays the groundwork for AI tools for hazardous substance identification, question answering, and compliance monitoring. The code and data are available at https://github.com/IBM/PFAS-regulations.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:32Z",
+        "input_sha256": "42b7764b59ec3c942f0e4408f8e5c1e96c4001ff9667da506cfb7656b63b59eb",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "PFAS 규제 정보 추출 벤치마크로 LLM 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "PFAS 규제 문서 정보 추출 벤치마크 RegExtract 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43793022274",
+        "context_sha256": "e658afb699cfe6b217d8551891644a263e294d0029a8b5004b57c0aadc79d664"
+      },
+      "proposal_sha256": "e405a715054bead1be8ae48908ac40954e186dbe00ed2cc63e6980bea6dbfc28"
     }
   },
   "processed_comments": [],
@@ -107445,8 +107608,8 @@
         "2610.15103"
       ],
       "abstract_attempted": [],
-      "calls": 11,
-      "cost_usd": 10.1813
+      "calls": 12,
+      "cost_usd": 11.0496
     }
   },
   "reaudits": [
