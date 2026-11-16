@@ -71528,8 +71528,8 @@
       }
     },
     "2610.14769": {
-      "decision": "propose",
-      "reason": "영어 원문 문장을 벵골어로 번역시킬 때 모델이 경어 등급(honorific)을 성별·직업에 따라 불균등하게 배분하는지 재는 반사실(counterfactual) 평가 세트를 새로 제안하는 논문이다. 과제 입력은 영어 문장이고 텍스트만 사용하므로 en 트랙의 text로 분류했다. 문장 2,016개, 직업 72개, 문장틀 7개, 대명사 조건 4개, 성별 쌍 504개와 HAI, GSR, HBS 지표가 명시돼 있다. 데이터는 논문 각주가 밝힌 GitHub 저장소에 공개돼 있다. 공식 저장소 README에는 라이선스 표기가 없고 'Released for research use.'라는 문장만 있으며 LICENSE 파일도 없다. PDF 10쪽 전체에도 라이선스를 언급한 곳이 없다. 따라서 라이선스는 미표기로 두고 상업적 이용, 수정·파생, 재배포는 저작권 전부 보유로 기록했다. README가 lm-eval을 언급하지 않아 lm-eval 지원은 미표기로 기록했다. 모델 비교는 논문 표 4의 HBS(낮을수록 좋음) 9개 모델 결과를 사용했다.",
+      "decision": "needs_evidence",
+      "reason": "Claude가 근거 부족으로 반영을 승인하지 않았습니다: 모델 점수와 수치는 논문 표 4와 일치하지만, 라이선스 항목이 공식 소스와 맞지 않아 반려합니다. 첫째, 공식 저장소 README는 이 데이터를 연구 용도로 공개했다고 밝힙니다. 이는 데이터의 이용 범위를 정한 문장이므로 라이선스가 전혀 없다고 볼 수 없습니다. '미표기'는 논문과 공식 카드 어디에도 라이선스나 이용 조건이 없을 때만 쓸 수 있는데, 공급된 소스에 이용 조건 진술이 있으므로 이 값은 근거가 부족합니다. 둘째, 그 결과 상업적 이용, 수정·파생, 재배포를 모두 '저작권 전부 보유'로 일괄 처리한 것도 지지되지 않습니다. 소스가 밝힌 연구용 한정이라는 이용 범위가 이 세 칸에 반영되지 않았습니다. 이용 시 유의사항에서 이 문장을 언급하더라도 라이선스 칸의 판정 규칙을 충족하지는 못합니다. 이 라이선스 분류를 소스에 맞게 고치기 전에는 게시할 수 없습니다. 그 외 항목은 지지됩니다. 문장 2,016개, 직업 72개, 문장틀 7개, 조건 4개, 짝 504개, 영어 텍스트 입력, 원어민 3명의 직업 목록 구성, 180건 사람 검증이 논문과 일치합니다. 권장 모델 9개는 동일 조건의 HBS 열에서 가져왔고, 낮을수록 좋다는 방향과 각 행의 값 정렬도 맞습니다. 공개 가중치 여부는 null로 두어 폐쇄 가중치로 취급하지 않았고, lm-eval 미표기도 공식 README에 언급이 없으므로 수용 가능합니다.",
       "changes": [
         {
           "track": "en",
@@ -71761,7 +71761,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-16T03:05:49Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -71787,12 +71787,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "43793022274",
-        "context_sha256": "b77dddc1956d677c50a410655157e6c14a824e02188c7ede5523a170d1fe4a2e"
-      },
       "proposal_sha256": "59167600a7a88dc5847406eddbc668051d817155a2e81bf76b25b4d664f6bb4b",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": false,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": false,
+            "reason": "모델 점수와 수치는 논문 표 4와 일치하지만, 라이선스 항목이 공식 소스와 맞지 않아 반려합니다. 첫째, 공식 저장소 README는 이 데이터를 연구 용도로 공개했다고 밝힙니다. 이는 데이터의 이용 범위를 정한 문장이므로 라이선스가 전혀 없다고 볼 수 없습니다. '미표기'는 논문과 공식 카드 어디에도 라이선스나 이용 조건이 없을 때만 쓸 수 있는데, 공급된 소스에 이용 조건 진술이 있으므로 이 값은 근거가 부족합니다. 둘째, 그 결과 상업적 이용, 수정·파생, 재배포를 모두 '저작권 전부 보유'로 일괄 처리한 것도 지지되지 않습니다. 소스가 밝힌 연구용 한정이라는 이용 범위가 이 세 칸에 반영되지 않았습니다. 이용 시 유의사항에서 이 문장을 언급하더라도 라이선스 칸의 판정 규칙을 충족하지는 못합니다. 이 라이선스 분류를 소스에 맞게 고치기 전에는 게시할 수 없습니다. 그 외 항목은 지지됩니다. 문장 2,016개, 직업 72개, 문장틀 7개, 조건 4개, 짝 504개, 영어 텍스트 입력, 원어민 3명의 직업 목록 구성, 180건 사람 검증이 논문과 일치합니다. 권장 모델 9개는 동일 조건의 HBS 열에서 가져왔고, 낮을수록 좋다는 방향과 각 행의 값 정렬도 맞습니다. 공개 가중치 여부는 null로 두어 폐쇄 가중치로 취급하지 않았고, lm-eval 미표기도 공식 README에 언급이 없으므로 수용 가능합니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 192008,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 1712,
+              "output_tokens_details": {
+                "thinking_tokens": 1008
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 192008,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 1712,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 192008,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 192008
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.7852209,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "59167600a7a88dc5847406eddbc668051d817155a2e81bf76b25b4d664f6bb4b",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -107397,8 +107443,8 @@
         "2610.14769"
       ],
       "abstract_attempted": [],
-      "calls": 10,
-      "cost_usd": 9.3961
+      "calls": 11,
+      "cost_usd": 10.1813
     }
   },
   "reaudits": [
