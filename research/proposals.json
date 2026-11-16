@@ -71526,6 +71526,156 @@
         "reviewed_sha256": "e44e6de04ea84030198a3844a9a78c2c867018078075b77d16b42d771aeff026",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.14769": {
+      "decision": "propose",
+      "reason": "영어 원문 문장을 벵골어로 번역시킬 때 모델이 경어 등급(honorific)을 성별·직업에 따라 불균등하게 배분하는지 재는 반사실(counterfactual) 평가 세트를 새로 제안하는 논문이다. 과제 입력은 영어 문장이고 텍스트만 사용하므로 en 트랙의 text로 분류했다. 문장 2,016개, 직업 72개, 문장틀 7개, 대명사 조건 4개, 성별 쌍 504개와 HAI, GSR, HBS 지표가 명시돼 있다. 데이터는 논문 각주가 밝힌 GitHub 저장소에 공개돼 있다. 이번 수정에서는 PDF 해당 페이지에 실제로 있는 짧은 인용문으로 근거를 교체했다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "bangla-honorific-eval",
+            "이름": "Bangla Honorific Allocation Bias Benchmark",
+            "평가 축": "공정성·편향(영어-벵골어 번역의 경어 배분 편향)",
+            "언어": "en",
+            "정의": "영어 문장 2,016개를 모델이 벵골어로 번역할 때 경어(honorific)와 평어 중 무엇을 고르는지를 성별과 직업 기준으로 비교하는 반사실 평가 세트. 직업 72개를 문장틀 7개(중립 5개, 존중 암시 2개)와 대명사 조건 4개(he, she, they, 대명사 없음)에 교차했고, 남녀 문장은 단어 하나만 달라 504개의 짝(pair)을 이룬다. 지표는 HAI(방향), GSR(변화 빈도), HBS(0~100, 낮을수록 고르게 배분). 논문은 9개 모델을 온도 0, 문장별 독립 제로샷으로 평가했으며, 이는 논문 조건의 결과이고 현재 전역 리더보드가 아니다.",
+            "대표 과제": "영어 문장을 벵골어로 번역시킨 뒤 번역문의 경어/평어 여부를 규칙으로 분류하고, 성별 짝과 직업별 경어 비율 차이를 측정",
+            "대표 예시·설명": "영어 문장(예: 의사가 9시에 도착할 것이라고 말했다는 문장)을 he/she/they/무대명사 조건으로 바꿔 번역시키고, 벵골어에서 경어 대명사·동사 어미가 쓰였는지 확인하는 과제 설명(실제 문항을 옮긴 것이 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원은 확인하지 못했다. 이용 전 공식 저장소에서 따로 확인해야 한다. 템플릿 기반 통제 문장이고 방글라데시 표준 벵골어와 번역 과제에만 한정되며, 직업 목록은 원어민 3명이 구성했다. 경어 분류는 규칙 기반이고 사람 검증은 180건 표본이다. 혼합(mixed) 사례는 제외된다. 모델 평가 결과는 논문 조건에 한정된다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/ajwad-abrar/bangla-honorific-eval"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Fairness and bias (honorific allocation bias in English-to-Bengali translation)",
+            "definition": "A counterfactual evaluation set of 2,016 English sentences used to test whether a model chooses the honorific or ordinary Bengali register differently by gender and occupation when translating. 72 occupations are crossed with seven sentence frames (five neutral, two respect-primed) and four pronoun conditions (he, she, they, no pronoun). Masculine and feminine versions differ by one word, forming 504 matched pairs. Metrics are HAI (direction), GSR (frequency of register change) and HBS (0-100, lower means more even allocation). The paper evaluates nine models zero-shot at temperature 0 with each sentence submitted independently; this is a result under the paper's conditions, not a current global leaderboard.",
+            "task": "Translate English sentences into Bengali, classify each translation's register as honorific or ordinary by rule, and measure gender-pair and occupation-level differences in honorific rate.",
+            "example": "Task description, not an actual test item: an English sentence such as one about a doctor saying they would arrive at nine is varied across he/she/they/no-pronoun conditions, and the Bengali translation is checked for honorific pronouns and verb endings."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "evaluation set contains"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "evaluation set contains"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "The doctor said"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "github.com/ajwad-abrar/"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "The doctor said"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Honorific Allocation Bias"
+            },
+            "정의": {
+              "page": 3,
+              "quote": "evaluation set contains"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Honorific Allocation Bias"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.14769",
+      "paper_title": "Who Receives Respect? A Counterfactual Benchmark for Honorific Allocation Bias in Bengali",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.14769",
+        "sha256": "f39cf8255263f7caa874c13ebdb6a78d662ca1a2485a711edf865c78768b8b74",
+        "accessed": "2026-11-16T03:03:59Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 10,
+          "elapsed_seconds": 62.93,
+          "pdf_sha256": "f39cf8255263f7caa874c13ebdb6a78d662ca1a2485a711edf865c78768b8b74",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "9403a313fb3cfb958d042f00901b47fa085aa69560d991860f3e110f762e72cc",
+          "page_json_file": "2610.14769.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/ajwad-abrar/bangla-honorific-eval",
+            "fetched_url": "https://api.github.com/repos/ajwad-abrar/bangla-honorific-eval/readme",
+            "sha256": "7b34f4761f03d6ae4d1135e92c00c0926908a1197981f95125c519d040b41e4d",
+            "accessed": "2026-11-16T03:05:49Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-16T03:05:49Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.14769",
+        "paper_title": "Who Receives Respect? A Counterfactual Benchmark for Honorific Allocation Bias in Bengali",
+        "abstract": "Bengali has no grammatical gender, but honorificity is obligatory: every third-person reference must choose ordinary or respectful register. English has no such signal, so the system must choose a level of deference that the source never specified. We use this property to measure how large language models (LLMs) allocate respect in English--Bengali translation. Our evaluation set contains 2{,}016 sentences across 72 occupations. Each appears in seven sentence frames under four pronoun conditions. Masculine and feminine versions differ by one word, forming counterfactual pairs. We report a single Honorific Bias Score (HBS) for each model on a 0--100 scale, covering both the gender and occupation axes. A lower score means that respect is allocated more evenly. For the occupation analysis, we compute each occupation's honorific rate across the seven no-pronoun sentence frames. The standard deviation of these 72 occupation-level rates ranges from 17.2 to 35.5 percentage points across models, showing substantial variation in how honorifics are allocated across occupations. Occupation is associated with 3.2\\% to 51.5\\% of the variance in register choice, compared with at most 1.2\\% for gender. Gender effects are much smaller overall: only two of the nine models show significant directional gender gaps, and they favor opposite genders. HBS ranges from 19.9 to 70.1 across the nine models, showing substantial variation in how evenly the models allocate respect.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:32Z",
+        "input_sha256": "d63a9793de0a734be9d58d5cf5d3142fb7d13041e809451e729ac209a42e46cf",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "벵골어 존칭 배분 편향 벤치마크로 LLM 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "irrelevant",
+            "reason": "벵골어 경어법 할당 편향 벤치마크, 한국어·영어 외 언어 한정"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43793022274",
+        "context_sha256": "b77dddc1956d677c50a410655157e6c14a824e02188c7ede5523a170d1fe4a2e"
+      },
+      "proposal_sha256": "d460e08b456df63118a6477393173d9bcc524483c46b0337865305917b522b72"
     }
   },
   "processed_comments": [],
@@ -107130,8 +107280,8 @@
         "2610.14769"
       ],
       "abstract_attempted": [],
-      "calls": 8,
-      "cost_usd": 7.7839
+      "calls": 9,
+      "cost_usd": 8.5682
     }
   },
   "reaudits": [
