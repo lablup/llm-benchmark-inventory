@@ -71842,7 +71842,7 @@
     },
     "2610.15103": {
       "decision": "propose",
-      "reason": "RegExtract는 미국 주 PFAS 규제 문서(영어)에서 값과 출처 구간(provenance)을 함께 추출하는 재사용 가능한 벤치마크이며, 사람이 주석한 488개 필드 인스턴스와 provenance 반영 평가 지표를 제공한다. 입력이 텍스트뿐이라 en 트랙의 text로 분류했다. 논문이 공식 코드·데이터 링크(GitHub)를 명시했고, 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "reason": "RegExtract는 미국 주 PFAS 규제 문서(영어)에서 값과 출처 구간(provenance)을 함께 추출하는 재사용 가능한 벤치마크이며, 사람이 주석한 488개 필드 인스턴스와 provenance 반영 평가 지표를 제공한다. 입력이 텍스트뿐이라 en 트랙의 text로 분류했다. 공식 저장소 카드가 Apache-2.0 라이선스를 명시하고, 카드에 lm-eval 언급이 없어 해당 항목은 미표기로 기록했다.",
       "changes": [
         {
           "track": "en",
@@ -71855,12 +71855,12 @@
             "대표 과제": "문서 메타데이터(title, location, date, reference, status, pfas definition)와 규제 필드(type, date, who, action, products, exceptions, currently unavoidable, intentionally added)를 값과 provenance가 담긴 JSON으로 추출",
             "대표 예시·설명": "긴 규제 문서를 읽고 각 필드의 값과 근거 문장을 JSON으로 내는 과제(예: 'Who'가 제조업자이면 'Action'은 제조하다로 정리). 실제 시험 문항이 아닌 과제 설명이다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·재배포 조건과 lm-eval 지원은 확인하지 못했다. 영어 문서이고 미국 주 문서 20건뿐이며 규모가 작다. 논문은 이 한계를 인정한다. 엄격한 일치 지표라서 의미가 같은 답도 감점될 수 있다. 논문 점수는 논문 조건의 결과이며 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "Apache-2.0(저장소 자체 저작물 한정. 원천 규제 문서는 각자 약관)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "Apache-2.0은 공식 저장소 README와 LICENSE 파일이 저장소에 부여한 것이다. 라이선스 사본 첨부, 저작권·고지 유지, 변경 고지 등 Apache-2.0 조건을 지켜야 한다. 이 벤치마크의 원천 문서는 saferstates.org에서 PFAS 규제로 걸러 선별한 미국 주 규제 문서 20건이다(논문 8쪽). 저장소의 Apache-2.0 표기가 원천 문서 각각의 고유 약관을 대신하지 않으므로, 각 구성 요소의 약관은 이용 전에 따로 확인해야 한다. 영어 문서 20건 규모라 일반화에 한계가 있고 미국 주 문서에 한정된다(논문 8쪽). 엄격한 일치 지표라서 의미가 같은 답도 감점될 수 있다. 공식 카드에 lm-eval 언급이 없고 자체 스크립트(evaluation.py)로 평가한다. 논문 점수는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/IBM/PFAS-regulations"
           },
           "modality": "text",
@@ -71904,9 +71904,94 @@
               "quote": "RegExtract: A Benchmark"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/IBM/PFAS-regulations",
+              "quote": "SPDX-License-Identifier: Apache-2.0"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/IBM/PFAS-regulations",
+              "quote": "no-charge, royalty-free, irrevocable"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/IBM/PFAS-regulations",
+              "quote": "prepare Derivative Works of"
+            },
+            "재배포": {
+              "source_url": "https://github.com/IBM/PFAS-regulations",
+              "quote": "You may reproduce and distribute copies of the"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/IBM/PFAS-regulations",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Avg. regulation value score (Reg. Value; 0–1 scale, averaged over matched regulations and valid documents)",
+            "setting": "Results reported in this paper (Table 3, page 8), not a current global leaderboard. RegExtract full 20-document set, full-text inputs, few-shot structured prompting, max token number 8192, temperature 0 (page 12). Scores are averaged over valid documents only (#Valid differs by model: 16–20 of 20). The gpt-4o condensed-input rows of the same table are excluded because they use a different input condition.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "llama-3-3-70b-instruct",
+                "score": "0.70",
+                "evidence": {
+                  "page": 8,
+                  "quote": "llama-3-3-70b-instruct 17 1.00 / 0.82 / 0.88 0.70 / 0.55"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "llama-4-maverick-17b-128e-instruct-fp8",
+                "score": "0.68",
+                "evidence": {
+                  "page": 8,
+                  "quote": "llama-4-maverick-17b-128e-instruct-fp8 20 1.00 / 0.86 / 0.91 0.68 / 0.57"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "gpt-4o",
+                "score": "0.74",
+                "evidence": {
+                  "page": 8,
+                  "quote": "gpt-4o 17 0.97 / 0.85 / 0.88 0.74 / 0.64"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "granite-3.3-8b-instruct",
+                "score": "0.64",
+                "evidence": {
+                  "page": 8,
+                  "quote": "granite-3.3-8b-instruct 20 0.89 / 0.83 / 0.81 0.64 / 0.30"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "mixtral-8x22B-instruct-v0.1",
+                "score": "0.69",
+                "evidence": {
+                  "page": 8,
+                  "quote": "mixtral-8x22B-instruct-v0.1 16 0.97 / 0.86 / 0.89 0.69 / 0.54"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "granite-4.0-h-micro",
+                "score": "0.62",
+                "evidence": {
+                  "page": 8,
+                  "quote": "granite-4.0-h-micro 20 1.00 / 0.71 / 0.78 0.62 / 0.16"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.15103",
@@ -72001,7 +72086,8 @@
         "source_run": "43793022274",
         "context_sha256": "e658afb699cfe6b217d8551891644a263e294d0029a8b5004b57c0aadc79d664"
       },
-      "proposal_sha256": "e405a715054bead1be8ae48908ac40954e186dbe00ed2cc63e6980bea6dbfc28"
+      "proposal_sha256": "971b84a0dc309277a33f7f78afc1fc0fe8aa3e2a4e71cb6fafc9de91a98c1879",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -107608,8 +107694,8 @@
         "2610.15103"
       ],
       "abstract_attempted": [],
-      "calls": 12,
-      "cost_usd": 11.0496
+      "calls": 13,
+      "cost_usd": 11.9826
     }
   },
   "reaudits": [
