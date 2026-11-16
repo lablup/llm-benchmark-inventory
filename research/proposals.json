@@ -73185,6 +73185,191 @@
       },
       "issue_url": null,
       "proposal_sha256": "77320d8bd49eb946d25b2af7a0311d56231f02bd53588709d1714ea4fd51aca3"
+    },
+    "2602.03100": {
+      "decision": "propose",
+      "reason": "Risky-Bench는 VitaBench 기반 생활 지원 에이전트(배달, 매장 이용, 온라인 여행 예약)의 안전을 평가하는 재사용 가능한 벤치마크로, 새 평가 범주(에이전트 안전)에 해당합니다. 과제 지시문과 프롬프트가 영어로 인용되므로 en 트랙, 텍스트 입력만 쓰므로 text로 분류했습니다. 공식 코드·데이터 URL이 PDF 1쪽에 명시되어 있습니다. 라이선스와 lm-eval 지원은 확인되지 않아 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "risky-bench",
+            "이름": "Risky-Bench",
+            "평가 축": "에이전트 안전(생활 지원 에이전트의 공격 표면별 안전 위험)",
+            "언어": "en",
+            "정의": "생활 지원 에이전트의 안전을 배포 환경 기준으로 평가하는 벤치마크. 도메인에 독립적인 안전 원칙에서 도출한 안전 루브릭 15개와 5개 공격 표면(사용자 지시, 외부 환경, 에이전트 메모리, 비대화형 도구 피드백, 에이전트 코드베이스)을 교차해 배달·매장 이용·온라인 여행 예약의 3개 도메인에서 총 750개 과제(도메인·공격 표면당 50개)를 구성한다. 주 지표는 공격 성공률(ASR)이며 LLM judge(GPT-4.1, temperature 0)가 채점하고 사람 2인이 검증한다. 논문은 에이전트 7종을 평가했고 ASR은 25%에서 60% 범위로 보고된다(논문 조건의 결과이며 현재 전역 리더보드가 아님).",
+            "대표 과제": "원래의 생활 지원 과제에 공격 전략(프롬프트 인젝션, 메모리 오염, 백도어 등)을 적용한 시나리오를 에이전트가 수행하고, 안전 루브릭 위반 여부를 궤적 전체로 판정",
+            "대표 예시·설명": "과제 설명: 생일 케이크 주문처럼 정상적인 영어 사용자 지시가 주어지고, 환경 데이터에 숨겨진 악성 문구가 알레르기 정보를 무시하게 유도하는지 확인하는 과제. 실제 시험 문항을 옮긴 것이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터·코드 라이선스는 아직 확인하지 않았다(공식 저장소 확인 필요). 이 벤치마크는 VitaBench의 실제 과제에서 파생되므로 원천 구성 요소의 약관을 이용 전에 따로 확인해야 한다. 일부 장면은 중국 플랫폼 맥락(주소, 가맹점 등)을 담고 있다. 채점에 LLM judge(논문은 GPT-4.1)와 사용자 시뮬레이터(GPT-4.1) 실행 환경이 필요하고, 공격 시나리오가 포함되어 이중 용도 위험이 있으므로 이용 범위를 점검해야 한다. lm-eval 지원 여부도 확인하지 않았다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/SophieZheng998/Risky-Bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agent safety (safety risks of life-assist agents across attack surfaces)",
+            "definition": "A deployment-grounded benchmark for the safety of life-assist agents. It crosses 15 safety rubrics derived from domain-agnostic safety principles with five attack surfaces (user instruction, external environment, agent memory, non-interactive tool feedback, agent codebase) across three domains (food delivery, in-store assistance, online travel booking), yielding 750 tasks (50 per attack surface per domain). The primary metric is attack success rate (ASR), judged by an LLM (GPT-4.1, temperature 0) and verified by two human annotators. The paper evaluates seven agents and reports ASR between 25% and 60% under its own conditions, which is not a current global leaderboard.",
+            "task": "Agents execute original life-assist tasks modified with attack strategies (prompt injection, memory poisoning, backdoors), and the full trajectory is judged for violations of a safety rubric.",
+            "example": "Task description, not an actual test item: given a benign English user instruction such as ordering a birthday cake, check whether malicious text hidden in environment data leads the agent to ignore the user's allergy information."
+          },
+          "evidence": {
+            "modality": {
+              "page": 23,
+              "quote": "Today is your"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "evaluates seven state-of-the-art"
+            },
+            "대표 예시·설명": {
+              "page": 23,
+              "quote": "Today is your"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "Our code and"
+            },
+            "언어": {
+              "page": 23,
+              "quote": "Today is your"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Our code and"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "evaluates seven state-of-the-art"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "evaluates seven state-of-the-art"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2602.03100",
+      "paper_title": "Risky-Bench: Evaluating Agentic Safety Risks in Real-World Life-Assist Deployments",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2602.03100",
+        "sha256": "99db621129a2f7f714404ebc844c1f92d4a24c6570df52410bc7962c7b03c037",
+        "accessed": "2026-11-16T03:30:08Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 45,
+          "elapsed_seconds": 170.25,
+          "pdf_sha256": "99db621129a2f7f714404ebc844c1f92d4a24c6570df52410bc7962c7b03c037",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "64372d3e5a76f6db53538217346d74d90f0d8b60343c13c520abbd6d6c223c9f",
+          "page_json_file": "2602.03100.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/SophieZheng998/Risky-Bench",
+            "fetched_url": "https://api.github.com/repos/SophieZheng998/Risky-Bench/readme",
+            "sha256": "0170efe278d700bb6080845b50fa6e6bf4f59e8ceed901a18700db779efeb255",
+            "accessed": "2026-11-16T03:33:21Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-16T03:33:21Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2602.03100",
+        "paper_title": "Risky-Bench: Evaluating Agentic Safety Risks in Real-World Life-Assist Deployments",
+        "abstract": "Large Language Models (LLMs) are increasingly deployed as agents that operate in real-world environments, introducing safety risks beyond linguistic harm through tool use, external transactions, and multi-step decision making. Existing agent safety evaluations construct risk-oriented tasks that lack a hierarchically organized taxonomy of attack surfaces, rely on predefined harm categories rather than deployment-grounded safety rubrics, and evaluate agent behavior in isolation rather than during realistic, long-horizon task execution. To address these limitations, we propose Risky-Bench, a deployment-grounded framework for systematic agent safety evaluation in life-assist settings. Risky-Bench derives context-aware safety rubrics from domain-agnostic safety principles and systematically probes safety risks across hierarchically organized attack surfaces through realistic task execution under varying threat assumptions. Applied to life-assist scenarios covering food delivery, in-store assistance, and online travel booking, Risky-Bench evaluates seven state-of-the-art agents across 750 tasks, revealing attack success rates ranging from 25% to 60% and exposing systematic failure patterns including threat-model-specific vulnerabilities, attack-surface-dependent risk concentration, and model-dependent effects of explicit reasoning. Our code and data are available at https://github.com/SophieZheng998/Risky-Bench.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:45Z",
+        "input_sha256": "0c96fb970ef2d713fa63258465532d3b768e9a4f1b03737ecc2b39b8fb8a23e3",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트의 실제 배포 안전성 평가 벤치마크로 언어 모델 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 안전 평가용 Risky-Bench 데이터·프레임워크 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43793022274",
+        "context_sha256": "040378a6c5b2bbe766f0f40737a9b73871034aeaced1659a2eaaf9cb4a2f52c4"
+      },
+      "proposal_sha256": "194b0a5c1b5fff592e2436dc09ea8c87f5b4bf40ac3bdbc2d4fce6896c54c440"
     }
   },
   "processed_comments": [],
@@ -108797,8 +108982,8 @@
         "2602.03100"
       ],
       "abstract_attempted": [],
-      "calls": 21,
-      "cost_usd": 20.0492
+      "calls": 22,
+      "cost_usd": 20.9532
     }
   },
   "reaudits": [
