@@ -678,4 +678,16 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Answer existence, counting and comparison questions (Yes/No or an integer) with grounding regions, then judge evidence support under the AESP rules.",
     "example": "Task description, not an actual test item: given a remote sensing image and a question, the model returns an answer and grounding regions, and the benchmark checks whether the number of target objects covered matches the answer (existence, exact count, or comparison between two classes)."
   },
+  "pvfh-bench": {
+    "axis": "Images (premise-induced visual fixation hallucination)",
+    "definition": "A benchmark built from 258 MSCOCO 2014 validation images, each with a true object and a visually confusable but absent object, that diagnoses hallucination caused by false-premise queries. It has four subsets (Vanilla, Visual Fixation, False Premise, and the core Premise-Induced Visual Fixation setting) with 258 instances each, 1,032 in total. The metric is accuracy in percentage points, graded by an LLM judge (Qwen3.5-Flash). The paper reports non-reasoning results for 10 LVLMs and reasoning-mode results for some of them.",
+    "task": "Existence verification (actual object, confusable object) and false-premise spatial-relation queries about an absent object, checking whether the model rejects the premise.",
+    "example": "Task description: when an image contains a newspaper but no magazine, the query asks 'Is the {false object} in the image?' or asks where the absent object is (upper or lower half), and the model should reject the premise. This is not an actual test item."
+  },
+  "sanzaru": {
+    "axis": "Agents (protocol formation and collaboration under epistemic and communication asymmetry)",
+    "definition": "A cooperative bomb-defusal puzzle benchmark in which information and action authority are split across three agents, each with a different restriction on hearing, speaking, or seeing. It consists of 120 puzzle instances across seven families.",
+    "task": "Across seven families (Base, Carving, Flashing Light, Flashback, Shuffle Wires, Haystack, Bait), a team must form a communication protocol and cut the correct wire.",
+    "example": "Task description (not an actual test item): an English system prompt describes the three roles (Deaf, Mute, Blind) and their channel limits, and the agents use speak, gesture, act, and wait calls to pass information to one another and defuse the bomb."
+  },
 };
