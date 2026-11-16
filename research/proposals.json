@@ -72137,7 +72137,7 @@
     },
     "2610.15134": {
       "decision": "propose",
-      "reason": "Lumen-bench는 도구 호출 환경에서 비윤리적 요청에 대한 실제 행동(harmful tool call)을 측정하는 새 벤치마크다. 시나리오 108개를 포루투갈어 원본에서 영어를 포함한 5개 언어로 병렬 제공하며, 영어 요청문이 PDF에 인용되어 있다. 텍스트 입력만 쓰므로 en 트랙 text 모달리티 한 행으로 제안한다. 한국어 과제는 없어 ko 행은 만들지 않았다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 자동 검증하지 않았으므로 '확인 불가'로 기록했다. 공식 링크는 논문 초록에 명시된 GitHub 저장소다.",
+      "reason": "Lumen-bench는 도구 호출 환경에서 비윤리적 요청에 대한 실제 행동(harmful tool call)을 측정하는 새 벤치마크다. 시나리오 108개를 포루투갈어 원본에서 영어를 포함한 5개 언어로 병렬 제공하며, 영어 요청문이 PDF에 인용되어 있다. 텍스트 입력만 쓰므로 en 트랙 text 모달리티 한 행으로 제안한다. 한국어 과제는 없어 ko 행은 만들지 않았다. 라이선스는 논문 13쪽과 공식 저장소 README가 데이터셋 CC-BY-4.0, 코드 MIT로 명시한다. 공식 README에 lm-eval 언급이 없어 lm-eval 지원은 미표기로 기록했다. 추천 모델 점수는 논문 23쪽 Table 15(L3-beh, 30개 모델)에서 가져왔다.",
       "changes": [
         {
           "track": "en",
@@ -72150,12 +72150,12 @@
             "대표 과제": "시나리오 요청을 받아 21개 도구를 호출할지 거부할지 결정하고 호출 내용을 L0~L3로 채점",
             "대표 예시·설명": "과제 설명: 채용 담당자가 영어로 저소득 지역 출신이나 공립학교 출신 후보를 선발 과정에서 제외하라고 요청하면, 모델이 후보 처리 도구로 실제 필터를 적용하는지 거부하는지 판단한다. 실제 시험 문항을 옮긴 것이 아니다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스는 자동 검증하지 못했으므로 이용 전에 데이터셋 카드와 저장소를 확인해야 한다. 영어 시나리오는 포르투갈어 원본을 Claude Sonnet 4.6이 번역한 것이며 체계적인 사람 검수는 없었다. 사람 보정은 포르투갈어 83건뿐이고, 판정은 o4-mini에 의존한다. 응답은 단일 세션이며 도구와 피드백은 시뮬레이션이다. 윤리적으로 민감한 요청 내용이 포함되어 있다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-4.0(데이터셋), 코드는 MIT",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "출처 표기(BY) 필요. 논문 13쪽과 공식 저장소 README는 데이터셋에 CC-BY-4.0을, 코드에 MIT를 별도로 부여한다. 시나리오는 저자가 새로 쓴 합성 데이터이고 영어 시나리오는 포르투갈어 원본을 Claude Sonnet 4.6이 번역한 것이며 체계적인 사람 검수는 없었다. 공개 자료에는 30개 모델이 만든 응답 기록이 포함되므로(논문 9쪽), 해당 모델 제공자의 약관은 이용 전에 따로 점검해야 한다. 사람 보정은 포르투갈어 83건뿐이고 판정은 o4-mini에 의존한다. 응답은 단일 세션이며 도구와 피드백은 시뮬레이션이다. 윤리적으로 민감한 요청 내용이 포함되어 있다. 공식 README에 lm-eval 언급이 없고 자체 스크립트로 재현한다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/TropicAI-Research/lumen"
           },
           "modality": "text",
@@ -72199,9 +72199,430 @@
               "quote": "behavioral benchmark of"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "page": 13,
+              "quote": "The dataset is distributed under CC-BY-4.0"
+            },
+            "상업적 이용": {
+              "page": 13,
+              "quote": "The dataset is distributed under CC-BY-4.0"
+            },
+            "수정·파생": {
+              "page": 13,
+              "quote": "The dataset is distributed under CC-BY-4.0"
+            },
+            "재배포": {
+              "page": 13,
+              "quote": "The dataset is distributed under CC-BY-4.0"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/TropicAI-Research/lumen",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "L3-behavioral harmful-action rate (L3-beh), percent of completed trials (%), lower is better",
+            "setting": "Table 15 (paper page 23): per-model rate across all ten language/prompt conditions (108 scenarios x 5 languages x 6 pressure variants x 2 system prompts, 6,480 cases per model; N excludes API failures), tool-calling with 21 tools, evaluator temperature=0 and max_tokens=1024 (except GPT-5-Mini and GPT-5.4, which use provider defaults), up to 5 iterations, o4-mini semantic judge. These are results reported in this paper, not a current global leaderboard.",
+            "higher_is_better": false,
+            "results": [
+              {
+                "model": "Claude-Haiku-4.5",
+                "score": "0.00",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Claude-Haiku-4.5 C 6,480 0.00 0.00 0.00 0.00"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Claude-Haiku-4.5 C 6,480 0.00 0.00 0.00 0.00"
+                }
+              },
+              {
+                "model": "Gemini-3.1-Pro",
+                "score": "0.00",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Gemini-3.1-Pro C 6,480 0.00 0.00 0.00 0.00"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Gemini-3.1-Pro C 6,480 0.00 0.00 0.00 0.00"
+                }
+              },
+              {
+                "model": "GPT-5.4",
+                "score": "0.00",
+                "evidence": {
+                  "page": 23,
+                  "quote": "GPT-5.4 C 6,480 0.00 0.00 0.00 0.00"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "GPT-5.4 C 6,480 0.00 0.00 0.00 0.00"
+                }
+              },
+              {
+                "model": "GPT-5-mini",
+                "score": "0.05",
+                "evidence": {
+                  "page": 23,
+                  "quote": "GPT-5-mini C 6,480 0.05 0.05 0.05 0.05"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "GPT-5-mini C 6,480 0.05 0.05 0.05 0.05"
+                }
+              },
+              {
+                "model": "MiniMax-M2.7",
+                "score": "0.08",
+                "evidence": {
+                  "page": 23,
+                  "quote": "MiniMax-M2.7 O 6,480 0.14 0.12 0.12 0.08"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "MiniMax-M2.7 O 6,480 0.14 0.12 0.12 0.08"
+                }
+              },
+              {
+                "model": "Gemma-4-31B",
+                "score": "0.23",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Gemma-4-31B O 6,480 0.26 0.23 0.23 0.23"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Gemma-4-31B O 6,480 0.26 0.23 0.23 0.23"
+                }
+              },
+              {
+                "model": "Qwen3.5-27B",
+                "score": "0.25",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Qwen3.5-27B O 6,480 0.40 0.37 0.37 0.25"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Qwen3.5-27B O 6,480 0.40 0.37 0.37 0.25"
+                }
+              },
+              {
+                "model": "DeepSeek-V3.2",
+                "score": "0.28",
+                "evidence": {
+                  "page": 23,
+                  "quote": "DeepSeek-V3.2 O 6,480 0.86 0.52 0.52 0.28"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "DeepSeek-V3.2 O 6,480 0.86 0.52 0.52 0.28"
+                }
+              },
+              {
+                "model": "Qwen3.5-397B-A17B",
+                "score": "0.34",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Qwen3.5-397B-A17B O 6,480 0.40 0.34 0.34 0.34"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Qwen3.5-397B-A17B O 6,480 0.40 0.34 0.34 0.34"
+                }
+              },
+              {
+                "model": "Gemma-4-26B",
+                "score": "0.39",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Gemma-4-26B O 6,480 0.39 0.39 0.39 0.39"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Gemma-4-26B O 6,480 0.39 0.39 0.39 0.39"
+                }
+              },
+              {
+                "model": "GPT-OSS-Safeguard-20B",
+                "score": "0.56",
+                "evidence": {
+                  "page": 23,
+                  "quote": "GPT-OSS-Safeguard-20B O 6,480 0.79 0.69 0.69 0.56"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "GPT-OSS-Safeguard-20B O 6,480 0.79 0.69 0.69 0.56"
+                }
+              },
+              {
+                "model": "GPT-OSS-120B",
+                "score": "0.56",
+                "evidence": {
+                  "page": 23,
+                  "quote": "GPT-OSS-120B O 6,480 0.80 0.68 0.57 0.56"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "GPT-OSS-120B O 6,480 0.80 0.68 0.57 0.56"
+                }
+              },
+              {
+                "model": "Qwen3.5-35B-A3B",
+                "score": "0.88",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Qwen3.5-35B-A3B O 6,480 5.37 5.05 5.05 0.88"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Qwen3.5-35B-A3B O 6,480 5.37 5.05 5.05 0.88"
+                }
+              },
+              {
+                "model": "GPT-OSS-20B",
+                "score": "0.88",
+                "evidence": {
+                  "page": 23,
+                  "quote": "GPT-OSS-20B O 6,480 1.14 0.94 0.91 0.88"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "GPT-OSS-20B O 6,480 1.14 0.94 0.91 0.88"
+                }
+              },
+              {
+                "model": "Sabiá-4",
+                "score": "1.22",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Sabiá-4 C 6,480 1.23 1.22 1.22 1.22"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Sabiá-4 C 6,480 1.23 1.22 1.22 1.22"
+                }
+              },
+              {
+                "model": "GPT-4.1",
+                "score": "1.50",
+                "evidence": {
+                  "page": 23,
+                  "quote": "GPT-4.1 C 6,480 1.70 1.50 1.50 1.50"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "GPT-4.1 C 6,480 1.70 1.50 1.50 1.50"
+                }
+              },
+              {
+                "model": "Gemini-3.1-Flash-Lite",
+                "score": "2.31",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Gemini-3.1-Flash-Lite C 6,480 3.35 2.42 2.42 2.31"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Gemini-3.1-Flash-Lite C 6,480 3.35 2.42 2.42 2.31"
+                }
+              },
+              {
+                "model": "Qwen3.5-9B",
+                "score": "2.53",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Qwen3.5-9B O 6,480 3.90 2.64 2.64 2.53"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Qwen3.5-9B O 6,480 3.90 2.64 2.64 2.53"
+                }
+              },
+              {
+                "model": "Llama-4-Scout",
+                "score": "3.56",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Llama-4-Scout O 6,480 4.51 4.20 4.20 3.56"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Llama-4-Scout O 6,480 4.51 4.20 4.20 3.56"
+                }
+              },
+              {
+                "model": "Sabiazinho-4",
+                "score": "6.03",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Sabiazinho-4 C 6,480 6.94 6.16 6.16 6.03"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Sabiazinho-4 C 6,480 6.94 6.16 6.16 6.03"
+                }
+              },
+              {
+                "model": "GPT-4.1-mini",
+                "score": "6.36",
+                "evidence": {
+                  "page": 23,
+                  "quote": "GPT-4.1-mini C 6,480 7.70 6.40 6.37 6.36"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "GPT-4.1-mini C 6,480 7.70 6.40 6.37 6.36"
+                }
+              },
+              {
+                "model": "Mistral-Small-2603",
+                "score": "7.99",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Mistral-Small-2603 O 6,480 8.63 8.16 8.15 7.99"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Mistral-Small-2603 O 6,480 8.63 8.16 8.15 7.99"
+                }
+              },
+              {
+                "model": "Mistral-Large-2512",
+                "score": "8.41",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Mistral-Large-2512 O 6,480 8.94 8.70 8.69 8.41"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Mistral-Large-2512 O 6,480 8.94 8.70 8.69 8.41"
+                }
+              },
+              {
+                "model": "Ministral-8B",
+                "score": "13.40",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Ministral-8B O 6,480 14.04 13.63 13.58 13.40"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Ministral-8B O 6,480 14.04 13.63 13.58 13.40"
+                }
+              },
+              {
+                "model": "Qwen3-235B-A22B",
+                "score": "15.34",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Qwen3-235B-A22B O 6,480 18.40 18.04 17.99 15.34"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Qwen3-235B-A22B O 6,480 18.40 18.04 17.99 15.34"
+                }
+              },
+              {
+                "model": "Llama-3.1-8B",
+                "score": "23.75",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Llama-3.1-8B O 6,463 25.53 24.83 24.80 23.75"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Llama-3.1-8B O 6,463 25.53 24.83 24.80 23.75"
+                }
+              },
+              {
+                "model": "Llama-3.3-70B",
+                "score": "27.55",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Llama-3.3-70B O 6,465 28.82 28.20 28.07 27.55"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Llama-3.3-70B O 6,465 28.82 28.20 28.07 27.55"
+                }
+              },
+              {
+                "model": "Qwen3-32B",
+                "score": "33.41",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Qwen3-32B O 6,480 36.16 34.68 34.66 33.41"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Qwen3-32B O 6,480 36.16 34.68 34.66 33.41"
+                }
+              },
+              {
+                "model": "Qwen3-8B",
+                "score": "42.28",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Qwen3-8B O 6,480 45.52 43.44 43.18 42.28"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Qwen3-8B O 6,480 45.52 43.44 43.18 42.28"
+                }
+              },
+              {
+                "model": "Qwen3-14B",
+                "score": "45.99",
+                "evidence": {
+                  "page": 23,
+                  "quote": "Qwen3-14B O 6,480 48.72 46.99 46.85 45.99"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 23,
+                  "quote": "Qwen3-14B O 6,480 48.72 46.99 46.85 45.99"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.15134",
@@ -72310,7 +72731,8 @@
         "source_run": "43793022274",
         "context_sha256": "1d86acca6cab0d337ab1c1b5a2f1e1a0e32e06680ccf7781c976107a0d050587"
       },
-      "proposal_sha256": "421473f40d5a31bd06f437a1109df0621aaeff066207bc1d1493777578035c89"
+      "proposal_sha256": "e631e48cd03bb9ee42fbcd2b339739fcff27a2fe9ff93fa7c9466b9c74505d9f",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -107918,8 +108340,8 @@
         "2610.15134"
       ],
       "abstract_attempted": [],
-      "calls": 15,
-      "cost_usd": 13.9192
+      "calls": 16,
+      "cost_usd": 15.0507
     }
   },
   "reaudits": [
