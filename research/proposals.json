@@ -73613,6 +73613,156 @@
       },
       "issue_url": null,
       "proposal_sha256": "ebf698d0c9dbd6f45ec6daefb2bafb0d15e70d36eac659c4dd6b8c6bd7f9bdb4"
+    },
+    "2610.15773": {
+      "decision": "propose",
+      "reason": "HMU-Bench는 재사용 가능한 새 벤치마크입니다. ABC 악보 기반 Q&A 1,029문항쌍과 오디오 Q&A 460문항쌍으로 구성되고, 문항은 중국어-영어 쌍입니다. 중국어는 범위 밖이지만 영어 버전의 과제는 en 트랙에 해당합니다. 그래서 en 트랙 행 하나만 제안합니다. 논문이 공식 자원으로 밝힌 GitHub 주소가 있어 링크 근거도 충분합니다. 다만 오디오 부분은 text/vision 두 값으로 정확히 표현되지 않아, 악보 부분 기준으로 text로 분류했고 이 점을 유의사항에 적었습니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "hmu-bench",
+            "이름": "HMU-Bench",
+            "평가 축": "이해(음악 이해: 악보·오디오, 계층 라벨)",
+            "언어": "en(중국어-영어 병렬 중 영어 버전)",
+            "정의": "옴니 모델의 음악 이해를 악보(ABC)와 오디오 두 부분으로 평가하는 중·영 병렬 벤치마크. ABC Q&A는 1,029 문항쌍(6개 음악 영역, 38개 과제 유형, 풀이 요구 라벨은 추출·단일 단계 추론·다단계 추론)이고, Audio Q&A는 92개 녹음에 460 문항쌍(전역/지역 범위와 난이도를 교차한 5개 구성)이다. 음악은 모두 Suno 생성물이며 문항과 참조 답은 사람이 검수했다. 응답은 개방형이고 참조 기반으로 0–4점 척도로 채점한다(논문은 Qwen 3.5 Flash 채점). 논문은 옴니 모델 7종과 텍스트 전용 기준 2종을 평가했다.",
+            "대표 과제": "ABC Q&A(악보 발췌문에 대한 개방형 질의응답)와 Audio Q&A(전체 녹음과 질문에 대한 개방형 질의응답)",
+            "대표 예시·설명": "과제 설명: ABC 악보 발췌문과 영어 질문을 주고(예: 숨은 주음과 조성을 판별하고 근거를 설명), 모델이 개방형 답을 쓰면 참조 답과 대조해 0–4점으로 채점한다. 오디오 부분은 녹음 전체와 질문을 입력으로 쓴다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스와 이용 조건은 확인하지 못했다. 논문은 평가 전용 용도이며 Suno 이용 약관을 따른다고 밝힌다(논문 2쪽). 논문은 데이터·주석·평가 프롬프트를 공개할 예정이라고 적었으므로 공개 시점과 범위를 이용 전에 확인해야 한다. 이 행은 영어 버전을 대상으로 하며 중국어 버전은 범위 밖이다. 오디오 입력이 필요한 Audio Q&A는 text/vision 구분으로 정확히 표현되지 않아, 악보 기반 ABC Q&A 기준으로 text로 분류했다. 음악은 Suno 생성물에 한정되고 질문만 제시하는 대조군이 없으며, 오디오 참조 82건은 추가 청취 검수를 기다리고 사람과 채점 모델 간 일치도는 측정되지 않았다(논문 4쪽). LLM 채점은 악보 출력의 옥타브 오류를 놓칠 수 있다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/stepaudiollm/hmu-bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Music understanding (notation and audio, hierarchically labeled)",
+            "definition": "A Chinese-English parallel benchmark that evaluates omni models' music understanding on notation (ABC) and audio. ABC Q&A has 1,029 question pairs (six musical domains, 38 task types; solution-requirement labels: extraction, single-step inference, multi-step inference). Audio Q&A has 460 question pairs on 92 recordings (five scope-difficulty configurations crossing global/local scope with difficulty). All music is Suno-generated, and questions and references are human-reviewed. Answers are open-ended and graded against references on a 0-4 scale (Qwen 3.5 Flash grades in the paper). The paper evaluates seven omni models and two text-only references.",
+            "task": "ABC Q&A (open-ended questions over ABC notation excerpts) and Audio Q&A (open-ended questions over a full recording)",
+            "example": "Task description: given an ABC notation excerpt and an English question (for example, identify the hidden tonic and mode and explain the evidence), the model writes an open-ended answer that is graded against a reference on a 0-4 scale. The audio part uses the full recording and a question as input."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "ABC Q&A contains"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "ABC Q&A contains"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "identify the hidden"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/stepaudiollm/hmu-bench"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "identify the hidden"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We introduce HMU-Bench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "ABC Q&A contains"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "ABC notation, audio"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.15773",
+      "paper_title": "HMU-Bench: Hierarchical Music Understanding Benchmark for Omni Models",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.15773",
+        "sha256": "d4b1fa95aad1d357dcdc1a172772348b34e7822f25e2f69b6f05ad644acce87a",
+        "accessed": "2026-11-16T04:04:35Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 5,
+          "elapsed_seconds": 41.88,
+          "pdf_sha256": "d4b1fa95aad1d357dcdc1a172772348b34e7822f25e2f69b6f05ad644acce87a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "67d28a9d684f6143eaabc25f95a1449c067a56e65014a682289e5805b5109b43",
+          "page_json_file": "2610.15773.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/stepaudiollm/hmu-bench",
+            "fetched_url": "https://api.github.com/repos/stepaudiollm/hmu-bench/readme",
+            "sha256": "a66739157d66eacf2a4cc3b486ed79da501cf320b646c90a3f497f5359eea654",
+            "accessed": "2026-11-16T04:05:46Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/stepaudiollm/hmu-bench/license",
+              "name": "LICENSE_PLACEHOLDER.md",
+              "spdx_id": "NOASSERTION",
+              "sha256": "b222b25b573719e3b1842856701b80b064ad23deec09c351acceff832649d165"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-16T04:05:46Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.15773",
+        "paper_title": "HMU-Bench: Hierarchical Music Understanding Benchmark for Omni Models",
+        "abstract": "Music-understanding benchmarks should identify both the evidence available to a model and the operations a correct answer requires. We introduce HMU-Bench, a bilingual benchmark with notation and audio components. ABC Q&A contains 1,029 Chinese-English question pairs across six musical domains, labeled as extraction, single-step inference, or multi-step inference. Audio Q&A contains 460 question pairs on 92 recordings, spanning five scope-difficulty configurations. All music is Suno-generated, and questions and references are human-reviewed. Reference-based evaluation of seven omni models yields high notation scores for the strongest systems, but no model averages above 1.4 on the 0-4 audio scale. Notation and audio rankings show little correlation. A transposition case study also reveals octave errors missed by LLM grading. These findings motivate separate modality reporting and event-level checks for symbolic outputs. Data, annotations, evaluator prompts, and graded responses will be released at https://github.com/stepaudiollm/hmu-bench.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:45Z",
+        "input_sha256": "c895cc735a8865ff7923698e5d985f1e40ec296ade18200f5d5c019cee163b7b",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "옴니 모델의 계층적 음악 이해 평가 벤치마크로 언어 모델 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "중영 이중언어 음악 이해 벤치마크 HMU-Bench 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43793022274",
+        "context_sha256": "3e4e6368145f41f0532c9eec3d383b17f5463848f41a28c5cac4b9ef2498b376"
+      },
+      "proposal_sha256": "9ac9a0fecd42d0f2422c1c8dd4b413abd31f3706284d242ce5ca33e8ea3e4892"
     }
   },
   "processed_comments": [],
@@ -109237,8 +109387,8 @@
         "2610.15773"
       ],
       "abstract_attempted": [],
-      "calls": 29,
-      "cost_usd": 27.5371
+      "calls": 30,
+      "cost_usd": 28.327
     }
   },
   "reaudits": [
