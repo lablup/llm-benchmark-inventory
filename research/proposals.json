@@ -73458,6 +73458,84 @@
         "context_sha256": "fefe43c83e86cba0792c8e32e643f03e2963be5118cc81bea6d13df7ce739c7b"
       },
       "proposal_sha256": "1e1c4ba6f4258678da3bccfc787da2f7dee0a74fee2be6aa6c9bf38abac72b65"
+    },
+    "2610.15666": {
+      "decision": "needs_evidence",
+      "reason": "이 논문은 페르시아어 단일 이미지 기반 VLA 데이터셋(258개 인스턴스, 230장 사진)과 PGOS-FA 지표를 새로 제안하므로 재사용 가능한 벤치마크 후보로 볼 수 있다. 그러나 과제 언어가 페르시아어(Persian-only)여서 이 인벤토리의 한국어/영어 범위 밖이며, 영어는 시스템 프롬프트 언어 비교일 뿐 번역된 데이터가 아니라고 논문 스스로 밝힌다(III-F). 또한 PDF가 데이터셋·코드의 공식 URL을 전혀 밝히지 않고 '합리적 요청 시 제공'이라고만 적어 '링크' 증거를 채울 수 없다. 따라서 링크 근거가 없어 propose할 수 없고, 언어 범위도 맞지 않아 변경안은 제출하지 않는다.",
+      "changes": [],
+      "arxiv_id": "2610.15666",
+      "paper_title": "A Persian Vision-Language-Action Dataset and Benchmark for Ambiguity- and Infeasibility-Aware Instruction-to-Plan Grounding",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.15666",
+        "sha256": "ff6211198b8255aa74da2f5254c163b60eaf0dcb3502d17023a39a0280757969",
+        "accessed": "2026-11-16T03:48:50Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 15,
+          "elapsed_seconds": 91.13,
+          "pdf_sha256": "ff6211198b8255aa74da2f5254c163b60eaf0dcb3502d17023a39a0280757969",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "e6786605e176c437e82b3e9212f20060823e13a955d059f561d333c1c34dd1be",
+          "page_json_file": "2610.15666.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-16T03:50:27Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.15666",
+        "paper_title": "A Persian Vision-Language-Action Dataset and Benchmark for Ambiguity- and Infeasibility-Aware Instruction-to-Plan Grounding",
+        "abstract": "Converting natural-language instructions into executable action plans conditioned on a scene image is a core capability for embodied human-robot interaction, but existing benchmarks target English, simulated or video-grounded environments, and largely assume instructions are clear and executable. We introduce the first Persian vision-language-action dataset for this task: 258 instances over 230 real household/office photographs, annotated with reference plans, deliberate ambiguity and infeasibility labels, disambiguating question-answer pairs, and an auto-generated chain-of-thought rationale for training. Using this resource, we ablate retrieval-augmentation, chain-of-thought prompting, and an agentic disambiguation step, evaluated with an LLM-as-judge protocol and a new metric, PGOS-FA, extending prior work (PG2S) with step-order sensitivity, an over-generation penalty, and Persian-adapted embeddings. Paired statistical testing across 36 comparisons shows retrieval-augmentation is a large, robustly significant effect, while finer-grained additions are directionally consistent but not statistically distinguishable from noise at this scale, and the LLM-judge metric has near-zero power where PGOS-FA succeeds. A blind human-correlation study on 79 real outputs shows PGOS-FA tracks human judgment at least as closely as the LLM-judge. Testing generalization beyond the ablation's single backbone, we find that most of the gap between an open-weight and a substantially stronger closed planner is attributable to open-weight model generation rather than to the closed model's capability specifically, and that our best configuration significantly outperforms an independently reproduced external baseline despite a weaker backbone. The dataset, PGOS-FA implementation, and evaluation code will be made available upon reasonable request.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:45Z",
+        "input_sha256": "2d0cc2caa285be97a737e0015e4c30b133202793d99888c2d9ad020edb743523",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "페르시아어 지시-계획 그라운딩 평가 벤치마크로 언어 모델 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "페르시아어 VLA 데이터셋·벤치마크, 한국어 아님, 재사용성 불명확"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "846b97194dd7ba0c0ebd7017bafe377d45612869b30847e321b4d086ad5bf610"
     }
   },
   "processed_comments": [],
@@ -109077,8 +109155,8 @@
         "2610.15666"
       ],
       "abstract_attempted": [],
-      "calls": 25,
-      "cost_usd": 23.7588
+      "calls": 26,
+      "cost_usd": 24.6633
     }
   },
   "reaudits": [
