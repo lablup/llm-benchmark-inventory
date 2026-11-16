@@ -71149,6 +71149,169 @@
       "proposal_sha256": "18d6843b8a473f193c25e2cb829fb0fc954781a9158be6e525502039d91489ce",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2610.14635": {
+      "decision": "propose",
+      "reason": "PVFH-Bench는 MSCOCO 이미지 258장으로 만든 재사용 가능한 시각 환각 진단 벤치마크이고, 과제 문장이 영어(\"Is the {false object} in the image?\")라 en 트랙의 vision 항목으로 제안합니다. 4개 하위셋 각 258건, 총 1,032건이며 지표는 정확도(%)이고 채점은 LLM judge(Qwen3.5-Flash)가 맡습니다. 공식 코드·데이터 주소는 PDF 초록에 있습니다. 라이선스 등은 확인하지 않아 '확인 불가'로 두고 유의사항에 적었습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "pvfh-bench",
+            "이름": "PVFH-Bench",
+            "평가 축": "이미지(전제 유도 시각 고착 환각)",
+            "언어": "en",
+            "정의": "MSCOCO 2014 검증 이미지 258장에서 이미지당 실제 객체와 시각적으로 혼동되지만 없는 객체 한 쌍을 만들고, 거짓 전제 질의에 모델이 따라가는 환각을 진단하는 벤치마크. 하위셋 4개(Vanilla, Visual Fixation, False Premise, 핵심 설정인 Premise-Induced Visual Fixation)에 각 258건씩 총 1,032건이며, 지표는 정확도(%)이고 채점은 LLM judge(Qwen3.5-Flash)로 한다. 논문은 LVLM 10종의 비추론 결과와 일부 모델의 추론 모드 결과를 보고한다.",
+            "대표 과제": "존재 확인(실제 객체, 혼동 객체)과 거짓 전제 공간 관계 질의(없는 객체의 위치 묻기)에 대해 전제를 거부하는지 평가",
+            "대표 예시·설명": "과제 설명: 이미지에 신문은 있고 잡지는 없을 때, 'Is the {false object} in the image?'처럼 없는 객체의 존재를 묻거나 그 객체의 위치(위쪽/아래쪽 등)를 물어 모델이 전제를 거부하는지 확인한다. 실제 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스·상업적 이용·수정·재배포·lm-eval 지원은 직접 확인하지 않았다. 논문 부록은 이미지가 MSCOCO 2014(CC BY 4.0)에서 왔고 생성 질문·주석도 같은 라이선스로 공개할 예정이라고 적었으나, 이 인벤토리에서는 검증하지 않았으므로 공식 저장소에서 확인해야 한다. 객체 쌍 생성에 Qwen3.5-Plus, 채점에 Qwen3.5-Flash 등 외부 모델 API가 쓰였고, 구성 요소별 약관은 별도로 확인해야 한다. 규모가 작은 진단용 벤치마크(COCO 이미지 한정)이며 논문 수치는 해당 논문 조건의 결과로 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/NEUIR/PVFH-Bench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (premise-induced visual fixation hallucination)",
+            "definition": "A benchmark built from 258 MSCOCO 2014 validation images, each with a true object and a visually confusable but absent object, that diagnoses hallucination caused by false-premise queries. It has four subsets (Vanilla, Visual Fixation, False Premise, and the core Premise-Induced Visual Fixation setting) with 258 instances each, 1,032 in total. The metric is accuracy in percentage points, graded by an LLM judge (Qwen3.5-Flash). The paper reports non-reasoning results for 10 LVLMs and reasoning-mode results for some of them.",
+            "task": "Existence verification (actual object, confusable object) and false-premise spatial-relation queries about an absent object, checking whether the model rejects the premise.",
+            "example": "Task description: when an image contains a newspaper but no magazine, the query asks 'Is the {false object} in the image?' or asks where the absent object is (upper or lower half), and the model should reject the premise. This is not an actual test item."
+          },
+          "evidence": {
+            "modality": {
+              "page": 4,
+              "quote": "258 images from"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "Premise-Induced Visual Fixation"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "Is the {false"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/ NEUIR/PVFH-Bench"
+            },
+            "언어": {
+              "page": 4,
+              "quote": "Is the {false"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "we introduce PVFH-Bench,"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "we introduce PVFH-Bench,"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Premise-Induced Visual Fixation"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.14635",
+      "paper_title": "PVFH-Bench: Benchmarking Premise-Induced Visual Fixation Hallucinations in Vision-Language Models",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.14635",
+        "sha256": "1f5c1aea52e9b1b1b53548039db8022e8f458d5832d7b70d3b13fb6aa7c2e729",
+        "accessed": "2026-11-16T03:00:11Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 18,
+          "elapsed_seconds": 93.33,
+          "pdf_sha256": "1f5c1aea52e9b1b1b53548039db8022e8f458d5832d7b70d3b13fb6aa7c2e729",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "03d83d2ab12667749c98e2ef89790850cdc2c4a1e2fe17f9f8a837c9e7708394",
+          "page_json_file": "2610.14635.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/NEUIR/PVFH-Bench",
+            "fetched_url": "https://api.github.com/repos/NEUIR/PVFH-Bench/readme",
+            "sha256": "95fc3d97a54bcab83311dbdeb11688f01fb373ddc600f72d692aed0de2bea36a",
+            "accessed": "2026-11-16T03:02:08Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/NEUIR/PVFH-Bench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "c3afafac9a86b70f9bf80695a1bf32c8bc00efd9e06f0c3f70521b44e688c41c"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-16T03:02:08Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.14635",
+        "paper_title": "PVFH-Bench: Benchmarking Premise-Induced Visual Fixation Hallucinations in Vision-Language Models",
+        "abstract": "Large Vision-Language Models (LVLMs) have achieved remarkable progress across a wide range of multimodal tasks. However, object hallucination remains a persistent challenge, undermining model reliability in applications such as visual question answering, embodied agents, and human-AI decision support systems. In this paper, inspired by cognitive science studies on perceptual bias, we investigate a new failure mode termed Premise-Induced Visual Fixation Hallucination (PVFH). Specifically, PVFH refers to a premise-induced reasoning error in which models become anchored to visually confusable evidence, accept a false textual premise, and subsequently generate responses about an absent yet visually plausible object. To systematically study this phenomenon, we introduce PVFH-Bench, a benchmark that automatically constructs visually confusable but absent targets and pairs the core hallucination setting with diagnostic subsets to trace how models move from object recognition to Premise-Induced Visual Fixation Hallucination. Experimental results on 10 state-of-the-art LVLMs demonstrate that all evaluated models are highly vulnerable to Premise-Induced Visual Fixation Hallucination. Moreover, we find that explicit chain-of-thought reasoning can further exacerbate this failure mode by encouraging models to overinterpret weak visual cues as supporting evidence for hallucinated objects.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:32Z",
+        "input_sha256": "eaf51a01697bd435da3c0e9668ace8dcbaa808e0d18fd39008162ee4ae026094",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "VLM 시각 고정 환각 벤치마크로 멀티모달 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "LVLM 환각 평가 벤치마크 PVFH-Bench 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "43793022274",
+        "context_sha256": "d716cdda09bf4402ccfb8d83ab975c56ef5cd1a2c3b80be10816dc7e2c9f5445"
+      },
+      "proposal_sha256": "6a7e03057552b48749153261bb1923dc237f599077b3f3df6fbc3c2ef734c366"
     }
   },
   "processed_comments": [],
@@ -106752,8 +106915,8 @@
         "2610.14635"
       ],
       "abstract_attempted": [],
-      "calls": 5,
-      "cost_usd": 4.9566
+      "calls": 6,
+      "cost_usd": 5.8539
     }
   },
   "reaudits": [
