@@ -73941,74 +73941,9 @@
       "proposal_sha256": "00c5226508768bc0b18512c6884c2ce280cb04b83daa8a0d44c8cc47ec07b646"
     },
     "2503.21821": {
-      "decision": "propose",
-      "reason": "영어 PhD 자격시험 물리 문제 1,034개로 구성된 개방형 풀이 벤치마크를 새로 제안한 논문이다. 인벤토리의 en 트랙에 같은 벤치마크가 없어 신규 행으로 올린다. 문제는 영어로 쓰여 있고 PDF가 공식 GitHub 저장소를 명시한다. 248개 문제는 그림이 필요하므로 modality는 vision으로 잡았다. 다만 76%는 그림 없는 텍스트 문제이고 논문의 주요 순위도 그림 없는 문제 기준이라, 검수자가 text로 바꿀 여지가 있다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 두었다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "physics",
-            "이름": "PHYSICS",
-            "평가 축": "추론(대학원 수준 물리 문제 풀이)",
-            "언어": "en",
-            "정의": "물리 PhD 자격시험에서 가져온 개방형 문제 1,034개(정답 2,559개)로, 고전역학, 양자역학, 열·통계역학, 전자기학, 원자물리, 광학 6개 영역을 다룬다. 검증 240개와 테스트 794개로 나뉘고 248개 문제는 그림을 포함한다. 문제마다 풀이와 검증된 참조 정답이 있고, 정답 유형은 수치, 기호, 텍스트다. 정답마다 LLM judge(GLM-5.3-Flash)가 판정하며, 모든 정답이 맞아야 인정하는 strict accuracy가 주 지표다. 논문 보고 결과는 모델 53종에 대한 것이며 현재 전역 리더보드가 아니다.",
-            "대표 과제": "6개 물리 영역의 다단계 개방형 문제 풀이(하위 질문별 수치·기호·텍스트 정답)",
-            "대표 예시·설명": "전자기학 문제에서 유전체로 반씩 채워진 구형 축전기의 전기변위, 전기장, 전체 정전용량을 구하게 하는 과제 설명이며 실제 시험 문항을 옮긴 것이 아니다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "PDF에서 데이터 라이선스 정보를 확인하지 못했다. 문제는 교재와 공개 온라인 자료에서 수집됐고(논문 3.1, 3.2절) 정답 검증에 LLM 에이전트가 쓰였으므로, 구성 요소별 약관을 이용 전에 따로 확인해야 한다. 채점에는 LLM judge가 필요하다. 그림이 있는 문제는 멀티모달 모델로만 평가할 수 있고, 텍스트 전용 모델은 그림 없는 문제에서만 평가된다. 공개 출처 문제라 사전학습 데이터와의 중복 여부는 측정되지 않았다(논문 한계 절).",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/yale-nlp/physics-verified"
-          },
-          "modality": "vision",
-          "english_copy": {
-            "axis": "Reasoning (graduate-level physics problem solving)",
-            "definition": "PHYSICS contains 1,034 open-ended problems (2,559 reference answers) from physics PhD-qualifying exams in six domains: classical mechanics, quantum mechanics, thermodynamics and statistical mechanics, electromagnetism, atomic physics, and optics. It is split into 240 validation and 794 test problems, and 248 problems include figures. Each problem has a worked solution and verified reference answers typed as numeric, symbolic, or text. An LLM judge (GLM-5.3-Flash) grades each answer separately, and the main metric is strict accuracy, which requires every answer to be correct. The paper's results cover 53 models and are not a current global leaderboard.",
-            "task": "Multi-step open-ended problem solving in six physics domains, with numeric, symbolic, or text answers per subquestion",
-            "example": "Task description, not an actual test item: for a spherical capacitor half filled with each of two dielectrics, find the electric displacements, the electric fields, and the total capacitance."
-          },
-          "evidence": {
-            "modality": {
-              "page": 3,
-              "quote": "With figures 248"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "benchmark for evaluating"
-            },
-            "대표 예시·설명": {
-              "page": 1,
-              "quote": "spherical capacitor of"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "https://github.com/yale-nlp/physics-verified"
-            },
-            "언어": {
-              "page": 1,
-              "quote": "spherical capacitor of"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "benchmark for evaluating"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "benchmark for evaluating"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "benchmark for evaluating"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "데이터셋 라이선스의 적용 범위를 확정할 수 없어 게시하지 않는다. 공식 GitHub README는 'Evaluation harness for PHYSICS-Verified'라는 평가 하니스 설명이고, 그 License 절의 'MIT.'와 LICENSE 파일(MIT)은 이 저장소의 코드에 대한 표기다. 데이터는 Hugging Face의 yale-nlp/physics-verified에 별도로 있는데 그 카드는 가져오지 못했다. 코드 라이선스는 데이터셋 라이선스가 아니므로 이 MIT를 라이선스, 상업적 이용, 수정·파생, 재배포 값의 근거로 쓸 수 없다. 반대로 LICENSE 파일 절이 있는 카드는 라이선스 부재의 근거가 될 수 없어 '미표기'와 '저작권 전부 보유'로 처리할 수도 없다. 또 문제는 교재와 공개 온라인 자료에서 가져온 것이라(논문 3쪽 '드로운 from major textbooks and reputable online resources', 3.1절 'publicly available sources') MIT가 모든 구성 요소에 적용된다고 볼 근거도 없다. lm-eval 지원 여부도 같은 이유로 라이선스 확정 전에는 정리할 수 없다. Hugging Face 데이터셋 카드(https://huggingface.co/datasets/yale-nlp/physics-verified)를 가져와 데이터 라이선스와 구성 요소 약관을 확인한 뒤 다시 제출해야 한다. 논문 2쪽의 Table 2(그림 없는 테스트 문제 602개 기준 strict accuracy)에는 추천 결과에 쓸 수 있는 수치가 있으나, 권리 필드가 확정되지 않아 이번에는 게시하지 않는다.",
+      "changes": [],
       "arxiv_id": "2503.21821",
       "paper_title": "Physics: Benchmarking Foundation Models on University-Level Physics Problem Solving",
       "paper_updated": "2026-10-14T00:00:00Z",
@@ -74078,7 +74013,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-17T04:00:10Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -74104,11 +74039,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "44003891677",
-        "context_sha256": "709e5041bdad31893f1dacb5a1f82b6fccdd7a8a5575c0cf14055a5e584999b4"
-      },
-      "proposal_sha256": "c7be500034a89e0ed30ca14973a330141feab14c913ab0f358852735101857af"
+      "proposal_sha256": "670e4fa8cbec25f4db737e361974368ef11cfaee24b7081195bb334a6ea1c746",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -110338,8 +110271,8 @@
         "2611.18517",
         "2611.18553"
       ],
-      "calls": 9,
-      "cost_usd": 6.8747
+      "calls": 10,
+      "cost_usd": 7.9846
     }
   },
   "reaudits": [
