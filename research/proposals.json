@@ -74045,7 +74045,7 @@
     },
     "2508.08742": {
       "decision": "propose",
-      "reason": "SciRerankBench는 과학 분야 RAG에서 리랭커를 평가하기 위해 새로 만든 재사용 가능한 영어 벤치마크입니다. 5개 과학 분야에 걸친 Q-C-A 5.5K쌍을 4가지 설정(NC, SSLI, CC, Base/Multi-Hop)으로 구성했고, 리랭커 13종과 LLM 11종을 평가합니다. 과제 문항과 맥락이 영어이므로 en 트랙의 텍스트 모달리티로 분류합니다. 공식 코드·데이터 링크는 1쪽 각주에 있습니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "reason": "SciRerankBench는 과학 분야 RAG에서 리랭커를 평가하기 위해 새로 만든 영어 벤치마크입니다. 5개 과학 분야에 걸친 Q-C-A 5.5K쌍을 4가지 설정(NC, SSLI, CC, Base/Multi-Hop)으로 구성했고, 리랭커 13종과 LLM 11종을 평가합니다. 과제 문항과 맥락이 영어이므로 en 트랙의 텍스트 모달리티로 분류합니다. 공식 코드·데이터 링크는 논문 1쪽 각주에 있습니다. 논문 PDF와 공식 저장소 README(LICENSE 파일 없음) 어디에도 벤치마크 자체의 라이선스가 적혀 있지 않아 '미표기(논문·공식 저장소 확인)'로 기록하고, 상업적 이용·수정·파생·재배포는 저자가 라이선스를 밝히기 전까지 '저작권 전부 보유'로 처리했습니다. 공식 README에는 lm-eval 언급이 없어 '미표기'로 기록했습니다. 벤치마크는 OpenAlex 등 다른 출처와 도구로 만들어졌으므로 구성 요소별 약관을 따로 점검하도록 안내합니다.",
       "changes": [
         {
           "track": "en",
@@ -74058,12 +74058,12 @@
             "대표 과제": "NC, SSLI, CC, Base, Multi-Hop 설정에서 후보 맥락 100개를 재순위화하고 상위 10개로 답변을 생성",
             "대표 예시·설명": "과학 질문 하나와 정답, 후보 맥락 100개가 주어진다. 리랭커가 관련 맥락을 상위로 올리면 LLM이 그 맥락만으로 답을 생성하고, 정답과의 토큰 Recall로 채점한다. SSLI와 CC 설정에서는 관련 맥락 사이에 각각 의미만 비슷한 논리상 무관 문단 10개, 사실이 조작된 문단 10개가 섞인다(과제 설명).",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스와 재배포 조건은 아직 확인하지 않았으므로 이용 전에 공식 저장소와 데이터 페이지에서 확인해야 한다. 질문, 답, 방해 맥락은 자동 생성한 합성 데이터이며 논문의 사람 평가로 품질을 점검했다. 평가 수치는 논문의 조건(오픈소스 LLM, 제로샷)에서 얻은 결과이며 현재 전역 리더보드가 아니다. 논문은 RankGPT를 계산 비용 때문에 실행하지 않았다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 이 벤치마크는 다른 출처와 도구로 구성되어 있다: OpenAlex의 학술 문헌 초록(논문 3쪽, 15쪽), 단일 홉 질문 생성용 LMQG(t5-small-squad-qag), 멀티홉 질문 생성용 Unsupervised-Multi-hop-QA 프레임워크(valhalla/t5-base-qg-hl와 BERT 기반 빈칸 채우기 모델), BGE 임베딩과 Qdrant 벡터 DB(모두 논문 3쪽). 반사실 맥락은 LLM이 원문을 다시 써서 만들었다(논문 4쪽). 각 구성 요소의 고유 약관은 이용 전에 따로 확인해야 한다. 논문 10쪽과 17쪽이 OpenAlex를 공개 라이선스(CC0)로 밝히지만 이는 원천 코퍼스에 대한 표기이며 벤치마크 자체의 라이선스가 아니다. 공식 README는 데이터 내려받기 주소가 자리표시자([DATA_URL])이며 곧 공개된다고 적고, 규모를 약 58,000개 Q-A-C 삼중쌍으로 소개하는 반면 논문은 5.5K쌍이라고 하므로 실제 내려받는 파일의 규모를 기록해 두어야 한다. 질문·답·방해 맥락은 자동 생성한 합성 데이터이며 논문의 사람 평가로 품질을 점검했다. 평가 수치는 논문 조건(오픈소스 LLM, 제로샷)의 결과이며 현재 전역 리더보드가 아니다. 논문은 RankGPT를 계산 비용 때문에 실행하지 않았다. 공식 README에 lm-eval 언급이 없고 자체 스크립트(scripts/eval/eval_reranker.py)로 평가한다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/Chhtt/SciRerankBench"
           },
           "modality": "text",
@@ -74107,9 +74107,105 @@
               "quote": "Scientific Rerank-oriented RAG"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/Chhtt/SciRerankBench",
+              "absent": true,
+              "pdf_mentions": [
+                {
+                  "page": 10,
+                  "quote": "released under open licenses",
+                  "about": "윤리 성명에서 원천 자료인 OpenAlex 메타데이터가 공개 라이선스로 배포된다는 서술이며, 벤치마크 자체의 라이선스가 아니다."
+                },
+                {
+                  "page": 17,
+                  "quote": "distributed under the Apache 2.0 License",
+                  "about": "체크리스트에서 평가 대상 리랭커·LLM과 OpenAlex 코퍼스의 라이선스(Apache 2.0, MIT, CC BY-NC-SA 4.0, CC0, LLaMA 2 Community License)를 열거한 서술이며, 벤치마크 자체의 라이선스가 아니다."
+                }
+              ]
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/Chhtt/SciRerankBench",
+              "absent": true,
+              "pdf_mentions": [
+                {
+                  "page": 10,
+                  "quote": "released under open licenses",
+                  "about": "윤리 성명에서 원천 자료인 OpenAlex 메타데이터가 공개 라이선스로 배포된다는 서술이며, 벤치마크 자체의 라이선스가 아니다."
+                },
+                {
+                  "page": 17,
+                  "quote": "distributed under the Apache 2.0 License",
+                  "about": "체크리스트에서 평가 대상 리랭커·LLM과 OpenAlex 코퍼스의 라이선스(Apache 2.0, MIT, CC BY-NC-SA 4.0, CC0, LLaMA 2 Community License)를 열거한 서술이며, 벤치마크 자체의 라이선스가 아니다."
+                }
+              ]
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/Chhtt/SciRerankBench",
+              "absent": true,
+              "pdf_mentions": [
+                {
+                  "page": 10,
+                  "quote": "released under open licenses",
+                  "about": "윤리 성명에서 원천 자료인 OpenAlex 메타데이터가 공개 라이선스로 배포된다는 서술이며, 벤치마크 자체의 라이선스가 아니다."
+                },
+                {
+                  "page": 17,
+                  "quote": "distributed under the Apache 2.0 License",
+                  "about": "체크리스트에서 평가 대상 리랭커·LLM과 OpenAlex 코퍼스의 라이선스(Apache 2.0, MIT, CC BY-NC-SA 4.0, CC0, LLaMA 2 Community License)를 열거한 서술이며, 벤치마크 자체의 라이선스가 아니다."
+                }
+              ]
+            },
+            "재배포": {
+              "source_url": "https://github.com/Chhtt/SciRerankBench",
+              "absent": true,
+              "pdf_mentions": [
+                {
+                  "page": 10,
+                  "quote": "released under open licenses",
+                  "about": "윤리 성명에서 원천 자료인 OpenAlex 메타데이터가 공개 라이선스로 배포된다는 서술이며, 벤치마크 자체의 라이선스가 아니다."
+                },
+                {
+                  "page": 17,
+                  "quote": "distributed under the Apache 2.0 License",
+                  "about": "체크리스트에서 평가 대상 리랭커·LLM과 OpenAlex 코퍼스의 라이선스(Apache 2.0, MIT, CC BY-NC-SA 4.0, CC0, LLaMA 2 Community License)를 열거한 서술이며, 벤치마크 자체의 라이선스가 아니다."
+                }
+              ]
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/Chhtt/SciRerankBench",
+              "absent": true
+            }
+          },
+          "recommendations": {
+            "metric": "Recall (LLM 생성 답변과 정답의 토큰 수준 일치, 단위 %)",
+            "setting": "이 논문(arXiv 2508.08742v3)의 표 4에서 보고된 결과이며 현재 전역 리더보드가 아니다. 데이터셋은 SciRerankBench의 Biology 서브셋, Base 설정(깨끗한 관련 맥락을 쓰는 표준 설정)이다. 논문 프로토콜은 BGE로 후보 100개를 검색한 뒤 리랭커가 상위 10개를 고르고 그 맥락으로 LLM이 답을 생성하는 제로샷 조건이며, 모든 모델은 기본 설정으로 실행하고 독립 실험 3회 결과를 평균±표준편차로 표기한다. 표 4는 LLM2Vec과 Rearank 두 리랭커만 비교하며, 값은 표에 인쇄된 그대로다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "LLM2Vec",
+                "score": "31.46",
+                "evidence": {
+                  "page": 16,
+                  "quote": "LLM2Vec</td><td>Bio.</td><td>33.72±0.36</td><td>32.77±0.45</td><td>31.78±0.52</td><td>31.34±0.61</td><td>31.46±0.50</td>"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Rearank",
+                "score": "46.69",
+                "evidence": {
+                  "page": 16,
+                  "quote": "Rearank</td><td>Bio.</td><td>49.98±0.79</td><td>48.57±1.27</td><td>47.11±0.81</td><td>46.48±2.16</td><td>46.69±0.94</td>"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2508.08742",
@@ -74209,7 +74305,8 @@
         "source_run": "44003891677",
         "context_sha256": "b67f11a01d590018ab7c5d48a5ae4aaa43ee31d956d4e65680b252d7d512ecd0"
       },
-      "proposal_sha256": "9514d81b403c0349752b70c03f8998d9cb3b8912a9c1ec49c267e5ae608a5923"
+      "proposal_sha256": "21e8bbf8c2155de415825cf68a10326e8bada9920ea283e7faab9bec092343d3",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -110441,8 +110538,8 @@
         "2611.18517",
         "2611.18553"
       ],
-      "calls": 11,
-      "cost_usd": 8.9605
+      "calls": 12,
+      "cost_usd": 10.0714
     }
   },
   "reaudits": [
