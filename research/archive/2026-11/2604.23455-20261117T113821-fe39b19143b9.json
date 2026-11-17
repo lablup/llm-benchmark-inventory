@@ -1,0 +1,151 @@
+{
+  "arxiv_id": "2604.23455",
+  "paper_title": "CUJBench: Benchmarking LLM Agents for Browser-to-Backend Failure Diagnosis",
+  "created_at": "2026-11-17T02:38:21Z",
+  "status": "needs_evidence",
+  "reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: The official card mentions the evaluation harness; cite it instead of claiming absence",
+  "source": {
+    "url": "https://arxiv.org/pdf/2604.23455",
+    "sha256": "b5fdf4d6c00042cdfc240db704493908242593ffb529f443af4015f4b7796216",
+    "accessed": "2026-11-16T03:36:43Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 10,
+      "elapsed_seconds": 72.18,
+      "pdf_sha256": "b5fdf4d6c00042cdfc240db704493908242593ffb529f443af4015f4b7796216",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "9455bbb66000659a35607cff2c3804a49ba6026ef85458a0fb53740677e8dd55",
+      "page_json_file": "2604.23455.pages.json"
+    },
+    "official_resources": [
+      {
+        "url": "https://github.com/haoming29/CUJBench",
+        "fetched_url": "https://api.github.com/repos/haoming29/CUJBench/readme",
+        "sha256": "cab0d8739054d102a85cdbb6386310cce87cb04741ef96a4ffeac67091d7e84c",
+        "accessed": "2026-11-16T03:38:21Z",
+        "license_file": {
+          "fetched_url": "https://api.github.com/repos/haoming29/CUJBench/license",
+          "name": "LICENSE",
+          "spdx_id": "Apache-2.0",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
+      }
+    ]
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "1e1c4ba6f4258678da3bccfc787da2f7dee0a74fee2be6aa6c9bf38abac72b65",
+  "changes": [
+    {
+      "track": "en",
+      "row": {
+        "id": "cujbench",
+        "이름": "CUJBench",
+        "평가 축": "에이전트(브라우저-백엔드 장애 진단)",
+        "언어": "en",
+        "정의": "실패한 CUJ(핵심 사용자 여정) 테스트를 고정된 멀티모달 스냅샷으로 진단하는 벤치마크. 시나리오 87개(OpenTelemetry Demo 59개, Tractor Store 28개)이며 5개 장애 계열(Baseline 2, Browser proxy 56, Backend flag 4, Compound 18, Frontend mutations 7)로 구성된다. 증거는 브라우저(Ef), 백엔드(Eb), 운영 맥락(Ec)으로 나뉘고 증거 접근 도구 12개와 제출 도구 1개를 고정한다. 평가는 A@1(component와 type 일치), CM, LM, TM, PCE, PCW, 증거 인용 재현율(ER), 제출률(SR), 도구 커버리지(TC), 호출 수, 추가 호출(EC)로 하며 A@1에는 시나리오 군집 95% 신뢰구간을 쓴다. 논문은 6개 LLM을 검색(B1), 브라우저 전용(B2), 전체 도구(B3) 3개 조건에서 평가했다(1,566회 중 1,562회 완료).",
+        "대표 과제": "실패한 CUJ 테스트의 알림과 스냅샷 증거(스크린샷, HAR, 콘솔, 트레이스, 로그, 최근 변경 등)를 도구로 조회해 장애 component, layer, 원인 type, 근거 증거 식별자를 제출하는 구조화된 RCA",
+        "대표 예시·설명": "과제 설명: 에이전트가 결제나 로그인 같은 사용자 여정의 실패 알림을 받고 고정 도구(view_screenshot, get_network_requests, search_logs 등)로 증거를 조회한 뒤 submit_root_cause로 진단과 인용 증거를 제출한다. 실제 시험 문항이 아니다.",
+        "예시 표기": "과제 설명",
+        "라이선스": "확인 불가",
+        "상업적 이용": "확인 불가",
+        "수정·파생": "확인 불가",
+        "재배포": "확인 불가",
+        "이용 시 유의사항": "라이선스, 상업적 이용, 수정·재배포 조건과 lm-eval 지원은 PDF에서 확인되지 않아 '확인 불가'로 둔다. 이 벤치마크는 OpenTelemetry Demo와 Tractor Store 두 오픈소스 앱을 기반으로 하므로 각 구성 요소의 약관은 이용 전에 따로 확인해야 한다. 시나리오 생성과 검토에 GPT-5.4를 썼고, 사람 SRE가 87개 중 40개를 검수해 8개의 라벨을 수정했다. 논문은 결과가 두 개의 전자상거래 앱 범위에 한정되며 대부분의 장애가 브라우저·HTTP 계층에서 시작된다고 밝힌다. 일부 모델(Llama-4-Scout, Qwen3-VL)은 도구 호출 형식 오류로 제출률이 낮다. 논문의 모델 비교는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+        "lm-eval 지원": "확인 불가",
+        "링크": "https://github.com/haoming29/CUJBench"
+      },
+      "modality": "vision",
+      "english_copy": {
+        "axis": "Agents (browser-to-backend failure diagnosis)",
+        "definition": "A benchmark that diagnoses failed CUJ (Critical User Journey) tests from frozen multi-modal snapshots. It has 87 scenarios (59 OpenTelemetry Demo, 28 Tractor Store) across five fault families (Baseline 2, Browser proxy 56, Backend flag 4, Compound 18, Frontend mutations 7). Evidence is partitioned into browser (Ef), backend (Eb) and operational context (Ec), with a fixed interface of 12 evidence tools plus one submission tool. Metrics are A@1 (component and type match), CM, LM, TM, PCE, PCW, evidence recall (ER), submission rate (SR), tool coverage (TC), calls and extra calls (EC), with scenario-clustered 95% confidence intervals for A@1. The paper evaluates six LLMs under retrieval (B1), browser-only (B2) and full-toolset (B3) conditions (1,562 of 1,566 runs completed).",
+        "task": "Given the alert and snapshot evidence of a failed CUJ test (screenshots, HAR, console, traces, logs, recent changes), query it with tools and submit a structured RCA with the faulty component, fault layer, root-cause type and cited evidence identifiers.",
+        "example": "Task description, not an actual test item: an agent receives a failure alert for a user journey such as checkout, inspects evidence with fixed tools (view_screenshot, get_network_requests, search_logs and others), and submits a diagnosis with cited evidence through submit_root_cause."
+      },
+      "evidence": {
+        "modality": {
+          "page": 5,
+          "quote": "view_screenshot"
+        },
+        "대표 과제": {
+          "page": 2,
+          "quote": "infer why a"
+        },
+        "대표 예시·설명": {
+          "page": 2,
+          "quote": "infer why a"
+        },
+        "링크": {
+          "page": 2,
+          "quote": "github.com/haoming29/CUJBench"
+        },
+        "언어": {
+          "page": 1,
+          "quote": "X just failed;"
+        },
+        "이름": {
+          "page": 1,
+          "quote": "CUJBench: Benchmarking LLM"
+        },
+        "정의": {
+          "page": 2,
+          "quote": "87 scenarios spanning"
+        },
+        "평가 축": {
+          "page": 2,
+          "quote": "infer why a"
+        }
+      },
+      "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "before": null,
+      "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    }
+  ],
+  "screening": {
+    "arxiv_id": "2604.23455",
+    "paper_title": "CUJBench: Benchmarking LLM Agents for Browser-to-Backend Failure Diagnosis",
+    "abstract": "Automated failure diagnosis requires correlating browser-visible symptoms with backend observability signals, yet existing benchmarks do not evaluate this cross-modal reasoning task. Constructing one is non-trivial: multi-modal failure scenarios are costly to annotate, and live-environment capture introduces stochasticity that makes cross-run agent comparison unreliable. We present CUJBench, to our knowledge, the first benchmark to combine browser-visible failure evidence with backend observability in a diagnostic framing. CUJBench addresses annotation cost through an LLM-assisted generation pipeline with a multi-agent review loop and a three-layer annotation scheme, producing 87 labeled scenarios across five fault families, and ensures reproducibility by packaging each failure as a deterministic multi-modal snapshot with a fixed tool interface. Evaluating six LLMs under retrieval, browser-only, and full-toolset baselines, the benchmark yields an overall accuracy of 21.6% with a ceiling of 52.5%, well below saturation. Contrary to expectation, browser-only agents outperform full-toolset agents in aggregate, with expanded evidence access inducing unfocused exploration rather than improved synthesis. Trajectory analysis identifies cross-modal synthesis as the primary bottleneck: agents retrieve the decisive evidence but fail to attribute it correctly, a failure that persists across all six models and that model scale and richer tool access alone cannot resolve.",
+    "paper_updated": "2026-10-14T00:00:00Z",
+    "created_at": "2026-10-19T13:50:45Z",
+    "input_sha256": "b0b7b019a5161b6928bca1cc8849d99847ce8276ae4a9ca4b45ddc6bf4fa5d70",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "LLM 에이전트의 브라우저-백엔드 실패 진단 평가 벤치마크로 부합"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "브라우저-백엔드 장애 진단 에이전트 벤치마크 CUJBench 신규 제안"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}
