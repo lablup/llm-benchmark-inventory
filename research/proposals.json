@@ -74042,6 +74042,174 @@
       "proposal_sha256": "670e4fa8cbec25f4db737e361974368ef11cfaee24b7081195bb334a6ea1c746",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2508.08742": {
+      "decision": "propose",
+      "reason": "SciRerankBench는 과학 분야 RAG에서 리랭커를 평가하기 위해 새로 만든 재사용 가능한 영어 벤치마크입니다. 5개 과학 분야에 걸친 Q-C-A 5.5K쌍을 4가지 설정(NC, SSLI, CC, Base/Multi-Hop)으로 구성했고, 리랭커 13종과 LLM 11종을 평가합니다. 과제 문항과 맥락이 영어이므로 en 트랙의 텍스트 모달리티로 분류합니다. 공식 코드·데이터 링크는 1쪽 각주에 있습니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "scirerankbench",
+            "이름": "SciRerankBench",
+            "평가 축": "검색(과학 RAG 리랭커 평가)",
+            "언어": "en",
+            "정의": "과학 문헌 기반 RAG에서 2단계 파이프라인의 리랭커를 평가하는 벤치마크. 생물, 물리, 화학, 지리, 수학 5개 분야에서 Q-C-A 5.5K쌍을 구성하고 4가지 설정을 둔다. 세 가지 진단 설정은 노이즈 맥락(NC), 의미는 비슷하지만 논리상 무관한 맥락(SSLI), 반사실 맥락(CC)이며, 깨끗한 관련 맥락을 쓰는 표준 설정(Base/Multi-Hop)을 함께 제공한다. 리랭커 13종과 LLM 11종을 평가하며, 리랭커는 Recall@10, Recall@5, AP, MRR로, LLM 답변은 토큰 수준 Recall로 채점한다. 후보 100개를 BGE로 검색한 뒤 리랭커가 상위 10개를 골라 LLM에 전달하는 제로샷 조건이다.",
+            "대표 과제": "NC, SSLI, CC, Base, Multi-Hop 설정에서 후보 맥락 100개를 재순위화하고 상위 10개로 답변을 생성",
+            "대표 예시·설명": "과학 질문 하나와 정답, 후보 맥락 100개가 주어진다. 리랭커가 관련 맥락을 상위로 올리면 LLM이 그 맥락만으로 답을 생성하고, 정답과의 토큰 Recall로 채점한다. SSLI와 CC 설정에서는 관련 맥락 사이에 각각 의미만 비슷한 논리상 무관 문단 10개, 사실이 조작된 문단 10개가 섞인다(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스와 재배포 조건은 아직 확인하지 않았으므로 이용 전에 공식 저장소와 데이터 페이지에서 확인해야 한다. 질문, 답, 방해 맥락은 자동 생성한 합성 데이터이며 논문의 사람 평가로 품질을 점검했다. 평가 수치는 논문의 조건(오픈소스 LLM, 제로샷)에서 얻은 결과이며 현재 전역 리더보드가 아니다. 논문은 RankGPT를 계산 비용 때문에 실행하지 않았다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Chhtt/SciRerankBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Retrieval (reranker evaluation for scientific RAG)",
+            "definition": "A benchmark for evaluating rerankers in two-stage retrieval-augmented generation over scientific literature. It has 5.5K question-context-answer pairs across five subjects (biology, physics, chemistry, geography, mathematics) and four settings. Three diagnostic settings are Noisy Contexts (NC), Semantically Similar but Logically Irrelevant Contexts (SSLI), and Counterfactual Contexts (CC), plus a standard setting with clean relevant contexts (Base/Multi-Hop). Thirteen rerankers and eleven LLMs are evaluated. Rerankers are scored with Recall@10, Recall@5, AP and MRR, and LLM answers with token-level Recall. In the zero-shot protocol, BGE retrieves 100 candidates, a reranker selects the top 10, and the LLM generates the answer.",
+            "task": "Rerank 100 candidate contexts in the NC, SSLI, CC, Base and Multi-Hop settings and generate an answer from the top 10",
+            "example": "Task description: given a scientific question, a gold answer and 100 candidate passages, a reranker promotes relevant passages, an LLM answers from the selected passages, and token-level Recall against the gold answer is computed. In SSLI and CC, 10 semantically similar but logically irrelevant passages or 10 counterfactual passages are mixed into the candidates."
+          },
+          "evidence": {
+            "modality": {
+              "page": 25,
+              "quote": "What are two"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "5.5K Q-C-A pairs"
+            },
+            "대표 예시·설명": {
+              "page": 25,
+              "quote": "What are two"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/Chhtt/SciRerankBench"
+            },
+            "언어": {
+              "page": 25,
+              "quote": "What are two"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "SciRerankBench"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "5.5K Q-C-A pairs"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Scientific Rerank-oriented RAG"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2508.08742",
+      "paper_title": "SciRerankBench: Benchmarking Rerankers Towards Scientific Retrieval-Augmented Generation with LLMs",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2508.08742",
+        "sha256": "b6b94febf21d1fc58db628389964a40e42114bd793f2dc10d88477b635af3e3a",
+        "accessed": "2026-11-17T04:00:53Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "poppler_failed"
+          ],
+          "page_count": 28,
+          "elapsed_seconds": 292.44,
+          "pdf_sha256": "b6b94febf21d1fc58db628389964a40e42114bd793f2dc10d88477b635af3e3a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "7f7d11e7dceb48c4fa19b649d08ba182ccc5feb77809cb22749c48f57b2f7718",
+          "page_json_file": "2508.08742.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Chhtt/SciRerankBench",
+            "fetched_url": "https://api.github.com/repos/Chhtt/SciRerankBench/readme",
+            "sha256": "64d276b355b6b3b4e15b80cfd5376f4c63ca0981d4cbc4cfe650924da794cd1f",
+            "accessed": "2026-11-17T04:06:07Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-17T04:06:07Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2508.08742",
+        "paper_title": "SciRerankBench: Benchmarking Rerankers Towards Scientific Retrieval-Augmented Generation with LLMs",
+        "abstract": "Scientific literature question answering is a pivotal step towards new scientific discoveries. Recently, \\textit{two-stage} retrieval-augmented generated large language models (RAG-LLMs) have shown impressive advancements in this domain. Such a two-stage framework, especially the second stage (reranker), is particularly essential in the scientific domain, where subtle differences in terminology may have a greatly negative impact on the final factual-oriented or knowledge-intensive answers. Despite this significant progress, the potential and limitations of these works remain unexplored. In this work, we present a Scientific Rerank-oriented RAG Benchmark (SciRerankBench), for evaluating rerankers within RAG-LLMs systems, spanning five scientific subjects. To rigorously assess the reranker performance in terms of noise resilience, relevance disambiguation, and factual consistency, we develop three types of question-context-answer (Q-C-A) pairs, i.e., Noisy Contexts (NC), Semantically Similar but Logically Irrelevant Contexts (SSLI), and Counterfactual Contexts (CC). Through systematic evaluation of 13 widely used rerankers on five families of LLMs, we provide detailed insights into their relative strengths and limitations. To the best of our knowledge, SciRerankBench is the first benchmark specifically developed to evaluate rerankers within RAG-LLMs, which provides valuable observations and guidance for their future development.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:45Z",
+        "input_sha256": "862ef2f83d16922734d451e4353e6550405f5bb102058c232f7a0694ace0ca48",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "과학 검색 증강 생성의 리랭커 평가 벤치마크로 언어 모델 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "과학 RAG 리랭커 평가용 SciRerankBench 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "44003891677",
+        "context_sha256": "b67f11a01d590018ab7c5d48a5ae4aaa43ee31d956d4e65680b252d7d512ecd0"
+      },
+      "proposal_sha256": "9514d81b403c0349752b70c03f8998d9cb3b8912a9c1ec49c267e5ae608a5923"
     }
   },
   "processed_comments": [],
@@ -110273,8 +110441,8 @@
         "2611.18517",
         "2611.18553"
       ],
-      "calls": 10,
-      "cost_usd": 7.9846
+      "calls": 11,
+      "cost_usd": 8.9605
     }
   },
   "reaudits": [
