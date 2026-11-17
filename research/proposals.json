@@ -73763,6 +73763,103 @@
       "proposal_sha256": "9ac9a0fecd42d0f2422c1c8dd4b413abd31f3706284d242ce5ca33e8ea3e4892",
       "approval_policy": "claude_only",
       "resume_error": "2610.15773: pending evidence artifact unavailable; no repeated draft call"
+    },
+    "2610.15722": {
+      "decision": "needs_evidence",
+      "reason": "PhySimCode는 영어 프롬프트 기반의 물리 영상-코드 생성 벤치마크(비전 입력, 한 개 en 행 후보)로 재사용 가능한 벤치마크로 보입니다. 다만 제공된 PDF 본문에는 공식 데이터셋이나 코드 URL이 없습니다. 본문은 '평가 세트와 평가 코드가 공개되었다'고만 적고, 실제 주소로는 프로젝트 페이지(sourajakundu.github.io/PhySimCode)만 나옵니다. HuggingFace와 GitHub 주소는 arXiv 메타데이터 초록에만 있고 PDF 본문에서 인용할 수 없어, 링크 필드의 증거 요건을 충족하지 못합니다. 따라서 propose하지 않고 needs_evidence로 둡니다. PDF에서 데이터셋·코드 URL을 확인하면 en 트랙의 vision 행으로 다시 제안할 수 있습니다. 그때 지표는 물리 법칙 정확성(Likert 1~5), 시뮬레이션 동등성, 코드 실행 가능성, ±20% 파라미터 복원이며, 규모는 160,614샘플·162개 현상·평가 2,430개 영상입니다. 라이선스 등 5개 필드는 '확인 불가'로 기록하면 됩니다.",
+      "changes": [],
+      "arxiv_id": "2610.15722",
+      "paper_title": "PhySimCode: A Benchmark and Evaluation Method for Physics Video to Code Generation",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.15722",
+        "sha256": "4c431aab6e2d6df69f1c9040547b929185789c207636d3e43e8b175b9a65b5f9",
+        "accessed": "2026-11-17T03:43:53Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 34,
+          "elapsed_seconds": 274.92,
+          "pdf_sha256": "4c431aab6e2d6df69f1c9040547b929185789c207636d3e43e8b175b9a65b5f9",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "065681e8d5200f9dec68ee2a0df22b1858eb6d6b879e8bf6f5f387826df550d3",
+          "page_json_file": "2610.15722.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-17T03:48:40Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.15722",
+        "paper_title": "PhySimCode: A Benchmark and Evaluation Method for Physics Video to Code Generation",
+        "abstract": "Multimodal large language models (MLLMs) are good at video understanding and code generation, but it remains unclear whether they can recover the physical laws underlying videos, a capability essential for converting videos into executable simulations and for providing structured physical supervision in robotics. Captioning motion video does not imply that a model has inferred its governing dynamics, estimated quantitative parameters, or can regenerate the observed scene from code. Existing video-physics benchmarks evaluate plausibility, property estimation, or future-state prediction, but offer limited insight into whether models can translate visual dynamics into runnable simulation code. We introduce PhySimCode, a benchmark for physics video-to-code generation: given only a raw video, a model must infer the relevant physics, recover parameter values, and generate runnable Python that reproduces the input video. The dataset contains 160.6K procedurally generated samples spanning 162 physics phenomena across analytic SciPy simulations and PyBullet-rendered rigid-body, articulated, fluid, and contact-rich scenes; each sample bundles the simulation code, physical parameters, rendered video, and a structured chain-of-thought covering observations, laws, ODEs, numerical methods, and validation checks. We evaluate ten state-of-the-art closed- and open-source MLLMs along physical-law correctness, simulation equivalence, code executability, and parameter recovery. Models reliably state physics laws (4.27-4.93/5) yet score only 1.51-2.47/5 on inferring them from video, and the best system (Claude Sonnet 4.6) recovers just 7.7% of ground-truth parameters within $\\pm 20\\%$, exposing a substantial video-to-simulation gap. The 2,430-video evaluation set is available at https://huggingface.co/datasets/SourajaKundu123/PhySimCode and the evaluation code at https://github.com/SourajaKundu/PhySimCode",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:45Z",
+        "input_sha256": "778b25bec29e9b92b47ec05b9988100e218658ffdcca0fa733bbe8cb0469dd0b",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "물리 비디오-코드 생성 평가 벤치마크로 멀티모달 언어 모델 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "물리 비디오→코드 생성 벤치마크 PhySimCode 신규 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "7d95126ce6775ff5b11c9351bcf3db95f51a307856a27a541bf84c2a4591b25c"
     }
   },
   "processed_comments": [],
@@ -109988,8 +110085,8 @@
         "2611.18517",
         "2611.18553"
       ],
-      "calls": 5,
-      "cost_usd": 2.9937
+      "calls": 6,
+      "cost_usd": 3.9939
     }
   },
   "reaudits": [
