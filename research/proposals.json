@@ -74353,6 +74353,169 @@
         "reviewed_sha256": "21e8bbf8c2155de415825cf68a10326e8bada9920ea283e7faab9bec092343d3",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2607.10301": {
+      "decision": "propose",
+      "reason": "ChartSync는 차트 이미지와 영어 편집 지시문으로 텍스트 수정에 맞춰 도형 형상까지 연쇄 갱신하는 능력(VLCE)을 평가하는 새 벤치마크입니다. 870개 triplet, 9개 차트 범주, 4개 과제 유형으로 구성되고 코드·데이터 저장소가 PDF에 명시되어 있습니다. 과제 언어는 영어이고 입력이 차트 이미지라 en 트랙의 vision으로 분류합니다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록합니다. 이전 답변에서 PDF에 없던 인용문을 고쳐, 해당 쪽에 실제로 있는 짧은 문구로 대체했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "chartsync",
+            "이름": "ChartSync",
+            "평가 축": "이미지(차트 편집: 시각-논리 연쇄 편집)",
+            "언어": "en",
+            "정의": "차트 이미지와 편집 지시문을 입력으로, 텍스트 값 변경에 맞춰 도형 형상까지 동기화하는 능력(VLCE)을 평가하는 벤치마크. 전문가 검증을 거친 870개 triplet, 9개 차트 범주, 4개 과제 유형(단일 텍스트 편집, 복수 텍스트 편집, 단일 VLCE, 복수 VLCE)으로 구성되며 이 중 235개가 도형 연동 VLCE 사례. 객관적 시각 지표(OCR F1, SSIM)와 VLM 판정(TESR, VLCS, BFS)의 2단계로 평가하며, 논문은 14개 이미지 편집 모델과 코드 매개 파이프라인 1개를 평가함",
+            "대표 과제": "차트 이미지와 지시문을 받아 값 변경과 연동 도형 변경을 수행하는 이미지 편집(단일·복수 텍스트 편집, 단일·복수 VLCE)",
+            "대표 예시·설명": "영어 지시문으로 차트의 특정 값을 바꾸고 해당 막대 높이를 함께 조정하게 하는 과제 설명(실제 시험 문항을 옮긴 것이 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못했음. 코드 저장소의 라이선스가 데이터 라이선스를 대신하지 않으므로 이용 전 확인 필요. 원본 차트 렌더링 코드는 ChartMimic에서 가져왔으므로(논문 4쪽) 구성 요소별 약관도 따로 확인해야 함. 채점에 VLM 판정(논문은 Gemini-3.1-Pro 사용)이 필요함. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아님",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/kaka-yjk/ChartSyncCodebase"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (chart editing: visuo-logical cascading editing)",
+            "definition": "A benchmark of Visuo-Logical Cascading Editing (VLCE): given a chart image and an editing instruction, the model must synchronize geometry with textual value changes. It has 870 expert-validated triplets across 9 chart categories and 4 task types (single text edit, multiple text edit, single VLCE, multiple VLCE), of which 235 are geometry-coupled VLCE instances. Evaluation is two-tier: objective visual metrics (OCR F1, SSIM) and VLM-as-a-judge scores (TESR, VLCS, BFS). The paper evaluates 14 image editing models and one code-mediated pipeline.",
+            "task": "Image editing from a chart image and an instruction that changes a value and its coupled geometry (single/multiple text edit, single/multiple VLCE)",
+            "example": "Task description, not an actual test item: an English instruction asks to change a value in a chart and adjust the corresponding bar height."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "Image + instruction"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "870 triplets across"
+            },
+            "대표 예시·설명": {
+              "page": 21,
+              "quote": "Change the Number"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "ChartSyncCodebase"
+            },
+            "언어": {
+              "page": 21,
+              "quote": "Change the Number"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "introduce ChartSync"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "870 triplets across"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Visuo-Logical Cascading Editing"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2607.10301",
+      "paper_title": "ChartSync: A Benchmark for Visuo-Logical Cascading Chart Editing",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2607.10301",
+        "sha256": "57c1d5afefc29e27b73dd77f20694f00524495f8b996ed5b61d8f9a9708b2703",
+        "accessed": "2026-11-18T02:41:03Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 22,
+          "elapsed_seconds": 134.88,
+          "pdf_sha256": "57c1d5afefc29e27b73dd77f20694f00524495f8b996ed5b61d8f9a9708b2703",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "1fdb6d5e9420005d061d621f32a019a6eccc608410c5be137cbb192cbb3c5cdb",
+          "page_json_file": "2607.10301.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/kaka-yjk/ChartSyncCodebase",
+            "fetched_url": "https://api.github.com/repos/kaka-yjk/ChartSyncCodebase/readme",
+            "sha256": "25b28ec894fa177e054599a588e986a420298ac542a865946e5ab804e8291c3f",
+            "accessed": "2026-11-18T02:44:04Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/kaka-yjk/ChartSyncCodebase/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-18T02:44:04Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2607.10301",
+        "paper_title": "ChartSync: A Benchmark for Visuo-Logical Cascading Chart Editing",
+        "abstract": "Generative image editing models struggle with structured statistical charts when data modifications require geometric synchronization. We formalize this task as Visuo-Logical Cascading Editing (VLCE). However, existing methods remain confined to localized text substitutions and struggle with dependency-aware cascading updates. To systematically evaluate this capability, we introduce ChartSync, an expert-validated benchmark constructed via a programmatic rendering pipeline that guarantees deterministic visuo-logical coupling for the ground truth. ChartSync comprises 870 triplets across 9 chart categories and 4 task types, including 235 geometry-coupled VLCE instances that specifically test cascading text-to-geometry synchronization. We further evaluate these instances via a two-tier framework combining objective visual metrics with a vision-language model judge paradigm to assess low-level fidelity alongside multimodal comprehension and reasoning. Evaluating 14 image editing models and one code-mediated pipeline reveals a nuanced capability gap: most open-source models suffer severe drops in geometric synchronization, while only two frontier proprietary models show emerging VLCE capability, with their residual errors mainly involving semantic isolation and background corruption. Our detailed error analysis deconstructs these failure paradigms to identify core meta-abilities for guiding future multimodal architectures. The ChartSync dataset and code are publicly released at https://github.com/kaka-yjk/ChartSyncCodebase.",
+        "paper_updated": "2026-11-17T00:00:00Z",
+        "created_at": "2026-11-18T02:40:24Z",
+        "input_sha256": "84559489e6dfdc5237640031894004d81e2520f4ea71c93d598cc4bb24e8115c",
+        "version": "claude-v1",
+        "policy": "claude_only",
+        "status": "passed",
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "decision": "relevant",
+            "reason": "차트 편집 멀티모달 벤치마크, 공개 데이터셋 제공"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "44224161605",
+        "context_sha256": "b9ce7b9ec2760862047cebc147e1e1278a792d90828dd27cc2a931eac205d383"
+      },
+      "proposal_sha256": "350964085c1f22686d29316a893b6ef56974db983d69b8682866b146d0355dfa"
     }
   },
   "processed_comments": [],
@@ -111643,8 +111806,8 @@
         "2611.21292",
         "2611.21300"
       ],
-      "calls": 3,
-      "cost_usd": 0.1964
+      "calls": 4,
+      "cost_usd": 1.1396
     }
   },
   "reaudits": [
