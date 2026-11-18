@@ -74541,6 +74541,156 @@
       },
       "issue_url": null,
       "proposal_sha256": "fbae7f12bf6221770d6dcf2a6c7098a1854115576b317470778ff6094383e82a"
+    },
+    "2605.00513": {
+      "decision": "propose",
+      "reason": "ControBench는 Reddit의 영어 토론(Trump, abortion, religion 세 주제)으로 만든 새 벤치마크다. 사용자 7,371명, 게시물 1,783개, 상호작용 26,525건으로 구성된 이종 그래프에서 사용자 입장을 분류하는 노드 분류 과제를 정의한다. GNN, 사전학습 언어모델, LLM 7종을 함께 평가하므로 재사용 가능한 벤치마크로 판단한다. 과제 텍스트가 영어이고 이미지 입력이 없어 en 트랙, text로 분류했다. PDF 1쪽이 공식 코드·데이터 주소(GitHub)를 밝히고 있다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 PDF에서 확인되지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "controbench",
+            "이름": "ControBench",
+            "평가 축": "사회 담론 분석(논쟁적 담론에서 사용자 이념 입장 분류)",
+            "언어": "en",
+            "정의": "Reddit 토론 3개 주제(Trump, abortion, religion)로 만든 이종 소셜 그래프 벤치마크. 사용자 7,371명, 게시물 1,783개, 상호작용 26,525건으로 구성된다. 주제별 사용자 수는 Trump 2,067명(2클래스), Abortion 2,177명(3클래스), Religion 3,127명(9클래스)이다. 사용자 라벨은 스스로 밝힌 Reddit flair에서 얻는다. 사용자-댓글-사용자 간선은 답글과 부모 댓글의 텍스트를 함께 담는다. 학습·검증·테스트는 60/20/20 층화 분할이고 지표는 Macro-F1과 Micro-F1이다. GNN과 PLM은 전체 테스트셋에서 시드 3개 평균으로, LLM은 데이터셋당 층화 200명 표본에서 평가한다.",
+            "대표 과제": "이종 그래프에서 사용자 노드의 이념 입장 분류(노드 분류)",
+            "대표 예시·설명": "사용자가 쓴 게시물, 댓글, 부모 댓글에 대한 답글 텍스트와 그래프 구조를 이용해 해당 사용자의 입장 라벨(예: Trump 지지/비지지, 낙태 찬성/반대/혼합)을 예측하는 과제 설명. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터·코드 라이선스와 lm-eval 지원 여부는 확인하지 못했다. 데이터는 Reddit Data API로 수집한 공개 토론이므로 Reddit 약관 등 구성 요소별 약관을 이용 전에 따로 확인해야 한다. 논문 윤리 성명은 프로파일링, 표적화, 모더레이션 결정 등 고위험 용도로 쓰지 말라고 권고한다. 라벨은 자기 선언 flair에 기반한 대리 지표라 정식 평정자 간 일치 검증이 없다(Kimi-K2 기반 검증 κ는 0.46~0.79). 민감한 정치·종교 콘텐츠가 포함되어 있다. LLM 결과는 200명 표본 기준이라 전체 테스트셋 결과와 직접 비교할 수 없다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/thuytt0001/controbench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Social discourse analysis (user ideological stance classification in controversial discussions)",
+            "definition": "A heterogeneous social-graph benchmark built from Reddit discussions on three topics (Trump, abortion, religion). It contains 7,371 users, 1,783 posts and 26,525 interactions. Per-topic user counts are Trump 2,067 (2 classes), Abortion 2,177 (3 classes) and Religion 3,127 (9 classes). User labels come from self-declared Reddit flairs. User-comment-user edges carry both the reply text and the parent comment text. Splits are a stratified 60/20/20 train/validation/test, and metrics are Macro-F1 and Micro-F1. GNNs and PLMs are evaluated on the full test set averaged over three seeds, while LLMs are evaluated on a stratified 200-user sample per dataset.",
+            "task": "User stance node classification on a heterogeneous graph",
+            "example": "Task description, not an actual test item: predict a user's stance label (for example Trump supporter or non-supporter; pro-choice, pro-life or mixed view) from their posts, comments, replies to parent comments, and the graph structure."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "BERT embeddings for"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "node classification problem"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "node classification problem"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/thuytt0001/controbench"
+            },
+            "언어": {
+              "page": 1,
+              "quote": "President spread fake"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "ControBench, a benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "ControBench, a benchmark"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "ControBench, a benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2605.00513",
+      "paper_title": "ControBench: An Interaction-Aware Benchmark for Controversial Discourse Analysis on Social Networks",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2605.00513",
+        "sha256": "87218f044c9107c26fdc0767e86efe985aa781c741ccc78a47f7b2ab40dbbb6d",
+        "accessed": "2026-11-18T03:17:55Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 10,
+          "elapsed_seconds": 98.99,
+          "pdf_sha256": "87218f044c9107c26fdc0767e86efe985aa781c741ccc78a47f7b2ab40dbbb6d",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "c1083992b1433956184013dfcdb0c72c78d7ecdd2a0c38ec59968045c76268e2",
+          "page_json_file": "2605.00513.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/thuytt0001/controbench",
+            "fetched_url": "https://api.github.com/repos/thuytt0001/controbench/readme",
+            "sha256": "d3951cae882ddb5333e71403fa5eed5e25d04ffa7d5e6e1a8f63428700722168",
+            "accessed": "2026-11-18T03:19:58Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-18T03:19:58Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2605.00513",
+        "paper_title": "ControBench: An Interaction-Aware Benchmark for Controversial Discourse Analysis on Social Networks",
+        "abstract": "Understanding how people argue across ideological divides online is important for studying political polarization, misinformation, and content moderation. Existing datasets capture only part of this problem: some preserve text but ignore interaction structure, some model structure without rich semantics, and others represent conversations without stable user-level ideological identity. We introduce ControBench, a benchmark for controversial discourse analysis that combines heterogeneous social interaction graphs with rich textual semantics. Built from Reddit discussions on three topics, Trump, abortion, and religion, ControBench contains 7,370 users, 1,783 posts, and 26,525 interactions. The graph contains user and post nodes connected by semantically enriched edges; in particular, user-comment-user edges encode both a reply and the parent comment that it responds to, preserving local argumentative context. User labels are derived from self-declared Reddit flairs, providing a scalable proxy for ideological identity without manual annotation. The resulting datasets exhibit low or negative adjusted homophily (Trump: -0.77, Abortion: 0.06, Religion: 0.04), reflecting the cross-cutting structure of real-world debate. We evaluate graph neural networks, pretrained language models, and large language models on ControBench and observe distinct performance patterns across topics and model families, especially when ideological boundaries are ambiguous. These results position ControBench as a challenging and realistic benchmark for controversial discourse analysis.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:58Z",
+        "input_sha256": "1892b852bb9c81d310f6a1bd169df7e4e75e25e511ff71e09d4b8e3433ddc5b8",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "소셜 네트워크 논쟁 담론 분석 벤치마크로 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "논쟁적 담화 분석용 그래프-텍스트 벤치마크 ControBench 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "44224161605",
+        "context_sha256": "5a96c91a6d54386cd93ec9b8c3f07652b5d294aec30e1b8f54e648a0ac9b6cce"
+      },
+      "proposal_sha256": "c8d8d4aa279f507e340c83901d22722a582351a9896d1ef35416339eb33ad178"
     }
   },
   "processed_comments": [],
@@ -111846,8 +111996,8 @@
         "2611.21292",
         "2611.21300"
       ],
-      "calls": 8,
-      "cost_usd": 4.8757
+      "calls": 9,
+      "cost_usd": 5.7804
     }
   },
   "reaudits": [
