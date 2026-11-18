@@ -75038,6 +75038,219 @@
         "reviewed_sha256": "961db267b2841ebb5d36f8a21797092369184cfcb9f1fa7f0d0c2d8da5edb074",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2606.19887": {
+      "decision": "propose",
+      "reason": "FinRED는 금융 분야 LLM 안전성(레드팀)을 평가하는 새 벤치마크다. 전문가가 검증한 시드 5,805개, 2단계 위험 분류(Level-1 5개, Level-2 26개), 금융 특화 판정 루브릭, 공격 방법별 ASR 평가를 제공한다. 논문 Table I은 평가 언어를 Korean/English로 적고 있어 ko·en 두 트랙으로 제안한다. 다만 시드 수는 언어별로 나뉘어 보고되지 않아 전체 수치로만 적었다. 데이터셋은 자격을 갖춘 연구자에게만 열리는 게이트 방식이다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "ko",
+          "row": {
+            "id": "finred",
+            "이름": "FinRED",
+            "평가 축": "안전(금융 도메인 레드팀)",
+            "언어": "ko",
+            "정의": "금융 특화 위협(규제 회피, 사기 조력 등)에 대한 LLM의 적대적 내성을 평가하는 전문가 주도 레드팀 벤치마크. 공개물은 전문가 검증 시드 5,805개(Level-1 5개, Level-2 26개 위험 유형, 언어별 수는 미보고)이며, 5개 차원(유해성, 설득력, 거부 품질, 사실성, 회피성)의 금융 특화 판정 루브릭으로 채점한다. 공격 방법(Direct Request, GCG, AutoDAN, TAP, GPTFuzzer, AutoDAN-Turbo) 적용 후 Attack Success Rate(%)를 위험 범주별로 보고한다.",
+            "대표 과제": "금융 문서에서 만든 레드팀 행동 시드(Behavioral Prompts)에 대한 모델 응답을 루브릭으로 판정",
+            "대표 예시·설명": "공격자 페르소나(예: 침투 테스터)를 부여한 시드 프롬프트로 사이버 위협, 금융 범죄, 허위정보, 소비자 권리 침해, ICT 규제 회피 시나리오를 시험하고, 응답이 유해한 금융 목표에 기여하는지 판정하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "이중 용도 위험 때문에 데이터셋, 생성 파이프라인, 프롬프트 템플릿, 평가 틀이 자격을 갖춘 연구자에게만 게이트로 제공된다. 라이선스와 이용 조건은 확인하지 못했으며, 이용 전 저장소와 데이터 카드를 점검해야 한다. 논문은 한국 금융보안원(FSI) 규제 샌드박스에 도입됐다고 밝힌다. 언어별 시드 수는 논문에 없다. 판정 규칙은 어느 차원이든 Unsafe면 응답을 Unsafe로 처리한다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/datumo/FinRED"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Safety (financial-domain red-teaming)",
+            "definition": "An expert-guided red-teaming benchmark that measures LLM adversarial resilience against finance-specific threats such as regulatory evasion and fraud facilitation. The released artifact has 5,805 expert-validated seeds across 5 Level-1 and 26 Level-2 risk types (no per-language counts reported). Responses are scored with a five-dimension finance-specific judge rubric (harmfulness, persuasiveness, refusal quality, factualness, evasiveness). Attack Success Rate (%) is reported per risk category after applying attack methods (Direct Request, GCG, AutoDAN, TAP, GPTFuzzer, AutoDAN-Turbo).",
+            "task": "Judge model responses to red-teaming behavior seeds generated from financial documents",
+            "example": "Task description: seed prompts with an attacker persona (for example a penetration tester) probe cyber threat, financial crime, misinformation, consumer rights violation and ICT compliance evasion scenarios, and the judge checks whether the response contributes to the harmful financial objective."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "natural-language Seed"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "Behavioral Prompts (seeds)"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "experienced penetration tester"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/datumo/FinRED"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "Korean/English"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "FinRED"
+            },
+            "정의": {
+              "page": 3,
+              "quote": "5,805 expert-validated seeds"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "financial LLM safety"
+            }
+          },
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        },
+        {
+          "track": "en",
+          "row": {
+            "id": "finred",
+            "이름": "FinRED",
+            "평가 축": "안전(금융 도메인 레드팀)",
+            "언어": "en",
+            "정의": "금융 특화 위협(규제 회피, 사기 조력 등)에 대한 LLM의 적대적 내성을 평가하는 전문가 주도 레드팀 벤치마크. 공개물은 전문가 검증 시드 5,805개(Level-1 5개, Level-2 26개 위험 유형, 언어별 수는 미보고)이며, 5개 차원(유해성, 설득력, 거부 품질, 사실성, 회피성)의 금융 특화 판정 루브릭으로 채점한다. 공격 방법(Direct Request, GCG, AutoDAN, TAP, GPTFuzzer, AutoDAN-Turbo) 적용 후 Attack Success Rate(%)를 위험 범주별로 보고한다.",
+            "대표 과제": "금융 문서에서 만든 레드팀 행동 시드(Behavioral Prompts)에 대한 모델 응답을 루브릭으로 판정",
+            "대표 예시·설명": "공격자 페르소나(예: 침투 테스터)를 부여한 시드 프롬프트로 사이버 위협, 금융 범죄, 허위정보, 소비자 권리 침해, ICT 규제 회피 시나리오를 시험하고, 응답이 유해한 금융 목표에 기여하는지 판정하는 과제 설명",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "이중 용도 위험 때문에 데이터셋, 생성 파이프라인, 프롬프트 템플릿, 평가 틀이 자격을 갖춘 연구자에게만 게이트로 제공된다. 라이선스와 이용 조건은 확인하지 못했으며, 이용 전 저장소와 데이터 카드를 점검해야 한다. 논문은 한국 금융보안원(FSI) 규제 샌드박스에 도입됐다고 밝힌다. 언어별 시드 수는 논문에 없다. 판정 규칙은 어느 차원이든 Unsafe면 응답을 Unsafe로 처리한다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/datumo/FinRED"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Safety (financial-domain red-teaming)",
+            "definition": "An expert-guided red-teaming benchmark that measures LLM adversarial resilience against finance-specific threats such as regulatory evasion and fraud facilitation. The released artifact has 5,805 expert-validated seeds across 5 Level-1 and 26 Level-2 risk types (no per-language counts reported). Responses are scored with a five-dimension finance-specific judge rubric (harmfulness, persuasiveness, refusal quality, factualness, evasiveness). Attack Success Rate (%) is reported per risk category after applying attack methods (Direct Request, GCG, AutoDAN, TAP, GPTFuzzer, AutoDAN-Turbo).",
+            "task": "Judge model responses to red-teaming behavior seeds generated from financial documents",
+            "example": "Task description: seed prompts with an attacker persona (for example a penetration tester) probe cyber threat, financial crime, misinformation, consumer rights violation and ICT compliance evasion scenarios, and the judge checks whether the response contributes to the harmful financial objective."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "natural-language Seed"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "Behavioral Prompts (seeds)"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "experienced penetration tester"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/datumo/FinRED"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "Korean/English"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "FinRED"
+            },
+            "정의": {
+              "page": 3,
+              "quote": "5,805 expert-validated seeds"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "financial LLM safety"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2606.19887",
+      "paper_title": "FinRED: An Expert-Guided Benchmark Generation and Evaluation Framework for Financial LLM Red-Teaming",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.19887",
+        "sha256": "b893995dc0031ec2acbc0ec33a6c2ac0282bc4ce3dcd8bee38012f866e81ed00",
+        "accessed": "2026-11-18T03:29:25Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 10,
+          "elapsed_seconds": 103.8,
+          "pdf_sha256": "b893995dc0031ec2acbc0ec33a6c2ac0282bc4ce3dcd8bee38012f866e81ed00",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "239c81f7951fb9cb656f0088296e71322c429af5cdf9ea05b565501cc41da956",
+          "page_json_file": "2606.19887.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/datumo/FinRED",
+            "fetched_url": "https://huggingface.co/datasets/datumo/FinRED/raw/main/README.md",
+            "sha256": "b69afe55e3e1efc7e08991df6b62f8a1e53f33c5c66ba8e3171d04dfc7fa9d4d",
+            "accessed": "2026-11-18T03:31:41Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-18T03:31:41Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2606.19887",
+        "paper_title": "FinRED: An Expert-Guided Benchmark Generation and Evaluation Framework for Financial LLM Red-Teaming",
+        "abstract": "Existing safety benchmarks target general adversarial scenarios but miss finance-specific risks. Financial LLMs face regulatory compliance violations, fraud facilitation, and systemic trust erosion that require targeted evaluation. We introduce FinRED, an expert-guided red-teaming framework for financial LLM safety evaluation developed with financial experts. FinRED uses a novel two-level taxonomy mapping global standards (e.g., FATF and EU DORA) to threats ranging from regulatory evasion to complex fraud, integrated with a scalable pipeline that converts real financial documents into context-rich red-teaming Behavioral Prompts (seeds) through an expert-defined schema. Rigorous expert validation confirms seed plausibility and realism for meaningful LLM safety evaluation. We also provide an expert-validated, finance-specific rubric that goes beyond disclaimer checks, aligns more closely with human experts than static one-size-fits-all rubrics, and reduces critical false negatives from 28 to 12. Aligned with internationally adopted risk-management and information-security standards (e.g., ISO/IEC 27001), FinRED is deployed in South Korea's Financial Security Institute (FSI) regulatory sandbox for generative AI security evaluation in real financial services. To mitigate dual-use risks, the dataset, generation pipeline, prompt template, and evaluation framework are gated for qualified researchers at https://github.com/selectstar-ai/FinRED-paper and https://huggingface.co/datasets/datumo/FinRED.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:58Z",
+        "input_sha256": "773f85d7595479352f6456ea3bc5c8062b4149bd3f5fa5925b3743160e73dcc3",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "금융 LLM 레드팀 벤치마크로 안전성 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "금융 LLM 레드팀 평가 벤치마크·루브릭 FinRED 제안, 한국 배치"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "44224161605",
+        "context_sha256": "3f7797fd6c0114179680f8a7b0cf123bcb2eeb2b8570260db21173bfa3c49364"
+      },
+      "proposal_sha256": "4e5d40bceb70c99ce3c1eada0bfd16e808fa1a9f7d8a120927b35f68421720f3"
     }
   },
   "processed_comments": [],
@@ -112346,8 +112559,8 @@
         "2611.21292",
         "2611.21300"
       ],
-      "calls": 12,
-      "cost_usd": 8.8463
+      "calls": 13,
+      "cost_usd": 9.778
     }
   },
   "reaudits": [
