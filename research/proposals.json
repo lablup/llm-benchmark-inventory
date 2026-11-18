@@ -75121,6 +75121,95 @@
       "proposal_sha256": "41c87fc5daf7450fb7eae57f2086574138eb29138c0569a67f43ec3f07a4ca26",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2607.11889": {
+      "decision": "exclude",
+      "reason": "이 논문은 시점 일관(point-in-time) 언어 모델을 사전학습하고 공개하는 모델 논문이다. 평가에는 BoolQ, PIQA, HellaSwag, IFEval 같은 기존 벤치마크를 그대로 쓰고, 경제 평가도 기존 Dow Jones Newswire 자료로 포트폴리오 샤프 비율을 재는 응용 실험이다. 새로 만들었거나 실질적으로 갱신한 재사용 가능한 벤치마크는 확인되지 않는다. 본문이 공개했다고 밝힌 자원은 학습 파이프라인, 모델 체크포인트, 학습 데이터셋이다. 따라서 제안할 변경 사항이 없다.",
+      "changes": [],
+      "arxiv_id": "2607.11889",
+      "paper_title": "Scaling Point-in-Time Language Models: Enabling Economic Evaluation of Embeddings",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2607.11889",
+        "sha256": "25642f913ce2fc05a1833d71553ae0b06cbfb5b19985f2675a6a761b0e07f273",
+        "accessed": "2026-11-18T03:32:29Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 26,
+          "elapsed_seconds": 138.17,
+          "pdf_sha256": "25642f913ce2fc05a1833d71553ae0b06cbfb5b19985f2675a6a761b0e07f273",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "e166729e02e9ccb86b1ad0ce0fc8ae9e5166629c84ace86a938debdbd9501a0d",
+          "page_json_file": "2607.11889.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-18T03:34:53Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2607.11889",
+        "paper_title": "Scaling Point-in-Time Language Models: Enabling Economic Evaluation of Embeddings",
+        "abstract": "Large language models trained on unrestricted internet corpora inevitably embed information from the future, introducing lookahead bias that compromises the validity of backtests and causal inference in finance and the social sciences. Point-in-time language models--trained exclusively on text available up to each calendar date--eliminate this leakage by construction, but existing efforts typically produce models that lag substantially behind their unconstrained counterparts. We show that this performance gap can be substantially narrowed through scale. Training decoder-only transformers with up to 4 billion parameters on 1 trillion chronologically filtered tokens from FineWeb, we construct a sequence of monthly model checkpoints spanning 2013-2024. Across a range of common-sense reasoning and language understanding benchmarks, our models approach the performance of leading open-weight models of comparable size (e.g., Gemma-3-4B and LLaMA-7B) trained on temporally unrestricted data, although a performance gap remains on several tasks. Instruction fine-tuning via LoRA further improves downstream usability. We release the complete pipeline--including dataset construction, training infrastructure, and evaluation code--to enable reproducible point-in-time language modeling and to support research applications that require strict temporal validity.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:58Z",
+        "input_sha256": "0d0a9fbd9c783b1b3b2cf879dffe6babc6e094db65560403fc927d525e11402b",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "시점별 언어모델 벤치마크로 경제적 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "시점 언어모델 시리즈와 재현 평가 파이프라인·데이터셋 공개"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "33ea173f3766b2c047e36bb7a53b3d247d28cd2475bcaae3b34fd42f3e36960e"
     }
   },
   "processed_comments": [],
@@ -112430,8 +112519,8 @@
         "2611.21292",
         "2611.21300"
       ],
-      "calls": 14,
-      "cost_usd": 10.7406
+      "calls": 15,
+      "cost_usd": 11.7126
     }
   },
   "reaudits": [
