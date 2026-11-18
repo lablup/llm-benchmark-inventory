@@ -690,4 +690,10 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Across seven families (Base, Carving, Flashing Light, Flashback, Shuffle Wires, Haystack, Bait), a team must form a communication protocol and cut the correct wire.",
     "example": "Task description (not an actual test item): an English system prompt describes the three roles (Deaf, Mute, Blind) and their channel limits, and the agents use speak, gesture, act, and wait calls to pass information to one another and defuse the bomb."
   },
+  "geo-bench": {
+    "axis": "Security and manipulation (ranking-manipulation attacks and detection for LLM rankers under generative engine optimization, GEO)",
+    "definition": "A benchmark that compares 15 methods under one protocol and one ranking prompt: three white-box gradient attacks (STS, RAF, StealthRank), two black-box attacks (Zero-Shot, TAP), and ten white-hat C-SEO rewriting strategies. Five datasets (Ragroll, STSData, RewriteToRank, LLM Rank Optimizer, C-SEO Bench) form 83 lists, and every item serves as a target, giving 729 targets. The main ranker is Llama-3.1-8B-Instruct, and edits are re-scored on three other LLM rankers (Qwen2.5-14B, Mistral-7B, GPT-4o-mini) and a BGE cross-encoder. Product order is shuffled in 10 random orders and the median target rank is used. Effectiveness is measured with NRG, S@0.1 and P@0.1; stealth is measured with keyword violation rate (KVR), perplexity ratio (PPL-R), LLM-judge AUROC, and residual NRG at a fixed 6% false-positive rate. STS is reported only on STSData (30 targets) because its pipeline produced valid suffixes only there.",
+    "task": "Given a query and a list of products, edit only the target product's description (append a suffix or rewrite it) to raise its rank under an LLM ranker, then evaluate both the rank gain and how detectable the edit is.",
+    "example": "Task description (not an actual test item): an English query \"I am looking for a {noun}\" and a list of named, described items are given to an LLM ranker that returns a full ranking. An attack text is appended to, or rewrites, the target's description, and the benchmark measures whether the target's rank improves."
+  },
 };

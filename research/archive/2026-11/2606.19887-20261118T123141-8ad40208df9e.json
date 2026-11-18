@@ -1,0 +1,81 @@
+{
+  "arxiv_id": "2606.19887",
+  "paper_title": "FinRED: An Expert-Guided Benchmark Generation and Evaluation Framework for Financial LLM Red-Teaming",
+  "created_at": "2026-11-18T03:31:41Z",
+  "status": "needs_evidence",
+  "reason": "recommendations에 넣을 모델별 점수의 정확한 인용문을 만들 수 없어 이번 제안은 게시하지 않는다. 수치가 있는 표는 Table II(공격 성공률 %)뿐이다. 이 표의 점수 행에는 모델명이 없고 모델명은 별도 헤더 줄에만 있어서, 모델명과 점수를 함께 담은 짧은 인용문이 존재하지 않는다. 또한 두 추출본의 수치가 서로 다르다. 예를 들어 R1 Direct Request의 Qwen2.5는 MinerU 추출에서 9.41, Poppler 추출에서 82.41이다. 따라서 한 실험의 모델-점수 쌍을 신뢰할 수 있게 인용할 수 없다. Table III은 모델별 점수가 아니라 생성 파이프라인별 평균이다. 41쪽의 judge 일치율 수치는 평가 대상 모델의 점수가 아니라 판정 루브릭 간 비교이므로 사용하지 않았다. 참고로 라이선스는 공식 카드 frontmatter에 'license: cc-by-nc-4.0'로 적혀 있다. 이 필드는 문제가 되지 않으나, 점수 근거가 보완될 때까지 전체 변경을 비운다.",
+  "source": {
+    "url": "https://arxiv.org/pdf/2606.19887",
+    "sha256": "b893995dc0031ec2acbc0ec33a6c2ac0282bc4ce3dcd8bee38012f866e81ed00",
+    "accessed": "2026-11-18T03:29:25Z",
+    "page_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "extraction": {
+      "backend": "mineru",
+      "poppler_version": "pdftotext version 24.02.0",
+      "fallback_reasons": [
+        "table_layout"
+      ],
+      "page_count": 10,
+      "elapsed_seconds": 103.8,
+      "pdf_sha256": "b893995dc0031ec2acbc0ec33a6c2ac0282bc4ce3dcd8bee38012f866e81ed00",
+      "visual_pdf_audit": false,
+      "original_text_reduced": false,
+      "tables_missing": 0,
+      "mineru_version": "2.7.6",
+      "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "device": "cpu",
+      "formula_recognition": false,
+      "language": "en",
+      "page_json_sha256": "239c81f7951fb9cb656f0088296e71322c429af5cdf9ea05b565501cc41da956",
+      "page_json_file": "2606.19887.pages.json"
+    },
+    "official_resources": [
+      {
+        "url": "https://huggingface.co/datasets/datumo/FinRED",
+        "fetched_url": "https://huggingface.co/datasets/datumo/FinRED/raw/main/README.md",
+        "sha256": "b69afe55e3e1efc7e08991df6b62f8a1e53f33c5c66ba8e3171d04dfc7fa9d4d",
+        "accessed": "2026-11-18T03:31:41Z",
+        "license_file": null
+      }
+    ]
+  },
+  "extraction_model": "claude-sonnet-5-5",
+  "verification": null,
+  "validation_error": null,
+  "proposal_sha256": "41c87fc5daf7450fb7eae57f2086574138eb29138c0569a67f43ec3f07a4ca26",
+  "changes": [],
+  "screening": {
+    "arxiv_id": "2606.19887",
+    "paper_title": "FinRED: An Expert-Guided Benchmark Generation and Evaluation Framework for Financial LLM Red-Teaming",
+    "abstract": "Existing safety benchmarks target general adversarial scenarios but miss finance-specific risks. Financial LLMs face regulatory compliance violations, fraud facilitation, and systemic trust erosion that require targeted evaluation. We introduce FinRED, an expert-guided red-teaming framework for financial LLM safety evaluation developed with financial experts. FinRED uses a novel two-level taxonomy mapping global standards (e.g., FATF and EU DORA) to threats ranging from regulatory evasion to complex fraud, integrated with a scalable pipeline that converts real financial documents into context-rich red-teaming Behavioral Prompts (seeds) through an expert-defined schema. Rigorous expert validation confirms seed plausibility and realism for meaningful LLM safety evaluation. We also provide an expert-validated, finance-specific rubric that goes beyond disclaimer checks, aligns more closely with human experts than static one-size-fits-all rubrics, and reduces critical false negatives from 28 to 12. Aligned with internationally adopted risk-management and information-security standards (e.g., ISO/IEC 27001), FinRED is deployed in South Korea's Financial Security Institute (FSI) regulatory sandbox for generative AI security evaluation in real financial services. To mitigate dual-use risks, the dataset, generation pipeline, prompt template, and evaluation framework are gated for qualified researchers at https://github.com/selectstar-ai/FinRED-paper and https://huggingface.co/datasets/datumo/FinRED.",
+    "paper_updated": "2026-10-14T00:00:00Z",
+    "created_at": "2026-10-19T13:50:58Z",
+    "input_sha256": "773f85d7595479352f6456ea3bc5c8062b4149bd3f5fa5925b3743160e73dcc3",
+    "version": 4,
+    "status": "passed",
+    "votes": [
+      {
+        "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+        "decision": "relevant",
+        "reason": "금융 LLM 레드팀 벤치마크로 안전성 평가에 부합"
+      },
+      {
+        "model": "zai-org/GLM-5.3-Flash",
+        "decision": "relevant",
+        "reason": "금융 LLM 레드팀 평가 벤치마크·루브릭 FinRED 제안, 한국 배치"
+      }
+    ]
+  },
+  "approval_policy": "claude_only"
+}
