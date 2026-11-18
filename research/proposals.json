@@ -74691,6 +74691,163 @@
         "context_sha256": "5a96c91a6d54386cd93ec9b8c3f07652b5d294aec30e1b8f54e648a0ac9b6cce"
       },
       "proposal_sha256": "c8d8d4aa279f507e340c83901d22722a582351a9896d1ef35416339eb33ad178"
+    },
+    "2605.29107": {
+      "decision": "propose",
+      "reason": "GEO-Bench는 LLM 순위 조작(GEO) 공격 15개 방법을 하나의 프로토콜로 비교하는 재사용 가능한 벤치마크 논문이다. 5개 데이터셋 729개 타깃, LLM 랭커 4종과 교차 인코더 1종, 효과성·은닉성 지표를 정의한다. 과제 프롬프트가 영어이고 텍스트 입력만 쓰므로 en 트랙의 text로 분류했다. PDF 1쪽이 공식 코드 저장소를 명시한다. 라이선스 등 미확인 항목은 '확인 불가'로 두었고 새 행이라 기존 id와 겹치지 않는다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "geo-bench",
+            "이름": "GEO-Bench",
+            "평가 축": "보안·조작(LLM 랭커 대상 생성엔진최적화(GEO) 순위 조작 공격·탐지)",
+            "언어": "en",
+            "정의": "화이트박스 경사 공격 3종(STS, RAF, StealthRank), 블랙박스 공격 2종(Zero-Shot, TAP), 화이트햇 C-SEO 재작성 10종 등 15개 방법을 동일한 순위 프롬프트와 지표로 비교하는 벤치마크. 5개 데이터셋(Ragroll, STSData, RewriteToRank, LLM Rank Optimizer, C-SEO Bench)의 83개 목록에서 모든 항목을 타깃으로 삼아 729개 타깃을 구성한다. 주 랭커는 Llama-3.1-8B-Instruct이고 다른 LLM 랭커 3종(Qwen2.5-14B, Mistral-7B, GPT-4o-mini)과 BGE 교차 인코더로 재평가한다. 상품 순서를 10회 무작위로 섞어 타깃 순위의 중앙값을 쓰며, 효과성은 NRG, S@0.1, P@0.1로, 은닉성은 키워드 위반율(KVR), 퍼플렉시티 비율(PPL-R), LLM judge AUROC와 고정 오탐률(6%)에서의 잔존 NRG로 측정한다. STS는 유효한 접미사가 STSData에서만 생성되어 해당 30개 타깃에서만 보고된다.",
+            "대표 과제": "쿼리와 상품 목록이 주어졌을 때 타깃 상품의 설명만 수정(접미사 추가 또는 재작성)해 LLM 랭커 순위를 올리는 공격을 수행하고, 순위 상승 효과와 탐지 가능성을 평가",
+            "대표 예시·설명": "과제 설명: 영어 쿼리 \"I am looking for a {noun}\"와 이름·설명이 붙은 항목 목록을 LLM 랭커에 주고 전체 순위를 출력하게 한다. 타깃 항목의 설명에 공격 텍스트를 붙이거나 재작성한 뒤 순위가 올라가는지 측정한다(실제 문항 아님).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터·코드 라이선스는 확인하지 못했다. 이 벤치마크는 Ragroll, STSData, LLM Rank Optimizer, RewriteToRank, C-SEO Bench 등 기존 공개 데이터셋을 재구성했으므로(논문 3쪽) 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 논문 윤리 성명은 코드, 프롬프트, 생성 텍스트를 사용 제한과 함께 공개한다고 밝힌다. 순위 조작 공격을 포함한 이중 용도 연구이므로 이용 범위를 점검해야 한다. 논문은 짧은 영어 목록, 교차 인코더 1종, 자동 평가(LLM judge 1종, 사람 평가 없음)라는 한계를 밝히며 결과는 논문 조건의 값이고 현재 전역 리더보드가 아니다. 평가에는 GPU와 GPT-4o-mini API가 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/glad-lab/geobench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Security and manipulation (ranking-manipulation attacks and detection for LLM rankers under generative engine optimization, GEO)",
+            "definition": "A benchmark that compares 15 methods under one protocol and one ranking prompt: three white-box gradient attacks (STS, RAF, StealthRank), two black-box attacks (Zero-Shot, TAP), and ten white-hat C-SEO rewriting strategies. Five datasets (Ragroll, STSData, RewriteToRank, LLM Rank Optimizer, C-SEO Bench) form 83 lists, and every item serves as a target, giving 729 targets. The main ranker is Llama-3.1-8B-Instruct, and edits are re-scored on three other LLM rankers (Qwen2.5-14B, Mistral-7B, GPT-4o-mini) and a BGE cross-encoder. Product order is shuffled in 10 random orders and the median target rank is used. Effectiveness is measured with NRG, S@0.1 and P@0.1; stealth is measured with keyword violation rate (KVR), perplexity ratio (PPL-R), LLM-judge AUROC, and residual NRG at a fixed 6% false-positive rate. STS is reported only on STSData (30 targets) because its pipeline produced valid suffixes only there.",
+            "task": "Given a query and a list of products, edit only the target product's description (append a suffix or rewrite it) to raise its rank under an LLM ranker, then evaluate both the rank gain and how detectable the edit is.",
+            "example": "Task description (not an actual test item): an English query \"I am looking for a {noun}\" and a list of named, described items are given to an LLM ranker that returns a full ranking. An attack text is appended to, or rewrites, the target's description, and the benchmark measures whether the target's rank improves."
+          },
+          "evidence": {
+            "modality": {
+              "page": 3,
+              "quote": "I am looking"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "I am looking"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "I am looking"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/glad-lab/geobench"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "I am looking"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "GEO-BENCH, a benchmark"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "729 shared targets"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "GEO-BENCH, a benchmark"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2605.29107",
+      "paper_title": "GEO-Bench: Benchmarking Ranking Manipulation in Generative Engine Optimization",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2605.29107",
+        "sha256": "c5795a987b8e4614ff27cd1e34f84158fc298c71fb4247a9274c473e161cc86e",
+        "accessed": "2026-11-18T03:21:12Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 17,
+          "elapsed_seconds": 162.16,
+          "pdf_sha256": "c5795a987b8e4614ff27cd1e34f84158fc298c71fb4247a9274c473e161cc86e",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "c66441d9940133153bf57d32c9934f0471f3ac97650f4999de97be412d0ad5df",
+          "page_json_file": "2605.29107.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/glad-lab/geobench",
+            "fetched_url": "https://api.github.com/repos/glad-lab/geobench/readme",
+            "sha256": "9a85f3b88c1c2892874429e1a6a0ffcf9d1a4b04b93a080ab63f7d38befe4233",
+            "accessed": "2026-11-18T03:24:20Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-18T03:24:20Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2605.29107",
+        "paper_title": "GEO-Bench: Benchmarking Ranking Manipulation in Generative Engine Optimization",
+        "abstract": "Large language models (LLMs) increasingly rank products, documents, and recommendations for user queries, which makes manipulating these rankings a growing concern for fairness and information integrity. Research on generative engine optimization (GEO) has produced many manipulation methods, but each is evaluated on its own dataset with its own metrics, so their relative strength and detectability stay unclear. We present GEO-Bench, a benchmark that evaluates GEO ranking-manipulation attacks under one protocol. It unifies black-box prompt-based attacks (TAP, Zero-Shot), white-box gradient-based attacks (STS, RAF, StealthRank), and ten white-hat C-SEO strategies. We score every method on five datasets against a fixed open-weight ranker (Llama-3.1-8B-Instruct), using metrics for both effectiveness (NRG, Success@α, Promote@α) and stealth (keyword violation rate, perplexity ratio). Our evaluation shows that effectiveness and stealth trade off across adversarial attacks, that black-box content rewriting matches or exceeds gradient-based attacks on rank promotion while producing more fluent text and can evade both keyword- and perplexity-based detection on some domains, and that the access model does not predict attack strength. By standardizing datasets, attack implementations, and metrics, GEO-Bench enables the first direct comparison across these attack paradigms and supports the development of detection methods.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:58Z",
+        "input_sha256": "4bf14a78bfec80bdf6492f36cf6aa5027ab769e6ef21b6626cce2c7dd7317905",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "생성 엔진 최적화 순위 조작 벤치마크로 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "GEO 랭킹 조작 공격 통합 평가 벤치마크 GEO-Bench 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "44224161605",
+        "context_sha256": "a89e33843c3ddf25f64563c9f7adb27f5f88ecb77c7c382bc351f18967639ba9"
+      },
+      "proposal_sha256": "31b661dfb32549dccce495ca993e13c9a4fca7f6d4edfb131f6ec15c7f73e9e6"
     }
   },
   "processed_comments": [],
@@ -111997,8 +112154,8 @@
         "2611.21292",
         "2611.21300"
       ],
-      "calls": 9,
-      "cost_usd": 5.7804
+      "calls": 10,
+      "cost_usd": 6.7812
     }
   },
   "reaudits": [
