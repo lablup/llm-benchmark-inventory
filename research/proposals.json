@@ -106704,10 +106704,10 @@
     "2604.11581": {
       "arxiv_id": "2604.11581",
       "paper_title": "Hidden Measurement Error in LLM Pipelines Distorts Annotation, Evaluation, and Benchmarking",
-      "abstract": "LLM evaluations drive model deployment, safety standards, research conclusions, and future projections, for example, about AI's impact on the labor market. Yet the way we often estimate noise from autoraters (LLM-as-judge) ignores variability from factors like judge model choice and prompt phrasing, which means we're underestimating error in a way that worsens with more data. This unmeasured variance can affect results enough to reverse conclusions. And judge-pipelines that fail to average this variation are more vulnerable to \"benchmark hacking\". This paper introduces a framework we call \"total evaluation error (TEE),\" which decomposes LLM pipeline uncertainty and uses design-study projections to reduce total error. In our safety and ideology applications, naive standard errors are 53-70% smaller than the corrected SE under our TEE framework. Using Chatbot Arena data, we show naive 95% CI coverage drops as n grows, while TEE-corrected coverage holds at 95%, and TEE-guided pipelines restrict the potential range of benchmark gaming by roughly 43%. We show further that a small pilot allows for the estimation of proper CIs, with the added benefit of projecting which design changes most improve precision. Using those projections to allocate API calls cut MMLU estimation error roughly in half against the answer key at the same budget, and increased per-match agreement with human voters on Chatbot Arena by 7.9 percentage points.",
-      "paper_updated": "2026-11-11T00:00:00Z",
-      "created_at": "2026-11-12T02:39:38Z",
-      "input_sha256": "ae896824ca9109025f8938be1cadbe4679d2700df3155b12830008e57b1b286d",
+      "abstract": "LLM evaluations drive model deployment, safety standards, research conclusions, and future projections, for example, about AI's impact on the labor market. Yet the way we often estimate noise from autoraters (LLM-as-judge) ignores variability from factors like judge model choice and prompt phrasing, which means we're underestimating error in a way that worsens with more data. This unmeasured variance can affect results enough to reverse conclusions. And judge-pipelines that fail to average this variation are more vulnerable to \"benchmark hacking\". This paper introduces a framework we call \"total evaluation error (TEE),\" which decomposes LLM pipeline uncertainty and uses design-study projections to reduce total error. In our safety and ideology applications, naive standard errors are 53-70% smaller than the corrected SE under our TEE framework. Using Chatbot Arena data, we show naive 95% CI coverage drops as n grows, while TEE-corrected coverage holds at 95%, and TEE-guided pipelines restrict the potential range of benchmark gaming by roughly 43%. We show further that a small pilot allows for the estimation of proper CIs, with the added benefit of projecting which design changes most improve precision. Using those projections to allocate API calls cut MMLU estimation error roughly in half against the answer key at the same budget, and increased per-match agreement with human voters on Chatbot Arena by 5.5 percentage points.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "excluded",
@@ -106715,7 +106715,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "irrelevant",
-          "reason": "평가 오차 통계 프레임워크이며 새 벤치마크가 아님"
+          "reason": "평가 오차 분해 통계 프레임워크로 재사용 벤치마크 아님"
         }
       ]
     },
@@ -108521,11 +108521,11 @@
     },
     "2611.18279": {
       "arxiv_id": "2611.18279",
-      "paper_title": "GT-FENG: General Theory of Factual Evaluation and Normative Grounding in Language Models *Author(s)",
+      "paper_title": "GT-FENG: General Theory of Factual Evaluation and Normative Grounding in Language Models",
       "abstract": "Whether a language model's answer is correct often depends on context: the same value can be right under one jurisdiction, date, or legal definition and wrong under another. We introduce GT-FENG (General Theory of Factual Evaluation and Normative Grounding), the first general framework to unify contextual/temporal correctness and rule-based error attribution across law, policy, and other rule-governed domains. GT-FENG checks answers against the applicable rules and identifies documented rules that match incorrect answers. It shows that when multiple rules give the same value, the answer alone cannot tell which rule the model used. In Medicaid income-limit answers from two models, documenting the asked state's own records reduces the number of wrong answers that match only other states' values by 68-78%, and more than half of stable wrong answers then match two or more documented sources. GT-FENG provides a foundation for evaluating language models in rule-governed domains and for future benchmarks and evaluation toolkits. We release GT-FENG as an open-source Python package, gtfeng.",
-      "paper_updated": "2026-11-16T00:00:00Z",
-      "created_at": "2026-11-17T02:39:44Z",
-      "input_sha256": "b3d4ed57eb7de4953fb604cd2edfb8420bc8d8c2c6c24ed3bc3835c405ca90d4",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
       "version": "claude-v1",
       "policy": "claude_only",
       "status": "passed",
@@ -108533,7 +108533,7 @@
         {
           "model": "claude-sonnet-5-5",
           "decision": "uncertain",
-          "reason": "평가 프레임워크·패키지 공개, 벤치마크 여부와 언어 불명확"
+          "reason": "평가 프레임워크·패키지 공개, 벤치마크 자료 여부 불명확"
         }
       ]
     },
@@ -108930,6 +108930,330 @@
           "model": "claude-sonnet-5-5",
           "decision": "uncertain",
           "reason": "오디오-텍스트 평가 지표 제안, 재사용 자원 불명확"
+        }
+      ]
+    },
+    "2604.14548": {
+      "arxiv_id": "2604.14548",
+      "paper_title": "VoxSafeBench: Not Just What Is Said, but Who, How, and Where",
+      "abstract": "As speech language models (SLMs) transition from personal devices into shared, multi-user environments, their responses must account for far more than the words alone. Who is speaking, how they sound, and where the conversation takes place can each turn an otherwise benign request into one that is unsafe, unfair, or privacy-violating. Existing benchmarks, however, largely focus on basic audio comprehension, study individual risks in isolation, or conflate content that is inherently harmful with content that only becomes problematic due to its acoustic context. We introduce VoxSafeBench, among the first benchmarks to jointly evaluate social alignment in SLMs across three dimensions: safety, fairness, and privacy. VoxSafeBench adopts a Two-Tier design: Tier1 evaluates content-centric risks using matched text and audio inputs, while Tier2 targets audio-conditioned risks in which the transcript is benign but the appropriate response hinges on the speaker, paralinguistic cues, or the surrounding environment. To validate Tier2, we include intermediate perception probes and confirm that frontier SLMs can successfully detect these acoustic cues yet still fail to act on them appropriately. Across 22 tasks with bilingual coverage, we find that safeguards appearing robust on text often degrade in speech: safety awareness drops for speaker- and scene-conditioned risks, fairness erodes when demographic differences are conveyed vocally, and privacy protections falter when contextual cues arrive acoustically. Together, these results expose a pervasive speech grounding gap: current SLMs frequently recognize the relevant social norm in text but fail to apply it when the decisive cue must be grounded in speech. Code and data are publicly available at: https://amphionteam.github.io/VoxSafeBench_demopage/",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "이중언어 음성 LM 안전·공정성·프라이버시 벤치마크, 공개"
+        }
+      ]
+    },
+    "2605.09636": {
+      "arxiv_id": "2605.09636",
+      "paper_title": "PDEAgent-Bench: A Multi-Metric, Multi-Library Benchmark for PDE Solver Generation",
+      "abstract": "PDE-to-solver code generation aims to automatically synthesize executable numerical solvers from partial differential equation (PDE) specifications. This task requires not only understanding the mathematical structure of PDEs, but also selecting appropriate discretization schemes and solver configurations, and correctly implementing the resulting formulations in finite-element method (FEM) libraries. Existing code generation benchmarks mainly evaluate syntactic correctness, or success on predefined test cases. To our knowledge, there is currently no publicly available benchmark specifically for PDE-to-solver code generation, and general-purpose code benchmarks do not fully capture the unique challenges of numerical PDE solution, such as ensuring solver accuracy, efficiency, and compatibility with professional FEM libraries. We introduce PDEAgent-Bench, to the best of our knowledge, the first multi-metric, multi-library benchmark for PDE-to-solver code generation. PDEAgent-Bench contains 645 instances across 6 mathematical categories and 11 PDE families, with common FEM libraries for DOLFINx, Firedrake, and deal.II. Each instance provides an agent-facing problem specification, a reference solution on a prescribed evaluation grid, and case-specific accuracy and runtime targets. PDEAgent-Bench adopts a staged evaluation framework in which generated solvers must sequentially pass executability, numerical accuracy, and computational efficiency checks. Experiments with representative LLMs and code agents show that models can often produce runnable code, but their pass rate drops substantially once accuracy and efficiency requirements are enforced. These results indicate that current agents remain limited in producing numerically reliable and efficient PDE solvers, and that PDEAgent-Bench provides a reproducible testbed grounded in the practical requirements of numerical PDE solving.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "PDE 솔버 코드 생성 벤치마크 신규 도입, 영어 가능성 높음"
+        }
+      ]
+    },
+    "2605.21543": {
+      "arxiv_id": "2605.21543",
+      "paper_title": "Provable Joint Decontamination for Benchmarking Multiple Large Language Models",
+      "abstract": "Benchmark data contamination has become a central challenge in LLM evaluation: when evaluation examples appear in the training data of one or more audited models, reported performance can be inflated and cross-model comparisons become unreliable. A broad line of training-data detection work designs scores to quantify how strongly a model memorizes a given data point, but these score-based methods lack theoretical guarantees. Recent conformal approaches provide provable false-identification control for a single model; however, applying them separately to each model can produce model-specific benchmarks, undermining fair comparison across models. In this work, we formalize multi-model benchmark decontamination as a joint selection problem and propose Joint Envelope Conformal Selection (JECS), a conformal procedure that enables global contamination rate (GCR) control under stated assumptions. Specifically, JECS computes per-model conformal p-values, aggregates them by the per-item maximum, and reconstructs a conservative envelope of the max-p null distribution from right-tail observations above a data-driven threshold. By applying the adaptive Benjamini-Hochberg (BH) procedure to the envelope-rescaled values, we select a benchmark with provable GCR control. Extensive experiments across various models and benchmarks demonstrate that JECS achieves higher power than the max-p baseline while consistently maintaining the target GCR control.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "오염 제거 방법론이며 새 벤치마크 자료 없음"
+        }
+      ]
+    },
+    "2605.26322": {
+      "arxiv_id": "2605.26322",
+      "paper_title": "OmniToM: Benchmarking Theory of Mind in LLMs via Explicit Belief Modeling",
+      "abstract": "Theory of Mind (ToM), the ability to infer others' knowledge, intentions, and emotions, is commonly evaluated in large language models (LLMs) using end-point question answering, where performance is judged solely by the final answer to a social reasoning query. This paradigm obscures whether the model actually constructs the underlying mental-state representations required for robust reasoning, particularly in scenarios involving divergent, evolving, or mistaken beliefs. In order to address this research gap, we introduce OmniToM, a benchmark that directly evaluates these representations by requiring explicit modeling of belief structures for all relevant actors within a narrative. These structures are composed of belief propositions: minimal statements of what an actor takes to be true about the world or another actor's mental state, allowing knowledge, intentions, emotions, and false beliefs to be analyzed in a common format. Models are evaluated in two stages: Stage 1: Belief Extraction, which extracts from the story the beliefs relevant to its social dynamics, and Stage 2: Belief Labeling, which assigns each belief a seven-dimensional schema label covering recursive order, truth status, knowledge access, explicitness, content type, mental source, and context. Built from 895 stories from the existing ToMBench story corpus and augmented with 22,343 labeled belief propositions, OmniToM uses a human-calibrated LLM-assisted annotation pipeline. Across diverse models in zero-shot evaluation, OmniToM reveals an actor-specific belief-tracking bottleneck: current LLMs struggle with the knowledge-access and representational decisions required to transform narrative facts into actors' beliefs and shared mental states.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "마음이론 평가 벤치마크 OmniToM, ToMBench 기반 확장"
+        }
+      ]
+    },
+    "2606.02404": {
+      "arxiv_id": "2606.02404",
+      "paper_title": "K-BrowseComp: A Web Browsing Agent Benchmark Grounded in Korean Contexts",
+      "abstract": "Frontier model evaluations are shifting from foundational capabilities (e.g., instruction following and reasoning) toward compositional, agentic ones, but Korean agentic benchmarks remain scarce. We introduce K-BrowseComp, a web-browsing agent benchmark grounded in Korean contexts, consisting of 400 problems. The 300-problem K-BrowseComp-Verified subset is manually constructed and validated by native Korean speakers. On this subset, frontier LLMs, including GPT-5.5, DeepSeek-V4-Pro, and GLM-5.1, reach only 30.00--45.67\\%, a substantial drop from BrowseComp, while Korean LLMs released through Korea's Proprietary AI Foundation Model program obtain only 0.00--10.33\\%. We further construct a 100-problem synthetic split using hard few-shot exemplars and failure-mode-targeted generation to exploit the asymmetry between solving and creating web browsing problems. On the adversarially filtered synthetic diagnostic split, the strongest model reaches only 26.00\\%, and we report this split separately as a targeted stress test. We publicly release our data and code.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "한국어 웹 브라우징 에이전트 벤치마크, 공개"
+        }
+      ]
+    },
+    "2609.07151": {
+      "arxiv_id": "2609.07151",
+      "paper_title": "Vishing-Tactics-Bench: Forecasting Exploitation Trajectories in Voice Phishing Calls",
+      "abstract": "Voice phishing (vishing) unfolds in real time; by the time a call has ended and post-hoc classification is possible, the harm has already been done. The more actionable question is which concrete harm (Information Gathering or Financial Exploitation) an ongoing call is tactically progressing toward. We present Vishing-Tactics-Bench, a benchmark grounded in Endsley's situation-awareness (SA) framework that recasts vishing defense from after-the-fact fraud classification to harm projection: predicting at each turn whether the call will reach either terminal harm. We adapt MITRE ATT&CK to vishing as a 6-tactic taxonomy (Vishing-Tactics) and label 35,340 scammer utterances across 5,645 synthetic Chinese calls. We define Exploitation Trajectory Forecasting, a survival-style protocol over the two terminal harms with three metrics: AP@k, C-index, and divergence error. Baselines ranging from a Markov heuristic to fine-tuned LLMs show that the tactical trajectory serves as an interpretable representation of the call's tactical state, supporting harm-specific forecasting, which can then be used for the downstream application of intervention selection; a stratified lead-time analysis at a tight false-alarm budget further identifies at what point in a call the trajectory signal yields early warning.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "모든 과제가 중국어 합성 통화로 한정됨"
+        }
+      ]
+    },
+    "2611.18600": {
+      "arxiv_id": "2611.18600",
+      "paper_title": "ScopeBench: Evaluating Cultural Norm Scope Awareness in LLMs",
+      "abstract": "Safety evaluation in large language models treats harm as culturally invariant, yet a model cannot correctly apply a safety norm without knowing whose norms bind. We introduce ScopeBench, a benchmark that treats cultural scope as a first-class safety dimension. It comprises 3,323 norms spanning 49 countries across nine cultural clusters, each annotated as Universal or Specific. We define three scope error types identically across four evaluation tasks: Scope Inflation, Scope Deflation, and Scope Displacement. Evaluating 21 frontier LLMs across seven model families, we surface three structural failures. First, the dominant error type inverts with prompt format: Scope Deflation reaches 70% in single-answer classification, while Scope Inflation reaches 33% when each candidate culture is judged independently. Second, scope-classification accuracy is empirically decoupled from behavioral safety: the six classifiers achieving at least 97% Task 1 accuracy still produce harmful responses to 40-42% of scope-violating statements. Third, no model is safe in interaction, with harmful-response rates ranging from 29% to 51% across the cohort, excluding one model that systematically refuses the task. We release all data, code, and model outputs to establish cultural scope as a distinct alignment axis.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "문화 규범 범위 인식 벤치마크, 데이터 공개, 언어 가능성"
+        }
+      ]
+    },
+    "2611.18620": {
+      "arxiv_id": "2611.18620",
+      "paper_title": "CondRelBench: A Mixed-Domain Benchmark for Condition-Scoped Relation Understanding",
+      "abstract": "Relation extraction systems often identify what a relation is, but not the condition under which it holds. This can collapse condition-bound claims into unsupported generalizations, a failure we call relation overgeneralization. We introduce CondRelBench, a mixed-domain benchmark for evaluating condition-scoped relation understanding. Each claim is represented as (E1, R, E2 | C), where C is the condition licensing the relation. Using 3,000 synthetic paragraphs, 200 PubMed full-text papers, and 695 Reddit posts, we construct five probe variants per tuple that preserve, replace, remove, or contradict the condition, or contradict the relation itself. Models classify each probe as Supported, Not Supported, or Not Enough Evidence. We also introduce Overgeneralization Rate (OGR) and Scope Preservation Score (SPS) to measure false support for altered claims and consistency across probe families. Across prompted LLMs, fine-tuned LLMs, and encoder models, we find that Accuracy and Macro F1 often hide scope failures. Models frequently support the original scoped claim but fail when its condition is removed or altered. Domain-specific encoders achieve the strongest scope preservation, while instruction-tuned LLMs often show higher overgeneralization. Synthetic supervision helps but does not close the gap to real-world PubMed and Reddit performance.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "조건 범위 관계 이해 벤치마크, 영어 PubMed·Reddit 포함"
+        }
+      ]
+    },
+    "2611.18669": {
+      "arxiv_id": "2611.18669",
+      "paper_title": "LogicEye: Agent Driven Multimodal Dataset for Interpretable Ophthalmic Diagnosis",
+      "abstract": "Clinical adoption of ophthalmic Artificial Intelligence remains limited by low interpretability and a lack of finely annotated multimodal data. Most existing datasets provide only coarse disease labels without the granular pathological findings required for differential diagnosis. We present LogicEye$^{Agent}$, a dual-pool inference and verification agent that emulates clinical reasoning by jointly verifying positive inclusion signs and negative exclusion criteria. Using LogicEye$^{Agent}$, we curate LogicEye$^{Data}$, a large-scale multimodal dataset of 804,461 fundus and OCT images paired with structured pathological reports spanning 38 diseases and 29 subtypes, with quality assured through joint verification by multimodal large language models and clinical experts. Building on this dataset, we further develop LogicEye$^{Bench}$, which incorporates a category-constrained loss for hierarchical disease recognition and report generation. Grounding coarse labels into verified visual findings effectively curtails diagnostic hallucinations and establishes a solid foundation for interpretable vision-language modeling in ophthalmology. The code is available at:https://github.com/Eden35/LogicEye-Agent-Driven-Multimodal-Dataset-for-Interpretable-Ophthalmic-Diagnosis.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "안과 멀티모달 데이터셋·Bench, 언어 및 LLM 평가 불명확"
+        }
+      ]
+    },
+    "2611.18701": {
+      "arxiv_id": "2611.18701",
+      "paper_title": "What Does Hard-Negative Fine-Tuning Teach Multimodal Large Language Models? Controlled Evidence from a Compositional Benchmark",
+      "abstract": "Fine-tuning on hard negatives is a popular way to improve the compositional reasoning of vision-language models, but when accuracy goes up it is rarely clear what the model actually learned. We ask this question for multimodal large language models. We use CompHall, 2,860 forced-choice questions (spatial, attribute, counting and part-whole) with two graded hard negatives each, three model families (LLaVA-1.5, LLaVA-NeXT and Idefics2), and controls that such studies often lack: gray-image evaluation, three seeds, option-order tests, control arms trained on different question types, and independent benchmarks. We find four things. First, CompHall is not a pure test of vision: part-whole questions can be answered from the text alone (66-95% without the image), and per-image accuracy is unrelated to an object-hallucination probe (r = -0.05), so we see no evidence that compositional failures drive hallucination. Second, the original fine-tuning method scored mostly image-placeholder tokens and hurt both LLaVA models. With a corrected loss, fine-tuning raises accuracy on the spatial-relation questions of CV-Bench in all three families, by +3.2, +23.1 and +6.0 points (averaged over both option orders). Control arms show that the gain needs spatial training questions, and for LLaVA-NeXT about two-thirds of it appears even on relation words that were only wrong options in training. Third, the gain is not general: on CompHall itself it is significant only for LLaVA-NeXT (+6.9 points) and not detectable for Idefics2, it reaches about 3 points at most on true/false statements, and LLaVA-1.5 fine-tuned on other question types learns to answer \"true\" too often. Fourth, both losses raise the yes-bias of LLaVA-1.5 on POPE.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "CompHall 기반 분석 연구, 새 평가 자료 여부 불명확"
+        }
+      ]
+    },
+    "2611.18880": {
+      "arxiv_id": "2611.18880",
+      "paper_title": "RAVEN-Bench: A Paired EO-IR Video QA Benchmark for Aerial Multimodal Understanding",
+      "abstract": "Multimodal large language models (MLLMs) have advanced rapidly in image and video understanding, yet their ability to reason over paired aerial electro-optical and infrared (EO-IR) videos remains poorly understood. Such video poses a harder test than standard RGB video QA: targets are often small, evidence may appear only briefly, viewpoints change with the platform, and useful cues may appear in only one stream. We introduce RAVEN-Bench (Reasoning over Aerial Videos with EO-IR aligNment), a paired EO-IR video QA benchmark for low-altitude aerial multimodal understanding. RAVEN-Bench contains 100 temporally aligned EO-IR video pairs and 1,200 human-authored four-way multiple-choice questions, each independently audited for answer keys, modality requirements, evidence intervals, and group validity. It supports EO-only, IR-only, and paired EO+IR evaluation, and uses hierarchical capability levels and structured question groups to diagnose paired-input gain beyond the stronger unimodal condition, unimodal reliance, target consistency, and evidence-chain coherence. We evaluate frontier, open-weight, and remote-sensing MLLMs, showing that aggregate accuracy can overstate evidence-supported EO-IR reasoning. RAVEN-Bench provides controlled modality conditions and group-level diagnostics for auditing whether progress on RGB video benchmarks transfers to aerial cross-spectral understanding. Code and data are available at https://github.com/yuhu990424/RAVEN-Bench and https://huggingface.co/datasets/TerraSenseAnalytics/RAVEN-Bench.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "EO-IR 영상 QA 벤치마크, 데이터 공개"
+        }
+      ]
+    },
+    "2611.18890": {
+      "arxiv_id": "2611.18890",
+      "paper_title": "Benchmark Factory: Agentic Benchmark Creation via Dataset Curation and Label-Free Quality Anchors",
+      "abstract": "Teams deploying coding agents need benchmarks built from their own code, but curating and validating them by hand is resource intensive, and an unvalidated benchmark can mislead silently. We present Benchmark Factory, an autonomous meta-agent loop with human checkpoints: an LLM agent writes sourcing queries over landed production code changes, runs models of known relative strength on each candidate, diagnoses why a candidate fails, and repairs it by editing its queries, prompts, and configuration until it clears quality anchors that need no per-task human labels. We used Benchmark Factory to build benchmarks for five developer cohorts at our organization. Engineering raters scored a 5% sample 2.3 for task quality and 2.6 for grader verdicts on a 1-to-3 scale. On configurations never used to build them, the benchmarks ranked Claude Opus~4.7 at high reasoning effort above low effort (60.6% vs. 54.4% of tasks passed, $p=0.002$) and GPT-5.5 above GPT-5.4 (65.8% vs. 60.5%, $p=0.004$); 9 of the 10 per-cohort comparisons pointed the same way. A deliberately trivial benchmark failed the anchors; five broken graders failed them, even under a relaxed rule fixed in advance that the real grader passes; and with model labels shuffled so that no true ordering existed, random redraws of a candidate passed in at most 1.4% of simulations. The anchors are necessary, not sufficient, conditions for a valid benchmark, designed to focus human review on what the loop cannot repair.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "코딩 에이전트 벤치마크 자동 생성 시스템, 평가 자료 생성"
+        }
+      ]
+    },
+    "2611.19086": {
+      "arxiv_id": "2611.19086",
+      "paper_title": "Beyond Benchmarks: Evaluating Large Language Models and Agentic Patterns for Static Code Analysis Warning Classification",
+      "abstract": "Context: Static Code Analysis (SCA) tools support software verification and validation, reducing the time and cost of code reviews. However, the best SCA tools in the practitioner community generate a high volume of false positives, which developers tend to ignore, leading to genuine warnings being overlooked. Accordingly, studies increasingly adopt Large Language Models (LLMs) to identify and reduce false positives. Existing studies have produced promising results on public datasets, but underperformed on unseen datasets. Moreover, researchers do not leverage the full potential of Agentic patterns in LLMs or incorporate established code quality standards for warning classification. Objectives: This study utilises four manually annotated datasets to evaluate the performance of three contemporary LLMs for SCA warning classification in real-world applications, and incorporates Agentic patterns and established coding standards to enhance models' performance, addressing gaps identified in existing studies. Method: Three LLMs were selected using the LiveCodeBench benchmark, and the Structured Chain-of-Thought (SCoT) prompting technique was used to evaluate these LLMs. Furthermore, we incorporated Agentic patterns, such as Debating and Self-Consistency, to potentially improve performance in SCA warning classification. Results: Our results show that the performance of different LLMs varies with the characteristics of the dataset, ranging from 0.52 to 0.96 F1-Score for the best models. Additionally, the use of Agentic patterns does not improve LLMs' performance in most scenarios. Conclusions: SCA warning classification using LLMs works best only with certain warning types. We recommend evaluating LLMs in real-world applications rather than using publicly available datasets/benchmarks to understand their full utility.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "기존 데이터셋으로 LLM 성능 평가한 연구, 새 벤치마크 아님"
+        }
+      ]
+    },
+    "2611.19184": {
+      "arxiv_id": "2611.19184",
+      "paper_title": "Do VLMs Really Look at the Road? A Diagnostic Evaluation for Autonomous Driving",
+      "abstract": "Vision-language models (VLMs) are increasingly being evaluated for autonomous driving through question-answering benchmarks, yet high benchmark accuracy does not necessarily reflect visually grounded reasoning. We present a diagnostic evaluation framework that systematically probes whether VLMs base safety-critical driving decisions on visual evidence or instead rely on language priors, answer biases, and dataset regularities. Our benchmark comprises two task categories, Adverse Weather and Junctions \\& Intersections, with a nuScenes spatial reasoning extension, and evaluates open-source (general, driving, and spatial-reasoning) VLMs along four diagnostic protocols: image versus no-image evaluation, counterfactual weather sensitivity, linguistic robustness under paraphrasing and negation, and spatial reasoning. All ground-truth labels are derived programmatically from BDD100K and DriveLM annotations, enabling reproducible evaluation without manual labeling. Across all models, we find that competitive overall accuracy conceals systematic failure modes, including strong affirmation bias, limited sensitivity to counterfactual scene changes, near-chance performance on negated questions despite high paraphrase consistency, and confident driving decisions even without visual input. These results demonstrate that current open-source VLMs remain insufficiently grounded for safety-critical autonomous driving and underscore the need for diagnostic evaluation beyond aggregate accuracy.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "자율주행 VLM 진단 벤치마크, 프로그램적 라벨 생성"
+        }
+      ]
+    },
+    "2611.19356": {
+      "arxiv_id": "2611.19356",
+      "paper_title": "A Comparative Evaluation of BERT-Based and LLM-Based Models for Indic Sentence Similarity",
+      "abstract": "The relative effectiveness of BERT-based encoders and large language model (LLM)-based embeddings for Indic semantic textual similarity remains insufficiently characterized. We compare eight BERT-based and five LLM-based models on the 1,500-pair STS Benchmark development set translated into ten Indic languages and on the native Marathi MahaSTS test set. IndicSBERT achieves the highest Pearson correlation in all ten translated language sets, with a macro-average of 0.843, followed by BGE-M3 at 0.792. Harrier-270M is the strongest LLM-based model on translated STS-B, with a macro-average of 0.751. On MahaSTS, IndicSBERT and Bhasha-Embed-v0 achieve Pearson correlations of 0.901 and 0.900, respectively, while EmbeddingGemma leads the LLM-based models at 0.871. The highest-scoring BERT-based model thus exceeds the highest-scoring LLM-based model in both settings, although the magnitude of the difference varies across benchmarks. These findings indicate that LLM-derived embeddings do not uniformly improve Indic sentence similarity over established encoders and motivate evaluation that accounts for language coverage, task supervision, and benchmark construction.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "기존 STS 데이터 비교 평가이며 모두 인도어 대상"
+        }
+      ]
+    },
+    "2611.19364": {
+      "arxiv_id": "2611.19364",
+      "paper_title": "XLSAR-Bench: Towards Extremely Large SAR Imagery Understanding of MLLMs",
+      "abstract": "The rapid development of multimodal large language models (MLLMs) has highlighted the need for comprehensive benchmarks to assess their capabilities and limitations in remote sensing (RS). However, evaluating MLLMs in large-size synthetic aperture radar (SAR) scenarios remains challenging, as understanding complete scenes requires both global semantic interpretation and fine-grained target perception. Existing SAR benchmarks predominantly rely on small image patches, limiting their ability to assess these capabilities jointly. To address these limitations, we present XLSAR-Bench, a comprehensive benchmark for evaluating the perception and reasoning capabilities of MLLMs in large-scene SAR imagery. XLSAR-Bench comprises 405 images with an average size of 7153$\\times$7153 pixels, ten tasks spanning visual question answering, visual grounding, and detailed image captioning, with all evaluation samples meticulously annotated manually, assisted by a semi-automatic captioner. Experimental results from general-purpose and domain-specific MLLMs reveal persistent challenges in understanding large SAR scenes and accurately perceiving small targets. We have open-sourced XLSAR-Bench to support further research in developing more powerful MLLMs for complete large SAR scenes.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "대형 SAR 영상 MLLM 벤치마크, 오픈소스 공개"
+        }
+      ]
+    },
+    "2611.19525": {
+      "arxiv_id": "2611.19525",
+      "paper_title": "Objectify, Don't Delete: Complaint-Derived Evaluation of Ambient Clinical Notes",
+      "abstract": "Evaluating the quality of AI-generated clinical notes is hard: standard metrics like ROUGE measure lexical similarity to reference notes, while expert checklists encode what committees believe matters. Neither captures what clinicians actually complain about. Recent work has shown that evaluation criteria can be mined from user feedback and filtered to criteria that LLM judges can reliably enforce. We argue that this is where much of the value is lost. The criteria that fail enforceability are disproportionately the ones clinicians raise most often, because high-frequency complaints are stated as several questions glued together. No yes/no judgment can grade such composites as posed. We introduce an objectification step that rewrites such criteria into sets of scoped, determinate decisions. We demonstrate the approach through an evaluation pipeline that mines criteria from complaints, objectifies them, and deploys LLM judges against both planted defects and production notes. Across eleven defects planted into ACI-bench reference notes, objectified judges localize violations with median recall of 0.95, while reference metrics change by at most 0.037. Given the complaint as one broad question, the same judges still find every planted defect, but they also flag 70% of the unperturbed reference notes; one section-pair question per call raises Youden's J from 0.30 to 0.72 (by 0.19 to 0.26 with prompt effort matched). We release ACI-Defect, a perturbation benchmark; clinician-reviewed instance-level labels showing quality gaps in the ACI-bench gold standard (32 of 40 notes contain hallucinations; 40 of 40 omit discussed facts); and grounding-judge verdicts. On 1,446 production notes, mean instance-rate burden falls at every clinician-rating step (rho=-0.15), a small association. Defect counts have to be kept per span rather than collapsed into one pass/fail bit per note.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "임상 노트 평가용 ACI-Defect 벤치마크 공개"
+        }
+      ]
+    },
+    "2611.19530": {
+      "arxiv_id": "2611.19530",
+      "paper_title": "LLM Trading Agents Earn Beta, Not Alpha: A Look-Ahead-Free Benchmark",
+      "abstract": "Large language model (LLM) trading agents now trade stocks for their users, and benchmarks rank models by their agents' returns. Yet a single run's return says little about skill. In our study, two runs of the same model that differed only in the random seed ended 5.2 points apart on average, so telling skill from luck takes many backtests across markets, models and seeds. However, live arenas trade each day only once, and backtests either use the few months after a model's training cutoff or run on years the model may remember, often with news joined to prices by calendar date. In this paper, we present rta-bench-1, a backtest over three US markets (a rally, a bear market and a crash). It shows each headline only after its publication minute, plays each period blind and named, and checks every run for look-ahead. It also splits each return into factor exposure and alpha and scores every decision against random choices of the same day and sector. In 91 runs of six models from four vendors, no alpha was significant, market and style exposure accounted for a median 78% of the return, and the decisions did no better than random stocks of the same sector. The agents bought the stocks with the most positive news, yet in ablations they earned as much without their headlines. Still, the agents carried out rules reliably, since a single cash rule in the prompt cut a GPT-based agent's share in stocks by 30.3 points in all six pairs. Builders should therefore supply the edge themselves and report exposures and alpha, and benchmarks should replay news by publication time.",
+      "paper_updated": "2026-11-17T00:00:00Z",
+      "created_at": "2026-11-18T02:40:37Z",
+      "input_sha256": "10a86315c826fec9ac454f52f84d9e360b8ea549708249306adb3220187abfd9",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 트레이딩 에이전트 룩어헤드 없는 벤치마크 rta-bench-1"
         }
       ]
     }
@@ -110934,10 +111258,30 @@
         "2503.08823",
         "2504.02293",
         "2603.02578",
-        "2603.19615"
+        "2603.19615",
+        "2604.11581",
+        "2604.14548",
+        "2605.09636",
+        "2605.21543",
+        "2605.26322",
+        "2606.02404",
+        "2609.07151",
+        "2611.18279",
+        "2611.18600",
+        "2611.18620",
+        "2611.18669",
+        "2611.18701",
+        "2611.18880",
+        "2611.18890",
+        "2611.19086",
+        "2611.19184",
+        "2611.19356",
+        "2611.19364",
+        "2611.19525",
+        "2611.19530"
       ],
-      "calls": 1,
-      "cost_usd": 0.0662
+      "calls": 2,
+      "cost_usd": 0.1346
     }
   },
   "reaudits": [
