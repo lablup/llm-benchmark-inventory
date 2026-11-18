@@ -75374,6 +75374,151 @@
         "context_sha256": "32e99dcad12b26efe1b17f887735b267b96adf8449e782891dafb7e88391a0ee"
       },
       "proposal_sha256": "6a85f4de3b2e7168be80ede9f0c5784db345391c6f55cb4c75b37586c9256bd3"
+    },
+    "2610.16260": {
+      "decision": "propose",
+      "reason": "ScreenASR-Bench는 화면 속 시각 증거(ETE/EVE/ISE 3단계)가 음성 인식의 모호한 핵심어 복원에 도움이 되는 정도를 재는 재사용 가능한 새 벤치마크입니다. 사례 2,002건은 음성 구간, 키프레임, 참조 전사문, 목표 키워드로 구성되고, 과제 예시가 영어(capitol/capital 등)여서 en 트랙으로 분류했습니다. 키프레임 이미지가 입력이므로 modality는 vision이고, PDF가 Hugging Face 데이터셋 링크를 명시합니다. 라이선스 등은 확인하지 않아 '확인 불가'로 기록했습니다. 이번 수정에서는 PDF 해당 쪽에 실제로 있는 짧은 인용문으로 증거를 교체했습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "screenasr-bench",
+            "이름": "ScreenASR-Bench",
+            "평가 축": "이미지(시각 문맥 기반 음성 인식: 핵심어 복원)",
+            "언어": "en",
+            "정의": "공개 온라인 영상에서 수집한 2,002개 사례로 구성된 3단계 벤치마크. 사례마다 음성 구간, 키프레임, 참조 전사문, 목표 키워드가 있다. 시각 증거의 직접성에 따라 명시적 텍스트 증거(ETE), 명시적 시각 증거(EVE), 암시적 의미 증거(ISE)로 나뉜다. 지표는 WER, 핵심어 재현율(Recall), 시각 문맥으로 인한 개선을 나타내는 정규화 시각 이득(NVG)이다. ASR 모델, 대형 오디오-언어 모델, 옴니 모델을 음성 단독, 키프레임 캡션, 키프레임 이미지 조건에서 평가한다.",
+            "대표 과제": "음성과 키프레임을 입력으로 받아 음향적으로 모호한 핵심어를 정확히 인식(ETE/EVE/ISE 3단계)",
+            "대표 예시·설명": "과제 설명: 음성 구간과 키프레임이 주어지면 모델이 전사하고, 음향적으로 비슷한 단어(예: capitol과 capital, plain과 plane) 중 화면 증거에 맞는 핵심어를 맞히는지 재현율로 채점한다. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 아직 확인하지 않았다. 영상 출처별 약관과 데이터셋 카드를 이용 전에 따로 확인해야 한다. 입력이 음성과 이미지이므로 평가에는 오디오와 이미지를 모두 받는 모델 환경이 필요하다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/MingweiFu/ScreenASR-Bench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (visually grounded speech recognition: keyword recovery)",
+            "definition": "A tiered benchmark of 2,002 cases collected from publicly accessible online videos. Each case has a speech segment, a keyframe, a reference transcription, and a target keyword. Cases are grouped by how directly the visual evidence supports the keyword: Explicit Textual Evidence (ETE), Explicit Visual Evidence (EVE), and Implicit Semantic Evidence (ISE). Metrics are WER, keyword Recall, and normalized visual gain (NVG). ASR models, large audio-language models, and omni models are evaluated with audio only, with a keyframe caption, and with the keyframe image.",
+            "task": "Given speech and a keyframe, correctly recognize acoustically ambiguous keywords (three levels: ETE, EVE, ISE).",
+            "example": "Task description, not an actual test item: given a speech segment and a keyframe, the model transcribes the speech and must choose the keyword supported by the screen evidence over an acoustically similar word (for example capitol vs. capital, plain vs. plane), scored by keyword recall."
+          },
+          "evidence": {
+            "modality": {
+              "page": 1,
+              "quote": "a speech segment,"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "three progressively challenging"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "a speech segment,"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/MingweiFu/"
+            },
+            "언어": {
+              "page": 3,
+              "quote": "capitol"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "SCREENASR-BENCH"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "2,002 cases collected"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "three progressively challenging"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.16260",
+      "paper_title": "ScreenASR-Bench: A Tiered Benchmark for Speech Recognition with Visual Context",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.16260",
+        "sha256": "56f8e08b8ae79443c91a310e851ecd4067e3a37193e666d9b74ff06dc283c23b",
+        "accessed": "2026-11-18T03:56:09Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 5,
+          "elapsed_seconds": 55.17,
+          "pdf_sha256": "56f8e08b8ae79443c91a310e851ecd4067e3a37193e666d9b74ff06dc283c23b",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "e7ee21d8600303e1c33c6b71406e96db9882dc4ef716bb90bb1cb2df229ed462",
+          "page_json_file": "2610.16260.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/MingweiFu/ScreenASR-Bench",
+            "fetched_url": "https://huggingface.co/datasets/MingweiFu/ScreenASR-Bench/raw/main/README.md",
+            "sha256": "8d59afb82d0a133010111c0d9d5fc0e5a33e56699098f4d03c53ee719755888c",
+            "accessed": "2026-11-18T03:57:56Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-18T03:57:56Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.16260",
+        "paper_title": "ScreenASR-Bench: A Tiered Benchmark for Speech Recognition with Visual Context",
+        "abstract": "Current ASR models perform well on general benchmarks but still struggle with acoustically ambiguous words. Visual context can aid recognition in screen-based scenarios, yet existing benchmarks provide limited insight into the benefits of different types of visual evidence. To address this gap, we introduce ScreenASR-Bench , a tiered benchmark with three progressively challenging levels: Explicit Textual Evidence (ETE), based on direct on-screen text; Explicit Visual Evidence (EVE), using visible content rather than on-screen text; and Implicit Semantic Evidence (ISE), requiring scene-level inference. Extensive experiments on ASR models, Large Audio-Language Models (LALMs) and Omni models show that incorporating visual context substantially improves recall over the audio-only setting across all three model families. The gains are largest for ETE and smallest for ISE, indicating that models leverage direct visual evidence more effectively than indirect semantic cues. To facilitate future research on visually grounded speech recognition, we publicly release ScreenASR-Bench.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:58Z",
+        "input_sha256": "9aa4324e5a661b8524ffde4abe7d064448a6f8baf288e9bd569d2ea8b0996a51",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "시각적 맥락 음성 인식 벤치마크로 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "시각 맥락 기반 ASR 3단계 벤치마크 ScreenASR-Bench 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "44224161605",
+        "context_sha256": "c81353fb0ad0457affe9c40eed3a63973444361531a30c113b1685a24ab74dae"
+      },
+      "proposal_sha256": "5c6f1f7fc2048b0183e11178772c4d1cdf69317b8cbf75f07dee8f22c5f6bcaf"
     }
   },
   "processed_comments": [],
@@ -112691,8 +112836,8 @@
         "2611.21292",
         "2611.21300"
       ],
-      "calls": 17,
-      "cost_usd": 13.5913
+      "calls": 18,
+      "cost_usd": 14.3949
     }
   },
   "reaudits": [
