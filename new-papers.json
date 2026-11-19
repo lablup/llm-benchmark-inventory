@@ -1,7 +1,480 @@
 {
   "schema_version": 1,
-  "last_checked_at": "2026-11-18T02:34:19Z",
+  "last_checked_at": "2026-11-19T02:34:40Z",
   "papers": [
+    {
+      "arxiv_id": "2611.23045",
+      "url": "https://arxiv.org/abs/2611.23045",
+      "title": "ForecastGym: A Live, Controlled, and Replayable Benchmark for Forecasting Agents",
+      "summary": "Agents built on large language models (LLMs) increasingly forecast real-world events by searching the Web and reasoning over what they find. How well such an agent forecasts depends on both the retrieved evidence and the model, making control over that evidence essential for evaluation. Live evaluations can mix retrieval with reasoning when each system searches on its own, while retrospective search can leak later information through date filters or today's ranking of historical pages. Comparing models, search sources, and memory strategies requires both fixed evidence and a record of how it evolved before resolution. We introduce ForecastGym, which records what four commercial web search APIs return for open prediction-market questions every two days and replays this frozen evidence offline once outcomes are known, comparing models, memory, and captured search sources under a fixed evidence-acquisition policy. Its first release covers 150 questions, 614 evidence states, one per question and collection time, and 131k search results. Rerunning the same queries after settlement returns results that all but state the outcome for up to 92% of the questions, despite the tested date filters. On the frozen evidence, all tested LLMs trail the market in forecasting accuracy. Our diagnostic analysis suggests that missed public information contributes more to the gap in high-gap states than misreading does. Switching the search API changes a model's Brier score by up to 0.043, more than the spread across models, while persistent notes score similarly to rereading all evidence at half the input tokens. The evidence a forecaster sees can matter as much as the model that reads it.",
+      "authors": [
+        "Yicheng Tao",
+        "Yuante Li",
+        "Zipei Fan"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22947",
+      "url": "https://arxiv.org/abs/2611.22947",
+      "title": "The Kernel Reality Check: Benchmarking and Distilling Efficient Attention at Scale",
+      "summary": "Kernelized attention methods, which aim to replace the $O(N^2)$ complexity of softmax attention with $O(N)$ alternatives, have been the focus of intense research in the last five years. Despite growing interest, systematic evaluations and fair comparisons across approaches and scales are still missing. We analyze kernelized attention in two halves and highlight prominent limitations on each. On efficiency, FlashAttention achieves lower memory consumption and faster wall-clock time than SOTA kernelized methods during training and in vision transformers across most sequence lengths (with inference-time memory in causal language models the only clear exception), contradicting the core assumption for pure kernelized attention used as a drop-in replacement for softmax. We also discover that reported efficiency gains often fail to reproduce against modern baselines. On quality, current kernelized methods leave gaps of 2-10 points relative to softmax under a unified distillation protocol, and model scala alone does not close these gaps. We show this gap is not intrinsic to kernelization: LARA++, a principled extension of LARA that approximates softmax via importance sampling with adaptive proposal distributions, recovers up to 99% of softmax accuracy. We establish that the gap is closable; however, the computational overhead remains substantial, leaving the efficiency wall intact. Code is available at https://github.com/firatoncel/KernelRealityCheckNeurIPS2026",
+      "authors": [
+        "Fırat Öncel",
+        "Cem Subakan",
+        "Mirco Ravanelli",
+        "Çağatay Yıldız"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22905",
+      "url": "https://arxiv.org/abs/2611.22905",
+      "title": "Think Before You Code: A Benchmark for Testing LLMs on Software Engineering Deliberation",
+      "summary": "Think Before You Code (TBYC) is a benchmark pipeline for studying whether code-focused language models can reason about software issues in ways that resemble human engineering deliberation. The benchmark curates GitHub issue discussions into structured records, extracts human discussion artifacts such as problems, solutions, constraints, rationales, and trade-offs, and then prompts models to generate issue-level \"thoughts\" using retrieved code context and few-shot examples. It converts model responses back into the same artifact space and evaluates them against human annotations using complementary metrics for artifact type detection, metadata matching, tag overlap, and semantic summary similarity. Beyond scoring, this study includes visualization, leaderboard, and baseline tools that make it possible to compare models, prompting strategies, and extraction methods across repositories and issues. Think Before You Code is an end-to-end evaluation environment for measuring how closely LLM software reasoning aligns with human strategic judgment.",
+      "authors": [
+        "Ashman Mehra"
+      ],
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22708",
+      "url": "https://arxiv.org/abs/2611.22708",
+      "title": "Cross-cultural Adaptation of Recipes for Low-Resource Languages: A Benchmark and Multilingual Culinary Lexicon for Hausa, Yorùbá, and Igbo",
+      "summary": "Recent multilingual large language models (LLMs) have improved machine translation, yet culturally adaptive translation for low-resource languages (LRLs) remains underexplored. This is particularly challenging for recipes, where ingredients, cooking tools, measurements, and procedures may require adaptation to the target cultural context. In this work, we introduce ReciLoReL, a benchmark of 600 expert-translated and culturally adapted recipes across Yorùbá, Hausa, and Igbo (three of the most prominent languages in Nigeria), and ReciLex, a multilingual culinary lexicon containing approximately 15,000 translated entities across ten recipe entity categories, including ingredients, tools, chef actions, state of tools, and durations. We evaluate state-of-the-art multilingual LLMs for English-to-LRL recipe translation under zero-shot and few-shot settings and investigate whether augmenting LLMs with ReciLex improves culturally adaptive recipe translation without requiring large target-language recipe corpora for training or fine-tuning. Beyond conventional reference-based translation evaluation using BLEU, chrF, and TER, we introduce five criteria for evaluating cultural adaptation, adapted from established cross-cultural adaptation methods. Across the selected LLMs and languages, ReciLex improves average BLEU from 13.57 to 14.51 and chrF from 37.89 to 38.74, while reducing TER from 77.14 to 75.12. Human evaluation further shows improvements ranging from 0.11 to 0.36 points across the five cultural adaptation evaluation criteria on a five-point scale. Overall, our work provides new resources, evaluation criteria, and empirical evaluation for studying culturally adaptive recipe translation in low-resource settings.",
+      "authors": [
+        "Nuhu Ibrahim",
+        "Maryam Abdulazeez",
+        "Fatsuma Jauro",
+        "Salisu Aliyu",
+        "Robert Stevens",
+        "Riza Batista-Navarro"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22652",
+      "url": "https://arxiv.org/abs/2611.22652",
+      "title": "OmniTongue: A Comprehensive MLLM Benchmark for Automated Tongue Diagnosis in Traditional Chinese Medicine",
+      "summary": "Multimodal Large Language Models (MLLMs) have excelled in Western medical imaging, yet their potential in Traditional Chinese Medicine (TCM) tongue diagnosis remains systematically unevaluated. Tongue diagnosis requires sophisticated global and local perception, serving as a rigorous touchstone for assessing the visual understanding depth of MLLMs. However, existing datasets are limited by single dimensions, coarse granularity, and ambiguous labels, hindering the evaluation of authentic clinical capabilities. To bridge this gap, we introduce OmniTongue, the first comprehensive, fine-grained Visual Question Answering benchmark for TCM tongue diagnosis. This benchmark integrates 1,351 expert-validated images and 21,616 instruction pairs. Its core design features 16 clinical dimensions for multidimensional evaluation, region-specific annotations for pathological localization, and 66 fine-grained labels for precise diagnostic representation. Extensive evaluations of existing MLLMs reveal significant performance gaps, demonstrating that medical-specific models lack domain advantages, while universally poor Macro-F1 scores expose a reliance on statistical shortcuts rather than genuine understanding of tongue pathology. These findings not only highlight the current limitations of MLLMs in interpreting regional medical features but also underscore OmniTongue's significance for developing robust automated tongue diagnosis models. The code and dataset will be made publicly available in a future release.",
+      "authors": [
+        "Liuyi Xu",
+        "Yun Guo",
+        "Shusheng Li",
+        "Xuewen Zhang",
+        "Yining Qian",
+        "An-Yang Lu"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22580",
+      "url": "https://arxiv.org/abs/2611.22580",
+      "title": "AfriNORM: An Evaluation Benchmark for Normative Reasoning of LLMs Across African Cultures",
+      "summary": "Large language models (LLMs) are increasingly deployed across various sectors. However, current evaluation benchmarks are insufficient to assess the applicability of these models in local African contexts, as most focus on linguistic fluency (grammar/translation) rather than cultural competence. The few existing benchmarks that measure general knowledge or social conventions do not capture the African deontic modality, i.e., the strict norms and taboos that govern diverse social interactions. In this paper, we introduce AfriNORM, a scenario-based, multiple-choice question dataset designed to measure and diagnose the normative reasoning limitations of LLMs when applied to African sociocultural contexts. We introduce two metrics: a Universal Commonsense Bias Score (UCBS) to quantify commonsense bias in LLM and a Distractor Bias Score (DBS) to quantify an LLM's limited understanding of African cultural norms. We also conduct a case study on the Yorùbá language, identifying confusion gaps in two closed-source LLMs, \"Gemini 2.0 Flash\" and \"GPT-5\", and one open-source LLM, \"Llama 3.1 8B Instruct\" when prompted in English versus Yorùbá. While their accuracy in English is high, their performance in Yorùbá is much lower, attributable to cultural confusion rather than simple bias, indicating that the models exhibit semantic confusion when reasoning about norms in Yorùbá.",
+      "authors": [
+        "Ahmad Samuel Gali",
+        "Tadesse Destaw Belay",
+        "Idris Abdulmumin",
+        "Seid Muhie Yimam",
+        "Shamsuddeen Hassan Muhammad"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22514",
+      "url": "https://arxiv.org/abs/2611.22514",
+      "title": "MM-ReportBench: A Comprehensive Benchmark for Multimodal Report Generation from Tables",
+      "summary": "The ability to generate multimodal reports integrating fluent narratives with faithful visualizations from tabular data, has become a cornerstone capability for modern vision-language models in practical domains such as finance, healthcare, and policy making. However, existing benchmarks are limited by single-modality focus, simplistic metrics, novelty evaluation, and visualization quality. We address these limitations with MM-ReportBench, a multimodal report evaluation benchmark covering 386 tasks across 185 real-world tables. Each task is paired with an expert-curated reference report featuring standardized chapter structures and verifiable key insight points, constructed through a hybrid pipeline of multimodal reports generation based on Monte Carlo Tree Search and rigorous human quality control. For robust evaluation, we design a dual-judge evaluation framework: Text Judge Model assesses textual quality along structural completeness, grounded insight verification with numerical fact-checking against source tables, and novelty analysis that distinguishes genuine analytical discovery from trivial paraphrasing; Visualization Judge Model evaluates generated visualizations across data fidelity, expressiveness, aesthetics, and technical correctness. They also evaluate cross-modal consistency. Extensive experiments on 20 state-of-the-art models reveal critical weaknesses: even the strongest model achieves only 68.9 overall score, with numerical hallucination affecting 38.5% of reports and genuinely novel insights remaining rare. Our ablation studies further demonstrate that single-judge evaluation consistently inflates scores by 8-12 points compared to dual-judge assessment, confirming that rigorous and reliable benchmarking demands multi-faceted, complementary evaluation probes.",
+      "authors": [
+        "Teng Lin",
+        "Nan Tang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22490",
+      "url": "https://arxiv.org/abs/2611.22490",
+      "title": "SciWorkBench: A Benchmark for Real Scientific Workflows",
+      "summary": "Language models are increasingly being used as agents capable of planning and executing projects, as well as refining their actions through feedback. This shift raises a question: can current agents complete projects like real scientists? To examine this question, we introduce SciWorkBench, a benchmark for evaluating agents' abilities on real science tasks across biology, chemistry, materials science, and physics. SciWorkBench is built from peer-reviewed literature or expert-contributed research scenarios. We also propose a unified scientific analysis framework validated by domain experts, which can categorize most tasks in SciWorkBench. Each task covers one or more stages of this framework. We evaluate up-to-date models within the Claude Code and Codex agent frameworks under a unified execution and grading protocol. The best-performing agent achieves a mean score of 57.38, indicating that current agents still struggle with realistic scientific workflows. Our failure analysis identifies three recurring weaknesses at the workflow level: difficulty translating scientific knowledge into task-specific procedures, weak integration of evidence across different modalities, and limited capacity for scientific self-correction. These findings highlight the importance of workflow-based evaluation for measuring progress toward reliable AI systems for scientific research.",
+      "authors": [
+        "Yuchen Zhang",
+        "Taolin Han",
+        "Jinghang Wang",
+        "Jinxin Wang",
+        "Yun Wu",
+        "Wai Yuet Chiu",
+        "Xiaogang Li",
+        "Yuting Fu",
+        "Kewei Sun",
+        "Jiaxin Li",
+        "Qile Jin",
+        "Jiajia Li",
+        "Ruodan Chen",
+        "Qingteng Chen",
+        "Jialu Nie",
+        "Junchao Li",
+        "Yifei Zhang",
+        "Chen Zhao",
+        "Hu Wei",
+        "Lin Qu",
+        "Yanni Yin",
+        "Bing Zhao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22360",
+      "url": "https://arxiv.org/abs/2611.22360",
+      "title": "Can Vision-Language Models Truly Understand Images? A Benchmark Beyond Commonsense Bias",
+      "summary": "Multimodal large language models (MLLMs) have achieved impressive performance on a wide range of vision-language tasks. However, it remains unclear whether their predictions are grounded in the visual content itself or are largely driven by statistical co-occurrence patterns and commonsense correlations learned from large-scale image-text corpora. Existing vision-language benchmarks predominantly consist of samples that conform to human commonsense, allowing models to achieve strong performance by exploiting dataset priors rather than genuinely understanding image content. To address this limitation, we present ContraSense, a systematically constructed benchmark for evaluating faithful vision-language understanding. ContraSense consists of carefully curated counter-intuitive image-text pairs that deliberately violate common expectations, substantially reducing the effectiveness of statistical biases and requiring models to rely on visual evidence for reasoning. We conduct comprehensive evaluations on a diverse set of representative open- and closed-source MLLMs. The results reveal a substantial performance gap between current MLLMs and humans: even the strongest closed-source model achieves only about 60\\% accuracy, compared with 96.04\\% for human participants. These findings demonstrate that current MLLMs still struggle with faithful visual understanding and highlight the need for more robust multimodal reasoning grounded in image content. The ContraSense benchmark is publicly available at https://huggingface.co/datasets/LingLin00/ContraSense.",
+      "authors": [
+        "Ling Lin",
+        "Heng Su",
+        "Xiangzeng Liu",
+        "Yang Bai",
+        "Congcong Zhu",
+        "Jingrun Chen"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22333",
+      "url": "https://arxiv.org/abs/2611.22333",
+      "title": "MoL-SQL: A Controlled Benchmark for Mixture-of-Language Text-to-SQL",
+      "summary": "Text-to-SQL systems are usually built and evaluated under a monolingual assumption, yet in international applications users often query databases stored in a different language. Existing multilingual benchmarks mostly translate only the question without aligning schema and value entities, so they can neither locate the source of an accuracy drop nor rule out translation errors. Hence, we introduce MoL-SQL, a benchmark for mixture-of-language Text-to-SQL that switches the languages of the question, schema, and stored values independently while keeping each task fixed, and grades every cross-lingual entity mapping into four difficulty levels. We migrate five Text-to-SQL benchmarks of different domains and source languages through a unified alignment pipeline that builds a shared cross-lingual entity map, migrates each database with its constraints, rewrites the gold SQL under execution-equivalence checks, and regenerates the question from the verified SQL, keeping all language versions of a task aligned in entities, intent, and execution result. MoL-SQL provides two splits: MoL-Full (16,892 samples) for overall evaluation and MoL-Cube (3,840 samples) covering every language combination to isolate question, schema, and value effects. Experiments with eight LLMs and four families of Text-to-SQL methods show that schema and value languages have distinct effects, with stored values costing up to 23 points, and that these effects mainly stem from cross-lingual entity mapping. Neither question translation nor additional reasoning narrows the value gap, whereas access to target-database values substantially reduces it, indicating that mixture-of-language Text-to-SQL benefits most from language-aware context grounding.",
+      "authors": [
+        "Tianqi Luo",
+        "Boyan Li",
+        "Yuyu Luo"
+      ],
+      "categories": [
+        "cs.DB"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22241",
+      "url": "https://arxiv.org/abs/2611.22241",
+      "title": "Where Does Hindsight Enter Clinical Agent Benchmarks? An Audit of Simulators and Case Construction",
+      "summary": "Benchmarks for LLM diagnostic agents are built from retrospective records: the case an agent reads is rewritten from discharge summaries, and unrecorded test results are generated by a simulator that often sees the final diagnosis. HindAudit separates three hindsight channels (the diagnosis given to the simulator, the retrospective context it conditions on, and the agent-facing case text) and measures each with judges trained only on real data. On 27,489 emergency admissions from MIMIC-IV, five registered tests found no leakage into simulated laboratory results: providing the diagnosis to five simulators had a negligible effect, and prompted gatekeepers diluted the diagnostic signal, although exploratory results suggest they can raise agent scores. The largest effect lay in the case text. Against a presentation-time reconstruction from triage records, benchmark-style summaries raised the zero-shot accuracy of four LLMs from 25.4% to 39.7% and discharge histories to 45.3%, and raised six interactive agents' scores while barely changing their ranking. The exploratory gap was reproduced in a registered replication on held-out patients. Masking diagnosis names left it unchanged. Because MIMIC lacks a contemporaneous bedside history, the gap is an upper bound on hindsight. We report all registered outcomes and recommend construction practices.",
+      "authors": [
+        "Meilu Zhu",
+        "Xiaohan Li",
+        "Axiu Mao"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22012",
+      "url": "https://arxiv.org/abs/2611.22012",
+      "title": "PS-HalluBench: Taxonomy-Driven Benchmarking of LLM Hallucinations in Power Systems",
+      "summary": "Large language models (LLMs) are increasingly explored for power-system applications, yet their reliability in engineering analysis remains uncertain. We introduce PS-HalluBench, a manually constructed benchmark of 200 questions that evaluates hallucination-related failures across five power-system task categories: numerical reasoning, network topology, constraint verification, false-premise acceptance, and abstention. We evaluate ten LLMs over the benchmark, yielding 39.35\\% overall correctness, with constraint verification achieving only 21.75\\%, and highlighting persistent difficulties in engineering reasoning. We further investigate engineering-grounded reasoning through numerical solver support and verified network information both of which show significant performance improvement. The findings reveal important limitations of standalone LLM reasoning and motivate integrating LLMs with verified engineering tools for reliable power-system analysis.",
+      "authors": [
+        "S. M. Monzurul Hoque Chowdhury",
+        "Nabila Tasfiha Rahman",
+        "Qinghua Li"
+      ],
+      "categories": [
+        "eess.SY",
+        "cs.SY"
+      ],
+      "published": "2026-11-16T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.22009",
+      "url": "https://arxiv.org/abs/2611.22009",
+      "title": "DiagTrace: An Interactive Benchmark for Clinical Decision Making",
+      "summary": "Large language models (LLMs) have shown strong performance on medical question answering and diagnostic reasoning benchmarks. However, existing evaluations typically provide all patient information upfront and assess only the final diagnosis or rationale. This setup ignores the need to acquire diagnostic evidence incrementally from incomplete information in real-world diagnosis. To bridge this gap, we introduce DiagTrace, a source-grounded benchmark for evaluating whether LLMs can reconstruct the documented diagnostic trajectory through interactive information seeking. Each benchmark instance is built from a PubMed Central case report and includes an initial presentation, an event bank, a clinical course, and diagnostic references. DiagTrace contains 510 cases across eight specialties, with 225 used to evaluate four LLMs on clinical-course alignment, interaction quality, and efficiency. Results reveal trade-offs in coverage, source-consistent ordering, and turn use.",
+      "authors": [
+        "Yufan Wang",
+        "Rui Yang",
+        "Yi Lin",
+        "Chunhua Weng",
+        "Yifan Peng"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-11-16T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.21707",
+      "url": "https://arxiv.org/abs/2611.21707",
+      "title": "Bookkeeping Is Not Judgement: EJBench, an Engineering Judgement Benchmark Built from a Conjugate Heat Transfer Design Campaign",
+      "summary": "We introduce EJBench, a benchmark of engineering judgement: whether a model can predict how a design behaves at new conditions from a few earlier results, and decide on it. Unlike engineering benchmarks that test whether an agent can operate simulation or CAD software, EJBench is software-agnostic and asks what an engineer would conclude without running a simulation. Its tasks come from a conjugate heat transfer design campaign for battery cold plates, in three families: matching unlabelled test results to their operating points, choosing which stored runs to reveal before signing off a design, and ranking new duties by peak cell temperature. Every answer is taken from a converged simulation, not from an LLM judge. The best of ten frontier models, GPT-6 Astra, scores 0.71, and models state almost the same confidence on tasks they get wrong as on tasks they get right. We also post-train Qwen3.5-9B with LoRA and reinforcement learning, rewarded by the share of answer criteria the simulation results confirm; on the held-out test split its score rises from 0.071 to 0.106. We release the train, validation and test splits, the evaluation harness and the leaderboard.",
+      "authors": [
+        "James Sadler",
+        "Rotimi Alabi",
+        "Kotub Uddin"
+      ],
+      "categories": [
+        "cs.CE",
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-11-16T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.21682",
+      "url": "https://arxiv.org/abs/2611.21682",
+      "title": "NEBench R1: a Reasoning Benchmark for Evaluating Nuclear Domain Competence in Large Language Models",
+      "summary": "Large language models (LLMs) are increasingly being explored for knowledge-intensive and safety-critical applications in nuclear engineering. However, existing nuclear-domain benchmarks provide limited content coverage or focus primarily on answer accuracy without systematically evaluating the quality of the underlying reasoning. This study introduces NEBench R1, a reasoning-oriented benchmark comprising 7,546 unique multiple-choice questions extracted from U.S. Nuclear Regulatory Commission (NRC) reactor operator licensing examinations covering 18 nuclear facilities. Each question is classified according to the NRC Knowledge and Abilities catalogs and accompanied by an official explanation serving as a reference for reasoning evaluation. Six LLMs were evaluated, with overall accuracy ranging from 34.0% to 73.9% across three distinct performance tiers. To assess reasoning quality, an LLM-based judge evaluated correctly answered responses using a multidimensional rubric. Although responses generally demonstrated strong problem comprehension, they scored lower in factual and procedural accuracy and distractor analysis, indicating that correct answers were not necessarily supported by technically sound justifications. Response clarity was also weakly indicative of technical quality. Furthermore, longer reasoning traces were associated with lower accuracy in both frontier reasoning models, suggesting that reasoning length may reflect question difficulty rather than improved problem-solving performance. Reasoning-token consumption may therefore provide an additional signal for identifying potentially unreliable responses. NEBench R1 establishes a benchmark for evaluating both answer accuracy and reasoning quality, providing a foundation for assessing the domain competence and reliability of LLMs in nuclear engineering.",
+      "authors": [
+        "Liyan Wang",
+        "Longze Li",
+        "Mohamed Hassan",
+        "Isshu Lee",
+        "Dajie Sun",
+        "Ruimin Feng",
+        "Aleksandar Vakanski"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-15T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.21678",
+      "url": "https://arxiv.org/abs/2611.21678",
+      "title": "RTLReviewBench: LLM Hardware Reviewers Rarely Miss Bugs but Routinely Reject Correct RTL",
+      "summary": "Hardware teams increasingly ask large language models (LLMs) to review register-transfer level (RTL) code, yet it is unclear whether a model can tell a correct module from a buggy one without simulating it. We introduce RTLReviewBench, a benchmark of 114 matched pairs of buggy and correct Verilog modules. Each pair shares one specification, most buggy modules are real failures of LLM code generators, and every label is confirmed by simulation. Evaluating 12 commercial and open-weight models, we find a consistent asymmetry: reviewers rarely accept buggy code but often reject correct code, producing more than five false rejections for every missed bug. Synthetic mutants hide part of the problem: on the same designs, models miss far fewer injected bugs than real ones. Asking a model to reason before it commits to a verdict sharply reduces false rejections for weaker reviewers, and a controlled ablation shows that where the reasoning appears in the output matters more than the instruction to reason, whereas sampling and majority voting do not help. A blinded audit further shows that some correct \"buggy\" verdicts rest on false technical claims. We release the benchmark, a harder split for future models, all model responses, and the evaluation code at https://github.com/yasirmahmud/RTLReviewBench",
+      "authors": [
+        "Yasir Mahmud"
+      ],
+      "categories": [
+        "cs.AR",
+        "cs.LG"
+      ],
+      "published": "2026-11-14T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.21644",
+      "url": "https://arxiv.org/abs/2611.21644",
+      "title": "MInfoVisQA: A Multilingual Benchmark for Information-Rich Visual Question Answering",
+      "summary": "Multimodal large language models (MLLMs) excel in vision-language tasks; yet, whether they maintain consistent understanding of information-rich visuals (InfoVis) when the surface language changes remains unclear. To quantify this capability, we introduce MInfoVisQA, a parallel benchmark with 8,960 QA configurations derived from 128 seed instances across 24 languages. We construct seed-matched, language-parallel visuals and QA pairs by disentangling numerical-structural data from text and programmatically synchronizing translated labels. We evaluate 25 MLLMs under two settings: Language-Aligned QA (LQA, matching visual-text languages) and Cross-Language QA (XQA, fixed QA language with varying visual languages). The results show that aggregate accuracy masks substantial robustness gaps: two models with comparable mean LQA accuracy (80.4\\%) exhibit performance spreads of 7.8 and 20.3 percentage points across languages. Moreover, all 25 models score lower with non-English visuals under fixed English QA, underscoring the need for cross-language sensitivity metrics.",
+      "authors": [
+        "Changjiang Jiang",
+        "Jiang Zhou",
+        "Xinbin Yuan",
+        "Fan Zhang",
+        "Tao Feng",
+        "Zhuohan Xie"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ],
+      "published": "2026-10-14T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
+    {
+      "arxiv_id": "2611.21622",
+      "url": "https://arxiv.org/abs/2611.21622",
+      "title": "CrisisBench: an evaluation suite for crisis counseling AI",
+      "summary": "Background: Crisis helplines are essential to mental health systems but are often understaffed and underfunded. LLMs could support counselors, but existing benchmarks do not capture the escalation, risk assessment, and de-escalation central to crisis conversations, while privacy restrictions limit use of real transcripts. Methods: We present CrisisBench, a privacy-preserving suite for single- and multi-turn crisis counseling evaluation. It includes 1,085 single-turn tasks from 200 de-identified conversations and 1,185 patient LLMs derived from hotline metadata. Patient models and a 23-item LLM judge were calibrated against expert counselors. Results: We evaluated five GPT models plus draft-then-edit and retrieval-augmented generation. All systems underperformed human counselors on excessive empathy and questioning in single-turn evaluation. The rubric achieved human-human Krippendorff's $α$ = 0.51 and LLM-human $α$ = 0.54 (Pearson r = 0.80). In multi-turn evaluation, retrieval-augmented generation scored highest overall (0.961), with all systems within 0.058. Microskills and style/tone were near ceiling, while productivity and safety/risk accounted for most between-system variation. Counselors rated patient LLMs realistic (86%) and useful (92%). Conclusion: CrisisBench enables scalable, privacy-preserving evaluation of crisis counseling. Current systems perform strongly on core structural competencies but still diverge from experts on important response-level failure modes. We release the rubrics, judge prompts, and evaluation tasks.",
+      "authors": [
+        "Akshay Swaminathan",
+        "Filip Ramazan",
+        "Sharang Phadke",
+        "Kevina Wang",
+        "Ivan Lopez",
+        "Shaked Peleg Azzam",
+        "Gloria Ye",
+        "Chastin Chung",
+        "William Wang",
+        "Stephanie Stoll",
+        "Ivy Pham",
+        "Rebecca Hurwitz",
+        "Shreya Shah",
+        "Samuel Chuang",
+        "Divyanjali Verma",
+        "Abhay John",
+        "Ehsan Adeli",
+        "Nigam H. Shah"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-11T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "announced_at": "2026-11-18T05:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z"
+    },
     {
       "arxiv_id": "2611.21300",
       "url": "https://arxiv.org/abs/2611.21300",
@@ -101,15 +574,15 @@
         "stat.ME",
         "stat.ML"
       ],
-      "published": "2026-11-16T00:00:00Z",
-      "updated": "2026-11-17T00:00:00Z",
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
       "announced_at": "2026-11-17T05:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-11-18T02:34:19Z",
       "review_status": "pending",
       "review_issue_url": null,
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-11-17T00:00:00Z",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
       "analysis_status": "exclude",
       "analysis_at": "2026-11-18T02:40:48Z",
       "analysis_reason": "Claude 초록 선별에서 제외"
@@ -373,22 +846,22 @@
       "arxiv_id": "2611.20385",
       "url": "https://arxiv.org/abs/2611.20385",
       "title": "DominoBench: Evaluating Multi-Step Physical Reasoning from Still Images",
-      "summary": "Can a vision-language model look at a picture of a chain reaction and tell what will happen? Recent multimodal models describe scenes fluently and solve textbook physics problems, which suggests they should also predict how a scene of ramps, ledges, pendulums, seesaws and dominoes plays out once a ball is pushed. We tested this claim on 30 models from 10 families and reached a clear conclusion: unaided, no model predicts the outcome reliably. We built DominoBench, a benchmark of still images of 2D rigid-body scenes whose outcome a physics simulator computes. It holds 854 items in 427 minimal pairs, in which a change of one to three grid steps in one quantity decides whether one person survives, and every item comes with a four-rung hint ladder ending in the exact calculation that decides the outcome. Unaided, frontier models from Anthropic, Google and OpenAI are right about the person whose fate flips in at most 72% of items and answer both twins of a pair correctly in at most 34%. Pointing at the deciding step helps little, and exact geometry given as text barely helps, yet once the deciding calculation and the quantities it needs, including speeds that a still image cannot show, are written out, the same models reach 82-92% on the deciding person, while small open-weight models stay near chance. Physical prediction from a still image therefore fails at the quantitative step: the strongest models use the deciding quantity when they are given it, but do not produce it on their own. For models that plan or act in the physical world, a fluent account of a scene is thus no evidence of a correct prediction: such models must find and compute the deciding quantity unprompted, and DominoBench tests whether they do.",
+      "summary": "Can a vision-language model look at a picture of a chain reaction and tell what will happen? Recent multimodal models describe scenes fluently and solve textbook physics problems, which suggests they should also predict how a scene of ramps, ledges, pendulums, seesaws and dominoes plays out once a ball is pushed. We tested this claim on 30 models from 10 families and reached a clear conclusion: unaided, no model predicts the outcome reliably. We built DominoBench, a benchmark of still images of 2D rigid-body scenes whose outcome a physics simulator computes. It holds 854 items in 427 minimal pairs, in which a change of one to three grid steps in one quantity decides whether one person survives, and every item comes with a four-rung hint ladder ending in the exact calculation that decides the outcome. Unaided, frontier models from Anthropic, Google and OpenAI are right about the person whose fate flips in at most 75% of items and answer both twins of a pair correctly in at most 40%. Pointing at the deciding step helps little, and exact geometry given as text barely helps, yet once the deciding calculation and the quantities it needs, including speeds that a still image cannot show, are written out, the same models reach 80-92% on the deciding person, while small open-weight models stay near chance. Physical prediction from a still image therefore fails at the quantitative step: the strongest models use the deciding quantity when they are given it, but do not produce it on their own. For models that plan or act in the physical world, a fluent account of a scene is thus no evidence of a correct prediction: such models must find and compute the deciding quantity unprompted, and DominoBench tests whether they do.",
       "authors": [
         "Emilio Ferrara"
       ],
       "categories": [
         "cs.CV"
       ],
-      "published": "2026-11-16T00:00:00Z",
-      "updated": "2026-11-17T00:00:00Z",
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
       "announced_at": "2026-11-17T05:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-11-18T02:34:19Z",
       "review_status": "pending",
       "review_issue_url": null,
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-11-17T00:00:00Z",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
       "analysis_status": "queued",
       "analysis_at": "2026-11-18T02:40:48Z",
       "analysis_reason": "초록 선별 후 본문 조사 대기"
@@ -893,6 +1366,250 @@
       "analysis_status": "queued",
       "analysis_at": "2026-11-18T02:40:37Z",
       "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2609.35707",
+      "title": "ScAn-Bench: Evaluating Scaling Analysis Methodology",
+      "summary": "Recent progress in machine learning is driven by large-scale foundation models, where scaling laws and finding optimal scaling prescriptions for architecture, data, and hyperparameters are key in advancing the state-of-the-art. Therefore, it is surprising that no systematic study evaluates the methodology to obtain scaling laws and prescriptions across different model types. To shed light on this crucial blind spot and facilitate future research, we introduce the surrogate benchmarks ScAn-Bench-LLM and ScAn-Bench-VLM based on 4524 and 8024 checkpoints of language and vision-language model pipelines. On our benchmarks, we perform the first systematic evaluation of both data acquisition and extrapolation methodology for scaling analysis across different data modalities.",
+      "authors": [
+        "Artin Sermaxhaj",
+        "Nastaran Alipour",
+        "Donat Sinani",
+        "Johannes Hog",
+        "Neeratyoy Mallik",
+        "Steven Adriaensen",
+        "Jenia Jitsev",
+        "Danny Stoll"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "categories": [
+        "cs.LG"
+      ],
+      "url": "https://arxiv.org/abs/2609.35707",
+      "first_seen_at": "2026-10-18T13:16:31Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "queued",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
+      "arxiv_id": "2609.33319",
+      "title": "PhysAlign: A Benchmark for Evidence-Grounded Role Alignment in Multimodal Physics Reasoning",
+      "summary": "A key challenge in physics diagram understanding is correctly associating visual information with the physical entities, relations, and conditions it describes. Even when a value, symbol, or other local element is accurately recognized, assigning it to the wrong entity or scope can distort the underlying physical premise and lead to incorrect reasoning. To systematically study this challenge, we introduce \\textbf{PhysAlign}, a benchmark designed to assess whether multimodal models correctly associate information recognized from physics diagrams with its intended physical role. By disentangling visual recognition from physical-role assignment through localized probes and controlled variants, PhysAlign isolates correspondence errors from recognition failures. It contains 3,341 human-validated probes spanning 986 physics problems, enabling systematic evaluation of visual recognition and physical-role correspondence at scale. We further introduce five complementary evaluation metrics, including CAcc, GAcc, and JAcc, which provide a comprehensive assessment of models' ability to recognize diagram content, establish correct physical correspondences, and solve the underlying physics problem. Across our evaluated multimodal models, PhysAlign reveals a consistent gap between local visual recognition and physical-role grounding. Even when the queried content is correctly recognized, the conditional correspondence error rate remains 13.8\\% for GPT-6-Astra and rises to about 50.6\\% for InternVL3.5-8B. These findings indicate that strong perception alone does not ensure reliable physical interpretation, exposing a distinct grounding bottleneck that is largely hidden by answer-level accuracy and highlighting the need for future models to better align recognized visual evidence with its physical meaning.",
+      "authors": [
+        "Kecheng Liang",
+        "Haoyang Liu",
+        "Zexin Chen",
+        "Zirong Liu",
+        "Weixing Chen",
+        "Qiufeng Wang",
+        "Yang Liu",
+        "Liang Lin"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "categories": [
+        "cs.AI"
+      ],
+      "url": "https://arxiv.org/abs/2609.33319",
+      "first_seen_at": "2026-10-18T13:16:31Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "needs_evidence",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-12-14부터 재시도",
+      "analysis_failures": 3,
+      "analysis_retry_after": "2026-12-14",
+      "analysis_at": "2026-11-14T02:43:34Z"
+    },
+    {
+      "arxiv_id": "2608.08077",
+      "url": "https://arxiv.org/abs/2608.08077",
+      "title": "Explore, Map, Remember, Decide: A Benchmark for VLM Readiness in Safety-Critical Scenarios",
+      "summary": "Vision-Language Models (VLMs) are often deployed as embodied controllers for robotics, yet it remains unclear how well they can explore an environment, maintain an internal map, and ground safety-critical decisions in long-horizon sequential trajectories. In this work, we introduce EMRD, an evaluation framework that decouples spatial reasoning into four stages: Explore (what the agent observes), Map (what it records and where), Remember (what it retains), and Decide (whether its final choice is justified), scored across 18 stage-specific metrics. We use EMRD to evaluate eleven open- and closed-weight VLMs across 16 buildings under nominal conditions and three environmental stresses (darkness, smoke, and motion noise), where an embodied VLM explores unknown rooms, maps observed objects, and selects the safest gathering place. Open-weight models leave rooms unvisited in 95% of episodes and detect at most 51% of objects; closed-weight models explore more, though with an external memory (notepad), two of the three stop prematurely. Without external memory, most VLMs keep fewer of the objects they saw, especially in larger buildings. The start limits which rooms are explored, and open-weight models started in different rooms agree on the final room not significantly more often than chance. Moreover, these choices are biased by semantic priors: swapping a room's label is often enough to change the final choice. Finally, motion noise increases object position error (by 12-60% for closed-weight models), strong darkness lowers map recall by 28-31 percentage points, and dense smoke reduces seen objects by 25-39 points, while the choice among the rooms entered does not change significantly.",
+      "authors": [
+        "Gabriele La Malfa",
+        "Nitay Alon",
+        "Emanuele La Malfa",
+        "Reuth Mirsky",
+        "Stefan Sarkadi"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.MA",
+        "cs.RO"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2606.15867",
+      "url": "https://arxiv.org/abs/2606.15867",
+      "title": "CogCanvas: A Benchmark for Evaluating Multi-Subject Reference-Based Image Generation",
+      "summary": "Multi-subject reference-based image generation requires jointly preserving multiple human identities, binding per-person objects and fashion items, and respecting a specified background scene, a regime where current diffusion models remain brittle. Existing benchmarks evaluate only one axis at a time and none jointly captures multi-identity composition with human-object interaction, background grounding, and spatial plausibility. We introduce CogCanvas, a benchmark of 1,952 curated reference images spanning 100 celebrity identities, 115 distinctive objects and fashion items, and 29 real-world background scenes including landmarks, from which we construct 1,361 compositional prompts covering 2-5 person group sizes. The curation pipeline combines DINOv2-based deduplication, two-stage aesthetic filtering, and automated derivation of structured interaction and position graphs that serve as ground-truth supervision. CogCanvas supports three tasks, reference-based multi-human-object generation (primary), text-to-image compositional generation, and reference retrieval, under a unified six-axis evaluation protocol. We introduce two metrics tailored to the multi-reference setting: BG-Sim, which scores background fidelity on SAM 3-masked regions via DINOv3 feature similarity, and Attr-VQA, which uses a multimodal LLM to verify per-subject attribute binding and inter-person interactions against the structured graphs. Benchmarking five SOTA methods reveals that every model degrades substantially as group size grows from 2 to 5, with near-complete failure on object/fashion binding beyond three subjects.",
+      "authors": [
+        "Long-Bao Nguyen",
+        "Quang-Khai Le",
+        "Tam V. Nguyen",
+        "Minh-Triet Tran",
+        "Trung-Nghia Le"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-10-19T05:47:12Z",
+      "review_status": "reviewed",
+      "review_issue_url": "https://github.com/lablup/llm-benchmark-inventory/issues/49",
+      "analysis_status": "accepted",
+      "analysis_reason": "CogCanvas는 다중 인물 신원, 객체·패션, 배경 참조를 함께 쓰는 이미지 생성 벤치마크이며 참조 이미지 1,952장과 프롬프트 1,361개를 제공한다. 프롬프트는 영어 문장이라 en 트랙이고 참조 이미지를 입력으로 쓰므로 vision이다. 공식 데이터 카드가 license: cc-by-nc-4.0을 명시해 라이선스 4개 항목은 카드 인용으로 채웠다. 카드와 PDF 어디에도 lm-eval 언급이 없어 '미표기'로 두었고, 추천 결과는 논문 Table 2의 N=2 Attr-VQA 6개 방법이다."
+    },
+    {
+      "arxiv_id": "2605.07830",
+      "url": "https://arxiv.org/abs/2605.07830",
+      "title": "CyBiasBench: Benchmarking Bias in LLM Agents for Cyber-Attack Scenarios",
+      "summary": "Large language models (LLMs) are increasingly deployed as autonomous agents in offensive cybersecurity. In this paper, we reveal an interesting phenomenon: different agents exhibit distinct attack patterns. Specifically, agents exhibit distinct attack-selection biases, differing in both the families they explore and the concentration of their efforts. These patterns remain relatively stable across prompt variations. To systematically quantify this behavior, we introduce CyBiasBench, a comprehensive 630-session benchmark that evaluates five agents on three targets and four prompt conditions with ten attack families. We identify explicit bias across agents, with different dominant attack families and varying entropy levels in their attack-family allocation distributions. Such bias characterizes agent behavior within the evaluated environments and provides information beyond aggregate attack success rates. Furthermore, our experiments reveal a bias momentum effect, where agents resist explicit steering toward attack families that conflict with their bias. This forced distribution shift does not yield measurable improvements in attack performance. To ensure reproducibility and facilitate future research, we release an interactive result dashboard at https://trustworthyai.co.kr/CyBiasBench/ and a reproducibility artifact with aggregated session-level statistics and full evaluation scripts at https://github.com/Harry24k/CyBiasBench.",
+      "authors": [
+        "Taein Lim",
+        "Seongyong Ju",
+        "Munhyeok Kim",
+        "Hyunjun Kim",
+        "Hoki Kim"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2604.22774",
+      "url": "https://arxiv.org/abs/2604.22774",
+      "title": "When VLMs 'Fix' Students: Identifying and Penalizing Over-Correction in the Evaluation of Multi-line Handwritten Math OCR",
+      "summary": "Accurate transcription of handwritten mathematics is crucial for educational AI systems, yet current benchmarks fail to evaluate this capability properly. Most prior studies focus on single-line expressions and rely on lexical metrics such as BLEU, which fail to assess the semantic reasoning across multi-line student solutions. In this paper, we present the first systematic study of multi-line handwritten math Optical Character Recognition (OCR), revealing a critical failure mode of Vision-Language Models (VLMs): over-correction. Instead of faithfully transcribing a student's work, these models often \"fix\" errors, thereby hiding the very mistakes an educational assessment aims to detect. To address this, we propose PINK (Penalized INK-based score), a semantic evaluation metric that leverages a Large Language Model (LLM) for rubric-based grading and explicitly penalizes over-correction. Our comprehensive evaluation of 15 state-of-the-art VLMs on the FERMAT dataset reveals substantial ranking reversals compared to BLEU: models like GPT-4o are heavily penalized for aggressive over-correction, whereas Gemini 2.5 Flash emerges as the most faithful transcriber. Furthermore, human expert studies show that PINK aligns significantly better with human judgment (55.0% preference over BLEU's 39.5%), providing a more reliable evaluation framework for handwritten math OCR in educational settings. Code is available at https://github.com/9115jin/PINK.",
+      "authors": [
+        "Jin Seong",
+        "Wencke Liermann",
+        "Minho Kim",
+        "Jong-hun Shin",
+        "Soojong Lim"
+      ],
+      "categories": [
+        "cs.CY",
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2604.00024",
+      "url": "https://arxiv.org/abs/2604.00024",
+      "title": "WHBench: Evaluating Frontier LLMs with Expert-in-the-Loop Validation on Women's Health Topics",
+      "summary": "Large language models are increasingly used for medical guidance, but women's health remains under-evaluated in benchmark design. We present the Women's Health Benchmark (WHBench), a targeted evaluation suite of 47 expert-crafted scenarios across 10 women's health topics, designed to expose clinically meaningful failure modes including outdated guidelines, unsafe omissions, dosing errors, and equity-related blind spots. We evaluate 22 models using a 23-criterion rubric spanning clinical accuracy, completeness, safety, communication quality, instruction following, equity, uncertainty handling, and guideline adherence, with safety-weighted penalties and server-side score recalculation. Across 3,102 attempted responses (3,100 scored), no model mean performance exceeds 75 percent; the best model reaches 72.1 percent. Even top models show low fully correct rates and substantial variation in harm rates. Inter-rater reliability is moderate at the response label level but high for model ranking, supporting WHBench utility for comparative system evaluation while highlighting the need for expert oversight in clinical deployment. WHBench provides a public, failure-mode-aware benchmark to track safer and more equitable progress in womens health AI.",
+      "authors": [
+        "Sneha Maurya",
+        "Spandana Govindgari",
+        "Girish Kumar"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CY"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2603.23034",
+      "url": "https://arxiv.org/abs/2603.23034",
+      "title": "Traffic Sign Recognition in Autonomous Driving: Dataset, Benchmark, and Field Experiment",
+      "summary": "Traffic Sign Recognition (TSR) is a core perception capability for autonomous driving, where robustness to cross-region variation, long-tailed categories, and semantic ambiguity is essential for reliable real-world deployment. Despite steady progress in recognition accuracy, existing traffic sign datasets and benchmarks offer limited diagnostic insight into how different modeling paradigms behave under these practical challenges. We present TS-1M, a large-scale and globally diverse traffic sign dataset comprising over one million real-world images across 454 standardized categories, together with a diagnostic benchmark designed to analyze model capability boundaries. Beyond standard train-test evaluation, we provide a suite of challenge-oriented settings, including cross-region recognition, rare-class identification, low-clarity robustness, and semantic text understanding, enabling systematic and fine-grained assessment of modern TSR models. Using TS-1M, we conduct a unified benchmark across three representative learning paradigms: classical supervised models, self-supervised pretrained models, and multimodal vision-language models (VLMs). Our analysis reveals consistent paradigm-dependent behaviors, showing that semantic alignment is a key factor for cross-region generalization and rare-category recognition, while purely visual models remain sensitive to appearance shift and data imbalance. Finally, we validate the practical relevance of TS-1M through real-scene autonomous driving experiments, where traffic sign recognition is integrated with semantic reasoning and spatial localization to support map-level decision constraints. Overall, TS-1M establishes a reference-level diagnostic benchmark for TSR and provides principled insights into robust and semantic-aware traffic sign perception. Project page: https://guoyangzhao.github.io/projects/ts1m.",
+      "authors": [
+        "Guoyang Zhao",
+        "Weiqing Qi",
+        "Kai Zhang",
+        "Chenguang Zhang",
+        "Zeying Gong",
+        "Zhihai Bi",
+        "Kai Chen",
+        "Benshan Ma",
+        "Ming Liu",
+        "Jun Ma"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2505.19125",
+      "url": "https://arxiv.org/abs/2505.19125",
+      "title": "RTime-QA: A Benchmark for Atomic Temporal Event Understanding in Multimodal Large Language Models",
+      "summary": "Multimodal large language models (MLLMs) perform well on video benchmarks, yet many video questions can be answered from a single frame or from language priors, which leaves open whether these models perceive how an event unfolds in time. We introduce \\rtqa, a benchmark for atomic temporal event understanding built on time-reversed question pairs: each video is accompanied by its reversal, and each question is asked on both videos with identical text and options but different correct answers, so that a deterministic model that ignores the order of the frames cannot answer both. \\rtqa{} comprises 8,420 questions of five types on 1,278 videos, 639 videos and their reversals. The questions are derived from event annotations that a proposer model writes, a reviewer model checks and human annotators verify, and three subsets target fast evaluation (\\rtqatiny), questions that are hard to answer from the first and last frames (\\rtqacore) and two consecutive events (\\rtqacomp). All 20 evaluated models are less accurate on reversed videos. On \\rtqafull, proprietary models answer both questions of 90.6--94.4\\% of the pairs and the strongest open-source model of 66.8\\%; on \\rtqacore, the proprietary models drop to 55.6--64.5\\%, and shuffling the frames reduces the paired accuracy of the tested open-source models to 3.4--7.4\\%. We further build \\rtqatrain{} with the same pipeline, without human verification, and train three open-source MLLMs on it with supervised fine-tuning (SFT) and reinforcement learning (DAPO) under matched settings: both raise paired accuracy on \\rtqafull, SFT by 20.7--27.4 points and DAPO by 5.9--22.9 points. For Qwen3.5-9B-Thinking, the training data also help on two other temporal benchmarks: SFT and DAPO raise the Vinoground text score by 5.8 and 3.8 points, respectively, and DAPO raises the TVBench macro accuracy by 4.6 points.",
+      "authors": [
+        "Yuqi Liu",
+        "Qin Jin",
+        "Tianyuan Qu",
+        "Xuan Liu",
+        "Yang Du",
+        "Bei Yu",
+        "Jiaya Jia"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-17T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null
     },
     {
       "arxiv_id": "2611.18553",
@@ -1482,6 +2199,38 @@
       "analysis_reason": "초록 선별 후 본문 조사 대기"
     },
     {
+      "arxiv_id": "2610.22155",
+      "url": "https://arxiv.org/abs/2610.22155",
+      "title": "Realtime-Bench: Can Frontier Models Solve Real-time Interactive Problems?",
+      "summary": "Real-time interaction requires agents to perceive evolving environments and act under temporal constraints, yet existing evaluations of real-time streaming models focus on conversational quality and streaming perception, leaving effective action under strict temporal constraints untested. We introduce Realtime-Bench, a suite of carefully curated dynamic tasks where delayed actions directly affect success. Under Wall Clock, where environments advance according to actual inference latency, the best success rate reaches only 44% and the best Pass^3 is only 36%, demonstrating that real-time interaction remains challenging. To separate serving latency from models' real-time streaming capability, we compare Wall Clock with Paused Clock, which removes inference delays as an idealized reference, and introduce Token Clock, which advances simulated time according to generated token counts, testing temporal awareness independently of physical serving speed. We find that temporal costs limit success in evolving environments and that higher reasoning effort has mixed effects under time pressure, reflecting a trade-off between decision quality and timely execution. Based on these results, we discuss future directions for improving real-time multimodal models, including adaptive reasoning with temporal awareness and continuous perception and action.",
+      "authors": [
+        "Jingyu Tang",
+        "Xu Yang",
+        "Zhehao Zhang",
+        "Zheng Wang",
+        "Qi Cheng",
+        "Haozhe Zhao",
+        "Manling Li",
+        "Wenxuan Li",
+        "Xide Xia",
+        "Jiaxin Pei"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-16T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-10-24T02:42:20Z",
+      "review_status": "pending",
+      "review_issue_url": null,
+      "analysis_status": "queued",
+      "analysis_at": "2026-10-24T02:48:58Z",
+      "analysis_reason": "초록 선별 후 본문 조사 대기"
+    },
+    {
       "arxiv_id": "2610.16346",
       "title": "CellChain: Benchmarking Cross-Scale Evidence Use for Perturbation Reasoning",
       "summary": "Recent advances in foundation models and large-scale cellular perturbation datasets have driven growing interest in using LLMs to predict and reason about cellular responses. Biological reasoning in this setting involves relating molecular mechanisms, cellular responses, and functional outcomes across scales. Evaluating foundation models therefore requires assessing not only whether their predictions are correct, but also how those predictions depend on the biological evidence provided. We introduce CellChain, an experimentally grounded benchmark comprising 590 biological cases and 2,360 matched evidence-condition instances across gene-dependency prediction, cytokine-axis identification, and drug-sensitivity ranking. CellChain links perturbation experiments and external biological resources through a provenance-aware evidence graph spanning molecular, pathway, transcriptional, and phenotypic information. Task-specific conditions vary evidence coverage, composition, or assignment while preserving questions, candidate answers, reference targets, and scoring rules. Across 18 foundation models, the highest accuracies under prespecified target-evidence conditions are 57.5%, 75.5%, and 70.8%, respectively, and broader evidence coverage does not consistently improve accuracy. On the drug-sensitivity benchmark cohort, matched reference histories outperform swapped histories by an average of 13.0 percentage points in cluster-weighted accuracy. Decision-transition analysis separates corrections, newly introduced errors, and wrong-answer switches, revealing substantial answer changes hidden by small net accuracy differences. CellChain provides controlled comparisons for attributing changes in model predictions to prespecified expansions of biological context, including changes in evidence coverage, composition, and biological assignment.",
@@ -1537,6 +2286,55 @@
       "analysis_status": "exclude",
       "analysis_at": "2026-11-18T02:40:37Z",
       "analysis_reason": "Claude 초록 선별에서 제외"
+    },
+    {
+      "arxiv_id": "2608.05180",
+      "url": "https://arxiv.org/abs/2608.05180",
+      "title": "The Nuclear Decision-Making Benchmark: Evaluating Frontier LLM Tendencies in Escalation, Proliferation, Non-Proliferation, and Arms Control Scenarios",
+      "summary": "Large language models (LLMs) are entering defense and national-security workflows. Seven of the nine nuclear-armed states have committed to keeping humans in control of decisions to use nuclear weapons, but LLMs may still shape the assessments and options that reach decision-makers. Scrutinizing that influence calls for evidence about how these models behave on nuclear-policy questions. Such evidence should cover more than crisis escalation and should separate a model's tendencies from artifacts of a single phrasing, ordering, or run; evaluations to date have not focused on these questions. We introduce the Nuclear Decision-Making Benchmark (NDM Bench), a dataset and reproducible framework for testing how the choice of model and the design of a question shape LLMs' answers on nuclear policy. Its 151 scenarios, written by international relations experts, span four domains: nuclear escalation (76), arms control (25), non-proliferation (25), and proliferation (25). Each scenario can be posed with different states in the decision-maker's role and with added framing sentences. Eight frontier LLMs answered every prompt five times, about 380{,}000 responses in all. Results highlight that models' choices differ by model and domain, and that in escalation, how often they choose a nuclear threat or nuclear use depends on the state being advised and, for some models, the framing. However, agreement across identical runs is often low, with all five runs agreeing on only 43\\% of escalation prompts. We release the scenarios, the prompts with their answer orders, and the parsed responses, along with documentation of how they were built and recommended practices for evaluations where there is no correct answer to grade against.",
+      "authors": [
+        "Benjamin Jensen",
+        "Ian Reynolds",
+        "Yasir Atalan",
+        "Martin Pollack",
+        "Austin Woo",
+        "Anna McConkie",
+        "Robert Sincero"
+      ],
+      "categories": [
+        "cs.CY"
+      ],
+      "published": "2026-11-16T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null
+    },
+    {
+      "arxiv_id": "2607.25987",
+      "url": "https://arxiv.org/abs/2607.25987",
+      "title": "IH-Benchmark: A Conflict-Centered Benchmark for Instruction-Hierarchy Robustness in Large Language Models",
+      "summary": "When a language model receives conflicting instructions from different priority levels, which one does it actually follow? This question lies at the heart of reliable LLM deployment. Existing benchmarks answer this only partially, often focusing on a single hierarchy component or adapting public datasets with limited tool-use coverage. We present IH-Benchmark, a conflict-centered benchmark for instruction-hierarchy robustness across direct System $\\succ$ User (S $\\succ$ U) conflicts and tool-mediated User $\\succ$ Tool (U $\\succ$ T) conflicts. We organize tests into seven constraint categories according to the higher-priority requirements under evaluation. Each test is evaluated with a uniform binary pass/fail protocol combining a predicate domain-specific language (DSL) with rubric-based LLM judges. We report category-balanced compliance rates and evaluate non-conflict controls separately. Our evaluation of 32 model configurations over five runs each reveals substantial variation in overall compliance, with scores ranging from 32.9% to 97.8%. Models achieve higher compliance on S $\\succ$ U than on U $\\succ$ T on average, at 84.6% and 69.6%, respectively. Strong performance on the former track does not guarantee comparable robustness on the latter. Constraint hardening provides a prompt-based defense, but its benefits depend on the model and how conflicting instructions are delivered. Several models also resist unauthorized tool actions more reliably than injected instructions that alter response language or factual content. Together, these results show that high aggregate compliance can conceal weaknesses in specific conflict tracks and instruction requirements. We release IH-Benchmark, including the benchmark corpus, agent simulators, and evaluation harness, at LINK_RELEASE_AFTER_PEER_REVIEW.",
+      "authors": [
+        "Conor McCauley",
+        "Zeliang Kan",
+        "Jason Martin"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.SE"
+      ],
+      "published": "2026-11-16T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
+      "submission_date_precision": "day",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
+      "metadata_source": "oai",
+      "first_seen_at": "2026-11-19T02:34:40Z",
+      "review_status": "pending",
+      "review_issue_url": null
     },
     {
       "arxiv_id": "2606.02404",
@@ -13722,35 +14520,6 @@
       "analysis_reason": "초록 선별 후 본문 조사 대기"
     },
     {
-      "arxiv_id": "2609.35707",
-      "title": "ScAn-Bench: Evaluating Scaling Analysis Methodology",
-      "summary": "Recent progress in machine learning is driven by large-scale foundation models, where scaling laws and finding optimal scaling prescriptions for architecture, data, and hyperparameters are key in advancing the state-of-the-art. Therefore, it is surprising that no systematic study evaluates the methodology to obtain scaling laws and prescriptions across different model types. To shed light on this crucial blind spot and facilitate future research, we introduce the surrogate benchmarks ScAn-Bench-LLM and ScAn-Bench-VLM based on 4524 and 8024 checkpoints of language and vision-language model pipelines. On our benchmarks, we perform the first systematic evaluation of both data acquisition and extrapolation methodology for scaling analysis across different data modalities.",
-      "authors": [
-        "Artin Sermaxhaj",
-        "Nastaran Alipour",
-        "Donat Sinani",
-        "Johannes Hog",
-        "Neeratyoy Mallik",
-        "Steven Adriaensen",
-        "Jenia Jitsev",
-        "Danny Stoll"
-      ],
-      "published": "2026-10-29T00:00:00Z",
-      "updated": "2026-10-30T00:00:00Z",
-      "categories": [
-        "cs.LG"
-      ],
-      "url": "https://arxiv.org/abs/2609.35707",
-      "first_seen_at": "2026-10-18T13:16:31Z",
-      "review_status": "pending",
-      "review_issue_url": null,
-      "analysis_status": "queued",
-      "submission_date_precision": "day",
-      "metadata_changed_at": "2026-10-30T00:00:00Z",
-      "metadata_source": "oai",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
-    },
-    {
       "arxiv_id": "2609.11234",
       "url": "https://arxiv.org/abs/2609.11234",
       "title": "NovGauge: A Fine-Grained Benchmark for Diagnosing LLMs' Capability in Paper Novelty Assessment",
@@ -19774,38 +20543,6 @@
       "analysis_reason": "초록 선별 후 본문 조사 대기",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-22T00:00:00Z"
-    },
-    {
-      "arxiv_id": "2610.22155",
-      "url": "https://arxiv.org/abs/2610.22155",
-      "title": "Realtime-Bench: Can Frontier Models Solve Real-time Interactive Problems?",
-      "summary": "Real-time interaction requires agents to perceive evolving environments and act under temporal constraints, yet existing evaluations of real-time streaming models focus on conversational quality and streaming perception, leaving effective action under strict temporal constraints untested. We introduce Realtime-Bench, a suite of carefully curated dynamic tasks where delayed actions directly affect success. Under Wall Clock, where environments advance according to actual inference latency, the best success rate reaches only 44% and the best Pass^3 is only 36%, demonstrating that real-time interaction remains challenging. To separate serving latency from models' real-time streaming capability, we compare Wall Clock with Paused Clock, which removes inference delays as an idealized reference, and introduce Token Clock, which advances simulated time according to generated token counts, testing temporal awareness independently of physical serving speed. We find that temporal costs limit success in evolving environments and that higher reasoning effort has mixed effects under time pressure, reflecting a trade-off between decision quality and timely execution. Based on these results, we discuss future directions for improving real-time multimodal models, including adaptive reasoning with temporal awareness and continuous perception and action.",
-      "authors": [
-        "Jingyu Tang",
-        "Xu Yang",
-        "Zhehao Zhang",
-        "Zheng Wang",
-        "Qi Cheng",
-        "Haozhe Zhao",
-        "Manling Li",
-        "Wenxuan Li",
-        "Xide Xia",
-        "Jiaxin Pei"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-22T00:00:00Z",
-      "updated": "2026-10-23T00:00:00Z",
-      "submission_date_precision": "day",
-      "metadata_changed_at": "2026-10-23T00:00:00Z",
-      "metadata_source": "oai",
-      "first_seen_at": "2026-10-24T02:42:20Z",
-      "review_status": "pending",
-      "review_issue_url": null,
-      "analysis_status": "queued",
-      "analysis_at": "2026-10-24T02:48:58Z",
-      "analysis_reason": "초록 선별 후 본문 조사 대기"
     },
     {
       "arxiv_id": "2610.09163",
@@ -28602,11 +29339,11 @@
       "first_seen_at": "2026-10-18T13:16:31Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "awaiting_claude",
+      "analysis_status": "needs_evidence",
       "submission_date_precision": "day",
       "metadata_changed_at": "2026-10-14T00:00:00Z",
       "metadata_source": "oai",
-      "analysis_reason": "이 논문은 재사용 가능한 벤치마크 EmbodiedSkillBench를 새로 제안한다. LLM 에이전트가 관측-행동 폐루프에서 임바디드 스킬(행동·지각·경험 250개)을 쓰며 물리 과제를 수행하는 정도를 평가한다. 기존 인벤토리에 없는 새 항목이다. 과제는 LIBERO-Pro의 영어 지시문(\"put both moka pots on the stove\")이므로 en 트랙으로 분류한다. 에이전트가 장면·손목 RGB 이미지를 관측으로 받으므로 modality는 vision이다. 논문이 이름을 밝힌 공식 코드 링크는 GitHub 저장소 하나다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않아 '확인 불가'로 기록한다.",
+      "analysis_reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: The official card mentions a license; cite it instead of claiming absence",
       "analysis_at": "2026-11-18T03:55:57Z"
     },
     {
@@ -28890,7 +29627,7 @@
       "metadata_source": "oai",
       "first_seen_at": "2026-10-19T13:33:59Z",
       "review_status": "reviewed",
-      "review_issue_url": null,
+      "review_issue_url": "https://github.com/lablup/llm-benchmark-inventory/issues/74",
       "analysis_status": "accepted",
       "analysis_reason": "GEO-Bench는 LLM 순위 조작(GEO) 공격 15개 방법을 하나의 프로토콜로 비교하는 재사용 가능한 벤치마크 논문이다. 5개 데이터셋 729개 타깃, LLM 랭커 4종과 교차 인코더 1종, 효과성·은닉성 지표를 정의한다. 과제 프롬프트가 영어이고 텍스트 입력만 쓰므로 en 트랙의 text로 분류했다. PDF 1쪽이 공식 코드 저장소를 명시한다. 공식 저장소 README에는 라이선스와 lm-eval 언급이 없고 PDF에도 라이선스 표기가 없으므로, 라이선스는 '미표기(논문·공식 저장소 확인)', 이용 권한은 '저작권 전부 보유', lm-eval 지원은 '미표기'로 기록하고 각각 근거를 첨부했다. 새 행이라 기존 id와 겹치지 않는다. 권장 결과는 Table 2(Llama-3.1-8B, NRG)의 공격 방법별 값이다."
     },
@@ -28922,8 +29659,8 @@
       "first_seen_at": "2026-10-19T13:33:59Z",
       "review_status": "pending",
       "review_issue_url": null,
-      "analysis_status": "awaiting_claude",
-      "analysis_reason": "ControBench는 Reddit의 영어 토론(Trump, abortion, religion 세 주제)으로 만든 새 벤치마크다. 사용자 7,371명, 게시물 1,783개, 상호작용 26,525건으로 구성된 이종 그래프에서 사용자 입장을 분류하는 노드 분류 과제를 정의한다. GNN, 사전학습 언어모델, LLM 7종을 함께 평가하므로 재사용 가능한 벤치마크로 판단한다. 과제 텍스트가 영어이고 이미지 입력이 없어 en 트랙, text로 분류했다. PDF 1쪽이 공식 코드·데이터 주소(GitHub)를 밝히고 있다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 PDF에서 확인되지 않아 '확인 불가'로 기록했다.",
+      "analysis_status": "needs_evidence",
+      "analysis_reason": "저장된 초안을 재개할 수 없어 보류했습니다. 재감사(reaudit) 요청이 필요합니다: The official card mentions the evaluation harness; cite it instead of claiming absence",
       "analysis_at": "2026-11-18T03:21:00Z"
     },
     {
@@ -38646,32 +39383,6 @@
       "analysis_reason": "MINCE는 평가 데이터셋을 줄이는 방법론(Monte Carlo 기반 부분집합 크기 결정)을 제안하는 논문이다. 새로운 재사용 가능 벤치마크를 만든 것이 아니라 기존 벤치마크(IFEval, MMLU, GSM8K, MMLU-Pro)에서 무작위로 고정 추출한 부분집합을 사용한다. 또한 논문이 명시한 공식 데이터셋 또는 코드 URL이 없으므로 링크 근거도 충족하지 못한다. 기존 벤치마크 자체를 실질적으로 갱신한 것도 아니어서 인벤토리 변경 대상이 아니다."
     },
     {
-      "arxiv_id": "2606.15867",
-      "url": "https://arxiv.org/abs/2606.15867",
-      "title": "CogCanvas: A Benchmark for Evaluating Multi-Subject Reference-Based Image Generation",
-      "summary": "Multi-subject reference-based image generation requires jointly preserving multiple human identities, binding per-person objects and fashion items, and respecting a specified background scene, a regime where current diffusion models remain brittle. Existing benchmarks evaluate only one axis at a time and none jointly captures multi-identity composition with human-object interaction, background grounding, and spatial plausibility. We introduce CogCanvas, a benchmark of 1,952 curated reference images spanning 100 celebrity identities, 115 distinctive objects and fashion items, and 29 real-world background scenes including landmarks, from which we construct 1,361 compositional prompts covering 2-5 person group sizes. The curation pipeline combines DINOv2-based deduplication, two-stage aesthetic filtering, and automated derivation of structured interaction and position graphs that serve as ground-truth supervision. CogCanvas supports three tasks, reference-based multi-human-object generation (primary), text-to-image compositional generation, and reference retrieval, under a unified six-axis evaluation protocol. We introduce two metrics tailored to the multi-reference setting: BG-Sim, which scores background fidelity on SAM 3-masked regions via DINOv3 feature similarity, and Attr-VQA, which uses a multimodal LLM to verify per-subject attribute binding and inter-person interactions against the structured graphs. Benchmarking five SOTA methods reveals that every model degrades substantially as group size grows from 2 to 5, with near-complete failure on object/fashion binding beyond three subjects.",
-      "authors": [
-        "Long-Bao Nguyen",
-        "Quang-Khai Le",
-        "Tam V. Nguyen",
-        "Minh-Triet Tran",
-        "Trung-Nghia Le"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-30T00:00:00Z",
-      "updated": "2026-10-01T00:00:00Z",
-      "submission_date_precision": "day",
-      "metadata_changed_at": "2026-10-01T00:00:00Z",
-      "metadata_source": "oai",
-      "first_seen_at": "2026-10-19T05:47:12Z",
-      "review_status": "reviewed",
-      "review_issue_url": "https://github.com/lablup/llm-benchmark-inventory/issues/49",
-      "analysis_status": "accepted",
-      "analysis_reason": "CogCanvas는 다중 인물 신원, 객체·패션, 배경 참조를 함께 쓰는 이미지 생성 벤치마크이며 참조 이미지 1,952장과 프롬프트 1,361개를 제공한다. 프롬프트는 영어 문장이라 en 트랙이고 참조 이미지를 입력으로 쓰므로 vision이다. 공식 데이터 카드가 license: cc-by-nc-4.0을 명시해 라이선스 4개 항목은 카드 인용으로 채웠다. 카드와 PDF 어디에도 lm-eval 언급이 없어 '미표기'로 두었고, 추천 결과는 논문 Table 2의 N=2 Attr-VQA 6개 방법이다."
-    },
-    {
       "arxiv_id": "2605.26380",
       "url": "https://arxiv.org/abs/2605.26380",
       "title": "VisualNeedle: Benchmarking Active Visual Search in Information-Dense Scenes",
@@ -41813,38 +42524,6 @@
       "metadata_changed_at": "2026-09-29T00:00:00Z",
       "metadata_source": "oai",
       "analysis_reason": "이 논문은 벤치마크 생성 프레임워크인 MetaBench-Harness를 제안하고, 이를 CodeContests와 AIME-2024에 적용해 MB-CodeContests와 MB-AIME를 만들었다. 두 진화 벤치마크의 과제는 영어로 보이며 텍스트 전용이라 범위 조건은 충족할 수 있다. 그러나 PDF는 공식 데이터셋이나 코드 URL을 제시하지 않는다. 재현성 성명에서도 시드 데이터, 프롬프트 템플릿, 코드를 논문 채택 후 공개할 예정이라고만 밝힌다. 유일하게 명시된 URL인 AIME 2024의 Hugging Face 데이터셋은 시드 데이터일 뿐, 이 논문이 만든 벤치마크의 공식 자원이 아니다. 따라서 '링크' 증거를 확보할 수 없어 propose 요건을 충족하지 못하므로 needs_evidence로 판단한다. 공개 자원이 확인되면 en 트랙 text 행으로 다시 검토할 수 있다."
-    },
-    {
-      "arxiv_id": "2609.33319",
-      "title": "PhysAlign: A Benchmark for Evidence-Grounded Role Alignment in Multimodal Physics Reasoning",
-      "summary": "A key challenge in physics diagram understanding is correctly associating visual information with the physical entities, relations, and conditions it describes. Even when a value, symbol, or other local element is accurately recognized, assigning it to the wrong entity or scope can distort the underlying physical premise and lead to incorrect reasoning. To systematically study this challenge, we introduce \\textbf{PhysAlign}, a benchmark designed to assess whether multimodal models correctly associate information recognized from physics diagrams with its intended physical role. By disentangling visual recognition from physical-role assignment through localized probes and controlled variants, PhysAlign isolates correspondence errors from recognition failures. It contains 3,341 human-validated probes spanning 986 physics problems, enabling systematic evaluation of visual recognition and physical-role correspondence at scale. We further introduce five complementary evaluation metrics, including CAcc, GAcc, and JAcc, which provide a comprehensive assessment of models' ability to recognize diagram content, establish correct physical correspondences, and solve the underlying physics problem. Across our evaluated multimodal models, PhysAlign reveals a consistent gap between local visual recognition and physical-role grounding. Even when the queried content is correctly recognized, the conditional correspondence error rate remains 13.8\\% for GPT-6-Astra and rises to about 50.6\\% for InternVL3.5-8B. These findings indicate that strong perception alone does not ensure reliable physical interpretation, exposing a distinct grounding bottleneck that is largely hidden by answer-level accuracy and highlighting the need for future models to better align recognized visual evidence with its physical meaning.",
-      "authors": [
-        "Kecheng Liang",
-        "Haoyang Liu",
-        "Zexin Chen",
-        "Zirong Liu",
-        "Weixing Chen",
-        "Qiufeng Wang",
-        "Yang Liu",
-        "Liang Lin"
-      ],
-      "published": "2026-09-27T07:34:22Z",
-      "updated": "2026-09-29T00:00:00Z",
-      "categories": [
-        "cs.AI"
-      ],
-      "url": "https://arxiv.org/abs/2609.33319",
-      "first_seen_at": "2026-10-18T13:16:31Z",
-      "review_status": "pending",
-      "review_issue_url": null,
-      "analysis_status": "needs_evidence",
-      "submission_date_precision": "day",
-      "metadata_changed_at": "2026-09-29T00:00:00Z",
-      "metadata_source": "oai",
-      "analysis_reason": "PDF 추출 실패(PDF evidence exceeds the context limit), 2026-12-14부터 재시도",
-      "analysis_failures": 3,
-      "analysis_retry_after": "2026-12-14",
-      "analysis_at": "2026-11-14T02:43:34Z"
     },
     {
       "arxiv_id": "2609.33314",
@@ -49497,9 +50176,9 @@
         "cs.CR"
       ],
       "published": "2026-08-24T00:00:00Z",
-      "updated": "2026-10-27T00:00:00Z",
+      "updated": "2026-11-18T00:00:00Z",
       "submission_date_precision": "day",
-      "metadata_changed_at": "2026-10-27T00:00:00Z",
+      "metadata_changed_at": "2026-11-18T00:00:00Z",
       "metadata_source": "oai",
       "first_seen_at": "2026-10-28T02:36:30Z",
       "review_status": "pending",
@@ -51044,61 +51723,61 @@
   "discovery": {
     "rss": {
       "cs": {
-        "pub_date": "2026-11-17T05:00:00Z",
-        "checked_at": "2026-11-18T02:34:19Z",
-        "items": 2000,
-        "possibly_truncated": true
+        "pub_date": "2026-11-18T05:00:00Z",
+        "checked_at": "2026-11-19T02:34:40Z",
+        "items": 1343,
+        "possibly_truncated": false
       },
       "econ": {
-        "pub_date": "2026-11-17T05:00:00Z",
-        "checked_at": "2026-11-18T02:34:19Z",
-        "items": 62,
+        "pub_date": "2026-11-18T05:00:00Z",
+        "checked_at": "2026-11-19T02:34:40Z",
+        "items": 31,
         "possibly_truncated": false
       },
       "eess": {
-        "pub_date": "2026-11-17T05:00:00Z",
-        "checked_at": "2026-11-18T02:34:19Z",
-        "items": 316,
+        "pub_date": "2026-11-18T05:00:00Z",
+        "checked_at": "2026-11-19T02:34:40Z",
+        "items": 111,
         "possibly_truncated": false
       },
       "math": {
-        "pub_date": "2026-11-17T05:00:00Z",
-        "checked_at": "2026-11-18T02:34:19Z",
-        "items": 1388,
+        "pub_date": "2026-11-18T05:00:00Z",
+        "checked_at": "2026-11-19T02:34:40Z",
+        "items": 668,
         "possibly_truncated": false
       },
       "physics": {
-        "pub_date": "2026-11-17T05:00:00Z",
-        "checked_at": "2026-11-18T02:34:19Z",
-        "items": 364,
+        "pub_date": "2026-11-18T05:00:00Z",
+        "checked_at": "2026-11-19T02:34:40Z",
+        "items": 186,
         "possibly_truncated": false
       },
       "q-bio": {
-        "pub_date": "2026-11-17T05:00:00Z",
-        "checked_at": "2026-11-18T02:34:19Z",
-        "items": 63,
+        "pub_date": "2026-11-18T05:00:00Z",
+        "checked_at": "2026-11-19T02:34:40Z",
+        "items": 34,
         "possibly_truncated": false
       },
       "q-fin": {
-        "pub_date": "2026-11-17T05:00:00Z",
-        "checked_at": "2026-11-18T02:34:19Z",
-        "items": 60,
+        "pub_date": "2026-11-18T05:00:00Z",
+        "checked_at": "2026-11-19T02:34:40Z",
+        "items": 20,
         "possibly_truncated": false
       },
       "stat": {
-        "pub_date": "2026-11-17T05:00:00Z",
-        "checked_at": "2026-11-18T02:34:19Z",
-        "items": 275,
+        "pub_date": "2026-11-18T05:00:00Z",
+        "checked_at": "2026-11-19T02:34:40Z",
+        "items": 95,
         "possibly_truncated": false
       }
     },
     "oai": {
-      "next_day": "2026-11-18",
-      "completed_through": "2026-11-17",
-      "last_response_at": "2026-11-18T00:00:56Z"
+      "next_day": "2026-11-19",
+      "completed_through": "2026-11-18",
+      "last_response_at": "2026-11-19T00:01:43Z"
     },
     "errors": {},
     "recovery_pending": false,
-    "last_attempt_at": "2026-11-18T02:34:19Z"
+    "last_attempt_at": "2026-11-19T02:34:40Z"
   }
 }
