@@ -81726,23 +81726,19 @@
     },
     "2609.30981": {
       "arxiv_id": "2609.30981",
-      "paper_title": "STORM-Bench: Evaluating Online Video QA under Evolving and Incomplete Evidence",
-      "abstract": "Reliable online video question answering requires tracking state transitions while selectively abstaining when visual evidence is insufficient. Existing benchmarks focus on static recognition or long-range retrieval, rarely evaluating these coupled capabilities under evolving and incomplete evidence. We present STORM-Bench, comprising 5,736 questions across 630 compact, change-dense episodes spanning five egocentric domains (STORM-Real) and two controlled simulation subsets (STORM-Sim) at 1 FPS. Questions are stratified by a proxy for accumulated change intensity (Low, Medium, High) and query-time answerability (Known, Uncertain). To measure reliability, we introduce STORM-BR, a harmonic metric over joint answer-status correctness that exposes abstention failures masked by aggregate accuracy, alongside STORM-BR-ATTR for uncertainty attribution. Across 14 video LLMs, online accuracy peaks at 60.3\\% (mean 51.7\\%), whereas STORM-BR ranges from 5.7\\% to 35.6\\% (mean 18.8\\%), driven by pervasive overconfidence on uncertain queries. STORM-Bench shows that task accuracy masks these gaps in epistemic reliability and state tracking. Benchmark and code are available at https://github.com/siruzhong/STORM-Bench.",
-      "paper_updated": "2026-09-28T00:00:00Z",
-      "created_at": "2026-10-19T13:45:22Z",
-      "input_sha256": "77ffbc22f0a70efae05b1645a4cccfc4c07c438807417ec09a38656ccb11e684",
-      "version": 4,
+      "paper_title": "RevisitQA: Short Videos Are Not Easy under Dense Revisits",
+      "abstract": "Video question answering benchmarks have increasingly focused on longer recordings, yet short videos can also be challenging when scenes are revisited frequently. As a camera repeatedly leaves and returns to the same workspace, objects may change out of view, making earlier observations outdated or misleading. Understanding such videos requires models to track evolving states across repeated visits rather than simply retrieve past observations. To study this challenge, we introduce RevisitQA, a benchmark containing 2,577 questions across 622 episodes with a median duration of 44.8 seconds, drawn from five real-world egocentric domains and two simulated environments. RevisitQA covers six question types and evaluates models at specific query times, requiring them to answer from the observed history or abstain when it is insufficient. Across 15 offline and seven streaming video LLMs, the median model correctly answers only 55.5% of answerable questions and abstains on just 30.3% of unanswerable ones. Removing earlier frames further reveals that historical observations help answer questions but can also make models less likely to abstain when answers remain unresolved. These findings highlight dense episodic revisits as an important and unresolved challenge for video question answering. Code is available at https://github.com/siruzhong/RevisitQA.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "온라인 비디오 QA 불확실성 벤치마크"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "온라인 비디오 QA 신뢰성 평가 벤치마크 STORM-Bench 제안"
+          "reason": "비디오 QA 벤치마크 신규 제안, 언어 제한 없음"
         }
       ]
     },
@@ -111529,6 +111525,348 @@
           "reason": "과학 워크플로 에이전트 벤치마크 신규 도입"
         }
       ]
+    },
+    "2611.22514": {
+      "arxiv_id": "2611.22514",
+      "paper_title": "MM-ReportBench: A Comprehensive Benchmark for Multimodal Report Generation from Tables",
+      "abstract": "The ability to generate multimodal reports integrating fluent narratives with faithful visualizations from tabular data, has become a cornerstone capability for modern vision-language models in practical domains such as finance, healthcare, and policy making. However, existing benchmarks are limited by single-modality focus, simplistic metrics, novelty evaluation, and visualization quality. We address these limitations with MM-ReportBench, a multimodal report evaluation benchmark covering 386 tasks across 185 real-world tables. Each task is paired with an expert-curated reference report featuring standardized chapter structures and verifiable key insight points, constructed through a hybrid pipeline of multimodal reports generation based on Monte Carlo Tree Search and rigorous human quality control. For robust evaluation, we design a dual-judge evaluation framework: Text Judge Model assesses textual quality along structural completeness, grounded insight verification with numerical fact-checking against source tables, and novelty analysis that distinguishes genuine analytical discovery from trivial paraphrasing; Visualization Judge Model evaluates generated visualizations across data fidelity, expressiveness, aesthetics, and technical correctness. They also evaluate cross-modal consistency. Extensive experiments on 20 state-of-the-art models reveal critical weaknesses: even the strongest model achieves only 68.9 overall score, with numerical hallucination affecting 38.5% of reports and genuinely novel insights remaining rare. Our ablation studies further demonstrate that single-judge evaluation consistently inflates scores by 8-12 points compared to dual-judge assessment, confirming that rigorous and reliable benchmarking demands multi-faceted, complementary evaluation probes.",
+      "paper_updated": "2026-11-18T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "표 기반 멀티모달 보고서 생성 벤치마크, 언어 제한 없음"
+        }
+      ]
+    },
+    "2611.22580": {
+      "arxiv_id": "2611.22580",
+      "paper_title": "AfriNORM: An Evaluation Benchmark for Normative Reasoning of LLMs Across African Cultures",
+      "abstract": "Large language models (LLMs) are increasingly deployed across various sectors. However, current evaluation benchmarks are insufficient to assess the applicability of these models in local African contexts, as most focus on linguistic fluency (grammar/translation) rather than cultural competence. The few existing benchmarks that measure general knowledge or social conventions do not capture the African deontic modality, i.e., the strict norms and taboos that govern diverse social interactions. In this paper, we introduce AfriNORM, a scenario-based, multiple-choice question dataset designed to measure and diagnose the normative reasoning limitations of LLMs when applied to African sociocultural contexts. We introduce two metrics: a Universal Commonsense Bias Score (UCBS) to quantify commonsense bias in LLM and a Distractor Bias Score (DBS) to quantify an LLM's limited understanding of African cultural norms. We also conduct a case study on the Yorùbá language, identifying confusion gaps in two closed-source LLMs, \"Gemini 2.0 Flash\" and \"GPT-5\", and one open-source LLM, \"Llama 3.1 8B Instruct\" when prompted in English versus Yorùbá. While their accuracy in English is high, their performance in Yorùbá is much lower, attributable to cultural confusion rather than simple bias, indicating that the models exhibit semantic confusion when reasoning about norms in Yorùbá.",
+      "paper_updated": "2026-11-18T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "아프리카 규범 추론 벤치마크, 영어 대 요루바어 평가 포함"
+        }
+      ]
+    },
+    "2611.22652": {
+      "arxiv_id": "2611.22652",
+      "paper_title": "OmniTongue: A Comprehensive MLLM Benchmark for Automated Tongue Diagnosis in Traditional Chinese Medicine",
+      "abstract": "Multimodal Large Language Models (MLLMs) have excelled in Western medical imaging, yet their potential in Traditional Chinese Medicine (TCM) tongue diagnosis remains systematically unevaluated. Tongue diagnosis requires sophisticated global and local perception, serving as a rigorous touchstone for assessing the visual understanding depth of MLLMs. However, existing datasets are limited by single dimensions, coarse granularity, and ambiguous labels, hindering the evaluation of authentic clinical capabilities. To bridge this gap, we introduce OmniTongue, the first comprehensive, fine-grained Visual Question Answering benchmark for TCM tongue diagnosis. This benchmark integrates 1,351 expert-validated images and 21,616 instruction pairs. Its core design features 16 clinical dimensions for multidimensional evaluation, region-specific annotations for pathological localization, and 66 fine-grained labels for precise diagnostic representation. Extensive evaluations of existing MLLMs reveal significant performance gaps, demonstrating that medical-specific models lack domain advantages, while universally poor Macro-F1 scores expose a reliance on statistical shortcuts rather than genuine understanding of tongue pathology. These findings not only highlight the current limitations of MLLMs in interpreting regional medical features but also underscore OmniTongue's significance for developing robust automated tongue diagnosis models. The code and dataset will be made publicly available in a future release.",
+      "paper_updated": "2026-11-18T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "중의학 설진 VQA 벤치마크, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.22708": {
+      "arxiv_id": "2611.22708",
+      "paper_title": "Cross-cultural Adaptation of Recipes for Low-Resource Languages: A Benchmark and Multilingual Culinary Lexicon for Hausa, Yorùbá, and Igbo",
+      "abstract": "Recent multilingual large language models (LLMs) have improved machine translation, yet culturally adaptive translation for low-resource languages (LRLs) remains underexplored. This is particularly challenging for recipes, where ingredients, cooking tools, measurements, and procedures may require adaptation to the target cultural context. In this work, we introduce ReciLoReL, a benchmark of 600 expert-translated and culturally adapted recipes across Yorùbá, Hausa, and Igbo (three of the most prominent languages in Nigeria), and ReciLex, a multilingual culinary lexicon containing approximately 15,000 translated entities across ten recipe entity categories, including ingredients, tools, chef actions, state of tools, and durations. We evaluate state-of-the-art multilingual LLMs for English-to-LRL recipe translation under zero-shot and few-shot settings and investigate whether augmenting LLMs with ReciLex improves culturally adaptive recipe translation without requiring large target-language recipe corpora for training or fine-tuning. Beyond conventional reference-based translation evaluation using BLEU, chrF, and TER, we introduce five criteria for evaluating cultural adaptation, adapted from established cross-cultural adaptation methods. Across the selected LLMs and languages, ReciLex improves average BLEU from 13.57 to 14.51 and chrF from 37.89 to 38.74, while reducing TER from 77.14 to 75.12. Human evaluation further shows improvements ranging from 0.11 to 0.36 points across the five cultural adaptation evaluation criteria on a five-point scale. Overall, our work provides new resources, evaluation criteria, and empirical evaluation for studying culturally adaptive recipe translation in low-resource settings.",
+      "paper_updated": "2026-11-18T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어→저자원어 레시피 번역 벤치마크, 영어 원문 포함"
+        }
+      ]
+    },
+    "2611.22905": {
+      "arxiv_id": "2611.22905",
+      "paper_title": "Think Before You Code: A Benchmark for Testing LLMs on Software Engineering Deliberation",
+      "abstract": "Think Before You Code (TBYC) is a benchmark pipeline for studying whether code-focused language models can reason about software issues in ways that resemble human engineering deliberation. The benchmark curates GitHub issue discussions into structured records, extracts human discussion artifacts such as problems, solutions, constraints, rationales, and trade-offs, and then prompts models to generate issue-level \"thoughts\" using retrieved code context and few-shot examples. It converts model responses back into the same artifact space and evaluates them against human annotations using complementary metrics for artifact type detection, metadata matching, tag overlap, and semantic summary similarity. Beyond scoring, this study includes visualization, leaderboard, and baseline tools that make it possible to compare models, prompting strategies, and extraction methods across repositories and issues. Think Before You Code is an end-to-end evaluation environment for measuring how closely LLM software reasoning aligns with human strategic judgment.",
+      "paper_updated": "2026-11-18T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "GitHub 이슈 기반 SW 추론 벤치마크, 영어 가능성 높으나 불명확"
+        }
+      ]
+    },
+    "2611.22947": {
+      "arxiv_id": "2611.22947",
+      "paper_title": "The Kernel Reality Check: Benchmarking and Distilling Efficient Attention at Scale",
+      "abstract": "Kernelized attention methods, which aim to replace the $O(N^2)$ complexity of softmax attention with $O(N)$ alternatives, have been the focus of intense research in the last five years. Despite growing interest, systematic evaluations and fair comparisons across approaches and scales are still missing. We analyze kernelized attention in two halves and highlight prominent limitations on each. On efficiency, FlashAttention achieves lower memory consumption and faster wall-clock time than SOTA kernelized methods during training and in vision transformers across most sequence lengths (with inference-time memory in causal language models the only clear exception), contradicting the core assumption for pure kernelized attention used as a drop-in replacement for softmax. We also discover that reported efficiency gains often fail to reproduce against modern baselines. On quality, current kernelized methods leave gaps of 2-10 points relative to softmax under a unified distillation protocol, and model scala alone does not close these gaps. We show this gap is not intrinsic to kernelization: LARA++, a principled extension of LARA that approximates softmax via importance sampling with adaptive proposal distributions, recovers up to 99% of softmax accuracy. We establish that the gap is closable; however, the computational overhead remains substantial, leaving the efficiency wall intact. Code is available at https://github.com/firatoncel/KernelRealityCheckNeurIPS2026",
+      "paper_updated": "2026-11-18T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "어텐션 효율 비교 연구, 재사용 평가 자료 아님"
+        }
+      ]
+    },
+    "2611.23045": {
+      "arxiv_id": "2611.23045",
+      "paper_title": "ForecastGym: A Live, Controlled, and Replayable Benchmark for Forecasting Agents",
+      "abstract": "Agents built on large language models (LLMs) increasingly forecast real-world events by searching the Web and reasoning over what they find. How well such an agent forecasts depends on both the retrieved evidence and the model, making control over that evidence essential for evaluation. Live evaluations can mix retrieval with reasoning when each system searches on its own, while retrospective search can leak later information through date filters or today's ranking of historical pages. Comparing models, search sources, and memory strategies requires both fixed evidence and a record of how it evolved before resolution. We introduce ForecastGym, which records what four commercial web search APIs return for open prediction-market questions every two days and replays this frozen evidence offline once outcomes are known, comparing models, memory, and captured search sources under a fixed evidence-acquisition policy. Its first release covers 150 questions, 614 evidence states, one per question and collection time, and 131k search results. Rerunning the same queries after settlement returns results that all but state the outcome for up to 92% of the questions, despite the tested date filters. On the frozen evidence, all tested LLMs trail the market in forecasting accuracy. Our diagnostic analysis suggests that missed public information contributes more to the gap in high-gap states than misreading does. Switching the search API changes a model's Brier score by up to 0.043, more than the spread across models, while persistent notes score similarly to rereading all evidence at half the input tokens. The evidence a forecaster sees can matter as much as the model that reads it.",
+      "paper_updated": "2026-11-18T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "예측 에이전트용 재현 가능 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2502.05085": {
+      "arxiv_id": "2502.05085",
+      "paper_title": "Causality can systematically address the monsters under the bench(marks)",
+      "abstract": "Effective and reliable evaluation is essential for advancing empirical machine learning. However, the increasing accessibility of generalist models and the progress towards ever more complex, high-level tasks make systematic evaluation more challenging. Benchmarks are plagued by various biases, artifacts, or leakage, while models may behave unreliably due to poorly explored failure modes. Haphazard treatments and inconsistent formulations of such \"monsters\" leads to a duplication of efforts, a lack of trust in results, and unsupported inferences. In this position paper, we argue causality offers an ideal framework to systematically address these challenges. By making causal assumptions in an approach explicit, we can faithfully model phenomena, formulate testable hypotheses with explanatory power, and leverage principled tools for analysis. To make the design of conceptual causal models more accessible, we identify several useful Common Abstract Topologies (CATs) in causal graphs which help gain insight into the reasoning abilities in large language models. Through a series of case studies, we demonstrate how the precise yet pragmatic language of causality clarifies the strengths and limitations of a method and inspires new approaches for systematic progress.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "인과성 관점 입장 논문, 새 벤치마크 없음"
+        }
+      ]
+    },
+    "2507.18061": {
+      "arxiv_id": "2507.18061",
+      "paper_title": "TELEVAL: A Benchmark Designed for Spoken Language Models in Chinese Interactive Scenarios",
+      "abstract": "Spoken Language Models (SLMs) are expected to support natural spoken interaction beyond task completion. Existing benchmarks assess a range of semantic tasks and conversational capabilities. However, high task scores do not necessarily imply reliable and appropriate spoken interaction. To address this gap, we introduce TELEVAL, a large-scale benchmark focused on Chinese spoken interaction. It evaluates responses to spoken inputs without additional task-specific prompts or predefined answer options. TELEVAL covers two complementary aspects: (1) Reliable Content Fulfillment, which measures semantic accuracy under diverse acoustic and linguistic conditions, and (2) Interactional Appropriateness, which assesses conversational naturalness and appropriate adaptation to auditory cues. Experiments reveal limitations in both aspects. Strong results on factual question-answering datasets do not consistently extend to locally relevant knowledge or challenging speech conditions, such as Chinese cultural questions and dialectal speech. Models also struggle to adapt their responses to auditory cues, even in cases where they explicitly recognize them. We further document a recurring failure pattern, termed the \"Caption Trap\", in which some responses describe a perceived auditory cue instead of addressing the user's conversational needs. Overall, the evaluated SLMs struggle to deliver consistently accurate and conversationally appropriate responses. TELEVAL provides a diagnostic framework for evaluating both content reliability and conversational adaptation.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "중국어 음성 상호작용 벤치마크로 과제가 중국어에 한정"
+        }
+      ]
+    },
+    "2602.07045": {
+      "arxiv_id": "2602.07045",
+      "paper_title": "VLRS-Bench: A Vision-Language Reasoning Benchmark for Remote Sensing",
+      "abstract": "Recent advancements in Multimodal Large Language Models (MLLMs) have enabled complex reasoning. However, existing remote sensing (RS) benchmarks remain heavily biased toward perception tasks, such as object recognition and scene classification. This limitation hinders the development of MLLMs for cognitively demanding RS applications. To address this, we propose a Vision Language ReaSoning Benchmark (VLRS-Bench), which is the first benchmark exclusively dedicated to complex RS reasoning. Structured across the three core dimensions of Cognition, Decision, and Prediction, VLRS-Bench comprises 2,000 question-answer pairs with an average question length of 129.87 words, spanning 14 tasks and up to eight temporal phases. VLRS-Bench is constructed via a specialized pipeline that integrates RS-specific priors and expert knowledge to ensure geospatial realism and reasoning complexity. Experimental results reveal significant bottlenecks in existing state-of-the-art MLLMs, providing critical insights for advancing multimodal reasoning within the remote sensing community.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "원격탐사 추론 벤치마크, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2604.10547": {
+      "arxiv_id": "2604.10547",
+      "paper_title": "Agent^2 RL-Bench: Can LLM Agents Engineer Agentic RL Post-Training?",
+      "abstract": "We introduce Agent^2 RL-Bench, a compact diagnostic benchmark for evaluating agentic RL post-training, which tests whether LLM agents can autonomously design, implement, debug, and execute post-training pipelines that improve foundation models. RL post-training increasingly drives model alignment and specialization, yet existing benchmarks are largely static, rewarding supervised fine-tuning or script generation without assessing an agent's ability to close an interactive RL loop. Agent^2 RL-Bench provides a unified agent-facing interface: each run starts from an isolated workspace containing a base model, task data, instructions, and a grading API, and agents must iterate within a fixed budget by training models and submitting artifacts for evaluation. The benchmark spans six tasks across three levels, from static rule-based training to judge-based optimization and closed-loop online RL with trajectory collection. Two diagnostic skills, namely runtime recording and post-hoc summarization, enable structured analysis of agent behavior, facilitating smooth and effective iteration of the benchmark's evaluation framework. Across five agent systems and six driver LLMs, agents show intelligent behavior but clear limitations: one RL-oriented run improves ALFWorld from 4.85 to 93.28 via SFT warm-up and GRPO with online rollouts, yet DeepSearchQA remains difficult, most successful routes rely on supervised pipelines, and interactive outcomes show large differences across agent stacks. Overall, Agent2 RL-Bench shows that current agents can sometimes engineer online RL, but stable agent-driven RL post-training remains rare under fixed budgets. It also demonstrates that our benchmark provides a strong and effective evaluation framework for future research in this direction. Code is available at https://github.com/microsoft/RD-Agent.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트 RL 후훈련 평가 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2606.12922": {
+      "arxiv_id": "2606.12922",
+      "paper_title": "Polar: A Benchmark for Evaluating Political Bias in LLMs",
+      "abstract": "Political bias in large language models (LLMs) is increasingly significant, but difficult to measure reproducibly across political and linguistic contexts. We introduce Polar, a 4,026-instance multiple-choice benchmark that measures political bias through option-level likelihoods rather than prompt-based generation. Polar covers two ideological axes and eight issue categories derived from the Manifesto Project, and evaluates models in parallel across U.S. and South Korean political contexts. Across 38 LLMs, measured bias varies systematically with political context, issue category, model group, and presentation language. All models lean left-progressive on U.S. political content, but show more centered and mixed patterns on South Korean content. Translation experiments further show that presentation language alone can shift measured bias. These findings highlight the need for multilingual and cross-contextual evaluation of political bias in LLMs. The code and dataset are publicly available on GitHub (https://github.com/mcrl/Polar) and Hugging Face (https://huggingface.co/datasets/thunder-research-group/Polar).",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "미국·한국 정치 편향 벤치마크, 한국 맥락 포함"
+        }
+      ]
+    },
+    "2607.12304": {
+      "arxiv_id": "2607.12304",
+      "paper_title": "What Does a Temporal Benchmark Score Measure? Decomposing Channel Use in Video VLM Evaluation",
+      "abstract": "A score on a temporal video question answering benchmark is meant to measure that a model has temporal understanding, but it conflates two questions. (1) is the question even temporal, does it need several frames and their order? And (2) when it does, does the model recover the order from the pixels, or read it off the positional encoding (RoPE)? Most of a temporal score answers neither, since a single frame and answer priors often carry it, and the field's validity checks, frame-shuffle sensitivity and multi-frame gain, speak only to (1). For (2) we score a reversal conflict, frames reversed while RoPE stays forward, two ways: label-free, as the accuracy lost against the forward labels, and against reversed labels wherever labels transform deterministically under time reversal. This separates a model that follows the reversed content from one merely disrupted. The two readings dissociate two similarly scoring models at both model scales. Qwen3-VL answers the reversed event it actually sees, reading the visual sequence. Molmo2 correctly reports a backwards video when positions agree, and flipping only the RoPE indices flips its prediction to the forward events, i.e. it reads positions. We call these regimes visual-sequence-dominant and position-dominant. Controls show reversed content is processable whenever the channels agree, and that both families share a bias toward describing events as running forward (arrow-of-time prior) that, being similar in strength, cannot by itself account for the dissociation. The distinction matters because the two channels fail on opposite inputs: two models with the same score are not interchangeable.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "비디오 VLM 평가 방법론, 재사용 자료 여부 불명확"
+        }
+      ]
+    },
+    "2608.10090": {
+      "arxiv_id": "2608.10090",
+      "paper_title": "CHORUS: Coverage-Guided Agentic RL and Policy Consolidation for Testbench Stimulus Generation",
+      "abstract": "Testbenches written by large language models can compile and run while leaving entire datapaths idle. We present CHORUS, the first framework to combine coverage-guided agentic reinforcement learning (RL) with policy consolidation for testbench stimulus generation. We train LLM4Cov's final supervised checkpoint to draft testbenches and repair its lowest-scoring draft using simulator feedback, raising CVDP-ECov agentic Pass@1 from 69.2% to 85.5%. Applying the same training to three checkpoints yields similar overall pass rates, yet the policies succeed on different designs. Averaging their weights combines these strengths in a single dense 4B model that reaches 86.7% agentic Pass@1. When simulator rewards select the teacher for each training prompt, the distilled 4B model reaches 88.0%, 13.5 percentage points above DeepSeek-R1 (671B).",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "훈련 프레임워크 논문, 새 벤치마크 아님"
+        }
+      ]
+    },
+    "2609.02402": {
+      "arxiv_id": "2609.02402",
+      "paper_title": "A Physics-Consistent Benchmark for Contact-Rich Human-Robot Interaction in Assistive Care",
+      "abstract": "Conventional task-level evaluation asks whether a robot policy completes a specified action, but can miss failures that emerge only during physical human contact. This limitation is critical in contact-rich assistive tasks, where meaningful evaluation requires a physically responsive human, interaction-quality assessment beyond task success, and a leak-free observer-scorer protocol. We introduce a physics-consistent benchmark for contact-rich human-robot interaction, instantiated in robot-assisted bathing. The benchmark combines a deformable, passively responding human, physics-aware scores alongside task-level success, and a frozen vision-only / scorer-only evaluation protocol. To establish physical validity, region-wise simulated responses are calibrated against force-indentation measurements from Franka impedance pushes on a medical-care manikin. Under a frozen T1-T7 protocol with 140 runs per method, an LLM-augmented state machine (State Machine) achieves 72.9% task success but drops to 56.4% after correct-region and force-safety screening; VoxPoser produces lighter and more stable contact but completes only 27.9% of trials; and zero-shot pi0.5 achieves 0.7% task success with no correct-region or safety-gated successes. These results show that task completion alone does not imply physically valid contact and motivate physics-aware screening before deployment of contact-rich assistive robot policies.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "로봇 상호작용 벤치마크, 언어모델 관련성 불명확"
+        }
+      ]
+    },
+    "2611.23410": {
+      "arxiv_id": "2611.23410",
+      "paper_title": "RFBench: A Simulator-Grounded Multimodal Benchmark for Passive RF Layout Design and Understanding",
+      "abstract": "While multimodal language models can interpret diagrams and generate structured outputs, their capacity to connect passive radio-frequency (RF) design intent, layout geometry, and electromagnetic behavior remains largely untested. To address this gap, we introduce RFBench, a simulator-grounded dataset and benchmark for passive RF layout design and understanding. The dataset contains 10,000 two-port planar layouts simulated using ADS Momentum, with each layout represented by editable geometric primitives, a raster image, a 16x16 occupancy grid, complex S-parameters at 201 frequency points, a structural category, and an RF response label. Building on these aligned representations, we define seven tasks spanning specification-conditioned layout generation, representation translation, response prediction, simulator-based validation, design diagnosis and improvement, structural understanding, and response classification. Extensive baselines across seven multimodal language models reveal systematic weaknesses in generating structurally valid layouts and predicting electromagnetically faithful responses. We show that RF-specific fine-tuning increases T1a structural validity from 0.0% to 83.2% and the T3 primitive-input within-2-dB rate from 17.7% to 62.8%, demonstrating the value of domain adaptation while leaving considerable room for further progress. RFBench establishes a common testbed for evaluating multimodal RF capabilities and guiding the development of models that connect design intent and layout representations with physical behavior.",
+      "paper_updated": "2026-11-19T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "RF 레이아웃 멀티모달 벤치마크, 전문 도메인 허용"
+        }
+      ]
+    },
+    "2611.23601": {
+      "arxiv_id": "2611.23601",
+      "paper_title": "FutureBench: A Renewable Framework for Evaluating Knowledge-Context Conflict in LLMs",
+      "abstract": "Asking a model to check retrieved text can also tell it which source to trust. We introduce FutureBench, a renewable framework for evaluating knowledge-context conflict using timestamped questions, controlled passage triplets, and no-context probes. Across 3,629 questions and six models, Verify (a prompt combining checking with passage priority) raises false-answer adoption in all five models tested on pre-cutoff events, mainly by displacing answers that were correct under Baseline, which allows both passage evidence and model knowledge. On post-cutoff events, only o4-mini increases adoption (+13.7 percentage points). A four-prompt comparison on 902 post-cutoff questions finds that passage priority without checking raises adoption, while moving to Verify lowers it in all five models. Adversarial-Aware, which warns of misleading passages and prioritizes model knowledge, restores 82.5-98.9% of displaced pre-cutoff answers with under one point of change in true-passage accuracy. FutureBench supports repeated evaluation on fixed cohorts and extension to new events as models change.",
+      "paper_updated": "2026-11-19T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "지식-문맥 충돌 평가 프레임워크, 영어 가능성 높음"
+        }
+      ]
+    },
+    "2611.23704": {
+      "arxiv_id": "2611.23704",
+      "paper_title": "Localizing Text Anonymization for Trustworthy AI: Extending RAT-Bench to Malaysian Microdata and PII",
+      "abstract": "As governments and organizations adopt foundation models for public services and workplace productivity, sensitive citizen, employee, and administrative text may enter LLM workflows through inference, retrieval, fine-tuning, or local model development. We examine whether text anonymizers transfer to new deployment settings by extending RAT-Bench to Malaysia using local microdata, Malaysian PII formats, and culturally grounded transcripts in Malaysian English and Bahasa Malaysia. We evaluate NER- and LLM-based anonymizers using an LLM attacker that infers attributes from anonymized text, measuring both re-identification success and text utility. Across Malaysian English and Bahasa Malaysia, the two LLM anonymizers provide the strongest explicit privacy-utility trade-offs, reducing Easy/Hard re-identification risk to 23-29% while preserving BLEU scores of 0.77-0.94. Non-LLM tools show sharper failure modes, either preserving utility while leaving high residual risk or reducing risk through severe over-redaction, especially in Bahasa Malaysia. These findings suggest that anonymizers should be evaluated against deployment-relevant languages, identifier formats, and cultural contexts before being relied on in public-sector, workplace, or local AI pipelines.",
+      "paper_updated": "2026-11-19T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "과제 언어가 말레이시아 영어·말레이어, 한국어 아님; 영어 포함 여부 모호"
+        }
+      ]
+    },
+    "2611.23891": {
+      "arxiv_id": "2611.23891",
+      "paper_title": "SixthView: A Benchmark for Hidden-View Reconstruction and 3D Assembly Reasoning",
+      "abstract": "Inferring the unseen side of a 3D assembly requires reasoning about part placement and occlusion. Different assemblies can match the observed views while producing different hidden views, leaving the target ambiguous. We introduce SixthView, a benchmark in which models predict a sixth orthographic view from five observed views and information about the component shapes. The benchmark contains 602 synthetic polycube assemblies with 2--10 parts and requires a dense grid of part labels for the missing view, allowing both exact-view and cell-level evaluation. For each item, we exhaustively verify that all legal assemblies consistent with the exact component geometry and observed label grids yield the same target view. With these inputs, the task tests symbolic assembly and coordinate reasoning. The image-only variants additionally require shape recovery from rendered views, where occlusion can make different 3D shapes look identical. We evaluate three vision-language models under four input conditions. Across 552 items with complete evaluations, exact-grid accuracy with images plus exact text ranges from 33.2% to 85.4%. Adding exact text to separate images improves accuracy by 19.7--63.0 percentage points, whereas adding images to exact text changes it by only $-0.5$ to $+2.1$ points. Separate image panels outperform a merged sheet by 6.7--11.1 points. The results show that performance depends strongly on access to exact symbolic information, with little further improvement from images once the geometry is specified. GitHub: https://github.com/facebookresearch/sixthview_benchmark",
+      "paper_updated": "2026-11-19T00:00:00Z",
+      "created_at": "2026-11-24T02:42:07Z",
+      "input_sha256": "6ce827fcbe6c06669c582a64b474c36bb392fadace2f7526254f4282c38ac1fe",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "3D 조립 추론 VLM 벤치마크 신규 제안"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -113666,10 +114004,30 @@
         "2611.22241",
         "2611.22333",
         "2611.22360",
-        "2611.22490"
+        "2611.22490",
+        "2611.22514",
+        "2611.22580",
+        "2611.22652",
+        "2611.22708",
+        "2611.22905",
+        "2611.22947",
+        "2611.23045",
+        "2502.05085",
+        "2507.18061",
+        "2602.07045",
+        "2604.10547",
+        "2606.12922",
+        "2607.12304",
+        "2608.10090",
+        "2609.02402",
+        "2609.30981",
+        "2611.23410",
+        "2611.23601",
+        "2611.23704",
+        "2611.23891"
       ],
-      "calls": 4,
-      "cost_usd": 1.8636
+      "calls": 5,
+      "cost_usd": 1.9286
     }
   },
   "reaudits": [
