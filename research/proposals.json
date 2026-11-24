@@ -112209,6 +112209,366 @@
           "reason": "LM 행동 사후분포 샘플링 벤치마크, 코드·데이터 공개"
         }
       ]
+    },
+    "2611.25849": {
+      "arxiv_id": "2611.25849",
+      "paper_title": "EgoWitness: Benchmarking Instance-Level Spatial Memory and Reasoning in Egocentric Video Streams",
+      "abstract": "Recalling where and when an object was last seen and who saw it requires recognizing it across days and people. Existing long-video benchmarks focus on events, object categories, or relative locations, leaving instance-level spatial memory largely untested in multimodal models. To address this gap, we present EgoWitness, a benchmark for instance-level spatial memory and reasoning in egocentric video. Its 8,453 human-verified questions span approximately 324 hours of week-long and short-horizon recordings and test seven abilities, from recognizing an object or room to recalling who saw it and reasoning about room visits. Over one million reviewed masks of 34 registered landmarks and 21 movable-object labels are linked through room timelines. Among twelve direct vision-language models (VLMs), open-weight models reach at most 46.97% accuracy, and none exceeds 35% on identifying who saw an object last. We therefore propose EgoClue, a spatial-memory agent that retrieves candidate intervals, verifies instance identity, and computes spatial and temporal relations with five tools. Two-stage training with supervised fine-tuning (SFT) and Group Relative Policy Optimization (GRPO) raises its 4B controller from 23.64% to 72.65% accuracy on 1,320 held-out questions. Evidence-trace synthesis matches the best direct VLM at 74.85% on week-long questions and achieves 80.56% in environments excluded from training.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "egocentric 영상 공간 기억 멀티모달 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.25903": {
+      "arxiv_id": "2611.25903",
+      "paper_title": "From Cases to Criteria: Reusing Evaluation Knowledge for Task-Specific Rubric Generation",
+      "abstract": "Query-specific rubrics make LLM evaluation more fine-grained and transparent, and generating high-quality rubrics requires both identifying the target query's evaluation scope and specifying concrete checks. Historical rubrics provide reusable evaluation experiences, yet existing approaches reuse either complete query-rubric cases or aggregated criteria and dimensions without explicitly connecting recurring evaluation requirements to their criterion-level evidence and source-query context. This can preserve irrelevant task details or lose the broader evaluation structure. In this paper, we introduce RubricDuo, which organizes historical query-rubric pairs into a Rubric Knowledge Graph linking evaluation dimensions, shared concepts, local concepts, criteria, and queries, where reusable evaluation requirements across queries are abstracted by shared concepts. Given a target query, RubricDuo first combines concepts relevant to the target query with retrieved historical cases to draft a rubric with broad coverage. It then revisits each draft criterion, retrieves concept-linked historical criteria and their source queries, and adapts applicable evidence to refine the criterion. Experiments on RubricBench and HealthBench demonstrate that RubricDuo achieves the overall best performance among the evaluated automatic methods in both alignment with human-authored rubrics and downstream LLM judging.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "루브릭 생성 방법론 논문, 신규 평가 자원 없음"
+        }
+      ]
+    },
+    "2611.26077": {
+      "arxiv_id": "2611.26077",
+      "paper_title": "Same Judgement, Different Scores: Numerical Scoring Topology in LLM-as-a-Judge Evaluation",
+      "abstract": "LLMs are increasingly used as automated evaluators to reduce the cost and time required for human annotation. However, the role of scoring-scheme design in the reliability of LLM-as-a-Judge evaluation remains underexplored. To address this problem, we introduce numerical scoring topology, which characterizes the structural design of a scoring scheme in terms of its scale width, granularity, offset, symmetry, and boundary placement. Building on this definition, we conduct the first systematic study of how numerical scoring topology influences zero-shot LLM-as-a-Judge evaluation across diverse benchmarks and judge models. Our results show that numerical scoring topology systematically affects judge scores, calibration, and robustness, particularly in judgment-intensive evaluations. Shifted and narrow ranges tend to induce some of the largest score deviations across many settings. We further find that stronger and larger judge models generally achieve higher discriminative validity and greater robustness to scoring-topology changes. These findings suggest that numerical scoring topology should be treated as an integral component of LLM-as-a-Judge evaluation and highlight the need for more principled and standardized scoring protocols.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "채점 방식 영향 분석 연구, 재사용 벤치마크 아님"
+        }
+      ]
+    },
+    "2611.26248": {
+      "arxiv_id": "2611.26248",
+      "paper_title": "TwinLab-Bench: Evaluating AI Scientists in Agentic Twins of Real Labs",
+      "abstract": "AI agents are increasingly expected to act as AI scientists, which requires three increasingly open abilities: carrying out a given computational workflow correctly, choosing the next measurements from a given design space, and designing their own experiments. Existing benchmarks mainly evaluate the first two abilities, in a terminal or in a closed loop that selects from predefined candidates. Evaluating the third ability requires reliably executing an experiment that an agent designs, with readings grounded in a real laboratory. We introduce TwinLab-Bench, which evaluates AI scientists on self-designed experiments in 52 tasks from laboratories in the physical sciences, the life sciences, and engineering. The benchmark supports more than 100 experimental action types, and the agent's report is scored by comparison with a hidden answer taken from real laboratory records. Each task has its own TwinLab agent, an agent that serves as the environment and executes the experiments that the tested agent designs, reading the raw materials of the laboratory and calling calculators that are built from its records. Compared with a language model that sees only the task description, the TwinLab agent almost eliminates readings that deviate from the real records and inconsistent answers to a repeated request, and closed-book probes control for answers recalled from memory. We find that these tasks remain hard for frontier models: the strongest, Claude Fable 5.2, averages a score of only 45.0, and we conduct an empirical study of where it fails.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "AI 과학자 에이전트 평가용 TwinLab-Bench 제안"
+        }
+      ]
+    },
+    "2611.26298": {
+      "arxiv_id": "2611.26298",
+      "paper_title": "DailySafe: Benchmarking Dynamic Safety Awareness in Everyday Multi-Turn Multimodal Interactions",
+      "abstract": "As multimodal large language models (MLLMs) become increasingly integrated into everyday life, their ability to provide safe and reliable assistance in realistic daily activities remains insufficiently explored. Existing safety benchmarks primarily focus on isolated harmful requests or adversarial scenarios, overlooking the safety risks that may arise as ordinary tasks unfold. In practice, users pursue legitimate goals through multi-turn, multimodal interactions, where seemingly benign requests may become safety-critical when considered alongside earlier actions and visual observations. This calls for Dynamic Safety Awareness, the ability to track evolving task conditions, recognize implicit contextual risks, and provide safe and helpful assistance. To systematically evaluate this capability, we introduce DailySafe, a benchmark comprising 195 naturalistic multi-turn, multi-image interactions across 10 everyday domains and 42 task categories. Grounded in authentic user dialogue topics and documented safety knowledge, DailySafe captures realistic scenarios where safety-critical evidence is progressively revealed across conversational turns and visual observations. Using case-specific safety annotations, DailySafe assesses whether MLLMs can recognize and appropriately address evolving risks while supporting users' legitimate goals, bringing multimodal safety evaluation closer to real-world everyday AI assistance. DailySafe is publicly available at: https://github.com/XuankunRong/DailySafe.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티턴 멀티모달 안전성 벤치마크 DailySafe 공개"
+        }
+      ]
+    },
+    "2611.26335": {
+      "arxiv_id": "2611.26335",
+      "paper_title": "ClosureBench: A Benchmark for Reasoning under Closure Assumptions",
+      "abstract": "AI agents built on large language models (LLMs) often answer questions from incomplete records. Missing information might be interpreted as unknown or false, depending on the completeness of the source. Current evaluations fail to distinguish these two aspects, as they are usually interwoven with other reasoning demands. We present ClosureBench, a benchmark that tests whether LLMs follow the stated rules for dealing with missing information. Every base scenario is tested under OWA, CWA, and LCWA, and only the treatment of missing information changes between variants. ClosureBench provides a verified base benchmark as well as agent extensions for action choice, source scope, and updates. A model is considered correct on a base scenario only if it provides correct answers in all of its closure variants. Across 960 instances, overall accuracy can mask substantial closure mistakes. Models achieve overall accuracy from 71.18% to 99.86% across replicated runs, but their core switch accuracy, measured on the scenarios whose gold label actually changes with the contract, varies between 18.23% and 99.31%. Large discrepancies emerge under LCWA. For example, some agents choose unknown despite the prompt indicating that missing information should be treated as false. Our findings demonstrate that evaluations of AI agents should not only measure whether agents can reason over existing facts but also whether they use the appropriate assumption when information is absent.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "폐쇄 가정 추론 벤치마크 ClosureBench 제안"
+        }
+      ]
+    },
+    "2611.26336": {
+      "arxiv_id": "2611.26336",
+      "paper_title": "One Framework to Diagnose Them All: A Stratified Benchmark for Bengali LLM Hallucination",
+      "abstract": "Hallucination research in low-resource languages fragments easily: each newly named failure mode prompts its own dataset, spending scarce annotators on incomparable resources. We argue for consolidation and test it at community scale. Alikbachan is a Bengali hallucination-detection benchmark stratified along three crossed axes: a human-validated cultural-distance band, six task types, and a five-family, 32-mode hallucination taxonomy. It comprises a harvested 2,516-item test set (Phase 1) and a quota-constructed, gold-labeled 5,000-item set (Phase 2). The stratification is diagnostic. Four zero-shot LLM judges vary by over 30 macro-F1 points across strata, and the item-level predictions of 99 Phase-1 and 32 Phase-2 competition systems reproduce the profile: discourse-level omission defeats judges and most teams alike, whereas only a minority over-flag negative controls. The judges' verdict probabilities rank items well (ROC-AUC 0.74-0.95) but are overconfident (ECE 0.04-0.29). An open competition on Alikbachan drew 222 teams and 3,566 submissions, and a single-prompt 32B judge reaches the 57th percentile. Of the 25 teams in both phases, 24 regress on Phase 2 (mean $-17.6$ points) while every zero-shot judge improves, and Phase-1 rank barely predicts Phase-2 rank (Spearman $ρ=0.35$), so a Phase-1 leaderboard alone would have crowned a different winner.",
+      "paper_updated": "2026-11-20T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "모든 과제가 벵골어로 한정된 환각 벤치마크"
+        }
+      ]
+    },
+    "2611.26870": {
+      "arxiv_id": "2611.26870",
+      "paper_title": "Beyond Demographic Discrimination: Benchmarking Normative-Descriptive Calibration in LLMs",
+      "abstract": "Large language models (LLMs) are increasingly deployed in socially consequential settings, where they must distinguish between normative reasoning (what should happen) and descriptive reasoning (what is likely to happen). Most fairness benchmarks evaluate demographic discrimination under a single reasoning objective, and none we know of tests whether a model treats the same item differently when asked to describe an outcome versus decide one. We introduce normative--descriptive calibration, the extent to which a model's differentiation between matched candidates depends on whether it is asked to predict or to decide, and measure it with the Normative--Descriptive Calibration Benchmark (NDCB): 697 matched-pair scenarios across six domains, each posed under both framings, and three metrics, Normative Engagement Rate (NER), Normative Leakage Rate (NLR), and Normative--Descriptive Separation (NDS). Across six LLMs, NDS separates 13 of 15 model pairs, against 7 for BBQ accuracy and none for BOLD, although these counts also reflect each benchmark's sample size. Claude Sonnet 4.6 and Claude Opus 4.6 separate the framings most strongly (average NDS $= +0.55$ and $+0.52$, with overlapping confidence intervals), whereas GPT-5.5's average NDS is negative ($-0.14$) under the single-pick instruction and near zero ($+0.02$) without it. In a simplified prompt template, removing single trigger words never changes the sign of a model's average NDS but can shift it by up to 0.46 and reorder models. Reversing candidate order reveals a further effect: when forced to choose between identical candidates, all six models favor whichever is listed first, and once order is averaged out their demographic-aligned lean is toward the marginalized candidate. Describing disparities and prescribing them are separable behaviors that differ across models.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "규범-서술 보정 평가 벤치마크 NDCB 제안"
+        }
+      ]
+    },
+    "2611.26875": {
+      "arxiv_id": "2611.26875",
+      "paper_title": "How Long Will My Language Model Run? A Benchmark for Pre-Execution Runtime Prediction",
+      "abstract": "Researchers submitting deep learning jobs to shared GPU clusters need runtime estimates to request time limits, choose hardware, and budget compute. Large language models (LLMs) offer a tempting shortcut: describe the job and ask. We introduce PreRun, a benchmark for predicting deep learning training and inference runtime from information available before execution. PreRun contains 801 training and 1,884 inference records of language and vision models collected on a GPU cluster, paired with workload configurations and explicitly defined timing targets. It also includes 64 text-generation configurations measured under standardized conditions, each in three separate program launches. We compare three LLMs (Qwen3.5-9B, GPT-OSS-120B, and Claude Opus 5.5) with regression baselines and evaluate analytical estimates on a supported forward-pass subset. On 16 held-out generation configurations, the open-weight LLMs underestimate latency by 90-99% on average without examples. Claude's zero-shot mean absolute error is 4.5 times that of a Random Forest fit on 32 configurations. Five labeled examples substantially reduce Claude's generation error, but their benefit varies across timing targets. We will open-source our data and evaluation pipeline upon acceptance.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 런타임 예측 벤치마크 PreRun 제안"
+        }
+      ]
+    },
+    "2611.26883": {
+      "arxiv_id": "2611.26883",
+      "paper_title": "TouchBench: Can Vision-Language Models Feel Invisible Physical Properties?",
+      "abstract": "Vision-language models (VLMs) are increasingly used for embodied perception and reasoning, yet their physical understanding is largely evaluated on questions answerable from images. Many properties critical to manipulation, such as an opaque bottle's fill level or an object's compliance, may only be revealed through touch. We introduce TouchBench, an egocentric vision-language-tactile benchmark that distinguishes visually answerable questions (Tier A) from those involving properties hidden from the camera (Tier B). It pairs head-mounted video with synchronized 137-channel whole-hand tactile sensing, comprising 900 clips from five participants across 11 tasks, with 900 absolute and 4,102 relative questions. Four state-of-the-art VLMs average 66.4% accuracy on Tier A relative questions but only 49.8% on Tier B, near chance (50%). To bridge this gap, we propose Tactile-as-Prompt (TaP), which presents 34 interpretable tactile statistics as text, enabling VLMs to reason with touch without a learned tactile encoder. TaP raises zero-shot Tier B relative accuracy to 62.9% and reaches 73.1% after leave-one-user-out fine-tuning, outperforming video alone (67.4%) and a learned tactile-token encoder (67.3%). The gains extend to unseen objects and users. On a separate 20-hour in-the-wild corpus, tactile text improves fine-tuned contact-question accuracy from 67.1% to 75.5%. These results highlight the limits of vision-only physical reasoning and establish language as an effective interface for tactile perception.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "시각-촉각 VLM 벤치마크 TouchBench 제안"
+        }
+      ]
+    },
+    "2611.26900": {
+      "arxiv_id": "2611.26900",
+      "paper_title": "Modeling Attributional Style at Scale: A Dataset and Analysis for Psychological Attribution Assessment and Reframing",
+      "abstract": "According to the reformulated Learned Helplessness theory, repeated exposure to uncontrollable negative events can foster a depressogenic attributional style, increasing susceptibility to depression yet remaining a tractable target for cognitive therapy. Computational research on attributional cognition, however, is hampered by the lack of large-scale datasets and robust evaluation protocols. In this work, we introduce the Attributional Style Transfer Dataset (ASTD) along with dedicated evaluation metrics, the first benchmark designed to model, assess, and reframe attributional explanations at scale. Constructed via a Prevent-Filter-Validate pipeline that integrates LLM-based generation with specialist validation, ASTD contains 42,000 real-world events paired with psychologically grounded attributions spanning seven styles. Using this dataset, we address two key challenges: (1) scalable assessment of attributional style via both supervised classifiers and zero/few-shot LLMs; and (2) attributional reframing and evaluation, where we propose automatic evaluation metrics to quantify psychological validity. Furthermore, we leverage our proposed metrics to construct a preference dataset, fine-tuning LLMs with Direct Preference Optimization (DPO) and achieving substantial gains in reframing quality. Together, our dataset, metrics, and methodology offer a new paradigm for understanding and modeling attributional style, with direct implications for scalable and adaptive mental health interventions. Code and data: https://github.com/qzhou711/ASTD",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "귀인 양식 평가 데이터셋과 지표 ASTD 제안"
+        }
+      ]
+    },
+    "2611.26910": {
+      "arxiv_id": "2611.26910",
+      "paper_title": "AstronautBench: Measuring Agent Self-Improvement Across Episodes Through Knowledge, Evidence, and Progress",
+      "abstract": "LLM agents are expected to improve themselves from their own experience across episodes, with fixed weights. Self-improvement in an embodied world cannot be read from one measure. Existing benchmarks measure task progress, world-knowledge question answering (QA), and episodic memory, but a correct answer does not show that the agent ever observed the evidence for it, and progress does not show what the agent learned. We introduce AstronautBench, which measures one agent's self-improvement through three views on the same run: what it knows, whether its own evidence supports that knowledge, and how far it gets in the world. It is built on the game Outer Wilds, where each episode is a 22-minute loop after which the world resets, only the agent's knowledge carries over, and progress is gated by knowledge. After every episode, we measure the places reached and ship-log rumor facts revealed, the correctness of answers to 164 questions about the world, and whether each answer is supported by the frames and position the agent cites from its own recorded play. Two LLM judges from different model families check every answer. In eight-episode baselines with GPT-6.1 Sol and Gemini 4 Argon planners, which act through a learned controller or their own gamepad inputs, the three views do not move together, so any one of them alone gives an incomplete picture of whether the agent is improving. The GPT-6.1 Sol agent's correct answers grow from 14.6% to 26.8% of all questions, but at episode 8 only 59 to 68% of them are supported by its cited evidence. It reveals no new rumor facts after episode 3, while the places it reaches and its memory keep growing. More than half of the answers that become correct after episode 3 cite only evidence from earlier episodes.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트 자기개선 평가 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.27042": {
+      "arxiv_id": "2611.27042",
+      "paper_title": "RoboColiseum: Co-evolution of Simulation, Evaluation, and Models",
+      "abstract": "Simulation-based evaluation of embodied models requires calibrated interactions, diverse tasks, and explicit execution constraints. We present RoboColiseum, a platform combining system identification, composable physics and rendering, and multidimensional benchmarking. Recorded-command replay characterizes robot dynamics and object interactions, while a shared interface connects rigid and deformable simulation to rendering. Across 22 paired real--simulation robot--task configurations, task scores have a reported Pearson correlation of 0.9686. Eight evaluation tracks span instruction following, spatial reasoning, general manipulation, robustness, dexterous manipulation, precision manipulation, whole-body coordination, and execution across robot embodiments. Budget-aware scoring combines task progress, resource use, and completion rewards. We report 12 selected Season~I policies and all 11 systems on the public Season~II leaderboard, comprising eight Agent systems and three VLA policies. Agent2Act connects language models to robot-control execution; the VLA study uses mixed-task supervised fine-tuning. The results reveal substantial variation across tracks within each evaluation category. RoboColiseum connects simulation development with capability-oriented evaluation and provides a foundation for extending robot interactions and model assessment.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트/VLA 대상 다차원 평가 플랫폼 제안"
+        }
+      ]
+    },
+    "2611.27106": {
+      "arxiv_id": "2611.27106",
+      "paper_title": "Schema-Validated LLM Workflows: A Benchmark Protocol and Comparative Evaluation Across Six Python Implementations",
+      "abstract": "Large language models are increasingly used to extract records, generate SQL, summarize reports, answer policy questions, and route operational work. At these software boundaries, parseable output is necessary but does not establish task correctness. We present a reproducible benchmark protocol, a public executable artifact, and a confirmatory live API evaluation that separate structural validity from task-specific correctness across five business workflow tasks and six Python implementation conditions: PydanticAI, LangGraph, DSPy, CrewAI, Agno, and a framework-free SDK reference. We hypothesize that (H1) schema validity and task quality are separable, (H2) structured-output binding paths are heterogeneous under a shared model and lowest-common-denominator contract, and (H3) condition-by-task interactions concentrate failures rather than shifting all tasks equally. Confirmatory analysis uses distinct task instances (100 extraction and 50 per other task, with three nested replicates) under a frozen analysis plan, yielding a 5400-row primary matrix with equivalence margins and Holm-adjusted contrasts against the SDK reference. In the eligible confirmatory run, overall schema validity was 0.684 and mean automated quality was 0.638. PydanticAI, LangGraph, and DSPy retained near-ceiling schema validity with mean quality 0.91-0.94, while the plain SDK, Agno, and CrewAI conditions were substantially lower in this package and model configuration. Schema-valid rows still produced many task-score flags, especially in extraction and compliance QA, and quality residuals show strong condition-by-task interactions (including a workflow collapse for CrewAI). Labelled ablations address retry budgets and feature-using mechanisms; primary contrasts remain system-configuration findings, not causal attributions to marketed library features.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "스키마 검증 LLM 워크플로 벤치마크 프로토콜 제안"
+        }
+      ]
+    },
+    "2611.27116": {
+      "arxiv_id": "2611.27116",
+      "paper_title": "CoEvoBench: Can LLMs Drive Recursive Co-Evolution of Agentic Systems?",
+      "abstract": "The performance of an LLM agent depends on both its model and its harness, the code that mediates its interaction with tools and environments. Can LLM researchers drive this co-evolution as a recursive improvement process, deciding round after round which component to change when each change alters the value of the other? Existing benchmarks evaluate post-training or data research with the harness out of scope, or harness optimization with the model fixed, leaving this joint decision unmeasured. We introduce CoEvoBench, a benchmark that evaluates LLMs as researchers co-evolving the model and harness of a target agent across five agentic domains. Researchers start from a common base model and initial harness, train and revise within a 24-hour budget, and submit a model-harness pair that is scored on separate test tasks. Across five frontier researchers, the strongest closes more than four fifths of the gap to an instruction-tuned reference system, and co-evolution succeeds on interaction tasks but rarely on long-horizon coding. These results suggest that current LLMs can make a strong first improvement, but cannot yet turn feedback from an improved system into the next one. CoEvoBench provides a controlled testbed for measuring the research capabilities that recursive co-evolution requires.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "모델-하네스 공진화 평가 벤치마크 CoEvoBench"
+        }
+      ]
+    },
+    "2611.27158": {
+      "arxiv_id": "2611.27158",
+      "paper_title": "FM4SAR-Bench 1.0: Towards A Fair Benchmark for Evaluating Foundation Models for SAR Image Interpretation",
+      "abstract": "Foundation models have advanced SAR image interpretation but created a heterogeneous, fragmented model ecosystem. Existing models differ substantially in their input, training data, objectives, architectures, and release policy, yet the field lacks a unified taxonomy and comparative framework. Current evaluations rely primarily on task-specific benchmarks, which are ill-suited to fair comparison among models with fundamentally different input-output formats and task paradigms, and often overlook data transparency, reproducibility, interpretability, and deployment readiness. Limited SAR data accessibility also means high reported performance does not guarantee access to training data, code, or weights, limiting reproduction, benchmarking, and deployment. To address these issues, we propose a systematic taxonomy and hierarchical evaluation framework for SAR-related foundation models: five rating levels, six dimensions, and fine-grained criteria, with separate protocols for VFMs and VLMs. Beyond overall ratings, it yields interpretable multidimensional capability profiles and supports user-defined weighting, so rankings follow user priorities. Utilizing a fixed auxiliary multimodal large language model in combination with human review, we conduct a systematic meta-analysis and multidimensional assessment of 76 VFMs and 40 VLMs. In terms of SAR benchmark task performance under our framework, SAR-native VLMs do not significantly outperform remote sensing VLMs pretrained on mixed multimodal corpora in which SAR is one of several modalities. This lack of clear advantage is largely due to data availability: large-scale, high-quality, public annotated SAR data remain scarce, restricting both model and training-data scale for SAR-native models. The framework provides a structured basis for requirement-aware model selection and remains extensible as new models emerge.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "SAR 파운데이션 모델 평가 프레임워크, 재사용 자원 불명확"
+        }
+      ]
+    },
+    "2611.27186": {
+      "arxiv_id": "2611.27186",
+      "paper_title": "What Does Matching a Human Intervention Effect Establish? Benchmark Checks for LLM Simulations",
+      "abstract": "LLM simulations are validated by equivalence with human effects, yet a zero reference passes whenever the human 90 percent interval lies inside the margin, as the human benchmark shows before simulation. When the zero reference fails, planned precision gives independent simulations the margin up to which passing is a 5 percent test of response. In an exploratory 70-experiment reanalysis, 72 percent of GPT-4's $\\pm$0.20 SD passes were zero-reference passes; GPT-4 passed 16 contrasts the zero reference failed (1.58 expected without response). In a preregistered audit, Claude Sonnet 5.5 passed three intention targets, all zero-reference passes, and the registered belief-gradient control; norm beliefs changed 0.065 SD against humans' 0.351 (zero-reference check added after unblinding; norm beliefs emphasized after inspection). Registered tests detected no overestimation; average-effect intervals excluded overestimation above 0.08 SD. A group audit's precision floor is 1.33 facts against a 2.9-fact effect. Report the zero-reference threshold beside every equivalence decision.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "excluded",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "irrelevant",
+          "reason": "LLM 시뮬레이션 통계 검증 논의, 벤치마크 아님"
+        }
+      ]
+    },
+    "2611.27241": {
+      "arxiv_id": "2611.27241",
+      "paper_title": "WINSO: A Large-Size Very-High-Resolution Remote Sensing Dataset for Wind Turbine Detection and Solar Panel Segmentation",
+      "abstract": "Wind and solar energy are central to the global transition toward net-zero emissions and sustainable development. Accurate spatial inventories of wind and solar facilities are essential for future energy planning. Satellite remote sensing provides a practical and efficient means to acquire such geospatial data at scale. However, reliable facility mapping from large-size satellite images remains constrained by the scarcity of carefully annotated datasets and the lack of systematic evaluation protocols. To address these limitations, we introduce \\textbf{WINSO}, a large-scale wind and solar benchmark based on very-high-resolution (VHR) satellite imagery with ground sampling distances (GSDs) of 0.5--0.7\\,m. WINSO comprises 10,962 large-size images sampled from diverse geographic locations across the Asia-Pacific region, covering at least 71,600\\,$\\text{km}^2$ and totaling 286.36 gigapixels, with individual image dimensions reaching 44,032$\\times$62,208 pixels. Through manual annotation and expert verification, a total of 166,473 instances are labeled using horizontal bounding boxes (HBBs) for wind turbines and polygon masks for solar panels. To build baselines for clean-energy facility mapping, we evaluate state-of-the-art detection and segmentation models, specialized ultra-high-resolution (UHR) architectures, and vision-language models across different inference strategies. Furthermore, cross-dataset evaluations on two external public datasets illustrate the strong generalization capability of the WINSO. WINSO establishes a standardized benchmark to advance automated clean-energy mapping, paving the way for wide-area monitoring of the clean-energy transition.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "원격탐사 검출 데이터셋, VLM 평가 포함하나 LLM 관련성 불명확"
+        }
+      ]
+    },
+    "2611.27349": {
+      "arxiv_id": "2611.27349",
+      "paper_title": "EcomWriteBench: A Real-World Benchmark for E-commerce Writing Tasks",
+      "abstract": "Large language models (LLMs) are increasingly used throughout e-commerce workflows to generate content that informs purchasing decisions and supports customer interactions. Evaluating these systems requires accounting for user needs, product evidence, structural constraints, and business requirements that are not fully captured by general-purpose writing benchmarks. We introduce EcomWriteBench, a real-world benchmark containing 3,861 queries from 69 e-commerce writing tasks across 13 categories and five languages. Through task-level extraction, cross-task consolidation, and refinement guided by human feedback, EcomWriteBench constructs a shared pool of 37 abilities and identifies the subset applicable to each task. Ability-wise scoring enables us to compare state-of-the-art LLMs on EcomWriteBench and characterize their relative strengths and weaknesses across fine-grained e-commerce writing abilities. We further propose a preference-calibrated weight-learning framework that converts human pairwise preferences into interpretable scoring rubrics through global, category-level, and task-level aggregation weights. This framework provides a reusable approach for translating human preferences into automated evaluation by combining ability discovery, ability-wise scoring, and preference-calibrated aggregation, and can potentially be applied to a broad range of benchmarks beyond EcomWriteBench. On held-out queries, our scoring framework achieves 88.96% agreement with human preferences, compared with 78.54% for conventional LLM-as-a-judge scoring.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "5개 언어 전자상거래 글쓰기 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.27453": {
+      "arxiv_id": "2611.27453",
+      "paper_title": "AppCon-Bench: Perception and Misperception of Material Appearance in Vision-Language Models",
+      "abstract": "Identifying the same material across changes in illumination or geometry is a critical ability for robust vision systems. Humans exhibit remarkable material appearance constancy, being able to recognize the intrinsic physical properties of an object's surface material across variations in extrinsic, confounding factors such as the lighting or the shape of such object. Vision-Language Models (VLMs) demonstrate strong performance across a wide range of semantic vision tasks, yet their ability to interpret subtle mid-level perceptual attributes remains less understood. We introduce AppCon-Bench, a benchmark comprising five tasks designed to assess material appearance constancy under controlled variations in geometry and illumination, and evaluate representative VLMs alongside human observers, investigating their ability to maintain consistent material judgments across viewing conditions and experimental contexts. After thorough analysis, we identify several key findings that reveal both similarities and systematic differences between human and VLM material appearance perception, highlighting the value of evaluating perceptual successes and failures beyond overall accuracy and informing areas of improvement for current VLMs.",
+      "paper_updated": "2026-11-23T00:00:00Z",
+      "created_at": "2026-11-24T02:42:43Z",
+      "input_sha256": "e800a88b1dc56da525bdef45fc40c9edf06f867f284ed5939497573f9646e65d",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "VLM 재질 외관 항등성 벤치마크 AppCon-Bench"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -114386,10 +114746,30 @@
         "2611.25459",
         "2611.25582",
         "2611.25673",
-        "2611.25735"
+        "2611.25735",
+        "2611.25849",
+        "2611.25903",
+        "2611.26077",
+        "2611.26248",
+        "2611.26298",
+        "2611.26335",
+        "2611.26336",
+        "2611.26870",
+        "2611.26875",
+        "2611.26883",
+        "2611.26900",
+        "2611.26910",
+        "2611.27042",
+        "2611.27106",
+        "2611.27116",
+        "2611.27158",
+        "2611.27186",
+        "2611.27241",
+        "2611.27349",
+        "2611.27453"
       ],
-      "calls": 6,
-      "cost_usd": 2.0061
+      "calls": 7,
+      "cost_usd": 2.0813
     }
   },
   "reaudits": [
