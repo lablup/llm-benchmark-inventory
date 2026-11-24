@@ -75375,7 +75375,7 @@
     },
     "2610.16260": {
       "decision": "propose",
-      "reason": "ScreenASR-Bench는 화면 속 시각 증거(ETE/EVE/ISE 3단계)가 음성 인식의 모호한 핵심어 복원에 도움이 되는 정도를 재는 재사용 가능한 새 벤치마크입니다. 사례 2,002건은 음성 구간, 키프레임, 참조 전사문, 목표 키워드로 구성되고, 과제 예시가 영어(capitol/capital 등)여서 en 트랙으로 분류했습니다. 키프레임 이미지가 입력이므로 modality는 vision이고, PDF가 Hugging Face 데이터셋 링크를 명시합니다. 라이선스 등은 확인하지 않아 '확인 불가'로 기록했습니다. 이번 수정에서는 PDF 해당 쪽에 실제로 있는 짧은 인용문으로 증거를 교체했습니다.",
+      "reason": "ScreenASR-Bench는 화면 속 시각 증거(ETE/EVE/ISE 3단계)가 음성 인식의 모호한 핵심어 복원에 도움이 되는 정도를 재는 새 벤치마크입니다. 사례 2,002건은 음성 구간, 키프레임, 참조 전사문, 목표 키워드로 구성되며, 키프레임 이미지가 입력이므로 modality는 vision입니다. 공식 Hugging Face 카드 본문은 CC BY-NC 4.0(학술 연구 전용, 상업 이용 금지)을 명시하고, 카드 메타데이터는 cc-by-4.0을 표기합니다. 더 제한적인 본문 조건을 기록하고 두 표기를 유의사항에 함께 적었습니다. lm-eval은 카드에 언급이 없어 '미표기'로 두고 부재 증거를 붙였습니다. 추천 결과는 논문 Table 1의 음성 단독 조건 Overall Recall 한 가지로 통일했습니다.",
       "changes": [
         {
           "track": "en",
@@ -75383,17 +75383,17 @@
             "id": "screenasr-bench",
             "이름": "ScreenASR-Bench",
             "평가 축": "이미지(시각 문맥 기반 음성 인식: 핵심어 복원)",
-            "언어": "en",
+            "언어": "en/zh",
             "정의": "공개 온라인 영상에서 수집한 2,002개 사례로 구성된 3단계 벤치마크. 사례마다 음성 구간, 키프레임, 참조 전사문, 목표 키워드가 있다. 시각 증거의 직접성에 따라 명시적 텍스트 증거(ETE), 명시적 시각 증거(EVE), 암시적 의미 증거(ISE)로 나뉜다. 지표는 WER, 핵심어 재현율(Recall), 시각 문맥으로 인한 개선을 나타내는 정규화 시각 이득(NVG)이다. ASR 모델, 대형 오디오-언어 모델, 옴니 모델을 음성 단독, 키프레임 캡션, 키프레임 이미지 조건에서 평가한다.",
             "대표 과제": "음성과 키프레임을 입력으로 받아 음향적으로 모호한 핵심어를 정확히 인식(ETE/EVE/ISE 3단계)",
             "대표 예시·설명": "과제 설명: 음성 구간과 키프레임이 주어지면 모델이 전사하고, 음향적으로 비슷한 단어(예: capitol과 capital, plain과 plane) 중 화면 증거에 맞는 핵심어를 맞히는지 재현율로 채점한다. 실제 시험 문항이 아니다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 아직 확인하지 않았다. 영상 출처별 약관과 데이터셋 카드를 이용 전에 따로 확인해야 한다. 입력이 음성과 이미지이므로 평가에는 오디오와 이미지를 모두 받는 모델 환경이 필요하다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-NC-4.0(카드 본문 표기. 카드 메타데이터는 cc-by-4.0)",
+            "상업적 이용": "불가",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "공식 카드 본문은 CC BY-NC 4.0을 학술 연구 전용으로 부여하고 상업적 이용을 금지한다. 같은 카드의 메타데이터는 cc-by-4.0을 표기하므로, 더 제한적인 본문 조건(비상업, 학술 연구 목적, 출처 표기)을 기준으로 기록했다. 이 벤치마크는 다른 출처로 구성되어 있다: 공개 온라인 영상에서 가져온 음성·키프레임이고(논문 2쪽), 키프레임 중 약 10%는 GPT Image 2.0으로 합성했으며, 키프레임 선택·증거 분류·캡션 생성에는 Qwen3.5-35B-A3B를 썼다(논문 2쪽, 4쪽). 카드의 라이선스 표기가 이들 구성 요소 각각의 고유 약관을 대신하지 않으므로, 영상 출처와 생성 모델의 약관은 이용 전에 따로 확인해야 한다. 카드는 언어를 Chinese로 표기하고 논문의 예시(capitol 등)는 영어이다. 입력이 음성과 이미지이므로 평가에는 오디오와 이미지를 모두 받는 모델 환경이 필요하다. 공식 카드에 lm-eval 언급이 없다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://huggingface.co/datasets/MingweiFu/ScreenASR-Bench"
           },
           "modality": "vision",
@@ -75439,7 +75439,137 @@
           },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://huggingface.co/datasets/MingweiFu/ScreenASR-Bench",
+              "quote": "released under CC BY-NC 4.0 for academic research only"
+            },
+            "상업적 이용": {
+              "source_url": "https://huggingface.co/datasets/MingweiFu/ScreenASR-Bench",
+              "quote": "Commercial use is prohibited."
+            },
+            "수정·파생": {
+              "source_url": "https://huggingface.co/datasets/MingweiFu/ScreenASR-Bench",
+              "quote": "released under CC BY-NC 4.0"
+            },
+            "재배포": {
+              "source_url": "https://huggingface.co/datasets/MingweiFu/ScreenASR-Bench",
+              "quote": "for academic research only"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://huggingface.co/datasets/MingweiFu/ScreenASR-Bench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Overall keyword Recall (%): 주석된 목표 핵심어 중 모델이 올바르게 인식한 비율(Nhit/Ntotal), 단위 %",
+            "setting": "논문 Table 1의 Overall Recall 열, ScreenASR-Bench 전체 2,002사례, 음성 단독 조건(Vision '-', 키프레임 캡션·이미지 없음). 논문에서 보고한 결과이며 현재 전역 리더보드가 아니다. Qwen-Audio-3.0-ASR는 표 추출에서 모델명과 점수가 같은 행으로 인용되지 않아 목록에서 제외했다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "FireRedASR2-LLM",
+                "score": "37.87",
+                "evidence": {
+                  "page": 3,
+                  "quote": "FireRedASR2-LLM - 7.02 35.11 5.34 43.07 6.15 34.62 6.22 37.87"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "MiMo-V2.5-ASR",
+                "score": "53.43",
+                "evidence": {
+                  "page": 3,
+                  "quote": "MiMo-V2.5-ASR - 6.97 47.07 4.80 59.28 5.22 54.99 5.77 53.43"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-ASR-1.7B",
+                "score": "38.37",
+                "evidence": {
+                  "page": 3,
+                  "quote": "Qwen3-ASR-1.7B</td><td>-</td><td>7.88</td><td>34.10</td><td>5.99</td><td>42.52</td><td>6.47</td><td>39.10</td><td>6.87</td><td>38.37"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Seed-ASR-2.0",
+                "score": "54.09",
+                "evidence": {
+                  "page": 4,
+                  "quote": "Seed-ASR-2.0 achieves the lowest WER of 4.82% but only 54.09% recall"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "MOSS-Audio-8B-Instruct",
+                "score": "45.87",
+                "evidence": {
+                  "page": 3,
+                  "quote": "MOSS-Audio-8B-Instruct</td><td>-</td><td>7.19</td><td>40.71</td><td>5.07</td><td>51.11</td><td>9.32</td><td>46.44</td><td>7.01</td><td>45.87"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "MiMo-Audio-7B-Instruct",
+                "score": "46.72",
+                "evidence": {
+                  "page": 3,
+                  "quote": "MiMo-Audio-7B-Instruct</td><td>-</td><td>9.04</td><td>43.00</td><td>6.84</td><td>51.66</td><td>14.28</td><td>45.42</td><td>9.63</td><td>46.72"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "StepAudio-2.5-Chat",
+                "score": "49.12",
+                "evidence": {
+                  "page": 3,
+                  "quote": "StepAudio-2.5-Chat</td><td>-</td><td>9.39</td><td>45.93</td><td>6.57</td><td>52.77</td><td>7.51</td><td>48.88</td><td>7.94</td><td>49.12"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3-Omni",
+                "score": "60.78",
+                "evidence": {
+                  "page": 3,
+                  "quote": "Qwen3-Omni</td><td>-</td><td>6.81</td><td>56.23</td><td>4.69</td><td>66.62</td><td>5.32</td><td>59.47</td><td>5.70</td><td>60.78"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "MiMo-V2.5",
+                "score": "65.18",
+                "evidence": {
+                  "page": 3,
+                  "quote": "MiMo-V2.5</td><td>-</td><td>11.39</td><td>62.98</td><td>5.69</td><td>68.42</td><td>10.68</td><td>63.95</td><td>9.25</td><td>65.18"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.5-Omni-Plus",
+                "score": "65.83",
+                "evidence": {
+                  "page": 4,
+                  "quote": "Qwen3.5-Omni-Plus reaching 65.83%"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Doubao-Seed-2.0-lite",
+                "score": "56.13",
+                "evidence": {
+                  "page": 3,
+                  "quote": "Doubao-Seed-2.0-lite</td><td>-</td><td>6.85</td><td>53.56</td><td>4.81</td><td>58.31</td><td>5.44</td><td>57.03</td><td>5.79</td><td>56.13"
+                },
+                "open_weight": null
+              }
+            ]
+          },
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.16260",
@@ -75516,7 +75646,8 @@
         "source_run": "45313426620",
         "context_sha256": "68bc137b53467f82d9c45cfbaa4e34c1f7a4cac83bbe7d8c9d6c29b92b62d1df"
       },
-      "proposal_sha256": "5c6f1f7fc2048b0183e11178772c4d1cdf69317b8cbf75f07dee8f22c5f6bcaf"
+      "proposal_sha256": "3b1856e04809e25e44e990fd0f635dc27809620312f1f67ba270388d3e66782c",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -112859,7 +112990,9 @@
     },
     "2026-11-24": {
       "attempted": [],
-      "abstract_attempted": []
+      "abstract_attempted": [],
+      "calls": 1,
+      "cost_usd": 0.9118
     }
   },
   "reaudits": [
