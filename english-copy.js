@@ -696,4 +696,16 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Given a query and a list of products, edit only the target product's description (append a suffix or rewrite it) to raise its rank under an LLM ranker, then evaluate both the rank gain and how detectable the edit is.",
     "example": "Task description (not an actual test item): an English query \"I am looking for a {noun}\" and a list of named, described items are given to an LLM ranker that returns a full ranking. An attack text is appended to, or rewrites, the target's description, and the benchmark measures whether the target's rank improves."
   },
+  "memoreval": {
+    "axis": "Agents (memory modality for embodied agents)",
+    "definition": "A benchmark of which form of retained experience best supports later requests for embodied agents. In the experience phase the agent goes through events, and in the request phase it answers information and action requests using only memory, with no new observations. It has 53 tasks across four simulated indoor environments and seven categories, plus one stacked composite task per environment built from 10-11 component tasks. Requests are graded deterministically, and task success is reported together with separate write-time and read-time inference costs.",
+    "task": "Information and action requests in seven categories: object location, spatial configuration, appearance binding, set aggregation, user preference, occluded state, and skill outcome",
+    "example": "Task description: after events the robot experienced, answer an English question such as which room an object is in, or plan the actions to fetch it, without receiving new observations."
+  },
+  "sovabench": {
+    "axis": "Images/video (vehicle surveillance action retrieval)",
+    "definition": "A content-based video retrieval benchmark built from MEVA and VIRAT validation surveillance footage, centered on vehicle-related actions. It uses seven opposite action pairs (drive forward/reverse, enter/exit vehicle, load/unload, open/close trunk, open/close vehicle door, start/stop, turn left/right). The inter-pair protocol merges each pair into one class, with 1,423 queries and 9,882 total samples (including human-only distractors), measured by mAP. The intra-pair protocol distinguishes opposite actions that differ mainly in temporal direction, with 2,300 queries over 14 action classes, measured by Pair-mAP. All samples are used for testing. The paper also proposes a training-free framework that turns MLLM-generated descriptions into sentence embeddings. Random baselines are 3.4 mAP and 50.3 Pair-mAP.",
+    "task": "Inter-pair action-pair retrieval (mAP) and intra-pair opposite-action retrieval (Pair-mAP)",
+    "example": "Task description: a cropped vehicle surveillance clip is given as a query and the system retrieves other clips of the same action pair. In intra-pair, it must separate clips that differ only in temporal direction, such as opening versus closing. In the MLLM framework experiments, descriptions are generated with the English instruction \"Briefly classify the actions occurring in this video\"."
+  },
 };

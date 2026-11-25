@@ -2,6 +2,9 @@
 
 조사 시각의 한국 시간 기준으로 보관합니다. 재조사 결과는 새 파일에 쌓이며 기존 기록은 유지합니다.
 
+- [2611.30161 · OpenViVE: New Benchmark and Dual-Stream Co-Attention Framework for Vietnamese Visual Entailment](2611.30161-abstract-20261125T114106-733927715825.md)
+- [2611.29635 · Diversity in Unity, Theory in Practice: Hierarchical Multitask Benchmarks for Chinese Minority Languages](2611.29635-abstract-20261125T114106-9e693f63ed21.md)
+- [2611.29592 · Rethinking Closed-Ended Medical VLM Evaluation: From Stable Wrongness to Counterfactual Answer Sensitivity](2611.29592-abstract-20261125T114106-f386fc7a1e74.md)
 - [2611.27186 · What Does Matching a Human Intervention Effect Establish? Benchmark Checks for LLM Simulations](2611.27186-abstract-20261124T114243-bf7316f47fa2.md)
 - [2611.26336 · One Framework to Diagnose Them All: A Stratified Benchmark for Bengali LLM Hallucination](2611.26336-abstract-20261124T114243-3de73feb4ffb.md)
 - [2611.26077 · Same Judgement, Different Scores: Numerical Scoring Topology in LLM-as-a-Judge Evaluation](2611.26077-abstract-20261124T114243-ba7728c893a3.md)
@@ -206,6 +209,7 @@
 - [2605.12413 · Beyond Localization: A Comprehensive Benchmark of Perspective-Conditioned Spatial Reasoning in MLLMs from Omnidirectional Images](2605.12413-20261106T120625-e6a275dd8cdf.md)
 - [2605.09635 · K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs](2605.09635-20261107T130159-e1b90e945357.md)
 - [2605.07675 · FactoryBench: Evaluating Industrial Machine Understanding](2605.07675-20261114T113845-fd8bd2349df5.md)
+- [2605.07395 · Unsolvability Ceiling in Multi-LLM Routing: An Empirical Study of Evaluation Artifacts](2605.07395-abstract-20261125T114037-34301079412e.md)
 - [2605.07247 · EnvSimBench: A Benchmark for Evaluating and Improving LLM-Based Environment Simulation](2605.07247-20261111T114059-dbb237973533.md)
 - [2605.05973 · Towards Reliable LLM Evaluation: Correcting the Winner's Curse in Adaptive Benchmarking](2605.05973-abstract-20261111T114217-8533a42ac3bc.md)
 - [2605.02209 · Submodular Benchmark Selection](2605.02209-abstract-20261114T114010-7e932578583f.md)
