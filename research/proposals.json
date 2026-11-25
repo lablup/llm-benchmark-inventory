@@ -75697,7 +75697,7 @@
     },
     "2610.12561": {
       "decision": "propose",
-      "reason": "MeMoREval은 임베디드 에이전트의 메모리 모달리티(텍스트, 설명, 프레임, 장면 그래프)를 경험 단계와 요청 단계로 나눠 평가하는 재사용 가능한 새 벤치마크입니다. 과제 예시가 영어이므로 en 트랙에 배정했고, 카메라 프레임이 필요한 과제라 vision으로 분류했습니다. PDF가 공식 코드 저장소를 명시합니다. 라이선스와 lm-eval 지원은 확인하지 않았기 때문에 '확인 불가'로 기록했습니다.",
+      "reason": "MeMoREval은 임베디드 에이전트의 메모리 모달리티(텍스트, 설명, 프레임, 장면 그래프)를 경험 단계와 요청 단계로 나눠 평가하는 재사용 가능한 새 벤치마크입니다. 과제 예시가 영어이므로 en 트랙에 배정했고, 카메라 프레임이 필요한 과제라 vision으로 분류했습니다. 공식 저장소 README와 LICENSE 파일이 저장소에 Apache-2.0을 부여하므로 이를 인용했습니다. 공식 README에 lm-eval 언급이 없어 '미표기'로 기록했습니다. 논문 5쪽 표 5의 frames+graph 조건 점수로 모델별 비교 결과를 구성했습니다.",
       "changes": [
         {
           "track": "en",
@@ -75710,12 +75710,12 @@
             "대표 과제": "7개 범주(물체 위치, 공간 배치, 외형 결합, 집합 집계, 사용자 선호, 가려진 상태, 기술 결과)의 정보 요청과 행동 요청",
             "대표 예시·설명": "로봇이 겪은 사건 뒤에 새 관측 없이 영어 질문(예: 특정 물체가 어느 방에 있는지)에 답하거나 그 물체를 가져오는 계획을 내는 과제 설명",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 않았다. 평가에는 Genesis 시뮬레이터와 SceneSmith 기반 장면, 로봇 모델, LLM API 실행 환경이 필요하다. 논문 결과는 논문 조건에서 얻은 값이며 현재 전역 리더보드가 아니다. 수치는 사용한 모델과 메모리 백엔드 설정에 따라 달라진다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "Apache-2.0(저장소 자체 저작물 한정. 장면 등 구성 요소는 각자 약관)",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "Apache-2.0은 공식 저장소 README와 LICENSE 파일이 저장소에 부여한 것이며, 라이선스 사본 첨부, 고지 유지, 변경 고지 등 Apache-2.0 조건을 지켜야 한다. 이 벤치마크는 다른 출처로 구성되어 있다: SceneSmith 장면을 각색한 실내 환경 4곳과 Genesis 시뮬레이터(논문 5쪽). README는 장면을 별도의 Hugging Face 데이터셋으로 배포하고 제3자 표기는 NOTICE 파일에 둔다고 밝히므로, 저장소의 Apache-2.0이 각 구성 요소의 고유 약관을 대신하지 않는다. 각 구성 요소의 약관은 이용 전에 따로 확인해야 한다. README는 벤치마크 코드(시뮬레이션, 기술, 메모리 백엔드, 에이전트, 채점)가 동료 심사 후 공개될 예정이며 현재는 과제 명세, 장면, 로봇 에셋만 공개한다고 밝힌다. 공식 README에 lm-eval 언급이 없다. 평가에는 LLM API 실행 환경이 필요하다. 논문 결과는 논문 조건에서 얻은 값이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/jimwang418/MeMoREval"
           },
           "modality": "vision",
@@ -75759,9 +75759,66 @@
               "quote": "evaluating memory modalities"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/jimwang418/MeMoREval",
+              "quote": "released under the [Apache License 2.0](LICENSE)"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/jimwang418/MeMoREval",
+              "quote": "non-exclusive, no-charge, royalty-free, irrevocable"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/jimwang418/MeMoREval",
+              "quote": "prepare Derivative Works of"
+            },
+            "재배포": {
+              "source_url": "https://github.com/jimwang418/MeMoREval",
+              "quote": "You may reproduce and distribute copies of the"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/jimwang418/MeMoREval",
+              "absent": true
+            }
+          },
+          "recommendations": {
+            "metric": "Task success (%), 53 single tasks 기준 전체 과제 성공률, 단위 %",
+            "setting": "논문 표 5(14쪽): frames+graph 메모리 조건, seed 0, 세 백엔드(transcript, wiki, A-MEM)를 합산한 셀당 159회 실행. 각 모델이 writer, describer, agent를 모두 맡고 temperature 0, 53개 단일 과제를 사용했다. 검색 호출은 최대 5회, 텍스트 메모리 컨텍스트는 턴당 최대 20,000자다. 이는 이 논문에서 보고된 결과이며 현재 전역 리더보드가 아니다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Gemini 3.7 Flash",
+                "score": "72",
+                "evidence": {
+                  "page": 14,
+                  "quote": "Gemini 3.7 Flash 40 58 61 62 70 72"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GPT 5.6 Sol",
+                "score": "57",
+                "evidence": {
+                  "page": 14,
+                  "quote": "GPT 5.6 Sol 36 35 40 39 55 57"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "GLM 5.3 Flash",
+                "score": "50",
+                "evidence": {
+                  "page": 14,
+                  "quote": "GLM 5.3 Flash 33 38 43 45 41 50"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.12561",
@@ -75854,7 +75911,8 @@
         "source_run": "45534018364",
         "context_sha256": "18958069244b5e8f0c2ba1a58480ebace608275bf92b4788f9654b1ca9f8ad16"
       },
-      "proposal_sha256": "42713dfe02bf5f0b24dbc3a60c5988a45a26ef7ba280d086df14fa5dfe19ced1"
+      "proposal_sha256": "dc9978e199b83f5995ed5a226aec258ffec3f2450ec53f82d660d44232e8fb39",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -116368,8 +116426,8 @@
         "2611.31082",
         "2611.31215"
       ],
-      "calls": 5,
-      "cost_usd": 1.1655
+      "calls": 6,
+      "cost_usd": 2.1442
     }
   },
   "reaudits": [
