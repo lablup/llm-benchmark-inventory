@@ -87537,22 +87537,18 @@
     "2610.02982": {
       "arxiv_id": "2610.02982",
       "paper_title": "PLCWorld: Benchmarking LLM-Generated PLC Programs in Closed-Loop Plant Simulation",
-      "abstract": "Programmable logic controllers (PLCs) coordinate industrial equipment by reading sensor inputs and issuing control commands. Evaluating whether large language model (LLM)-generated PLC programs satisfy task requirements and safety constraints requires observing how their commands affect device and workpiece states. We introduce PLCWorld, a common closed-loop execution environment and benchmark that couples Structured Text (ST) execution with simulated plant responses and sensor feedback. Grounded in control relations identified in industrial PLC programs and engineering documentation, PLCWorld contains 100 synthetic tasks and 473 registered task-condition pairs across Motion Control and Material Handling, with difficulty defined by control-dependency scope. A common protocol reports Task Success and Safety Violation separately. Validation combines practitioner review, reference and alternative programs, targeted counterexamples, specification-evaluator alignment checks, and comparisons with independent ST runtimes. Reference and alternative programs satisfy their applicable cases, while all 542 targeted counterexamples activate their designated evaluator rules under at least one registered condition. Execution Gap relates submission-profile acceptance to subsequent task failure or observed Safety Violation. Across the constructed task groups, direct GPT-5.5 achieves 82.70% Task Success on Easy cases but 25.10% on Hard cases. Evaluations of six LLMs and four adapted generation-and-verification workflows further expose differences between completion, safety, and generation cost. Our code, simulation environment, benchmark tasks, and baseline implementations are publicly available at https://yunji0516.github.io/PLCWorld/.",
-      "paper_updated": "2026-10-05T00:00:00Z",
-      "created_at": "2026-10-19T13:48:02Z",
-      "input_sha256": "ccd4af20fb4d5eee220f0132975fb6ab273060bd2c1e9b084491fa693497c5f2",
-      "version": 4,
+      "abstract": "Programmable logic controllers (PLCs) coordinate industrial equipment through sensor inputs and control commands. Evaluating LLM-generated PLC programs requires observing device and workpiece states to assess task completion and safety. We introduce PLCWorld, a closed-loop execution environment and benchmark coupling Structured Text (ST) execution with simulated plant responses and sensor feedback. Grounded in control relations from industrial PLC programs and engineering documentation, PLCWorld contains 100 synthetic tasks and 473 registered task-condition pairs across Motion Control and Material Handling, with difficulty defined by control-dependency scope. It reports Task Success and Safety Violation separately. Execution Gap measures the fraction of cases with task failure or observed safety violation among those assigned to programs passing a common submission-profile and I/O check. Validation combines practitioner review, reference and alternative programs, 542 targeted counterexamples, alignment checks, and independent ST runtime comparisons. Across six LLMs and four adapted generation-and-verification workflows, direct GPT-5.5 achieves 83.96% Task Success on Easy cases but 24.51% on Hard cases. The workflows show no consistent plant-level gains, and failures persist after upstream acceptance. Our code is available at https://yunji0516.github.io/PLCWorld/.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "LLM 생성 PLC 프로그램 폐루프 벤치마크 제안"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "LLM 생성 PLC 프로그램 폐루프 실행 벤치마크 신규 제안"
+          "reason": "LLM PLC 코드 생성 폐루프 벤치마크 신규 제안"
         }
       ]
     },
@@ -95090,23 +95086,19 @@
     },
     "2610.19589": {
       "arxiv_id": "2610.19589",
-      "paper_title": "JockeyBench: Evaluating LLM Agents on Horse-Racing Decision-Making",
-      "abstract": "Repeated event forecasting requires extracting predictive signals from noisy evidence and evaluating their value across successive decisions. We introduce JockeyBench, a benchmark and evaluation protocol that studies this problem through historical Japanese horse racing. The protocol combines time-gated evidence, priced tools, paired frozen-program controls, and two workflows: executing an LLM-written predictor or acquiring evidence for a fresh per-race LLM forecast. Evaluation separates forecast quality, benchmark-specific net utility, and retrospective betting returns and risk under fixed decision rules. Across 28 model--scaffold configurations on 324 races, paired tests identify seven revision gains and two declines after multiple-testing correction. Yet every configuration has negative mean profit under capped-Kelly settlement. In a four-model comparison, the reusable-program workflow has higher mean betting profit and lower research fees, although both workflows lose on average. Further diagnostics reveal that mean probability bias reverses on selected bets and that profitable individual runs can depend on concentrated returns. These findings motivate evaluating predictive competence, adaptation, resource use, and decision value separately when assessing agents for repeated event forecasting.",
-      "paper_updated": "2026-10-14T04:59:45Z",
-      "created_at": "2026-10-19T13:51:34Z",
-      "input_sha256": "cfefc1a7bd3a7a3551c5a324d0a9ba367007bceec83ed8caaf94c47399cfbe39",
-      "version": 4,
+      "paper_title": "JockeyBench: The Racing Analyst's Last Exam",
+      "abstract": "Evaluating LLM agents in noisy sequential forecasting is challenging: strong performance may reflect a capable initial predictor rather than successful online revision, while accurate forecasts may still fail to deliver economic value after costs and market frictions. Existing benchmarks rarely isolate revision gains, compare reusable model-written predictors with direct LLM forecasting on the same tasks, or assess forecast quality alongside research costs and realized returns. To address these gaps, we introduce JockeyBench, a leakage-controlled replay benchmark built from 12 years of Japanese horse-racing records. Agents acquire evidence at a cost and seal probabilistic forecasts before outcomes are revealed. To isolate the effect of revision, we pair each adaptive code-as-policy agent with a frozen copy of its initial predictor. We also compare code-as-policy, which executes reusable prediction programs, with LLM-as-policy, which forecasts each race directly. We evaluate 29 models on 324 races. The strongest initial predictors outperform a conditional-logit baseline trained on 20,730 races. The two top-ranked models retain their initial predictors throughout evaluation. Revision helps weaker predictors correct overconfidence, but updates driven by noisy outcomes can hurt performance. Code-as-policy generally produces more accurate forecasts at lower research cost, while models that struggle to write reliable predictors benefit from forecasting directly with LLM-as-policy. Yet all 29 models, including Claude Opus 5.5 and GPT-6 Astra, have negative mean returns in retrospective settlement. JockeyBench thus offers a demanding testbed for current LLM agents.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
       "status": "passed",
       "votes": [
         {
-          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "model": "claude-sonnet-5-5",
           "decision": "relevant",
-          "reason": "경마 의사결정 LLM 에이전트 벤치마크"
-        },
-        {
-          "model": "zai-org/GLM-5.3-Flash",
-          "decision": "relevant",
-          "reason": "경마 의사결정 에이전트 벤치마크 JockeyBench와 프로토콜 제안"
+          "reason": "LLM 에이전트 순차 예측 리플레이 벤치마크 신규 제안"
         }
       ]
     },
@@ -112993,6 +112985,330 @@
           "reason": "에이전트 평가 스위트 Claw-Eval, 300개 과제 공개"
         }
       ]
+    },
+    "2606.01348": {
+      "arxiv_id": "2606.01348",
+      "paper_title": "ChartArena: A Unified Benchmark with Atomic-Primitive Reasoning for Chart Parsing",
+      "abstract": "Charts convey dense quantitative and relational information, yet current general chart parsing remains challenging due to fragmented evaluation and limited structural reasoning. Existing benchmarks focus on narrow sub-tasks with inconsistent output formats (e.g., Markdown, CSV, JSON, SVG, code), hindering fair comparison and often overlooking real-world scenarios such as printed or hand-drawn photos. Meanwhile, end-to-end multimodal models tend to learn shallow pixel-to-text mappings without explicit structure understanding, making them fragile under visual variations. To address these issues, we present a unified framework that connects evaluation and modeling. On the evaluation side, we introduce ChartArena, a comprehensive bilingual benchmark covering eight chart families, including both numeric charts (bar, line, pie, radar, box plot, combination) and diagrammatic structures (flowchart, mind map). The dataset is constructed via a human-agent collaborative annotation pipeline, where model-assisted drafts are refined through multi-stage human verification to ensure structural consistency and annotation reliability. Furthermore, we design a format-agnostic evaluation protocol that maps different outputs into two canonical semantic spaces: a normalized triple view and a directed graph view, and evaluates them with structure-aware metrics. On the modeling side, we propose Chart Atomic Primitives (CAP), a lightweight semantic scaffold that introduces structural inductive bias during supervised fine-tuning. By guiding the model to infer structure before generating outputs, CAP leads to more consistent and robust parsing behavior. Extensive experiments show that models trained with CAP mechanism achieve reliable performance on ChartArena. ChartArena is publicly available at https://github.com/pspdada/ChartArena.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "이중언어 차트 파싱 벤치마크이나 언어가 한/영인지 불명확"
+        }
+      ]
+    },
+    "2606.30026": {
+      "arxiv_id": "2606.30026",
+      "paper_title": "MuseBench: Benchmarking Intent-Level Audiovisual Arts Understanding in MLLMs",
+      "abstract": "Audiovisual arts encompass diverse creative disciplines, including cinema, visual arts, stage performance, and game design, where artistic meaning arises from deliberate combinations of visual, auditory, and narrative elements (e.g., fear amplified through claustrophobic framing, or grief conveyed through silence and lingering close-ups). Artistic understanding extends beyond recognizing what is depicted to reasoning about why it is expressed through particular creative choices. Despite progress in multimodal large language models (MLLMs), reasoning about artistic intent remains underexplored, as existing benchmarks largely measure perceptual recognition. To address this gap, we introduce MuseBench, a benchmark for evaluating intent-level artistic understanding in MLLMs. It comprises 4,016 questions derived from video essays spanning cinematic arts, static visual arts, stage performing arts, and game arts. To capture the open-ended nature of artistic analysis at scale, the benchmark combines single-select and variable-option multi-select questions. All questions are generated and refined through a four-phase iterative pipeline combining shortcut filtering, adversarial distractors, and expert validation. We evaluate 34 MLLM versions using either video and audio transcripts (V+T) or video, native audio, and text (V+A+T). The highest observed accuracy is 64.62% (V+A+T), trailing the 87.18% human expert baseline. Further analysis reveals that native-audio models score lowest on game arts, models often recover partial interpretations but struggle to identify complete correct option sets on multi-select items, and adaptive frame-selection models trail the strongest video-specific model. These results identify artistic knowledge and complete interpretation as challenges for audiovisual models.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MLLM 예술 의도 이해 벤치마크 신규 제안, 제한 언어 없음"
+        }
+      ]
+    },
+    "2611.28050": {
+      "arxiv_id": "2611.28050",
+      "paper_title": "Benchmarking and Adapting LLMs for English-Swedish Medical Question Answering",
+      "abstract": "Large language models do well on English medical exams, but less is known about Swedish. This matters most for small open models that hospitals can run locally. To reduce this gap, we first build an item-aligned English-Swedish benchmark from ten medical multiple-choice datasets; each Swedish item keeps the options and answer of its English source. A conservative refinement loop repairs the translations: open models from three families find errors, ground them in a Swedish medical term base, and keep a model-written edit only if blind judges vote for it. On this benchmark, small models lose much more accuracy in Swedish than large ones, especially when they answer without reasoning. Second, we ask whether English data and open teacher models can close this gap. We translate the training data, let teachers write reasoning traces, and fine-tune two small students on gold answers or traces in English, Swedish, or both. Training on reasoning traces that include Swedish closes the gap and lifts the 1.2B student from 23.5\\% to 52.0\\% in Swedish, slightly above a 20B open model in its fast mode, with a sixth of its memory. We release the benchmark, its edit history, and the code.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어-스웨덴어 의료 QA 벤치마크로 영어 과제 포함"
+        }
+      ]
+    },
+    "2611.28099": {
+      "arxiv_id": "2611.28099",
+      "paper_title": "VidRouteBench: A Benchmark for Budgeted Video-Generation Routing",
+      "abstract": "Text-to-video generators differ by two orders of magnitude in price, and a cheap configuration of a strong model is often good enough for a prompt. Routing prompts across such arms (model x sampling configuration) should buy quality at fixed budget, but no dataset supports studying it: public video-preference sets contain only closed models, one configuration each. We release VidRouteBench: 16 arms from 7 open families spanning 121x in measured cost ($0.0025-$0.298 per clip), 27,110 clips (1,421 A800-hours) over 1,625 grouped prompts, a quality score frozen after calibration against human preferences (68.7% CV accuracy vs 66.2% for the best single scorer), per-clip scores on 9 identifiable quality dimensions, repeated seeds, an encrypted test split, and a sealed newest family for cold start. The evaluator compares a router against the best prompt-agnostic mixture of arms, not the best single arm. Per-prompt specialisation here is real and predictable (oracle gap 0.642, 47% reproducible across seeds, prompt-arm interaction F=4.47 at p=1.6e-63), unlike LLM-routing arms, where the same pipeline finds none. We then propose OPMU (one probe, many utilities): label a new arm on K probe prompts, predict its 9 dimensions once, and serve any scenario utility by scalarising afterwards. Over 215 utility directions OPMU Pareto-dominates the prompt-agnostic baseline for 94% of directions versus 90% for per-scenario routers, with no per-scenario retraining. Three baselines fail instructively: bag-of-words features lose almost all routing gain in the low-data regime (0.009 vs 0.168); crediting a new arm with its probe average is harmful (-3.32 recovery) although it is the strong baseline on RewardBench-style arms (0.786); Chebyshev scalarisation does not help, our cost-utility front being convex.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "비디오 생성 라우팅 벤치마크 데이터셋 공개"
+        }
+      ]
+    },
+    "2611.28117": {
+      "arxiv_id": "2611.28117",
+      "paper_title": "PhoneQC: Benchmarking Multimodal LLMs for Order-Level Smartphone Trade-in Inspection",
+      "abstract": "As vision-language models enter remote smartphone trade-in, sellers already upload six views and a diagnostic screen, which makes it easy to treat the human quote as a step a model can take over. A model may mark a crack or read the screen, yet the quote is a staff form: appearance fill stays near 0.25, and the closed models that score a little higher do so only on the orders they answer, so human appraisal remains necessary. Two obstacles stand in the way. (1) Single-view defect sets and attribute benchmarks do not score an order-level form under a fixed input contract, so a box or a leaked field can be mistaken for a finished quote. (2) The unread half of the form is the staff fields, and a model left to emit boxes or captions does not learn them. We present PhoneQC, a 335-order iPhone-heavy cut that ranks systems by a 0 to 100 form score (Score100) only inside matched protocols (images alone; images plus a detector sidecar), with a declared upper bound that is not ranked as a peer. As a case study on that board, field-only LoRA freezes the backbone, adapts attention projections, and supervises staff fields while leaving the defect list empty; the adapter sees the same images as the zero-shot model. On image-only T1 the 3B model rises from 26.6 to 33.3 at coverage 0.928; without the empty-blocker item the open ranking still favors the adapter, while the remaining gap to a person stays large on this cut.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "스마트폰 검수 MLLM 벤치마크, 과제 언어 불명확"
+        }
+      ]
+    },
+    "2611.28331": {
+      "arxiv_id": "2611.28331",
+      "paper_title": "Decision models for UAVBench and the viability of edge deployment",
+      "abstract": "Small language models are often proposed for reasoning onboard a drone. However, a good benchmark score does not tell us whether a model will actually run, and run usefully, on an edge computer. In this paper we study three related questions using the UAV decision benchmark, UAVBench. First, are small structured decision models good candidates for these tasks? Second, can an ordinary local machine (a Mac) screen candidate models before we test them on physical devices? Third, what software and resource limits govern deployment? Our main Mac evaluation covers 24 model configurations on the same 2,000 validated multiple-choice questions from UAVBench. These include 20 size-and-precision configurations of 11 generative models, plus four open-weight structured decision models that received no additional UAVBench-specific training. A structured decision model, H2O Lightning 4B, achieved the highest accuracy we observed, scoring 77.65% on the Mac. This shows that these models are well suited to this kind of task. However, when we tried to deploy the decision models, we ran into conversion and runtime limits on the edge devices we tested, which we describe in detail. To test local screening, we ran matched evaluations of two generative models on both the Mac and a Qualcomm RB3 board. The accuracies did not match exactly, but the ranking did. LFM2 2.6B ranked above Qwen2.5 1.5B on both platforms. This supports using a local machine to shortlist candidates. That said, individual answers still differed between platforms, so testing on the actual hardware remained necessary.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "기존 UAVBench 활용 중심, 새 평가 자원 여부 불명확"
+        }
+      ]
+    },
+    "2611.28368": {
+      "arxiv_id": "2611.28368",
+      "paper_title": "Schedule, Rank, Profile: Continuous Evaluation of LLM Agents in Games",
+      "abstract": "Games are a robust test for large language model agents: they require sequential decisions, adversarial or cooperative interaction, state tracking, reasoning under uncertainty, and long-horizon planning. However, a one-time game benchmark can go stale as models, prompts, environment implementations, and evaluation policies change, and refreshing it is costly: full round-robin evaluation scales poorly in the number of model pairs, and the resulting outcomes live on incompatible per-game scales. We present a framework for continuous evaluation of LLM agents in game settings, organized around three coupled components. First, an adaptive scheduler that maps pairwise Bradley-Terry uncertainty to reduced per-pair match targets, concentrating budget on comparisons that remain unresolved. Second, a Unified Leaderboard (ULB) that reduces heterogeneous outcomes to pairwise evidence and fits a game-balanced Bradley-Terry model by minorization-maximization with bootstrap intervals, so that high-throughput games cannot dominate the aggregate ranking. Third, a game skill-profile methodology that scores each game along diverse skill dimensions, making the capability coverage of the suite explicit and turning game selection into a design decision rather than an artifact of availability. In this paper, we specify the research design and outcome reduction of the current implementation and evaluate the framework on a ten-game suite spanning perfect-information board games, imperfect-information games, and social/language settings, reporting LLM capability profiles, evaluation-cost savings across model-refresh cycles, and an empirical Pareto frontier relating model performance to inference cost. As deployed, the scheduler saved 61.7% of episodes; it counted each episode in the two team games as four records, overstating their savings, and the other eight games save 61.9%.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 게임 지속 평가 프레임워크와 리더보드"
+        }
+      ]
+    },
+    "2611.28542": {
+      "arxiv_id": "2611.28542",
+      "paper_title": "BIRD-Persona: A Persona-Aware Benchmark for SQL and pandas Analytics Code Generation",
+      "abstract": "Production text-to-code systems use large language models to turn natural-language analytics requests into executable SQL and pandas code. Existing benchmarks cover both tasks but do not isolate when performance diverges between them. We introduce BIRD-Persona, a persona-stratified extension of BIRD-Python that adds novice and expert rewrites to tasks with matched SQL and pandas ground truth, along with schema variants and task-structure annotations. Across 1,534 tasks, nine models, and 245,592 evaluations, SQL outperforms pandas for eight of nine systems. The gap varies by condition: expert, schema-explicit prompts improve both paradigms but help SQL more; schema representations have mixed, model-dependent effects; and selected-column burden widens the gap while subqueries do not. By making user phrasing a controlled benchmark dimension, BIRD-Persona supports persona-aware and paradigm-aware evaluation of natural-language analytics systems. The dataset is available at https://huggingface.co/datasets/optum-cognition-lab/BIRD-Persona.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "SQL/pandas 코드 생성 벤치마크 데이터셋 공개"
+        }
+      ]
+    },
+    "2611.28671": {
+      "arxiv_id": "2611.28671",
+      "paper_title": "The Evaluation Substrate Matters: Benchmarking Multi-Agent Serving Substrates",
+      "abstract": "Multi-agent systems (MAS) usually coordinate heterogeneous models and tools to solve complex tasks, creating a growing need for reliable evaluation. However, a multi-agent workflow that is fastest in one serving environment can lose its advantage in another, even when its models, prompts, and task remain fixed. This makes a benchmark result conditional on how the workflow is executed. We introduce MASSys, a benchmark for measuring this dependence in multi-agent large language model (LLM) systems. MASSys executes the same candidate-task pairs across serving substrates and load regimes, using five workload families spanning software repair, research synthesis, financial analysis, interactive control, and diagram generation. It records task quality alongside delivery, latency, cost, resource pressure, and failure evidence. In a controlled motivation diagnostic, the Star workflow falls from first to fourth in mean-latency rank under KV-cache pressure, while Chain rises from fourth to first. The substrate sweeps further show that increasing load creates long runtime tails and timeout pressure. In several task families, quality among evaluated outputs changes less than effective quality over submitted jobs: the system delivers fewer usable results even when the surviving outputs remain competitive. Tool and runtime traces reveal that these outcomes involve both model serving and non-model execution. Together, the results motivate evaluating MAS designs over explicit operating conditions and reporting which tasks are delivered, how well they are solved, and where execution breaks down.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티에이전트 서빙 평가 벤치마크 MASSys 제안"
+        }
+      ]
+    },
+    "2611.28713": {
+      "arxiv_id": "2611.28713",
+      "paper_title": "Legal Is Not Good: A Pre-Registered Benchmark of Low-Cost Language and Decision Models on a New Strategy Game",
+      "abstract": "Measure Before You Train argued that an agent's decisions should be measured against ground truth, under a protocol fixed in advance, before anyone trains or replaces the model behind them. We carry the method to a second, very different domain, a turn-based strategy game, and ask a deliberately modest question: how well do low-cost agents play under a pre-registered protocol? hexfolk is a minimal two-player 4X game written for this purpose, so no model has seen its rules or positions. A deterministic engine, one agent interface, a referee that never corrects an illegal or late move, and per-decision logs make every game replayable; questions and expected answers were committed before the games, on held-out seeds with mirrored seats and 95% Wilson intervals. Two small open language models (8B and 3B) lose every game to a few-line rule player. Answering in free text they are invalid on 98% of their decisions; constrained to legal moves they never play an invalid one, yet they lose to the uniformly random player (the 8B model wins 10.0 [4.3, 21.4]% of games), refuting our expectation that they would beat it; the result survives a control that shuffles the order of the options. Two native decision models never play an invalid move and both beat random; one loses all 50 games to the rule player, the other is not distinguishable from it in 50 games and beats a one-step search. The paid agents make tens to over a hundred model calls per game; against the same opponents a free 60 ms-per-move search, which makes none, outplays every paid model by the full range of the scale. Two 7-8B models served locally behave the same way. No frontier model is included.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "신규 전략 게임 hexfolk 기반 LLM 평가 프로토콜"
+        }
+      ]
+    },
+    "2611.28787": {
+      "arxiv_id": "2611.28787",
+      "paper_title": "DiscernBench: Evaluating Cooperative Discernment of LLM Agents in Institutional Settings",
+      "abstract": "The deployment of large language models in operational settings demands evaluation of judgment under institutional constraint. We introduce DiscernBench, a benchmark for evaluating cooperative discernment: the ability of an agent to determine whether to comply with, refuse, or escalate a request in an institutional setting. DiscernBench comprises scenarios derived from real-world incident reports across domains such as aviation, law enforcement, and emergency management. We evaluate eight LLMs across three decision-making configurations and analyze both final decisions and the intermediate judgments produced during multi-agent deliberation. Under disagreement, Final Responders exhibit model- and role-dependent aggregation patterns in which a lone specialist recommendation can disproportionately influence the collective decision, a phenomenon we term Minority-Signal Override. Role-specialized multi-agent deliberation raises average over-escalation from 3.79% under direct single-agent judgment to 28.27%, with the direction and magnitude of minority-signal influence varying substantially across models and specialist roles. These results reveal distinct collective decision behaviors that are not captured by final-answer accuracy alone. Trustworthy multi-agent systems therefore require evaluating not only individual specialist reasoning, but also how conflicting judgments are transformed into collective decisions. Code and data are available at https://github.com/Disha1001/DiscernBench.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 판단 벤치마크 DiscernBench 공개"
+        }
+      ]
+    },
+    "2611.28800": {
+      "arxiv_id": "2611.28800",
+      "paper_title": "HighwayVerse: A Chain-of-Inspection Benchmark for Highway Infrastructure Anomaly Understanding",
+      "abstract": "Practical highway infrastructure inspection entails progressive diagnostic reasoning from visual perception to maintenance decisions, yet existing benchmarks remain confined to isolated tasks, leaving Multimodal Large Language Models (MLLMs) insufficiently evaluated across sequential inspection stages. Meanwhile, current datasets focus primarily on highway pavement defects, falling short of real-world inspection across diverse infrastructure components such as highway pavements, guardrails, glare screens, and drainage systems. To address these gaps, we formulate the Highway Infrastructure Inspection Progression Chain (HIIP-Chain), spanning Anomaly Detection, Anomaly Recognition, Condition Analysis, and Maintenance Resolution, and introduce HighwayVerse. HighwayVerse comprises 14,143 real-world Ground and Unmanned Aerial Vehicle (UAV) inspection records spanning 100 and 17 anomaly categories, respectively, with 84,858 expert-reviewed question-answer pairs. We evaluate 12 open-source and closed-source MLLMs using the chained metric Final, which credits a correct maintenance decision only when all preceding diagnostic stages are completed correctly. Results show that although models achieve relatively high accuracy when initially judging whether an anomaly is present, their markedly lower Final scores expose struggles across downstream recognition, analysis, and decision-making. This discrepancy indicates that current MLLMs do not fully comprehend specific highway anomaly patterns beyond superficial initial judgments. Furthermore, we propose LaneRAG, a training-free retrieval-augmented framework that provides hierarchical reference guidance achieving consistent performance improvements across diverse MLLMs. Our dataset, evaluation benchmark, and source code will be publicly released.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "고속도로 이상 이해 MLLM 벤치마크 신규 제안"
+        }
+      ]
+    },
+    "2611.28844": {
+      "arxiv_id": "2611.28844",
+      "paper_title": "AgriManager: A Framework and Benchmark for LLM-RL Generalization in Agricultural Management",
+      "abstract": "Agricultural management is heterogeneous along two axes. The first is distributional shift within a fixed task interface: weather, crops, and prices vary across years and locations while sensors, actions, and objective stay fixed. The second is structural shift across interfaces: different farms expose different observed variables, available actions, and management objectives. We formalize the second axis as schema shift: variation in the policy-facing schema $Σ= (Σ_O, Σ_A, Σ_R)$ between training and deployment. We test whether LLM-RL generalizes across both axes with AgriManager, to our knowledge the first framework that trains LLM policies with RL across multiple process-based crop simulators, unifying DSSAT, WOFOST, and Cycles. We design a three-tier generalization ladder: Tier 1 within-schema distributional shift, Tier 2 single-axis schema shift along $Σ_O / Σ_A / Σ_R$, Tier 3 compositional schema shift across simulators, all scored on a frozen held-out test suite with three training seeds per method. Within fixed schemas, Qwen3-4B trained by RL with explicit reasoning exceeds neural-network PPO trained with the same interaction budget; without reasoning, training stalls near no-action where the reward penalizes input use. Under single-axis schema shift, $Σ_O$ transfer needs decision-critical state, $Σ_A$ results are consistent with joint action-menu coverage, and with reasoning a policy trained on yield alone transfers to unseen objectives. Under compositional schema shift, single-source training mostly hurts zero-shot transfer across simulators, and a unified policy trained only on other combinations of the same components recovers about 86% of the gain of a specialist trained on the target combination on DSSAT and stays below the specialists on the WOFOST and Cycles profit targets. Project page: https://agrimanager-framework.github.io",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM-RL 농업 관리 일반화 프레임워크 및 벤치마크"
+        }
+      ]
+    },
+    "2611.28853": {
+      "arxiv_id": "2611.28853",
+      "paper_title": "CivilCADBench: Benchmarking Multimodal LLMs for Understanding, Reconstructing, and Designing Civil Engineering Drawing Sets",
+      "abstract": "Civil infrastructure is designed, built, and maintained through engineering drawing sets, yet preparing and revising them remains labour-intensive and calls for automation. Multimodal large language models (MLLMs) are promising candidates, but assessing them requires a benchmark grounded in real engineering practice. We introduce CivilCADBench, a benchmark for understanding, reconstructing, and designing civil engineering drawing sets, built from real infrastructure drawings and source CAD files containing over 250,000 CAD entities. Unlike parametric 3D CAD models, these drawings are dense, layered, and multi-sheet; and since prints are lossy projections with no pixel trace of layers, a file can print correctly yet remain wrongly organised. CivilCADBench comprises three task families of increasing difficulty: understanding tasks are evaluated with 2,183 expert-reviewed questions ranging from single sheets to whole sets, while reconstruction and design tasks are agentic, requiring models to rebuild printed pages as editable CAD files, either as single pages or entire drawing sets, and to produce new designs. These tasks are performed across 232 pages, 28 sets, and 19 design tasks, and evaluated by a deterministic scorer that compares model outputs with the designers' source files on geometry, layers, text, and dimensions. We evaluate seven frontier MLLMs on CivilCADBench, and find that they read and redraw printed content accurately but recover the file structure poorly: the best model scores above 90% in understanding and single-page reconstruction, yet only 60% on layer assignment and 48% on design. Grounded in real engineering practice, CivilCADBench exposes both the capabilities and the limitations of frontier models in professional civil engineering, laying a foundation for next-generation models and agentic systems for intelligent civil engineering.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "토목 도면 MLLM 벤치마크 CivilCADBench 제안"
+        }
+      ]
+    },
+    "2611.28902": {
+      "arxiv_id": "2611.28902",
+      "paper_title": "StudioBench: Benchmarking Agentic Multimodal Large Language Models for Productive Audiovisual Creation",
+      "abstract": "Video generators can now render convincing short clips, yet complete audiovisual works require coordinating visuals, sound, and editing across multiple stages. Existing benchmarks focus on individual generators or video agents under narrower production settings, leaving end-to-end creation by general multimodal large language models (MLLMs) underexplored. We introduce StudioBench, a benchmark comprising 160 tasks across eight video genres and five task types, spanning diverse audiovisual production requirements. Models produce minutes of finished audiovisual content using 33 atomic generation, editing, and inspection tools, without shell access or workflow templates. We evaluate the delivered films, while analyzing reconstructed workflow graphs to characterize production behavior and diagnose failures. Across seven MLLMs, explicit requirements are nearly saturated, yet production quality varies substantially in picture clarity and composition, object structure, motion, and lip sync. All models spontaneously organize multi-stage production workflows without predefined templates. However, higher-quality models exhibit more selective production workflows, whereas additional tool calls alone show little association with quality. These findings identify the missing quality loop of effective inspection, selection, and revision as a key bottleneck in productive audiovisual creation.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MLLM 영상 제작 에이전트 벤치마크 StudioBench"
+        }
+      ]
+    },
+    "2611.28924": {
+      "arxiv_id": "2611.28924",
+      "paper_title": "OmniDecisionBench: Evaluating and Benchmarking the Multimodal Jev-Style System One Decision Models",
+      "abstract": "Multimodal System One models answer visual tasks with typed decisions and native probabilities, yet no holistic evaluation compares them with general VLMs or maps either class's capability boundaries. We introduce OmniDecisionBench, a holistic benchmark of multimodal System One models. Its main evaluation assigns 45 datasets (192,975 records) to five capability families and twelve primary angles across four typed interfaces, scoring accuracy and candidate-probability calibration. A validation layer adds three single-factor diagnostics varying visual presentation, textual evidence sufficiency, and target dataset. Across three System One models and two general VLMs, three regularities emerge. First, strengths depend on angle and metric: System One models lead discrete tasks overall with lower ECE15 on most perception, reading, and reasoning angles (Jev 1.14: 80.14% accuracy, 4.50% ECE15), while general VLMs lead ordinal grading and outperform Jev 1.14 among the three models tested on direct Box grounding. Second, multi-image and abstract reasoning bound every model, where confidence rather than accuracy separates them. Third, reliability shifts with the input: rendering only options nearly triples Jev 1.14's selective risk at nearly flat mean signed bias, and donor risk cutoffs often exceed target risk across unseen datasets and task families. OmniDecisionBench thus maps which model class suits each angle and where reliability ends. The code and dataset will be available at https://github.com/Glax147/OmniDecisionBench.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티모달 의사결정 모델 종합 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.28940": {
+      "arxiv_id": "2611.28940",
+      "paper_title": "When Rubrics Do Not Decide: Silent Value Completion in LLM Evaluation",
+      "abstract": "Multi-criterion LLM judges often evaluate responses without specifying how conflicting criteria resolve, leaving the winner undetermined even under exact criterion scores. Issuing a strict verdict without declaring the required trade-off premise constitutes silent value completion. We introduce TradeoffBench to isolate this failure by separating rule execution from response scoring. On authoritative criterion vectors, six open-weight non-reasoning judges pass all dominance and equality controls yet pick unsupported winners on 9%-81% of 1,345 conflicts. All 577 order-stable choices follow an explicitly banned majority rule. Reasoning-enabled configurations drop anonymous-vector violations to 2 in 9,720 judgments under an explicit rule, yet cannot bridge omitted trade-offs or divergent component scoring. On raw TradeoffBench text with unspecified trade-offs, GPT-6.1-sol omits its completion premise in 29.8% of 400 verified conflicts. Even under an explicit rule on four-rater-consensus MultiPref conflicts, four reasoning judges still issue strict verdicts on 16/45 (GPT-6.1-sol) up to 35/46 and 25/29 (open-weight judges) of valid presentations. We propose identified-first evaluation, decoupling specification support, explicit completion, and target agreement. In MultiPref human-score audits, peer-mean substitution raises directional disagreement from 0.6% to 28.8% on 2,707 shared targets. A single-peer ablation confirms a 29.38-point gap on 2,175 targets, ruling out averaging as the cause. In HUMAINE, declared partial trade-offs add 2.5 percentage points of coverage, yet newly decided pairs incur 3.9% disagreement versus 0.9% for Pareto. Reliable LLM judging, therefore, requires auditing, specification support, declared trade-offs, and human target agreement separately.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 판정자 평가용 TradeoffBench 제안"
+        }
+      ]
+    },
+    "2611.29009": {
+      "arxiv_id": "2611.29009",
+      "paper_title": "Mind the Trap As LLMs Guess the Data Model: Grain-Aware Guards Against Fan-out in Text-to-SQL and Its Benchmarks",
+      "abstract": "Text-to-SQL systems built on large language models (LLMs) often aggregate over one-to-many and many-to-many joins, a classic trap: when the joined rows repeat an entity, a SUM or COUNT counts it more than once, yet the query runs and returns a plausible number. We characterize these fan-out errors by one condition on the relation an aggregate reads, which depends on two facts a schema does not show: each measure's grain, and how many rows a join on each key repeats. An audit that tests the condition on the data finds distorted gold answers for 4.2% of the dev questions of BIRD, a widely used benchmark, and BIRD's later, independent revision changed 44% of the answers the audit flags as definite fan-out, against 16% of unflagged ones. We release BIRD-FanOut, 486 BIRD questions with reviewed gold, and GrainTraps, synthetic questions that set this trap and related ones. Across eight LLM agents, functional dependencies (FDs) computed from the data help no more than per-column statistics on GrainTraps, but grain-aware FDs, which also state each measure's grain and the repetition per key, cut fan-out errors on BIRD from 18.4% of runs to about 13%, also on held-out questions and without LLM judges. Accuracy rises less, because most remaining errors are not fan-out and BIRD's hints often prescribe the over-count. Text-to-SQL models should be given the grain of the data, and benchmark gold should be audited on the data. Code, data and benchmarks are available at https://github.com/ahmed-mahran/misqal",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:40:49Z",
+      "input_sha256": "8da0f0510c2f4f8ae148aa974d45e7772e48dcfff9e1555c693120e723dfc4e3",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "BIRD-FanOut, GrainTraps Text-to-SQL 평가셋 공개"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -115283,10 +115599,30 @@
         "2406.13144",
         "2501.14851",
         "2510.07626",
-        "2604.06132"
+        "2604.06132",
+        "2606.01348",
+        "2606.30026",
+        "2610.02982",
+        "2610.19589",
+        "2611.28050",
+        "2611.28099",
+        "2611.28117",
+        "2611.28331",
+        "2611.28368",
+        "2611.28542",
+        "2611.28671",
+        "2611.28713",
+        "2611.28787",
+        "2611.28800",
+        "2611.28844",
+        "2611.28853",
+        "2611.28902",
+        "2611.28924",
+        "2611.28940",
+        "2611.29009"
       ],
-      "calls": 1,
-      "cost_usd": 0.0713
+      "calls": 2,
+      "cost_usd": 0.1419
     }
   },
   "reaudits": [
