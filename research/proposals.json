@@ -76309,7 +76309,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-25T04:11:37Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -76335,12 +76335,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "45534018364",
-        "context_sha256": "ab87fa6c34644201aa45a7ea94374d37418624037ff54d3dc1437d22cb55a413"
-      },
       "proposal_sha256": "bbc2437f91fa0cb5eb5558ff8140930f2e7a31edd78927e4d702d8a6325d1d5d",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 변경 사항을 PDF 전체 페이지와 공식 README에 대조했고, 근거가 부족하거나 모순된 항목은 없었습니다. 규모 수치는 모두 원문과 일치합니다. 질의 1,423개와 전체 샘플 9,882개(3쪽), intra-pair 질의 2,300개와 14개 행동 클래스(4쪽), 반대 행동 쌍 7개(Table 1), MEVA와 VIRAT 검증 세트 기반 구성, 무작위 기준 3.4 mAP와 50.3 Pair-mAP가 지원됩니다. 모달리티는 입력이 영상이므로 vision이 타당합니다. 언어는 과제 자체가 영상 간 검색이라 영어 요소가 약하지만, 부록과 Figure 3의 영어 지시문을 근거로 en 트랙에 둔 것은 비슷한 기존 항목과 일관되고, 정의와 유의사항에서 영어가 프레임워크 프롬프트에만 쓰인다고 한정했습니다. 라이선스는 공식 README와 논문 4쪽이 메타데이터를 CC-BY-4.0으로 명시하므로 '미표기'가 아니며, 상업 이용·수정·재배포 칸도 메타데이터 한정으로 적어 원본 영상 권리를 임의로 부여하지 않았습니다. MEVA(CC-BY-4.0)와 VIRAT(Video Dataset Usage Agreement)에서 파생된 벤치마크이므로 각 구성 요소의 고유 약관을 따로 확인하라는 유의사항이 있고, 영상은 재배포하지 않는다는 제한도 반영되었습니다. lm-eval 지원은 공식 README와 PDF 어디에도 lm-eval 언급이 없고 pdf_mentions도 비어 있어, 문서화되지 않았다는 의미의 '미표기'로 해결된 값입니다. 추천 목록은 Table 4 Inter-pair 열의 19개 모델 점수를 모두 포함합니다. 값은 Poppler 텍스트와 MinerU 표에서 서로 충돌 없이 일치하고, 지표 방향(mAP, 높을수록 좋음)과 조건(GTE-Large 문장 임베딩, 최대 코사인 유사도, 가능한 경우 1 FPS, general·task-aware 구분)도 정확합니다. 논문 보고 결과이며 전역 리더보드가 아니라는 점도 명시되어 있어 상위 3개(MiniCPM-V 4.5 task-aware 38.3, CLIP4Clip 36.6, InternVL3.5 8B task-aware 35.4) 선정이 정당합니다. 공개 가중치는 논문이 오픈소스로 명시한 InternVL3.5 8B와 MiniCPM-V 4.5에만 true이고 나머지는 null로 남겨 폐쇄 가중치로 오인하지 않았습니다. 예시 설명에서 task-aware 지시문과 general 지시문의 구분이 약간 뭉뚱그려져 있으나 결론에 영향을 주지 않는 경미한 표현 문제입니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 231136,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 3123,
+              "output_tokens_details": {
+                "thinking_tokens": 1980
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 231136,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 3123,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 231136,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 231136
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.9558429,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "bbc2437f91fa0cb5eb5558ff8140930f2e7a31edd78927e4d702d8a6325d1d5d",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -116879,8 +116925,8 @@
         "2611.31082",
         "2611.31215"
       ],
-      "calls": 17,
-      "cost_usd": 12.9538
+      "calls": 18,
+      "cost_usd": 13.9096
     }
   },
   "reaudits": [
