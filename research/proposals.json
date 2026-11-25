@@ -75959,6 +75959,160 @@
         "reviewed_sha256": "dc9978e199b83f5995ed5a226aec258ffec3f2450ec53f82d660d44232e8fb39",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2601.04824": {
+      "decision": "propose",
+      "reason": "SOVABench는 MEVA와 VIRAT 차량 감시 영상으로 만든 재사용 가능한 행동 검색 벤치마크를 새로 제안하는 논문이다. 반대 행동 쌍 7개로 inter-pair(질의 1,423개, 샘플 9,882개)와 intra-pair(질의 2,300개) 두 프로토콜을 정의한다. 입력이 영상이므로 vision 트랙으로 분류했다. 벤치마크 자체는 영상 간 검색이라 언어 요소가 약하지만, PDF 부록에 인용된 영어 지시문(\"Briefly classify the actions occurring in this video\")을 언어 근거로 삼아 en 트랙으로 제안한다. 공식 코드·주석 링크는 1쪽 각주에 있다. 라이선스 등은 아직 검증하지 않아 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "sovabench",
+            "이름": "SOVABench",
+            "평가 축": "이미지(차량 감시 영상 행동 검색)",
+            "언어": "en",
+            "정의": "MEVA와 VIRAT 검증 세트의 감시 영상에서 차량 관련 행동을 추려 만든 콘텐츠 기반 영상 검색 벤치마크. 반대 행동 쌍 7개(전진/후진, 승차/하차, 적재/하역, 트렁크 열기/닫기, 차문 열기/닫기, 시동/정지, 좌회전/우회전)로 구성. inter-pair 프로토콜은 쌍을 하나의 클래스로 묶어 질의 1,423개, 전체 샘플 9,882개(사람만 나오는 방해 샘플 포함)로 mAP를 측정한다. intra-pair 프로토콜은 시간 방향만 다른 반대 행동을 구별하며 질의 2,300개, 14개 행동 클래스로 Pair-mAP를 측정한다. 모든 샘플을 테스트에 사용한다. 논문은 이 벤치마크 위에서 MLLM 설명문을 문장 임베딩으로 바꾸는 학습 불필요 프레임워크도 함께 제안하며, 무작위 기준은 3.4 mAP와 50.3 Pair-mAP이다.",
+            "대표 과제": "inter-pair 행동 쌍 검색(mAP)과 intra-pair 반대 행동 검색(Pair-mAP)",
+            "대표 예시·설명": "과제 설명: 잘라낸 차량 감시 영상 클립 하나를 질의로 주고, 같은 행동 쌍의 다른 클립을 검색한다. intra-pair에서는 열기/닫기처럼 시간 방향만 다른 클립을 구별해야 한다. MLLM 프레임워크 실험에서는 영어 지시문 \"Briefly classify the actions occurring in this video\"로 설명문을 생성한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스와 재배포 조건은 이 제안 단계에서 검증하지 않았다. 논문 3.3절은 원본 영상을 재배포하지 않고 메타데이터와 추출 절차만 제공하며, 재구성하려면 MEVA(CC-BY-4.0)와 VIRAT(VIRAT Video Dataset Usage Agreement) 접근이 필요하고 메타데이터는 CC-BY-4.0이라고 밝힌다. 각 구성 요소의 약관은 이용 전에 따로 확인해야 한다. 벤치마크 과제는 영상 간 검색이며 영어는 MLLM 프레임워크의 프롬프트에만 쓰인다. 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/oriol-rabasseda/sovabench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images/video (vehicle surveillance action retrieval)",
+            "definition": "A content-based video retrieval benchmark built from MEVA and VIRAT validation surveillance footage, centered on vehicle-related actions. It uses seven opposite action pairs (drive forward/reverse, enter/exit vehicle, load/unload, open/close trunk, open/close vehicle door, start/stop, turn left/right). The inter-pair protocol merges each pair into one class, with 1,423 queries and 9,882 total samples (including human-only distractors), measured by mAP. The intra-pair protocol distinguishes opposite actions that differ mainly in temporal direction, with 2,300 queries over 14 action classes, measured by Pair-mAP. All samples are used for testing. The paper also proposes a training-free framework that turns MLLM-generated descriptions into sentence embeddings. Random baselines are 3.4 mAP and 50.3 Pair-mAP.",
+            "task": "Inter-pair action-pair retrieval (mAP) and intra-pair opposite-action retrieval (Pair-mAP)",
+            "example": "Task description: a cropped vehicle surveillance clip is given as a query and the system retrieves other clips of the same action pair. In intra-pair, it must separate clips that differ only in temporal direction, such as opening versus closing. In the MLLM framework experiments, descriptions are generated with the English instruction \"Briefly classify the actions occurring in this video\"."
+          },
+          "evidence": {
+            "modality": {
+              "page": 11,
+              "quote": "Briefly classify the"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "1,423 queries and"
+            },
+            "대표 예시·설명": {
+              "page": 11,
+              "quote": "Briefly classify the"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/oriol-rabasseda/sovabench.git"
+            },
+            "언어": {
+              "page": 11,
+              "quote": "Briefly classify the"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "SOVABench (Surveillance Opposite"
+            },
+            "정의": {
+              "page": 3,
+              "quote": "1,423 queries and"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "SOVABench (Surveillance Opposite"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2601.04824",
+      "paper_title": "SOVABench: A Vehicle Surveillance Action Retrieval Benchmark for Multimodal Large Language Models",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2601.04824",
+        "sha256": "2753509903f3fed3ab6855e078826065d08df38b5c41c0351039449f02fb74ea",
+        "accessed": "2026-11-25T04:09:38Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 14,
+          "elapsed_seconds": 91.87,
+          "pdf_sha256": "2753509903f3fed3ab6855e078826065d08df38b5c41c0351039449f02fb74ea",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "2577aaf45d4ba1f3bcba6599972e17aa8a342503e73c7a80cb2d328b4af98406",
+          "page_json_file": "2601.04824.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/oriol-rabasseda/sovabench",
+            "fetched_url": "https://api.github.com/repos/oriol-rabasseda/sovabench/readme",
+            "sha256": "756d6f69fb94b8ebd4546559d48c52d14f5083efaa82d24f34a803355e2116dd",
+            "accessed": "2026-11-25T04:11:37Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-25T04:11:37Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2601.04824",
+        "paper_title": "SOVABench: A Vehicle Surveillance Action Retrieval Benchmark for Multimodal Large Language Models",
+        "abstract": "Automatic identification of events and recurrent behavior analysis are critical for video surveillance. However, most existing content-based video retrieval benchmarks focus on scene-level similarity and do not evaluate the action discrimination required in surveillance. To address this gap, we introduce SOVABench (Surveillance Opposite Vehicle Actions Benchmark), a real-world retrieval benchmark built from surveillance footage and centered on vehicle-related actions. SOVABench defines two evaluation protocols (inter-pair and intra-pair) to assess cross-action discrimination and temporal direction understanding. Although action distinctions are generally intuitive for human observers, our experiments show that they remain challenging for state-of-the-art vision and multimodal models. Leveraging the visual reasoning and instruction-following capabilities of Multimodal Large Language Models (MLLMs), we present a training-free framework for producing interpretable embeddings from MLLM-generated descriptions for both images and videos. The framework achieves strong performance on SOVABench as well as on several spatial and counting benchmarks where contrastive Vision-Language Models often fail. The code, annotations, and instructions to construct the benchmark are publicly available.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:58Z",
+        "input_sha256": "77f0a8d7cafea22750ed9d53444d2c48e2c3d427374597b09c31339afcba07b4",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "차량 감시 행동 검색 벤치마크로 영상 검색 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "MLLM 차량 감시 행동 검색 벤치마크를 새로 제안, 코드·주석 공개"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "45534018364",
+        "context_sha256": "ab87fa6c34644201aa45a7ea94374d37418624037ff54d3dc1437d22cb55a413"
+      },
+      "proposal_sha256": "7df882a45a1b58c5d58726799cbd0384a146915a863217bc82d5b694696b9838"
     }
   },
   "processed_comments": [],
@@ -116497,8 +116651,8 @@
         "2611.31082",
         "2611.31215"
       ],
-      "calls": 15,
-      "cost_usd": 11.0124
+      "calls": 16,
+      "cost_usd": 11.9365
     }
   },
   "reaudits": [
