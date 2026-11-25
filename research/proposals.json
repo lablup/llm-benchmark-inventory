@@ -113669,6 +113669,186 @@
           "reason": "위조 탐지기 중심 벤치마크로 LLM 평가·언어 불분명"
         }
       ]
+    },
+    "2611.30422": {
+      "arxiv_id": "2611.30422",
+      "paper_title": "HWRE-Bench: Can LLM Agents Understand Hardware They Did Not Design?",
+      "abstract": "Hardware benchmarks for LLM agents all run the design flow forward, from a specification to RTL, a layout or a bug fix. We ask the reverse question: given an implemented artifact, such as a layout, a gate-level netlist or a protected simulation model, can an agent work out what it does well enough to act on that knowledge? We introduce HWRE-Bench, a benchmark for agentic hardware reverse engineering built on one observation. Each step of the forward flow discards information (names, hierarchy, word-level structure, generator parameters, the programming model), and a reverse-engineering task asks the agent to recover what was lost and to prove it with an executable deliverable that the artifact alone cannot supply. Since layout extraction is now mechanical and a correct netlist is already a cycle-exact model, every task carries a mandatory copy-the-netlist control that must score zero. HWRE-Bench spans five tracks (Extract, Abstract, Audit, Interoperate, Modify), four information-loss levels and white- versus black-box access, all on original designs. We report a pilot of 148 rollouts from two agents on four seed tasks under 16 conditions, with stage-annotated trajectories. Agents built their own layout extractors and audited a sanitized layout as reliably as a netlist, at about 27% more turns. Keyless, equivalence-preserving obfuscation changed neither pass rates nor defect-repair scores. Whether agents read the structure at all depended on task framing rather than on necessity, so pass rate alone does not show understanding. Provider safety filters stopped 16% of one agent's runs on the audit tasks. These results argue for deliverables beyond equivalence and for reporting run validity explicitly.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:41:15Z",
+      "input_sha256": "f507458f208f8a253b333942a599823f17b838db8ddf3a3761ba2ab3d2ce8917",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트용 하드웨어 역공학 벤치마크 신규 제안; 언어는 불명확하나 재사용 가능"
+        }
+      ]
+    },
+    "2611.30460": {
+      "arxiv_id": "2611.30460",
+      "paper_title": "Rethinking the Evaluation of Contrastive Decoding for Hallucination Mitigation in Multimodal Large Language Models",
+      "abstract": "Contrastive decoding (CD) mitigates object hallucination in multimodal large language models (MLLMs) by contrasting token distributions under different conditions to adjust token scores. However, existing generative and discriminative benchmarks primarily measure final task scores, which can be confounded by candidate filtering, changes in generation trajectories, and response biases, making it difficult to isolate the effects of the underlying contrastive adjustments. To address these limitations while complementing existing evaluations, we introduce CONCOR (Contrastive Correction Evaluation), a controlled benchmark that directly evaluates the competition between ground-truth and different types of hallucinated candidates using the Contrastive Grounding Margin (CGM). CGM also enables analysis of directional consistency, composition, and reliability of contrastive corrections. Our evaluation reveals that existing CD methods exhibit distinct correction behaviors: some consistently favor ground-truth candidates, whereas others produce strong corrections but also introduce more errors. Crucially, these differences help explain their contrasting responses to increased contrast strength, which improves some methods while degrading others. These findings highlight the importance of evaluating the contrastive correction itself, rather than relying solely on final-output performance, and CONCOR provides a controlled and interpretable framework for understanding and improving CD methods for hallucination mitigation.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:41:15Z",
+      "input_sha256": "f507458f208f8a253b333942a599823f17b838db8ddf3a3761ba2ab3d2ce8917",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "MLLM 환각 완화 대조 디코딩 평가용 CONCOR 벤치마크 제안"
+        }
+      ]
+    },
+    "2611.30590": {
+      "arxiv_id": "2611.30590",
+      "paper_title": "POMA: Beyond Final Flags -- Process-Level Evaluation of Base LLMs in Vulnerability Exploitation",
+      "abstract": "As large language models (LLMs) evolve from text generation to autonomous software-engineering execution, automated vulnerability exploitability verification has emerged as a vital frontier in software quality assurance and security validation. Existing security benchmarks, however, largely judge models by binary pass/fail outcomes or coarse stage milestones. Such outcome-centric scoring obscures fine-grained failure dynamics across long-horizon execution and conflates the intrinsic capability of a base LLM with external agent scaffolding. We present POMA (Pwn-Oriented Model Assessment), a process-level evaluation methodology and platform that isolates base LLMs under a unified execution baseline -- fixing task inputs, tool interfaces, target environments, feedback formats, and execution budgets -- while measuring intermediate states and transitions from runtime evidence. Evaluating four frontier base LLMs across 55 CTF Pwn challenges and 10 real-world vulnerability reproduction tasks exposes persistent capability attrition along the exploitation chain: from vulnerability knowledge to executable implementation, from client-side actions to verified target states, from failure localization to precise repair, and across iterative revisions. In real-world software, models further struggle to satisfy format, semantic, differential, and crash-identity constraints simultaneously. By pinpointing where execution chains break down, POMA provides an empirical foundation for trustworthy capability assessment and principled vulnerability-agent design. Our benchmark catalogs, process-measurement evaluator, and sample harness are publicly available at https://github.com/maple-pwn/poma-release .",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:41:15Z",
+      "input_sha256": "f507458f208f8a253b333942a599823f17b838db8ddf3a3761ba2ab3d2ce8917",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "취약점 익스플로잇 과정 평가 벤치마크/플랫폼 공개"
+        }
+      ]
+    },
+    "2611.30925": {
+      "arxiv_id": "2611.30925",
+      "paper_title": "PRIMEAPE: A Multilingual Benchmark for Fine-Grained Meta-Evaluation of Judge Models",
+      "abstract": "Large language models increasingly serve as judges of other models, shaping benchmark rankings and model development. Yet, a judge whose rationale consistently supports its verdict may still disagree with human preferences. To study this, we introduce PRIMEAPE, a multilingual benchmark for evaluating judge verdicts and rationales. PRIMEAPE provides 2,205 response pairs covering 243 instructions in English, French, Spanish, Urdu, Hindi, Norwegian Bokmål, and Yoruba, with 11k human annotations of preferences and rationales across relevance, naturalness, truthfulness, safety, and overall quality. Our evaluation of twelve open- and closed-weight judges reveals that aggregate performance conceals differences across languages and criteria, while requesting rationales does not consistently improve agreement with human preferences. Judges also favor the first position, longer responses, and responses from related models, with effects that vary across criteria and languages. Crucially, judges can justify verdicts that disagree with human preferences while maintaining consistency between their verdicts and rationales. These findings show that consistency with a judge's own verdict does not establish alignment with human judgment. PRIMEAPE enables assessment of both, providing a foundation for more reliable multilingual judges. We release our benchmark and all annotation materials under the CC BY-NC 4.0 license at github.com/Toloka/primeape.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:41:15Z",
+      "input_sha256": "f507458f208f8a253b333942a599823f17b838db8ddf3a3761ba2ab3d2ce8917",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어 포함 다국어 판정 모델 메타평가 벤치마크 공개"
+        }
+      ]
+    },
+    "2611.30957": {
+      "arxiv_id": "2611.30957",
+      "paper_title": "SayDo: Benchmarking the Safety of Frontier Models from Chat to Closed-Loop Robot Control",
+      "abstract": "Frontier vision-language models (VLMs) are increasingly used as high-level robot controllers, yet their safety is evaluated almost entirely in text. We introduce SayDo, a benchmark that assesses the propensity of frontier models to cause harm in embodied contexts. SayDo comprises eleven laboratory and household tasks that pair a benign instruction with a hazard latent in the scene. Tasks are implemented in six settings along an embodiment gradient, from chat questions about an imagined robot to closed-loop control of a simulated robot arm. Benign controls, safe-alternative variants and scripted operator pushback complement each task. Across six open- and closed-weight VLMs and 11,480 episodes, hazardous-action rates rise from 14% in chat to 47% in the simulator, and from 2% to 80% for the most affected model. The increase is largely driven by open-weight models. We find that models flag hazards before acting in 73% of unsafe episodes and give way to pushback about twice as often when controlling robots as in chat. The safest models also show signs of overcaution on benign controls. Safety evaluations run in text therefore do not predict the safety behavior of the same models when used as robot controllers.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:41:15Z",
+      "input_sha256": "f507458f208f8a253b333942a599823f17b838db8ddf3a3761ba2ab3d2ce8917",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "로봇 제어 VLM 안전성 평가 벤치마크 SayDo 제안"
+        }
+      ]
+    },
+    "2611.30989": {
+      "arxiv_id": "2611.30989",
+      "paper_title": "WorldLeague: Benchmarking Physical Agency",
+      "abstract": "AI systems can now operate Blender, follow instructions in complex video games, and manipulate objects with robot arms. What range of physical goals can today's AI systems achieve autonomously? Answering this question requires testing systems on tasks that demand different combinations of perception, memory, planning, and action. We introduce \\textbf{WorldLeague}, a benchmark that compares AI systems on a common set of \\textbf{60 simulated robot tasks} by measuring progress toward each task's physical goal from the robot's trajectory. Robots explore scenes to gather evidence in \\textbf{WorldSeek}, rearrange objects in \\textbf{WorldShape}, and adapt to changes in \\textbf{WorldShift}. Tying these goals to a single control interface limits which AI systems can be compared. In WorldLeague, vision-language models (VLMs) choose targets and motions, while vision-language-action models (VLAs) and world-action models (WAMs) use their native controls. For each of six capability dimensions, we measure how much progress a system makes toward its goals (Interactive Score) and how often it achieves them (physical success rate). Together, these measures form the system's \\emph{Physical Agency Profile}. Among 13 representative AI systems, Claude Fable 5.2 achieves 13 of the 60 goals and earns the highest mean Interactive Score (28.58/100). Fable leads in four dimensions, while GPT-6.1-Sol and GPT-6-Astra tie for first on rule-following tasks. Even when VLMs answer every final question correctly, they receive an Interactive Score of zero in 71.8\\% of those episodes. WorldLeague gives Embodied AI, Physical AI, and Agentic AI a shared basis for comparing what AI systems achieve autonomously, from partial progress toward a physical goal to full goal completion. Project Webpage: https://xyangzhou.github.io/WorldLeague",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:41:15Z",
+      "input_sha256": "f507458f208f8a253b333942a599823f17b838db8ddf3a3761ba2ab3d2ce8917",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "60개 시뮬레이션 로봇 과제의 물리적 에이전시 벤치마크"
+        }
+      ]
+    },
+    "2611.31022": {
+      "arxiv_id": "2611.31022",
+      "paper_title": "OmniV-Bench: Can MLLMs Comprehend Immersive Spatio-temporal Scenes?",
+      "abstract": "Omnidirectional videos (ODVs) capture dynamic environments with a full $360^\\circ$ field of view, providing rich spatial context and temporal dynamics for applications such as virtual reality (VR), augmented reality (AR), and embodied intelligence. Recent multimodal large language models (MLLMs) have made great progress in spatial and temporal understanding, yet their ability to comprehend the immersive 360 spatio-temporal information conveyed by ODVs remains largely unexplored. To bridge this gap, we first introduce OmniV-Bench, a Benchmark designed to comprehensively evaluate the capabilities of MLLMs on spatio-temporal Omnidirectional Video understanding. OmniV-Bench contains 4,123 high-quality ODVs collected from diverse scenes, along with 8,923 human-annotated question-answer pairs spanning 11 fine-grained tasks across three categories, i.e., general, spatial, and spatio-temporal understanding. Extensive benchmark experiments reveal that the spatio-temporal complexity of ODVs poses significant challenges for current MLLMs. To address these limitations, we further propose OmniV-Harness, an agentic harness that enhances ODV understanding through viewpoint-guided evidence initialization and task-relevant evidence acquisition with adaptive tool use. Comprehensive experiments demonstrate that OmniV-Harness consistently improves immersive spatio-temporal reasoning ability of MLLMs. Both OmniV-Bench and OmniV-Harness will be released upon publication.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:41:15Z",
+      "input_sha256": "f507458f208f8a253b333942a599823f17b838db8ddf3a3761ba2ab3d2ce8917",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "360도 영상 이해 MLLM 벤치마크 OmniV-Bench 제안"
+        }
+      ]
+    },
+    "2611.31063": {
+      "arxiv_id": "2611.31063",
+      "paper_title": "From Local Errors to System Failures: Modeling and Benchmarking Error Propagation in Multi-Agent LLM Systems",
+      "abstract": "In multi-agent systems (MAS) built on large language models (LLMs), errors can propagate through intermediate messages and compromise final answers. However, outcome-based evaluation obscures how agents amplify, attenuate, or correct these errors. We propose Response-Aware Error Propagation among Agents (REPA), a structural model that connects measured local responses to system-level error propagation. REPA separately estimates input assembly and agent processing across multiple error channels, while theoretical analysis relates local modeling errors to endpoint prediction error. Experiments span three Qwen base models, six MAS workflows, and ten knowledge and reasoning settings in ErrPropBench-10. REPA achieves a mean condition-level Spearman correlation of 0.84 across base models, compared with 0.47 for direct regression. Controlled experiments also demonstrate its utility for targeted recovery. REPA-guided retrieval-augmented generation (RAG) improves accuracy over no retrieval by an average of 19 percentage points with 16% additional tokens. By linking local agent behavior to system susceptibility, REPA provides an interpretable foundation for studying error propagation and developing targeted optimization in MAS.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:41:15Z",
+      "input_sha256": "f507458f208f8a253b333942a599823f17b838db8ddf3a3761ba2ab3d2ce8917",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "다중 에이전트 오류 전파 벤치마크 ErrPropBench 포함"
+        }
+      ]
+    },
+    "2611.31082": {
+      "arxiv_id": "2611.31082",
+      "paper_title": "ChiProgramBench: Can LLM Agents Rebuild Efficient Circuits from Pin-Level Experiments?",
+      "abstract": "Understanding a system that can be run but not inspected is a core engineering skill: one designs experiments, forms hypotheses about hidden state and timing, discards those that observations refute, and finally builds a replacement that works and is efficient. To evaluate this capability of LLM agents in the hardware domain, we present ChiProgramBench, 18 tasks derived from open-source processors, accelerators, codecs, transforms, interconnects, and control circuits. Agents can only drive and read the pins of a hidden, stateful simulated reference, then submit a gate-level netlist made of public library cells. Agents work in two settings: black-box discovery gives only anonymized functional pins and the interfaces of fixed memories, while function-guided reconstruction adds the circuit's purpose and each pin's role. Hidden test cases compare outputs with the reference cycle by cycle; power, delay, and area earn credit relative to the reference only when every case passes. Across 432 trials of 6 LLM agent configurations, successful agents recover algorithms and numerical conventions, yet only 12.0% of black-box and 14.8% of function-guided trials pass every case. Function-guided reconstruction raises the mean functional score, the cycle-weighted share of passed cases, from 24.6% to 30.9%. Of the 58 fully passing designs, only three improve on the reference's combined power, area, and delay, so behavioral recovery and efficient implementation remain distinct challenges.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:41:15Z",
+      "input_sha256": "f507458f208f8a253b333942a599823f17b838db8ddf3a3761ba2ab3d2ce8917",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "회로 재구성 LLM 에이전트 벤치마크 ChiProgramBench 제안"
+        }
+      ]
+    },
+    "2611.31215": {
+      "arxiv_id": "2611.31215",
+      "paper_title": "Seeking in Space: Benchmarking Purposeful Active Exploration of Vision-Language Models for Spatial Reasoning",
+      "abstract": "Humans explore unfamiliar spaces with purpose, deciding where to look until they have gathered the evidence a spatial question requires. However, can vision-language models (VLMs), which reason increasingly well over curated images and videos, also seek in space when the evidence is not handed to them? We present ActSpace-Bench, a benchmark of 994 questions across 234 exploration episodes in 72 real-scanned indoor scenes, where a model starts from a single view, navigates real captured frames, and must gather evidence before answering. To assess whether such exploration is purposeful, we introduce a controlled evaluation protocol that fixes each model as the reasoner and compares its own exploration against a same-budget random walk and an oracle route, separating evidence seeking from spatial reasoning. Every question is verified to require exploration and answered from 3D annotations, masked-evidence questions test whether models know when to abstain, and over 95% of sampled questions are confirmed correct by human verification. Evaluations of 23 proprietary, open-weight, and spatially specialized VLMs reveal that the strongest models do seek evidence with purpose but lose much of it to limited memory, whereas weaker and specialized models explore no better than a random walk or fail to reason over the evidence they are given, pointing to memory and evidence-grounded reasoning as the next targets for active spatial intelligence.",
+      "paper_updated": "2026-11-24T00:00:00Z",
+      "created_at": "2026-11-25T02:41:15Z",
+      "input_sha256": "f507458f208f8a253b333942a599823f17b838db8ddf3a3761ba2ab3d2ce8917",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "VLM 능동 탐색 공간추론 벤치마크 ActSpace-Bench 제안"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -115999,10 +116179,20 @@
         "2611.30226",
         "2611.30288",
         "2611.30361",
-        "2611.30419"
+        "2611.30419",
+        "2611.30422",
+        "2611.30460",
+        "2611.30590",
+        "2611.30925",
+        "2611.30957",
+        "2611.30989",
+        "2611.31022",
+        "2611.31063",
+        "2611.31082",
+        "2611.31215"
       ],
-      "calls": 3,
-      "cost_usd": 0.2155
+      "calls": 4,
+      "cost_usd": 0.2545
     }
   },
   "reaudits": [
