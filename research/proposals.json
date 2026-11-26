@@ -77464,6 +77464,167 @@
         "reviewed_sha256": "a59f3513eed45fcfa19e173910027de8ff5014f766d4503f87049a0d230cc7e9",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.17125": {
+      "decision": "propose",
+      "reason": "ToolHACE는 도구 호출 이후 응답의 환각을 span 단위로 탐지하는 재사용 가능한 새 벤치마크다. 정답, 과다 생성, 과소 생성, 오답 불일치, 존재하지 않는 도구 언급의 5개 범주로 라벨링했고 train 37,135건과 test 11,606건을 제공한다. 과제 예시(영어 질의)가 영어이므로 en 트랙의 텍스트 벤치마크로 분류했다. 논문이 공식 저장소(github.com/s-nlp/Tool-Call-HD)를 각주로 명시했다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "toolhace",
+            "이름": "ToolHACE",
+            "평가 축": "환각 탐지(도구 호출 이후 응답의 span 단위 근거 이탈 탐지)",
+            "언어": "en",
+            "정의": "도구를 쓰는 LLM의 도구 호출 이후 응답에서 환각을 span 단위로 탐지하는 벤치마크. ToolACE 대화(11,300개)를 바탕으로 만들었고 5개 범주(Correct, Answer Mismatch, Overgeneration, Undergeneration, Missing Tool)로 라벨링했다. Undergeneration은 span 없이 응답 수준으로만 라벨링한다. 전체 48,741건이며 train 37,135건, test 11,606건(범주별 층화)이다. test는 판정 모델 3개 중 2개 이상이 동의한 예시만 남겼다. 주 지표는 span 수준 F1(IoU 0.75 매칭)이고 응답 수준 macro F1을 보조로 쓴다. 논문은 제로샷·퓨샷 LLM, 외부 환각 데이터로 학습한 전이 모델, 인도메인 학습 모델을 비교했다.",
+            "대표 과제": "도구 호출 대화(질의, 도구 호출, 도구 응답, 최종 답변)에서 최종 답변의 환각 범주와 환각 span을 JSON으로 예측",
+            "대표 예시·설명": "영어 사용자 질의와 도구 출력이 주어졌을 때, 최종 답변이 도구 출력과 모순되는 값을 말하거나 근거 없는 내용을 덧붙이거나 없는 도구의 기능을 제안하는지 판별하고 해당 구간을 표시하는 과제 설명(실제 문항 아님)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "논문이 데이터와 코드를 공개한다고 밝히지만 데이터 라이선스는 확인하지 못했다. 이 벤치마크는 ToolACE 대화를 기반으로 하고 환각 변형 일부를 LLM(GPT-OSS-120B, Qwen 계열 등)과 소형 모델 생성물로 만들었으므로, 각 구성 요소의 약관을 이용 전에 따로 확인해야 한다. 환각 예시 상당수가 합성이고 전체를 사람이 검증하지 않았다(500건 표본 검증). 논문은 영어 도구 사용 환경에 한정된다고 밝힌다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/s-nlp/Tool-Call-HD"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Hallucination detection (span-level ungrounded content in post-tool-call responses)",
+            "definition": "A benchmark for span-level hallucination detection in the final responses of tool-augmented LLMs after a tool call. It is built on ToolACE dialogues (11,300) and labeled with five categories: Correct, Answer Mismatch, Overgeneration, Undergeneration, and Missing Tool. Undergeneration has no span and is labeled at the response level only. It has 48,741 samples in total, with 37,135 train and 11,606 test examples, stratified by category. Test examples were kept only if at least two of three judge models agreed. The primary metric is span-level F1 (IoU 0.75 matching), with response-level macro F1 as a secondary metric. The paper compares zero-shot and few-shot LLMs, transfer models trained on external hallucination data, and in-domain fine-tuned models.",
+            "task": "Given a tool-calling dialogue (query, tool call, tool response, final answer), predict the hallucination category and hallucinated spans of the final answer as JSON",
+            "example": "Task description (not an actual test item): given an English user query and a tool output, decide whether the final answer contradicts a tool value, adds unsupported content, or offers a capability no available tool provides, and mark the offending span."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "Convert CMYK (C=20%,"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "ToolHACE, a span-level"
+            },
+            "대표 예시·설명": {
+              "page": 5,
+              "quote": "Convert CMYK (C=20%,"
+            },
+            "링크": {
+              "page": 10,
+              "quote": "https://github.com/s-nlp/Tool-Call-HD"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "Convert CMYK (C=20%,"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "ToolHACE, a span-level"
+            },
+            "정의": {
+              "page": 6,
+              "quote": "48,741 samples in"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "ToolHACE, a span-level"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.17125",
+      "paper_title": "ToolHACE: A Dataset for Detecting Hallucinations in Tool-Based LLM Responses",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.17125",
+        "sha256": "0f542ab9663b7f2d93364ea315d8cdfbf9615d6ca4523477fe13ddb22c5792ab",
+        "accessed": "2026-11-26T03:50:44Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 21,
+          "elapsed_seconds": 112.85,
+          "pdf_sha256": "0f542ab9663b7f2d93364ea315d8cdfbf9615d6ca4523477fe13ddb22c5792ab",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "221b762d3fb4354a91b0afc48eea5b968b36819fe25fcba2f66ec5b77dbba829",
+          "page_json_file": "2610.17125.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/s-nlp/Tool-Call-HD",
+            "fetched_url": "https://api.github.com/repos/s-nlp/Tool-Call-HD/readme",
+            "sha256": "98446786c4874e0ebca726ef7ae003f5b4ea535763e519ac4a96dad065fbeb0d",
+            "accessed": "2026-11-26T03:53:02Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-26T03:53:02Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.17125",
+        "paper_title": "ToolHACE: A Dataset for Detecting Hallucinations in Tool-Based LLM Responses",
+        "abstract": "Tool-augmented language models ground their responses in external tool outputs, improving reliability beyond parametric knowledge alone. However, even when the correct tool is called and returns accurate information, models may still contradict such outputs, omit critical details, or generate unsupported claims. Existing hallucination benchmarks for tool-augmented dialogue primarily focus on the tool-calling stage, evaluating whether the correct tool and arguments are selected, while overlooking errors that arise during post-tool response generation. To address this gap, we introduce ToolHACE, a span-level benchmark for hallucination detection in tool-augmented LLM responses, covering five fine-grained hallucination categories. Through extensive experiments with modern hallucination detectors, we show that post-tool-call hallucinations are widespread and remain challenging to detect. Our results further demonstrate that effective detection requires training on specialized tool-augmented corpora, while transfer from tool-agnostic hallucination datasets performs poorly in this setting. These findings highlight the need for dedicated benchmarks and models for reliable hallucination detection in tool-augmented language systems.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:51:10Z",
+        "input_sha256": "aeb2b4b78f54740c50bb7f41cfe678c9e6d7bb2b09ab8b761425b2f933770207",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "도구 기반 LLM 응답 환각 탐지 데이터셋 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "도구 기반 응답 환각 탐지 스팬 수준 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "45743390692",
+        "context_sha256": "885ea536e53c99458159360a55b51f11ed65a887cc2a60f346106a01c220109d"
+      },
+      "proposal_sha256": "6116ecb5498ae3fd78f07e08f36af9344251d276b51f1066ebf18252f2a41864"
     }
   },
   "processed_comments": [],
@@ -118744,8 +118905,8 @@
         "2611.33093",
         "2611.33143"
       ],
-      "calls": 12,
-      "cost_usd": 10.2529
+      "calls": 13,
+      "cost_usd": 11.2242
     }
   },
   "reaudits": [
