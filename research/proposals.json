@@ -76473,6 +76473,189 @@
       },
       "issue_url": null,
       "proposal_sha256": "886362d2a487a6ce4e80c541871c7ea1c0f25b5ec840fcf5903c06717af3048c"
+    },
+    "2610.16412": {
+      "decision": "propose",
+      "reason": "SLS-Bench는 새로 제안된 재사용 가능한 벤치마크이다. 공개 사고 보고서를 바탕으로 만든 90개 과제로, 합성 로그 스트림(평균 약 56k 줄)을 읽고 사고 요약 보고서를 쓰는 에이전트 평가이다. 고정 질문이 영어이고 입력이 텍스트 로그뿐이므로 en 트랙의 text로 분류한다. 채점은 참조 요약과 비교하는 LLM 판정이며 두 판정 모델의 평균을 쓰고, 논문은 14개 LLM을 평가했다. 논문 부록은 데이터에 CC BY 4.0, 코드에 Apache 2.0을 밝히지만 자동 제안 규칙에 따라 라이선스 관련 필드와 lm-eval 지원은 '확인 불가'로 두었다. 논문의 모델 비교 수치는 인용하지 않았으며 현재 전역 리더보드를 뜻하지 않는다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "sls-bench",
+            "이름": "SLS-Bench",
+            "평가 축": "에이전트(인시던트 로그 요약)",
+            "언어": "en",
+            "정의": "공개된 실제 사고 보고서를 바탕으로 만든 90개 과제. 과제마다 합성 로그 파일(20k~100k 줄, 평균 56k 줄), 모든 과제에 공통인 고정 질문, 평균 약 2,400단어의 참조 요약이 있다. 에이전트가 로그를 분석해 구조화된 사고 요약을 쓰면 LLM 판정 2종(GPT-5.2 medium, Sonnet 4.6 low)이 참조 요약과 7개 평가 축으로 비교해 5단계 라벨(0~1.00)로 채점하고 두 판정의 평균을 최종 점수로 쓴다. 논문은 14개 LLM을 평가했으며 이는 논문 조건의 결과이고 현재 전역 리더보드가 아니다.",
+            "대표 과제": "대용량 로그 파일에서 시스템 구조, 단계별 경과, 근본 원인 진단을 담은 사고 조사 보고서 작성",
+            "대표 예시·설명": "고정 영어 질문이 로그를 분석해 사고 조사 보고서를 쓰라고 요구하며, 보고서는 사고 요약, 재구성한 시스템, 단계별 타임라인(요약·증거·추론), 최종 진단의 지정 구조를 따라야 한다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원은 자동 제안 단계에서 확인하지 않았다. 논문 부록 A.3은 벤치마크에 CC BY 4.0, 코드에 Apache 2.0을 밝히지만, 사고 보고서 원문은 각 게시자의 약관을 따르므로 이용 전에 구성 요소별 약관을 따로 확인해야 한다. 로그와 참조 요약은 같은 사고 모델에서 LLM이 합성했고 판정 모델은 로그를 보지 못한 채 참조 요약과만 비교한다. 채점에는 LLM 판정 호출이 필요하다. 과제는 영어 질문 하나이며 90개로 규모가 작다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/dynatrace-oss/SLS-Bench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (incident log summarization)",
+            "definition": "90 tasks grounded in publicly available real-world incident reports. Each task has a synthetic log file (20k to 100k lines, 56k on average), a fixed question shared by all tasks, and a reference summary averaging about 2,400 words. An agent analyzes the logs and writes a structured incident summary. Two LLM judges (GPT-5.2 medium and Sonnet 4.6 low) compare it with the reference on seven rubric axes, map the result to five labels (0 to 1.00), and the final score is their average. The paper evaluates 14 LLMs; these are results under the paper's conditions, not a current global leaderboard.",
+            "task": "Write an incident investigation report from a large log file, covering system structure, phase-by-phase progression, and a root-cause diagnosis.",
+            "example": "A fixed English question asks the agent to analyze the log file and write an incident investigation report in a prescribed structure: incident synopsis, reconstructed system, phase-by-phase timeline (summary, evidence, reasoning), and primary diagnosis."
+          },
+          "evidence": {
+            "modality": {
+              "page": 25,
+              "quote": "Analyze the provided"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "Benchmark for Incident"
+            },
+            "대표 예시·설명": {
+              "page": 25,
+              "quote": "Analyze the provided"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/dynatrace-oss/SLS-Bench"
+            },
+            "언어": {
+              "page": 25,
+              "quote": "Analyze the provided"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Benchmark for Incident"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "90 tasks grounded"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Benchmark for Incident"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.16412",
+      "paper_title": "SLS-Bench: A Benchmark for Incident Log Summarization with Synthetic Observability Data",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.16412",
+        "sha256": "6cb305200dcbafe50e4432b11bbe4801a62a4f44b98765a6ce267307ca1f3524",
+        "accessed": "2026-11-26T03:32:18Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 43,
+          "elapsed_seconds": 192.45,
+          "pdf_sha256": "6cb305200dcbafe50e4432b11bbe4801a62a4f44b98765a6ce267307ca1f3524",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "6bc8620d2deccbe064771c2c75ed94c7ab16df8812a64e8befd55805392d502b",
+          "page_json_file": "2610.16412.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/dynatrace-oss/SLS-Bench",
+            "fetched_url": "https://huggingface.co/datasets/dynatrace-oss/SLS-Bench/raw/main/README.md",
+            "sha256": "2971f82dd2edb6dfad76e59ccbc09a404b88777a79b4e56ce1ce90706e773efe",
+            "accessed": "2026-11-26T03:35:51Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-26T03:35:51Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.16412",
+        "paper_title": "SLS-Bench: A Benchmark for Incident Log Summarization with Synthetic Observability Data",
+        "abstract": "As IT systems grow in complexity, automated agent-driven incident response becomes increasingly critical. A key capability for these agents is summarizing large log streams into human-readable reports. Further progress requires meaningfully evaluating this function, yet existing benchmarks leave end-to-end summarization from large log streams underexplored due to the prohibitive cost and complexity of collecting real-world data. We introduce SLS-Bench, a benchmark for incident log summarization featuring 90 tasks grounded in real-world incident reports, each with a synthetic log stream and a reference summary. To construct SLS-Bench, we developed a data generation pipeline that converts incident reports into structured incident models, which guide the generation of synthetic logs and reference summaries. This pipeline combines narrative grounding, explicit incident modeling, generator-verifier loops, and statistical comparisons with real-world log streams to produce realistic and controllable observability data. Our evaluation of 14 LLMs on SLS-Bench shows that while frontier models can produce useful summaries, they do so at substantial cost and latency, and open-weight models lag significantly. SLS-Bench provides a framework for systematic evaluation of log analysis agents and a scalable blueprint for future synthetic observability benchmarks.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:50:58Z",
+        "input_sha256": "b5f658238ef3f511054e95cdc019c1629d28a5119ae19fea1fab2688385775a3",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "사건 로그 요약 벤치마크로 평가에 부합"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "장애 로그 요약 벤치마크 SLS-Bench와 생성 파이프라인 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "45743390692",
+        "context_sha256": "46829f045e6b5c2fb879ab072d59f5e0e2b69f031acc6268d449fd1c000e10e0"
+      },
+      "proposal_sha256": "8c144e9d8ca092fbcc07a9664c3bf401b7ea4643b3a61ab01c937a5ba772ac24"
     }
   },
   "processed_comments": [],
@@ -117748,8 +117931,8 @@
         "2611.33093",
         "2611.33143"
       ],
-      "calls": 4,
-      "cost_usd": 2.1507
+      "calls": 5,
+      "cost_usd": 3.1739
     }
   },
   "reaudits": [
