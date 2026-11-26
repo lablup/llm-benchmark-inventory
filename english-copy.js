@@ -708,4 +708,16 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Inter-pair action-pair retrieval (mAP) and intra-pair opposite-action retrieval (Pair-mAP)",
     "example": "Task description: a cropped vehicle surveillance clip is given as a query and the system retrieves other clips of the same action pair. In intra-pair, it must separate clips that differ only in temporal direction, such as opening versus closing. In the MLLM framework experiments, descriptions are generated with the English instruction \"Briefly classify the actions occurring in this video\"."
   },
+  "sls-bench": {
+    "axis": "Agents (incident log summarization)",
+    "definition": "90 tasks grounded in publicly available real-world incident reports. Each task has a synthetic log file (20k to 100k lines, 56k on average), a fixed question shared by all tasks, and a reference summary averaging about 2,400 words. An agent analyzes the logs and writes a structured incident summary. Two LLM judges (GPT-5.2 medium and Sonnet 4.6 low) compare it with the reference on seven rubric axes, map the result to five labels (0 to 1.00), and the final score is their average. The paper evaluates 14 LLMs; these are results under the paper's conditions, not a current global leaderboard.",
+    "task": "Write an incident investigation report from a large log file, covering system structure, phase-by-phase progression, and a root-cause diagnosis.",
+    "example": "A fixed English question asks the agent to analyze the log file and write an incident investigation report in a prescribed structure: incident synopsis, reconstructed system, phase-by-phase timeline (summary, evidence, reasoning), and primary diagnosis."
+  },
+  "multinav-bench": {
+    "axis": "Agents (interactive ObjectGoal navigation with door and container state changes)",
+    "definition": "An ObjectGoal navigation benchmark in which channel interactions such as opening doors change spatial connectivity and container interactions such as opening cabinets change target visibility. It has 3,000 episodes in MolmoSpaces (1,000 each for channel, container and mixed tasks, across 639 houses), with interaction-necessity labels (2,654 required, 346 unnecessary). It offers a raw image-based perception mode and a restricted ground-truth perception mode. Metrics are SR, SPL, ISR, IP and Total Cost.",
+    "task": "ObjectGoal navigation that requires opening doors to reach rooms and opening containers to reveal hidden targets (channel, container and mixed splits)",
+    "example": "Task description, not an actual test item: the agent receives a target object category and explores a house with closed doors and containers. It must open only the necessary ones and stop within the required distance with the target visible. Unnecessary doors serve as negative controls."
+  },
 };
