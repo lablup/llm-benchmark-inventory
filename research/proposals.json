@@ -114870,6 +114870,348 @@
           "reason": "인터랙티브 차트-코드 생성 벤치마크 ChartInt 제안"
         }
       ]
+    },
+    "2611.31346": {
+      "arxiv_id": "2611.31346",
+      "paper_title": "What People Choose Not to Say: A Multimodal Benchmark for Fine-Grained Information Manipulation in Conversations",
+      "abstract": "Recent advances in MLLMs have improved social understanding, enabling models to recognize emotions and distinguish truthful from deceptive behaviors. However, existing benchmarks largely focus on coarse-grained emotion recognition or binary truth-deception detection, overlooking the diverse ways people manipulate information in conversations, such as withholding, leakage, fabrication, evasion, and defensive counterclaim. Understanding these behaviors requires reasoning about underlying facts, participant knowledge, and conversational context, making them difficult to evaluate reliably. To address this gap, we introduce InfoCon, a multimodal benchmark for fine-grained information manipulation in conversations. InfoCon identifies six fine-grained strategies and derives a coarse consistency label from their factual and interactional relations. We develop an evidence-grounded multi-agent annotation framework to construct and verify reliable labels from rich contextual evidence. We benchmark representative multimodal models and systematically analyze their fine-grained information manipulation understanding, providing a testbed beyond binary truth-deception judgments.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "다중모달 대화 정보 조작 벤치마크 InfoCon 신규 도입"
+        }
+      ]
+    },
+    "2611.31590": {
+      "arxiv_id": "2611.31590",
+      "paper_title": "GoldiBench: Right Tools, Wrong Amount -- Benchmarking Agents on Effect Judgement in Professional Editing",
+      "abstract": "Real editing requests describe a look, not the steps to reach it, so an agent that serves them must judge how much of each tool the look takes. Existing benchmarks do not measure this: their tasks either state the tools and values, or leave the amount open and are scored by VLM judges that pass more than half of half- and triple-strength results. We introduce GoldiBench, a benchmark of 500 editing tasks in five professional applications (darktable, RawTherapee, GIMP, Inkscape, Blender), solvable by writing a program or by operating the GUI. Each task pairs a START image with a TARGET rendered from a hidden program, so the amount is fixed by a known target; the agent's edit is re-rendered and compared with TARGET, and the same task is posed with the tools and values, the tools only, or the goal only, separating operation from effect judgement. Across 25 open, GUI and closed models, agents operate well (99-100% with programs from 4B up when told the values) but fall off a cliff when they must judge the amount: given only the tools, the best model passes 19% of the tasks with programs and 33% through the GUI, and scale does not close the gap. Manuals barely help; the measured TARGET-START difference more than doubles the pass rate, but the same difference shown as an image does not for open models. Allowed four renders, agents almost always stop after the first; forced to compare, the strong models double their pass rate. Agents know the tools, but neither read nor check the amount.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "전문 편집 에이전트 평가용 GoldiBench 신규 벤치마크"
+        }
+      ]
+    },
+    "2611.31595": {
+      "arxiv_id": "2611.31595",
+      "paper_title": "LUCID: Statistically Grounded Self-Correction for LLM Reasoning Evaluation",
+      "abstract": "Cheap language-model raters grade chain-of-thought reasoning at scale, yet systematic step-rating errors can skew reasoning audits and solution rankings. We introduce LUCID (Loop for Unbiased Calibration via Inference-time Diagnosis), which pairs prompt self-correction with Design-based Supervised Learning (DSL). Without retraining or weight access, LUCID calibrates binary step ratings by aligning predicted and expert soundness rates. From a small expert-labeled set, LUCID summarizes rater bias in plain text and prompts the rater to re-grade unseen steps. For example, on PRM800K, GPT-5-mini grades too strictly, under-rating computation, verification, and late-trace steps most acutely. In one pass, LUCID shrinks GPT-5-mini's calibration gap from 7.8 to 0.9 percentage points in absolute predicted-expert rate difference. LUCID also halves false alarms (sound steps rated unsound) and lifts error-detection F1 on unsound steps by 32%. LUCID retains these gains with 1,000 diagnostic steps or overall-gap feedback alone. The loop also transfers across models and domains: it applies GPT-5-mini's bias profile to lift GLM-5.2's PRM800K accuracy, and it narrows calibration gaps for overly strict but capable raters across math, science, web, and logic benchmarks. Because prompt feedback shifts thresholds without improving class-balanced sound/unsound discrimination, LUCID filters re-grading with pre-/post-checks that skip already calibrated raters and roll back ineffective passes. Finally, we reuse that expert set with raw corpus ratings in DSL for calibration and regression debiasing, and apply DSL to pair-labeled steps for sound-step transitions. DSL's out-of-fold soundness probabilities lift best-of-K selection to match expert labels, while its doubly-robust estimators beat expert-only regression fits at small budgets and cut sound-step transition error by nearly two-thirds.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "추론 평가용 보정 방법 중심, 재사용 평가자료 불분명"
+        }
+      ]
+    },
+    "2611.31682": {
+      "arxiv_id": "2611.31682",
+      "paper_title": "LimoBench: How Street Smart Are Large Language Models?",
+      "abstract": "Large language models (LLMs) have transformed how humans interact with information, enabling natural-language interfaces across various domains. They are increasingly deployed for geospatial applications including map-based question answering, location-based services, and natural-language interfaces to spatial databases. But are LLMs truly location-aware, able to reliably interpret and precisely answer location queries involving real-world coordinates, points of interest (POIs), and geospatial distances? To answer this concretely, we present LimoBench, a street-level benchmark of 82 natural-language location queries over seven canonical spatial operations: geocoding, reverse geocoding, routing, directionality, range search, $k$-nearest-neighbor search, and spatial join. The queries are grounded in real map data of West Lafayette, Indiana, and are graded by location and semantic complexity. They are designed to probe LLMs' street-level spatial awareness, from simple lookups to multi-step spatial reasoning. We also present Limo, an approach based on the Model Context Protocol (MCP) that enhances the location awareness of LLMs. Limo grounds LLMs in PostGIS-backed spatial data through a compact set of tools. We find that ungrounded models mostly achieve single-digit accuracy (3.1% for GPT-6 Luna) across different spatial operations. In contrast, the same models achieve near-perfect accuracy (99.3% for GPT-6 Luna) when given access to Limo's spatial tools through MCP. Current LLMs thus have limited and unreliable street-level spatial knowledge, while grounding provides accurate answers at modest overhead (+0.2 s latency, 7.7$\\times$ tokens, and 2.2$\\times$ cost for GPT-6 Luna). We release the benchmark, Limo toolset, and evaluation code to encourage the community to evaluate their own location-aware LLM approaches.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "위치 인식 LLM 평가 LimoBench 벤치마크 공개"
+        }
+      ]
+    },
+    "2611.31703": {
+      "arxiv_id": "2611.31703",
+      "paper_title": "E-Waste-Bench: A Large-Scale Benchmark for Visual Triage of Data-Center Hardware",
+      "abstract": "Retired data-center hardware can often be refurbished or resold, but triage demands more than object categories. A model must tell visually similar parts apart, judge condition under damage and occlusion, and read the printed part number. We audit nine public e-waste collections. They cover mostly consumer devices (only 10% of images are labeled as a data-center part), label neither condition nor printed text, and contain 42% exact or augmented duplicates. We introduce E-Waste-Bench, 328K photographs drawn from 762K deduplicated images and labeled for class (24 classes), granularity, condition and printed text. Images come from those collections and the web, where a recipe-based crawler works beside an agent built on an open-weight vision-language model. The agent vets new sources and reads sites the crawler cannot parse, and both are steered toward under-represented classes. Training labels are model-made, splits follow near-duplicate groups, and human annotators label a test set of nearly 10,000 images. We benchmark classification, condition, detection, text perception and cross-dataset transfer. On this test set, a ConvNeXt-T trained on E-Waste-Bench reaches 64.3% top-1, against 31.5% with the public collections alone. Near-duplicate leakage inflates top-1 by 3.0 points under model-made test labels but by less than 0.1 under human labels, so model-labeled benchmarks need group splits. Accuracy falls to 42.1% on marketplace and auction photographs, the closest proxy for hardware leaving service. Data and code will be released.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "비전 분류 데이터셋, LLM 벤치마크 해당 여부 불분명"
+        }
+      ]
+    },
+    "2611.31839": {
+      "arxiv_id": "2611.31839",
+      "paper_title": "Spec-Test Coverage Gap: Detecting Overspecified Tests in SWE-Bench-Style Benchmarks",
+      "abstract": "SWE-bench-style benchmarks, such as SWE-bench Verified (Verified) and SWE-bench Pro (Pro), evaluate coding agents with tests taken from the change that originally fixed each issue. However, these tests can enforce details the task never states, causing correct alternative fixes to fail. Such overspecified tests have so far been found mainly through expensive expert review. To address this, we define the Spec-Test Coverage Gap (STCG), a 1-4 scale measuring overspecification, and score it with two LLM judges, Claude Opus 5.5 and GPT-6.1 Sol, which are given the specification and the test patch. A task is flagged as overspecified when both judges score it 3 or higher. Our study has three parts. First, we validate the judges on 206 tasks that earlier human audits and agent results label as overspecified or fine. Second, we apply STCG to all 500 Verified and 731 public Pro tasks and compare the flags with the results of the top 30 Verified submissions. Third, we verify the flags by asking Claude Opus 5.5 to loosen the overspecified requirements of flagged tasks, and regrade 2,186 failed patches from those submissions. Our main findings are: (1) Overspecified tests are detectable: on the validation tasks, the judges correctly flag 89% of the tasks that human audits identify as overspecified and wrongly flag only 4% of the tasks known to be fine. (2) Overspecified tests are common: applied to whole benchmarks, the judges flag 23% of Verified and 35% of Pro tasks. (3) Flagged tasks are much harder for agents: the top 30 Verified submissions resolve only 31% of the flagged tasks on average, against 88% of the other tasks. (4) Overspecified tests change the leaderboard: relaxing the tests lets 61% of the 2,186 failed patches on flagged tasks pass. Counting these patches as resolved would add 33 to 60 tasks to each top-30 submission, raising resolve rates by up to 12 percentage points.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "SWE-bench류 테스트 과명세 진단 평가 자료/방법 제시"
+        }
+      ]
+    },
+    "2611.32094": {
+      "arxiv_id": "2611.32094",
+      "paper_title": "Clinical3D-Bench: Evaluating and Improving Spatial Intelligence of Multimodal LLMs in Hospital Environments",
+      "abstract": "Spatial reasoning in hospitals requires tracking look-alike equipment, interpreting patient-relative directions, and judging passage widths, yet existing benchmarks provide limited coverage of these abilities. We introduce Clinical3D-Bench, a simulated benchmark with 3,368 questions of eight types on egocentric walkthroughs of 373 hospital-room layouts. Layouts follow hospital design guidelines, answers are computed from the 3D scenes, and paired scene states test whether models change their answers when relevant evidence changes. Videos are photorealistic, and ten physicians screened the layouts. Among 35 multimodal large language models (MLLMs), the best open and proprietary models reach 45.7% and 53.6% macro accuracy, against 40.8% for an answer prior and 79.0% for physicians on a subset, and 27 of 32 open models score below 40% on two-way patient-relative directions. Fine-tuning on Clinical3D-45K, our 44,750-question training set, lifts two MLLMs 16-20 points above the best proprietary model. 3D maps given to the fine-tuned MLLM as input go largely unused: replacing them with another video's, even when they are ground truth, barely changes its accuracy. The proposed GeoJeV instead lets the MLLM compute with 3D: it reconstructs a scene memory from each video, selects 3D operations and their arguments from the MLLM's question state, and adds their evidence to its option scores. It achieves the highest accuracy of all evaluated models, narrowing the gap to physicians.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "병원 공간지능 MLLM 벤치마크 Clinical3D-Bench"
+        }
+      ]
+    },
+    "2611.32152": {
+      "arxiv_id": "2611.32152",
+      "paper_title": "RoboProbe: Benchmarking Physical Plausibility of Robot World Models",
+      "abstract": "Evaluating the physical plausibility of generated videos is critical for reliable robotic planning with world models. These videos inform action proposal and assessment before real-world execution, so undetected physical violations can lead to erroneous assessments of action feasibility and safety. Yet current video generators often produce physically implausible interactions. Detecting such violations directly with vision-language models (VLMs) remains challenging as physical verification requires evidence-grounded spatiotemporal reasoning beyond high-level semantic understanding. We develop five law-specific metrics for evaluating physical plausibility by combining spatiotemporal evidence from segmentation, tracking, 3D geometry, or appearance comparisons with targeted VLM reasoning: Contact fidelity, Object persistence, Solidity, Robot deformation, and Object deformation. Building on this metric suite, we introduce RoboProbe, an agentic evaluation framework that coordinates metric execution and selectively refines evaluations through constrained actions. To evaluate the physical plausibility of robot world models, we further introduce RP-Bench, with 761 human-labeled generated videos and 130 real demonstrations of 239 manipulation tasks from 12 robot datasets. On RP-Bench, all five metrics achieve AUROCs above 0.85 and outperform the evaluated learned judges, prior evaluators, and a frames-only Gemini baseline. Applying these metrics to five video generators reveals distinct patterns of physical violations across models, in both violation types and frequencies.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "로봇 월드모델 물리 타당성 평가 RP-Bench 도입"
+        }
+      ]
+    },
+    "2611.32168": {
+      "arxiv_id": "2611.32168",
+      "paper_title": "Benchmarking Protein Structure Tokenizers as Generation Targets for Language Models",
+      "abstract": "Discrete structure tokenizers are the standard way to give a language model access to protein three-dimensional structure, yet they are selected on how accurately they can be read, their reconstruction fidelity, while the property that governs generation is how well a model can write them. We measure this property, writability, directly: holding the base model, data, recipe and compute fixed, we swap only the tokenizer and train the same 9B model to emit structure tokens residue by residue, over eight tokenizers, four compute budgets and three evaluation sets (96 cells). At 2B tokens final writability runs from TM 0.662 down to 0.378 under identical conditions, with five of the eight arms clearing the TM 0.5 mark at which a fold is usually called correct and three falling short of it. Neither codebook size nor reconstruction ceiling explains where an arm lands; the best and worst both use 8192 codewords. What does explain the spread is local structure preservation of the code space. In DPLM-2 a one-bit codeword error costs 0.019 TM where a random codeword costs 0.347, and the trained model's own errors are correspondingly local, at 0.51 of the random Hamming expectation; FoldToken4 fails both tests at the same codebook size and is 0.13 TM less writable. Three controls discipline how such a benchmark may be read. A same-recipe rerun puts the noise floor at $σ=0.0067$ TM, which collapses an apparent six-way ranking into four tiers. A reference-free geometry panel turns out to be nearly orthogonal to TM (Pearson $-0.58$), with the worst arm by TM producing the most physically valid backbones. And two pre-registered interventions are null for a reason the mechanism measurements reveal: the quantity they target saturates at 1.5B tokens while TM is still rising. All 131 evaluation cells, including raw generated token streams, are released.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "uncertain",
+          "reason": "단백질 구조 토크나이저 벤치마크, 언어모델 평가 범위 불분명"
+        }
+      ]
+    },
+    "2611.32172": {
+      "arxiv_id": "2611.32172",
+      "paper_title": "MediaStormBench-CameraLog: Can Multimodal Models Identify a Camera's Log Curve?",
+      "abstract": "MediaStormBench is a multimodal benchmark for real-world film and television production, with each subset drawn from MediaStorm's day-to-day work. We release its first subset, MediaStormBench-CameraLog (CameraLogBench), on a common foundational task in footage ingest and initial color grading: identifying the Log curve of a clip without metadata. Cameras record Log footage by compressing a wide range of scene light into code values with a vendor-defined logarithmic curve, and color can be restored correctly only once that curve is known. The curve, however, is recorded only in file metadata, easily lost in transcoding and team hand-offs. A colorist then has to try candidate curves one by one against a waveform scope, and a wrong choice shifts the tones and colors of the whole clip. Recovering the curve from the image alone is challenging, because vendor curves cluster tightly in code value and are coupled with unknown exposure. CameraLogBench is built on professionally shot footage and tests whether multimodal models can identify the curve, with a probe that removes the correct option to expose guessing from priors. Because every candidate curve is strictly defined by a published vendor formula, we derive four controls from one implementation of these formulas: graded negatives, synthetic frames of identical scenes, in-context specification digests, and a training-free formula baseline, which together decouple semantic priors from photometric measurement. Across 11 models, real-footage accuracy barely exceeds always guessing the most frequent curve; when the correct option is removed, models almost never abstain, revealing heavy reliance on scene and brand priors. Supplying the vendor specification sharply improves recognition on calibrated charts but hardly helps on natural images without a photometric reference, exposing a gap between reading a specification and measuring pixels.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "멀티모달 모델 Log 곡선 식별 벤치마크 공개"
+        }
+      ]
+    },
+    "2611.32251": {
+      "arxiv_id": "2611.32251",
+      "paper_title": "CaveBench: Benchmarking Abductive Physical Reasoning from Internal Observations",
+      "abstract": "Vision-language models (VLMs) are advancing in physical reasoning, but whether they can understand external physical drivers from internal observations remains an open question. Existing benchmarks have not specifically targeted this setting. To this end, we introduce CaveBench, a benchmark for abductive physical reasoning from internal observations. Models receive apparatus descriptions and internal images while the external controls remain hidden, and must infer the operations responsible for the observed responses. CaveBench spans 20 apparatus scenes in five physical domains and contains 10,200 simulated episodes, split into 9,000 training, 1,000 validation, and 200 test episodes. Questions span one to six events and require the complete control set at every event, testing whether an explanation accounts for the entire process. Synchronized observations and control records provide the inputs and reference answers. Evaluating 27 VLM configurations yields six-event exact-match accuracies of 68.0% for the strongest closed-source model and 12.5% for the strongest open-weight model. Seven adaptation baselines show that single-event gains need not improve complete sequences. Error analysis identifies failures in visual identification, physical inference, evidence integration, and action composition, specifying where current models struggle to connect internal phenomena with their external causes.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "VLM 귀추적 물리추론 벤치마크 CaveBench 도입"
+        }
+      ]
+    },
+    "2611.32508": {
+      "arxiv_id": "2611.32508",
+      "paper_title": "RecurSciBench: Benchmarking Recursive Self-Improvement in Data-Driven Scientific Research",
+      "abstract": "Large language model (LLM)-based agents are advancing the automation of data-driven scientific research. Recent advances in recursive self-improvement (RSI) offer the potential for these agents to continuously improve through experience, but evaluating transfer across scientific tasks requires executable, scientifically verifiable tasks and independent assessment of self-improvement gains. We introduce RecurSciBench, a scalable benchmark for evaluating RSI in data-driven scientific research. Its RecurSciPipe framework automatically constructs scientific modeling and data analysis tasks from raw datasets, with execution-based verification and scientific validity checks. RecurSciBench spans four scientific domains, multiple data modalities, and varied scientific objectives. We evaluate four RSI systems by comparing their initial and evolved states on independent tasks after evolution on source tasks, covering within-type, cross-type, and cross-domain transfer. Experiments show that the benefits of self-improvement vary across agent systems and scientific domains. Positive overall gains can coexist with regressions on individual tasks. Experience can transfer across task types and benefit other domains even without measurable gains in the source domain.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "에이전트 재귀적 자기개선 평가 벤치마크 도입"
+        }
+      ]
+    },
+    "2611.32610": {
+      "arxiv_id": "2611.32610",
+      "paper_title": "Privacy Disclosure Control Benchmark (PDC-Bench): How Faithfully Do LLMs Keep Privacy Constraints on In-Context Disclosure Granularity?",
+      "abstract": "In LLM task execution, a constraint on the permitted disclosure granularity of personal attributes is sometimes imposed on the output. For example, if a person's private attribute is their location (San Francisco) and disclosure is permitted only at the country level, an output at the state level (California) violates the constraint. Detecting such violations requires capturing not only direct privacy leakage (San Francisco) but also semantic leakage (California). However, existing benchmarks cannot measure the degree of leakage with respect to a given semantic constraint such as the country-level limit. We therefore formalize disclosure control as a constraint on the permitted ceiling over the hierarchy of a knowledge graph. Building on this formulation, we construct PDC-Bench, a benchmark of 16,105 samples covering geography, age, race and ethnicity, and occupation. In our experiments applying PDC-Bench to eleven LLMs, 62% of the constraint violations were semantic leakage. We further found that semantic leakage depends less on the model than on the permitted disclosure granularity and the task's need for the private attribute; reliable auditing must therefore target semantic leakage together with these two factors. Data, prompts, and code are available at https://github.com/fuji1655/PDC-Bench.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 개인정보 공개 수준 제어 벤치마크 PDC-Bench"
+        }
+      ]
+    },
+    "2611.32646": {
+      "arxiv_id": "2611.32646",
+      "paper_title": "A Text-to-SQL Benchmark for Official Statistics",
+      "abstract": "Official statistics are critical datasets for a wide variety of actors, including policymakers and businesses. For providers of official statistics, improving accessibility, governance, and disclosure of their data is of key importance. This can be improved by providing question-answering systems based on text-to-SQL approaches. However, existing text-to-SQL benchmarks do not resemble this setting. Official statistics are published as open-domain catalogs of thousands of wide tables whose columns and values are codes, and whose meaning is recorded in separate metadata rather than in a relational schema. To address this gap, we introduce LOCuST, a text-to-SQL benchmark that pairs over two thousand English and Dutch tables from Statistics Netherlands with a semantic knowledge graph. The graph describes the tables, measures, and dimension codes through labels, definitions, hierarchies, and units, and is the external knowledge a system needs to find the right tables and ground a question in the right codes. The benchmark includes expert-annotated questions for different query and aggregation types, including raw value retrieval, summations, proportion calculations, and joins. Alongside standard evaluation measures, we introduce an observation F1 metric that measures how close a query is to the ground truth even when the answers are different. We evaluate a variety of state-of-the-art LLMs and find that they struggle to write SQL that answers the questions correctly.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "영어·네덜란드어 text-to-SQL 벤치마크 LOCuST"
+        }
+      ]
+    },
+    "2611.32734": {
+      "arxiv_id": "2611.32734",
+      "paper_title": "ASCENT: A Benchmark for Evaluating and Advancing Stepwise Diagnostic Reasoning in Large Language Models on Common Clinical Scenarios",
+      "abstract": "Large language models (LLMs) excel at medical question answering yet are rarely evaluated on the stepwise diagnostic reasoning that defines real clinical workflows, where impressions are revised as information accumulates. We build Annotated Stepwise Clinical rEasoning for NaturalisTic Diagnosis (ASCENT), a clinician-annotated benchmark and training resource of 3,078 stepwise problems derived from MedQA-USMLE that decomposes each vignette into EMR-aligned steps (Findings, Impression, supporting Rationale), enabling evaluation of intermediate reasoning under incomplete information. Experiments and training with ASCENT revealed insights into how current LLMs handle stepwise diagnostic reasoning. Even strong reasoning models that perform well on MedQA-USMLE leave substantial headroom on ASCENT, and general-purpose frontier models trail further, exposing a persistent gap between fully informed and stepwise diagnosis. Fine-tuning Qwen2.5-7B and 32B on ASCENT yields measurable F1 gains over both pre-trained and HuatuoGPT-o1 CoT-trained baselines, with gains driven primarily by precision. Complementary robustness analyses (counterfactual perturbation, format-vs-content control, judge agreement, and rollout) further show that ASCENT-fine-tuned models rely on the diagnostic content of prior impressions rather than imitating their output format, while error propagation under rollout remains a key challenge for clinical deployment.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "단계적 임상 진단추론 벤치마크 ASCENT 구축"
+        }
+      ]
+    },
+    "2611.32964": {
+      "arxiv_id": "2611.32964",
+      "paper_title": "Benchmarking Evidence Sufficiency in Vision-Language Models for Autonomous Driving",
+      "abstract": "Reliable driving VLMs must do more than answer correctly or localize relevant scene actors: they must determine whether the available visual evidence is sufficient to support an answer. Existing evaluations largely treat grounding and answerability as separate measurements, making it difficult to distinguish well-supported predictions from those localized to relevant but insufficient evidence. We introduce DriveAnswer, a benchmark of 20,151 questions across seven reasoning families, that operationalizes this distinction using matched strong- and weak-evidence configurations. Each pair preserves the underlying scene fact and semantic answer while changing whether the observations support answering, making abstention the appropriate response under weak evidence. On the six-family evaluation, the strongest zero-shot baseline reaches 67.31% strong-evidence accuracy, yet only 21.55% of matched questions satisfy both answer-abstain behavior and complete grounding. With controlled adaptation, Gemma-4-12B reaches 63.29% on this joint capability, nearly tripling its zero-shot performance. Qwen3-VL-8B exhibits the same broad improvement in evidence-sensitive answering and grounding. These results show that semantic correctness, evidence sufficiency, and grounding are distinct capabilities that should be evaluated jointly.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "주행 VLM 증거 충분성 벤치마크 DriveAnswer"
+        }
+      ]
+    },
+    "2611.33036": {
+      "arxiv_id": "2611.33036",
+      "paper_title": "Towards Realistic Evaluation of Uncertainty Quantification for LLM-Based Recommender Systems",
+      "abstract": "Large language models (LLMs) provide a flexible interface for recommendation systems. However, their issued rankings require reliable instance-level uncertainty monitoring. In this scenario, comparing uncertainty quantification (UQ) methods becomes challenging because LLM rankers lack a standard item-classification head. Their scores may depend on option labels, prompts, generation procedures, and the available user and item evidence. Existing methods derive uncertainty from different sources and apply it at different stages of the recommendation process. Some methods evaluate an issued ranking, whereas others use uncertainty to change the ranking itself, making direct comparison difficult. Here we introduce a fixed-ranking benchmark which evaluates eight heterogeneous UQ signals as record-level monitors under a shared output contract. We evaluate these signals across four recommendation datasets and two LLM backbones under a shared fixed-ranking protocol. From the results, we draw three main observations. First, UQ method ordering changes across backbones even on the same reference instances. Second, ranking-aligned Top10Mass provides the strongest scalar Error@10 detection in several evaluation conditions, reflecting effective cutoff-aligned monitoring, while its advantage narrows for popularity-tail targets. Third, scalar UQ signals are weak at identifying which control has the larger clipped NDCG@10 difference, whereas source-specific signals, including Perturbation Rank Instability and simple listwise distances, provide stronger paired-control agreement, reflecting their sensitivity to the two controlled evidence sources. These findings motivate us to evaluate ranking-failure detection, robustness across recommendation conditions, and responses to controlled evidence changes as distinct properties of UQ.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 추천 불확실성 정량화 고정랭킹 벤치마크 도입"
+        }
+      ]
+    },
+    "2611.33093": {
+      "arxiv_id": "2611.33093",
+      "paper_title": "AIChipBench: Benchmarking LLM Agents for Automated AI Accelerator Design",
+      "abstract": "A language-model decoder carries state between decoding steps, and in hardware a wrong state update can leave the current token correct and corrupt the output several tokens later, so a design can pass output tests and still be wrong. AIChipBench asks what LLM coding agents need to build such hardware correctly. Agents implement quantized Qwen3.5, Gemma 3, Gemma 4, and Llama 3.2 decoders in synthesizable register-transfer-level (RTL) code against an executable integer reference that specifies the outputs and the stored state at every decoding step. They debug against public tests under fixed budgets; their frozen designs are graded on held-out token sequences, resets, memory stalls, and synthesis, and a second track asks them to speed up a correct design at nearly fixed area. Across 9,136 attempts by four coding agents, the difficulty lies in stored state. Feedback that points to the first state mismatch raises acceptance over output-only feedback in all 12 agent--task cells of a matched study, by 25.0 to 46.9 percentage points, and halves the agent-hours per accepted design. Regraded on new sequences and conditions, 45 of 69 accepted designs fail within the 32 steps their tests required. More than a third of attempts to speed up a correct design end without one. An overall score ranks Sol 5.6 and Fable 5.1 above Astra 6 and Opus 5.5, and both halves of the instances give this order in all 200 random splits. Hardware agents therefore need debugging feedback that exposes stored state, and their benchmarks need final tests well beyond the development cases.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "LLM 에이전트 가속기 설계 벤치마크 AIChipBench"
+        }
+      ]
+    },
+    "2611.33143": {
+      "arxiv_id": "2611.33143",
+      "paper_title": "ROAM-Bench: Evaluating Embodied Active Spatial Intelligence through Evidence Verification",
+      "abstract": "Embodied spatial intelligence requires agents to gather information through exploration and interaction, then use it to reason and act. Existing benchmarks insufficiently distinguish correct outcomes from completion of these task requirements. We introduce ROAM-Bench to evaluate these abilities under robot motion and collision constraints. Independent checks use simulation state and episode records to assess outcomes and task requirements, with stronger checks of geometry, coverage, or placement. It comprises 250 manually validated tasks across 11 types in five groups and 27 indoor environments, covering object and room search, counting, geometric judgments, direction reasoning, and relocation. Human evaluators achieve 84% strict task success on 100 sampled tasks, with every correct outcome satisfying the required checks. Across seven frontier vision-language models, we identify two complementary failure modes: correct outcomes with unmet task requirements, and incorrect outcomes despite passing stronger checks. Oracle-input diagnostics show that more complete target observations and calibrated feedback improve final spatial judgments.",
+      "paper_updated": "2026-11-25T00:00:00Z",
+      "created_at": "2026-11-26T02:40:25Z",
+      "input_sha256": "1aa5763cc744c8f547dc53bab3e87ac50fdc2e9b8fe63b7e7c752e61172e0ec1",
+      "version": "claude-v1",
+      "policy": "claude_only",
+      "status": "passed",
+      "votes": [
+        {
+          "model": "claude-sonnet-5-5",
+          "decision": "relevant",
+          "reason": "구현 에이전트 공간지능 벤치마크 ROAM-Bench 도입"
+        }
+      ]
     }
   },
   "claude_daily_runs": {
@@ -117278,10 +117620,29 @@
         "2611.31261",
         "2611.31268",
         "2611.31301",
-        "2611.31345"
+        "2611.31345",
+        "2611.31346",
+        "2611.31590",
+        "2611.31595",
+        "2611.31682",
+        "2611.31703",
+        "2611.31839",
+        "2611.32094",
+        "2611.32152",
+        "2611.32168",
+        "2611.32172",
+        "2611.32251",
+        "2611.32508",
+        "2611.32610",
+        "2611.32646",
+        "2611.32734",
+        "2611.32964",
+        "2611.33036",
+        "2611.33093",
+        "2611.33143"
       ],
-      "calls": 1,
-      "cost_usd": 0.0683
+      "calls": 2,
+      "cost_usd": 0.134
     }
   },
   "reaudits": [
