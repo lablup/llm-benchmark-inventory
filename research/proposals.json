@@ -77772,74 +77772,9 @@
       }
     },
     "2308.12241": {
-      "decision": "propose",
-      "reason": "LLMRec은 ChatGPT, ChatGLM, LLaMA, Alpaca를 Amazon Beauty 데이터에서 평점 예측, 순차 추천, 직접 추천, 설명 생성, 리뷰 요약 5개 추천 과제로 평가하는 벤치마크입니다. 논문이 코드·가공 데이터·결과를 GitHub에 공개한다고 밝혔습니다. 과제 프롬프트가 영어이므로 en 트랙, 텍스트 입력이므로 text로 분류했습니다. 추천은 기존 표에 없는 새 평가 범주로 허용됩니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 PDF에서 확인되지 않아 '확인 불가'로 두었습니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "llmrec",
-            "이름": "LLMRec",
-            "평가 축": "추천(평점 예측·순차·직접 추천·설명 생성·리뷰 요약)",
-            "언어": "en",
-            "정의": "LLM을 범용 추천 모델로 쓰는 추천 벤치마크. Amazon Beauty 데이터에서 평점 예측, 순차 추천, 직접 추천, 설명 생성, 리뷰 요약 5개 과제를 평가한다. 정확도 기반 과제는 RMSE·MAE, HR@k, NDCG@k로, 설명 생성과 요약은 BLEU·ROUGE로 채점하며 정성 평가도 병행한다. 사전학습 그대로의 모델과 지도 미세조정(SFT) 모델을 모두 평가한다.",
-            "대표 과제": "rating prediction, sequential recommendation, direct recommendation, explanation generation, review summarization",
-            "대표 예시·설명": "영어 프롬프트(예: 사용자가 특정 상품에 몇 점을 줄지 묻는 질문)에 모델이 별점 등으로 답하는 과제 설명",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원 여부를 아직 확인하지 못했다. 이용 전 저장소와 Amazon 리뷰 데이터의 약관을 따로 확인해야 한다. 이 벤치마크는 Amazon Beauty 단일 카테고리만 평가하며, 논문도 다른 데이터셋으로 일반화할 수 없다고 밝힌다. 설명 생성과 요약의 BLEU·ROUGE는 정성 평가와 어긋날 수 있다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/williamliujl/LLMRec"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Recommendation (rating prediction, sequential, direct recommendation, explanation generation, review summarization)",
-            "definition": "A benchmark that uses LLMs as general-purpose recommenders. It evaluates five tasks on the Amazon Beauty data: rating prediction, sequential recommendation, direct recommendation, explanation generation, and review summarization. Accuracy-oriented tasks are scored with RMSE/MAE and HR@k/NDCG@k, generation tasks with BLEU/ROUGE, with a complementary qualitative evaluation. Both off-the-shelf and supervised fine-tuned (SFT) models are evaluated.",
-            "task": "Rating prediction, sequential recommendation, direct recommendation, explanation generation, review summarization",
-            "example": "Task description: an English prompt, for example asking what star rating a user would give an item, and the model answers with a rating or other required output."
-          },
-          "evidence": {
-            "modality": {
-              "page": 4,
-              "quote": "What star rating"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "rating prediction, sequential"
-            },
-            "대표 예시·설명": {
-              "page": 4,
-              "quote": "What star rating"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/williamliujl/LLMRec"
-            },
-            "언어": {
-              "page": 4,
-              "quote": "What star rating"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "Benchmarking Large Language"
-            },
-            "정의": {
-              "page": 2,
-              "quote": "Amazon Beauty dataset"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "rating prediction, sequential"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "데이터셋 라이선스가 모든 구성 요소에 적용되는지 근거로 세울 수 없어 게시하지 않습니다. 공식 저장소 카드(https://github.com/williamliujl/LLMRec)에는 '## LICENSE file'(SPDX Apache-2.0)이 있습니다. 그러나 이 파일이 지정하는 대상은 저장소 코드이고, 카드 README 어디에도 데이터셋 라이선스는 적혀 있지 않습니다. 카드는 가공 프롬프트 데이터를 저장소 밖(Google Drive·Baidu Yun)에서 배포한다고만 밝힙니다. 코드 라이선스는 데이터 라이선스가 아니므로 Apache-2.0을 데이터에 적용해 '가능' 등으로 쓰면 가정이 됩니다. 이 벤치마크는 다른 출처로 구성되어 있습니다. Amazon 추천 데이터셋의 Beauty 카테고리(PDF 2쪽, 4쪽, 10쪽), P5(Geng et al. 2022)의 학습·평가 분할(PDF 5쪽, 10쪽), 설명 정답 추출용 Sentires 툴킷(PDF 10쪽)이 그 출처입니다. 이들 각 구성 요소의 약관이 따로 적용되며, 제공된 자료에는 그 약관이 없습니다. 카드에 LICENSE 파일 항목이 있어 '미표기' 부재 증거 형식도 쓸 수 없습니다. 상업적 이용, 수정·파생, 재배포를 근거 있게 채우려면 저자가 데이터 배포본(Google Drive 등)의 라이선스를 밝히거나 Amazon·P5·Sentires 약관을 확보해야 합니다. 이 때문에 lm-eval 지원 항목을 포함한 모든 항목을 보류하고 changes는 비워 둡니다. 참고로 PDF 1쪽의 'All rights reserved'는 논문 AAAI 게재 고지입니다.",
+      "changes": [],
       "arxiv_id": "2308.12241",
       "paper_title": "LLMRec: Benchmarking Large Language Models on Recommendation Task",
       "paper_updated": "2026-10-14T00:00:00Z",
@@ -77896,7 +77831,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-26T04:01:10Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -77922,11 +77857,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "45743390692",
-        "context_sha256": "4151da613daa945a52d2e512a457e28160f1d710b3d2c0def95e488e47deaa43"
-      },
-      "proposal_sha256": "12611a5de121d0e6bc032e05de18f906a536fcce3cc95b4b7d03e1591c2f858c"
+      "proposal_sha256": "cf461d3481ef91c627bf9674ec67b21cede5437ab7212dfec40d35674cb38164",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -119210,8 +119143,8 @@
         "2611.33093",
         "2611.33143"
       ],
-      "calls": 16,
-      "cost_usd": 14.1712
+      "calls": 17,
+      "cost_usd": 15.109
     }
   },
   "reaudits": [
