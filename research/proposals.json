@@ -77017,6 +77017,100 @@
         "reviewed_sha256": "2a4010d63a4682237c8d59dc11332681ebb5603b02253d2825f8010b2a045748",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.16942": {
+      "decision": "exclude",
+      "reason": "UA-Bench는 수중 음향 신호(탐지 펄스, 통신 파형, 선박 방사 소음)를 오디오로 인식하는 LALM 벤치마크이다. 과제 지시문은 영어 템플릿이지만 평가 대상은 한국어·영어 언어 과제가 아니라 영어/한국어 범위 밖의 비언어적 음향 신호 분류이다. 이 인벤토리의 범위(지식, 추론, 코딩, 에이전트, 멀티모달, 장문 맥락 등 한국어·영어 과제/지시문 평가)에 맞지 않아 제외한다.",
+      "changes": [],
+      "arxiv_id": "2610.16942",
+      "paper_title": "UA-Bench: Benchmarking Large Audio-Language Models on Underwater Acoustic Recognition",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.16942",
+        "sha256": "db84f6e773287ca72ede539260132e611406d6d326337754520e6d4aa969d834",
+        "accessed": "2026-11-26T03:42:13Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 31,
+          "elapsed_seconds": 157.55,
+          "pdf_sha256": "db84f6e773287ca72ede539260132e611406d6d326337754520e6d4aa969d834",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "86751d5132951b104d77a78061380e708f23e5f81ac48082976c6b0f86f396e2",
+          "page_json_file": "2610.16942.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-26T03:44:56Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.16942",
+        "paper_title": "UA-Bench: Benchmarking Large Audio-Language Models on Underwater Acoustic Recognition",
+        "abstract": "Large audio-language models (LALMs) are fast becoming a general interface to sound, yet how far their broad pretraining carries into specialized domains remains largely open. Vessel monitoring, maritime safety, and ocean sensing all depend on recognizing underwater signals, but to our knowledge LALMs have not been systematically evaluated on them. Annotated recordings are costly to collect, and a faithful synthetic alternative has to bring together many interacting factors: the structure of detection pulses, communication waveforms, and ship-radiated noise, and the sound-speed profile, geometry, and multipath propagation through which each reaches the receiver. We address this by proposing \\textbf{UA-Bench}, to our knowledge the first large-scale benchmark for evaluating LALMs on underwater acoustic signal recognition. It comprises 375,051 audio records that couple parameterized sources with modeled propagation, so that every record can be traced to the conditions that produced it. The records span these three signal families, and each carries a three-level label hierarchy (13 leaf classes), a templated multi-turn dialogue, and source and channel metadata. We evaluate on a balanced 2,600-record subset with a gated coarse-to-fine protocol that locates each error at source routing, fine-grained classification, or output format, and add a paired silent-audio control to test whether the waveform is actually used. Nine open LALMs, evaluated without task-specific adaptation, reach only 2.0\\%--13.1\\% leaf accuracy, against a random reference of 7.7\\%. The waveform helps source routing far more than leaf recognition (for one model, +29.5 versus +2.3 points over silence), and just four models gain reliably at the leaf level, by at most 4.7 points. UA-Bench thus gives a reference point for these models, and its released training partition supports follow-up adaptation work.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:51:10Z",
+        "input_sha256": "c3cacbc08a124d86e448813feba6a6347e21ba0d94bbec8ed42de87b57e05eeb",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "수중 음향 인식용 LLM 벤치마크 및 평가 프로토콜"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "수중 음향 인식 대규모 오디오-언어모델 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "3017c81984fd1b03fe911679a66d80dc1295ec45c4f71e4aeb6a44fb315d9975"
     }
   },
   "processed_comments": [],
@@ -118294,8 +118388,8 @@
         "2611.33093",
         "2611.33143"
       ],
-      "calls": 7,
-      "cost_usd": 5.3685
+      "calls": 8,
+      "cost_usd": 6.3269
     }
   },
   "reaudits": [
