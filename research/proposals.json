@@ -76476,7 +76476,7 @@
     },
     "2610.16412": {
       "decision": "propose",
-      "reason": "SLS-Bench는 새로 제안된 재사용 가능한 벤치마크이다. 공개 사고 보고서를 바탕으로 만든 90개 과제로, 합성 로그 스트림(평균 약 56k 줄)을 읽고 사고 요약 보고서를 쓰는 에이전트 평가이다. 고정 질문이 영어이고 입력이 텍스트 로그뿐이므로 en 트랙의 text로 분류한다. 채점은 참조 요약과 비교하는 LLM 판정이며 두 판정 모델의 평균을 쓰고, 논문은 14개 LLM을 평가했다. 논문 부록은 데이터에 CC BY 4.0, 코드에 Apache 2.0을 밝히지만 자동 제안 규칙에 따라 라이선스 관련 필드와 lm-eval 지원은 '확인 불가'로 두었다. 논문의 모델 비교 수치는 인용하지 않았으며 현재 전역 리더보드를 뜻하지 않는다.",
+      "reason": "SLS-Bench는 새로 제안된 재사용 가능한 벤치마크이다. 공개 사고 보고서를 바탕으로 만든 90개 과제로, 합성 로그 스트림(평균 약 56k 줄)을 읽고 사고 요약 보고서를 쓰는 에이전트 평가이다. 고정 질문이 영어이고 입력이 텍스트 로그뿐이므로 en 트랙의 text로 분류한다. 채점은 참조 요약과 비교하는 LLM 판정이며 두 판정 모델의 평균을 쓴다. 공식 데이터 카드는 cc-by-4.0을 표기하고 논문 15쪽은 벤치마크의 사용·수정·재배포를 상업적 이용 포함으로 허용한다고 밝힌다. 공식 카드와 논문 어디에도 lm-eval 언급이 없어 해당 필드는 미표기로 기록한다. 논문 Table 1의 23개 모델 구성 점수를 한 실험 기준으로 함께 제시하며 이는 논문 조건의 결과이고 현재 전역 리더보드가 아니다.",
       "changes": [
         {
           "track": "en",
@@ -76489,12 +76489,12 @@
             "대표 과제": "대용량 로그 파일에서 시스템 구조, 단계별 경과, 근본 원인 진단을 담은 사고 조사 보고서 작성",
             "대표 예시·설명": "고정 영어 질문이 로그를 분석해 사고 조사 보고서를 쓰라고 요구하며, 보고서는 사고 요약, 재구성한 시스템, 단계별 타임라인(요약·증거·추론), 최종 진단의 지정 구조를 따라야 한다.",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건과 lm-eval 지원은 자동 제안 단계에서 확인하지 않았다. 논문 부록 A.3은 벤치마크에 CC BY 4.0, 코드에 Apache 2.0을 밝히지만, 사고 보고서 원문은 각 게시자의 약관을 따르므로 이용 전에 구성 요소별 약관을 따로 확인해야 한다. 로그와 참조 요약은 같은 사고 모델에서 LLM이 합성했고 판정 모델은 로그를 보지 못한 채 참조 요약과만 비교한다. 채점에는 LLM 판정 호출이 필요하다. 과제는 영어 질문 하나이며 90개로 규모가 작다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "CC-BY-4.0(데이터), 코드는 Apache-2.0",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "출처 표기(BY) 필요. 코드는 별도로 Apache-2.0이다. 이 벤치마크는 공개된 실제 사고 보고서를 바탕으로 합성한 것이다(논문 4쪽). 논문 15쪽(부록 A.3)에 따르면 보고서 원문, HTML, 이미지는 재배포하지 않고 출처 URL만 제공하며, 위 라이선스는 저자가 권리를 가진 산출물과 코드에만 적용되고 링크된 보고서는 각 게시자의 권리와 약관을 따른다. 따라서 각 구성 요소(원천 사고 보고서)의 고유 약관은 이용 전에 따로 확인해야 한다. 로그와 참조 요약은 같은 사고 모델에서 LLM이 합성했고, 판정 모델은 로그를 보지 못한 채 참조 요약과만 비교한다. 채점에 LLM 판정 호출이 필요하다. 과제는 영어 질문 하나이며 90개로 규모가 작다. 공식 카드에 lm-eval 언급이 없다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://huggingface.co/datasets/dynatrace-oss/SLS-Bench"
           },
           "modality": "text",
@@ -76538,9 +76538,323 @@
               "quote": "Benchmark for Incident"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://huggingface.co/datasets/dynatrace-oss/SLS-Bench",
+              "quote": "license: cc-by-4.0"
+            },
+            "상업적 이용": {
+              "page": 15,
+              "quote": "redistributed, including commercially"
+            },
+            "수정·파생": {
+              "page": 15,
+              "quote": "may be used, modified, and redistributed"
+            },
+            "재배포": {
+              "page": 15,
+              "quote": "modified, and redistributed"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://huggingface.co/datasets/dynatrace-oss/SLS-Bench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Score (higher is better): mean LLM-judge score on a 0-1 scale (five rubric labels mapped to 0, 0.25, 0.50, 0.75, 1.00 and averaged over two judges), mean over the 90 benchmark problems",
+            "setting": "Results reported in this paper's Table 1, not a current global leaderboard. Same benchmark (all 90 SLS-Bench problems, single split) and same fixed question; an LLM agent with a stateful Python interpreter (pandas) analyzes each log file; up to 200 tool calls per problem; 500k output-token limit per API request; default sampling (temperature 1.0, top-p 1.0); reasoning effort shown in parentheses; scored by GPT-5.2 (medium) and Sonnet 4.6 (low) judges whose predictions are averaged.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "GPT-5.4 (high)",
+                "score": "0.73",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.4 (high) 0.73 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "GPT-5.4 (medium)",
+                "score": "0.73",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.4 (medium)⋆ 0.73 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "GPT-5.4 (low)",
+                "score": "0.67",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.4 (low)⋆ 0.67 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "GPT-5.4 Mini (high)",
+                "score": "0.61",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.4 Mini (high)⋆ 0.61 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "GPT-5.4 Mini (medium)",
+                "score": "0.57",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.4 Mini (medium)⋆ 0.57 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "GPT-5.4 Mini (low)",
+                "score": "0.48",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.4 Mini (low)⋆ 0.48 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "GPT-5.4 Nano (high)",
+                "score": "0.44",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.4 Nano (high) 0.44 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "GPT-5.4 Nano (medium)",
+                "score": "0.39",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.4 Nano (medium)⋆ 0.39 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "GPT-5.4 Nano (low)",
+                "score": "0.28",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GPT-5.4 Nano (low)⋆ 0.28 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "Opus 4.6 (high)",
+                "score": "0.61",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Opus 4.6 (high) 0.61 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "Opus 4.6 (medium)",
+                "score": "0.59",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Opus 4.6 (medium) 0.59 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "Sonnet 4.6 (medium)",
+                "score": "0.57",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Sonnet 4.6 (medium) 0.57 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "Sonnet 4.6 (low)",
+                "score": "0.58",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Sonnet 4.6 (low) 0.58 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "Opus 4.6 (low)",
+                "score": "0.53",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Opus 4.6 (low) 0.53 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "Haiku 4.5",
+                "score": "0.46",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Haiku 4.5 0.46 ± 0.01"
+                },
+                "open_weight": false,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "closed-source frontier models, specifically the GPT-5.4 [OpenAI, 2026] and Claude 4.x models [Anthropic, 2026]"
+                }
+              },
+              {
+                "model": "GLM-5 (744B/40B)",
+                "score": "0.49",
+                "evidence": {
+                  "page": 8,
+                  "quote": "GLM-5 (744B/40B) 0.49 ± 0.01"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "GLM-5 achieving the strongest open-weight score"
+                }
+              },
+              {
+                "model": "MiniMax-M2 (230B/10B)",
+                "score": "0.29",
+                "evidence": {
+                  "page": 8,
+                  "quote": "MiniMax-M2 (230B/10B)⋆ 0.29 ± 0.01"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 12,
+                  "quote": "Code and weights: https://github.com/MiniMax-AI/MiniMax-M2"
+                }
+              },
+              {
+                "model": "Nemotron 3 Super (120B/12B)",
+                "score": "0.29",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Nemotron 3 Super (120B/12B) 0.29 ± 0.02"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "DeepSeek V3.2 (685B/37B)",
+                "score": "0.27",
+                "evidence": {
+                  "page": 8,
+                  "quote": "DeepSeek V3.2 (685B/37B) 0.27 ± 0.02"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Mistral Large 3 (675B/41B)",
+                "score": "0.12",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Mistral Large 3 (675B/41B) 0.12 ± 0.01"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "open-weight models, including Ministral 3 14B and Mistral Large 3"
+                }
+              },
+              {
+                "model": "Ministral 3 (14B)",
+                "score": "0.12",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Ministral 3 (14B) 0.12 ± 0.01"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 8,
+                  "quote": "open-weight models, including Ministral 3 14B"
+                }
+              },
+              {
+                "model": "Qwen3-Next (80B/3B)",
+                "score": "0.10",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Qwen3-Next (80B/3B) 0.10 ± 0.01"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Nemotron 3 Nano (30B/3.5B)",
+                "score": "0.06",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Nemotron 3 Nano (30B/3.5B) 0.06 ± 0.01"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.16412",
@@ -76655,7 +76969,8 @@
         "source_run": "45743390692",
         "context_sha256": "46829f045e6b5c2fb879ab072d59f5e0e2b69f031acc6268d449fd1c000e10e0"
       },
-      "proposal_sha256": "8c144e9d8ca092fbcc07a9664c3bf401b7ea4643b3a61ab01c937a5ba772ac24"
+      "proposal_sha256": "2a4010d63a4682237c8d59dc11332681ebb5603b02253d2825f8010b2a045748",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -117931,8 +118246,8 @@
         "2611.33093",
         "2611.33143"
       ],
-      "calls": 5,
-      "cost_usd": 3.1739
+      "calls": 6,
+      "cost_usd": 4.3181
     }
   },
   "reaudits": [
