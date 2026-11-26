@@ -77206,6 +77206,168 @@
       },
       "issue_url": null,
       "proposal_sha256": "5d719d0fb5f09f30fef8b93ab68847e85240de9aa9f51b75320132ad1f1d5734"
+    },
+    "2610.17089": {
+      "decision": "propose",
+      "reason": "MultINav-Bench는 MolmoSpaces 시뮬레이터 안에서 문·수납장 상호작용이 필요한 ObjectGoal 내비게이션 3,000 에피소드(채널·컨테이너·혼합 각 1,000개, 639개 house)를 제공하는 재사용 가능한 신규 벤치마크이다. 에이전트는 RGB-D 관측을 받으므로 vision으로 분류했다. 목표 지시문은 부록의 영어 프롬프트 인용으로 확인되어 en 트랙에 둔다. 공식 데이터셋 주소는 PDF 1쪽에 명시되어 있다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록한다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "multinav-bench",
+            "이름": "MultINav-Bench",
+            "평가 축": "에이전트(상호작용형 ObjectGoal 내비게이션: 문·수납장 상태 변화)",
+            "언어": "en",
+            "정의": "문 같은 통로(channel) 상호작용이 공간 연결성을, 수납장 같은 컨테이너 상호작용이 목표 가시성을 바꾸는 ObjectGoal 내비게이션 벤치마크. MolmoSpaces에서 3,000개 에피소드(채널·컨테이너·혼합 각 1,000개, 639개 house)로 구성되고, 필수(required) 2,654개와 불필요(unnecessary) 346개의 상호작용 필요성 라벨이 있다. 원시 이미지 인식 모드와 제한된 정답(restricted-GT) 인식 모드를 제공한다. 지표는 SR, SPL, ISR, IP, Total Cost이다.",
+            "대표 과제": "문을 열어 방에 진입하고 수납장을 열어 숨은 목표 객체를 찾는 ObjectGoal 내비게이션(채널, 컨테이너, 혼합 분할)",
+            "대표 예시·설명": "과제 설명: 에이전트가 목표 객체 범주를 받고 닫힌 문과 수납장이 있는 집을 탐색하며, 필요한 문·수납장만 열어 목표를 시야에 두고 정해진 거리 안에 정지해야 한다. 불필요한 문은 열지 않아도 되는 대조 사례이다. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. 이 벤치마크는 MolmoSpaces 환경, ProcTHOR-10K house, NavToObj 시드를 바탕으로 만들어졌으므로(논문 5쪽) 구성 요소별 약관을 이용 전에 따로 확인해야 한다. 실행에는 MolmoSpaces 시뮬레이터 환경이 필요하다. 논문의 주 비교는 제한된 정답 인식 모드의 결과이다. 대상 객체 범주가 일부(egg 등)에 쏠려 있다고 논문이 밝힌다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/Piqiuni/MultINav-Bench"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Agents (interactive ObjectGoal navigation with door and container state changes)",
+            "definition": "An ObjectGoal navigation benchmark in which channel interactions such as opening doors change spatial connectivity and container interactions such as opening cabinets change target visibility. It has 3,000 episodes in MolmoSpaces (1,000 each for channel, container and mixed tasks, across 639 houses), with interaction-necessity labels (2,654 required, 346 unnecessary). It offers a raw image-based perception mode and a restricted ground-truth perception mode. Metrics are SR, SPL, ISR, IP and Total Cost.",
+            "task": "ObjectGoal navigation that requires opening doors to reach rooms and opening containers to reveal hidden targets (channel, container and mixed splits)",
+            "example": "Task description, not an actual test item: the agent receives a target object category and explores a house with closed doors and containers. It must open only the necessary ones and stop within the required distance with the target visible. Unnecessary doors serve as negative controls."
+          },
+          "evidence": {
+            "modality": {
+              "page": 15,
+              "quote": "Both compared methods"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "a 3K-episode ObjectGoal"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "a 3K-episode ObjectGoal"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "huggingface.co/datasets/Piqiuni/MultINav-Bench"
+            },
+            "언어": {
+              "page": 22,
+              "quote": "Find the requested"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "a 3K-episode ObjectGoal"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "a 3K-episode ObjectGoal"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "channel, container, and"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.17089",
+      "paper_title": "Interactive Navigation Beyond Reachability: Benchmark and Agentic Framework",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.17089",
+        "sha256": "87b6c0b5a53ddcc4c3fbdbb7e5eda6e35ccf1ce24ad3cc55c620d2103e4b13fa",
+        "accessed": "2026-11-26T03:47:28Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 22,
+          "elapsed_seconds": 93.16,
+          "pdf_sha256": "87b6c0b5a53ddcc4c3fbdbb7e5eda6e35ccf1ce24ad3cc55c620d2103e4b13fa",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "9048989db002d1ea141af94e453bb3627b985038c03633948fca2d45d2b211dd",
+          "page_json_file": "2610.17089.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/Piqiuni/MultINav-Bench",
+            "fetched_url": "https://huggingface.co/datasets/Piqiuni/MultINav-Bench/raw/main/README.md",
+            "sha256": "2cf80d0b45bfb674de0dd8940fcc243c88e4ed944f485514a9a0937c47ffaf19",
+            "accessed": "2026-11-26T03:49:28Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-26T03:49:28Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.17089",
+        "paper_title": "Interactive Navigation Beyond Reachability: Benchmark and Agentic Framework",
+        "abstract": "Existing embodied navigation tasks commonly assume that traversability and object states remain fixed during an episode. Yet reaching a goal may require opening a door to access a room and then opening a container to reveal a hidden target. We formulate interactive navigation beyond reachability, unifying channel-induced changes in spatial connectivity, container-induced changes in target visibility, and their sequential dependencies. We introduce MultINav-Bench, a 3K-episode ObjectGoal benchmark in MolmoSpaces spanning channel, container, and mixed tasks, with interaction-necessity annotations covering required and unnecessary episodes. Its data generation pipeline automates task construction across multiple task types. The evaluation protocol separately measures navigation success, interaction effectiveness, and cost. We further propose MultINav-Agent, a three-stage agentic framework built on a persistent, state-conditioned interaction graph. Semantic interactive perception grounds entities and interaction states; a vision-language model selects task-relevant actions based on expected changes in connectivity and target observability; and post-interaction verification updates the graph to guide subsequent navigation, exploration, or interaction. Experiments on MultINav-Bench show that MultINav-Agent consistently outperforms adapted baselines across channel, container, and mixed tasks.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:51:10Z",
+        "input_sha256": "acd81f8a020e755b99e1208b6cf33f7a76678f275b023ab4eb723d82829802a4",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "상호작용 내비게이션 벤치마크와 에이전트 프레임워크 제안"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "상호작용 내비게이션 벤치마크 MultINav-Bench 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "45743390692",
+        "context_sha256": "c7a277b2a1682da6851fe4825da169dadbfd00ab4f34018c6a5da20d5fb9b8e2"
+      },
+      "proposal_sha256": "38b672056fbf691f7747ef0f52e3544e0f64c694aa25022619e40ee50edd6e3c"
     }
   },
   "processed_comments": [],
@@ -118485,8 +118647,8 @@
         "2611.33093",
         "2611.33143"
       ],
-      "calls": 9,
-      "cost_usd": 7.2955
+      "calls": 10,
+      "cost_usd": 8.26
     }
   },
   "reaudits": [
