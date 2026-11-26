@@ -77386,7 +77386,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-26T03:49:28Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -77412,12 +77412,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "45743390692",
-        "context_sha256": "c7a277b2a1682da6851fe4825da169dadbfd00ab4f34018c6a5da20d5fb9b8e2"
-      },
       "proposal_sha256": "a59f3513eed45fcfa19e173910027de8ff5014f766d4503f87049a0d230cc7e9",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 변경 사실이 논문 PDF 전체 페이지와 공식 데이터셋 카드로 모두 뒷받침됩니다. 규모는 3,000 에피소드(채널·컨테이너·혼합 각 1,000개), 639개 house, 필수 2,654개와 불필요 346개로 논문 본문, 부록 표, 카드가 서로 일치합니다. 원시 이미지 인식 모드와 제한된 정답 인식 모드, 지표 5종(SR, SPL, ISR, IP, Total Cost)도 논문에 있고, 에이전트가 RGB-D 관측을 받으므로 modality를 vision으로 둔 것은 타당합니다. 언어는 카드의 영어 표기와 부록의 영어 프롬프트로 확인됩니다. 라이선스는 카드가 CC BY 4.0을 명시하고 장면에 포함된 Objaverse 유래 콘텐츠는 ODC-BY 1.0이라고 따로 적었으며, 행에도 이 구분이 반영되어 있습니다. 상업적 이용, 수정·파생, 재배포 값은 CC BY 4.0의 권한과 일치하며 허가를 새로 만들거나 제한을 빠뜨린 부분이 없습니다. 이용 시 유의사항은 파생 출처(ProcTHOR-10K, NavToObj 시드, MolmoSpaces)를 명시하고 각 구성 요소의 약관을 따로 확인하도록 안내해 요구 조건을 충족합니다. 공식 카드와 논문 어디에도 lm-eval 언급이 없어 pdf_mentions가 비어 있으므로, 'lm-eval 지원'을 '미표기'로 둔 것은 인정되는 확정값입니다. 권장 모델 비교는 논문 Table 3의 전체(Overall) 행에서 가져온 것으로, MultINav-Agent 41.63%와 MoMa-LLM 10.53%가 행·열 정렬대로 옮겨졌습니다. 두 모델은 같은 3,000 에피소드, 같은 제한된 정답 인식 인터페이스, 같은 Qwen3.6-35B-A3B-FP8 모델과 실행기라는 동일 조건에서 비교되었고, 해당 실험에서 비교된 모델이 이 둘뿐이라 목록이 빠짐없이 포함되었습니다. 지표 방향(높을수록 좋음)과 단위(%)도 맞고, 논문 보고 결과이며 전역 리더보드가 아니라는 점도 명시되어 있습니다. 가중치 공개 여부는 null로 두어 폐쇄형으로 취급하지 않았습니다. 추출 텍스트 사이에 충돌은 없고, 그림에만 의존하는 주장도 없습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 238617,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2610,
+              "output_tokens_details": {
+                "thinking_tokens": 1601
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 238617,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2610,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 238617,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 238617
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.9806369,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "a59f3513eed45fcfa19e173910027de8ff5014f766d4503f87049a0d230cc7e9",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -118697,8 +118743,8 @@
         "2611.33093",
         "2611.33143"
       ],
-      "calls": 11,
-      "cost_usd": 9.2723
+      "calls": 12,
+      "cost_usd": 10.2529
     }
   },
   "reaudits": [
