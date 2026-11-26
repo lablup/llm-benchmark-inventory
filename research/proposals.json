@@ -77968,74 +77968,9 @@
       "approval_policy": "claude_only"
     },
     "2506.23101": {
-      "decision": "propose",
-      "reason": "Genres는 사회적 관계(Fiske 관계 모델 4종)를 바탕으로 멀티모달 LLM의 성별 편향을 평가하는 새 벤치마크입니다. 1,440개의 텍스트·이미지 서사 유도 쌍이 있고 8개 지표를 제공합니다. 과제 프롬프트가 영어이므로 en 트랙에, 이미지를 입력으로 쓰므로 vision으로 분류했습니다. 공식 데이터셋 주소는 PDF 1쪽 각주에 있습니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했습니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "genres",
-            "이름": "Genres",
-            "평가 축": "공정성·편향(사회적 관계 기반 성별 편향, 서사 생성)",
-            "언어": "en",
-            "정의": "Fiske의 관계 모델 이론에 따른 4가지 관계 유형, 다양한 사회적 시나리오, 3개 연령대를 아우르는 멀티모달 서사 유도 쌍(NEP) 1,440개로 구성된 벤치마크. 서사 요소 288개 항목마다 이미지 5장을 짝지었다. 남성·여성 두 인물의 프로필과 서사를 생성하게 한 뒤 프로필 배정, 행위성·역할, 감정 표현, 서사 프레이밍의 4개 차원 8개 지표(M1~M8)로 성별 편향을 측정한다. 논문은 MLLM 6종을 LLM judge 3종으로 평가했고 두 가지 생성 단계 완화 전략도 비교했다.",
-            "대표 과제": "관계 유형별 시나리오에서 남성·여성 두 인물의 프로필과 약 500단어 서사를 생성하고, 이를 8개 지표로 채점",
-            "대표 예시·설명": "영어 프롬프트로 소설 속 두 인물의 관계와 시나리오를 제시하고 각 인물의 짧은 프로필과 서사 한 편을 쓰게 하며, 이미지 한 장이 함께 주어지는 과제 설명(실제 시험 문항이 아님)",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스를 확인하지 못했다. 이 벤치마크의 이미지는 Stable Diffusion XL로 생성하고 사람이 검수했으며, 프롬프트와 이미지 설명은 GPT-4o 등을 활용해 만들었으므로 각 구성 요소의 약관을 이용 전에 따로 확인해야 한다. 성별은 남녀 이분법으로만 다루고, 이름과 시나리오는 미국·서구 중심이다. 일부 지표는 LLM judge(Llama-3.1-8B, GLM-4-9B, Mistral-Small-24B)에 의존한다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://huggingface.co/datasets/Savannah-y7/Genres"
-          },
-          "modality": "vision",
-          "english_copy": {
-            "axis": "Fairness and bias (gender bias through social relationships, narrative generation)",
-            "definition": "A benchmark of 1,440 multimodal Narrative Elicitation Pairs grounded in Fiske's relational models theory, spanning four relationship types, diverse social scenarios, and three age groups. Each of 288 narrative-element entries is paired with five images. Models generate profiles and a narrative for one male and one female character, and gender bias is measured with eight metrics (M1-M8) across four dimensions: profile assignment, agency and role, emotional expression, and narrative framing. The paper evaluates six MLLMs with three LLM judges and compares two generation-stage mitigation strategies.",
-            "task": "Generate profiles and a roughly 500-word narrative for a male and a female character in a relationship scenario, then score the output with the eight metrics.",
-            "example": "Task description (not an actual test item): an English prompt gives two characters' relationship and a scenario, asks for short profiles and one narrative, and supplies an image alongside the text."
-          },
-          "evidence": {
-            "modality": {
-              "page": 3,
-              "quote": "text-image Narrative Elicitation"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "GEN-RES comprises 1,440"
-            },
-            "대표 예시·설명": {
-              "page": 15,
-              "quote": "I am writing"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "datasets/Savannah-y7/Genres"
-            },
-            "언어": {
-              "page": 15,
-              "quote": "I am writing"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "GEN-RES comprises 1,440"
-            },
-            "정의": {
-              "page": 1,
-              "quote": "GEN-RES comprises 1,440"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "evaluating gender bias"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "Genres 논문의 Table 2~6은 남성-여성 차이를 부호가 있는 값으로 보고하며(양수는 남성 우대, 음수는 여성 우대, 논문 5쪽과 6쪽), 4.1절은 '단일 순위로 합치지 않고 차원별로 비교한다'고 명시합니다(6쪽). 값이 클수록 또는 작을수록 좋은 방향이 논문에 정해져 있지 않아 higher_is_better를 true나 false로 지정할 수 없습니다. 절댓값 변환이나 평균, 순위는 임의 변환이라 쓸 수 없고, 이 때문에 모델별 추천 결과(recommendations)를 지원할 수치 근거가 없습니다. 따라서 이번에는 아무것도 게시하지 않습니다(changes 비움). 권리 정보는 확보했습니다. 공식 카드는 license: cc-by-nc-4.0을 표기하고 LICENSE 파일에 CC-BY-NC 4.0 전문이 있어 라이선스는 CC-BY-NC-4.0, 상업적 이용은 불가, 수정·파생은 가능, 재배포는 조건부 가능으로 기록할 수 있으며, 카드에 lm-eval 언급이 없어 lm-eval 지원은 '미표기'로 기록할 수 있습니다. 성별 편향 정도를 서열화할 수 있는 단일 방향 지표를 저자가 정의하거나 방향이 있는 점수를 보고하는 판본이 확보되면 다시 제출할 수 있습니다.",
+      "changes": [],
       "arxiv_id": "2506.23101",
       "paper_title": "From Individuals to Interactions: Benchmarking Gender Bias in Multimodal Large Language Models from the Lens of Social Relationship",
       "paper_updated": "2026-10-14T00:00:00Z",
@@ -78112,7 +78047,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-26T04:09:07Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -78138,11 +78073,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "45743390692",
-        "context_sha256": "a6e19ee6b45e6007ac0b955e791db9120656225dc22d385ec6670af257dd413e"
-      },
-      "proposal_sha256": "f1c54826734c51c7355538a56b14c889f120d9f5cc6a85ffd34c4363dfc9bccd"
+      "proposal_sha256": "b37d2a08c7d913e60090ab526ce9c284a0c7d4671ed466682dc170c61b99e1d5",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -119429,8 +119362,8 @@
         "2611.33093",
         "2611.33143"
       ],
-      "calls": 20,
-      "cost_usd": 18.2756
+      "calls": 21,
+      "cost_usd": 19.304
     }
   },
   "reaudits": [
