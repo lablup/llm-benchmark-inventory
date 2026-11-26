@@ -77111,6 +77111,101 @@
       },
       "issue_url": null,
       "proposal_sha256": "3017c81984fd1b03fe911679a66d80dc1295ec45c4f71e4aeb6a44fb315d9975"
+    },
+    "2610.17018": {
+      "decision": "exclude",
+      "reason": "이 논문은 LLM 평가에 시간 축을 도입해야 한다는 방법론·분석 논문이다. 새로 재사용 가능한 벤치마크를 내놓지 않는다. 12개 시간 라벨 데이터셋은 기존 벤치마크(BioASQ, FinQA, StreamingQA, WildTime-arXiv 등)를 재가공하거나 PubMed·USPTO·NVD 같은 원천 코퍼스에서 직접 구성한 평가 자료다. 논문은 이를 평가 대상으로 쓰되 독립된 벤치마크로 공개·정의하지 않으며, PDF가 공식 데이터·코드 URL을 명시하지도 않는다. 'We release our code and data'라는 문장만 있어 링크 증거가 없다. 이미 인벤토리에 있는 LiveCodeBench도 새 변경 없이 분석 대상으로만 쓰였다. 따라서 중복이거나 모델·방법 중심 논문으로 보고 제외한다.",
+      "changes": [],
+      "arxiv_id": "2610.17018",
+      "paper_title": "LLM Evaluation is a Forecasting Problem",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.17018",
+        "sha256": "9c22d357b03e4de3deb46493a1992afc5ee8392469c3fae723e97e073980764c",
+        "accessed": "2026-11-26T03:45:10Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 32,
+          "elapsed_seconds": 117.75,
+          "pdf_sha256": "9c22d357b03e4de3deb46493a1992afc5ee8392469c3fae723e97e073980764c",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "90fa60a4ce328cb72ec3ae3928533d526f8763bf75f35eb64a9b090eca377c25",
+          "page_json_file": "2610.17018.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-26T03:47:14Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.17018",
+        "paper_title": "LLM Evaluation is a Forecasting Problem",
+        "abstract": "Standard procedure in machine learning is to randomly split train and test data, emulating IID draws from one underlying data distribution. In practice, models are trained on past data and deployed in the future, which may come from distinct distributions. In this paper, we find that web text is indeed highly non-stationary, as text distributions shift over time. We further observe that model performance changes continuously over time across diverse benchmarks. Consequently, future model performance is better predicted by measurements made on recent evaluation data, and is best predicted by time series forecasters applied to historic performance rather than by historic performance itself. Choosing which model to deploy based on forecasted accuracy enables more reliable selection of performant models, thus improving downstream accuracy in the regime practitioners care about: deployment. Taken together, our experiments suggest that time should be treated as a fundamental variable in LLM evaluation. We release our code and data.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:51:10Z",
+        "input_sha256": "40e70850ad5a779e083af54c739a3617fca8ad2e7167378fe081c0802d485189",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 평가를 시계열 예측 문제로 재정의한 연구"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "uncertain",
+            "reason": "시간 기반 평가 프레임워크 제안하나 재사용 벤치마크 자료 명확성 낮음"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "5d719d0fb5f09f30fef8b93ab68847e85240de9aa9f51b75320132ad1f1d5734"
     }
   },
   "processed_comments": [],
@@ -118389,8 +118484,8 @@
         "2611.33093",
         "2611.33143"
       ],
-      "calls": 8,
-      "cost_usd": 6.3269
+      "calls": 9,
+      "cost_usd": 7.2955
     }
   },
   "reaudits": [
