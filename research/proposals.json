@@ -77862,74 +77862,9 @@
       "approval_policy": "claude_only"
     },
     "2506.03278": {
-      "decision": "propose",
-      "reason": "FailureSensorIQ는 산업 자산 10종의 고장 모드와 센서 관계를 묻는 영어 객관식 벤치마크를 새로 만들고 공개한 논문이다. 전체 8,296문항 중 단일 정답이 2,667개, 복수 정답이 5,629개다. 질문과 선택지는 영어 텍스트이므로 en 트랙의 text로 분류했다. 이미지 입력은 필요하지 않다. 논문이 명시한 공식 자료는 GitHub 소프트웨어 저장소(https://github.com/IBM/FailureSensorIQ)뿐이다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "failuresensoriq",
-            "이름": "FailureSensorIQ",
-            "평가 축": "도메인 지식·추론(산업 자산의 고장 모드-센서 관계 객관식 QA)",
-            "언어": "en",
-            "정의": "ISO 문서와 전문가가 만든 질문 템플릿으로 10개 산업 자산의 고장 모드와 센서 관계를 묻는 객관식 QA 벤치마크. 전체 8,296문항(단일 정답 2,667, 복수 정답 5,629)이며, FM2Sensor(고장 모드에서 센서)와 Sensor2FM(센서에서 고장 모드)을 선택형·제거형으로 묻는다. 단일 정답 문항은 정확도로 평가하고 교란, 불확실성, 복잡도 분석을 함께 수행한다.",
-            "대표 과제": "FM2Sensor와 Sensor2FM(선택형·제거형) 객관식 문항에서 정답 선택지 고르기",
-            "대표 예시·설명": "과제 설명: 자산과 고장 모드가 주어지면 선택지에서 가장 관련 있는 센서를 고르거나, 센서가 이상 값을 보일 때 관련 없는 고장 모드를 고른다(실제 시험 문항이 아님).",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터셋 라이선스와 이용 조건을 확인하지 못했다. 논문이 이름을 밝힌 공식 자료는 GitHub 소프트웨어 저장소이며, Hugging Face 리더보드와 데이터셋 주소는 PDF에서 확인하지 못했다. 이 벤치마크는 ISO 문서에서 얻은 정보로 만들어졌으므로(논문 3쪽), 해당 문서의 고유 약관을 이용 전에 따로 확인해야 한다. 논문 수치(상위 10개 모델의 단일 정답 정확도 평균 53.5% 등)는 논문 조건의 결과이며 현재 전역 리더보드가 아니다. 정적 지식만 다루고 시간적 센서 동역학은 포함하지 않는다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/IBM/FailureSensorIQ"
-          },
-          "modality": "text",
-          "english_copy": {
-            "axis": "Domain knowledge and reasoning (multiple-choice QA on failure-mode and sensor relationships of industrial assets)",
-            "definition": "A multiple-choice QA benchmark built from ISO documents and expert-written question templates, asking about relationships between failure modes and sensors for 10 industrial assets. It has 8,296 questions in total (2,667 single-correct and 5,629 multi-correct), covering FM2Sensor (failure mode to sensor) and Sensor2FM (sensor to failure mode) in selection and elimination formats. Single-correct questions are scored by accuracy, with perturbation, uncertainty, and complexity analyses.",
-            "task": "Choose the correct option(s) in FM2Sensor and Sensor2FM questions (selection and elimination formats)",
-            "example": "Task description (not an actual test item): given an asset and a failure mode, pick the most relevant sensor from the options, or given an abnormal sensor reading, pick the failure mode that is not relevant."
-          },
-          "evidence": {
-            "modality": {
-              "page": 17,
-              "quote": "Please select the"
-            },
-            "대표 과제": {
-              "page": 2,
-              "quote": "Failure Modes to"
-            },
-            "대표 예시·설명": {
-              "page": 2,
-              "quote": "Failure Modes to"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "https://github.com/IBM/FailureSensorIQ"
-            },
-            "언어": {
-              "page": 17,
-              "quote": "Please select the"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "FailureSensorIQ, a novel"
-            },
-            "정의": {
-              "page": 3,
-              "quote": "8,296 questions across"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "FailureSensorIQ, a novel"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공식 저장소 LICENSE 파일은 CC-BY-4.0이지만 저장소에 대한 표기입니다. README는 데이터를 Hugging Face 데이터셋 저장소(ibm-research/FailureSensorIQ)에서 호스팅한다고 밝히는데, 그 데이터셋 카드는 공급된 공식 자료에 없어 데이터셋 자체의 라이선스를 대조할 수 없습니다. 논문 3쪽은 이 벤치마크가 ISO 문서에서 얻은 정보와 전문가 질문 템플릿으로 만들어졌다고 밝히며, ISO 문서의 고유 약관도 공급 자료에 없습니다. 따라서 CC-BY-4.0이 모든 구성 요소에 적용된다는 근거를 세울 수 없어 라이선스, 상업적 이용, 수정·파생, 재배포 값을 게시할 수 없습니다. Hugging Face 데이터셋 카드를 공식 자료로 추가해 가져온 뒤 다시 제안해야 합니다.",
+      "changes": [],
       "arxiv_id": "2506.03278",
       "paper_title": "FailureSensorIQ: A Multi-Choice QA Dataset for Understanding Sensor Relationships and Failure Modes",
       "paper_updated": "2026-10-14T00:00:00Z",
@@ -78002,7 +77937,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-26T04:04:42Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -78028,11 +77963,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "45743390692",
-        "context_sha256": "fea65e240edb20177ed3fc96d01ab834cc943a7799eefe9c29aef54f0b0724ac"
-      },
-      "proposal_sha256": "1f0ca3a98e6a5f2e043b2915e534afb2ff98412a7c34c9ab64f944d182b004cf"
+      "proposal_sha256": "f9db6d84752adaf44a929fe6787b8fd3b8a7a0b93ff9cb3e1496ee4757403bc3",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -119317,8 +119250,8 @@
         "2611.33093",
         "2611.33143"
       ],
-      "calls": 18,
-      "cost_usd": 16.1617
+      "calls": 19,
+      "cost_usd": 17.261
     }
   },
   "reaudits": [
