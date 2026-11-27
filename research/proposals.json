@@ -78801,6 +78801,80 @@
       },
       "issue_url": null,
       "proposal_sha256": "7862e9ed73b1f83c0cda8cc36099da6e88cc25cce5dfbb1517122a2ddb629198"
+    },
+    "2609.03874": {
+      "decision": "needs_evidence",
+      "reason": "SearchTome(영어 교재 18권, 6개 도메인, 목차 기반 검색, 텍스트 입력)는 재사용 가능한 영어 벤치마크로 보이며, 학습·개발·테스트 질의와 Recall@1, Recall@3, nDCG@3 지표도 논문에 명시되어 있다. 그러나 제공된 PDF 텍스트에는 공식 데이터셋이나 코드의 URL이 없다. 초록에는 GitHub와 Hugging Face에 공개했다고만 적혀 있고, 3쪽의 샘플 링크 문구도 주소가 추출되지 않았다. 링크 필드는 PDF가 직접 밝힌 공식 URL이어야 하므로 이를 확인할 수 없는 지금은 propose할 수 없다. 하이퍼링크 주소를 확보한 뒤 en 트랙 text 행으로 다시 검토하는 것이 좋다.",
+      "changes": [],
+      "arxiv_id": "2609.03874",
+      "paper_title": "STAIR (STructure Aware Information Retriever): A novel dataset and LLM based retriever for document structure augmentation",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2609.03874",
+        "sha256": "42dcd80ff2320446da6e55b6660c8655e1b8e33ec44e977ec045d86f398971db",
+        "accessed": "2026-11-27T03:30:38Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 11,
+          "elapsed_seconds": 84.38,
+          "pdf_sha256": "42dcd80ff2320446da6e55b6660c8655e1b8e33ec44e977ec045d86f398971db",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "b600689fe830322b343ed15608c283eb381a70793b19a08af725febfe2b9c863",
+          "page_json_file": "2609.03874.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-27T03:32:11Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2609.03874",
+        "paper_title": "STAIR (STructure Aware Information Retriever): A novel dataset and LLM based retriever for document structure augmentation",
+        "abstract": "Retrieval Augmented Generation (RAG) is a key component for generating accurate and hallucination free answers using Large Language Models (LLMs). LLMs are improving at handling long context, but still suffer from \"lost in the middle\" problem. Thus, precise and accurate retrieval is important. Current retrievers chunk long context into length-based manageable chunks - in the process throwing away rich and informative semantic global structure in the corpus. We introduce a novel retrieval system STAIR that empowers an LLM to exploit global structure in a corpus such as a Table of Contents (ToC) to efficiently store and retrieve information from its model parameters. Our thorough and careful ablation studies with a finetuned Differentiable Search Index (DSI) system show that ToC helps build a low hallucination (less than 0.05%) generative Information Retrieval (IR) system and can generalize to examples where very few training samples are available. To further research in this novel direction of ToC based retrieval we release SearchTome - a diverse benchmark created from 18 books across 6 diverse domains to further research in this novel direction. STAIR achieves a high Recall@1 score of 82.6% on SearchTome as compared to DSI (76.9%), where the difference is found to be statistically significant. STAIR easily beats other strong baselines such as BM25 (59.5%), DPR (68.7%) and out-of-the-box Mistral (13.8%).",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:51:10Z",
+        "input_sha256": "73558ce9b05051730abfa8be3bbbd05c78176ee6efe1032358d820e993cf94d2",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "문서 구조 기반 검색 데이터셋과 LLM 검색기"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "문서 구조 기반 검색 데이터셋·벤치마크 SearchTome 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "528a7731c4a080557d53377affcfc558287322220e4008fec0a4a4a1cd9bd969"
     }
   },
   "processed_comments": [],
@@ -120675,8 +120749,8 @@
         "2611.34862",
         "2611.34925"
       ],
-      "calls": 8,
-      "cost_usd": 6.0032
+      "calls": 9,
+      "cost_usd": 6.8632
     }
   },
   "reaudits": [
