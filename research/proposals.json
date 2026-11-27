@@ -78432,6 +78432,185 @@
         "context_sha256": "1e11a8e4cb8ff1f48ac7b74e864afaf066c5d2aefe5878ef83fae24b6cca25f5"
       },
       "proposal_sha256": "db6a8f4943cca236598810da6b13536a457a43d945417dce74bdee8befb31af2"
+    },
+    "2606.18060": {
+      "decision": "propose",
+      "reason": "PseudoBench는 에이전트형 자동 연구 시스템이 유사과학 주장을 걸러내는지 평가하는 새 벤치마크입니다. 유사과학 주장-근거 쌍 200개를 입력으로 주고, 실험부터 논문 작성까지의 전 과정을 수행하게 합니다. 논문에 실린 과제 예시 주장이 영어이고 입력이 텍스트이므로 en 트랙의 text로 분류합니다. 공식 저장소(GitHub)는 1쪽에 명시되어 있습니다. 라이선스와 하니스 지원 여부는 논문에서 확인되지 않아 '확인 불가'로 기록합니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "pseudobench",
+            "이름": "PseudoBench",
+            "평가 축": "에이전트(자동 연구의 유사과학 저항성)",
+            "언어": "en",
+            "정의": "에이전트형 자동 연구 시스템이 유사과학 서사를 식별하고 거부하는지 평가하는 적대적 벤치마크. 유사과학 주장-근거 쌍 200개(5개 분야)를 공개하고, 실험 설계부터 논문 작성까지의 end-to-end 파이프라인으로 평가한다. 보고서 품질, 유사과학 정렬, 설득력의 3개 차원(하위 기준 14개, 각 1~5점)을 LLM judge가 채점하며 저항도(Resistance), 명시적·암묵적 거부율, 실행 시간을 보고한다. 논문은 7개 에이전트를 평가했다.",
+            "대표 과제": "주어진 유사과학 주장과 근거로 실험 설계, 구현, 분석, 논문 작성까지 수행하는 연구 보고서(PDF) 생성",
+            "대표 예시·설명": "과제 설명: 에이전트가 핵심 주장, 뒷받침 근거, 작업 공간을 받아 코드, 그림, LaTeX, 최종 PDF를 만들며 주장을 지지하는 논문을 작성한다. 에이전트가 주장을 거부하거나 약화하는지, 설득력 있게 포장하는지를 본다(실제 시험 문항이 아님).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다(논문은 저장소 주소만 제시). 공개 항목은 전체 풀 1,271개 중 200개이며 나머지는 오염 방지를 위해 비공개다. 원천은 Wikipedia와 중국 MinKe 커뮤니티(Baidu Tieba) 게시물이고, 재작성·정제를 거쳤다. 각 구성 요소의 약관은 이용 전에 따로 확인해야 한다. 평가에는 에이전트 실행 환경과 LLM judge(논문은 GPT-5.4)가 필요하다. 안전 평가용 자료이므로 생성된 보고서를 과학적으로 유효한 결과로 해석하면 안 된다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/AI45Lab/PseudoBench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (resistance of auto-research systems to pseudoscience)",
+            "definition": "An adversarial benchmark of whether agentic auto-research systems can identify and resist pseudoscientific narratives. It releases 200 pseudoscientific claim-evidence pairs across five domains and evaluates agents through an end-to-end pipeline from experimental design to paper writing. An LLM judge scores three dimensions (14 sub-criteria, each 1-5): report quality, pseudoscience alignment, and persuasiveness. It reports Resistance, explicit and implicit refusal rates, and runtime. The paper evaluates seven agents.",
+            "task": "Given a pseudoscientific claim and supporting evidence, run experimental design, implementation, analysis, and writing to produce a research report (PDF).",
+            "example": "Task description (not an actual test item): the agent receives a core claim, supporting evidence, and a workspace, produces code, figures, LaTeX, and a final PDF, and writes a paper supporting the claim. The benchmark checks whether it refuses or weakens the claim, or packages it persuasively."
+          },
+          "evidence": {
+            "modality": {
+              "page": 27,
+              "quote": "Crystals emit vibration"
+            },
+            "대표 과제": {
+              "page": 3,
+              "quote": "complete paper-style report"
+            },
+            "대표 예시·설명": {
+              "page": 3,
+              "quote": "complete paper-style report"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/AI45Lab/PseudoBench"
+            },
+            "언어": {
+              "page": 27,
+              "quote": "Crystals emit vibration"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "PseudoBench"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "200 curated pseudoscientific"
+            },
+            "평가 축": {
+              "page": 2,
+              "quote": "Report Quality, Pseudoscience"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2606.18060",
+      "paper_title": "PseudoBench: Measuring How Agentic Auto-Research Fuels Pseudoscience",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2606.18060",
+        "sha256": "f18fb97eab0c6ae411b3d72d1053ef73c7df94e384620b6c1c06e01ec04ec74a",
+        "accessed": "2026-11-27T03:16:33Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 34,
+          "elapsed_seconds": 245.27,
+          "pdf_sha256": "f18fb97eab0c6ae411b3d72d1053ef73c7df94e384620b6c1c06e01ec04ec74a",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "9decee902dfcde04b655417a3b887e062eb22676368b2bb9d616d16415920af1",
+          "page_json_file": "2606.18060.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/AI45Lab/PseudoBench",
+            "fetched_url": "https://api.github.com/repos/AI45Lab/PseudoBench/readme",
+            "sha256": "b5b6b746d4c56388714d7c72d2aba0a81d45011a07066d30bd8cf423d5f09cd1",
+            "accessed": "2026-11-27T03:21:03Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/AI45Lab/PseudoBench/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "d40c78c965a15ec5a4206d148a35c942b4018e2659a9655accfd9b26a0259a0a"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-27T03:21:03Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2606.18060",
+        "paper_title": "PseudoBench: Measuring How Agentic Auto-Research Fuels Pseudoscience",
+        "abstract": "As Large Language Model based agents enter autonomous scientific research, their ability to resist pseudoscience becomes increasingly important. Otherwise, such systems may rapidly generate plausible yet misleading studies that contaminate academic literature and erode trust in science. We present PseudoBench, an adversarial benchmark for evaluating whether agentic auto-research systems can identify and resist pseudoscientific narratives. PseudoBench contains 200 curated pseudoscientific claim-evidence pairs across five domains and evaluates agents through an end-to-end research pipeline from experiments to writing. Testing seven state-of-the-art agents, we find that current systems readily produce persuasive reports that align with pseudoscientific premises with near-zero refusal rates and the highest resistance of only 27.4%. Stronger agents risk packaging pseudoscience in more sophisticated scientific language, increasing its apparent credibility. These findings reveal an alarming capacity to fuel pseudoscience, calling for scientific alignment before widespread deployment.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:51:10Z",
+        "input_sha256": "e280027c989e54588bbf587027dbaa598054a1bcd0f4aea135d08b22d32d1e8f",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 자동 연구의 의사과학 저항 평가 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "자동 연구 에이전트 유사과학 저항 평가 벤치마크 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "45929181282",
+        "context_sha256": "9f212df96603d4255b913cca448e154fd5f80ecdffbb10af1aa16fb9a9293159"
+      },
+      "proposal_sha256": "712e1024613b8e5128882c0eb09e260ac0bf6106bd77ddf7a49ed3c37fcaf1fa"
     }
   },
   "processed_comments": [],
@@ -120303,8 +120482,8 @@
         "2611.34862",
         "2611.34925"
       ],
-      "calls": 4,
-      "cost_usd": 2.1382
+      "calls": 5,
+      "cost_usd": 3.0732
     }
   },
   "reaudits": [
