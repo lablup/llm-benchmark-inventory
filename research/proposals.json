@@ -79392,7 +79392,7 @@
     },
     "2610.18052": {
       "decision": "propose",
-      "reason": "BEMULA는 LLM 에이전트의 메모리 삭제 요청 이행을 평가하는 새 벤치마크다. 50개 대화 인스턴스, 135개 삭제 요청, 1,742개 질문으로 구성되며 삭제 요청이 있는 대화와 없는 대화를 짝지은 통제 설계를 쓴다. 과제는 영어 텍스트라 en 트랙의 text로 분류했다. 공식 데이터·코드 링크는 PDF에 명시돼 있다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "reason": "BEMULA는 LLM 에이전트의 메모리 삭제 요청 이행을 평가하는 새 벤치마크다. 50개 대화 인스턴스, 135개 삭제 요청, 1,742개 질문으로 구성되며 삭제 요청이 있는 대화와 없는 대화를 짝지은 통제 설계를 쓴다. 과제는 영어 텍스트라 en 트랙의 text로 분류했다. 공식 카드(저장소 README)에는 라이선스 표기와 lm-eval 언급이 없고 LICENSE 파일 항목도 없다. PDF 어느 쪽에도 라이선스 관련 표현이 없다. 따라서 라이선스는 미표기로, 이용 권한 세 항목은 저작권 전부 보유로, lm-eval 지원은 미표기로 기록하고 모두 부재 증거를 붙였다.",
       "changes": [
         {
           "track": "en",
@@ -79405,12 +79405,12 @@
             "대표 과제": "삭제 요청이 포함된 멀티세션 대화를 순서대로 입력한 뒤, 새 세션에서 메모리만으로 질문에 답하게 하여 5개 스위트를 채점",
             "대표 예시·설명": "사용자가 대화 중 특정 개인 정보를 잊어 달라고 요청하고, 이후 새 세션에서 그 정보를 묻는 질문과 추출 공격 질문에 에이전트가 값을 누설하지 않으면서 무관한 기억은 유지하는지 확인하는 과제(과제 설명)",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했으며 이용 전 저장소에서 확인해야 한다. 논문은 모든 대화가 LLM이 만든 합성 데이터이고 대화 생성 파이프라인이 하나뿐이며 대화형 메모리만 다룬다고 밝힌다. 채점은 LLM 판정(DeepSeek-V4.1-Flash)에 의존하고, 경량판 BEMULA-Lite(짧은 대화·중간 길이 대화 31개, 질문 848개)도 있다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "미표기(논문·공식 저장소 확인)",
+            "상업적 이용": "저작권 전부 보유",
+            "수정·파생": "저작권 전부 보유",
+            "재배포": "저작권 전부 보유",
+            "이용 시 유의사항": "라이선스 미표기(논문·공식 저장소 README 확인). 이용 전 저자 확인 필요. 데이터는 GPT-5.6-Luna로 생성한 합성 데이터이며(논문 15쪽), 외부 데이터셋을 가져다 만든 구성 요소는 논문에 나타나지 않는다. 논문은 모든 대화가 LLM이 만든 합성 데이터이고 대화 생성 파이프라인이 하나뿐이며 대화형 메모리만 다룬다고 밝힌다. 채점은 LLM 판정(DeepSeek-V4.1-Flash)에 의존하고, 경량판 BEMULA-Lite(짧은 대화·중간 길이 대화 31개, 질문 848개)도 있다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/Nboxff/bemula-benchmark"
           },
           "modality": "text",
@@ -79454,9 +79454,107 @@
               "quote": "memory unlearning as"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/Nboxff/bemula-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/Nboxff/bemula-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/Nboxff/bemula-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "재배포": {
+              "source_url": "https://github.com/Nboxff/bemula-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/Nboxff/bemula-benchmark",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "BEMULA 종합 Score (FA × UG, 논문 식 5), 백분율 점수(0–100 단위, %)",
+            "setting": "논문 Table 1(8쪽)의 Backbone: DeepSeek-V4.1-Flash 블록. 전체 BEMULA 벤치마크(50개 인스턴스, 135개 삭제 요청, 1,742개 질문)에서 Full Context LLM과 메모리 시스템 6종을 같은 백본 LLM으로 비교한 한 실험의 결과이며, 답변은 DeepSeek-V4.1-Flash 판정으로 채점했다. 이 점수는 이 논문에서 보고된 결과이며 현재 전역 리더보드가 아니다. 목록의 항목은 모델이 아니라 메모리 시스템(백본 LLM 고정)이다.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "Full Context",
+                "score": "28.5",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Full Context 75.0 53.6 46.0 100.0 32.9 0.7 28.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Naive RAG",
+                "score": "8.2",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Naive RAG 72.8 12.5 64.7 71.1 11.8 0.0 8.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "LangMem",
+                "score": "31.0",
+                "evidence": {
+                  "page": 8,
+                  "quote": "LangMem 92.0 40.6 74.0 89.5 35.7 1.5 31.0"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Mem0",
+                "score": "11.5",
+                "evidence": {
+                  "page": 8,
+                  "quote": "Mem0 87.9 17.0 86.7 71.1 12.6 0.0 11.5"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "A-MEM",
+                "score": "17.7",
+                "evidence": {
+                  "page": 8,
+                  "quote": "A-MEM 73.2 29.5 54.0 93.0 21.2 0.0 17.7"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "LightMem",
+                "score": "10.2",
+                "evidence": {
+                  "page": 8,
+                  "quote": "LightMem 94.6 12.9 94.0 82.5 10.4 0.0 10.2"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "SimpleMem",
+                "score": "16.5",
+                "evidence": {
+                  "page": 8,
+                  "quote": "SimpleMem 90.6 17.9 84.7 90.4 20.0 0.7 16.5"
+                },
+                "open_weight": null
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2610.18052",
@@ -79553,7 +79651,8 @@
         "source_run": "45929181282",
         "context_sha256": "28129f19ca7fb0058a9d897120be466608da4df0a204b5d3cd7a5d3110c133ac"
       },
-      "proposal_sha256": "989f89067bc1009e4016e7de53f78cd571657b5c53a8801554bc32dd11cac38d"
+      "proposal_sha256": "0ddc372c48a2d7de77dfbabff0898c52484f111e4b190b42c2a07980c549353d",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -121437,8 +121536,8 @@
         "2611.34862",
         "2611.34925"
       ],
-      "calls": 17,
-      "cost_usd": 14.4972
+      "calls": 18,
+      "cost_usd": 15.5972
     }
   },
   "reaudits": [
