@@ -720,4 +720,10 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "ObjectGoal navigation that requires opening doors to reach rooms and opening containers to reveal hidden targets (channel, container and mixed splits)",
     "example": "Task description, not an actual test item: the agent receives a target object category and explores a house with closed doors and containers. It must open only the necessary ones and stop within the required distance with the target visible. Unnecessary doors serve as negative controls."
   },
+  "bemula": {
+    "axis": "Agents (memory unlearning: honoring explicit forget requests)",
+    "definition": "A benchmark of whether LLM agents honor explicit user requests to delete information from memory. It has 50 multi-session dialogue instances (746 sessions, 36,900 turns per version), 135 forget requests of six types, and 1,742 test questions. Each dialogue with forget requests is paired with a control version without them. Five test suites (retention, forgetting efficacy, preservation of unrelated memories, relearning, attack robustness) are graded by an LLM judge, with metrics RA, FE, PR, RLA, AR, RPR and Score (percentages). The paper evaluates six memory systems and a Full Context LLM under three backbone LLMs.",
+    "task": "Ingest a multi-session dialogue containing forget requests, then answer test questions in a fresh session from memory alone, scored on five suites.",
+    "example": "Task description: a user asks the agent to forget a piece of personal information during a conversation, then later questions and extraction attacks check whether the agent leaks the value while keeping unrelated memories."
+  },
 };
