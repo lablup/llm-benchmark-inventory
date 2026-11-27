@@ -79699,6 +79699,180 @@
         "reviewed_sha256": "0ddc372c48a2d7de77dfbabff0898c52484f111e4b190b42c2a07980c549353d",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.18161": {
+      "decision": "propose",
+      "reason": "이 논문은 HOI 인식·검출용 영어 yes/no 질의 형식의 제로샷 MLLM 평가 프레임워크를 제안한다. HICO, HICO-DET, V-COCO에 질문-답변 주석을 새로 만들었고, 코드와 변환 데이터는 공개 저장소에 있다고 밝힌다. 과제 입력이 이미지이므로 vision, 질의가 영어이므로 en 트랙의 신규 행으로 제안한다. 라이선스와 lm-eval 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "hoi-zs-mllm",
+            "이름": "Zero-Shot HOI Benchmark for MLLMs (HICO/HICO-DET/V-COCO Q&A)",
+            "평가 축": "이미지(인간-객체 상호작용 인식·검출, 제로샷)",
+            "언어": "en",
+            "정의": "외부 객체 검출기와 MLLM의 제로샷 추론을 결합해 인간-객체 상호작용(HOI)을 인식·검출하는 평가 프레임워크. HICO, HICO-DET, V-COCO에 객체-상호작용 쌍별 질문-답변 주석을 새로 구성했고, 첫 토큰 logit을 상호작용 점수로 바꿔 mAP로 기존 HOI 모델과 비교한다. 프롬프팅 전략 분류 체계와 시각 프롬프트(Objects as Context, Black Other Objects)를 함께 평가한다. HICO는 test 이미지 9,658장, HICO-DET은 Full 600·Rare 138·Non-rare 462 범주 구분으로 mAP를 보고하며, V-COCO는 AP(#1 role, #2 role)를 쓴다.",
+            "대표 과제": "HICO 인식(mAP), HICO-DET·V-COCO 검출(IoU 0.5 기준 mAP/AP), GT 박스를 쓴 HICO-DET 평가",
+            "대표 예시·설명": "이미지와 영어 yes/no 질문(예: 'Is there anybody carrying a backpack?')을 주고, 모델이 yes 토큰을 낼 확률을 해당 상호작용 점수로 사용하는 과제 설명이다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터·코드 라이선스는 확인하지 못했다. 논문 1쪽의 CC-BY-NC-ND 4.0 표기는 원고 판본에 대한 것으로 데이터셋 라이선스가 아니다. 이 벤치마크는 HICO, HICO-DET, V-COCO와 MS-COCO로 사전학습한 YOLO11 검출기를 바탕으로 하므로, 각 구성 요소의 약관은 이용 전에 따로 확인해야 한다. 파이프라인이 COCO 검출기에 의존해 완전한 open-world는 아니며, 이미지×질문 쌍이 많아 평가 비용이 크다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/oriol-rabasseda/mllms-zs-hoi"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (zero-shot human-object interaction recognition and detection)",
+            "definition": "An evaluation framework for zero-shot human-object interaction (HOI) recognition and detection that combines an external object detector with zero-shot MLLM reasoning. It adds new question-answer annotations for each object-interaction pair on HICO, HICO-DET and V-COCO, and converts first-token logits into interaction scores so results can be compared with specialized HOI models by mAP. It also evaluates a taxonomy of prompting strategies and two visual prompts (Objects as Context, Black Other Objects). HICO uses a 9,658-image test set, HICO-DET reports mAP over Full (600), Rare (138) and Non-rare (462) categories, and V-COCO reports AP (#1 role, #2 role).",
+            "task": "HICO recognition (mAP), HICO-DET and V-COCO detection (mAP/AP at IoU 0.5), and HICO-DET with ground-truth boxes",
+            "example": "Task description: given an image and an English yes/no question such as 'Is there anybody carrying a backpack?', the probability of a yes token is used as the score for that interaction."
+          },
+          "evidence": {
+            "modality": {
+              "page": 9,
+              "quote": "Blur the Background"
+            },
+            "대표 과제": {
+              "page": 20,
+              "quote": "pure zero-shot HOI"
+            },
+            "대표 예시·설명": {
+              "page": 28,
+              "quote": "Is there anybody"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/oriol-rabasseda/mllms-zs-hoi"
+            },
+            "언어": {
+              "page": 28,
+              "quote": "Is there anybody"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "Benchmarking MLLMs for"
+            },
+            "정의": {
+              "page": 20,
+              "quote": "pure zero-shot HOI"
+            },
+            "평가 축": {
+              "page": 20,
+              "quote": "pure zero-shot HOI"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.18161",
+      "paper_title": "Benchmarking Multimodal Large Language Models for Zero-Shot Human-Object Interaction",
+      "paper_updated": "2026-10-20T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.18161",
+        "sha256": "c4234d87e4baf44c84080957a914b5b6007b1d3a012db9007036ba6918688a60",
+        "accessed": "2026-11-27T04:04:08Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 29,
+          "elapsed_seconds": 163.22,
+          "pdf_sha256": "c4234d87e4baf44c84080957a914b5b6007b1d3a012db9007036ba6918688a60",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "3a30504ed47b3adc16560cad15ed140021a0154d53386fbbef2c6f9b090da1dd",
+          "page_json_file": "2610.18161.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/oriol-rabasseda/mllms-zs-hoi",
+            "fetched_url": "https://api.github.com/repos/oriol-rabasseda/mllms-zs-hoi/readme",
+            "sha256": "8a0505cb78da0374747c1dd8bcbdc33e5f7a3eaa6969046d16a9d7f2e0b9685f",
+            "accessed": "2026-11-27T04:07:18Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/oriol-rabasseda/mllms-zs-hoi/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-27T04:07:18Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.18161",
+        "paper_title": "Benchmarking Multimodal Large Language Models for Zero-Shot Human-Object Interaction",
+        "abstract": "Multimodal Large Language Models (MLLMs) have demonstrated strong zero-shot reasoning across diverse domains, but their potential for Human-Object Interaction (HOI) remains unexplored. Unlike traditional HOI approaches that rely on extensive labeled datasets and fixed interaction taxonomies, MLLMs offer flexible reasoning, making them well-suited for dynamic, real-world scenarios. In this work, we present the first systematic study of MLLMs for HOI recognition and detection within a pipeline that combines an external object detector for entity localization with zero-shot multimodal reasoning for interaction understanding. We introduce a benchmark framework for principled zero-shot evaluation, consisting of (i) a unified taxonomy of zero-shot prompting strategies, and (ii) a methodology that transforms token-level logits into interaction scores, enabling fair comparison with specialized HOI models under standard metrics. To support prompt-based evaluation, we additionally construct new question-answer annotations for standard HOI datasets, transforming them into a format suitable for MLLMs. Building on this, we propose two visual prompting strategies, namely Objects as Context and Black Other Objects, that guide MLLMs to target objects while preserving scene context. Experiments on HICO, HICO-DET, and V-COCO demonstrate state-of-the-art zero-shot performance, achieving 53.50 mAP on HICO and 23.69 mAP on HICO-DET. Overall, our work provides a principled benchmarking framework for MLLMs in HOI, opening the door to new models and datasets and enabling flexible open-world interaction understanding.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:51:22Z",
+        "input_sha256": "827ecf73a4517e52b01b4eb7a7c391241e8fc9c3235c0362f6b9fc1f6508834e",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "MLLM 인간-사물 상호작용 벤치마크, 시각-언어"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "MLLM 제로샷 HOI 평가 벤치마크 프레임워크 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "45929181282",
+        "context_sha256": "acc8aa610ac645317d92d9edc59dcb3d48c062e65cdcfebfb323570a225032dc"
+      },
+      "proposal_sha256": "5dbf4968fba0c844ff7e0694f3e3755e9a5f4f78761b04e44a233d993222f5f8"
     }
   },
   "processed_comments": [],
@@ -121585,8 +121759,8 @@
         "2611.34862",
         "2611.34925"
       ],
-      "calls": 19,
-      "cost_usd": 16.6611
+      "calls": 20,
+      "cost_usd": 17.6861
     }
   },
   "reaudits": [
