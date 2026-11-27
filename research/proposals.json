@@ -79389,6 +79389,171 @@
       "proposal_sha256": "e1a5b3d4adb55ba80ffba8303aa4a5c8c99f6b967b9012a3a283de82cc26df0c",
       "publication_policy": "complete-evidence-v1",
       "approval_policy": "claude_only"
+    },
+    "2610.18052": {
+      "decision": "propose",
+      "reason": "BEMULA는 LLM 에이전트의 메모리 삭제 요청 이행을 평가하는 새 벤치마크다. 50개 대화 인스턴스, 135개 삭제 요청, 1,742개 질문으로 구성되며 삭제 요청이 있는 대화와 없는 대화를 짝지은 통제 설계를 쓴다. 과제는 영어 텍스트라 en 트랙의 text로 분류했다. 공식 데이터·코드 링크는 PDF에 명시돼 있다. 라이선스와 하니스 지원은 확인하지 못해 '확인 불가'로 기록했다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "bemula",
+            "이름": "BEMULA",
+            "평가 축": "에이전트(메모리 삭제 요청 이행, 메모리 언러닝)",
+            "언어": "en",
+            "정의": "LLM 에이전트가 사용자의 명시적 삭제 요청을 이행하는지 평가하는 메모리 언러닝 벤치마크. 50개 멀티세션 대화 인스턴스(746세션, 버전당 36,900턴), 6가지 유형의 삭제 요청 135개, 테스트 질문 1,742개로 구성된다. 각 대화에는 삭제 요청이 없는 통제 버전이 짝지어진다. 저장, 삭제 효과, 무관한 기억 보존, 유사 사실 재학습, 추출 공격 저항의 5개 테스트 스위트를 LLM 판정으로 채점하며 지표는 RA, FE, PR, RLA, AR, RPR, Score(백분율)이다. 논문은 메모리 시스템 6종과 Full Context를 백본 LLM 3종에서 평가했다.",
+            "대표 과제": "삭제 요청이 포함된 멀티세션 대화를 순서대로 입력한 뒤, 새 세션에서 메모리만으로 질문에 답하게 하여 5개 스위트를 채점",
+            "대표 예시·설명": "사용자가 대화 중 특정 개인 정보를 잊어 달라고 요청하고, 이후 새 세션에서 그 정보를 묻는 질문과 추출 공격 질문에 에이전트가 값을 누설하지 않으면서 무관한 기억은 유지하는지 확인하는 과제(과제 설명)",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터 라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했으며 이용 전 저장소에서 확인해야 한다. 논문은 모든 대화가 LLM이 만든 합성 데이터이고 대화 생성 파이프라인이 하나뿐이며 대화형 메모리만 다룬다고 밝힌다. 채점은 LLM 판정(DeepSeek-V4.1-Flash)에 의존하고, 경량판 BEMULA-Lite(짧은 대화·중간 길이 대화 31개, 질문 848개)도 있다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Nboxff/bemula-benchmark"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (memory unlearning: honoring explicit forget requests)",
+            "definition": "A benchmark of whether LLM agents honor explicit user requests to delete information from memory. It has 50 multi-session dialogue instances (746 sessions, 36,900 turns per version), 135 forget requests of six types, and 1,742 test questions. Each dialogue with forget requests is paired with a control version without them. Five test suites (retention, forgetting efficacy, preservation of unrelated memories, relearning, attack robustness) are graded by an LLM judge, with metrics RA, FE, PR, RLA, AR, RPR and Score (percentages). The paper evaluates six memory systems and a Full Context LLM under three backbone LLMs.",
+            "task": "Ingest a multi-session dialogue containing forget requests, then answer test questions in a fresh session from memory alone, scored on five suites.",
+            "example": "Task description: a user asks the agent to forget a piece of personal information during a conversation, then later questions and extraction attacks check whether the agent leaks the value while keeping unrelated memories."
+          },
+          "evidence": {
+            "modality": {
+              "page": 16,
+              "quote": "Please forget that"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "memory unlearning as"
+            },
+            "대표 예시·설명": {
+              "page": 16,
+              "quote": "Please forget that"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/Nboxff/bemula-benchmark"
+            },
+            "언어": {
+              "page": 16,
+              "quote": "Please forget that"
+            },
+            "이름": {
+              "page": 6,
+              "quote": "BEMULA contains 50"
+            },
+            "정의": {
+              "page": 6,
+              "quote": "BEMULA contains 50"
+            },
+            "평가 축": {
+              "page": 2,
+              "quote": "memory unlearning as"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.18052",
+      "paper_title": "Can Agents Forget When Asked? A Benchmark for Memory Unlearning in LLM Agents",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.18052",
+        "sha256": "983e236cccfaa595b0d66c47c650aac6c24a88cb00ca1b0aeabefe219b415652",
+        "accessed": "2026-11-27T03:56:19Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 25,
+          "elapsed_seconds": 162.42,
+          "pdf_sha256": "983e236cccfaa595b0d66c47c650aac6c24a88cb00ca1b0aeabefe219b415652",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "d39e95fde9afd4a782134845cd76e8da0b0e5476d1644615b71cd93c2539a8d5",
+          "page_json_file": "2610.18052.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Nboxff/bemula-benchmark",
+            "fetched_url": "https://api.github.com/repos/Nboxff/bemula-benchmark/readme",
+            "sha256": "a7a184194d8770f155fb18b2f3e7979810179af42d5c406d8c94c6a024da7863",
+            "accessed": "2026-11-27T03:59:41Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-27T03:59:41Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.18052",
+        "paper_title": "Can Agents Forget When Asked? A Benchmark for Memory Unlearning in LLM Agents",
+        "abstract": "Long-term memory has become a core component of large language model (LLM) agents. As agents accumulate personal information over long-term use, users increasingly ask them to delete sensitive or outdated facts. A memory system should honor such requests. It should remove exactly what was requested and keep the rest of its memory intact. However, existing memory benchmarks evaluate only memory writing, retrieval, and organization, so whether agents can forget at the user's explicit request remains under-evaluated. To address this gap, we propose Bemula, the first benchmark dedicated to memory unlearning. It comprises 50 multi-session dialogue instances, 135 forget requests of six types, and 1,742 test questions. Each dialogue has a control version without the requests, so that only systems that have stored the target can earn credit for forgetting. Across the paired versions, five test suites measure storage, removal of the requested information, preservation of unrelated memories, relearning of similar facts, and resistance to extraction attacks. On Bemula, we evaluate six mainstream memory systems under three backbone LLMs, together with the Full Context LLM on two of them. The results are negative. Across all evaluated systems and backbones, no system passes more than 1.5% of forget requests end to end, and most pass none at all. These systems either leave the requested information extractable under simple attacks or delete far more than requested. Memory unlearning therefore remains an open challenge for agent memory design. We release our data and code at https://github.com/Nboxff/bemula-benchmark.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:51:22Z",
+        "input_sha256": "c657cfa246dfdb6cda203288c745eb628242bd57f4496fdd221ff8693e7362b4",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 메모리 망각 벤치마크, 언어 관련"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "에이전트 메모리 망각 벤치마크 Bemula 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "45929181282",
+        "context_sha256": "28129f19ca7fb0058a9d897120be466608da4df0a204b5d3cd7a5d3110c133ac"
+      },
+      "proposal_sha256": "989f89067bc1009e4016e7de53f78cd571657b5c53a8801554bc32dd11cac38d"
     }
   },
   "processed_comments": [],
@@ -121272,8 +121437,8 @@
         "2611.34862",
         "2611.34925"
       ],
-      "calls": 16,
-      "cost_usd": 13.4425
+      "calls": 17,
+      "cost_usd": 14.4972
     }
   },
   "reaudits": [
