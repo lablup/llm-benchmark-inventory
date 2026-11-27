@@ -79621,7 +79621,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-27T03:59:41Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -79647,12 +79647,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "45929181282",
-        "context_sha256": "28129f19ca7fb0058a9d897120be466608da4df0a204b5d3cd7a5d3110c133ac"
-      },
       "proposal_sha256": "0ddc372c48a2d7de77dfbabff0898c52484f111e4b190b42c2a07980c549353d",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안 내용은 논문 전체 페이지와 공식 저장소 README에 비추어 모두 뒷받침된다. 규모 수치(50개 인스턴스, 746세션, 버전당 36,900턴, 135개 삭제 요청, 1,742개 질문), 6가지 요청 유형, 5개 스위트, 통제 버전 설계, 평가 대상(메모리 시스템 6종과 Full Context, 백본 3종)이 논문 본문과 부록 표에 일치한다. 데이터가 GPT-5.6-Luna로 생성된 합성 데이터라는 점, 채점이 DeepSeek-V4.1-Flash 판정에 의존한다는 점, 경량판 BEMULA-Lite의 규모(31개 인스턴스, 848개 질문)도 확인된다. 영어 텍스트 대화이므로 en 트랙의 text 분류도 타당하다. 권리 항목은 논문 본문 어디에도 데이터나 벤치마크 라이선스 서술이 없고 공식 카드(README)에도 라이선스와 lm-eval 언급이 없다. pdf_mentions도 비어 있어 부재 증거가 충분하다. 따라서 라이선스는 미표기이고 상업적 이용, 수정·파생, 재배포가 모두 저작권 전부 보유로 기록된 조합은 규칙에 맞다. lm-eval 지원 미표기는 지원 여부가 문서화되지 않았다는 뜻으로 허용되는 값이다. 외부 데이터셋을 가져와 구성한 요소는 없고 다른 연구는 방법론적 참고로만 인용되므로, 구성 요소 약관 확인 문구가 없어도 문제가 없다. 추천 목록은 논문 Table 1의 DeepSeek-V4.1-Flash 블록에서 Full Context, Naive RAG, LangMem, Mem0, A-MEM, LightMem, SimpleMem 7개 전부를 같은 조건으로 다뤘고, 점수가 모두 표와 일치한다(28.5, 8.2, 31.0, 11.5, 17.7, 10.2, 16.5). Score가 높을수록 좋은 백분율 지표라는 방향도 맞다. 구성 요소 점수로 종합 점수를 역산해 보아도 표와 일치한다. 표의 SimplMem은 단순 오타이며 같은 페이지 원문 텍스트가 SimpleMem으로 확인해 준다. 공개 가중치 여부는 근거가 없어 null로 두었고 비공개로 취급하지 않았다. 점수는 논문 보고 결과이며 전역 리더보드가 아니라는 점도 명시되어 있다. 그림에만 근거한 주장이나 추출 충돌은 발견되지 않았다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 259831,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2446,
+              "output_tokens_details": {
+                "thinking_tokens": 1446
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 259831,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2446,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 259831,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 259831
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 1.0638528999999999,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "0ddc372c48a2d7de77dfbabff0898c52484f111e4b190b42c2a07980c549353d",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -121536,8 +121582,8 @@
         "2611.34862",
         "2611.34925"
       ],
-      "calls": 18,
-      "cost_usd": 15.5972
+      "calls": 19,
+      "cost_usd": 16.6611
     }
   },
   "reaudits": [
