@@ -83266,6 +83266,101 @@
         "reviewed_sha256": "6c6cc40dad2179d0d7bb61d87f598424f7f37b58882b47d0683707f53d560de2",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2608.26310": {
+      "decision": "needs_evidence",
+      "reason": "이 논문은 전문가가 검증한 벤치마크 ProofLoc-Olympiad(350문항)와 ProofLoc-University(200문항)를 새로 만들었고, 영어 수학 증명에서 첫 오류 단계를 찾는 텍스트 과제이므로 en/text 트랙에 해당할 가능성이 높습니다. 그러나 PDF 32쪽 전체에서 이 데이터셋이나 코드의 공식 URL이 확인되지 않습니다. 참고문헌에 나온 lean-tools-mcp 저장소와 AXLE 문서는 벤치마크 자원이 아니라 평가 도구입니다. 링크는 공식 자료를 PDF가 직접 밝힌 경우에만 쓸 수 있으므로, 공식 자원 URL이 확인될 때까지 제안을 보류합니다.",
+      "changes": [],
+      "arxiv_id": "2608.26310",
+      "paper_title": "FaithSieve: Fine-Grained Evaluation of Math Proofs with Faithful Formal Evidence",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2608.26310",
+        "sha256": "ae2a3463b69a65ed989f3e5ac6c29b004dd98a50eec59d1730d118fb0e06c25d",
+        "accessed": "2026-11-28T03:37:08Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 32,
+          "elapsed_seconds": 89.08,
+          "pdf_sha256": "ae2a3463b69a65ed989f3e5ac6c29b004dd98a50eec59d1730d118fb0e06c25d",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "92d7e10a0e5d5c22e65273f0475cc715f8ab021f9f3ad35187ce2cfe1bada12d",
+          "page_json_file": "2608.26310.pages.json"
+        }
+      },
+      "status": "needs_evidence",
+      "created_at": "2026-11-28T03:38:47Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2608.26310",
+        "paper_title": "FaithSieve: Fine-Grained Evaluation of Math Proofs with Faithful Formal Evidence",
+        "abstract": "Large language models can now generate complex, multi-step mathematical proofs, but reliably determining their correctness and localizing early logical errors remains a critical challenge. Existing evaluation approaches largely depend on model-based natural-language judgments, which often overlook local reasoning gaps. While formal theorem provers like Lean offer a path to rigorous verification, using them to evaluate informal text requires solving locality and semantic mismatches: a prover might bypass a local flaw by proving an overly broad target, or validate an auto-formalized statement that drifts from the original mathematical intent. To address this, we introduce FaithSieve, a Lean-assisted framework for fine-grained evaluation of natural-language mathematical proofs. FaithSieve decomposes coarse proof steps into local reasoning units, extracts typed proof obligations, and verifies them through a formal evaluation agent. Formal validation is gated by semantic alignment scoring, so Lean evidence is incorporated only when the formal statement faithfully preserves the context, objects, and logical form of the original claim. We construct two expert-verified datasets, ProofLoc-Olympiad and ProofLoc-University, to benchmark first-error localization. On the 350-problem Olympiad dataset, FaithSieve using a GPT-5.4 backbone achieves 81.43% exact first-error accuracy, outperforming the direct-judging baseline of 72.29%. Furthermore, on the 200-problem ProofLoc-University benchmark spanning six advanced domains, FaithSieve reaches 84.5% exact accuracy, compared to 75.0% for the direct judge. Our work demonstrates that decomposing proofs into fine-grained units and grounding them with faithful formal evidence significantly improves reliable evaluation of natural-language reasoning.",
+        "paper_updated": "2026-10-15T00:00:00Z",
+        "created_at": "2026-10-20T02:49:12Z",
+        "input_sha256": "387f7fe22f6bee5d4cdc035494ffa3b90c063643fa6db910364a2ce6c3555680",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 수학 증명 세밀 평가 프레임워크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "수학 증명 세부 평가 프레임워크·전문가 검증 데이터셋 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "cf7e101f822e0b12eee883c30871d6dd01ef8a23053c13a722a943853de65203"
     }
   },
   "processed_comments": [],
@@ -125194,8 +125289,8 @@
         "2608.26310"
       ],
       "abstract_attempted": [],
-      "calls": 33,
-      "cost_usd": 32.7939
+      "calls": 34,
+      "cost_usd": 33.7561
     }
   },
   "reaudits": [
