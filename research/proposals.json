@@ -80933,6 +80933,175 @@
         "reviewed_sha256": "d6bebb3abf3d7d11e33ec5fabee86bd4e1320b523449104f6d1e770621566ffe",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.19157": {
+      "decision": "propose",
+      "reason": "DivAlgo는 코드 생성 모델의 알고리즘 다양성을 측정하는 재사용 가능한 새 벤치마크입니다. CodeContests+의 영어 문제 서술과 C++ 사람 풀이로 구성되고 train/val/test 분할(총 7,623 인스턴스)과 지표(VendiCodeX-SFT, AlgoCov)를 제시합니다. 문제 서술이 영어 텍스트이므로 en 트랙의 text 모달리티로 분류했습니다. PDF가 밝힌 공식 URL은 GitHub 저장소 하나입니다. 라이선스 등은 확인하지 못해 '확인 불가'로 두었습니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "divalgo",
+            "이름": "DivAlgo",
+            "평가 축": "코딩(알고리즘 다양성)",
+            "언어": "en",
+            "정의": "CodeContests+ 문제에 대해 알고리즘이 서로 다른 사람 C++ 풀이 2개와 사람 풀이 풀을 묶은 코드 생성 벤치마크. 7,623개 인스턴스를 train 5,623, val 1,000, test 1,000으로 나누고 C++ 풀이 15,246개를 포함한다. 풀이 쌍은 패러다임·기법·자료구조 온톨로지 겹침에 따라 strong, medium, weak, identical로 분류된다. 모델 풀이 집합의 다양성은 VendiCodeX-SFT로, 두 대표 사람 풀이의 포괄도는 AlgoCov로 평가한다. 논문은 24개 모델을 평가했다.",
+            "대표 과제": "프로그래밍 문제에 대해 모델이 여러 개의 알고리즘적으로 다른 정답 C++ 풀이를 생성(i.i.d., verbalized sampling, iterative 생성, steer(A+B))",
+            "대표 예시·설명": "영어 문제 서술을 주고 정답 C++ 풀이를 여러 개 생성하게 한 뒤, 풀이 집합의 알고리즘 다양성(VendiCodeX-SFT)과 두 대표 사람 풀이의 포괄도(AlgoCov)를 사람 풀이와 비교하는 과제 설명이다. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 아직 확인하지 않았다. 이 벤치마크는 CodeContests+의 문제와 사람 제출 풀이에서 만들었으므로(논문 3쪽) 각 구성 요소의 고유 약관을 이용 전에 따로 확인해야 한다. 풀이 쌍의 다양성 라벨은 LLM 판정과 경량 유사도 지표로 자동 구성되었고 사람 주석이 아니다. 풀이 언어는 C++로 한정된다. 채점에는 코드 컴파일·실행 환경이 필요하다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/anubhav-jangra/divalgo"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (algorithmic diversity)",
+            "definition": "A code generation benchmark pairing, for each CodeContests+ problem, two algorithmically distinct human C++ solutions with a pool of human solutions. It has 7,623 instances (5,623 train, 1,000 val, 1,000 test) and 15,246 C++ solutions. Solution pairs are classified as strong, medium, weak, or identical by overlap in a paradigm, technique, and data-structure ontology. Diversity of a model's solution set is measured with VendiCodeX-SFT, and coverage of the two representative human solutions with AlgoCov. The paper evaluates 24 models.",
+            "task": "Given a programming problem, a model generates multiple correct C++ solutions with different algorithms (i.i.d., verbalized sampling, iterative generation, steer (A+B)).",
+            "example": "Task description, not an actual test item: an English problem statement is given and the model produces several correct C++ solutions. The diversity of the set (VendiCodeX-SFT) and its coverage of the two representative human solutions (AlgoCov) are compared with human solutions."
+          },
+          "evidence": {
+            "modality": {
+              "page": 2,
+              "quote": "The Kingdom of"
+            },
+            "대표 과제": {
+              "page": 1,
+              "quote": "algorithmically diverse solutions"
+            },
+            "대표 예시·설명": {
+              "page": 2,
+              "quote": "The Kingdom of"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/anubhav-jangra/divalgo"
+            },
+            "언어": {
+              "page": 2,
+              "quote": "The Kingdom of"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "We propose the"
+            },
+            "정의": {
+              "page": 4,
+              "quote": "7,623"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "algorithmically diverse solutions"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.19157",
+      "paper_title": "DivAlgo: A systematic evaluation of algorithmic diversity for code generation models",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.19157",
+        "sha256": "9e267cb8803828b139bbdfd669adc26a51a1d5346a60f7ff956a350393e72081",
+        "accessed": "2026-11-28T03:06:22Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 24,
+          "elapsed_seconds": 70.28,
+          "pdf_sha256": "9e267cb8803828b139bbdfd669adc26a51a1d5346a60f7ff956a350393e72081",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "bfa66c705bbcfe50c76ea7fb4d8552b0c37cb74e9b4884b3eba6f4a4b2ab0356",
+          "page_json_file": "2610.19157.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/anubhav-jangra/divalgo",
+            "fetched_url": "https://api.github.com/repos/anubhav-jangra/divalgo/readme",
+            "sha256": "2fb0a983e4350a0dbbc92adb4313092f7f5d7f126f5431ec9e9210849c58b94b",
+            "accessed": "2026-11-28T03:07:57Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/anubhav-jangra/divalgo/license",
+              "name": "LICENSE",
+              "spdx_id": "MIT",
+              "sha256": "218d3af176fb756acce4cb14584c049f17ff84d6bb5099529ae6a461dacf57fb"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-28T03:07:57Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.19157",
+        "paper_title": "DivAlgo: A systematic evaluation of algorithmic diversity for code generation models",
+        "abstract": "Code generation models are actively being used in professional and educational settings. However, the competence of large language models (LLMs) to generate algorithmically diverse code remains largely unknown. We propose the DivAlgo benchmark, a large-scale dataset constituting algorithmically diverse solutions to programming problems. We also introduce a lightweight similarity metric to enable large-scale evaluation. Our experiments across 24 modern code generation models found that uncontrolled model-generated code is significantly less diverse than human solutions (capturing ~31% of human diversity), and even the best diverse code generation strategy could achieve only ~70% of human diversity. Moreover, while it was possible to steer the models to generate solutions based on human strategies, they were unable to reproduce the diversity of the human solutions. These findings indicate the limitations of code generation models in capturing the algorithmic diversity humans exhibit, and that overexposure to model-generated code can narrow programmers' algorithmic vocabulary.",
+        "paper_updated": "2026-10-13T20:24:42Z",
+        "created_at": "2026-10-19T13:51:34Z",
+        "input_sha256": "07209cd9c40198b771155efa49b8cb2a2704f3dc612ed568825a52678496885f",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "코드 생성 알고리즘 다양성 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "코드 생성 알고리즘 다양성 평가용 DivAlgo 데이터셋·유사도 지표 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "46098694122",
+        "context_sha256": "3df02d6eb4205274f518f248341d882859586fc9e2420d2e39a225a1c1655d15"
+      },
+      "proposal_sha256": "dafe9cdf49b7da690e3b584b3fae0a353c822df9e051d6114c08c828fabd3f73"
     }
   },
   "processed_comments": [],
@@ -122843,8 +123012,8 @@
         "2610.19157"
       ],
       "abstract_attempted": [],
-      "calls": 11,
-      "cost_usd": 11.3432
+      "calls": 12,
+      "cost_usd": 12.3801
     }
   },
   "reaudits": [
