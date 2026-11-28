@@ -79889,6 +79889,164 @@
       },
       "issue_url": null,
       "proposal_sha256": "1103beed577934f07f684aa1a8a01af45f8f5c58f5e85d92aad93446994f7479"
+    },
+    "2610.18569": {
+      "decision": "propose",
+      "reason": "CREATE는 이미지 3장의 공통 연결 개념을 찾는 시각 원격연상검사(Visual RAT) 퍼즐 155개로 이루어진 재사용 가능한 새 벤치마크이며, 기존 인벤토리에 같은 항목이 없다. 프롬프트가 영어이므로 en 트랙, 이미지 입력이 필요하므로 vision으로 분류했다. 논문은 80개 퍼즐 부분집합으로 사람 실험(N=25)을 하고 VLM 11종을 평가했으며, 공식 코드·데이터 주소는 1쪽 각주에 있다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 두었다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "create",
+            "이름": "CREATE",
+            "평가 축": "이미지(시각 창의 연상: 시각 원격연상검사)",
+            "언어": "en",
+            "정의": "세 장의 서로 달라 보이는 이미지에서 공통 연결 개념(정답 단어)을 찾는 시각 Remote Associates Test 퍼즐 155개로 구성된 벤치마크. LLM으로 만든 텍스트 RAT 후보를 필터링하고 스톡 사진을 수작업으로 붙인 반자동 구축이며, is-a, part-of, used-for, symbol-of 관계를 다룬다. 사람 실험(80개 퍼즐 부분집합, 참가자 25명, 퍼즐당 5명)으로 난이도를 검증했다. 논문은 VLM 11종을 제로샷, 상세 프롬프트, 단계별, 2-shot, 텍스트 전용 설정에서 평가했다. 주 지표는 정답 개념 일치율(%)이며 LLM judge가 채점한다.",
+            "대표 과제": "세 장의 단서 이미지에서 공통 연결 개념 찾기(shared concept identification)",
+            "대표 예시·설명": "세 이미지(grasshopper, sidecar, screwdriver)가 하나의 정답 단어(cocktail)로 연결되는 과제로, 모델은 이미지의 표면적 내용이 아니라 다른 의미를 추상해 공통 개념을 답해야 한다(과제 설명).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋 라이선스는 확인하지 못했다. 이미지는 무료 스톡 사진 플랫폼(Unsplash, Pexels)에서 가져왔고(논문 3쪽, 5쪽), 저장소 자체의 라이선스와 별개로 각 이미지 출처의 약관을 이용 전에 따로 확인해야 한다. 채점에 LLM judge(논문은 Gemini-3.5-Flash-Lite 사용)가 필요하다. 사람 실험은 80개 퍼즐 부분집합에서만 수행되었고 논문 본문의 모델 점수도 이 부분집합 기준이다. 논문 수치는 해당 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/CeYang214/CREATEivity-benchmark"
+          },
+          "modality": "vision",
+          "english_copy": {
+            "axis": "Images (visual creativity: visual Remote Associates Test)",
+            "definition": "A benchmark of 155 visual Remote Associates Test puzzles in which a solver must find the shared concept connecting three seemingly dissimilar images. It was built semi-automatically: LLM-generated text RAT candidates were filtered and then paired with stock photos by hand, covering is-a, part-of, used-for and symbol-of relations. A human study (80-puzzle subset, 25 participants, 5 per puzzle) validates difficulty. The paper evaluates 11 VLMs under zero-shot, detailed, stepwise, two-shot and text-only settings. The main metric is accuracy of the identified shared concept (%), graded by an LLM judge.",
+            "task": "Shared concept identification from three cue images",
+            "example": "Task description: three images (a grasshopper, a sidecar, a screwdriver) are connected by the answer word cocktail. The model must abstract the alternate sense of each image rather than describe it literally."
+          },
+          "evidence": {
+            "modality": {
+              "page": 12,
+              "quote": "What common concept"
+            },
+            "대표 과제": {
+              "page": 12,
+              "quote": "What common concept"
+            },
+            "대표 예시·설명": {
+              "page": 1,
+              "quote": "The three cue"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "github.com/CeYang214/CREATEivity-benchmark"
+            },
+            "언어": {
+              "page": 12,
+              "quote": "What common concept"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "benchmark containing 155"
+            },
+            "정의": {
+              "page": 1,
+              "quote": "benchmark containing 155"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "benchmark containing 155"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.18569",
+      "paper_title": "CREATE: Creativity Evaluation of VLMs using the Visual Remote Associates Test",
+      "paper_updated": "2026-10-14T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.18569",
+        "sha256": "ced99f387acd5fadd03d646d34c51fb488689c541693830f9ea2d54629eb6876",
+        "accessed": "2026-11-28T02:52:49Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 18,
+          "elapsed_seconds": 61.51,
+          "pdf_sha256": "ced99f387acd5fadd03d646d34c51fb488689c541693830f9ea2d54629eb6876",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 1,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "2433fe656709fc542ce36416c5b2efc913ad06b25393e885c2814c4a9bf7afd9",
+          "page_json_file": "2610.18569.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/CeYang214/CREATEivity-benchmark",
+            "fetched_url": "https://api.github.com/repos/CeYang214/CREATEivity-benchmark/readme",
+            "sha256": "02550909d4bfaa09ffedd65fbdd6256c0df8f91efc5497702fde8f2abecc686c",
+            "accessed": "2026-11-28T02:54:18Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-28T02:54:18Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.18569",
+        "paper_title": "CREATE: Creativity Evaluation of VLMs using the Visual Remote Associates Test",
+        "abstract": "Vision language models (VLMs) are used in creative tasks such as visual storytelling, design ideation, art interpretation, and advertising. Yet we lack principled ways to measure the lateral reasoning of these models compared to human potential. We introduce CREATE, a semi-automatically constructed benchmark containing 155 visual Remote Associates Test problems. These problems require a solver to find an underlying connection among three seemingly dissimilar images. We conduct a human study (N=25) to validate and ground the quality of our benchmark, and evaluate 11 VLMs. Our findings show that most VLMs underperform humans on this task. Our experiments indicate that the associative ability of VLMs depends on the cue concepts provided in the text and does not universally extend to visual puzzles.",
+        "paper_updated": "2026-10-14T00:00:00Z",
+        "created_at": "2026-10-19T13:51:22Z",
+        "input_sha256": "6e17b0a7c1876b4f7d3f02ef60d8ce968314b06d410857328200602fdda4ccf0",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "VLM 창의성 평가 벤치마크, 시각-언어 관련"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "VLM 창의성 시각 RAT 벤치마크 CREATE 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "46098694122",
+        "context_sha256": "200d83991dd19c851799bc5d9b269e0662b0f8d28d6d7b60e496aab36a69e70a"
+      },
+      "proposal_sha256": "421c333719252656a8f24a126bd4599a2f774490ce35418fcb116b75f62280ef"
     }
   },
   "processed_comments": [],
@@ -121792,8 +121950,8 @@
         "2610.18569"
       ],
       "abstract_attempted": [],
-      "calls": 2,
-      "cost_usd": 1.9725
+      "calls": 3,
+      "cost_usd": 2.925
     }
   },
   "reaudits": [
