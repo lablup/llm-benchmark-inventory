@@ -83614,6 +83614,92 @@
         "context_sha256": "830ae78c190b140621b3b8dc57b13d361838caa06460f3892b1e9973f1d592bd"
       },
       "proposal_sha256": "8cb091c5ecf9b766e01e380f565c790290fe5d976e25ea42d4a7a0e8efbcef0f"
+    },
+    "2610.19330": {
+      "decision": "exclude",
+      "reason": "NavAble은 BLV 보행 보조용 접근성 객체 11종의 픽셀 단위 분할 데이터셋과 합성 데이터 생성 파이프라인으로, 주 평가는 DeepLabv3+, SegFormer, Mask2Former, SAN 같은 전통적 분할 모델의 mIoU, 정밀도, 재현율이다. LLM·VLM 벤치마크라기보다 일반 컴퓨터 비전 데이터셋에 가깝다. 표 2에서 Gemini, Qwen3-VL 등 VLM을 참고용으로 평가하지만 논문이 이를 배포 가능한 기준선이 아닌 참고 지표로 한정한다. 또한 PDF에는 한국어 또는 영어 과제 지시문, 프롬프트 템플릿, 선택지 인용이 없다. 클래스 이름 외에는 과제 언어를 뒷받침할 증거가 없어 ko/en 트랙을 정할 수 없다. 논문 본문이 영어라는 사실만으로 언어를 추정할 수 없다. 참고로 초록의 수치(41K·8K 이미지, 565개 에셋)와 PDF 본문의 수치(36K·5.5K 이미지, 500개 에셋)가 서로 달라 규모 정보도 확정하기 어렵다. 공식 링크(huggingface.co/datasets/NavAble/NeurIPS_2026_BLV)는 PDF에 있으나, 위 이유로 인벤토리 행은 제안하지 않는다.",
+      "changes": [],
+      "arxiv_id": "2610.19330",
+      "paper_title": "NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.19330",
+        "sha256": "94c9b2dd7c953bfd2772b6db280e6c1f59cb684a04e10831472e541e4b6fc1b2",
+        "accessed": "2026-11-28T03:51:38Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 23,
+          "elapsed_seconds": 70.54,
+          "pdf_sha256": "94c9b2dd7c953bfd2772b6db280e6c1f59cb684a04e10831472e541e4b6fc1b2",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "c82be82452d2f7fff5d8cb1e5635fa977f11a85986b4721bf28dc622a31a2907",
+          "page_json_file": "2610.19330.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-28T03:53:03Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.19330",
+        "paper_title": "NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation",
+        "abstract": "Reliable recognition of accessibility-critical objects (e.g., audible pedestrian signals, door-activation buttons, and handrails) is essential for assistive navigation technologies that support safe, independent mobility for blind and low-vision (BLV) users. Yet these categories are underrepresented in existing large-scale vision datasets, and the few datasets that include them suffer from limited class coverage, inconsistent annotations, and poor diversity. We introduce NavAble, a large-scale dataset spanning 11 accessibility-critical object classes, combining 41K curated open-source images with 8K newly collected, densely annotated real-world images. To extend scale and diversity, we develop a synthetic data generation pipeline that renders high-fidelity 3D assets across 37 environments under diverse styles and viewpoints, yielding 452K frames with rich ground-truth annotations from 565 assets. The pipeline minimizes manual effort by combining automated web image crawling, VLM-based filtering, SAM 3D-based asset generation, and convenient camera trajectory configuration, enabling large-scale data generation at a diversity unattainable through manual collection. Experiments show that fine-tuning existing segmentation models on the NavAble Dataset achieves reliable accessibility-object segmentation (>80% mIoU on our held-out test set). We also demonstrate the effectiveness of synthetic data augmentation, which yields up to +3.5 mIoU over real-world-only fine-tuning. Beyond benchmark evaluation, validation on egocentric data from two mobility-assistive robots demonstrates improved perception reliability in real-world navigation scenarios. Together, NavAble establishes a scalable foundation for BLV navigation perception, directly addressing the data scarcity and embodiment gaps. The dataset and pipeline are publicly available at https://huggingface.co/datasets/NavAble/NeurIPS_2026_BLV.",
+        "paper_updated": "2026-10-14T00:14:14Z",
+        "created_at": "2026-10-19T13:51:34Z",
+        "input_sha256": "4fecf2a5844f2aafcae56dfd62e4ba0ff274d6ba579ca1e620f6c92ad27baa0c",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "시각장애인 내비게이션 데이터셋과 파이프라인"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "시각 장애 내비게이션용 대규모 데이터셋·합성 생성 파이프라인 공개"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "247fc69a11a524cc2b35d7d6b5fc089424c8fa8d023adad0a96ec5bffc16364b"
     }
   },
   "processed_comments": [],
@@ -125549,8 +125635,8 @@
         "2610.19330"
       ],
       "abstract_attempted": [],
-      "calls": 37,
-      "cost_usd": 36.8893
+      "calls": 38,
+      "cost_usd": 37.8873
     }
   },
   "reaudits": [
