@@ -81651,6 +81651,190 @@
       },
       "issue_url": null,
       "proposal_sha256": "b427a44d2c46c2d9948a54ce2c54150b7a10662316d1c5a7d7efe17bf2d16a19"
+    },
+    "2511.04473": {
+      "decision": "propose",
+      "reason": "이 논문은 Wikidata 기반 지식그래프 QA 벤치마크 GTSQA(train 30,477 / test 1,622문항)를 새로 공개하고 정답 부분그래프를 함께 제공한다. 질문이 영어이고 텍스트만 쓰므로 en 트랙의 text 행으로 제안한다. 기존 인벤토리에 같은 벤치마크는 없다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 PDF에서 확인하지 못해 '확인 불가'로 둔다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "gtsqa",
+            "이름": "GTSQA",
+            "평가 축": "지식그래프 QA(그래프 검색·멀티홉 추론)",
+            "언어": "en",
+            "정의": "ogbl-wikikg2에서 생성하고 2025년 7월 20일자 Wikidata 덤프로 검증한 합성 KGQA 데이터셋. 총 32,099문항(train 30,477, test 1,622)이며 정답 부분그래프의 구조 유형 27종을 포함한다. 문항마다 시드 엔티티, SPARQL 질의, 정답 부분그래프가 제공된다. test 분할은 학습에 없던 정답 노드, 그래프 구조, 관계 유형에 대한 제로샷 일반화를 측정하도록 설계됐다. 지표는 EM 기반 Hits·Recall, 정답 트리플의 Recall·Precision·F1이다. 평가 프레임워크 SynthKGQA와 함께 공개됐다.",
+            "대표 과제": "시드 엔티티가 주어진 상태에서 지식그래프에서 근거 트리플(부분그래프)을 검색하고 영어 질문에 답하기",
+            "대표 예시·설명": "영어 질문(예: 투발루의 국가를 작곡한 사람은 누구인가)에 대해, 시드 엔티티에서 답 노드까지의 근거 트리플을 그래프에서 찾아 답하는 과제",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "데이터셋·코드의 라이선스는 PDF에서 확인하지 못했다. 이 벤치마크는 ogbl-wikikg2와 Wikidata를 바탕으로 구성되므로 각 구성 요소의 약관을 이용 전에 따로 확인해야 한다. 질문과 패러프레이즈는 LLM(GPT-4.1 등)이 생성했다. 시드 엔티티를 미리 제공하므로 엔티티 링킹은 평가 범위 밖이다. 대규모 KG 검색기 비교에는 공식 제공 질문별 서브그래프(최대 30,000 엣지)를 써야 한다고 논문이 밝힌다. 논문의 모델 비교는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://huggingface.co/datasets/Graphcore/GTSQA"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Knowledge-graph QA (graph retrieval and multi-hop reasoning)",
+            "definition": "A synthetic KGQA dataset generated from ogbl-wikikg2 and validated against the 20 July 2025 Wikidata dump. It has 32,099 questions (30,477 train, 1,622 test) covering 27 ground-truth subgraph structure types. Each item provides seed entities, a SPARQL query, and the ground-truth answer subgraph. The test split is designed to measure zero-shot generalization to unseen answer nodes, graph structures, and relation types. Metrics are EM-based Hits and Recall, plus Recall, Precision and F1 of ground-truth triples. It is released together with the SynthKGQA generation framework.",
+            "task": "Given seed entities, retrieve the supporting triples (the answer subgraph) from a knowledge graph and answer an English question.",
+            "example": "Task description: for an English question such as who composed the national anthem of Tuvalu, find the supporting triples from the seed entity to the answer node in the graph and answer."
+          },
+          "evidence": {
+            "modality": {
+              "page": 28,
+              "quote": "Who composed the"
+            },
+            "대표 과제": {
+              "page": 2,
+              "quote": "32,099 questions spanning"
+            },
+            "대표 예시·설명": {
+              "page": 28,
+              "quote": "Who composed the"
+            },
+            "링크": {
+              "page": 2,
+              "quote": "huggingface.co/datasets/Graphcore/GTSQA"
+            },
+            "언어": {
+              "page": 28,
+              "quote": "Who composed the"
+            },
+            "이름": {
+              "page": 2,
+              "quote": "Ground-Truth Subgraphs for"
+            },
+            "정의": {
+              "page": 2,
+              "quote": "32,099 questions spanning"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "Knowledge Graph Question"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2511.04473",
+      "paper_title": "Ground-Truth Subgraphs for Better Training and Evaluation of Knowledge Graph Augmented LLMs",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2511.04473",
+        "sha256": "6589c0d61b96633c6b548f17557e9662c4a0cc93c74d46068a52e4564ac551dc",
+        "accessed": "2026-11-28T03:17:13Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 44,
+          "elapsed_seconds": 117.7,
+          "pdf_sha256": "6589c0d61b96633c6b548f17557e9662c4a0cc93c74d46068a52e4564ac551dc",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "b050289c8e99cdaa3ed4bdd6f9c10194a0c8861b1cfa1593c15033bc2d24295e",
+          "page_json_file": "2511.04473.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://huggingface.co/datasets/Graphcore/GTSQA",
+            "fetched_url": "https://huggingface.co/datasets/Graphcore/GTSQA/raw/main/README.md",
+            "sha256": "9eb04d9a84d5ba311de07a724bf12ef8e4860339f2ae4eb287917db7df8eec29",
+            "accessed": "2026-11-28T03:19:36Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-28T03:19:36Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2511.04473",
+        "paper_title": "Ground-Truth Subgraphs for Better Training and Evaluation of Knowledge Graph Augmented LLMs",
+        "abstract": "Retrieval of information from graph-structured knowledge bases represents a promising direction for improving the factuality of LLMs. While various solutions have been proposed, a comparison of methods is difficult due to the lack of challenging QA datasets with ground-truth targets for graph retrieval. We present SynthKGQA, an LLM-powered framework for generating high-quality Knowledge Graph Question Answering datasets from any Knowledge Graph, providing the full set of ground-truth facts in the KG to reason over questions. To demonstrate its utility, we apply SynthKGQA to ogbl-wikikg2, a Wikidata-derived KG, and validate generated items against an up-to-date dump of Wikidata to create GTSQA. This new dataset is specifically designed to test zero-shot generalization with respect to unseen graph structures and relation types, enabling us to analyze the abilities and limitations of SOTA graph retrieval approaches at an unprecedented level of granularity. We also show that KG retrievers trained on GTSQA can transfer to a human-curated benchmark, and that the ground-truth subgraphs produced by SynthKGQA provide a better training supervision signal than previously-used heuristics.",
+        "paper_updated": "2026-10-15T00:00:00Z",
+        "created_at": "2026-10-20T02:49:12Z",
+        "input_sha256": "6329288a7962f7ccf00934ba551e625b0c323ab803c089bb7df05c5178016b4d",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "지식그래프 기반 LLM 평가 데이터셋"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "KGQA 데이터셋 생성 프레임워크 및 GTSQA 데이터셋 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "46098694122",
+        "context_sha256": "84badcf98e08d61aa1dd533225e6f757bc42eafc62c85d8b7887bce3cd422f61"
+      },
+      "proposal_sha256": "29d0ec4eb7386ffe4f4d8f1ae4b407dde1ece8fa04ae7182093a28937b4eb611"
     }
   },
   "processed_comments": [],
@@ -123568,8 +123752,8 @@
         "2511.04473"
       ],
       "abstract_attempted": [],
-      "calls": 17,
-      "cost_usd": 17.3446
+      "calls": 18,
+      "cost_usd": 18.4123
     }
   },
   "reaudits": [
