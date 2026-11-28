@@ -83700,6 +83700,165 @@
       },
       "issue_url": null,
       "proposal_sha256": "247fc69a11a524cc2b35d7d6b5fc089424c8fa8d023adad0a96ec5bffc16364b"
+    },
+    "2610.19433": {
+      "decision": "propose",
+      "reason": "EvoProbe는 Cybench를 시드로 삼아 영어 지시문 기반 사이버보안 에이전트 과제를 생성·검증하고 하위 과제 점수와 다중 심사 궤적 평가로 채점하는 벤치마크 진화 프레임워크이다. 검증을 거친 66개 과제(R1 48개, R2 18개)와 Outcome, Pass@3, Pass^3, 궤적 점수 지표를 제시하므로 재사용 가능한 평가 체계로 보고 en 트랙 신규 행으로 제안한다. 과제는 영어 프롬프트와 Harbor 형식으로 생성되며 입력은 텍스트뿐이라 text로 분류한다. PDF가 명시한 공식 자원은 코드 저장소 하나뿐이고 66개 과제 데이터셋을 별도로 공개한다는 언급은 확인하지 못했으므로, 이 점은 이용 시 유의사항에 적었다. 라이선스와 lm-eval 지원은 확인하지 않아 '확인 불가'로 둔다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "evoprobe",
+            "이름": "EvoProbe",
+            "평가 축": "에이전트(사이버보안 CTF, 평가 기반 벤치마크 진화)",
+            "언어": "en",
+            "정의": "진단 평가 결과를 다음 과제 생성에 되먹이는 닫힌 루프의 벤치마크 진화 프레임워크. Cybench를 시드로 Web, Reverse, Pwn, Misc, Forensics, Crypto 6개 범주에서 생성·검증한 66개 과제(R1 48개, R2 18개)를 8개 모델로 평가했다. 하위 과제 점수와 단계별(정찰, 취약점 분석, 공격 실행, 플래그 획득) 점수, 다중 심사 궤적 평가(5개 차원, 각 0–20점)를 사용한다. 지표는 Outcome(평균 과제 점수, 0–10), 궤적 점수(0–100), Pass@3, Pass^3이며 과제당 3회 실행한다. 논문 보고 결과는 해당 논문 조건의 값이며 현재 전역 리더보드가 아니다.",
+            "대표 과제": "Web, Reverse, Pwn, Misc, Forensics, Crypto 범주의 실행 가능한 CTF 과제를 Docker 환경에서 풀어 플래그를 획득",
+            "대표 예시·설명": "과제 설명: 에이전트가 instruction.md의 영어 지시문과 격리된 Docker 환경에서 서비스를 탐색하고 하위 과제별 점수를 얻으며 최종 플래그를 제출한다. 실제 시험 문항이 아니다.",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포 조건은 확인하지 못했다. PDF는 EvoProbe 소스 코드의 공개 사실만 밝히고 66개 과제 데이터셋의 별도 공개 여부는 밝히지 않았다. 과제는 Cybench를 시드로 LLM이 생성했고 사람 검수를 거쳤으므로, 시드와 구성 요소의 약관은 이용 전에 따로 확인해야 한다. 실행에는 Harbor, Docker, LLM API 환경이 필요하다. 사이버보안 이중 용도 과제라 이용 범위를 점검해야 한다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/Qhovo1/EvoProbe"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Agents (cybersecurity CTF, evaluation-driven benchmark evolution)",
+            "definition": "A closed-loop benchmark evolution framework that feeds diagnostic evaluation results back into task generation. Seeded with Cybench, it generated and validated 66 tasks (48 in R1, 18 in R2) across six categories (Web, Reverse, Pwn, Misc, Forensics, Crypto), evaluated on eight models. It uses subtask and phase-level scores (reconnaissance, vulnerability analysis, exploitation, flag capture) and multi-judge trajectory evaluation (five dimensions, 0-20 each). Metrics are Outcome (mean task score, 0-10), Trajectory Score (0-100), Pass@3 and Pass^3, with three runs per task. Reported results hold under the paper's conditions and are not a current global leaderboard.",
+            "task": "Solve executable CTF tasks in Docker environments across Web, Reverse, Pwn, Misc, Forensics and Crypto and capture the flag.",
+            "example": "Task description, not an actual test item: an agent reads an English instruction.md, explores a service in an isolated Docker environment, earns subtask scores, and submits the final flag."
+          },
+          "evidence": {
+            "modality": {
+              "page": 15,
+              "quote": "Create a NEW"
+            },
+            "대표 과제": {
+              "page": 5,
+              "quote": "Web, Reverse, Pwn,"
+            },
+            "대표 예시·설명": {
+              "page": 15,
+              "quote": "Create a NEW"
+            },
+            "링크": {
+              "page": 1,
+              "quote": "https://github.com/Qhovo1/EvoProbe"
+            },
+            "언어": {
+              "page": 15,
+              "quote": "Create a NEW"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "EvoProbe"
+            },
+            "정의": {
+              "page": 5,
+              "quote": "Outcome (mean task"
+            },
+            "평가 축": {
+              "page": 5,
+              "quote": "Web, Reverse, Pwn,"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2610.19433",
+      "paper_title": "EvoProbe: Evaluation-Driven Benchmark Evolution for LLM Agents",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.19433",
+        "sha256": "01df1779730ab75ec591bbe9ed0223911e31d2dca7082b5358420b4079577846",
+        "accessed": "2026-11-28T03:53:17Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 19,
+          "elapsed_seconds": 61.54,
+          "pdf_sha256": "01df1779730ab75ec591bbe9ed0223911e31d2dca7082b5358420b4079577846",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "58911a5901275b3d6f347ef1a1cba1ec092e140376b33b957115bbc5e303477b",
+          "page_json_file": "2610.19433.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/Qhovo1/EvoProbe",
+            "fetched_url": "https://api.github.com/repos/Qhovo1/EvoProbe/readme",
+            "sha256": "f190cd7a0dd4a9739d928f05c0a536d13e2cf0821c174280021f717f8f57888e",
+            "accessed": "2026-11-28T03:54:45Z",
+            "license_file": null
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-28T03:54:45Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2610.19433",
+        "paper_title": "EvoProbe: Evaluation-Driven Benchmark Evolution for LLM Agents",
+        "abstract": "Static benchmarks for large language model (LLM) agents face saturation and data contamination risks, motivating continual updates to evaluation tasks. However, aggregate scores and success rates offer limited insight into specific problem-solving bottlenecks and provide limited guidance for subsequent task design. We propose EvoProbe, an evaluation-driven benchmark evolution framework that integrates task generation, diagnostic evaluation, and feedback-driven regeneration into a closed loop. It combines verifiable subtask outcome scoring with evidence-supported multi-judge trajectory evaluation and distills phase-level bottlenecks, success patterns, and failure patterns into diagnostic feedback for generating new executable tasks. Across two rounds of cybersecurity experiments, evaluations of eight models on 66 tasks reveal phase-level performance differences and common failure patterns beyond aggregate scores. In a cross-round comparison with the Examiner model set and solver configuration held fixed, all eight models achieve lower Outcome scores on the updated tasks, with relative decreases of 11.8\\% in mean Outcome and 40.0\\% in mean Pass\\textasciicircum{}3. These results support using fine-grained diagnostics to guide iterative task updates and probe agents' current capabilities and limitations.",
+        "paper_updated": "2026-10-14T02:27:06Z",
+        "created_at": "2026-10-19T13:51:34Z",
+        "input_sha256": "2b907ae6ac87ac4c9cb0e6069470fb46e94ccaa951a6fb28c8e58316cb984669",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 에이전트 벤치마크 진화 프레임워크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "평가 기반 벤치마크 진화 프레임워크 EvoProbe 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "46098694122",
+        "context_sha256": "440a61657dc47270796b5da2393fa05e96811c2a885a072d648ceae967756244"
+      },
+      "proposal_sha256": "0b3cec6eea40b937cd24dfe189c15aecc7e4cf3f37f1b6815afc392d26cec486"
     }
   },
   "processed_comments": [],
@@ -125636,8 +125795,8 @@
         "2610.19433"
       ],
       "abstract_attempted": [],
-      "calls": 38,
-      "cost_usd": 37.8873
+      "calls": 39,
+      "cost_usd": 38.8668
     }
   },
   "reaudits": [
