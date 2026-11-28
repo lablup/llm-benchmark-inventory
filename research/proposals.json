@@ -82920,7 +82920,7 @@
     },
     "2608.25061": {
       "decision": "propose",
-      "reason": "DataKernelBench는 TPC-H 22개 쿼리를 검증된 PyTorch TorchPlan으로 바꾼 뒤, LLM이 CUDA·Triton 커널을 만들어 속도를 높이게 하는 재사용 가능한 코딩 벤치마크입니다. 과제 지시문과 코드가 영어이고 입력이 텍스트와 코드뿐이라 en 트랙의 text로 분류했습니다. 논문이 공식 코드 저장소(github.com/kerneldf/datakernelbench)를 명시하므로 그 주소를 링크로 씁니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 둡니다.",
+      "reason": "DataKernelBench는 TPC-H 22개 쿼리를 검증된 PyTorch TorchPlan으로 바꾼 뒤, LLM이 CUDA·Triton 커널을 만들어 속도를 높이게 하는 재사용 가능한 코딩 벤치마크입니다. 과제 지시문과 코드가 영어이고 입력이 텍스트와 코드뿐이라 en 트랙의 text로 분류했습니다. 공식 저장소 카드(github.com/kerneldf/datakernelbench)가 LICENSE 파일의 Apache-2.0과 저장소 전체 콘텐츠에 적용되는 라이선스를 밝혀 라이선스·상업적 이용·수정·파생·재배포를 인용으로 채웠고, 카드에 lm-eval 언급이 없어 lm-eval 지원은 '미표기'로 두었습니다. 추천 모델은 논문 Table 1(TPC-H SF10, H100, 모델별 최고 구성)의 Overall 속도 향상에서 가져왔습니다.",
       "changes": [
         {
           "track": "en",
@@ -82933,12 +82933,12 @@
             "대표 과제": "TorchPlan이 주어지면 run_query의 외부 의미를 유지한 채 더 빠른 Triton 또는 CUDA 구현을 만든다(core/full 두 수준).",
             "대표 예시·설명": "TPC-H Q6 같은 쿼리의 TorchPlan을 받아 필터, 투영, 집계를 하나로 합친 커널로 다시 쓰고, 출력 일치와 속도 향상으로 채점하는 과제 설명(실제 문항이 아님).",
             "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 못했다. 논문은 평가 하니스와 산출물을 공개할 예정이라고 밝히므로 실제 공개 범위를 이용 전에 확인해야 한다. 평가에는 NVIDIA GPU, cuDF, DuckDB 실행 환경이 필요하다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다. 기준 TorchPlan은 LLM이 생성한 뒤 DuckDB 결과와 대조해 검증한 것이다.",
-            "lm-eval 지원": "확인 불가",
+            "라이선스": "Apache-2.0",
+            "상업적 이용": "가능",
+            "수정·파생": "가능(조건 준수)",
+            "재배포": "조건부 가능",
+            "이용 시 유의사항": "Apache-2.0은 공식 저장소 LICENSE 파일의 표기이며, README는 코드를 포함한 저장소의 모든 콘텐츠가 IBM에 의해 관련 오픈소스 라이선스로 제공된다고 밝힌다. Apache-2.0 조건(라이선스 사본 첨부, 변경 고지, 저작권·고지 유지)을 지켜야 한다. 이 벤치마크는 다른 출처로 구성되어 있다: TPC-H(Transaction Processing Council)와 DuckDB의 tpch 확장으로 생성한 데이터·SQL 쿼리·참조 출력(논문 4쪽). 저장소의 Apache-2.0이 이들 구성 요소 각각의 고유 약관을 대신하지 않으므로, 각 구성 요소의 약관은 이용 전에 따로 확인해야 한다. 기준 TorchPlan은 LLM이 생성한 뒤 DuckDB 결과와 대조해 검증한 것이다. README는 IBM이 개선·갱신·지원 의무를 지지 않는다고 밝힌다. 공식 README에 lm-eval 언급이 없고 자체 스크립트(kernel_plans/generate_kernel_plans.py)로 실행한다. 평가에는 NVIDIA GPU, cuDF, DuckDB 실행 환경이 필요하다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
+            "lm-eval 지원": "미표기",
             "링크": "https://github.com/kerneldf/datakernelbench"
           },
           "modality": "text",
@@ -82982,9 +82982,150 @@
               "quote": "DataKernelBench tests LLMs"
             }
           },
+          "rights_evidence": {
+            "라이선스": {
+              "source_url": "https://github.com/kerneldf/datakernelbench",
+              "quote": "LICENSE (SPDX Apache-2.0)"
+            },
+            "상업적 이용": {
+              "source_url": "https://github.com/kerneldf/datakernelbench",
+              "quote": "worldwide, non-exclusive, no-charge, royalty-free, irrevocable"
+            },
+            "수정·파생": {
+              "source_url": "https://github.com/kerneldf/datakernelbench",
+              "quote": "copyright license to reproduce, prepare Derivative Works of,"
+            },
+            "재배포": {
+              "source_url": "https://github.com/kerneldf/datakernelbench",
+              "quote": "You may reproduce and distribute copies of the"
+            },
+            "lm-eval 지원": {
+              "source_url": "https://github.com/kerneldf/datakernelbench",
+              "absent": true,
+              "pdf_mentions": []
+            }
+          },
+          "recommendations": {
+            "metric": "Overall speedup vs. TorchPlan with torch.compile (TC), dimensionless ratio (×); higher is better",
+            "setting": "Results reported in this paper (Table 1, Section 4.2), not a current global leaderboard. TPC-H SF10, all 22 queries, one NVIDIA H100 80GB GPU, execution-guided repair with at most 10 rounds, minimum speedup 1.05 with fallback to the TC runtime for failed or slower kernels, default generation settings of each API or checkpoint. Each model is shown at its best kernel configuration (CUDA or Triton, core or full), as printed in Table 1.",
+            "higher_is_better": true,
+            "results": [
+              {
+                "model": "GPT-5.5",
+                "score": "2.11",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-5.5 CUDA-full 100.0 2.11"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Claude Sonnet 4.6",
+                "score": "1.54",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude Sonnet 4.6 Triton-full 100.0 1.54"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Claude Opus 4.7",
+                "score": "1.51",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude Opus 4.7 CUDA-full 100.0 1.51"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Gemini 3.1 Pro",
+                "score": "1.44",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Gemini 3.1 Pro CUDA-full 54.5 1.44"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Claude Haiku 4.5",
+                "score": "1.30",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Claude Haiku 4.5 Triton-full 95.5 1.30"
+                },
+                "open_weight": null
+              },
+              {
+                "model": "Qwen3.5-397B-A17B",
+                "score": "1.26",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Qwen3.5-397B-A17B Triton-full 100.0 1.26"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight models"
+                }
+              },
+              {
+                "model": "GPT-OSS-120B",
+                "score": "1.26",
+                "evidence": {
+                  "page": 7,
+                  "quote": "GPT-OSS-120B CUDA-full 86.4 1.26"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight models"
+                }
+              },
+              {
+                "model": "DeepSeek-V4-Flash",
+                "score": "1.23",
+                "evidence": {
+                  "page": 7,
+                  "quote": "DeepSeek-V4-Flash Triton-core 90.9 1.23"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight models"
+                }
+              },
+              {
+                "model": "MiniMax-M2.5",
+                "score": "1.19",
+                "evidence": {
+                  "page": 7,
+                  "quote": "MiniMax-M2.5 Triton-full 81.8 1.19"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight models"
+                }
+              },
+              {
+                "model": "Devstral-2-123B",
+                "score": "1.08",
+                "evidence": {
+                  "page": 7,
+                  "quote": "Devstral-2-123B Triton-full 45.5 1.08"
+                },
+                "open_weight": true,
+                "open_weight_evidence": {
+                  "page": 7,
+                  "quote": "Open-weight models"
+                }
+              }
+            ]
+          },
           "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
           "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "recommendations_before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
         }
       ],
       "arxiv_id": "2608.25061",
@@ -83077,7 +83218,8 @@
         "source_run": "46098694122",
         "context_sha256": "30c13d7a1987e30ff4c85791f36ecc67c9b6bf29cbfa84cd5915fc86f2e3ec8b"
       },
-      "proposal_sha256": "0504dfccf9445f854de36687dfbe4400b559a24237f688e136b55dc2ad61a8be"
+      "proposal_sha256": "6c6cc40dad2179d0d7bb61d87f598424f7f37b58882b47d0683707f53d560de2",
+      "publication_policy": "complete-evidence-v1"
     }
   },
   "processed_comments": [],
@@ -125005,8 +125147,8 @@
         "2608.25061"
       ],
       "abstract_attempted": [],
-      "calls": 31,
-      "cost_usd": 30.7354
+      "calls": 32,
+      "cost_usd": 31.7942
     }
   },
   "reaudits": [
