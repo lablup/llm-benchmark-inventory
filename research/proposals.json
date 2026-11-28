@@ -82750,7 +82750,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-28T03:27:47Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -82776,12 +82776,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "46098694122",
-        "context_sha256": "f9cce2a3bc498e24ef0287250fad9593435b7890d0e81746b3d88c634e39f863"
-      },
       "proposal_sha256": "3b3fb9d7936651ce7a00eae07bb2bb138fe0b791d5e2651eecf0269a85ab480a",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안된 en 행의 변경 사실은 제공된 PDF 전체 페이지와 공식 GitHub 카드로 뒷받침됩니다. 규모(40,886문항, 11개 과제군, 165개 시스템 중 수작업 30개와 dysts 135개, 27개 술어, 78개 간선 중 함의 31·배제 47)는 논문 1~3쪽과 일치합니다. Table 1의 과제군별 문항 수를 합하면 40,886이 됩니다. 모델 14종 중 10종이 전체 데이터를, 4종이 5k 또는 1k 부분집합을 수행했다는 서술, CARE의 다섯 진단 항목, 정답이 공리 함의로 도출된다는 서술, 총계에 포함되지 않는 합성 매개변수화 각주도 모두 근거가 있습니다. 영어 텍스트 입력과 TRUE/FALSE 응답 프롬프트는 2쪽의 영어 예시 문항과 13쪽의 프롬프트 템플릿으로 확인됩니다. 라이선스는 공식 카드가 코드 MIT와 데이터셋 CC BY 4.0을 따로 밝히므로 값이 해소되어 있고, 논문에는 데이터 라이선스 진술이 없어 충돌하지 않습니다. 이에 따라 상업적 이용 '가능', 수정·파생 '가능(조건 준수)', 재배포 '조건부 가능'은 CC BY에 부합하며 허가를 부풀리지 않았습니다. 코드 라이선스를 데이터 권리로 오인한 부분도 없습니다. 이 벤치마크는 dysts 라이브러리에서 파생된 시스템을 포함하는데, 이용 시 유의사항이 dysts를 명시하고 구성 요소의 고유 약관을 따로 확인하라고 안내하므로 요구 조건을 충족합니다. 공식 카드가 과제군을 10개로, 논문이 11개로 적는 불일치도 유의사항에 기록되어 있습니다. lm-eval 지원 '미표기'는 공식 카드에 lm-eval 언급이 없어 받아들일 수 있는 해소값이며, 논문 쪽 pdf_mentions도 비어 있어 충돌이 없습니다. 추천 목록은 4쪽 Table 3의 전체 정본(N=40,886) 모델 10종과 MCC 값이 모두 일치하고, 높을수록 좋은 방향과 순위도 맞습니다. 동일 조건(전체 데이터, 제로샷, 동일 프롬프트)이며 부분집합 평가 모델(o3-mini 등)은 N이 달라 의도적으로 제외되었으므로 상위 3개 선정이 정당합니다. 오픈 가중치는 표의 OSS 표기로 근거가 제시된 Qwen, LLaMA, Mistral에만 true로 적었고, 나머지는 null로 두어 비공개로 취급하지 않았습니다. 논문 조건의 결과이며 전역 리더보드가 아니라는 점도 명시되어 있습니다. 미확인이나 확인 불가 필드는 없습니다. Figure 1의 과제군별 평균 MCC가 본문 수치와 달라 보이지만, 제안은 해당 수치를 사용하지 않으므로 영향이 없습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 215782,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2865,
+              "output_tokens_details": {
+                "thinking_tokens": 1664
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 215782,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2865,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 215782,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 215782
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 0.8918469,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "3b3fb9d7936651ce7a00eae07bb2bb138fe0b791d5e2651eecf0269a85ab480a",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -124705,8 +124751,8 @@
         "2605.24305"
       ],
       "abstract_attempted": [],
-      "calls": 27,
-      "cost_usd": 26.888
+      "calls": 28,
+      "cost_usd": 27.7798
     }
   },
   "reaudits": [
