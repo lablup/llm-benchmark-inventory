@@ -726,4 +726,34 @@ window.ENGLISH_INVENTORY_COPY = {
     "task": "Ingest a multi-session dialogue containing forget requests, then answer test questions in a fresh session from memory alone, scored on five suites.",
     "example": "Task description: a user asks the agent to forget a piece of personal information during a conversation, then later questions and extraction attacks check whether the agent leaks the value while keeping unrelated memories."
   },
+  "ma-bench": {
+    "axis": "Agents and reasoning (long multi-document operational planning / mission analysis)",
+    "definition": "A benchmark of mission analysis, the first step of military operational planning. It has 10 expert-built synthetic scenarios, each with an incomplete, partly contradictory packet of 10 to 12 documents (36k to 243k characters). Briefs are graded against 1,257 expert-written atomic pass/fail requirements (74 to 170 per scenario). Items carry a grounding tier (Tier 1 stated, Tier 2 synthesized, Tier 3 inferred) and a severity weight (CI +9, I +5, SI +2, D -5, CD -9), and negative items name wrong moves. A reasoning-model judge that never sees the documents grades each brief in one call. Scores are an unclamped severity-weighted score (perfect = 1) and the share of items passed. The paper evaluates 20 models under a 3,000-word cap; these are results under the paper's conditions, not a current global leaderboard.",
+    "task": "Write a mission analysis brief from a document packet (12 steps including higher mission and intent, constraints, assumptions, risk, and decision points).",
+    "example": "Task description: an English prompt casts the model as lead planner in a joint staff planning cell and asks for a mission analysis brief of at most 3,000 words covering 12 listed sections, using only the provided documents. The brief is graded item by item."
+  },
+  "gtsqa": {
+    "axis": "Knowledge-graph QA (graph retrieval and multi-hop reasoning)",
+    "definition": "A synthetic KGQA dataset generated from ogbl-wikikg2 and validated against the 20 July 2025 Wikidata dump. It has 32,099 questions (30,477 train, 1,622 test) covering 27 ground-truth subgraph structure types. Each item provides seed entities, a SPARQL query, and the ground-truth answer subgraph. The test split is designed to measure zero-shot generalization to unseen answer nodes, graph structures, and relation types. Metrics are EM-based Hits and Recall, plus Recall, Precision and F1 of ground-truth triples. It is released together with the SynthKGQA generation framework.",
+    "task": "Given seed entities, retrieve the supporting triples (the answer subgraph) from a knowledge graph and answer an English question.",
+    "example": "Task description: for an English question such as who composed the national anthem of Tuvalu, find the supporting triples from the seed entity to the answer node in the graph and answer."
+  },
+  "chaosbench-logic-v2": {
+    "axis": "Reasoning (first-order-logic reasoning over dynamical systems)",
+    "definition": "A binary TRUE/FALSE reasoning benchmark about dynamical systems. It has 40,886 questions, 11 task families, 165 dynamical systems (30 manually curated and 135 from the dysts library), 27 first-order-logic predicates, and 78 axiom edges (31 implication, 47 exclusion). Ground-truth labels are derived by axiom entailment. The CARE evaluation protocol reports MCC (primary), macro-family MCC, calibration (predicted TRUE rate), consistency, and coverage (invalid-response rate). The paper evaluates 14 models; 10 completed the full dataset and 4 were run on 5k or 1k subsets reported separately. The regime transition and FOL inference families also use synthetic parameterizations not counted in the total. Results hold under the paper's conditions and are not a current global leaderboard.",
+    "task": "TRUE/FALSE judgments across 11 task families, including multi_hop, regime_transition, fol_inference, adversarial, indicator_diagnostic, and consistency_paraphrase",
+    "example": "Task description, not an actual test item: an English question asks whether a system has a property (for example, whether Chua's circuit is chaotic at a given bifurcation parameter value), and the prompt instructs the model to reply with only TRUE or FALSE."
+  },
+  "datakernelbench": {
+    "axis": "Coding (GPU kernel optimization for database queries)",
+    "definition": "A benchmark that converts the 22 TPC-H SQL queries into validated PyTorch TorchPlan programs, then asks LLMs to optimize either the core tensor snippet (core) or the full query (full) in CUDA or Triton. It uses an execution-guided repair loop and scores pass rate and speedup over torch.compile TorchPlan. The paper evaluates ten models on TPC-H SF10 with one H100 GPU and reports a Dask-cuDF extension on SF100 with four H100 GPUs.",
+    "task": "Given a TorchPlan, produce a faster Triton or CUDA implementation that preserves the external run_query semantics (core and full levels).",
+    "example": "Task description, not an actual test item: take the TorchPlan of a query such as TPC-H Q6, rewrite it with a fused kernel that combines filtering, projection and aggregation, and score it on output match and speedup."
+  },
+  "evoprobe": {
+    "axis": "Agents (cybersecurity CTF, evaluation-driven benchmark evolution)",
+    "definition": "A closed-loop benchmark evolution framework that feeds diagnostic evaluation results back into task generation. Seeded with Cybench, it generated and validated 66 tasks (48 in R1, 18 in R2) across six categories (Web, Reverse, Pwn, Misc, Forensics, Crypto), evaluated on eight models. It uses subtask and phase-level scores (reconnaissance, vulnerability analysis, exploitation, flag capture) and multi-judge trajectory evaluation (five dimensions, 0-20 each). Metrics are Outcome (mean task score, 0-10), Trajectory Score (0-100), Pass@3 and Pass^3, with three runs per task. Reported results hold under the paper's conditions and are not a current global leaderboard.",
+    "task": "Solve executable CTF tasks in Docker environments across Web, Reverse, Pwn, Misc, Forensics and Crypto and capture the flag.",
+    "example": "Task description, not an actual test item: an agent reads an English instruction.md, explores a service in an isolated Docker environment, earns subtask scores, and submits the final flag."
+  },
 };
