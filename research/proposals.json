@@ -82917,6 +82917,167 @@
       },
       "issue_url": null,
       "proposal_sha256": "311e0e10243ad443c09dbe0d07d2903fa7b9350053961dbbd038361708b61a2d"
+    },
+    "2608.25061": {
+      "decision": "propose",
+      "reason": "DataKernelBench는 TPC-H 22개 쿼리를 검증된 PyTorch TorchPlan으로 바꾼 뒤, LLM이 CUDA·Triton 커널을 만들어 속도를 높이게 하는 재사용 가능한 코딩 벤치마크입니다. 과제 지시문과 코드가 영어이고 입력이 텍스트와 코드뿐이라 en 트랙의 text로 분류했습니다. 논문이 공식 코드 저장소(github.com/kerneldf/datakernelbench)를 명시하므로 그 주소를 링크로 씁니다. 라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원은 확인하지 못해 '확인 불가'로 둡니다.",
+      "changes": [
+        {
+          "track": "en",
+          "row": {
+            "id": "datakernelbench",
+            "이름": "DataKernelBench",
+            "평가 축": "코딩(데이터베이스 쿼리용 GPU 커널 최적화)",
+            "언어": "en",
+            "정의": "TPC-H의 22개 SQL 쿼리를 검증된 PyTorch TorchPlan 프로그램으로 바꾼 뒤, LLM이 핵심 텐서 구간(core) 또는 전체 쿼리(full)를 CUDA 또는 Triton으로 최적화하게 하는 벤치마크. 실행 기반 수정 루프를 쓰며 통과율과 torch.compile TorchPlan 대비 속도 향상으로 채점한다. 논문은 TPC-H SF10과 H100 GPU 1장에서 모델 10종을 평가했고, SF100과 H100 4장의 Dask-cuDF 확장 실험도 보고한다.",
+            "대표 과제": "TorchPlan이 주어지면 run_query의 외부 의미를 유지한 채 더 빠른 Triton 또는 CUDA 구현을 만든다(core/full 두 수준).",
+            "대표 예시·설명": "TPC-H Q6 같은 쿼리의 TorchPlan을 받아 필터, 투영, 집계를 하나로 합친 커널로 다시 쓰고, 출력 일치와 속도 향상으로 채점하는 과제 설명(실제 문항이 아님).",
+            "예시 표기": "과제 설명",
+            "라이선스": "확인 불가",
+            "상업적 이용": "확인 불가",
+            "수정·파생": "확인 불가",
+            "재배포": "확인 불가",
+            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 못했다. 논문은 평가 하니스와 산출물을 공개할 예정이라고 밝히므로 실제 공개 범위를 이용 전에 확인해야 한다. 평가에는 NVIDIA GPU, cuDF, DuckDB 실행 환경이 필요하다. 논문 수치는 논문 조건의 결과이며 현재 전역 리더보드가 아니다. 기준 TorchPlan은 LLM이 생성한 뒤 DuckDB 결과와 대조해 검증한 것이다.",
+            "lm-eval 지원": "확인 불가",
+            "링크": "https://github.com/kerneldf/datakernelbench"
+          },
+          "modality": "text",
+          "english_copy": {
+            "axis": "Coding (GPU kernel optimization for database queries)",
+            "definition": "A benchmark that converts the 22 TPC-H SQL queries into validated PyTorch TorchPlan programs, then asks LLMs to optimize either the core tensor snippet (core) or the full query (full) in CUDA or Triton. It uses an execution-guided repair loop and scores pass rate and speedup over torch.compile TorchPlan. The paper evaluates ten models on TPC-H SF10 with one H100 GPU and reports a Dask-cuDF extension on SF100 with four H100 GPUs.",
+            "task": "Given a TorchPlan, produce a faster Triton or CUDA implementation that preserves the external run_query semantics (core and full levels).",
+            "example": "Task description, not an actual test item: take the TorchPlan of a query such as TPC-H Q6, rewrite it with a fused kernel that combines filtering, projection and aggregation, and score it on output match and speedup."
+          },
+          "evidence": {
+            "modality": {
+              "page": 5,
+              "quote": "must return one"
+            },
+            "대표 과제": {
+              "page": 4,
+              "quote": "our benchmark covers"
+            },
+            "대표 예시·설명": {
+              "page": 4,
+              "quote": "our benchmark covers"
+            },
+            "링크": {
+              "page": 4,
+              "quote": "kerneldf/datakernelbench"
+            },
+            "언어": {
+              "page": 5,
+              "quote": "must return one"
+            },
+            "이름": {
+              "page": 1,
+              "quote": "DataKernelBench tests LLMs"
+            },
+            "정의": {
+              "page": 4,
+              "quote": "our benchmark covers"
+            },
+            "평가 축": {
+              "page": 1,
+              "quote": "DataKernelBench tests LLMs"
+            }
+          },
+          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "before": null,
+          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "arxiv_id": "2608.25061",
+      "paper_title": "DataKernelBench: Can LLMs Optimize Database Queries on GPUs?",
+      "paper_updated": "2026-10-16T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2608.25061",
+        "sha256": "a49747d1eedf7a20d647a77aaf7abd6e8e63611eb9a1aa332c392cda45ccb76f",
+        "accessed": "2026-11-28T03:33:35Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 16,
+          "elapsed_seconds": 54.65,
+          "pdf_sha256": "a49747d1eedf7a20d647a77aaf7abd6e8e63611eb9a1aa332c392cda45ccb76f",
+          "visual_pdf_audit": false,
+          "original_text_reduced": false,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "022ca7a0f633e209a789fc3f31952393f13ac8cb1c88b176582cb7b14d56fd51",
+          "page_json_file": "2608.25061.pages.json"
+        },
+        "official_resources": [
+          {
+            "url": "https://github.com/kerneldf/datakernelbench",
+            "fetched_url": "https://api.github.com/repos/kerneldf/datakernelbench/readme",
+            "sha256": "e97bdf54fbfd0f931ae2a1b1578aafb1da4e9f85a5cc4f54378b14702634c88e",
+            "accessed": "2026-11-28T03:35:24Z",
+            "license_file": {
+              "fetched_url": "https://api.github.com/repos/kerneldf/datakernelbench/license",
+              "name": "LICENSE",
+              "spdx_id": "Apache-2.0",
+              "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+            }
+          }
+        ]
+      },
+      "status": "awaiting_claude",
+      "created_at": "2026-11-28T03:35:24Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "issue_url": null,
+      "screening": {
+        "arxiv_id": "2608.25061",
+        "paper_title": "DataKernelBench: Can LLMs Optimize Database Queries on GPUs?",
+        "abstract": "GPUs increasingly accelerate database systems, but query-specific peak performance still often relies on hand-written kernels. Existing LLM kernel benchmarks focus on machine learning operators, leaving irregular, heterogeneous, data-movement-heavy database-style operators untested. We introduce DataKernelBench, which translates SQL into validated PyTorch TorchPlan programs and evaluates LLMs that optimize either the core tensor-bounded snippet or the full query in CUDA or Triton through execution-guided repair. Across ten proprietary and open-weight models on TPC-H SF10 with an H100 GPU, the strongest full-query CUDA configuration achieves $2.11\\times$ speedup over the TorchPlan baseline at full pass rate. We find that higher-performing implementations commonly use kernel fusion and execution-strategy changes, stronger models benefit most from full-query specialization, and workload context matters more than hardware context. To handle data larger than GPU memory, we extend TorchPlan with Dask-cuDF for on-demand partition loading on TPC-H SF100 with four H100 GPUs, achieving $2.54\\times$ speedup. Project page: https://kerneldf.github.io/datakernelbench",
+        "paper_updated": "2026-10-16T00:00:00Z",
+        "created_at": "2026-10-20T02:49:12Z",
+        "input_sha256": "ba1e34d58eed7fae676a2df950537fcb2740b9cb1cefd6c2f7a7d823e5f8472d",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "LLM 데이터베이스 쿼리 최적화 벤치마크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "DB 쿼리 GPU 커널 최적화 LLM 벤치마크 신규 제안"
+          }
+        ]
+      },
+      "claude_pending": {
+        "source_run": "46098694122",
+        "context_sha256": "30c13d7a1987e30ff4c85791f36ecc67c9b6bf29cbfa84cd5915fc86f2e3ec8b"
+      },
+      "proposal_sha256": "0504dfccf9445f854de36687dfbe4400b559a24237f688e136b55dc2ad61a8be"
     }
   },
   "processed_comments": [],
@@ -124844,8 +125005,8 @@
         "2608.25061"
       ],
       "abstract_attempted": [],
-      "calls": 30,
-      "cost_usd": 29.7954
+      "calls": 31,
+      "cost_usd": 30.7354
     }
   },
   "reaudits": [
