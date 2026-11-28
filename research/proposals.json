@@ -81943,7 +81943,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "proposed",
       "created_at": "2026-11-28T03:19:36Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -81969,12 +81969,58 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "46098694122",
-        "context_sha256": "84badcf98e08d61aa1dd533225e6f757bc42eafc62c85d8b7887bce3cd422f61"
-      },
       "proposal_sha256": "6dd5ec87443b97237c38a1299a8133994cff4ff1857c2adcbfb34e614d11304a",
-      "publication_policy": "complete-evidence-v1"
+      "publication_policy": "complete-evidence-v1",
+      "verification": {
+        "policy": "claude_only",
+        "approve": true,
+        "votes": [
+          {
+            "model": "claude-sonnet-5-5",
+            "approve": true,
+            "reason": "제안 행의 변경 사실이 논문과 공식 카드로 뒷받침되어 승인합니다. 질문 수(전체 32,099, train 30,477, test 1,622), 구조 유형 27종, 2025년 7월 20일자 Wikidata 검증, 영어 텍스트 모달리티가 논문과 카드에 일치합니다. 시드 엔티티, SPARQL 질의, 정답 부분그래프를 제공한다는 서술과 test 분할의 제로샷 일반화 설계도 본문에 근거가 있습니다. 라이선스는 공식 카드가 CC BY 4.0을 명시하므로 상업적 이용 가능, 수정·파생 가능(조건 준수), 재배포 조건부 가능이 허용 범위 안입니다. 이용 시 유의사항은 이 벤치마크가 ogbl-wikikg2와 Wikidata에서 파생되었음을 밝히고 각 구성 요소의 약관을 따로 확인하라고 적어 파생 데이터 요건을 충족합니다. 카드와 논문 어디에도 lm-eval 언급이 없고 pdf_mentions도 비어 있어, 'lm-eval 지원' 항목의 '미표기'는 부재 증거로 정당합니다. 추천 목록은 논문 7쪽 Table 2의 EM Hits 12개 모델 점수가 모두 원문과 일치하고, 단위는 %이며 값이 높을수록 좋은 방향입니다. 선택한 실험의 비교 모델을 모두 포함하므로 상위 3개(SubgraphRAG 78.24, RoG 67.47, GCR 56.58) 선정이 타당합니다. LLM-only와 KG-RAG 방법이 같은 표에 있으나 최종 추론 모델과 GCR 경로 길이 제한 등 조건이 설정 설명에 명시되어 있고, 논문 보고 결과이며 전역 리더보드가 아니라는 점도 밝혔습니다. 가중치 공개 여부는 null로 두어 폐쇄형으로 취급하지 않았습니다. 충돌하는 추출이나 그림에만 의존한 주장은 확인되지 않았습니다.",
+            "num_turns": 1,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 266712,
+              "cache_read_input_tokens": 649,
+              "output_tokens": 2202,
+              "output_tokens_details": {
+                "thinking_tokens": 1410
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 266712,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "global",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 2202,
+                  "cache_read_input_tokens": 649,
+                  "cache_creation_input_tokens": 266712,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 266712
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard",
+              "fallback_credit": null
+            },
+            "cost_usd": 1.0889369,
+            "auth_method": "oauth_token"
+          }
+        ],
+        "reviewed_sha256": "6dd5ec87443b97237c38a1299a8133994cff4ff1857c2adcbfb34e614d11304a",
+        "publication_policy": "complete-evidence-v1"
+      }
     }
   },
   "processed_comments": [],
@@ -123892,8 +123938,8 @@
         "2511.04473"
       ],
       "abstract_attempted": [],
-      "calls": 19,
-      "cost_usd": 19.5359
+      "calls": 20,
+      "cost_usd": 20.6248
     }
   },
   "reaudits": [
