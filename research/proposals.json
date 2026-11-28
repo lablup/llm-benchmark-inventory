@@ -80371,74 +80371,9 @@
       "proposal_sha256": "641efb79535a0dcc5d0ede97d20f24bfdd45550e776b4678702b090c44bc59dd"
     },
     "2610.18834": {
-      "decision": "propose",
-      "reason": "Game2Real-Bench는 토이 게임 1,000문항과 실세계 400문항을 묶어 VLM의 시각 추론을 평가하는 새 벤치마크입니다. 이미지 입력이 필요하고 질문은 영어이므로 en 트랙의 vision 행으로 제안합니다. 논문이 밝힌 공식 저장소 URL이 있습니다. 라이선스 등 미확인 항목은 '확인 불가'로 기록했습니다.",
-      "changes": [
-        {
-          "track": "en",
-          "row": {
-            "id": "game2real-bench",
-            "이름": "Game2Real-Bench",
-            "평가 축": "이미지(토이 게임-실세계 시각 추론 대응·전이)",
-            "언어": "en",
-            "정의": "세부 지각, 공간 추론, 제약 추론, 순차 계획의 4개 능력 그룹에서 토이 게임과 실세계 시각 추론의 대응을 보는 벤치마크. 평가셋은 1,400문항으로, 프로그램으로 생성·검증한 게임 1,000문항(주관식 600, 단일선택 400)과 기존 벤치마크·공개 데이터에서 선별·구성한 실세계 400문항(능력당 100)이다. 별도로 18개 게임 과제와 65개 QA 패밀리에 걸친 검증 샘플 23,893개의 Game2Real-Dataset을 제공한다. 게임 점수는 정확도이고 실세계 점수는 출처별 평가를 따르며 SpatiaLQA는 F1을 쓴다. 논문은 VLM 25종을 제로샷으로 평가했고 게임-실세계 모델 점수의 Pearson·Spearman 상관은 0.935이며, 4개 모델의 원샷 전이도 분석했다. 논문 조건의 결과이며 현재 전역 리더보드가 아니다.",
-            "대표 과제": "세부 지각, 공간 추론, 제약 추론, 순차 계획의 4개 능력 그룹에서 게임 과제(예: Rolling Cube, Hexakai, Mancala)와 실세계 질문을 풀고 정답 일치 또는 점수로 채점",
-            "대표 예시·설명": "과제 설명: 이미지와 영어 질문(예: 장면 속 특정 동물 수 세기)을 주고, 게임 샘플은 실행 가능한 검증기로, 실세계 샘플은 출처 평가 방식으로 채점한다. 실제 시험 문항이 아니다.",
-            "예시 표기": "과제 설명",
-            "라이선스": "확인 불가",
-            "상업적 이용": "확인 불가",
-            "수정·파생": "확인 불가",
-            "재배포": "확인 불가",
-            "이용 시 유의사항": "라이선스, 상업적 이용, 수정·파생, 재배포, lm-eval 지원 여부는 확인하지 않았다. 실세계 400문항은 GQA, OmniSpatial, SPair-71k, VisualTrans, ReasonMap, SpatiaLQA 등 기존 데이터에서 선별·재구성한 것이므로(논문 5쪽, 20쪽) 각 출처의 고유 약관을 이용 전에 따로 확인해야 한다. 코드 저장소의 라이선스를 데이터 라이선스로 간주하면 안 된다. 논문은 VLMEvalKit으로 평가했지만 lm-eval 지원과는 별개다. 실세계 점수 산정은 원 벤치마크의 지표를 일부 바꿨다(CAPTURe는 정확 일치, SpatiaLQA는 규칙 기반 매칭의 F1 평균). 토이 게임 18개 중 4개는 실세계 대응 샘플이 없다.",
-            "lm-eval 지원": "확인 불가",
-            "링크": "https://github.com/QingAnLiu/Game2Real-Bench"
-          },
-          "modality": "vision",
-          "english_copy": {
-            "axis": "Images (alignment and transfer between toy-game and real-world visual reasoning)",
-            "definition": "A benchmark linking toy-game and real-world visual reasoning across four capability groups: fine-grained perception, spatial reasoning, constraint reasoning, and sequential planning. The evaluation set has 1,400 samples: 1,000 programmatically generated and verified game samples (600 open-ended, 400 single-choice) and 400 real-world samples (100 per capability) curated or constructed from existing benchmarks and public data. A separate Game2Real-Dataset provides 23,893 verified samples over 18 game tasks and 65 QA families. Game scores are accuracy; real-world scores follow source evaluators, with F1 for SpatiaLQA. The paper evaluates 25 VLMs zero-shot, reports a model-level Pearson and Spearman correlation of 0.935 between game and real-world scores, and studies one-shot transfer on four models. These are results under the paper's conditions, not a current global leaderboard.",
-            "task": "Solve game tasks (for example Rolling Cube, Hexakai, Mancala) and real-world questions in the four capability groups, scored by answer match or task score.",
-            "example": "Task description, not an actual test item: given images and an English question (for example counting specific animals in a scene), game samples are scored by executable verifiers and real-world samples by each source's evaluation protocol."
-          },
-          "evidence": {
-            "modality": {
-              "page": 4,
-              "quote": "visual observations"
-            },
-            "대표 과제": {
-              "page": 1,
-              "quote": "fine-grained perception, spatial"
-            },
-            "대표 예시·설명": {
-              "page": 14,
-              "quote": "How many sheep"
-            },
-            "링크": {
-              "page": 1,
-              "quote": "github.com/QingAnLiu/Game2Real-Bench"
-            },
-            "언어": {
-              "page": 14,
-              "quote": "How many sheep"
-            },
-            "이름": {
-              "page": 1,
-              "quote": "Game2Real-Bench"
-            },
-            "정의": {
-              "page": 5,
-              "quote": "1,400 evaluation samples"
-            },
-            "평가 축": {
-              "page": 1,
-              "quote": "fine-grained perception, spatial"
-            }
-          },
-          "english_before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
-          "before": null,
-          "before_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
-        }
-      ],
+      "decision": "needs_evidence",
+      "reason": "공급된 공식 자료만으로는 이 벤치마크 데이터의 라이선스, 상업적 이용, 수정·파생, 재배포 조건을 확정할 수 없어 게시하지 않습니다. 공식 저장소 README의 License 절은 'Project-authored software is released under the MIT License'라며 MIT를 소프트웨어에만 부여하고, 'Dataset images and annotations are distributed separately under mixed upstream terms; the software license does not relicense them'이라고 밝힙니다. 따라서 저장소 LICENSE 파일의 MIT는 코드 라이선스이며 데이터 라이선스가 아닙니다. 또 README에는 'LICENSE file' 절이 있어 '라이선스 미표기'에 해당하는 부재 증거 형식도 쓸 수 없습니다. 데이터 쪽 조건은 README가 안내한 Hugging Face 데이터 저장소(liuqa/Game2Real-Bench)의 benchmark/metadata/licensing.md, attribution.md, sources.tsv에 있으나 이번에 공급된 자료에는 포함되지 않았습니다. 논문은 실세계 400문항이 GQA, OmniSpatial, SPair-71k, Visual-Jigsaw, CAPTURe-real, All-Angles-Bench, IKEA Manuals at Work, SpatiaLQA, SSI-Bench, VisualTrans, ReasonMap 등 11개 출처에서 왔다고 밝힙니다(PDF 20쪽 Table 5). 이 출처들의 약관이 서로 다를 수 있으므로 각각 따로 점검해야 하며, 어느 한 조건으로 일괄 기재할 수 없습니다. 데이터 저장소의 licensing.md와 sources.tsv를 가져온 뒤 다시 제출해 주십시오.",
+      "changes": [],
       "arxiv_id": "2610.18834",
       "paper_title": "Game2Real-Bench: Do Toy Games Reveal and Transfer to Real-World Visual Reasoning?",
       "paper_updated": "2026-10-14T00:00:00Z",
@@ -80515,7 +80450,7 @@
           }
         ]
       },
-      "status": "awaiting_claude",
+      "status": "needs_evidence",
       "created_at": "2026-11-28T03:00:57Z",
       "extraction_model": "claude-sonnet-5-5",
       "issue_url": null,
@@ -80541,11 +80476,9 @@
           }
         ]
       },
-      "claude_pending": {
-        "source_run": "46098694122",
-        "context_sha256": "20c703710bdefa3cbf54732c9eb7d49de992327871497cca7b96568b7b8da717"
-      },
-      "proposal_sha256": "9186d06ffd0f9de432dca78fe781ddb991524fd33211419be976a78e51941172"
+      "proposal_sha256": "12452157a3c149bc8e5ef2da95a52fe7fa65194ee3e84fee6ad050e35c837cd9",
+      "publication_policy": "complete-evidence-v1",
+      "approval_policy": "claude_only"
     }
   },
   "processed_comments": [],
@@ -122452,8 +122385,8 @@
         "2610.18834"
       ],
       "abstract_attempted": [],
-      "calls": 7,
-      "cost_usd": 7.022
+      "calls": 8,
+      "cost_usd": 8.0436
     }
   },
   "reaudits": [
