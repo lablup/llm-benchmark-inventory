@@ -84013,6 +84013,90 @@
         "reviewed_sha256": "a4c48802156487aae7fedf11cc24cc49b24b0e895f8aa8d77c92810f27baf308",
         "publication_policy": "complete-evidence-v1"
       }
+    },
+    "2610.19447": {
+      "decision": "exclude",
+      "reason": "이 논문은 버그 수정 벤치마크의 데이터 오염을 탐지하는 방법(BenchChecker)을 제안하는 방법론 논문이다. 자체적으로 재사용 가능한 새 벤치마크를 만들지 않았다. 평가에 쓴 SWE-bench Verified, Multi-SWE-bench, Defects4J 등은 모두 기존 벤치마크이며, 논문이 제시한 오염 필터링 결과(해결률 변화)는 기존 벤치마크에 대한 분석이다. 오염 제거 하위집합을 독립된 벤치마크로 정의하거나 갱신본으로 공개한다는 근거도 없다. 따라서 인벤토리에 새 행을 추가하거나 기존 행을 갱신할 실질적 변경이 없다.",
+      "changes": [],
+      "arxiv_id": "2610.19447",
+      "paper_title": "BenchChecker: Assessing the Credibility of Bug-Fixing Benchmarks for LLMs",
+      "paper_updated": "2026-10-15T00:00:00Z",
+      "source": {
+        "url": "https://arxiv.org/pdf/2610.19447",
+        "sha256": "5129d9a99653ef5f20d7fdd0143473c00cd1f7db94a4ac38d34dded5e9c9b4e8",
+        "accessed": "2026-11-28T03:55:59Z",
+        "page_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "extraction": {
+          "backend": "mineru",
+          "poppler_version": "pdftotext version 24.02.0",
+          "fallback_reasons": [
+            "table_layout"
+          ],
+          "page_count": 21,
+          "elapsed_seconds": 92.14,
+          "pdf_sha256": "5129d9a99653ef5f20d7fdd0143473c00cd1f7db94a4ac38d34dded5e9c9b4e8",
+          "visual_pdf_audit": false,
+          "original_text_reduced": true,
+          "tables_missing": 0,
+          "mineru_version": "2.7.6",
+          "model_revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "device": "cpu",
+          "formula_recognition": false,
+          "language": "en",
+          "page_json_sha256": "1ac4a4a18b8007c3bcfa3c0412c9a16b7eb2d8f90c65a0b56c0598050c47a1bf",
+          "page_json_file": "2610.19447.pages.json"
+        }
+      },
+      "status": "exclude",
+      "created_at": "2026-11-28T03:57:42Z",
+      "extraction_model": "claude-sonnet-5-5",
+      "approval_policy": "claude_only",
+      "screening": {
+        "arxiv_id": "2610.19447",
+        "paper_title": "BenchChecker: Assessing the Credibility of Bug-Fixing Benchmarks for LLMs",
+        "abstract": "While Large Language Models (LLMs) show promise for Automatic Program Repair (APR), existing benchmarks suffer from data contamination, in which test samples appear in training sets, artificially inflating performance. To address this, we propose BenchChecker, a framework compatible with both open-source and closed-source models that supports more credible evaluation by detecting such contamination. Grounded in the observation that persistent patches likely remain in recent repository snapshots used for training, BenchChecker employs a forensics-based two-stage detection process using only textual model outputs together with public repository history. The first stage conducts a repository presence test by probing the model with code prefixes to infer training inclusion; the second stage performs a patch presence test to verify patch persistence via similarity alignment and test-suite verification. Evaluations using StarCoder-15B, StarCoder2-15B, and CodeGen2-16B trained on The Stack v2 demonstrate that BenchChecker achieves robust detection with AUC scores around 0.9 across six benchmarks. Furthermore, applying BenchChecker to SWE-bench Verified and Multi-SWE-bench reveals that filtering contaminated samples reduces the reported resolution rates of most LLMs by more than 20% relative to the original rates on medium-difficulty tasks.",
+        "paper_updated": "2026-10-14T02:34:48Z",
+        "created_at": "2026-10-19T13:51:34Z",
+        "input_sha256": "debcb1a6292d9e7124a19bccb05aab508bf555116ac50e7fc3bac55250db0589",
+        "version": 4,
+        "status": "passed",
+        "votes": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "decision": "relevant",
+            "reason": "버그 수정 벤치마크 신뢰성 평가 프레임워크"
+          },
+          {
+            "model": "zai-org/GLM-5.3-Flash",
+            "decision": "relevant",
+            "reason": "버그 수정 벤치마크 오염 탐지 프레임워크 BenchChecker 제안"
+          }
+        ]
+      },
+      "issue_url": null,
+      "proposal_sha256": "e38d8206817bf9ffa632278c39a3981d154ff599ed0d4b0a2f6922de63e1f185"
     }
   },
   "processed_comments": [],
@@ -125950,8 +126034,8 @@
         "2610.19447"
       ],
       "abstract_attempted": [],
-      "calls": 41,
-      "cost_usd": 40.8679
+      "calls": 42,
+      "cost_usd": 41.8442
     }
   },
   "reaudits": [
